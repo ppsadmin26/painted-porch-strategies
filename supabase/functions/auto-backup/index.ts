@@ -1098,6 +1098,7 @@ Deno.serve(async (req) => {
     let path = "";
     let runId = "";
 
+    let bodyBucket = "";
     if (req.method === "POST") {
       try {
         const body = await req.json();
@@ -1105,6 +1106,7 @@ Deno.serve(async (req) => {
         kind = body.kind ?? kind;
         path = body.path ?? "";
         runId = body.run_id ?? "";
+        bodyBucket = body.bucket ?? "";
       } catch {
         // no body
       }
