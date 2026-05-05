@@ -12,7 +12,8 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Mail, Search, RefreshCw, Send, Code2, Eye, AlertCircle, Copy } from "lucide-react";
+import { Mail, Search, RefreshCw, Send, Code2, Eye, AlertCircle, Copy, Activity } from "lucide-react";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
 type EmailItem = {
@@ -174,9 +175,16 @@ export default function SiteEmails() {
             styling, ask in the Lovable chat and the template file will be updated.
           </p>
         </div>
-        <Button variant="outline" size="sm" onClick={load} disabled={loading}>
-          <RefreshCw className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`} /> Refresh
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button asChild variant="outline" size="sm">
+            <Link to="/admin/emails/health">
+              <Activity className="h-4 w-4 mr-2" /> Email health
+            </Link>
+          </Button>
+          <Button variant="outline" size="sm" onClick={load} disabled={loading}>
+            <RefreshCw className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`} /> Refresh
+          </Button>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
