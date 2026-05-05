@@ -16,7 +16,7 @@ type ProbeResult = {
   label: string;
   category: string;
   required_secret: string;
-  status: "pass" | "fail" | "skipped";
+  status: "pass" | "fail" | "warn" | "skipped";
   http_status?: number;
   latency_ms?: number;
   detail?: string;
@@ -122,20 +122,83 @@ async function probeYouTube(): Promise<ProbeResult> {
 async function probeAnthropic(): Promise<ProbeResult> {
   const key = Deno.env.get("ANTHROPIC_API_KEY");
   if (!key) return skipped("anthropic", "Anthropic", "AI", "ANTHROPIC_API_KEY", "ANTHROPIC_API_KEY not set");
-  // /v1/models is a free GET with auth
   try {
+    // 1. Verify the API key by hitting /v1/models
     const { value: res, ms } = await timed(() =>
       fetch("https://api.anthropic.com/v1/models?limit=1", {
         headers: { "x-api-key": key, "anthropic-version": "2023-06-01" },
       }),
     );
-    const ok = res.ok;
-    const body = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      return {
+        id: "anthropic", label: "Anthropic", category: "AI", required_secret: "ANTHROPIC_API_KEY",
+        status: "fail", http_status: res.status, latency_ms: ms,
+        detail: (body as any)?.error?.message ?? "unknown error",
+        hint: "Verify ANTHROPIC_API_KEY is active.",
+      };
+    }
+    await res.json().catch(() => ({}));
+
+    // 2. Verify ANTHROPIC_MODEL is set and currently valid
+    const model = Deno.env.get("ANTHROPIC_MODEL");
+    if (!model) {
+      return {
+        id: "anthropic", label: "Anthropic", category: "AI", required_secret: "ANTHROPIC_API_KEY",
+        status: "warn", http_status: res.status, latency_ms: ms,
+        detail: "API key works, but ANTHROPIC_MODEL secret is not set.",
+        hint: "Set ANTHROPIC_MODEL (e.g. claude-sonnet-4-5-20250929). See https://docs.anthropic.com/en/docs/about-claude/models",
+      };
+    }
+
+    // Tiny 1-token request validates the model id without burning budget
+    const { value: mRes, ms: mMs } = await timed(() =>
+      fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: {
+          "x-api-key": key,
+          "anthropic-version": "2023-06-01",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model,
+          max_tokens: 1,
+          messages: [{ role: "user", content: "ping" }],
+        }),
+      }),
+    );
+
+    if (mRes.ok) {
+      await mRes.json().catch(() => ({}));
+      return {
+        id: "anthropic", label: "Anthropic", category: "AI", required_secret: "ANTHROPIC_API_KEY",
+        status: "pass", http_status: mRes.status, latency_ms: mMs,
+        detail: `API key valid. Model "${model}" is live.`,
+      };
+    }
+
+    const errBody = await mRes.json().catch(() => ({}));
+    const errMsg = String((errBody as any)?.error?.message ?? "");
+    const errType = String((errBody as any)?.error?.type ?? "");
+    const isModelIssue =
+      mRes.status === 404 ||
+      /model/i.test(errMsg) && (/not.found|deprecat|invalid|unknown|does not exist/i.test(errMsg)) ||
+      errType === "not_found_error";
+
+    if (isModelIssue) {
+      return {
+        id: "anthropic", label: "Anthropic", category: "AI", required_secret: "ANTHROPIC_MODEL",
+        status: "fail", http_status: mRes.status, latency_ms: mMs,
+        detail: `ANTHROPIC_MODEL "${model}" is not available: ${errMsg || "model not found"}`,
+        hint: "Update the ANTHROPIC_MODEL secret to a current model id (e.g. claude-sonnet-4-5-20250929). See https://docs.anthropic.com/en/docs/about-claude/models",
+      };
+    }
+
     return {
       id: "anthropic", label: "Anthropic", category: "AI", required_secret: "ANTHROPIC_API_KEY",
-      status: ok ? "pass" : "fail", http_status: res.status, latency_ms: ms,
-      detail: ok ? "Models endpoint reachable" : ((body as any)?.error?.message ?? "unknown error"),
-      hint: ok ? undefined : "Verify ANTHROPIC_API_KEY is active.",
+      status: "fail", http_status: mRes.status, latency_ms: mMs,
+      detail: errMsg || "Messages endpoint error",
+      hint: "Verify ANTHROPIC_API_KEY and ANTHROPIC_MODEL are valid.",
     };
   } catch (e: any) {
     return { id: "anthropic", label: "Anthropic", category: "AI", required_secret: "ANTHROPIC_API_KEY", status: "fail", detail: e?.message };
@@ -268,6 +331,7 @@ Deno.serve(async (req) => {
       total: results.length,
       pass: results.filter((r) => r.status === "pass").length,
       fail: results.filter((r) => r.status === "fail").length,
+      warn: results.filter((r) => r.status === "warn").length,
       skipped: results.filter((r) => r.status === "skipped").length,
     };
 
