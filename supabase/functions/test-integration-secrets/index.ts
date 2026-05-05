@@ -281,7 +281,6 @@ async function probeSupabaseServiceRole(): Promise<ProbeResult> {
 const ALL_PROBES: Record<string, () => Promise<ProbeResult>> = {
   ghl: probeGhl,
   stripe: probeStripe,
-  resend: probeResend,
   youtube: probeYouTube,
   anthropic: probeAnthropic,
   lovable_ai: probeLovableAi,
