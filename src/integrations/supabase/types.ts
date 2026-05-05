@@ -702,6 +702,34 @@ export type Database = {
       admin_check_email_infra: { Args: never; Returns: Json }
       admin_dump_config: { Args: never; Returns: string }
       admin_dump_schema: { Args: never; Returns: string }
+      admin_email_log: {
+        Args: {
+          _limit?: number
+          _offset?: number
+          _search?: string
+          _since?: string
+          _status?: string
+          _template?: string
+        }
+        Returns: {
+          created_at: string
+          error_message: string
+          message_id: string
+          recipient_email: string
+          status: string
+          template_name: string
+        }[]
+      }
+      admin_email_stats: { Args: { _since?: string }; Returns: Json }
+      admin_email_suppressions: {
+        Args: { _limit?: number }
+        Returns: {
+          created_at: string
+          email: string
+          metadata: Json
+          reason: string
+        }[]
+      }
       admin_list_backup_schedules: {
         Args: never
         Returns: {
