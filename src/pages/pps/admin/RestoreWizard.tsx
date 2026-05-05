@@ -92,15 +92,15 @@ export default function RestoreWizard() {
     if (error) { toast.error(`List failed: ${error.message}`); return; }
     const all = data ?? [];
     const z = all
-      .filter((f) => f.id !== null && f.name.startsWith("pps-backup-") && f.name.endsWith(".zip"))
+      .filter((f) => f.id !== null && f.name.toLowerCase().endsWith(".zip"))
       .map((f) => ({ name: f.name, size: (f.metadata as any)?.size ?? 0 }));
     const fo = all
       .filter((f) => f.id === null && f.name.startsWith("pps-migrate-"))
       .map((f) => f.name);
     setZips(z);
     setFolders(fo);
-    if (z[0] && !selectedZip) setSelectedZip(z[0].name);
-    if (fo[0] && !selectedFolder) setSelectedFolder(fo[0]);
+    if (z[0] && (!selectedZip || !z.some((file) => file.name === selectedZip))) setSelectedZip(z[0].name);
+    if (fo[0] && (!selectedFolder || !fo.includes(selectedFolder))) setSelectedFolder(fo[0]);
   };
 
   useEffect(() => { loadSources(); }, []);
