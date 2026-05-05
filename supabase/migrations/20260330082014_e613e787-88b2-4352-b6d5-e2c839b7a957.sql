@@ -1,0 +1,1 @@
+UPDATE media_appearances SET thumbnail_url = '/media/analysts-after-dark-thumbnail.png' WHERE id = 'da0a149e-9ffc-4db7-8813-aa508ac26f6c';

@@ -1,0 +1,1 @@
+UPDATE media_appearances SET thumbnail_url = '/media/asa-hidden-superpowers-thumbnail.png' WHERE id = '1773a1f7-0577-4569-8469-0a065ced14ca';

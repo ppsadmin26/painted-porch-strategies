@@ -1,0 +1,1 @@
+UPDATE media_appearances SET thumbnail_url = '/media/newbury-change-readiness-webinar-thumbnail.png', appearance_date = '2024-06-27' WHERE id = 'c5703234-ad42-40a5-97b3-46ef99551b7c';

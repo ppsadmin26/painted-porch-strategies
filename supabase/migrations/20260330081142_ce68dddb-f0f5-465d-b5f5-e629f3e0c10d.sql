@@ -1,0 +1,1 @@
+UPDATE media_appearances SET thumbnail_url = '/media/asa-comfortable-thumbnail.png' WHERE id = '35312965-94ba-49f7-a22b-abd19082d2be';

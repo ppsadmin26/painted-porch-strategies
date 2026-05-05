@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Pre-commit guard — blocks oversized or video files from entering git history.
+#
+# Enable once per clone:
+#   git config core.hooksPath .githooks
+#
+# Bypass (rare, with caution):
+#   git commit --no-verify
+set -e
+node scripts/check-large-files.mjs

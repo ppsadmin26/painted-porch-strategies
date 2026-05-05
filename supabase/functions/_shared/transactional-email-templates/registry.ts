@@ -1,0 +1,42 @@
+/// <reference types="npm:@types/react@18.3.1" />
+import * as React from 'npm:react@18.3.1'
+
+export interface TemplateEntry {
+  component: React.ComponentType<any>
+  subject: string | ((data: Record<string, any>) => string)
+  to?: string
+  displayName?: string
+  previewData?: Record<string, any>
+}
+
+import { template as contactConfirmation } from './contact-confirmation.tsx'
+import { template as contactNotification } from './contact-notification.tsx'
+import { template as burnoutAccess } from './burnout-access.tsx'
+import { template as stracticalWaitlist } from './stractical-waitlist.tsx'
+import { template as pilotTrainingReplay } from './pilot-training-replay.tsx'
+import { template as kickTheHabitReplay } from './kick-the-habit-replay.tsx'
+import { template as communicatorStylesReplay } from './communicator-styles-replay.tsx'
+import { template as strategicCanvas } from './strategic-canvas.tsx'
+import { template as changeReadinessRoadmap } from './change-readiness-roadmap.tsx'
+import { template as changeCommsGuide } from './change-comms-guide.tsx'
+import { template as blueDoorPurchaseConfirmation } from './blue-door-purchase-confirmation.tsx'
+import { template as stoicFieldGuide } from './stoic-field-guide.tsx'
+import { template as easterEggNotification } from './easter-egg-notification.tsx'
+import { template as easterEggConfirmation } from './easter-egg-confirmation.tsx'
+
+export const TEMPLATES: Record<string, TemplateEntry> = {
+  'contact-confirmation': contactConfirmation,
+  'contact-notification': contactNotification,
+  'easter-egg-notification': easterEggNotification,
+  'easter-egg-confirmation': easterEggConfirmation,
+  'burnout-access': burnoutAccess,
+  'stractical-waitlist': stracticalWaitlist,
+  'pilot-training-replay': pilotTrainingReplay,
+  'kick-the-habit-replay': kickTheHabitReplay,
+  'communicator-styles-replay': communicatorStylesReplay,
+  'strategic-canvas': strategicCanvas,
+  'change-readiness-roadmap': changeReadinessRoadmap,
+  'change-comms-guide': changeCommsGuide,
+  'blue-door-purchase-confirmation': blueDoorPurchaseConfirmation,
+  'stoic-field-guide': stoicFieldGuide,
+}

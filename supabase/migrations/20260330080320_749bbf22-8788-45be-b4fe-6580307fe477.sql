@@ -1,0 +1,1 @@
+UPDATE media_appearances SET media_type = 'podcast', show_name = 'Your Digital Bullpen' WHERE id = '61a7460a-1416-4959-b07d-3a0d4dfa0ae2';

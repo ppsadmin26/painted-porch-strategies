@@ -1,0 +1,1 @@
+UPDATE media_appearances SET thumbnail_url = '/media/petra-going-through-growth-thumbnail.png' WHERE id = '15ae1c94-5bff-48cf-b855-9a52158bc320';

@@ -1,0 +1,36 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Videos — never commit. Use the site-videos Cloud Storage bucket
+# (managed via /admin/videos). See scripts/check-large-files.mjs.
+*.mp4
+*.mov
+*.webm
+*.avi
+*.mkv
+*.m4v
+src/assets/**/*.mp4
+src/assets/**/*.mov
+public/videos/**

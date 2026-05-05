@@ -1,0 +1,1 @@
+UPDATE media_appearances SET show_name = 'Staffing Success (American Staffing Association)' WHERE id = '157f0ec4-5780-4644-95dc-6860c5767121';

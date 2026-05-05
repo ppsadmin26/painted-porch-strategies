@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Painted Porch Strategies Design System
+ * All colors in HSL format
+ * 
+ * Brand Colors:
+ * - Teal Blue: #007697 → hsl(192, 100%, 29%)
+ * - Lime Green: #70A300 → hsl(77, 100%, 32%)
+ * - Purple: #523387 → hsl(263, 44%, 36%)
+ * - Raspberry: #DB0043 → hsl(342, 100%, 43%)
+ * - Gold: #E8A231 → hsl(40, 81%, 55%)
+ * - Navy: #00006B → hsl(240, 100%, 21%)
+ * - Charcoal: #545454 → hsl(0, 0%, 33%)
+ */
+
+@layer base {
+  :root {
+    color-scheme: light;
+    /* Base */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 33%; /* Charcoal #545454 */
+
+    /* Cards & Popovers */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 33%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 33%;
+
+    /* Primary - Teal Blue #007697 */
+    --primary: 192 100% 29%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Gold #E8A231 */
+    --secondary: 40 81% 55%;
+    --secondary-foreground: 240 100% 21%; /* Navy text on gold */
+
+    /* Muted */
+    --muted: 210 20% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Accent - Lime Green #70A300 */
+    --accent: 77 100% 32%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive - Raspberry #DB0043 */
+    --destructive: 342 100% 43%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Strategic - Purple #523387 */
+    --strategic: 263 44% 36%;
+    --strategic-foreground: 0 0% 100%;
+
+    /* Navy - Deep authority #00006B */
+    --navy: 240 100% 21%;
+    --navy-foreground: 0 0% 100%;
+
+    /* Gold - Warm accent #E8A231 */
+    --gold: 40 81% 55%;
+    --gold-foreground: 240 100% 21%;
+
+    /* Blue Door - Cobalt #0047AB */
+    --bluedoor: 215 100% 34%;
+    --bluedoor-foreground: 0 0% 100%;
+
+    /* Lime - Highlight #70A300 */
+    --lime: 77 100% 32%;
+    --lime-foreground: 0 0% 100%;
+
+    /* Raspberry - Bold emphasis #DB0043 */
+    --raspberry: 342 100% 43%;
+    --raspberry-foreground: 0 0% 100%;
+
+    /* UI Elements */
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 192 100% 29%;
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 240 100% 21%; /* Navy */
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 192 100% 29%; /* Teal */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 263 44% 36%; /* Purple */
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 80% 30%;
+    --sidebar-ring: 192 100% 29%;
+  }
+
+  .dark {
+    --background: 240 20% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 20% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 240 20% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 192 100% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 81% 50%;
+    --secondary-foreground: 240 100% 10%;
+
+    --muted: 240 15% 18%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 77 80% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 342 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --strategic: 263 44% 45%;
+    --strategic-foreground: 0 0% 100%;
+
+    --navy: 240 80% 30%;
+    --navy-foreground: 0 0% 100%;
+
+    --gold: 40 81% 55%;
+    --gold-foreground: 240 100% 10%;
+
+    --bluedoor: 215 100% 40%;
+    --bluedoor-foreground: 0 0% 100%;
+
+    --lime: 77 80% 45%;
+    --lime-foreground: 0 0% 100%;
+
+    --raspberry: 342 100% 50%;
+    --raspberry-foreground: 0 0% 100%;
+
+    --border: 240 15% 25%;
+    --input: 240 15% 25%;
+    --ring: 192 100% 35%;
+
+    --sidebar-background: 240 20% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 192 100% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 263 44% 45%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 15% 20%;
+    --sidebar-ring: 192 100% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  html, body {
+    color-scheme: light !important;
+    background-color: white !important;
+    color: hsl(0 0% 33%) !important;
+  }
+
+  /* Aggressive dark mode prevention for Telegram in-app browser */
+  @media (prefers-color-scheme: dark) {
+    html, body {
+      background-color: white !important;
+      color: hsl(0 0% 33%) !important;
+      color-scheme: light !important;
+    }
+  }
+
+  /* Override dark mode classes Telegram may inject */
+  html.dark, body.dark,
+  html[data-theme="dark"], body[data-theme="dark"],
+  html.telegram-dark, body.telegram-dark {
+    background-color: white !important;
+    color: hsl(0 0% 33%) !important;
+    color-scheme: light !important;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    @apply font-semibold;
+    /* Color is intentionally NOT set here to allow inheritance from parent containers.
+       Use text-navy explicitly on light backgrounds. */
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl font-semibold;
+  }
+
+  h5 {
+    @apply text-lg md:text-xl font-medium;
+  }
+
+  h6 {
+    @apply text-base md:text-lg font-medium;
+  }
+}
+
+@layer components {
+  /* Primary CTA Button */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground font-semibold py-4 px-8 rounded-lg
+           transition-all duration-200 ease-out
+           hover:brightness-90 hover:scale-[1.02];
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Secondary CTA Button - Now Gold */
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground font-semibold py-4 px-8 rounded-lg
+           transition-all duration-200 ease-out
+           hover:brightness-90 hover:scale-[1.02];
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Strategic Button - Purple */
+  .btn-strategic {
+    @apply bg-strategic text-strategic-foreground font-semibold py-4 px-8 rounded-lg
+           transition-all duration-200 ease-out
+           hover:brightness-90 hover:scale-[1.02];
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Strategic section styling */
+  .section-strategic {
+    @apply bg-strategic text-strategic-foreground;
+  }
+
+  /* Navy section styling */
+  .section-navy {
+    @apply bg-navy text-navy-foreground;
+  }
+
+  /* Emphasis text */
+  .text-emphasis {
+    @apply font-bold;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Gradient backgrounds for visual variety */
+  .bg-gradient-strategic {
+    background: linear-gradient(135deg, hsl(263 44% 36%) 0%, hsl(240 100% 21%) 100%);
+  }
+
+  .bg-gradient-warm {
+    background: linear-gradient(135deg, hsl(40 81% 55%) 0%, hsl(342 100% 43%) 100%);
+  }
+
+  .bg-gradient-fresh {
+    background: linear-gradient(135deg, hsl(192 100% 29%) 0%, hsl(77 100% 32%) 100%);
+  }
+
+  /* Card accent borders */
+  .card-accent-gold {
+    @apply border-l-4 border-gold;
+  }
+
+  .card-accent-purple {
+    @apply border-l-4 border-strategic;
+  }
+
+  .card-accent-lime {
+    @apply border-l-4 border-lime;
+  }
+
+  .card-accent-raspberry {
+    @apply border-l-4 border-raspberry;
+  }
+
+  /* Decorative pill badges */
+  .badge-strategic {
+    @apply bg-strategic/10 text-strategic font-poppins font-semibold text-sm px-4 py-1.5 rounded-full;
+  }
+
+  .badge-gold {
+    @apply bg-gold/15 text-gold font-poppins font-semibold text-sm px-4 py-1.5 rounded-full;
+  }
+
+  .badge-lime {
+    @apply bg-lime/15 text-lime font-poppins font-semibold text-sm px-4 py-1.5 rounded-full;
+  }
+
+  /* Slow forward zoom with subtle fade-reset loop */
+  @keyframes slow-zoom {
+    0% {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+    85% {
+      transform: scale(1.25) translateY(-3%);
+      opacity: 1;
+    }
+    95% {
+      transform: scale(1.25) translateY(-3%);
+      opacity: 0;
+    }
+    96% {
+      transform: scale(1) translateY(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slow-zoom {
+    animation: slow-zoom 14s ease-in-out infinite;
+  }
+}
+
+/* Marquee hover pause */
+.flex:hover > .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+ * Accessibility utilities
+ * ============================================================ */
+@layer utilities {
+  /* High-contrast focus ring designed for dark/navy backgrounds.
+   * Use on any focusable element (a, button) sitting on navy or image bgs.
+   * Pairs with the ParallaxCTA component. */
+  .focus-ring-on-dark:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px hsl(var(--navy)),
+      0 0 0 5px hsl(var(--gold));
+  }
+
+  /* Disable parallax (bg-fixed) for users who prefer reduced motion or are
+   * on touch devices where fixed backgrounds cause performance/jank issues. */
+  @media (prefers-reduced-motion: reduce) {
+    .md\:bg-fixed,
+    .bg-fixed {
+      background-attachment: scroll !important;
+    }
+  }
+}
+
+
+/* Always-visible scrollbar for embedded assessment iframes */
+.aidaform-scroll-container {
+  scrollbar-width: auto; /* Firefox */
+  scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--muted));
+}
+.aidaform-scroll-container::-webkit-scrollbar {
+  width: 12px;
+  -webkit-appearance: none;
+}
+.aidaform-scroll-container::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 8px;
+}
+.aidaform-scroll-container::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--primary) / 0.6);
+  border-radius: 8px;
+  border: 2px solid hsl(var(--muted));
+}
+.aidaform-scroll-container::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--primary) / 0.85);
+}

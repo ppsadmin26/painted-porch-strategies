@@ -1,0 +1,528 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { 
+  CheckCircle, 
+  Compass,
+  Target,
+  Layers,
+  ArrowRight,
+  Sparkles,
+  Landmark,
+  Clock,
+  Video,
+  FileText,
+  BarChart3,
+  Lightbulb,
+  Monitor,
+} from "lucide-react";
+import { TierBadge, TIERS } from "@/components/pps/TierBadge";
+import { TierHeroSection } from "@/components/pps/TierHeroSection";
+import { FAQSection } from "@/components/pps/FAQSection";
+import { ExploreBeforeCommitSection } from "@/components/pps/partner/ExploreBeforeCommitSection";
+import { igniteFaqCategories } from "./ignite/igniteFaqs";
+
+// Hero background - colorful flame for IGNITE spark theme
+import igniteHeroFlame from "@/assets/ignite-hero-flame.jpg";
+import igniteCtaBg from "@/assets/ignite-final-cta-bg.jpg";
+
+// Archetype cards data
+const archetypes = [
+  {
+    title: "The Curious Explorer",
+    icon: Compass,
+    traits: [
+      "You're curious about Phase Zero™ concepts",
+      "You want to test before full commitment",
+      "You're asking \"Could this work for me?\"",
+      "You prefer self-paced learning",
+    ],
+    color: "bg-gold/10",
+    iconColor: "text-gold",
+    iconBg: "bg-gold/20",
+    textColor: "text-gold",
+    borderColor: "border-gold/30",
+  },
+  {
+    title: "The Individual Innovator",
+    icon: Lightbulb,
+    traits: [
+      "You're investing in your own development",
+      "Your organization doesn't sponsor training",
+      "You want to build capacity independently",
+      "You're ready to architect your own transformation",
+    ],
+    color: "bg-primary/10",
+    iconColor: "text-primary",
+    iconBg: "bg-primary/20",
+    textColor: "text-primary",
+    borderColor: "border-primary/30",
+  },
+  {
+    title: "The Strategic Seeker",
+    icon: Target,
+    traits: [
+      "You want to test with small group first",
+      "Your organization is exploring options",
+      "You need proof-of-concept before larger investment",
+      "You're building the case for broader adoption",
+    ],
+    color: "bg-lime/10",
+    iconColor: "text-lime",
+    iconBg: "bg-lime/20",
+    textColor: "text-lime",
+    borderColor: "border-lime/30",
+  },
+  {
+    title: "The Foundation Fortifier",
+    icon: Layers,
+    traits: [
+      "You've tried tactical solutions that didn't stick",
+      "You recognize you need strategic capacity first",
+      "You want frameworks, not just tips",
+      "You're ready for Phase Zero architecture",
+    ],
+    color: "bg-strategic/10",
+    iconColor: "text-strategic",
+    iconBg: "bg-strategic/20",
+    textColor: "text-strategic",
+    borderColor: "border-strategic/30",
+  },
+];
+
+// Data arrays moved to subpages: IgniteCourses, IgniteAssessments, IgniteMasterclasses
+
+// Testimonial data (placeholders)
+const testimonials = [
+  {
+    quote: "I bought Radical Mindfulness thinking it was about meditation. It completely changed how I lead. I went from reactive firefighting to conscious design. Now I'm bringing these concepts to my entire team through an AMPLIFY workshop.",
+    name: "[Name]",
+    title: "[Title]",
+    context: "Started with IGNITE, now exploring AMPLIFY",
+  },
+  {
+    quote: "The EQ-i assessment revealed blind spots I didn't know existed. The debrief with the Painted Porch team gave me a roadmap I'm still working through six months later. Best investment I've made in my development.",
+    name: "[Name]",
+    title: "[Title]",
+    context: "EQ-i Assessment + Radical Mindfulness",
+  },
+  {
+    quote: "I took all four IGNITE courses over six months. Each one built on the last. Now I'm facilitating these concepts with my team and they're asking where I learned this stuff. Phase Zero is a game-changer.",
+    name: "[Name]",
+    title: "[Title]",
+    context: "Complete IGNITE Bundle",
+  },
+];
+
+// FAQ data imported from shared file
+export default function IgnitePathAlt() {
+  return (
+    <div>
+      {/* SECTION 1: HERO */}
+      <TierHeroSection
+        tier={TIERS.IGNITE}
+        badgeLabel="IGNITE P.A.T.H.way"
+        headline="Spark New ShIFt. Build Phase Zero Foundations at Your Own Pace."
+        headlineHighlight="IF"
+        description="IGNITE is self-led strategic development: courses, assessments, and Phase Zero frameworks for building transformation capacity—at your own pace, on your own terms. Whether you're investing in yourself or exploring before organizational commitment, this is where the spark for extraordinary shift begins."
+        ctas={[
+          {
+            label: "Browse IGNITE",
+            href: "#experience",
+            isPrimary: true,
+            isAnchor: true,
+          },
+        ]}
+        background={{
+          type: "video",
+          src: igniteHeroFlame,
+          poster: igniteHeroFlame,
+          slotKey: "ignite-hero",
+        }}
+      />
+
+      {/* SECTION 2: WHO IGNITE IS FOR */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              Ready to IGNITE Your Next Sh<span className="text-gold">IF</span>t?
+            </h2>
+            <p className="text-lg text-foreground max-w-3xl mx-auto mb-2">
+              IGNITE is the self-led entry point onto the Painted Porch — designed to spark clarity, build confidence, and prove transformative sh<span className="text-gold font-bold">IF</span>t is possible.
+            </p>
+            <p className="text-lg text-foreground max-w-3xl mx-auto">
+              You might be ready for IGNITE if you're…
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-4 gap-6 mb-12">
+            {archetypes.map((archetype, index) => (
+              <div 
+                key={index} 
+                className={`${archetype.color} p-6 rounded-xl border ${archetype.borderColor} transition-all hover:shadow-lg`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-10 h-10 rounded-full ${archetype.iconBg} flex items-center justify-center flex-shrink-0`}>
+                    <archetype.icon className={`w-5 h-5 ${archetype.iconColor}`} />
+                  </div>
+                  <h3 className={`font-poppins font-bold text-lg ${archetype.textColor}`}>
+                    {archetype.title}
+                  </h3>
+                </div>
+                <ul className="space-y-2">
+                  {archetype.traits.map((trait, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                      <CheckCircle className={`w-4 h-4 ${archetype.iconColor} flex-shrink-0 mt-0.5`} />
+                      <span>{trait}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          
+          <div className="text-center">
+            <p className="text-lg text-foreground mb-6">
+              <strong>If any of these spark a "Sh<span className="text-gold">IF</span>t Yeah!", then stepping onto the IGNITE path is just right for you.</strong>
+            </p>
+            <p className="text-foreground mb-8 max-w-2xl mx-auto">
+              Take our free P.A.T.H.finder quiz to discover which programs fit your specific development priorities.
+            </p>
+            <Link to="/start-here">
+              <Button className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary transition-colors">
+                Take Free P.A.T.H.finder Quiz
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: THE IGNITE EXPERIENCE */}
+      <section id="experience" className="py-16 md:py-24 bg-muted scroll-mt-20">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              What Sh<span className="text-gold">IF</span>t You Can Start in IGNITE
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Column 1: Self-Led Courses */}
+            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <Monitor className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-poppins font-bold text-xl text-navy mb-4">
+                Self-Led Courses
+              </h3>
+              <p className="text-foreground mb-6 leading-relaxed">
+                Transform how you lead with Phase Zero capacity on your schedule—frameworks and practices that teach you to architect change, communicate with clarity, cultivate resilience, and develop teams where everyone shines.
+              </p>
+              <p className="text-sm font-semibold text-navy mb-2">Each includes:</p>
+              <ul className="space-y-1 flex-grow">
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
+                  Video lessons & frameworks
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
+                  Workbooks & exercises
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
+                  Lifetime access
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
+                  Practical application tools
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Link to="/partner/ignite/courses">
+                  <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+                    Explore Courses →
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Column 2: Strategic Assessments */}
+            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col">
+              <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-4">
+                <BarChart3 className="w-6 h-6 text-gold" />
+              </div>
+              <h3 className="font-poppins font-bold text-xl text-navy mb-4">
+                Strategic Assessments
+              </h3>
+              <p className="text-foreground mb-6 leading-relaxed">
+                Decode your success—assessments that reveal your transformation architect capacity, emotional intelligence, unique strengths, and the talents that make you extraordinary.
+              </p>
+              <p className="text-sm font-semibold text-navy mb-2">Each includes:</p>
+              <ul className="space-y-1 flex-grow">
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
+                  Comprehensive report
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
+                  Personal debrief session*
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
+                  Action recommendations
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
+                  Development roadmap
+                </li>
+              </ul>
+              <p className="text-xs text-muted-foreground mt-3 italic">*Optional, based on assessment</p>
+              <div className="mt-6">
+                <Link to="/partner/ignite/assessments">
+                  <Button variant="outline" className="w-full border-gold text-gold hover:bg-gold hover:text-white transition-colors">
+                    Explore Assessments →
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Column 3: Masterclasses */}
+            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col">
+              <div className="w-12 h-12 rounded-full bg-strategic/10 flex items-center justify-center mb-4">
+                <Video className="w-6 h-6 text-strategic" />
+              </div>
+              <h3 className="font-poppins font-bold text-xl text-navy mb-4">
+                Masterclasses
+              </h3>
+              <p className="text-foreground mb-6 leading-relaxed">
+                Strategic insights in under 90 minutes—mini-workshops that illuminate Phase Zero strategic architecture, transformation leadership, and conscious design principles one small shift at a time.
+              </p>
+              <p className="text-sm font-semibold text-navy mb-3">Format:</p>
+              <ul className="space-y-2 mb-6 flex-grow">
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <Clock className="w-4 h-4 text-strategic flex-shrink-0" />
+                  30-90 minute focused sessions
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <Video className="w-4 h-4 text-strategic flex-shrink-0" />
+                  Live + recorded access
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <FileText className="w-4 h-4 text-strategic flex-shrink-0" />
+                  Specific Phase Zero concepts
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <Lightbulb className="w-4 h-4 text-strategic flex-shrink-0" />
+                  Immediately actionable insights
+                </li>
+              </ul>
+              <div className="mt-6">
+                <Link to="/partner/ignite/masterclasses">
+                  <Button variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
+                    Explore Masterclasses →
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BREATHING SECTION: Quote Strip */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container max-w-4xl mx-auto px-6 text-center">
+          <blockquote className="text-2xl md:text-3xl font-poppins font-semibold text-navy italic leading-relaxed">
+            "The secret of change is to focus all of your energy not on fighting the old, but on building the new."
+          </blockquote>
+          <p className="mt-4 text-muted-foreground text-sm">— Socrates</p>
+        </div>
+      </section>
+
+      {/* SECTION 6: WHAT HAPPENS AFTER IGNITE? */}
+      <section className="py-16 md:py-24 bg-muted">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              From Spark to Momentum
+            </h2>
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
+              IGNITE sparks your capacity to sh<span className="text-gold font-bold">IF</span>t. When you're ready for more depth or team engagement, here's where to go next.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Path 1: Nurture the Spark */}
+            <div className="bg-gold/10 p-8 rounded-xl border-t-4 border-gold">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
+                  <TIERS.IGNITE.icon className="w-5 h-5 text-gold" />
+                </div>
+                <h3 className="font-poppins font-bold text-lg text-navy">Nurture the Spark</h3>
+              </div>
+              <p className="text-sm font-medium text-foreground/80 mb-4">
+                Stay in IGNITE, go deeper
+              </p>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-gold" />
+                  Complete additional courses
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-gold" />
+                  Take strategic assessments
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-gold" />
+                  Join upcoming masterclasses
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-gold" />
+                  Build comprehensive strategic capacity
+                </li>
+              </ul>
+              <p className="text-xs text-muted-foreground italic">
+                Best for: Leaders who want continued self-paced development
+              </p>
+            </div>
+
+            {/* Path 2: Amplify What You've Started */}
+            <div className="bg-strategic/10 p-8 rounded-xl border-t-4 border-strategic">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-strategic/20 flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-strategic" />
+                </div>
+                <h3 className="font-poppins font-bold text-lg text-navy">Amplify What You've Started</h3>
+              </div>
+              <p className="text-sm font-medium text-foreground/80 mb-4">
+                Join cohorts or bring your team
+              </p>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-strategic" />
+                  Leadership cohorts for peer learning
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-strategic" />
+                  Custom workshops for your team
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-strategic" />
+                  Strategic sprints for focused challenges
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-strategic" />
+                  Deeper Phase Zero exploration
+                </li>
+              </ul>
+              <p className="text-xs text-muted-foreground italic mb-4">
+                Best for: Leaders ready for community engagement or team development
+              </p>
+              <Link to="/partner/amplify">
+                <Button className="bg-transparent border-2 border-strategic text-strategic hover:bg-strategic hover:text-white w-full transition-colors">
+                  Explore AMPLIFY <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+
+            {/* Path 3: Open the Blue Door */}
+            <div className="bg-primary/10 p-8 rounded-xl border-t-4 border-primary">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                  <Landmark className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="font-poppins font-bold text-lg text-navy">Open the Door to Strategic Shift</h3>
+              </div>
+              <p className="text-sm font-medium text-foreground/80 mb-4">
+                Organizational Clarity Before Implementation Commitment
+              </p>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Comprehensive organizational assessment
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Identify shifts you're built to lead
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Painted Porch Pillars analysis
+                </li>
+                <li className="flex items-center gap-2 text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  Determines AMPLIFY or EMBODY fit
+                </li>
+              </ul>
+              <p className="text-xs text-muted-foreground italic mb-4">
+                Best for: Executives exploring what shift to lead next
+              </p>
+              <Link to="/blue-door">
+                <Button className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary w-full transition-colors">
+                  Open the Blue Door
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: TESTIMONIALS */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              Leaders Who Lit the Spark with IGNITE
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white p-8 rounded-xl shadow-sm">
+                <div className="text-4xl text-gold mb-4">"</div>
+                <p className="text-foreground italic mb-6 leading-relaxed">
+                  {testimonial.quote}
+                </p>
+                <div className="border-t pt-4">
+                  <p className="font-semibold text-navy">{testimonial.name}</p>
+                  <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                  <p className="text-xs text-gold mt-1">{testimonial.context}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: FAQ */}
+      <FAQSection 
+        tierName="IGNITE" 
+        categories={igniteFaqCategories}
+      />
+
+      {/* SECTION 8.5: EXPLORE BEFORE YOU COMMIT */}
+      <ExploreBeforeCommitSection />
+
+      {/* SECTION 9: FINAL CTA */}
+      <section className="relative py-16 md:py-24 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${igniteCtaBg})` }} />
+        <div className="absolute inset-0 bg-navy/75" />
+        <div className="container max-w-4xl mx-auto px-6 text-center relative z-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            What Sh<span className="text-gold">IF</span>t Will You Ignite First?
+          </h2>
+          <p className="text-lg text-white/90 mb-4 max-w-2xl mx-auto">
+            <strong>Your Phase Zero journey starts with one program, one assessment, or one decision to invest in your transformation capacity.</strong>
+          </p>
+          <p className="text-white/80 mb-8 max-w-2xl mx-auto">
+            Not sure where to start? Take our free P.A.T.H.finder quiz to get personalized recommendations based on your development priorities.
+          </p>
+          <Link to="/start-here">
+            <Button className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-6 px-10 transition-colors">
+              Take Free P.A.T.H.finder Quiz
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}

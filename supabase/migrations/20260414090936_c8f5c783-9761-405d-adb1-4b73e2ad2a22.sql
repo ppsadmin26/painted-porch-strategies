@@ -1,0 +1,1 @@
+ALTER TABLE public.profiles ADD COLUMN editor_sections text[] NOT NULL DEFAULT '{}'::text[];

@@ -1,0 +1,182 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { CheckCircle, ArrowRight } from "lucide-react";
+import { TIER_LIST } from "@/config/tiers";
+import { TierBadge } from "@/components/pps/TierBadge";
+
+const tierFeatures = {
+  IGNITE: [
+    "On-demand video courses",
+    "Downloadable templates & frameworks",
+    "Self-assessment tools",
+    "Community forum access",
+  ],
+  AMPLIFY: [
+    "Live workshop sessions",
+    "Custom strategy development",
+    "Team workshop facilitation",
+    "Follow-up support",
+  ],
+  EMBODY: [
+    "Weekly strategic sessions",
+    "On-site facilitation",
+    "Leadership team coaching",
+    "Custom program development",
+    "Priority access & support",
+  ],
+};
+
+const tierDescriptions = {
+  IGNITE: "Access our library of tools, templates, and on-demand masterclasses to build change-readiness at your own pace.",
+  AMPLIFY: "Focused workshop sessions to address specific challenges and amplify your change-readiness with expert facilitation.",
+  EMBODY: "Deep partnership for organizations committed to comprehensive transformation with ongoing advisory support.",
+};
+
+const tierCtas = {
+  IGNITE: "Explore Ignite",
+  AMPLIFY: "Explore Amplify",
+  EMBODY: "Explore Embody",
+};
+
+export default function PartnerWithUs() {
+  return (
+    <div>
+      {/* Hero */}
+      <section className="bg-navy py-16 md:py-24">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="max-w-3xl">
+            <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
+              Partner With Us
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Choose Your P.A.T.H.way
+            </h1>
+            <p className="text-lg text-white/90 leading-relaxed">
+              Every transformation journey is unique. Choose the level of partnership that fits your organization's needs, readiness, and goals.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Philosophy */}
+      <section className="py-12 bg-muted">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+              Transparent, Flat-Fee Pricing
+            </h2>
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
+              We believe in clarity. All engagements are priced as flat fees — no surprise bills, no scope creep charges. You know exactly what you're investing before we begin.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Pathways Grid */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-8">
+            {TIER_LIST.map((tier) => {
+              const features = tierFeatures[tier.name as keyof typeof tierFeatures];
+              const description = tierDescriptions[tier.name as keyof typeof tierDescriptions];
+              const cta = tierCtas[tier.name as keyof typeof tierCtas];
+              
+              return (
+                <div
+                  key={tier.name}
+                  className={`relative ${tier.bgColor} p-8 rounded-xl border-t-4 ${tier.borderColor}`}
+                >
+                  <TierBadge tier={tier} className="mb-4" />
+                  <p className="text-sm font-medium text-primary mb-4">
+                    {tier.tagline}
+                  </p>
+                  <p className="text-foreground mb-6 text-sm leading-relaxed">
+                    {description}
+                  </p>
+                  <ul className="space-y-3 mb-8">
+                    {features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to={tier.href}>
+                    <Button className={`w-full ${tier.solidButtonClasses} transition-colors`}>
+                      {cta} <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* What's Included */}
+      <section className="py-16 md:py-24 bg-muted">
+        <div className="container max-w-3xl mx-auto px-6">
+          <div className="bg-white p-8 rounded-xl shadow-sm">
+            <h3 className="font-poppins font-semibold text-2xl text-navy mb-6 text-center">
+              What's Included in Every Engagement
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
+                <div>
+                  <span className="font-semibold text-navy">Discovery Conversation</span>
+                  <p className="text-sm text-foreground">Partnership call to explore fit and approach</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
+                <div>
+                  <span className="font-semibold text-navy">Clear Scope & Timeline</span>
+                  <p className="text-sm text-foreground">Detailed proposal with deliverables and milestones</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
+                <div>
+                  <span className="font-semibold text-navy">Stoic Principles Foundation</span>
+                  <p className="text-sm text-foreground">All work grounded in reason, logic, purpose, and virtue</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
+                <div>
+                  <span className="font-semibold text-navy">5% Charitable Donation</span>
+                  <p className="text-sm text-foreground">Every fee includes a donation to the charity of your choice</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 md:py-24 bg-gradient-strategic text-white">
+        <div className="container max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Ready to Begin Your Transformation?
+          </h2>
+          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+            Reach out to learn more about finding the right pathway for your organization.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact?scope=organization&interest=organizational-advisory&message=I'm interested in organizational advisory.">
+              <Button className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-5 px-8 transition-colors">
+                Contact Us
+              </Button>
+            </Link>
+            <Link to="/start-here">
+              <Button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy text-lg py-5 px-8 transition-colors">
+                Take the Path Fit Quiz
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

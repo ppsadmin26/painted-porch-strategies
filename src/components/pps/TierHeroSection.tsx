@@ -1,0 +1,183 @@
+import { Link } from "react-router-dom";
+import { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
+import { TierBadge } from "@/components/pps/TierBadge";
+import { type TierConfig } from "@/config/tiers";
+import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
+
+interface HeroCTA {
+  label: string;
+  href: string;
+  /** If true, uses anchor link (href="#section") instead of router Link */
+  isAnchor?: boolean;
+  /** If true, uses primary tier styling; otherwise uses outline white */
+  isPrimary?: boolean;
+  icon?: ReactNode;
+}
+
+interface TierHeroSectionProps {
+  /** Tier config for badge styling (optional - if not provided, uses custom badge) */
+  tier?: TierConfig;
+  /** Custom badge label (overrides default tier badge label) */
+  badgeLabel?: string;
+  /** Custom badge content (overrides tier badge entirely) */
+  customBadge?: ReactNode;
+  /** Main headline */
+  headline: string | ReactNode;
+  /** Optional highlighted portion of headline (renders in gold) */
+  headlineHighlight?: string;
+  /** Optional subheadline (italic, gold text) */
+  subheadline?: string;
+  /** Main description paragraph(s) */
+  description: string | ReactNode;
+  /** Call-to-action buttons */
+  ctas: HeroCTA[];
+  /** Background - can be image URL, video source, or admin-managed slot */
+  background: {
+    type: "image" | "video";
+    src: string;
+    /** Fallback image for video poster */
+    poster?: string;
+    /** If provided, the video src is fetched from `site_videos` for this slot key (admin-managed) */
+    slotKey?: string;
+  };
+  /** Overlay color class (default: "bg-navy/40") */
+  overlayClass?: string;
+  /** Minimum height class (default: "min-h-[70vh]") */
+  minHeightClass?: string;
+}
+
+/**
+ * Standardized Hero Section for tier pages and hub pages.
+ * 
+ * Features:
+ * - Left-justified content (80% width on md+)
+ * - Semi-opaque backdrop blur text container
+ * - Video or image backgrounds with overlay
+ * - Consistent badge, headline, description, CTA structure
+ * 
+ * Used by: PartnerWithUsAlt, IgnitePathAlt, AmplifyPathAlt, EmbodyPathAlt
+ */
+export function TierHeroSection({
+  tier,
+  badgeLabel,
+  customBadge,
+  headline,
+  headlineHighlight,
+  subheadline,
+  description,
+  ctas,
+  background,
+  overlayClass = "bg-navy/40",
+  minHeightClass = "min-h-[70vh]",
+}: TierHeroSectionProps) {
+  // Determine primary button styling based on tier or default
+  const getPrimaryButtonClasses = () => {
+    if (tier) {
+      return tier.solidButtonClasses;
+    }
+    return "bg-gold border-2 border-gold text-navy hover:bg-white hover:text-gold";
+  };
+
+  return (
+    <section className={`relative isolate ${minHeightClass} flex items-center`}>
+      {/* Background */}
+      {background.type === "video" ? (
+        background.slotKey ? (
+          <LazyHeroVideo
+            slotKey={background.slotKey}
+            posterUrl={background.poster ?? background.src}
+            fallbackVideoUrl={background.src}
+            className="absolute inset-0 w-full h-full"
+          />
+        ) : (
+          <video
+            src={background.src}
+            poster={background.poster}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )
+      ) : (
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${background.src})` }}
+        />
+      )}
+      
+      {/* Overlay */}
+      <div className={`absolute inset-0 ${overlayClass}`} />
+
+      <div className="container max-w-6xl mx-auto px-6 relative z-10 py-16 md:py-24">
+        <div className="md:w-4/5">
+          <div className="bg-black/50 backdrop-blur-sm p-8 md:p-12 rounded-xl">
+            {/* Badge */}
+            {customBadge ? (
+              customBadge
+            ) : tier ? (
+              <TierBadge tier={tier} label={badgeLabel} className="mb-6" />
+            ) : null}
+
+            {/* Headline */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              {typeof headline === "string" && headlineHighlight ? (
+                <>
+                  {headline.split(headlineHighlight)[0]}
+                  <span className="text-gold">{headlineHighlight}</span>
+                  {headline.split(headlineHighlight)[1]}
+                </>
+              ) : (
+                headline
+              )}
+            </h1>
+
+            {/* Subheadline */}
+            {subheadline && (
+              <p className="text-gold font-medium italic mb-4">
+                {subheadline}
+              </p>
+            )}
+
+            {/* Description */}
+            <div className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl">
+              {typeof description === "string" ? <p>{description}</p> : description}
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              {ctas.map((cta, index) => {
+                const buttonClasses = cta.isPrimary
+                  ? `${getPrimaryButtonClasses()} text-lg py-6 px-8 transition-colors w-full sm:w-auto`
+                  : "bg-transparent border-2 border-white/70 text-white hover:bg-white hover:text-navy text-lg py-6 px-8 transition-colors w-full sm:w-auto";
+
+                const content = (
+                  <Button className={buttonClasses}>
+                    {cta.label}
+                    {cta.icon}
+                  </Button>
+                );
+
+                if (cta.isAnchor) {
+                  return (
+                    <a key={index} href={cta.href}>
+                      {content}
+                    </a>
+                  );
+                }
+
+                return (
+                  <Link key={index} to={cta.href}>
+                    {content}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,1 @@
+UPDATE media_appearances SET thumbnail_url = '/media/crelate-pitfalls-thumbnail.png' WHERE id = '509efa3e-15c4-4a3b-8f45-539610e08f1e';

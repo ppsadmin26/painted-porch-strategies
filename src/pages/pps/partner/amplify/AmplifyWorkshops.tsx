@@ -1,0 +1,445 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { CheckCircle, ArrowRight, Info, Compass, GitBranch, Columns3, Shield, Settings, Lightbulb, Users, Brain, MessageSquare, Landmark } from "lucide-react";
+import architectChangeThumb from "@/assets/workshops/architect-change-thumb.jpg";
+import pillarsThumb from "@/assets/workshops/pillars-assessment-thumb.jpg";
+import pathThumb from "@/assets/workshops/path-framework-thumb.jpg";
+import resilienceThumb from "@/assets/workshops/change-resilience-thumb.jpg";
+import leadershipOpThumb from "@/assets/workshops/leadership-operating-thumb.jpg";
+import teamBuildingThumb from "@/assets/workshops/team-building-thumb.jpg";
+import mindfulnessThumb from "@/assets/workshops/mindfulness-leadership-thumb.jpg";
+import communicationThumb from "@/assets/workshops/communication-architecture-thumb.jpg";
+import stoicThumb from "@/assets/workshops/stoic-leadership-thumb.jpg";
+import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
+import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
+
+const workshopFaqCategories: FAQCategory[] = [
+  {
+    name: "General",
+    faqs: [
+      {
+        question: "How is AMPLIFY different from IGNITE?",
+        answer: "IGNITE is self-paced individual development. AMPLIFY is team-based learning (workshops, sprints, cohorts). IGNITE builds your capacity. AMPLIFY builds team or organizational capacity.",
+      },
+      {
+        question: "What's included in the investment?",
+        answer: "Pre-work, facilitation, frameworks/tools, post-workshop resources, and ongoing advisory sessions for questions and continued guidance.",
+      },
+    ],
+  },
+  {
+    name: "Workshops",
+    faqs: [
+      {
+        question: "Do we need the Blue Door before a workshop?",
+        answer: "Required for multi-day workshops. Highly recommended (but not required) for single-day workshops. Our Blue Door Organizational Appraisal provides the diagnostic foundation for workshop focus and sprint partnerships.",
+      },
+      {
+        question: "Can we do a workshop first, then decide on a Strategic Sprint?",
+        answer: "Absolutely. Many teams start with a workshop to test fit, then progress to sprint if deeper partnership makes sense.",
+      },
+      {
+        question: "What if our team is geographically distributed?",
+        answer: "We facilitate virtual workshops effectively. In-person is ideal when possible, but not required.",
+      },
+    ],
+  },
+];
+
+const workshopTopics = [
+  {
+    title: "Architect Change: Phase Zero™ Strategic Design",
+    image: architectChangeThumb,
+    challenge: "Your team jumps straight to execution without designing what you're building. Projects launch before strategic foundations exist.",
+    highlights: [
+      "What Phase Zero is and why most teams skip it",
+      "How to architect transformation before building it",
+      "The cost of skipping strategic preparation",
+      "Decision framework for Phase Zero investment",
+      "Team alignment on what requires architecture vs. execution",
+    ],
+    format: "Full to multi-day workshop",
+    investment: "Starting at $36,000",
+    note: "Prerequisite: Blue Door",
+  },
+  {
+    title: "Painted Porch Pillars Organizational Blueprint",
+    image: pillarsThumb,
+    challenge: "You're not sure if your organization is ready for the transformation you're considering. You need honest assessment of capacity.",
+    highlights: [
+      "The three Painted Porch Pillars and how they reveal organizational readiness",
+      "Gap analysis: where are you strong? where are you vulnerable?",
+      "What needs to be architected before transformation can succeed",
+      "Roadmap for strengthening vulnerable pillars",
+      "Clear decision on whether to proceed, pause, or redesign your initiative",
+    ],
+    format: "Full to multi-day workshop",
+    investment: "Starting at $25,000",
+    note: "Prerequisite: Blue Door",
+  },
+  {
+    title: "The P.A.T.H. to Navigating Change",
+    image: pathThumb,
+    challenge: "Your team doesn't have a shared framework for navigating transformation. Everyone approaches change differently.",
+    highlights: [
+      "The P.A.T.H. framework (Prepare → Align → Take Off → Habits)",
+      "Where your team is in the P.A.T.H. right now",
+      "Common mistakes at each stage and how to avoid them",
+      "Team protocols for using P.A.T.H. going forward",
+      "Roadmap for completing Phase Zero preparation",
+    ],
+    format: "Full-day workshop",
+    investment: "$25,000",
+    note: "Prerequisite: Blue Door",
+  },
+  {
+    title: "Cultivating Change Resilience",
+    image: resilienceThumb,
+    challenge: "Your team treats pushback as an obstacle rather than valuable feedback. You're not building organizational capacity to navigate and learn from what people are telling you.",
+    highlights: [
+      "Why people don't resist change — they resist being changed",
+      "How to distinguish between legitimate feedback and fear of the unknown",
+      "Navigation strategies for building resilience through feedback",
+      "How Phase Zero addresses pushback before it starts",
+      "A navigation playbook for building organizational resilience",
+    ],
+    format: "Half to full-day workshop",
+    investment: "Starting at $10,000",
+    note: "Prerequisite: Blue Door",
+  },
+  {
+    title: "Your Leadership Operating Model",
+    image: leadershipOpThumb,
+    challenge: "Your leadership team doesn't have clear decision-making protocols, communication rhythms, or accountability structures for transformation.",
+    highlights: [
+      "How decisions get made (and by whom)",
+      "Communication cadences, channels, and escalation protocols",
+      "Accountability structures that create follow-through",
+      "Exploring each leader's Working Genius and its impact on team dynamics",
+      "A documented leadership operating model your team commits to",
+    ],
+    format: "Full-day workshop",
+    investment: "$25,000",
+    note: "Prerequisite: Blue Door",
+  },
+];
+
+export default function AmplifyWorkshops() {
+  return (
+    <div>
+      <PPSBreadcrumb
+        segments={[
+          { label: "Partner", href: "/partner" },
+          { label: "AMPLIFY", href: "/partner/amplify" },
+          { label: "Team Workshops" },
+        ]}
+      />
+
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container max-w-6xl mx-auto px-6">
+          <Link
+            to="/partner/amplify"
+            className="inline-flex items-center gap-2 text-sm text-strategic hover:underline mb-8"
+          >
+            <ArrowRight className="w-4 h-4 rotate-180" /> Back to AMPLIFY Overview
+          </Link>
+
+          <div className="text-center mb-12">
+            <h1 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              Executive Workshops That Build Phase Zero Foundations
+            </h1>
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
+              Our signature workshops are designed to align leadership teams and author your next strategic shift.
+            </p>
+          </div>
+
+          {/* Top row: Architect Change + Pillars */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {workshopTopics.slice(0, 2).map((workshop, index) => {
+              return (
+                <div key={index} className="rounded-xl flex flex-col overflow-hidden border border-border">
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex items-start gap-4 mb-3">
+                      <img
+                        src={workshop.image}
+                        alt={workshop.title}
+                        loading="lazy"
+                        className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
+                      />
+                      <div>
+                        <h2 className="font-poppins font-bold text-lg text-navy leading-tight mb-1">{workshop.title}</h2>
+                        <div className="flex flex-wrap gap-2 text-sm">
+                          <span className="text-foreground font-medium">{workshop.format}</span>
+                          <span className="text-foreground">|</span>
+                          <span className="text-lime font-semibold">{workshop.investment}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mb-4 bg-raspberry/5 border border-raspberry/20 rounded-lg p-4">
+                      <p className="text-sm font-semibold text-raspberry mb-1">The Challenge:</p>
+                      <p className="text-sm text-foreground">{workshop.challenge}</p>
+                    </div>
+                    <div className="flex-grow">
+                      <p className="text-sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
+                      <ul className="space-y-1">
+                        {workshop.highlights.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <CheckCircle className="w-3 h-3 text-lime flex-shrink-0 mt-1" />
+                            <span className="text-xs text-foreground">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {workshop.note && (
+                      <p className="text-xs text-foreground italic mt-4">*{workshop.note}</p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Remaining workshops grid */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {workshopTopics.slice(2).map((workshop, index) => {
+              return (
+                <div key={index} className="rounded-xl flex flex-col overflow-hidden border border-border">
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex items-start gap-4 mb-3">
+                      <img
+                        src={workshop.image}
+                        alt={workshop.title}
+                        loading="lazy"
+                        className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
+                      />
+                      <div>
+                        <h2 className="font-poppins font-bold text-lg text-navy leading-tight mb-1">{workshop.title}</h2>
+                        <div className="flex flex-wrap gap-2 text-sm">
+                          <span className="text-foreground font-medium">{workshop.format}</span>
+                          <span className="text-foreground">|</span>
+                          <span className="text-lime font-semibold">{workshop.investment}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mb-4 bg-raspberry/5 border border-raspberry/20 rounded-lg p-4">
+                      <p className="text-sm font-semibold text-raspberry mb-1">The Challenge:</p>
+                      <p className="text-sm text-foreground">{workshop.challenge}</p>
+                    </div>
+                    <div className="flex-grow">
+                      <p className="text-sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
+                      <ul className="space-y-1">
+                        {workshop.highlights.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <CheckCircle className="w-3 h-3 text-lime flex-shrink-0 mt-1" />
+                            <span className="text-xs text-foreground">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {workshop.note && (
+                      <p className="text-xs text-foreground italic mt-4">*{workshop.note}</p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Blue Door Callout */}
+          <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 md:pr-12 flex flex-col md:flex-row items-start md:items-center gap-6 mb-12">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <Info className="w-5 h-5 text-primary" />
+                <h3 className="font-poppins font-semibold text-navy whitespace-nowrap">Authoring Your Next Sh<span className="text-raspberry">IF</span>t Begins At the Blue Door</h3>
+              </div>
+              <p className="text-sm text-foreground mb-2 mt-4">
+                The Blue Door is our 20-minute organizational appraisal that reveals where your business and leadership stands on the path to transformation so that you can lead with clarity and build with confidence.
+              </p>
+              <p className="text-sm text-foreground/70 italic mb-3">
+                Required for Strategic Sprints and workshops. Not needed for Leadership Labs.
+              </p>
+              <p className="text-sm text-foreground/70 italic mb-3">
+                The Blue Door investment will be credited toward any booked engagement.
+              </p>
+              <div className="flex items-center gap-4 text-sm">
+                <span className="font-semibold text-navy">$1,500</span>
+                <span className="text-foreground/70">|</span>
+                <span className="text-foreground/70">20 minutes</span>
+              </div>
+            </div>
+            <Link to="/blue-door">
+              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white whitespace-nowrap transition-colors">
+                Get Started <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+
+          {/* Leadership & Team Development Workshops */}
+          <div id="leadership-team-development" className="mb-12 scroll-mt-24">
+            <div className="text-center mb-8">
+              <span className="inline-block bg-gold/10 text-gold font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
+                Ready to Book
+              </span>
+              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-3">
+                Leadership & Team Development Workshops
+              </h2>
+              <p className="text-foreground max-w-2xl mx-auto">
+                Build the capacity your organization needs to lead and adapt to change. These workshops strengthen the foundational skills that make transformation possible and extraordinary achievable.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                {
+                  icon: Users,
+                  title: "Building Extraordinary Teams",
+                  image: teamBuildingThumb,
+                  description: "Why most team-building fails — and what high-performing teams actually do differently. Move beyond trust falls to build teams that collaborate, challenge, and create together.",
+                  duration: "Half-day to full-day",
+                  investment: "Starting at $10,000",
+                  outcomes: [
+                    "Identify team dynamics that accelerate (or block) performance",
+                    "Build shared language for healthy conflict and collaboration",
+                    "Create team operating agreements with accountability",
+                    "Strengthen trust through vulnerability and shared purpose",
+                  ],
+                },
+                {
+                  icon: Brain,
+                  title: "Mindful Leadership",
+                  image: mindfulnessThumb,
+                  description: "Practical mindfulness techniques for executives who don't have time for mindfulness. Build the awareness, focus, and emotional regulation that transform how leaders show up.",
+                  duration: "Half-day to full-day",
+                  investment: "Starting at $10,000",
+                  outcomes: [
+                    "Develop a personal mindfulness practice that fits your schedule",
+                    "Strengthen emotional regulation under pressure",
+                    "Improve focus and decision-making clarity",
+                    "Create team rituals that build collective presence",
+                  ],
+                },
+                {
+                  icon: MessageSquare,
+                  title: "The Art & Architecture of Communicating Change",
+                  image: communicationThumb,
+                  description: "Beyond the announcement email: How to design communication that actually drives behavior change. Build the messaging infrastructure that makes change stick.",
+                  duration: "Half-day to full-day",
+                  investment: "Starting at $10,000",
+                  outcomes: [
+                    "Design communication cadences that build momentum",
+                    "Craft messages that address the 'why' people actually need",
+                    "Build feedback loops that surface real concerns early",
+                    "Create a communication playbook for your next initiative",
+                  ],
+                },
+                {
+                  icon: Landmark,
+                  title: "Stoicism in the Workplace: Ancient Lessons for Modern Leadership",
+                  image: stoicThumb,
+                  description: "Ancient philosophy meets contemporary challenges. How reason, logic, purpose, and virtue create resilient leaders who navigate complexity with clarity and conviction.",
+                  duration: "Half-day to full-day",
+                  investment: "Starting at $10,000",
+                  outcomes: [
+                    "Apply Stoic principles to everyday leadership decisions",
+                    "Build resilience through strategic preparation (Premeditatio Malorum)",
+                    "Develop the capacity to lead through uncertainty and ambiguity",
+                    "Create a personal leadership philosophy grounded in virtue and purpose",
+                  ],
+                },
+              ].map((workshop, index) => {
+                return (
+                  <div
+                    key={index}
+                    id={workshop.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
+                    className="rounded-xl border border-border p-6 flex flex-col scroll-mt-24"
+                  >
+                    <div className="flex items-start gap-4 mb-3">
+                      <img
+                        src={workshop.image}
+                        alt={workshop.title}
+                        loading="lazy"
+                        className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
+                      />
+                      <div>
+                        <h3 className="font-poppins font-bold text-lg text-navy leading-tight mb-1">{workshop.title}</h3>
+                        <div className="flex flex-wrap gap-2 text-sm">
+                          <span className="text-foreground font-medium">{workshop.duration}</span>
+                          <span className="text-foreground">|</span>
+                          <span className="text-lime font-semibold">{workshop.investment}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-sm text-foreground mb-4">{workshop.description}</p>
+                    <div className="flex-grow">
+                      <p className="text-sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
+                      <ul className="space-y-1">
+                        {workshop.outcomes.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <CheckCircle className="w-3 h-3 text-lime flex-shrink-0 mt-1" />
+                            <span className="text-xs text-foreground">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <p className="text-xs text-foreground/70 italic mt-4">No Blue Door required</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="text-center mt-10">
+            <Link to="/contact?scope=organization&interest=workshops&message=I'm interested in booking a workshop for our team.">
+              <Button className="bg-brand-teal text-white hover:bg-brand-teal/90 px-8 py-3 text-base font-semibold">
+                Contact Us to Book Your Workshop
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <FAQSection
+        tierName="AMPLIFY"
+        categories={workshopFaqCategories}
+        subheadline="Common questions about AMPLIFY workshops"
+      />
+
+      {/* Final CTA */}
+      <section className="relative py-16 md:py-24 text-white overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${architectChangeThumb})` }}
+        />
+        <div className="absolute inset-0 bg-navy/60" />
+        <div className="container max-w-4xl mx-auto px-6 text-center relative z-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Ready to AMPLIFY Your Team's Next Sh<span className="text-white">IF</span>t?
+          </h2>
+          <p className="text-lg text-white/90 mb-4 max-w-2xl mx-auto">
+            Our workshops are co-designed around your context, your challenges, and your transformation goals.
+          </p>
+          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto font-semibold">
+            Let's design the right experience for your team.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+            <Link to="/contact?scope=organization&interest=workshops&message=I'm interested in AMPLIFY workshops for our team.">
+              <Button className="bg-brand-teal border-2 border-brand-teal text-white hover:bg-white hover:text-brand-teal text-lg py-5 px-8 transition-colors font-semibold">
+                Contact Us to Get Started
+              </Button>
+            </Link>
+            <Link to="/start-here">
+              <Button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy text-lg py-5 px-8 transition-colors font-semibold">
+                Discover Your P.A.T.H.way
+              </Button>
+            </Link>
+          </div>
+
+          <Link to="/partner" className="text-white/80 hover:text-white underline text-sm">
+            Explore All Partnership Options
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}

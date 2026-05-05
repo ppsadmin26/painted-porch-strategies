@@ -1,0 +1,1 @@
+ALTER TABLE public.site_videos ADD COLUMN IF NOT EXISTS poster_path TEXT;
