@@ -75,6 +75,7 @@ export default function RestoreWizard() {
   const [sourceUrl, setSourceUrl] = useState(OLD_SOURCE_FUNCTIONS_URL);
   const [sourceToken, setSourceToken] = useState("");
   const [sourcePath, setSourcePath] = useState("");
+  const [sourceBucket, setSourceBucket] = useState<"backups" | "blog-images" | "site-videos" | "email-assets">("backups");
   const [pulling, setPulling] = useState(false);
   const [pullProgress, setPullProgress] = useState<{ done: number; total: number; bytes: number; failed: number } | null>(null);
   const PULL_BATCH = 4;
