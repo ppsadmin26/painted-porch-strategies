@@ -78,26 +78,6 @@ async function probeStripe(): Promise<ProbeResult> {
   }
 }
 
-async function probeResend(): Promise<ProbeResult> {
-  const key = Deno.env.get("RESEND_API_KEY");
-  if (!key) return skipped("resend", "Resend", "Email", "RESEND_API_KEY", "RESEND_API_KEY not set");
-  try {
-    const { value: res, ms } = await timed(() =>
-      fetch("https://api.resend.com/domains", { headers: { Authorization: `Bearer ${key}` } }),
-    );
-    const ok = res.ok;
-    const body = await res.json().catch(() => ({}));
-    const count = Array.isArray((body as any)?.data) ? (body as any).data.length : undefined;
-    return {
-      id: "resend", label: "Resend", category: "Email", required_secret: "RESEND_API_KEY",
-      status: ok ? "pass" : "fail", http_status: res.status, latency_ms: ms,
-      detail: ok ? `Domains list returned${count !== undefined ? ` (${count} domain${count === 1 ? "" : "s"})` : ""}` : ((body as any)?.message ?? "unknown error"),
-      hint: ok ? undefined : "Verify RESEND_API_KEY has read access.",
-    };
-  } catch (e: any) {
-    return { id: "resend", label: "Resend", category: "Email", required_secret: "RESEND_API_KEY", status: "fail", detail: e?.message };
-  }
-}
 
 async function probeYouTube(): Promise<ProbeResult> {
   const key = Deno.env.get("YOUTUBE_API_KEY");

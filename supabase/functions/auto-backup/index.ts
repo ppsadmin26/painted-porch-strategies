@@ -1530,7 +1530,7 @@ Excluded: storage binaries (re-upload those separately when needed)
         SUPABASE_JWKS: { category: "Supabase Core", description: "Used for in-function JWT validation.", required: false },
         SUPABASE_DB_URL: { category: "Supabase Core", description: "Direct Postgres URL.", required: false },
         BACKUP_CRON_SECRET: { category: "Internal", description: "Shared secret for cron-triggered backups.", required: true },
-        RESEND_API_KEY: { category: "Email", description: "Resend API key for transactional email.", required: true },
+        
         STRIPE_SECRET_KEY: { category: "Payments", description: "Stripe live/test secret key.", required: true },
         STRIPE_WEBHOOK_SECRET: { category: "Payments", description: "Stripe webhook signing secret.", required: true },
         GHL_API_KEY: { category: "GoHighLevel", description: "GoHighLevel private integration token.", required: true },
