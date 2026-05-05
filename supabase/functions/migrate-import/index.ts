@@ -525,10 +525,11 @@ Deno.serve(async (req) => {
       const dropped = before - rows.length;
 
       const CHUNK = 200;
+      const conflictKey2 = JUNCTION_CONFLICT_KEYS[table] ?? "id";
       for (let i = 0; i < rows.length; i += CHUNK) {
         const slice = rows.slice(i, i + CHUNK);
         const { error: e } = upsert
-          ? await sb.from(table).upsert(slice, { onConflict: "id" })
+          ? await sb.from(table).upsert(slice, { onConflict: conflictKey2 })
           : await sb.from(table).insert(slice);
         if (e) throw new Error(`${table}: ${e.message}`);
       }
