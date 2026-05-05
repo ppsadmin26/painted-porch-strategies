@@ -16,7 +16,7 @@ type ProbeResult = {
   label: string;
   category: string;
   required_secret: string;
-  status: "pass" | "fail" | "skipped";
+  status: "pass" | "fail" | "warn" | "skipped";
   http_status?: number;
   latency_ms?: number;
   detail?: string;
