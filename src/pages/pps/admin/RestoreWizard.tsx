@@ -78,7 +78,7 @@ export default function RestoreWizard() {
   const [sourceBucket, setSourceBucket] = useState<"backups" | "blog-images" | "site-videos" | "email-assets">("backups");
   const [pulling, setPulling] = useState(false);
   const [pullProgress, setPullProgress] = useState<{ done: number; total: number; bytes: number; failed: number } | null>(null);
-  const PULL_BATCH = 4;
+  const PULL_BATCH = 2;
 
   const appendLog = (m: string) =>
     setLog((p) => [...p, `[${new Date().toLocaleTimeString()}] ${m}`]);
