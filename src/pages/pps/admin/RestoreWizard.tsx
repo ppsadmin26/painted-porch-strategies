@@ -491,18 +491,40 @@ export default function RestoreWizard() {
                   />
                 </div>
               </div>
-              <div>
-                <Label className="text-xs">Source path (folder name or pps-restore-*.zip)</Label>
-                <input
-                  className="w-full border rounded px-2 py-1.5 text-sm bg-background"
-                  placeholder="pps-backup-2026-05-05T... or pps-restore-pps-backup-...zip"
-                  value={sourcePath}
-                  onChange={(e) => setSourcePath(e.target.value.trim())}
-                  disabled={pulling}
-                />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div>
+                  <Label className="text-xs">Source bucket</Label>
+                  <select
+                    className="w-full border rounded px-2 py-1.5 text-sm bg-background"
+                    value={sourceBucket}
+                    onChange={(e) => setSourceBucket(e.target.value as any)}
+                    disabled={pulling}
+                  >
+                    <option value="backups">backups (DB zip / migration folder)</option>
+                    <option value="blog-images">blog-images (live storage)</option>
+                    <option value="site-videos">site-videos (live storage)</option>
+                    <option value="email-assets">email-assets (live storage)</option>
+                  </select>
+                </div>
+                <div className="md:col-span-2">
+                  <Label className="text-xs">
+                    {sourceBucket === "backups"
+                      ? "Source path (folder name or pps-restore-*.zip)"
+                      : "Path prefix (optional — leave blank for entire bucket)"}
+                  </Label>
+                  <input
+                    className="w-full border rounded px-2 py-1.5 text-sm bg-background"
+                    placeholder={sourceBucket === "backups"
+                      ? "pps-backup-2026-05-05T... or pps-restore-pps-backup-...zip"
+                      : "leave blank for entire bucket, or e.g. uploads/"}
+                    value={sourcePath}
+                    onChange={(e) => setSourcePath(e.target.value.trim())}
+                    disabled={pulling}
+                  />
+                </div>
               </div>
               <div className="flex items-center gap-3">
-                <Button onClick={pullFromSource} disabled={pulling || !sourceUrl || !sourceToken || !sourcePath}>
+                <Button onClick={pullFromSource} disabled={pulling || !sourceUrl || !sourceToken || (sourceBucket === "backups" && !sourcePath)}>
                   {pulling
                     ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" /> Pulling…</>
                     : <>Pull into this project</>}
@@ -516,7 +538,7 @@ export default function RestoreWizard() {
                 )}
               </div>
               <p className="text-[11px] text-muted-foreground">
-                Tip: in the OLD project, click <strong>Prepare restore zip</strong> on /admin/backups first, then paste the resulting <code>pps-restore-*.zip</code> name here for a one-shot transfer.
+                Tip: pick <strong>blog-images</strong>, <strong>site-videos</strong>, or <strong>email-assets</strong> to copy live storage binaries directly into this project's matching bucket. Use <strong>backups</strong> for DB zips / migration folders.
               </p>
             </div>
           )}
