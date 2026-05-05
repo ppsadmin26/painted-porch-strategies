@@ -363,15 +363,25 @@ export default function SecretsHandoff() {
                     ? "border-green-600/40 bg-green-600/5"
                     : r.status === "fail"
                       ? "border-rose-600/40 bg-rose-600/5"
-                      : "border-muted bg-muted/30";
+                      : r.status === "warn"
+                        ? "border-amber-500/40 bg-amber-500/5"
+                        : "border-muted bg-muted/30";
                 const Icon =
-                  r.status === "pass" ? CheckCircle2 : r.status === "fail" ? XCircle : MinusCircle;
+                  r.status === "pass"
+                    ? CheckCircle2
+                    : r.status === "fail"
+                      ? XCircle
+                      : r.status === "warn"
+                        ? AlertTriangle
+                        : MinusCircle;
                 const iconColor =
                   r.status === "pass"
                     ? "text-green-600"
                     : r.status === "fail"
                       ? "text-rose-600"
-                      : "text-muted-foreground";
+                      : r.status === "warn"
+                        ? "text-amber-600"
+                        : "text-muted-foreground";
                 return (
                   <div key={r.id} className={`rounded border p-3 text-xs ${tone}`}>
                     <div className="flex items-start justify-between gap-2 flex-wrap">
@@ -401,8 +411,8 @@ export default function SecretsHandoff() {
                       </Button>
                     </div>
                     {r.detail && <div className="mt-1 text-muted-foreground break-words">{r.detail}</div>}
-                    {r.hint && r.status === "fail" && (
-                      <div className="mt-1 text-rose-700">Hint: {r.hint}</div>
+                    {r.hint && (r.status === "fail" || r.status === "warn") && (
+                      <div className={`mt-1 ${r.status === "warn" ? "text-amber-700" : "text-rose-700"}`}>Hint: {r.hint}</div>
                     )}
                   </div>
                 );
