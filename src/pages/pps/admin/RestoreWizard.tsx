@@ -21,6 +21,8 @@ type Step = {
 
 const COPY_BATCH = 8;
 const MAX_RETRIES = 3;
+const OLD_SOURCE_FUNCTIONS_URL = "https://kzbcudiorvnsqqgyzusl.functions.supabase.co";
+const OLD_ADMIN_TOKEN_SNIPPET = "JSON.parse(localStorage.getItem('sb-kzbcudiorvnsqqgyzusl-auth-token') || '{}').access_token";
 
 function fmt(b: number) {
   if (!b) return "0 B";
@@ -70,7 +72,7 @@ export default function RestoreWizard() {
 
   // Cross-project pull state
   const [pullOpen, setPullOpen] = useState(false);
-  const [sourceUrl, setSourceUrl] = useState("");
+  const [sourceUrl, setSourceUrl] = useState(OLD_SOURCE_FUNCTIONS_URL);
   const [sourceToken, setSourceToken] = useState("");
   const [sourcePath, setSourcePath] = useState("");
   const [pulling, setPulling] = useState(false);
@@ -459,9 +461,9 @@ export default function RestoreWizard() {
           {pullOpen && (
             <div className="px-3 pb-3 pt-1 space-y-2 text-sm border-t">
               <p className="text-xs text-muted-foreground">
-                In the source project, sign in as admin, open DevTools console, and run:&nbsp;
-                <code className="text-[10px]">{"(await window.supabase?.auth?.getSession?.())?.data?.session?.access_token"}</code>.
-                Paste the result below along with that project's functions URL and the backup folder/zip name.
+                No Cloud storage download is needed. In the OLD project, sign in as admin, open DevTools console, run&nbsp;
+                <code className="text-[10px] break-all">{OLD_ADMIN_TOKEN_SNIPPET}</code>,
+                then paste the token below with the backup folder or zip name.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div>
@@ -511,7 +513,7 @@ export default function RestoreWizard() {
                 )}
               </div>
               <p className="text-[11px] text-muted-foreground">
-                Tip: in the source project, click <strong>Prepare restore zip</strong> on /admin/backups first, then paste the resulting <code>pps-restore-*.zip</code> name here for a one-shot transfer.
+                Tip: in the OLD project, click <strong>Prepare restore zip</strong> on /admin/backups first, then paste the resulting <code>pps-restore-*.zip</code> name here for a one-shot transfer.
               </p>
             </div>
           )}
