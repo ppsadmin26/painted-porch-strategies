@@ -579,18 +579,24 @@ Deno.serve(async (req) => {
     if (phase === "pull_list") {
       const sourceUrl: string = body.sourceUrl;
       const sourceToken: string = body.sourceToken;
-      const path: string = body.path;
-      if (!sourceUrl || !sourceToken || !path) {
-        throw new Error("sourceUrl, sourceToken, and path required");
+      const path: string = body.path ?? "";
+      const sourceBucket: string = body.sourceBucket ?? "backups";
+      if (!sourceUrl || !sourceToken) {
+        throw new Error("sourceUrl and sourceToken required");
+      }
+      if (sourceBucket === "backups" && !path) {
+        throw new Error("path required when listing the backups bucket");
       }
       const result = await callSourceAutoBackup(sourceUrl, sourceToken, {
         action: "list-files",
         path,
+        bucket: sourceBucket,
       });
       const files = (result.files ?? []).filter((f: any) => f.url && !f.name.endsWith("/__state.json"));
       return new Response(JSON.stringify({
         ok: true,
         folder: result.folder ?? path,
+        bucket: result.bucket ?? sourceBucket,
         files: files.map((f: any) => ({ name: f.name, size: f.size ?? 0, url: f.url })),
         total: files.length,
       }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
@@ -599,6 +605,7 @@ Deno.serve(async (req) => {
     if (phase === "pull_batch") {
       const files: { url: string; destPath: string }[] = body.files ?? [];
       const upsert = body.upsert !== false;
+      const destBucket: string = body.destBucket ?? "backups";
       if (!Array.isArray(files) || !files.length) {
         return new Response(JSON.stringify({ ok: true, copied: 0, failed: 0, bytes: 0, errors: [] }), {
           headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -614,7 +621,7 @@ Deno.serve(async (req) => {
           bytes += blob.size;
           const ct = r.headers.get("content-type") || guessContentType(f.destPath);
           const { error: upErr } = await sb.storage
-            .from("backups")
+            .from(destBucket)
             .upload(f.destPath, blob, { contentType: ct, upsert });
           if (upErr) throw new Error(upErr.message);
           copied++;
