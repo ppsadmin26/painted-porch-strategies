@@ -1098,6 +1098,7 @@ Deno.serve(async (req) => {
     let path = "";
     let runId = "";
 
+    let bodyBucket = "";
     if (req.method === "POST") {
       try {
         const body = await req.json();
@@ -1105,6 +1106,7 @@ Deno.serve(async (req) => {
         kind = body.kind ?? kind;
         path = body.path ?? "";
         runId = body.run_id ?? "";
+        bodyBucket = body.bucket ?? "";
       } catch {
         // no body
       }
@@ -1244,24 +1246,29 @@ Deno.serve(async (req) => {
 
     if (action === "list-files") {
       requireAdmin();
-      if (!path) return jsonResponse({ error: "path required" }, 400);
+      // Allow listing from any bucket (e.g. blog-images, site-videos, email-assets)
+      // for cross-project storage migration. Defaults to "backups".
+      const targetBucket = (bodyBucket || "backups").trim();
+      if (!path && targetBucket === "backups") return jsonResponse({ error: "path required" }, 400);
+      const listPath = path || "";
       // Single-file artifact (zip): return just itself with a signed URL.
-      if (path.endsWith(".zip") || path.endsWith(".json")) {
-        const { data, error } = await sb.storage.from("backups").createSignedUrl(path, 600);
+      if (targetBucket === "backups" && (listPath.endsWith(".zip") || listPath.endsWith(".json"))) {
+        const { data, error } = await sb.storage.from("backups").createSignedUrl(listPath, 600);
         if (error) throw error;
         return jsonResponse({
-          folder: path,
-          files: [{ name: path, size: 0, url: data.signedUrl }],
+          folder: listPath,
+          bucket: targetBucket,
+          files: [{ name: listPath, size: 0, url: data.signedUrl }],
           expires_in: 600,
         });
       }
-      const files = await listBucketObjects(sb, "backups", path);
+      const files = await listBucketObjects(sb, targetBucket, listPath);
       // Sign in batches of 100 (createSignedUrls supports arrays).
       const out: { name: string; size: number; url: string | null; updated_at: string | null }[] = [];
       for (let i = 0; i < files.length; i += 100) {
         const batch = files.slice(i, i + 100);
         const { data, error } = await sb.storage
-          .from("backups")
+          .from(targetBucket)
           .createSignedUrls(batch.map((f) => f.name), 600);
         if (error) throw error;
         batch.forEach((f, idx) => {
@@ -1274,7 +1281,7 @@ Deno.serve(async (req) => {
         });
       }
       out.sort((a, b) => a.name.localeCompare(b.name));
-      return jsonResponse({ folder: path, files: out, expires_in: 600 });
+      return jsonResponse({ folder: listPath, bucket: targetBucket, files: out, expires_in: 600 });
     }
 
     if (action === "prepare-restore-zip") {
