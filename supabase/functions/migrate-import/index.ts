@@ -611,18 +611,31 @@ Deno.serve(async (req) => {
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      let copied = 0, failed = 0, bytes = 0;
+      let copied = 0, failed = 0, skipped = 0, bytes = 0;
       const errors: string[] = [];
+      const MAX_BYTES = 90 * 1024 * 1024; // 90MB safety cap per file (edge worker memory)
       for (const f of files) {
         try {
+          // HEAD-style probe via range request to learn size cheaply
+          const head = await fetch(f.url, { method: "GET", headers: { Range: "bytes=0-0" } });
+          const cr = head.headers.get("content-range"); // bytes 0-0/12345
+          const total = cr ? Number(cr.split("/")[1]) : Number(head.headers.get("content-length") ?? 0);
+          if (total && total > MAX_BYTES) {
+            skipped++;
+            errors.push(`${f.destPath}: skipped (${(total / 1048576).toFixed(1)}MB > 90MB cap)`);
+            try { await head.body?.cancel(); } catch { /* noop */ }
+            continue;
+          }
+          try { await head.body?.cancel(); } catch { /* noop */ }
+
           const r = await fetch(f.url);
           if (!r.ok) throw new Error(`fetch ${r.status}`);
-          const blob = await r.blob();
-          bytes += blob.size;
+          const buf = new Uint8Array(await r.arrayBuffer());
+          bytes += buf.byteLength;
           const ct = r.headers.get("content-type") || guessContentType(f.destPath);
           const { error: upErr } = await sb.storage
             .from(destBucket)
-            .upload(f.destPath, blob, { contentType: ct, upsert });
+            .upload(f.destPath, buf, { contentType: ct, upsert });
           if (upErr) throw new Error(upErr.message);
           copied++;
         } catch (err) {
@@ -630,7 +643,7 @@ Deno.serve(async (req) => {
           errors.push(`${f.destPath}: ${(err as Error)?.message ?? err}`);
         }
       }
-      return new Response(JSON.stringify({ ok: true, copied, failed, bytes, errors }), {
+      return new Response(JSON.stringify({ ok: true, copied, failed, skipped, bytes, errors }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
