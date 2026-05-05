@@ -369,17 +369,24 @@ export default function RestoreWizard() {
   const reset = () => { setSteps([]); setLog([]); };
 
   const pullFromSource = async () => {
-    if (!sourceUrl || !sourceToken || !sourcePath) {
-      toast.error("Source URL, admin token, and path are all required");
+    if (!sourceUrl || !sourceToken) {
+      toast.error("Source URL and admin token are required");
+      return;
+    }
+    if (sourceBucket === "backups" && !sourcePath) {
+      toast.error("Source path is required for the backups bucket");
       return;
     }
     setPulling(true);
     setPullProgress({ done: 0, total: 0, bytes: 0, failed: 0 });
-    appendLog(`🔄 Pulling ${sourcePath} from source project…`);
+    const label = sourceBucket === "backups"
+      ? `backups/${sourcePath}`
+      : `${sourceBucket}/${sourcePath || "(entire bucket)"}`;
+    appendLog(`🔄 Pulling ${label} from source project…`);
     try {
       const list = await invoke<{ files: { name: string; size: number; url: string }[]; folder: string; total: number }>(
         "migrate-import",
-        { phase: "pull_list", sourceUrl, sourceToken, path: sourcePath },
+        { phase: "pull_list", sourceUrl, sourceToken, path: sourcePath, sourceBucket },
       );
       const files = list.files || [];
       if (!files.length) {
@@ -387,24 +394,17 @@ export default function RestoreWizard() {
         setPulling(false);
         return;
       }
-      appendLog(`  Found ${files.length} file(s) in source. Streaming into this project's backups bucket…`);
+      appendLog(`  Found ${files.length} file(s). Streaming into ${sourceBucket} bucket on this project…`);
       setPullProgress({ done: 0, total: files.length, bytes: 0, failed: 0 });
 
-      // For single-zip pulls, source.list-files returns name=fullPath; we want
-      // to land it at the same relative path in destination.
-      const items = files.map((f) => ({
-        url: f.url,
-        // strip a leading folder name from the source if it matches the requested
-        // folder, so we land files at <folder>/<rel> in destination too.
-        destPath: f.name,
-      }));
+      const items = files.map((f) => ({ url: f.url, destPath: f.name }));
 
       let done = 0, bytes = 0, failed = 0;
       for (let i = 0; i < items.length; i += PULL_BATCH) {
         const batch = items.slice(i, i + PULL_BATCH);
         const r = await invoke<{ copied: number; failed: number; bytes: number; errors: string[] }>(
           "migrate-import",
-          { phase: "pull_batch", files: batch, upsert: true },
+          { phase: "pull_batch", files: batch, upsert: true, destBucket: sourceBucket },
         );
         done += r.copied;
         failed += r.failed;
@@ -413,16 +413,18 @@ export default function RestoreWizard() {
         setPullProgress({ done: done + failed, total: items.length, bytes, failed });
       }
       appendLog(`✅ Pull complete: ${done} copied, ${failed} failed, ${fmt(bytes)} transferred`);
-      toast.success(`Pulled ${done}/${items.length} files`);
-      // Refresh source dropdowns so the new file/folder appears.
-      await loadSources();
-      // Auto-select the freshly pulled artifact.
-      if (sourcePath.endsWith(".zip")) {
-        setSourceKind("zip");
-        setSelectedZip(sourcePath);
-      } else {
-        setSourceKind("folder");
-        setSelectedFolder(sourcePath);
+      toast.success(`Pulled ${done}/${items.length} files into ${sourceBucket}`);
+
+      // Only refresh / auto-select wizard sources when we pulled into the backups bucket.
+      if (sourceBucket === "backups") {
+        await loadSources();
+        if (sourcePath.endsWith(".zip")) {
+          setSourceKind("zip");
+          setSelectedZip(sourcePath);
+        } else {
+          setSourceKind("folder");
+          setSelectedFolder(sourcePath);
+        }
       }
     } catch (e: any) {
       appendLog(`❌ Pull failed: ${e.message || e}`);
