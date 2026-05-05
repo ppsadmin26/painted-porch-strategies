@@ -67,7 +67,7 @@ export default function SecretsHandoff() {
     label: string;
     category: string;
     required_secret: string;
-    status: "pass" | "fail" | "skipped";
+    status: "pass" | "fail" | "warn" | "skipped";
     http_status?: number;
     latency_ms?: number;
     detail?: string;
@@ -76,7 +76,7 @@ export default function SecretsHandoff() {
   type ProbeResponse = {
     ok: boolean;
     checked_at: string;
-    summary: { total: number; pass: number; fail: number; skipped: number };
+    summary: { total: number; pass: number; fail: number; warn?: number; skipped: number };
     results: ProbeResult[];
   };
   const [probing, setProbing] = useState(false);
