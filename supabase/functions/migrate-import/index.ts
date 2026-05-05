@@ -75,6 +75,13 @@ const USER_FK_COLUMNS: Record<string, string[]> = {
   backup_settings: ["updated_by"],
 };
 
+// Junction tables without an `id` PK — upsert must use composite key
+const JUNCTION_CONFLICT_KEYS: Record<string, string> = {
+  blog_post_categories: "post_id,category_id",
+  media_appearance_categories: "appearance_id,category_id",
+  youtube_video_categories: "video_id,category_id",
+};
+
 function remapUserIds(table: string, rows: any[], idMap: Record<string, string> | undefined) {
   if (!idMap || !rows?.length) return rows;
   const cols = USER_FK_COLUMNS[table];
