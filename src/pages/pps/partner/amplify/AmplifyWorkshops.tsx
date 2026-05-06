@@ -15,19 +15,6 @@ import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 
 const workshopFaqCategories: FAQCategory[] = [
   {
-    name: "General",
-    faqs: [
-      {
-        question: "How is AMPLIFY different from IGNITE?",
-        answer: "IGNITE is self-paced individual development. AMPLIFY is team-based learning (workshops, sprints, cohorts). IGNITE builds your capacity. AMPLIFY builds team or organizational capacity.",
-      },
-      {
-        question: "What's included in the investment?",
-        answer: "Pre-work, facilitation, frameworks/tools, post-workshop resources, and ongoing advisory sessions for questions and continued guidance.",
-      },
-    ],
-  },
-  {
     name: "Workshops",
     faqs: [
       {
@@ -41,6 +28,19 @@ const workshopFaqCategories: FAQCategory[] = [
       {
         question: "What if our team is geographically distributed?",
         answer: "We facilitate virtual workshops effectively. In-person is ideal when possible, but not required.",
+      },
+    ],
+  },
+  {
+    name: "General",
+    faqs: [
+      {
+        question: "How is AMPLIFY different from IGNITE?",
+        answer: "IGNITE is self-paced individual development. AMPLIFY is team-based learning (workshops, sprints, cohorts). IGNITE builds your capacity. AMPLIFY builds team or organizational capacity.",
+      },
+      {
+        question: "What's included in the investment?",
+        answer: "Pre-work, facilitation, frameworks/tools, post-workshop resources, and ongoing advisory sessions for questions and continued guidance.",
       },
     ],
   },
