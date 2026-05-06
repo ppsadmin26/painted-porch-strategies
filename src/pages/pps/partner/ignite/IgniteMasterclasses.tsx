@@ -15,7 +15,6 @@ import mcTalkingToStrangers from "@/assets/masterclass/talking-to-strangers.jpg"
 import mcJournalingChallenge from "@/assets/masterclass/journaling-challenge.jpg";
 import mcRadicalMindfulness from "@/assets/masterclass/radical-mindfulness.jpg";
 import mcMeditationChallenge from "@/assets/masterclass/meditation-challenge.jpg";
-import mcPassengerToPilot from "@/assets/masterclass/passenger-to-pilot.jpg";
 import mcGratitudeChallenge from "@/assets/masterclass/gratitude-challenge.jpg";
 
 type Category = "Leadership & Change" | "Communication & Connection" | "Mindfulness & Resilience";
@@ -53,7 +52,6 @@ const allMasterclasses: MasterclassItem[] = [
   { title: "Master Your Message Journaling Challenge", leader: "Rob", image: mcJournalingChallenge, themeColor: "primary", description: "A 5-day journaling challenge to reconnect, rediscover, and reignite your true voice — five short prompts, on your time.", price: 15, category: "Communication & Connection", href: "/mym-journal-challenge" },
   { title: "Radical Mindfulness Mini Course", leader: "Sierra", image: mcRadicalMindfulness, themeColor: "gold", category: "Mindfulness & Resilience" },
   { title: "Meditation Challenge", leader: "Sierra", image: mcMeditationChallenge, themeColor: "gold", price: 15, category: "Mindfulness & Resilience" },
-  { title: "Passenger to Pilot", leader: "Sierra", image: mcPassengerToPilot, themeColor: "gold", price: 10, category: "Mindfulness & Resilience" },
   { title: "Gratitude Challenge", leader: "Sierra", image: mcGratitudeChallenge, themeColor: "gold", price: 15, category: "Mindfulness & Resilience" },
 ];
 
