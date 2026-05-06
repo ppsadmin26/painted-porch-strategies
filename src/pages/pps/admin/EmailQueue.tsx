@@ -164,23 +164,15 @@ export default function EmailQueue() {
   };
 
   const sb = supabase as any;
-      toast.success(label);
-      await load();
-    } catch (e: any) {
-      toast.error(e?.message ?? `${label} failed`);
-    } finally {
-      setBusy(null);
-    }
-  };
 
   const requeue = (queue: string, msgId: number) =>
     runAction(`requeue-${msgId}`, "Requeued to active queue", () =>
-      supabase.rpc("admin_email_requeue_dlq", { _queue: queue, _msg_id: msgId }),
+      sb.rpc("admin_email_requeue_dlq", { _queue: queue, _msg_id: msgId }),
     );
 
   const deleteMsg = (queue: string, kind: "active" | "dlq", msgId: number) =>
     runAction(`del-${msgId}`, "Message deleted", () =>
-      supabase.rpc("admin_email_delete_message", {
+      sb.rpc("admin_email_delete_message", {
         _queue: queue,
         _kind: kind,
         _msg_id: msgId,
@@ -189,7 +181,7 @@ export default function EmailQueue() {
 
   const releaseStuck = (queue: string, msgId: number) =>
     runAction(`release-${msgId}`, "Released for immediate retry", () =>
-      supabase.rpc("admin_email_reset_stuck", {
+      sb.rpc("admin_email_reset_stuck", {
         _queue: queue,
         _msg_id: msgId,
         _action: "release",
@@ -198,7 +190,7 @@ export default function EmailQueue() {
 
   const moveToDlq = (queue: string, msgId: number) =>
     runAction(`movedlq-${msgId}`, "Moved to DLQ", () =>
-      supabase.rpc("admin_email_reset_stuck", {
+      sb.rpc("admin_email_reset_stuck", {
         _queue: queue,
         _msg_id: msgId,
         _action: "move_to_dlq",
@@ -207,8 +199,9 @@ export default function EmailQueue() {
 
   const purgeDlq = (queue: string) =>
     runAction(`purge-${queue}`, `Purged ${queue} DLQ`, () =>
-      supabase.rpc("admin_email_purge_dlq", { _queue: queue }),
+      sb.rpc("admin_email_purge_dlq", { _queue: queue }),
     );
+
   const ttlFor = useCallback(
     (q: string) =>
       q === "auth_emails"
