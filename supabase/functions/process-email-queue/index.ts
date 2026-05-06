@@ -67,7 +67,8 @@ async function moveToDlq(
   supabase: ReturnType<typeof createClient>,
   queue: string,
   msg: { msg_id: number; message: Record<string, unknown> },
-  reason: string
+  reason: string,
+  attempt?: number
 ): Promise<void> {
   const payload = msg.message
   await supabase.from('email_send_log').insert({
@@ -76,6 +77,7 @@ async function moveToDlq(
     recipient_email: payload.to,
     status: 'dlq',
     error_message: reason,
+    attempt: attempt ?? null,
   })
   const { error } = await supabase.rpc('move_to_dlq', {
     source_queue: queue,
