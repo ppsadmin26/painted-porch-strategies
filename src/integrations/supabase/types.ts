@@ -714,6 +714,10 @@ export type Database = {
       admin_check_email_infra: { Args: never; Returns: Json }
       admin_dump_config: { Args: never; Returns: string }
       admin_dump_schema: { Args: never; Returns: string }
+      admin_email_delete_message: {
+        Args: { _kind: string; _msg_id: number; _queue: string }
+        Returns: Json
+      }
       admin_email_dlq_list: { Args: { _limit?: number }; Returns: Json }
       admin_email_log: {
         Args: {
@@ -733,9 +737,18 @@ export type Database = {
           template_name: string
         }[]
       }
+      admin_email_purge_dlq: { Args: { _queue: string }; Returns: Json }
       admin_email_queue_health: { Args: never; Returns: Json }
       admin_email_queue_messages: {
         Args: { _kind?: string; _limit?: number; _queue?: string }
+        Returns: Json
+      }
+      admin_email_requeue_dlq: {
+        Args: { _msg_id: number; _queue: string }
+        Returns: Json
+      }
+      admin_email_reset_stuck: {
+        Args: { _action?: string; _msg_id: number; _queue: string }
         Returns: Json
       }
       admin_email_stats: { Args: { _since?: string }; Returns: Json }
