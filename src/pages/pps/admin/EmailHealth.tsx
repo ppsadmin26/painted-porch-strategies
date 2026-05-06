@@ -407,6 +407,100 @@ export default function EmailHealth() {
           </div>
         </TabsContent>
 
+        <TabsContent value="queue" className="space-y-3">
+          {queueHealth.length === 0 ? (
+            <Card className="p-6 text-sm text-muted-foreground">
+              Queue health is loading…
+            </Card>
+          ) : (
+            queueHealth.map((q) => {
+              const isAuth = q.queue === "auth_emails";
+              const hasDlq = q.dlq > 0;
+              return (
+                <Card key={q.queue} className="p-5">
+                  <div className="flex items-start justify-between gap-4 flex-wrap">
+                    <div>
+                      <h3 className="font-poppins font-semibold text-navy flex items-center gap-2">
+                        <Inbox className="h-4 w-4 text-primary" />
+                        {isAuth ? "Auth emails queue" : "Transactional emails queue"}
+                        <code className="text-[11px] font-mono text-muted-foreground">
+                          ({q.queue})
+                        </code>
+                      </h3>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {isAuth
+                          ? "High-priority queue. Drained first by the dispatcher."
+                          : "Normal-priority queue. Drained after auth emails."}
+                      </p>
+                    </div>
+                    {hasDlq && (
+                      <Badge
+                        variant="outline"
+                        className="bg-red-50 text-red-700 border-red-300"
+                      >
+                        <AlertTriangle className="h-3 w-3 mr-1" />
+                        Needs attention
+                      </Badge>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+                    <QueueStat
+                      label="Pending"
+                      value={q.pending}
+                      sub={
+                        q.oldest_pending
+                          ? `Oldest: ${fmt(q.oldest_pending)}`
+                          : "Queue empty"
+                      }
+                      tone={q.pending > 0 ? "warn" : "ok"}
+                    />
+                    <QueueStat
+                      label="In DLQ"
+                      value={q.dlq}
+                      sub={
+                        q.oldest_dlq
+                          ? `Oldest: ${fmt(q.oldest_dlq)}`
+                          : "No dead letters"
+                      }
+                      tone={hasDlq ? "danger" : "ok"}
+                    />
+                  </div>
+
+                  {q.last_error ? (
+                    <div className="mt-4 rounded-md border border-red-200 bg-red-50 p-3 text-xs">
+                      <div className="font-semibold text-red-700 flex items-center gap-1.5 mb-1">
+                        <AlertCircle className="h-3.5 w-3.5" />
+                        Most recent failure
+                      </div>
+                      <div className="text-muted-foreground">
+                        <span className="font-medium text-navy">{q.last_error.recipient}</span>
+                        {" · "}
+                        <span>{q.last_error.template}</span>
+                        {" · "}
+                        {statusBadge(q.last_error.status)}
+                        <span className="ml-1">{fmt(q.last_error.at)}</span>
+                      </div>
+                      <div className="mt-1.5 text-red-700 break-words">
+                        {q.last_error.error}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="mt-4 text-xs text-muted-foreground flex items-center gap-1.5">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />
+                      No recent failures recorded for this queue.
+                    </div>
+                  )}
+                </Card>
+              );
+            })
+          )}
+          <p className="text-[11px] text-muted-foreground">
+            Messages move to the dead-letter queue (DLQ) after 5 failed delivery attempts or once
+            their TTL expires. Drain or inspect DLQ contents from the database if a backlog appears.
+          </p>
+        </TabsContent>
+
         <TabsContent value="suppression">
           <Card className="overflow-hidden">
             <div className="grid grid-cols-12 gap-3 px-4 py-2 border-b text-xs font-semibold text-muted-foreground uppercase tracking-wide">
