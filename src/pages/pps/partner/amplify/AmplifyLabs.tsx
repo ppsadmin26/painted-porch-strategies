@@ -6,15 +6,6 @@ import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 
 const labFaqCategories: FAQCategory[] = [
   {
-    name: "General",
-    faqs: [
-      {
-        question: "How is AMPLIFY different from IGNITE?",
-        answer: "IGNITE is self-paced individual development. AMPLIFY is team-based learning (workshops, sprints, cohorts). IGNITE builds your capacity. AMPLIFY builds team or organizational capacity.",
-      },
-    ],
-  },
-  {
     name: "Leadership Labs",
     faqs: [
       {
@@ -53,6 +44,15 @@ const labFaqCategories: FAQCategory[] = [
       {
         question: "I missed the last cohort. Will the content be the same?",
         answer: "The core frameworks and exercises stay consistent, but each cohort benefits from fresh examples, updated case studies, and the unique dynamics of a new group of leaders. No two cohorts are exactly alike.",
+      },
+    ],
+  },
+  {
+    name: "General",
+    faqs: [
+      {
+        question: "How is AMPLIFY different from IGNITE?",
+        answer: "IGNITE is self-paced individual development. AMPLIFY is team-based learning (workshops, sprints, cohorts). IGNITE builds your capacity. AMPLIFY builds team or organizational capacity.",
       },
     ],
   },
