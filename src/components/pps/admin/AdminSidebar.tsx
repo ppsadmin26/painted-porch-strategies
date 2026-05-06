@@ -26,7 +26,7 @@ const navItems: { title: string; url: string; icon: any; section?: AdminSection 
   { title: "Secrets Handoff", url: "/admin/secrets-handoff", icon: KeyRound },
   { title: "Migration Checklist", url: "/admin/migration-checklist", icon: ListChecks },
   { title: "Site Emails", url: "/admin/emails", icon: Mail },
-  { title: "Email Queue", url: "/admin/emails/queue", icon: Inbox },
+  { title: "Email Health & Queue", url: "/admin/emails/queue", icon: Inbox },
   { title: "Users", url: "/admin/users", icon: Users },
   { title: "Account", url: "/admin/account", icon: Settings },
 ];
