@@ -12,7 +12,7 @@ const nextSteps = [
   {
     icon: ClipboardList,
     title: "Complete Your Blue Door Appraisal",
-    description: "You'll receive a link to our organizational appraisal. It takes about 20 minutes and gives our team the strategic context needed to craft your executive brief.",
+    description: "You'll receive a link to our organizational appraisal. It takes less than 30 minutes and gives our team the strategic context needed to craft your executive brief.",
   },
   {
     icon: Clock,

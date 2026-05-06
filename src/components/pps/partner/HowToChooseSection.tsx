@@ -114,13 +114,13 @@ export function BlueDoorCalloutSection() {
             </h3>
           </div>
           <p className="text-foreground mb-3">
-            The <span className="text-bluedoor font-bold">Blue Door</span> is our 20-minute strategic organizational appraisal that reveals where your organization stands on the path to transformation—and what's blocking progress. It's a recommended first step and provides strategic clarity on where to focus investment first and which P.A.T.H.way format will yield the greatest impact for your next sh<span className="font-bold text-raspberry">IF</span>t.
+            The <span className="text-bluedoor font-bold">Blue Door</span> is our strategic organizational appraisal (less than 30 minutes) that reveals where your organization stands on the path to transformation—and what's blocking progress. It's a recommended first step and provides strategic clarity on where to focus investment first and which P.A.T.H.way format will yield the greatest impact for your next sh<span className="font-bold text-raspberry">IF</span>t.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-4 text-sm">
               <span className="font-bold text-bluedoor">$1,500</span>
               <span className="text-foreground/60">|</span>
-              <span className="text-foreground/70">20 minutes</span>
+              <span className="text-foreground/70">Less than 30 minutes</span>
             </div>
             <Link to="/blue-door">
               <Button className="bg-transparent border-2 border-bluedoor text-bluedoor hover:bg-bluedoor hover:text-white transition-colors">

@@ -46,7 +46,7 @@ export default function InvestmentSectionAlt() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Clock className="w-5 h-5 text-strategic flex-shrink-0 mt-0.5" />
-                <span className="text-foreground">15-20 minutes to complete the diagnostic</span>
+                <span className="text-foreground">Less than 30 minutes to complete the diagnostic</span>
               </li>
               <li className="flex items-start gap-3">
                 <Brain className="w-5 h-5 text-strategic flex-shrink-0 mt-0.5" />

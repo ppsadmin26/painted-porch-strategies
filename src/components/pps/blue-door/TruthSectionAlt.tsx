@@ -23,11 +23,11 @@ export default function TruthSectionAlt() {
             The <span className="font-bold text-bluedoor">Blue Door</span> surfaces that reality early—while you're still exploring and before direction gets locked in.
           </p>
           <p className="text-foreground text-lg leading-relaxed mb-6">
-            In 15–20 minutes, you'll learn what might otherwise take months to figure out: whether your organization can actually lead the shift you're considering, or where some groundwork would set you up for real success.
+            In less than 30 minutes, you'll learn what might otherwise take months to figure out: whether your organization can actually lead the shift you're considering, or where some groundwork would set you up for real success.
           </p>
           <div className="bg-raspberry/10 border-l-4 border-raspberry p-6 md:p-8 rounded-xl shadow-sm mb-6">
             <p className="font-bold text-raspberry text-center">
-              15-20 minutes now could save months of effort and hundreds of thousands pursuing a shift you're not yet structured to lead.
+              Less than 30 minutes now could save months of effort and hundreds of thousands pursuing a shift you're not yet structured to lead.
             </p>
             <div className="flex justify-center mt-4">
               <CostCalculatorDialog />
