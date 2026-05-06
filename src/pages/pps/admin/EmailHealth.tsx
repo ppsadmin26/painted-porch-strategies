@@ -603,6 +603,68 @@ export default function EmailHealth() {
           </p>
         </TabsContent>
 
+        <TabsContent value="dlq" className="space-y-3">
+          {dlq.length === 0 || dlq.every((d) => d.messages.length === 0) ? (
+            <Card className="p-6 text-sm text-muted-foreground flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-green-600" />
+              No dead-letter messages. The queues are clean.
+            </Card>
+          ) : (
+            dlq.map((d) =>
+              d.messages.length === 0 ? null : (
+                <Card key={d.queue} className="p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <AlertTriangle className="h-4 w-4 text-red-600" />
+                    <h3 className="font-poppins font-semibold text-navy">
+                      {d.queue === "auth_emails"
+                        ? "Auth emails DLQ"
+                        : "Transactional emails DLQ"}
+                    </h3>
+                    <Badge
+                      variant="outline"
+                      className="bg-red-50 text-red-700 border-red-300"
+                    >
+                      {d.messages.length} stuck
+                    </Badge>
+                    <code className="text-[11px] font-mono text-muted-foreground ml-1">
+                      ({d.dlq})
+                    </code>
+                  </div>
+                  <div className="grid grid-cols-12 gap-3 px-3 py-2 border-b text-[11px] font-semibold text-muted-foreground uppercase tracking-wide">
+                    <div className="col-span-3">Recipient</div>
+                    <div className="col-span-3">Template</div>
+                    <div className="col-span-2">Attempts</div>
+                    <div className="col-span-4">Failed at</div>
+                  </div>
+                  {d.messages.map((m) => (
+                    <div
+                      key={m.msg_id}
+                      className="grid grid-cols-12 gap-3 px-3 py-2 border-b last:border-b-0 text-sm items-center"
+                    >
+                      <div className="col-span-3 truncate font-medium text-navy">
+                        {m.recipient ?? "—"}
+                      </div>
+                      <div className="col-span-3 truncate text-xs text-muted-foreground">
+                        {m.template ?? "—"}
+                      </div>
+                      <div className="col-span-2 text-xs text-red-700 font-semibold">
+                        {m.read_ct}
+                      </div>
+                      <div className="col-span-4 text-xs text-muted-foreground">
+                        {fmt(m.enqueued_at)}
+                      </div>
+                    </div>
+                  ))}
+                </Card>
+              ),
+            )
+          )}
+          <p className="text-[11px] text-muted-foreground">
+            DLQ messages have failed delivery 5+ times or expired their TTL. Inspect
+            payloads in the database to diagnose recurring failures.
+          </p>
+        </TabsContent>
+
         <TabsContent value="suppression">
           <Card className="overflow-hidden">
             <div className="grid grid-cols-12 gap-3 px-4 py-2 border-b text-xs font-semibold text-muted-foreground uppercase tracking-wide">
