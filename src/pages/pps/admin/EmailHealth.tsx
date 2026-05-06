@@ -270,6 +270,14 @@ export default function EmailHealth() {
       <Tabs defaultValue="log" className="space-y-4">
         <TabsList>
           <TabsTrigger value="log">Send log</TabsTrigger>
+          <TabsTrigger value="queue">
+            Queue health
+            {queueHealth.reduce((a, q) => a + q.dlq, 0) > 0 && (
+              <span className="ml-1.5 inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-red-100 text-red-700 text-[10px] font-bold">
+                {queueHealth.reduce((a, q) => a + q.dlq, 0)}
+              </span>
+            )}
+          </TabsTrigger>
           <TabsTrigger value="suppression">
             Suppression list ({suppressions.length})
           </TabsTrigger>
