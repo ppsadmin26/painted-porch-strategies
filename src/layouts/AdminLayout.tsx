@@ -7,6 +7,7 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { LogOut } from "lucide-react";
 import { RunBackupButton } from "@/components/pps/admin/RunBackupButton";
+import GitHubSyncBanner from "@/components/pps/admin/GitHubSyncBanner";
 
 export default function AdminLayout() {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ export default function AdminLayout() {
       <div className="min-h-screen flex w-full">
         <AdminSidebar />
         <div className="flex-1 flex flex-col min-w-0">
+          <GitHubSyncBanner />
           <header className="h-12 flex items-center justify-between border-b bg-card px-4 shrink-0 gap-2">
             <SidebarTrigger className="ml-0" />
             <div className="flex items-center gap-2">
