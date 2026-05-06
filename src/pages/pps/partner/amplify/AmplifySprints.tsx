@@ -172,7 +172,7 @@ export default function AmplifySprints() {
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
               <div>
                 <h2 className="font-poppins font-bold text-2xl text-navy mb-2">Strategic Sprint Investment</h2>
-                <p className="text-3xl font-bold text-lime mb-4">$18,000 - $69,000</p>
+                <p className="text-3xl font-bold text-lime mb-4">Starting at $36,000</p>
                 <p className="text-sm text-foreground">(based on scope and timeline; Prerequisite: Blue Door)</p>
               </div>
               <div className="bg-white p-6 rounded-lg">

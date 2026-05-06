@@ -92,7 +92,7 @@ export default function ValueEscalationSectionAlt() {
             <p className="font-poppins font-bold text-2xl md:text-3xl text-strategic mb-2">
               Architect Change Design Session
             </p>
-            <p className="font-poppins font-bold text-2xl text-strategic mb-4">$18,000 - $69,000</p>
+            <p className="font-poppins font-bold text-2xl text-strategic mb-4">Starting at $36,000</p>
             <p className="font-poppins font-semibold italic text-lg text-navy mb-4">
               "Which sh<span className="font-bold text-bluedoor">IF</span>t will we design, and are we aligned enough to support it?"
             </p>
@@ -104,7 +104,7 @@ export default function ValueEscalationSectionAlt() {
             </p>
             <p className="font-poppins font-semibold text-strategic text-sm mb-2">Investment Options:</p>
             <ul className="space-y-1.5 text-sm text-foreground">
-              {["Half-day session or Self-Led Toolkit: $18,000*", "Full-day session: $36,000*", "2+ day intensive: $69,000*"].map((item, i) => (
+              {["Full-day session: $36,000*", "2+ day intensive: $69,000*"].map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-strategic flex-shrink-0 mt-0.5" />
                   <span>{item}</span>
