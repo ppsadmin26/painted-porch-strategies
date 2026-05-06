@@ -144,8 +144,7 @@ import IntegrityCheck from "./pages/pps/admin/IntegrityCheck";
 import SecretsHandoff from "./pages/pps/admin/SecretsHandoff";
 import MigrationChecklist from "./pages/pps/admin/MigrationChecklist";
 import SiteEmails from "./pages/pps/admin/SiteEmails";
-import EmailHealth from "./pages/pps/admin/EmailHealth";
-import EmailQueue from "./pages/pps/admin/EmailQueue";
+import EmailOps from "./pages/pps/admin/EmailOps";
 import ResetPassword from "./pages/pps/admin/ResetPassword";
 
 // Legacy redirect: forward /pps/* paths to clean URLs
