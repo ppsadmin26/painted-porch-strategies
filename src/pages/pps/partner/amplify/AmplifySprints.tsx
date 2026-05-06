@@ -211,7 +211,7 @@ export default function AmplifySprints() {
               <div className="flex items-center gap-4 text-sm">
                 <span className="font-semibold text-navy">$1,500</span>
                 <span className="text-foreground/70">|</span>
-                <span className="text-foreground/70">20 minutes</span>
+                <span className="text-foreground/70">Less than 30 minutes</span>
               </div>
             </div>
             <Link to="/blue-door">
