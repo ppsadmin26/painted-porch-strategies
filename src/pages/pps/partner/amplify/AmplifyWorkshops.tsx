@@ -253,7 +253,7 @@ export default function AmplifyWorkshops() {
                 <h3 className="font-poppins font-semibold text-navy whitespace-nowrap">Authoring Your Next Sh<span className="text-raspberry">IF</span>t Begins At the Blue Door</h3>
               </div>
               <p className="text-sm text-foreground mb-2 mt-4">
-                The Blue Door is our 20-minute organizational appraisal that reveals where your business and leadership stands on the path to transformation so that you can lead with clarity and build with confidence.
+                The Blue Door is our organizational appraisal (less than 30 minutes) that reveals where your business and leadership stands on the path to transformation so that you can lead with clarity and build with confidence.
               </p>
               <p className="text-sm text-foreground/70 italic mb-3">
                 Required for Strategic Sprints and workshops. Not needed for Leadership Labs.
