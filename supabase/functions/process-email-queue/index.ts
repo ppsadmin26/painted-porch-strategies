@@ -126,7 +126,7 @@ Deno.serve(async (req) => {
   // 1. Check rate-limit cooldown and read queue config
   const { data: state } = await supabase
     .from('email_send_state')
-    .select('retry_after_until, batch_size, send_delay_ms, auth_email_ttl_minutes, transactional_email_ttl_minutes')
+    .select('retry_after_until, batch_size, send_delay_ms, auth_email_ttl_minutes, transactional_email_ttl_minutes, max_attempts, retry_backoff_base_ms, retry_backoff_max_ms')
     .single()
 
   if (state?.retry_after_until && new Date(state.retry_after_until) > new Date()) {
@@ -138,6 +138,9 @@ Deno.serve(async (req) => {
 
   const batchSize = state?.batch_size ?? DEFAULT_BATCH_SIZE
   const sendDelayMs = state?.send_delay_ms ?? DEFAULT_SEND_DELAY_MS
+  const maxAttempts = state?.max_attempts ?? DEFAULT_MAX_ATTEMPTS
+  const backoffBaseMs = state?.retry_backoff_base_ms ?? DEFAULT_RETRY_BACKOFF_BASE_MS
+  const backoffMaxMs = state?.retry_backoff_max_ms ?? DEFAULT_RETRY_BACKOFF_MAX_MS
   const ttlMinutes: Record<string, number> = {
     auth_emails: state?.auth_email_ttl_minutes ?? DEFAULT_AUTH_TTL_MINUTES,
     transactional_emails: state?.transactional_email_ttl_minutes ?? DEFAULT_TRANSACTIONAL_TTL_MINUTES,
