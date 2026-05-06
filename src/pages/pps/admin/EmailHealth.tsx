@@ -40,6 +40,36 @@ type Stats = {
   checked_at: string;
 };
 
+function QueueStat({
+  label,
+  value,
+  sub,
+  tone = "ok",
+}: {
+  label: string;
+  value: number;
+  sub?: string;
+  tone?: "ok" | "warn" | "danger";
+}) {
+  const toneClass =
+    tone === "danger"
+      ? "text-red-600"
+      : tone === "warn"
+      ? "text-amber-600"
+      : "text-navy";
+  return (
+    <div className="rounded-md border bg-muted/20 p-3">
+      <div className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">
+        {label}
+      </div>
+      <div className={`text-xl font-bold font-poppins mt-0.5 ${toneClass}`}>
+        {value.toLocaleString()}
+      </div>
+      {sub && <div className="text-[10px] text-muted-foreground mt-0.5">{sub}</div>}
+    </div>
+  );
+}
+
 type LogRow = {
   message_id: string;
   template_name: string;
