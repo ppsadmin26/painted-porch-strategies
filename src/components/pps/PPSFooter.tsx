@@ -16,10 +16,10 @@ export default function PPSFooter() {
     { label: "Courses", href: "/partner/ignite/courses" },
     { label: "Assessments", href: "/partner/ignite/assessments" },
     { label: "Masterclasses", href: "/partner/ignite/masterclasses" },
-    { label: "Workshops", href: "/partner/amplify/workshops" },
     { label: "Leadership Labs", href: "/partner/amplify/labs" },
+    { label: "Team Workshops", href: "/partner/amplify/workshops" },
     { label: "Strategic Sprints", href: "/partner/amplify/sprints" },
-    { label: "Advisory", href: "/partner/embody" },
+    { label: "Organizational Advisory", href: "/partner/embody" },
   ];
 
   const socials = [
