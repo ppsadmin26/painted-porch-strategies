@@ -16,7 +16,7 @@ const steps: Step[] = [
   {
     number: 1,
     title: "Answer 15 Strategic Questions",
-    time: "(15-20 minutes)",
+    time: "(less than 30 minutes)",
     description: "Questions designed to surface both opportunity (what shifts are available) and capability (what you're built to lead)."
   },
   {
