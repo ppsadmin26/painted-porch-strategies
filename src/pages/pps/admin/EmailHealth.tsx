@@ -162,6 +162,7 @@ export default function EmailHealth() {
   const [rows, setRows] = useState<LogRow[]>([]);
   const [suppressions, setSuppressions] = useState<Suppression[]>([]);
   const [queueHealth, setQueueHealth] = useState<QueueHealth[]>([]);
+  const [dlq, setDlq] = useState<DlqQueue[]>([]);
   const [template, setTemplate] = useState<string>("all");
   const [status, setStatus] = useState<string>("all");
   const [search, setSearch] = useState("");
