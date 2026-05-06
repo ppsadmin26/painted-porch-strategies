@@ -1,11 +1,21 @@
 import { sendLovableEmail } from 'npm:@lovable.dev/email-js'
 import { createClient } from 'npm:@supabase/supabase-js@2'
 
-const MAX_RETRIES = 5
+const DEFAULT_MAX_ATTEMPTS = 5
 const DEFAULT_BATCH_SIZE = 10
 const DEFAULT_SEND_DELAY_MS = 200
 const DEFAULT_AUTH_TTL_MINUTES = 15
 const DEFAULT_TRANSACTIONAL_TTL_MINUTES = 60
+const DEFAULT_RETRY_BACKOFF_BASE_MS = 30_000
+const DEFAULT_RETRY_BACKOFF_MAX_MS = 600_000
+
+// Exponential backoff with full jitter, capped at maxMs.
+// attempt is 1-based (1 = first retry after the initial failure).
+function computeBackoffSeconds(attempt: number, baseMs: number, maxMs: number): number {
+  const exp = Math.min(maxMs, baseMs * Math.pow(2, Math.max(0, attempt - 1)))
+  const jittered = Math.random() * exp
+  return Math.max(1, Math.ceil(jittered / 1000))
+}
 
 // Check if an error is a rate-limit (429) response.
 // Uses EmailAPIError.status when available (email-js >=0.x with structured errors),
@@ -57,7 +67,8 @@ async function moveToDlq(
   supabase: ReturnType<typeof createClient>,
   queue: string,
   msg: { msg_id: number; message: Record<string, unknown> },
-  reason: string
+  reason: string,
+  attempt?: number
 ): Promise<void> {
   const payload = msg.message
   await supabase.from('email_send_log').insert({
@@ -66,6 +77,7 @@ async function moveToDlq(
     recipient_email: payload.to,
     status: 'dlq',
     error_message: reason,
+    attempt: attempt ?? null,
   })
   const { error } = await supabase.rpc('move_to_dlq', {
     source_queue: queue,
@@ -116,7 +128,7 @@ Deno.serve(async (req) => {
   // 1. Check rate-limit cooldown and read queue config
   const { data: state } = await supabase
     .from('email_send_state')
-    .select('retry_after_until, batch_size, send_delay_ms, auth_email_ttl_minutes, transactional_email_ttl_minutes')
+    .select('retry_after_until, batch_size, send_delay_ms, auth_email_ttl_minutes, transactional_email_ttl_minutes, max_attempts, retry_backoff_base_ms, retry_backoff_max_ms')
     .single()
 
   if (state?.retry_after_until && new Date(state.retry_after_until) > new Date()) {
@@ -128,6 +140,9 @@ Deno.serve(async (req) => {
 
   const batchSize = state?.batch_size ?? DEFAULT_BATCH_SIZE
   const sendDelayMs = state?.send_delay_ms ?? DEFAULT_SEND_DELAY_MS
+  const maxAttempts = state?.max_attempts ?? DEFAULT_MAX_ATTEMPTS
+  const backoffBaseMs = state?.retry_backoff_base_ms ?? DEFAULT_RETRY_BACKOFF_BASE_MS
+  const backoffMaxMs = state?.retry_backoff_max_ms ?? DEFAULT_RETRY_BACKOFF_MAX_MS
   const ttlMinutes: Record<string, number> = {
     auth_emails: state?.auth_email_ttl_minutes ?? DEFAULT_AUTH_TTL_MINUTES,
     transactional_emails: state?.transactional_email_ttl_minutes ?? DEFAULT_TRANSACTIONAL_TTL_MINUTES,
@@ -217,10 +232,13 @@ Deno.serve(async (req) => {
       }
 
       // Move to DLQ if max failed send attempts reached.
-      if (failedAttempts >= MAX_RETRIES) {
-        await moveToDlq(supabase, queue, msg, `Max retries (${MAX_RETRIES}) exceeded (attempted ${failedAttempts} times)`)
+      if (failedAttempts >= maxAttempts) {
+        await moveToDlq(supabase, queue, msg, `Max attempts (${maxAttempts}) exceeded (attempted ${failedAttempts} times)`, failedAttempts)
         continue
       }
+
+      // This send is attempt N (1-based: 1 on first try, failedAttempts+1 on retries).
+      const currentAttempt = failedAttempts + 1
 
       // Guard: skip if another worker already sent this message (VT expired race)
       if (payload.message_id) {
@@ -276,6 +294,7 @@ Deno.serve(async (req) => {
           template_name: payload.label || queue,
           recipient_email: payload.to,
           status: 'sent',
+          attempt: currentAttempt,
         })
 
         // Delete from queue
@@ -304,6 +323,7 @@ Deno.serve(async (req) => {
             recipient_email: payload.to,
             status: 'rate_limited',
             error_message: errorMsg.slice(0, 1000),
+            attempt: currentAttempt,
           })
 
           const retryAfterSecs = getRetryAfterSeconds(error)
@@ -327,7 +347,7 @@ Deno.serve(async (req) => {
         // 403 means emails are disabled for this project — retrying won't help.
         // Move straight to DLQ and stop processing the rest of the batch.
         if (isForbidden(error)) {
-          await moveToDlq(supabase, queue, msg, 'Emails disabled for this project')
+          await moveToDlq(supabase, queue, msg, 'Emails disabled for this project', currentAttempt)
           return new Response(
             JSON.stringify({ processed: totalProcessed, stopped: 'emails_disabled' }),
             { headers: { 'Content-Type': 'application/json' } }
@@ -341,12 +361,27 @@ Deno.serve(async (req) => {
           recipient_email: payload.to,
           status: 'failed',
           error_message: errorMsg.slice(0, 1000),
+          attempt: currentAttempt,
         })
         if (payload?.message_id && typeof payload.message_id === 'string') {
           failedAttemptsByMessageId.set(payload.message_id, failedAttempts + 1)
         }
 
-        // Non-429 errors: message stays invisible until VT expires, then retried
+        // Schedule the next retry using exponential backoff with jitter by
+        // extending the message's visibility timeout. Without this, the message
+        // would be retried in 30s (the default VT) regardless of how many
+        // times it has already failed.
+        const backoffSecs = computeBackoffSeconds(currentAttempt, backoffBaseMs, backoffMaxMs)
+        const { error: vtError } = await supabase.rpc('set_email_vt', {
+          queue_name: queue,
+          message_id: msg.msg_id,
+          vt_seconds: backoffSecs,
+        })
+        if (vtError) {
+          console.error('Failed to set retry backoff VT', { queue, msg_id: msg.msg_id, backoffSecs, error: vtError })
+        } else {
+          console.log('Scheduled retry', { queue, msg_id: msg.msg_id, attempt: currentAttempt, backoff_seconds: backoffSecs })
+        }
       }
 
       // Small delay between sends to smooth bursts
