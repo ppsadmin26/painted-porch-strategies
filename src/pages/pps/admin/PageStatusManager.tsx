@@ -32,6 +32,34 @@ export default function PageStatusManager() {
   const [newPath, setNewPath] = useState("");
   const [newNote, setNewNote] = useState("");
   const [adding, setAdding] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+
+  const syncFromSitemap = async () => {
+    setSyncing(true);
+    try {
+      const paths = collectSitemapPaths();
+      const missing = paths.filter((p) => !map[p]);
+      if (missing.length === 0) {
+        toast({ title: "Already in sync", description: "Every sitemap route has a row." });
+        return;
+      }
+      const rows = missing.map((path) => ({
+        path,
+        status: "live" as const,
+        note: "Synced from sitemap",
+      }));
+      const { error } = await supabase.from("page_status").insert(rows);
+      if (error) throw error;
+      toast({
+        title: "Sitemap synced",
+        description: `Added ${missing.length} missing path${missing.length === 1 ? "" : "s"} as Live.`,
+      });
+    } catch (err) {
+      toast({ title: "Sync failed", description: String(err), variant: "destructive" });
+    } finally {
+      setSyncing(false);
+    }
+  };
 
   const overrides = useMemo(
     () =>
