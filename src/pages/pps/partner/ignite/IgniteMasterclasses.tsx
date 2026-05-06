@@ -118,7 +118,7 @@ export default function IgniteMasterclasses() {
               const colors = categoryColors[item.category];
               return (
                 <div key={item.title} className={`bg-muted rounded-xl border-t-4 border-${item.themeColor} transition-all hover:shadow-lg flex flex-col overflow-hidden`}>
-                  <img src={item.image} alt={item.title} className="w-full h-40 object-cover" style={item.title === "Kick the Habit" ? { objectPosition: "center 60%" } : undefined} />
+                  <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
                   <div className="p-5 flex flex-col flex-1">
                     <div className="mb-3">
                       <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium ${colors.bg} ${colors.text} mb-2`}>
