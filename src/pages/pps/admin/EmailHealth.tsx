@@ -235,6 +235,17 @@ export default function EmailHealth() {
     ? Math.round((stats.sent / stats.total) * 100)
     : null;
 
+  const totalDlq = queueHealth.reduce((a, q) => a + q.dlq, 0);
+  const failureCount =
+    (stats?.failed ?? 0) + (stats?.bounced ?? 0) + (stats?.complained ?? 0);
+  const failureRate =
+    stats && stats.total >= 10 ? failureCount / stats.total : 0;
+  const failureThresholdHit =
+    stats && stats.total >= 10 && failureRate > 0.05;
+  const alertActive = totalDlq > 0 || failureThresholdHit;
+  const rangeLabel =
+    RANGES.find((r) => r.hours === hours)?.label.toLowerCase() ?? "selected window";
+
   return (
     <div className="p-6 max-w-7xl mx-auto">
       <div className="mb-6 flex items-start justify-between gap-4 flex-wrap">
