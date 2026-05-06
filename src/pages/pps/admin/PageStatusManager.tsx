@@ -8,7 +8,9 @@ import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Trash2, FileWarning } from "lucide-react";
+import { Plus, Trash2, FileWarning, RefreshCw } from "lucide-react";
+import { collectSitemapPaths } from "@/pages/pps/Sitemap";
+import { supabase } from "@/integrations/supabase/client";
 
 /**
  * Admin-only manager for page publish status. Lets admins:
