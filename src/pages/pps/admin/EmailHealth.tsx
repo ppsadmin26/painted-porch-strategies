@@ -21,6 +21,8 @@ import {
   Clock,
   Ban,
   Shield,
+  Inbox,
+  AlertTriangle,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -52,6 +54,21 @@ type Suppression = {
   reason: string;
   created_at: string;
   metadata: any;
+};
+
+type QueueHealth = {
+  queue: string;
+  pending: number;
+  dlq: number;
+  oldest_pending: string | null;
+  oldest_dlq: string | null;
+  last_error: {
+    recipient: string;
+    template: string;
+    status: string;
+    error: string;
+    at: string;
+  } | null;
 };
 
 const RANGES = [
@@ -98,6 +115,7 @@ export default function EmailHealth() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [rows, setRows] = useState<LogRow[]>([]);
   const [suppressions, setSuppressions] = useState<Suppression[]>([]);
+  const [queueHealth, setQueueHealth] = useState<QueueHealth[]>([]);
   const [template, setTemplate] = useState<string>("all");
   const [status, setStatus] = useState<string>("all");
   const [search, setSearch] = useState("");
@@ -115,7 +133,7 @@ export default function EmailHealth() {
     setLoading(true);
     setError(null);
     try {
-      const [statsRes, logRes, supRes] = await Promise.all([
+      const [statsRes, logRes, supRes, queueRes] = await Promise.all([
         supabase.rpc("admin_email_stats", { _since: since }),
         supabase.rpc("admin_email_log", {
           _since: since,
@@ -126,13 +144,17 @@ export default function EmailHealth() {
           _offset: page * 100,
         }),
         supabase.rpc("admin_email_suppressions", { _limit: 200 }),
+        supabase.rpc("admin_email_queue_health"),
       ]);
       if (statsRes.error) throw statsRes.error;
       if (logRes.error) throw logRes.error;
       if (supRes.error) throw supRes.error;
+      if (queueRes.error) throw queueRes.error;
       setStats(statsRes.data as Stats);
       setRows((logRes.data as LogRow[]) ?? []);
       setSuppressions((supRes.data as Suppression[]) ?? []);
+      const qData = queueRes.data as { queues?: QueueHealth[] } | null;
+      setQueueHealth(qData?.queues ?? []);
     } catch (e: any) {
       const msg = e?.message ?? "Failed to load email health";
       setError(msg);
@@ -248,6 +270,14 @@ export default function EmailHealth() {
       <Tabs defaultValue="log" className="space-y-4">
         <TabsList>
           <TabsTrigger value="log">Send log</TabsTrigger>
+          <TabsTrigger value="queue">
+            Queue health
+            {queueHealth.reduce((a, q) => a + q.dlq, 0) > 0 && (
+              <span className="ml-1.5 inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-red-100 text-red-700 text-[10px] font-bold">
+                {queueHealth.reduce((a, q) => a + q.dlq, 0)}
+              </span>
+            )}
+          </TabsTrigger>
           <TabsTrigger value="suppression">
             Suppression list ({suppressions.length})
           </TabsTrigger>
@@ -377,6 +407,100 @@ export default function EmailHealth() {
           </div>
         </TabsContent>
 
+        <TabsContent value="queue" className="space-y-3">
+          {queueHealth.length === 0 ? (
+            <Card className="p-6 text-sm text-muted-foreground">
+              Queue health is loading…
+            </Card>
+          ) : (
+            queueHealth.map((q) => {
+              const isAuth = q.queue === "auth_emails";
+              const hasDlq = q.dlq > 0;
+              return (
+                <Card key={q.queue} className="p-5">
+                  <div className="flex items-start justify-between gap-4 flex-wrap">
+                    <div>
+                      <h3 className="font-poppins font-semibold text-navy flex items-center gap-2">
+                        <Inbox className="h-4 w-4 text-primary" />
+                        {isAuth ? "Auth emails queue" : "Transactional emails queue"}
+                        <code className="text-[11px] font-mono text-muted-foreground">
+                          ({q.queue})
+                        </code>
+                      </h3>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {isAuth
+                          ? "High-priority queue. Drained first by the dispatcher."
+                          : "Normal-priority queue. Drained after auth emails."}
+                      </p>
+                    </div>
+                    {hasDlq && (
+                      <Badge
+                        variant="outline"
+                        className="bg-red-50 text-red-700 border-red-300"
+                      >
+                        <AlertTriangle className="h-3 w-3 mr-1" />
+                        Needs attention
+                      </Badge>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+                    <QueueStat
+                      label="Pending"
+                      value={q.pending}
+                      sub={
+                        q.oldest_pending
+                          ? `Oldest: ${fmt(q.oldest_pending)}`
+                          : "Queue empty"
+                      }
+                      tone={q.pending > 0 ? "warn" : "ok"}
+                    />
+                    <QueueStat
+                      label="In DLQ"
+                      value={q.dlq}
+                      sub={
+                        q.oldest_dlq
+                          ? `Oldest: ${fmt(q.oldest_dlq)}`
+                          : "No dead letters"
+                      }
+                      tone={hasDlq ? "danger" : "ok"}
+                    />
+                  </div>
+
+                  {q.last_error ? (
+                    <div className="mt-4 rounded-md border border-red-200 bg-red-50 p-3 text-xs">
+                      <div className="font-semibold text-red-700 flex items-center gap-1.5 mb-1">
+                        <AlertCircle className="h-3.5 w-3.5" />
+                        Most recent failure
+                      </div>
+                      <div className="text-muted-foreground">
+                        <span className="font-medium text-navy">{q.last_error.recipient}</span>
+                        {" · "}
+                        <span>{q.last_error.template}</span>
+                        {" · "}
+                        {statusBadge(q.last_error.status)}
+                        <span className="ml-1">{fmt(q.last_error.at)}</span>
+                      </div>
+                      <div className="mt-1.5 text-red-700 break-words">
+                        {q.last_error.error}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="mt-4 text-xs text-muted-foreground flex items-center gap-1.5">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />
+                      No recent failures recorded for this queue.
+                    </div>
+                  )}
+                </Card>
+              );
+            })
+          )}
+          <p className="text-[11px] text-muted-foreground">
+            Messages move to the dead-letter queue (DLQ) after 5 failed delivery attempts or once
+            their TTL expires. Drain or inspect DLQ contents from the database if a backlog appears.
+          </p>
+        </TabsContent>
+
         <TabsContent value="suppression">
           <Card className="overflow-hidden">
             <div className="grid grid-cols-12 gap-3 px-4 py-2 border-b text-xs font-semibold text-muted-foreground uppercase tracking-wide">
@@ -455,5 +579,35 @@ function Stat({
       </div>
       {sub && <div className="text-[11px] text-muted-foreground mt-0.5">{sub}</div>}
     </Card>
+  );
+}
+
+function QueueStat({
+  label,
+  value,
+  sub,
+  tone = "ok",
+}: {
+  label: string;
+  value: number;
+  sub?: string;
+  tone?: "ok" | "warn" | "danger";
+}) {
+  const toneClass =
+    tone === "danger"
+      ? "text-red-600"
+      : tone === "warn"
+      ? "text-amber-600"
+      : "text-navy";
+  return (
+    <div className="rounded-md border bg-muted/20 p-3">
+      <div className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">
+        {label}
+      </div>
+      <div className={`text-xl font-bold font-poppins mt-0.5 ${toneClass}`}>
+        {value.toLocaleString()}
+      </div>
+      {sub && <div className="text-[10px] text-muted-foreground mt-0.5">{sub}</div>}
+    </div>
   );
 }
