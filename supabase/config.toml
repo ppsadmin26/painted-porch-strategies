@@ -4,3 +4,6 @@ verify_jwt = true
 
 [functions.handle-email-delivery-event]
 verify_jwt = false
+
+[functions.github-webhook]
+verify_jwt = false

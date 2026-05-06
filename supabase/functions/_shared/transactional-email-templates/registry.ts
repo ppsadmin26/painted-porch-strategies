@@ -23,6 +23,7 @@ import { template as blueDoorPurchaseConfirmation } from './blue-door-purchase-c
 import { template as stoicFieldGuide } from './stoic-field-guide.tsx'
 import { template as easterEggNotification } from './easter-egg-notification.tsx'
 import { template as easterEggConfirmation } from './easter-egg-confirmation.tsx'
+import { template as githubSyncAlert } from './github-sync-alert.tsx'
 
 export const TEMPLATES: Record<string, TemplateEntry> = {
   'contact-confirmation': contactConfirmation,
@@ -39,4 +40,5 @@ export const TEMPLATES: Record<string, TemplateEntry> = {
   'change-comms-guide': changeCommsGuide,
   'blue-door-purchase-confirmation': blueDoorPurchaseConfirmation,
   'stoic-field-guide': stoicFieldGuide,
+  'github-sync-alert': githubSyncAlert,
 }

@@ -358,6 +358,72 @@ export type Database = {
         }
         Relationships: []
       }
+      github_sync_events: {
+        Row: {
+          created_at: string
+          event_type: string
+          id: string
+          message: string | null
+          payload: Json | null
+          source: string
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          event_type: string
+          id?: string
+          message?: string | null
+          payload?: Json | null
+          source: string
+          status: string
+        }
+        Update: {
+          created_at?: string
+          event_type?: string
+          id?: string
+          message?: string | null
+          payload?: Json | null
+          source?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      github_sync_status: {
+        Row: {
+          details: Json | null
+          id: number
+          last_alert_sent_at: string | null
+          last_check_at: string | null
+          last_error_message: string | null
+          last_failure_at: string | null
+          last_success_at: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          details?: Json | null
+          id?: number
+          last_alert_sent_at?: string | null
+          last_check_at?: string | null
+          last_error_message?: string | null
+          last_failure_at?: string | null
+          last_success_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          details?: Json | null
+          id?: number
+          last_alert_sent_at?: string | null
+          last_check_at?: string | null
+          last_error_message?: string | null
+          last_failure_at?: string | null
+          last_success_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       media_appearance_categories: {
         Row: {
           appearance_id: string
@@ -761,6 +827,7 @@ export type Database = {
           reason: string
         }[]
       }
+      admin_get_github_sync_status: { Args: never; Returns: Json }
       admin_list_backup_schedules: {
         Args: never
         Returns: {
