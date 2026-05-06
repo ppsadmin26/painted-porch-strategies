@@ -92,7 +92,7 @@ export default function ValueEscalationSectionAlt() {
             <p className="font-poppins font-bold text-2xl md:text-3xl text-strategic mb-2">
               Architect Change Design Session
             </p>
-            <p className="font-poppins font-bold text-2xl text-strategic mb-4">$18,000 - $69,000</p>
+            <p className="font-poppins font-bold text-2xl text-strategic mb-4">Starting at $36,000</p>
             <p className="font-poppins font-semibold italic text-lg text-navy mb-4">
               "Which sh<span className="font-bold text-bluedoor">IF</span>t will we design, and are we aligned enough to support it?"
             </p>
