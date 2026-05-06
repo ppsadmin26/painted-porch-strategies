@@ -148,12 +148,22 @@ export default function EmailQueue() {
   const runAction = async (
     key: string,
     label: string,
-    fn: () => Promise<{ error: any; data: any }>,
+    fn: () => Promise<any>,
   ) => {
     setBusy(key);
     try {
-      const { error } = await fn();
+      const { error } = (await fn()) ?? {};
       if (error) throw error;
+      toast.success(label);
+      await load();
+    } catch (e: any) {
+      toast.error(e?.message ?? `${label} failed`);
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const sb = supabase as any;
       toast.success(label);
       await load();
     } catch (e: any) {
