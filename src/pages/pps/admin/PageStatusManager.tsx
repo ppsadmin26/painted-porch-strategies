@@ -118,12 +118,23 @@ export default function PageStatusManager() {
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <div className="mb-8">
-        <h1 className="text-2xl font-poppins font-bold text-pps-navy">Page Status</h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          Mark pages as Live or Draft. Drafts show a friendly Coming Soon screen to the public,
-          and the real page to signed-in staff.
-        </p>
+      <div className="mb-8 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-poppins font-bold text-pps-navy">Page Status</h1>
+          <p className="text-sm text-muted-foreground mt-1">
+            Mark pages as Live or Draft. Drafts show a friendly Coming Soon screen to the public,
+            and the real page to signed-in staff.
+          </p>
+        </div>
+        <Button
+          variant="outline"
+          onClick={syncFromSitemap}
+          disabled={syncing}
+          className="shrink-0"
+        >
+          <RefreshCw className={`w-4 h-4 mr-2 ${syncing ? "animate-spin" : ""}`} />
+          {syncing ? "Syncing…" : "Sync from sitemap"}
+        </Button>
       </div>
 
       <Card className="p-5 mb-6">
