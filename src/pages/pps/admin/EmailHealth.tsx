@@ -101,6 +101,22 @@ type QueueHealth = {
   } | null;
 };
 
+type DlqMessage = {
+  msg_id: number;
+  enqueued_at: string;
+  read_ct: number;
+  recipient: string | null;
+  template: string | null;
+  subject: string | null;
+  message: any;
+};
+
+type DlqQueue = {
+  queue: string;
+  dlq: string;
+  messages: DlqMessage[];
+};
+
 const RANGES = [
   { label: "Last 24h", hours: 24 },
   { label: "Last 7 days", hours: 24 * 7 },
