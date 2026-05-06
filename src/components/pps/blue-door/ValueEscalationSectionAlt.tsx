@@ -70,7 +70,7 @@ export default function ValueEscalationSectionAlt() {
             <div>
               <p className="font-poppins font-semibold text-bluedoor text-sm mb-2">Deliverables:</p>
               <ul className="space-y-1.5 text-sm text-foreground">
-                {["15-20 minute strategic appraisal", "Executive P.A.T.H.way within 72 business hours", "3-4 viable shifts identified", "Structural capability appraisal", "Prerequisites for each potential path"].map((item, i) => (
+                {["Strategic appraisal in less than 30 minutes", "Executive P.A.T.H.way within 72 business hours", "3-4 viable shifts identified", "Structural capability appraisal", "Prerequisites for each potential path"].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-bluedoor flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
