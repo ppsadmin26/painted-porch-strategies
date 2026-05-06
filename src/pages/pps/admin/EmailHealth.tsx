@@ -101,6 +101,22 @@ type QueueHealth = {
   } | null;
 };
 
+type DlqMessage = {
+  msg_id: number;
+  enqueued_at: string;
+  read_ct: number;
+  recipient: string | null;
+  template: string | null;
+  subject: string | null;
+  message: any;
+};
+
+type DlqQueue = {
+  queue: string;
+  dlq: string;
+  messages: DlqMessage[];
+};
+
 const RANGES = [
   { label: "Last 24h", hours: 24 },
   { label: "Last 7 days", hours: 24 * 7 },
@@ -146,6 +162,7 @@ export default function EmailHealth() {
   const [rows, setRows] = useState<LogRow[]>([]);
   const [suppressions, setSuppressions] = useState<Suppression[]>([]);
   const [queueHealth, setQueueHealth] = useState<QueueHealth[]>([]);
+  const [dlq, setDlq] = useState<DlqQueue[]>([]);
   const [template, setTemplate] = useState<string>("all");
   const [status, setStatus] = useState<string>("all");
   const [search, setSearch] = useState("");
@@ -163,7 +180,7 @@ export default function EmailHealth() {
     setLoading(true);
     setError(null);
     try {
-      const [statsRes, logRes, supRes, queueRes] = await Promise.all([
+      const [statsRes, logRes, supRes, queueRes, dlqRes] = await Promise.all([
         supabase.rpc("admin_email_stats", { _since: since }),
         supabase.rpc("admin_email_log", {
           _since: since,
@@ -175,16 +192,20 @@ export default function EmailHealth() {
         }),
         supabase.rpc("admin_email_suppressions", { _limit: 200 }),
         supabase.rpc("admin_email_queue_health"),
+        supabase.rpc("admin_email_dlq_list", { _limit: 50 }),
       ]);
       if (statsRes.error) throw statsRes.error;
       if (logRes.error) throw logRes.error;
       if (supRes.error) throw supRes.error;
       if (queueRes.error) throw queueRes.error;
+      if (dlqRes.error) throw dlqRes.error;
       setStats(statsRes.data as Stats);
       setRows((logRes.data as LogRow[]) ?? []);
       setSuppressions((supRes.data as Suppression[]) ?? []);
       const qData = queueRes.data as { queues?: QueueHealth[] } | null;
       setQueueHealth(qData?.queues ?? []);
+      const dData = dlqRes.data as { queues?: DlqQueue[] } | null;
+      setDlq(dData?.queues ?? []);
     } catch (e: any) {
       const msg = e?.message ?? "Failed to load email health";
       setError(msg);
@@ -213,6 +234,17 @@ export default function EmailHealth() {
   const sentRate = stats && stats.total > 0
     ? Math.round((stats.sent / stats.total) * 100)
     : null;
+
+  const totalDlq = queueHealth.reduce((a, q) => a + q.dlq, 0);
+  const failureCount =
+    (stats?.failed ?? 0) + (stats?.bounced ?? 0) + (stats?.complained ?? 0);
+  const failureRate =
+    stats && stats.total >= 10 ? failureCount / stats.total : 0;
+  const failureThresholdHit =
+    stats && stats.total >= 10 && failureRate > 0.05;
+  const alertActive = totalDlq > 0 || failureThresholdHit;
+  const rangeLabel =
+    RANGES.find((r) => r.hours === hours)?.label.toLowerCase() ?? "selected window";
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
@@ -254,6 +286,38 @@ export default function EmailHealth() {
             <div>
               <div className="font-semibold">Could not load email health</div>
               <div className="text-muted-foreground">{error}</div>
+            </div>
+          </div>
+        </Card>
+      )}
+
+      {alertActive && (
+        <Card className="p-4 mb-4 border-red-300 bg-red-50">
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="h-5 w-5 mt-0.5 text-red-600 shrink-0" />
+            <div className="text-sm flex-1">
+              <div className="font-poppins font-semibold text-red-700">
+                Email delivery alert
+              </div>
+              <ul className="mt-1 text-red-700/90 list-disc pl-5 space-y-0.5">
+                {totalDlq > 0 && (
+                  <li>
+                    <span className="font-semibold">{totalDlq}</span> message
+                    {totalDlq === 1 ? "" : "s"} stuck in the dead-letter queue. Review
+                    the DLQ tab for details.
+                  </li>
+                )}
+                {failureThresholdHit && (
+                  <li>
+                    Failure rate is{" "}
+                    <span className="font-semibold">
+                      {Math.round(failureRate * 100)}%
+                    </span>{" "}
+                    over the {rangeLabel} ({failureCount} of {stats?.total}). Threshold
+                    is 5% with at least 10 sends.
+                  </li>
+                )}
+              </ul>
             </div>
           </div>
         </Card>
@@ -305,6 +369,14 @@ export default function EmailHealth() {
             {queueHealth.reduce((a, q) => a + q.dlq, 0) > 0 && (
               <span className="ml-1.5 inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-red-100 text-red-700 text-[10px] font-bold">
                 {queueHealth.reduce((a, q) => a + q.dlq, 0)}
+              </span>
+            )}
+          </TabsTrigger>
+          <TabsTrigger value="dlq">
+            DLQ
+            {totalDlq > 0 && (
+              <span className="ml-1.5 inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-red-100 text-red-700 text-[10px] font-bold">
+                {totalDlq}
               </span>
             )}
           </TabsTrigger>
@@ -528,6 +600,68 @@ export default function EmailHealth() {
           <p className="text-[11px] text-muted-foreground">
             Messages move to the dead-letter queue (DLQ) after 5 failed delivery attempts or once
             their TTL expires. Drain or inspect DLQ contents from the database if a backlog appears.
+          </p>
+        </TabsContent>
+
+        <TabsContent value="dlq" className="space-y-3">
+          {dlq.length === 0 || dlq.every((d) => d.messages.length === 0) ? (
+            <Card className="p-6 text-sm text-muted-foreground flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-green-600" />
+              No dead-letter messages. The queues are clean.
+            </Card>
+          ) : (
+            dlq.map((d) =>
+              d.messages.length === 0 ? null : (
+                <Card key={d.queue} className="p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <AlertTriangle className="h-4 w-4 text-red-600" />
+                    <h3 className="font-poppins font-semibold text-navy">
+                      {d.queue === "auth_emails"
+                        ? "Auth emails DLQ"
+                        : "Transactional emails DLQ"}
+                    </h3>
+                    <Badge
+                      variant="outline"
+                      className="bg-red-50 text-red-700 border-red-300"
+                    >
+                      {d.messages.length} stuck
+                    </Badge>
+                    <code className="text-[11px] font-mono text-muted-foreground ml-1">
+                      ({d.dlq})
+                    </code>
+                  </div>
+                  <div className="grid grid-cols-12 gap-3 px-3 py-2 border-b text-[11px] font-semibold text-muted-foreground uppercase tracking-wide">
+                    <div className="col-span-3">Recipient</div>
+                    <div className="col-span-3">Template</div>
+                    <div className="col-span-2">Attempts</div>
+                    <div className="col-span-4">Failed at</div>
+                  </div>
+                  {d.messages.map((m) => (
+                    <div
+                      key={m.msg_id}
+                      className="grid grid-cols-12 gap-3 px-3 py-2 border-b last:border-b-0 text-sm items-center"
+                    >
+                      <div className="col-span-3 truncate font-medium text-navy">
+                        {m.recipient ?? "—"}
+                      </div>
+                      <div className="col-span-3 truncate text-xs text-muted-foreground">
+                        {m.template ?? "—"}
+                      </div>
+                      <div className="col-span-2 text-xs text-red-700 font-semibold">
+                        {m.read_ct}
+                      </div>
+                      <div className="col-span-4 text-xs text-muted-foreground">
+                        {fmt(m.enqueued_at)}
+                      </div>
+                    </div>
+                  ))}
+                </Card>
+              ),
+            )
+          )}
+          <p className="text-[11px] text-muted-foreground">
+            DLQ messages have failed delivery 5+ times or expired their TTL. Inspect
+            payloads in the database to diagnose recurring failures.
           </p>
         </TabsContent>
 
