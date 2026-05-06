@@ -56,6 +56,21 @@ type Suppression = {
   metadata: any;
 };
 
+type QueueHealth = {
+  queue: string;
+  pending: number;
+  dlq: number;
+  oldest_pending: string | null;
+  oldest_dlq: string | null;
+  last_error: {
+    recipient: string;
+    template: string;
+    status: string;
+    error: string;
+    at: string;
+  } | null;
+};
+
 const RANGES = [
   { label: "Last 24h", hours: 24 },
   { label: "Last 7 days", hours: 24 * 7 },
