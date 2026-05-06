@@ -13,14 +13,27 @@ import { Button } from "@/components/ui/button";
 import { Settings2, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-interface SitemapNode {
+export interface SitemapNode {
   label: string;
   path?: string;
   children?: SitemapNode[];
   note?: string;
 }
 
-const sitemapData: SitemapNode[] = [
+/** Flat list of every path in the sitemap tree (deduped). */
+export function collectSitemapPaths(nodes: SitemapNode[] = sitemapData): string[] {
+  const out = new Set<string>();
+  const walk = (ns: SitemapNode[]) => {
+    for (const n of ns) {
+      if (n.path) out.add(n.path);
+      if (n.children) walk(n.children);
+    }
+  };
+  walk(nodes);
+  return Array.from(out).sort();
+}
+
+export const sitemapData: SitemapNode[] = [
   {
     label: "Home",
     path: "/",

@@ -8,7 +8,9 @@ import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Trash2, FileWarning } from "lucide-react";
+import { Plus, Trash2, FileWarning, RefreshCw } from "lucide-react";
+import { collectSitemapPaths } from "@/pages/pps/Sitemap";
+import { supabase } from "@/integrations/supabase/client";
 
 /**
  * Admin-only manager for page publish status. Lets admins:
@@ -30,6 +32,34 @@ export default function PageStatusManager() {
   const [newPath, setNewPath] = useState("");
   const [newNote, setNewNote] = useState("");
   const [adding, setAdding] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+
+  const syncFromSitemap = async () => {
+    setSyncing(true);
+    try {
+      const paths = collectSitemapPaths();
+      const missing = paths.filter((p) => !map[p]);
+      if (missing.length === 0) {
+        toast({ title: "Already in sync", description: "Every sitemap route has a row." });
+        return;
+      }
+      const rows = missing.map((path) => ({
+        path,
+        status: "live" as const,
+        note: "Synced from sitemap",
+      }));
+      const { error } = await supabase.from("page_status").insert(rows);
+      if (error) throw error;
+      toast({
+        title: "Sitemap synced",
+        description: `Added ${missing.length} missing path${missing.length === 1 ? "" : "s"} as Live.`,
+      });
+    } catch (err) {
+      toast({ title: "Sync failed", description: String(err), variant: "destructive" });
+    } finally {
+      setSyncing(false);
+    }
+  };
 
   const overrides = useMemo(
     () =>
@@ -88,12 +118,23 @@ export default function PageStatusManager() {
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <div className="mb-8">
-        <h1 className="text-2xl font-poppins font-bold text-pps-navy">Page Status</h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          Mark pages as Live or Draft. Drafts show a friendly Coming Soon screen to the public,
-          and the real page to signed-in staff.
-        </p>
+      <div className="mb-8 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+        <div>
+          <h1 className="text-2xl font-poppins font-bold text-pps-navy">Page Status</h1>
+          <p className="text-sm text-muted-foreground mt-1">
+            Mark pages as Live or Draft. Drafts show a friendly Coming Soon screen to the public,
+            and the real page to signed-in staff.
+          </p>
+        </div>
+        <Button
+          variant="outline"
+          onClick={syncFromSitemap}
+          disabled={syncing}
+          className="shrink-0"
+        >
+          <RefreshCw className={`w-4 h-4 mr-2 ${syncing ? "animate-spin" : ""}`} />
+          {syncing ? "Syncing…" : "Sync from sitemap"}
+        </Button>
       </div>
 
       <Card className="p-5 mb-6">
