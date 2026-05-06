@@ -17,7 +17,29 @@ import {
   AlertTriangle,
   Clock,
   AlertCircle,
+  MoreVertical,
+  Trash2,
+  RotateCcw,
+  PlayCircle,
+  Skull,
 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 
 type Msg = {
@@ -119,6 +141,66 @@ export default function EmailQueue() {
     const t = setInterval(load, 30_000);
     return () => clearInterval(t);
   }, [load]);
+
+  const [busy, setBusy] = useState<string | null>(null);
+  const [purgeTarget, setPurgeTarget] = useState<string | null>(null);
+
+  const runAction = async (
+    key: string,
+    label: string,
+    fn: () => Promise<any>,
+  ) => {
+    setBusy(key);
+    try {
+      const { error } = (await fn()) ?? {};
+      if (error) throw error;
+      toast.success(label);
+      await load();
+    } catch (e: any) {
+      toast.error(e?.message ?? `${label} failed`);
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const sb = supabase as any;
+
+  const requeue = (queue: string, msgId: number) =>
+    runAction(`requeue-${msgId}`, "Requeued to active queue", () =>
+      sb.rpc("admin_email_requeue_dlq", { _queue: queue, _msg_id: msgId }),
+    );
+
+  const deleteMsg = (queue: string, kind: "active" | "dlq", msgId: number) =>
+    runAction(`del-${msgId}`, "Message deleted", () =>
+      sb.rpc("admin_email_delete_message", {
+        _queue: queue,
+        _kind: kind,
+        _msg_id: msgId,
+      }),
+    );
+
+  const releaseStuck = (queue: string, msgId: number) =>
+    runAction(`release-${msgId}`, "Released for immediate retry", () =>
+      sb.rpc("admin_email_reset_stuck", {
+        _queue: queue,
+        _msg_id: msgId,
+        _action: "release",
+      }),
+    );
+
+  const moveToDlq = (queue: string, msgId: number) =>
+    runAction(`movedlq-${msgId}`, "Moved to DLQ", () =>
+      sb.rpc("admin_email_reset_stuck", {
+        _queue: queue,
+        _msg_id: msgId,
+        _action: "move_to_dlq",
+      }),
+    );
+
+  const purgeDlq = (queue: string) =>
+    runAction(`purge-${queue}`, `Purged ${queue} DLQ`, () =>
+      sb.rpc("admin_email_purge_dlq", { _queue: queue }),
+    );
 
   const ttlFor = useCallback(
     (q: string) =>
@@ -296,8 +378,22 @@ export default function EmailQueue() {
                       {g.kind === "dlq" ? "DLQ" : "ACTIVE"}
                     </span>
                   </div>
-                  <div className="text-xs text-muted-foreground">
-                    {g.messages.length} message{g.messages.length === 1 ? "" : "s"} · TTL {ttl}m
+                  <div className="flex items-center gap-3">
+                    <div className="text-xs text-muted-foreground">
+                      {g.messages.length} message{g.messages.length === 1 ? "" : "s"} · TTL {ttl}m
+                    </div>
+                    {g.kind === "dlq" && g.messages.length > 0 && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="h-7 text-xs border-red-300 text-red-700 hover:bg-red-50"
+                        disabled={busy === `purge-${g.queue}`}
+                        onClick={() => setPurgeTarget(g.queue)}
+                      >
+                        <Trash2 className="h-3 w-3 mr-1" />
+                        Purge DLQ
+                      </Button>
+                    )}
                   </div>
                 </div>
                 {g.messages.length === 0 ? (
@@ -310,8 +406,9 @@ export default function EmailQueue() {
                       <div className="col-span-3">Recipient</div>
                       <div className="col-span-3">Template / subject</div>
                       <div className="col-span-2">Enqueued</div>
-                      <div className="col-span-2">Age</div>
+                      <div className="col-span-1">Age</div>
                       <div className="col-span-2">Attempts</div>
+                      <div className="col-span-1 text-right">Actions</div>
                     </div>
                     {g.messages.map((m) => {
                       const age = ageMinutes(m.enqueued_at);
@@ -334,11 +431,11 @@ export default function EmailQueue() {
                             {fmt(m.enqueued_at)}
                           </div>
                           <div
-                            className={`col-span-2 text-xs font-medium ${
+                            className={`col-span-1 text-xs font-medium ${
                               expired ? "text-red-600" : "text-muted-foreground"
                             }`}
                           >
-                            {Math.round(age)}m {expired ? "· expired" : ""}
+                            {Math.round(age)}m{expired ? " ·exp" : ""}
                           </div>
                           <div className="col-span-2 text-xs">
                             <span
@@ -351,6 +448,47 @@ export default function EmailQueue() {
                               {m.read_ct} / {data?.max_attempts ?? 5}
                             </span>
                           </div>
+                          <div className="col-span-1 flex justify-end">
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="h-7 w-7 p-0"
+                                  disabled={busy?.endsWith(`-${m.msg_id}`)}
+                                >
+                                  <MoreVertical className="h-4 w-4" />
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="end" className="w-56 bg-background">
+                                {g.kind === "dlq" ? (
+                                  <DropdownMenuItem onClick={() => requeue(g.queue, m.msg_id)}>
+                                    <RotateCcw className="h-4 w-4 mr-2" />
+                                    Requeue to active
+                                  </DropdownMenuItem>
+                                ) : (
+                                  <>
+                                    <DropdownMenuItem onClick={() => releaseStuck(g.queue, m.msg_id)}>
+                                      <PlayCircle className="h-4 w-4 mr-2" />
+                                      Release (retry now)
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => moveToDlq(g.queue, m.msg_id)}>
+                                      <Skull className="h-4 w-4 mr-2" />
+                                      Force-move to DLQ
+                                    </DropdownMenuItem>
+                                  </>
+                                )}
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem
+                                  className="text-red-600 focus:text-red-600"
+                                  onClick={() => deleteMsg(g.queue, g.kind, m.msg_id)}
+                                >
+                                  <Trash2 className="h-4 w-4 mr-2" />
+                                  Delete permanently
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          </div>
                         </div>
                       );
                     })}
@@ -361,6 +499,31 @@ export default function EmailQueue() {
           })}
         </div>
       )}
+
+      <AlertDialog open={!!purgeTarget} onOpenChange={(o) => !o && setPurgeTarget(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Purge {purgeTarget} DLQ?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This permanently deletes every message in the {purgeTarget} dead-letter
+              queue. They will not be sent and cannot be recovered.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-red-600 hover:bg-red-700"
+              onClick={() => {
+                const t = purgeTarget;
+                setPurgeTarget(null);
+                if (t) purgeDlq(t);
+              }}
+            >
+              Purge all
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
       <div className="text-xs text-muted-foreground mt-4">
         Showing {totalShown} message{totalShown === 1 ? "" : "s"} across{" "}
