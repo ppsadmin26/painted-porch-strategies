@@ -233,7 +233,7 @@ Deno.serve(async (req) => {
 
       // Move to DLQ if max failed send attempts reached.
       if (failedAttempts >= maxAttempts) {
-        await moveToDlq(supabase, queue, msg, `Max attempts (${maxAttempts}) exceeded (attempted ${failedAttempts} times)`)
+        await moveToDlq(supabase, queue, msg, `Max attempts (${maxAttempts}) exceeded (attempted ${failedAttempts} times)`, failedAttempts)
         continue
       }
 
