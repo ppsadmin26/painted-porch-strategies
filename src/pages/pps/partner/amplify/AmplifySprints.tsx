@@ -203,7 +203,7 @@ export default function AmplifySprints() {
                 <h3 className="font-poppins font-semibold text-navy">About The Blue Door</h3>
               </div>
               <p className="text-sm text-foreground mb-2">
-                The Blue Door is our 20-minute strategic appraisal that reveals where your organization stands on the path to transformation—and what's blocking progress.
+                The Blue Door is our strategic appraisal (less than 30 minutes) that reveals where your organization stands on the path to transformation—and what's blocking progress.
               </p>
               <p className="text-sm text-foreground/70 italic mb-3">
                 Required for Strategic Sprints and workshops. Not needed for Leadership Labs.
