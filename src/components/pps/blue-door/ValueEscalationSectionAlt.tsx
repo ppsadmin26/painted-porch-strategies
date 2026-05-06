@@ -104,7 +104,7 @@ export default function ValueEscalationSectionAlt() {
             </p>
             <p className="font-poppins font-semibold text-strategic text-sm mb-2">Investment Options:</p>
             <ul className="space-y-1.5 text-sm text-foreground">
-              {["Half-day session or Self-Led Toolkit: $18,000*", "Full-day session: $36,000*", "2+ day intensive: $69,000*"].map((item, i) => (
+              {["Full-day session: $36,000*", "2+ day intensive: $69,000*"].map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-strategic flex-shrink-0 mt-0.5" />
                   <span>{item}</span>
