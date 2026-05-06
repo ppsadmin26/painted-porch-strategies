@@ -732,6 +732,7 @@ export type Database = {
           template_name: string
         }[]
       }
+      admin_email_queue_health: { Args: never; Returns: Json }
       admin_email_stats: { Args: { _since?: string }; Returns: Json }
       admin_email_suppressions: {
         Args: { _limit?: number }
