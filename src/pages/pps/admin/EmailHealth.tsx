@@ -115,6 +115,7 @@ export default function EmailHealth() {
   const [stats, setStats] = useState<Stats | null>(null);
   const [rows, setRows] = useState<LogRow[]>([]);
   const [suppressions, setSuppressions] = useState<Suppression[]>([]);
+  const [queueHealth, setQueueHealth] = useState<QueueHealth[]>([]);
   const [template, setTemplate] = useState<string>("all");
   const [status, setStatus] = useState<string>("all");
   const [search, setSearch] = useState("");
@@ -132,7 +133,7 @@ export default function EmailHealth() {
     setLoading(true);
     setError(null);
     try {
-      const [statsRes, logRes, supRes] = await Promise.all([
+      const [statsRes, logRes, supRes, queueRes] = await Promise.all([
         supabase.rpc("admin_email_stats", { _since: since }),
         supabase.rpc("admin_email_log", {
           _since: since,
@@ -143,13 +144,17 @@ export default function EmailHealth() {
           _offset: page * 100,
         }),
         supabase.rpc("admin_email_suppressions", { _limit: 200 }),
+        supabase.rpc("admin_email_queue_health"),
       ]);
       if (statsRes.error) throw statsRes.error;
       if (logRes.error) throw logRes.error;
       if (supRes.error) throw supRes.error;
+      if (queueRes.error) throw queueRes.error;
       setStats(statsRes.data as Stats);
       setRows((logRes.data as LogRow[]) ?? []);
       setSuppressions((supRes.data as Suppression[]) ?? []);
+      const qData = queueRes.data as { queues?: QueueHealth[] } | null;
+      setQueueHealth(qData?.queues ?? []);
     } catch (e: any) {
       const msg = e?.message ?? "Failed to load email health";
       setError(msg);
