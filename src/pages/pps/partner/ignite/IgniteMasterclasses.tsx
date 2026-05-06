@@ -9,7 +9,7 @@ import { igniteFaqCategories } from "./igniteFaqs";
 import mcElementsOfTeam from "@/assets/masterclass/elements-of-team.jpg";
 import mcSuperpowersOfTeam from "@/assets/masterclass/superpowers-of-a-team.jpg";
 import mcLeadingChange from "@/assets/masterclass/leading-change.jpg";
-import mcKickTheHabit from "@/assets/masterclass/kick-the-habit.jpg";
+
 import mcMasterYourMessage from "@/assets/masterclass/master-your-message.jpg";
 import mcTalkingToStrangers from "@/assets/masterclass/talking-to-strangers.jpg";
 import mcJournalingChallenge from "@/assets/masterclass/journaling-challenge.jpg";
@@ -46,7 +46,7 @@ const allMasterclasses: MasterclassItem[] = [
   { title: "The Elements of a Team", leader: "Amy", themeColor: "primary", image: mcElementsOfTeam, category: "Leadership & Change" },
   { title: "Superpowers of a Team Challenge", leader: "Amy", themeColor: "primary", image: mcSuperpowersOfTeam, description: "A 5-day challenge to uncover your team's hidden superpowers and turn everyday differences into your biggest competitive edge.", price: 27, category: "Leadership & Change", href: "/team-superpowers" },
   { title: "Leading Change Mini Course", leader: "Amy", themeColor: "strategic", image: mcLeadingChange, category: "Leadership & Change" },
-  { title: "Kick the Habit", leader: null, themeColor: "primary", image: mcKickTheHabit, description: "Learn to spot negative thinking patterns, challenge habitual ways of doing, and develop a Change-ready mindset.", price: 10, category: "Leadership & Change" },
+  
   { title: "Master Your Message Mini Course", leader: "Rob", image: mcMasterYourMessage, themeColor: "foreground", category: "Communication & Connection" },
   { title: "Talking to Strangers", leader: "Rob", image: mcTalkingToStrangers, themeColor: "primary", description: "A 5-day challenge to help you start better conversations — with strangers, colleagues, and everyone in between.", price: 27, category: "Communication & Connection", href: "/talking-to-strangers" },
   { title: "Master Your Message Journaling Challenge", leader: "Rob", image: mcJournalingChallenge, themeColor: "primary", description: "A 5-day journaling challenge to reconnect, rediscover, and reignite your true voice — five short prompts, on your time.", price: 15, category: "Communication & Connection", href: "/mym-journal-challenge" },
@@ -118,7 +118,7 @@ export default function IgniteMasterclasses() {
               const colors = categoryColors[item.category];
               return (
                 <div key={item.title} className={`bg-muted rounded-xl border-t-4 border-${item.themeColor} transition-all hover:shadow-lg flex flex-col overflow-hidden`}>
-                  <img src={item.image} alt={item.title} className="w-full h-40 object-cover" style={item.title === "Kick the Habit" ? { objectPosition: "center 60%" } : undefined} />
+                  <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
                   <div className="p-5 flex flex-col flex-1">
                     <div className="mb-3">
                       <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium ${colors.bg} ${colors.text} mb-2`}>
