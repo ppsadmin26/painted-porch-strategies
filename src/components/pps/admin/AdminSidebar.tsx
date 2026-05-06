@@ -26,7 +26,7 @@ const navItems: { title: string; url: string; icon: any; section?: AdminSection 
   { title: "Secrets Handoff", url: "/admin/secrets-handoff", icon: KeyRound },
   { title: "Migration Checklist", url: "/admin/migration-checklist", icon: ListChecks },
   { title: "Site Emails", url: "/admin/emails", icon: Mail },
-  { title: "Email Queue", url: "/admin/emails/queue", icon: Inbox },
+  { title: "Email Health & Queue", url: "/admin/emails/queue", icon: Inbox },
   { title: "Users", url: "/admin/users", icon: Users },
   { title: "Account", url: "/admin/account", icon: Settings },
 ];
@@ -54,7 +54,7 @@ export function AdminSidebar() {
     if (item.url === "/admin/secrets-handoff" && role !== "admin") return false;
     if (item.url === "/admin/migration-checklist" && role !== "admin") return false;
     if (item.url === "/admin/emails" && role !== "admin") return false;
-    if (item.url === "/admin/emails/queue" && role !== "admin" && role !== "editor") return false;
+    if (item.url === "/admin/emails/queue" && role !== "admin") return false;
     // Section-gated items
     if (item.section) return canAccess(item.section);
     return true;

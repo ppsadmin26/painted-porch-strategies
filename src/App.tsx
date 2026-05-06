@@ -144,8 +144,7 @@ import IntegrityCheck from "./pages/pps/admin/IntegrityCheck";
 import SecretsHandoff from "./pages/pps/admin/SecretsHandoff";
 import MigrationChecklist from "./pages/pps/admin/MigrationChecklist";
 import SiteEmails from "./pages/pps/admin/SiteEmails";
-import EmailHealth from "./pages/pps/admin/EmailHealth";
-import EmailQueue from "./pages/pps/admin/EmailQueue";
+import EmailOps from "./pages/pps/admin/EmailOps";
 import ResetPassword from "./pages/pps/admin/ResetPassword";
 
 // Legacy redirect: forward /pps/* paths to clean URLs
@@ -389,8 +388,8 @@ const App = () => (
             <Route path="secrets-handoff" element={<SecretsHandoff />} />
             <Route path="migration-checklist" element={<MigrationChecklist />} />
             <Route path="emails" element={<SiteEmails />} />
-            <Route path="emails/health" element={<EmailHealth />} />
-            <Route path="emails/queue" element={<EmailQueue />} />
+            <Route path="emails/health" element={<Navigate to="/admin/emails/queue" replace />} />
+            <Route path="emails/queue" element={<EmailOps />} />
           </Route>
           
           {/* Legacy /pps/* redirects + 404 catch-all */}
