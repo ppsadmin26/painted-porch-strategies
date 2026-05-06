@@ -388,8 +388,8 @@ const App = () => (
             <Route path="secrets-handoff" element={<SecretsHandoff />} />
             <Route path="migration-checklist" element={<MigrationChecklist />} />
             <Route path="emails" element={<SiteEmails />} />
-            <Route path="emails/health" element={<EmailHealth />} />
-            <Route path="emails/queue" element={<EmailQueue />} />
+            <Route path="emails/health" element={<Navigate to="/admin/emails/queue" replace />} />
+            <Route path="emails/queue" element={<EmailOps />} />
           </Route>
           
           {/* Legacy /pps/* redirects + 404 catch-all */}
