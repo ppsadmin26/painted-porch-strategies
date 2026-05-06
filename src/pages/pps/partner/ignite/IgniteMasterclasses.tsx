@@ -15,7 +15,6 @@ import mcTalkingToStrangers from "@/assets/masterclass/talking-to-strangers.jpg"
 import mcJournalingChallenge from "@/assets/masterclass/journaling-challenge.jpg";
 import mcRadicalMindfulness from "@/assets/masterclass/radical-mindfulness.jpg";
 import mcMeditationChallenge from "@/assets/masterclass/meditation-challenge.jpg";
-import mcPassengerToPilot from "@/assets/masterclass/passenger-to-pilot.jpg";
 import mcGratitudeChallenge from "@/assets/masterclass/gratitude-challenge.jpg";
 
 type Category = "Leadership & Change" | "Communication & Connection" | "Mindfulness & Resilience";
