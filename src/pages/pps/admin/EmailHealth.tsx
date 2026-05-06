@@ -180,7 +180,7 @@ export default function EmailHealth() {
     setLoading(true);
     setError(null);
     try {
-      const [statsRes, logRes, supRes, queueRes] = await Promise.all([
+      const [statsRes, logRes, supRes, queueRes, dlqRes] = await Promise.all([
         supabase.rpc("admin_email_stats", { _since: since }),
         supabase.rpc("admin_email_log", {
           _since: since,
@@ -192,16 +192,20 @@ export default function EmailHealth() {
         }),
         supabase.rpc("admin_email_suppressions", { _limit: 200 }),
         supabase.rpc("admin_email_queue_health"),
+        supabase.rpc("admin_email_dlq_list", { _limit: 50 }),
       ]);
       if (statsRes.error) throw statsRes.error;
       if (logRes.error) throw logRes.error;
       if (supRes.error) throw supRes.error;
       if (queueRes.error) throw queueRes.error;
+      if (dlqRes.error) throw dlqRes.error;
       setStats(statsRes.data as Stats);
       setRows((logRes.data as LogRow[]) ?? []);
       setSuppressions((supRes.data as Suppression[]) ?? []);
       const qData = queueRes.data as { queues?: QueueHealth[] } | null;
       setQueueHealth(qData?.queues ?? []);
+      const dData = dlqRes.data as { queues?: DlqQueue[] } | null;
+      setDlq(dData?.queues ?? []);
     } catch (e: any) {
       const msg = e?.message ?? "Failed to load email health";
       setError(msg);
