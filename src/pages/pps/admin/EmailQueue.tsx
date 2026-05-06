@@ -142,6 +142,63 @@ export default function EmailQueue() {
     return () => clearInterval(t);
   }, [load]);
 
+  const [busy, setBusy] = useState<string | null>(null);
+  const [purgeTarget, setPurgeTarget] = useState<string | null>(null);
+
+  const runAction = async (
+    key: string,
+    label: string,
+    fn: () => Promise<{ error: any; data: any }>,
+  ) => {
+    setBusy(key);
+    try {
+      const { error } = await fn();
+      if (error) throw error;
+      toast.success(label);
+      await load();
+    } catch (e: any) {
+      toast.error(e?.message ?? `${label} failed`);
+    } finally {
+      setBusy(null);
+    }
+  };
+
+  const requeue = (queue: string, msgId: number) =>
+    runAction(`requeue-${msgId}`, "Requeued to active queue", () =>
+      supabase.rpc("admin_email_requeue_dlq", { _queue: queue, _msg_id: msgId }),
+    );
+
+  const deleteMsg = (queue: string, kind: "active" | "dlq", msgId: number) =>
+    runAction(`del-${msgId}`, "Message deleted", () =>
+      supabase.rpc("admin_email_delete_message", {
+        _queue: queue,
+        _kind: kind,
+        _msg_id: msgId,
+      }),
+    );
+
+  const releaseStuck = (queue: string, msgId: number) =>
+    runAction(`release-${msgId}`, "Released for immediate retry", () =>
+      supabase.rpc("admin_email_reset_stuck", {
+        _queue: queue,
+        _msg_id: msgId,
+        _action: "release",
+      }),
+    );
+
+  const moveToDlq = (queue: string, msgId: number) =>
+    runAction(`movedlq-${msgId}`, "Moved to DLQ", () =>
+      supabase.rpc("admin_email_reset_stuck", {
+        _queue: queue,
+        _msg_id: msgId,
+        _action: "move_to_dlq",
+      }),
+    );
+
+  const purgeDlq = (queue: string) =>
+    runAction(`purge-${queue}`, `Purged ${queue} DLQ`, () =>
+      supabase.rpc("admin_email_purge_dlq", { _queue: queue }),
+    );
   const ttlFor = useCallback(
     (q: string) =>
       q === "auth_emails"
