@@ -378,8 +378,22 @@ export default function EmailQueue() {
                       {g.kind === "dlq" ? "DLQ" : "ACTIVE"}
                     </span>
                   </div>
-                  <div className="text-xs text-muted-foreground">
-                    {g.messages.length} message{g.messages.length === 1 ? "" : "s"} · TTL {ttl}m
+                  <div className="flex items-center gap-3">
+                    <div className="text-xs text-muted-foreground">
+                      {g.messages.length} message{g.messages.length === 1 ? "" : "s"} · TTL {ttl}m
+                    </div>
+                    {g.kind === "dlq" && g.messages.length > 0 && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="h-7 text-xs border-red-300 text-red-700 hover:bg-red-50"
+                        disabled={busy === `purge-${g.queue}`}
+                        onClick={() => setPurgeTarget(g.queue)}
+                      >
+                        <Trash2 className="h-3 w-3 mr-1" />
+                        Purge DLQ
+                      </Button>
+                    )}
                   </div>
                 </div>
                 {g.messages.length === 0 ? (
