@@ -230,10 +230,13 @@ Deno.serve(async (req) => {
       }
 
       // Move to DLQ if max failed send attempts reached.
-      if (failedAttempts >= MAX_RETRIES) {
-        await moveToDlq(supabase, queue, msg, `Max retries (${MAX_RETRIES}) exceeded (attempted ${failedAttempts} times)`)
+      if (failedAttempts >= maxAttempts) {
+        await moveToDlq(supabase, queue, msg, `Max attempts (${maxAttempts}) exceeded (attempted ${failedAttempts} times)`)
         continue
       }
+
+      // This send is attempt N (1-based: 1 on first try, failedAttempts+1 on retries).
+      const currentAttempt = failedAttempts + 1
 
       // Guard: skip if another worker already sent this message (VT expired race)
       if (payload.message_id) {
