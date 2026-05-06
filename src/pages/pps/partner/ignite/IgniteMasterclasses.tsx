@@ -9,7 +9,7 @@ import { igniteFaqCategories } from "./igniteFaqs";
 import mcElementsOfTeam from "@/assets/masterclass/elements-of-team.jpg";
 import mcSuperpowersOfTeam from "@/assets/masterclass/superpowers-of-a-team.jpg";
 import mcLeadingChange from "@/assets/masterclass/leading-change.jpg";
-import mcKickTheHabit from "@/assets/masterclass/kick-the-habit.jpg";
+
 import mcMasterYourMessage from "@/assets/masterclass/master-your-message.jpg";
 import mcTalkingToStrangers from "@/assets/masterclass/talking-to-strangers.jpg";
 import mcJournalingChallenge from "@/assets/masterclass/journaling-challenge.jpg";
