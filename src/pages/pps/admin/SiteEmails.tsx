@@ -177,8 +177,8 @@ export default function SiteEmails() {
         </div>
         <div className="flex items-center gap-2">
           <Button asChild variant="outline" size="sm">
-            <Link to="/admin/emails/health">
-              <Activity className="h-4 w-4 mr-2" /> Email health
+            <Link to="/admin/emails/queue">
+              <Activity className="h-4 w-4 mr-2" /> Email health & queue
             </Link>
           </Button>
           <Button variant="outline" size="sm" onClick={load} disabled={loading}>
