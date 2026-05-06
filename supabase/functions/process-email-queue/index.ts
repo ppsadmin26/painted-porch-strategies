@@ -359,12 +359,27 @@ Deno.serve(async (req) => {
           recipient_email: payload.to,
           status: 'failed',
           error_message: errorMsg.slice(0, 1000),
+          attempt: currentAttempt,
         })
         if (payload?.message_id && typeof payload.message_id === 'string') {
           failedAttemptsByMessageId.set(payload.message_id, failedAttempts + 1)
         }
 
-        // Non-429 errors: message stays invisible until VT expires, then retried
+        // Schedule the next retry using exponential backoff with jitter by
+        // extending the message's visibility timeout. Without this, the message
+        // would be retried in 30s (the default VT) regardless of how many
+        // times it has already failed.
+        const backoffSecs = computeBackoffSeconds(currentAttempt, backoffBaseMs, backoffMaxMs)
+        const { error: vtError } = await supabase.rpc('set_email_vt', {
+          queue_name: queue,
+          message_id: msg.msg_id,
+          vt_seconds: backoffSecs,
+        })
+        if (vtError) {
+          console.error('Failed to set retry backoff VT', { queue, msg_id: msg.msg_id, backoffSecs, error: vtError })
+        } else {
+          console.log('Scheduled retry', { queue, msg_id: msg.msg_id, attempt: currentAttempt, backoff_seconds: backoffSecs })
+        }
       }
 
       // Small delay between sends to smooth bursts
