@@ -1,11 +1,21 @@
 import { sendLovableEmail } from 'npm:@lovable.dev/email-js'
 import { createClient } from 'npm:@supabase/supabase-js@2'
 
-const MAX_RETRIES = 5
+const DEFAULT_MAX_ATTEMPTS = 5
 const DEFAULT_BATCH_SIZE = 10
 const DEFAULT_SEND_DELAY_MS = 200
 const DEFAULT_AUTH_TTL_MINUTES = 15
 const DEFAULT_TRANSACTIONAL_TTL_MINUTES = 60
+const DEFAULT_RETRY_BACKOFF_BASE_MS = 30_000
+const DEFAULT_RETRY_BACKOFF_MAX_MS = 600_000
+
+// Exponential backoff with full jitter, capped at maxMs.
+// attempt is 1-based (1 = first retry after the initial failure).
+function computeBackoffSeconds(attempt: number, baseMs: number, maxMs: number): number {
+  const exp = Math.min(maxMs, baseMs * Math.pow(2, Math.max(0, attempt - 1)))
+  const jittered = Math.random() * exp
+  return Math.max(1, Math.ceil(jittered / 1000))
+}
 
 // Check if an error is a rate-limit (429) response.
 // Uses EmailAPIError.status when available (email-js >=0.x with structured errors),
