@@ -261,6 +261,7 @@ export type Database = {
       }
       email_send_log: {
         Row: {
+          attempt: number | null
           created_at: string
           error_message: string | null
           id: string
@@ -271,6 +272,7 @@ export type Database = {
           template_name: string
         }
         Insert: {
+          attempt?: number | null
           created_at?: string
           error_message?: string | null
           id?: string
@@ -281,6 +283,7 @@ export type Database = {
           template_name: string
         }
         Update: {
+          attempt?: number | null
           created_at?: string
           error_message?: string | null
           id?: string
@@ -297,7 +300,10 @@ export type Database = {
           auth_email_ttl_minutes: number
           batch_size: number
           id: number
+          max_attempts: number
           retry_after_until: string | null
+          retry_backoff_base_ms: number
+          retry_backoff_max_ms: number
           send_delay_ms: number
           transactional_email_ttl_minutes: number
           updated_at: string
@@ -306,7 +312,10 @@ export type Database = {
           auth_email_ttl_minutes?: number
           batch_size?: number
           id?: number
+          max_attempts?: number
           retry_after_until?: string | null
+          retry_backoff_base_ms?: number
+          retry_backoff_max_ms?: number
           send_delay_ms?: number
           transactional_email_ttl_minutes?: number
           updated_at?: string
@@ -315,7 +324,10 @@ export type Database = {
           auth_email_ttl_minutes?: number
           batch_size?: number
           id?: number
+          max_attempts?: number
           retry_after_until?: string | null
+          retry_backoff_base_ms?: number
+          retry_backoff_max_ms?: number
           send_delay_ms?: number
           transactional_email_ttl_minutes?: number
           updated_at?: string
@@ -771,6 +783,10 @@ export type Database = {
           msg_id: number
           read_ct: number
         }[]
+      }
+      set_email_vt: {
+        Args: { message_id: number; queue_name: string; vt_seconds: number }
+        Returns: boolean
       }
     }
     Enums: {
