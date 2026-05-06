@@ -431,11 +431,11 @@ export default function EmailQueue() {
                             {fmt(m.enqueued_at)}
                           </div>
                           <div
-                            className={`col-span-2 text-xs font-medium ${
+                            className={`col-span-1 text-xs font-medium ${
                               expired ? "text-red-600" : "text-muted-foreground"
                             }`}
                           >
-                            {Math.round(age)}m {expired ? "· expired" : ""}
+                            {Math.round(age)}m{expired ? " ·exp" : ""}
                           </div>
                           <div className="col-span-2 text-xs">
                             <span
@@ -448,6 +448,47 @@ export default function EmailQueue() {
                               {m.read_ct} / {data?.max_attempts ?? 5}
                             </span>
                           </div>
+                          <div className="col-span-1 flex justify-end">
+                            <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="h-7 w-7 p-0"
+                                  disabled={busy?.endsWith(`-${m.msg_id}`)}
+                                >
+                                  <MoreVertical className="h-4 w-4" />
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="end" className="w-56 bg-background">
+                                {g.kind === "dlq" ? (
+                                  <DropdownMenuItem onClick={() => requeue(g.queue, m.msg_id)}>
+                                    <RotateCcw className="h-4 w-4 mr-2" />
+                                    Requeue to active
+                                  </DropdownMenuItem>
+                                ) : (
+                                  <>
+                                    <DropdownMenuItem onClick={() => releaseStuck(g.queue, m.msg_id)}>
+                                      <PlayCircle className="h-4 w-4 mr-2" />
+                                      Release (retry now)
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => moveToDlq(g.queue, m.msg_id)}>
+                                      <Skull className="h-4 w-4 mr-2" />
+                                      Force-move to DLQ
+                                    </DropdownMenuItem>
+                                  </>
+                                )}
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem
+                                  className="text-red-600 focus:text-red-600"
+                                  onClick={() => deleteMsg(g.queue, g.kind, m.msg_id)}
+                                >
+                                  <Trash2 className="h-4 w-4 mr-2" />
+                                  Delete permanently
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          </div>
                         </div>
                       );
                     })}
@@ -458,6 +499,31 @@ export default function EmailQueue() {
           })}
         </div>
       )}
+
+      <AlertDialog open={!!purgeTarget} onOpenChange={(o) => !o && setPurgeTarget(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Purge {purgeTarget} DLQ?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This permanently deletes every message in the {purgeTarget} dead-letter
+              queue. They will not be sent and cannot be recovered.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-red-600 hover:bg-red-700"
+              onClick={() => {
+                const t = purgeTarget;
+                setPurgeTarget(null);
+                if (t) purgeDlq(t);
+              }}
+            >
+              Purge all
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
       <div className="text-xs text-muted-foreground mt-4">
         Showing {totalShown} message{totalShown === 1 ? "" : "s"} across{" "}
