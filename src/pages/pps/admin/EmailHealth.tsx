@@ -372,6 +372,14 @@ export default function EmailHealth() {
               </span>
             )}
           </TabsTrigger>
+          <TabsTrigger value="dlq">
+            DLQ
+            {totalDlq > 0 && (
+              <span className="ml-1.5 inline-flex items-center justify-center min-w-[18px] h-[18px] px-1 rounded-full bg-red-100 text-red-700 text-[10px] font-bold">
+                {totalDlq}
+              </span>
+            )}
+          </TabsTrigger>
           <TabsTrigger value="suppression">
             Suppression list ({suppressions.length})
           </TabsTrigger>
