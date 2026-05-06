@@ -291,6 +291,38 @@ export default function EmailHealth() {
         </Card>
       )}
 
+      {alertActive && (
+        <Card className="p-4 mb-4 border-red-300 bg-red-50">
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="h-5 w-5 mt-0.5 text-red-600 shrink-0" />
+            <div className="text-sm flex-1">
+              <div className="font-poppins font-semibold text-red-700">
+                Email delivery alert
+              </div>
+              <ul className="mt-1 text-red-700/90 list-disc pl-5 space-y-0.5">
+                {totalDlq > 0 && (
+                  <li>
+                    <span className="font-semibold">{totalDlq}</span> message
+                    {totalDlq === 1 ? "" : "s"} stuck in the dead-letter queue. Review
+                    the DLQ tab for details.
+                  </li>
+                )}
+                {failureThresholdHit && (
+                  <li>
+                    Failure rate is{" "}
+                    <span className="font-semibold">
+                      {Math.round(failureRate * 100)}%
+                    </span>{" "}
+                    over the {rangeLabel} ({failureCount} of {stats?.total}). Threshold
+                    is 5% with at least 10 sends.
+                  </li>
+                )}
+              </ul>
+            </div>
+          </div>
+        </Card>
+      )}
+
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
         <Stat icon={<Activity className="h-4 w-4" />} label="Total" value={stats?.total ?? 0} />
         <Stat
