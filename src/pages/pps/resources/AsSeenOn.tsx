@@ -122,7 +122,7 @@ export default function AsSeenOn() {
     return t ? [t] : [];
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [perPage, setPerPage] = useState(9);
+  const [perPage, setPerPage] = useState(12);
 
   const { data: appearances, isLoading } = useQuery<MediaAppearance[]>({
     queryKey: ["media-appearances"],
