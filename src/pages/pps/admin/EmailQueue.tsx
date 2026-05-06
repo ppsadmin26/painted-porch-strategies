@@ -406,8 +406,9 @@ export default function EmailQueue() {
                       <div className="col-span-3">Recipient</div>
                       <div className="col-span-3">Template / subject</div>
                       <div className="col-span-2">Enqueued</div>
-                      <div className="col-span-2">Age</div>
+                      <div className="col-span-1">Age</div>
                       <div className="col-span-2">Attempts</div>
+                      <div className="col-span-1 text-right">Actions</div>
                     </div>
                     {g.messages.map((m) => {
                       const age = ageMinutes(m.enqueued_at);
