@@ -478,9 +478,46 @@ Deno.serve(async (req) => {
     // Convert markdown to Tiptap JSON
     const bodyJson = markdownToTiptap(markdown);
 
-    // Extract excerpt (first ~200 chars of body text)
+    // Generate an AI summary for the excerpt (falls back to first sentences if AI fails)
     const bodyText = extractTextFromTiptap(bodyJson);
-    const excerpt = bodyText.slice(0, 250).trim() + "...";
+    let excerpt = bodyText.slice(0, 250).trim() + "...";
+    const lovableKey = Deno.env.get("LOVABLE_API_KEY");
+    if (lovableKey) {
+      try {
+        const summaryRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${lovableKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "google/gemini-3-flash-preview",
+            messages: [
+              {
+                role: "system",
+                content:
+                  "You write concise, compelling blog post excerpts. Return ONE paragraph of 2-3 sentences (max 280 characters) that captures the article's core argument and what the reader will learn. Plain text only, no quotes, no markdown, no hashtags, no em-dashes. Do NOT start with the title or 'In this post'.",
+              },
+              {
+                role: "user",
+                content: `Title: ${title}\n\nArticle:\n${bodyText.slice(0, 6000)}`,
+              },
+            ],
+          }),
+        });
+        if (summaryRes.ok) {
+          const summaryData = await summaryRes.json();
+          const aiExcerpt = summaryData?.choices?.[0]?.message?.content?.trim();
+          if (aiExcerpt) {
+            excerpt = aiExcerpt.replace(/^["']|["']$/g, "").replace(/\s+/g, " ").trim();
+          }
+        } else {
+          console.warn("Excerpt AI call failed:", summaryRes.status, await summaryRes.text());
+        }
+      } catch (e) {
+        console.warn("Excerpt generation error:", e);
+      }
+    }
 
     // Check for duplicate slug
     const adminClient = createClient(supabaseUrl, serviceKey);
