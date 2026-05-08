@@ -352,6 +352,39 @@ export default function PPSBlogPost() {
         </div>
       </article>
 
+      {/* Category Pills (bottom of primary post) */}
+      {post.categories && post.categories.length > 0 && (
+        <div className="container max-w-3xl mx-auto px-6 pt-8 pb-6">
+          <div className="flex flex-wrap gap-2">
+            {post.categories.map((cat) => {
+              const colorMap: Record<string, string> = {
+                "Stoicism & Philosophy": "border-purple text-purple",
+                "Leadership": "border-primary text-primary",
+                "Change & Transformation": "border-strategic text-strategic",
+                "Teams & Culture": "border-navy text-navy",
+                "Mindset & Growth": "border-gold text-gold",
+                "Resilience & Wellbeing": "border-raspberry text-raspberry",
+                "Communication": "border-lime text-lime",
+                "Workplace & Operations": "border-primary text-primary",
+                "Productivity & Focus": "border-gold text-gold",
+                "Resources": "border-strategic text-strategic",
+                "As Seen On": "border-navy text-navy",
+              };
+              const pillColors = colorMap[cat.title] || "border-muted-foreground text-muted-foreground";
+              return (
+                <Link
+                  key={cat.title}
+                  to={`/resources/insights?category=${encodeURIComponent(cat.title)}`}
+                  className={`inline-block font-poppins font-semibold text-sm px-3 py-1 rounded-full border-2 bg-background hover:opacity-80 transition-opacity ${pillColors}`}
+                >
+                  {cat.title}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
       {/* Author Bio Section */}
       {post.author && post.author.author_bio && (
         <div className="container max-w-3xl mx-auto px-6 pb-8">
@@ -385,42 +418,9 @@ export default function PPSBlogPost() {
       )}
 
       {/* Share */}
-      <div className="container max-w-3xl mx-auto px-6 pb-6 flex justify-center">
+      <div className="container max-w-3xl mx-auto px-6 pb-8 flex justify-center">
         <ShareButton title={post.title} />
       </div>
-
-      {/* Category Pills */}
-      {post.categories && post.categories.length > 0 && (
-        <div className="container max-w-3xl mx-auto px-6 pb-8">
-          <div className="flex flex-wrap gap-2">
-            {post.categories.map((cat) => {
-              const colorMap: Record<string, string> = {
-                "Stoicism & Philosophy": "border-purple text-purple",
-                "Leadership": "border-primary text-primary",
-                "Change & Transformation": "border-strategic text-strategic",
-                "Teams & Culture": "border-navy text-navy",
-                "Mindset & Growth": "border-gold text-gold",
-                "Resilience & Wellbeing": "border-raspberry text-raspberry",
-                "Communication": "border-lime text-lime",
-                "Workplace & Operations": "border-primary text-primary",
-                "Productivity & Focus": "border-gold text-gold",
-                "Resources": "border-strategic text-strategic",
-                "As Seen On": "border-navy text-navy",
-              };
-              const pillColors = colorMap[cat.title] || "border-muted-foreground text-muted-foreground";
-              return (
-                <Link
-                  key={cat.title}
-                  to={`/resources/insights?category=${encodeURIComponent(cat.title)}`}
-                  className={`inline-block font-poppins font-semibold text-sm px-3 py-1 rounded-full border-2 bg-background hover:opacity-80 transition-opacity ${pillColors}`}
-                >
-                  {cat.title}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      )}
 
       {/* CTA */}
       <section className="py-16 bg-muted">
