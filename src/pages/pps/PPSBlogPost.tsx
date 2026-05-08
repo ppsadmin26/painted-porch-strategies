@@ -90,7 +90,87 @@ async function fetchBlogPost(slug: string): Promise<BlogPostDetail | null> {
     is_primary: (links || []).some((l) => l.category_id === cat.id && l.is_primary),
   }));
 
-  return { ...post, categories: enrichedCategories, author };
+  const categoryIds = (links || []).map((l) => ({ id: l.category_id, is_primary: l.is_primary }));
+  return { ...post, categories: enrichedCategories, author, categoryIds };
+}
+
+interface RelatedPost {
+  id: string;
+  title: string;
+  slug: string | null;
+  excerpt: string | null;
+  cover_image_url: string | null;
+  publish_date: string | null;
+  primaryCategoryTitle: string | null;
+}
+
+async function fetchRelatedPosts(
+  postId: string,
+  categoryIds: { id: string; is_primary: boolean }[],
+): Promise<RelatedPost[]> {
+  if (!categoryIds.length) return [];
+
+  const primaryId = categoryIds.find((c) => c.is_primary)?.id;
+  const otherIds = categoryIds.filter((c) => c.id !== primaryId).map((c) => c.id);
+  const orderedIds = [primaryId, ...otherIds].filter(Boolean) as string[];
+
+  const collected: RelatedPost[] = [];
+  const seen = new Set<string>([postId]);
+
+  for (const catId of orderedIds) {
+    if (collected.length >= 3) break;
+    const { data: links } = await supabase
+      .from("blog_post_categories")
+      .select("post_id, is_primary")
+      .eq("category_id", catId);
+    const candidateIds = (links || [])
+      .map((l) => l.post_id)
+      .filter((id) => !seen.has(id));
+    if (!candidateIds.length) continue;
+
+    const { data: posts } = await supabase
+      .from("blog_posts")
+      .select("id, title, slug, excerpt, cover_image_url, publish_date, status")
+      .in("id", candidateIds)
+      .in("status", ["published", "scheduled"])
+      .order("publish_date", { ascending: false })
+      .limit(3);
+
+    for (const p of posts || []) {
+      if (collected.length >= 3) break;
+      if (seen.has(p.id)) continue;
+      seen.add(p.id);
+      collected.push({
+        id: p.id,
+        title: p.title,
+        slug: p.slug,
+        excerpt: p.excerpt,
+        cover_image_url: p.cover_image_url,
+        publish_date: p.publish_date,
+        primaryCategoryTitle: null,
+      });
+    }
+  }
+
+  // Attach primary category title for each
+  if (collected.length) {
+    const { data: allLinks } = await supabase
+      .from("blog_post_categories")
+      .select("post_id, category_id, is_primary")
+      .in("post_id", collected.map((p) => p.id));
+    const catIds = [...new Set((allLinks || []).map((l) => l.category_id))];
+    const { data: cats } = catIds.length
+      ? await supabase.from("blog_categories").select("id, title").in("id", catIds)
+      : { data: [] };
+    const catMap = new Map((cats || []).map((c) => [c.id, c.title]));
+    for (const p of collected) {
+      const link = (allLinks || []).find((l) => l.post_id === p.id && l.is_primary)
+        || (allLinks || []).find((l) => l.post_id === p.id);
+      p.primaryCategoryTitle = link ? catMap.get(link.category_id) || null : null;
+    }
+  }
+
+  return collected;
 }
 
 function renderInline(node: TiptapNode): React.ReactNode {
