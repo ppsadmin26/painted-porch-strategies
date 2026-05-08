@@ -37,6 +37,7 @@ interface BlogPostDetail {
   aeo_tags: string[] | null;
   author_id: string | null;
   categories?: { title: string; color: string | null; is_primary?: boolean }[];
+  categoryIds?: { id: string; is_primary: boolean }[];
   author?: AuthorInfo | null;
 }
 
@@ -90,7 +91,87 @@ async function fetchBlogPost(slug: string): Promise<BlogPostDetail | null> {
     is_primary: (links || []).some((l) => l.category_id === cat.id && l.is_primary),
   }));
 
-  return { ...post, categories: enrichedCategories, author };
+  const categoryIds = (links || []).map((l) => ({ id: l.category_id, is_primary: l.is_primary }));
+  return { ...post, categories: enrichedCategories, author, categoryIds };
+}
+
+interface RelatedPost {
+  id: string;
+  title: string;
+  slug: string | null;
+  excerpt: string | null;
+  cover_image_url: string | null;
+  publish_date: string | null;
+  primaryCategoryTitle: string | null;
+}
+
+async function fetchRelatedPosts(
+  postId: string,
+  categoryIds: { id: string; is_primary: boolean }[],
+): Promise<RelatedPost[]> {
+  if (!categoryIds.length) return [];
+
+  const primaryId = categoryIds.find((c) => c.is_primary)?.id;
+  const otherIds = categoryIds.filter((c) => c.id !== primaryId).map((c) => c.id);
+  const orderedIds = [primaryId, ...otherIds].filter(Boolean) as string[];
+
+  const collected: RelatedPost[] = [];
+  const seen = new Set<string>([postId]);
+
+  for (const catId of orderedIds) {
+    if (collected.length >= 3) break;
+    const { data: links } = await supabase
+      .from("blog_post_categories")
+      .select("post_id, is_primary")
+      .eq("category_id", catId);
+    const candidateIds = (links || [])
+      .map((l) => l.post_id)
+      .filter((id) => !seen.has(id));
+    if (!candidateIds.length) continue;
+
+    const { data: posts } = await supabase
+      .from("blog_posts")
+      .select("id, title, slug, excerpt, cover_image_url, publish_date, status")
+      .in("id", candidateIds)
+      .in("status", ["published", "scheduled"])
+      .order("publish_date", { ascending: false })
+      .limit(3);
+
+    for (const p of posts || []) {
+      if (collected.length >= 3) break;
+      if (seen.has(p.id)) continue;
+      seen.add(p.id);
+      collected.push({
+        id: p.id,
+        title: p.title,
+        slug: p.slug,
+        excerpt: p.excerpt,
+        cover_image_url: p.cover_image_url,
+        publish_date: p.publish_date,
+        primaryCategoryTitle: null,
+      });
+    }
+  }
+
+  // Attach primary category title for each
+  if (collected.length) {
+    const { data: allLinks } = await supabase
+      .from("blog_post_categories")
+      .select("post_id, category_id, is_primary")
+      .in("post_id", collected.map((p) => p.id));
+    const catIds = [...new Set((allLinks || []).map((l) => l.category_id))];
+    const { data: cats } = catIds.length
+      ? await supabase.from("blog_categories").select("id, title").in("id", catIds)
+      : { data: [] };
+    const catMap = new Map((cats || []).map((c) => [c.id, c.title]));
+    for (const p of collected) {
+      const link = (allLinks || []).find((l) => l.post_id === p.id && l.is_primary)
+        || (allLinks || []).find((l) => l.post_id === p.id);
+      p.primaryCategoryTitle = link ? catMap.get(link.category_id) || null : null;
+    }
+  }
+
+  return collected;
 }
 
 function renderInline(node: TiptapNode): React.ReactNode {
@@ -189,6 +270,12 @@ export default function PPSBlogPost() {
     queryKey: ["blog-post", slug],
     queryFn: () => fetchBlogPost(slug!),
     enabled: !!slug,
+  });
+
+  const { data: relatedPosts = [] } = useQuery({
+    queryKey: ["blog-post-related", post?.id],
+    queryFn: () => fetchRelatedPosts(post!.id, post!.categoryIds || []),
+    enabled: !!post?.id && !!post?.categoryIds?.length,
   });
 
   const canonicalUrl = post?.slug ? `${siteUrl}/resources/insights/${post.slug}` : undefined;
@@ -421,6 +508,56 @@ export default function PPSBlogPost() {
       <div className="container max-w-3xl mx-auto px-6 pb-8 flex justify-center">
         <ShareButton title={post.title} />
       </div>
+
+      {/* Related Posts */}
+      {relatedPosts.length > 0 && (
+        <section className="py-12 sm:py-16 border-t border-border">
+          <div className="container max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-6 sm:mb-8 text-center">
+              Read more about this topic
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {relatedPosts.map((rp) => (
+                <Link
+                  key={rp.id}
+                  to={`/resources/insights/${rp.slug}`}
+                  className="group block bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg transition-all h-full"
+                >
+                  {rp.cover_image_url ? (
+                    <img
+                      src={rp.cover_image_url}
+                      alt={rp.title}
+                      className="w-full aspect-[16/9] object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="w-full aspect-[16/9] bg-navy/5 flex items-center justify-center px-4">
+                      <span className="font-poppins font-semibold text-navy/40 text-sm leading-tight line-clamp-2 text-center">
+                        {rp.title}
+                      </span>
+                    </div>
+                  )}
+                  <div className="p-5">
+                    {rp.primaryCategoryTitle && (
+                      <span className="inline-block text-[11px] font-semibold text-primary uppercase tracking-wide mb-2">
+                        {rp.primaryCategoryTitle}
+                      </span>
+                    )}
+                    <h3 className="font-poppins font-semibold text-base sm:text-lg text-navy mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                      {rp.title}
+                    </h3>
+                    {rp.excerpt && (
+                      <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3">
+                        {rp.excerpt}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="py-12 sm:py-16 bg-muted">
