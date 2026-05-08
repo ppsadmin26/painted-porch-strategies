@@ -100,6 +100,15 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
     /^people also viewed/i,
     /^recommended for you/i,
     /^newsletter/i,
+    /^\d+\s+followers?$/i,
+    /^\\?\+\s*subscribe/i,
+    /^#+\s*more articles by /i,
+    /^more articles by /i,
+    /^more from /i,
+    /^published on linkedin/i,
+    /^to view or add a comment/i,
+    /^see all (articles|posts|newsletters)/i,
+    /^subscribe to (this )?newsletter/i,
   ];
 
   const normalizedTitle = titleHint ? normalizeForComparison(titleHint) : "";
