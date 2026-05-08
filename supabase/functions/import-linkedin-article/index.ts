@@ -177,6 +177,17 @@ function markdownToTiptap(markdown: string): any {
       continue;
     }
 
+    // Standalone image line: ![alt](url)
+    const imageMatch = line.trim().match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)$/);
+    if (imageMatch) {
+      content.push({
+        type: "image",
+        attrs: { src: imageMatch[2], alt: imageMatch[1] || null },
+      });
+      i++;
+      continue;
+    }
+
     // Headings
     const headingMatch = line.match(/^(#{1,6})\s+(.+)/);
     if (headingMatch) {
