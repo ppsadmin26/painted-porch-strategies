@@ -6,14 +6,28 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+// Known author-name suffixes that LinkedIn appends to Pulse slugs.
+// Add new ones here as new authors publish.
+const KNOWN_AUTHOR_SUFFIXES = [
+  "amy-yackowski",
+  "rob-hunter",
+  "sierra-ramm-cantrell",
+  "sierra-cantrell",
+];
+
 function slugFromUrl(url: string): string {
   const match = url.match(/\/pulse\/([^/?]+)/);
   if (!match) return "";
-  // Remove the author suffix (last segment after the last dash that contains the author name)
   let slug = match[1];
-  // LinkedIn slugs end with "-authorname-XXXXX" - remove trailing ID
+  // LinkedIn slugs end with "-authorname-XXXXX" - strip the trailing 5-char ID first
   slug = slug.replace(/-[a-z0-9]{5}$/, "");
-  // Clean up
+  // Then strip any known author-name suffix
+  for (const suffix of KNOWN_AUTHOR_SUFFIXES) {
+    if (slug.endsWith(`-${suffix}`)) {
+      slug = slug.slice(0, -1 - suffix.length);
+      break;
+    }
+  }
   return slug.replace(/[^a-z0-9-]/g, "");
 }
 
