@@ -509,6 +509,56 @@ export default function PPSBlogPost() {
         <ShareButton title={post.title} />
       </div>
 
+      {/* Related Posts */}
+      {relatedPosts.length > 0 && (
+        <section className="py-12 sm:py-16 border-t border-border">
+          <div className="container max-w-6xl mx-auto px-4 sm:px-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-6 sm:mb-8 text-center">
+              Read more about this topic
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {relatedPosts.map((rp) => (
+                <Link
+                  key={rp.id}
+                  to={`/resources/insights/${rp.slug}`}
+                  className="group block bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg transition-all h-full"
+                >
+                  {rp.cover_image_url ? (
+                    <img
+                      src={rp.cover_image_url}
+                      alt={rp.title}
+                      className="w-full aspect-[16/9] object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="w-full aspect-[16/9] bg-navy/5 flex items-center justify-center px-4">
+                      <span className="font-poppins font-semibold text-navy/40 text-sm leading-tight line-clamp-2 text-center">
+                        {rp.title}
+                      </span>
+                    </div>
+                  )}
+                  <div className="p-5">
+                    {rp.primaryCategoryTitle && (
+                      <span className="inline-block text-[11px] font-semibold text-primary uppercase tracking-wide mb-2">
+                        {rp.primaryCategoryTitle}
+                      </span>
+                    )}
+                    <h3 className="font-poppins font-semibold text-base sm:text-lg text-navy mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                      {rp.title}
+                    </h3>
+                    {rp.excerpt && (
+                      <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3">
+                        {rp.excerpt}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* CTA */}
       <section className="py-12 sm:py-16 bg-muted">
         <div className="container max-w-4xl mx-auto px-4 sm:px-6 text-center">
