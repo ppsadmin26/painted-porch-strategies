@@ -526,7 +526,7 @@ Deno.serve(async (req) => {
               {
                 role: "system",
                 content:
-                  "You write concise, compelling blog post excerpts. Return ONE paragraph of 2-3 sentences (max 280 characters) that captures the article's core argument and what the reader will learn. Plain text only, no quotes, no markdown, no hashtags, no em-dashes. Do NOT start with the title or 'In this post'.",
+                  "You write the short summary that appears at the top of a Painted Porch Strategies blog post. It should read like an SEO meta description: ONE compelling paragraph, 2-3 sentences, max 280 characters. Capture the article's core argument, hint at what the reader will gain, and include a subtle call-to-action feel (curiosity, benefit, or invitation to read on). Use plain English at a 6th-grade level. Reference brand terms (Phase Zero, P.A.T.H., organizational change, shIFt) only when the article does. Plain text only — no quotes, markdown, hashtags, or em-dashes. Do NOT start with the title or 'In this post'.",
               },
               {
                 role: "user",
