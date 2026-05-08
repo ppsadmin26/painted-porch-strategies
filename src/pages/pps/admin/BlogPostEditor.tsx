@@ -225,7 +225,7 @@ export default function BlogPostEditor() {
     const postData = {
       title,
       slug: slug || generateSlug(title),
-      excerpt,
+      excerpt: (seoDescription && seoDescription.trim().length > 0) ? seoDescription : excerpt,
       body_json: bodyJson,
       cover_image_url: coverImageUrl || null,
       status: effectiveStatus,
