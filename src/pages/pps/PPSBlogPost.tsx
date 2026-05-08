@@ -423,16 +423,16 @@ export default function PPSBlogPost() {
       </div>
 
       {/* CTA */}
-      <section className="py-16 bg-muted">
-        <div className="container max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+      <section className="py-12 sm:py-16 bg-muted">
+        <div className="container max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-navy mb-3 sm:mb-4 leading-tight text-balance">
             Want to put these ideas into action?
           </h2>
-          <p className="text-foreground mb-6">
+          <p className="text-sm sm:text-base text-foreground mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto text-pretty">
             Step on the P.A.T.H.way and explore how to apply these principles in your life, work, and anywhere in between.
           </p>
-          <Link to="/partner">
-            <button className="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
+          <Link to="/partner" className="inline-block w-full sm:w-auto">
+            <button className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition-colors">
               Explore Partnership
             </button>
           </Link>
