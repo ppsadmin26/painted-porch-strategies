@@ -473,7 +473,14 @@ Deno.serve(async (req) => {
       metadata.ogImage = extracted.cover_image_url;
     }
 
-    // Fallback: if LLM extraction returned nothing, fall back to markdown + cleaner
+    // Always run the cleanup pass to strip any LinkedIn chrome the LLM may
+    // have leaked in (newsletter follower counts, "+ Subscribe", "More articles
+    // by ...", subsequent article previews, etc.).
+    if (markdown) {
+      markdown = cleanLinkedInMarkdown(markdown, title);
+    }
+
+    // Fallback: if LLM extraction returned nothing, fall back to raw markdown + cleaner
     if (!markdown) {
       markdown = cleanLinkedInMarkdown(fallbackMarkdown, title);
     }
