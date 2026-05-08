@@ -37,6 +37,7 @@ interface BlogPostDetail {
   aeo_tags: string[] | null;
   author_id: string | null;
   categories?: { title: string; color: string | null; is_primary?: boolean }[];
+  categoryIds?: { id: string; is_primary: boolean }[];
   author?: AuthorInfo | null;
 }
 
