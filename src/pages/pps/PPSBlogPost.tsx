@@ -272,6 +272,12 @@ export default function PPSBlogPost() {
     enabled: !!slug,
   });
 
+  const { data: relatedPosts = [] } = useQuery({
+    queryKey: ["blog-post-related", post?.id],
+    queryFn: () => fetchRelatedPosts(post!.id, post!.categoryIds || []),
+    enabled: !!post?.id && !!post?.categoryIds?.length,
+  });
+
   const canonicalUrl = post?.slug ? `${siteUrl}/resources/insights/${post.slug}` : undefined;
   const seoTitle = post?.seo_title || post?.title;
   const seoDescription = post?.seo_description || post?.excerpt || undefined;
