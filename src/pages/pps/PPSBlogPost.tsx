@@ -429,11 +429,11 @@ export default function PPSBlogPost() {
             Want to put these ideas into action?
           </h2>
           <p className="text-foreground mb-6">
-            Let's explore how to apply these principles in your organization.
+            Step on the P.A.T.H.way and explore how to apply these principles in your life, work, and anywhere in between.
           </p>
-          <Link to="/contact?scope=organization&interest=organizational-advisory&message=I'd like to discuss applying these ideas in our organization.">
+          <Link to="/partner">
             <button className="bg-primary hover:bg-primary/90 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
-              Start a Conversation
+              Explore Partnership
             </button>
           </Link>
         </div>
