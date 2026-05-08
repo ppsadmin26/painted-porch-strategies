@@ -100,6 +100,15 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
     /^people also viewed/i,
     /^recommended for you/i,
     /^newsletter/i,
+    /^\d+\s+followers?$/i,
+    /^\\?\+\s*subscribe/i,
+    /^#+\s*more articles by /i,
+    /^more articles by /i,
+    /^more from /i,
+    /^published on linkedin/i,
+    /^to view or add a comment/i,
+    /^see all (articles|posts|newsletters)/i,
+    /^subscribe to (this )?newsletter/i,
   ];
 
   const normalizedTitle = titleHint ? normalizeForComparison(titleHint) : "";
@@ -419,7 +428,7 @@ Deno.serve(async (req) => {
           {
             type: "json",
             prompt:
-              "Extract ONLY the LinkedIn Pulse article itself. Return: 'title' (the article title, with no '| LinkedIn' suffix), 'cover_image_url' (the article hero/cover image URL if present, otherwise null), and 'body_markdown' (the FULL article body in clean markdown — every paragraph, heading, list, blockquote, inline link, AND every in-body image from the article body, in original order). CRITICAL — preserve ALL inline text formatting using markdown syntax: bold as **text**, italic as *text* (or _text_), bold+italic as ***text***, inline code as `text`, and inline links as [text](url). LinkedIn renders bold/italic via <strong>/<b> and <em>/<i> tags — convert each one to the matching markdown marks; do not strip them and do not flatten to plain text. Preserve in-body images as standalone markdown image lines using the absolute https URL: ![alt text](https://...). Do NOT skip images, do NOT replace them with captions only, and do NOT include the cover/hero image in body_markdown (return that separately as cover_image_url). EXCLUDE: author bio, follow/subscribe widgets, reactions, comments, 'More from <author>', 'Others also viewed', 'Sign in / Join now' prompts, related articles, navigation, footer, cookie/privacy notices, and any LinkedIn UI chrome. Do not summarize or paraphrase — copy the article text verbatim with its original emphasis intact.",
+              "Extract ONLY the SINGLE LinkedIn Pulse article located at the requested URL — nothing else on the page. Return: 'title' (the article title, with no '| LinkedIn' suffix), 'cover_image_url' (the article hero/cover image URL if present, otherwise null), and 'body_markdown' (the FULL article body in clean markdown — every paragraph, heading, list, blockquote, inline link, AND every in-body image from the article body, in original order). STOP the body at the end of THIS article's last paragraph. Do NOT include anything that comes after the article body, including but not limited to: the newsletter masthead or name (e.g. 'A Little Bit Aurelius'), follower counts ('266 followers'), '+ Subscribe' buttons, 'More articles by <author>' sections and the bulleted lists of other article titles that follow them, any subsequent or previous article's date/title/body, 'Published on LinkedIn', 'To view or add a comment', 'Subscribe to this newsletter', author bio cards, follow widgets, reactions, comments, 'More from <author>', 'Others also viewed', 'Sign in / Join now' prompts, related articles, navigation, footer, cookie/privacy notices, and any LinkedIn UI chrome. CRITICAL — preserve ALL inline text formatting using markdown syntax: bold as **text**, italic as *text* (or _text_), bold+italic as ***text***, inline code as `text`, and inline links as [text](url). LinkedIn renders bold/italic via <strong>/<b> and <em>/<i> tags — convert each one to the matching markdown marks; do not strip them and do not flatten to plain text. Preserve in-body images as standalone markdown image lines using the absolute https URL: ![alt text](https://...). Do NOT skip images, do NOT replace them with captions only, and do NOT include the cover/hero image in body_markdown (return that separately as cover_image_url). Do not summarize or paraphrase — copy the article text verbatim with its original emphasis intact.",
             schema: {
               type: "object",
               properties: {
@@ -464,7 +473,14 @@ Deno.serve(async (req) => {
       metadata.ogImage = extracted.cover_image_url;
     }
 
-    // Fallback: if LLM extraction returned nothing, fall back to markdown + cleaner
+    // Always run the cleanup pass to strip any LinkedIn chrome the LLM may
+    // have leaked in (newsletter follower counts, "+ Subscribe", "More articles
+    // by ...", subsequent article previews, etc.).
+    if (markdown) {
+      markdown = cleanLinkedInMarkdown(markdown, title);
+    }
+
+    // Fallback: if LLM extraction returned nothing, fall back to raw markdown + cleaner
     if (!markdown) {
       markdown = cleanLinkedInMarkdown(fallbackMarkdown, title);
     }
