@@ -601,7 +601,10 @@ export default function BlogPostEditor() {
                       });
                       if (error) throw error;
                       if (data.seo_title) setSeoTitle(data.seo_title);
-                      if (data.seo_description) setSeoDescription(data.seo_description);
+                      if (data.seo_description) {
+                        setSeoDescription(data.seo_description);
+                        setExcerpt(data.seo_description);
+                      }
                       if (data.seo_keywords) setSeoKeywords(data.seo_keywords);
                       if (data.aeo_tags) setAeoTags(data.aeo_tags);
                       if (data.geo_tags) setGeoTags(data.geo_tags);
