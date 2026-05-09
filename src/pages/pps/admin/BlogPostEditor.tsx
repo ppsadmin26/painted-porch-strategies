@@ -225,7 +225,7 @@ export default function BlogPostEditor() {
     const postData = {
       title,
       slug: slug || generateSlug(title),
-      excerpt,
+      excerpt: (seoDescription && seoDescription.trim().length > 0) ? seoDescription : excerpt,
       body_json: bodyJson,
       cover_image_url: coverImageUrl || null,
       status: effectiveStatus,
@@ -417,14 +417,26 @@ export default function BlogPostEditor() {
             className="w-full text-3xl md:text-4xl font-poppins font-bold bg-transparent border-none outline-none text-navy placeholder:text-muted-foreground"
           />
 
-          {/* Excerpt */}
-          <Textarea
-            value={excerpt}
-            onChange={(e) => setExcerpt(e.target.value)}
-            placeholder="Write a brief excerpt..."
-            className="resize-none text-base"
-            rows={2}
-          />
+          {/* Excerpt — auto-synced from SEO description on save */}
+          <div className="space-y-1">
+            <Textarea
+              value={(seoDescription && seoDescription.trim().length > 0) ? seoDescription : excerpt}
+              onChange={(e) => {
+                if (seoDescription && seoDescription.trim().length > 0) {
+                  setSeoDescription(e.target.value);
+                  setExcerpt(e.target.value);
+                } else {
+                  setExcerpt(e.target.value);
+                }
+              }}
+              placeholder="Write a brief excerpt..."
+              className="resize-none text-base"
+              rows={2}
+            />
+            <p className="text-xs text-muted-foreground">
+              Auto-synced with the SEO description. Edits here update both.
+            </p>
+          </div>
 
           {/* Editor */}
           <TiptapEditor content={bodyJson} onChange={setBodyJson} />
@@ -601,7 +613,10 @@ export default function BlogPostEditor() {
                       });
                       if (error) throw error;
                       if (data.seo_title) setSeoTitle(data.seo_title);
-                      if (data.seo_description) setSeoDescription(data.seo_description);
+                      if (data.seo_description) {
+                        setSeoDescription(data.seo_description);
+                        setExcerpt(data.seo_description);
+                      }
                       if (data.seo_keywords) setSeoKeywords(data.seo_keywords);
                       if (data.aeo_tags) setAeoTags(data.aeo_tags);
                       if (data.geo_tags) setGeoTags(data.geo_tags);
