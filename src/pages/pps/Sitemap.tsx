@@ -39,6 +39,15 @@ export const sitemapData: SitemapNode[] = [
     path: "/",
   },
   {
+    label: "Phase Zero",
+    path: "/phase-zero",
+  },
+  {
+    label: "Home (Archive)",
+    path: "/home-archive",
+    note: "Previous home page kept for reference",
+  },
+  {
     label: "About",
     path: "/about",
     children: [
@@ -242,16 +251,6 @@ export const sitemapData: SitemapNode[] = [
       { label: "Rob", path: "/rob" },
       { label: "Sierra", path: "/sierra" },
       { label: "Team Overview", path: "/overview" },
-    ],
-  },
-  {
-    label: "Legacy Pages (Still Live)",
-    children: [
-      { label: "For Leaders", path: "/for-leaders" },
-      { label: "For Teams", path: "/for-teams" },
-      { label: "Services", path: "/services" },
-      { label: "Business Programs", path: "/business-programs" },
-      { label: "Programs", path: "/programs" },
     ],
   },
   {
