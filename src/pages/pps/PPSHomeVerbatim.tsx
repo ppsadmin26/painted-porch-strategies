@@ -129,7 +129,7 @@ export default function PPSHomeVerbatim() {
           </span>
         }
         headline={
-          <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.05] tracking-tight">
+          <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.25rem] leading-[1.05] tracking-tight">
             It&rsquo;s Time to Do Epic <ShIFt />.
           </span>
         }
