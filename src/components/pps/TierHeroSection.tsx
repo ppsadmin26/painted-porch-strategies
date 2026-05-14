@@ -151,7 +151,9 @@ export function TierHeroSection({
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
               {ctas.map((cta, index) => {
-                const buttonClasses = cta.isPrimary
+                const buttonClasses = cta.buttonClassName
+                  ? `${cta.buttonClassName} text-lg py-6 px-8 transition-colors w-full sm:w-auto`
+                  : cta.isPrimary
                   ? `${getPrimaryButtonClasses()} text-lg py-6 px-8 transition-colors w-full sm:w-auto`
                   : "bg-transparent border-2 border-white/70 text-white hover:bg-white hover:text-navy text-lg py-6 px-8 transition-colors w-full sm:w-auto";
 
