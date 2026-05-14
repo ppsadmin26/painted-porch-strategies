@@ -3,9 +3,8 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   Compass,
-  Layers,
-  Heart,
-  Sparkles,
+  Building2,
+  Brain,
   DoorOpen,
   Users,
   Lightbulb,
@@ -72,31 +71,34 @@ const phaseZeroQuestions = [
 
 const pillars = [
   {
-    icon: Heart,
+    icon: Building2,
     title: "Cultural Cornerstone",
     subtitle: "Leadership & Culture",
     description:
       "Your leadership, culture, values, and the relational architecture that shape how your organization leads, decides, and evolves.",
-    color: "text-primary",
-    bgColor: "bg-primary/10",
+    color: "text-navy",
+    bgColor: "bg-[hsl(220,60%,95%)]",
+    iconBg: "bg-[hsl(220,50%,90%)]",
   },
   {
-    icon: Layers,
+    icon: Compass,
     title: "Operational Frame",
-    subtitle: "Systems & Workflows",
+    subtitle: "Workflows & Systems",
     description:
       "Your systems, workflows, structures, and decision pathways that move strategy from intention into reality.",
-    color: "text-lime",
-    bgColor: "bg-lime/10",
+    color: "text-strategic",
+    bgColor: "bg-strategic/10",
+    iconBg: "bg-strategic/15",
   },
   {
-    icon: Sparkles,
+    icon: Brain,
     title: "Living Ecosystem",
-    subtitle: "Capacity & Judgment",
+    subtitle: "Human Capacity",
     description:
       "Your individual and collective capacity, judgment, communication, resilience, and mindset needed to sustain meaningful shIFt.",
-    color: "text-raspberry",
-    bgColor: "bg-raspberry/10",
+    color: "text-gold",
+    bgColor: "bg-gold/10",
+    iconBg: "bg-gold/15",
   },
 ];
 
