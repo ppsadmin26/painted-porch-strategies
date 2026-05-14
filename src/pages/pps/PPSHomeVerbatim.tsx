@@ -195,10 +195,7 @@ export default function PPSHomeVerbatim() {
           <div className="grid md:grid-cols-3 gap-8">
             {threeAmQuestions.map((q, i) => (
               <div key={i} className="text-center">
-                <div className="text-3xl font-poppins font-bold text-primary mb-3">
-                  0{i + 1}
-                </div>
-                <p className="text-foreground italic leading-relaxed">
+                <p className="text-primary font-bold italic leading-relaxed">
                   &ldquo;{q}&rdquo;
                 </p>
               </div>
