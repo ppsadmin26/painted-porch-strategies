@@ -537,111 +537,168 @@ export default function PPSHomeVerbatim() {
             </div>
           </div>
 
-          {/* P.A.T.H. */}
-          <div className="bg-white rounded-2xl p-8 md:p-10 mb-10 shadow-sm">
-            <div className="flex flex-col md:flex-row md:items-center md:gap-10 gap-4">
-              <div className="md:w-1/3">
-                <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-gold mb-2">
+          {/* ============================================================ */}
+          {/* Integrated framework: P.A.T.H. → Pillars → Bedrock → Porch    */}
+          {/* ============================================================ */}
+          <div className="relative max-w-5xl mx-auto">
+
+            {/* LAYER 1: P.A.T.H. (the roadmap on top) */}
+            <div className="relative z-30">
+              <div className="text-center mb-3">
+                <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                   The Way Forward
                 </p>
-                <h3 className="font-poppins font-bold text-2xl text-navy">
+                <h3 className="font-poppins font-bold text-2xl text-navy mt-1">
                   P.A.T.H.
                 </h3>
               </div>
-              <div className="md:w-2/3">
-                <p className="text-foreground leading-relaxed mb-4">
-                  A way of thinking about and navigating intentional,
-                  sustainable progress.
+              <div className="bg-white border border-navy/10 rounded-2xl p-3 shadow-sm">
+                <div className="grid grid-cols-4 gap-2 md:gap-3">
+                  {[
+                    { letter: "P", word: "Prepare" },
+                    { letter: "A", word: "Align" },
+                    { letter: "T", word: "Take Off" },
+                    { letter: "H", word: "Habits" },
+                  ].map((step, idx) => (
+                    <div
+                      key={step.letter}
+                      className="relative flex flex-col items-center justify-center py-4 rounded-xl bg-muted/60 border border-navy/5"
+                    >
+                      <span className="font-poppins font-bold text-2xl text-navy">
+                        {step.letter}
+                      </span>
+                      <span className="text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest text-foreground/60 mt-1">
+                        {step.word}
+                      </span>
+                      {idx < 3 && (
+                        <ArrowRight className="hidden md:block absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gold bg-white rounded-full" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <p className="text-center text-xs italic text-foreground/60 mt-3">
+                The methodology and roadmap we follow.
+              </p>
+            </div>
+
+            {/* Connector: PATH → Pillars */}
+            <div className="flex justify-around px-8 md:px-16" aria-hidden="true">
+              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+            </div>
+
+            {/* LAYER 2: The Three Pillars (load-bearing columns) */}
+            <div className="relative z-20">
+              <div className="text-center mb-6">
+                <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
+                  The Load-Bearing Three
                 </p>
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-poppins font-semibold text-navy">
-                  <span>Prepare</span>
-                  <ArrowRight className="w-4 h-4 text-gold" />
-                  <span>Align</span>
-                  <ArrowRight className="w-4 h-4 text-gold" />
-                  <span>Take Off</span>
-                  <ArrowRight className="w-4 h-4 text-gold" />
-                  <span>Habits</span>
+                <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
+                  Painted Porch Pillars
+                </h3>
+                <p className="text-foreground/80 text-sm mt-2 max-w-2xl mx-auto">
+                  The framework we measure and build to fortify.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                {pillars.map((pillar, i) => (
+                  <div
+                    key={i}
+                    className={`${pillar.bgColor} p-6 rounded-xl border-t-4 ${
+                      i === 0
+                        ? "border-navy"
+                        : i === 1
+                        ? "border-strategic"
+                        : "border-gold"
+                    } transition-all hover:shadow-lg hover:-translate-y-1`}
+                  >
+                    <pillar.icon className={`w-10 h-10 ${pillar.color} mb-4`} />
+                    <h4 className="font-poppins font-semibold text-xl text-navy mb-1">
+                      {pillar.title}
+                    </h4>
+                    <p className={`text-sm font-medium ${pillar.color} mb-3`}>
+                      {pillar.subtitle}
+                    </p>
+                    <p className="text-foreground text-sm leading-relaxed">
+                      {pillar.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Connector: Pillars → Bedrock */}
+            <div className="flex justify-around px-8 md:px-16" aria-hidden="true">
+              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+            </div>
+
+            {/* LAYER 3: Essential Elements (the bedrock under the pillars) */}
+            <div className="relative z-10">
+              <div className="bg-white border border-navy/10 rounded-2xl p-6 md:p-8 shadow-sm">
+                <div className="text-center mb-5">
+                  <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
+                    The Behavioral Bedrock
+                  </p>
+                  <h4 className="font-poppins font-semibold text-lg text-navy mt-1">
+                    Essential Elements
+                  </h4>
+                  <p className="text-foreground/80 text-sm mt-2 max-w-2xl mx-auto">
+                    The supporting behaviors and conditions that fortify each
+                    Pillar.
+                  </p>
+                </div>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {[
+                    "Communication",
+                    "Collaboration",
+                    "Clarity",
+                    "Resilience",
+                    "Alignment",
+                    "Organizational Health",
+                  ].map((el) => (
+                    <span
+                      key={el}
+                      className="bg-muted text-navy font-poppins font-medium text-sm px-4 py-2 rounded-full border border-navy/10"
+                    >
+                      {el}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Painted Porch Pillars */}
-          <div className="text-center mb-8 max-w-2xl mx-auto">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-gold mb-2">
-              The Load-Bearing Three
-            </p>
-            <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mb-3">
-              Painted Porch Pillars
-            </h3>
-            <p className="text-foreground leading-relaxed">
-              Three dimensions that influence and impact what your
-              organization is built to carry.
-            </p>
-          </div>
+            {/* Connector: Bedrock → Fortified Porch */}
+            <div className="flex justify-center" aria-hidden="true">
+              <div className="w-px h-10 border-l-2 border-dashed border-gold/40" />
+            </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {pillars.map((pillar, i) => (
-              <div
-                key={i}
-                className={`${pillar.bgColor} p-6 rounded-xl transition-all hover:shadow-lg`}
-              >
-                <pillar.icon className={`w-10 h-10 ${pillar.color} mb-4`} />
-                <h4 className="font-poppins font-semibold text-xl text-navy mb-1">
-                  {pillar.title}
-                </h4>
-                <p className={`text-sm font-medium ${pillar.color} mb-3`}>
-                  {pillar.subtitle}
+            {/* LAYER 4: The Fortified Porch (the resulting structure) */}
+            <div className="relative z-30">
+              <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 text-center shadow-xl border-b-4 border-gold">
+                <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
+                  The Result
                 </p>
-                <p className="text-foreground text-sm leading-relaxed">
-                  {pillar.description}
+                <h3 className="font-poppins font-bold text-2xl md:text-3xl text-white mb-4">
+                  The Fortified Porch
+                </h3>
+                <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
+                  When P.A.T.H. guides the journey, the Pillars stand
+                  load-bearing, and the Elements show up every day, your
+                  organization becomes capable of{" "}
+                  <strong className="text-gold">
+                    authoring change and continually evolving
+                  </strong>
+                  , rather than constantly absorbing fragmentation and fixing
+                  disruption.
                 </p>
               </div>
-            ))}
-          </div>
-
-          {/* Essential Elements */}
-          <div className="bg-white rounded-2xl p-8 md:p-10 mb-10 shadow-sm text-center max-w-3xl mx-auto">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-gold mb-3">
-              Essential Elements
-            </p>
-            <p className="text-foreground leading-relaxed mb-5">
-              The everyday human behaviors and conditions that influence
-              whether change actually sticks.
-            </p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {[
-                "Communication",
-                "Collaboration",
-                "Clarity",
-                "Resilience",
-                "Alignment",
-                "Organizational Health",
-              ].map((el) => (
-                <span
-                  key={el}
-                  className="bg-muted text-navy font-poppins font-medium text-sm px-4 py-2 rounded-full border border-navy/10"
-                >
-                  {el}
-                </span>
-              ))}
             </div>
-          </div>
 
-          {/* The Fortified Porch */}
-          <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 text-center max-w-3xl mx-auto shadow-xl">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-gold mb-3">
-              The Fortified Porch
-            </p>
-            <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              When all three Pillars are load-bearing, and all elements are
-              executing, your organization becomes capable of{" "}
-              <strong className="text-gold">
-                authoring change and continually evolving
-              </strong>
-              , rather than constantly absorbing fragmentation and fixing
-              disruption.
-            </p>
           </div>
         </div>
       </section>
