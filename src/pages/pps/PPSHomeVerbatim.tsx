@@ -599,8 +599,9 @@ export default function PPSHomeVerbatim() {
                 <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
                   Painted Porch Pillars
                 </h3>
-                <p className="text-foreground/80 text-sm mt-2 max-w-2xl mx-auto">
-                  The framework we measure and build to fortify.
+                <p className="text-foreground/80 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+                  Three dimensions that influence and impact what your
+                  organization is built to carry.
                 </p>
               </div>
 
