@@ -236,11 +236,16 @@ export default function PPSHomeVerbatim() {
               })}
             </ul>
             <p>And meanwhile, your organization is still trying to:</p>
-            <ul className="space-y-1.5 text-foreground/85 pl-1">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 pt-2">
               {stillTryingTo.map((c) => (
-                <li key={c}>{c}</li>
+                <div
+                  key={c}
+                  className="bg-primary/5 border border-primary/20 rounded-lg px-3 py-4 text-center text-sm font-poppins font-semibold text-navy leading-snug"
+                >
+                  {c}
+                </div>
               ))}
-            </ul>
+            </div>
             <p>
               Even successful organizations can start feeling stretched when
               priorities, expectations, systems, and pace are all evolving
