@@ -510,7 +510,7 @@ export default function PPSHomeVerbatim() {
                 Over time, we&rsquo;ve noticed a simple, yet complex pattern:
               </p>
               <p>
-                Change is easier to start than it is to sustain, especially
+                <strong className="font-bold text-navy">Change is easier to start than it is to sustain</strong>, especially
                 when people, systems, leadership, and expectations are all
                 trying to evolve at the same time.
               </p>
