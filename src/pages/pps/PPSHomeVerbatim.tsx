@@ -290,28 +290,28 @@ export default function PPSHomeVerbatim() {
       {/* ============================================================ */}
       {/* Phase Zero gradient CTA (verbatim)                            */}
       {/* ============================================================ */}
-      <section className="py-16 md:py-24 bg-gradient-strategic text-white">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-gold/10 via-gold/5 to-white text-navy">
         <div className="container max-w-4xl mx-auto px-6">
           <div className="text-center mb-10">
-            <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
+            <span className="inline-block bg-navy text-white font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
               Phase Zero
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-navy">
               The clarity that accelerates your next big <ShIFt />.
             </h2>
           </div>
 
-          <div className="space-y-2 text-lg text-white/90 max-w-2xl mx-auto leading-relaxed mb-8">
+          <div className="space-y-2 text-lg text-foreground max-w-2xl mx-auto leading-relaxed mb-8">
             {phaseZeroBefore.map((p) => (
               <p key={p}>{p}</p>
             ))}
           </div>
 
-          <p className="text-lg text-white/90 mb-3 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-foreground mb-3 max-w-2xl mx-auto leading-relaxed">
             Phase Zero exists to create clarity before your next major
             decision hardens into execution.
           </p>
-          <p className="text-lg text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
             It&rsquo;s the threshold work that helps your organization see
             itself clearly before determining what comes next.
           </p>
@@ -320,19 +320,19 @@ export default function PPSHomeVerbatim() {
             {phaseZeroQuestions.map((p) => (
               <div
                 key={p.label}
-                className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border-l-4 border-gold"
+                className="bg-white rounded-xl p-5 border-l-4 border-gold shadow-sm"
               >
                 <p className="font-poppins font-semibold text-gold text-sm mb-2">
                   {p.label}
                 </p>
-                <p className="font-poppins italic text-lg text-white leading-snug">
+                <p className="font-poppins italic text-lg text-navy leading-snug">
                   &ldquo;{p.q}&rdquo;
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="space-y-4 text-lg text-white/90 max-w-2xl mx-auto leading-relaxed mb-10">
+          <div className="space-y-4 text-lg text-foreground max-w-2xl mx-auto leading-relaxed mb-10">
             <p>
               Because not every opportunity strengthens the organization
               pursuing it, and not every change creates the conditions needed
@@ -348,7 +348,7 @@ export default function PPSHomeVerbatim() {
 
           <div className="text-center">
             <Link to="/phase-zero">
-              <Button className="bg-gold border-2 border-gold text-navy hover:bg-white hover:border-white text-lg py-5 px-8 transition-colors">
+              <Button className="bg-navy border-2 border-navy text-white hover:bg-white hover:text-navy text-lg py-5 px-8 transition-colors">
                 Explore Phase Zero
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
