@@ -554,19 +554,19 @@ export default function PPSHomeVerbatim() {
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3">
                   {[
-                    { letter: "P", word: "Prepare", color: "primary" },
-                    { letter: "A", word: "Align", color: "raspberry" },
-                    { letter: "T", word: "Take Off", color: "gold" },
-                    { letter: "H", word: "Habits", color: "lime" },
+                    { letter: "P", word: "Prepare", bg: "bg-primary/10", border: "border-primary/30", text: "text-primary" },
+                    { letter: "A", word: "Align", bg: "bg-raspberry/10", border: "border-raspberry/30", text: "text-raspberry" },
+                    { letter: "T", word: "Take Off", bg: "bg-gold/10", border: "border-gold/30", text: "text-gold" },
+                    { letter: "H", word: "Habits", bg: "bg-lime/10", border: "border-lime/30", text: "text-lime" },
                   ].map((step, idx) => (
                     <div
                       key={step.letter}
-                      className={`relative flex flex-col items-center justify-center py-4 rounded-xl bg-${step.color}/10 border border-${step.color}/30`}
+                      className={`relative flex flex-col items-center justify-center py-4 rounded-xl border ${step.bg} ${step.border}`}
                     >
-                      <span className={`font-poppins font-bold text-2xl text-${step.color}`}>
+                      <span className={`font-poppins font-bold text-2xl ${step.text}`}>
                         {step.letter}
                       </span>
-                      <span className={`text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest text-${step.color} mt-1`}>
+                      <span className={`text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest mt-1 ${step.text}`}>
                         {step.word}
                       </span>
                       {idx < 3 && (
