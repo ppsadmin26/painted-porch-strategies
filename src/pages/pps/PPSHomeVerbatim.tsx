@@ -577,8 +577,9 @@ export default function PPSHomeVerbatim() {
                   ))}
                 </div>
               </div>
-              <p className="text-center text-xs italic text-foreground/60 mt-3">
-                The methodology and roadmap we follow.
+              <p className="text-center text-sm md:text-base text-foreground/80 mt-4 max-w-2xl mx-auto leading-relaxed">
+                A way of thinking about and navigating intentional, sustainable
+                progress.
               </p>
             </div>
 
@@ -598,8 +599,9 @@ export default function PPSHomeVerbatim() {
                 <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
                   Painted Porch Pillars
                 </h3>
-                <p className="text-foreground/80 text-sm mt-2 max-w-2xl mx-auto">
-                  The framework we measure and build to fortify.
+                <p className="text-foreground/80 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+                  Three dimensions that influence and impact what your
+                  organization is built to carry.
                 </p>
               </div>
 
@@ -647,9 +649,9 @@ export default function PPSHomeVerbatim() {
                   <h4 className="font-poppins font-semibold text-lg text-navy mt-1">
                     Essential Elements
                   </h4>
-                  <p className="text-foreground/80 text-sm mt-2 max-w-2xl mx-auto">
-                    The supporting behaviors and conditions that fortify each
-                    Pillar.
+                  <p className="text-foreground/80 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+                    The everyday human behaviors and conditions that influence
+                    whether change actually sticks.
                   </p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-2">
