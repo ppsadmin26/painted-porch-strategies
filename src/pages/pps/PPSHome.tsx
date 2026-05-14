@@ -87,7 +87,7 @@ function HeroSection() {
         <div className="flex flex-wrap gap-4">
           <Link
             to="/blue-door"
-            className="inline-flex items-center font-poppins font-semibold text-base px-8 py-4 rounded-full bg-cobalt text-white hover:bg-cobalt/90 transition-colors shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+            className="inline-flex items-center font-poppins font-semibold text-base px-8 py-4 rounded-full bg-bluedoor text-white hover:bg-bluedoor/90 transition-colors shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
           >
             Open the Blue Door
             <ArrowRight className="ml-2 w-4 h-4" />
@@ -109,7 +109,7 @@ function HeroSection() {
 /* -------------------------------------------------------------------------- */
 function ShiftSection() {
   return (
-    <section className="relative py-24 md:py-32 bg-cream overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-muted overflow-hidden">
       <div
         aria-hidden="true"
         className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-primary/10 blur-3xl"
@@ -188,9 +188,9 @@ function PhaseZeroSection() {
 /* -------------------------------------------------------------------------- */
 function BlueDoorSection() {
   return (
-    <section className="relative py-24 md:py-32 bg-sand overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-muted/60 overflow-hidden">
       <FadeIn className="container max-w-4xl mx-auto px-6 text-center">
-        <p className="text-cobalt font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-6">
+        <p className="text-bluedoor font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-6">
           Begin Here
         </p>
         <h2 className="font-poppins font-bold text-4xl md:text-6xl text-navy leading-tight mb-8">
@@ -204,7 +204,7 @@ function BlueDoorSection() {
         </p>
         <Link
           to="/blue-door"
-          className="inline-flex items-center font-poppins font-semibold text-base px-8 py-4 rounded-full bg-cobalt text-white hover:bg-cobalt/90 transition-colors shadow-lg"
+          className="inline-flex items-center font-poppins font-semibold text-base px-8 py-4 rounded-full bg-bluedoor text-white hover:bg-bluedoor/90 transition-colors shadow-lg"
         >
           Open the Blue Door
           <ArrowRight className="ml-2 w-4 h-4" />
@@ -257,7 +257,7 @@ function PathwaysSection() {
             <Link
               key={t.tier}
               to={t.to}
-              className={`group block bg-cream/40 hover:bg-cream/70 transition-colors p-8 border-l-4 ${t.color}`}
+              className={`group block bg-muted/40 hover:bg-muted/70 transition-colors p-8 border-l-4 ${t.color}`}
             >
               <p
                 className={`${t.label} font-poppins font-semibold uppercase tracking-[0.15em] text-xs mb-3`}
@@ -349,7 +349,7 @@ function FoundationSection() {
 /* -------------------------------------------------------------------------- */
 function PartnershipSection() {
   return (
-    <section className="relative py-24 md:py-32 bg-cream overflow-hidden">
+    <section className="relative py-24 md:py-32 bg-muted overflow-hidden">
       <FadeIn className="container max-w-3xl mx-auto px-6 text-center">
         <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-6">
           The Partnership
@@ -407,7 +407,7 @@ function InsightsSection() {
               className="group block"
             >
               {post.cover_image_url ? (
-                <div className="aspect-[16/10] overflow-hidden mb-4 bg-cream">
+                <div className="aspect-[16/10] overflow-hidden mb-4 bg-muted">
                   <img
                     src={post.cover_image_url}
                     alt={post.title}
@@ -416,7 +416,7 @@ function InsightsSection() {
                   />
                 </div>
               ) : (
-                <div className="aspect-[16/10] mb-4 bg-cream" />
+                <div className="aspect-[16/10] mb-4 bg-muted" />
               )}
               {post.categories?.[0] && (
                 <p className="text-xs text-primary font-semibold uppercase tracking-wide mb-2">

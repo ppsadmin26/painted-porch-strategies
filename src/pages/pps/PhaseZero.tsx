@@ -50,7 +50,7 @@ export default function PhaseZero() {
       </section>
 
       {/* Section 1 */}
-      <section className="py-24 md:py-32 bg-cream">
+      <section className="py-24 md:py-32 bg-muted">
         <FadeIn className="container max-w-3xl mx-auto px-6">
           <p className="text-primary font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-6">
             One
@@ -93,7 +93,7 @@ export default function PhaseZero() {
       </section>
 
       {/* Section 3 */}
-      <section className="py-24 md:py-32 bg-sand">
+      <section className="py-24 md:py-32 bg-muted/60">
         <FadeIn className="container max-w-3xl mx-auto px-6">
           <p className="text-gold font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-6">
             Three
