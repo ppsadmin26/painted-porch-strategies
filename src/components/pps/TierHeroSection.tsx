@@ -12,6 +12,8 @@ interface HeroCTA {
   isAnchor?: boolean;
   /** If true, uses primary tier styling; otherwise uses outline white */
   isPrimary?: boolean;
+  /** Optional className override that fully replaces the default button classes */
+  buttonClassName?: string;
   icon?: ReactNode;
 }
 
