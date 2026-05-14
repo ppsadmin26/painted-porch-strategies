@@ -543,29 +543,30 @@ export default function PPSHomeVerbatim() {
 
               {/* LAYER 1: P.A.T.H. */}
               <div>
-                <div className="text-center mb-3">
+                <div className="text-center mb-5">
                   <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Way Forward
                   </p>
-                  <h3 className="font-poppins font-bold text-2xl text-navy mt-1">
-                    P.A.T.H.
-                  </h3>
+                  <p className="text-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto leading-relaxed">
+                    A way of thinking about and navigating intentional, sustainable
+                    progress.
+                  </p>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3">
                   {[
-                    { letter: "P", word: "Prepare" },
-                    { letter: "A", word: "Align" },
-                    { letter: "T", word: "Take Off" },
-                    { letter: "H", word: "Habits" },
+                    { letter: "P", word: "Prepare", color: "primary" },
+                    { letter: "A", word: "Align", color: "raspberry" },
+                    { letter: "T", word: "Take Off", color: "gold" },
+                    { letter: "H", word: "Habits", color: "lime" },
                   ].map((step, idx) => (
                     <div
                       key={step.letter}
-                      className="relative flex flex-col items-center justify-center py-4 rounded-xl bg-muted/60 border border-navy/5"
+                      className={`relative flex flex-col items-center justify-center py-4 rounded-xl bg-${step.color}/10 border border-${step.color}/30`}
                     >
-                      <span className="font-poppins font-bold text-2xl text-navy">
+                      <span className={`font-poppins font-bold text-2xl text-${step.color}`}>
                         {step.letter}
                       </span>
-                      <span className="text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest text-foreground/60 mt-1">
+                      <span className={`text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest text-${step.color} mt-1`}>
                         {step.word}
                       </span>
                       {idx < 3 && (
@@ -574,10 +575,6 @@ export default function PPSHomeVerbatim() {
                     </div>
                   ))}
                 </div>
-                <p className="text-center text-sm md:text-base text-foreground/80 mt-5 max-w-2xl mx-auto leading-relaxed">
-                  A way of thinking about and navigating intentional, sustainable
-                  progress.
-                </p>
               </div>
 
               {/* Connector: PATH → Pillars (single line on mobile, three on md+) */}
