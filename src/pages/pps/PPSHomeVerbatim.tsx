@@ -228,7 +228,7 @@ export default function PPSHomeVerbatim() {
           </div>
 
           <div className="space-y-5 text-lg text-foreground leading-relaxed">
-            <p>Sometimes it feels like every important conversation is happening at the same time.</p>
+            <p>And it feels like every important conversation is happening at the same time.</p>
             <ul className="space-y-1.5 text-foreground/85 pl-1">
               {everyConversation.map((c, i) => {
                 const parts = c.text.split("{b}");
@@ -246,7 +246,7 @@ export default function PPSHomeVerbatim() {
                 );
               })}
             </ul>
-            <p>And meanwhile, your organization is still trying to:</p>
+            <p>Meanwhile, your organization is still trying to:</p>
             <ul
               role="list"
               aria-label="Ongoing organizational priorities"
