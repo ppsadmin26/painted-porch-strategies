@@ -778,22 +778,22 @@ export default function PPSHomeVerbatim() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border-l-4 border-lime">
-                <p className="font-poppins font-bold text-lime mb-2">If yes</p>
-                <p className="text-white/85 text-sm leading-relaxed">
+              <div className="rounded-xl p-6" style={{ backgroundColor: "#8FB94A" }}>
+                <p className="font-poppins font-bold text-white mb-2">If yes</p>
+                <p className="text-white text-sm leading-relaxed">
                   We get to work with you on what it takes to author and shape
                   your next shift.
                 </p>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border-l-4 border-gold">
-                <p className="font-poppins font-bold text-gold mb-2">If not yet</p>
-                <p className="text-white/85 text-sm leading-relaxed">
+              <div className="bg-gold rounded-xl p-6">
+                <p className="font-poppins font-bold text-white mb-2">If not yet</p>
+                <p className="text-white text-sm leading-relaxed">
                   We tell you, and we provide a pathway to action.
                 </p>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border-l-4 border-raspberry">
-                <p className="font-poppins font-bold text-raspberry mb-2">If not us</p>
-                <p className="text-white/85 text-sm leading-relaxed">
+              <div className="bg-raspberry rounded-xl p-6">
+                <p className="font-poppins font-bold text-white mb-2">If not us</p>
+                <p className="text-white text-sm leading-relaxed">
                   We tell you that, too, and connect you with the right
                   partner for your stage and needs.
                 </p>
