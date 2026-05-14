@@ -9,6 +9,11 @@ import {
   DoorOpen,
   Users,
   Lightbulb,
+  Target,
+  HeartHandshake,
+  TrendingUp,
+  Compass as CompassIcon,
+  Zap,
 } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
@@ -38,12 +43,12 @@ const everyConversation: { text: string; bold: string[] }[] = [
   { text: "The {b} conversation.", bold: ["culture"] },
 ];
 
-const stillTryingTo = [
-  "deliver results",
-  "support people",
-  "sustain growth",
-  "maintain alignment",
-  "adapt in real time",
+const stillTryingTo: { label: string; icon: typeof Target }[] = [
+  { label: "deliver results", icon: Target },
+  { label: "support people", icon: HeartHandshake },
+  { label: "sustain growth", icon: TrendingUp },
+  { label: "maintain alignment", icon: CompassIcon },
+  { label: "adapt in real time", icon: Zap },
 ];
 
 const phaseZeroBefore = [
@@ -236,16 +241,22 @@ export default function PPSHomeVerbatim() {
               })}
             </ul>
             <p>And meanwhile, your organization is still trying to:</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 pt-2">
-              {stillTryingTo.map((c) => (
-                <div
-                  key={c}
-                  className="bg-primary/5 border border-primary/20 rounded-lg px-3 py-4 text-center text-sm font-poppins font-semibold text-navy leading-snug"
+            <ul
+              role="list"
+              aria-label="Ongoing organizational priorities"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 pt-2 list-none p-0"
+            >
+              {stillTryingTo.map(({ label, icon: Icon }) => (
+                <li
+                  key={label}
+                  aria-label={label}
+                  className="bg-primary/5 border border-primary/20 rounded-lg px-3 py-4 text-center text-sm font-poppins font-semibold text-navy leading-snug flex flex-col items-center gap-2"
                 >
-                  {c}
-                </div>
+                  <Icon className="w-6 h-6 text-primary" aria-hidden="true" />
+                  <span>{label}</span>
+                </li>
               ))}
-            </div>
+            </ul>
             <p>
               Even successful organizations can start feeling stretched when
               priorities, expectations, systems, and pace are all evolving
