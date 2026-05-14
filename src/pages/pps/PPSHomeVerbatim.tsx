@@ -277,6 +277,12 @@ export default function PPSHomeVerbatim() {
               And pushing harder in the wrong direction doesn&rsquo;t change
               the direction. It simply compounds the cost of getting there.
             </p>
+            <p>
+              The frustration that surfaces in moments like this is rarely
+              random; it&rsquo;s a signal that clarity is needed before
+              committing to another direction that eventually leaves your
+              organization feeling fragmented, unfinished, or unsustainable.
+            </p>
           </div>
         </div>
       </section>
