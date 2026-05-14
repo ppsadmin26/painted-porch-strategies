@@ -30,12 +30,12 @@ const threeAmQuestions = [
   "Can our organization realistically sustain what comes next?",
 ];
 
-const everyConversation = [
-  "The strategy conversation.",
-  "The technology and AI conversation.",
-  "The operational conversation.",
-  "The leadership conversation.",
-  "The culture conversation.",
+const everyConversation: { text: string; bold: string[] }[] = [
+  { text: "The {b} conversation.", bold: ["strategy"] },
+  { text: "The {b} and {b} conversation.", bold: ["technology", "AI"] },
+  { text: "The {b} conversation.", bold: ["operational"] },
+  { text: "The {b} conversation.", bold: ["leadership"] },
+  { text: "The {b} conversation.", bold: ["culture"] },
 ];
 
 const stillTryingTo = [
