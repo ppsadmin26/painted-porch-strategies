@@ -46,7 +46,7 @@ const everyConversation: { text: string; bold: string[] }[] = [
 const stillTryingTo: { label: string; icon: typeof Target }[] = [
   { label: "Deliver measurable results", icon: Target },
   { label: "Support your people", icon: HeartHandshake },
-  { label: "sustain growth", icon: TrendingUp },
+  { label: "Sustain continual growth", icon: TrendingUp },
   { label: "maintain alignment", icon: CompassIcon },
   { label: "adapt in real time", icon: Zap },
 ];
