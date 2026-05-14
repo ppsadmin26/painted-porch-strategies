@@ -48,6 +48,11 @@ export const sitemapData: SitemapNode[] = [
     note: "Previous home page kept for reference",
   },
   {
+    label: "Home (Verbatim)",
+    path: "/home-verbatim",
+    note: "Alt home — verbatim copy with numbered 3AM strip",
+  },
+  {
     label: "About",
     path: "/about",
     children: [
