@@ -577,14 +577,31 @@ export default function PPSHomeVerbatim() {
                 </div>
               </div>
 
-              {/* Connector: PATH → Pillars (single line on mobile, three on md+) */}
-              <div className="flex justify-center md:hidden my-6" aria-hidden="true">
-                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-              </div>
-              <div className="hidden md:flex justify-around px-16 my-6" aria-hidden="true">
-                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+              {/* Winding road connector: PATH → Pillars */}
+              <div className="mt-6 mb-8" aria-hidden="true">
+                <svg
+                  viewBox="0 0 1000 110"
+                  className="w-full h-16 md:h-20"
+                  preserveAspectRatio="none"
+                >
+                  {/* Road segments - each colored to match its PATH step */}
+                  <g fill="none" strokeWidth="22" strokeLinecap="round">
+                    <path d="M 20 30 C 90 30, 140 80, 240 80" stroke="hsl(var(--primary))" />
+                    <path d="M 240 80 C 340 80, 380 30, 490 30" stroke="hsl(var(--raspberry))" />
+                    <path d="M 490 30 C 600 30, 640 80, 750 80" stroke="hsl(var(--gold))" />
+                    <path d="M 750 80 C 860 80, 920 50, 980 30" stroke="hsl(var(--lime))" />
+                  </g>
+                  {/* Dashed center stripe */}
+                  <path
+                    d="M 20 30 C 90 30, 140 80, 240 80 C 340 80, 380 30, 490 30 C 600 30, 640 80, 750 80 C 860 80, 920 50, 980 30"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeDasharray="8 8"
+                    strokeLinecap="round"
+                    opacity="0.85"
+                  />
+                </svg>
               </div>
 
               {/* LAYER 2: The Three Pillars */}
