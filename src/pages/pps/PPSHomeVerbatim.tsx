@@ -185,29 +185,6 @@ export default function PPSHomeVerbatim() {
       />
 
       {/* ============================================================ */}
-      {/* 3AM Questions strip                                           */}
-      {/* ============================================================ */}
-      <section className="py-12 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
-          <p className="text-center text-sm font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-8">
-            The questions leaders ask at 3AM
-          </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            {threeAmQuestions.map((q, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl font-poppins font-bold text-primary mb-3">
-                  0{i + 1}
-                </div>
-                <p className="text-foreground italic leading-relaxed">
-                  &ldquo;{q}&rdquo;
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
       {/* There's a lot of ShIFt happening (verbatim)                   */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-white">
@@ -249,6 +226,30 @@ export default function PPSHomeVerbatim() {
           </div>
         </div>
       </section>
+
+      {/* ============================================================ */}
+      {/* 3AM Questions strip                                           */}
+      {/* ============================================================ */}
+      <section className="py-12 bg-muted">
+        <div className="container max-w-6xl mx-auto px-6">
+          <p className="text-center text-sm font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-8">
+            The questions leaders ask at 3AM
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {threeAmQuestions.map((q, i) => (
+              <div key={i} className="text-center">
+                <div className="text-3xl font-poppins font-bold text-primary mb-3">
+                  0{i + 1}
+                </div>
+                <p className="text-foreground italic leading-relaxed">
+                  &ldquo;{q}&rdquo;
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* ============================================================ */}
       {/* Phase Zero gradient CTA (verbatim)                            */}
