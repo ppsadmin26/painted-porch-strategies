@@ -139,21 +139,21 @@ export default function PPSHomeVerbatim() {
             <span className="block text-xl sm:text-2xl md:text-[1.65rem] font-poppins font-semibold italic text-gold leading-snug tracking-tight mt-1 mb-3 sm:mb-4">
               Before momentum outruns alignment.
             </span>
-            <span className="block font-bold">You aren&rsquo;t short on vision.</span>
-            <span className="block font-bold">Or resolve and experience.</span>
-            <span className="block font-bold">
+            <span className="block">You aren&rsquo;t short on vision.</span>
+            <span className="block">Or resolve and experience.</span>
+            <span className="block">
               Or methodologies, frameworks, and advisors.
             </span>
             <span className="block font-bold">
               You&rsquo;ve adopted and outgrown more than one.
             </span>
-            <span className="block font-bold">
+            <span className="block">
               What&rsquo;s harder to find is clarity &ndash; the kind that
               comes before strategy hardens the direction, the announcement
               activates the initiative, and resources commit to what comes
               next.
             </span>
-            <span className="block font-bold">
+            <span className="block">
               Because the question usually isn&rsquo;t whether your
               organization can execute. It&rsquo;s whether what you&rsquo;re
               building is aligned with what your organization is trying to
