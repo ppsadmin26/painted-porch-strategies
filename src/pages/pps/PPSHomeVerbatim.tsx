@@ -252,13 +252,13 @@ export default function PPSHomeVerbatim() {
               aria-label="Ongoing organizational priorities"
               className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 pt-2 list-none p-0"
             >
-              {stillTryingTo.map(({ label, icon: Icon }) => (
+              {stillTryingTo.map(({ label, icon: Icon, bg, border, iconColor }) => (
                 <li
                   key={label}
                   aria-label={label}
-                  className="bg-primary/5 border border-primary/20 rounded-lg px-3 py-4 text-center text-sm font-poppins font-semibold text-navy leading-snug flex flex-col items-center gap-2"
+                  className={`${bg} border ${border} rounded-lg px-3 py-4 text-center text-sm font-poppins font-semibold text-navy leading-snug flex flex-col items-center gap-2`}
                 >
-                  <Icon className="w-6 h-6 text-primary" aria-hidden="true" />
+                  <Icon className={`w-6 h-6 ${iconColor}`} aria-hidden="true" />
                   <span>{label}</span>
                 </li>
               ))}
