@@ -12,44 +12,47 @@ import ppsLogo from "@/assets/pps-logo.png";
 import { SiteSearch } from "@/components/pps/SiteSearch";
 
 const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Phase Zero", href: "/phase-zero" },
+  { label: "The Blue Door", href: "/blue-door" },
   {
-    label: "About Us",
-    href: "/about",
-    children: [
-      { label: "Our Approach", href: "/about/approach" },
-      { label: "Our Impact", href: "/about/impact" },
-    ],
-  },
-  {
-    label: "Partner with Us",
+    label: "P.A.T.H.ways",
     href: "/partner",
     children: [
-      
       { label: "Ignite ShIFt", href: "/partner/ignite" },
       { label: "Amplify ShIFt", href: "/partner/amplify" },
       { label: "Embody ShIFt", href: "/partner/embody" },
     ],
   },
   {
-    label: "Resources",
+    label: "Insights",
     href: "/resources",
     children: [
-      
-      { label: "Free Resources", href: "/resources/free" },
       { label: "Insights", href: "/resources/insights" },
       { label: "YouTube", href: "/resources/youtube" },
+      { label: "Media", href: "/speaking/media" },
+      { label: "Free Resources", href: "/resources/free" },
       { label: "FAQ", href: "/resources/faq" },
     ],
   },
-  { label: "The Blue Door", href: "/blue-door" },
   {
     label: "Speaking",
     href: "/speaking",
     children: [
+      { label: "Amy", href: "/speaking/amy" },
+      { label: "Rob", href: "/speaking/rob" },
+      { label: "Sierra", href: "/speaking/sierra" },
       { label: "As Seen On", href: "/speaking/media" },
     ],
   },
-  { label: "Start Here", href: "/start-here" },
+  {
+    label: "About",
+    href: "/about",
+    children: [
+      { label: "Our Approach", href: "/about/approach" },
+      { label: "Our Impact", href: "/about/impact" },
+    ],
+  },
 ];
 
 export default function PPSNavigation() {
@@ -58,6 +61,7 @@ export default function PPSNavigation() {
   const location = useLocation();
 
   const isActiveLink = (href: string) => {
+    if (href === "/") return location.pathname === "/";
     return location.pathname === href || location.pathname.startsWith(href + "/");
   };
 
@@ -67,16 +71,16 @@ export default function PPSNavigation() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img 
-              src={ppsLogo} 
-              alt="Painted Porch Strategies" 
+            <img
+              src={ppsLogo}
+              alt="Painted Porch Strategies"
               className="h-12 md:h-14 w-auto"
             />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-3">
-            {navLinks.map((link) => (
+            {navLinks.map((link) =>
               link.children ? (
                 <DropdownMenu key={link.href}>
                   <div className="flex items-center">
@@ -90,11 +94,13 @@ export default function PPSNavigation() {
                     >
                       {link.label}
                     </Link>
-                    <DropdownMenuTrigger className={`ml-1 p-1 transition-colors ${
-                      isActiveLink(link.href)
-                        ? "text-primary"
-                        : "text-foreground hover:text-primary"
-                    }`}>
+                    <DropdownMenuTrigger
+                      className={`ml-1 p-1 transition-colors ${
+                        isActiveLink(link.href)
+                          ? "text-primary"
+                          : "text-foreground hover:text-primary"
+                      }`}
+                    >
                       <ChevronDown className="w-4 h-4" />
                     </DropdownMenuTrigger>
                   </div>
@@ -118,15 +124,15 @@ export default function PPSNavigation() {
                   key={link.href}
                   to={link.href}
                   className={`text-xs font-medium transition-colors whitespace-nowrap ${
-                    location.pathname === link.href
+                    isActiveLink(link.href)
                       ? "text-primary"
                       : "text-foreground hover:text-primary"
                   }`}
                 >
                   {link.label}
                 </Link>
-              )
-            ))}
+              ),
+            )}
             <SiteSearch />
             <Link to="/start-here">
               <Button className="bg-primary hover:bg-primary/90 text-xs px-3 py-1 h-8">
@@ -175,13 +181,17 @@ export default function PPSNavigation() {
                           className={`px-3 py-2 ${
                             isActiveLink(link.href) ? "text-primary" : "text-foreground"
                           }`}
-                          onClick={() => setExpandedMobileItem(
-                            expandedMobileItem === link.href ? null : link.href
-                          )}
+                          onClick={() =>
+                            setExpandedMobileItem(
+                              expandedMobileItem === link.href ? null : link.href,
+                            )
+                          }
                         >
-                          <ChevronDown className={`w-4 h-4 transition-transform ${
-                            expandedMobileItem === link.href ? "rotate-180" : ""
-                          }`} />
+                          <ChevronDown
+                            className={`w-4 h-4 transition-transform ${
+                              expandedMobileItem === link.href ? "rotate-180" : ""
+                            }`}
+                          />
                         </button>
                       </div>
                       {expandedMobileItem === link.href && (
@@ -207,9 +217,7 @@ export default function PPSNavigation() {
                     <Link
                       to={link.href}
                       className={`font-medium py-2 block ${
-                        location.pathname === link.href
-                          ? "text-primary"
-                          : "text-foreground"
+                        isActiveLink(link.href) ? "text-primary" : "text-foreground"
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
