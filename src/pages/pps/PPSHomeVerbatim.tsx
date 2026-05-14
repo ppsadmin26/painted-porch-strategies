@@ -447,14 +447,14 @@ export default function PPSHomeVerbatim() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-muted p-8 rounded-xl">
-              <div className="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-gold/10 border border-gold/30 p-8 rounded-xl flex flex-col">
+              <div className="w-12 h-12 bg-gold/25 rounded-lg flex items-center justify-center mb-4">
                 <Compass className="w-6 h-6 text-gold" />
               </div>
               <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
                 Exploring for Yourself?
               </h3>
-              <p className="text-foreground mb-4 leading-relaxed">
+              <p className="text-foreground mb-4 leading-relaxed flex-grow">
                 You may be exploring how to communicate, lead, collaborate,
                 and navigate change more intentionally in the work
                 you&rsquo;re already doing. Courses, assessments, masterclasses,
@@ -462,21 +462,21 @@ export default function PPSHomeVerbatim() {
               </p>
               <Link
                 to="/start-here"
-                className="text-primary font-semibold hover:underline inline-flex items-center"
+                className="text-gold font-semibold hover:underline inline-flex items-center mt-auto"
               >
                 Discover Your P.A.T.H.way
                 <ArrowRight className="ml-1 w-4 h-4" />
               </Link>
             </div>
 
-            <div className="bg-muted p-8 rounded-xl">
-              <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
-                <Users className="w-6 h-6 text-primary" />
+            <div className="bg-bluedoor/10 border border-bluedoor/30 p-8 rounded-xl flex flex-col">
+              <div className="w-12 h-12 bg-bluedoor/25 rounded-lg flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-bluedoor" />
               </div>
               <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
                 Exploring for Your Team or Organization?
               </h3>
-              <p className="text-foreground mb-4 leading-relaxed">
+              <p className="text-foreground mb-4 leading-relaxed flex-grow">
                 You&rsquo;re trying to answer larger organizational questions
                 around growth, alignment, leadership capacity, technology
                 integration, and what your organization is realistically ready
@@ -484,7 +484,7 @@ export default function PPSHomeVerbatim() {
               </p>
               <Link
                 to="/blue-door"
-                className="text-primary font-semibold hover:underline inline-flex items-center"
+                className="text-bluedoor font-semibold hover:underline inline-flex items-center mt-auto"
               >
                 Open the Blue Door
                 <ArrowRight className="ml-1 w-4 h-4" />
