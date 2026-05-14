@@ -543,29 +543,30 @@ export default function PPSHomeVerbatim() {
 
               {/* LAYER 1: P.A.T.H. */}
               <div>
-                <div className="text-center mb-3">
+                <div className="text-center mb-5">
                   <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Way Forward
                   </p>
-                  <h3 className="font-poppins font-bold text-2xl text-navy mt-1">
-                    P.A.T.H.
-                  </h3>
+                  <p className="text-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto leading-relaxed">
+                    A way of thinking about and navigating intentional, sustainable
+                    progress.
+                  </p>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3">
                   {[
-                    { letter: "P", word: "Prepare" },
-                    { letter: "A", word: "Align" },
-                    { letter: "T", word: "Take Off" },
-                    { letter: "H", word: "Habits" },
+                    { letter: "P", word: "Prepare", bg: "bg-primary/10", border: "border-primary/30", text: "text-primary" },
+                    { letter: "A", word: "Align", bg: "bg-raspberry/10", border: "border-raspberry/30", text: "text-raspberry" },
+                    { letter: "T", word: "Take Off", bg: "bg-gold/10", border: "border-gold/30", text: "text-gold" },
+                    { letter: "H", word: "Habits", bg: "bg-lime/10", border: "border-lime/30", text: "text-lime" },
                   ].map((step, idx) => (
                     <div
                       key={step.letter}
-                      className="relative flex flex-col items-center justify-center py-4 rounded-xl bg-muted/60 border border-navy/5"
+                      className={`relative flex flex-col items-center justify-center py-4 rounded-xl border ${step.bg} ${step.border}`}
                     >
-                      <span className="font-poppins font-bold text-2xl text-navy">
+                      <span className={`font-poppins font-bold text-2xl ${step.text}`}>
                         {step.letter}
                       </span>
-                      <span className="text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest text-foreground/60 mt-1">
+                      <span className={`text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest mt-1 ${step.text}`}>
                         {step.word}
                       </span>
                       {idx < 3 && (
@@ -574,10 +575,6 @@ export default function PPSHomeVerbatim() {
                     </div>
                   ))}
                 </div>
-                <p className="text-center text-sm md:text-base text-foreground/80 mt-5 max-w-2xl mx-auto leading-relaxed">
-                  A way of thinking about and navigating intentional, sustainable
-                  progress.
-                </p>
               </div>
 
               {/* Connector: PATH → Pillars (single line on mobile, three on md+) */}
