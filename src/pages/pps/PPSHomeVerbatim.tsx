@@ -9,6 +9,11 @@ import {
   DoorOpen,
   Users,
   Lightbulb,
+  Target,
+  HeartHandshake,
+  TrendingUp,
+  Compass as CompassIcon,
+  Zap,
 } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
