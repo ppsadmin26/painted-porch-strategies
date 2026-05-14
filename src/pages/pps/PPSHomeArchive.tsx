@@ -45,7 +45,7 @@ const stats = [
   { value: "Phase Zero™", label: "The strategic work before the work begins" },
 ];
 
-export default function PPSHome() {
+export default function PPSHomeArchive() {
   return (
     <div>
       {/* Hero Section */}
