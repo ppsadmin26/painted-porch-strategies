@@ -497,31 +497,97 @@ export default function PPSHomeVerbatim() {
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-muted">
         <div className="container max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12 max-w-3xl mx-auto">
+          {/* Opening narrative */}
+          <div className="text-center mb-16 max-w-3xl mx-auto">
             <span className="badge-gold mb-4 inline-block">Our Painted Porch</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
               The foundation beneath the movement.
             </h2>
-            <p className="text-lg text-foreground italic">
-              Sustainable movement requires more than momentum.
+            <div className="space-y-4 text-lg text-foreground leading-relaxed">
+              <p className="italic text-foreground/80">
+                Over time, we&rsquo;ve noticed a simple, complex pattern:
+              </p>
+              <p>
+                Change is easier to start than it is to sustain, especially
+                when people, systems, leadership, and expectations are all
+                trying to evolve at the same time.
+              </p>
+              <p>
+                Most organizations already know how to launch initiatives.
+                What&rsquo;s harder is building the clarity, alignment, and
+                organizational architecture required to sustain what comes
+                after the launch.
+              </p>
+            </div>
+
+            <div className="mt-10 pt-8 border-t border-navy/10">
+              <p className="text-base text-foreground/70 mb-3">
+                Everything at Painted Porch Strategies is designed around one
+                central idea:
+              </p>
+              <p className="font-poppins text-2xl md:text-3xl font-semibold text-navy leading-snug">
+                Sustainable movement requires more than momentum.
+              </p>
+              <p className="text-foreground italic mt-4">
+                Clarity is the catalyst for what gets decided, what moves
+                forward, and what happens next.
+              </p>
+            </div>
+          </div>
+
+          {/* P.A.T.H. */}
+          <div className="bg-white rounded-2xl p-8 md:p-10 mb-10 shadow-sm">
+            <div className="flex flex-col md:flex-row md:items-center md:gap-10 gap-4">
+              <div className="md:w-1/3">
+                <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-gold mb-2">
+                  The Way Forward
+                </p>
+                <h3 className="font-poppins font-bold text-2xl text-navy">
+                  P.A.T.H.
+                </h3>
+              </div>
+              <div className="md:w-2/3">
+                <p className="text-foreground leading-relaxed mb-4">
+                  A way of thinking about and navigating intentional,
+                  sustainable progress.
+                </p>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-poppins font-semibold text-navy">
+                  <span>Prepare</span>
+                  <ArrowRight className="w-4 h-4 text-gold" />
+                  <span>Align</span>
+                  <ArrowRight className="w-4 h-4 text-gold" />
+                  <span>Take Off</span>
+                  <ArrowRight className="w-4 h-4 text-gold" />
+                  <span>Habits</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Painted Porch Pillars */}
+          <div className="text-center mb-8 max-w-2xl mx-auto">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-gold mb-2">
+              The Load-Bearing Three
             </p>
-            <p className="text-base text-foreground/80 mt-3">
-              Three dimensions that influence and impact what your organization
-              is built to carry. When all three Pillars are load-bearing, your
-              porch is fortified.
+            <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mb-3">
+              Painted Porch Pillars
+            </h3>
+            <p className="text-foreground leading-relaxed">
+              Three dimensions that influence and impact what your
+              organization is built to carry.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
             {pillars.map((pillar, i) => (
               <div
                 key={i}
                 className={`${pillar.bgColor} p-6 rounded-xl transition-all hover:shadow-lg`}
               >
                 <pillar.icon className={`w-10 h-10 ${pillar.color} mb-4`} />
-                <h3 className="font-poppins font-semibold text-xl text-navy mb-1">
+                <h4 className="font-poppins font-semibold text-xl text-navy mb-1">
                   {pillar.title}
-                </h3>
+                </h4>
                 <p className={`text-sm font-medium ${pillar.color} mb-3`}>
                   {pillar.subtitle}
                 </p>
@@ -532,11 +598,47 @@ export default function PPSHomeVerbatim() {
             ))}
           </div>
 
-          <div className="mt-10 text-center max-w-2xl mx-auto">
-            <p className="text-foreground italic">
-              <strong className="text-navy not-italic">P.A.T.H.</strong> A way
-              of thinking about and navigating intentional, sustainable
-              progress: Prepare &rarr; Align &rarr; Take Off &rarr; Habits.
+          {/* Essential Elements */}
+          <div className="bg-white rounded-2xl p-8 md:p-10 mb-10 shadow-sm text-center max-w-3xl mx-auto">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-gold mb-3">
+              Essential Elements
+            </p>
+            <p className="text-foreground leading-relaxed mb-5">
+              The everyday human behaviors and conditions that influence
+              whether change actually sticks.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {[
+                "Communication",
+                "Collaboration",
+                "Clarity",
+                "Resilience",
+                "Alignment",
+                "Organizational Health",
+              ].map((el) => (
+                <span
+                  key={el}
+                  className="bg-muted text-navy font-poppins font-medium text-sm px-4 py-2 rounded-full border border-navy/10"
+                >
+                  {el}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* The Fortified Porch */}
+          <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 text-center max-w-3xl mx-auto shadow-xl">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-gold mb-3">
+              The Fortified Porch
+            </p>
+            <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+              When all three Pillars are load-bearing, and all elements are
+              executing, your organization becomes capable of{" "}
+              <strong className="text-gold">
+                authoring change and continually evolving
+              </strong>
+              , rather than constantly absorbing fragmentation and fixing
+              disruption.
             </p>
           </div>
         </div>
