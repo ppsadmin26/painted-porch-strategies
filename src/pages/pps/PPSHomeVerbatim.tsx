@@ -43,12 +43,18 @@ const everyConversation: { text: string; bold: string[] }[] = [
   { text: "The {b} conversation.", bold: ["culture"] },
 ];
 
-const stillTryingTo: { label: string; icon: typeof Target }[] = [
-  { label: "Deliver measurable results", icon: Target },
-  { label: "Support your people", icon: HeartHandshake },
-  { label: "Sustain continual growth", icon: TrendingUp },
-  { label: "Maintain strategic alignment", icon: CompassIcon },
-  { label: "Adapt and pivot in real time", icon: Zap },
+const stillTryingTo: {
+  label: string;
+  icon: typeof Target;
+  bg: string;
+  border: string;
+  iconColor: string;
+}[] = [
+  { label: "Deliver measurable results", icon: Target, bg: "bg-primary/5", border: "border-primary/30", iconColor: "text-primary" },
+  { label: "Support your people", icon: HeartHandshake, bg: "bg-raspberry/5", border: "border-raspberry/30", iconColor: "text-raspberry" },
+  { label: "Sustain continual growth", icon: TrendingUp, bg: "bg-lime/5", border: "border-lime/30", iconColor: "text-lime" },
+  { label: "Maintain strategic alignment", icon: CompassIcon, bg: "bg-bluedoor/5", border: "border-bluedoor/30", iconColor: "text-bluedoor" },
+  { label: "Adapt and pivot in real time", icon: Zap, bg: "bg-gold/10", border: "border-gold/40", iconColor: "text-gold" },
 ];
 
 const phaseZeroBefore = [
