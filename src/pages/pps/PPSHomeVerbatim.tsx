@@ -43,12 +43,12 @@ const everyConversation: { text: string; bold: string[] }[] = [
   { text: "The {b} conversation.", bold: ["culture"] },
 ];
 
-const stillTryingTo = [
-  "deliver results",
-  "support people",
-  "sustain growth",
-  "maintain alignment",
-  "adapt in real time",
+const stillTryingTo: { label: string; icon: typeof Target }[] = [
+  { label: "deliver results", icon: Target },
+  { label: "support people", icon: HeartHandshake },
+  { label: "sustain growth", icon: TrendingUp },
+  { label: "maintain alignment", icon: CompassIcon },
+  { label: "adapt in real time", icon: Zap },
 ];
 
 const phaseZeroBefore = [
