@@ -528,11 +528,10 @@ export default function PPSHomeVerbatim() {
                 central idea:
               </p>
               <p className="font-poppins text-2xl md:text-3xl font-semibold text-navy leading-snug">
-                Sustainable movement requires more than momentum.
-              </p>
-              <p className="text-foreground italic mt-4">
-                Clarity is the catalyst for what gets decided, what moves
-                forward, and what happens next.
+                Sustainable movement requires more than momentum.{" "}
+                <span className="italic font-normal text-xl md:text-2xl block mt-4">
+                  Clarity is the catalyst for what gets decided, what moves forward, and what happens next.
+                </span>
               </p>
             </div>
           </div>
