@@ -358,56 +358,6 @@ export default function PPSHomeVerbatim() {
       </section>
 
       {/* ============================================================ */}
-      {/* The Painted Porch Pillars                                     */}
-      {/* ============================================================ */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12 max-w-3xl mx-auto">
-            <span className="badge-gold mb-4 inline-block">Our Painted Porch</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              The foundation beneath the movement.
-            </h2>
-            <p className="text-lg text-foreground italic">
-              Sustainable movement requires more than momentum.
-            </p>
-            <p className="text-base text-foreground/80 mt-3">
-              Three dimensions that influence and impact what your organization
-              is built to carry. When all three Pillars are load-bearing, your
-              porch is fortified.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {pillars.map((pillar, i) => (
-              <div
-                key={i}
-                className={`${pillar.bgColor} p-6 rounded-xl transition-all hover:shadow-lg`}
-              >
-                <pillar.icon className={`w-10 h-10 ${pillar.color} mb-4`} />
-                <h3 className="font-poppins font-semibold text-xl text-navy mb-1">
-                  {pillar.title}
-                </h3>
-                <p className={`text-sm font-medium ${pillar.color} mb-3`}>
-                  {pillar.subtitle}
-                </p>
-                <p className="text-foreground text-sm leading-relaxed">
-                  {pillar.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 text-center max-w-2xl mx-auto">
-            <p className="text-foreground italic">
-              <strong className="text-navy not-italic">P.A.T.H.</strong> A way
-              of thinking about and navigating intentional, sustainable
-              progress: Prepare &rarr; Align &rarr; Take Off &rarr; Habits.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
       {/* The Blue Door (verbatim)                                      */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-muted">
@@ -543,62 +493,149 @@ export default function PPSHomeVerbatim() {
       </section>
 
       {/* ============================================================ */}
-      {/* Partnership Promise (verbatim)                                */}
+      {/* Our Painted Porch (Pillars)                                   */}
       {/* ============================================================ */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-navy to-navy/90 text-white">
-        <div className="container max-w-4xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
-              Our Partnership Promise
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              We aren&rsquo;t here to tell you yes.
+      <section className="py-16 md:py-24 bg-muted">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12 max-w-3xl mx-auto">
+            <span className="badge-gold mb-4 inline-block">Our Painted Porch</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              The foundation beneath the movement.
             </h2>
-            <div className="space-y-4 text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
-              <p>
-                Most transformation initiatives are structured to build
-                momentum first, beginning with the question of what to do.
-                Finding the yes, framing the yes, scoping the yes, even when
-                the honest answer is something else.
-              </p>
-              <p>
-                We&rsquo;re here to tell you what will actually work, and
-                what it will take to make it happen. The question we begin
-                with is whether what&rsquo;s being considered is the right
-                thing to do right now. We ask it before strategy, before
-                scope, before signing.
-              </p>
-            </div>
+            <p className="text-lg text-foreground italic">
+              Sustainable movement requires more than momentum.
+            </p>
+            <p className="text-base text-foreground/80 mt-3">
+              Three dimensions that influence and impact what your organization
+              is built to carry. When all three Pillars are load-bearing, your
+              porch is fortified.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border-l-4 border-lime">
-              <p className="font-poppins font-bold text-lime mb-2">If yes</p>
-              <p className="text-white/85 text-sm leading-relaxed">
-                We get to work with you on what it takes to author and shape
-                your next shift.
+            {pillars.map((pillar, i) => (
+              <div
+                key={i}
+                className={`${pillar.bgColor} p-6 rounded-xl transition-all hover:shadow-lg`}
+              >
+                <pillar.icon className={`w-10 h-10 ${pillar.color} mb-4`} />
+                <h3 className="font-poppins font-semibold text-xl text-navy mb-1">
+                  {pillar.title}
+                </h3>
+                <p className={`text-sm font-medium ${pillar.color} mb-3`}>
+                  {pillar.subtitle}
+                </p>
+                <p className="text-foreground text-sm leading-relaxed">
+                  {pillar.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center max-w-2xl mx-auto">
+            <p className="text-foreground italic">
+              <strong className="text-navy not-italic">P.A.T.H.</strong> A way
+              of thinking about and navigating intentional, sustainable
+              progress: Prepare &rarr; Align &rarr; Take Off &rarr; Habits.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* Painted Porch Partnership (with Promise callout)              */}
+      {/* ============================================================ */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container max-w-4xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="badge-gold mb-4 inline-block">Painted Porch Partnership</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
+              For the moments that carry broader consequences.
+            </h2>
+            <div className="space-y-4 text-lg text-foreground leading-relaxed">
+              <p>
+                There are moments when the decisions in front of your
+                organization begin carrying broader consequences: for people,
+                systems, leadership, culture, capacity, operations, and the
+                future direction of the organization itself.
               </p>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border-l-4 border-gold">
-              <p className="font-poppins font-bold text-gold mb-2">If not yet</p>
-              <p className="text-white/85 text-sm leading-relaxed">
-                We tell you, and we provide a pathway to action.
+              <p>
+                Especially during periods of growth that feels increasingly
+                complex, strategic inflection, organizational stretching,
+                leadership alignment challenges, AI-era transformation
+                pressure, or questions about what sustainable evolution
+                actually looks like from here.
               </p>
-            </div>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border-l-4 border-raspberry">
-              <p className="font-poppins font-bold text-raspberry mb-2">If not us</p>
-              <p className="text-white/85 text-sm leading-relaxed">
-                We tell you that, too, and connect you with the right partner
-                for your stage and needs.
+              <p>
+                At that level, clarity becomes more than a leadership
+                preference and isn&rsquo;t solved by another quick-win
+                workshop, framework, or implementation sprint. It becomes part
+                of what determines whether your change strengthens alignment
+                or creates operational drift you later have to untangle.
+              </p>
+              <p>
+                We work alongside organizations during these kinds of moments:
+                inside the clarity, alignment, structure, and deeper design
+                conversations that shape what shIFt happens next.
               </p>
             </div>
           </div>
 
-          <p className="text-center text-white/85 text-base mt-10 max-w-2xl mx-auto">
-            <strong className="text-white">That&rsquo;s the Painted Porch promise:</strong>{" "}
-            full transparency about what will work, and the truth about what
-            it takes to make it happen.
-          </p>
+          {/* Promise callout */}
+          <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 shadow-xl">
+            <div className="text-center mb-10">
+              <span className="inline-block bg-gold text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
+                Our Painted Porch Promise
+              </span>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                We aren&rsquo;t here to tell you yes.
+              </h3>
+              <div className="space-y-4 text-base md:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+                <p>
+                  Most transformation initiatives are structured to build
+                  momentum first, beginning with the question of what to do.
+                  Finding the yes, framing the yes, scoping the yes, even when
+                  the honest answer is something else.
+                </p>
+                <p>
+                  We&rsquo;re here to tell you what will actually work, and
+                  what it will take to make it happen. The question we begin
+                  with is whether what&rsquo;s being considered is the right
+                  thing to do right now. We ask it before strategy, before
+                  scope, before signing.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border-l-4 border-lime">
+                <p className="font-poppins font-bold text-lime mb-2">If yes</p>
+                <p className="text-white/85 text-sm leading-relaxed">
+                  We get to work with you on what it takes to author and shape
+                  your next shift.
+                </p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border-l-4 border-gold">
+                <p className="font-poppins font-bold text-gold mb-2">If not yet</p>
+                <p className="text-white/85 text-sm leading-relaxed">
+                  We tell you, and we provide a pathway to action.
+                </p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border-l-4 border-raspberry">
+                <p className="font-poppins font-bold text-raspberry mb-2">If not us</p>
+                <p className="text-white/85 text-sm leading-relaxed">
+                  We tell you that, too, and connect you with the right
+                  partner for your stage and needs.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-center text-white/85 text-base mt-10 max-w-2xl mx-auto">
+              <strong className="text-white">That&rsquo;s the Painted Porch promise:</strong>{" "}
+              full transparency about what will work, and the truth about what
+              it takes to make it happen.
+            </p>
+          </div>
         </div>
       </section>
 
