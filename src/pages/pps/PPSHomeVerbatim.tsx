@@ -210,7 +210,7 @@ export default function PPSHomeVerbatim() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-3xl mx-auto px-6">
           <div className="text-center mb-10">
-            <span className="badge-gold mb-4 inline-block">It&rsquo;s Not Just You</span>
+            <span className="badge-gold mb-4 inline-block">It&rsquo;s Not Just You...</span>
             <h2 className="text-3xl md:text-5xl font-bold text-navy leading-tight">
               There&rsquo;s a lot of <ShIFt /> happening right now.
             </h2>
