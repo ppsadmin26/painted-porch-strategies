@@ -129,23 +129,36 @@ export default function PPSHomeVerbatim() {
           </span>
         }
         headline={
-          <>
+          <span className="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
             It&rsquo;s Time to Do Epic <ShIFt />.
-          </>
+          </span>
         }
         subheadline="Before momentum outruns alignment."
         description={
-          <span className="block space-y-3">
+          <span className="block space-y-4 text-base md:text-lg">
             <span className="block">You aren&rsquo;t short on vision.</span>
+            <span className="block">Or resolve.</span>
+            <span className="block">Or experience.</span>
             <span className="block">
-              Or resolve. Or experience. Or methodologies, frameworks, and
-              advisors. You&rsquo;ve adopted and outgrown more than one.
+              Or methodologies, frameworks, and advisors. You&rsquo;ve adopted
+              and outgrown more than one.
             </span>
             <span className="block">
-              What&rsquo;s harder to find is clarity. The kind that comes
-              before strategy hardens the direction, before the announcement
-              activates the initiative, and before resources commit to what
-              comes next.
+              What&rsquo;s harder to find is clarity &ndash; the kind that
+              comes before strategy hardens the direction, the announcement
+              activates the initiative, and resources commit to what comes
+              next.
+            </span>
+            <span className="block">
+              Because the question usually isn&rsquo;t whether your
+              organization can execute. It&rsquo;s whether what you&rsquo;re
+              building is aligned with what your organization is trying to
+              become.
+            </span>
+            <span className="block text-white">
+              Painted Porch Strategies exists in the space before acceleration
+              compounds complexity &ndash; where clarity, alignment, and
+              sustainable movement begin.
             </span>
           </span>
         }
