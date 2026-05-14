@@ -219,9 +219,21 @@ export default function PPSHomeVerbatim() {
           <div className="space-y-5 text-lg text-foreground leading-relaxed">
             <p>Sometimes it feels like every important conversation is happening at the same time.</p>
             <ul className="space-y-1.5 text-foreground/85 pl-1">
-              {everyConversation.map((c) => (
-                <li key={c}>{c}</li>
-              ))}
+              {everyConversation.map((c, i) => {
+                const parts = c.text.split("{b}");
+                return (
+                  <li key={i}>
+                    {parts.map((p, j) => (
+                      <span key={j}>
+                        {p}
+                        {j < c.bold.length && (
+                          <span className="font-bold text-raspberry">{c.bold[j]}</span>
+                        )}
+                      </span>
+                    ))}
+                  </li>
+                );
+              })}
             </ul>
             <p>And meanwhile, your organization is still trying to:</p>
             <ul className="space-y-1.5 text-foreground/85 pl-1">
