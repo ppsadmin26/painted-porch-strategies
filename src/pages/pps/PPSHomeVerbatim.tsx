@@ -47,7 +47,7 @@ const stillTryingTo: { label: string; icon: typeof Target }[] = [
   { label: "Deliver measurable results", icon: Target },
   { label: "Support your people", icon: HeartHandshake },
   { label: "Sustain continual growth", icon: TrendingUp },
-  { label: "maintain alignment", icon: CompassIcon },
+  { label: "Maintain strategic alignment", icon: CompassIcon },
   { label: "adapt in real time", icon: Zap },
 ];
 
