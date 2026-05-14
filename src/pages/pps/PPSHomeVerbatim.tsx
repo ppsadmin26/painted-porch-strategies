@@ -133,9 +133,12 @@ export default function PPSHomeVerbatim() {
             It&rsquo;s Time to Do Epic <ShIFt />.
           </span>
         }
-        subheadline="Before momentum outruns alignment."
+        subheadline=""
         description={
           <span className="block space-y-4 text-base md:text-lg">
+            <span className="block text-2xl md:text-3xl font-poppins font-semibold italic text-gold mb-2">
+              Before momentum outruns alignment.
+            </span>
             <span className="block">You aren&rsquo;t short on vision.</span>
             <span className="block">Or resolve.</span>
             <span className="block">Or experience.</span>
