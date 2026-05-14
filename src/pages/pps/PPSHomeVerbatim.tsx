@@ -542,18 +542,20 @@ export default function PPSHomeVerbatim() {
           {/* ============================================================ */}
           <div className="relative max-w-5xl mx-auto">
 
-            {/* LAYER 1: P.A.T.H. (the roadmap on top) */}
-            <div className="relative z-30">
-              <div className="text-center mb-3">
-                <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
-                  The Way Forward
-                </p>
-                <h3 className="font-poppins font-bold text-2xl text-navy mt-1">
-                  P.A.T.H.
-                </h3>
-              </div>
-              <div className="bg-white border border-navy/10 rounded-2xl p-3 shadow-sm">
-                <div className="grid grid-cols-4 gap-2 md:gap-3">
+            {/* Unified white "blueprint" card holding PATH → Pillars → Bedrock */}
+            <div className="bg-white rounded-3xl border border-navy/10 shadow-sm p-6 sm:p-8 md:p-12">
+
+              {/* LAYER 1: P.A.T.H. */}
+              <div>
+                <div className="text-center mb-3">
+                  <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
+                    The Way Forward
+                  </p>
+                  <h3 className="font-poppins font-bold text-2xl text-navy mt-1">
+                    P.A.T.H.
+                  </h3>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3">
                   {[
                     { letter: "P", word: "Prepare" },
                     { letter: "A", word: "Align" },
@@ -571,77 +573,81 @@ export default function PPSHomeVerbatim() {
                         {step.word}
                       </span>
                       {idx < 3 && (
-                        <ArrowRight className="hidden md:block absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gold bg-white rounded-full" />
+                        <ArrowRight className="hidden sm:block absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gold bg-white rounded-full" />
                       )}
                     </div>
                   ))}
                 </div>
-              </div>
-              <p className="text-center text-sm md:text-base text-foreground/80 mt-4 max-w-2xl mx-auto leading-relaxed">
-                A way of thinking about and navigating intentional, sustainable
-                progress.
-              </p>
-            </div>
-
-            {/* Connector: PATH → Pillars */}
-            <div className="flex justify-around px-8 md:px-16" aria-hidden="true">
-              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-            </div>
-
-            {/* LAYER 2: The Three Pillars (load-bearing columns) */}
-            <div className="relative z-20">
-              <div className="text-center mb-6">
-                <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
-                  The Load-Bearing Three
-                </p>
-                <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
-                  Painted Porch Pillars
-                </h3>
-                <p className="text-foreground/80 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
-                  Three dimensions that influence and impact what your
-                  organization is built to carry.
+                <p className="text-center text-sm md:text-base text-foreground/80 mt-5 max-w-2xl mx-auto leading-relaxed">
+                  A way of thinking about and navigating intentional, sustainable
+                  progress.
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6">
-                {pillars.map((pillar, i) => (
-                  <div
-                    key={i}
-                    className={`${pillar.bgColor} p-6 rounded-xl border-t-4 ${
-                      i === 0
-                        ? "border-navy"
-                        : i === 1
-                        ? "border-strategic"
-                        : "border-gold"
-                    } transition-all hover:shadow-lg hover:-translate-y-1`}
-                  >
-                    <pillar.icon className={`w-10 h-10 ${pillar.color} mb-4`} />
-                    <h4 className="font-poppins font-semibold text-xl text-navy mb-1">
-                      {pillar.title}
-                    </h4>
-                    <p className={`text-sm font-medium ${pillar.color} mb-3`}>
-                      {pillar.subtitle}
-                    </p>
-                    <p className="text-foreground text-sm leading-relaxed">
-                      {pillar.description}
-                    </p>
-                  </div>
-                ))}
+              {/* Connector: PATH → Pillars (single line on mobile, three on md+) */}
+              <div className="flex justify-center md:hidden my-6" aria-hidden="true">
+                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
               </div>
-            </div>
+              <div className="hidden md:flex justify-around px-16 my-6" aria-hidden="true">
+                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+              </div>
 
-            {/* Connector: Pillars → Bedrock */}
-            <div className="flex justify-around px-8 md:px-16" aria-hidden="true">
-              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-              <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-            </div>
+              {/* LAYER 2: The Three Pillars */}
+              <div>
+                <div className="text-center mb-6">
+                  <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
+                    The Load-Bearing Three
+                  </p>
+                  <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
+                    Painted Porch Pillars
+                  </h3>
+                  <p className="text-foreground/80 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+                    Three dimensions that influence and impact what your
+                    organization is built to carry.
+                  </p>
+                </div>
 
-            {/* LAYER 3: Essential Elements (the bedrock under the pillars) */}
-            <div className="relative z-10">
-              <div className="bg-white border border-navy/10 rounded-2xl p-6 md:p-8 shadow-sm">
+                <div className="grid md:grid-cols-3 gap-4 md:gap-6">
+                  {pillars.map((pillar, i) => (
+                    <div
+                      key={i}
+                      className={`${pillar.bgColor} p-6 rounded-xl border-t-4 ${
+                        i === 0
+                          ? "border-navy"
+                          : i === 1
+                          ? "border-strategic"
+                          : "border-gold"
+                      } transition-all hover:shadow-lg hover:-translate-y-1`}
+                    >
+                      <pillar.icon className={`w-10 h-10 ${pillar.color} mb-4`} />
+                      <h4 className="font-poppins font-semibold text-xl text-navy mb-1">
+                        {pillar.title}
+                      </h4>
+                      <p className={`text-sm font-medium ${pillar.color} mb-3`}>
+                        {pillar.subtitle}
+                      </p>
+                      <p className="text-foreground text-sm leading-relaxed">
+                        {pillar.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Connector: Pillars → Bedrock */}
+              <div className="flex justify-center md:hidden my-6" aria-hidden="true">
+                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+              </div>
+              <div className="hidden md:flex justify-around px-16 my-6" aria-hidden="true">
+                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
+              </div>
+
+              {/* LAYER 3: Essential Elements */}
+              <div className="bg-muted/50 border border-navy/5 rounded-2xl p-6 md:p-8">
                 <div className="text-center mb-5">
                   <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Behavioral Bedrock
@@ -665,22 +671,23 @@ export default function PPSHomeVerbatim() {
                   ].map((el) => (
                     <span
                       key={el}
-                      className="bg-muted text-navy font-poppins font-medium text-sm px-4 py-2 rounded-full border border-navy/10"
+                      className="bg-white text-navy font-poppins font-medium text-sm px-4 py-2 rounded-full border border-navy/10"
                     >
                       {el}
                     </span>
                   ))}
                 </div>
               </div>
+
             </div>
 
-            {/* Connector: Bedrock → Fortified Porch */}
+            {/* Connector: blueprint card → Fortified Porch */}
             <div className="flex justify-center" aria-hidden="true">
-              <div className="w-px h-10 border-l-2 border-dashed border-gold/40" />
+              <div className="w-px h-10 border-l-2 border-dashed border-gold/50" />
             </div>
 
             {/* LAYER 4: The Fortified Porch (the resulting structure) */}
-            <div className="relative z-30">
+            <div>
               <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 text-center shadow-xl border-b-4 border-gold">
                 <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
                   The Result
