@@ -15,6 +15,8 @@ import NotFound from "./pages/NotFound";
 // Painted Porch Strategies Pages
 import PPSLayout from "./layouts/PPSLayout";
 import PPSHome from "./pages/pps/PPSHome";
+import PPSHomeArchive from "./pages/pps/PPSHomeArchive";
+import PhaseZero from "./pages/pps/PhaseZero";
 import PPSAbout from "./pages/pps/PPSAbout";
 import PPSForLeaders from "./pages/pps/PPSForLeaders";
 import PPSForTeams from "./pages/pps/PPSForTeams";
@@ -234,6 +236,8 @@ const App = () => (
           <Route path="/" element={<PPSLayout />}>
             <Route index element={<PPSHome />} />
             <Route path="home-alt" element={<PPSHomeAlt />} />
+            <Route path="home-archive" element={<PPSHomeArchive />} />
+            <Route path="phase-zero" element={<PhaseZero />} />
             {/* About Section */}
             <Route path="about" element={<PPSAbout />} />
             <Route path="about/approach" element={<OurApproach />} />
@@ -329,14 +333,12 @@ const App = () => (
             <Route path="found-it" element={<EasterEggForm />} />
             <Route path="unsubscribe" element={<Unsubscribe />} />
             
-            {/* Legacy routes - keep for now */}
-            <Route path="for-leaders" element={<PPSForLeaders />} />
-            <Route path="for-teams" element={<PPSForTeams />} />
-            <Route path="services" element={<PPSServices />} />
-            <Route path="business-programs" element={<PPSBusinessPrograms />} />
-            
-            {/* Redirects for moved pages */}
-            <Route path="programs" element={<PPSPrograms />} />
+            {/* Legacy routes — now 301-equivalent redirects to nearest new page */}
+            <Route path="for-leaders" element={<Navigate to="/start-here" replace />} />
+            <Route path="for-teams" element={<Navigate to="/blue-door" replace />} />
+            <Route path="services" element={<Navigate to="/partner" replace />} />
+            <Route path="business-programs" element={<Navigate to="/partner" replace />} />
+            <Route path="programs" element={<Navigate to="/partner/ignite" replace />} />
             <Route path="radical-mindfulness" element={<RadicalMindfulness />} />
             <Route path="communication" element={<MasterYourMessage />} />
             <Route path="extraordinary-teams" element={<ExtraordinaryTeams />} />
