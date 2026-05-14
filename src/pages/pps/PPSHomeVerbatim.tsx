@@ -129,14 +129,14 @@ export default function PPSHomeVerbatim() {
           </span>
         }
         headline={
-          <span className="block text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+          <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.05] tracking-tight">
             It&rsquo;s Time to Do Epic <ShIFt />.
           </span>
         }
         subheadline=""
         description={
-          <span className="block space-y-4 text-base md:text-lg">
-            <span className="block text-2xl md:text-3xl font-poppins font-semibold italic text-gold mb-2">
+          <span className="block space-y-3 sm:space-y-4 text-base sm:text-lg leading-relaxed tracking-[0.005em]">
+            <span className="block text-xl sm:text-2xl md:text-[1.65rem] font-poppins font-semibold italic text-gold leading-snug tracking-tight mt-1 mb-3 sm:mb-4">
               Before momentum outruns alignment.
             </span>
             <span className="block">You aren&rsquo;t short on vision.</span>
@@ -158,7 +158,7 @@ export default function PPSHomeVerbatim() {
               building is aligned with what your organization is trying to
               become.
             </span>
-            <span className="block text-white">
+            <span className="block text-white pt-1">
               Painted Porch Strategies exists in the space before acceleration
               compounds complexity &ndash; where clarity, alignment, and
               sustainable movement begin.
