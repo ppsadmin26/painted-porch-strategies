@@ -577,8 +577,9 @@ export default function PPSHomeVerbatim() {
                   ))}
                 </div>
               </div>
-              <p className="text-center text-xs italic text-foreground/60 mt-3">
-                The methodology and roadmap we follow.
+              <p className="text-center text-sm md:text-base text-foreground/80 mt-4 max-w-2xl mx-auto leading-relaxed">
+                A way of thinking about and navigating intentional, sustainable
+                progress.
               </p>
             </div>
 
