@@ -274,13 +274,13 @@ export default function PPSHomeVerbatim() {
               operating rhythms that once worked well enough to get here.
             </p>
             <p>
-              And pushing harder in the wrong direction doesn&rsquo;t change
-              the direction. It simply compounds the cost of getting there.
+              And <strong className="font-bold">pushing harder in the wrong direction doesn&rsquo;t change
+              the direction</strong>. It simply compounds the cost of getting there.
             </p>
             <p>
               The frustration that surfaces in moments like this is rarely
-              random; it&rsquo;s a signal that clarity is needed before
-              committing to another direction that eventually leaves your
+              random; it&rsquo;s a signal that <strong className="font-bold">clarity is needed before
+              committing to another direction</strong> that eventually leaves your
               organization feeling fragmented, unfinished, or unsustainable.
             </p>
           </div>
