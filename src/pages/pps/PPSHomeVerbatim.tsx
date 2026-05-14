@@ -778,9 +778,9 @@ export default function PPSHomeVerbatim() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="rounded-xl p-6" style={{ backgroundColor: "#C9E4A6" }}>
-                <p className="font-poppins font-bold text-navy mb-2">If yes</p>
-                <p className="text-navy text-sm leading-relaxed">
+              <div className="rounded-xl p-6" style={{ backgroundColor: "#8FB94A" }}>
+                <p className="font-poppins font-bold text-white mb-2">If yes</p>
+                <p className="text-white text-sm leading-relaxed">
                   We get to work with you on what it takes to author and shape
                   your next shift.
                 </p>
