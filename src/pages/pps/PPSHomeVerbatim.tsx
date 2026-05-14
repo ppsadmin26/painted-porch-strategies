@@ -190,7 +190,7 @@ export default function PPSHomeVerbatim() {
       <section className="py-12 bg-muted">
         <div className="container max-w-6xl mx-auto px-6">
           <p className="text-center text-sm font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-8">
-            The questions leaders ask at 3AM
+            The 3AM questions leaders are asking
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             {threeAmQuestions.map((q, i) => (
