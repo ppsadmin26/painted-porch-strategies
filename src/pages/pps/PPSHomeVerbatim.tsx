@@ -649,9 +649,9 @@ export default function PPSHomeVerbatim() {
                   <h4 className="font-poppins font-semibold text-lg text-navy mt-1">
                     Essential Elements
                   </h4>
-                  <p className="text-foreground/80 text-sm mt-2 max-w-2xl mx-auto">
-                    The supporting behaviors and conditions that fortify each
-                    Pillar.
+                  <p className="text-foreground/80 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+                    The everyday human behaviors and conditions that influence
+                    whether change actually sticks.
                   </p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-2">
