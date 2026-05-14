@@ -1,0 +1,1 @@
+INSERT INTO page_status (path, status) VALUES ('/home-verbatim', 'draft') ON CONFLICT (path) DO NOTHING;
