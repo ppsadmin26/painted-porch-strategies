@@ -56,7 +56,7 @@ function HeroSection() {
       {/* Warm cream wash from bottom (porch-light glow) */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-t from-cream/20 via-transparent to-transparent"
+        className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-transparent"
       />
       {/* Gold hairline accent (top right) */}
       <div
