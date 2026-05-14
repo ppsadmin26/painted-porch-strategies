@@ -48,7 +48,7 @@ const stillTryingTo: { label: string; icon: typeof Target }[] = [
   { label: "Support your people", icon: HeartHandshake },
   { label: "Sustain continual growth", icon: TrendingUp },
   { label: "Maintain strategic alignment", icon: CompassIcon },
-  { label: "adapt in real time", icon: Zap },
+  { label: "Adapt and pivot in real time", icon: Zap },
 ];
 
 const phaseZeroBefore = [
