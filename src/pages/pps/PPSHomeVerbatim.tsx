@@ -507,7 +507,7 @@ export default function PPSHomeVerbatim() {
             </h2>
             <div className="space-y-4 text-lg text-foreground leading-relaxed">
               <p className="italic text-foreground/80">
-                Over time, we&rsquo;ve noticed a simple, complex pattern:
+                Over time, we&rsquo;ve noticed a simple, yet complex pattern:
               </p>
               <p>
                 Change is easier to start than it is to sustain, especially
