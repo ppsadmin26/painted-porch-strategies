@@ -148,16 +148,16 @@ export default function PPSHomeVerbatim() {
               You&rsquo;ve adopted and outgrown more than one.
             </span>
             <span className="block">
-              What&rsquo;s harder to find is clarity &ndash; the kind that
+              <span className="font-bold">What&rsquo;s harder to find is clarity</span> &ndash; the kind that
               comes before strategy hardens the direction, the announcement
               activates the initiative, and resources commit to what comes
               next.
             </span>
             <span className="block">
               Because the question usually isn&rsquo;t whether your
-              organization can execute. It&rsquo;s whether what you&rsquo;re
+              organization can execute. It&rsquo;s whether <span className="font-bold">what you&rsquo;re
               building is aligned with what your organization is trying to
-              become.
+              become</span>.
             </span>
             <span className="block text-white pt-1">
               Painted Porch Strategies exists in the space before acceleration
