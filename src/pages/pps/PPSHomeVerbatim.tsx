@@ -332,6 +332,20 @@ export default function PPSHomeVerbatim() {
             ))}
           </div>
 
+          <div className="space-y-4 text-lg text-white/90 max-w-2xl mx-auto leading-relaxed mb-10">
+            <p>
+              Because not every opportunity strengthens the organization
+              pursuing it, and not every change creates the conditions needed
+              to sustain what comes after it.
+            </p>
+            <p>
+              Some organizations become exhausted not from lack of effort, but
+              from the accumulated weight of unfinished work, competing
+              priorities, fragmented initiatives, and directions that never
+              fully aligned in the first place.
+            </p>
+          </div>
+
           <div className="text-center">
             <Link to="/phase-zero">
               <Button className="bg-gold border-2 border-gold text-navy hover:bg-white hover:border-white text-lg py-5 px-8 transition-colors">
