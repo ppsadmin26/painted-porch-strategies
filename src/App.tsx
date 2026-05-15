@@ -20,6 +20,7 @@ import PPSHomeVerbatim from "./pages/pps/PPSHomeVerbatim";
 import HeroPreviewV1 from "./pages/pps/HeroPreviewV1";
 import HeroPreviewV2 from "./pages/pps/HeroPreviewV2";
 import HeroPreviewV3 from "./pages/pps/HeroPreviewV3";
+import HeroPreviewCompare from "./pages/pps/HeroPreviewCompare";
 import PhaseZero from "./pages/pps/PhaseZero";
 import PPSAbout from "./pages/pps/PPSAbout";
 import PPSPricing from "./pages/pps/PPSPricing";
@@ -240,6 +241,7 @@ const App = () => (
             <Route path="hero-preview/v1" element={<HeroPreviewV1 />} />
             <Route path="hero-preview/v2" element={<HeroPreviewV2 />} />
             <Route path="hero-preview/v3" element={<HeroPreviewV3 />} />
+            <Route path="hero-preview/compare" element={<HeroPreviewCompare />} />
             <Route path="phase-zero" element={<PhaseZero />} />
             {/* About Section */}
             <Route path="about" element={<PPSAbout />} />
