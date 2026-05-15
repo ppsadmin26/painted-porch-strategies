@@ -1127,9 +1127,9 @@ export default function PPSHomeVerbatim() {
           <span className="block space-y-4 text-left md:text-center">
             <span className="block">The question isn&rsquo;t simply what comes next.</span>
             <span className="block">
-              The question is what your organization is becoming, and whether
+              The question is who your organization is becoming, and whether
               what you&rsquo;re about to commit to is the work that will
-              actually make that future possible.
+              actually make that shIFt happen.
             </span>
             <span className="block">
               Because organizations rarely struggle from a lack of effort.
