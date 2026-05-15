@@ -949,15 +949,15 @@ export default function PPSHomeVerbatim() {
           </div>
 
           {/* Promise callout */}
-          <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 shadow-xl">
+          <div className="bg-gradient-to-br from-lime/15 to-lime/5 text-navy rounded-2xl p-8 md:p-12 shadow-xl border border-lime/30">
             <div className="text-center mb-10">
               <span className="inline-block bg-gold text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
                 Our Painted Porch Promise
               </span>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6">
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-navy">
                 We aren&rsquo;t here to tell you yes.
               </h3>
-              <div className="space-y-4 text-base md:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+              <div className="space-y-4 text-base md:text-lg text-navy/80 max-w-2xl mx-auto leading-relaxed">
                 <p>
                   Most transformation initiatives are structured to build
                   momentum first, beginning with the question of what to do.
@@ -975,30 +975,30 @@ export default function PPSHomeVerbatim() {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="rounded-xl p-6" style={{ backgroundColor: "#8FB94A" }}>
-                <p className="font-poppins font-bold text-white mb-2">If yes</p>
-                <p className="text-white text-sm leading-relaxed">
+              <div className="bg-white rounded-xl p-6 border-l-4" style={{ borderLeftColor: "#8FB94A" }}>
+                <p className="font-poppins font-bold mb-2" style={{ color: "#8FB94A" }}>If yes</p>
+                <p className="text-navy/80 text-sm leading-relaxed">
                   We get to work with you on what it takes to author and shape
                   your next shift.
                 </p>
               </div>
-              <div className="bg-gold rounded-xl p-6">
-                <p className="font-poppins font-bold text-white mb-2">If not yet</p>
-                <p className="text-white text-sm leading-relaxed">
+              <div className="bg-white rounded-xl p-6 border-l-4 border-gold">
+                <p className="font-poppins font-bold text-gold mb-2">If not yet</p>
+                <p className="text-navy/80 text-sm leading-relaxed">
                   We tell you, and we provide a pathway to action.
                 </p>
               </div>
-              <div className="bg-raspberry rounded-xl p-6">
-                <p className="font-poppins font-bold text-white mb-2">If not us</p>
-                <p className="text-white text-sm leading-relaxed">
+              <div className="bg-white rounded-xl p-6 border-l-4 border-raspberry">
+                <p className="font-poppins font-bold text-raspberry mb-2">If not us</p>
+                <p className="text-navy/80 text-sm leading-relaxed">
                   We tell you that, too, and connect you with the right
                   partner for your stage and needs.
                 </p>
               </div>
             </div>
 
-            <p className="text-center text-white/85 text-base mt-10 max-w-2xl mx-auto">
-              <strong className="text-white">That&rsquo;s the Painted Porch promise:</strong>{" "}
+            <p className="text-center text-navy/80 text-base mt-10 max-w-2xl mx-auto">
+              <strong className="text-navy">That&rsquo;s the Painted Porch promise:</strong>{" "}
               full transparency about what will work, and the truth about what
               it takes to make it happen.
             </p>
