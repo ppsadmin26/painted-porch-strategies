@@ -918,7 +918,7 @@ export default function PPSHomeVerbatim() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="badge-gold mb-4 inline-block">Painted Porch Partnership</span>
+            <span className="badge-gold mb-4 inline-block">Strategic Advisory</span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
               For the moments that carry broader consequences.
             </h2>
