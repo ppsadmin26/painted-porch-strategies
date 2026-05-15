@@ -293,7 +293,7 @@ export default function PPSHomeVerbatim() {
       </section>
 
       {/* ============================================================ */}
-      {/* Phase Zero gradient CTA (verbatim)                            */}
+      {/* The porch is Open gradient CTA (verbatim)                    */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-gold/10 via-gold/5 to-white text-navy">
         <div className="container max-w-4xl mx-auto px-6">
