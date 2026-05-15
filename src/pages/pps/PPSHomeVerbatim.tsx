@@ -919,31 +919,41 @@ export default function PPSHomeVerbatim() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
               For the moments that carry broader consequences.
             </h2>
-            <div className="space-y-4 text-lg text-foreground leading-relaxed">
+            <div className="space-y-4 text-lg text-foreground leading-relaxed text-left">
               <p>
                 There are moments when the decisions in front of your
-                organization begin carrying broader consequences: for people,
-                systems, leadership, culture, capacity, operations, and the
-                future direction of the organization itself.
+                organization begin carrying broader consequences:{" "}
+                <span className="italic">
+                  for people, systems, leadership, culture, capacity,
+                  operations, and the future direction of the organization
+                  itself.
+                </span>
               </p>
-              <p>
-                Especially during periods of growth that feels increasingly
-                complex, strategic inflection, organizational stretching,
-                leadership alignment challenges, AI-era transformation
-                pressure, or questions about what sustainable evolution
-                actually looks like from here.
-              </p>
+              <p>Especially during periods of:</p>
+              <ul className="list-disc pl-6 space-y-2 marker:text-lime">
+                <li>growth that feels increasingly complex</li>
+                <li>moments of strategic inflection</li>
+                <li>organizational stretching</li>
+                <li>leadership alignment challenges</li>
+                <li>AI-era transformation pressure</li>
+                <li>questioning about what sustainable evolution actually looks like</li>
+              </ul>
               <p>
                 At that level, clarity becomes more than a leadership
                 preference and isn&rsquo;t solved by another quick-win
-                workshop, framework, or implementation sprint. It becomes part
-                of what determines whether your change strengthens alignment
-                or creates operational drift you later have to untangle.
+                workshop, framework, or implementation sprint.
               </p>
               <p>
-                We work alongside organizations during these kinds of moments:
-                inside the clarity, alignment, structure, and deeper design
-                conversations that shape what shIFt happens next.
+                It becomes part of what determines whether your change
+                strengthens alignment or creates operational drift you later
+                have to untangle.
+              </p>
+              <p>
+                We work alongside organizations during these kinds of moments:{" "}
+                <span className="italic">
+                  inside the clarity, alignment, structure, and deeper design
+                  conversations that shape what shIFt happens next.
+                </span>
               </p>
             </div>
           </div>
