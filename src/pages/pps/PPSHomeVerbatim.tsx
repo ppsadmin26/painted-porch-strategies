@@ -569,8 +569,29 @@ export default function PPSHomeVerbatim() {
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
-                    {/* Curve rises from bottom-left corner area up to road entry at right edge (y=100) */}
+                    {/* Mobile: match main road (sw=20, opacity=0.4, dash 6/6) */}
                     <path
+                      className="sm:hidden"
+                      d="M 0 40 C 40 40, 60 100, 100 100"
+                      fill="none"
+                      stroke="hsl(var(--primary))"
+                      strokeWidth="20"
+                      strokeLinecap="butt"
+                      opacity="0.4"
+                    />
+                    <path
+                      className="sm:hidden"
+                      d="M 0 40 C 40 40, 60 100, 100 100"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeDasharray="6 6"
+                      strokeLinecap="round"
+                      opacity="0.6"
+                    />
+                    {/* Desktop: match main road (sw=28, opacity=0.6, dash 8/8) */}
+                    <path
+                      className="hidden sm:block"
                       d="M 0 40 C 40 40, 60 100, 100 100"
                       fill="none"
                       stroke="hsl(var(--primary))"
@@ -579,6 +600,7 @@ export default function PPSHomeVerbatim() {
                       opacity="0.6"
                     />
                     <path
+                      className="hidden sm:block"
                       d="M 0 40 C 40 40, 60 100, 100 100"
                       fill="none"
                       stroke="white"
