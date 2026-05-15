@@ -22,8 +22,8 @@ export type CTAAction = {
   to?: string;
   /** External URL (use this OR to). Opens in new tab. */
   href?: string;
-  /** Visual style. "primary" = gold pill on navy. "secondary" = outline white. */
-  variant?: "primary" | "secondary";
+  /** Visual style. "primary" = gold. "secondary" = outline white. "bluedoor" = cobalt for /blue-door CTAs. */
+  variant?: "primary" | "secondary" | "bluedoor";
   /** Optional aria-label override for screen readers */
   ariaLabel?: string;
 };
@@ -51,13 +51,15 @@ const focusRingDark =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy";
 
 const baseAction =
-  "inline-flex items-center justify-center font-poppins font-semibold text-base px-8 py-4 rounded-full transition-colors shadow-xl " +
+  "inline-flex items-center justify-center font-poppins font-semibold text-base px-8 py-4 rounded-md transition-colors shadow-xl " +
   focusRingDark;
 
 const variantClasses: Record<NonNullable<CTAAction["variant"]>, string> = {
   primary: "bg-gold text-navy hover:bg-gold/90",
   secondary:
     "bg-transparent text-white border-2 border-white hover:bg-white hover:text-navy",
+  bluedoor:
+    "bg-bluedoor text-white border-2 border-bluedoor hover:bg-white hover:text-bluedoor",
 };
 
 function ActionEl({ action }: { action: CTAAction }) {
