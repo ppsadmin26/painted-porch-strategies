@@ -716,9 +716,9 @@ export default function PPSHomeVerbatim() {
                   <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Behavioral Bedrock
                   </p>
-                  <h4 className="font-poppins font-semibold text-lg text-navy mt-1">
+                  <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
                     Essential Elements
-                  </h4>
+                  </h3>
                   <p className="text-foreground/80 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
                     The everyday human behaviors and conditions that influence
                     whether change actually sticks.
