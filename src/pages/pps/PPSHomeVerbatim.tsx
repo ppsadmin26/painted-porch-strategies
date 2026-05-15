@@ -569,14 +569,24 @@ export default function PPSHomeVerbatim() {
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
-                    <g fill="none" strokeWidth="20" strokeLinecap="round" opacity="0.35">
-                      <path d="M 0 110 C 100 110, 220 95, 300 95" stroke="hsl(var(--primary))" />
-                      <path d="M 300 95 C 400 95, 520 110, 600 110" stroke="hsl(var(--raspberry))" />
-                      <path d="M 600 110 C 700 110, 820 95, 900 95" stroke="hsl(var(--gold))" />
-                      <path d="M 900 95 C 1000 95, 1120 105, 1200 100" stroke="hsl(var(--lime))" />
+                    <defs>
+                      <path
+                        id="ppsRoadMobile"
+                        d="M 0 100 C 100 100, 200 70, 300 100 S 500 130, 600 100 S 800 70, 900 100 S 1100 130, 1200 100"
+                      />
+                      <clipPath id="ppsRoadMobileClip1"><rect x="0" y="0" width="300" height="200" /></clipPath>
+                      <clipPath id="ppsRoadMobileClip2"><rect x="300" y="0" width="300" height="200" /></clipPath>
+                      <clipPath id="ppsRoadMobileClip3"><rect x="600" y="0" width="300" height="200" /></clipPath>
+                      <clipPath id="ppsRoadMobileClip4"><rect x="900" y="0" width="300" height="200" /></clipPath>
+                    </defs>
+                    <g fill="none" strokeWidth="20" strokeLinecap="butt" opacity="0.4">
+                      <use href="#ppsRoadMobile" stroke="hsl(var(--primary))" clipPath="url(#ppsRoadMobileClip1)" />
+                      <use href="#ppsRoadMobile" stroke="hsl(var(--raspberry))" clipPath="url(#ppsRoadMobileClip2)" />
+                      <use href="#ppsRoadMobile" stroke="hsl(var(--gold))" clipPath="url(#ppsRoadMobileClip3)" />
+                      <use href="#ppsRoadMobile" stroke="hsl(var(--lime))" clipPath="url(#ppsRoadMobileClip4)" />
                     </g>
-                    <path
-                      d="M 0 110 C 100 110, 220 95, 300 95 C 400 95, 520 110, 600 110 C 700 110, 820 95, 900 95 C 1000 95, 1120 105, 1200 100"
+                    <use
+                      href="#ppsRoadMobile"
                       fill="none"
                       stroke="white"
                       strokeWidth="1.5"
@@ -586,25 +596,31 @@ export default function PPSHomeVerbatim() {
                     />
                   </svg>
 
-                  {/* Desktop/tablet: full winding curve, segments aligned with boxes */}
+                  {/* Desktop/tablet: full winding curve, single smooth path split into 4 colored segments */}
                   <svg
                     viewBox="0 0 1200 200"
                     className="hidden sm:block absolute top-[42%] -translate-y-1/2 sm:-left-8 md:-left-12 right-0 w-auto h-[140%] pointer-events-none"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
-                    <g fill="none" strokeWidth="28" strokeLinecap="round" opacity="0.55">
-                      {/* P (Teal): 0–300 */}
-                      <path d="M 0 90 C 80 90, 160 60, 240 60 C 280 60, 290 100, 300 110" stroke="hsl(var(--primary))" />
-                      {/* A (Raspberry): 300–600 */}
-                      <path d="M 300 110 C 320 140, 380 150, 460 150 C 540 150, 580 90, 600 80" stroke="hsl(var(--raspberry))" />
-                      {/* T (Gold): 600–900 */}
-                      <path d="M 600 80 C 620 70, 680 60, 760 60 C 840 60, 880 130, 900 140" stroke="hsl(var(--gold))" />
-                      {/* H (Lime): 900–1200 */}
-                      <path d="M 900 140 C 940 150, 1020 130, 1100 90 C 1150 65, 1180 60, 1200 60" stroke="hsl(var(--lime))" />
+                    <defs>
+                      <path
+                        id="ppsRoadDesktop"
+                        d="M 0 100 C 100 100, 200 50, 300 100 S 500 150, 600 100 S 800 50, 900 100 S 1100 150, 1200 100"
+                      />
+                      <clipPath id="ppsRoadDesktopClip1"><rect x="0" y="0" width="300" height="200" /></clipPath>
+                      <clipPath id="ppsRoadDesktopClip2"><rect x="300" y="0" width="300" height="200" /></clipPath>
+                      <clipPath id="ppsRoadDesktopClip3"><rect x="600" y="0" width="300" height="200" /></clipPath>
+                      <clipPath id="ppsRoadDesktopClip4"><rect x="900" y="0" width="300" height="200" /></clipPath>
+                    </defs>
+                    <g fill="none" strokeWidth="28" strokeLinecap="butt" opacity="0.6">
+                      <use href="#ppsRoadDesktop" stroke="hsl(var(--primary))" clipPath="url(#ppsRoadDesktopClip1)" />
+                      <use href="#ppsRoadDesktop" stroke="hsl(var(--raspberry))" clipPath="url(#ppsRoadDesktopClip2)" />
+                      <use href="#ppsRoadDesktop" stroke="hsl(var(--gold))" clipPath="url(#ppsRoadDesktopClip3)" />
+                      <use href="#ppsRoadDesktop" stroke="hsl(var(--lime))" clipPath="url(#ppsRoadDesktopClip4)" />
                     </g>
-                    <path
-                      d="M 0 90 C 80 90, 160 60, 240 60 C 280 60, 290 100, 300 110 C 320 140, 380 150, 460 150 C 540 150, 580 90, 600 80 C 620 70, 680 60, 760 60 C 840 60, 880 130, 900 140 C 940 150, 1020 130, 1100 90 C 1150 65, 1180 60, 1200 60"
+                    <use
+                      href="#ppsRoadDesktop"
                       fill="none"
                       stroke="white"
                       strokeWidth="2"
