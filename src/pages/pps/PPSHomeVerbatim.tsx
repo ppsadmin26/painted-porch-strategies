@@ -962,7 +962,7 @@ export default function PPSHomeVerbatim() {
           </div>
 
           {/* Promise callout */}
-          <div className="bg-gradient-to-br from-lime/15 to-lime/5 text-navy rounded-2xl p-8 md:p-12 shadow-xl border border-lime/30">
+          <div className="bg-gradient-to-br from-navy/10 to-navy/5 text-navy rounded-2xl p-8 md:p-12 shadow-xl border border-navy/20">
             <div className="text-center mb-10">
               <span className="inline-block bg-gold text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
                 Our Painted Porch Promise
