@@ -13,6 +13,9 @@ import {
   TrendingUp,
   Compass as CompassIcon,
   Zap,
+  FileText,
+  Wrench,
+  Mic,
 } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
