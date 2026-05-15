@@ -547,34 +547,37 @@ export default function PPSHomeVerbatim() {
                   <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Way Forward
                   </p>
+                  <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
+                    Your P.A.T.H. to Sustainable Change
+                  </h3>
                   <p className="text-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto leading-relaxed">
                     A way of thinking about and navigating intentional, sustainable
                     progress.
                   </p>
                 </div>
 
-                {/* Steps with winding road behind */}
+                {/* Steps with winding road behind, extending edge-to-edge of the card */}
                 <div className="relative pb-10 md:pb-14 mb-2">
                   <svg
-                    viewBox="0 0 1000 200"
-                    className="absolute inset-x-0 top-1/2 -translate-y-1/2 w-full h-[140%] pointer-events-none"
+                    viewBox="0 0 1200 200"
+                    className="absolute top-1/2 -translate-y-1/2 -left-6 -right-6 sm:-left-8 sm:-right-8 md:-left-12 md:-right-12 w-auto h-[140%] pointer-events-none"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
-                    <g fill="none" strokeWidth="28" strokeLinecap="round">
-                      <path d="M 20 60 C 120 60, 170 150, 260 150" stroke="hsl(var(--primary))" opacity="0.85" />
-                      <path d="M 260 150 C 350 150, 400 60, 500 60" stroke="hsl(var(--raspberry))" opacity="0.85" />
-                      <path d="M 500 60 C 600 60, 650 150, 740 150" stroke="hsl(var(--gold))" opacity="0.85" />
-                      <path d="M 740 150 C 840 150, 900 90, 980 60" stroke="hsl(var(--lime))" opacity="0.85" />
+                    <g fill="none" strokeWidth="28" strokeLinecap="round" opacity="0.55">
+                      <path d="M 0 90 C 60 90, 130 60, 220 60 C 310 60, 360 150, 440 150" stroke="hsl(var(--primary))" />
+                      <path d="M 440 150 C 520 150, 570 60, 660 60" stroke="hsl(var(--raspberry))" />
+                      <path d="M 660 60 C 750 60, 800 150, 880 150" stroke="hsl(var(--gold))" />
+                      <path d="M 880 150 C 970 150, 1040 90, 1120 70 C 1170 58, 1190 60, 1200 60" stroke="hsl(var(--lime))" />
                     </g>
                     <path
-                      d="M 20 60 C 120 60, 170 150, 260 150 C 350 150, 400 60, 500 60 C 600 60, 650 150, 740 150 C 840 150, 900 90, 980 60"
+                      d="M 0 90 C 60 90, 130 60, 220 60 C 310 60, 360 150, 440 150 C 520 150, 570 60, 660 60 C 750 60, 800 150, 880 150 C 970 150, 1040 90, 1120 70 C 1170 58, 1190 60, 1200 60"
                       fill="none"
                       stroke="white"
                       strokeWidth="2"
                       strokeDasharray="8 8"
                       strokeLinecap="round"
-                      opacity="0.9"
+                      opacity="0.7"
                     />
                   </svg>
 
