@@ -1113,45 +1113,6 @@ export default function PPSHomeVerbatim() {
             ))}
           </div>
 
-          {posts && posts.length > 0 && (
-            <div className="grid md:grid-cols-3 gap-8">
-              {posts.map((post) => (
-                <Link
-                  key={post.id}
-                  to={`/resources/insights/${post.slug}`}
-                  className="group block"
-                >
-                  {post.cover_image_url ? (
-                    <div className="aspect-[16/10] overflow-hidden rounded-xl mb-4 bg-muted">
-                      <img
-                        src={post.cover_image_url}
-                        alt={post.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                  ) : (
-                    <div className="aspect-[16/10] mb-4 bg-muted rounded-xl flex items-center justify-center">
-                      <Lightbulb className="w-10 h-10 text-primary/40" />
-                    </div>
-                  )}
-                  {post.categories?.[0] && (
-                    <p className="text-xs text-primary font-semibold uppercase tracking-wide mb-2">
-                      {post.categories[0].title}
-                    </p>
-                  )}
-                  <h3 className="font-poppins font-semibold text-lg text-navy group-hover:text-primary transition-colors leading-snug mb-2">
-                    {post.title}
-                  </h3>
-                  {post.excerpt && (
-                    <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                  )}
-                </Link>
-              ))}
-            </div>
-          )}
         </div>
       </section>
 
