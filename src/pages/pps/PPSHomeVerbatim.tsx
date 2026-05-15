@@ -562,9 +562,34 @@ export default function PPSHomeVerbatim() {
 
                 {/* Steps with winding road behind, extending edge-to-edge of the card */}
                 <div className="relative pb-10 md:pb-14 mb-2">
+                  {/* Mobile: flatter curve, lighter opacity, thinner stroke */}
                   <svg
                     viewBox="0 0 1200 200"
-                    className="absolute top-1/2 -translate-y-1/2 -left-6 -right-6 sm:-left-8 sm:-right-8 md:-left-12 md:-right-12 w-auto h-[140%] pointer-events-none"
+                    className="sm:hidden absolute top-1/2 -translate-y-1/2 -left-6 -right-6 w-auto h-[120%] pointer-events-none"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                  >
+                    <g fill="none" strokeWidth="20" strokeLinecap="round" opacity="0.35">
+                      <path d="M 0 110 C 100 110, 200 95, 320 95" stroke="hsl(var(--primary))" />
+                      <path d="M 320 95 C 440 95, 540 110, 640 110" stroke="hsl(var(--raspberry))" />
+                      <path d="M 640 110 C 740 110, 820 95, 920 95" stroke="hsl(var(--gold))" />
+                      <path d="M 920 95 C 1020 95, 1120 105, 1200 100" stroke="hsl(var(--lime))" />
+                    </g>
+                    <path
+                      d="M 0 110 C 100 110, 200 95, 320 95 C 440 95, 540 110, 640 110 C 740 110, 820 95, 920 95 C 1020 95, 1120 105, 1200 100"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="1.5"
+                      strokeDasharray="6 6"
+                      strokeLinecap="round"
+                      opacity="0.6"
+                    />
+                  </svg>
+
+                  {/* Desktop/tablet: full winding curve */}
+                  <svg
+                    viewBox="0 0 1200 200"
+                    className="hidden sm:block absolute top-1/2 -translate-y-1/2 sm:-left-8 sm:-right-8 md:-left-12 md:-right-12 w-auto h-[140%] pointer-events-none"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
