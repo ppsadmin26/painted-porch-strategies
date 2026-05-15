@@ -881,11 +881,6 @@ export default function PPSHomeVerbatim() {
 
             </div>
 
-            {/* Connector: blueprint card → Fortified Porch */}
-            <div className="flex justify-center" aria-hidden="true">
-              <div className="w-px h-10 border-l-2 border-dashed border-gold/50" />
-            </div>
-
             {/* LAYER 4: The Fortified Porch (the resulting structure) */}
             <div>
               <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 text-center shadow-xl border-b-4 border-gold">
