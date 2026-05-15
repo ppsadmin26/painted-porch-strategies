@@ -176,7 +176,7 @@ export default function PPSHomeVerbatim() {
               become</span>.
             </span>
             <span className="block text-white pt-1">
-              Painted Porch Strategies exists in the space before acceleration
+              The Painted Porch exists in the space before acceleration
               compounds complexity &ndash; where clarity, alignment, and
               sustainable movement begin.
             </span>
