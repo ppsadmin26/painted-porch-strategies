@@ -1125,23 +1125,23 @@ export default function PPSHomeVerbatim() {
         }
         description={
           <span className="block space-y-4 text-left md:text-center">
-            <span className="block">The question isn&rsquo;t simply what comes next.</span>
+            <span className="block">The question isn&rsquo;t simply what's needed next.</span>
             <span className="block">
-              The question is who your organization is becoming, and whether
-              what you&rsquo;re about to commit to is the work that will
-              actually make that shIFt happen.
+              It's who your organization is becoming, and whether what
+              you&rsquo;re about to commit to is the work that will actually
+              make that shIFt happen.
             </span>
             <span className="block">
               Because organizations rarely struggle from a lack of effort, but
               from fragmented priorities, unfinished work, and momentum
-              committed before clarity is fully formed.
+              committed before clarity and identify are fully formed.
             </span>
             <span className="block">
               The future will keep asking your organization to evolve.
             </span>
             <span className="block">
-              The question is whether you&rsquo;ll do it in ways you can
-              actually sustain together.
+              The answer is whether you&rsquo;ll ignite, amplify, and embody
+              what it takes to make it not just happen, but last.
             </span>
           </span>
         }
