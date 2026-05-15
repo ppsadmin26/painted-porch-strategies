@@ -128,7 +128,7 @@ export default function PPSHomeVerbatim() {
   useDocumentSeo({
     title: "Painted Porch Strategies | It's Time to Do Epic ShIFt",
     description:
-      "Phase Zero is the work before the work. Find clarity before momentum outruns alignment.",
+      "The porch is Open is the work before the work. Find clarity before momentum outruns alignment.",
   });
 
   const { data: posts } = useFeaturedPosts(3);
@@ -141,7 +141,7 @@ export default function PPSHomeVerbatim() {
       <TierHeroSection
         customBadge={
           <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
-            Phase Zero<sup className="text-[0.55em] align-super">™</sup> &middot; The Work Before the Work
+            The porch is Open &middot; The Work Before the Work
           </span>
         }
         headline={
@@ -299,7 +299,7 @@ export default function PPSHomeVerbatim() {
         <div className="container max-w-4xl mx-auto px-6">
           <div className="text-center mb-10">
             <span className="inline-block bg-navy text-white font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
-              Phase Zero
+              The porch is Open
             </span>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-navy">
               The clarity that accelerates your next big <ShIFt />.
@@ -313,7 +313,7 @@ export default function PPSHomeVerbatim() {
           </div>
 
           <p className="text-lg text-foreground mb-3 max-w-2xl mx-auto leading-relaxed">
-            Phase Zero exists to create clarity before your next major
+            The porch is Open exists to create clarity before your next major
             decision hardens into execution.
           </p>
           <p className="text-lg text-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
@@ -354,7 +354,7 @@ export default function PPSHomeVerbatim() {
           <div className="text-center">
             <Link to="/phase-zero">
               <Button className="bg-navy border-2 border-navy text-white hover:bg-white hover:text-navy text-lg py-5 px-8 transition-colors">
-                Explore Phase Zero
+                Explore the Porch
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
@@ -1117,7 +1117,7 @@ export default function PPSHomeVerbatim() {
       {/* ============================================================ */}
       <ParallaxCTA
         backgroundImage={homeHero}
-        eyebrow="Phase Zero™"
+        eyebrow="The porch is Open"
         headline={
           <>
             Step onto the porch. Begin the <span className="text-raspberry">IF</span>.
