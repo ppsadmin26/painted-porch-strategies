@@ -817,15 +817,31 @@ export default function PPSHomeVerbatim() {
                 </div>
               </div>
 
-              {/* Connector: Pillars → Bedrock */}
-              <div className="flex justify-center md:hidden my-6" aria-hidden="true">
-                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-              </div>
-              <div className="hidden md:flex justify-around px-16 my-6" aria-hidden="true">
-                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-                <div className="w-px h-10 border-l-2 border-dashed border-navy/20" />
-              </div>
+              {/* Connector: Pillars → Bedrock (mini pillars) */}
+              {(() => {
+                const MiniPillar = () => (
+                  <div className="flex flex-col items-center" aria-hidden="true">
+                    {/* Capital (top) */}
+                    <div className="w-4 h-1.5 rounded-sm bg-navy/30" />
+                    {/* Shaft */}
+                    <div className="w-2 h-8 bg-gradient-to-b from-navy/25 to-navy/15" />
+                    {/* Base */}
+                    <div className="w-5 h-1.5 rounded-sm bg-navy/30" />
+                  </div>
+                );
+                return (
+                  <>
+                    <div className="flex justify-center md:hidden my-6" aria-hidden="true">
+                      <MiniPillar />
+                    </div>
+                    <div className="hidden md:flex justify-around px-16 my-6" aria-hidden="true">
+                      <MiniPillar />
+                      <MiniPillar />
+                      <MiniPillar />
+                    </div>
+                  </>
+                );
+              })()}
 
               {/* LAYER 3: Essential Elements */}
               <div className="bg-muted/50 border border-navy/5 rounded-2xl p-6 md:p-8">
