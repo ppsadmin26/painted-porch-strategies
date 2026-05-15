@@ -1132,11 +1132,9 @@ export default function PPSHomeVerbatim() {
               actually make that shIFt happen.
             </span>
             <span className="block">
-              Because organizations rarely struggle from a lack of effort.
-            </span>
-            <span className="block">
-              More often, they struggle from fragmented priorities, unfinished
-              work, and momentum committed before clarity is fully formed.
+              Because organizations rarely struggle from a lack of effort, but
+              from fragmented priorities, unfinished work, and momentum
+              committed before clarity is fully formed.
             </span>
             <span className="block">
               The future will keep asking your organization to evolve.
