@@ -1027,25 +1027,93 @@ export default function PPSHomeVerbatim() {
       {/* ============================================================ */}
       {/* Insights                                                      */}
       {/* ============================================================ */}
-      {posts && posts.length > 0 && (
-        <section className="py-16 md:py-24 bg-white">
-          <div className="container max-w-6xl mx-auto px-6">
-            <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
-              <div>
-                <span className="badge-gold mb-3 inline-block">Insights, Resources &amp; Conversations</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-navy">
-                  Some conversations stay with us long after they end.
-                </h2>
-              </div>
-              <Link
-                to="/resources"
-                className="text-primary font-semibold hover:underline inline-flex items-center"
-              >
-                Explore Insights
-                <ArrowRight className="ml-1 w-4 h-4" />
-              </Link>
-            </div>
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center mb-10 max-w-3xl mx-auto">
+            <span className="badge-gold mb-3 inline-block">Thoughts from the Porch</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
+              Our Research, Insights &amp; Resources
+            </h2>
+          </div>
 
+          <div className="space-y-4 text-lg text-foreground leading-relaxed text-left max-w-3xl mx-auto mb-10">
+            <p>Some conversations stay with us long after they end.</p>
+            <p>
+              A question someone asked in a workshop.
+              <br />
+              A tension pattern that keeps resurfacing across organizations.
+              <br />
+              An &lsquo;ah ha&rsquo; we couldn&rsquo;t stop thinking about on a long
+              drive, in the shower, or in conversation on our porch.
+            </p>
+            <p>
+              Painted Porch explores the realities many organizations and
+              leaders are navigating through:
+            </p>
+            <ul className="list-disc pl-6 space-y-2 marker:text-lime">
+              <li>essays and reflections</li>
+              <li>strategic conversations</li>
+              <li>practical tools and resources</li>
+              <li>speaking engagements and media appearances</li>
+              <li>long-form discussions</li>
+              <li>observations from inside the work itself</li>
+            </ul>
+            <p>
+              So that we have a shared language for what we&rsquo;ve all been
+              sensing and seeking to solve, together.
+            </p>
+          </div>
+
+          {/* Three callouts */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {[
+              {
+                to: "/resources/insights",
+                title: "Insights & Articles",
+                desc: "Essays and reflections from the Porch.",
+                Icon: FileText,
+                accent: "#8FB94A",
+                tw: "text-lime",
+              },
+              {
+                to: "/resources/free",
+                title: "Resources & Tools",
+                desc: "Practical tools you can put to work today.",
+                Icon: Wrench,
+                accent: "hsl(var(--gold))",
+                tw: "text-gold",
+              },
+              {
+                to: "/media",
+                title: "Conversations & Media",
+                desc: "Speaking, interviews, and long-form discussions.",
+                Icon: Mic,
+                accent: "hsl(var(--raspberry))",
+                tw: "text-raspberry",
+              },
+            ].map(({ to, title, desc, Icon, accent, tw }) => (
+              <Link
+                key={to}
+                to={to}
+                className="group bg-white rounded-xl p-6 border-l-4 border border-navy/10 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
+                style={{ borderLeftColor: accent }}
+              >
+                <Icon className={`w-7 h-7 mb-3 ${tw}`} />
+                <h3 className={`font-poppins font-bold text-lg mb-1 ${tw}`}>
+                  {title}
+                </h3>
+                <p className="text-navy/80 text-sm leading-relaxed mb-3">
+                  {desc}
+                </p>
+                <span className={`inline-flex items-center text-sm font-semibold ${tw}`}>
+                  Explore
+                  <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          {posts && posts.length > 0 && (
             <div className="grid md:grid-cols-3 gap-8">
               {posts.map((post) => (
                 <Link
@@ -1083,9 +1151,10 @@ export default function PPSHomeVerbatim() {
                 </Link>
               ))}
             </div>
-          </div>
-        </section>
-      )}
+          )}
+        </div>
+      </section>
+
 
       {/* ============================================================ */}
       {/* Final CTA                                                     */}
