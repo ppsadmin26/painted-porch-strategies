@@ -560,12 +560,12 @@ export default function PPSHomeVerbatim() {
                   </p>
                 </div>
 
-                {/* Steps with winding road behind, contained to the boxes' width */}
-                <div className="relative pb-10 md:pb-14 mb-2 overflow-hidden">
+                {/* Steps with winding road behind, road extends to the white card edges */}
+                <div className="relative pb-10 md:pb-14 mb-2">
                   {/* Mobile: flatter curve, lighter opacity, thinner stroke */}
                   <svg
                     viewBox="0 0 1200 200"
-                    className="sm:hidden absolute top-[42%] -translate-y-1/2 inset-x-0 w-full h-[120%] pointer-events-none"
+                    className="sm:hidden absolute top-[42%] -translate-y-1/2 -left-6 -right-6 w-auto h-[120%] pointer-events-none"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
@@ -599,7 +599,7 @@ export default function PPSHomeVerbatim() {
                   {/* Desktop/tablet: full winding curve, single smooth path split into 4 colored segments */}
                   <svg
                     viewBox="0 0 1200 200"
-                    className="hidden sm:block absolute top-[42%] -translate-y-1/2 inset-x-0 w-full h-[140%] pointer-events-none"
+                    className="hidden sm:block absolute top-[42%] -translate-y-1/2 -left-8 -right-8 md:-left-12 md:-right-12 w-auto h-[140%] pointer-events-none"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
