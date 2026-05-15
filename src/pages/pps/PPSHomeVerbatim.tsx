@@ -576,7 +576,7 @@ export default function PPSHomeVerbatim() {
                       fill="none"
                       stroke="hsl(var(--primary))"
                       strokeWidth="20"
-                      strokeLinecap="butt"
+                      strokeLinecap="round"
                       opacity="0.4"
                     />
                     <path
@@ -596,7 +596,7 @@ export default function PPSHomeVerbatim() {
                       fill="none"
                       stroke="hsl(var(--primary))"
                       strokeWidth="28"
-                      strokeLinecap="butt"
+                      strokeLinecap="round"
                       opacity="0.6"
                     />
                     <path
@@ -624,7 +624,7 @@ export default function PPSHomeVerbatim() {
                       fill="none"
                       stroke="hsl(var(--lime))"
                       strokeWidth="20"
-                      strokeLinecap="butt"
+                      strokeLinecap="round"
                       opacity="0.4"
                     />
                     <path
@@ -644,7 +644,7 @@ export default function PPSHomeVerbatim() {
                       fill="none"
                       stroke="hsl(var(--lime))"
                       strokeWidth="28"
-                      strokeLinecap="butt"
+                      strokeLinecap="round"
                       opacity="0.6"
                     />
                     <path
