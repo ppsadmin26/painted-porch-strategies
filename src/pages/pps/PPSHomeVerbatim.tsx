@@ -565,7 +565,7 @@ export default function PPSHomeVerbatim() {
                   {/* Mobile: flatter curve, lighter opacity, thinner stroke */}
                   <svg
                     viewBox="0 0 1200 200"
-                    className="sm:hidden absolute top-[42%] -translate-y-1/2 -left-6 right-0 w-auto h-[120%] pointer-events-none"
+                    className="sm:hidden absolute top-[42%] -translate-y-1/2 inset-x-0 w-full h-[120%] pointer-events-none"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
