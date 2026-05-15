@@ -1125,7 +1125,7 @@ export default function PPSHomeVerbatim() {
         }
         description={
           <span className="block space-y-4 text-left md:text-center">
-            <span className="block">The question is not simply what comes next.</span>
+            <span className="block">The question isn&rsquo;t simply what comes next.</span>
             <span className="block">
               The question is what your organization is becoming, and whether
               what you&rsquo;re about to commit to is the work that will
