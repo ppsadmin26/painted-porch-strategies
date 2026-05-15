@@ -1127,8 +1127,8 @@ export default function PPSHomeVerbatim() {
           <span className="block space-y-4 text-left md:text-center">
             <span className="block">The question isn&rsquo;t simply what's needed next.</span>
             <span className="block">
-              It's who your organization is becoming, and whether what
-              you&rsquo;re about to commit to is the work that will actually
+              It's who your organization is becoming, and IF what
+              you&rsquo;re about to commit to is the work will actually
               make that shIFt happen.
             </span>
             <span className="block">
