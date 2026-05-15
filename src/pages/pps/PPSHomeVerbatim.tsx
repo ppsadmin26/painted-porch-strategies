@@ -354,7 +354,7 @@ export default function PPSHomeVerbatim() {
           <div className="text-center">
             <Link to="/phase-zero">
               <Button className="bg-navy border-2 border-navy text-white hover:bg-white hover:text-navy text-lg py-5 px-8 transition-colors">
-                Explore Phase Zero
+                Explore Phase Zero™
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
