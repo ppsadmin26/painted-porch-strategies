@@ -293,13 +293,13 @@ export default function PPSHomeVerbatim() {
       </section>
 
       {/* ============================================================ */}
-      {/* The porch is Open gradient CTA (verbatim)                    */}
+      {/* Phase Zero gradient CTA (verbatim)                            */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-gold/10 via-gold/5 to-white text-navy">
         <div className="container max-w-4xl mx-auto px-6">
           <div className="text-center mb-10">
             <span className="inline-block bg-navy text-white font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
-              The porch is Open
+              Phase Zero™
             </span>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-navy">
               The clarity that accelerates your next big <ShIFt />.
