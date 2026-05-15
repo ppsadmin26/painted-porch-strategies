@@ -565,18 +565,18 @@ export default function PPSHomeVerbatim() {
                   {/* Mobile: flatter curve, lighter opacity, thinner stroke */}
                   <svg
                     viewBox="0 0 1200 200"
-                    className="sm:hidden absolute top-1/2 -translate-y-1/2 -left-6 -right-6 w-auto h-[120%] pointer-events-none"
+                    className="sm:hidden absolute top-[42%] -translate-y-1/2 -left-6 right-0 w-auto h-[120%] pointer-events-none"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
                     <g fill="none" strokeWidth="20" strokeLinecap="round" opacity="0.35">
-                      <path d="M 0 110 C 100 110, 200 95, 320 95" stroke="hsl(var(--primary))" />
-                      <path d="M 320 95 C 440 95, 540 110, 640 110" stroke="hsl(var(--raspberry))" />
-                      <path d="M 640 110 C 740 110, 820 95, 920 95" stroke="hsl(var(--gold))" />
-                      <path d="M 920 95 C 1020 95, 1120 105, 1200 100" stroke="hsl(var(--lime))" />
+                      <path d="M 0 110 C 100 110, 220 95, 300 95" stroke="hsl(var(--primary))" />
+                      <path d="M 300 95 C 400 95, 520 110, 600 110" stroke="hsl(var(--raspberry))" />
+                      <path d="M 600 110 C 700 110, 820 95, 900 95" stroke="hsl(var(--gold))" />
+                      <path d="M 900 95 C 1000 95, 1120 105, 1200 100" stroke="hsl(var(--lime))" />
                     </g>
                     <path
-                      d="M 0 110 C 100 110, 200 95, 320 95 C 440 95, 540 110, 640 110 C 740 110, 820 95, 920 95 C 1020 95, 1120 105, 1200 100"
+                      d="M 0 110 C 100 110, 220 95, 300 95 C 400 95, 520 110, 600 110 C 700 110, 820 95, 900 95 C 1000 95, 1120 105, 1200 100"
                       fill="none"
                       stroke="white"
                       strokeWidth="1.5"
@@ -586,21 +586,25 @@ export default function PPSHomeVerbatim() {
                     />
                   </svg>
 
-                  {/* Desktop/tablet: full winding curve */}
+                  {/* Desktop/tablet: full winding curve, segments aligned with boxes */}
                   <svg
                     viewBox="0 0 1200 200"
-                    className="hidden sm:block absolute top-1/2 -translate-y-1/2 sm:-left-8 sm:-right-8 md:-left-12 md:-right-12 w-auto h-[140%] pointer-events-none"
+                    className="hidden sm:block absolute top-[42%] -translate-y-1/2 sm:-left-8 md:-left-12 right-0 w-auto h-[140%] pointer-events-none"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
                     <g fill="none" strokeWidth="28" strokeLinecap="round" opacity="0.55">
-                      <path d="M 0 90 C 60 90, 130 60, 220 60 C 310 60, 360 150, 440 150" stroke="hsl(var(--primary))" />
-                      <path d="M 440 150 C 520 150, 570 60, 660 60" stroke="hsl(var(--raspberry))" />
-                      <path d="M 660 60 C 750 60, 800 150, 880 150" stroke="hsl(var(--gold))" />
-                      <path d="M 880 150 C 970 150, 1040 90, 1120 70 C 1170 58, 1190 60, 1200 60" stroke="hsl(var(--lime))" />
+                      {/* P (Teal): 0–300 */}
+                      <path d="M 0 90 C 80 90, 160 60, 240 60 C 280 60, 290 100, 300 110" stroke="hsl(var(--primary))" />
+                      {/* A (Raspberry): 300–600 */}
+                      <path d="M 300 110 C 320 140, 380 150, 460 150 C 540 150, 580 90, 600 80" stroke="hsl(var(--raspberry))" />
+                      {/* T (Gold): 600–900 */}
+                      <path d="M 600 80 C 620 70, 680 60, 760 60 C 840 60, 880 130, 900 140" stroke="hsl(var(--gold))" />
+                      {/* H (Lime): 900–1200 */}
+                      <path d="M 900 140 C 940 150, 1020 130, 1100 90 C 1150 65, 1180 60, 1200 60" stroke="hsl(var(--lime))" />
                     </g>
                     <path
-                      d="M 0 90 C 60 90, 130 60, 220 60 C 310 60, 360 150, 440 150 C 520 150, 570 60, 660 60 C 750 60, 800 150, 880 150 C 970 150, 1040 90, 1120 70 C 1170 58, 1190 60, 1200 60"
+                      d="M 0 90 C 80 90, 160 60, 240 60 C 280 60, 290 100, 300 110 C 320 140, 380 150, 460 150 C 540 150, 580 90, 600 80 C 620 70, 680 60, 760 60 C 840 60, 880 130, 900 140 C 940 150, 1020 130, 1100 90 C 1150 65, 1180 60, 1200 60"
                       fill="none"
                       stroke="white"
                       strokeWidth="2"
