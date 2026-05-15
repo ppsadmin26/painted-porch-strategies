@@ -170,9 +170,9 @@ export default function PPSHomeVerbatim() {
               next.
             </span>
             <span className="block">
-              Because the question usually isn&rsquo;t whether your
-              organization can execute. It&rsquo;s whether <span className="font-bold">what you&rsquo;re
-              building is aligned with what your organization is trying to
+              Because the question usually isn&rsquo;t IF your
+              organization can execute. It&rsquo;s if <span className="font-bold">what you&rsquo;re
+              building is aligned with who your organization is trying to
               become</span>.
             </span>
             <span className="block text-white pt-1">
