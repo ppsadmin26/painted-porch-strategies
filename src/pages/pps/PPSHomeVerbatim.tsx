@@ -313,7 +313,7 @@ export default function PPSHomeVerbatim() {
           </div>
 
           <p className="text-lg text-foreground mb-3 max-w-2xl mx-auto leading-relaxed">
-            The porch is Open exists to create clarity before your next major
+            Phase Zero™ exists to create clarity before your next major
             decision hardens into execution.
           </p>
           <p className="text-lg text-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
