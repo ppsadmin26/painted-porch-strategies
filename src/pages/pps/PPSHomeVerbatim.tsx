@@ -922,7 +922,7 @@ export default function PPSHomeVerbatim() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
               For the moments that carry broader consequences.
             </h2>
-            <div className="space-y-4 text-lg text-foreground leading-relaxed text-left">
+            <div className="text-lg text-foreground leading-relaxed text-left">
               <p>
                 There are moments when the decisions in front of your
                 organization begin carrying broader consequences:{" "}
@@ -932,7 +932,7 @@ export default function PPSHomeVerbatim() {
                   itself.
                 </span>
               </p>
-              <p>Especially during periods of:</p>
+              <p className="mt-6 mb-3">Especially during periods of:</p>
               <ul className="list-disc pl-10 md:pl-12 space-y-2 marker:text-foreground pr-2">
                 <li>growth that feels increasingly complex</li>
                 <li>moments of strategic inflection</li>
@@ -941,17 +941,17 @@ export default function PPSHomeVerbatim() {
                 <li>AI-era transformation pressure</li>
                 <li>questioning about what sustainable evolution actually looks like</li>
               </ul>
-              <p>
+              <p className="mt-8">
                 At that level, clarity becomes more than a leadership
                 preference and isn&rsquo;t solved by another quick-win
                 workshop, framework, or implementation sprint.
               </p>
-              <p>
+              <p className="mt-6">
                 It becomes part of what determines whether your change
                 strengthens alignment or creates operational drift you later
                 have to untangle.
               </p>
-              <p>
+              <p className="mt-6">
                 We work alongside organizations during these kinds of moments:{" "}
                 <span className="italic">
                   inside the clarity, alignment, structure, and deeper design
