@@ -615,10 +615,10 @@ export default function PPSHomeVerbatim() {
                     aria-labelledby="path-heading"
                   >
                     {[
-                      { letter: "P", word: "Prepare", slug: "prepare", border: "border-primary", text: "text-primary" },
-                      { letter: "A", word: "Align", slug: "align", border: "border-raspberry", text: "text-raspberry" },
-                      { letter: "T", word: "Take Off", slug: "take-off", border: "border-gold", text: "text-gold" },
-                      { letter: "H", word: "Habits", slug: "habits", border: "border-lime", text: "text-lime" },
+                      { letter: "P", word: "Prepare", slug: "prepare", border: "border-primary", text: "text-primary", bg: "bg-primary", dot: "bg-primary" },
+                      { letter: "A", word: "Align", slug: "align", border: "border-raspberry", text: "text-raspberry", bg: "bg-raspberry", dot: "bg-raspberry" },
+                      { letter: "T", word: "Take Off", slug: "take-off", border: "border-gold", text: "text-gold", bg: "bg-gold", dot: "bg-gold" },
+                      { letter: "H", word: "Habits", slug: "habits", border: "border-lime", text: "text-lime", bg: "bg-lime", dot: "bg-lime" },
                     ].map((step, idx, arr) => (
                       <li
                         key={step.letter}
@@ -626,12 +626,32 @@ export default function PPSHomeVerbatim() {
                         className={`relative flex flex-col items-center justify-center py-4 rounded-xl border-2 bg-white shadow-sm scroll-mt-24 ${step.border}`}
                         aria-label={`Step ${idx + 1} of ${arr.length}: ${step.letter}, ${step.word}`}
                       >
+                        {/* Connector line + dot above the box (into the road) */}
+                        <span
+                          aria-hidden="true"
+                          className={`absolute -top-3 left-1/2 -translate-x-1/2 w-0.5 h-3 ${step.bg} opacity-60`}
+                        />
+                        <span
+                          aria-hidden="true"
+                          className={`absolute -top-[14px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full ring-2 ring-white ${step.dot}`}
+                        />
+
                         <span className={`font-poppins font-bold text-2xl ${step.text}`} aria-hidden="true">
                           {step.letter}
                         </span>
                         <span className={`text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest mt-1 ${step.text}`} aria-hidden="true">
                           {step.word}
                         </span>
+
+                        {/* Connector line + dot below the box (into the road) */}
+                        <span
+                          aria-hidden="true"
+                          className={`absolute -bottom-3 left-1/2 -translate-x-1/2 w-0.5 h-3 ${step.bg} opacity-60`}
+                        />
+                        <span
+                          aria-hidden="true"
+                          className={`absolute -bottom-[14px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full ring-2 ring-white ${step.dot}`}
+                        />
                       </li>
                     ))}
                   </ol>
