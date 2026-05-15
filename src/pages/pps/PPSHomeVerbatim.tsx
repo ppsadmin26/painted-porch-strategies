@@ -560,8 +560,8 @@ export default function PPSHomeVerbatim() {
                   </p>
                 </div>
 
-                {/* Steps with winding road behind, extending edge-to-edge of the card */}
-                <div className="relative pb-10 md:pb-14 mb-2">
+                {/* Steps with winding road behind, contained to the boxes' width */}
+                <div className="relative pb-10 md:pb-14 mb-2 overflow-hidden">
                   {/* Mobile: flatter curve, lighter opacity, thinner stroke */}
                   <svg
                     viewBox="0 0 1200 200"
