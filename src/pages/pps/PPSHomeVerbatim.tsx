@@ -128,7 +128,7 @@ export default function PPSHomeVerbatim() {
   useDocumentSeo({
     title: "Painted Porch Strategies | It's Time to Do Epic ShIFt",
     description:
-      "The porch is Open is the work before the work. Find clarity before momentum outruns alignment.",
+      "Phase Zero™ is the work before the work. Find clarity before momentum outruns alignment.",
   });
 
   const { data: posts } = useFeaturedPosts(3);
