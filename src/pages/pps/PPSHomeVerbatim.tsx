@@ -141,7 +141,7 @@ export default function PPSHomeVerbatim() {
       <TierHeroSection
         customBadge={
           <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
-            The porch is Open &middot; The Work Before the Work
+            Phase Zero™ &middot; The Work Before the Work
           </span>
         }
         headline={
