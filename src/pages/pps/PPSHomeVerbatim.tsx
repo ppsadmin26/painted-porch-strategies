@@ -560,12 +560,23 @@ export default function PPSHomeVerbatim() {
                   </p>
                 </div>
 
-                {/* Steps with winding road behind, road extends to the white card edges */}
+                {/* Steps with winding road behind. Road SVG = grid width (so 4 colors align with 4 boxes). Flat extension bars stretch the road into the white card's padding on each side. */}
                 <div className="relative pb-10 md:pb-14 mb-2">
+                  {/* Left flat extension (teal) — reaches the white card's left edge */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute top-[42%] -translate-y-1/2 -left-6 sm:-left-8 md:-left-12 w-6 sm:w-8 md:w-12 h-5 sm:h-7 bg-primary opacity-40 sm:opacity-60 pointer-events-none"
+                  />
+                  {/* Right flat extension (lime) — reaches the white card's right edge */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute top-[42%] -translate-y-1/2 -right-6 sm:-right-8 md:-right-12 w-6 sm:w-8 md:w-12 h-5 sm:h-7 bg-lime opacity-40 sm:opacity-60 pointer-events-none"
+                  />
+
                   {/* Mobile: flatter curve, lighter opacity, thinner stroke */}
                   <svg
                     viewBox="0 0 1200 200"
-                    className="sm:hidden absolute top-[42%] -translate-y-1/2 -left-6 -right-6 w-auto h-[120%] pointer-events-none"
+                    className="sm:hidden absolute top-[42%] -translate-y-1/2 inset-x-0 w-full h-[120%] pointer-events-none"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
