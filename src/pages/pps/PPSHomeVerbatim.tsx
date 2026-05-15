@@ -128,7 +128,7 @@ export default function PPSHomeVerbatim() {
   useDocumentSeo({
     title: "Painted Porch Strategies | It's Time to Do Epic ShIFt",
     description:
-      "The porch is Open is the work before the work. Find clarity before momentum outruns alignment.",
+      "Phase Zero™ is the work before the work. Find clarity before momentum outruns alignment.",
   });
 
   const { data: posts } = useFeaturedPosts(3);
@@ -141,7 +141,7 @@ export default function PPSHomeVerbatim() {
       <TierHeroSection
         customBadge={
           <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
-            The porch is Open &middot; The Work Before the Work
+            Phase Zero™ &middot; The Work Before the Work
           </span>
         }
         headline={
@@ -293,13 +293,13 @@ export default function PPSHomeVerbatim() {
       </section>
 
       {/* ============================================================ */}
-      {/* The porch is Open gradient CTA (verbatim)                    */}
+      {/* Phase Zero gradient CTA (verbatim)                            */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-gradient-to-b from-gold/10 via-gold/5 to-white text-navy">
         <div className="container max-w-4xl mx-auto px-6">
           <div className="text-center mb-10">
             <span className="inline-block bg-navy text-white font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
-              The porch is Open
+              Phase Zero™
             </span>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-navy">
               The clarity that accelerates your next big <ShIFt />.
@@ -313,7 +313,7 @@ export default function PPSHomeVerbatim() {
           </div>
 
           <p className="text-lg text-foreground mb-3 max-w-2xl mx-auto leading-relaxed">
-            The porch is Open exists to create clarity before your next major
+            Phase Zero™ exists to create clarity before your next major
             decision hardens into execution.
           </p>
           <p className="text-lg text-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
