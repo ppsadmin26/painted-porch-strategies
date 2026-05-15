@@ -933,7 +933,7 @@ export default function PPSHomeVerbatim() {
                 </span>
               </p>
               <p>Especially during periods of:</p>
-              <ul className="list-disc pl-6 space-y-2 marker:text-lime">
+              <ul className="list-disc pl-10 md:pl-12 space-y-2 marker:text-foreground pr-2">
                 <li>growth that feels increasingly complex</li>
                 <li>moments of strategic inflection</li>
                 <li>organizational stretching</li>
@@ -1050,7 +1050,7 @@ export default function PPSHomeVerbatim() {
               Painted Porch explores the realities many organizations and
               leaders are navigating through:
             </p>
-            <ul className="list-disc pl-6 space-y-2 marker:text-lime">
+            <ul className="list-disc pl-10 md:pl-12 space-y-2 marker:text-foreground pr-2">
               <li>essays and reflections</li>
               <li>strategic conversations</li>
               <li>practical tools and resources</li>
