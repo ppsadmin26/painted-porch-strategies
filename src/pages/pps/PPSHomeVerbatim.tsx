@@ -542,7 +542,11 @@ export default function PPSHomeVerbatim() {
             <div className="bg-white rounded-3xl border border-navy/10 shadow-sm p-6 sm:p-8 md:p-12">
 
               {/* LAYER 1: P.A.T.H. */}
-              <div>
+              <section
+                id="the-way-forward"
+                aria-labelledby="path-heading"
+                className="scroll-mt-24 scroll-smooth"
+              >
                 <div className="text-center mb-5">
                   <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Way Forward
@@ -586,14 +590,15 @@ export default function PPSHomeVerbatim() {
                     aria-labelledby="path-heading"
                   >
                     {[
-                      { letter: "P", word: "Prepare", border: "border-primary", text: "text-primary" },
-                      { letter: "A", word: "Align", border: "border-raspberry", text: "text-raspberry" },
-                      { letter: "T", word: "Take Off", border: "border-gold", text: "text-gold" },
-                      { letter: "H", word: "Habits", border: "border-lime", text: "text-lime" },
+                      { letter: "P", word: "Prepare", slug: "prepare", border: "border-primary", text: "text-primary" },
+                      { letter: "A", word: "Align", slug: "align", border: "border-raspberry", text: "text-raspberry" },
+                      { letter: "T", word: "Take Off", slug: "take-off", border: "border-gold", text: "text-gold" },
+                      { letter: "H", word: "Habits", slug: "habits", border: "border-lime", text: "text-lime" },
                     ].map((step, idx, arr) => (
                       <li
                         key={step.letter}
-                        className={`relative flex flex-col items-center justify-center py-4 rounded-xl border-2 bg-white shadow-sm ${step.border}`}
+                        id={`path-${step.slug}`}
+                        className={`relative flex flex-col items-center justify-center py-4 rounded-xl border-2 bg-white shadow-sm scroll-mt-24 ${step.border}`}
                         aria-label={`Step ${idx + 1} of ${arr.length}: ${step.letter}, ${step.word}`}
                       >
                         <span className={`font-poppins font-bold text-2xl ${step.text}`} aria-hidden="true">
@@ -606,7 +611,7 @@ export default function PPSHomeVerbatim() {
                     ))}
                   </ol>
                 </div>
-              </div>
+              </section>
 
               {/* LAYER 2: The Three Pillars */}
               <div>
