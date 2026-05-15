@@ -920,7 +920,7 @@ export default function PPSHomeVerbatim() {
           <div className="text-center mb-12">
             <span className="badge-gold mb-4 inline-block">Strategic Advisory</span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-              For the moments that carry broader consequences.
+              We Partner for the Moments that Matter
             </h2>
             <div className="text-lg text-foreground leading-relaxed text-left">
               <p>
