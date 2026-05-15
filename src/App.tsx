@@ -17,6 +17,9 @@ import PPSLayout from "./layouts/PPSLayout";
 import PPSHome from "./pages/pps/PPSHome";
 import PPSHomeArchive from "./pages/pps/PPSHomeArchive";
 import PPSHomeVerbatim from "./pages/pps/PPSHomeVerbatim";
+import HeroPreviewV1 from "./pages/pps/HeroPreviewV1";
+import HeroPreviewV2 from "./pages/pps/HeroPreviewV2";
+import HeroPreviewV3 from "./pages/pps/HeroPreviewV3";
 import PhaseZero from "./pages/pps/PhaseZero";
 import PPSAbout from "./pages/pps/PPSAbout";
 import PPSPricing from "./pages/pps/PPSPricing";
@@ -234,6 +237,9 @@ const App = () => (
             <Route path="home-alt" element={<PPSHomeAlt />} />
             <Route path="home-archive" element={<PPSHomeArchive />} />
             <Route path="home-verbatim" element={<PPSHomeVerbatim />} />
+            <Route path="hero-preview/v1" element={<HeroPreviewV1 />} />
+            <Route path="hero-preview/v2" element={<HeroPreviewV2 />} />
+            <Route path="hero-preview/v3" element={<HeroPreviewV3 />} />
             <Route path="phase-zero" element={<PhaseZero />} />
             {/* About Section */}
             <Route path="about" element={<PPSAbout />} />
