@@ -552,56 +552,57 @@ export default function PPSHomeVerbatim() {
                     progress.
                   </p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3">
-                  {[
-                    { letter: "P", word: "Prepare", bg: "bg-primary/10", border: "border-primary/30", text: "text-primary" },
-                    { letter: "A", word: "Align", bg: "bg-raspberry/10", border: "border-raspberry/30", text: "text-raspberry" },
-                    { letter: "T", word: "Take Off", bg: "bg-gold/10", border: "border-gold/30", text: "text-gold" },
-                    { letter: "H", word: "Habits", bg: "bg-lime/10", border: "border-lime/30", text: "text-lime" },
-                  ].map((step, idx) => (
-                    <div
-                      key={step.letter}
-                      className={`relative flex flex-col items-center justify-center py-4 rounded-xl border ${step.bg} ${step.border}`}
-                    >
-                      <span className={`font-poppins font-bold text-2xl ${step.text}`}>
-                        {step.letter}
-                      </span>
-                      <span className={`text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest mt-1 ${step.text}`}>
-                        {step.word}
-                      </span>
-                      {idx < 3 && (
-                        <ArrowRight className="hidden sm:block absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gold bg-white rounded-full" />
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
 
-              {/* Winding road connector: PATH → Pillars */}
-              <div className="mt-6 mb-8" aria-hidden="true">
-                <svg
-                  viewBox="0 0 1000 110"
-                  className="w-full h-16 md:h-20"
-                  preserveAspectRatio="none"
-                >
-                  {/* Road segments - each colored to match its PATH step */}
-                  <g fill="none" strokeWidth="22" strokeLinecap="round">
-                    <path d="M 20 30 C 90 30, 140 80, 240 80" stroke="hsl(var(--primary))" />
-                    <path d="M 240 80 C 340 80, 380 30, 490 30" stroke="hsl(var(--raspberry))" />
-                    <path d="M 490 30 C 600 30, 640 80, 750 80" stroke="hsl(var(--gold))" />
-                    <path d="M 750 80 C 860 80, 920 50, 980 30" stroke="hsl(var(--lime))" />
-                  </g>
-                  {/* Dashed center stripe */}
-                  <path
-                    d="M 20 30 C 90 30, 140 80, 240 80 C 340 80, 380 30, 490 30 C 600 30, 640 80, 750 80 C 860 80, 920 50, 980 30"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeDasharray="8 8"
-                    strokeLinecap="round"
-                    opacity="0.85"
-                  />
-                </svg>
+                {/* Steps with winding road behind */}
+                <div className="relative pb-10 md:pb-14 mb-2">
+                  <svg
+                    viewBox="0 0 1000 200"
+                    className="absolute inset-x-0 top-1/2 -translate-y-1/2 w-full h-[140%] pointer-events-none"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                  >
+                    <g fill="none" strokeWidth="28" strokeLinecap="round">
+                      <path d="M 20 60 C 120 60, 170 150, 260 150" stroke="hsl(var(--primary))" opacity="0.85" />
+                      <path d="M 260 150 C 350 150, 400 60, 500 60" stroke="hsl(var(--raspberry))" opacity="0.85" />
+                      <path d="M 500 60 C 600 60, 650 150, 740 150" stroke="hsl(var(--gold))" opacity="0.85" />
+                      <path d="M 740 150 C 840 150, 900 90, 980 60" stroke="hsl(var(--lime))" opacity="0.85" />
+                    </g>
+                    <path
+                      d="M 20 60 C 120 60, 170 150, 260 150 C 350 150, 400 60, 500 60 C 600 60, 650 150, 740 150 C 840 150, 900 90, 980 60"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeDasharray="8 8"
+                      strokeLinecap="round"
+                      opacity="0.9"
+                    />
+                  </svg>
+
+                  <ol
+                    className="relative grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3"
+                    aria-label="The four stages of P.A.T.H."
+                  >
+                    {[
+                      { letter: "P", word: "Prepare", border: "border-primary", text: "text-primary" },
+                      { letter: "A", word: "Align", border: "border-raspberry", text: "text-raspberry" },
+                      { letter: "T", word: "Take Off", border: "border-gold", text: "text-gold" },
+                      { letter: "H", word: "Habits", border: "border-lime", text: "text-lime" },
+                    ].map((step, idx, arr) => (
+                      <li
+                        key={step.letter}
+                        className={`relative flex flex-col items-center justify-center py-4 rounded-xl border-2 bg-white shadow-sm ${step.border}`}
+                        aria-label={`Step ${idx + 1} of ${arr.length}: ${step.letter}, ${step.word}`}
+                      >
+                        <span className={`font-poppins font-bold text-2xl ${step.text}`} aria-hidden="true">
+                          {step.letter}
+                        </span>
+                        <span className={`text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest mt-1 ${step.text}`} aria-hidden="true">
+                          {step.word}
+                        </span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
               </div>
 
               {/* LAYER 2: The Three Pillars */}
