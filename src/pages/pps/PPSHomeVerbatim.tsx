@@ -562,16 +562,58 @@ export default function PPSHomeVerbatim() {
 
                 {/* Steps with winding road behind. Road SVG = grid width (so 4 colors align with 4 boxes). Flat extension bars stretch the road into the white card's padding on each side. */}
                 <div className="relative pb-10 md:pb-14 mb-2">
-                  {/* Left flat extension (teal) — reaches the white card's left edge */}
-                  <div
+                  {/* Left curved extension (teal) — continues the road's tangent up-and-out toward the white card's left edge */}
+                  <svg
+                    viewBox="0 0 100 200"
+                    className="absolute top-[42%] -translate-y-1/2 -left-6 sm:-left-8 md:-left-12 w-6 sm:w-8 md:w-12 h-[120%] sm:h-[140%] pointer-events-none"
+                    preserveAspectRatio="none"
                     aria-hidden="true"
-                    className="absolute top-[42%] -translate-y-1/2 -left-6 sm:-left-8 md:-left-12 w-6 sm:w-8 md:w-12 h-5 sm:h-7 bg-primary opacity-40 sm:opacity-60 pointer-events-none"
-                  />
-                  {/* Right flat extension (lime) — reaches the white card's right edge */}
-                  <div
+                  >
+                    {/* Curve rises from bottom-left corner area up to road entry at right edge (y=100) */}
+                    <path
+                      d="M 0 40 C 40 40, 60 100, 100 100"
+                      fill="none"
+                      stroke="hsl(var(--primary))"
+                      strokeWidth="28"
+                      strokeLinecap="butt"
+                      opacity="0.6"
+                    />
+                    <path
+                      d="M 0 40 C 40 40, 60 100, 100 100"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeDasharray="8 8"
+                      strokeLinecap="round"
+                      opacity="0.7"
+                    />
+                  </svg>
+                  {/* Right curved extension (lime) — continues the road's tangent up-and-out from the H box toward the white card's right edge */}
+                  <svg
+                    viewBox="0 0 100 200"
+                    className="absolute top-[42%] -translate-y-1/2 -right-6 sm:-right-8 md:-right-12 w-6 sm:w-8 md:w-12 h-[120%] sm:h-[140%] pointer-events-none"
+                    preserveAspectRatio="none"
                     aria-hidden="true"
-                    className="absolute top-[42%] -translate-y-1/2 -right-6 sm:-right-8 md:-right-12 w-6 sm:w-8 md:w-12 h-5 sm:h-7 bg-lime opacity-40 sm:opacity-60 pointer-events-none"
-                  />
+                  >
+                    {/* Curve continues from road exit at left edge (y=100) up to top-right corner area */}
+                    <path
+                      d="M 0 100 C 40 100, 60 40, 100 40"
+                      fill="none"
+                      stroke="hsl(var(--lime))"
+                      strokeWidth="28"
+                      strokeLinecap="butt"
+                      opacity="0.6"
+                    />
+                    <path
+                      d="M 0 100 C 40 100, 60 40, 100 40"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="2"
+                      strokeDasharray="8 8"
+                      strokeLinecap="round"
+                      opacity="0.7"
+                    />
+                  </svg>
 
                   {/* Mobile: flatter curve, lighter opacity, thinner stroke */}
                   <svg
