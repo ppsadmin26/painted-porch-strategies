@@ -612,7 +612,7 @@ export default function PPSHomeVerbatim() {
               <div>
                 <div className="text-center mb-6">
                   <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
-                    The Load-Bearing Three
+                    The Load-Bearing Structures
                   </p>
                   <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
                     Painted Porch Pillars
