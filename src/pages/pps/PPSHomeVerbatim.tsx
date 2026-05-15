@@ -572,7 +572,7 @@ export default function PPSHomeVerbatim() {
                     {/* Mobile: match main road (sw=20, opacity=0.4, dash 6/6) */}
                     <path
                       className="sm:hidden"
-                      d="M 0 40 C 40 40, 60 100, 100 100"
+                      d="M 0 70 C 50 70, 50 100, 100 100"
                       fill="none"
                       stroke="hsl(var(--primary))"
                       strokeWidth="20"
@@ -581,7 +581,7 @@ export default function PPSHomeVerbatim() {
                     />
                     <path
                       className="sm:hidden"
-                      d="M 0 40 C 40 40, 60 100, 100 100"
+                      d="M 0 70 C 50 70, 50 100, 100 100"
                       fill="none"
                       stroke="white"
                       strokeWidth="1.5"
@@ -592,7 +592,7 @@ export default function PPSHomeVerbatim() {
                     {/* Desktop: match main road (sw=28, opacity=0.6, dash 8/8) */}
                     <path
                       className="hidden sm:block"
-                      d="M 0 40 C 40 40, 60 100, 100 100"
+                      d="M 0 50 C 50 50, 50 100, 100 100"
                       fill="none"
                       stroke="hsl(var(--primary))"
                       strokeWidth="28"
@@ -601,7 +601,7 @@ export default function PPSHomeVerbatim() {
                     />
                     <path
                       className="hidden sm:block"
-                      d="M 0 40 C 40 40, 60 100, 100 100"
+                      d="M 0 50 C 50 50, 50 100, 100 100"
                       fill="none"
                       stroke="white"
                       strokeWidth="2"
@@ -620,7 +620,7 @@ export default function PPSHomeVerbatim() {
                     {/* Mobile: match main road (sw=20, opacity=0.4, dash 6/6) */}
                     <path
                       className="sm:hidden"
-                      d="M 0 100 C 40 100, 60 40, 100 40"
+                      d="M 0 100 C 50 100, 50 70, 100 70"
                       fill="none"
                       stroke="hsl(var(--lime))"
                       strokeWidth="20"
@@ -629,7 +629,7 @@ export default function PPSHomeVerbatim() {
                     />
                     <path
                       className="sm:hidden"
-                      d="M 0 100 C 40 100, 60 40, 100 40"
+                      d="M 0 100 C 50 100, 50 70, 100 70"
                       fill="none"
                       stroke="white"
                       strokeWidth="1.5"
@@ -640,7 +640,7 @@ export default function PPSHomeVerbatim() {
                     {/* Desktop: match main road (sw=28, opacity=0.6, dash 8/8) */}
                     <path
                       className="hidden sm:block"
-                      d="M 0 100 C 40 100, 60 40, 100 40"
+                      d="M 0 100 C 50 100, 50 50, 100 50"
                       fill="none"
                       stroke="hsl(var(--lime))"
                       strokeWidth="28"
@@ -649,7 +649,7 @@ export default function PPSHomeVerbatim() {
                     />
                     <path
                       className="hidden sm:block"
-                      d="M 0 100 C 40 100, 60 40, 100 40"
+                      d="M 0 100 C 50 100, 50 50, 100 50"
                       fill="none"
                       stroke="white"
                       strokeWidth="2"
