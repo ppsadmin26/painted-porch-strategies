@@ -1123,9 +1123,32 @@ export default function PPSHomeVerbatim() {
             Step onto the porch. Begin the <span className="text-raspberry">IF</span>.
           </>
         }
-        description="The future will keep asking your organization to evolve. The question is whether you'll do it in ways you can actually sustain together."
+        description={
+          <span className="block space-y-4 text-left md:text-center">
+            <span className="block">The question is not simply what comes next.</span>
+            <span className="block">
+              The question is what your organization is becoming, and whether
+              what you&rsquo;re about to commit to is the work that will
+              actually make that future possible.
+            </span>
+            <span className="block">
+              Because organizations rarely struggle from a lack of effort.
+            </span>
+            <span className="block">
+              More often, they struggle from fragmented priorities, unfinished
+              work, and momentum committed before clarity is fully formed.
+            </span>
+            <span className="block">
+              The future will keep asking your organization to evolve.
+            </span>
+            <span className="block">
+              The question is whether you&rsquo;ll do it in ways you can
+              actually sustain together.
+            </span>
+          </span>
+        }
         actions={[
-          { label: "Open the Blue Door", to: "/blue-door", variant: "primary" },
+          { label: "Open the Blue Door", to: "/blue-door", variant: "bluedoor" },
           { label: "Discover Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
         ]}
       />
