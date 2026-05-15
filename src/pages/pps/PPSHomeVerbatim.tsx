@@ -583,7 +583,7 @@ export default function PPSHomeVerbatim() {
 
                   <ol
                     className="relative grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3"
-                    aria-label="The four stages of P.A.T.H."
+                    aria-labelledby="path-heading"
                   >
                     {[
                       { letter: "P", word: "Prepare", border: "border-primary", text: "text-primary" },
