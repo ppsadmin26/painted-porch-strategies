@@ -599,7 +599,7 @@ export default function PPSHomeVerbatim() {
                   {/* Desktop/tablet: full winding curve, single smooth path split into 4 colored segments */}
                   <svg
                     viewBox="0 0 1200 200"
-                    className="hidden sm:block absolute top-[42%] -translate-y-1/2 inset-x-0 w-full h-[140%] pointer-events-none"
+                    className="hidden sm:block absolute top-[42%] -translate-y-1/2 -left-8 -right-8 md:-left-12 md:-right-12 w-auto h-[140%] pointer-events-none"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
