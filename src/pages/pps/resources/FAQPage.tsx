@@ -110,7 +110,7 @@ const sitewideFaqCategories: FAQCategory[] = [
     faqs: [
       {
         question: "How long are masterclasses?",
-        answer: "Masterclasses are focused 30-90 minute sessions designed to illuminate specific Phase Zero concepts without requiring weeks of commitment.",
+        answer: "Masterclasses are focused under 30 minute sessions designed to illuminate specific Phase Zero concepts without requiring weeks of commitment.",
       },
       {
         question: "Are masterclasses live or recorded?",
