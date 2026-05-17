@@ -183,6 +183,38 @@ export default function PhaseZero() {
         minHeightClass="min-h-[60vh]"
       />
 
+      {/* Why Phase Zero Exists */}
+      <section className="py-16 md:py-24 bg-muted/40">
+        <FadeIn className="container max-w-3xl mx-auto px-6">
+          <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-4">
+            Why Phase Zero Exists
+          </p>
+          <h2 className="font-poppins font-bold text-3xl md:text-5xl text-navy leading-tight mb-6">
+            Not every opportunity strengthens the organization chasing it.
+          </h2>
+          <div className="space-y-5 text-lg md:text-xl text-charcoal/85 leading-relaxed">
+            <p>And not every change creates the conditions needed to sustain what comes after it.</p>
+            <p>
+              Some organizations get worn down not from a lack of effort, but from the
+              weight that builds up underneath it. Unfinished work. Competing priorities.
+              Fragmented initiatives. Directions that never fully aligned in the first place.
+            </p>
+            <p>
+              Pushing harder in the wrong direction does not change the direction. It just{" "}
+              <strong className="text-raspberry font-bold">compounds the cost of getting there</strong>.
+            </p>
+            <p>
+              Phase Zero is the pause that prevents that cost. A deliberate stop, before
+              the next big <ShIFt /> hardens into execution, to look honestly at what your
+              organization can carry and what it cannot.
+            </p>
+          </div>
+          <blockquote className="text-2xl md:text-3xl font-poppins italic text-navy mt-10 border-l-4 border-gold pl-6">
+            "The frustration that surfaces in moments like this is rarely random. It is a signal."
+          </blockquote>
+        </FadeIn>
+      </section>
+
       {/* The work before the work */}
       <section className="py-16 md:py-24 bg-white">
         <FadeIn className="container max-w-3xl mx-auto px-6">
