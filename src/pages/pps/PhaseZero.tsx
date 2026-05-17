@@ -5,6 +5,7 @@ import { useScrollAnimation, getAnimationClasses } from "@/hooks/useScrollAnimat
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import homeHero from "@/assets/heroes/home-hero.jpg";
+import phaseZeroHero from "@/assets/heroes/phase-zero-hero.jpg";
 
 function FadeIn({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible, reducedMotion } = useScrollAnimation<HTMLDivElement>({ threshold: 0.15 });
@@ -178,7 +179,7 @@ export default function PhaseZero() {
           { label: "Open the Blue Door", href: "/blue-door", buttonClassName: "bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor" },
           { label: "See Where You'd Start", href: "/start-here" },
         ]}
-        background={{ type: "image", src: homeHero }}
+        background={{ type: "image", src: phaseZeroHero }}
         overlayClass="bg-navy/55"
         minHeightClass="min-h-[60vh]"
       />
