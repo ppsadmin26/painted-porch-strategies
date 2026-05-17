@@ -10,8 +10,11 @@ import { MemoryRouter } from "react-router-dom";
  * Instead we assert the structural contract that guarantees the link sits at
  * the bottom of each card at every breakpoint:
  *   - card uses `flex flex-col h-full`
- *   - the link uses `mt-auto`
- *   - the link is the LAST child of its card
+ *   - the paragraph uses `flex-1` so it absorbs vertical slack
+ *   - the link is wrapped in a `mt-auto` container with a consistent
+ *     `min-h-[2.5rem]` so the link row matches across cards regardless of
+ *     content length
+ *   - the link wrapper is the LAST child of its card
  *   - the grid wrapper uses `items-stretch` so cards match heights on md+
  */
 
