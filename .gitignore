@@ -34,3 +34,12 @@ dist-ssr
 src/assets/**/*.mp4
 src/assets/**/*.mov
 public/videos/**
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+# Keep committed visual baselines
+!e2e/__snapshots__/
+!e2e/__snapshots__/**
