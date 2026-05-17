@@ -52,7 +52,7 @@ const focusRingDark =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy";
 
 const baseAction =
-  "inline-flex items-center justify-center font-poppins font-semibold text-lg px-8 py-6 rounded-md transition-colors shadow-xl w-full sm:w-auto " +
+  "inline-flex items-center justify-center font-poppins font-semibold text-lg px-8 py-6 rounded-md transition-colors shadow-xl w-full sm:w-auto sm:min-w-[280px] " +
   focusRingDark;
 
 const variantClasses: Record<NonNullable<CTAAction["variant"]>, string> = {
