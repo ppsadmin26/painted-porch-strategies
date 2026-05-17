@@ -178,7 +178,7 @@ export default function PPSPricing() {
               </Button>
             </Link>
             <Link to="/blue-door">
-              <Button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy text-lg py-5 px-8 transition-colors">
+              <Button className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor text-lg py-5 px-8 transition-colors">
                 Take the Free Assessment
               </Button>
             </Link>

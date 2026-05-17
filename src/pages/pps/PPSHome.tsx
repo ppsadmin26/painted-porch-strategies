@@ -115,7 +115,7 @@ export default function PPSHome() {
           {
             label: "Open the Blue Door",
             href: "/blue-door",
-            isPrimary: true,
+            buttonClassName: "bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor",
             icon: <ArrowRight className="ml-2 w-5 h-5" />,
           },
           {
@@ -559,7 +559,7 @@ export default function PPSHome() {
               <div className="mt-auto pt-2 min-h-[2.5rem] flex items-center">
                 <Link
                   to="/blue-door"
-                  className="text-primary font-semibold hover:underline inline-flex items-center"
+                  className="text-bluedoor font-semibold hover:underline inline-flex items-center"
                 >
                   Open the Blue Door
                   <ArrowRight className="ml-1 w-4 h-4" />
