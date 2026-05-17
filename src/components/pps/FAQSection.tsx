@@ -113,7 +113,7 @@ export function FAQSection({
           <div className="space-y-8">
             {categories!.map((category, catIndex) => (
               <div key={catIndex}>
-                <h3 className="font-poppins font-semibold text-lg text-navy mb-4 pb-2 border-b border-border/50">
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-4 pb-2 border-b border-border/50">
                   {category.name}
                 </h3>
                 <Accordion type="single" collapsible className="w-full space-y-3">

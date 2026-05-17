@@ -93,7 +93,7 @@ export default function MediaAppearanceList() {
       <div className="bg-card border-b border-border px-4 py-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-poppins font-bold text-navy">Media Appearances</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy">Media Appearances</h1>
             <p className="text-sm text-muted-foreground">Manage your As Seen On content</p>
           </div>
           <div className="flex items-center gap-2">

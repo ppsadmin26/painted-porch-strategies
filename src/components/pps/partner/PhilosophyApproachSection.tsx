@@ -63,7 +63,7 @@ export function PhilosophyApproachSection() {
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <principle.icon className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-poppins font-bold text-lg text-navy">
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">
                   {principle.title}
                 </h3>
               </div>
@@ -90,7 +90,7 @@ export function PhilosophyApproachSection() {
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <principle.icon className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-poppins font-bold text-xl text-navy">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">
                 {principle.title}
               </h3>
             </div>

@@ -116,7 +116,7 @@ export default function OurApproach() {
                 <span className="text-4xl font-bold text-navy/20 font-poppins">
                   {value.number}
                 </span>
-                <h3 className="font-poppins font-bold text-2xl text-navy mt-2 mb-4">
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-2 mb-4">
                   {value.title}
                 </h3>
                 <p className="text-foreground leading-relaxed mb-4">
@@ -145,7 +145,7 @@ export default function OurApproach() {
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white rounded-xl p-7 border-t-4 border-lime shadow-sm">
-              <h3 className="font-poppins font-semibold text-xl text-lime mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-lime mb-4">
                 What we believe:
               </h3>
               <ul className="space-y-3">
@@ -158,7 +158,7 @@ export default function OurApproach() {
               </ul>
             </div>
             <div className="bg-white rounded-xl p-7 border-t-4 border-raspberry shadow-sm">
-              <h3 className="font-poppins font-semibold text-xl text-raspberry mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-raspberry mb-4">
                 What we reject:
               </h3>
               <ul className="space-y-3">
@@ -212,7 +212,7 @@ export default function OurApproach() {
               <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
                 The Painted Porch Promise
               </p>
-              <h3 className="font-poppins font-bold text-2xl md:text-3xl mb-5">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold mb-5">
                 You will not need us forever.
               </h3>
               <p className="text-white/90 leading-relaxed mb-4">
@@ -229,7 +229,7 @@ export default function OurApproach() {
               <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
                 Where We Fit
               </p>
-              <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mb-5">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-5">
                 Upstream of the rollout.
               </h3>
               <p className="text-foreground leading-relaxed mb-4">

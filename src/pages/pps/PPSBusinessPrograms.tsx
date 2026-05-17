@@ -247,7 +247,7 @@ export default function PPSBusinessPrograms() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="font-poppins font-bold text-xl text-navy mb-3 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 group-hover:text-primary transition-colors">
                       {program.title}
                     </h3>
                     <p className="text-foreground text-sm leading-relaxed mb-4">
@@ -313,7 +313,7 @@ export default function PPSBusinessPrograms() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="font-poppins font-bold text-xl text-navy mb-3 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 group-hover:text-primary transition-colors">
                       {program.title}
                     </h3>
                     <p className="text-foreground text-sm leading-relaxed mb-4">
@@ -333,7 +333,7 @@ export default function PPSBusinessPrograms() {
       {/* Invest in People Banner */}
       <section className="py-12 md:py-16 bg-navy text-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold font-poppins">
+          <h3 className="text-xl md:text-2xl font-bold font-poppins">
             Great companies invest in developing their people. When your people are strong, your business will thrive.
           </h3>
         </div>
@@ -380,7 +380,7 @@ export default function PPSBusinessPrograms() {
                       Most Popular
                     </span>
                   )}
-                  <h3 className={`font-poppins font-bold text-lg ${tier.accent} mb-2`}>
+                  <h3 className={`text-xl md:text-2xl font-poppins font-bold ${tier.accent} mb-2`}>
                     {tier.name}
                   </h3>
                   <div className="mb-6">
@@ -443,7 +443,7 @@ export default function PPSBusinessPrograms() {
                   <span className={`font-poppins font-bold text-xs uppercase tracking-wider ${expert.accent} mb-1`}>
                     {expert.specialty}
                   </span>
-                  <h3 className="font-poppins font-bold text-xl text-navy mb-1">
+                  <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-1">
                     {expert.name}
                   </h3>
                   <p className="text-xs text-muted-foreground mb-4">

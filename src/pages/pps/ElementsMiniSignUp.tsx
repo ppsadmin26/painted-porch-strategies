@@ -77,7 +77,7 @@ export default function ElementsMiniSignUp() {
             <Sparkles className="w-4 h-4" />
             MINI COURSE
           </div>
-          <h1 className="font-poppins font-bold text-4xl md:text-6xl mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             The Elements of <span className="text-gold">Your Team</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-6">
@@ -97,7 +97,7 @@ export default function ElementsMiniSignUp() {
       {/* Why */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-poppins font-bold text-3xl md:text-4xl text-navy mb-6">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-6">
             People + Diverse Styles = Tension... or Teamwork.
           </h2>
           <p className="text-lg text-charcoal mb-4">
@@ -115,7 +115,7 @@ export default function ElementsMiniSignUp() {
       {/* Five Elements grid */}
       <section className="py-16 px-4 bg-secondary/30">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-poppins font-bold text-3xl md:text-4xl text-navy text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy text-center mb-12">
             Meet the <span className="text-teal">Five Elements</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -129,7 +129,7 @@ export default function ElementsMiniSignUp() {
                   <div className={`inline-flex items-center justify-center w-14 h-14 rounded-full ${el.bg} mb-4`}>
                     <Icon className={`w-7 h-7 ${el.color}`} />
                   </div>
-                  <h3 className={`font-poppins font-bold text-xl mb-2 ${el.color}`}>{el.name}</h3>
+                  <h3 className={`text-xl md:text-2xl font-poppins font-bold mb-2 ${el.color}`}>{el.name}</h3>
                   <p className="text-sm text-charcoal">{el.desc}</p>
                 </div>
               );
@@ -141,7 +141,7 @@ export default function ElementsMiniSignUp() {
       {/* What you'll learn */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-poppins font-bold text-3xl text-navy mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-8 text-center">
             In this mini course, you'll discover how to:
           </h2>
           <ul className="space-y-5 mt-8 max-w-3xl mx-auto">
@@ -180,7 +180,7 @@ export default function ElementsMiniSignUp() {
       <section id="pricing" className="py-16 px-4 bg-secondary/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-navy mb-3">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
               Choose Your <span className="text-teal">P.A.T.H.way</span>
             </h2>
             <p className="text-lg text-charcoal">
@@ -195,7 +195,7 @@ export default function ElementsMiniSignUp() {
                 <Users className="w-3.5 h-3.5" />
                 INDIVIDUAL
               </div>
-              <h3 className="font-poppins font-bold text-2xl text-navy mb-2">For You</h3>
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">For You</h3>
               <p className="text-charcoal mb-6">
                 Self-paced access for one learner. Perfect for leaders, coaches, and curious humans.
               </p>
@@ -224,7 +224,7 @@ export default function ElementsMiniSignUp() {
                 <Building2 className="w-3.5 h-3.5" />
                 TEAM
               </div>
-              <h3 className="font-poppins font-bold text-2xl text-navy mb-2">For Your Team</h3>
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">For Your Team</h3>
               <p className="text-charcoal mb-6">
                 Bring the Five Elements to your whole team with custom pricing and optional facilitation.
               </p>
@@ -254,7 +254,7 @@ export default function ElementsMiniSignUp() {
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-navy mb-3">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
               Discover. Decode. Align.
             </h2>
             <p className="text-lg text-charcoal">
@@ -272,7 +272,7 @@ export default function ElementsMiniSignUp() {
                   {lesson.num}
                 </div>
                 <div>
-                  <h3 className="font-poppins font-bold text-lg text-navy mb-1">{lesson.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-1">{lesson.title}</h3>
                   <p className="text-charcoal">{lesson.desc}</p>
                 </div>
               </div>
@@ -292,7 +292,7 @@ export default function ElementsMiniSignUp() {
       {/* Final CTA */}
       <section className="py-16 px-4 bg-gradient-to-br from-navy to-purple text-white">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-poppins font-bold text-3xl md:text-4xl mb-4">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
             Ready to unlock the hidden dynamics of your team?
           </h2>
           <p className="text-lg text-white/90 mb-8">

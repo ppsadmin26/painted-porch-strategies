@@ -535,7 +535,7 @@ export default function Sitemap() {
     <main className="min-h-screen bg-white">
       <div className="max-w-4xl mx-auto px-6 py-16">
         <header className="mb-10">
-          <h1 className="font-poppins font-bold text-4xl md:text-5xl text-pps-navy mb-3">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-pps-navy mb-3">
             Sitemap
           </h1>
           <p className="font-montserrat text-pps-charcoal text-lg">

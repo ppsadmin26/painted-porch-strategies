@@ -153,7 +153,7 @@ export default function EQChangeLeaderMini() {
             <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
             <span className="text-sm font-semibold">EQ-i 2.0 Assessment</span>
           </div>
-          <h1 className="font-poppins text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             What Can E.Q. Do For You?
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/90">
@@ -187,7 +187,7 @@ export default function EQChangeLeaderMini() {
       {/* Stat Callout */}
       <section className="py-16 bg-navy text-white text-center">
         <div className="container max-w-3xl mx-auto px-6">
-          <h2 className="font-poppins text-2xl md:text-3xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
             Did you know that Emotional Intelligence has been shown to account
             for 27–45% of job success?
           </h2>
@@ -209,7 +209,7 @@ export default function EQChangeLeaderMini() {
             <span className="text-sm font-semibold tracking-widest text-raspberry uppercase">
               Know Thyself
             </span>
-            <h2 className="font-poppins text-3xl md:text-4xl font-bold text-navy mt-2 mb-6">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-6">
               The Impacts of Understanding E.Q.
             </h2>
             <p className="text-foreground max-w-3xl mx-auto text-lg leading-relaxed">
@@ -251,7 +251,7 @@ export default function EQChangeLeaderMini() {
       {/* Why EQ Stats */}
       <section className="py-16 bg-muted/40">
         <div className="container max-w-5xl mx-auto px-6">
-          <h2 className="font-poppins text-3xl font-bold text-navy text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy text-center mb-12">
             So, why do E.Q.?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -275,7 +275,7 @@ export default function EQChangeLeaderMini() {
             <span className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">
               The Modern Day Leader
             </span>
-            <h2 className="font-poppins text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-4">
               The EQ-i 2.0 Model of Emotional Intelligence
             </h2>
             <p className="text-lg text-foreground font-medium">Skills for both Work and Life</p>
@@ -297,7 +297,7 @@ export default function EQChangeLeaderMini() {
       {/* What's Included */}
       <section className="py-16 bg-muted/30">
         <div className="container max-w-5xl mx-auto px-6">
-          <h2 className="font-poppins text-3xl md:text-4xl font-bold text-navy text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy text-center mb-16">
             What's Included In Your EQ-i 2.0 Report
           </h2>
           <div className="space-y-12">
@@ -325,7 +325,7 @@ export default function EQChangeLeaderMini() {
                       {section.tag}
                     </span>
                   </div>
-                  <h3 className="font-poppins text-xl font-bold text-navy mb-3">
+                  <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                     {section.title}
                   </h3>
                   <p className="text-foreground mb-4">{section.description}</p>
@@ -350,7 +350,7 @@ export default function EQChangeLeaderMini() {
       {/* Is For You If */}
       <section className="py-16 bg-raspberry text-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-poppins text-3xl md:text-4xl font-bold mb-8">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-8">
             The EQ-i 2.0 Assessment Is For You If...
           </h2>
           <div className="grid md:grid-cols-3 gap-6 mb-10">
@@ -380,7 +380,7 @@ export default function EQChangeLeaderMini() {
             <span className="text-sm font-semibold tracking-widest text-raspberry uppercase">
               Get Started Today
             </span>
-            <h2 className="font-poppins text-3xl md:text-4xl font-bold text-navy mt-2">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2">
               Discover Your E.Q.
             </h2>
             <p className="text-foreground mt-3">
@@ -399,7 +399,7 @@ export default function EQChangeLeaderMini() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Workplace Report */}
             <div className="bg-white rounded-xl border border-border shadow-md p-8 flex flex-col">
-              <h3 className="font-poppins text-lg font-semibold text-navy mb-1">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                 EQ-i Workplace Report
               </h3>
               <div className="mb-1 flex items-baseline gap-2">
@@ -439,7 +439,7 @@ export default function EQChangeLeaderMini() {
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-raspberry text-white text-xs font-semibold px-4 py-1 rounded-full">
                 Most Popular
               </div>
-              <h3 className="font-poppins text-lg font-semibold text-navy mb-1">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                 EQ-i Leadership Report
               </h3>
               <div className="mb-1 flex items-baseline gap-2">
@@ -476,7 +476,7 @@ export default function EQChangeLeaderMini() {
 
             {/* Let's Talk */}
             <div className="bg-muted/40 rounded-xl border border-border shadow-md p-8 flex flex-col">
-              <h3 className="font-poppins text-lg font-semibold text-navy mb-1">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                 Unsure or want to learn more?
               </h3>
               <p className="text-2xl font-bold text-navy mb-4">Let's Talk</p>

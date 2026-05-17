@@ -110,7 +110,7 @@ export default function TeamChallenge() {
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-navy/10 text-navy mb-4">
                 <Zap className="w-3.5 h-3.5" /> 5-Day Challenge
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-navy leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
                 The{" "}
                 <span className="text-primary italic">Superpowers</span>{" "}
                 of a Team Challenge
@@ -220,7 +220,7 @@ export default function TeamChallenge() {
                   <Calendar className="w-4 h-4" />
                   {lesson.day}
                 </div>
-                <h3 className="font-poppins font-bold text-navy mb-2 leading-tight">
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2 leading-tight">
                   {lesson.title}
                 </h3>
                 <p className="text-sm text-foreground">{lesson.description}</p>
@@ -244,21 +244,21 @@ export default function TeamChallenge() {
           <div className="grid sm:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Users className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">Team Leaders</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Team Leaders</h3>
               <p className="text-sm text-foreground">
                 Who want to stop guessing what motivates each person and start leading with their actual strengths.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Sparkles className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">Cross-Functional Teams</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Cross-Functional Teams</h3>
               <p className="text-sm text-foreground">
                 Tired of personality clashes and ready to turn their differences into a real edge.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Zap className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">Anyone on a Team</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Anyone on a Team</h3>
               <p className="text-sm text-foreground">
                 Who wants to know their own superpower and bring out the best in everyone around them.
               </p>

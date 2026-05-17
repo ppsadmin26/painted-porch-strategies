@@ -429,7 +429,7 @@ export default function AsSeenOn() {
                         <span className={`text-sm font-medium ${config.iconColor}`}>
                           {appearance.show_name}
                         </span>
-                        <h3 className="font-poppins font-semibold text-lg text-navy mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                        <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                           {appearance.title}
                         </h3>
                         <p className="text-foreground text-sm leading-relaxed mb-4 line-clamp-3 group-hover:line-clamp-none transition-all flex-1" title={appearance.description || ""}>

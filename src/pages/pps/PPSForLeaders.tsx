@@ -180,7 +180,7 @@ export default function PPSForLeaders() {
                   </div>
                   <div>
                     <span className="text-sm text-strategic font-semibold uppercase tracking-wider">{program.title}</span>
-                    <h3 className="font-poppins font-semibold text-xl text-navy">{program.subtitle}</h3>
+                    <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">{program.subtitle}</h3>
                   </div>
                 </div>
                 <p className="text-foreground mb-4">{program.description}</p>
@@ -244,7 +244,7 @@ export default function PPSForLeaders() {
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-lg">
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-6">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6">
                 Start with Discovery
               </h3>
               <p className="text-foreground mb-6">

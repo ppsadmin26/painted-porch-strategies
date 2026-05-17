@@ -124,7 +124,7 @@ export default function ClientLogoMarquee({
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
         }`}
       >
-        <h2 className="text-2xl md:text-3xl font-bold text-navy mb-12 px-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-navy mb-12 px-6">
           {heading}
         </h2>
 

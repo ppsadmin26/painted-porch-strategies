@@ -48,7 +48,7 @@ export default function FAQSectionAlt() {
   return (
     <section className="py-12 md:py-20 bg-muted/50">
       <div className="container max-w-4xl mx-auto px-6">
-        <h2 className="text-2xl md:text-4xl font-bold text-navy text-center mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-4">
           Frequently Asked Questions
         </h2>
         <p className="text-foreground text-center mb-10">

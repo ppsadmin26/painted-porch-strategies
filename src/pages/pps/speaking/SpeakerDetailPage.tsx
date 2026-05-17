@@ -154,7 +154,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
                   )}
                 </div>
                 <div className="p-6">
-                  <h3 className="font-poppins font-semibold text-lg text-navy mb-3 uppercase">
+                  <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3 uppercase">
                     {topic.title}
                   </h3>
                   <p className="text-sm text-foreground leading-relaxed">
@@ -180,7 +180,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
       {/* Workshop Follow-Up */}
       <section className="py-16 md:py-24 bg-muted">
         <div className="container max-w-4xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4 text-center">
             {speaker.workshopHeading}
           </h2>
           <p className="text-foreground text-lg leading-relaxed text-center mb-8 max-w-3xl mx-auto">

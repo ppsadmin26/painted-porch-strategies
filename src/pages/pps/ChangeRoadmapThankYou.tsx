@@ -19,7 +19,7 @@ export default function ChangeRoadmapThankYou() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-lime-green/20 rounded-full mb-6">
             <CheckCircle2 className="w-12 h-12 text-lime-green" />
           </div>
-          <h1 className="font-poppins font-bold text-4xl md:text-5xl mb-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-4">
             📑 Here's Your Worksheet
           </h1>
           <p className="text-xl text-white/90">
@@ -32,7 +32,7 @@ export default function ChangeRoadmapThankYou() {
       <section className="py-16 px-4">
         <div className="max-w-3xl mx-auto">
           <div className="bg-white border-2 border-border rounded-2xl shadow-lg p-8 md:p-12 text-center">
-            <h2 className="font-poppins font-bold text-2xl md:text-3xl text-navy mb-4">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               Download Your Worksheet
             </h2>
             <p className="text-lg text-charcoal mb-6 max-w-xl mx-auto">
@@ -64,14 +64,14 @@ export default function ChangeRoadmapThankYou() {
 
           {/* Next steps */}
           <div className="mt-12">
-            <h3 className="font-poppins font-bold text-2xl text-navy text-center mb-8">
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy text-center mb-8">
               While You're Here…
             </h3>
             <div className="grid md:grid-cols-2 gap-6">
               <Link to="/resources/free" className="group">
                 <div className="bg-white border-2 border-border hover:border-teal rounded-xl p-6 h-full transition-colors">
                   <BookOpen className="w-10 h-10 text-teal mb-3" />
-                  <h4 className="font-poppins font-semibold text-lg text-navy mb-2">
+                  <h4 className="text-base md:text-lg font-poppins font-semibold text-navy mb-2">
                     Explore More Free Resources
                   </h4>
                   <p className="text-sm text-charcoal">
@@ -82,7 +82,7 @@ export default function ChangeRoadmapThankYou() {
               <Link to="/blue-door" className="group">
                 <div className="bg-white border-2 border-border hover:border-bluedoor rounded-xl p-6 h-full transition-colors">
                   <Home className="w-10 h-10 text-bluedoor mb-3" />
-                  <h4 className="font-poppins font-semibold text-lg text-navy mb-2">
+                  <h4 className="text-base md:text-lg font-poppins font-semibold text-navy mb-2">
                     Open <span className="text-bluedoor font-bold">The Blue Door</span>
                   </h4>
                   <p className="text-sm text-charcoal">

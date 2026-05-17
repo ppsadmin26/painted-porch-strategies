@@ -73,7 +73,7 @@ export default function CommunicatorStylesWatch() {
           <span className="inline-block bg-lime/90 text-navy font-poppins font-semibold text-xs px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
             Instant Access
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-navy leading-tight mb-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-4">
             <span className="text-raspberry italic">The 6 Communicator Styles</span> Training Replay
           </h1>
           <p className="text-foreground max-w-2xl mx-auto mb-3">
@@ -111,7 +111,7 @@ export default function CommunicatorStylesWatch() {
           <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
             {/* Learnings */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 During this training session, you will learn how...
               </h2>
               <ul className="space-y-3 text-foreground">
@@ -131,7 +131,7 @@ export default function CommunicatorStylesWatch() {
 
             {/* Reference Sheet */}
             <div className="bg-muted/30 rounded-xl p-8 md:p-10">
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Don't Forget Your One-Page Reference Sheet
               </h2>
               <p className="text-foreground mb-6">
@@ -150,7 +150,7 @@ export default function CommunicatorStylesWatch() {
       {/* Next Steps */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Ready to keep the momentum going?
           </h2>
           <p className="text-foreground mb-8 max-w-2xl mx-auto">

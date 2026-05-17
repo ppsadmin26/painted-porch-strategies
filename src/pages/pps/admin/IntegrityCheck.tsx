@@ -120,7 +120,7 @@ export default function IntegrityCheck() {
   return (
     <div className="p-6 max-w-5xl mx-auto space-y-6">
       <div>
-        <h1 className="text-2xl font-poppins font-bold text-navy">Integrity Check</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy">Integrity Check</h1>
         <p className="text-sm text-muted-foreground mt-1">
           Compare row counts and storage object counts in <strong>this</strong> project against a backup manifest. Mismatches are flagged so you can re-run a restore phase.
         </p>
@@ -219,7 +219,7 @@ export default function IntegrityCheck() {
 
           <Card className="p-6 space-y-3">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-poppins font-semibold text-navy">Tables</h2>
+              <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-navy">Tables</h2>
               <span className="text-xs text-muted-foreground">expected = backup · actual = this project</span>
             </div>
             <div className="overflow-x-auto">
@@ -257,7 +257,7 @@ export default function IntegrityCheck() {
 
           <Card className="p-6 space-y-3">
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-poppins font-semibold text-navy">Storage buckets</h2>
+              <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-navy">Storage buckets</h2>
               <span className="text-xs text-muted-foreground">file counts and total bytes</span>
             </div>
             {result.source === "zip" && (

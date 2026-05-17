@@ -66,7 +66,7 @@ export default function PilotTraining() {
       {/* Hero */}
       <section className="bg-white py-16 md:py-20 text-center">
         <div className="container max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-navy leading-tight mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
             Access the{" "}
             <span className="text-primary inline-flex items-center gap-2">
               <Plane className="w-8 h-8 md:w-10 md:h-10" /> From Passenger to Pilot <Plane className="w-8 h-8 md:w-10 md:h-10" />
@@ -104,7 +104,7 @@ export default function PilotTraining() {
       {/* Auto-pilot intro */}
       <section className="bg-muted/30 py-16 md:py-20">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             For many of us, it can often feel as though we're on auto-pilot, simply going through the motions.
           </h2>
           <div className="space-y-4 text-foreground max-w-2xl mx-auto">
@@ -123,7 +123,7 @@ export default function PilotTraining() {
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((f) => (
               <div key={f.title} className="text-center bg-muted/20 rounded-xl p-8 border-t-4 border-gold">
-                <h3 className="text-xl font-bold text-navy mb-3">{f.title}</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-navy mb-3">{f.title}</h3>
                 <p className="text-foreground text-sm">{f.description}</p>
               </div>
             ))}
@@ -137,7 +137,7 @@ export default function PilotTraining() {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16">
             {/* Left: learnings */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 During this training session, you will learn to...
               </h2>
               <ul className="space-y-3 text-foreground">
@@ -152,7 +152,7 @@ export default function PilotTraining() {
 
             {/* Right: form */}
             <div id="get-access">
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Get Immediate Access
               </h2>
               <p className="text-foreground text-sm mb-2">

@@ -86,7 +86,7 @@ export default function RadicalMindfulness() {
           <span className="inline-block text-pps-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
             From Overwhelm to Om
           </span>
-          <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
             Radical Mindfulness
           </h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed mb-8">
@@ -104,7 +104,7 @@ export default function RadicalMindfulness() {
       <AnimatedSection>
         <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-pps-orange mb-6">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-orange mb-6">
               Stress. Emotional Ups & Downs. Lack of Control.
             </h2>
             <p className="text-lg text-charcoal leading-relaxed">
@@ -118,7 +118,7 @@ export default function RadicalMindfulness() {
       <AnimatedSection>
         <section className="py-20 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 className="font-poppins font-bold text-2xl md:text-3xl text-pps-navy text-center mb-4">
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy text-center mb-4">
               During our Radical Mindfulness program, you'll discover ways to:
             </h3>
             <div className="grid md:grid-cols-3 gap-8 mt-12">
@@ -129,7 +129,7 @@ export default function RadicalMindfulness() {
                     <div className="w-16 h-16 bg-pps-lime/10 rounded-full flex items-center justify-center mx-auto mb-6">
                       <Icon className="h-8 w-8 text-pps-lime" />
                     </div>
-                    <h4 className="font-poppins font-bold text-lg text-pps-navy mb-3">{h.title}</h4>
+                    <h4 className="text-base md:text-lg font-poppins font-bold text-pps-navy mb-3">{h.title}</h4>
                     <p className="text-charcoal text-sm leading-relaxed">{h.description}</p>
                   </div>
                 );
@@ -148,7 +148,7 @@ export default function RadicalMindfulness() {
       <AnimatedSection>
         <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-pps-navy mb-6">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-6">
               What is Radical Mindfulness?
             </h2>
             <p className="text-lg text-charcoal leading-relaxed">
@@ -163,7 +163,7 @@ export default function RadicalMindfulness() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-12">
-              <h2 className="font-poppins font-bold text-3xl md:text-4xl mb-4">
+              <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
                 Program Outline & Approach
               </h2>
               <p className="text-lg text-white/80 max-w-3xl mx-auto">
@@ -175,7 +175,7 @@ export default function RadicalMindfulness() {
 
           <AnimatedSection>
             <div className="bg-white/5 rounded-2xl border border-white/10 p-8 mb-12">
-              <h3 className="font-poppins font-bold text-xl text-pps-gold mb-4">Watch. Reflect. Discuss.</h3>
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-gold mb-4">Watch. Reflect. Discuss.</h3>
               <p className="text-white/80 leading-relaxed">
                 We believe that <strong>real learning and transformation is not a spectator sport</strong>. Through per-lesson discussion boards and a <strong>Private Community</strong>, <strong>PLUS Monthly, Live Group Video Calls</strong> <em>(optional, add-on)</em>, you can connect with Sierra and your fellow "Mindful Radicals" to share your takeaways, insights, ah-has, and more to shift from knowing to <strong>doing</strong> and <strong>becoming</strong>.
               </p>
@@ -191,7 +191,7 @@ export default function RadicalMindfulness() {
                       {i + 1}
                     </span>
                     <div>
-                      <h4 className="font-poppins font-semibold text-white mb-2">{mod.title}</h4>
+                      <h4 className="text-base md:text-lg font-poppins font-semibold text-white mb-2">{mod.title}</h4>
                       <p className="text-white/70 text-sm leading-relaxed">{mod.description}</p>
                     </div>
                   </div>
@@ -212,7 +212,7 @@ export default function RadicalMindfulness() {
       <AnimatedSection>
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-pps-navy text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy text-center mb-16">
               Program Details
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
@@ -223,7 +223,7 @@ export default function RadicalMindfulness() {
                     <div className="w-20 h-20 bg-pps-teal/10 rounded-full flex items-center justify-center mx-auto mb-6">
                       <Icon className="h-10 w-10 text-pps-teal" />
                     </div>
-                    <h3 className="font-poppins font-bold text-xl text-pps-navy mb-4">{d.title}</h3>
+                    <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-4">{d.title}</h3>
                     <p className="text-charcoal leading-relaxed">{d.description}</p>
                   </div>
                 );
@@ -238,7 +238,7 @@ export default function RadicalMindfulness() {
         <section className="py-20 bg-muted/30">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-2xl border border-border p-8 md:p-12">
-              <h3 className="font-poppins font-bold text-2xl text-pps-navy mb-2">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-2">
                 Hi! I'm Sierra, your Painted Porch Guide!
               </h3>
               <p className="text-pps-gold font-poppins font-semibold text-sm mb-6">
@@ -260,7 +260,7 @@ export default function RadicalMindfulness() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-4">
-              <h2 className="font-poppins font-bold text-3xl md:text-4xl text-pps-navy mb-4">
+              <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-4">
                 Take Advantage of Early Bird Pricing!
               </h2>
               <p className="text-lg text-charcoal max-w-2xl mx-auto leading-relaxed">
@@ -278,7 +278,7 @@ export default function RadicalMindfulness() {
                       Most Popular
                     </span>
                   )}
-                  <h3 className="font-poppins font-bold text-lg text-pps-navy mb-1">{tier.name}</h3>
+                  <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-1">{tier.name}</h3>
                   <p className="text-4xl font-poppins font-bold text-pps-navy mb-2">{tier.price}</p>
                   <p className="text-sm text-charcoal mb-6">{tier.subtitle}</p>
                   <ul className="space-y-3 mb-8">
@@ -303,7 +303,7 @@ export default function RadicalMindfulness() {
       <AnimatedSection>
         <section className="py-20 bg-muted/30">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-pps-navy text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy text-center mb-12">
               You've Got Questions. We've Got Answers.
             </h2>
             <Accordion type="single" collapsible className="space-y-3">
@@ -326,7 +326,7 @@ export default function RadicalMindfulness() {
       <AnimatedSection>
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 className="font-poppins font-bold text-2xl text-pps-navy mb-4">A Virtuous Cycle</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-4">A Virtuous Cycle</h3>
             <p className="text-charcoal leading-relaxed mb-4">
               Painted Porch Strategies was created to model the Stoic principles of <em>Reason, Logic, Purpose, and Virtue</em>.
               Since we intend to live by the Stoic philosopher Seneca's advice of "<em>works not words</em>", we believe that in order{" "}
@@ -342,7 +342,7 @@ export default function RadicalMindfulness() {
       {/* Business CTA */}
       <section className="py-20 bg-pps-navy text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-poppins font-bold text-3xl md:text-4xl mb-6">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-6">
             Interested in Radical Mindfulness for your Business?
           </h2>
           <p className="text-lg text-white/80 leading-relaxed mb-8">

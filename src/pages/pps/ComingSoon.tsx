@@ -120,7 +120,7 @@ export default function ComingSoon() {
           Building something here
         </p>
 
-        <h1 className="font-poppins font-bold text-3xl md:text-4xl text-pps-navy mb-4">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-pps-navy mb-4">
           Painting this porch as we speak
         </h1>
 

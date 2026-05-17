@@ -747,7 +747,7 @@ export default function MigrationChecklist() {
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-3xl font-bold flex items-center gap-2">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold flex items-center gap-2">
             <ListChecks className="h-7 w-7" /> Migration Checklist
           </h1>
           <p className="text-muted-foreground mt-1 max-w-3xl">
@@ -1092,7 +1092,7 @@ export default function MigrationChecklist() {
             <Card key={phase.id} className="p-5">
               <div className="flex items-start justify-between gap-4 mb-3">
                 <div>
-                  <h2 className="text-xl font-semibold flex items-center gap-2">
+                  <h2 className="text-3xl md:text-4xl font-semibold flex items-center gap-2">
                     {phase.number > 0 ? `Phase ${phase.number}: ` : ""}
                     {phase.title}
                     {phaseDone && (

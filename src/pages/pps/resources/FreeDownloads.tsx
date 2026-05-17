@@ -191,7 +191,7 @@ export default function FreeDownloads() {
                     </div>
                     <div className="flex-1">
                       <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{download.format}</span>
-                      <h3 className="font-poppins font-semibold text-xl text-navy mt-1">
+                      <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-1">
                         {download.title}
                       </h3>
                     </div>

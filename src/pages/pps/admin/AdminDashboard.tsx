@@ -47,7 +47,7 @@ export default function AdminDashboard() {
   return (
     <div className="p-6 max-w-5xl mx-auto">
       <div className="mb-8">
-        <h1 className="text-2xl font-poppins font-bold text-navy">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy">
           Painted Porch Admin
         </h1>
         <p className="text-muted-foreground text-sm mt-1">

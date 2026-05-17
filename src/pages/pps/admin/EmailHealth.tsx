@@ -250,7 +250,7 @@ export default function EmailHealth() {
     <div className="p-6 max-w-7xl mx-auto">
       <div className="mb-6 flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-2xl font-poppins font-bold text-navy flex items-center gap-2">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy flex items-center gap-2">
             <Activity className="h-6 w-6 text-primary" /> Email Health
           </h1>
           <p className="text-sm text-muted-foreground mt-1 max-w-2xl">
@@ -522,7 +522,7 @@ export default function EmailHealth() {
                 <Card key={q.queue} className="p-5">
                   <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div>
-                      <h3 className="font-poppins font-semibold text-navy flex items-center gap-2">
+                      <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy flex items-center gap-2">
                         <Inbox className="h-4 w-4 text-primary" />
                         {isAuth ? "Auth emails queue" : "Transactional emails queue"}
                         <code className="text-[11px] font-mono text-muted-foreground">
@@ -615,7 +615,7 @@ export default function EmailHealth() {
                 <Card key={d.queue} className="p-4">
                   <div className="flex items-center gap-2 mb-3">
                     <AlertTriangle className="h-4 w-4 text-red-600" />
-                    <h3 className="font-poppins font-semibold text-navy">
+                    <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">
                       {d.queue === "auth_emails"
                         ? "Auth emails DLQ"
                         : "Transactional emails DLQ"}

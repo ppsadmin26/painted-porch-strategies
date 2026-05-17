@@ -513,7 +513,7 @@ export default function PPSBlog() {
                       )}
 
                       <div className="p-5 flex flex-col flex-1">
-                        <h3 className="font-poppins font-semibold text-lg text-navy mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                        <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                           {post.title}
                         </h3>
 

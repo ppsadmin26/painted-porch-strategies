@@ -31,7 +31,7 @@ export default function ValueEscalationSectionAlt() {
   return (
     <section className="py-12 md:py-20 bg-white">
       <div className="container max-w-6xl mx-auto px-6">
-        <h2 className="text-2xl md:text-4xl font-bold text-navy text-center mb-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-6">
           The Architecture of Strategic Clarity
         </h2>
         
@@ -161,7 +161,7 @@ export default function ValueEscalationSectionAlt() {
         </div>
         
         <div className="bg-navy/5 p-8 rounded-lg text-center">
-          <h3 className="font-poppins font-bold text-xl md:text-2xl text-navy mb-4">
+          <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-4">
             The Progression:
           </h3>
           <div className="text-base md:text-lg text-foreground leading-relaxed mb-4 flex flex-col items-center gap-2">

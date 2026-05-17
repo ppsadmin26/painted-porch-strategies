@@ -732,7 +732,7 @@ export default function BackupsManager() {
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-8 flex-wrap">
         <div>
-          <h1 className="text-3xl font-poppins font-bold text-navy mb-2 flex items-center gap-3">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy mb-2 flex items-center gap-3">
             <Database className="w-8 h-8 text-primary" />
             Backups
           </h1>
@@ -852,7 +852,7 @@ export default function BackupsManager() {
       <Card className="p-6 mb-8 border-l-4 border-l-navy bg-navy/5">
         <div className="flex items-center gap-3 mb-3">
           <FileCode className="w-5 h-5 text-navy" />
-          <h2 className="font-poppins text-xl font-semibold text-navy">
+          <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-navy">
             Source Code Snapshots <span className="text-xs font-normal text-muted-foreground">(disaster recovery)</span>
           </h2>
         </div>
@@ -919,7 +919,7 @@ export default function BackupsManager() {
       <Card className="p-6 mb-8">
         <div className="flex items-center gap-3 mb-2">
           <Clock className="w-5 h-5 text-primary" />
-          <h2 className="font-poppins text-xl font-semibold text-navy">
+          <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-navy">
             Retention policy
           </h2>
         </div>
@@ -999,7 +999,7 @@ export default function BackupsManager() {
         <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
           <div className="flex items-center gap-3">
             <Calendar className="w-5 h-5 text-primary" />
-            <h2 className="font-poppins text-xl font-semibold text-navy">Automated schedule</h2>
+            <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-navy">Automated schedule</h2>
           </div>
           <Button
             variant="outline"
@@ -1066,7 +1066,7 @@ export default function BackupsManager() {
       {/* History */}
       <Card className="p-0 overflow-hidden">
         <div className="p-6 pb-3 flex items-center justify-between">
-          <h2 className="font-poppins text-xl font-semibold text-navy">Backup history</h2>
+          <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-navy">Backup history</h2>
           <span className="text-xs text-muted-foreground font-montserrat">
             Showing last {runs.length}
           </span>

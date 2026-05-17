@@ -23,7 +23,7 @@ export function PathwayPhilosophySection() {
     <section className="py-16 md:py-20 bg-muted">
       <div className="container max-w-6xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Why Three P.A.T.H.ways? Because No Two Sh<span className="text-raspberry">IF</span>ts are the Same.
           </h2>
           <p className="text-foreground max-w-2xl mx-auto">
@@ -37,7 +37,7 @@ export function PathwayPhilosophySection() {
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <principle.icon className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="font-poppins font-bold text-lg text-navy mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                 {principle.title}
               </h3>
               <p className="text-foreground text-sm leading-relaxed">

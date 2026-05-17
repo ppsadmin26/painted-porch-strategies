@@ -237,7 +237,7 @@ export default function AmplifyPathAlt() {
             <div className="bg-gold/5 p-8 rounded-xl border-t-4 border-gold flex flex-col">
               <div className="flex items-center gap-3 mb-6">
                 <Users className="w-8 h-8 text-gold" />
-                <h3 className="font-poppins font-bold text-xl text-gold">Organizations & Teams</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-gold">Organizations & Teams</h3>
               </div>
               <p className="text-sm font-semibold text-gold mb-4">4 Signals Your Team is Ready for AMPLIFY Workshop or Strategic Sprint:</p>
               <div className="space-y-4">
@@ -267,7 +267,7 @@ export default function AmplifyPathAlt() {
             <div className="bg-teal/5 p-8 rounded-xl border-t-4 border-teal flex flex-col">
               <div className="flex items-center gap-3 mb-6">
                 <User className="w-8 h-8 text-teal" />
-                <h3 className="font-poppins font-bold text-xl text-teal">Individual Leaders</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-teal">Individual Leaders</h3>
               </div>
               <p className="text-sm font-semibold text-teal mb-4">4 Signals You're Ready for AMPLIFY Leadership Labs:</p>
               <div className="space-y-4">
@@ -312,7 +312,7 @@ export default function AmplifyPathAlt() {
             {amplifyFormats.map((format, index) => (
               <div key={index} className={`bg-white p-8 rounded-xl border-t-4 ${format.color} flex flex-col`}>
                 <format.icon className={`w-10 h-10 mb-4 ${format.color.replace('border-', 'text-')}`} />
-                <h3 className={`font-poppins font-bold text-2xl mb-1 whitespace-pre-line ${format.color.replace('border-', 'text-')}`}>
+                <h3 className={`text-xl md:text-2xl font-poppins font-bold mb-1 whitespace-pre-line ${format.color.replace('border-', 'text-')}`}>
                   {format.title}
                 </h3>
                 <p className="text-sm font-semibold text-foreground mb-2">For: {format.audience}</p>
@@ -383,7 +383,7 @@ export default function AmplifyPathAlt() {
 
           {/* Side-by-side comparison table */}
           <div className="overflow-x-auto">
-            <h3 className="font-poppins font-semibold text-xl text-navy text-center mb-6">
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy text-center mb-6">
               Quick Comparison: Cost vs. Eliminates vs. Enables
             </h3>
             <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
@@ -460,7 +460,7 @@ export default function AmplifyPathAlt() {
       {/* SECTION: Which ShIFt — Workshop vs. Sprint vs. Leader Lab */}
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container max-w-6xl mx-auto px-6">
-          <h3 className="text-2xl md:text-3xl font-semibold text-navy text-center mb-8">
+          <h3 className="text-xl md:text-2xl font-semibold text-navy text-center mb-8">
             Which Sh<span className="text-strategic">IF</span>t: Workshop vs. Sprint vs. Leader Lab
           </h3>
 
@@ -468,7 +468,7 @@ export default function AmplifyPathAlt() {
             <div className="bg-gold/5 p-6 rounded-xl flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <Users className="w-6 h-6 text-gold flex-shrink-0" />
-                <h4 className="font-poppins font-bold text-lg text-gold">Choose TEAM WORKSHOP if:</h4>
+                <h4 className="text-base md:text-lg font-poppins font-bold text-gold">Choose TEAM WORKSHOP if:</h4>
               </div>
               <ul className="space-y-3 flex-grow">
                 <li className="flex items-start gap-2">
@@ -498,7 +498,7 @@ export default function AmplifyPathAlt() {
             <div className="bg-lime/5 p-6 rounded-xl flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <Crosshair className="w-6 h-6 text-lime flex-shrink-0" />
-                <h4 className="font-poppins font-bold text-lg text-lime">Choose STRATEGIC SPRINT if:</h4>
+                <h4 className="text-base md:text-lg font-poppins font-bold text-lime">Choose STRATEGIC SPRINT if:</h4>
               </div>
               <ul className="space-y-3 flex-grow">
                 <li className="flex items-start gap-2">
@@ -528,7 +528,7 @@ export default function AmplifyPathAlt() {
             <div className="bg-teal/5 p-6 rounded-xl flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <User className="w-6 h-6 text-teal flex-shrink-0" />
-                <h4 className="font-poppins font-bold text-lg text-teal">Choose LEADERSHIP LAB if:</h4>
+                <h4 className="text-base md:text-lg font-poppins font-bold text-teal">Choose LEADERSHIP LAB if:</h4>
               </div>
               <ul className="space-y-3 flex-grow">
                 <li className="flex items-start gap-2">
@@ -598,7 +598,7 @@ export default function AmplifyPathAlt() {
                 <div className="w-10 h-10 rounded-full bg-amplify/10 flex items-center justify-center">
                   <TIERS.AMPLIFY.icon className="w-5 h-5 text-amplify" />
                 </div>
-                <h3 className="font-poppins font-bold text-lg text-navy">Continue in AMPLIFY</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Continue in AMPLIFY</h3>
               </div>
               <ul className="space-y-2 mb-6">
                 <li className="text-sm text-foreground">• Additional workshops on different topics</li>
@@ -616,7 +616,7 @@ export default function AmplifyPathAlt() {
                 <div className="w-10 h-10 rounded-full bg-navy/20 flex items-center justify-center">
                   <Landmark className="w-5 h-5 text-navy" />
                 </div>
-                <h3 className="font-poppins font-bold text-lg text-navy">Progress to EMBODY</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Progress to EMBODY</h3>
               </div>
               <ul className="space-y-2 mb-6">
                 <li className="text-sm text-foreground">• 6-12+ month embedded partnership</li>
@@ -639,7 +639,7 @@ export default function AmplifyPathAlt() {
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                   <Link2 className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-poppins font-bold text-lg text-navy">Maintain Connection</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Maintain Connection</h3>
               </div>
               <ul className="space-y-2 mb-6">
                 <li className="text-sm text-foreground">• Join our semi-annual Leadership Summits (open to AMPLIFY alumni)</li>
@@ -687,7 +687,7 @@ export default function AmplifyPathAlt() {
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl text-center">
-              <h3 className="font-poppins font-bold text-xl mb-4">For Organizations & Teams</h3>
+              <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4">For Organizations & Teams</h3>
               <p className="text-white/90 mb-6">Start with strategic clarity.</p>
               <Link to="/blue-door">
                 <Button className="bg-bluedoor hover:bg-bluedoor/90 text-white w-full mb-4">
@@ -700,7 +700,7 @@ export default function AmplifyPathAlt() {
             </div>
 
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl text-center">
-              <h3 className="font-poppins font-bold text-xl mb-4">For Individual Leaders</h3>
+              <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4">For Individual Leaders</h3>
               <p className="text-white/90 mb-6">Apply for a Leadership Lab.</p>
               <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I'm interested in applying for a Leadership Lab.">
                 <Button className="bg-teal hover:bg-teal/90 text-white w-full mb-4">

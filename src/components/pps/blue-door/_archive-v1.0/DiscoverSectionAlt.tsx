@@ -75,7 +75,7 @@ export default function DiscoverSectionAlt() {
     <section className="py-12 md:py-20 bg-white">
       <div className="container max-w-5xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-2xl md:text-4xl font-bold text-navy mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Go from "What IF" to "Where Next"
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -87,7 +87,7 @@ export default function DiscoverSectionAlt() {
         </div>
 
         <div className="mb-12">
-          <h3 className="text-lg md:text-xl font-semibold text-navy text-center mb-6">
+          <h3 className="text-xl md:text-2xl font-semibold text-navy text-center mb-6">
             We examine three core areas—the <span className="text-raspberry">Painted Porch Pillars</span>
           </h3>
           
@@ -102,7 +102,7 @@ export default function DiscoverSectionAlt() {
                   <div className={`w-12 h-12 rounded-full ${pillar.iconBgClass} flex items-center justify-center mb-4`}>
                     <Icon className={`w-6 h-6 ${pillar.textClass}`} />
                   </div>
-                  <h4 className={`font-poppins font-semibold text-lg ${pillar.textClass} mb-2`}>
+                  <h4 className={`text-base md:text-lg font-poppins font-semibold ${pillar.textClass} mb-2`}>
                     {pillar.title}
                   </h4>
                   <p className="text-sm text-foreground leading-relaxed">
@@ -118,7 +118,7 @@ export default function DiscoverSectionAlt() {
           ref={outcomesRef}
           className={`transition-all duration-700 ease-out ${outcomesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          <h3 className="text-lg md:text-xl font-semibold text-navy text-center mb-6">
+          <h3 className="text-xl md:text-2xl font-semibold text-navy text-center mb-6">
             Your Executive Blue Door Brief Will Show You
           </h3>
           

@@ -144,7 +144,7 @@ export default function AboutAmy() {
             />
           </div>
 
-          <h1 className="font-poppins text-4xl font-bold text-navy md:text-5xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy">
             Hi! I'm Amy
           </h1>
 
@@ -180,7 +180,7 @@ export default function AboutAmy() {
       {/* ── SPEAKER REEL ─────────────────────────────────────────────── */}
       <section className="bg-navy py-12 md:py-16">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="font-poppins text-2xl font-bold text-white md:text-3xl">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
             See Amy in Action
           </h2>
           <p className="mt-2 text-white/70">Expert Speaker Reel</p>
@@ -203,7 +203,7 @@ export default function AboutAmy() {
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
-            <h2 className="font-poppins text-3xl font-bold text-navy md:text-4xl">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy">
               What I Do
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-foreground/70">
@@ -222,7 +222,7 @@ export default function AboutAmy() {
                 <div className="flex items-start gap-3">
                   <span className="text-2xl">{card.emoji}</span>
                   <div>
-                    <h3 className="font-poppins text-lg font-semibold text-navy group-hover:text-primary transition-colors">
+                    <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy group-hover:text-primary transition-colors">
                       {card.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-foreground/70">
@@ -245,7 +245,7 @@ export default function AboutAmy() {
       {/* ── QUICK LINKS ──────────────────────────────────────────────── */}
       <section className="bg-muted/50 py-16 md:py-20">
         <div className="mx-auto max-w-2xl px-6">
-          <h2 className="text-center font-poppins text-3xl font-bold text-navy md:text-4xl">
+          <h2 className="text-3xl md:text-4xl text-center font-poppins font-bold text-navy">
             Explore & Connect
           </h2>
           <p className="mt-3 text-center text-foreground/60">
@@ -283,7 +283,7 @@ export default function AboutAmy() {
       {/* ── YOUTUBE EMBED ────────────────────────────────────────────── */}
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="font-poppins text-3xl font-bold text-navy md:text-4xl">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy">
             From the Porch
           </h2>
           <p className="mt-3 text-foreground/60">
@@ -307,7 +307,7 @@ export default function AboutAmy() {
       {/* ── SPOTIFY + PODCAST ────────────────────────────────────────── */}
       <section className="bg-navy py-16 md:py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-center font-poppins text-3xl font-bold text-white md:text-4xl">
+          <h2 className="text-3xl md:text-4xl text-center font-poppins font-bold text-white">
             Listen In
           </h2>
           <p className="mt-3 text-center text-white/60">
@@ -338,7 +338,7 @@ export default function AboutAmy() {
                   loading="lazy"
                 />
               </div>
-              <h3 className="font-poppins text-xl font-bold text-white">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-white">
                 Life & Logos on The Painted Porch
               </h3>
               <p className="mt-2 text-sm text-white/60">
@@ -363,7 +363,7 @@ export default function AboutAmy() {
         <div className="mx-auto max-w-2xl px-6 text-center">
           <div className="rounded-2xl border-2 border-primary/20 bg-primary/5 px-8 py-12 md:px-12">
             <span className="text-5xl">☕</span>
-            <h2 className="mt-4 font-poppins text-3xl font-bold text-navy">
+            <h2 className="text-3xl md:text-4xl mt-4 font-poppins font-bold text-navy">
               Meet for a Virtual Coffee or Cocktail
             </h2>
             <p className="mx-auto mt-4 max-w-md text-foreground/70">

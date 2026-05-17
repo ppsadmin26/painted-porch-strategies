@@ -490,7 +490,7 @@ export default function AdminUsers() {
       <div className="min-h-full flex items-center justify-center bg-muted/30">
         <div className="text-center">
           <Shield className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-          <h1 className="text-xl font-poppins font-bold text-navy mb-2">Admin Access Required</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy mb-2">Admin Access Required</h1>
           <p className="text-muted-foreground mb-4">You need admin privileges to manage users.</p>
           <Button variant="outline" onClick={() => navigate("/admin")}>
             <ArrowLeft className="h-4 w-4 mr-1" /> Back to Dashboard
@@ -506,7 +506,7 @@ export default function AdminUsers() {
       <div className="bg-card border-b border-border px-4 py-4">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-poppins font-bold text-navy">User Management</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy">User Management</h1>
             <p className="text-sm text-muted-foreground">Manage team members and author profiles</p>
           </div>
 

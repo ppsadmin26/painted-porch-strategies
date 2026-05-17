@@ -256,7 +256,7 @@ export default function SecretsHandoff() {
     <div className="container mx-auto p-6 space-y-6">
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-3xl font-bold flex items-center gap-2">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold flex items-center gap-2">
             <KeyRound className="h-7 w-7" /> Secrets Handoff
           </h1>
           <p className="text-muted-foreground mt-1">
@@ -330,7 +330,7 @@ export default function SecretsHandoff() {
       <Card className="p-4 space-y-3">
         <div className="flex items-start justify-between gap-3 flex-wrap">
           <div>
-            <h2 className="text-lg font-semibold flex items-center gap-2">
+            <h2 className="text-3xl md:text-4xl font-semibold flex items-center gap-2">
               <PlugZap className="h-5 w-5" /> Live integration tests
             </h2>
             <p className="text-xs text-muted-foreground mt-1 max-w-2xl">
@@ -430,7 +430,7 @@ export default function SecretsHandoff() {
         <div className="space-y-6">
           {grouped.map(([category, list]) => (
             <Card key={category} className="p-4">
-              <h2 className="font-semibold text-lg mb-3">{category}</h2>
+              <h2 className="text-3xl md:text-4xl font-semibold mb-3">{category}</h2>
               <div className="space-y-2">
                 {list.map((item) => {
                   const status = local[item.name] ?? "unchecked";

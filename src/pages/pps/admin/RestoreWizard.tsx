@@ -437,7 +437,7 @@ export default function RestoreWizard() {
   return (
     <div className="p-6 max-w-5xl mx-auto space-y-6">
       <div>
-        <h1 className="text-2xl font-poppins font-bold text-navy">Restore Wizard</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy">Restore Wizard</h1>
         <p className="text-sm text-muted-foreground mt-1">
           Step-by-step restore from a backup (zip or migration folder) into <strong>this</strong> project. Each phase shows progress and retries on failure.
         </p>

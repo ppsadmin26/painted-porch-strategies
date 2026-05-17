@@ -79,7 +79,7 @@ export default function PageStatusManager() {
           <div className="flex items-start gap-3">
             <FileWarning className="w-5 h-5 text-pps-raspberry mt-0.5" />
             <div>
-              <h2 className="font-poppins font-semibold text-pps-navy mb-1">Admins only</h2>
+              <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-pps-navy mb-1">Admins only</h2>
               <p className="font-montserrat text-sm text-pps-charcoal">
                 Page status changes are limited to admin accounts. Reach out to an admin if you
                 need a page flipped between Live and Draft.
@@ -120,7 +120,7 @@ export default function PageStatusManager() {
     <div className="p-6 max-w-4xl mx-auto">
       <div className="mb-8 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-poppins font-bold text-pps-navy">Page Status</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-pps-navy">Page Status</h1>
           <p className="text-sm text-muted-foreground mt-1">
             Mark pages as Live or Draft. Drafts show a friendly Coming Soon screen to the public,
             and the real page to signed-in staff.
@@ -138,7 +138,7 @@ export default function PageStatusManager() {
       </div>
 
       <Card className="p-5 mb-6">
-        <h2 className="font-poppins font-semibold text-pps-navy text-sm mb-3">
+        <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-pps-navy mb-3">
           Add a new override
         </h2>
         <div className="flex flex-col sm:flex-row gap-2">
@@ -165,7 +165,7 @@ export default function PageStatusManager() {
       </Card>
 
       <div className="mb-3 flex items-center justify-between">
-        <h2 className="font-poppins font-semibold text-pps-navy text-sm">
+        <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-pps-navy">
           Overrides {overrides.length > 0 && (
             <span className="text-muted-foreground font-normal">
               ({draftCount} draft, {overrides.length - draftCount} live)

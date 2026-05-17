@@ -74,7 +74,7 @@ export default function StartHere() {
                   <p className="text-sm font-medium text-primary mb-6">
                     {tier.tagline}
                   </p>
-                  <h4 className="font-semibold text-navy mb-3">Ideal for:</h4>
+                  <h4 className="text-base md:text-lg font-semibold text-navy mb-3">Ideal for:</h4>
                   <ul className="space-y-2 mb-6">
                     {details.idealFor.map((item, i) => (
                       <li key={i} className="flex items-start gap-2">
@@ -122,7 +122,7 @@ export default function StartHere() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <Link to="/resources/free" className="bg-muted p-6 rounded-xl hover:shadow-lg transition-all group">
-              <h3 className="font-poppins font-semibold text-lg text-navy mb-2 group-hover:text-primary">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary">
                 Free Resources
               </h3>
               <p className="text-sm text-foreground mb-4">
@@ -133,7 +133,7 @@ export default function StartHere() {
               </span>
             </Link>
             <Link to="/resources/insights" className="bg-muted p-6 rounded-xl hover:shadow-lg transition-all group">
-              <h3 className="font-poppins font-semibold text-lg text-navy mb-2 group-hover:text-primary">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary">
                 Read Insights
               </h3>
               <p className="text-sm text-foreground mb-4">
@@ -144,7 +144,7 @@ export default function StartHere() {
               </span>
             </Link>
             <Link to="/resources/youtube" className="bg-muted p-6 rounded-xl hover:shadow-lg transition-all group">
-              <h3 className="font-poppins font-semibold text-lg text-navy mb-2 group-hover:text-primary">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary">
                 Watch Videos
               </h3>
               <p className="text-sm text-foreground mb-4">

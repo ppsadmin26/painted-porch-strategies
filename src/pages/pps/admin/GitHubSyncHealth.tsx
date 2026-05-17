@@ -76,7 +76,7 @@ export default function GitHubSyncHealth() {
     <div className="px-6 py-6 max-w-7xl mx-auto space-y-6">
       <div className="flex items-center justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-2xl font-bold flex items-center gap-2 text-[#00006B]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold flex items-center gap-2 text-[#00006B]">
             <Github className="h-6 w-6" /> GitHub Sync Health
           </h1>
           <p className="text-sm text-muted-foreground mt-1">

@@ -165,7 +165,7 @@ export default function IgnitePathAlt() {
                   <div className={`w-10 h-10 rounded-full ${archetype.iconBg} flex items-center justify-center flex-shrink-0`}>
                     <archetype.icon className={`w-5 h-5 ${archetype.iconColor}`} />
                   </div>
-                  <h3 className={`font-poppins font-bold text-lg ${archetype.textColor}`}>
+                  <h3 className={`text-xl md:text-2xl font-poppins font-bold ${archetype.textColor}`}>
                     {archetype.title}
                   </h3>
                 </div>
@@ -212,7 +212,7 @@ export default function IgnitePathAlt() {
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <Monitor className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-poppins font-bold text-xl text-navy mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-4">
                 Self-Led Courses
               </h3>
               <p className="text-foreground mb-6 leading-relaxed">
@@ -251,7 +251,7 @@ export default function IgnitePathAlt() {
               <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-4">
                 <BarChart3 className="w-6 h-6 text-gold" />
               </div>
-              <h3 className="font-poppins font-bold text-xl text-navy mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-4">
                 Strategic Assessments
               </h3>
               <p className="text-foreground mb-6 leading-relaxed">
@@ -291,7 +291,7 @@ export default function IgnitePathAlt() {
               <div className="w-12 h-12 rounded-full bg-strategic/10 flex items-center justify-center mb-4">
                 <Video className="w-6 h-6 text-strategic" />
               </div>
-              <h3 className="font-poppins font-bold text-xl text-navy mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-4">
                 Masterclasses
               </h3>
               <p className="text-foreground mb-6 leading-relaxed">
@@ -357,7 +357,7 @@ export default function IgnitePathAlt() {
                 <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
                   <TIERS.IGNITE.icon className="w-5 h-5 text-gold" />
                 </div>
-                <h3 className="font-poppins font-bold text-lg text-navy">Nurture the Spark</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Nurture the Spark</h3>
               </div>
               <p className="text-sm font-medium text-foreground/80 mb-4">
                 Stay in IGNITE, go deeper
@@ -391,7 +391,7 @@ export default function IgnitePathAlt() {
                 <div className="w-10 h-10 rounded-full bg-strategic/20 flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-strategic" />
                 </div>
-                <h3 className="font-poppins font-bold text-lg text-navy">Amplify What You've Started</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Amplify What You've Started</h3>
               </div>
               <p className="text-sm font-medium text-foreground/80 mb-4">
                 Join cohorts or bring your team
@@ -430,7 +430,7 @@ export default function IgnitePathAlt() {
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
                   <Landmark className="w-5 h-5 text-primary" />
                 </div>
-                <h3 className="font-poppins font-bold text-lg text-navy">Open the Door to Strategic Shift</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Open the Door to Strategic Shift</h3>
               </div>
               <p className="text-sm font-medium text-foreground/80 mb-4">
                 Organizational Clarity Before Implementation Commitment

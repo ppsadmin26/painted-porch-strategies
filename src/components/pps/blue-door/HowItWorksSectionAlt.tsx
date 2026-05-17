@@ -56,7 +56,7 @@ export default function HowItWorksSectionAlt() {
   return (
     <section className="py-12 md:py-20 bg-gradient-to-br from-primary/5 via-white to-gold/5">
       <div className="container max-w-6xl mx-auto px-6">
-        <h2 className="text-2xl md:text-4xl font-bold text-navy text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-12">
           How It Works
         </h2>
         
@@ -70,7 +70,7 @@ export default function HowItWorksSectionAlt() {
                   {step.number}
                 </div>
                 
-                <h3 className={`font-poppins font-semibold text-lg md:text-xl ${stepColors[index].text} mb-2`}>
+                <h3 className={`text-xl md:text-2xl font-poppins font-semibold ${stepColors[index].text} mb-2`}>
                   Step {step.number}: {step.title}
                 </h3>
                 

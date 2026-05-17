@@ -36,7 +36,7 @@ export default function HeroPreviewV2() {
 
           {/* Headline */}
           <div className="max-w-4xl">
-            <h1 className="font-poppins text-5xl font-bold leading-[0.95] tracking-tighter text-navy md:text-7xl lg:text-8xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold leading-[0.95] tracking-tighter text-navy">
               It's Time to Do <br />
               Epic Sh<span className="text-raspberry">IF</span>t.
             </h1>

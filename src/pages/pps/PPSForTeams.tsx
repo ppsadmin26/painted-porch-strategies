@@ -160,7 +160,7 @@ export default function PPSForTeams() {
                   <div className={`w-12 h-12 bg-${pillar.color}/10 rounded-lg flex items-center justify-center mb-4`}>
                     <Icon className={`w-6 h-6 text-${pillar.color}`} />
                   </div>
-                  <h3 className="font-poppins font-semibold text-xl text-navy mb-1">{pillar.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">{pillar.title}</h3>
                   <p className={`text-sm font-medium text-${pillar.color} mb-3`}>{pillar.subtitle}</p>
                   <p className="text-foreground text-sm leading-relaxed">{pillar.description}</p>
                 </div>
@@ -195,7 +195,7 @@ export default function PPSForTeams() {
                       <Icon className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-poppins font-semibold text-xl text-navy">{program.title}</h3>
+                      <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">{program.title}</h3>
                       <p className="text-sm font-medium text-primary">{program.subtitle}</p>
                     </div>
                   </div>
@@ -241,7 +241,7 @@ export default function PPSForTeams() {
               </div>
             </div>
             <div className="bg-muted p-8 rounded-xl shadow-lg">
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-6">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6">
                 Start with Discovery
               </h3>
               <p className="text-foreground mb-6">

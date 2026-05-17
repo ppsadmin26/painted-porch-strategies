@@ -25,13 +25,13 @@ export default function WhoThisIsForSectionAlt() {
   return (
     <section className="py-12 md:py-20 bg-white">
       <div className="container max-w-6xl mx-auto px-6">
-        <h2 className="text-2xl md:text-4xl font-bold text-navy text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-12">
           Is This the Right Moment To Open the Blue Door?
         </h2>
         
         <div ref={cardsRef} className="grid md:grid-cols-2 gap-8">
           <div className={`bg-gradient-to-br from-lime/10 to-primary/10 border-l-4 border-lime p-8 rounded-xl shadow-sm ${getStaggeredItemClasses(visibleItems[0], "slide-left")}`}>
-            <h3 className="font-poppins font-bold text-xl md:text-2xl text-lime mb-6">
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-lime mb-6">
               The Blue Door is For...
             </h3>
             <ul className="space-y-4">
@@ -45,7 +45,7 @@ export default function WhoThisIsForSectionAlt() {
           </div>
           
           <div className={`bg-gradient-to-br from-raspberry/10 to-raspberry/5 border-l-4 border-raspberry p-8 rounded-xl shadow-sm ${getStaggeredItemClasses(visibleItems[1], "slide-right")}`}>
-            <h3 className="font-poppins font-bold text-xl md:text-2xl text-raspberry mb-6">
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-raspberry mb-6">
               The Blue Door is Not For...
             </h3>
             <ul className="space-y-4">

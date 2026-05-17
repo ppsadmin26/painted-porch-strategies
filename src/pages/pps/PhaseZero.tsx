@@ -190,7 +190,7 @@ export default function PhaseZero() {
           <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-4">
             Why Phase Zero Exists
           </p>
-          <h2 className="font-poppins font-bold text-3xl md:text-5xl text-navy leading-tight mb-6">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
             Not every opportunity strengthens the organization chasing it.
           </h2>
           <div className="space-y-5 text-lg md:text-xl text-charcoal/85 leading-relaxed">
@@ -222,7 +222,7 @@ export default function PhaseZero() {
           <p className="text-gold font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-4">
             The Work Before the Work
           </p>
-          <h2 className="font-poppins font-bold text-3xl md:text-5xl text-navy leading-tight mb-6">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
             Phase Zero is where the real choices get made.
           </h2>
           <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-5">
@@ -248,13 +248,13 @@ export default function PhaseZero() {
             <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-3">
               Clear About the Work
             </p>
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-navy leading-tight">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight">
               What Phase Zero is, and what it is not.
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white rounded-xl p-7 border-t-4 border-lime shadow-sm">
-              <h3 className="font-poppins font-semibold text-xl text-lime mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-lime mb-4">
                 Phase Zero is:
               </h3>
               <ul className="space-y-3">
@@ -267,7 +267,7 @@ export default function PhaseZero() {
               </ul>
             </div>
             <div className="bg-white rounded-xl p-7 border-t-4 border-raspberry shadow-sm">
-              <h3 className="font-poppins font-semibold text-xl text-raspberry mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-raspberry mb-4">
                 Phase Zero is not:
               </h3>
               <ul className="space-y-3">
@@ -290,7 +290,7 @@ export default function PhaseZero() {
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
               The Foundations Phase Zero Examines
             </p>
-            <h2 className="font-poppins font-bold text-3xl md:text-5xl text-navy leading-tight mb-6">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
               The Painted Porch Pillars.
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
@@ -312,7 +312,7 @@ export default function PhaseZero() {
                     <p.icon className={`w-6 h-6 ${p.accent}`} />
                   </div>
                   <div>
-                    <h3 className={`font-poppins font-semibold text-lg ${p.accent} leading-tight`}>
+                    <h3 className={`text-xl md:text-2xl font-poppins font-semibold ${p.accent} leading-tight`}>
                       {p.title}
                     </h3>
                     <p className="text-sm text-muted-foreground">{p.subtitle}</p>
@@ -324,7 +324,7 @@ export default function PhaseZero() {
                 </p>
 
                 <div>
-                  <h4 className="font-semibold text-navy text-sm mb-2">The Questions:</h4>
+                  <h4 className="text-base md:text-lg font-semibold text-navy mb-2">The Questions:</h4>
                   <ul className="space-y-1.5">
                     {p.questions.map((q, i) => (
                       <li key={i} className="text-sm text-foreground flex items-start gap-2">
@@ -336,7 +336,7 @@ export default function PhaseZero() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-navy text-sm mb-2">Strong Footing Looks Like:</h4>
+                  <h4 className="text-base md:text-lg font-semibold text-navy mb-2">Strong Footing Looks Like:</h4>
                   <ul className="space-y-1.5">
                     {p.outcomes.map((o, i) => (
                       <li key={i} className="text-sm text-foreground flex items-start gap-2">
@@ -356,7 +356,7 @@ export default function PhaseZero() {
               <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-2">
                 The Behavioral Bedrock
               </p>
-              <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                 Essential Elements
               </h3>
               <p className="text-foreground/80 text-base max-w-2xl mx-auto leading-relaxed">
@@ -382,7 +382,7 @@ export default function PhaseZero() {
               <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
                 The Result
               </p>
-              <h3 className="font-poppins font-bold text-2xl md:text-3xl text-white mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-white mb-4">
                 The Fortified Porch
               </h3>
               <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
@@ -403,7 +403,7 @@ export default function PhaseZero() {
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
               Where Phase Zero Leads
             </p>
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-navy leading-tight">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight">
               Three clear ways to begin.
             </h2>
           </FadeIn>
@@ -414,7 +414,7 @@ export default function PhaseZero() {
                 className={`bg-white rounded-xl p-7 border-t-4 ${w.border} shadow-sm flex flex-col`}
               >
                 <w.icon className={`w-9 h-9 ${w.accent} mb-4`} />
-                <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                   {w.title}
                 </h3>
                 <p className="text-foreground leading-relaxed mb-5 flex-grow">

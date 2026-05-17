@@ -47,7 +47,7 @@ export default function AmplifyPath() {
         <div className="container max-w-6xl mx-auto px-6">
         <div className="max-w-3xl">
             <TierBadge tier={TIERS.AMPLIFY} className="mb-6" />
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Targeted Workshops for Rapid Progress
             </h1>
             <p className="text-lg text-white/90 leading-relaxed">
@@ -61,7 +61,7 @@ export default function AmplifyPath() {
       <section className="py-12 bg-strategic/10">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-navy mb-4">What's Included in AMPLIFY</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">What's Included in AMPLIFY</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {features.map((feature, index) => (
@@ -89,7 +89,7 @@ export default function AmplifyPath() {
             {workshops.map((workshop, index) => (
               <div key={index} className={`bg-muted p-8 rounded-xl border-l-4 ${workshop.color}`}>
                 <span className="text-sm font-medium text-strategic">{workshop.duration}</span>
-                <h3 className="font-poppins font-semibold text-xl text-navy mt-2 mb-3">
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-2 mb-3">
                   {workshop.title}
                 </h3>
                 <p className="text-foreground text-sm leading-relaxed">
@@ -114,28 +114,28 @@ export default function AmplifyPath() {
               <div className="w-12 h-12 rounded-full bg-strategic/20 flex items-center justify-center mx-auto mb-4">
                 <span className="text-strategic font-bold">1</span>
               </div>
-              <h3 className="font-semibold text-navy mb-2">Initial Conversation</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-navy mb-2">Initial Conversation</h3>
               <p className="text-sm text-foreground">Understand your needs and goals</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 rounded-full bg-strategic/20 flex items-center justify-center mx-auto mb-4">
                 <span className="text-strategic font-bold">2</span>
               </div>
-              <h3 className="font-semibold text-navy mb-2">Custom Design</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-navy mb-2">Custom Design</h3>
               <p className="text-sm text-foreground">Tailor the workshop to your context</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 rounded-full bg-strategic/20 flex items-center justify-center mx-auto mb-4">
                 <span className="text-strategic font-bold">3</span>
               </div>
-              <h3 className="font-semibold text-navy mb-2">Facilitate</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-navy mb-2">Facilitate</h3>
               <p className="text-sm text-foreground">Deliver engaging, actionable session</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 rounded-full bg-strategic/20 flex items-center justify-center mx-auto mb-4">
                 <span className="text-strategic font-bold">4</span>
               </div>
-              <h3 className="font-semibold text-navy mb-2">Follow-Up</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-navy mb-2">Follow-Up</h3>
               <p className="text-sm text-foreground">Support implementation of learnings</p>
             </div>
           </div>

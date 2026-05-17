@@ -141,7 +141,7 @@ export default function OurTeam() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className={`font-poppins font-semibold text-xl mb-1 ${isAmy ? "text-purple" : "text-navy"}`}>
+                  <h3 className={`text-xl md:text-2xl font-poppins font-semibold mb-1 ${isAmy ? "text-purple" : "text-navy"}`}>
                     {member.name}
                   </h3>
                   <p className={`text-sm font-medium mb-1 ${isAmy ? "text-purple" : member.accent}`}>
@@ -198,7 +198,7 @@ export default function OurTeam() {
       <section className="py-12 md:py-16 bg-muted">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-navy">Certifications & Credentials</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-navy">Certifications & Credentials</h3>
           </div>
           <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 md:gap-6">
             {certifications.map((cert, index) => (

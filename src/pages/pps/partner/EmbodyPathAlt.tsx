@@ -327,7 +327,7 @@ export default function EmbodyPathAlt() {
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Where you're at */}
             <div className="bg-gold/10 p-8 rounded-xl">
-              <h3 className="font-poppins font-semibold text-xl text-gold mb-4">Where you're at:</h3>
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-gold mb-4">Where you're at:</h3>
               <ul className="space-y-3">
                 {[
                   "You're ready to stop treating change like on-off projects and build a culture of continuous innovation",
@@ -347,7 +347,7 @@ export default function EmbodyPathAlt() {
 
             {/* What you know */}
             <div className="bg-primary/10 p-8 rounded-xl">
-              <h3 className="font-poppins font-semibold text-xl text-primary mb-4">What you know:</h3>
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-primary mb-4">What you know:</h3>
               <ul className="space-y-3">
                 {[
                   "Great people + great process = extraordinary outcomes",
@@ -367,7 +367,7 @@ export default function EmbodyPathAlt() {
 
           {/* Outcome seeking */}
           <div className="bg-lime/10 border-l-4 border-lime p-6 rounded-r-xl mb-12">
-            <h3 className="font-poppins font-semibold text-lg text-lime mb-2">The EMBODY outcome you're seeking:</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-lime mb-2">The EMBODY outcome you're seeking:</h3>
             <p className="text-lg text-foreground italic mb-2">
               "We've built the internal structures and culture to architect and execute sustainable change—continual transformation is now ours to lead."
             </p>
@@ -378,7 +378,7 @@ export default function EmbodyPathAlt() {
 
           {/* What EMBODY Provides */}
           <div className="mb-12">
-            <h3 className="font-poppins font-semibold text-xl text-navy mb-6 text-center">What EMBODY Partnership Provides:</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6 text-center">What EMBODY Partnership Provides:</h3>
             <p className="text-muted-foreground mb-4 text-center">Comprehensive engagement for organizations ready for permanent transformation:</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
@@ -416,7 +416,7 @@ export default function EmbodyPathAlt() {
               <div key={i} className="bg-white p-6 rounded-xl">
                 <div className="flex items-center gap-3 mb-3">
                   <industry.icon className="w-8 h-8 text-gold shrink-0" />
-                  <h3 className="font-poppins font-semibold text-navy" style={{ fontSize: '1.0625rem' }}>{industry.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy" style={{ fontSize: '1.0625rem' }}>{industry.title}</h3>
                 </div>
                 <ul className="space-y-2">
                   {industry.items.map((item, j) => (
@@ -432,7 +432,7 @@ export default function EmbodyPathAlt() {
 
           {/* What They Share */}
           <div className="bg-gold/10 p-8 rounded-xl">
-            <h3 className="font-poppins font-semibold text-xl text-navy mb-4 text-center">What They Share:</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-4 text-center">What They Share:</h3>
             <div className="flex flex-wrap justify-center gap-4">
               {[
                 "C-suite commitment to transformation",
@@ -471,14 +471,14 @@ export default function EmbodyPathAlt() {
                     <span className={`${phase.accentText} font-bold`}>{phase.number}</span>
                   </div>
                   <div>
-                    <h3 className="font-poppins font-semibold text-xl text-navy">{phase.title}</h3>
+                    <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">{phase.title}</h3>
                     <span className={`text-sm font-medium ${phase.accentText}`}>{phase.duration}</span>
                   </div>
                 </div>
 
                 {phase.sections.map((section, idx) => (
                   <div key={idx} className="mb-4">
-                    <h4 className="font-semibold text-navy text-sm mb-2">
+                    <h4 className="text-base md:text-lg font-semibold text-navy mb-2">
                       {section.title} {section.subtitle && <span className="font-normal text-muted-foreground">{section.subtitle}</span>}
                     </h4>
                     <ul className="space-y-1.5">
@@ -507,7 +507,7 @@ export default function EmbodyPathAlt() {
                 <span className={`${phases[2].accentText} font-bold`}>{phases[2].number}</span>
               </div>
               <div>
-                <h3 className="font-poppins font-semibold text-xl text-navy">{phases[2].title}</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">{phases[2].title}</h3>
                 <span className={`text-sm font-medium ${phases[2].accentText}`}>{phases[2].duration}</span>
               </div>
             </div>
@@ -515,7 +515,7 @@ export default function EmbodyPathAlt() {
             <div className="grid md:grid-cols-2 gap-6">
               {phases[2].sections.map((section, idx) => (
                 <div key={idx}>
-                  <h4 className="font-semibold text-navy text-sm mb-2">{section.title}</h4>
+                  <h4 className="text-base md:text-lg font-semibold text-navy mb-2">{section.title}</h4>
                   <ul className="space-y-1.5">
                     {section.items.map((item, i) => (
                       <li key={i} className="text-sm text-foreground flex items-start gap-2">
@@ -536,7 +536,7 @@ export default function EmbodyPathAlt() {
 
           {/* The Painted Porch Partnership Model */}
           <div className="bg-navy text-white p-8 rounded-xl text-center mt-8">
-            <h3 className="font-poppins font-semibold text-xl text-white mb-4">The Painted Porch Partnership Model:</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-white mb-4">The Painted Porch Partnership Model:</h3>
             <p className="text-white/90 mb-4">
               <strong className="text-gold">You're the expert</strong> of your organizational context, your culture, your constraints.
             </p>
@@ -586,7 +586,7 @@ export default function EmbodyPathAlt() {
                     <pillar.icon className={`w-6 h-6 ${pillar.accentText}`} />
                   </div>
                   <div>
-                    <h3 className={`font-poppins font-semibold text-lg ${pillar.accentText} leading-tight`}>{pillar.title}</h3>
+                    <h3 className={`text-xl md:text-2xl font-poppins font-semibold ${pillar.accentText} leading-tight`}>{pillar.title}</h3>
                     <p className="text-sm text-muted-foreground">{pillar.subtitle}</p>
                   </div>
                 </div>
@@ -596,7 +596,7 @@ export default function EmbodyPathAlt() {
                 </p>
 
                 <div>
-                  <h4 className="font-semibold text-navy text-sm mb-2">What We'll Architect:</h4>
+                  <h4 className="text-base md:text-lg font-semibold text-navy mb-2">What We'll Architect:</h4>
                   <ul className="space-y-1.5">
                     {pillar.architect.map((a, i) => (
                       <li key={i} className="text-sm text-foreground flex items-start gap-2">
@@ -649,7 +649,7 @@ export default function EmbodyPathAlt() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* What You're Investing In */}
             <div className="bg-white p-8 rounded-xl shadow-sm">
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-6">What You're Investing In:</h3>
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6">What You're Investing In:</h3>
               <ul className="space-y-4">
                 {[
                   "Permanent transformation architecture we co-architect with your leadership — Designed for your context, owned by your organization",
@@ -671,7 +671,7 @@ export default function EmbodyPathAlt() {
 
             {/* The ROI */}
             <div className="bg-white p-8 rounded-xl shadow-sm">
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-6">The ROI of Strategic Architecture:</h3>
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6">The ROI of Strategic Architecture:</h3>
               <p className="text-muted-foreground mb-4">Organizations with transformation architecture:</p>
               <ul className="space-y-4">
                 {[
@@ -755,7 +755,7 @@ export default function EmbodyPathAlt() {
 
           {/* P.A.T.H.way Steps */}
           <div className="mb-12">
-            <h3 className="font-poppins font-semibold text-xl text-center text-navy mb-8">
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-center text-navy mb-8">
               Your P.A.T.H.way to EMBODY Lasting Transformation:
             </h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -764,7 +764,7 @@ export default function EmbodyPathAlt() {
                   <div className="w-10 h-10 rounded-full bg-gold text-white font-bold flex items-center justify-center mx-auto mb-3">
                     {step.step}
                   </div>
-                  <h4 className="font-semibold text-navy mb-2">{step.title}</h4>
+                  <h4 className="text-base md:text-lg font-semibold text-navy mb-2">{step.title}</h4>
                   <p className="text-sm text-muted-foreground">{step.desc}</p>
                 </div>
               ))}
@@ -774,7 +774,7 @@ export default function EmbodyPathAlt() {
           {/* Side-by-Side CTA Cards */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             <div className="bg-bluedoor/10 p-8 rounded-xl border border-bluedoor/30">
-              <h3 className="font-poppins font-semibold text-xl text-bluedoor mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-bluedoor mb-4">
                 Open the Blue Door
               </h3>
               <p className="text-foreground mb-6">
@@ -787,7 +787,7 @@ export default function EmbodyPathAlt() {
               </Link>
             </div>
             <div className="bg-white p-8 rounded-xl border border-border">
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-4">
                 Questions About EMBODY Partnership?
               </h3>
               <p className="text-foreground mb-6">

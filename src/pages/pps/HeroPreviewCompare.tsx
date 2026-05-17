@@ -13,7 +13,7 @@ export default function HeroPreviewCompare() {
   return (
     <div className="min-h-screen bg-neutral-100">
       <div className="sticky top-0 z-10 bg-white border-b border-neutral-200 px-4 py-3 flex flex-wrap items-center gap-4">
-        <h1 className="font-poppins font-semibold text-navy text-lg">Hero Preview Comparison</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-semibold text-navy">Hero Preview Comparison</h1>
         <label className="flex items-center gap-2 text-sm text-charcoal">
           Frame width
           <select

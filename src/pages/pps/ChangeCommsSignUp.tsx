@@ -84,7 +84,7 @@ export default function ChangeCommsSignUp() {
             <Sparkles className="w-4 h-4" />
             FREE PLANNING & ACTION GUIDE
           </div>
-          <h1 className="font-poppins font-bold text-4xl md:text-6xl mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             4 Critical Steps for <span className="text-gold">Effective Change Communication</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
@@ -98,7 +98,7 @@ export default function ChangeCommsSignUp() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
           {/* Left */}
           <div>
-            <h2 className="font-poppins font-bold text-3xl text-navy mb-4">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               Get a free copy of our guide.
             </h2>
             <p className="text-lg text-charcoal mb-6">
@@ -123,7 +123,7 @@ export default function ChangeCommsSignUp() {
               />
             </a>
 
-            <h3 className="font-poppins font-semibold text-xl text-navy mb-4">What's inside:</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-4">What's inside:</h3>
             <ul className="space-y-4">
               <li className="flex gap-3">
                 <Megaphone className="w-6 h-6 text-teal flex-shrink-0 mt-1" />
@@ -154,7 +154,7 @@ export default function ChangeCommsSignUp() {
 
           {/* Form */}
           <div className="bg-white border-2 border-border rounded-2xl shadow-lg p-8 md:sticky md:top-8">
-            <h3 className="font-poppins font-bold text-2xl text-navy mb-2">Send My Free Guide Now</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">Send My Free Guide Now</h3>
             <p className="text-sm text-muted-foreground mb-6">
               Drop your info below and we'll email it over right away.
             </p>

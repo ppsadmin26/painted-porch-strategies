@@ -232,7 +232,7 @@ export default function PPSAbout() {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="font-poppins font-semibold text-xl mb-1 text-navy">
+                  <h3 className="text-xl md:text-2xl font-poppins font-semibold mb-1 text-navy">
                     {member.name}
                   </h3>
                   <p className={`text-sm font-medium mb-1 ${isAmy ? "text-strategic" : member.accent}`}>
@@ -288,7 +288,7 @@ export default function PPSAbout() {
       {/* What Makes Us Different */}
       <section className="py-12 md:py-16 bg-muted/30">
         <div className="container max-w-6xl mx-auto px-6">
-          <h3 className="font-poppins font-semibold text-xl text-navy mb-8 text-center">
+          <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-8 text-center">
             What Makes Us Different
           </h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -345,7 +345,7 @@ export default function PPSAbout() {
       <section className="py-12 md:py-16 bg-muted">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-navy">Our Certifications & Credentials</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-navy">Our Certifications & Credentials</h3>
           </div>
           <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 md:gap-6">
             {certifications.map((cert, index) => (

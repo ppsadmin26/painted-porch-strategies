@@ -119,7 +119,7 @@ export default function IgniteCourses() {
           </Link>
 
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Ignite New Capabilities...at Your Own Pace
             </h1>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
@@ -138,7 +138,7 @@ export default function IgniteCourses() {
                   <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full ${course.pillColor} self-start`}>
                     {course.pill}
                   </span>
-                  <h2 className={`font-poppins font-bold text-2xl ${course.textColor} mt-2 mb-2`}>
+                  <h2 className={`text-3xl md:text-4xl font-poppins font-bold ${course.textColor} mt-2 mb-2`}>
                     {course.title}
                   </h2>
                   <p className="text-sm font-semibold text-foreground/80 mb-4">{course.tagline}</p>
@@ -182,13 +182,13 @@ export default function IgniteCourses() {
 
           {/* Bundle Options */}
           <div className="bg-gold/10 p-8 rounded-xl">
-            <h2 className="font-poppins font-bold text-xl text-navy mb-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-6 text-center">
               Bundle Options
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {bundles.map((bundle, index) => (
                 <div key={index} className="bg-white p-6 rounded-lg text-center">
-                  <h3 className="font-semibold text-navy mb-2">{bundle.name}</h3>
+                  <h3 className="text-xl md:text-2xl font-semibold text-navy mb-2">{bundle.name}</h3>
                   <p className="text-sm text-foreground mb-3">{bundle.courses}</p>
                   <p className="text-2xl font-bold text-navy mb-1">{bundle.price}</p>
                   <p className="text-sm text-lime font-medium">{bundle.savings}</p>

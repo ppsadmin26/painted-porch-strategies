@@ -121,7 +121,7 @@ const EasterEggForm = () => {
           <div className="animate-in fade-in duration-300">
             {/* Header */}
             <div className="mb-10">
-              <h1 className="font-poppins font-bold text-[28px] md:text-[40px] text-navy mb-3">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-[28px] md:text-[40px] text-navy mb-3">
                 🎉🐣 You Found Something.
               </h1>
               <p className="font-poppins text-base md:text-xl text-foreground mb-3">
@@ -259,7 +259,7 @@ const EasterEggForm = () => {
           /* STATE 2: Confirmation */
           <div className="animate-in fade-in duration-400 flex flex-col items-center text-center py-12 md:py-20">
             <div className="w-16 h-1 bg-primary rounded-full mb-8" />
-            <h1 className="font-poppins font-bold text-[26px] md:text-[36px] text-navy mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-[26px] md:text-[36px] text-navy mb-6">
               You're in good company.
             </h1>
             <p className="text-foreground text-base md:text-lg leading-relaxed max-w-md mb-4">
