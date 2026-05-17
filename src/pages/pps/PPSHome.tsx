@@ -355,12 +355,32 @@ export default function PPSHome() {
             ))}
           </div>
 
-          <div className="mt-10 text-center max-w-2xl mx-auto">
-            <p className="text-foreground italic">
-              <strong className="text-navy not-italic">P.A.T.H.</strong> &mdash;
-              Prepare &rarr; Align &rarr; Take Off &rarr; Habits. Our way of
-              navigating intentional, sustainable progress.
-            </p>
+          <div className="mt-12 max-w-4xl mx-auto">
+            <div className="bg-muted/60 border-l-4 border-primary rounded-xl p-6 md:p-8">
+              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.15em] text-primary mb-4 text-center">
+                The P.A.T.H. We Walk Together
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                {[
+                  { letter: "P", word: "Prepare" },
+                  { letter: "A", word: "Align" },
+                  { letter: "T", word: "Take Off" },
+                  { letter: "H", word: "Habits" },
+                ].map((step) => (
+                  <div key={step.letter} className="text-center">
+                    <div className="font-poppins font-bold text-3xl md:text-4xl text-navy leading-none mb-1">
+                      {step.letter}
+                    </div>
+                    <div className="font-poppins text-sm font-medium text-foreground">
+                      {step.word}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm text-muted-foreground text-center mt-5 italic">
+                Our way of navigating intentional, sustainable progress.
+              </p>
+            </div>
           </div>
         </div>
       </section>
