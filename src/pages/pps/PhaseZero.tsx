@@ -146,7 +146,7 @@ export default function PhaseZero() {
   useDocumentSeo({
     title: "Phase Zero™ | The Work Before the Work | Painted Porch Strategies",
     description:
-      "Phase Zero™ is the work before the work. It is where leaders get honest about people, systems, and culture before the next big shift begins.",
+      "Phase Zero™ is the work before the work. It is where leaders get clear about people, systems, and culture before the next big shift begins.",
   });
 
   return (
