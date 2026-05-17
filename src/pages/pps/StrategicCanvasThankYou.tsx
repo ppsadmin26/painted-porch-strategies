@@ -75,10 +75,10 @@ export default function StrategicCanvasThankYou() {
                 </div>
               </Link>
               <Link to="/blue-door" className="group">
-                <div className="bg-white border-2 border-border hover:border-cobalt rounded-xl p-6 h-full transition-colors">
-                  <Home className="w-10 h-10 text-cobalt mb-3" />
+                <div className="bg-white border-2 border-border hover:border-bluedoor rounded-xl p-6 h-full transition-colors">
+                  <Home className="w-10 h-10 text-bluedoor mb-3" />
                   <h4 className="font-poppins font-semibold text-lg text-navy mb-2">
-                    Open <span className="text-cobalt font-bold">The Blue Door</span>
+                    Open <span className="text-bluedoor font-bold">The Blue Door</span>
                   </h4>
                   <p className="text-sm text-charcoal">
                     Ready to go deeper? Our organizational appraisal is the next step.
