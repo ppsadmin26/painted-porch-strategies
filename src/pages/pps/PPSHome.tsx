@@ -206,7 +206,7 @@ export default function PPSHome() {
                   </div>
                   <div className="flex-1">
                     <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-primary mb-1">
-                      01 &middot; Start a conversation
+                      01 &middot; Find Your P.A.T.H.
                     </p>
                     <h3 className="font-poppins font-semibold text-xl text-navy mb-2 group-hover:text-primary transition-colors">
                       Explore where you are
