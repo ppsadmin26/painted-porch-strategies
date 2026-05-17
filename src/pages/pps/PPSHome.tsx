@@ -184,9 +184,9 @@ export default function PPSHome() {
               </h2>
               <p className="text-lg text-foreground leading-relaxed mb-4">
                 We don&rsquo;t arrive with a slide deck of answers or a packaged
-                program waiting for your name on it. We arrive at the threshold,
-                with the questions that haven&rsquo;t been asked yet, before the
-                next big decision hardens.
+                program waiting for your name on it. We meet you at the threshold 
+                of transformation, with the questions that haven&rsquo;t been 
+                asked yet, before the next big decision begins.
               </p>
               <p className="text-lg text-foreground leading-relaxed">
                 Most leaders find us in one of three places. Wherever you start,
