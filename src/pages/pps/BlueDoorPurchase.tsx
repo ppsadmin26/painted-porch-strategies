@@ -115,7 +115,7 @@ export default function BlueDoorPurchase() {
             
             <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-4 mb-6">
               <p className="font-poppins font-bold text-navy text-base mb-1">
-                🚪 Launching May 18th, 2026
+                🚪 Launching June 15th, 2026
               </p>
               <p className="text-foreground text-sm">
                 Reserve your Blue Door now. On launch day, we'll email you a secure link to access and complete your assessment.

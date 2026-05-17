@@ -147,7 +147,7 @@ serve(async (req) => {
             company: companyValidation.sanitized || "",
           },
           footer:
-            "Thank you for opening your Blue Door. Your assessment access link will be emailed on launch day (May 18th, 2026). Questions? explore@onthepaintedporch.com",
+            "Thank you for opening your Blue Door. Your assessment access link will be emailed on launch day (June 15th, 2026). Questions? explore@onthepaintedporch.com",
           rendering_options: { amount_tax_display: "exclude_tax" },
         },
       },
