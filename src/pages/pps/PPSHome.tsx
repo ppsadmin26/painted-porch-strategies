@@ -551,18 +551,20 @@ export default function PPSHome() {
               <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
                 Exploring for Your Team or Organization?
               </h3>
-              <p className="text-foreground mb-4 leading-relaxed">
+              <p className="text-foreground mb-4 leading-relaxed flex-1">
                 Organizational clarity, strategic alignment, and the Blue Door
                 experience for leaders answering bigger questions about growth,
                 capacity, and what&rsquo;s realistically next.
               </p>
-              <Link
-                to="/blue-door"
-                className="mt-auto text-primary font-semibold hover:underline inline-flex items-center"
-              >
-                Open the Blue Door
-                <ArrowRight className="ml-1 w-4 h-4" />
-              </Link>
+              <div className="mt-auto pt-2 min-h-[2.5rem] flex items-center">
+                <Link
+                  to="/blue-door"
+                  className="text-primary font-semibold hover:underline inline-flex items-center"
+                >
+                  Open the Blue Door
+                  <ArrowRight className="ml-1 w-4 h-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
