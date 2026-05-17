@@ -210,7 +210,7 @@ export default function PhaseZero() {
               organization can carry and what it cannot.
             </p>
           </div>
-          <p className="mt-8 text-lg md:text-xl font-montserrat font-semibold text-navy leading-relaxed">
+          <p className="mt-10 text-2xl md:text-3xl font-poppins font-semibold text-navy leading-relaxed">
             The frustration that surfaces in moments like this is rarely random. <span className="text-raspberry">It is a signal.</span>
           </p>
         </FadeIn>
