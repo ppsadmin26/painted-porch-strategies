@@ -4,7 +4,7 @@ import {
   ArrowRight,
   Compass,
   Building2,
-  Workflow,
+  Brain,
   DoorOpen,
   Map,
   Users,
@@ -40,29 +40,32 @@ const pillars = [
     subtitle: "Leadership & Culture",
     description:
       "Your leadership, culture, values, and the relational architecture that shape how your organization leads, decides, and evolves.",
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-    borderColor: "border-primary/30",
+    color: "text-navy",
+    bgColor: "bg-[hsl(220,60%,95%)]",
+    iconBg: "bg-[hsl(220,50%,90%)]",
+    borderColor: "border-navy",
   },
   {
-    icon: Workflow,
+    icon: Compass,
     title: "Operational Frame",
     subtitle: "Workflows & Systems",
     description:
       "Your systems, workflows, structures, and decision pathways that move strategy from intention into reality.",
-    color: "text-lime",
-    bgColor: "bg-lime/10",
-    borderColor: "border-lime/30",
+    color: "text-strategic",
+    bgColor: "bg-strategic/10",
+    iconBg: "bg-strategic/15",
+    borderColor: "border-strategic",
   },
   {
-    icon: Users,
+    icon: Brain,
     title: "Living Ecosystem",
     subtitle: "Capacity & Judgment",
     description:
       "Your individual and collective capacity, judgment, communication, resilience, and mindset needed to sustain meaningful shIFt.",
-    color: "text-raspberry",
-    bgColor: "bg-raspberry/10",
-    borderColor: "border-raspberry/30",
+    color: "text-gold",
+    bgColor: "bg-gold/10",
+    iconBg: "bg-gold/15",
+    borderColor: "border-gold",
   },
 ];
 
@@ -334,9 +337,9 @@ export default function PPSHome() {
             {pillars.map((pillar, i) => (
               <div
                 key={i}
-                className={`${pillar.bgColor} border-t-4 ${pillar.borderColor.replace('/30','')} p-6 rounded-xl transition-all hover:shadow-lg`}
+                className={`${pillar.bgColor} border-l-4 ${pillar.borderColor} p-6 rounded-xl transition-all hover:shadow-lg`}
               >
-                <div className={`w-14 h-14 rounded-lg ${pillar.bgColor} ring-1 ${pillar.borderColor} flex items-center justify-center mb-4`}>
+                <div className={`w-14 h-14 rounded-lg ${pillar.iconBg} flex items-center justify-center mb-4`}>
                   <pillar.icon className={`w-7 h-7 ${pillar.color}`} />
                 </div>
                 <h3 className="font-poppins font-semibold text-xl text-navy mb-1">
