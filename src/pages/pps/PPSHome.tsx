@@ -3,9 +3,8 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   Compass,
-  Layers,
-  Heart,
-  Sparkles,
+  Building2,
+  Workflow,
   DoorOpen,
   Map,
   Users,
