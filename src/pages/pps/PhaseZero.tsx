@@ -305,7 +305,7 @@ export default function PhaseZero() {
             {pillars.map((p) => (
               <FadeIn
                 key={p.title}
-                className={`${p.bg} p-6 rounded-xl border-l-4 ${p.border} h-full grid gap-y-5 lg:grid-rows-[4.75rem_9.5rem_16.25rem_auto]`}
+                className={`${p.bg} p-6 rounded-xl border-l-4 ${p.border} h-full flex flex-col gap-y-5`}
               >
                 <div className="flex items-start gap-4">
                   <div className={`w-12 h-12 ${p.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
@@ -335,8 +335,8 @@ export default function PhaseZero() {
                   </ul>
                 </div>
 
-                <div>
-                  <h4 className="text-base md:text-lg font-semibold text-navy mb-2">Strong Footing Looks Like:</h4>
+                <div className="mt-auto">
+                  <h4 className="text-base md:text-lg font-semibold text-navy mb-2">Strong Foundation Looks Like:</h4>
                   <ul className="space-y-1.5">
                     {p.outcomes.map((o, i) => (
                       <li key={i} className="text-sm text-foreground flex items-start gap-2">
