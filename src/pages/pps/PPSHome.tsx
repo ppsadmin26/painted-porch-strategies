@@ -190,7 +190,7 @@ export default function PPSHome() {
               </p>
               <p className="text-lg text-foreground leading-relaxed">
                 Most leaders find us in one of three places. Wherever you start,
-                you start with a conversation, not a contract.
+                you start with clarity, not a contract.
               </p>
             </div>
 
