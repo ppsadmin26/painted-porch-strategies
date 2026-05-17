@@ -62,39 +62,15 @@ function walk(dir: string, acc: string[] = []): string[] {
 }
 
 /**
- * Extract the smallest JSX-ish block surrounding a `/blue-door` occurrence.
- * We use a balanced-brace scan: walk backward from the match to the nearest
- * unmatched `<` or `{`, then forward to the matching close. Good enough to
- * catch the surrounding <Button>/<Link>/TierHero ctas[] entry.
+ * Grab a generous source window around the `/blue-door` occurrence. Large
+ * enough to include the wrapping <Button>/<Link> opening tag, the nested
+ * styled child (for card-style CTAs), and the closing tag — but small enough
+ * to stay scoped to a single CTA.
  */
 function ctaContext(src: string, idx: number): string {
-  // Backward to nearest `<` that starts a JSX tag, or `{` that opens an object.
-  let start = idx;
-  let depth = 0;
-  while (start > 0) {
-    const c = src[start];
-    if (c === ">") depth++;
-    if (c === "<" && depth === 0) break;
-    if (c === "<") depth--;
-    if (c === "{" && depth === 0) break;
-    start--;
-  }
-  // Forward to matching close: simple — take ~600 chars or until `/>` / `}`.
-  let end = idx;
-  let parens = 0;
-  while (end < src.length && end - idx < 800) {
-    const c = src[end];
-    if (c === "{" || c === "(" || c === "<") parens++;
-    if (c === "}" || c === ")" || c === ">") {
-      parens--;
-      if (parens <= 0 && (c === "}" || c === ">")) {
-        end++;
-        break;
-      }
-    }
-    end++;
-  }
-  return src.slice(start, Math.min(end + 1, src.length));
+  const start = Math.max(0, idx - 400);
+  const end = Math.min(src.length, idx + 600);
+  return src.slice(start, end);
 }
 
 const files = walk(path.join(ROOT, "pages"))
