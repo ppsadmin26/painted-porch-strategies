@@ -403,7 +403,7 @@ export default function PhaseZero() {
               Where Phase Zero Leads
             </p>
             <h2 className="font-poppins font-bold text-3xl md:text-4xl text-navy leading-tight">
-              Three honest ways to begin.
+              Three clear ways to begin.
             </h2>
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-6">
