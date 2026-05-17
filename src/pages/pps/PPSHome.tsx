@@ -213,7 +213,7 @@ export default function PPSHome() {
                     <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-primary mb-1">
                       01 &middot; Find Your P.A.T.H.
                     </p>
-                    <h3 className="font-poppins font-semibold text-xl text-navy mb-2 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary transition-colors">
                       Explore where you are
                     </h3>
                     <p className="text-foreground leading-relaxed mb-3">
@@ -241,7 +241,7 @@ export default function PPSHome() {
                     <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-1">
                       02 &middot; Open the Blue Door
                     </p>
-                    <h3 className="font-poppins font-semibold text-xl text-navy mb-2 group-hover:text-bluedoor transition-colors">
+                    <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-bluedoor transition-colors">
                       Get clarity before you commit
                     </h3>
                     <p className="text-foreground leading-relaxed mb-3">
@@ -268,7 +268,7 @@ export default function PPSHome() {
                     <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-pps-purple mb-1">
                       03 &middot; Build what&rsquo;s next, together
                     </p>
-                    <h3 className="font-poppins font-semibold text-xl text-navy mb-2 group-hover:text-pps-purple transition-colors">
+                    <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-pps-purple transition-colors">
                       Partner through the <ShIFt />
                     </h3>
                     <p className="text-foreground leading-relaxed mb-3">
@@ -342,7 +342,7 @@ export default function PPSHome() {
                 <div className={`w-14 h-14 rounded-lg ${pillar.iconBg} flex items-center justify-center mb-4`}>
                   <pillar.icon className={`w-7 h-7 ${pillar.color}`} />
                 </div>
-                <h3 className="font-poppins font-semibold text-xl text-navy mb-1">
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                   {pillar.title}
                 </h3>
                 <p className={`text-sm font-medium ${pillar.color} mb-3`}>
@@ -364,7 +364,7 @@ export default function PPSHome() {
               <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                 The Way Forward
               </p>
-              <h3 id="path-heading" className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
+              <h3 id="path-heading" className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                 Your P.A.T.H. to Sustainable Change
               </h3>
               <p className="text-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto leading-relaxed">
@@ -525,7 +525,7 @@ export default function PPSHome() {
               <div className="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mb-4">
                 <Compass className="w-6 h-6 text-gold" />
               </div>
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                 Exploring for Yourself?
               </h3>
               <p className="text-foreground mb-4 leading-relaxed flex-1">
@@ -548,7 +548,7 @@ export default function PPSHome() {
               <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                 <Users className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                 Exploring for Your Team or Organization?
               </h3>
               <p className="text-foreground mb-4 leading-relaxed flex-1">
@@ -667,7 +667,7 @@ export default function PPSHome() {
                       {post.categories[0].title}
                     </p>
                   )}
-                  <h3 className="font-poppins font-semibold text-lg text-navy group-hover:text-primary transition-colors leading-snug mb-2">
+                  <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy group-hover:text-primary transition-colors leading-snug mb-2">
                     {post.title}
                   </h3>
                   {post.excerpt && (

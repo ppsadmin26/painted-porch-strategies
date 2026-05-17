@@ -22,7 +22,7 @@ export default function InvestmentSectionAlt() {
   return (
     <section id="investment" className="py-12 md:py-20 bg-gradient-to-br from-primary/10 via-white to-strategic/5">
       <div className="container max-w-5xl mx-auto px-6">
-        <h2 className="text-2xl md:text-4xl font-bold text-navy text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-12">
           Investment & Timeline
         </h2>
         
@@ -40,7 +40,7 @@ export default function InvestmentSectionAlt() {
         
         <div ref={cardsRef} className="grid md:grid-cols-2 gap-12 mb-12">
           <div className={`bg-white p-6 rounded-lg shadow-sm border-l-4 border-strategic transition-all duration-700 ease-out ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            <h3 className="font-poppins font-semibold text-xl text-strategic mb-4">
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-strategic mb-4">
               What to Expect:
             </h3>
             <ul className="space-y-3">
@@ -60,7 +60,7 @@ export default function InvestmentSectionAlt() {
           </div>
           
           <div className={`bg-white p-6 rounded-lg shadow-sm border-l-4 border-lime transition-all duration-700 ease-out delay-150 ${cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            <h3 className="font-poppins font-semibold text-xl text-lime mb-4">
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-lime mb-4">
               What's Included:
             </h3>
             <ul className="space-y-2">

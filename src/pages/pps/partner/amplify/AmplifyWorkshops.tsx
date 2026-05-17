@@ -145,7 +145,7 @@ export default function AmplifyWorkshops() {
           </Link>
 
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Executive Workshops That Build Phase Zero Foundations
             </h1>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
@@ -167,7 +167,7 @@ export default function AmplifyWorkshops() {
                         className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
                       />
                       <div>
-                        <h2 className="font-poppins font-bold text-lg text-navy leading-tight mb-1">{workshop.title}</h2>
+                        <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-1">{workshop.title}</h2>
                         <div className="flex flex-wrap gap-2 text-sm">
                           <span className="text-foreground font-medium">{workshop.format}</span>
                           <span className="text-foreground">|</span>
@@ -213,7 +213,7 @@ export default function AmplifyWorkshops() {
                         className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
                       />
                       <div>
-                        <h2 className="font-poppins font-bold text-lg text-navy leading-tight mb-1">{workshop.title}</h2>
+                        <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-1">{workshop.title}</h2>
                         <div className="flex flex-wrap gap-2 text-sm">
                           <span className="text-foreground font-medium">{workshop.format}</span>
                           <span className="text-foreground">|</span>
@@ -250,7 +250,7 @@ export default function AmplifyWorkshops() {
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
                 <Info className="w-5 h-5 text-primary" />
-                <h3 className="font-poppins font-semibold text-navy whitespace-nowrap">Authoring Your Next Sh<span className="text-raspberry">IF</span>t Begins At the Blue Door</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy whitespace-nowrap">Authoring Your Next Sh<span className="text-raspberry">IF</span>t Begins At the Blue Door</h3>
               </div>
               <p className="text-sm text-foreground mb-2 mt-4">
                 The Blue Door is our organizational appraisal (less than 30 minutes) that reveals where your business and leadership stands on the path to transformation so that you can lead with clarity and build with confidence.
@@ -280,7 +280,7 @@ export default function AmplifyWorkshops() {
               <span className="inline-block bg-gold/10 text-gold font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
                 Ready to Book
               </span>
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-3">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
                 Leadership & Team Development Workshops
               </h2>
               <p className="text-foreground max-w-2xl mx-auto">
@@ -361,7 +361,7 @@ export default function AmplifyWorkshops() {
                         className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
                       />
                       <div>
-                        <h3 className="font-poppins font-bold text-lg text-navy leading-tight mb-1">{workshop.title}</h3>
+                        <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy leading-tight mb-1">{workshop.title}</h3>
                         <div className="flex flex-wrap gap-2 text-sm">
                           <span className="text-foreground font-medium">{workshop.duration}</span>
                           <span className="text-foreground">|</span>

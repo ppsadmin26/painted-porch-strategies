@@ -98,7 +98,7 @@ export default function StracticalLeaderGuide() {
                 className={`${item.bg} p-8 rounded-xl border border-border/30`}
               >
                 <item.icon className={`w-10 h-10 ${item.color} mb-4`} />
-                <h3 className="font-poppins font-semibold text-xl text-navy mb-2">
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2">
                   {item.title}
                 </h3>
                 <p className="text-foreground leading-relaxed">
@@ -123,7 +123,7 @@ export default function StracticalLeaderGuide() {
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border/40">
             <div className="text-center mb-8">
               <Download className="w-12 h-12 text-gold mx-auto mb-4" />
-              <h2 className="text-3xl font-poppins font-bold text-navy mb-2">
+              <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-2">
                 Get Your Free Guide
               </h2>
               <p className="text-foreground/70">

@@ -65,7 +65,7 @@ export default function ResetPassword() {
       <div className="min-h-screen flex items-center justify-center bg-muted px-4">
         <div className="w-full max-w-md bg-card rounded-xl shadow-lg p-8 text-center">
           <Lock className="h-10 w-10 text-muted-foreground mx-auto mb-4" />
-          <h1 className="text-xl font-poppins font-bold text-foreground mb-2">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-foreground mb-2">
             Invalid or Expired Link
           </h1>
           <p className="text-muted-foreground mb-6">
@@ -82,7 +82,7 @@ export default function ResetPassword() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted px-4">
       <div className="w-full max-w-md bg-card rounded-xl shadow-lg p-8">
-        <h1 className="text-2xl font-poppins font-bold text-navy mb-2 text-center">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy mb-2 text-center">
           Set New Password
         </h1>
         <p className="text-muted-foreground text-center mb-6">

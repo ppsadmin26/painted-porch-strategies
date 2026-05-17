@@ -19,7 +19,7 @@ export default function PositioningSectionAlt() {
   return (
     <section className="py-12 md:py-20 bg-gradient-to-br from-strategic/5 via-white to-bluedoor/5">
       <div className="container max-w-4xl mx-auto px-6 text-center">
-        <h2 className="text-2xl md:text-4xl font-bold text-navy mb-12 flex items-center justify-center gap-3">
+        <h2 className="text-3xl md:text-4xl font-bold text-navy mb-12 flex items-center justify-center gap-3">
           <DoorOpen className="w-10 h-10 md:w-16 md:h-16 text-bluedoor flex-shrink-0" />
           <span>
             The <span className="text-bluedoor">Blue Door</span> Opens Before
@@ -56,7 +56,7 @@ export default function PositioningSectionAlt() {
 
         <div ref={cardsRef} className="grid md:grid-cols-2 gap-6">
           <div className={`bg-bluedoor/10 border-2 border-bluedoor p-6 rounded-lg transition-all duration-700 ease-out ${cardsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            <h3 className="font-poppins font-semibold text-lg md:text-xl text-bluedoor mb-3">
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-bluedoor mb-3">
               At the Blue Door
             </h3>
             <p className="text-foreground">
@@ -65,7 +65,7 @@ export default function PositioningSectionAlt() {
           </div>
 
           <div className={`bg-muted/50 border-2 border-muted-foreground/30 p-6 rounded-lg transition-all duration-700 ease-out delay-150 ${cardsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            <h3 className="font-poppins font-semibold text-lg md:text-xl text-foreground mb-3">
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-foreground mb-3">
               Past the Blue Door
             </h3>
             <p className="text-foreground">

@@ -48,7 +48,7 @@ export default function PPSFooter() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-poppins font-semibold text-gold mb-4">Quick Links</h4>
+            <h4 className="text-base md:text-lg font-poppins font-semibold text-gold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
@@ -62,7 +62,7 @@ export default function PPSFooter() {
 
           {/* P.A.T.H.ways */}
           <div>
-            <h4 className="font-poppins font-semibold text-gold mb-4">P.A.T.H.ways</h4>
+            <h4 className="text-base md:text-lg font-poppins font-semibold text-gold mb-4">P.A.T.H.ways</h4>
             <ul className="space-y-2">
               {pathways.map((link) => (
                 <li key={link.href}>
@@ -76,7 +76,7 @@ export default function PPSFooter() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-poppins font-semibold text-gold mb-4">Get In Touch</h4>
+            <h4 className="text-base md:text-lg font-poppins font-semibold text-gold mb-4">Get In Touch</h4>
             <Link to="/contact?interest=general" className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy font-semibold py-2 px-6 rounded-lg transition-all">
               Contact Us
             </Link>
@@ -99,7 +99,7 @@ export default function PPSFooter() {
 
         {/* Charity Note */}
         <div className="mt-6 pt-6 text-center">
-          <h4 className="font-poppins font-bold text-lg text-lime mb-2">
+          <h4 className="text-base md:text-lg font-poppins font-bold text-lime mb-2">
             Let's Do Good Sh<span className="text-red-500">IF</span>t
           </h4>
           <p className="text-sm text-white/80">

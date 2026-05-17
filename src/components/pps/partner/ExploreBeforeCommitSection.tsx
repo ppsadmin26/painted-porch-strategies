@@ -11,7 +11,7 @@ export function ExploreBeforeCommitSection() {
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           <Link to="/resources/free" className="bg-muted p-6 rounded-xl hover:shadow-lg transition-all group flex flex-col">
-            <h3 className="font-poppins font-semibold text-lg text-navy mb-2 group-hover:text-primary">
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary">
               Free Resources
             </h3>
             <p className="text-sm text-foreground mb-4">
@@ -22,7 +22,7 @@ export function ExploreBeforeCommitSection() {
             </span>
           </Link>
           <Link to="/resources/insights" className="bg-muted p-6 rounded-xl hover:shadow-lg transition-all group flex flex-col">
-            <h3 className="font-poppins font-semibold text-lg text-navy mb-2 group-hover:text-primary">
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary">
               Read Insights
             </h3>
             <p className="text-sm text-foreground mb-4">
@@ -33,7 +33,7 @@ export function ExploreBeforeCommitSection() {
             </span>
           </Link>
           <Link to="/resources/youtube" className="bg-muted p-6 rounded-xl hover:shadow-lg transition-all group flex flex-col">
-            <h3 className="font-poppins font-semibold text-lg text-navy mb-2 group-hover:text-primary">
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary">
               Watch Videos
             </h3>
             <p className="text-sm text-foreground mb-4">

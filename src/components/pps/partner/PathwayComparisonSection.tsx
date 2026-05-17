@@ -109,7 +109,7 @@ export function PathwayComparisonSection() {
                 {/* Perfect For (above The Experience) */}
                 {"perfectFor" in content && content.perfectFor && (
                   <div className="mb-4">
-                    <h4 className="font-poppins font-semibold text-xs uppercase tracking-wide text-navy/70 mb-2">
+                    <h4 className="text-base md:text-lg font-poppins font-semibold uppercase tracking-wide text-navy/70 mb-2">
                       Perfect For:
                     </h4>
                     <ul className="space-y-2">

@@ -62,7 +62,7 @@ export default function JournalingChallenge() {
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-navy/10 text-navy mb-4">
                 <PenLine className="w-3.5 h-3.5" /> 5-Day Challenge
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-navy leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
                 Do the{" "}
                 <span className="text-primary italic">Write</span>{" "}
                 Thing: Journaling Challenge
@@ -139,7 +139,7 @@ export default function JournalingChallenge() {
                   <Calendar className="w-4 h-4" />
                   {lesson.day}
                 </div>
-                <h3 className="font-poppins font-bold text-navy mb-2 leading-tight">
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2 leading-tight">
                   {lesson.title}
                 </h3>
                 <p className="text-sm text-foreground">{lesson.description}</p>
@@ -163,21 +163,21 @@ export default function JournalingChallenge() {
           <div className="grid sm:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <BookOpen className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">Busy Leaders</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Busy Leaders</h3>
               <p className="text-sm text-foreground">
                 Who run from meeting to meeting and rarely get five quiet minutes to think their own thoughts.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Sparkles className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">Reflective Doers</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Reflective Doers</h3>
               <p className="text-sm text-foreground">
                 Who know self-reflection matters but haven't found a rhythm that actually sticks.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <PenLine className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">Anyone Curious</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Anyone Curious</h3>
               <p className="text-sm text-foreground">
                 Who wants a simple, low-pressure way to slow down and hear their own voice again.
               </p>

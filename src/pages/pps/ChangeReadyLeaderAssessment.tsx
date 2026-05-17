@@ -54,7 +54,7 @@ export default function ChangeReadyLeaderAssessment() {
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-lime/20 text-navy mb-4">
               <ClipboardCheck className="w-3.5 h-3.5" /> Free Assessment
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-navy leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
               Are You a{" "}
               <span className="text-primary">Change-Ready Leader?</span>
             </h1>
@@ -71,27 +71,27 @@ export default function ChangeReadyLeaderAssessment() {
       {/* What you'll learn */}
       <section className="py-12 bg-muted">
         <div className="container max-w-5xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-8 text-center">
             What you'll walk away with
           </h2>
           <div className="grid sm:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Target className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">A Clear Snapshot</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">A Clear Snapshot</h3>
               <p className="text-sm text-foreground">
                 See where you stand across the key dimensions of change-ready leadership.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Compass className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">Personal Blind Spots</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Personal Blind Spots</h3>
               <p className="text-sm text-foreground">
                 Spot the habits and tendencies that could trip you up when leading your next change.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Lightbulb className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">Practical Next Steps</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Practical Next Steps</h3>
               <p className="text-sm text-foreground">
                 Get simple, doable ideas for building your own readiness before change hits.
               </p>
@@ -104,7 +104,7 @@ export default function ChangeReadyLeaderAssessment() {
       <section id="assessment" className="py-16 bg-white">
         <div className="container max-w-4xl mx-auto px-6">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-navy mb-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
               Take the Assessment
             </h2>
             <p className="text-foreground">

@@ -121,7 +121,7 @@ export default function AmplifyLabs() {
           </Link>
 
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Leadership Labs: Peer-Driven Acceleration
             </h1>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
@@ -136,7 +136,7 @@ export default function AmplifyLabs() {
                   <img src={cohort.image} alt={cohort.title} className="w-full h-full object-cover" />
                 </div>
                 <div className="p-5 flex flex-col flex-1">
-                  <h2 className="font-poppins font-bold text-lg text-navy mb-1">{cohort.title}</h2>
+                  <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-1">{cohort.title}</h2>
                   <p className="text-sm font-semibold text-strategic mb-2">{cohort.tagline}</p>
                   <p className="text-sm text-foreground mb-4 flex-1">{cohort.description}</p>
                   {cohort.comingSoon ? (
@@ -162,7 +162,7 @@ export default function AmplifyLabs() {
 
           {/* Investment Info */}
           <div className="bg-strategic/10 p-8 rounded-xl border-t-4 border-strategic text-center">
-            <h2 className="font-poppins font-bold text-xl text-navy mb-2">Leadership Lab Investment</h2>
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-2">Leadership Lab Investment</h2>
             <p className="text-2xl font-bold text-strategic mb-2">$2,000 - $5,000 per participant</p>
             <p className="text-sm text-foreground mb-6">6-12 week cohort | Capped at 25 leaders per cohort</p>
             <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I'm interested in applying for a Leadership Lab.">

@@ -195,7 +195,7 @@ export default function PPSPrograms() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="font-poppins font-bold text-xl text-navy mb-3 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 group-hover:text-primary transition-colors">
                       {program.title}
                     </h3>
                     <p className="text-foreground text-sm leading-relaxed mb-4">
@@ -291,7 +291,7 @@ export default function PPSPrograms() {
                     )}
                   </div>
                   <div className="p-6">
-                    <h3 className="font-poppins font-bold text-xl text-navy mb-3 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 group-hover:text-primary transition-colors">
                       {program.title}
                     </h3>
                     <p className="text-foreground text-sm leading-relaxed mb-4">
@@ -337,7 +337,7 @@ export default function PPSPrograms() {
                   <span className={`font-poppins font-bold text-xs uppercase tracking-wider ${coach.accent} mb-2`}>
                     {coach.specialty}
                   </span>
-                  <h3 className="font-poppins font-bold text-xl text-navy mb-4">
+                  <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-4">
                     {coach.name}
                   </h3>
                   <p className="text-foreground text-sm leading-relaxed mb-6 flex-1">

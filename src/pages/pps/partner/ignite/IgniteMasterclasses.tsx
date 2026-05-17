@@ -82,7 +82,7 @@ export default function IgniteMasterclasses() {
           </Link>
 
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Masterclasses & Mini-Workshops
             </h1>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
@@ -124,7 +124,7 @@ export default function IgniteMasterclasses() {
                       <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium ${colors.bg} ${colors.text} mb-2`}>
                         {item.category}
                       </span>
-                      <h3 className={`font-poppins font-bold text-base text-${item.themeColor} leading-tight`}>
+                      <h3 className={`text-xl md:text-2xl font-poppins font-bold text-${item.themeColor} leading-tight`}>
                         {item.title}
                       </h3>
                       {item.leader && <p className="text-sm font-medium text-navy mt-1">Led by {item.leader}</p>}

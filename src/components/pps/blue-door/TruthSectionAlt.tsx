@@ -13,7 +13,7 @@ export default function TruthSectionAlt() {
           ref={ref}
           className={`text-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          <h2 className="text-2xl md:text-4xl font-bold text-navy mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             The Truth of Why Most Sh<span className="text-raspberry">IF</span>t Fails
           </h2>
           <p className="text-foreground text-lg leading-relaxed mb-6">

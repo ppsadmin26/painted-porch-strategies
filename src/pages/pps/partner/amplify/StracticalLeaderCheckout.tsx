@@ -122,7 +122,7 @@ function WaitlistDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (
         ) : (
           <div className="text-center py-6">
             <CheckCircle2 className="w-16 h-16 text-lime mx-auto mb-4" />
-            <h3 className="font-poppins font-bold text-2xl text-navy mb-2">You're on the List!</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">You're on the List!</h3>
             <p className="text-foreground/80">We'll let you know as soon as the next Stractical Leader Lab is scheduled.</p>
           </div>
         )}
@@ -191,7 +191,7 @@ export default function StracticalLeaderCheckout() {
            <span className="inline-block bg-gold text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
             6-Week Intensive Leader Lab
           </span>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-poppins font-bold text-white mb-4 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-4 leading-tight">
             {isExpired ? (
               <>Next <span className="text-gold">Stractical Leader</span> Lab Coming Soon</>
             ) : (
@@ -216,7 +216,7 @@ export default function StracticalLeaderCheckout() {
       {/* ═══ WHAT YOU'RE GETTING ═══ */}
       <section className="py-14 md:py-20 bg-white">
         <div className="container max-w-4xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-poppins font-bold text-navy text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy text-center mb-10">
             What You're Getting
           </h2>
           <div className="grid md:grid-cols-2 gap-5">
@@ -226,7 +226,7 @@ export default function StracticalLeaderCheckout() {
                   <item.icon className="w-5 h-5 text-gold" />
                 </div>
                 <div>
-                  <h3 className="font-poppins font-semibold text-navy text-sm leading-snug">{item.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy leading-snug">{item.title}</h3>
                   <p className="text-foreground/70 text-sm mt-1">{item.desc}</p>
                 </div>
               </div>
@@ -278,7 +278,7 @@ export default function StracticalLeaderCheckout() {
 
             {/* What Changes */}
             <div>
-              <h3 className="text-xl font-poppins font-bold text-navy mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-4">
                 What changes when you complete this program:
               </h3>
               <div className="space-y-3">
@@ -298,7 +298,7 @@ export default function StracticalLeaderCheckout() {
       {!isExpired && (
         <section className="py-14 md:py-20 bg-white">
           <div className="container max-w-3xl mx-auto px-6">
-            <h2 className="text-2xl md:text-3xl font-poppins font-bold text-navy text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy text-center mb-10">
               What Happens Next
             </h2>
             <div className="space-y-6">
@@ -308,7 +308,7 @@ export default function StracticalLeaderCheckout() {
                     <span className="text-white font-poppins font-bold text-xs">{i + 1}</span>
                   </div>
                   <div>
-                    <h3 className="font-poppins font-semibold text-navy">{step.phase}</h3>
+                    <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">{step.phase}</h3>
                     <ul className="mt-2 space-y-1.5">
                       {step.items.map((item, j) => (
                         <li key={j} className="flex items-start gap-2 text-sm text-foreground/80">
@@ -332,7 +332,7 @@ export default function StracticalLeaderCheckout() {
             <div className="w-14 h-14 rounded-full bg-lime/15 flex items-center justify-center mx-auto mb-4">
               <Shield className="w-7 h-7 text-lime" />
             </div>
-            <h2 className="text-2xl font-poppins font-bold text-navy mb-3">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
               100% Confidence Guarantee
             </h2>
             <p className="text-foreground/80 leading-relaxed max-w-xl mx-auto mb-4">

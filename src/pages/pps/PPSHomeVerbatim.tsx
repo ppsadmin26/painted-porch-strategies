@@ -227,7 +227,7 @@ export default function PPSHomeVerbatim() {
         <div className="container max-w-3xl mx-auto px-6">
           <div className="text-center mb-10">
             <span className="badge-gold mb-4 inline-block">It&rsquo;s Not Just You...</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-navy leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy leading-tight">
               There&rsquo;s a lot of <ShIFt /> happening right now.
             </h2>
           </div>
@@ -301,7 +301,7 @@ export default function PPSHomeVerbatim() {
             <span className="inline-block bg-navy text-white font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
               Phase Zero™
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-navy">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-navy">
               The clarity that accelerates your next big <ShIFt />.
             </h2>
           </div>
@@ -454,7 +454,7 @@ export default function PPSHomeVerbatim() {
               <div className="w-12 h-12 bg-gold/25 rounded-lg flex items-center justify-center mb-4">
                 <Compass className="w-6 h-6 text-gold" />
               </div>
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                 Exploring for Yourself?
               </h3>
               <p className="text-foreground mb-4 leading-relaxed flex-grow">
@@ -476,7 +476,7 @@ export default function PPSHomeVerbatim() {
               <div className="w-12 h-12 bg-bluedoor/25 rounded-lg flex items-center justify-center mb-4">
                 <Users className="w-6 h-6 text-bluedoor" />
               </div>
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                 Exploring for Your Team or Organization?
               </h3>
               <p className="text-foreground mb-4 leading-relaxed flex-grow">
@@ -554,7 +554,7 @@ export default function PPSHomeVerbatim() {
                   <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Way Forward
                   </p>
-                  <h3 id="path-heading" className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
+                  <h3 id="path-heading" className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Your P.A.T.H. to Sustainable Change
                   </h3>
                   <p className="text-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto leading-relaxed">
@@ -784,7 +784,7 @@ export default function PPSHomeVerbatim() {
                   <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Load-Bearing Structures
                   </p>
-                  <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
+                  <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Painted Porch Pillars
                   </h3>
                   <p className="text-foreground/80 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
@@ -806,7 +806,7 @@ export default function PPSHomeVerbatim() {
                       } transition-all hover:shadow-lg hover:-translate-y-1`}
                     >
                       <pillar.icon className={`w-10 h-10 ${pillar.color} mb-4`} />
-                      <h4 className="font-poppins font-semibold text-xl text-navy mb-1">
+                      <h4 className="text-base md:text-lg font-poppins font-semibold text-navy mb-1">
                         {pillar.title}
                       </h4>
                       <p className={`text-sm font-medium ${pillar.color} mb-3`}>
@@ -852,7 +852,7 @@ export default function PPSHomeVerbatim() {
                   <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Behavioral Bedrock
                   </p>
-                  <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
+                  <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Essential Elements
                   </h3>
                   <p className="text-foreground/80 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
@@ -887,7 +887,7 @@ export default function PPSHomeVerbatim() {
                 <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
                   The Result
                 </p>
-                <h3 className="font-poppins font-bold text-2xl md:text-3xl text-white mb-4">
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-white mb-4">
                   The Fortified Porch
                 </h3>
                 <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
@@ -962,7 +962,7 @@ export default function PPSHomeVerbatim() {
               <span className="inline-block bg-gold text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
                 Our Painted Porch Promise
               </span>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-navy">
+              <h3 className="text-xl md:text-2xl font-bold mb-6 text-navy">
                 We aren&rsquo;t here to tell you yes.
               </h3>
               <div className="space-y-4 text-base md:text-lg text-navy/80 max-w-2xl mx-auto leading-relaxed">
@@ -1094,7 +1094,7 @@ export default function PPSHomeVerbatim() {
                 style={{ borderLeftColor: accent }}
               >
                 <Icon className={`w-7 h-7 mb-3 ${tw}`} />
-                <h3 className={`font-poppins font-bold text-lg mb-1 ${tw}`}>
+                <h3 className={`text-xl md:text-2xl font-poppins font-bold mb-1 ${tw}`}>
                   {title}
                 </h3>
                 <p className="text-navy/80 text-sm leading-relaxed mb-3">

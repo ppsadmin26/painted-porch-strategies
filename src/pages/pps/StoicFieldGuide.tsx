@@ -92,7 +92,7 @@ export default function StoicFieldGuide() {
               <div className="inline-flex p-3 rounded-lg bg-gold/10 text-gold mb-4">
                 <BookOpen className="w-6 h-6" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 Inside this Field Guide, you will...
               </h2>
               <ul className="space-y-3 text-foreground">
@@ -114,7 +114,7 @@ export default function StoicFieldGuide() {
 
             {/* Right: Form */}
             <div id="get-access">
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Get Immediate Access
               </h2>
               <p className="text-foreground text-sm mb-2">

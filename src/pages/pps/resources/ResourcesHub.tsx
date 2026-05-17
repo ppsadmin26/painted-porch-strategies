@@ -71,7 +71,7 @@ export default function ResourcesHub() {
               <Link key={index} to={category.href} className="group">
                 <div className={`${category.color} p-8 rounded-xl transition-all hover:shadow-lg h-full`}>
                   <category.icon className={`w-12 h-12 ${category.iconColor} mb-4`} />
-                  <h3 className="font-poppins font-semibold text-2xl text-navy mb-3">
+                  <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                     {category.title}
                   </h3>
                   <p className="text-foreground mb-6 leading-relaxed">
@@ -98,7 +98,7 @@ export default function ResourcesHub() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <span className="text-sm font-medium text-primary">Insights</span>
-              <h3 className="font-poppins font-semibold text-lg text-navy mt-2 mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-2 mb-3">
                 Implementation Comes Last
               </h3>
               <p className="text-sm text-foreground mb-4">
@@ -110,7 +110,7 @@ export default function ResourcesHub() {
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <span className="text-sm font-medium text-lime">Download</span>
-              <h3 className="font-poppins font-semibold text-lg text-navy mt-2 mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-2 mb-3">
                 Shift Readiness Playbook
               </h3>
               <p className="text-sm text-foreground mb-4">
@@ -122,7 +122,7 @@ export default function ResourcesHub() {
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm">
               <span className="text-sm font-medium text-raspberry">Video</span>
-              <h3 className="font-poppins font-semibold text-lg text-navy mt-2 mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-2 mb-3">
                 Stoic Leadership Principles
               </h3>
               <p className="text-sm text-foreground mb-4">

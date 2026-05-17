@@ -113,7 +113,7 @@ export default function AmplifySprints() {
           </Link>
 
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Strategic Sprints: Phase Zero Partnership for Your Next Shift
             </h1>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
@@ -130,7 +130,7 @@ export default function AmplifySprints() {
                     <span className="text-lime font-bold">{phase.phase}</span>
                   </div>
                   <div>
-                    <h2 className="font-poppins font-bold text-lg text-navy">{phase.title}</h2>
+                    <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy">{phase.title}</h2>
                     <p className="text-sm text-primary">{phase.timeline}</p>
                   </div>
                 </div>
@@ -152,7 +152,7 @@ export default function AmplifySprints() {
 
           {/* Common Applications */}
           <div className="bg-white p-8 rounded-xl mb-12">
-            <h2 className="font-poppins font-bold text-xl text-navy mb-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-6 text-center">
               Common Strategic Sprint Applications
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
@@ -171,7 +171,7 @@ export default function AmplifySprints() {
           <div className="bg-lime/10 p-8 rounded-xl border-t-4 border-lime mb-12">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
               <div>
-                <h2 className="font-poppins font-bold text-2xl text-navy mb-2">Strategic Sprint Investment</h2>
+                <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-2">Strategic Sprint Investment</h2>
                 <p className="text-3xl font-bold text-lime mb-4">Starting at $36,000</p>
                 <p className="text-sm text-foreground">(based on scope and timeline; Prerequisite: Blue Door)</p>
               </div>
@@ -200,7 +200,7 @@ export default function AmplifySprints() {
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
                 <Info className="w-5 h-5 text-primary" />
-                <h3 className="font-poppins font-semibold text-navy">About The Blue Door</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">About The Blue Door</h3>
               </div>
               <p className="text-sm text-foreground mb-2">
                 The Blue Door is our strategic appraisal (less than 30 minutes) that reveals where your organization stands on the path to transformation—and what's blocking progress.

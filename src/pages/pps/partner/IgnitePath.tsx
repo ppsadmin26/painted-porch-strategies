@@ -77,7 +77,7 @@ export default function IgnitePath() {
         <div className="container max-w-6xl mx-auto px-6">
         <div className="max-w-3xl">
             <TierBadge tier={TIERS.IGNITE} className="mb-6" />
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Self-Led Learning for Change-Ready Leaders
             </h1>
             <p className="text-lg text-white/90 leading-relaxed">
@@ -91,7 +91,7 @@ export default function IgnitePath() {
       <section className="py-12 bg-gold/10">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-navy mb-4">What's Included in IGNITE</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">What's Included in IGNITE</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {features.map((feature, index) => (
@@ -122,7 +122,7 @@ export default function IgnitePath() {
                 <span className={`text-sm font-medium ${program.iconColor}`}>
                   {program.category}
                 </span>
-                <h3 className="font-poppins font-semibold text-xl text-navy mt-2 mb-3">
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-2 mb-3">
                   {program.title}
                 </h3>
                 <p className="text-foreground mb-6 text-sm leading-relaxed">

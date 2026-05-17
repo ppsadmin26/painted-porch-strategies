@@ -475,7 +475,7 @@ export default function SiteVideosManager() {
     <div className="p-6 max-w-5xl mx-auto">
       <div className="mb-6 flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-poppins font-bold text-navy">Site Videos</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy">Site Videos</h1>
           <p className="text-muted-foreground text-sm mt-1">
             Each row is a video slot used on a landing page. Add new slots when building new pages, then upload anytime.
           </p>
@@ -543,7 +543,7 @@ export default function SiteVideosManager() {
                 {/* Title + path */}
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="font-semibold text-navy text-sm truncate">{slot.label}</h3>
+                    <h3 className="text-xl md:text-2xl font-semibold text-navy truncate">{slot.label}</h3>
                     <code className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-muted text-muted-foreground">
                       {slot.slot_key}
                     </code>

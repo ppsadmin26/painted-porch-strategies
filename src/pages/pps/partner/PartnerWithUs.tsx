@@ -48,7 +48,7 @@ export default function PartnerWithUs() {
             <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
               Partner With Us
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Choose Your P.A.T.H.way
             </h1>
             <p className="text-lg text-white/90 leading-relaxed">
@@ -62,7 +62,7 @@ export default function PartnerWithUs() {
       <section className="py-12 bg-muted">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Transparent, Flat-Fee Pricing
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
@@ -117,7 +117,7 @@ export default function PartnerWithUs() {
       <section className="py-16 md:py-24 bg-muted">
         <div className="container max-w-3xl mx-auto px-6">
           <div className="bg-white p-8 rounded-xl shadow-sm">
-            <h3 className="font-poppins font-semibold text-2xl text-navy mb-6 text-center">
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6 text-center">
               What's Included in Every Engagement
             </h3>
             <ul className="space-y-4">

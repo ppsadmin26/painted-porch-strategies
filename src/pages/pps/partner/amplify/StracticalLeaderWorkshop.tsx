@@ -129,7 +129,7 @@ function WaitlistDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (
         ) : (
           <div className="text-center py-6">
             <CheckCircle2 className="w-16 h-16 text-lime mx-auto mb-4" />
-            <h3 className="font-poppins font-bold text-2xl text-navy mb-2">You're on the List!</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">You're on the List!</h3>
             <p className="text-foreground/80">We'll let you know as soon as the next Stractical Leader Lab is scheduled.</p>
           </div>
         )}
@@ -349,7 +349,7 @@ export default function StracticalLeaderWorkshop() {
                   <span className="text-3xl">{pillar.emoji}</span>
                   <div>
                     <p className={`text-xs font-poppins font-semibold uppercase tracking-wider ${pillar.color}`}>Pillar</p>
-                    <h3 className={`text-2xl font-poppins font-bold ${pillar.color}`}>{pillar.title}</h3>
+                    <h3 className={`text-xl md:text-2xl font-poppins font-bold ${pillar.color}`}>{pillar.title}</h3>
                   </div>
                 </div>
                 <p className="font-poppins font-semibold text-navy mb-3">{pillar.subtitle}</p>
@@ -384,7 +384,7 @@ export default function StracticalLeaderWorkshop() {
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                     <item.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <h3 className="font-poppins font-semibold text-navy">{item.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">{item.title}</h3>
                 </div>
                 <p className="text-sm text-foreground/80 leading-relaxed">{item.description}</p>
               </div>
@@ -439,7 +439,7 @@ export default function StracticalLeaderWorkshop() {
                     {w.bonus ? "★" : `W${w.week}`}
                   </div>
                   <div>
-                    <h3 className="font-poppins font-semibold text-white text-lg">{w.title}</h3>
+                    <h3 className="text-xl md:text-2xl font-poppins font-semibold text-white">{w.title}</h3>
                     <p className="text-white/70 text-sm mt-1 leading-relaxed">{w.description}</p>
                   </div>
                 </div>
@@ -563,7 +563,7 @@ export default function StracticalLeaderWorkshop() {
               <span className="inline-block bg-gold/10 text-gold font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
                 Meet Your Guide
               </span>
-              <h2 className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-1">
+              <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-1">
                 Amy Yackowski
               </h2>
               <p className="text-primary font-poppins font-medium mb-4">

@@ -65,7 +65,7 @@ export default function BurnoutOptIn() {
             <span className="inline-block bg-raspberry/15 text-raspberry font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider">
               Access Resources To
             </span>
-            <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl text-navy mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy mb-6 leading-tight">
               <Flame className="inline-block w-10 h-10 md:w-12 md:h-12 text-raspberry mb-2 mr-2" />
               Bust Burnout
             </h1>

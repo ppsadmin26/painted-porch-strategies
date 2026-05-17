@@ -108,7 +108,7 @@ export default function IgniteAssessments() {
           </Link>
 
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Uncover Your Talents. Architect Your Future.
             </h1>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
@@ -127,7 +127,7 @@ export default function IgniteAssessments() {
                     <span className={`inline-block px-3 py-1 text-xs font-semibold rounded-full ${assessment.pillColor} mb-2`}>
                       {assessment.subtitle}
                     </span>
-                    <h2 className={`font-poppins font-bold text-xl ${assessment.iconColor}`}>
+                    <h2 className={`text-3xl md:text-4xl font-poppins font-bold ${assessment.iconColor}`}>
                       {assessment.title}
                     </h2>
                   </div>

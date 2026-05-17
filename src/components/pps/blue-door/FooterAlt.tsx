@@ -12,7 +12,7 @@ export default function FooterAlt() {
       <div className="container max-w-6xl mx-auto px-6 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-poppins font-bold text-xl mb-4 text-gold">
+            <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4 text-gold">
               Painted Porch Strategies
             </h3>
             <p className="text-sm leading-relaxed opacity-90">
@@ -21,7 +21,7 @@ export default function FooterAlt() {
           </div>
           
           <div>
-            <h4 className="font-poppins font-semibold text-base mb-4 text-gold">
+            <h4 className="text-base md:text-lg font-poppins font-semibold mb-4 text-gold">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -39,7 +39,7 @@ export default function FooterAlt() {
           </div>
           
           <div>
-            <h4 className="font-poppins font-semibold text-base mb-4 text-gold">
+            <h4 className="text-base md:text-lg font-poppins font-semibold mb-4 text-gold">
               Get In Touch
             </h4>
             <p className="text-sm leading-relaxed opacity-90">
@@ -66,7 +66,7 @@ export default function FooterAlt() {
         </div>
         
         <div className="mt-10 pt-8 border-t border-white/10 text-center">
-          <h4 className="font-poppins font-bold text-base text-lime mb-2">
+          <h4 className="text-base md:text-lg font-poppins font-bold text-lime mb-2">
             Let's Do Good Sh<span className="text-raspberry">IF</span>t
           </h4>
           <p className="text-sm opacity-90 max-w-2xl mx-auto">

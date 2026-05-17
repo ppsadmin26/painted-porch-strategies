@@ -42,7 +42,7 @@ export default function KickTheHabit() {
       {/* Hero */}
       <section className="bg-white py-16 md:py-20 text-center">
         <div className="container max-w-4xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold text-navy leading-tight mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
             Access the{" "}
             <span className="text-raspberry italic">Kick the Habit</span>
             <br />
@@ -82,7 +82,7 @@ export default function KickTheHabit() {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16">
             {/* Left: What you'll learn */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 During this training session, you will learn to...
               </h2>
               <ul className="space-y-3 text-foreground">
@@ -115,7 +115,7 @@ export default function KickTheHabit() {
 
             {/* Right: Form */}
             <div id="get-access">
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Get Immediate Access
               </h2>
               <p className="text-foreground text-sm mb-2">

@@ -86,7 +86,7 @@ export default function StoicFieldGuideAccess() {
           <span className="inline-block bg-lime/90 text-navy font-poppins font-semibold text-xs px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
             Instant Access
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
             The <span className="text-gold italic">Stoic Leader's</span> Field Guide
           </h1>
           <p className="text-white/90 max-w-2xl mx-auto mb-3">
@@ -109,7 +109,7 @@ export default function StoicFieldGuideAccess() {
           <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
             {/* What's inside */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 What you'll find inside...
               </h2>
               <ul className="space-y-3 text-foreground">
@@ -134,7 +134,7 @@ export default function StoicFieldGuideAccess() {
               <div className="inline-flex p-3 rounded-lg bg-gold/10 text-gold mb-4">
                 <BookOpen className="w-6 h-6" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Download Your Field Guide
               </h2>
               <p className="text-foreground mb-6">
@@ -153,7 +153,7 @@ export default function StoicFieldGuideAccess() {
       {/* Next Steps */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Ready to keep the momentum going?
           </h2>
           <p className="text-foreground mb-8 max-w-2xl mx-auto">

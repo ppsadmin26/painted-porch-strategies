@@ -85,7 +85,7 @@ export default function PPSServices() {
           <span className="inline-block text-pps-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
             What We Do
           </span>
-          <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
             Our Services
           </h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed mb-8">
@@ -109,7 +109,7 @@ export default function PPSServices() {
             <span className="inline-block text-pps-teal font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
               The Painted Porch Way
             </span>
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-pps-navy mb-6">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-6">
               Our Focus
             </h2>
             <p className="text-lg text-charcoal leading-relaxed mb-8">
@@ -142,7 +142,7 @@ export default function PPSServices() {
               <span className="inline-block text-pps-teal font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
                 The Painted Porch System
               </span>
-              <h2 className="font-poppins font-bold text-3xl md:text-4xl text-pps-navy mb-6">
+              <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-6">
                 Our Services
               </h2>
               <p className="text-lg text-charcoal max-w-3xl mx-auto leading-relaxed">
@@ -163,7 +163,7 @@ export default function PPSServices() {
                       <Icon className="h-12 w-12 text-pps-teal" />
                     </div>
                     <div className="flex-1 p-8 md:p-10">
-                      <h3 className="font-poppins font-bold text-2xl text-pps-navy mb-4">
+                      <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-4">
                         {service.title}
                       </h3>
                       <p className="text-charcoal leading-relaxed mb-6">{service.description}</p>
@@ -186,7 +186,7 @@ export default function PPSServices() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="font-poppins font-bold text-3xl md:text-4xl text-pps-navy mb-6">
+              <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-6">
                 One-on-One Guidance, Coaching, and Advisory
               </h2>
               <p className="text-lg text-charcoal max-w-3xl mx-auto leading-relaxed">
@@ -205,7 +205,7 @@ export default function PPSServices() {
                   <div className="w-16 h-16 bg-pps-teal/10 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Sparkles className="h-8 w-8 text-pps-teal" />
                   </div>
-                  <h3 className="font-poppins font-bold text-lg text-pps-navy mb-1">{expert.role}</h3>
+                  <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-1">{expert.role}</h3>
                   <p className="text-sm text-pps-gold font-semibold mb-4">{expert.name}</p>
                   <p className="text-charcoal text-sm leading-relaxed mb-6">{expert.description}</p>
                   <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal/10 font-poppins font-semibold rounded-lg">
@@ -222,7 +222,7 @@ export default function PPSServices() {
       <AnimatedSection>
         <section className="py-20 bg-pps-navy text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl mb-6">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-6">
               Interested in our programs for yourself?
             </h2>
             <p className="text-lg text-white/80 leading-relaxed mb-8">

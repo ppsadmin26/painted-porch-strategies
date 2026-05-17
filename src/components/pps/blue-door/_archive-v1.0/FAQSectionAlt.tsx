@@ -58,7 +58,7 @@ export default function FAQSectionAlt() {
         <p className="text-center text-gold font-poppins font-semibold tracking-widest uppercase text-sm mb-3">
           Got Questions?
         </p>
-        <h2 className="text-2xl md:text-4xl font-bold text-navy text-center mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-4">
           Frequently Asked Questions
         </h2>
         <p className="text-foreground text-center mb-10">

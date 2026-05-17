@@ -137,7 +137,7 @@ export function ParallaxCTA({
         )}
         <h2
           id={headingId}
-          className="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg"
+          className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg"
         >
           {headline}
         </h2>

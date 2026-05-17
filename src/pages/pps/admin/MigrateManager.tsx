@@ -291,7 +291,7 @@ export default function MigrateManager() {
   return (
     <div className="p-6 max-w-5xl mx-auto space-y-8">
       <div>
-        <h1 className="text-2xl font-poppins font-bold text-navy">Project Migration</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy">Project Migration</h1>
         <p className="text-sm text-muted-foreground mt-1">
           Phased export of all DB rows + storage files into the <code>backups</code> bucket, then import into a freshly remixed project.
         </p>
@@ -302,7 +302,7 @@ export default function MigrateManager() {
         <div className="flex items-start gap-3">
           <Download className="h-5 w-5 text-primary mt-1" />
           <div className="flex-1">
-            <h2 className="font-poppins font-semibold text-navy">Export</h2>
+            <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-navy">Export</h2>
             <p className="text-sm text-muted-foreground">
               Runs in small batches to stay under edge-function CPU limits. Files are stored in <code>backups/&lt;folder&gt;/</code>, not zipped.
             </p>
@@ -330,7 +330,7 @@ export default function MigrateManager() {
         <div className="flex items-start gap-3">
           <Upload className="h-5 w-5 text-primary mt-1" />
           <div className="flex-1">
-            <h2 className="font-poppins font-semibold text-navy">Import</h2>
+            <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-navy">Import</h2>
             <p className="text-sm text-muted-foreground">
               Run this in the <strong>destination</strong> project after copying the export folder into its <code>backups</code> bucket.
             </p>

@@ -46,7 +46,7 @@ export default function EmbodyPath() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="max-w-3xl">
             <TierBadge tier={TIERS.EMBODY} className="mb-6" />
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Embedded Advisory Partnership
             </h1>
             <p className="text-lg text-white/90 leading-relaxed">
@@ -60,7 +60,7 @@ export default function EmbodyPath() {
       <section className="py-12 bg-navy/10">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-navy mb-4">What's Included in EMBODY</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">What's Included in EMBODY</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {features.map((feature, index) => (
@@ -88,7 +88,7 @@ export default function EmbodyPath() {
             {engagementTypes.map((type, index) => (
               <div key={index} className={`bg-muted p-8 rounded-xl border-t-4 ${type.color}`}>
                 <span className="text-sm font-medium text-navy">{type.duration}</span>
-                <h3 className="font-poppins font-semibold text-xl text-navy mt-2 mb-3">
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-2 mb-3">
                   {type.title}
                 </h3>
                 <p className="text-foreground text-sm leading-relaxed mb-4">
@@ -119,7 +119,7 @@ export default function EmbodyPath() {
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm">
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-6">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6">
                 Partnership Structure
               </h3>
               <ul className="space-y-4">

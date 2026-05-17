@@ -44,7 +44,7 @@ export default function CommunicatorStyles() {
           <p className="text-sm font-semibold tracking-widest text-teal uppercase mb-4">
             Grow on the Porch Training Series
           </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-navy leading-tight mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
             The{" "}
             <span className="text-raspberry italic">6 Communicator Styles</span>
             <br />
@@ -80,7 +80,7 @@ export default function CommunicatorStyles() {
       {/* Why this matters */}
       <section className="py-16 md:py-20 bg-muted/30">
         <div className="container max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             We all struggle at times to be seen, heard, and connect with others.
           </h2>
           <p className="text-foreground mb-4">
@@ -98,7 +98,7 @@ export default function CommunicatorStyles() {
           <div className="grid md:grid-cols-2 gap-12 md:gap-16">
             {/* Left: What you'll learn */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 During this training session, you will learn how...
               </h2>
               <ul className="space-y-4 text-foreground">
@@ -123,7 +123,7 @@ export default function CommunicatorStyles() {
 
             {/* Right: Form */}
             <div id="get-access">
-              <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Get Instant Access
               </h2>
               <p className="text-foreground text-sm mb-2">

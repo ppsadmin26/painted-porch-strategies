@@ -102,7 +102,7 @@ export default function PPSHomeArchive() {
                 className={`${pillar.bgColor} p-6 rounded-xl transition-all hover:shadow-lg`}
               >
                 <pillar.icon className={`w-10 h-10 ${pillar.color} mb-4`} />
-                <h3 className="font-poppins font-semibold text-xl text-navy mb-1">
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                   {pillar.title}
                 </h3>
                 <p className={`text-sm font-medium ${pillar.color} mb-3`}>
@@ -161,7 +161,7 @@ export default function PPSHomeArchive() {
               <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                 <Lightbulb className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                 Learning
               </h3>
               <p className="text-foreground mb-4">
@@ -176,7 +176,7 @@ export default function PPSHomeArchive() {
               <div className="w-12 h-12 bg-strategic/20 rounded-lg flex items-center justify-center mb-4">
                 <Target className="w-6 h-6 text-strategic" />
               </div>
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                 Coaching
               </h3>
               <p className="text-foreground mb-4">
@@ -191,7 +191,7 @@ export default function PPSHomeArchive() {
               <div className="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mb-4">
                 <Users className="w-6 h-6 text-gold" />
               </div>
-              <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                 Advisory
               </h3>
               <p className="text-foreground mb-4">

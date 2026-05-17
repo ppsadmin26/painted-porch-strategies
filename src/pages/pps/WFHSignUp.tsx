@@ -58,7 +58,7 @@ export default function WFHSignUp() {
             <Sparkles className="w-4 h-4" />
             FREE MINI-COURSE
           </div>
-          <h1 className="font-poppins font-bold text-4xl md:text-6xl mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             Become a <span className="text-gold">Work From Home Hero!</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
@@ -72,7 +72,7 @@ export default function WFHSignUp() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
           {/* Left: What you'll learn */}
           <div>
-            <h2 className="font-poppins font-bold text-3xl text-navy mb-4">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               MISSION #WFH: Accomplished
             </h2>
             <p className="text-lg text-charcoal mb-8">
@@ -80,7 +80,7 @@ export default function WFHSignUp() {
               with your family, your colleagues, and yourself.
             </p>
 
-            <h3 className="font-poppins font-semibold text-xl text-navy mb-4">You'll learn how to:</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-4">You'll learn how to:</h3>
             <ul className="space-y-4">
               <li className="flex gap-3">
                 <Home className="w-6 h-6 text-teal flex-shrink-0 mt-1" />
@@ -111,7 +111,7 @@ export default function WFHSignUp() {
 
           {/* Right: Form */}
           <div className="bg-white border-2 border-border rounded-2xl shadow-lg p-8 md:sticky md:top-8">
-            <h3 className="font-poppins font-bold text-2xl text-navy mb-2">Get My Cape Ready!</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">Get My Cape Ready!</h3>
             <p className="text-sm text-muted-foreground mb-6">
               Drop your info below and we'll email you access details.
             </p>

@@ -45,7 +45,7 @@ export default function ProblemSectionAlt() {
         
         <div className="h-2 w-32 rounded-full bg-gradient-to-r from-strategic via-gold to-lime mx-auto mb-12" />
         
-        <h2 className="text-2xl md:text-4xl font-bold text-navy text-center mb-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-6">
           The Gap Between Ambition & Architecture
         </h2>
         

@@ -63,7 +63,7 @@ export function HowToChooseSection() {
               key={index} 
               className={`bg-white p-6 rounded-xl border-t-4 ${card.tier.borderColor} shadow-sm flex flex-col`}
             >
-              <h3 className={`font-poppins font-bold text-lg ${card.tier.textColor} mb-4`}>
+              <h3 className={`text-xl md:text-2xl font-poppins font-bold ${card.tier.textColor} mb-4`}>
                 Start with {card.tier.name} if...
               </h3>
               <ul className="space-y-3 mb-6 flex-1">
@@ -109,7 +109,7 @@ export function BlueDoorCalloutSection() {
         <div className="bg-bluedoor/10 rounded-xl p-6 md:p-8">
           <div className="flex items-start gap-2 mb-3">
             <Info className="w-5 h-5 text-bluedoor flex-shrink-0 mt-1" />
-            <h3 className="font-poppins font-bold text-xl text-navy">
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">
               Exploring for Your Organization? Start by opening the <span className="text-bluedoor font-bold">Blue Door</span>.
             </h3>
           </div>

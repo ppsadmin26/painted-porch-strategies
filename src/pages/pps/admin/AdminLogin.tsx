@@ -82,7 +82,7 @@ export default function AdminLogin() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted px-4">
       <div className="w-full max-w-md bg-card rounded-xl shadow-lg p-8">
-        <h1 className="text-2xl font-poppins font-bold text-navy mb-2 text-center">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy mb-2 text-center">
           Painted Porch Admin
         </h1>
         <p className="text-muted-foreground text-center mb-6">

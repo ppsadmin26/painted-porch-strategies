@@ -46,7 +46,7 @@ export function DifferentiatorsSection() {
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <item.icon className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-poppins font-bold text-lg text-navy mb-3">
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                 {item.title}
               </h3>
               <p className="text-foreground text-sm leading-relaxed mb-4">

@@ -75,7 +75,7 @@ export default function PilotTrainingWatch() {
           <span className="inline-block bg-lime/90 text-navy font-poppins font-semibold text-xs px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
             Instant Access
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-navy leading-tight mb-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-4">
             <span className="text-primary italic">From Passenger to Pilot</span> Training Replay
           </h1>
           <p className="text-foreground max-w-2xl mx-auto mb-3">
@@ -102,7 +102,7 @@ export default function PilotTrainingWatch() {
       {/* Action Guide download */}
       <section className="py-12 bg-cream">
         <div className="container max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
             📄 Download Your Action Guide
           </h2>
           <p className="text-foreground mb-6 max-w-xl mx-auto">
@@ -123,7 +123,7 @@ export default function PilotTrainingWatch() {
       {/* Next steps */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Ready to keep the momentum going?
           </h2>
           <p className="text-foreground mb-8 max-w-2xl mx-auto">

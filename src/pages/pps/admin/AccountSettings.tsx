@@ -213,7 +213,7 @@ export default function AccountSettings() {
           <ArrowLeft className="h-5 w-5" />
         </Link>
         <div>
-          <h1 className="text-2xl font-poppins font-bold text-foreground">Account Settings</h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-foreground">Account Settings</h1>
           <p className="text-muted-foreground text-sm">Manage your email, password{profile?.is_author ? ", and author profile" : ""}</p>
         </div>
       </div>

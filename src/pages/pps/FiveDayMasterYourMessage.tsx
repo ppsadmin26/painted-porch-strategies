@@ -62,7 +62,7 @@ export default function FiveDayMasterYourMessage() {
               <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-navy/10 text-navy mb-4">
                 5-Day Challenge
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-navy leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
                 Master Your Message:{" "}
                 <span className="text-primary italic">Talking to Strangers</span>{" "}
                 Challenge
@@ -140,7 +140,7 @@ export default function FiveDayMasterYourMessage() {
                   <Calendar className="w-4 h-4" />
                   {lesson.day}
                 </div>
-                <h3 className="font-poppins font-bold text-navy mb-2 leading-tight">
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2 leading-tight">
                   {lesson.title}
                 </h3>
                 <p className="text-sm text-foreground">{lesson.description}</p>
@@ -164,21 +164,21 @@ export default function FiveDayMasterYourMessage() {
           <div className="grid sm:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <MessageCircle className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">Leaders</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Leaders</h3>
               <p className="text-sm text-foreground">
                 Who walk into rooms full of new faces and want to actually build relationships, not just collect business cards.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Sparkles className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">Networkers</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Networkers</h3>
               <p className="text-sm text-foreground">
                 Tired of awkward openers and small talk that goes nowhere fast.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <CheckCircle2 className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-bold text-navy mb-2">Anyone</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Anyone</h3>
               <p className="text-sm text-foreground">
                 Who wants to feel a little less awkward and a lot more confident with strangers, colleagues, and everyone in between.
               </p>

@@ -366,7 +366,7 @@ export default function PPSBlogPost() {
   if (!post) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4">
-        <h1 className="text-2xl font-bold text-navy">Post Not Found</h1>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy">Post Not Found</h1>
         <Link to="/resources/insights" className="text-primary hover:underline flex items-center gap-2">
           <ArrowLeft className="w-4 h-4" /> Back to Insights
         </Link>
@@ -393,7 +393,7 @@ export default function PPSBlogPost() {
             <ArrowLeft className="w-4 h-4" /> Back to Insights
           </Link>
 
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             {post.title}
           </h1>
 
@@ -513,7 +513,7 @@ export default function PPSBlogPost() {
       {relatedPosts.length > 0 && (
         <section className="py-12 sm:py-16 border-t border-border">
           <div className="container max-w-6xl mx-auto px-4 sm:px-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-navy mb-6 sm:mb-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 sm:mb-8 text-center">
               Read more about this topic
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -543,7 +543,7 @@ export default function PPSBlogPost() {
                         {rp.primaryCategoryTitle}
                       </span>
                     )}
-                    <h3 className="font-poppins font-semibold text-base sm:text-lg text-navy mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                       {rp.title}
                     </h3>
                     {rp.excerpt && (
@@ -562,7 +562,7 @@ export default function PPSBlogPost() {
       {/* CTA */}
       <section className="py-12 sm:py-16 bg-muted">
         <div className="container max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-navy mb-3 sm:mb-4 leading-tight text-balance">
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3 sm:mb-4 leading-tight text-balance">
             Want to put these ideas into action?
           </h2>
           <p className="text-sm sm:text-base text-foreground mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto text-pretty">

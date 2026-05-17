@@ -166,7 +166,7 @@ export default function SiteEmails() {
     <div className="p-6 max-w-6xl mx-auto">
       <div className="mb-6 flex items-start justify-between gap-4 flex-wrap">
         <div>
-          <h1 className="text-2xl font-poppins font-bold text-navy flex items-center gap-2">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy flex items-center gap-2">
             <Mail className="h-6 w-6 text-primary" /> Site Emails
           </h1>
           <p className="text-sm text-muted-foreground mt-1 max-w-2xl">

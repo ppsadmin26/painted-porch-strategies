@@ -96,7 +96,7 @@ const BurnoutResources = () => {
       <div className="relative overflow-hidden">
         <ColorSplashBackground />
         <div className="relative z-10 max-w-4xl mx-auto px-6 py-20 text-center">
-          <h1 className="font-poppins font-bold text-4xl md:text-5xl text-white flex items-center justify-center gap-3">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white flex items-center justify-center gap-3">
             <Flame className="h-10 w-10 text-orange-400 shrink-0" />
             Burnout-Busting Resources
           </h1>
@@ -118,7 +118,7 @@ const BurnoutResources = () => {
             <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
               Get Prepared
             </p>
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-foreground flex items-center justify-center gap-2">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground flex items-center justify-center gap-2">
               🔎 Action Begins with Awareness.
             </h2>
           </div>
@@ -137,7 +137,7 @@ const BurnoutResources = () => {
           <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
             The Painted Porch Story
           </p>
-          <h2 className="font-poppins font-bold text-3xl text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground mb-6">
             What's a Painted Porch?
           </h2>
           <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto font-montserrat">
@@ -156,7 +156,7 @@ const BurnoutResources = () => {
             <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
               Put Your Mask on First
             </p>
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-foreground flex items-center justify-center gap-2">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground flex items-center justify-center gap-2">
               💪 Address Burnout: For YOU.
             </h2>
           </div>
@@ -175,7 +175,7 @@ const BurnoutResources = () => {
           <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
             Who We Are
           </p>
-          <h2 className="font-poppins font-bold text-3xl text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground mb-6">
             Our Team of Experts
           </h2>
           <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto font-montserrat">
@@ -194,7 +194,7 @@ const BurnoutResources = () => {
             <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
               Support Others
             </p>
-            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-foreground flex items-center justify-center gap-2">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground flex items-center justify-center gap-2">
               🤝 Address Burnout: As a LEADER.
             </h2>
           </div>
@@ -213,7 +213,7 @@ const BurnoutResources = () => {
           <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
             Tackle Burnout
           </p>
-          <h2 className="font-poppins font-bold text-3xl text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground mb-6">
             Learn Radical Mindfulness
           </h2>
           <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto font-montserrat mb-8">
@@ -245,7 +245,7 @@ const ResourceCard = ({ tag, title, description, cta, url, icon: Icon }: Resourc
     <p className="font-poppins font-semibold text-xs uppercase tracking-wider text-primary mb-2">
       {tag}
     </p>
-    <h3 className="font-poppins font-bold text-xl text-foreground mb-3">
+    <h3 className="text-xl md:text-2xl font-poppins font-bold text-foreground mb-3">
       {title}
     </h3>
     <p className="text-muted-foreground font-montserrat mb-6 flex-1">

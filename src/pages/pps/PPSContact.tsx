@@ -282,7 +282,7 @@ export default function PPSContact() {
 
             {submitted ? (
               <div className="bg-lime/10 border border-lime/30 rounded-xl p-12 text-center">
-                <h3 className="text-2xl font-bold text-navy mb-3">Thank You!</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-navy mb-3">Thank You!</h3>
                 <p className="text-foreground mb-2">
                   Your message has been received. We'll review it and get back to you soon.
                 </p>

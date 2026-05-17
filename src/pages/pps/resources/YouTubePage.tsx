@@ -310,7 +310,7 @@ export default function YouTubePage() {
                           ))}
                         </div>
                       )}
-                      <h3 className="font-poppins font-semibold text-lg text-navy mt-1 mb-2 line-clamp-2">
+                      <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-1 mb-2 line-clamp-2">
                         {video.title}
                       </h3>
                       {video.description && (

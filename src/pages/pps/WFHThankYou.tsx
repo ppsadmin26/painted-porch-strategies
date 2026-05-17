@@ -13,7 +13,7 @@ export default function WFHThankYou() {
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-lime-green/20 mb-6">
             <CheckCircle className="w-12 h-12 text-lime-green" />
           </div>
-          <h1 className="font-poppins font-bold text-4xl md:text-5xl mb-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-4">
             Congratulations,
             <br />
             <span className="text-gold">Work From Home Pro-in-Training!</span>
@@ -28,7 +28,7 @@ export default function WFHThankYou() {
         <div className="max-w-2xl mx-auto text-center">
           <div className="bg-white border-2 border-border rounded-2xl shadow-lg p-8 md:p-12">
             <Mail className="w-12 h-12 text-teal mx-auto mb-4" />
-            <h2 className="font-poppins font-bold text-2xl text-navy mb-4">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               Check Your Email
             </h2>
             <p className="text-lg text-charcoal mb-2">

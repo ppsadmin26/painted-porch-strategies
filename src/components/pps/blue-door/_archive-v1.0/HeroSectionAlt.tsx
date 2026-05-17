@@ -39,7 +39,7 @@ export default function HeroSectionAlt() {
               Phase Zero™ Strategic Appraisal
             </span>
             
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-normal">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-normal">
               What Epic Sh<span className="text-raspberry">IF</span>t Could Your Organization Explore Next — and Are You Built to Lead It?
             </h1>
             

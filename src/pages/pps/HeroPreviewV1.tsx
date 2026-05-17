@@ -30,7 +30,7 @@ export default function HeroPreviewV1() {
           </div>
 
           {/* Headline */}
-          <h1 className="mb-6 font-poppins text-6xl font-extrabold leading-[0.9] tracking-tight text-navy md:text-8xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6 font-poppins font-extrabold leading-[0.9] tracking-tight text-navy">
             It's Time to <br />
             Do Epic Sh<span className="text-raspberry">IF</span>t.
           </h1>

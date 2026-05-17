@@ -109,7 +109,7 @@ export default function BlueDoorPurchase() {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left: Order Summary */}
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Complete Your Purchase
             </h1>
             
@@ -135,7 +135,7 @@ export default function BlueDoorPurchase() {
             </div>
 
             <div className="bg-gradient-to-br from-strategic/5 to-primary/5 rounded-lg p-6">
-              <h3 className="font-poppins font-semibold text-lg text-navy mb-4">
+              <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-4">
                 What's Included:
               </h3>
               <ul className="space-y-3">
@@ -159,7 +159,7 @@ export default function BlueDoorPurchase() {
 
             {/* Do Good ShIFt */}
             <div className="mt-8 p-6 bg-lime/10 border-l-4 border-lime rounded-r-lg">
-              <h4 className="font-poppins font-bold text-lg text-navy mb-2">
+              <h4 className="text-base md:text-lg font-poppins font-bold text-navy mb-2">
                 Let's Do Good Sh<span className="text-lime font-bold">IF</span>t
               </h4>
               <p className="text-foreground text-sm leading-relaxed">
@@ -182,7 +182,7 @@ export default function BlueDoorPurchase() {
           {/* Right: Checkout Form */}
           <div>
             <div className="bg-white rounded-lg shadow-lg p-8">
-              <h2 className="font-poppins font-bold text-xl text-navy mb-6">
+              <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-6">
                 Your Information
               </h2>
               

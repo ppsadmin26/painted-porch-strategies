@@ -33,7 +33,7 @@ export function PartnerIncludedSection() {
     <section className="py-16 md:py-24 bg-muted">
       <div className="container max-w-3xl mx-auto px-6">
         <div className="bg-white p-8 rounded-xl shadow-sm">
-          <h3 className="font-poppins font-semibold text-2xl text-navy mb-6 text-center">
+          <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6 text-center">
             What's Included in Every Engagement
           </h3>
           <ul className="space-y-4">
