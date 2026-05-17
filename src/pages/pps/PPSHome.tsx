@@ -12,7 +12,7 @@ import {
   Lightbulb,
   MessageCircle,
   KeyRound,
-  HandshakeIcon,
+  Handshake,
 } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
