@@ -92,8 +92,17 @@ export default function PPSAbout() {
         headline="About Us"
         description={
           <>
-            <p className="mb-4">The most successful people and organizations are those committed to developing <span className="font-semibold text-gold">emotional resilience</span>, <span className="font-semibold text-gold">quality connections</span>, and <span className="font-semibold text-gold">strong communication skills</span> to achieve lasting change, growth, and fulfillment.</p>
-            <p className="italic">It's what the Roman orator Cicero called <span className="font-semibold text-gold">Summum Bonum</span> — "the highest good."</p>
+            <p className="mb-4">
+              We help leaders and organizations build three things that make
+              change actually hold:{" "}
+              <span className="font-semibold text-gold">emotional resilience</span>,{" "}
+              <span className="font-semibold text-gold">quality connection</span>,
+              and{" "}
+              <span className="font-semibold text-gold">clear communication</span>.
+            </p>
+            <p>
+              Old wisdom. Modern work. That is what the porch is for.
+            </p>
           </>
         }
         ctas={[
@@ -103,6 +112,42 @@ export default function PPSAbout() {
         overlayClass="bg-navy/50"
         minHeightClass="min-h-[60vh]"
       />
+
+      {/* On Becoming */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="container max-w-3xl mx-auto px-6 text-center">
+          <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+            On Becoming
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
+            We are not in the business of fixing you.
+          </h2>
+          <div className="space-y-4 text-lg text-foreground leading-relaxed text-left md:text-center">
+            <p>
+              Most of the leaders we work with are already capable, already
+              experienced, and already carrying a lot. What they are looking
+              for is not another framework. It is a place to think clearly
+              about who their organization is trying to become.
+            </p>
+            <p>
+              Becoming is slower than fixing. It asks for honesty about
+              culture, leadership, and capacity. It asks for room to choose
+              what to lead, instead of just reacting to what is happening.
+            </p>
+            <p>
+              That is the work we partner on. If you want to see how we
+              think about that work in practice,{" "}
+              <Link
+                to="/about/approach"
+                className="font-semibold text-primary hover:underline"
+              >
+                read Our Approach
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Our Story - Opening */}
       <section className="py-16 md:py-24 bg-white">
@@ -330,13 +375,13 @@ export default function PPSAbout() {
                 What's a "Painted Porch"?
               </h2>
               <p className="text-lg text-foreground leading-relaxed mb-6">
-                In ancient Greece, philosophers gathered at the Stoa Poikile — the "Painted Porch" — to discuss ideas that would shape Western thought. These Stoic principles of reason, logic, purpose, and virtue remain as relevant today as they were 2,300 years ago.
+                In ancient Greece, philosophers gathered at the Stoa Poikile, also known as the "Painted Porch," to discuss ideas that would shape Western thought. Those Stoic principles of reason, logic, purpose, and virtue still hold up today.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-6">
                 We bring these timeless principles to modern business, helping leaders and teams build the mental and organizational architecture needed to navigate change successfully.
               </p>
               <p className="text-lg font-semibold text-primary">
-                Eudaimonia — prosperity and well-being through purposeful action.
+                Eudaimonia: prosperity and well-being through purposeful action.
               </p>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg">

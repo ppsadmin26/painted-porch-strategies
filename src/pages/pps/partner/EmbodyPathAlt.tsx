@@ -135,21 +135,12 @@ const pillars = [
     bgColor: "bg-[hsl(220,60%,95%)]",
     iconBg: "bg-[hsl(220,50%,90%)]",
     accentText: "text-navy",
-    questions: [
-      "Can your leaders author strategic direction—or only respond to demands?",
-      "Will your culture support this transformation—or resist it?",
-      "Do you have the leadership operating model required?",
-    ],
+    definition: "Your leaders, your culture, and how decisions get made together.",
     architect: [
       "Leadership capacity for strategic authorship",
       "Cultural platforms where change can be built",
       "Executive alignment and decision protocols",
       "Change authorship capability",
-    ],
-    outcomes: [
-      "Leaders who design change consciously",
-      "Culture that enables rather than undermines transformation",
-      "Strategic capacity at leadership level",
     ],
   },
   {
@@ -162,21 +153,12 @@ const pillars = [
     bgColor: "bg-strategic/10",
     iconBg: "bg-strategic/15",
     accentText: "text-strategic",
-    questions: [
-      "Do your workflows enable your intended market position?",
-      "Are your systems designed for efficiency—or for strategic value?",
-      "Can your operations handle transformation—or will they constrain it?",
-    ],
+    definition: "Your systems, workflows, and decision pathways that turn strategy into real work.",
     architect: [
       "Workflow design for market leadership",
       "System integration that enables value creation",
       "Operational capacity for transformation",
       "Process architecture aligned with strategy",
-    ],
-    outcomes: [
-      "Operations that enable strategy (not constrain it)",
-      "Workflows designed for value, not just efficiency",
-      "Systems that support transformation capacity",
     ],
   },
   {
@@ -189,21 +171,12 @@ const pillars = [
     bgColor: "bg-gold/10",
     iconBg: "bg-gold/15",
     accentText: "text-gold",
-    questions: [
-      "Can your people navigate ambiguity—or only execute defined processes?",
-      "Is judgment distributed throughout your organization—or centralized?",
-      "Do you have adaptive capacity—or just implementation skills?",
-    ],
+    definition: "The judgment, communication, and resilience your people bring to the work.",
     architect: [
       "Distributed judgment capability",
       "Navigation skills for complexity",
       "Adaptive capacity that can't be automated",
       "Resilience and strategic thinking throughout your organization",
-    ],
-    outcomes: [
-      "People who can navigate ambiguity with confidence",
-      "Judgment distributed appropriately across your organization",
-      "Adaptive capacity for continuous transformation",
     ],
   },
 ];
@@ -604,12 +577,9 @@ export default function EmbodyPathAlt() {
           </div>
 
           {/* Pillar Cards - 3 across */}
-          <div className="grid md:grid-cols-3 gap-6 mt-12 mb-6">
+          <div className="grid md:grid-cols-3 gap-6 mt-12 mb-8">
             {pillars.map((pillar) => (
               <div key={pillar.number} className={`${pillar.bgColor} p-6 rounded-xl border-l-4 ${pillar.borderColor}`}>
-                
-
-                
                 {/* Icon + Title/Subtitle row */}
                 <div className="flex items-start gap-4 mb-4">
                   <div className={`w-12 h-12 ${pillar.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
@@ -621,19 +591,11 @@ export default function EmbodyPathAlt() {
                   </div>
                 </div>
 
-                <div className="mb-4">
-                  <h4 className="font-semibold text-navy text-sm mb-2">The Questions:</h4>
-                  <ul className="space-y-1.5">
-                    {pillar.questions.map((q, i) => (
-                      <li key={i} className="text-sm text-foreground flex items-start gap-2">
-                        <span className={`${pillar.accentText} mt-1`}>•</span>
-                        {q}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <p className="text-sm text-foreground leading-relaxed mb-4">
+                  {pillar.definition}
+                </p>
 
-                <div className="mb-4">
+                <div>
                   <h4 className="font-semibold text-navy text-sm mb-2">What We'll Architect:</h4>
                   <ul className="space-y-1.5">
                     {pillar.architect.map((a, i) => (
@@ -644,20 +606,23 @@ export default function EmbodyPathAlt() {
                     ))}
                   </ul>
                 </div>
-
-                <div>
-                  <h4 className="font-semibold text-navy text-sm mb-2">Outcomes:</h4>
-                  <ul className="space-y-1.5">
-                    {pillar.outcomes.map((o, i) => (
-                      <li key={i} className="text-sm text-foreground flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
-                        {o}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             ))}
+          </div>
+
+          {/* Framework callout → Phase Zero */}
+          <div className="bg-muted/60 border border-navy/10 rounded-xl p-5 md:p-6 mb-8 text-center">
+            <p className="text-foreground leading-relaxed">
+              These three Pillars are the universal framework Phase Zero
+              examines. For the full definitions, the diagnostic questions,
+              and what strong footing looks like across each Pillar,{" "}
+              <Link
+                to="/phase-zero#foundations"
+                className="font-semibold text-primary hover:underline"
+              >
+                see the framework on the Phase Zero page →
+              </Link>
+            </p>
           </div>
 
           {/* Integration Card - Full Width */}
