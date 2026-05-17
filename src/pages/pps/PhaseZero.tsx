@@ -235,9 +235,9 @@ export default function PhaseZero() {
             pressure to move feels louder than the cost of moving in the
             wrong direction.
           </p>
-          <blockquote className="text-2xl md:text-3xl font-poppins italic text-navy mt-10 border-l-4 border-gold pl-6">
-            "Are we designing our next move, or reacting to theirs?"
-          </blockquote>
+          <p className="text-2xl md:text-3xl font-poppins italic text-navy mt-10 border-l-4 border-gold pl-6">
+            <em>"Are we designing our next move, or reacting to theirs?"</em>
+          </p>
         </FadeIn>
       </section>
 
