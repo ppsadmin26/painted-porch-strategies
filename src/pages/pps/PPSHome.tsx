@@ -4,7 +4,7 @@ import {
   ArrowRight,
   Compass,
   Building2,
-  Workflow,
+  Brain,
   DoorOpen,
   Map,
   Users,
