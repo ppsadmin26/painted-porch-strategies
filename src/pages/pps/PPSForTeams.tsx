@@ -113,7 +113,7 @@ export default function PPSForTeams() {
         headline={<>Most Change Fails.<br /><span className="text-gold">Let's Fix That.</span></>}
         description="Build teams that are resilient, mindful, and mission-focused. Our training and advisory programs create the foundation for lasting organizational change."
         ctas={[
-          { label: "Take the Free Assessment", href: "/blue-door", isPrimary: true, icon: <ArrowRight className="ml-2 w-5 h-5" /> },
+          { label: "Take the Free Assessment", href: "/blue-door", buttonClassName: "bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor", icon: <ArrowRight className="ml-2 w-5 h-5" /> },
           { label: "Contact Us", href: "/contact?scope=organization&interest=workshops&message=I'm interested in team development." },
         ]}
         background={{ type: "image", src: teamsHero }}
@@ -306,7 +306,7 @@ export default function PPSForTeams() {
             The Blue Door is our Phase Zero assessment tool. In less than 30 minutes, discover which strategic shifts align with your organizational capability and readiness.
           </p>
           <Link to="/blue-door">
-            <Button className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-5 px-8 shadow-lg transition-colors">
+            <Button className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor text-lg py-5 px-8 shadow-lg transition-colors">
               Take the Blue Door <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>

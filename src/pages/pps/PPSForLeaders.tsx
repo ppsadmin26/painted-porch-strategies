@@ -287,7 +287,7 @@ export default function PPSForLeaders() {
             The Blue Door is our Phase Zero assessment tool. In less than 30 minutes, discover which strategic shifts align with your organizational capability.
           </p>
           <Link to="/blue-door">
-            <Button className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-5 px-8 transition-colors">
+            <Button className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor text-lg py-5 px-8 transition-colors">
               Take the Blue Door
             </Button>
           </Link>
