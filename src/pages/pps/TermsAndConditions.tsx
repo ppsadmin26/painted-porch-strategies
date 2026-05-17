@@ -277,7 +277,7 @@ const TermsAndConditions = () => {
             <div className="space-y-3 text-foreground leading-relaxed">
               <p>CLIENT accepts full responsibility for their own progress and results from the PROGRAM. CLIENT acknowledges that they are the vital element to the PROGRAM's success — and that COMPANY cannot control CLIENT.</p>
               <p>COMPANY makes no representations or guarantees, verbal or written, beyond those specifically stated here. COMPANY and its affiliates disclaim implied warranties of title, merchantability, and fitness for a particular purpose.</p>
-              <p>Pobody's nerfect. What we can promise is honesty about what we're committing to — and what we're not. COMPANY makes no guarantee that the PROGRAM will meet CLIENT's requirements or that all CLIENTs will achieve the same results.</p>
+              <p>Pobody's nerfect. What we can promise is clarity about what we're committing to — and what we're not. COMPANY makes no guarantee that the PROGRAM will meet CLIENT's requirements or that all CLIENTs will achieve the same results.</p>
             </div>
           </div>
 
