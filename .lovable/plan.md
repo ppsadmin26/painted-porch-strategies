@@ -1,38 +1,47 @@
 ## Goal
 
-Enforce the memory rule across every live page: any CTA pointing to `/blue-door` must be cobalt (`bluedoor` token). Solid cobalt as primary, cobalt outline as secondary. Never gold, teal/primary, navy, or generic outline.
+Commit baseline visual snapshots for the existing Playwright specs so visual diffs work out of the box in CI, without flaky cross-platform mismatches.
 
-## Standard classes (already used elsewhere)
+## Decisions (defaulted since you skipped questions)
 
-- **Primary (solid):** `bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor`
-- **Secondary (outline on light bg):** `bg-transparent border-2 border-bluedoor text-bluedoor hover:bg-bluedoor hover:text-white`
-- **In `<ParallaxCTA>`:** `variant: "bluedoor"`
-- **In `<TierHeroSection>`:** pass `buttonClassName` with the primary classes above (not `isPrimary: true`, which renders gold)
+- **Baseline source**: generate snapshots in this Linux sandbox and commit them. Pin Playwright to a single Chromium/Linux project so CI matches and macOS dev machines don't generate competing baselines.
+- **Scope**: both existing specs — `ppshome-card-alignment.spec.ts` (3 viewports) and `video-fallback.spec.ts` (2 states). 5 PNGs total.
 
-## Live violations to fix
+## Plan
 
-1. **`src/pages/pps/StartHere.tsx`** line 46 — TierHero CTA "Take the P.A.T.H.finder Quiz" currently `isPrimary: true` to `/blue-door`. Replace with `buttonClassName` cobalt primary.
-2. **`src/pages/pps/PhaseZero.tsx`** line 178 — TierHero CTA "Open the Blue Door" `isPrimary: true`. Replace with `buttonClassName` cobalt primary.
-3. **`src/pages/pps/PPSForTeams.tsx`** line 116 — TierHero CTA to `/blue-door` `isPrimary: true`. Replace with `buttonClassName` cobalt primary.
-4. **`src/pages/pps/PPSForTeams.tsx`** lines 308–310 — in-page Button `bg-primary…` to `/blue-door`. Swap to cobalt primary classes.
-5. **`src/pages/pps/PPSForLeaders.tsx`** lines 289–291 — Button `bg-primary…` to `/blue-door`. Swap to cobalt primary classes.
-6. **`src/pages/pps/partner/IgnitePathAlt.tsx`** lines 459–460 — Button `bg-primary…` to `/blue-door`. Swap to cobalt primary classes.
-7. **`src/pages/pps/partner/AmplifyPathAlt.tsx`** lines 447–450 — secondary Button to `/blue-door` using generic `variant="outline"`. Swap to cobalt outline classes.
-8. **`src/pages/pps/partner/amplify/AmplifyWorkshops.tsx`** lines 270–271 — Button `border-primary text-primary…` to `/blue-door`. Swap to cobalt outline classes.
-9. **`src/pages/pps/partner/amplify/AmplifySprints.tsx`** lines 217–218 — Button `border-primary text-primary…` to `/blue-door`. Swap to cobalt outline classes.
+1. **Pin snapshots to Linux/Chromium** in `playwright.config.ts` via `createLovableConfig` overrides:
+   - `projects: [{ name: "chromium", use: devices["Desktop Chrome"] }]`
+   - `snapshotPathTemplate: "{testDir}/__snapshots__/{testFilePath}/{arg}{ext}"` (stable path, no `-chromium-linux` suffix sprawl)
+   - `expect: { toHaveScreenshot: { maxDiffPixelRatio: 0.02 } }` (matches per-spec settings)
 
-## Out of scope
+2. **Add npm scripts** to `package.json`:
+   - `"test:e2e": "playwright test"`
+   - `"test:e2e:update": "playwright test --update-snapshots"`
+   - `"test:e2e:ci": "playwright test --reporter=github,html"`
 
-- Archive files (`*Archive.tsx`, `_archive-v1.0/**`, `HeroPreview*`).
-- `PPSHomeVerbatim.tsx` (Draft / deprecated).
-- `PPSHomeAlt.tsx` (alternate, not in live nav).
-- `HowToChooseSection.tsx`, `ParallaxCTA.tsx`, `HeroSectionAlt.tsx`, `PPSHome.tsx` — already cobalt-compliant.
-- Decorative uses of `text-bluedoor` / `bg-bluedoor/10` for icons, pills, accents — already correct, no change needed.
+3. **Generate baselines** in sandbox:
+   - `npx playwright install --with-deps chromium`
+   - `npm run test:e2e:update`
+   - Verify 5 PNGs land under `e2e/__snapshots__/…`
 
-## Verification
+4. **Ensure they commit**:
+   - Add `!e2e/__snapshots__/**` allowlist (current `.gitignore` doesn't block them, but make intent explicit with a comment).
+   - Keep `test-results/`, `playwright-report/` ignored (add to `.gitignore` if missing).
 
-After edits, run:
-```
-rg -n -B1 -A2 '"/blue-door"' src -g '*.tsx' | rg -B2 "bg-(primary|gold|navy|teal|raspberry|lime)|isPrimary: true|variant=\"outline\"|border-primary"
-```
-should return zero hits outside of archive paths.
+5. **CI notes** (README snippet in `e2e/README.md`):
+   - Run on `ubuntu-latest` only for visual specs.
+   - Use `npm run test:e2e:ci`.
+   - If a UI change is intentional, contributor runs `npm run test:e2e:update` and commits updated PNGs.
+
+## Risks
+
+- Mocked Supabase route in `video-fallback.spec.ts` should produce a deterministic frame, but the loading state holds a request forever — the snapshot is taken after `Video unavailable…` text appears, which is the fallback path, so it's stable.
+- macOS contributors running `test:e2e` locally will see tiny font-rendering diffs vs. the Linux baselines. The 2% diff ratio absorbs most of it; if it's still noisy, we mask text regions in a follow-up.
+
+## Files touched
+
+- `playwright.config.ts` — pin project + snapshot path
+- `package.json` — 3 new scripts
+- `.gitignore` — add `test-results/`, `playwright-report/`
+- `e2e/__snapshots__/**` — 5 new PNG baselines (generated)
+- `e2e/README.md` — short contributor doc
