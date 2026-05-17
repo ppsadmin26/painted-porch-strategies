@@ -10,8 +10,11 @@ import { MemoryRouter } from "react-router-dom";
  * Instead we assert the structural contract that guarantees the link sits at
  * the bottom of each card at every breakpoint:
  *   - card uses `flex flex-col h-full`
- *   - the link uses `mt-auto`
- *   - the link is the LAST child of its card
+ *   - the paragraph uses `flex-1` so it absorbs vertical slack
+ *   - the link is wrapped in a `mt-auto` container with a consistent
+ *     `min-h-[2.5rem]` so the link row matches across cards regardless of
+ *     content length
+ *   - the link wrapper is the LAST child of its card
  *   - the grid wrapper uses `items-stretch` so cards match heights on md+
  */
 
@@ -75,16 +78,24 @@ describe("PPSHome — Discover cards link alignment", () => {
       [yourselfCard, pathLink],
       [teamCard, blueDoorCardLink],
     ] as const) {
-      // The link itself must push to the bottom of the flex column.
-      expect(link.className).toMatch(/\bmt-auto\b/);
+      // The link wrapper must push to the bottom of the flex column and
+      // enforce a consistent minimum height so links align across cards.
+      const wrapper = link.parentElement as HTMLElement;
+      expect(wrapper).toBeTruthy();
+      expect(wrapper.className).toMatch(/\bmt-auto\b/);
+      expect(wrapper.className).toMatch(/min-h-\[2\.5rem\]/);
+
+      // The paragraph absorbs slack so the link wrapper sits at the bottom.
+      const paragraph = card.querySelector("p") as HTMLParagraphElement;
+      expect(paragraph.className).toMatch(/\bflex-1\b/);
 
       // The card must be a full-height flex column.
       expect(card.className).toMatch(/\bflex\b/);
       expect(card.className).toMatch(/\bflex-col\b/);
       expect(card.className).toMatch(/\bh-full\b/);
 
-      // The link must be the LAST child of the card (nothing below it).
-      expect(card.lastElementChild).toBe(link);
+      // The link wrapper must be the LAST child of the card.
+      expect(card.lastElementChild).toBe(wrapper);
     }
 
     // The grid wrapper must stretch cards to equal height on md+ so the
