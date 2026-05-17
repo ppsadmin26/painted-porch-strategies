@@ -241,8 +241,7 @@ export default function PPSHome() {
                     </h3>
                     <p className="text-foreground leading-relaxed mb-3">
                       A structured organizational appraisal that surfaces what
-                      your organization is actually positioned to carry. Required
-                      before any partnership begins.
+                      your organization is actually positioned to carry.
                     </p>
                     <span className="text-sm font-semibold text-bluedoor inline-flex items-center">
                       Open the Blue Door
