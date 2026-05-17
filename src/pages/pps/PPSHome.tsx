@@ -355,33 +355,124 @@ export default function PPSHome() {
             ))}
           </div>
 
-          <div className="mt-12 max-w-4xl mx-auto">
-            <div className="bg-muted/60 border-l-4 border-primary rounded-xl p-6 md:p-8">
-              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.15em] text-primary mb-4 text-center">
-                The P.A.T.H. We Walk Together
+          <section
+            id="the-way-forward"
+            aria-labelledby="path-heading"
+            className="scroll-mt-24 scroll-smooth mt-16 max-w-5xl mx-auto"
+          >
+            <div className="text-center mb-5">
+              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
+                The Way Forward
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                {[
-                  { letter: "P", word: "Prepare" },
-                  { letter: "A", word: "Align" },
-                  { letter: "T", word: "Take Off" },
-                  { letter: "H", word: "Habits" },
-                ].map((step) => (
-                  <div key={step.letter} className="text-center">
-                    <div className="font-poppins font-bold text-3xl md:text-4xl text-navy leading-none mb-1">
-                      {step.letter}
-                    </div>
-                    <div className="font-poppins text-sm font-medium text-foreground">
-                      {step.word}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground text-center mt-5 italic">
-                Our way of navigating intentional, sustainable progress.
+              <h3 id="path-heading" className="font-poppins font-bold text-2xl md:text-3xl text-navy mt-1">
+                Your P.A.T.H. to Sustainable Change
+              </h3>
+              <p className="text-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto leading-relaxed">
+                A way of thinking about and navigating intentional, sustainable
+                progress.
               </p>
             </div>
-          </div>
+
+            {/* Steps with winding road behind. */}
+            <div className="relative pb-10 md:pb-14 mb-2 px-6 sm:px-8 md:px-12">
+              {/* Left curved extension (teal) */}
+              <svg
+                viewBox="0 0 100 200"
+                className="absolute top-[42%] -translate-y-1/2 left-0 sm:left-0 md:left-0 w-6 sm:w-8 md:w-12 h-[120%] sm:h-[140%] pointer-events-none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path className="sm:hidden" d="M 0 70 C 30 70, 60 100, 100 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="20" strokeLinecap="round" opacity="0.4" />
+                <path className="sm:hidden" d="M 0 70 C 30 70, 60 100, 100 100" fill="none" stroke="white" strokeWidth="1.5" strokeDasharray="6 6" strokeLinecap="round" opacity="0.6" />
+                <path className="hidden sm:block" d="M 0 50 C 30 50, 60 100, 100 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="28" strokeLinecap="round" opacity="0.6" />
+                <path className="hidden sm:block" d="M 0 50 C 30 50, 60 100, 100 100" fill="none" stroke="white" strokeWidth="2" strokeDasharray="8 8" strokeLinecap="round" opacity="0.7" />
+              </svg>
+              {/* Right curved extension (lime) */}
+              <svg
+                viewBox="0 0 100 200"
+                className="absolute top-[42%] -translate-y-1/2 right-0 sm:right-0 md:right-0 w-6 sm:w-8 md:w-12 h-[120%] sm:h-[140%] pointer-events-none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <path className="sm:hidden" d="M 0 100 C 40 88, 60 70, 100 70" fill="none" stroke="hsl(var(--lime))" strokeWidth="20" strokeLinecap="round" opacity="0.4" />
+                <path className="sm:hidden" d="M 0 100 C 40 88, 60 70, 100 70" fill="none" stroke="white" strokeWidth="1.5" strokeDasharray="6 6" strokeLinecap="round" opacity="0.6" />
+                <path className="hidden sm:block" d="M 0 100 C 40 80, 60 50, 100 50" fill="none" stroke="hsl(var(--lime))" strokeWidth="28" strokeLinecap="round" opacity="0.6" />
+                <path className="hidden sm:block" d="M 0 100 C 40 80, 60 50, 100 50" fill="none" stroke="white" strokeWidth="2" strokeDasharray="8 8" strokeLinecap="round" opacity="0.7" />
+              </svg>
+
+              {/* Mobile road */}
+              <svg
+                viewBox="0 0 1200 200"
+                className="sm:hidden absolute top-[42%] -translate-y-1/2 inset-x-0 w-full h-[120%] pointer-events-none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <defs>
+                  <path id="ppsHomeRoadMobile" d="M 0 100 C 100 100, 200 70, 300 100 S 500 130, 600 100 S 800 70, 900 100 S 1100 130, 1200 100" />
+                  <clipPath id="ppsHomeRoadMobileClip1"><rect x="0" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsHomeRoadMobileClip2"><rect x="300" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsHomeRoadMobileClip3"><rect x="600" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsHomeRoadMobileClip4"><rect x="900" y="0" width="300" height="200" /></clipPath>
+                </defs>
+                <g fill="none" strokeWidth="20" strokeLinecap="butt" opacity="0.4">
+                  <use href="#ppsHomeRoadMobile" stroke="hsl(var(--primary))" clipPath="url(#ppsHomeRoadMobileClip1)" />
+                  <use href="#ppsHomeRoadMobile" stroke="hsl(var(--raspberry))" clipPath="url(#ppsHomeRoadMobileClip2)" />
+                  <use href="#ppsHomeRoadMobile" stroke="hsl(var(--gold))" clipPath="url(#ppsHomeRoadMobileClip3)" />
+                  <use href="#ppsHomeRoadMobile" stroke="hsl(var(--lime))" clipPath="url(#ppsHomeRoadMobileClip4)" />
+                </g>
+                <use href="#ppsHomeRoadMobile" fill="none" stroke="white" strokeWidth="1.5" strokeDasharray="6 6" strokeLinecap="round" opacity="0.6" />
+              </svg>
+
+              {/* Desktop road */}
+              <svg
+                viewBox="0 0 1200 200"
+                className="hidden sm:block absolute top-[42%] -translate-y-1/2 inset-x-0 w-full h-[140%] pointer-events-none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <defs>
+                  <path id="ppsHomeRoadDesktop" d="M 0 100 C 100 100, 200 50, 300 100 S 500 150, 600 100 S 800 50, 900 100 S 1100 150, 1200 100" />
+                  <clipPath id="ppsHomeRoadDesktopClip1"><rect x="0" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsHomeRoadDesktopClip2"><rect x="300" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsHomeRoadDesktopClip3"><rect x="600" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsHomeRoadDesktopClip4"><rect x="900" y="0" width="300" height="200" /></clipPath>
+                </defs>
+                <g fill="none" strokeWidth="28" strokeLinecap="butt" opacity="0.6">
+                  <use href="#ppsHomeRoadDesktop" stroke="hsl(var(--primary))" clipPath="url(#ppsHomeRoadDesktopClip1)" />
+                  <use href="#ppsHomeRoadDesktop" stroke="hsl(var(--raspberry))" clipPath="url(#ppsHomeRoadDesktopClip2)" />
+                  <use href="#ppsHomeRoadDesktop" stroke="hsl(var(--gold))" clipPath="url(#ppsHomeRoadDesktopClip3)" />
+                  <use href="#ppsHomeRoadDesktop" stroke="hsl(var(--lime))" clipPath="url(#ppsHomeRoadDesktopClip4)" />
+                </g>
+                <use href="#ppsHomeRoadDesktop" fill="none" stroke="white" strokeWidth="2" strokeDasharray="8 8" strokeLinecap="round" opacity="0.7" />
+              </svg>
+
+              <ol
+                className="relative grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3"
+                aria-labelledby="path-heading"
+              >
+                {[
+                  { letter: "P", word: "Prepare", slug: "prepare", border: "border-primary", text: "text-primary", bg: "bg-primary", dot: "bg-primary" },
+                  { letter: "A", word: "Align", slug: "align", border: "border-raspberry", text: "text-raspberry", bg: "bg-raspberry", dot: "bg-raspberry" },
+                  { letter: "T", word: "Take Off", slug: "take-off", border: "border-gold", text: "text-gold", bg: "bg-gold", dot: "bg-gold" },
+                  { letter: "H", word: "Habits", slug: "habits", border: "border-lime", text: "text-lime", bg: "bg-lime", dot: "bg-lime" },
+                ].map((step, idx, arr) => (
+                  <li
+                    key={step.letter}
+                    id={`path-${step.slug}`}
+                    className={`relative flex flex-col items-center justify-center py-4 rounded-xl border-2 bg-white shadow-sm scroll-mt-24 ${step.border}`}
+                    aria-label={`Step ${idx + 1} of ${arr.length}: ${step.letter}, ${step.word}`}
+                  >
+                    <span aria-hidden="true" className={`absolute -top-3 left-1/2 -translate-x-1/2 w-0.5 h-3 ${step.bg} opacity-60`} />
+                    <span aria-hidden="true" className={`absolute -top-[14px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full ring-2 ring-white ${step.dot}`} />
+                    <span className={`font-poppins font-bold text-2xl ${step.text}`} aria-hidden="true">{step.letter}</span>
+                    <span className={`text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest mt-1 ${step.text}`} aria-hidden="true">{step.word}</span>
+                    <span aria-hidden="true" className={`absolute -bottom-3 left-1/2 -translate-x-1/2 w-0.5 h-3 ${step.bg} opacity-60`} />
+                    <span aria-hidden="true" className={`absolute -bottom-[14px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full ring-2 ring-white ${step.dot}`} />
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
         </div>
       </section>
 
