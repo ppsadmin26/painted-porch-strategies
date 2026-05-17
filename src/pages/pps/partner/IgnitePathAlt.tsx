@@ -457,7 +457,7 @@ export default function IgnitePathAlt() {
                 Best for: Executives exploring what shift to lead next
               </p>
               <Link to="/blue-door">
-                <Button className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary w-full transition-colors">
+                <Button className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor w-full transition-colors">
                   Open the Blue Door
                 </Button>
               </Link>
