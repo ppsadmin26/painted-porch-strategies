@@ -335,8 +335,8 @@ export default function PhaseZero() {
                   </ul>
                 </div>
 
-                <div>
-                  <h4 className="text-base md:text-lg font-semibold text-navy mb-2">Strong Footing Looks Like:</h4>
+                <div className="mt-auto">
+                  <h4 className="text-base md:text-lg font-semibold text-navy mb-2">Strong Foundation Looks Like:</h4>
                   <ul className="space-y-1.5">
                     {p.outcomes.map((o, i) => (
                       <li key={i} className="text-sm text-foreground flex items-start gap-2">
