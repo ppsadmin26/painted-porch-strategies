@@ -334,9 +334,11 @@ export default function PPSHome() {
             {pillars.map((pillar, i) => (
               <div
                 key={i}
-                className={`${pillar.bgColor} p-6 rounded-xl transition-all hover:shadow-lg`}
+                className={`${pillar.bgColor} border-t-4 ${pillar.borderColor.replace('/30','')} p-6 rounded-xl transition-all hover:shadow-lg`}
               >
-                <pillar.icon className={`w-10 h-10 ${pillar.color} mb-4`} />
+                <div className={`w-14 h-14 rounded-lg ${pillar.bgColor} ring-1 ${pillar.borderColor} flex items-center justify-center mb-4`}>
+                  <pillar.icon className={`w-7 h-7 ${pillar.color}`} />
+                </div>
                 <h3 className="font-poppins font-semibold text-xl text-navy mb-1">
                   {pillar.title}
                 </h3>
