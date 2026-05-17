@@ -186,7 +186,7 @@ export default function PPSAbout() {
             {[
               "Show up strong, confident, energized, and resilient when uncertainty or change is presented",
               "Share ideas and challenge well-worn norms and habits",
-              "Spot and solve problems proactively and honestly",
+              "Spot and solve problems proactively and openly",
               "Work in healthy, collaborative, accountable teams",
               "Communicate with clarity, consistency, and impact",
             ].map((ability, i) => (
