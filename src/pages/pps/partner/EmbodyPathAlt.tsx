@@ -624,33 +624,6 @@ export default function EmbodyPathAlt() {
               </Link>
             </p>
           </div>
-
-          {/* Integration Card - Full Width */}
-          <div className="bg-navy text-white p-8 rounded-xl">
-            <h3 className="font-poppins font-semibold text-xl mb-4 text-center">
-              When All Three Pillars Are Load-Bearing
-            </h3>
-            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <div className="text-center">
-                <p className="text-white/90">Better architecture →</p>
-              </div>
-              <div className="text-center">
-                <p className="text-white/90">Better operations →</p>
-              </div>
-              <div className="text-center">
-                <p className="text-white/90">Better capability →</p>
-              </div>
-              <div className="text-center">
-                <p className="text-white/90">Better architecture</p>
-              </div>
-            </div>
-            <p className="text-center text-white/90 mb-4">
-              The system reinforces itself. Transformation becomes self-sustaining.
-            </p>
-            <p className="text-center text-gold font-semibold text-lg">
-              You've built The Fortified Porch—organizational capacity for continuous change. That's what EMBODY partnerships create.
-            </p>
-          </div>
         </div>
       </section>
       {/* SECTION 6: INVESTMENT & ROI */}
