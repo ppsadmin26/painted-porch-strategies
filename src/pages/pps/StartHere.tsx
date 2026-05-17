@@ -43,7 +43,7 @@ export default function StartHere() {
         headline="Find Your P.A.T.H.way"
         description="Not sure where to begin? This guide will help you identify the right engagement level for your needs, goals, and readiness."
         ctas={[
-          { label: "Take the P.A.T.H.finder Quiz", href: "/blue-door", isPrimary: true },
+          { label: "Take the P.A.T.H.finder Quiz", href: "/blue-door", buttonClassName: "bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor" },
         ]}
         background={{ type: "image", src: startHereHero }}
         overlayClass="bg-navy/50"
