@@ -10,6 +10,9 @@ import {
   Map,
   Users,
   Lightbulb,
+  MessageCircle,
+  KeyRound,
+  Handshake,
 } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
@@ -164,6 +167,120 @@ export default function PPSHome() {
             pushing harder in the wrong direction simply compounds the cost of
             getting there.
           </p>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* How we meet you — editorial 2-col                             */}
+      {/* ============================================================ */}
+      <section className="py-16 md:py-24 bg-muted">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left: manifesto */}
+            <div className="lg:col-span-5 lg:sticky lg:top-24">
+              <span className="badge-gold mb-4 inline-block">How We Meet You</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
+                We&rsquo;re not a firm you hire. We&rsquo;re partners you sit with.
+              </h2>
+              <p className="text-lg text-foreground leading-relaxed mb-4">
+                We don&rsquo;t arrive with a slide deck of answers or a packaged
+                program waiting for your name on it. We arrive at the threshold,
+                with the questions that haven&rsquo;t been asked yet, before the
+                next big decision hardens.
+              </p>
+              <p className="text-lg text-foreground leading-relaxed">
+                Most leaders find us in one of three places. Wherever you start,
+                you start with a conversation, not a contract.
+              </p>
+            </div>
+
+            {/* Right: 3 stacked engagement rows */}
+            <div className="lg:col-span-7 space-y-5">
+              <Link
+                to="/start-here"
+                className="group block bg-white rounded-xl p-6 md:p-7 border-l-4 border-primary hover:shadow-lg transition-all"
+              >
+                <div className="flex gap-5">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-primary mb-1">
+                      01 &middot; Start a conversation
+                    </p>
+                    <h3 className="font-poppins font-semibold text-xl text-navy mb-2 group-hover:text-primary transition-colors">
+                      Explore where you are
+                    </h3>
+                    <p className="text-foreground leading-relaxed mb-3">
+                      Free assessments, the P.A.T.H. Compass, and tools you can
+                      use today. For leaders sensing something needs to <ShIFt />,
+                      but not yet sure what.
+                    </p>
+                    <span className="text-sm font-semibold text-primary inline-flex items-center">
+                      Discover Your P.A.T.H.way
+                      <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+
+              <Link
+                to="/blue-door"
+                className="group block bg-white rounded-xl p-6 md:p-7 border-l-4 border-bluedoor hover:shadow-lg transition-all"
+              >
+                <div className="flex gap-5">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-bluedoor/10 flex items-center justify-center">
+                    <KeyRound className="w-6 h-6 text-bluedoor" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-1">
+                      02 &middot; Open the Blue Door
+                    </p>
+                    <h3 className="font-poppins font-semibold text-xl text-navy mb-2 group-hover:text-bluedoor transition-colors">
+                      Get clarity before you commit
+                    </h3>
+                    <p className="text-foreground leading-relaxed mb-3">
+                      A structured organizational appraisal that surfaces what
+                      your organization is actually positioned to carry. Required
+                      before any partnership begins.
+                    </p>
+                    <span className="text-sm font-semibold text-bluedoor inline-flex items-center">
+                      Open the Blue Door
+                      <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+
+              <Link
+                to="/partner"
+                className="group block bg-white rounded-xl p-6 md:p-7 border-l-4 border-purple hover:shadow-lg transition-all"
+              >
+                <div className="flex gap-5">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-purple/10 flex items-center justify-center">
+                    <Handshake className="w-6 h-6 text-purple" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-purple mb-1">
+                      03 &middot; Build what&rsquo;s next, together
+                    </p>
+                    <h3 className="font-poppins font-semibold text-xl text-navy mb-2 group-hover:text-purple transition-colors">
+                      Partner through the <ShIFt />
+                    </h3>
+                    <p className="text-foreground leading-relaxed mb-3">
+                      Once the Blue Door reveals what&rsquo;s real, we partner
+                      with you to architect, align, and sustain the change.
+                      Three tiers, shaped to your moment: Ignite, Amplify, Embody.
+                    </p>
+                    <span className="text-sm font-semibold text-purple inline-flex items-center">
+                      Explore Partnership
+                      <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
