@@ -436,7 +436,7 @@ export default function PhaseZero() {
         backgroundImage={homeHero}
         eyebrow="Begin"
         headline="The Blue Door is Phase Zero in motion."
-        description="A structured 90 minute conversation that turns the three Pillars into a real picture of where your organization stands."
+        description="An under 30 minute organizational appraisal and debrief that turns the three Pillars into a real picture of where your organization stands."
         actions={[
           { label: "Open the Blue Door", to: "/blue-door", variant: "bluedoor" },
           { label: "Find Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
