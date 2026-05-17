@@ -499,19 +499,13 @@ export default function PPSHome() {
                 kind of change your organization can confidently execute &mdash;
                 before major pivots become active pursuit.
               </p>
-              <Link to="/blue-door">
-                <Button className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor text-lg py-5 px-8 transition-colors">
-                  Open the Blue Door
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm">
               <p className="text-sm font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-5">
                 What You&rsquo;ll Discover
               </p>
-              <ul className="space-y-4">
+              <ul className="space-y-4 mb-6">
                 {discover.map((d, i) => (
                   <li key={i} className="flex gap-3">
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-bluedoor/10 text-bluedoor font-poppins font-bold text-xs flex items-center justify-center mt-0.5">
@@ -521,6 +515,12 @@ export default function PPSHome() {
                   </li>
                 ))}
               </ul>
+              <Link to="/blue-door">
+                <Button className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor text-lg py-5 px-8 transition-colors w-full sm:w-auto">
+                  Open the Blue Door
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
