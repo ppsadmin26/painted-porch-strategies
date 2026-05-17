@@ -41,7 +41,7 @@ const coreValues = [
 const beliefs = [
   "People are the load-bearing part of every transformation.",
   "Clarity comes before strategy, not after it.",
-  "Honest questions are more useful than confident answers.",
+  "Real questions are more useful than confident answers.",
   "Frameworks are tools, not religions.",
   "Change that does not respect culture will not hold.",
 ];
