@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+import { Building2, Compass, Brain, ArrowRight, CheckCircle, DoorOpen, Route, Users } from "lucide-react";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { useScrollAnimation, getAnimationClasses } from "@/hooks/useScrollAnimation";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
+import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import homeHero from "@/assets/heroes/home-hero.jpg";
 
 function FadeIn({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -15,110 +18,418 @@ function FadeIn({ children, className = "" }: { children: React.ReactNode; class
   );
 }
 
+const ShIFt = () => (
+  <>
+    Sh<span className="text-raspberry">IF</span>t
+  </>
+);
+
+const isIsNot = {
+  is: [
+    "A clear look at what your organization can actually carry right now.",
+    "Honest questions about leadership, systems, and people before money or momentum gets locked in.",
+    "The design phase that decides whether your next big move strengthens you or stretches you thin.",
+  ],
+  isNot: [
+    "A readiness score or a health check.",
+    "A template, a deck, or a one-size playbook.",
+    "Training, coaching, or a workshop.",
+  ],
+};
+
+const pillars = [
+  {
+    icon: Building2,
+    title: "Cultural Cornerstone",
+    subtitle: "Leadership & Culture",
+    border: "border-l-navy",
+    bg: "bg-[hsl(220,60%,95%)]",
+    iconBg: "bg-[hsl(220,50%,90%)]",
+    accent: "text-navy",
+    definition:
+      "Your leaders, your culture, your values, and the way people work together. This is the load-bearing wall that decides how your organization leads, decides, and grows.",
+    questions: [
+      "Can our leaders shape direction, or are they only reacting to pressure?",
+      "Will our culture support this change, or quietly push against it?",
+      "Do we have a clear way leaders make decisions together?",
+    ],
+    outcomes: [
+      "Leaders who design change on purpose, not by accident.",
+      "A culture that helps change stick instead of pulling it apart.",
+      "Strategic muscle at the top of the organization.",
+    ],
+  },
+  {
+    icon: Compass,
+    title: "Operational Frame",
+    subtitle: "Workflows & Systems",
+    border: "border-l-strategic",
+    bg: "bg-strategic/10",
+    iconBg: "bg-strategic/15",
+    accent: "text-strategic",
+    definition:
+      "Your systems, workflows, and decision pathways. This is how strategy actually moves through the building and turns into real work.",
+    questions: [
+      "Do our workflows support the position we want to lead in our market?",
+      "Are our systems built for value, or just for speed?",
+      "Can our operations carry a real change, or will they crack under it?",
+    ],
+    outcomes: [
+      "Operations that move strategy forward instead of slowing it down.",
+      "Workflows designed for value, not just activity.",
+      "Systems that can hold real transformation.",
+    ],
+  },
+  {
+    icon: Brain,
+    title: "Living Ecosystem",
+    subtitle: "Human Capacity",
+    border: "border-l-gold",
+    bg: "bg-gold/10",
+    iconBg: "bg-gold/15",
+    accent: "text-gold",
+    definition:
+      "The judgment, communication, resilience, and mindset your people bring to the work. This is the human capacity that decides whether change holds up over time.",
+    questions: [
+      "Can our people navigate the unknown, or only follow set steps?",
+      "Is good judgment spread through the organization, or stuck at the top?",
+      "Do we have the human capacity to adapt, not just to execute?",
+    ],
+    outcomes: [
+      "People who can move through ambiguity with confidence.",
+      "Judgment shared at the right levels across the organization.",
+      "Real adaptive capacity for whatever comes next.",
+    ],
+  },
+];
+
+const essentialElements = [
+  "Communication",
+  "Collaboration",
+  "Clarity",
+  "Resilience",
+  "Alignment",
+  "Organizational Health",
+];
+
+const wherePhaseZeroLeads = [
+  {
+    icon: DoorOpen,
+    title: "The Blue Door",
+    body: "A structured organizational appraisal that shows where you stand across the three Pillars before you spend another dollar.",
+    to: "/blue-door",
+    cta: "Open the Blue Door",
+    accent: "text-bluedoor",
+    border: "border-bluedoor",
+  },
+  {
+    icon: Route,
+    title: "Your P.A.T.H.way",
+    body: "A short quiz that points you to the right starting place: IGNITE, AMPLIFY, or EMBODY.",
+    to: "/start-here",
+    cta: "Find Your P.A.T.H.way",
+    accent: "text-primary",
+    border: "border-primary",
+  },
+  {
+    icon: Users,
+    title: "Strategic Partnership",
+    body: "Ongoing partnership across all three Pillars to build change capacity your team can carry on their own.",
+    to: "/partner",
+    cta: "Explore Partnership",
+    accent: "text-gold",
+    border: "border-gold",
+  },
+];
+
 export default function PhaseZero() {
   useDocumentSeo({
     title: "Phase Zero™ | The Work Before the Work | Painted Porch Strategies",
     description:
-      "Phase Zero™ is the strategic authorship phase. Before tools, before kickoff, before implementation — this is where leaders decide what change to lead.",
+      "Phase Zero™ is the work before the work. It is where leaders get honest about people, systems, and culture before the next big shift begins.",
   });
 
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-navy text-white">
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${homeHero})` }}
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-br from-navy/95 via-navy/90 to-navy/80"
-        />
-        <div className="relative container max-w-4xl mx-auto px-6 py-24 animate-fade-in">
-          <p className="text-gold font-poppins font-semibold uppercase tracking-[0.2em] text-xs md:text-sm mb-6">
-            The Manifesto
-          </p>
-          <h1 className="font-poppins font-bold text-5xl md:text-7xl leading-[1.05] mb-8">
+      <TierHeroSection
+        customBadge={
+          <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
+            The Work Before the Work
+          </span>
+        }
+        headline={
+          <>
             Phase Zero<sup className="text-[0.4em] align-super">™</sup>
-          </h1>
-          <p className="text-xl md:text-2xl text-white/85 max-w-2xl leading-relaxed font-light">
-            The work before the work. The phase most consultants skip &mdash;
-            and the one that decides whether your transformation lasts.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        description={
+          <>
+            <p className="text-xl md:text-2xl mb-4">
+              Before the kickoff. Before the rollout. Before the next big <ShIFt />.
+            </p>
+            <p className="text-lg text-white/85">
+              Phase Zero is the honest look at people, systems, and culture
+              that decides whether your next move builds you up or burns you out.
+            </p>
+          </>
+        }
+        ctas={[
+          { label: "Open the Blue Door", href: "/blue-door", isPrimary: true },
+          { label: "See Where You'd Start", href: "/start-here" },
+        ]}
+        background={{ type: "image", src: homeHero }}
+        overlayClass="bg-navy/55"
+        minHeightClass="min-h-[60vh]"
+      />
 
-      {/* Section 1 */}
-      <section className="py-24 md:py-32 bg-muted">
+      {/* What we are navigating */}
+      <section className="py-16 md:py-24 bg-muted">
         <FadeIn className="container max-w-3xl mx-auto px-6">
-          <p className="text-primary font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-6">
-            One
+          <p className="text-primary font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-4">
+            What We Are Navigating
           </p>
           <h2 className="font-poppins font-bold text-3xl md:text-5xl text-navy leading-tight mb-6">
-            Most change initiatives don&rsquo;t fail at execution.
+            Everything important is changing at once.
           </h2>
-          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-6">
-            They fail at alignment. They fail because the strategic authorship
-            phase &mdash; the moment when leaders sit with the question of
-            <em className="not-italic text-navy font-semibold"> what change to lead </em>
-            &mdash; gets skipped in favor of momentum.
+          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-5">
+            Strategy. Technology and AI. Operations. Leadership. Culture.
+            Every one of these is in motion right now, and most organizations
+            are trying to keep up while still running the day to day.
           </p>
           <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed">
-            Tools get launched. Workflows get redesigned. Trainings get rolled
-            out. And six months later, the org is exhausted and nothing has
-            actually shifted.
+            The problem is not effort. The problem is that pushing harder in
+            an unclear direction does not change the direction. It just makes
+            the cost of getting there bigger.
           </p>
         </FadeIn>
       </section>
 
-      {/* Section 2 */}
-      <section className="py-24 md:py-32 bg-white">
+      {/* The work before the work */}
+      <section className="py-16 md:py-24 bg-white">
         <FadeIn className="container max-w-3xl mx-auto px-6">
-          <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-6">
-            Two
+          <p className="text-gold font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-4">
+            The Work Before the Work
           </p>
           <h2 className="font-poppins font-bold text-3xl md:text-5xl text-navy leading-tight mb-6">
-            Phase Zero is strategic authorship.
+            Phase Zero is where the real choices get made.
           </h2>
-          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-6">
-            It&rsquo;s the phase where you decide what change you could
-            credibly lead in your market. Not respond to. Not implement
-            because a competitor moved first. <em className="not-italic font-semibold text-navy">Author</em>.
+          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-5">
+            It is the phase where you decide what <ShIFt /> your organization
+            can credibly lead. Not what to copy. Not what to react to.
+            What to author.
           </p>
-          <blockquote className="text-2xl md:text-3xl font-poppins italic text-navy mt-12 border-l-4 border-gold pl-6">
-            &ldquo;Are we designing our next move &mdash; or reacting to theirs?&rdquo;
+          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed">
+            That sounds simple. It is not. Most teams skip it because the
+            pressure to move feels louder than the cost of moving in the
+            wrong direction.
+          </p>
+          <blockquote className="text-2xl md:text-3xl font-poppins italic text-navy mt-10 border-l-4 border-gold pl-6">
+            "Are we designing our next move, or reacting to theirs?"
           </blockquote>
         </FadeIn>
       </section>
 
-      {/* Section 3 */}
-      <section className="py-24 md:py-32 bg-muted/60">
-        <FadeIn className="container max-w-3xl mx-auto px-6">
-          <p className="text-gold font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-6">
-            Three
-          </p>
-          <h2 className="font-poppins font-bold text-3xl md:text-5xl text-navy leading-tight mb-6">
-            The architecture comes before the build.
-          </h2>
-          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed">
-            Phase Zero is where we assess whether your organization is
-            structurally capable of leading the position you want to occupy
-            &mdash; and where we design the architecture required to sustain
-            it. Foundational Architecture. Operational Intelligence. Human
-            Capacity. The three pillars of every fortified habitat.
-          </p>
+      {/* What Phase Zero is not */}
+      <section className="py-16 md:py-24 bg-muted/60">
+        <FadeIn className="container max-w-5xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-3">
+              Clear About the Work
+            </p>
+            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-navy leading-tight">
+              What Phase Zero is, and what it is not.
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-xl p-7 border-t-4 border-lime shadow-sm">
+              <h3 className="font-poppins font-semibold text-xl text-lime mb-4">
+                Phase Zero is:
+              </h3>
+              <ul className="space-y-3">
+                {isIsNot.is.map((s) => (
+                  <li key={s} className="flex items-start gap-3 text-foreground leading-relaxed">
+                    <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-1" />
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white rounded-xl p-7 border-t-4 border-raspberry shadow-sm">
+              <h3 className="font-poppins font-semibold text-xl text-raspberry mb-4">
+                Phase Zero is not:
+              </h3>
+              <ul className="space-y-3">
+                {isIsNot.isNot.map((s) => (
+                  <li key={s} className="flex items-start gap-3 text-foreground leading-relaxed">
+                    <span className="text-raspberry mt-1">•</span>
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </FadeIn>
       </section>
 
+      {/* Foundations Phase Zero Examines */}
+      <section id="foundations" className="py-20 md:py-28 bg-white scroll-mt-24">
+        <div className="container max-w-6xl mx-auto px-6">
+          <FadeIn className="text-center max-w-3xl mx-auto mb-12">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
+              The Foundations Phase Zero Examines
+            </p>
+            <h2 className="font-poppins font-bold text-3xl md:text-5xl text-navy leading-tight mb-6">
+              The Painted Porch Pillars.
+            </h2>
+            <p className="text-lg text-foreground leading-relaxed">
+              Every organization stands on three load-bearing structures.
+              When one is weak, change cracks. When all three are honest and
+              healthy, change holds. Phase Zero looks at each one.
+            </p>
+          </FadeIn>
+
+          {/* Pillar Cards */}
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {pillars.map((p) => (
+              <FadeIn
+                key={p.title}
+                className={`${p.bg} p-6 rounded-xl border-l-4 ${p.border} h-full`}
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className={`w-12 h-12 ${p.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                    <p.icon className={`w-6 h-6 ${p.accent}`} />
+                  </div>
+                  <div>
+                    <h3 className={`font-poppins font-semibold text-lg ${p.accent} leading-tight`}>
+                      {p.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">{p.subtitle}</p>
+                  </div>
+                </div>
+
+                <p className="text-sm text-foreground leading-relaxed mb-5">
+                  {p.definition}
+                </p>
+
+                <div className="mb-5">
+                  <h4 className="font-semibold text-navy text-sm mb-2">The Questions:</h4>
+                  <ul className="space-y-1.5">
+                    {p.questions.map((q, i) => (
+                      <li key={i} className="text-sm text-foreground flex items-start gap-2">
+                        <span className={`${p.accent} mt-1`}>•</span>
+                        <span>{q}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-navy text-sm mb-2">Strong Footing Looks Like:</h4>
+                  <ul className="space-y-1.5">
+                    {p.outcomes.map((o, i) => (
+                      <li key={i} className="text-sm text-foreground flex items-start gap-2">
+                        <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
+                        <span>{o}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Essential Elements */}
+          <FadeIn className="bg-muted/50 border border-navy/5 rounded-2xl p-6 md:p-10 mb-10">
+            <div className="text-center mb-6">
+              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-2">
+                The Behavioral Bedrock
+              </p>
+              <h3 className="font-poppins font-bold text-2xl md:text-3xl text-navy mb-3">
+                Essential Elements
+              </h3>
+              <p className="text-foreground/80 text-base max-w-2xl mx-auto leading-relaxed">
+                Under all three Pillars sit the everyday behaviors that
+                decide whether change actually sticks.
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-2">
+              {essentialElements.map((el) => (
+                <span
+                  key={el}
+                  className="bg-white text-navy font-poppins font-medium text-sm px-4 py-2 rounded-full border border-navy/10"
+                >
+                  {el}
+                </span>
+              ))}
+            </div>
+          </FadeIn>
+
+          {/* The Fortified Porch */}
+          <FadeIn>
+            <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 text-center shadow-xl border-b-4 border-gold">
+              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
+                The Result
+              </p>
+              <h3 className="font-poppins font-bold text-2xl md:text-3xl text-white mb-4">
+                The Fortified Porch
+              </h3>
+              <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
+                When the three Pillars stand strong and the Essential
+                Elements show up every day, your organization becomes able
+                to <strong className="text-gold">author change and keep growing</strong>,
+                instead of constantly cleaning up what the last shift broke.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Where Phase Zero leads */}
+      <section className="py-20 md:py-24 bg-muted">
+        <div className="container max-w-6xl mx-auto px-6">
+          <FadeIn className="text-center max-w-2xl mx-auto mb-12">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+              Where Phase Zero Leads
+            </p>
+            <h2 className="font-poppins font-bold text-3xl md:text-4xl text-navy leading-tight">
+              Three honest ways to begin.
+            </h2>
+          </FadeIn>
+          <div className="grid md:grid-cols-3 gap-6">
+            {wherePhaseZeroLeads.map((w) => (
+              <FadeIn
+                key={w.title}
+                className={`bg-white rounded-xl p-7 border-t-4 ${w.border} shadow-sm flex flex-col`}
+              >
+                <w.icon className={`w-9 h-9 ${w.accent} mb-4`} />
+                <h3 className="font-poppins font-semibold text-xl text-navy mb-3">
+                  {w.title}
+                </h3>
+                <p className="text-foreground leading-relaxed mb-5 flex-grow">
+                  {w.body}
+                </p>
+                <Link
+                  to={w.to}
+                  className={`inline-flex items-center gap-1.5 font-poppins font-semibold text-sm ${w.accent} hover:underline`}
+                >
+                  {w.cta} <ArrowRight className="w-4 h-4" />
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
       <ParallaxCTA
         backgroundImage={homeHero}
         eyebrow="Begin"
         headline="The Blue Door is Phase Zero in motion."
-        description="A 90-minute strategic diagnostic to surface what your organization is actually positioned to lead."
+        description="A structured 90 minute conversation that turns the three Pillars into a real picture of where your organization stands."
         actions={[
-          { label: "Open the Blue Door", to: "/blue-door", variant: "primary" },
-          { label: "Discover Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
+          { label: "Open the Blue Door", to: "/blue-door", variant: "bluedoor" },
+          { label: "Find Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
         ]}
       />
     </div>
