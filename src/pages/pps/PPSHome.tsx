@@ -254,17 +254,17 @@ export default function PPSHome() {
 
               <Link
                 to="/partner"
-                className="group block bg-white rounded-xl p-6 md:p-7 border-l-4 border-purple hover:shadow-lg transition-all"
+                className="group block bg-white rounded-xl p-6 md:p-7 border-l-4 border-pps-purple hover:shadow-lg transition-all"
               >
                 <div className="flex gap-5">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-purple/10 flex items-center justify-center">
-                    <Handshake className="w-6 h-6 text-purple" />
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-pps-purple/10 flex items-center justify-center">
+                    <Handshake className="w-6 h-6 text-pps-purple" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-purple mb-1">
+                    <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-pps-purple mb-1">
                       03 &middot; Build what&rsquo;s next, together
                     </p>
-                    <h3 className="font-poppins font-semibold text-xl text-navy mb-2 group-hover:text-purple transition-colors">
+                    <h3 className="font-poppins font-semibold text-xl text-navy mb-2 group-hover:text-pps-purple transition-colors">
                       Partner through the <ShIFt />
                     </h3>
                     <p className="text-foreground leading-relaxed mb-3">
@@ -272,7 +272,7 @@ export default function PPSHome() {
                       with you to architect, align, and sustain the change.
                       Three tiers, shaped to your moment: Ignite, Amplify, Embody.
                     </p>
-                    <span className="text-sm font-semibold text-purple inline-flex items-center">
+                    <span className="text-sm font-semibold text-pps-purple inline-flex items-center">
                       Explore Partnership
                       <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
