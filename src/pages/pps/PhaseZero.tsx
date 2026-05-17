@@ -301,13 +301,13 @@ export default function PhaseZero() {
           </FadeIn>
 
           {/* Pillar Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
+          <div className="grid lg:grid-cols-3 gap-6 mb-16">
             {pillars.map((p) => (
               <FadeIn
                 key={p.title}
-                className={`${p.bg} p-6 rounded-xl border-l-4 ${p.border} h-full flex flex-col`}
+                className={`${p.bg} p-6 rounded-xl border-l-4 ${p.border} h-full grid gap-y-5 lg:grid-rows-[4.75rem_9.5rem_16.25rem_auto]`}
               >
-                <div className="flex items-start gap-4 mb-4">
+                <div className="flex items-start gap-4">
                   <div className={`w-12 h-12 ${p.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
                     <p.icon className={`w-6 h-6 ${p.accent}`} />
                   </div>
@@ -319,11 +319,11 @@ export default function PhaseZero() {
                   </div>
                 </div>
 
-                <p className="text-sm text-foreground leading-relaxed mb-5 md:min-h-[7rem]">
+                <p className="text-sm text-foreground leading-relaxed">
                   {p.definition}
                 </p>
 
-                <div className="mb-5 md:min-h-[14rem]">
+                <div>
                   <h4 className="font-semibold text-navy text-sm mb-2">The Questions:</h4>
                   <ul className="space-y-1.5">
                     {p.questions.map((q, i) => (
@@ -335,7 +335,7 @@ export default function PhaseZero() {
                   </ul>
                 </div>
 
-                <div className="mt-auto">
+                <div>
                   <h4 className="font-semibold text-navy text-sm mb-2">Strong Footing Looks Like:</h4>
                   <ul className="space-y-1.5">
                     {p.outcomes.map((o, i) => (
