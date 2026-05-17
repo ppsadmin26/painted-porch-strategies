@@ -375,31 +375,6 @@ export default function PPSHome() {
 
             {/* Steps with winding road behind. */}
             <div className="relative pb-10 md:pb-14 mb-2 px-6 sm:px-8 md:px-12">
-              {/* Left curved extension (teal) */}
-              <svg
-                viewBox="0 0 100 200"
-                className="absolute top-[42%] -translate-y-1/2 left-0 sm:left-0 md:left-0 w-6 sm:w-8 md:w-12 h-[120%] sm:h-[140%] pointer-events-none"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                <path className="sm:hidden" d="M 0 70 C 30 70, 60 100, 100 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="20" strokeLinecap="round" opacity="0.4" />
-                <path className="sm:hidden" d="M 0 70 C 30 70, 60 100, 100 100" fill="none" stroke="white" strokeWidth="1.5" strokeDasharray="6 6" strokeLinecap="round" opacity="0.6" />
-                <path className="hidden sm:block" d="M 0 50 C 30 50, 60 100, 100 100" fill="none" stroke="hsl(var(--primary))" strokeWidth="28" strokeLinecap="round" opacity="0.6" />
-                <path className="hidden sm:block" d="M 0 50 C 30 50, 60 100, 100 100" fill="none" stroke="white" strokeWidth="2" strokeDasharray="8 8" strokeLinecap="round" opacity="0.7" />
-              </svg>
-              {/* Right curved extension (lime) */}
-              <svg
-                viewBox="0 0 100 200"
-                className="absolute top-[42%] -translate-y-1/2 right-0 sm:right-0 md:right-0 w-6 sm:w-8 md:w-12 h-[120%] sm:h-[140%] pointer-events-none"
-                preserveAspectRatio="none"
-                aria-hidden="true"
-              >
-                <path className="sm:hidden" d="M 0 100 C 40 88, 60 70, 100 70" fill="none" stroke="hsl(var(--lime))" strokeWidth="20" strokeLinecap="round" opacity="0.4" />
-                <path className="sm:hidden" d="M 0 100 C 40 88, 60 70, 100 70" fill="none" stroke="white" strokeWidth="1.5" strokeDasharray="6 6" strokeLinecap="round" opacity="0.6" />
-                <path className="hidden sm:block" d="M 0 100 C 40 80, 60 50, 100 50" fill="none" stroke="hsl(var(--lime))" strokeWidth="28" strokeLinecap="round" opacity="0.6" />
-                <path className="hidden sm:block" d="M 0 100 C 40 80, 60 50, 100 50" fill="none" stroke="white" strokeWidth="2" strokeDasharray="8 8" strokeLinecap="round" opacity="0.7" />
-              </svg>
-
               {/* Mobile road */}
               <svg
                 viewBox="0 0 1200 200"
