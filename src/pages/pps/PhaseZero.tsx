@@ -301,11 +301,11 @@ export default function PhaseZero() {
           </FadeIn>
 
           {/* Pillar Cards */}
-          <div className="grid lg:grid-cols-3 gap-6 mb-16">
+          <div className="grid lg:grid-cols-3 lg:grid-rows-[auto_auto_1fr_auto] gap-6 mb-16">
             {pillars.map((p) => (
               <FadeIn
                 key={p.title}
-                className={`${p.bg} p-6 rounded-xl border-l-4 ${p.border} h-full flex flex-col gap-y-5`}
+                className={`${p.bg} p-6 rounded-xl border-l-4 ${p.border} h-full flex flex-col gap-y-5 lg:grid lg:grid-rows-subgrid lg:row-span-4`}
               >
                 <div className="flex items-start gap-4">
                   <div className={`w-12 h-12 ${p.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
@@ -335,7 +335,7 @@ export default function PhaseZero() {
                   </ul>
                 </div>
 
-                <div className="mt-auto">
+                <div>
                   <h4 className="text-base md:text-lg font-semibold text-navy mb-2">Strong Foundation Looks Like:</h4>
                   <ul className="space-y-1.5">
                     {p.outcomes.map((o, i) => (
