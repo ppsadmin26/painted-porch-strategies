@@ -212,9 +212,9 @@ export default function PPSHome() {
                       Explore where you are
                     </h3>
                     <p className="text-foreground leading-relaxed mb-3">
-                      Free assessments, the P.A.T.H. Compass, and tools you can
-                      use today. For leaders sensing something needs to <ShIFt />,
-                      but not yet sure what.
+                      From free resources, masterclasses, courses, assessments,
+                      and more. For leaders sensing something needs to <ShIFt />,
+                      but not sure where to get started.
                     </p>
                     <span className="text-sm font-semibold text-primary inline-flex items-center">
                       Discover Your P.A.T.H.way
