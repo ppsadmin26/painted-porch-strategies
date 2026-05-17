@@ -48,28 +48,37 @@ describe("PPSHome — Discover cards link alignment", () => {
   it("aligns the link at the bottom of each card via flex-col + mt-auto", () => {
     renderHome();
 
-    const pathLink = screen.getByRole("link", {
-      name: /Discover Your P\.A\.T\.H\.way/i,
-    });
-    const blueDoorLinks = screen.getAllByRole("link", {
-      name: /Open the Blue Door/i,
-    });
-    // Find the Blue Door link inside the cards section (paired with the
-    // P.A.T.H.way link in the same grid). It's the one whose parent card also
-    // contains the heading "Exploring for Your Team or Organization?".
-    const blueDoorCardLink = blueDoorLinks.find((el) =>
-      el.parentElement?.textContent?.includes(
-        "Exploring for Your Team or Organization?",
-      ),
-    );
-    expect(blueDoorCardLink, "card-level Blue Door link").toBeDefined();
+    // Scope to each card via its heading, then assert the trailing link.
+    const yourselfCard = screen
+      .getByRole("heading", { name: /^Exploring for Yourself\?$/i })
+      .closest("div") as HTMLElement;
+    const teamCard = screen
+      .getByRole("heading", {
+        name: /^Exploring for Your Team or Organization\?$/i,
+      })
+      .closest("div") as HTMLElement;
 
-    for (const link of [pathLink, blueDoorCardLink!]) {
+    expect(yourselfCard).toBeTruthy();
+    expect(teamCard).toBeTruthy();
+
+    const pathLink = yourselfCard.querySelector(
+      'a[href="/start-here"]',
+    ) as HTMLAnchorElement;
+    const blueDoorCardLink = teamCard.querySelector(
+      'a[href="/blue-door"]',
+    ) as HTMLAnchorElement;
+
+    expect(pathLink).toBeTruthy();
+    expect(blueDoorCardLink).toBeTruthy();
+
+    for (const [card, link] of [
+      [yourselfCard, pathLink],
+      [teamCard, blueDoorCardLink],
+    ] as const) {
       // The link itself must push to the bottom of the flex column.
       expect(link.className).toMatch(/\bmt-auto\b/);
 
-      // Its parent card must be a full-height flex column.
-      const card = link.parentElement as HTMLElement;
+      // The card must be a full-height flex column.
       expect(card.className).toMatch(/\bflex\b/);
       expect(card.className).toMatch(/\bflex-col\b/);
       expect(card.className).toMatch(/\bh-full\b/);
@@ -79,10 +88,9 @@ describe("PPSHome — Discover cards link alignment", () => {
     }
 
     // The grid wrapper must stretch cards to equal height on md+ so the
-    // links visually line up across cards (mobile stacks, so per-card
-    // bottom alignment via mt-auto is what matters there).
-    const grid = (pathLink.parentElement as HTMLElement)
-      .parentElement as HTMLElement;
+    // links visually line up across cards. (Mobile stacks single-column,
+    // so per-card bottom alignment via mt-auto is what matters there.)
+    const grid = yourselfCard.parentElement as HTMLElement;
     expect(grid.className).toMatch(/\bgrid\b/);
     expect(grid.className).toMatch(/\bitems-stretch\b/);
     expect(grid.className).toMatch(/\bmd:grid-cols-2\b/);
