@@ -183,28 +183,6 @@ export default function PhaseZero() {
         minHeightClass="min-h-[60vh]"
       />
 
-      {/* What we are navigating */}
-      <section className="py-16 md:py-24 bg-muted">
-        <FadeIn className="container max-w-3xl mx-auto px-6">
-          <p className="text-primary font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-4">
-            What We Are Navigating
-          </p>
-          <h2 className="font-poppins font-bold text-3xl md:text-5xl text-navy leading-tight mb-6">
-            Everything important is changing at once.
-          </h2>
-          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-5">
-            Strategy. Technology and AI. Operations. Leadership. Culture.
-            Every one of these is in motion right now, and most organizations
-            are trying to keep up while still running the day to day.
-          </p>
-          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed">
-            The problem is not effort. The problem is that pushing harder in
-            an unclear direction does not change the direction. It just makes
-            the cost of getting there bigger.
-          </p>
-        </FadeIn>
-      </section>
-
       {/* The work before the work */}
       <section className="py-16 md:py-24 bg-white">
         <FadeIn className="container max-w-3xl mx-auto px-6">
