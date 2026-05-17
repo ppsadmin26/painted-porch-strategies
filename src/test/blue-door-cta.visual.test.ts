@@ -62,15 +62,49 @@ function walk(dir: string, acc: string[] = []): string[] {
 }
 
 /**
- * Grab a generous source window around the `/blue-door` occurrence. Large
- * enough to include the wrapping <Button>/<Link> opening tag, the nested
- * styled child (for card-style CTAs), and the closing tag — but small enough
- * to stay scoped to a single CTA.
+ * Extract the CTA block surrounding a `/blue-door` occurrence.
+ * Walks back to the nearest `<Link`, `<Button`, `<a `, or `{` (ctas[] entry
+ * opener), then forward to the matching closing `</Link>`, `</Button>`,
+ * `</a>`, or `},`. This stays inside one CTA and doesn't bleed into siblings.
  */
 function ctaContext(src: string, idx: number): string {
-  const start = Math.max(0, idx - 400);
-  const end = Math.min(src.length, idx + 600);
-  return src.slice(start, end);
+  const openers = [
+    { re: /<Link\b/g, close: "</Link>" },
+    { re: /<Button\b/g, close: "</Button>" },
+    { re: /<a\s/g, close: "</a>" },
+  ];
+
+  let bestStart = -1;
+  let closeStr: string | null = null;
+  for (const { re, close } of openers) {
+    re.lastIndex = 0;
+    let m: RegExpExecArray | null;
+    let lastBefore = -1;
+    while ((m = re.exec(src)) !== null && m.index < idx) {
+      lastBefore = m.index;
+    }
+    if (lastBefore > bestStart) {
+      bestStart = lastBefore;
+      closeStr = close;
+    }
+  }
+
+  // ctas[] object entry: nearest `{` on its own line with `href`/`label` nearby
+  const objStart = src.lastIndexOf("{", idx);
+  if (objStart > bestStart && idx - objStart < 400) {
+    bestStart = objStart;
+    closeStr = "}";
+  }
+
+  if (bestStart < 0) {
+    return src.slice(Math.max(0, idx - 200), Math.min(src.length, idx + 300));
+  }
+
+  const endIdx = closeStr
+    ? src.indexOf(closeStr, idx)
+    : -1;
+  const end = endIdx > 0 ? endIdx + (closeStr?.length ?? 0) : Math.min(src.length, idx + 400);
+  return src.slice(bestStart, end);
 }
 
 const files = walk(path.join(ROOT, "pages"))
