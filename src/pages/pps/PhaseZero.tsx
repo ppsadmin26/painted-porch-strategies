@@ -294,7 +294,7 @@ export default function PhaseZero() {
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
               Every organization stands on three load-bearing structures.
-              When one is weak, change cracks. When all three are honest and
+              When one is weak, change cracks. When all three are strong and
               healthy, change holds. Phase Zero looks at each one.
             </p>
           </FadeIn>
