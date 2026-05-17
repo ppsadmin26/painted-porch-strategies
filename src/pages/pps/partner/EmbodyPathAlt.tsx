@@ -577,12 +577,9 @@ export default function EmbodyPathAlt() {
           </div>
 
           {/* Pillar Cards - 3 across */}
-          <div className="grid md:grid-cols-3 gap-6 mt-12 mb-6">
+          <div className="grid md:grid-cols-3 gap-6 mt-12 mb-8">
             {pillars.map((pillar) => (
               <div key={pillar.number} className={`${pillar.bgColor} p-6 rounded-xl border-l-4 ${pillar.borderColor}`}>
-                
-
-                
                 {/* Icon + Title/Subtitle row */}
                 <div className="flex items-start gap-4 mb-4">
                   <div className={`w-12 h-12 ${pillar.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
@@ -594,19 +591,11 @@ export default function EmbodyPathAlt() {
                   </div>
                 </div>
 
-                <div className="mb-4">
-                  <h4 className="font-semibold text-navy text-sm mb-2">The Questions:</h4>
-                  <ul className="space-y-1.5">
-                    {pillar.questions.map((q, i) => (
-                      <li key={i} className="text-sm text-foreground flex items-start gap-2">
-                        <span className={`${pillar.accentText} mt-1`}>•</span>
-                        {q}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <p className="text-sm text-foreground leading-relaxed mb-4">
+                  {pillar.definition}
+                </p>
 
-                <div className="mb-4">
+                <div>
                   <h4 className="font-semibold text-navy text-sm mb-2">What We'll Architect:</h4>
                   <ul className="space-y-1.5">
                     {pillar.architect.map((a, i) => (
@@ -617,20 +606,23 @@ export default function EmbodyPathAlt() {
                     ))}
                   </ul>
                 </div>
-
-                <div>
-                  <h4 className="font-semibold text-navy text-sm mb-2">Outcomes:</h4>
-                  <ul className="space-y-1.5">
-                    {pillar.outcomes.map((o, i) => (
-                      <li key={i} className="text-sm text-foreground flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
-                        {o}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             ))}
+          </div>
+
+          {/* Framework callout → Phase Zero */}
+          <div className="bg-muted/60 border border-navy/10 rounded-xl p-5 md:p-6 mb-8 text-center">
+            <p className="text-foreground leading-relaxed">
+              These three Pillars are the universal framework Phase Zero
+              examines. For the full definitions, the diagnostic questions,
+              and what strong footing looks like across each Pillar,{" "}
+              <Link
+                to="/phase-zero#foundations"
+                className="font-semibold text-primary hover:underline"
+              >
+                see the framework on the Phase Zero page →
+              </Link>
+            </p>
           </div>
 
           {/* Integration Card - Full Width */}
