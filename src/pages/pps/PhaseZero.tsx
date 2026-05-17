@@ -209,9 +209,9 @@ export default function PhaseZero() {
               organization can carry and what it cannot.
             </p>
           </div>
-          <blockquote className="text-2xl md:text-3xl font-poppins italic text-navy mt-10 border-l-4 border-gold pl-6">
-            "The frustration that surfaces in moments like this is rarely random. It is a signal."
-          </blockquote>
+          <p className="text-2xl md:text-3xl font-poppins font-semibold text-navy mt-10">
+            The frustration that surfaces in moments like this is rarely random. <span className="text-raspberry">It is a signal.</span>
+          </p>
         </FadeIn>
       </section>
 
