@@ -520,8 +520,8 @@ export default function PPSHome() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-muted p-8 rounded-xl">
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            <div className="bg-muted p-8 rounded-xl flex flex-col h-full">
               <div className="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mb-4">
                 <Compass className="w-6 h-6 text-gold" />
               </div>
@@ -535,14 +535,14 @@ export default function PPSHome() {
               </p>
               <Link
                 to="/start-here"
-                className="text-primary font-semibold hover:underline inline-flex items-center"
+                className="mt-auto text-primary font-semibold hover:underline inline-flex items-center"
               >
                 Discover Your P.A.T.H.way
                 <ArrowRight className="ml-1 w-4 h-4" />
               </Link>
             </div>
 
-            <div className="bg-muted p-8 rounded-xl">
+            <div className="bg-muted p-8 rounded-xl flex flex-col h-full">
               <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4">
                 <Users className="w-6 h-6 text-primary" />
               </div>
@@ -556,7 +556,7 @@ export default function PPSHome() {
               </p>
               <Link
                 to="/blue-door"
-                className="text-primary font-semibold hover:underline inline-flex items-center"
+                className="mt-auto text-primary font-semibold hover:underline inline-flex items-center"
               >
                 Open the Blue Door
                 <ArrowRight className="ml-1 w-4 h-4" />
