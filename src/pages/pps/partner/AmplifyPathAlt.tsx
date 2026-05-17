@@ -448,7 +448,7 @@ export default function AmplifyPathAlt() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-bluedoor bg-background text-bluedoor shadow-sm hover:bg-bluedoor/5 hover:text-bluedoor hover:border-bluedoor"
+                className="bg-transparent border-2 border-bluedoor text-bluedoor hover:bg-bluedoor hover:text-white transition-colors"
               >
                 Begin with The Blue Door
               </Button>
