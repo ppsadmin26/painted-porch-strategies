@@ -205,7 +205,7 @@ export default function PhaseZero() {
             </p>
             <p>
               Phase Zero is the pause that prevents that cost. A deliberate stop, before
-              the next big <ShIFt /> hardens into execution, to look honestly at what your
+              the next big <ShIFt /> hardens into execution, to look clearly at what your
               organization can carry and what it cannot.
             </p>
           </div>
