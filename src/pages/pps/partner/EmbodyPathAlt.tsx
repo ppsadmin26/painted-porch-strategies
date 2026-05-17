@@ -135,21 +135,12 @@ const pillars = [
     bgColor: "bg-[hsl(220,60%,95%)]",
     iconBg: "bg-[hsl(220,50%,90%)]",
     accentText: "text-navy",
-    questions: [
-      "Can your leaders author strategic direction—or only respond to demands?",
-      "Will your culture support this transformation—or resist it?",
-      "Do you have the leadership operating model required?",
-    ],
+    definition: "Your leaders, your culture, and how decisions get made together.",
     architect: [
       "Leadership capacity for strategic authorship",
       "Cultural platforms where change can be built",
       "Executive alignment and decision protocols",
       "Change authorship capability",
-    ],
-    outcomes: [
-      "Leaders who design change consciously",
-      "Culture that enables rather than undermines transformation",
-      "Strategic capacity at leadership level",
     ],
   },
   {
@@ -162,21 +153,12 @@ const pillars = [
     bgColor: "bg-strategic/10",
     iconBg: "bg-strategic/15",
     accentText: "text-strategic",
-    questions: [
-      "Do your workflows enable your intended market position?",
-      "Are your systems designed for efficiency—or for strategic value?",
-      "Can your operations handle transformation—or will they constrain it?",
-    ],
+    definition: "Your systems, workflows, and decision pathways that turn strategy into real work.",
     architect: [
       "Workflow design for market leadership",
       "System integration that enables value creation",
       "Operational capacity for transformation",
       "Process architecture aligned with strategy",
-    ],
-    outcomes: [
-      "Operations that enable strategy (not constrain it)",
-      "Workflows designed for value, not just efficiency",
-      "Systems that support transformation capacity",
     ],
   },
   {
@@ -189,21 +171,12 @@ const pillars = [
     bgColor: "bg-gold/10",
     iconBg: "bg-gold/15",
     accentText: "text-gold",
-    questions: [
-      "Can your people navigate ambiguity—or only execute defined processes?",
-      "Is judgment distributed throughout your organization—or centralized?",
-      "Do you have adaptive capacity—or just implementation skills?",
-    ],
+    definition: "The judgment, communication, and resilience your people bring to the work.",
     architect: [
       "Distributed judgment capability",
       "Navigation skills for complexity",
       "Adaptive capacity that can't be automated",
       "Resilience and strategic thinking throughout your organization",
-    ],
-    outcomes: [
-      "People who can navigate ambiguity with confidence",
-      "Judgment distributed appropriately across your organization",
-      "Adaptive capacity for continuous transformation",
     ],
   },
 ];
