@@ -304,7 +304,7 @@ export default function PhaseZero() {
             {pillars.map((p) => (
               <FadeIn
                 key={p.title}
-                className={`${p.bg} p-6 rounded-xl border-l-4 ${p.border} h-full`}
+                className={`${p.bg} p-6 rounded-xl border-l-4 ${p.border} h-full flex flex-col`}
               >
                 <div className="flex items-start gap-4 mb-4">
                   <div className={`w-12 h-12 ${p.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
@@ -318,11 +318,11 @@ export default function PhaseZero() {
                   </div>
                 </div>
 
-                <p className="text-sm text-foreground leading-relaxed mb-5">
+                <p className="text-sm text-foreground leading-relaxed mb-5 md:min-h-[7rem]">
                   {p.definition}
                 </p>
 
-                <div className="mb-5">
+                <div className="mb-5 md:min-h-[14rem]">
                   <h4 className="font-semibold text-navy text-sm mb-2">The Questions:</h4>
                   <ul className="space-y-1.5">
                     {p.questions.map((q, i) => (
@@ -334,7 +334,7 @@ export default function PhaseZero() {
                   </ul>
                 </div>
 
-                <div>
+                <div className="mt-auto">
                   <h4 className="font-semibold text-navy text-sm mb-2">Strong Footing Looks Like:</h4>
                   <ul className="space-y-1.5">
                     {p.outcomes.map((o, i) => (
