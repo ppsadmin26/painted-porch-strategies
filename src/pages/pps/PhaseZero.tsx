@@ -335,7 +335,7 @@ export default function PhaseZero() {
                   </ul>
                 </div>
 
-                <div className="mt-auto">
+                <div>
                   <h4 className="text-base md:text-lg font-semibold text-navy mb-2">Strong Foundation Looks Like:</h4>
                   <ul className="space-y-1.5">
                     {p.outcomes.map((o, i) => (
