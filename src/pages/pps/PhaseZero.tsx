@@ -175,7 +175,7 @@ export default function PhaseZero() {
           </>
         }
         ctas={[
-          { label: "Open the Blue Door", href: "/blue-door", isPrimary: true },
+          { label: "Open the Blue Door", href: "/blue-door", buttonClassName: "bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor" },
           { label: "See Where You'd Start", href: "/start-here" },
         ]}
         background={{ type: "image", src: homeHero }}
