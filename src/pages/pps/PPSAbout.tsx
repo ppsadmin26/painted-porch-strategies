@@ -130,7 +130,7 @@ export default function PPSAbout() {
               about who their organization is trying to become.
             </p>
             <p>
-              Becoming is slower than fixing. It asks for honesty about
+              Becoming is slower than fixing. It asks for clarity about
               culture, leadership, and capacity. It asks for room to choose
               what to lead, instead of just reacting to what is happening.
             </p>
