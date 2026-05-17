@@ -26,7 +26,7 @@ const nextSteps = [
   },
 ];
 
-const LAUNCH_DATE = new Date("2026-05-18T00:00:00");
+const LAUNCH_DATE = new Date("2026-06-15T00:00:00");
 
 export default function BlueDoorSuccess() {
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function BlueDoorSuccess() {
         {isPreLaunch && (
           <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-5 mb-12 text-left">
             <p className="font-poppins font-bold text-navy text-base mb-1">
-              🚪 Launching May 18th, 2026
+              🚪 Launching June 15th, 2026
             </p>
             <p className="text-foreground text-sm leading-relaxed">
               Your spot is reserved. On launch day, we'll email you a secure access link to begin your Blue Door appraisal.
