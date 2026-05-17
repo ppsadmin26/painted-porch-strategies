@@ -970,7 +970,7 @@ export default function PPSHomeVerbatim() {
                   Most transformation initiatives are structured to build
                   momentum first, beginning with the question of what to do.
                   Finding the yes, framing the yes, scoping the yes, even when
-                  the honest answer is something else.
+                  the real answer is something else.
                 </p>
                 <p>
                   We&rsquo;re here to tell you what will actually work, and
