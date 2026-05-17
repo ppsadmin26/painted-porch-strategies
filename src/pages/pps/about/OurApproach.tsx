@@ -20,7 +20,7 @@ const coreValues = [
     number: "02",
     title: "Partnership",
     description:
-      "You are the expert on your life and your organization. We bring frameworks, honest questions, and outside perspective. You bring the context only you can see.",
+      "You are the expert on your life and your organization. We bring frameworks, real questions, and outside perspective. You bring the context only you can see.",
     detail:
       "We act as a guide and advisor, not a vendor. The win is when you can carry the work without us.",
     color: "bg-primary/10",
@@ -41,7 +41,7 @@ const coreValues = [
 const beliefs = [
   "People are the load-bearing part of every transformation.",
   "Clarity comes before strategy, not after it.",
-  "Honest questions are more useful than confident answers.",
+  "Real questions are more useful than confident answers.",
   "Frameworks are tools, not religions.",
   "Change that does not respect culture will not hold.",
 ];

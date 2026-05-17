@@ -65,7 +65,7 @@ const workshopTopics = [
   {
     title: "Painted Porch Pillars Organizational Blueprint",
     image: pillarsThumb,
-    challenge: "You're not sure if your organization is ready for the transformation you're considering. You need honest assessment of capacity.",
+    challenge: "You're not sure if your organization is ready for the transformation you're considering. You need a clear-eyed assessment of capacity.",
     highlights: [
       "The three Painted Porch Pillars and how they reveal organizational readiness",
       "Gap analysis: where are you strong? where are you vulnerable?",

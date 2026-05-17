@@ -263,7 +263,7 @@ const faqs = [
   },
   {
     question: "What if we complete the Blue Door Appraisal and don't qualify?",
-    answer: "We'll be honest about readiness. If gaps exist, we'll recommend how to build capacity (often through AMPLIFY or IGNITE first). When organizational readiness improves, we can reassess.",
+    answer: "We'll be straightforward about readiness. If gaps exist, we'll recommend how to build capacity (often through AMPLIFY or IGNITE first). When organizational readiness improves, we can reassess.",
   },
   {
     question: "How often do you meet with us during our EMBODY partnership?",

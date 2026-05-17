@@ -57,7 +57,7 @@ export default function TeamHealthAssessment() {
               <span className="text-primary">Assessment</span>
             </h1>
             <p className="text-lg text-foreground mb-4">
-              Take a quick, honest pulse-check on the health of your team. In just a few minutes, you'll see where your team is strong, where it's strained, and where small shIFts could unlock big improvements.
+              Take a quick, candid pulse-check on the health of your team. In just a few minutes, you'll see where your team is strong, where it's strained, and where small shIFts could unlock big improvements.
             </p>
             <p className="text-base text-muted-foreground">
               No cost. No strings. Just a clear read on how your team is really doing.

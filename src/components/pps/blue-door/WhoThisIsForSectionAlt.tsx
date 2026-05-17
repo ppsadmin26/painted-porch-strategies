@@ -5,7 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const forItems = [
   "Executive teams weighing which shIFt to pursue, sensing pressure to act but unsure which direction to lead",
   "Leaders who've picked a direction and want to know if their organization can actually carry it before they commit",
-  "Organizations willing to look at their architecture honestly, even if it means adjusting course"
+  "Organizations willing to look at their architecture clearly, even if it means adjusting course"
 ];
 
 const notForItems = [

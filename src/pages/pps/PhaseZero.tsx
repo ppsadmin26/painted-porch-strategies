@@ -27,7 +27,7 @@ const ShIFt = () => (
 const isIsNot = {
   is: [
     "A clear look at what your organization can actually carry right now.",
-    "Honest questions about leadership, systems, and people before money or momentum gets locked in.",
+    "Real questions about leadership, systems, and people before money or momentum gets locked in.",
     "The design phase that decides whether your next big move strengthens you or stretches you thin.",
   ],
   isNot: [
@@ -146,7 +146,7 @@ export default function PhaseZero() {
   useDocumentSeo({
     title: "Phase Zero™ | The Work Before the Work | Painted Porch Strategies",
     description:
-      "Phase Zero™ is the work before the work. It is where leaders get honest about people, systems, and culture before the next big shift begins.",
+      "Phase Zero™ is the work before the work. It is where leaders get clear about people, systems, and culture before the next big shift begins.",
   });
 
   return (
@@ -169,7 +169,7 @@ export default function PhaseZero() {
               Before the kickoff. Before the rollout. Before the next big <ShIFt />.
             </p>
             <p className="text-lg text-white/85">
-              Phase Zero is the honest look at people, systems, and culture
+              Phase Zero is the clear-eyed look at people, systems, and culture
               that decides whether your next move builds you up or burns you out.
             </p>
           </>
@@ -205,7 +205,7 @@ export default function PhaseZero() {
             </p>
             <p>
               Phase Zero is the pause that prevents that cost. A deliberate stop, before
-              the next big <ShIFt /> hardens into execution, to look honestly at what your
+              the next big <ShIFt /> hardens into execution, to look clearly at what your
               organization can carry and what it cannot.
             </p>
           </div>
@@ -294,7 +294,7 @@ export default function PhaseZero() {
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
               Every organization stands on three load-bearing structures.
-              When one is weak, change cracks. When all three are honest and
+              When one is weak, change cracks. When all three are strong and
               healthy, change holds. Phase Zero looks at each one.
             </p>
           </FadeIn>
@@ -403,7 +403,7 @@ export default function PhaseZero() {
               Where Phase Zero Leads
             </p>
             <h2 className="font-poppins font-bold text-3xl md:text-4xl text-navy leading-tight">
-              Three honest ways to begin.
+              Three clear ways to begin.
             </h2>
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-6">
