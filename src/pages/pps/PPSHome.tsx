@@ -3,9 +3,8 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   Compass,
-  Layers,
-  Heart,
-  Sparkles,
+  Building2,
+  Workflow,
   DoorOpen,
   Map,
   Users,
@@ -36,31 +35,34 @@ const threeAmQuestions = [
 
 const pillars = [
   {
-    icon: Heart,
+    icon: Building2,
     title: "Cultural Cornerstone",
     subtitle: "Leadership & Culture",
     description:
       "Your leadership, culture, values, and the relational architecture that shape how your organization leads, decides, and evolves.",
     color: "text-primary",
     bgColor: "bg-primary/10",
+    borderColor: "border-primary/30",
   },
   {
-    icon: Layers,
+    icon: Workflow,
     title: "Operational Frame",
-    subtitle: "Systems & Workflows",
+    subtitle: "Workflows & Systems",
     description:
       "Your systems, workflows, structures, and decision pathways that move strategy from intention into reality.",
     color: "text-lime",
     bgColor: "bg-lime/10",
+    borderColor: "border-lime/30",
   },
   {
-    icon: Sparkles,
+    icon: Users,
     title: "Living Ecosystem",
     subtitle: "Capacity & Judgment",
     description:
       "Your individual and collective capacity, judgment, communication, resilience, and mindset needed to sustain meaningful shIFt.",
     color: "text-raspberry",
     bgColor: "bg-raspberry/10",
+    borderColor: "border-raspberry/30",
   },
 ];
 
@@ -332,9 +334,11 @@ export default function PPSHome() {
             {pillars.map((pillar, i) => (
               <div
                 key={i}
-                className={`${pillar.bgColor} p-6 rounded-xl transition-all hover:shadow-lg`}
+                className={`${pillar.bgColor} border-t-4 ${pillar.borderColor.replace('/30','')} p-6 rounded-xl transition-all hover:shadow-lg`}
               >
-                <pillar.icon className={`w-10 h-10 ${pillar.color} mb-4`} />
+                <div className={`w-14 h-14 rounded-lg ${pillar.bgColor} ring-1 ${pillar.borderColor} flex items-center justify-center mb-4`}>
+                  <pillar.icon className={`w-7 h-7 ${pillar.color}`} />
+                </div>
                 <h3 className="font-poppins font-semibold text-xl text-navy mb-1">
                   {pillar.title}
                 </h3>
