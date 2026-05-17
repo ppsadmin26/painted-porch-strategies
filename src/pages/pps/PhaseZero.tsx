@@ -169,7 +169,7 @@ export default function PhaseZero() {
               Before the kickoff. Before the rollout. Before the next big <ShIFt />.
             </p>
             <p className="text-lg text-white/85">
-              Phase Zero is the honest look at people, systems, and culture
+              Phase Zero is the clear-eyed look at people, systems, and culture
               that decides whether your next move builds you up or burns you out.
             </p>
           </>
