@@ -691,7 +691,7 @@ export default function PPSHome() {
         }
         description="The future will keep asking your organization to evolve. The question is whether you'll do it in ways you can actually sustain together."
         actions={[
-          { label: "Open the Blue Door", to: "/blue-door", variant: "primary" },
+          { label: "Open the Blue Door", to: "/blue-door", variant: "bluedoor" },
           { label: "Discover Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
         ]}
       />
