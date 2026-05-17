@@ -375,13 +375,13 @@ export default function PPSAbout() {
                 What's a "Painted Porch"?
               </h2>
               <p className="text-lg text-foreground leading-relaxed mb-6">
-                In ancient Greece, philosophers gathered at the Stoa Poikile — the "Painted Porch" — to discuss ideas that would shape Western thought. These Stoic principles of reason, logic, purpose, and virtue remain as relevant today as they were 2,300 years ago.
+                In ancient Greece, philosophers gathered at the Stoa Poikile, also known as the "Painted Porch," to discuss ideas that would shape Western thought. Those Stoic principles of reason, logic, purpose, and virtue still hold up today.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-6">
                 We bring these timeless principles to modern business, helping leaders and teams build the mental and organizational architecture needed to navigate change successfully.
               </p>
               <p className="text-lg font-semibold text-primary">
-                Eudaimonia — prosperity and well-being through purposeful action.
+                Eudaimonia: prosperity and well-being through purposeful action.
               </p>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-lg">
