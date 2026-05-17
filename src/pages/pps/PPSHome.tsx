@@ -40,29 +40,32 @@ const pillars = [
     subtitle: "Leadership & Culture",
     description:
       "Your leadership, culture, values, and the relational architecture that shape how your organization leads, decides, and evolves.",
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-    borderColor: "border-primary/30",
+    color: "text-navy",
+    bgColor: "bg-[hsl(220,60%,95%)]",
+    iconBg: "bg-[hsl(220,50%,90%)]",
+    borderColor: "border-navy",
   },
   {
-    icon: Workflow,
+    icon: Compass,
     title: "Operational Frame",
     subtitle: "Workflows & Systems",
     description:
       "Your systems, workflows, structures, and decision pathways that move strategy from intention into reality.",
-    color: "text-lime",
-    bgColor: "bg-lime/10",
-    borderColor: "border-lime/30",
+    color: "text-strategic",
+    bgColor: "bg-strategic/10",
+    iconBg: "bg-strategic/15",
+    borderColor: "border-strategic",
   },
   {
-    icon: Users,
+    icon: Brain,
     title: "Living Ecosystem",
     subtitle: "Capacity & Judgment",
     description:
       "Your individual and collective capacity, judgment, communication, resilience, and mindset needed to sustain meaningful shIFt.",
-    color: "text-raspberry",
-    bgColor: "bg-raspberry/10",
-    borderColor: "border-raspberry/30",
+    color: "text-gold",
+    bgColor: "bg-gold/10",
+    iconBg: "bg-gold/15",
+    borderColor: "border-gold",
   },
 ];
 
