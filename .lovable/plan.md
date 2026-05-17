@@ -1,124 +1,45 @@
 ## Goal
 
-One page, one job. Each block has a single canonical home.
+Restore an editorial section between the hero and "The work before the work" on `/phase-zero`, with copy that does NOT duplicate the home page hero or home's Phase Zero band.
 
-- **`/phase-zero`** = canonical home for the universal Painted Porch Pillars framework + diagnostic + universal outcomes
-- **`/partner/embody`** = tier-specific commitments only (What We'll Architect per Pillar)
-- **`/about/approach`** = manifesto + Core Values (kept, language revised)
-- **`/about`** = story + leader + new "On Becoming" band
-- **`/home-verbatim`** = **moved to Draft** (admin-only copy reference, not externally linked)
+## Why the previous draft failed
 
-## Content Source Map (final)
+`PPSHome.tsx` already carries:
+- "You aren't short on vision, resolve, or experience. What's harder to find is clarity..." (hero, lines 107-108)
+- "The clarity that accelerates your next big shIFt" (line 300)
+- "Phase Zero exists to create clarity before your next major decision hardens into execution... the threshold work that helps your organization see itself clearly" (lines 300-309)
 
-| Block | Source today | New canonical home |
-|---|---|---|
-| Full Pillar definitions | `/home-verbatim` | `/phase-zero` |
-| Essential Elements (behavioral bedrock) | `/home-verbatim` | `/phase-zero` |
-| Fortified Porch (result band) | `/home-verbatim` | `/phase-zero` |
-| The Questions per Pillar | `/partner/embody` | `/phase-zero` |
-| Outcomes per Pillar | `/partner/embody` | `/phase-zero` |
-| What We'll Architect per Pillar | `/partner/embody` | **stays on `/partner/embody`** |
-| Manifesto / worldview prose | `/phase-zero` (currently) | `/about/approach` |
-| Core Values | `/about/approach` | **stays** (language revised only) |
-| On Becoming editorial | thesis doc | new band on `/about` |
+So clarity/threshold/"see itself clearly" framing is taken. We need a different angle.
 
-## Page Changes
+## The fresh angle: the cost of skipping Phase Zero
 
-### 1. `/phase-zero` (`src/pages/pps/PhaseZero.tsx`) — full rewrite
+The verbatim has copy that home did NOT absorb (lines 342-351): the idea that **not every opportunity strengthens the organization pursuing it**, and that organizations become exhausted not from lack of effort but from the **accumulated weight of unfinished work, competing priorities, and fragmented initiatives**. That is unique territory and is the natural bridge between the hero and "the work before the work."
 
-Sections in order:
-1. **Hero** — em-dashes removed, single `™` on this page (Phase Zero™)
-2. **What we are navigating** — accelerating complexity, fragmentation (6th-grade)
-3. **The work before the work** — what Phase Zero is
-4. **What Phase Zero is not** — Is / Is Not two-column
-5. **Foundations Phase Zero examines** *(NEW, anchor `id="foundations"`)*
-   - Intro: "Phase Zero examines three load-bearing structures."
-   - **Painted Porch Pillars** — three cards per Pillar (Teal / Lime / Raspberry per memory):
-     - Pillar name + subtitle + icon
-     - **Full definition paragraph** (lifted from `/home-verbatim`, rewritten 6th-grade)
-     - **The Questions** (diagnostic bullets, lifted from EMBODY)
-     - **Universal Outcomes** (strong-footing results, lifted from EMBODY)
-   - **Essential Elements** behavioral bedrock pill row (from `/home-verbatim`): Communication, Collaboration, Clarity, Resilience, Alignment, Organizational Health
-   - **The Fortified Porch** navy result band (from `/home-verbatim`)
-6. **Where Phase Zero leads** — three-card mini-map: Blue Door Diagnostic → P.A.T.H.way → Strategic Advisory
-7. **Final CTA** — `<ParallaxCTA>`, cobalt `bluedoor` primary + `/start-here` secondary
+## Where
 
-### 2. `/partner/embody` — slim Pillars block
+`src/pages/pps/PhaseZero.tsx`, inserted between `TierHeroSection` and the existing "The work before the work" section.
 
-Read first: `src/pages/pps/partner/EmbodyPath.tsx` (+ `-Alt` variant) and `src/components/pps/embody/*` to find exact section boundaries.
+## New section: "Why Phase Zero Exists"
 
-Keep on EMBODY:
-- Section intro framing EMBODY-level integration
-- Three Pillar cards: name + subtitle + icon, **one-line** definition, **What We'll Architect** bullets (tier-specific)
+Single-column editorial. `bg-muted/40`, `max-w-3xl`, FadeIn wrapper. Cadence matches the existing sections.
 
-Remove from EMBODY (now lives on `/phase-zero`):
-- Full Pillar definition paragraphs
-- **The Questions** per Pillar
-- **Outcomes** per Pillar
-- Standalone Essential Elements band
-- Standalone Fortified Porch band
+- **Eyebrow** (raspberry, uppercase, tracking-[0.2em]): `Why Phase Zero Exists`
+- **H2** (navy, font-poppins, font-bold): `Not every opportunity strengthens the organization chasing it.`
+- **Body p1**: "And not every change creates the conditions needed to sustain what comes after it."
+- **Body p2**: "Some organizations get worn down not from a lack of effort, but from the weight that builds up underneath it. Unfinished work. Competing priorities. Fragmented initiatives. Directions that never fully aligned in the first place."
+- **Body p3** (with raspberry bold): "Pushing harder in the wrong direction does not change the direction. It just **compounds the cost of getting there**."
+- **Body p4**: "Phase Zero is the pause that prevents that cost. A deliberate stop, before the next big <ShIFt /> hardens into execution, to look honestly at what your organization can carry and what it cannot."
+- **Pull-quote** (gold left-border, navy italic, mt-10): `"The frustration that surfaces in moments like this is rarely random. It is a signal."`
 
-Add below the Pillar cards:
-- Inline callout: *"These Pillars are the universal framework Phase Zero examines. See the full framework, diagnostic questions, and outcomes on the Phase Zero page →"* → `/phase-zero#foundations`
+## Constraints honored
 
-### 3. `/about/approach` (`OurApproach.tsx`) — restructure
+- No em-dashes. Replace verbatim's `&ndash;` with periods/colons.
+- 6th-grade plain English.
+- `™` already lives on this page's hero; this section uses plain "Phase Zero."
+- `<ShIFt />` component for the brand word.
+- Semantic tokens only (`text-navy`, `text-gold`, `text-raspberry`, `bg-muted`, `border-gold`).
+- No new components, no schema changes, no route changes, no CTA inside the section.
 
-- Keep `TierHeroSection`
-- **Keep Core Values** (Purpose, Partnership, Stewardship) — language revised to 6th-grade, manifesto-aligned
-- Keep `PartnershipPromise`
-- Remove 5-Principles zigzag and RLPV block
-- Add manifesto bands: "What we believe," "What we reject," "What we create the conditions for," "The Painted Porch promise," "Where we fit" two-column
-- Final CTA → `<ParallaxCTA>` (cobalt Blue Door primary)
-- No `™` on this page
+## Out of scope
 
-### 4. `/about` (`PPSAbout.tsx`) — additive
-
-- Add **"On Becoming"** band under hero: bg-white, max-w-3xl, navy H2, charcoal body, 6th-grade thesis prose, closes with link to `/about/approach`
-- Soften Cicero / Summum Bonum references to origin-context flavor
-- Keep lime band, team, certifications, existing CTA
-- No `™` on this page
-
-### 5. `/home-verbatim` — deprecate to Draft
-
-- Update `page_status` row for `/home-verbatim` from Live → Draft via migration (admin-only via PageGate)
-- Remove any in-app links pointing to it (search `rg "home-verbatim"`)
-- File and route stay in repo as a copy-reference artifact; existing `PPSHomeVerbatim.partnership.test.ts` continues to protect verbatim copy
-- Not removed from Sitemap (admin still sees Draft badge there)
-
-## Global Constraints
-
-- No em-dashes — replace with colons or periods
-- 6th-grade plain English
-- One `™` per page total — only on `/phase-zero` in this batch
-- Cobalt `bluedoor` variant for every `/blue-door` CTA
-- `<ParallaxCTA>` for every final band
-- Semantic tokens only
-- No new components, hooks, routes, schema tables, edge functions
-
-## Technical Section
-
-**Read before editing:**
-- `src/pages/pps/PPSHomeVerbatim.tsx` (lift definitions + Essential Elements + Fortified Porch)
-- `src/pages/pps/partner/EmbodyPath.tsx` + any `-Alt` variant + `src/components/pps/embody/*` (lift Questions + Outcomes; identify slim points)
-- `src/pages/pps/OurApproach.tsx`
-- `src/pages/pps/PPSAbout.tsx`
-- `src/pages/pps/PhaseZero.tsx`
-- `src/components/pps/ParallaxCTA.tsx`
-- `src/components/pps/PartnershipPromise.tsx`
-
-**Edit:**
-- `src/pages/pps/PhaseZero.tsx` — full rewrite; Foundations section uses `id="foundations"`
-- EMBODY page / Pillars sub-components — slim cards, remove EE + FP bands, add link to `/phase-zero#foundations`
-- `src/pages/pps/OurApproach.tsx` — manifesto restructure, Core Values revised
-- `src/pages/pps/PPSAbout.tsx` — add "On Becoming" band
-- One migration: `UPDATE page_status SET status='draft' WHERE path='/home-verbatim';`
-- Search-and-remove any internal links to `/home-verbatim`
-
-**Post-edit:** `npm run brand:validate` (confirm 1 `™` on `/phase-zero`; 0 on EMBODY, About, Approach).
-
-## Out of Scope
-
-- AMPLIFY / IGNITE Pillars treatment (same pattern, separate pass)
-- Home page (`PPSHome.tsx`)
-- New routes
-- Backend, schema additions, edge functions
+Home, verbatim, EMBODY, Approach, About, page_status, sitemap. Only `PhaseZero.tsx` changes.
