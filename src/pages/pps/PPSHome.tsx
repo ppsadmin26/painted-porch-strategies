@@ -35,31 +35,34 @@ const threeAmQuestions = [
 
 const pillars = [
   {
-    icon: Heart,
+    icon: Building2,
     title: "Cultural Cornerstone",
     subtitle: "Leadership & Culture",
     description:
       "Your leadership, culture, values, and the relational architecture that shape how your organization leads, decides, and evolves.",
     color: "text-primary",
     bgColor: "bg-primary/10",
+    borderColor: "border-primary/30",
   },
   {
-    icon: Layers,
+    icon: Workflow,
     title: "Operational Frame",
-    subtitle: "Systems & Workflows",
+    subtitle: "Workflows & Systems",
     description:
       "Your systems, workflows, structures, and decision pathways that move strategy from intention into reality.",
     color: "text-lime",
     bgColor: "bg-lime/10",
+    borderColor: "border-lime/30",
   },
   {
-    icon: Sparkles,
+    icon: Users,
     title: "Living Ecosystem",
     subtitle: "Capacity & Judgment",
     description:
       "Your individual and collective capacity, judgment, communication, resilience, and mindset needed to sustain meaningful shIFt.",
     color: "text-raspberry",
     bgColor: "bg-raspberry/10",
+    borderColor: "border-raspberry/30",
   },
 ];
 
