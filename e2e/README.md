@@ -7,10 +7,19 @@ the box.
 ## Running
 
 ```bash
-npm run test:e2e          # run against committed baselines
-npm run test:e2e:update   # regenerate baselines (commit the diff)
-npm run test:e2e:ci       # CI reporter (github + html)
+npm run test:e2e            # all e2e specs against committed baselines
+npm run test:e2e:update     # regenerate all baselines (commit the diff)
+npm run test:e2e:ci         # CI reporter (github + html), all specs
+
+npm run test:visual         # focused: Discover-cards visual regression
+npm run test:visual:update  # regenerate just that spec's baselines
+npm run test:visual:ci      # CI reporter, just that spec
 ```
+
+The `visual-regression.yml` GitHub Actions workflow runs `test:visual:ci`
+on PRs that touch `src/`, `e2e/`, or Playwright config, and uploads the
+HTML report as an artifact on failure.
+
 
 ## Generating / updating baselines
 
