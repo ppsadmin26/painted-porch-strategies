@@ -33,10 +33,8 @@ test.describe("PPSHome — Discover cards link alignment", () => {
       await page.setViewportSize({ width: vp.width, height: vp.height });
       await page.goto("/");
 
-      const yourselfLink = page.getByRole("link", {
-        name: /Discover Your P\.A\.T\.H\.way/i,
-      });
-      const teamLink = page.getByRole("link", { name: /Open the Blue Door/i });
+      const yourselfLink = page.getByTestId("discover-card-self-link");
+      const teamLink = page.getByTestId("discover-card-org-link");
 
       // Scroll the section into view so layout boxes are stable.
       await yourselfLink.scrollIntoViewIfNeeded();
