@@ -536,6 +536,7 @@ export default function PPSHome() {
               <div className="mt-auto pt-2 min-h-[2.5rem] flex items-center">
                 <Link
                   to="/start-here"
+                  data-testid="discover-card-self-link"
                   className="text-primary font-semibold hover:underline inline-flex items-center"
                 >
                   Discover Your P.A.T.H.way
