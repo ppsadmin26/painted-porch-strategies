@@ -179,8 +179,61 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
   return cleaned.join("\n").trim();
 }
 
+/** Normalize text for fuzzy line matching (boundary snippets vs. raw markdown lines). */
+function normalizeText(s: string): string {
+  return (s || "")
+    .toLowerCase()
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, "") // strip image markdown
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // unwrap link markdown to text
+    .replace(/[*_`>#]+/g, " ") // strip md emphasis/heading markers
+    .replace(/\s+/g, " ")
+    .replace(/[^a-z0-9 ]/g, "")
+    .trim();
+}
+
+function findLineIndex(normLines: string[], snippet: string, fromIndex = 0): number {
+  const needle = normalizeText(snippet).slice(0, 60);
+  if (!needle || needle.length < 8) return -1;
+  for (let i = fromIndex; i < normLines.length; i++) {
+    if (normLines[i] && normLines[i].includes(needle)) return i;
+  }
+  return -1;
+}
+
+/**
+ * Slice the raw (cleaned) markdown between two boundary snippets so that
+ * deterministic inline formatting (bold/italic/links) and in-body images
+ * survive. Returns "" when boundaries can't be located.
+ */
+function sliceRawByBoundaries(rawMarkdown: string, firstSnippet: string, lastSnippet: string): string {
+  if (!rawMarkdown || !firstSnippet || !lastSnippet) return "";
+  const lines = rawMarkdown.split("\n");
+  const normLines = lines.map(normalizeText);
+  const start = findLineIndex(normLines, firstSnippet);
+  if (start < 0) return "";
+  const end = findLineIndex(normLines, lastSnippet, start);
+  if (end < 0) return "";
+  return lines.slice(start, end + 1).join("\n").trim();
+}
+
+/** Split lines so inline images become their own block-level lines. */
+function splitInlineImageLines(markdown: string): string {
+  const imgRe = /!\[[^\]]*\]\([^)\s]+(?:\s+"[^"]*")?\)/g;
+  return markdown
+    .split("\n")
+    .flatMap((line) => {
+      if (!imgRe.test(line) || /^!\[[^\]]*\]\([^)\s]+(?:\s+"[^"]*")?\)$/.test(line.trim())) {
+        return [line];
+      }
+      // Split on image tokens, keep images as standalone lines
+      const parts = line.split(/(!\[[^\]]*\]\([^)\s]+(?:\s+"[^"]*")?\))/g);
+      return parts.map((p) => p.trim()).filter((p) => p.length > 0);
+    })
+    .join("\n");
+}
+
 function markdownToTiptap(markdown: string): any {
-  const lines = markdown.split("\n");
+  const lines = splitInlineImageLines(markdown).split("\n");
   const content: any[] = [];
 
   let i = 0;
