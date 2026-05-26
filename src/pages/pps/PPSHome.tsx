@@ -303,12 +303,12 @@ export default function PPSHome() {
                       03 &middot; Build what&rsquo;s next, together
                     </p>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-pps-purple transition-colors">
-                      Partner through the <ShIFt />
+                      Partner through Your Next <ShIFt />
                     </h3>
                     <p className="text-foreground leading-relaxed mb-3">
                       Once the Blue Door reveals what&rsquo;s real, we partner
                       with you to architect, align, and sustain the change.
-                      Three tiers, shaped to your moment: Ignite, Amplify, Embody.
+                      Three engagement styles, shaped to how you want to engage and what you need, when: Ignite, Amplify, Embody.
                     </p>
                     <span className="text-sm font-semibold text-pps-purple inline-flex items-center">
                       Explore Partnership
