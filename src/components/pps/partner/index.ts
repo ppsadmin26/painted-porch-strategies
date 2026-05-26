@@ -7,3 +7,4 @@ export { PartnerIncludedSection } from './PartnerIncludedSection';
 export { SocialProofSection } from './SocialProofSection';
 export { FinalInvitationSection } from './FinalInvitationSection';
 export { ExploreBeforeCommitSection } from './ExploreBeforeCommitSection';
+export { default as ArchitectureGapSection } from './ArchitectureGapSection';
