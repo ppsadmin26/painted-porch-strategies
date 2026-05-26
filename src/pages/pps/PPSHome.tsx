@@ -108,9 +108,11 @@ export default function PPSHome() {
             harder to find is clarity &mdash; the kind that comes before strategy
             hardens, before announcements activate, and before resources commit
             to what comes next. Painted Porch exists in the space before
-            acceleration compounds complexity.
+            acceleration compounds complexity, so you create extraordinary
+            outcomes and can navigate whatever <ShIFt /> happens next.
           </>
         }
+
         ctas={[
           {
             label: "Open the Blue Door",
