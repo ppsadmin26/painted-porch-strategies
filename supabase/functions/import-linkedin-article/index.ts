@@ -64,7 +64,8 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
   // bullet "what good work looks like" was getting nuked by /like$/i).
   const boilerplatePatterns = [
     /^linkedin respects your privacy/i,
-    /^skip to main content/i,
+    /^by clicking continue/i,
+    /^\[?skip to main content/i,
     /^agree & join/i,
     /^join now$/i,
     /^sign in$/i,
@@ -78,6 +79,8 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
     /^load more comments/i,
     /^react to this/i,
     /^follow$/i,
+    /^\+\s*subscribe$/i,
+    /^subscribe$/i,
     /^like$/i,
     /^comment$/i,
     /^share$/i,
@@ -85,11 +88,13 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
     /^see more$/i,
     /^show more$/i,
     /^published by/i,
-    /^\d+ comments?$/i,
-    /^\d+ reactions?$/i,
+    /^\d+\s+comments?$/i,
+    /^\d+\s+reactions?$/i,
+    /^\d+\s+followers?$/i,
     /^sign in to view/i,
     /^get the app$/i,
   ];
+
 
   const endPatterns = [
     /^#+\s*comments?$/i,
@@ -555,20 +560,11 @@ Deno.serve(async (req) => {
       extracted.last_paragraph_snippet || ""
     );
 
-    // Sanity check: if slice is suspiciously short vs. the cleaned raw, the LLM's
-    // closing boundary likely matched too early (callbacks/echoed phrasing) and
-    // we'd be dropping the tail of the article. Prefer cleanedRaw in that case.
-    if (
-      markdown &&
-      cleanedRaw &&
-      markdown.length < cleanedRaw.length * 0.6 &&
-      cleanedRaw.length > 500
-    ) {
-      console.log(
-        `Slice (${markdown.length} chars) is <60% of cleanedRaw (${cleanedRaw.length}); using cleanedRaw to avoid truncation.`
-      );
-      markdown = cleanedRaw;
-    }
+    // NOTE: Do not fall back to cleanedRaw when a valid slice exists. cleanedRaw
+    // routinely retains LinkedIn chrome (cookie banner, comments section, "523
+    // followers + Subscribe", etc.) that the slice strips out. The original
+    // closing-boundary truncation bug is already addressed by findLastLineIndex.
+
 
     // Fallback: LLM-extracted body, then cleaned raw markdown
     if (!markdown) {
