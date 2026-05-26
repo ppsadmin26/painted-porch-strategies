@@ -222,6 +222,15 @@ async function importSingleArticle(
         extracted.first_paragraph_snippet || "",
         extracted.last_paragraph_snippet || ""
       );
+      // Avoid truncation when closing snippet matches an earlier callback phrase
+      if (
+        markdown &&
+        cleanedRaw &&
+        markdown.length < cleanedRaw.length * 0.6 &&
+        cleanedRaw.length > 500
+      ) {
+        markdown = cleanedRaw;
+      }
       if (!markdown) {
         markdown = (extracted.body_markdown || "").trim();
         if (markdown) markdown = cleanLinkedInMarkdown(markdown);
