@@ -192,15 +192,17 @@ async function importSingleArticle(
           {
             type: "json",
             prompt:
-              "Extract ONLY the LinkedIn Pulse article. Return: 'title' (no '| LinkedIn' suffix), 'cover_image_url' (or null), and 'body_markdown' (FULL article body in clean markdown — every paragraph, heading, list, blockquote, inline link, in original order, verbatim). EXCLUDE author bio, follow widgets, reactions, comments, 'More from <author>', 'Others also viewed', sign-in prompts, related articles, navigation, footer, cookie notices, all LinkedIn UI chrome.",
+              "You are locating the SINGLE LinkedIn Pulse article at the requested URL within page markdown. Return: 'title' (no '| LinkedIn' suffix), 'cover_image_url' (or null), 'first_paragraph_snippet' (the first ~120 characters of the article's first real body paragraph or heading after the title — verbatim plain text, no markdown markers), 'last_paragraph_snippet' (the last ~120 characters of the article's final body paragraph before any 'More articles by', newsletter masthead, comments, or LinkedIn chrome — verbatim plain text, no markdown markers), and 'body_markdown' (FALLBACK ONLY — full article body in clean markdown with bold **text**, italic *text*, links [text](url), and in-body images ![alt](url) preserved verbatim; exclude author bio, follow widgets, reactions, comments, 'More from <author>', 'Others also viewed', sign-in prompts, related articles, navigation, footer, cookie notices, all LinkedIn UI chrome). Snippets MUST appear verbatim in the page text so a slicer can locate them.",
             schema: {
               type: "object",
               properties: {
                 title: { type: "string" },
                 cover_image_url: { type: ["string", "null"] },
+                first_paragraph_snippet: { type: "string" },
+                last_paragraph_snippet: { type: "string" },
                 body_markdown: { type: "string" },
               },
-              required: ["title", "body_markdown"],
+              required: ["title", "first_paragraph_snippet", "last_paragraph_snippet", "body_markdown"],
             },
           },
         ],
@@ -213,7 +215,18 @@ async function importSingleArticle(
       const extracted = payload.json ?? {};
       metadata = payload.metadata ?? {};
       const fallbackMd: string = payload.markdown || "";
-      markdown = (extracted.body_markdown || "").trim() || cleanLinkedInMarkdown(fallbackMd);
+      const cleanedRaw = fallbackMd ? cleanLinkedInMarkdown(fallbackMd) : "";
+      // Prefer raw-markdown slice between LLM boundaries — preserves bold/italic/links/images
+      markdown = sliceRawByBoundaries(
+        cleanedRaw,
+        extracted.first_paragraph_snippet || "",
+        extracted.last_paragraph_snippet || ""
+      );
+      if (!markdown) {
+        markdown = (extracted.body_markdown || "").trim();
+        if (markdown) markdown = cleanLinkedInMarkdown(markdown);
+      }
+      if (!markdown) markdown = cleanedRaw;
       extractedTitle = (extracted.title || "").replace(/ \| LinkedIn$/, "").trim();
       extractedCover = extracted.cover_image_url || null;
     } else {
