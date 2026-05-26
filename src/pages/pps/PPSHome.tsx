@@ -16,6 +16,8 @@ import {
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
+import StatMarquee from "@/components/pps/StatMarquee";
+import StatCard from "@/components/pps/StatCard";
 import { useFeaturedPosts } from "@/hooks/useFeaturedPosts";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import homeHero from "@/assets/heroes/home-hero.jpg";
