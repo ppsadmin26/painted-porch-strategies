@@ -64,7 +64,8 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
   // bullet "what good work looks like" was getting nuked by /like$/i).
   const boilerplatePatterns = [
     /^linkedin respects your privacy/i,
-    /^skip to main content/i,
+    /^by clicking continue/i,
+    /^\[?skip to main content/i,
     /^agree & join/i,
     /^join now$/i,
     /^sign in$/i,
@@ -78,6 +79,8 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
     /^load more comments/i,
     /^react to this/i,
     /^follow$/i,
+    /^\+\s*subscribe$/i,
+    /^subscribe$/i,
     /^like$/i,
     /^comment$/i,
     /^share$/i,
@@ -85,11 +88,13 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
     /^see more$/i,
     /^show more$/i,
     /^published by/i,
-    /^\d+ comments?$/i,
-    /^\d+ reactions?$/i,
+    /^\d+\s+comments?$/i,
+    /^\d+\s+reactions?$/i,
+    /^\d+\s+followers?$/i,
     /^sign in to view/i,
     /^get the app$/i,
   ];
+
 
   const endPatterns = [
     /^#+\s*comments?$/i,
