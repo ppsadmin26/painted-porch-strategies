@@ -179,8 +179,61 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
   return cleaned.join("\n").trim();
 }
 
+/** Normalize text for fuzzy line matching (boundary snippets vs. raw markdown lines). */
+function normalizeText(s: string): string {
+  return (s || "")
+    .toLowerCase()
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, "") // strip image markdown
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // unwrap link markdown to text
+    .replace(/[*_`>#]+/g, " ") // strip md emphasis/heading markers
+    .replace(/\s+/g, " ")
+    .replace(/[^a-z0-9 ]/g, "")
+    .trim();
+}
+
+function findLineIndex(normLines: string[], snippet: string, fromIndex = 0): number {
+  const needle = normalizeText(snippet).slice(0, 60);
+  if (!needle || needle.length < 8) return -1;
+  for (let i = fromIndex; i < normLines.length; i++) {
+    if (normLines[i] && normLines[i].includes(needle)) return i;
+  }
+  return -1;
+}
+
+/**
+ * Slice the raw (cleaned) markdown between two boundary snippets so that
+ * deterministic inline formatting (bold/italic/links) and in-body images
+ * survive. Returns "" when boundaries can't be located.
+ */
+function sliceRawByBoundaries(rawMarkdown: string, firstSnippet: string, lastSnippet: string): string {
+  if (!rawMarkdown || !firstSnippet || !lastSnippet) return "";
+  const lines = rawMarkdown.split("\n");
+  const normLines = lines.map(normalizeText);
+  const start = findLineIndex(normLines, firstSnippet);
+  if (start < 0) return "";
+  const end = findLineIndex(normLines, lastSnippet, start);
+  if (end < 0) return "";
+  return lines.slice(start, end + 1).join("\n").trim();
+}
+
+/** Split lines so inline images become their own block-level lines. */
+function splitInlineImageLines(markdown: string): string {
+  const imgRe = /!\[[^\]]*\]\([^)\s]+(?:\s+"[^"]*")?\)/g;
+  return markdown
+    .split("\n")
+    .flatMap((line) => {
+      if (!imgRe.test(line) || /^!\[[^\]]*\]\([^)\s]+(?:\s+"[^"]*")?\)$/.test(line.trim())) {
+        return [line];
+      }
+      // Split on image tokens, keep images as standalone lines
+      const parts = line.split(/(!\[[^\]]*\]\([^)\s]+(?:\s+"[^"]*")?\))/g);
+      return parts.map((p) => p.trim()).filter((p) => p.length > 0);
+    })
+    .join("\n");
+}
+
 function markdownToTiptap(markdown: string): any {
-  const lines = markdown.split("\n");
+  const lines = splitInlineImageLines(markdown).split("\n");
   const content: any[] = [];
 
   let i = 0;
@@ -428,15 +481,17 @@ Deno.serve(async (req) => {
           {
             type: "json",
             prompt:
-              "Extract ONLY the SINGLE LinkedIn Pulse article located at the requested URL — nothing else on the page. Return: 'title' (the article title, with no '| LinkedIn' suffix), 'cover_image_url' (the article hero/cover image URL if present, otherwise null), and 'body_markdown' (the FULL article body in clean markdown — every paragraph, heading, list, blockquote, inline link, AND every in-body image from the article body, in original order). STOP the body at the end of THIS article's last paragraph. Do NOT include anything that comes after the article body, including but not limited to: the newsletter masthead or name (e.g. 'A Little Bit Aurelius'), follower counts ('266 followers'), '+ Subscribe' buttons, 'More articles by <author>' sections and the bulleted lists of other article titles that follow them, any subsequent or previous article's date/title/body, 'Published on LinkedIn', 'To view or add a comment', 'Subscribe to this newsletter', author bio cards, follow widgets, reactions, comments, 'More from <author>', 'Others also viewed', 'Sign in / Join now' prompts, related articles, navigation, footer, cookie/privacy notices, and any LinkedIn UI chrome. CRITICAL — preserve ALL inline text formatting using markdown syntax: bold as **text**, italic as *text* (or _text_), bold+italic as ***text***, inline code as `text`, and inline links as [text](url). LinkedIn renders bold/italic via <strong>/<b> and <em>/<i> tags — convert each one to the matching markdown marks; do not strip them and do not flatten to plain text. Preserve in-body images as standalone markdown image lines using the absolute https URL: ![alt text](https://...). Do NOT skip images, do NOT replace them with captions only, and do NOT include the cover/hero image in body_markdown (return that separately as cover_image_url). Do not summarize or paraphrase — copy the article text verbatim with its original emphasis intact.",
+              "You are locating the SINGLE LinkedIn Pulse article at the requested URL within page markdown. Return: 'title' (article title, no '| LinkedIn' suffix), 'cover_image_url' (article hero/cover image URL if present, otherwise null), 'first_paragraph_snippet' (the first ~120 characters of the article's first real body paragraph or heading after the title — verbatim plain text, no markdown markers), 'last_paragraph_snippet' (the last ~120 characters of the article's final body paragraph before any 'More articles by', newsletter masthead, comments, or LinkedIn chrome — verbatim plain text, no markdown markers), and 'body_markdown' (FALLBACK ONLY — full article body in clean markdown with bold **text**, italic *text*, links [text](url), and in-body images ![alt](https-url) preserved verbatim; exclude cover image, comments, follow widgets, 'More articles by', newsletter chrome, sign-in prompts, navigation, footer). The snippets MUST appear verbatim in the page text so a downstream slicer can locate them. Do NOT paraphrase the snippets.",
             schema: {
               type: "object",
               properties: {
                 title: { type: "string" },
                 cover_image_url: { type: ["string", "null"] },
+                first_paragraph_snippet: { type: "string" },
+                last_paragraph_snippet: { type: "string" },
                 body_markdown: { type: "string" },
               },
-              required: ["title", "body_markdown"],
+              required: ["title", "first_paragraph_snippet", "last_paragraph_snippet", "body_markdown"],
             },
           },
         ],
@@ -462,7 +517,6 @@ Deno.serve(async (req) => {
     const metadata = payload.metadata ?? {};
     const fallbackMarkdown: string = payload.markdown || "";
 
-    let markdown: string = (extracted.body_markdown || "").trim();
     let title: string =
       (extracted.title || "").replace(/ \| LinkedIn$/, "").trim() ||
       metadata.title?.replace(/ \| LinkedIn$/, "").trim() ||
@@ -473,16 +527,24 @@ Deno.serve(async (req) => {
       metadata.ogImage = extracted.cover_image_url;
     }
 
-    // Always run the cleanup pass to strip any LinkedIn chrome the LLM may
-    // have leaked in (newsletter follower counts, "+ Subscribe", "More articles
-    // by ...", subsequent article previews, etc.).
-    if (markdown) {
-      markdown = cleanLinkedInMarkdown(markdown, title);
-    }
+    // PREFERRED PATH: slice raw markdown between LLM-located boundaries so
+    // bold/italic/links/in-body images survive (LLM body_markdown tends to
+    // flatten inline marks and drop images). Falls back to LLM body_markdown
+    // if the boundaries can't be found in the raw scrape.
+    const cleanedRaw = fallbackMarkdown ? cleanLinkedInMarkdown(fallbackMarkdown, title) : "";
+    let markdown = sliceRawByBoundaries(
+      cleanedRaw,
+      extracted.first_paragraph_snippet || "",
+      extracted.last_paragraph_snippet || ""
+    );
 
-    // Fallback: if LLM extraction returned nothing, fall back to raw markdown + cleaner
+    // Fallback: LLM-extracted body, then cleaned raw markdown
     if (!markdown) {
-      markdown = cleanLinkedInMarkdown(fallbackMarkdown, title);
+      markdown = (extracted.body_markdown || "").trim();
+      if (markdown) markdown = cleanLinkedInMarkdown(markdown, title);
+    }
+    if (!markdown) {
+      markdown = cleanedRaw;
     }
 
     if (!markdown) {
