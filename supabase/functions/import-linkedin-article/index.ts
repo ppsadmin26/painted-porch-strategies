@@ -499,7 +499,12 @@ function markdownToTiptap(markdown: string): any {
   return { type: "doc", content };
 }
 
+function unescapeMd(s: string): string {
+  return s.replace(/\\([\\`*_{}\[\]()#+\-.!>])/g, "$1");
+}
+
 function parseInlineMarks(text: string): any[] {
+  text = unescapeMd(text);
   const nodes: any[] = [];
   // Simple regex-based inline parsing for bold, italic, links
   const regex =
