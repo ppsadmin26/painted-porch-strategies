@@ -110,9 +110,9 @@ export default function PPSHome() {
             to what comes next. Painted Porch exists in the space before
             acceleration compounds complexity, so you create extraordinary
             outcomes and can navigate whatever <ShIFt /> happens next.
-
           </>
         }
+
         ctas={[
           {
             label: "Open the Blue Door",
