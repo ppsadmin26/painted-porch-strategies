@@ -283,10 +283,81 @@ async function importSingleArticle(
   return { success: true, slug };
 }
 
+/**
+ * Hard-truncate raw LinkedIn markdown at the first strong "post-article" marker
+ * (newsletter widget, comments section, "More articles by", etc.).
+ */
+function truncateAtArticleEnd(md: string): string {
+  const lines = md.replace(/\r\n/g, "\n").split("\n");
+  const stopRegex = [
+    /^\s*\[?\s*\+\s*subscribe\b/i,
+    /^#{1,6}\s+\d+\s+followers?\b/i,
+    /^\s*\d+\s+followers?\s*$/i,
+    /^\s*\[\s*\d+\s+comments?\s*\]/i,
+    /^\s*\d+\s+comments?\s*$/i,
+    /^\s*to view or add a comment/i,
+    /^\s*more articles by\b/i,
+    /^\s*more from\b/i,
+    /^\s*people also viewed\b/i,
+    /^\s*others also viewed\b/i,
+    /^\s*recommended for you\b/i,
+  ];
+  let cut = lines.length;
+  for (let i = 0; i < lines.length; i++) {
+    if (stopRegex.some((r) => r.test(lines[i]))) { cut = i; break; }
+  }
+  while (cut > 0) {
+    const prev = lines[cut - 1].trim();
+    if (
+      prev === "" ||
+      /^`+$/.test(prev) ||
+      /^#{1,6}\s+\S/.test(prev) ||
+      /^\[[^\]]+\]\([^)]+\)\s*$/.test(prev)
+    ) {
+      cut--;
+    } else break;
+  }
+  return lines.slice(0, cut).join("\n");
+}
+
+/**
+ * Strip a leading H1 (matching the article title) and/or a leading cover image
+ * (matching the cover URL) from final body markdown — they're stored separately.
+ */
+function stripLeadingTitleAndCover(md: string, title: string, coverUrl: string | null): string {
+  const lines = md.split("\n");
+  const normTitle = normalizeForComparison(title || "");
+  const coverBase = (coverUrl || "").split("?")[0];
+  let i = 0;
+  while (i < lines.length && lines[i].trim() === "") i++;
+  let removed = true;
+  while (removed && i < lines.length) {
+    removed = false;
+    const line = lines[i].trim();
+    const h = line.match(/^#{1,2}\s+(.+)$/);
+    if (h && normTitle && normalizeForComparison(h[1]) === normTitle) {
+      i++;
+      while (i < lines.length && lines[i].trim() === "") i++;
+      removed = true;
+      continue;
+    }
+    const img = line.match(/^!\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)$/);
+    if (img) {
+      const src = img[1];
+      if (!coverUrl || src === coverUrl || src.split("?")[0] === coverBase) {
+        i++;
+        while (i < lines.length && lines[i].trim() === "") i++;
+        removed = true;
+        continue;
+      }
+    }
+  }
+  return lines.slice(i).join("\n").trim();
+}
+
 /** Remove LinkedIn cookie banners, nav, comments, and other boilerplate */
 function cleanLinkedInMarkdown(md: string): string {
-  const rawLines = md
-    .replace(/\r\n/g, "\n")
+  const rawLines = truncateAtArticleEnd(md)
     .replace(/\u00a0/g, " ")
     .split("\n")
     .map((line) => line.replace(/[\u200B-\u200D\uFEFF]/g, "").trimEnd());
