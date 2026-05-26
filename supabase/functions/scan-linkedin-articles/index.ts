@@ -383,8 +383,77 @@ function cleanLinkedInMarkdown(md: string): string {
   return cleaned.join("\n").trim();
 }
 
+function normalizeText(s: string): string {
+  return (s || "")
+    .toLowerCase()
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, "")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[*_`>#]+/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/[^a-z0-9 ]/g, "")
+    .trim();
+}
+
+function findLineIndex(normLines: string[], snippet: string, fromIndex = 0): number {
+  const needle = normalizeText(snippet).slice(0, 60);
+  if (!needle || needle.length < 8) return -1;
+  for (let i = fromIndex; i < normLines.length; i++) {
+    if (normLines[i] && normLines[i].includes(needle)) return i;
+  }
+  return -1;
+}
+
+function sliceRawByBoundaries(rawMarkdown: string, firstSnippet: string, lastSnippet: string): string {
+  if (!rawMarkdown || !firstSnippet || !lastSnippet) return "";
+  const lines = rawMarkdown.split("\n");
+  const normLines = lines.map(normalizeText);
+  const start = findLineIndex(normLines, firstSnippet);
+  if (start < 0) return "";
+  const end = findLineIndex(normLines, lastSnippet, start);
+  if (end < 0) return "";
+  return lines.slice(start, end + 1).join("\n").trim();
+}
+
+function splitInlineImageLines(markdown: string): string {
+  const imgRe = /!\[[^\]]*\]\([^)\s]+(?:\s+"[^"]*")?\)/g;
+  return markdown
+    .split("\n")
+    .flatMap((line) => {
+      if (!imgRe.test(line) || /^!\[[^\]]*\]\([^)\s]+(?:\s+"[^"]*")?\)$/.test(line.trim())) {
+        return [line];
+      }
+      const parts = line.split(/(!\[[^\]]*\]\([^)\s]+(?:\s+"[^"]*")?\))/g);
+      return parts.map((p) => p.trim()).filter((p) => p.length > 0);
+    })
+    .join("\n");
+}
+
+function parseInlineMarks(text: string): any[] {
+  const nodes: any[] = [];
+  const regex =
+    /(\*\*\*(.+?)\*\*\*|\*\*(.+?)\*\*|\*(.+?)\*|_(.+?)_|\[([^\]]+)\]\(([^)]+)\))/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push({ type: "text", text: text.slice(lastIndex, match.index) });
+    }
+    if (match[2]) nodes.push({ type: "text", marks: [{ type: "bold" }, { type: "italic" }], text: match[2] });
+    else if (match[3]) nodes.push({ type: "text", marks: [{ type: "bold" }], text: match[3] });
+    else if (match[4]) nodes.push({ type: "text", marks: [{ type: "italic" }], text: match[4] });
+    else if (match[5]) nodes.push({ type: "text", marks: [{ type: "italic" }], text: match[5] });
+    else if (match[6] && match[7]) {
+      nodes.push({ type: "text", marks: [{ type: "link", attrs: { href: match[7] } }], text: match[6] });
+    }
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) nodes.push({ type: "text", text: text.slice(lastIndex) });
+  if (nodes.length === 0) nodes.push({ type: "text", text: text || " " });
+  return nodes;
+}
+
 function simpleMarkdownToTiptap(markdown: string): any {
-  const lines = markdown.split("\n");
+  const lines = splitInlineImageLines(markdown).split("\n");
   const content: any[] = [];
   let i = 0;
 
@@ -393,12 +462,19 @@ function simpleMarkdownToTiptap(markdown: string): any {
     if (line.trim() === "") { i++; continue; }
     if (/^---+$/.test(line.trim())) { content.push({ type: "horizontalRule" }); i++; continue; }
 
+    // Standalone image
+    const imageMatch = line.trim().match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"[^"]*")?\)$/);
+    if (imageMatch) {
+      content.push({ type: "image", attrs: { src: imageMatch[2], alt: imageMatch[1] || null } });
+      i++; continue;
+    }
+
     const hMatch = line.match(/^(#{1,6})\s+(.+)/);
     if (hMatch) {
       content.push({
         type: "heading",
         attrs: { level: hMatch[1].length },
-        content: [{ type: "text", text: hMatch[2].replace(/\*\*/g, "").trim() }],
+        content: parseInlineMarks(hMatch[2].trim()),
       });
       i++; continue;
     }
@@ -411,7 +487,7 @@ function simpleMarkdownToTiptap(markdown: string): any {
       }
       content.push({
         type: "blockquote",
-        content: [{ type: "paragraph", content: [{ type: "text", text: quoteLines.join(" ").trim() }] }],
+        content: [{ type: "paragraph", content: parseInlineMarks(quoteLines.join(" ").trim()) }],
       });
       continue;
     }
@@ -419,9 +495,10 @@ function simpleMarkdownToTiptap(markdown: string): any {
     if (/^[-*]\s+/.test(line.trim())) {
       const items: any[] = [];
       while (i < lines.length && /^[-*]\s+/.test(lines[i].trim())) {
+        const itemText = lines[i].trim().replace(/^[-*]\s+/, "");
         items.push({
           type: "listItem",
-          content: [{ type: "paragraph", content: [{ type: "text", text: lines[i].trim().replace(/^[-*]\s+/, "") }] }],
+          content: [{ type: "paragraph", content: parseInlineMarks(itemText) }],
         });
         i++;
       }
@@ -429,10 +506,21 @@ function simpleMarkdownToTiptap(markdown: string): any {
       continue;
     }
 
-    content.push({
-      type: "paragraph",
-      content: [{ type: "text", text: line.trim() }],
-    });
+    if (/^\d+\.\s+/.test(line.trim())) {
+      const items: any[] = [];
+      while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) {
+        const itemText = lines[i].trim().replace(/^\d+\.\s+/, "");
+        items.push({
+          type: "listItem",
+          content: [{ type: "paragraph", content: parseInlineMarks(itemText) }],
+        });
+        i++;
+      }
+      content.push({ type: "orderedList", content: items });
+      continue;
+    }
+
+    content.push({ type: "paragraph", content: parseInlineMarks(line.trim()) });
     i++;
   }
 
