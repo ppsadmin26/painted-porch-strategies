@@ -216,24 +216,27 @@ async function importSingleArticle(
       metadata = payload.metadata ?? {};
       const fallbackMd: string = payload.markdown || "";
       const cleanedRaw = fallbackMd ? cleanLinkedInMarkdown(fallbackMd) : "";
-      // Prefer raw-markdown slice between LLM boundaries — preserves bold/italic/links/images
+      extractedTitle = (extracted.title || "").replace(/ \| LinkedIn$/, "").trim();
+      extractedCover = extracted.cover_image_url || null;
+      const coverForStrip = metadata.ogImage || metadata.image || extractedCover || null;
+
+      // Prefer raw-markdown slice between LLM boundaries — preserves bold/italic/links/images.
       markdown = sliceRawByBoundaries(
         cleanedRaw,
         extracted.first_paragraph_snippet || "",
         extracted.last_paragraph_snippet || ""
       );
-      // Do NOT fall back to cleanedRaw when slice is valid — cleanedRaw still
-      // retains LinkedIn chrome (cookie banner, comments, subscribe widget) that
-      // the slice properly strips. findLastLineIndex already protects against
-      // the original closing-boundary truncation bug.
-
-      if (!markdown) {
-        markdown = (extracted.body_markdown || "").trim();
-        if (markdown) markdown = cleanLinkedInMarkdown(markdown);
-      }
+      // Do NOT trust LLM body_markdown — it has been observed to summarize the
+      // article and flatten inline formatting. truncateAtArticleEnd inside
+      // cleanLinkedInMarkdown already strips the newsletter widget + comments,
+      // so cleanedRaw is the right fallback.
       if (!markdown) markdown = cleanedRaw;
-      extractedTitle = (extracted.title || "").replace(/ \| LinkedIn$/, "").trim();
-      extractedCover = extracted.cover_image_url || null;
+
+      // Strip leading H1 (title) and leading cover image — stored separately.
+      if (markdown) {
+        markdown = stripLeadingTitleAndCover(markdown, extractedTitle, coverForStrip);
+      }
+
     } else {
       console.warn(`Firecrawl scrape failed for ${articleUrl}, status: ${scrapeRes.status}`);
     }
