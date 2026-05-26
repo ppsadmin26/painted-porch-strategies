@@ -628,26 +628,34 @@ Deno.serve(async (req) => {
     // flatten inline marks and drop images). Falls back to LLM body_markdown
     // if the boundaries can't be found in the raw scrape.
     const cleanedRaw = fallbackMarkdown ? cleanLinkedInMarkdown(fallbackMarkdown, title) : "";
+    const coverUrlForStrip: string | null =
+      metadata.ogImage || metadata.image || extracted.cover_image_url || null;
+
+    // PREFERRED PATH: slice raw markdown between LLM-located boundaries so
+    // bold/italic/links/in-body images survive (LLM body_markdown tends to
+    // flatten inline marks, drop images, AND silently summarize the body —
+    // which is why we no longer fall back to it).
     let markdown = sliceRawByBoundaries(
       cleanedRaw,
       extracted.first_paragraph_snippet || "",
       extracted.last_paragraph_snippet || ""
     );
 
-    // NOTE: Do not fall back to cleanedRaw when a valid slice exists. cleanedRaw
-    // routinely retains LinkedIn chrome (cookie banner, comments section, "523
-    // followers + Subscribe", etc.) that the slice strips out. The original
-    // closing-boundary truncation bug is already addressed by findLastLineIndex.
-
-
-    // Fallback: LLM-extracted body, then cleaned raw markdown
-    if (!markdown) {
-      markdown = (extracted.body_markdown || "").trim();
-      if (markdown) markdown = cleanLinkedInMarkdown(markdown, title);
-    }
+    // If the boundary slice couldn't be located, trust the cleaned raw scrape.
+    // truncateAtArticleEnd + cleanLinkedInMarkdown already strip the newsletter
+    // widget, comments, and footer. We deliberately do NOT use the LLM's
+    // body_markdown — it has been observed to summarize the article (literally
+    // inserting "...and so on..." mid-body) and to flatten inline formatting.
     if (!markdown) {
       markdown = cleanedRaw;
     }
+
+    // Strip leading H1 (title) and leading cover image — they're stored on the
+    // post record separately, so leaving them in the body causes duplicates.
+    if (markdown) {
+      markdown = stripLeadingTitleAndCover(markdown, title, coverUrlForStrip);
+    }
+
 
     if (!markdown) {
       return new Response(
