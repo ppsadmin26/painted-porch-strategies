@@ -18,6 +18,7 @@ import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
 import StatMarquee from "@/components/pps/StatMarquee";
 import StatCard from "@/components/pps/StatCard";
+import { RESEARCH_STATS } from "@/data/research-stats";
 import { useFeaturedPosts } from "@/hooks/useFeaturedPosts";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import homeHero from "@/assets/heroes/home-hero.jpg";
@@ -158,16 +159,33 @@ export default function PPSHome() {
       {/* ============================================================ */}
       {/* Research stats — static grid                                  */}
       {/* ============================================================ */}
-      <section className="py-12 md:py-16 bg-navy" aria-label="Research stats">
+      <section className="py-8 md:py-10 bg-navy" aria-label="Research stats">
         <div className="container max-w-6xl mx-auto px-6">
-          <p className="text-center text-xs font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-10">
+          <p className="text-center text-[0.7rem] md:text-xs font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-6 md:mb-7">
             The reality leaders are facing
           </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
-            <StatCard statId="mck_ai_readiness" variant="bold" accentClass="text-gold" />
-            <StatCard statId="mck_complexity" variant="bold" accentClass="text-gold" />
-            <StatCard statId="gartner_adoption" variant="bold" accentClass="text-gold" />
-            <StatCard statId="gallup_engagement" variant="bold" accentClass="text-gold" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:gap-6">
+            {[
+              "mck_ai_readiness",
+              "mck_complexity",
+              "gartner_adoption",
+              "gallup_engagement",
+            ].map((id) => {
+              const s = RESEARCH_STATS[id as keyof typeof RESEARCH_STATS];
+              return (
+                <div key={id} className="text-center px-2">
+                  <p className="text-3xl md:text-4xl font-poppins font-bold tabular-nums leading-none text-gold">
+                    {s.figure}
+                  </p>
+                  <p className="mt-2 text-xs md:text-sm text-white/90 font-montserrat leading-snug">
+                    {s.label.replace(/\.$/, "")}
+                  </p>
+                  <p className="mt-2 text-[0.6rem] md:text-[0.65rem] uppercase tracking-wider text-white/50">
+                    {s.source}{s.year ? ` · ${s.year}` : ""}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
