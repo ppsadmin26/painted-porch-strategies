@@ -156,16 +156,21 @@ export default function PPSHome() {
       </section>
 
       {/* ============================================================ */}
-      {/* Research stat marquee — pattern interrupt                     */}
+      {/* Research stats — static grid                                  */}
       {/* ============================================================ */}
-      <StatMarquee
-        statIds={[
-          "mck_ai_readiness",
-          "mck_complexity",
-          "gartner_adoption",
-          "gallup_engagement",
-        ]}
-      />
+      <section className="py-12 md:py-16 bg-navy" aria-label="Research stats">
+        <div className="container max-w-6xl mx-auto px-6">
+          <p className="text-center text-xs font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-10">
+            The reality leaders are facing
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+            <StatCard statId="mck_ai_readiness" variant="bold" accentClass="text-gold" />
+            <StatCard statId="mck_complexity" variant="bold" accentClass="text-gold" />
+            <StatCard statId="gartner_adoption" variant="bold" accentClass="text-gold" />
+            <StatCard statId="gallup_engagement" variant="bold" accentClass="text-gold" />
+          </div>
+        </div>
+      </section>
 
       {/* ============================================================ */}
       {/* There's a lot of ShIFt happening                              */}
