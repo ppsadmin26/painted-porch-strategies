@@ -128,6 +128,7 @@ function stripLeadingTitleAndCover(md: string, title: string, coverUrl: string |
 
 function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
   const rawLines = truncateAtArticleEnd(markdown)
+    .replace(/`{3,}/g, "") // strip ``` fence runs that LinkedIn scatters across the page
     .replace(/\u00a0/g, " ")
     .split("\n")
     .map((line) => line.replace(/[\u200B-\u200D\uFEFF]/g, "").trimEnd());
