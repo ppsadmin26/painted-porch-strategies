@@ -200,6 +200,18 @@ function findLineIndex(normLines: string[], snippet: string, fromIndex = 0): num
   return -1;
 }
 
+/** Find the LAST occurrence — important for closing-snippet matching since Amy often
+ *  echoes earlier phrasing in callbacks/conclusions. Matching the first hit would
+ *  truncate the article. */
+function findLastLineIndex(normLines: string[], snippet: string, fromIndex = 0): number {
+  const needle = normalizeText(snippet).slice(0, 60);
+  if (!needle || needle.length < 8) return -1;
+  for (let i = normLines.length - 1; i >= fromIndex; i--) {
+    if (normLines[i] && normLines[i].includes(needle)) return i;
+  }
+  return -1;
+}
+
 /**
  * Slice the raw (cleaned) markdown between two boundary snippets so that
  * deterministic inline formatting (bold/italic/links) and in-body images
@@ -211,7 +223,8 @@ function sliceRawByBoundaries(rawMarkdown: string, firstSnippet: string, lastSni
   const normLines = lines.map(normalizeText);
   const start = findLineIndex(normLines, firstSnippet);
   if (start < 0) return "";
-  const end = findLineIndex(normLines, lastSnippet, start);
+  // Use LAST occurrence so callback phrases earlier in the article don't truncate the slice.
+  const end = findLastLineIndex(normLines, lastSnippet, start);
   if (end < 0) return "";
   return lines.slice(start, end + 1).join("\n").trim();
 }
@@ -537,6 +550,21 @@ Deno.serve(async (req) => {
       extracted.first_paragraph_snippet || "",
       extracted.last_paragraph_snippet || ""
     );
+
+    // Sanity check: if slice is suspiciously short vs. the cleaned raw, the LLM's
+    // closing boundary likely matched too early (callbacks/echoed phrasing) and
+    // we'd be dropping the tail of the article. Prefer cleanedRaw in that case.
+    if (
+      markdown &&
+      cleanedRaw &&
+      markdown.length < cleanedRaw.length * 0.6 &&
+      cleanedRaw.length > 500
+    ) {
+      console.log(
+        `Slice (${markdown.length} chars) is <60% of cleanedRaw (${cleanedRaw.length}); using cleanedRaw to avoid truncation.`
+      );
+      markdown = cleanedRaw;
+    }
 
     // Fallback: LLM-extracted body, then cleaned raw markdown
     if (!markdown) {
