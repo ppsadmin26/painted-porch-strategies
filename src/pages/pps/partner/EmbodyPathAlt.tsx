@@ -9,6 +9,7 @@ import { ExploreBeforeCommitSection } from "@/components/pps/partner/ExploreBefo
 import embodyFinalCtaBg from "@/assets/embody-final-cta-bg.png";
 import { PartnerIncludedSection } from "@/components/pps/partner";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
+import StatCard, { StatSources } from "@/components/pps/StatCard";
 
 // Phase cards data
 const phases = [
