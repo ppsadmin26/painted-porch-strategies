@@ -72,6 +72,9 @@ export default function PartnerWithUsAlt() {
       {/* Section 3: Our Philosophy & Approach (tabbed) */}
       <PhilosophyApproachSection />
 
+      {/* Section 3b: The Architecture Gap — research-backed reality + Pillars */}
+      <ArchitectureGapSection />
+
       {/* Section 4: How to Choose */}
       <HowToChooseSection />
 
