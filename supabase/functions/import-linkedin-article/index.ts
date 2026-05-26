@@ -126,6 +126,60 @@ function stripLeadingTitleAndCover(md: string, title: string, coverUrl: string |
   return lines.slice(i).join("\n").trim();
 }
 
+/**
+ * Final scrub pass — runs AFTER slicing and leading-strip so any chrome that
+ * leaked through (because LLM boundary snippets missed, or because cleanup ran
+ * before the slice was located) gets nuked. Operates on the FINAL markdown.
+ */
+function scrubResidualChrome(md: string, coverUrl: string | null): string {
+  const coverBase = (coverUrl || "").split("?")[0];
+  const bareBoilerplate = [
+    /^\[?\s*skip to main content/i,
+    /^image (imagined|generated|created) (via|by|with)\b/i,
+    /^image (credit|source|by)[:\s]/i,
+    /^photo (credit|source|by)[:\s]/i,
+    /^\[?\s*\+\s*subscribe\b/i,
+    /^subscribe\b.*newsletter/i,
+    /^\d+\s+(followers?|comments?|reactions?)\s*$/i,
+    /^like\s*$/i,
+    /^comment\s*$/i,
+    /^share\s*$/i,
+    /^report this\b/i,
+    /^to view or add a comment/i,
+  ];
+  const out: string[] = [];
+  for (const raw of md.split("\n")) {
+    // Strip leading runs of backticks / escaped backticks / zero-width chars,
+    // then re-evaluate. LinkedIn sometimes prefixes chrome lines with these.
+    let line = raw
+      .replace(/[\u200B-\u200D\uFEFF\u00a0]/g, " ")
+      .replace(/^[\s`\\]+/, "")
+      .replace(/[\s`\\]+$/, "");
+    // Drop lines that are ONLY backticks/whitespace/punctuation after strip
+    if (!line || /^[`\s\-–—_*]+$/.test(line)) {
+      out.push("");
+      continue;
+    }
+    if (bareBoilerplate.some((r) => r.test(line))) continue;
+    // Drop the cover image anywhere in body (not only leading)
+    const img = line.match(/^!\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)\s*$/);
+    if (img) {
+      const src = img[1];
+      if (coverUrl && (src === coverUrl || src.split("?")[0] === coverBase)) continue;
+    }
+    out.push(line);
+  }
+  // Collapse consecutive blanks
+  const collapsed: string[] = [];
+  for (const l of out) {
+    if (l === "" && collapsed[collapsed.length - 1] === "") continue;
+    collapsed.push(l);
+  }
+  while (collapsed[0] === "") collapsed.shift();
+  while (collapsed[collapsed.length - 1] === "") collapsed.pop();
+  return collapsed.join("\n");
+}
+
 function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
   const rawLines = truncateAtArticleEnd(markdown)
     .replace(/`{3,}/g, "") // strip ``` fence runs that LinkedIn scatters across the page
@@ -445,7 +499,12 @@ function markdownToTiptap(markdown: string): any {
   return { type: "doc", content };
 }
 
+function unescapeMd(s: string): string {
+  return s.replace(/\\([\\`*_{}\[\]()#+\-.!>])/g, "$1");
+}
+
 function parseInlineMarks(text: string): any[] {
+  text = unescapeMd(text);
   const nodes: any[] = [];
   // Simple regex-based inline parsing for bold, italic, links
   const regex =
@@ -655,6 +714,7 @@ Deno.serve(async (req) => {
     // post record separately, so leaving them in the body causes duplicates.
     if (markdown) {
       markdown = stripLeadingTitleAndCover(markdown, title, coverUrlForStrip);
+      markdown = scrubResidualChrome(markdown, coverUrlForStrip);
     }
 
 
@@ -694,7 +754,7 @@ Deno.serve(async (req) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            model: "google/gemini-3-flash-preview",
+            model: "google/gemini-2.5-flash",
             messages: [
               {
                 role: "system",
