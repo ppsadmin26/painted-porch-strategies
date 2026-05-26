@@ -412,13 +412,23 @@ function findLineIndex(normLines: string[], snippet: string, fromIndex = 0): num
   return -1;
 }
 
+function findLastLineIndex(normLines: string[], snippet: string, fromIndex = 0): number {
+  const needle = normalizeText(snippet).slice(0, 60);
+  if (!needle || needle.length < 8) return -1;
+  for (let i = normLines.length - 1; i >= fromIndex; i--) {
+    if (normLines[i] && normLines[i].includes(needle)) return i;
+  }
+  return -1;
+}
+
 function sliceRawByBoundaries(rawMarkdown: string, firstSnippet: string, lastSnippet: string): string {
   if (!rawMarkdown || !firstSnippet || !lastSnippet) return "";
   const lines = rawMarkdown.split("\n");
   const normLines = lines.map(normalizeText);
   const start = findLineIndex(normLines, firstSnippet);
   if (start < 0) return "";
-  const end = findLineIndex(normLines, lastSnippet, start);
+  // Use last occurrence so callback phrases earlier in the article don't truncate the slice.
+  const end = findLastLineIndex(normLines, lastSnippet, start);
   if (end < 0) return "";
   return lines.slice(start, end + 1).join("\n").trim();
 }
