@@ -488,18 +488,18 @@ export default function PPSHome() {
       {/* ============================================================ */}
       {/* 3AM Questions strip — lead-in to The Blue Door                */}
       {/* ============================================================ */}
-      <section className="py-14 md:py-16 bg-white border-t border-border/40">
+      <section className="py-16 md:py-20 bg-navy">
         <div className="container max-w-6xl mx-auto px-6">
-          <p className="text-center text-sm font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-8">
+          <p className="text-center text-xs md:text-sm font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-10">
             The questions leaders are asking at 3AM
           </p>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-10 md:gap-8">
             {threeAmQuestions.map((q, i) => (
               <div key={i} className="text-center">
-                <div className="text-3xl font-poppins font-bold text-primary mb-3">
+                <div className="text-3xl md:text-4xl font-poppins font-bold text-gold/30 mb-4">
                   0{i + 1}
                 </div>
-                <p className="text-foreground italic leading-relaxed">
+                <p className="text-white/90 italic leading-relaxed text-base md:text-lg">
                   &ldquo;{q}&rdquo;
                 </p>
               </div>
