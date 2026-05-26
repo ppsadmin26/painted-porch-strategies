@@ -358,6 +358,7 @@ function stripLeadingTitleAndCover(md: string, title: string, coverUrl: string |
 /** Remove LinkedIn cookie banners, nav, comments, and other boilerplate */
 function cleanLinkedInMarkdown(md: string): string {
   const rawLines = truncateAtArticleEnd(md)
+    .replace(/`{3,}/g, "") // strip ``` fence runs that LinkedIn scatters across the page
     .replace(/\u00a0/g, " ")
     .split("\n")
     .map((line) => line.replace(/[\u200B-\u200D\uFEFF]/g, "").trimEnd());
