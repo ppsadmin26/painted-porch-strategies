@@ -524,13 +524,21 @@ export default function PPSHome() {
                 The Blue Door Organizational Appraisal.
               </h2>
               <p className="text-lg text-foreground leading-relaxed mb-4">
-                Designed for organizations seeking clarity before committing to
-                what comes next. Not a health assessment. Not a readiness score.
+                The questions that keep you up at 3AM deserve more than a pep
+                talk or another planning deck. They deserve clarity &mdash; the
+                kind that comes from seeing your organization clearly before
+                deciding what comes next.
+              </p>
+              <p className="text-lg text-foreground leading-relaxed mb-4">
+                The Blue Door is a structured reflection process, not a health
+                assessment and not a readiness score. It answers what kind of
+                change your organization can confidently execute &mdash; so you
+                stop wondering if you are solving the right problem and start
+                knowing you are.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-6">
-                It&rsquo;s a structured reflection process that clarifies what
-                kind of change your organization can confidently execute &mdash;
-                before major pivots become active pursuit.
+                Before major pivots become active pursuit. Before momentum
+                outruns alignment. Before another initiative is announced.
               </p>
             </div>
 
