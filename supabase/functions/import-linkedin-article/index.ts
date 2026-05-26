@@ -709,6 +709,7 @@ Deno.serve(async (req) => {
     // post record separately, so leaving them in the body causes duplicates.
     if (markdown) {
       markdown = stripLeadingTitleAndCover(markdown, title, coverUrlForStrip);
+      markdown = scrubResidualChrome(markdown, coverUrlForStrip);
     }
 
 
