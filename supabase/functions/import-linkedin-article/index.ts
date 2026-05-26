@@ -58,33 +58,37 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
     .split("\n")
     .map((line) => line.replace(/[\u200B-\u200D\uFEFF]/g, "").trimEnd());
 
+  // IMPORTANT: anchor with ^…$ so we only filter standalone LinkedIn UI label
+  // lines. Previously these were substring matches, which silently dropped
+  // article sentences ending in "like", "follow", "share", etc. (e.g. the
+  // bullet "what good work looks like" was getting nuked by /like$/i).
   const boilerplatePatterns = [
-    /linkedin respects your privacy/i,
-    /skip to main content/i,
-    /agree & join/i,
-    /join now/i,
-    /sign in/i,
-    /cookie policy/i,
-    /user agreement/i,
-    /privacy policy/i,
-    /community guidelines/i,
-    /language/i,
-    /report this/i,
-    /reply to comment/i,
-    /load more comments/i,
-    /react to this/i,
-    /follow/i,
-    /like$/i,
-    /comment$/i,
-    /share$/i,
-    /copy link/i,
-    /see more$/i,
-    /show more$/i,
-    /published by/i,
-    /\d+ comments?$/i,
-    /\d+ reactions?$/i,
-    /sign in to view/i,
-    /get the app/i,
+    /^linkedin respects your privacy/i,
+    /^skip to main content/i,
+    /^agree & join/i,
+    /^join now$/i,
+    /^sign in$/i,
+    /^cookie policy$/i,
+    /^user agreement$/i,
+    /^privacy policy$/i,
+    /^community guidelines$/i,
+    /^language$/i,
+    /^report this( post| comment| article)?$/i,
+    /^reply to comment/i,
+    /^load more comments/i,
+    /^react to this/i,
+    /^follow$/i,
+    /^like$/i,
+    /^comment$/i,
+    /^share$/i,
+    /^copy link$/i,
+    /^see more$/i,
+    /^show more$/i,
+    /^published by/i,
+    /^\d+ comments?$/i,
+    /^\d+ reactions?$/i,
+    /^sign in to view/i,
+    /^get the app$/i,
   ];
 
   const endPatterns = [
