@@ -9,6 +9,7 @@ import { ExploreBeforeCommitSection } from "@/components/pps/partner/ExploreBefo
 import embodyFinalCtaBg from "@/assets/embody-final-cta-bg.png";
 import { PartnerIncludedSection } from "@/components/pps/partner";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
+import StatCard, { StatSources } from "@/components/pps/StatCard";
 
 // Phase cards data
 const phases = [
@@ -812,6 +813,64 @@ export default function EmbodyPathAlt() {
 
       {/* SECTION 10.5: EXPLORE BEFORE YOU COMMIT */}
       <ExploreBeforeCommitSection />
+
+      {/* SECTION 10.75: THE HUMAN COST — why EMBODY's depth is the answer */}
+      <section className="py-16 md:py-24 bg-white" aria-labelledby="human-cost-heading">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12 max-w-3xl mx-auto">
+            <span className="inline-block bg-raspberry/10 text-raspberry font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
+              The Human Cost
+            </span>
+            <h2 id="human-cost-heading" className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              This is what unarchitected change does to people.
+            </h2>
+            <p className="text-lg text-foreground leading-relaxed">
+              EMBODY isn&rsquo;t a longer engagement because we like longer
+              engagements. It&rsquo;s a longer engagement because the numbers
+              below don&rsquo;t move with a workshop, a slide deck, or a
+              two-quarter sprint. They move when the architecture itself
+              changes.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <StatCard
+              statId="gallup_engagement"
+              accentClass="text-raspberry"
+              footnoteNumber={1}
+            />
+            <StatCard
+              statId="mck_health_burnout"
+              accentClass="text-gold"
+              footnoteNumber={2}
+            />
+            <StatCard
+              statId="deloitte_exhausted"
+              accentClass="text-pps-purple"
+              footnoteNumber={3}
+            />
+          </div>
+
+          <div className="mt-10 max-w-3xl mx-auto bg-muted/50 border-l-4 border-gold p-6 rounded-r-xl">
+            <p className="text-foreground italic leading-relaxed">
+              EMBODY exists so this stops happening on your watch. Permanent
+              capacity, built into your organization, so transformation becomes
+              something your people lead instead of something done to them.
+            </p>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-border/60 max-w-3xl mx-auto">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+              Sources
+            </p>
+            <StatSources
+              statIds={["gallup_engagement", "mck_health_burnout", "deloitte_exhausted"]}
+            />
+          </div>
+        </div>
+      </section>
+
+
 
       {/* SECTION 11: SHIFT HAPPENS CLOSING */}
       <section className="relative py-16 md:py-20 text-white overflow-hidden">

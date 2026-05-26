@@ -22,6 +22,7 @@ import {
   PartnerIncludedSection,
   ExploreBeforeCommitSection,
   FinalInvitationSection,
+  ArchitectureGapSection,
 } from "@/components/pps/partner";
 import { PhilosophyApproachSection } from "@/components/pps/partner/PhilosophyApproachSection";
 import { FAQSection } from "@/components/pps/FAQSection";
@@ -70,6 +71,9 @@ export default function PartnerWithUsAlt() {
 
       {/* Section 3: Our Philosophy & Approach (tabbed) */}
       <PhilosophyApproachSection />
+
+      {/* Section 3b: The Architecture Gap — research-backed reality + Pillars */}
+      <ArchitectureGapSection />
 
       {/* Section 4: How to Choose */}
       <HowToChooseSection />

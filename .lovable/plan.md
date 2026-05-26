@@ -1,47 +1,74 @@
-## Goal
 
-Commit baseline visual snapshots for the existing Playwright specs so visual diffs work out of the box in CI, without flaky cross-platform mismatches.
+# Stats Integration Plan — McKinsey + Human Data
 
-## Decisions (defaulted since you skipped questions)
+## Recommendation (the "why" first)
 
-- **Baseline source**: generate snapshots in this Linux sandbox and commit them. Pin Playwright to a single Chromium/Linux project so CI matches and macOS dev machines don't generate competing baselines.
-- **Scope**: both existing specs — `ppshome-card-alignment.spec.ts` (3 viewports) and `video-fallback.spec.ts` (2 states). 5 PNGs total.
+Your data tells two distinct stories, and the ICP cares about different parts of each depending on where they are in the journey. Forcing it all into one section flattens the message. Instead, distribute by **page intent**:
 
-## Plan
+| Page | Audience mindset | Story to tell | Stat type |
+|---|---|---|---|
+| **Home** (`/`) | "Is this for me?" — broad, skim-reading | Reality check that this isn't a niche problem. Hook attention. | Headline scrollers + 1 hero stat band |
+| **`/partner`** (org hub) | "We have a real change initiative. Is this serious?" | Why org architecture (not training, not management) is the gap. | McKinsey "shifts" stats, framed against Pillars |
+| **`/partner/embody`** | "We're committing 6–12 months. Convince me the human cost is real." | The human cost of unarchitected change. Justifies the depth of the engagement. | Human/burnout stats |
 
-1. **Pin snapshots to Linux/Chromium** in `playwright.config.ts` via `createLovableConfig` overrides:
-   - `projects: [{ name: "chromium", use: devices["Desktop Chrome"] }]`
-   - `snapshotPathTemplate: "{testDir}/__snapshots__/{testFilePath}/{arg}{ext}"` (stable path, no `-chromium-linux` suffix sprawl)
-   - `expect: { toHaveScreenshot: { maxDiffPixelRatio: 0.02 } }` (matches per-spec settings)
+This matches your three frameworks: **Pillars** answer the org-structure problem (partner hub), **Phase Zero™** answers the change-fatigue problem (home), **EMBODY's** depth is justified by burnout data.
 
-2. **Add npm scripts** to `package.json`:
-   - `"test:e2e": "playwright test"`
-   - `"test:e2e:update": "playwright test --update-snapshots"`
-   - `"test:e2e:ci": "playwright test --reporter=github,html"`
+---
 
-3. **Generate baselines** in sandbox:
-   - `npx playwright install --with-deps chromium`
-   - `npm run test:e2e:update`
-   - Verify 5 PNGs land under `e2e/__snapshots__/…`
+## What gets built
 
-4. **Ensure they commit**:
-   - Add `!e2e/__snapshots__/**` allowlist (current `.gitignore` doesn't block them, but make intent explicit with a comment).
-   - Keep `test-results/`, `playwright-report/` ignored (add to `.gitignore` if missing).
+### 1. Home page — "The 3AM Stats Bar" + one inline data moment
+**Why here:** Home visitors are scanning. We need pattern interrupts, not paragraphs.
 
-5. **CI notes** (README snippet in `e2e/README.md`):
-   - Run on `ubuntu-latest` only for visual specs.
-   - Use `npm run test:e2e:ci`.
-   - If a UI change is intentional, contributor runs `npm run test:e2e:update` and commits updated PNGs.
+- **A. Stat Marquee Bar** — slim, animated horizontal scroller (similar feel to the 3AM Questions strip you referenced), placed after the welcome/positioning section, before the P.A.T.H. ladder. Cycles 4 short stats with sources:
+  - "86% of organizations aren't ready to adopt AI at scale" — McKinsey
+  - "2 in 3 leaders say their organization is overly complex and inefficient" — McKinsey
+  - "Only 32% of leaders say their last change effort actually stuck" — Gartner
+  - "Global employee engagement fell to 20% in 2025" — Gallup
+- **B. Inline pull-quote stat** woven into existing copy: "$10 trillion in lost productivity. 9% of global GDP. That's the cost of asking people to adapt to change their organization wasn't built to hold." (Gallup, cited)
 
-## Risks
+### 2. `/partner` (Partner With Us hub) — McKinsey "Reality vs. The Shift" section
+**Why here:** This is the page where decision-makers evaluate whether PPS understands their problem. Show we've read the room.
 
-- Mocked Supabase route in `video-fallback.spec.ts` should produce a deterministic frame, but the loading state holds a request forever — the snapshot is taken after `Video unavailable…` text appears, which is the fallback path, so it's stable.
-- macOS contributors running `test:e2e` locally will see tiny font-rendering diffs vs. the Linux baselines. The 2% diff ratio absorbs most of it; if it's still noisy, we mask text regions in a follow-up.
+- New section: **"The Architecture Gap"** (placed before "How To Choose")
+- **Style B (Editorial data band)** with split-row "Reality → Shift" cards using **Style C** treatment:
+  - **Reality:** 86% not ready for AI · The Shift: Foundational Architecture must hold tech, not chase it
+  - **Reality:** 2 in 3 say overly complex · The Shift: Operational Intelligence redesigns flow
+  - **Reality:** Only 32% saw change stick · The Shift: Phase Zero™ authors what gets built
+  - **Reality:** 79% have low trust in change · The Shift: Human Capacity makes adoption durable
+- Color-codes each row to its matching Pillar (Teal, Lime, Raspberry, Navy).
+- Small superscript citations linking to a `[Sources]` accordion at the bottom.
 
-## Files touched
+### 3. `/partner/embody` — "The Human Cost" stat band
+**Why here:** EMBODY is the deepest, most expensive tier. The investment is justified by the magnitude of the human problem. Placed before the final CTA.
 
-- `playwright.config.ts` — pin project + snapshot path
-- `package.json` — 3 new scripts
-- `.gitignore` — add `test-results/`, `playwright-report/`
-- `e2e/__snapshots__/**` — 5 new PNG baselines (generated)
-- `e2e/README.md` — short contributor doc
+- **Style A (Bold stat cards)** — 3-card grid in raspberry/gold on a muted background:
+  - **20%** — Global employee engagement, lowest since 2020 (Gallup 2026)
+  - **1 in 4** — Employees report burnout symptoms (McKinsey Health)
+  - **52% / 49%** — "Always" or "often" exhausted / stressed (Deloitte)
+- Single line of PPS framing underneath: *"This is what unarchitected change does to people. EMBODY exists so it stops happening on your watch."*
+
+---
+
+## Shared infrastructure
+
+- **New component:** `src/components/pps/StatCard.tsx` — reusable big-number card (number, label, source). Variants: `bold` | `editorial` | `inline`.
+- **New component:** `src/components/pps/StatMarquee.tsx` — slim, auto-scrolling stat bar (CSS marquee, pauses on hover, respects `prefers-reduced-motion`).
+- **New data file:** `src/data/research-stats.ts` — single source of truth so the same stat appears identically wherever it's cited (one place to update if numbers change).
+- **Citations:** small `<sup>` numbers next to each stat, footnoted at the bottom of each section. Match the citation style used in your "Architecture of Change" article.
+
+## Technical notes
+
+- All stats live in `src/data/research-stats.ts` keyed by ID; components accept a `statId`.
+- Trademark rule respected: Phase Zero™ already used on `/partner`, so the new section uses it without re-marking. Pillars references use the shorthand "Porch Pillars" after first use on the page.
+- No new routes, so no `page_status` / Sitemap entries needed.
+- No backend changes.
+- Files touched: ~3 new components/data file, edits to `PPSHome.tsx`, `PartnerWithUs.tsx` (or equivalent partner hub), and the EMBODY page.
+
+## Out of scope (flag for later)
+- Animated count-up on stat reveal (could add later if you want; `useCountUp` already exists).
+- A dedicated "Research & Data" resources page that aggregates all citations — worth considering once you have 10+ cited stats across the site.
+
+---
+
+Want me to proceed exactly as above, or adjust any of the three placements / stat picks first?

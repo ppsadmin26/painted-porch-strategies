@@ -16,6 +16,8 @@ import {
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
+import StatMarquee from "@/components/pps/StatMarquee";
+import StatCard from "@/components/pps/StatCard";
 import { useFeaturedPosts } from "@/hooks/useFeaturedPosts";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import homeHero from "@/assets/heroes/home-hero.jpg";
@@ -154,6 +156,18 @@ export default function PPSHome() {
       </section>
 
       {/* ============================================================ */}
+      {/* Research stat marquee — pattern interrupt                     */}
+      {/* ============================================================ */}
+      <StatMarquee
+        statIds={[
+          "mck_ai_readiness",
+          "mck_complexity",
+          "gartner_adoption",
+          "gallup_engagement",
+        ]}
+      />
+
+      {/* ============================================================ */}
       {/* There's a lot of ShIFt happening                              */}
       {/* ============================================================ */}
       <section className="py-16 md:py-20 bg-white">
@@ -168,12 +182,27 @@ export default function PPSHome() {
             leadership, culture &mdash; while your organization is still trying
             to deliver results, support people, and adapt in real time.
           </p>
-          <p className="text-lg text-foreground leading-relaxed">
+          <p className="text-lg text-foreground leading-relaxed mb-8">
             Often the issue isn&rsquo;t effort. It&rsquo;s that your organization
             has outgrown the structures that worked well enough to get here. And
             pushing harder in the wrong direction simply compounds the cost of
             getting there.
           </p>
+
+          {/* Editorial pull stat — the human cost */}
+          <div className="mt-10 text-left">
+            <StatCard
+              statId="gallup_cost"
+              variant="editorial"
+              accentClass="text-raspberry"
+              framing={
+                <>
+                  That&rsquo;s the cost of asking people to adapt to change
+                  their organization wasn&rsquo;t built to hold.
+                </>
+              }
+            />
+          </div>
         </div>
       </section>
 
