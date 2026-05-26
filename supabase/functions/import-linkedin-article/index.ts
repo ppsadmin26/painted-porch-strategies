@@ -551,6 +551,21 @@ Deno.serve(async (req) => {
       extracted.last_paragraph_snippet || ""
     );
 
+    // Sanity check: if slice is suspiciously short vs. the cleaned raw, the LLM's
+    // closing boundary likely matched too early (callbacks/echoed phrasing) and
+    // we'd be dropping the tail of the article. Prefer cleanedRaw in that case.
+    if (
+      markdown &&
+      cleanedRaw &&
+      markdown.length < cleanedRaw.length * 0.6 &&
+      cleanedRaw.length > 500
+    ) {
+      console.log(
+        `Slice (${markdown.length} chars) is <60% of cleanedRaw (${cleanedRaw.length}); using cleanedRaw to avoid truncation.`
+      );
+      markdown = cleanedRaw;
+    }
+
     // Fallback: LLM-extracted body, then cleaned raw markdown
     if (!markdown) {
       markdown = (extracted.body_markdown || "").trim();
