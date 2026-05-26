@@ -133,62 +133,7 @@ export default function PPSHome() {
         overlayClass="bg-navy/55"
       />
 
-      {/* ============================================================ */}
-      {/* 3AM Questions strip                                           */}
-      {/* ============================================================ */}
-      <section className="py-12 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
-          <p className="text-center text-sm font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-8">
-            The questions leaders are asking at 3AM
-          </p>
-          <div className="grid md:grid-cols-3 gap-8">
-            {threeAmQuestions.map((q, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl font-poppins font-bold text-primary mb-3">
-                  0{i + 1}
-                </div>
-                <p className="text-foreground italic leading-relaxed">
-                  &ldquo;{q}&rdquo;
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* Research stats — static grid                                  */}
-      {/* ============================================================ */}
-      <section className="py-8 md:py-10 bg-navy" aria-label="Research stats">
-        <div className="container max-w-6xl mx-auto px-6">
-          <p className="text-center text-[0.7rem] md:text-xs font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-6 md:mb-7">
-            The reality leaders are facing
-          </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:gap-6">
-            {[
-              "mck_ai_readiness",
-              "mck_complexity",
-              "gartner_adoption",
-              "gallup_engagement",
-            ].map((id) => {
-              const s = RESEARCH_STATS[id as keyof typeof RESEARCH_STATS];
-              return (
-                <div key={id} className="text-center px-2">
-                  <p className="text-3xl md:text-4xl font-poppins font-bold tabular-nums leading-none text-gold">
-                    {s.figure}
-                  </p>
-                  <p className="mt-2 text-xs md:text-sm text-white/90 font-montserrat leading-snug">
-                    {s.label.replace(/\.$/, "")}
-                  </p>
-                  <p className="mt-2 text-[0.6rem] md:text-[0.65rem] uppercase tracking-wider text-white/50">
-                    {s.source}{s.year ? ` · ${s.year}` : ""}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* 3AM Questions + Research stats moved further down the page */}
 
       {/* ============================================================ */}
       {/* There's a lot of ShIFt happening                              */}
@@ -228,6 +173,41 @@ export default function PPSHome() {
           </div>
         </div>
       </section>
+
+      {/* ============================================================ */}
+      {/* Research stats — static grid                                  */}
+      {/* ============================================================ */}
+      <section className="py-8 md:py-10 bg-navy" aria-label="Research stats">
+        <div className="container max-w-6xl mx-auto px-6">
+          <p className="text-center text-[0.7rem] md:text-xs font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-6 md:mb-7">
+            The reality leaders are facing
+          </p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:gap-6">
+            {[
+              "mck_ai_readiness",
+              "mck_complexity",
+              "gartner_adoption",
+              "gallup_engagement",
+            ].map((id) => {
+              const s = RESEARCH_STATS[id as keyof typeof RESEARCH_STATS];
+              return (
+                <div key={id} className="text-center px-2">
+                  <p className="text-3xl md:text-4xl font-poppins font-bold tabular-nums leading-none text-gold">
+                    {s.figure}
+                  </p>
+                  <p className="mt-2 text-xs md:text-sm text-white/90 font-montserrat leading-snug">
+                    {s.label.replace(/\.$/, "")}
+                  </p>
+                  <p className="mt-2 text-[0.6rem] md:text-[0.65rem] uppercase tracking-wider text-white/50">
+                    {s.source}{s.year ? ` · ${s.year}` : ""}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
 
       {/* ============================================================ */}
       {/* How we meet you — editorial 2-col                             */}
@@ -506,6 +486,30 @@ export default function PPSHome() {
       </section>
 
       {/* ============================================================ */}
+      {/* 3AM Questions strip — lead-in to The Blue Door                */}
+      {/* ============================================================ */}
+      <section className="py-14 md:py-16 bg-white border-t border-border/40">
+        <div className="container max-w-6xl mx-auto px-6">
+          <p className="text-center text-sm font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-8">
+            The questions leaders are asking at 3AM
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {threeAmQuestions.map((q, i) => (
+              <div key={i} className="text-center">
+                <div className="text-3xl font-poppins font-bold text-primary mb-3">
+                  0{i + 1}
+                </div>
+                <p className="text-foreground italic leading-relaxed">
+                  &ldquo;{q}&rdquo;
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+
       {/* The Blue Door                                                 */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-muted">
