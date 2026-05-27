@@ -901,6 +901,16 @@ Deno.serve(async (req) => {
     // Convert markdown to Tiptap JSON
     const bodyJson = markdownToTiptap(markdown);
 
+    // Rewrite any LinkedIn Pulse links in the body to local blog URLs when
+    // the target article already exists in our blog library.
+    const adminClient = createClient(supabaseUrl, serviceKey);
+    try {
+      const rewrote = await rewriteLinkedInLinksToLocal(bodyJson, adminClient);
+      if (rewrote > 0) console.log(`Rewrote ${rewrote} LinkedIn link(s) to local blog URLs`);
+    } catch (e) {
+      console.warn("Link rewrite skipped:", e);
+    }
+
     // Generate an AI summary for the excerpt (falls back to first sentences if AI fails)
     const bodyText = extractTextFromTiptap(bodyJson);
     let excerpt = bodyText.slice(0, 250).trim() + "...";
