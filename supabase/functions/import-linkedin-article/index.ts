@@ -952,8 +952,7 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Check for duplicate slug
-    const adminClient = createClient(supabaseUrl, serviceKey);
+    // Check for duplicate slug (adminClient created above for link rewriting)
     const { data: existing } = await adminClient
       .from("blog_posts")
       .select("id")
