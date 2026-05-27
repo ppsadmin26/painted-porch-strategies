@@ -359,11 +359,44 @@ function sliceRawByBoundaries(rawMarkdown: string, firstSnippet: string, lastSni
   if (!rawMarkdown || !firstSnippet || !lastSnippet) return "";
   const lines = rawMarkdown.split("\n");
   const normLines = lines.map(normalizeText);
-  const start = findLineIndex(normLines, firstSnippet);
+  let start = findLineIndex(normLines, firstSnippet);
   if (start < 0) return "";
   // Use LAST occurrence so callback phrases earlier in the article don't truncate the slice.
-  const end = findLastLineIndex(normLines, lastSnippet, start);
+  let end = findLastLineIndex(normLines, lastSnippet, start);
   if (end < 0) return "";
+
+  // Walk START backward to include leading epigraph/blockquote/italic intro lines
+  // (e.g. opening pull-quotes the LLM tends to skip when picking first_paragraph).
+  // Stop at the article title (# heading), cover image, or article chrome.
+  let s = start - 1;
+  while (s >= 0) {
+    const raw = lines[s];
+    const t = raw.trim();
+    if (t === "") { s--; continue; }
+    // Stop on a top-level heading (article title) or any standalone image (cover).
+    if (/^#{1,2}\s+\S/.test(t)) break;
+    if (/^!\[[^\]]*\]\([^)\s]+/.test(t)) break;
+    // Include blockquotes and italic/quoted intros.
+    if (/^>\s?/.test(t) || /^[*_].+[*_]\s*$/.test(t) || /^["“”].+["“”]\s*$/.test(t)) {
+      start = s; s--; continue;
+    }
+    // Otherwise stop — don't pull in unrelated chrome.
+    break;
+  }
+
+  // Walk END forward to include trailing sign-off lines like "~ Amy Yack",
+  // "— Amy", "-Amy", etc., up until we hit chrome/truncation.
+  const signoffRe = /^\s*[~\-–—]+\s*[A-Za-z][\w .'’-]{0,60}\s*$/;
+  let e = end + 1;
+  while (e < lines.length) {
+    const t = lines[e].trim();
+    if (t === "") { e++; continue; }
+    if (signoffRe.test(t) || /^_.+_$|^\*.+\*$/.test(t)) {
+      end = e; e++; continue;
+    }
+    break;
+  }
+
   return lines.slice(start, end + 1).join("\n").trim();
 }
 
