@@ -755,7 +755,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { url } = await req.json();
+    const { url, reimport } = await req.json();
     if (!url || !url.includes("linkedin.com/pulse/")) {
       return new Response(
         JSON.stringify({ error: "Valid LinkedIn article URL required" }),
