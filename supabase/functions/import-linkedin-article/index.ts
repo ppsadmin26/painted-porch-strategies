@@ -359,11 +359,44 @@ function sliceRawByBoundaries(rawMarkdown: string, firstSnippet: string, lastSni
   if (!rawMarkdown || !firstSnippet || !lastSnippet) return "";
   const lines = rawMarkdown.split("\n");
   const normLines = lines.map(normalizeText);
-  const start = findLineIndex(normLines, firstSnippet);
+  let start = findLineIndex(normLines, firstSnippet);
   if (start < 0) return "";
   // Use LAST occurrence so callback phrases earlier in the article don't truncate the slice.
-  const end = findLastLineIndex(normLines, lastSnippet, start);
+  let end = findLastLineIndex(normLines, lastSnippet, start);
   if (end < 0) return "";
+
+  // Walk START backward to include leading epigraph/blockquote/italic intro lines
+  // (e.g. opening pull-quotes the LLM tends to skip when picking first_paragraph).
+  // Stop at the article title (# heading), cover image, or article chrome.
+  let s = start - 1;
+  while (s >= 0) {
+    const raw = lines[s];
+    const t = raw.trim();
+    if (t === "") { s--; continue; }
+    // Stop on a top-level heading (article title) or any standalone image (cover).
+    if (/^#{1,2}\s+\S/.test(t)) break;
+    if (/^!\[[^\]]*\]\([^)\s]+/.test(t)) break;
+    // Include blockquotes and italic/quoted intros.
+    if (/^>\s?/.test(t) || /^[*_].+[*_]\s*$/.test(t) || /^["“”].+["“”]\s*$/.test(t)) {
+      start = s; s--; continue;
+    }
+    // Otherwise stop — don't pull in unrelated chrome.
+    break;
+  }
+
+  // Walk END forward to include trailing sign-off lines like "~ Amy Yack",
+  // "— Amy", "-Amy", etc., up until we hit chrome/truncation.
+  const signoffRe = /^\s*[~\-–—]+\s*[A-Za-z][\w .'’-]{0,60}\s*$/;
+  let e = end + 1;
+  while (e < lines.length) {
+    const t = lines[e].trim();
+    if (t === "") { e++; continue; }
+    if (signoffRe.test(t) || /^_.+_$|^\*.+\*$/.test(t)) {
+      end = e; e++; continue;
+    }
+    break;
+  }
+
   return lines.slice(start, end + 1).join("\n").trim();
 }
 
@@ -637,7 +670,7 @@ Deno.serve(async (req) => {
           {
             type: "json",
             prompt:
-              "You are locating the SINGLE LinkedIn Pulse article at the requested URL within page markdown. Return: 'title' (article title, no '| LinkedIn' suffix), 'cover_image_url' (article hero/cover image URL if present, otherwise null), 'first_paragraph_snippet' (the first ~120 characters of the article's first real body paragraph or heading after the title — verbatim plain text, no markdown markers), 'last_paragraph_snippet' (the last ~120 characters of the article's final body paragraph before any 'More articles by', newsletter masthead, comments, or LinkedIn chrome — verbatim plain text, no markdown markers), and 'body_markdown' (FALLBACK ONLY — full article body in clean markdown with bold **text**, italic *text*, links [text](url), and in-body images ![alt](https-url) preserved verbatim; exclude cover image, comments, follow widgets, 'More articles by', newsletter chrome, sign-in prompts, navigation, footer). The snippets MUST appear verbatim in the page text so a downstream slicer can locate them. Do NOT paraphrase the snippets.",
+              "You are locating the SINGLE LinkedIn Pulse article at the requested URL within page markdown. Return: 'title' (article title, no '| LinkedIn' suffix), 'cover_image_url' (article hero/cover image URL if present, otherwise null), 'first_paragraph_snippet' (verbatim ~120 chars of the article's FIRST line of body content after the title — this INCLUDES any opening epigraph, pull-quote, italicized intro, or blockquote that appears before the first regular paragraph; do NOT skip them), 'last_paragraph_snippet' (verbatim ~120 chars of the article's FINAL line of body content before any LinkedIn chrome — this INCLUDES any sign-off line such as '~ Amy Yack', '— Amy', author signature, or closing italic note; do NOT stop before the sign-off), and 'body_markdown' (FALLBACK ONLY — full article body in clean markdown with bold **text**, italic *text*, blockquotes > , links [text](url), and in-body images ![alt](https-url) preserved verbatim; exclude cover image, comments, follow widgets, 'More articles by', newsletter chrome, sign-in prompts, navigation, footer). Snippets MUST appear verbatim in the page text. Do NOT paraphrase.",
             schema: {
               type: "object",
               properties: {
