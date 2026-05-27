@@ -1032,10 +1032,13 @@ Deno.serve(async (req) => {
     return new Response(
       JSON.stringify({
         success: true,
-        postId: newPost.id,
-        slug: newPost.slug,
+        postId: newPost!.id,
+        slug: newPost!.slug,
         title,
-        message: "Article imported as approved — ready for review",
+        reimported: !!(existing && reimport),
+        message: existing && reimport
+          ? "Article re-imported — content overwritten"
+          : "Article imported as approved — ready for review",
       }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
