@@ -154,7 +154,18 @@ export default function ImportLinkedInDialog({ onImported }: ImportLinkedInDialo
                 )}
               </Button>
             </div>
+            <label className="flex items-center gap-2 text-xs text-muted-foreground cursor-pointer">
+              <input
+                type="checkbox"
+                checked={reimport}
+                onChange={(e) => setReimport(e.target.checked)}
+                disabled={loading || scanning}
+                className="h-3.5 w-3.5"
+              />
+              Re-import (overwrite existing post content)
+            </label>
           </div>
+
 
           {/* Divider */}
           <div className="relative">
