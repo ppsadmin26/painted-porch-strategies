@@ -180,6 +180,132 @@ function scrubResidualChrome(md: string, coverUrl: string | null): string {
   return collapsed.join("\n");
 }
 
+/**
+ * LinkedIn frequently embeds "Recommended next", "Explore topics",
+ * "More like this", or "Related articles" widgets MID-BODY — not at the end.
+ * They render as a heading-ish line followed by a cluster of article-card
+ * fragments: ![cover](img) + [Title](pulse-url) + author + date.
+ *
+ * This pass scans the body and removes those clusters in-place, then resumes
+ * normal article content. Operates on already-cleaned markdown.
+ */
+function stripInlineRelatedSections(md: string): string {
+  const lines = md.split("\n");
+  const headerRe =
+    /^(#{1,6}\s+)?\s*(recommended (next|reading|for you|articles)|explore (topics|more)|related (articles|posts|reading)|more (like this|articles by|from)|you (might|may) (also )?(like|enjoy)|keep reading|see also|further reading|published by)\b/i;
+  const cardLineRe = [
+    /^!\[[^\]]*\]\([^)]+\)\s*$/, // standalone image
+    /^\[[^\]]+\]\(https?:\/\/(www\.)?linkedin\.com\/[^)]+\)\s*$/i, // linkedin link line
+    /^\[[^\]]+\]\(https?:\/\/[^)]+\)\s*$/i, // bare link line
+    /^\d+\s+(min read|minute read|reactions?|comments?|followers?)\s*$/i,
+    /^(by\s+)?[A-Z][\w .'’-]{1,80}\s*$/, // author byline (capitalized words)
+    /^\w{3,9}\.?\s+\d{1,2},?\s+\d{4}\s*$/i, // date line "Jan 5, 2024"
+    /^\d+\s+(likes?|views?)\s*$/i,
+  ];
+
+  const out: string[] = [];
+  let i = 0;
+  while (i < lines.length) {
+    const t = lines[i].trim();
+    if (headerRe.test(t)) {
+      // Skip the header line plus any following card-fragment lines (and blanks),
+      // until we hit something that looks like real prose again.
+      i++;
+      let consumed = 0;
+      while (i < lines.length) {
+        const u = lines[i].trim();
+        if (u === "") { i++; continue; }
+        const isCard = cardLineRe.some((r) => r.test(u));
+        if (isCard) { i++; consumed++; continue; }
+        // If we never consumed any card lines, treat header as a real heading
+        // and don't eat it — but we already skipped it. Push it back to be safe.
+        if (consumed === 0) {
+          out.push(lines[i - 1]); // re-emit the header we skipped
+        }
+        break;
+      }
+      // ensure spacing
+      if (out.length && out[out.length - 1] !== "") out.push("");
+      continue;
+    }
+    out.push(lines[i]);
+    i++;
+  }
+  // collapse trailing/leading/duplicate blanks
+  const collapsed: string[] = [];
+  for (const l of out) {
+    if (l.trim() === "" && collapsed[collapsed.length - 1]?.trim() === "") continue;
+    collapsed.push(l);
+  }
+  while (collapsed[0]?.trim() === "") collapsed.shift();
+  while (collapsed[collapsed.length - 1]?.trim() === "") collapsed.pop();
+  return collapsed.join("\n");
+}
+
+/**
+ * Walk a Tiptap doc and rewrite link marks pointing at LinkedIn Pulse articles
+ * to local blog routes WHEN the target slug already exists in blog_posts.
+ * Mutates the doc in place and returns the count of rewritten links.
+ */
+async function rewriteLinkedInLinksToLocal(doc: any, adminClient: any): Promise<number> {
+  // Collect all pulse URLs first
+  const urls = new Set<string>();
+  const walk = (n: any) => {
+    if (!n) return;
+    if (Array.isArray(n)) { n.forEach(walk); return; }
+    if (n.marks) {
+      for (const m of n.marks) {
+        if (m.type === "link" && m.attrs?.href && /linkedin\.com\/pulse\//i.test(m.attrs.href)) {
+          urls.add(m.attrs.href);
+        }
+      }
+    }
+    if (n.content) walk(n.content);
+  };
+  walk(doc);
+  if (urls.size === 0) return 0;
+
+  // Map each URL → candidate slug → existing post slug (if any)
+  const urlToSlug = new Map<string, string>();
+  const candidateSlugs = new Set<string>();
+  for (const u of urls) {
+    const s = slugFromUrl(u);
+    if (s) {
+      urlToSlug.set(u, s);
+      candidateSlugs.add(s);
+    }
+  }
+  if (candidateSlugs.size === 0) return 0;
+
+  const { data: rows } = await adminClient
+    .from("blog_posts")
+    .select("slug")
+    .in("slug", Array.from(candidateSlugs));
+  const existing = new Set<string>((rows || []).map((r: any) => r.slug));
+  if (existing.size === 0) return 0;
+
+  let rewrote = 0;
+  const walk2 = (n: any) => {
+    if (!n) return;
+    if (Array.isArray(n)) { n.forEach(walk2); return; }
+    if (n.marks) {
+      for (const m of n.marks) {
+        if (m.type === "link" && m.attrs?.href) {
+          const href = m.attrs.href;
+          const slug = urlToSlug.get(href);
+          if (slug && existing.has(slug)) {
+            m.attrs.href = `/resources/blog/${slug}`;
+            rewrote++;
+          }
+        }
+      }
+    }
+    if (n.content) walk2(n.content);
+  };
+  walk2(doc);
+  return rewrote;
+}
+
 function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
   const rawLines = truncateAtArticleEnd(markdown)
     .replace(/`{3,}/g, "") // strip ``` fence runs that LinkedIn scatters across the page
@@ -747,6 +873,7 @@ Deno.serve(async (req) => {
     // post record separately, so leaving them in the body causes duplicates.
     if (markdown) {
       markdown = stripLeadingTitleAndCover(markdown, title, coverUrlForStrip);
+      markdown = stripInlineRelatedSections(markdown);
       markdown = scrubResidualChrome(markdown, coverUrlForStrip);
     }
 
@@ -773,6 +900,16 @@ Deno.serve(async (req) => {
 
     // Convert markdown to Tiptap JSON
     const bodyJson = markdownToTiptap(markdown);
+
+    // Rewrite any LinkedIn Pulse links in the body to local blog URLs when
+    // the target article already exists in our blog library.
+    const adminClient = createClient(supabaseUrl, serviceKey);
+    try {
+      const rewrote = await rewriteLinkedInLinksToLocal(bodyJson, adminClient);
+      if (rewrote > 0) console.log(`Rewrote ${rewrote} LinkedIn link(s) to local blog URLs`);
+    } catch (e) {
+      console.warn("Link rewrite skipped:", e);
+    }
 
     // Generate an AI summary for the excerpt (falls back to first sentences if AI fails)
     const bodyText = extractTextFromTiptap(bodyJson);
@@ -815,8 +952,7 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Check for duplicate slug
-    const adminClient = createClient(supabaseUrl, serviceKey);
+    // Check for duplicate slug (adminClient created above for link rewriting)
     const { data: existing } = await adminClient
       .from("blog_posts")
       .select("id")
