@@ -21,6 +21,7 @@ export default function ImportLinkedInDialog({ onImported }: ImportLinkedInDialo
   const { toast } = useToast();
   const [open, setOpen] = useState(false);
   const [url, setUrl] = useState("");
+  const [reimport, setReimport] = useState(false);
   const [loading, setLoading] = useState(false);
   const [scanning, setScanning] = useState(false);
 
@@ -38,7 +39,7 @@ export default function ImportLinkedInDialog({ onImported }: ImportLinkedInDialo
     try {
       const { data, error } = await supabase.functions.invoke(
         "import-linkedin-article",
-        { body: { url } }
+        { body: { url, reimport } }
       );
 
       if (error) throw error;
@@ -47,7 +48,7 @@ export default function ImportLinkedInDialog({ onImported }: ImportLinkedInDialo
         if (data.slug) {
           toast({
             title: "Already imported",
-            description: `This article already exists as "${data.slug}".`,
+            description: `This article already exists as "${data.slug}". Check "Re-import" to overwrite.`,
           });
         } else {
           throw new Error(data.error);
@@ -56,11 +57,14 @@ export default function ImportLinkedInDialog({ onImported }: ImportLinkedInDialo
       }
 
       toast({
-        title: "Article imported!",
-        description: `"${data.title}" saved as approved — ready for review.`,
+        title: data.reimported ? "Article re-imported!" : "Article imported!",
+        description: data.reimported
+          ? `"${data.title}" content overwritten.`
+          : `"${data.title}" saved as approved — ready for review.`,
       });
 
       setUrl("");
+      setReimport(false);
       setOpen(false);
       onImported?.(data.slug);
     } catch (err: any) {
@@ -150,7 +154,18 @@ export default function ImportLinkedInDialog({ onImported }: ImportLinkedInDialo
                 )}
               </Button>
             </div>
+            <label className="flex items-center gap-2 text-xs text-muted-foreground cursor-pointer">
+              <input
+                type="checkbox"
+                checked={reimport}
+                onChange={(e) => setReimport(e.target.checked)}
+                disabled={loading || scanning}
+                className="h-3.5 w-3.5"
+              />
+              Re-import (overwrite existing post content)
+            </label>
           </div>
+
 
           {/* Divider */}
           <div className="relative">

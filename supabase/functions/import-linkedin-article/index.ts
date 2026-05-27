@@ -755,7 +755,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { url } = await req.json();
+    const { url, reimport } = await req.json();
     if (!url || !url.includes("linkedin.com/pulse/")) {
       return new Response(
         JSON.stringify({ error: "Valid LinkedIn article URL required" }),
@@ -959,7 +959,7 @@ Deno.serve(async (req) => {
       .eq("slug", slug)
       .maybeSingle();
 
-    if (existing) {
+    if (existing && !reimport) {
       return new Response(
         JSON.stringify({
           error: "Article already imported",
@@ -973,41 +973,72 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Insert as "pending" (ready for editorial review)
-    const { data: newPost, error: insertError } = await adminClient
-      .from("blog_posts")
-      .insert({
-        title,
-        slug,
-        status: "pending",
-        featured: false,
-        excerpt,
-        body_json: bodyJson,
-        cover_image_url: metadata.ogImage || metadata.image || null,
-        author_id: user.id,
-        publish_date: new Date().toISOString(),
-      })
-      .select("id, slug")
-      .single();
+    let newPost: { id: string; slug: string } | null = null;
 
-    if (insertError) {
-      console.error("Insert error:", insertError);
-      return new Response(
-        JSON.stringify({ error: "Failed to save article", detail: insertError.message }),
-        {
-          status: 500,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
+    if (existing && reimport) {
+      // Overwrite content fields but preserve status/featured/author so admin
+      // edits to publishing state aren't clobbered by a re-import.
+      const { data: updated, error: updateError } = await adminClient
+        .from("blog_posts")
+        .update({
+          title,
+          excerpt,
+          body_json: bodyJson,
+          cover_image_url: metadata.ogImage || metadata.image || null,
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", existing.id)
+        .select("id, slug")
+        .single();
+
+      if (updateError) {
+        console.error("Re-import update error:", updateError);
+        return new Response(
+          JSON.stringify({ error: "Failed to re-import article", detail: updateError.message }),
+          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      newPost = updated;
+    } else {
+      const { data: inserted, error: insertError } = await adminClient
+        .from("blog_posts")
+        .insert({
+          title,
+          slug,
+          status: "pending",
+          featured: false,
+          excerpt,
+          body_json: bodyJson,
+          cover_image_url: metadata.ogImage || metadata.image || null,
+          author_id: user.id,
+          publish_date: new Date().toISOString(),
+        })
+        .select("id, slug")
+        .single();
+
+      if (insertError) {
+        console.error("Insert error:", insertError);
+        return new Response(
+          JSON.stringify({ error: "Failed to save article", detail: insertError.message }),
+          {
+            status: 500,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          }
+        );
+      }
+      newPost = inserted;
     }
 
     return new Response(
       JSON.stringify({
         success: true,
-        postId: newPost.id,
-        slug: newPost.slug,
+        postId: newPost!.id,
+        slug: newPost!.slug,
         title,
-        message: "Article imported as approved — ready for review",
+        reimported: !!(existing && reimport),
+        message: existing && reimport
+          ? "Article re-imported — content overwritten"
+          : "Article imported as approved — ready for review",
       }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
