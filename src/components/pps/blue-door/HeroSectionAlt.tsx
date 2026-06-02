@@ -51,13 +51,15 @@ export default function HeroSectionAlt() {
             <div className={`transition-all duration-700 ease-out delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
               <Link to="/blue-door/purchase">
                 <Button className="bg-bluedoor text-white border-2 border-bluedoor text-lg md:text-xl py-5 px-12 shadow-lg hover:shadow-xl hover:bg-white hover:text-bluedoor transition-all">
-                  Reserve your Blue Door →
+                  {isBlueDoorPreLaunch() ? "Reserve your Blue Door →" : "Open your Blue Door →"}
                 </Button>
               </Link>
-              <p className="mt-4 text-sm md:text-base text-white/90 font-poppins">
-                <span className="inline-block bg-gold/90 text-navy font-semibold px-2 py-0.5 rounded mr-2">Launching June 29th</span>
-                Purchase now and we'll email your assessment access link on launch day.
-              </p>
+              {isBlueDoorPreLaunch() && (
+                <p className="mt-4 text-sm md:text-base text-white/90 font-poppins">
+                  <span className="inline-block bg-gold/90 text-navy font-semibold px-2 py-0.5 rounded mr-2">Launching June 29th</span>
+                  Purchase now and we'll email your assessment access link on launch day.
+                </p>
+              )}
             </div>
           </div>
         </div>
