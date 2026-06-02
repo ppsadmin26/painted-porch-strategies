@@ -131,8 +131,9 @@ describe("Supabase RLS policy snapshot", () => {
       });
     }
 
-    // backups bucket writes (storage.objects) must be admin only
-    for (const cmd of ["INSERT", "UPDATE", "DELETE"] as const) {
+    // backups bucket writes (storage.objects) must be admin only.
+    // (Bucket has no UPDATE policy — backups are write-once + delete on rotate.)
+    for (const cmd of ["INSERT", "DELETE"] as const) {
       const backupPols = policies.filter(
         (p) =>
           p.schemaname === "storage" &&
