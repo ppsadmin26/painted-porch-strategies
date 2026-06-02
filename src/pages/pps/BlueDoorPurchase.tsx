@@ -248,7 +248,7 @@ export default function BlueDoorPurchase() {
 
                 <Button 
                   type="submit" 
-                  className="btn-primary w-full text-lg py-6"
+                  className="w-full text-lg py-6 bg-bluedoor text-white border-2 border-bluedoor hover:bg-white hover:text-bluedoor transition-all"
                   disabled={isLoading}
                 >
                   {isLoading ? (
@@ -268,13 +268,13 @@ export default function BlueDoorPurchase() {
             </div>
 
             <p className="text-center text-muted-foreground text-sm mt-6">
-              Questions? Contact{" "}
-              <a 
-                href="mailto:explore@onthepaintedporch.com"
-                className="text-primary hover:underline"
+              Questions?{" "}
+              <Link
+                to={`/contact?scope=${encodeURIComponent("Company")}&interest=blue-door&message=${encodeURIComponent("I have questions about the Blue Door Organizational Appraisal")}`}
+                className="text-bluedoor font-semibold hover:underline"
               >
-                explore@onthepaintedporch.com
-              </a>
+                Contact us
+              </Link>
             </p>
           </div>
         </div>
