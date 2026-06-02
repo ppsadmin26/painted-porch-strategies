@@ -13,7 +13,7 @@ import { SiteSearch } from "@/components/pps/SiteSearch";
 
 const navLinks = [
   { label: "What is Phase Zero?", href: "/phase-zero" },
-  { label: "The Blue Door", href: "/blue-door" },
+  { label: "Open Your Blue Door", href: "/blue-door" },
   {
     label: "P.A.T.H.ways",
     href: "/partner",
