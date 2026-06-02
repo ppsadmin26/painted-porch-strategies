@@ -51,7 +51,7 @@ const pillars = [
       "Your leaders, your culture, your values, and the way people work together. This is the load-bearing wall that decides how your organization leads, decides, and grows.",
     questions: [
       "Can our leaders shape direction, or are they only reacting to pressure?",
-      "Will our culture support this change, or quietly push against it?",
+      "Will our culture support this change, or quietly (or loudly) push against it?",
       "Do we have a clear way leaders make decisions together?",
     ],
     outcomes: [
