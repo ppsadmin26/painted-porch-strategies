@@ -114,14 +114,16 @@ export default function BlueDoorPurchase() {
               Complete Your Purchase
             </h1>
             
-            <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-4 mb-6">
-              <p className="font-poppins font-bold text-navy text-base mb-1">
-                🚪 Launching June 29th, 2026
-              </p>
-              <p className="text-foreground text-sm">
-                Reserve your Blue Door now. On launch day, we'll email you a secure link to access and complete your assessment.
-              </p>
-            </div>
+            {isBlueDoorPreLaunch() && (
+              <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-4 mb-6">
+                <p className="font-poppins font-bold text-navy text-base mb-1">
+                  🚪 Launching June 29th, 2026
+                </p>
+                <p className="text-foreground text-sm">
+                  Reserve your Blue Door now. On launch day, we'll email you a secure link to access and complete your assessment.
+                </p>
+              </div>
+            )}
 
             <div className="bg-bluedoor/5 border-2 border-bluedoor rounded-lg p-6 mb-8 shadow-lg">
               <span className="inline-block bg-bluedoor text-white font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-3">
