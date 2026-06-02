@@ -20,7 +20,9 @@
     "seo:validate": "node scripts/validate-seo.mjs",
     "brand:validate": "node scripts/validate-trademarks.mjs",
     "brand:fix": "node scripts/validate-trademarks.mjs --fix",
-    "repo:check-large-files": "node scripts/check-large-files.mjs"
+    "repo:check-large-files": "node scripts/check-large-files.mjs",
+    "rls:verify": "node scripts/verify-rls.mjs",
+    "rls:update-snapshot": "node scripts/verify-rls.mjs --update"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",
