@@ -27,14 +27,12 @@ const nextSteps = [
   },
 ];
 
-const LAUNCH_DATE = new Date("2026-06-15T00:00:00");
-
 export default function BlueDoorSuccess() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const isPreLaunch = new Date() < LAUNCH_DATE;
+  const isPreLaunch = isBlueDoorPreLaunch();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-bluedoor/5 to-strategic/5 py-16 md:py-24">
