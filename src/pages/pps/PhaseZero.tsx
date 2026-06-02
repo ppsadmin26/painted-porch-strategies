@@ -236,7 +236,7 @@ export default function PhaseZero() {
             wrong direction.
           </p>
           <p className="text-2xl md:text-3xl font-poppins italic text-navy mt-10 border-l-4 border-gold pl-6">
-            <em>"Are we designing our next move, or reacting to theirs?"</em>
+            <em>"Are we designing our next move, or reacting to someone else's?"</em>
           </p>
         </FadeIn>
       </section>
