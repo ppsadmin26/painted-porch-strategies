@@ -257,7 +257,7 @@ export default function BlueDoorPurchase() {
                       Processing...
                     </>
                   ) : (
-                    "Reserve My Blue Door →"
+                    isBlueDoorPreLaunch() ? "Reserve My Blue Door →" : "Open My Blue Door →"
                   )}
                 </Button>
 
