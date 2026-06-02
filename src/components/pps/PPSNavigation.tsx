@@ -12,7 +12,6 @@ import ppsLogo from "@/assets/pps-logo.png";
 import { SiteSearch } from "@/components/pps/SiteSearch";
 
 const navLinks = [
-  { label: "Home", href: "/" },
   { label: "Phase Zero", href: "/phase-zero" },
   { label: "The Blue Door", href: "/blue-door" },
   {
