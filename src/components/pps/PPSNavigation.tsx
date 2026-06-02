@@ -12,7 +12,7 @@ import ppsLogo from "@/assets/pps-logo.png";
 import { SiteSearch } from "@/components/pps/SiteSearch";
 
 const navLinks = [
-  { label: "Phase Zero", href: "/phase-zero" },
+  { label: "What is Phase Zero?", href: "/phase-zero" },
   { label: "The Blue Door", href: "/blue-door" },
   {
     label: "P.A.T.H.ways",
