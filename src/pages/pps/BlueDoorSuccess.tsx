@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight, Mail, Clock, ClipboardList } from "lucide-react";
+import { isBlueDoorPreLaunch } from "@/config/blueDoor";
 
 const nextSteps = [
   {
