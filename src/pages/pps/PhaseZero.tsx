@@ -226,12 +226,12 @@ export default function PhaseZero() {
             Phase Zero is where the real choices get made.
           </h2>
           <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-5">
-            It is the phase where you decide what <ShIFt /> your organization
-            can credibly lead. Not what to copy. Not what to react to.
-            What to author.
+            It's the phase where you decide what <ShIFt /> your organization
+            can credibly lead. Not what to copy or catch up to, but what to{" "}
+            <strong className="font-bold">author</strong>.
           </p>
           <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed">
-            That sounds simple. It is not. Most teams skip it because the
+            That sounds simple; it's not. Most teams skip it because the
             pressure to move feels louder than the cost of moving in the
             wrong direction.
           </p>
