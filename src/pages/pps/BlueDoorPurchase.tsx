@@ -7,6 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Check, Clock, ArrowLeft, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
+import { isBlueDoorPreLaunch } from "@/config/blueDoor";
 
 const checkoutSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
@@ -113,14 +114,16 @@ export default function BlueDoorPurchase() {
               Complete Your Purchase
             </h1>
             
-            <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-4 mb-6">
-              <p className="font-poppins font-bold text-navy text-base mb-1">
-                🚪 Launching June 29th, 2026
-              </p>
-              <p className="text-foreground text-sm">
-                Reserve your Blue Door now. On launch day, we'll email you a secure link to access and complete your assessment.
-              </p>
-            </div>
+            {isBlueDoorPreLaunch() && (
+              <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-4 mb-6">
+                <p className="font-poppins font-bold text-navy text-base mb-1">
+                  🚪 Launching June 29th, 2026
+                </p>
+                <p className="text-foreground text-sm">
+                  Reserve your Blue Door now. On launch day, we'll email you a secure link to access and complete your assessment.
+                </p>
+              </div>
+            )}
 
             <div className="bg-bluedoor/5 border-2 border-bluedoor rounded-lg p-6 mb-8 shadow-lg">
               <span className="inline-block bg-bluedoor text-white font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-3">
@@ -254,7 +257,7 @@ export default function BlueDoorPurchase() {
                       Processing...
                     </>
                   ) : (
-                    "Reserve My Blue Door →"
+                    isBlueDoorPreLaunch() ? "Reserve My Blue Door →" : "Open My Blue Door →"
                   )}
                 </Button>
 
