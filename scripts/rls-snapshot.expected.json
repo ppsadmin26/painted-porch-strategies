@@ -1,0 +1,973 @@
+{
+    "policies": [
+        {
+            "schemaname": "public",
+            "tablename": "access_tokens",
+            "policyname": "No direct client access to access_tokens",
+            "cmd": "ALL",
+            "roles": [
+                "anon",
+                "authenticated"
+            ],
+            "qual": "false",
+            "with_check": "false",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "backup_runs",
+            "policyname": "Admins can delete backup runs",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "backup_runs",
+            "policyname": "Admins can read backup runs",
+            "cmd": "SELECT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "backup_runs",
+            "policyname": "Service role can insert backup runs",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "(auth.role() = 'service_role'::text)",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "backup_runs",
+            "policyname": "Service role can update backup runs",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "(auth.role() = 'service_role'::text)",
+            "with_check": "(auth.role() = 'service_role'::text)",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "backup_settings",
+            "policyname": "Admins can read backup settings",
+            "cmd": "SELECT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "backup_settings",
+            "policyname": "Admins can update backup settings",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": "is_admin(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "backup_settings",
+            "policyname": "Service role can read backup settings",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "(auth.role() = 'service_role'::text)",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_categories",
+            "policyname": "Admins can delete categories",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_categories",
+            "policyname": "Admins can insert categories",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "is_admin(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_categories",
+            "policyname": "Admins can update categories",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_categories",
+            "policyname": "Anyone can read categories",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "true",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_post_categories",
+            "policyname": "Anyone can read post categories",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "true",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_post_categories",
+            "policyname": "Authors or admins can delete post categories",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "(is_admin(auth.uid()) OR (EXISTS ( SELECT 1\n   FROM blog_posts bp\n  WHERE ((bp.id = blog_post_categories.post_id) AND (bp.author_id = auth.uid())))))",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_post_categories",
+            "policyname": "Authors or admins can insert post categories",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "(is_admin(auth.uid()) OR (EXISTS ( SELECT 1\n   FROM blog_posts bp\n  WHERE ((bp.id = blog_post_categories.post_id) AND (bp.author_id = auth.uid())))))",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_posts",
+            "policyname": "Admins/editors can insert any post, others own only",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "((auth.uid() = author_id) OR is_admin_or_editor(auth.uid()))",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_posts",
+            "policyname": "Authenticated users can read own or published posts",
+            "cmd": "SELECT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "((auth.uid() = author_id) OR (status = 'published'::blog_post_status) OR is_admin(auth.uid()))",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_posts",
+            "policyname": "Authors or admins/editors can delete posts",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "((auth.uid() = author_id) OR is_admin_or_editor(auth.uid()))",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_posts",
+            "policyname": "Authors or admins/editors can update posts",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "((auth.uid() = author_id) OR is_admin_or_editor(auth.uid()))",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "blog_posts",
+            "policyname": "Public can read published posts",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "((status = 'published'::blog_post_status) OR ((status = 'scheduled'::blog_post_status) AND (publish_date IS NOT NULL) AND (publish_date <= now())))",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "email_send_log",
+            "policyname": "Service role can insert send log",
+            "cmd": "INSERT",
+            "roles": [
+                "public"
+            ],
+            "qual": null,
+            "with_check": "(auth.role() = 'service_role'::text)",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "email_send_log",
+            "policyname": "Service role can read send log",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "(auth.role() = 'service_role'::text)",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "email_send_log",
+            "policyname": "Service role can update send log",
+            "cmd": "UPDATE",
+            "roles": [
+                "public"
+            ],
+            "qual": "(auth.role() = 'service_role'::text)",
+            "with_check": "(auth.role() = 'service_role'::text)",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "email_send_state",
+            "policyname": "Service role can manage send state",
+            "cmd": "ALL",
+            "roles": [
+                "public"
+            ],
+            "qual": "(auth.role() = 'service_role'::text)",
+            "with_check": "(auth.role() = 'service_role'::text)",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "email_unsubscribe_tokens",
+            "policyname": "Service role can insert tokens",
+            "cmd": "INSERT",
+            "roles": [
+                "public"
+            ],
+            "qual": null,
+            "with_check": "(auth.role() = 'service_role'::text)",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "email_unsubscribe_tokens",
+            "policyname": "Service role can mark tokens as used",
+            "cmd": "UPDATE",
+            "roles": [
+                "public"
+            ],
+            "qual": "(auth.role() = 'service_role'::text)",
+            "with_check": "(auth.role() = 'service_role'::text)",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "email_unsubscribe_tokens",
+            "policyname": "Service role can read tokens",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "(auth.role() = 'service_role'::text)",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "github_sync_events",
+            "policyname": "Admins read sync events",
+            "cmd": "SELECT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin_or_editor(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "github_sync_status",
+            "policyname": "Admins read sync status",
+            "cmd": "SELECT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin_or_editor(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "media_appearance_categories",
+            "policyname": "Admins can delete appearance categories",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "media_appearance_categories",
+            "policyname": "Admins can insert appearance categories",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "is_admin(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "media_appearance_categories",
+            "policyname": "Public can read appearance categories",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "true",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "media_appearances",
+            "policyname": "Admins can delete appearances",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "media_appearances",
+            "policyname": "Admins can insert appearances",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "is_admin(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "media_appearances",
+            "policyname": "Admins can update appearances",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "media_appearances",
+            "policyname": "Public can read appearances",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "true",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "page_status",
+            "policyname": "Admins can delete page status",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "page_status",
+            "policyname": "Admins can insert page status",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "is_admin(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "page_status",
+            "policyname": "Admins can update page status",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": "is_admin(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "page_status",
+            "policyname": "Authenticated can read all page status",
+            "cmd": "SELECT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "true",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "page_status",
+            "policyname": "Public can read live page status",
+            "cmd": "SELECT",
+            "roles": [
+                "anon"
+            ],
+            "qual": "(status = 'live'::text)",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "profiles",
+            "policyname": "Admins can delete profiles",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "profiles",
+            "policyname": "Admins can insert profiles",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "is_admin(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "profiles",
+            "policyname": "Admins can read all profiles",
+            "cmd": "SELECT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "profiles",
+            "policyname": "Admins can update all profiles",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "profiles",
+            "policyname": "Users can read own profile",
+            "cmd": "SELECT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "(auth.uid() = id)",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "profiles",
+            "policyname": "Users can update own profile",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "(auth.uid() = id)",
+            "with_check": "((auth.uid() = id) AND (role = ( SELECT p.role\n   FROM profiles p\n  WHERE (p.id = auth.uid()))))",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "site_video_slots",
+            "policyname": "Admins or editors can delete slots",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin_or_editor(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "site_video_slots",
+            "policyname": "Admins or editors can insert slots",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "is_admin_or_editor(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "site_video_slots",
+            "policyname": "Admins or editors can update slots",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin_or_editor(auth.uid())",
+            "with_check": "is_admin_or_editor(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "site_video_slots",
+            "policyname": "Site video slots publicly readable",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "true",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "site_videos",
+            "policyname": "Admins/editors can delete site videos",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin_or_editor(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "site_videos",
+            "policyname": "Admins/editors can insert site videos",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "is_admin_or_editor(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "site_videos",
+            "policyname": "Admins/editors can update site videos",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin_or_editor(auth.uid())",
+            "with_check": "is_admin_or_editor(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "site_videos",
+            "policyname": "Site videos publicly readable",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "true",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "suppressed_emails",
+            "policyname": "Service role can insert suppressed emails",
+            "cmd": "INSERT",
+            "roles": [
+                "public"
+            ],
+            "qual": null,
+            "with_check": "(auth.role() = 'service_role'::text)",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "suppressed_emails",
+            "policyname": "Service role can read suppressed emails",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "(auth.role() = 'service_role'::text)",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "youtube_video_categories",
+            "policyname": "Admins and editors can delete youtube video categories",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin_or_editor(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "youtube_video_categories",
+            "policyname": "Admins and editors can manage youtube video categories",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "is_admin_or_editor(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "youtube_video_categories",
+            "policyname": "Admins and editors can update youtube video categories",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin_or_editor(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "youtube_video_categories",
+            "policyname": "Anyone can view youtube video categories",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "true",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "youtube_videos",
+            "policyname": "Admins and editors can delete youtube videos",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin_or_editor(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "youtube_videos",
+            "policyname": "Admins and editors can insert youtube videos",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "is_admin_or_editor(auth.uid())",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "youtube_videos",
+            "policyname": "Admins and editors can update youtube videos",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "is_admin_or_editor(auth.uid())",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "public",
+            "tablename": "youtube_videos",
+            "policyname": "Anyone can view youtube videos",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "true",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Admins and editors can delete blog images",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "((bucket_id = 'blog-images'::text) AND is_admin_or_editor(auth.uid()))",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Admins and editors can update blog images",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "((bucket_id = 'blog-images'::text) AND is_admin_or_editor(auth.uid()))",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Admins and editors can upload blog images",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "((bucket_id = 'blog-images'::text) AND is_admin_or_editor(auth.uid()))",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Admins can delete backups",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "((bucket_id = 'backups'::text) AND is_admin(auth.uid()))",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Admins can insert backups",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "((bucket_id = 'backups'::text) AND is_admin(auth.uid()))",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Admins can read backups",
+            "cmd": "SELECT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "((bucket_id = 'backups'::text) AND is_admin(auth.uid()))",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Admins or editors can delete site videos",
+            "cmd": "DELETE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "((bucket_id = 'site-videos'::text) AND is_admin_or_editor(auth.uid()))",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Admins or editors can update site videos",
+            "cmd": "UPDATE",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": "((bucket_id = 'site-videos'::text) AND is_admin_or_editor(auth.uid()))",
+            "with_check": "((bucket_id = 'site-videos'::text) AND is_admin_or_editor(auth.uid()))",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Admins or editors can upload site videos",
+            "cmd": "INSERT",
+            "roles": [
+                "authenticated"
+            ],
+            "qual": null,
+            "with_check": "((bucket_id = 'site-videos'::text) AND is_admin_or_editor(auth.uid()))",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Blog images are publicly readable",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "(bucket_id = 'blog-images'::text)",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Service role can manage email assets",
+            "cmd": "ALL",
+            "roles": [
+                "service_role"
+            ],
+            "qual": "(bucket_id = 'email-assets'::text)",
+            "with_check": "(bucket_id = 'email-assets'::text)",
+            "permissive": "PERMISSIVE"
+        },
+        {
+            "schemaname": "storage",
+            "tablename": "objects",
+            "policyname": "Site videos are publicly readable",
+            "cmd": "SELECT",
+            "roles": [
+                "public"
+            ],
+            "qual": "(bucket_id = 'site-videos'::text)",
+            "with_check": null,
+            "permissive": "PERMISSIVE"
+        }
+    ],
+    "buckets": [
+        {
+            "id": "backups",
+            "name": "backups",
+            "public": false
+        },
+        {
+            "id": "blog-images",
+            "name": "blog-images",
+            "public": true
+        },
+        {
+            "id": "email-assets",
+            "name": "email-assets",
+            "public": true
+        },
+        {
+            "id": "site-videos",
+            "name": "site-videos",
+            "public": true
+        }
+    ],
+    "rls_enabled_tables": [
+        "access_tokens",
+        "backup_runs",
+        "backup_settings",
+        "blog_categories",
+        "blog_post_categories",
+        "blog_posts",
+        "email_send_log",
+        "email_send_state",
+        "email_unsubscribe_tokens",
+        "github_sync_events",
+        "github_sync_status",
+        "media_appearance_categories",
+        "media_appearances",
+        "page_status",
+        "profiles",
+        "site_video_slots",
+        "site_videos",
+        "suppressed_emails",
+        "youtube_video_categories",
+        "youtube_videos"
+    ]
+}
