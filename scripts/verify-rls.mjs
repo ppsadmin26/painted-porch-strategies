@@ -10,7 +10,7 @@
  *   node scripts/verify-rls.mjs           # verify (exit 1 on diff)
  *   node scripts/verify-rls.mjs --update  # rewrite the snapshot file
  */
-import { execSync } from "node:child_process";
+import { execSync, execFileSync } from "node:child_process";
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
@@ -43,7 +43,7 @@ function canRunPsql() {
 }
 
 function dumpCurrent() {
-  const out = execSync(`psql -t -A -c ${JSON.stringify(SQL)}`, {
+  const out = execFileSync("psql", ["-t", "-A", "-c", SQL], {
     encoding: "utf8",
     maxBuffer: 16 * 1024 * 1024,
   });
