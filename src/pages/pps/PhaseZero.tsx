@@ -211,7 +211,7 @@ export default function PhaseZero() {
             </p>
           </div>
           <p className="mt-10 text-2xl md:text-3xl font-poppins font-semibold text-navy leading-relaxed">
-            The frustration that surfaces in moments like this is rarely random. <span className="text-raspberry">It is a signal.</span>
+            The frustration that surfaces in moments like this is rarely random. <span className="text-raspberry">It's a signal.</span>
           </p>
         </FadeIn>
       </section>
