@@ -102,7 +102,7 @@ export default function ClientLogoMarquee({
   className = "",
   logos,
   testimonials = placeholderTestimonials,
-  showTestimonials = true,
+  showTestimonials = false,
 }: ClientLogoMarqueeProps) {
   const displayLogos = logos || allClientLogos;
   const { ref, isVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
