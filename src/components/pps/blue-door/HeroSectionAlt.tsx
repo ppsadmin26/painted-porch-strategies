@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParallax } from "@/hooks/useParallax";
+import { isBlueDoorPreLaunch } from "@/config/blueDoor";
 import blueDoorHero from "@/assets/blue-door-hero.jpg";
 
 export default function HeroSectionAlt() {
