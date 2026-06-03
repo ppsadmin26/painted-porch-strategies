@@ -136,10 +136,10 @@ const EasterEggForm = () => {
                 🎉🐣 You Found Something.
               </h1>
               <p className="font-poppins text-base md:text-xl text-foreground mb-3">
-                Most people don't make it this far. Tell us what you found and where — we'll donate $50 to a charity of your choice.
+                Most people don't make it this far. Tell us what you found and where — we'll donate $25 to a charity of your choice.
               </p>
               <p className="text-sm text-muted-foreground">
-                There are five Easter eggs hidden in our Terms of The Porch. Find any one of them and we'll donate $50 to a cause you care about.
+                There are five Easter eggs hidden in our Terms of The Porch. Find any one of them and we'll donate $25 to a cause you care about.
               </p>
             </div>
 
