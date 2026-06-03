@@ -23,6 +23,12 @@ export default function PPSFooter() {
     { label: "Organizational Advisory", href: "/partner/embody" },
   ];
 
+  const { liveMap } = useArePagesLive([...quickLinks, ...pathways].map((l) => l.href));
+  const visibleQuick = quickLinks.filter((l) => liveMap[l.href] !== false);
+  const visiblePathways = pathways.filter((l) => liveMap[l.href] !== false);
+
+
+
   const socials = [
     { icon: Youtube, href: "https://www.youtube.com/@onthepaintedporch", label: "YouTube" },
     { icon: Facebook, href: "https://www.facebook.com/paintedporchstrategies", label: "Facebook" },
