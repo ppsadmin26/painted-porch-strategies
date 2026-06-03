@@ -526,6 +526,39 @@ export type Database = {
         }
         Relationships: []
       }
+      policy_update_notifications: {
+        Row: {
+          created_at: string
+          id: string
+          recipient_count: number
+          sections: Json
+          sent_at: string
+          sent_by: string | null
+          source: string
+          summary: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          recipient_count?: number
+          sections?: Json
+          sent_at?: string
+          sent_by?: string | null
+          source?: string
+          summary: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          recipient_count?: number
+          sections?: Json
+          sent_at?: string
+          sent_by?: string | null
+          source?: string
+          summary?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           author_bio: string | null
