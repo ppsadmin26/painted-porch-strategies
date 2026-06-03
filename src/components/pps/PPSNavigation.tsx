@@ -191,9 +191,9 @@ export default function PPSNavigation() {
         {mobileMenuOpen && (
           <div className="lg:hidden py-4 border-t">
             <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
+              {visibleNav.map((link) => (
                 <div key={link.href}>
-                  {link.children ? (
+                  {link.children && link.children.length > 0 ? (
                     <div>
                       <div className="flex items-center justify-between">
                         <Link
