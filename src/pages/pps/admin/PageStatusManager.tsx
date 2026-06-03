@@ -37,7 +37,7 @@ export default function PageStatusManager() {
   const syncFromSitemap = async () => {
     setSyncing(true);
     try {
-      const paths = collectSitemapPaths();
+      const paths = collectSitemapPaths().filter((p) => !p.startsWith("/admin"));
       const missing = paths.filter((p) => !map[p]);
       if (missing.length === 0) {
         toast({ title: "Already in sync", description: "Every sitemap route has a row." });
