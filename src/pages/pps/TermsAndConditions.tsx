@@ -435,9 +435,6 @@ function PrivacyTabBody() {
             </Link>
             {" "}for anyone curious enough to read all the way to the end. Think of it as a thank-you from the Porch for taking us seriously.
           </p>
-          <p className="text-foreground leading-relaxed italic">
-            Hint: it involves charity, a Douglas Adams reference, and the number 25. No spoilers.
-          </p>
         </div>
       </div>
     </section>
