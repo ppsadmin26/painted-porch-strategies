@@ -4,5 +4,31 @@ Disallow: /admin
 Disallow: /admin/
 Disallow: /reset-password
 
-Sitemap: /sitemap.xml
+# Draft pages — hidden from search engines
+Disallow: /about/approach
+Disallow: /about/impact
+Disallow: /amy
+Disallow: /change-ready-leader-assessment
+Disallow: /change-ready-team-assessment
+Disallow: /communication
+Disallow: /elemental-style-assessment
+Disallow: /elements-mini
+Disallow: /eq-change-leader
+Disallow: /extraordinary-teams
+Disallow: /home-archive
+Disallow: /home-verbatim
+Disallow: /mym-journal-challenge
+Disallow: /overview
+Disallow: /partner/ignite/courses
+Disallow: /partner/ignite/masterclasses
+Disallow: /radical-mindfulness
+Disallow: /resources/youtube
+Disallow: /rob
+Disallow: /sierra
+Disallow: /talking-to-strangers
+Disallow: /team-health-assessment
+Disallow: /team-superpowers
+Disallow: /wfh-sign-up
+Disallow: /wfh-thank-you
 
+Sitemap: /sitemap.xml
