@@ -57,7 +57,7 @@ export default function PPSFooter() {
           <div>
             <h4 className="text-base md:text-lg font-poppins font-semibold text-gold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
+              {visibleQuick.map((link) => (
                 <li key={link.href}>
                   <Link to={link.href} className="text-sm text-white/80 hover:text-lime transition-colors">
                     {link.label}
