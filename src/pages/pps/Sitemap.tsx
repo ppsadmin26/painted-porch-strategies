@@ -244,7 +244,9 @@ export const sitemapData: SitemapNode[] = [
     label: "Contact & Legal",
     children: [
       { label: "Contact Us", path: "/contact" },
-      { label: "Terms & Conditions", path: "/terms" },
+      { label: "Terms, Privacy & Cookies", path: "/terms" },
+      { label: "Privacy Policy (tab)", path: "/privacy", note: "Redirects to /terms?tab=privacy" },
+      { label: "Cookie Policy (tab)", path: "/cookies", note: "Redirects to /terms?tab=cookies" },
       { label: "Unsubscribe", path: "/unsubscribe" },
       { label: "404 / Not Found", path: "/404", note: "Shown for any unknown URL" },
     ],

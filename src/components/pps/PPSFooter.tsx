@@ -108,8 +108,19 @@ export default function PPSFooter() {
           </p>
         </div>
 
-        {/* Copyright */}
+        {/* Legal Links */}
         <div className="mt-6 pt-6 text-center">
+          <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/70">
+            <li><Link to="/terms?tab=terms" className="hover:text-lime transition-colors">Terms</Link></li>
+            <li aria-hidden className="text-white/30">·</li>
+            <li><Link to="/terms?tab=privacy" className="hover:text-lime transition-colors">Privacy</Link></li>
+            <li aria-hidden className="text-white/30">·</li>
+            <li><Link to="/terms?tab=cookies" className="hover:text-lime transition-colors">Cookies</Link></li>
+          </ul>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-4 pt-4 text-center">
           <p className="text-xs text-white/60">
             © {new Date().getFullYear()} Painted Porch Strategies. All rights reserved. Phase Zero, P.A.T.H., and The Painted Porch Pillars are trademarks.
           </p>

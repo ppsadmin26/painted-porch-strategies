@@ -55,6 +55,8 @@ Deno.serve(async (req) => {
     { loc: "/start-here", priority: "0.9", changefreq: "monthly" },
     { loc: "/blue-door", priority: "0.9", changefreq: "monthly" },
     { loc: "/terms", priority: "0.3", changefreq: "yearly" },
+    { loc: "/privacy", priority: "0.3", changefreq: "yearly" },
+    { loc: "/cookies", priority: "0.3", changefreq: "yearly" },
   ];
 
   const today = new Date().toISOString().split("T")[0];

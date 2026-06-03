@@ -148,6 +148,7 @@ import MigrationChecklist from "./pages/pps/admin/MigrationChecklist";
 import SiteEmails from "./pages/pps/admin/SiteEmails";
 import EmailOps from "./pages/pps/admin/EmailOps";
 import ResetPassword from "./pages/pps/admin/ResetPassword";
+import PolicyNotifications from "./pages/pps/admin/PolicyNotifications";
 
 // Legacy redirect: forward /pps/* paths to clean URLs
 function LegacyPPSRedirect() {
@@ -334,6 +335,8 @@ const App = () => (
             <Route path="blue-door/success" element={<BlueDoorSuccess />} />
             <Route path="contact" element={<PPSContact />} />
             <Route path="terms" element={<TermsAndConditions />} />
+            <Route path="privacy" element={<Navigate to="/terms?tab=privacy" replace />} />
+            <Route path="cookies" element={<Navigate to="/terms?tab=cookies" replace />} />
             <Route path="sitemap" element={<Sitemap />} />
             <Route path="found-it" element={<EasterEggForm />} />
             <Route path="unsubscribe" element={<Unsubscribe />} />
@@ -397,6 +400,7 @@ const App = () => (
             <Route path="emails" element={<SiteEmails />} />
             <Route path="emails/health" element={<Navigate to="/admin/emails/queue" replace />} />
             <Route path="emails/queue" element={<EmailOps />} />
+            <Route path="policy-notifications" element={<PolicyNotifications />} />
           </Route>
           
           {/* Legacy /pps/* redirects + 404 catch-all */}
