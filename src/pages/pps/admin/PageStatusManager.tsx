@@ -171,8 +171,9 @@ export default function PageStatusManager() {
           </Button>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
-          Tip: every URL is Live by default. You only need to add an entry here when you want to
-          hide something from the public.
+          Tip: every new URL is Draft by default. Flip it to Live here (or on the
+          sitemap) when it's ready for the public. Admin, auth, and sitemap
+          routes stay Live automatically.
         </p>
       </Card>
 
