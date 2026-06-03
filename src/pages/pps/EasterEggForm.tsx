@@ -58,10 +58,13 @@ const EasterEggForm = () => {
       const [firstName, ...rest] = data.name.trim().split(/\s+/);
       const lastName = rest.join(" ") || "—";
 
+      const charityWebsite = data.charityWebsite?.trim() || "";
+
       const detailsMessage =
         `[Easter Egg Hunt — /found-it]\n\n` +
         `What they found:\n${data.explanation}\n\n` +
-        `Charity to donate $50 to:\n${data.charity}` +
+        `Charity to donate $25 to:\n${data.charity}` +
+        (charityWebsite ? `\nWebsite: ${charityWebsite}` : "") +
         (data.comments ? `\n\nAdditional comments:\n${data.comments}` : "");
 
       // 1. Push to GHL (contact + opportunity, tagged for the Easter egg hunt)
