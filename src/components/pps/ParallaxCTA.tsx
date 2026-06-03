@@ -2,6 +2,7 @@ import { ReactNode, useId } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useIsPageLive } from "@/hooks/useIsPageLive";
 
 /**
  * Accessible Parallax CTA section.
