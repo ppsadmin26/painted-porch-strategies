@@ -44,6 +44,12 @@ describe("Draft page visibility — nav/footer/CTA filtering", () => {
   });
 
   it("simulates non-admin filter — draft items removed from a link list", () => {
+    // /about and /resources have explicit Live overrides; /courses is Draft.
+    const map: PageStatusMap = {
+      ...draftMap,
+      "/about": { id: "a", path: "/about", status: "live", note: null, updated_at: "" },
+      "/resources": { id: "r", path: "/resources", status: "live", note: null, updated_at: "" },
+    };
     const links = [
       { href: "/about" },
       { href: "/courses" },
@@ -52,7 +58,7 @@ describe("Draft page visibility — nav/footer/CTA filtering", () => {
     ];
     const canPreview = false;
     const visible = links.filter(
-      (l) => canPreview || resolvePageStatus(l.href, draftMap) === "live",
+      (l) => canPreview || resolvePageStatus(l.href, map) === "live",
     );
     expect(visible.map((l) => l.href)).toEqual(["/about", "/resources"]);
   });
