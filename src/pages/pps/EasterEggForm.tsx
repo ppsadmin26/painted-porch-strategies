@@ -89,6 +89,7 @@ const EasterEggForm = () => {
         email: data.email.trim(),
         explanation: data.explanation.trim(),
         charity: data.charity.trim(),
+        charityWebsite: charityWebsite || undefined,
         comments: data.comments?.trim() || undefined,
       };
 
