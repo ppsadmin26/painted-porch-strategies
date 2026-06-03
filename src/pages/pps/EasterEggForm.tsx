@@ -44,6 +44,7 @@ const EasterEggForm = () => {
       
       explanation: "",
       charity: "",
+      charityWebsite: "",
       comments: "",
     },
   });
