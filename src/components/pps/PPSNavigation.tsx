@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import ppsLogo from "@/assets/pps-logo.png";
 import { SiteSearch } from "@/components/pps/SiteSearch";
+import { useArePagesLive } from "@/hooks/useIsPageLive";
 
 const navLinks = [
   { label: "What is Phase Zero?", href: "/phase-zero" },
