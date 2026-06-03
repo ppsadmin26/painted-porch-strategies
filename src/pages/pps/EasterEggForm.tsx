@@ -16,6 +16,12 @@ const formSchema = z.object({
   email: z.string().min(1, "We need a valid email to send your confirmation.").email("We need a valid email to send your confirmation."),
   explanation: z.string().min(10, "Just a line or two — we want to know you got it."),
   charity: z.string().min(1, "Name the organization and we'll take it from here."),
+  charityWebsite: z
+    .string()
+    .trim()
+    .url("Please enter a valid URL (include https://).")
+    .optional()
+    .or(z.literal("")),
   comments: z.string().optional(),
 });
 
