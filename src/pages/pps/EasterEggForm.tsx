@@ -231,7 +231,30 @@ const EasterEggForm = () => {
                           />
                         </FormControl>
                         <FormDescription className="text-xs text-muted-foreground">
-                          We'll make a $50 donation on your behalf. We reserve the right to redirect donations away from organizations that conflict with our values — we'll let you know if that happens and ask for an alternative.
+                          We'll make a $25 donation on your behalf. We reserve the right to redirect donations away from organizations that conflict with our values — we'll let you know if that happens and ask for an alternative.
+                        </FormDescription>
+                        <FormMessage className="text-raspberry" />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="charityWebsite"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-montserrat font-semibold text-sm text-foreground">Charity Website</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="url"
+                            inputMode="url"
+                            placeholder="https://example.org"
+                            className="h-12 rounded-lg border-[#CCCCCC] focus:border-primary focus-visible:ring-primary text-base"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormDescription className="text-xs text-muted-foreground">
+                          Helps us find the right organization (especially when names overlap). Include https://.
                         </FormDescription>
                         <FormMessage className="text-raspberry" />
                       </FormItem>
