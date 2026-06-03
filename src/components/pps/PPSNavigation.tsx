@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import ppsLogo from "@/assets/pps-logo.png";
 import { SiteSearch } from "@/components/pps/SiteSearch";
+import { useArePagesLive } from "@/hooks/useIsPageLive";
 
 const navLinks = [
   { label: "What is Phase Zero?", href: "/phase-zero" },
@@ -59,6 +60,33 @@ export default function PPSNavigation() {
   const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
   const location = useLocation();
 
+  // Collect every internal path used in the nav so we can check status in a
+  // single query and filter draft items out for non-admin visitors.
+  const allPaths = useMemo(() => {
+    const paths: string[] = [];
+    for (const l of navLinks) {
+      paths.push(l.href);
+      if (l.children) for (const c of l.children) paths.push(c.href);
+    }
+    paths.push("/start-here");
+    return paths;
+  }, []);
+  const { liveMap } = useArePagesLive(allPaths);
+
+  const visibleNav = useMemo(() => {
+    return navLinks
+      .map((l) => {
+        const children = l.children?.filter((c) => liveMap[c.href] !== false);
+        const parentLive = liveMap[l.href] !== false;
+        // If parent is draft AND no live children, hide entirely.
+        if (!parentLive && (!children || children.length === 0)) return null;
+        return { ...l, children };
+      })
+      .filter(Boolean) as typeof navLinks;
+  }, [liveMap]);
+
+  const startHereLive = liveMap["/start-here"] !== false;
+
   const isActiveLink = (href: string) => {
     if (href === "/") return location.pathname === "/";
     return location.pathname === href || location.pathname.startsWith(href + "/");
@@ -79,8 +107,8 @@ export default function PPSNavigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-3">
-            {navLinks.map((link) =>
-              link.children ? (
+            {visibleNav.map((link) =>
+              link.children && link.children.length > 0 ? (
                 <DropdownMenu key={link.href}>
                   <div className="flex items-center">
                     <Link
@@ -133,11 +161,13 @@ export default function PPSNavigation() {
               ),
             )}
             <SiteSearch />
-            <Link to="/start-here">
-              <Button className="bg-primary hover:bg-primary/90 text-xs px-3 py-1 h-8">
-                Discover Your P.A.T.H.way
-              </Button>
-            </Link>
+            {startHereLive && (
+              <Link to="/start-here">
+                <Button className="bg-primary hover:bg-primary/90 text-xs px-3 py-1 h-8">
+                  Discover Your P.A.T.H.way
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile: Search + Menu Button */}
@@ -161,9 +191,9 @@ export default function PPSNavigation() {
         {mobileMenuOpen && (
           <div className="lg:hidden py-4 border-t">
             <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
+              {visibleNav.map((link) => (
                 <div key={link.href}>
-                  {link.children ? (
+                  {link.children && link.children.length > 0 ? (
                     <div>
                       <div className="flex items-center justify-between">
                         <Link
@@ -225,11 +255,13 @@ export default function PPSNavigation() {
                   )}
                 </div>
               ))}
-              <Link to="/start-here" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="bg-primary hover:bg-primary/90 w-full mt-2">
-                  Discover Your P.A.T.H.way
-                </Button>
-              </Link>
+              {startHereLive && (
+                <Link to="/start-here" onClick={() => setMobileMenuOpen(false)}>
+                  <Button className="bg-primary hover:bg-primary/90 w-full mt-2">
+                    Discover Your P.A.T.H.way
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         )}

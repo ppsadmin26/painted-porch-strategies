@@ -122,8 +122,10 @@ export default function PageStatusManager() {
         <div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-pps-navy">Page Status</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Mark pages as Live or Draft. Drafts show a friendly Coming Soon screen to the public,
-            and the real page to signed-in staff.
+            Mark pages as Live or Draft. Drafts are hidden from navigation and
+            footer, replaced with a "Coming Soon" badge on cards and CTAs that
+            link to them, and show a friendly Coming Soon page if visited
+            directly. Signed-in admins and editors still see everything.
           </p>
         </div>
         <Button

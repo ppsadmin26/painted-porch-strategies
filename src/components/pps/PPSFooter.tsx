@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Youtube, Facebook, Instagram, Linkedin } from "lucide-react";
 import ppsLogoWhite from "@/assets/pps-logo-white.png";
+import { useArePagesLive } from "@/hooks/useIsPageLive";
 
 export default function PPSFooter() {
   const quickLinks = [
@@ -21,6 +22,12 @@ export default function PPSFooter() {
     { label: "Strategic Sprints", href: "/partner/amplify/sprints" },
     { label: "Organizational Advisory", href: "/partner/embody" },
   ];
+
+  const { liveMap } = useArePagesLive([...quickLinks, ...pathways].map((l) => l.href));
+  const visibleQuick = quickLinks.filter((l) => liveMap[l.href] !== false);
+  const visiblePathways = pathways.filter((l) => liveMap[l.href] !== false);
+
+
 
   const socials = [
     { icon: Youtube, href: "https://www.youtube.com/@onthepaintedporch", label: "YouTube" },
@@ -50,7 +57,7 @@ export default function PPSFooter() {
           <div>
             <h4 className="text-base md:text-lg font-poppins font-semibold text-gold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
+              {visibleQuick.map((link) => (
                 <li key={link.href}>
                   <Link to={link.href} className="text-sm text-white/80 hover:text-lime transition-colors">
                     {link.label}
@@ -64,7 +71,7 @@ export default function PPSFooter() {
           <div>
             <h4 className="text-base md:text-lg font-poppins font-semibold text-gold mb-4">P.A.T.H.ways</h4>
             <ul className="space-y-2">
-              {pathways.map((link) => (
+              {visiblePathways.map((link) => (
                 <li key={link.href}>
                   <Link to={link.href} className="text-sm text-white/80 hover:text-lime transition-colors">
                     {link.label}
