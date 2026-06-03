@@ -1,4 +1,4 @@
-import { FileText, Mic, Users, LayoutDashboard, Settings, Youtube, Video, Database, Wand2, ShieldCheck, KeyRound, ListChecks, Mail, Inbox, ScrollText } from "lucide-react";
+import { FileText, Mic, Users, LayoutDashboard, Settings, Youtube, Video, Database, Wand2, ShieldCheck, KeyRound, ListChecks, Mail, Inbox, ScrollText, ToggleLeft, Map } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
 import { useAdminSections, type AdminSection } from "@/hooks/useAdminSections";
