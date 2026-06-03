@@ -272,6 +272,7 @@ export const sitemapData: SitemapNode[] = [
       { label: "YouTube Videos", path: "/admin/youtube" },
       { label: "Site Videos", path: "/admin/videos" },
       { label: "Page Status", path: "/admin/pages", note: "Mark pages as Live or Draft" },
+      { label: "Policy Notifications", path: "/admin/policy-notifications", note: "Email subscribers when Terms/Privacy/Cookies change" },
       { label: "Account Settings", path: "/admin/account" },
     ],
   },
