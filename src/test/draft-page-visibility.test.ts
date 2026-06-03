@@ -25,8 +25,8 @@ describe("Draft page visibility — nav/footer/CTA filtering", () => {
     expect(resolvePageStatus("/partner/ignite/courses", draftMap)).toBe("draft");
   });
 
-  it("defaults unknown paths to live", () => {
-    expect(resolvePageStatus("/about", draftMap)).toBe("live");
+  it("defaults unknown paths to draft", () => {
+    expect(resolvePageStatus("/about", draftMap)).toBe("draft");
   });
 
   it("never gates ALWAYS_LIVE_PREFIXES even with override", () => {
