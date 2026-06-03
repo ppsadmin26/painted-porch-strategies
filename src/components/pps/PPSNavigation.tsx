@@ -161,11 +161,13 @@ export default function PPSNavigation() {
               ),
             )}
             <SiteSearch />
-            <Link to="/start-here">
-              <Button className="bg-primary hover:bg-primary/90 text-xs px-3 py-1 h-8">
-                Discover Your P.A.T.H.way
-              </Button>
-            </Link>
+            {startHereLive && (
+              <Link to="/start-here">
+                <Button className="bg-primary hover:bg-primary/90 text-xs px-3 py-1 h-8">
+                  Discover Your P.A.T.H.way{canPreview && liveMap["/start-here"] === false ? " (Draft)" : ""}
+                </Button>
+              </Link>
+            )}
           </div>
 
           {/* Mobile: Search + Menu Button */}
