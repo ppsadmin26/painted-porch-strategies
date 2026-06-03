@@ -63,10 +63,12 @@ export default function PageStatusManager() {
 
   const overrides = useMemo(
     () =>
-      Object.values(map).sort((a, b) => {
-        if (a.status !== b.status) return a.status === "draft" ? -1 : 1;
-        return a.path.localeCompare(b.path);
-      }),
+      Object.values(map)
+        .filter((entry) => !entry.path.startsWith("/admin"))
+        .sort((a, b) => {
+          if (a.status !== b.status) return a.status === "draft" ? -1 : 1;
+          return a.path.localeCompare(b.path);
+        }),
     [map],
   );
 
