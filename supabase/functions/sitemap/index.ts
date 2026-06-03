@@ -42,7 +42,7 @@ Deno.serve(async (req) => {
     .order("publish_date", { ascending: false });
 
   // Pull all draft overrides so we can exclude them from the public sitemap.
-  const { data: draftRows } = await supabase
+  const { data: draftRows } = await supabaseAdmin
     .from("page_status")
     .select("path")
     .eq("status", "draft");
