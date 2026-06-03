@@ -45,14 +45,14 @@ export default function PageStatusManager() {
       }
       const rows = missing.map((path) => ({
         path,
-        status: "live" as const,
+        status: "draft" as const,
         note: "Synced from sitemap",
       }));
       const { error } = await supabase.from("page_status").insert(rows);
       if (error) throw error;
       toast({
         title: "Sitemap synced",
-        description: `Added ${missing.length} missing path${missing.length === 1 ? "" : "s"} as Live.`,
+        description: `Added ${missing.length} missing path${missing.length === 1 ? "" : "s"} as Draft.`,
       });
     } catch (err) {
       toast({ title: "Sync failed", description: String(err), variant: "destructive" });
