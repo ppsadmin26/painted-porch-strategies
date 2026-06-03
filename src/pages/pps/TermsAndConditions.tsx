@@ -324,7 +324,7 @@ const TermsAndConditions = () => {
               <Link to="/found-it" className="text-primary font-semibold underline underline-offset-2 hover:text-primary/80 transition-colors">
                 paintedporchstrategies.com/found-it
               </Link>
-              . Find one, tell us what it is, and we'll donate $50 to a charity of your choice.
+              . Find one, tell us what it is, and we'll donate $25 to a charity of your choice.
             </p>
           </div>
 
