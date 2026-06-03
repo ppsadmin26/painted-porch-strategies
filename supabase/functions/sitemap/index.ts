@@ -5,6 +5,14 @@ const corsHeaders = {
   "Content-Type": "application/xml; charset=utf-8",
 };
 
+// Routes that bypass page_status overrides — auth, admin, sitemap, 404, contact.
+// Mirrors ALWAYS_LIVE_PREFIXES in src/config/pageStatus.ts.
+const ALWAYS_LIVE_PREFIXES = ["/admin", "/reset-password", "/sitemap", "/404", "/contact"];
+
+function isAlwaysLive(path: string) {
+  return ALWAYS_LIVE_PREFIXES.some((p) => path === p || path.startsWith(`${p}/`));
+}
+
 function getSiteUrl(req: Request) {
   const forwardedProto = req.headers.get("x-forwarded-proto");
   const forwardedHost = req.headers.get("x-forwarded-host");
@@ -29,6 +37,15 @@ Deno.serve(async (req) => {
     .select("slug, updated_at, publish_date")
     .eq("status", "published")
     .order("publish_date", { ascending: false });
+
+  // Pull all draft overrides so we can exclude them from the public sitemap.
+  const { data: draftRows } = await supabase
+    .from("page_status")
+    .select("path")
+    .eq("status", "draft");
+  const draftPaths = new Set<string>((draftRows ?? []).map((r: { path: string }) => r.path));
+
+  const isPublic = (path: string) => isAlwaysLive(path) || !draftPaths.has(path);
 
   const staticPages = [
     { loc: "/", priority: "1.0", changefreq: "weekly" },
@@ -57,7 +74,7 @@ Deno.serve(async (req) => {
     { loc: "/terms", priority: "0.3", changefreq: "yearly" },
     { loc: "/privacy", priority: "0.3", changefreq: "yearly" },
     { loc: "/cookies", priority: "0.3", changefreq: "yearly" },
-  ];
+  ].filter((page) => isPublic(page.loc));
 
   const today = new Date().toISOString().split("T")[0];
 
@@ -78,9 +95,11 @@ Deno.serve(async (req) => {
   if (posts) {
     for (const post of posts) {
       if (!post.slug) continue;
+      const path = `/resources/insights/${post.slug}`;
+      if (!isPublic(path)) continue;
       const lastmod = (post.updated_at || post.publish_date || today).split("T")[0];
       xml += `  <url>
-    <loc>${siteUrl}/resources/insights/${post.slug}</loc>
+    <loc>${siteUrl}${path}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
