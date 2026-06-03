@@ -6,13 +6,28 @@
     <meta name="color-scheme" content="light only" />
     <link rel="icon" type="image/png" href="/favicon.png">
     
-    <!-- Google Analytics -->
+    <!-- Google Analytics (Consent Mode v2 — privacy-first defaults) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7SY09HQJ3"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      // Consent Mode v2: deny ad/personalization until/if a banner ever sets them.
+      // Analytics_storage defaults to granted (legitimate-interest analytics with IP
+      // anonymization). Marketing pixels — when added — must flip ad_* to granted
+      // only after explicit consent, via a future cookie banner.
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'granted',
+        wait_for_update: 500,
+      });
       gtag('js', new Date());
-      gtag('config', 'G-N7SY09HQJ3');
+      gtag('config', 'G-N7SY09HQJ3', {
+        anonymize_ip: true,
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+      });
     </script>
     <title>Painted Porch Strategies | Architect Extraordinary Outcomes</title>
     <meta name="description" content="Painted Porch Strategies partners with leaders to architect extraordinary outcomes through Phase Zero™ strategic positioning and organizational transformation.">
