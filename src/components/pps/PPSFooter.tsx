@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Youtube, Facebook, Instagram, Linkedin } from "lucide-react";
 import ppsLogoWhite from "@/assets/pps-logo-white.png";
+import { useArePagesLive } from "@/hooks/useIsPageLive";
 
 export default function PPSFooter() {
   const quickLinks = [
