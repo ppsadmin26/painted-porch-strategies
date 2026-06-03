@@ -45,14 +45,14 @@ export default function PageStatusManager() {
       }
       const rows = missing.map((path) => ({
         path,
-        status: "live" as const,
+        status: "draft" as const,
         note: "Synced from sitemap",
       }));
       const { error } = await supabase.from("page_status").insert(rows);
       if (error) throw error;
       toast({
         title: "Sitemap synced",
-        description: `Added ${missing.length} missing path${missing.length === 1 ? "" : "s"} as Live.`,
+        description: `Added ${missing.length} missing path${missing.length === 1 ? "" : "s"} as Draft.`,
       });
     } catch (err) {
       toast({ title: "Sync failed", description: String(err), variant: "destructive" });
@@ -171,8 +171,9 @@ export default function PageStatusManager() {
           </Button>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
-          Tip: every URL is Live by default. You only need to add an entry here when you want to
-          hide something from the public.
+          Tip: every new URL is Draft by default. Flip it to Live here (or on the
+          sitemap) when it's ready for the public. Admin, auth, and sitemap
+          routes stay Live automatically.
         </p>
       </Card>
 

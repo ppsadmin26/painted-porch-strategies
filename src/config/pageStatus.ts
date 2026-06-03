@@ -48,6 +48,10 @@ function matchesPath(pattern: string, pathname: string): boolean {
 /**
  * Resolve the effective status for a pathname given the current DB map.
  * Used by PageGate and Sitemap.
+ *
+ * Default (no override): "draft" — every new URL is hidden until an admin
+ * explicitly marks it Live in /admin/pages or /sitemap. Always-live prefixes
+ * (admin, auth, sitemap, 404, contact) bypass this and stay Live.
  */
 export function resolvePageStatus(pathname: string, map: PageStatusMap): PageStatus {
   if (isAlwaysLive(pathname)) return "live";
@@ -58,7 +62,7 @@ export function resolvePageStatus(pathname: string, map: PageStatusMap): PageSta
   for (const record of Object.values(map)) {
     if (matchesPath(record.path, pathname)) return record.status;
   }
-  return "live";
+  return "draft";
 }
 
 export function resolvePageStatusEntry(
