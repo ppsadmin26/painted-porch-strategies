@@ -255,11 +255,13 @@ export default function PPSNavigation() {
                   )}
                 </div>
               ))}
-              <Link to="/start-here" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="bg-primary hover:bg-primary/90 w-full mt-2">
-                  Discover Your P.A.T.H.way
-                </Button>
-              </Link>
+              {startHereLive && (
+                <Link to="/start-here" onClick={() => setMobileMenuOpen(false)}>
+                  <Button className="bg-primary hover:bg-primary/90 w-full mt-2">
+                    Discover Your P.A.T.H.way
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
         )}
