@@ -71,7 +71,7 @@ export default function PPSNavigation() {
     paths.push("/start-here");
     return paths;
   }, []);
-  const { liveMap, canPreview } = useArePagesLive(allPaths);
+  const { liveMap } = useArePagesLive(allPaths);
 
   const visibleNav = useMemo(() => {
     return navLinks
