@@ -345,7 +345,7 @@ function SitemapBranch({
             Draft
           </span>
         )}
-        {canManage && node.path && (
+        {canManage && node.path && !node.path.startsWith("/admin") && (
           <InlineStatusControl
             path={node.path}
             entry={draftEntry}

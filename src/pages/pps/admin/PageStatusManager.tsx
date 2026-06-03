@@ -37,7 +37,7 @@ export default function PageStatusManager() {
   const syncFromSitemap = async () => {
     setSyncing(true);
     try {
-      const paths = collectSitemapPaths();
+      const paths = collectSitemapPaths().filter((p) => !p.startsWith("/admin"));
       const missing = paths.filter((p) => !map[p]);
       if (missing.length === 0) {
         toast({ title: "Already in sync", description: "Every sitemap route has a row." });
@@ -63,10 +63,12 @@ export default function PageStatusManager() {
 
   const overrides = useMemo(
     () =>
-      Object.values(map).sort((a, b) => {
-        if (a.status !== b.status) return a.status === "draft" ? -1 : 1;
-        return a.path.localeCompare(b.path);
-      }),
+      Object.values(map)
+        .filter((entry) => !entry.path.startsWith("/admin"))
+        .sort((a, b) => {
+          if (a.status !== b.status) return a.status === "draft" ? -1 : 1;
+          return a.path.localeCompare(b.path);
+        }),
     [map],
   );
 
@@ -97,6 +99,14 @@ export default function PageStatusManager() {
       toast({
         title: "Invalid path",
         description: "Path must start with / (e.g. /new-offering).",
+        variant: "destructive",
+      });
+      return;
+    }
+    if (path === "/admin" || path.startsWith("/admin/")) {
+      toast({
+        title: "Admin pages can't be drafts",
+        description: "Admin routes are always live and not gated by page status.",
         variant: "destructive",
       });
       return;
