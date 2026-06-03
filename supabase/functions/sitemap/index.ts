@@ -27,8 +27,11 @@ function getSiteUrl(req: Request) {
 
 Deno.serve(async (req) => {
   const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-  const supabaseKey = Deno.env.get("SUPABASE_ANON_KEY")!;
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+  // Service role key lets us see Draft overrides (anon RLS only exposes Live rows).
+  const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? anonKey;
+  const supabase = createClient(supabaseUrl, anonKey);
+  const supabaseAdmin = createClient(supabaseUrl, serviceKey);
 
   const siteUrl = getSiteUrl(req);
 
