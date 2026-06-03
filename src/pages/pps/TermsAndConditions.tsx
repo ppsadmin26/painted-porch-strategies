@@ -20,7 +20,7 @@ const TermsAndConditions = () => {
         headline="Terms of The Porch."
         subheadline="The Version You Might Actually Read"
         description={
-          <p className="text-white/60 italic text-base">As of March 28, 2026</p>
+          <p className="text-white/60 italic text-base">Last Updated: June 3, 2026</p>
         }
         ctas={[]}
         background={{ type: "image", src: termsHero }}
