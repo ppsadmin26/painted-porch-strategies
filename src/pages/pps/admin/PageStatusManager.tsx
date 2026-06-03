@@ -103,6 +103,14 @@ export default function PageStatusManager() {
       });
       return;
     }
+    if (path === "/admin" || path.startsWith("/admin/")) {
+      toast({
+        title: "Admin pages can't be drafts",
+        description: "Admin routes are always live and not gated by page status.",
+        variant: "destructive",
+      });
+      return;
+    }
     setAdding(true);
     try {
       await setStatus(path, "draft", newNote.trim() || null);
