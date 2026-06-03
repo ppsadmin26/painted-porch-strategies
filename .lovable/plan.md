@@ -1,74 +1,109 @@
+# Plan: Unified Terms / Privacy / Cookies + Policy Update Notifier
 
-# Stats Integration Plan — McKinsey + Human Data
+## 1. Single page, three tabs at `/terms`
 
-## Recommendation (the "why" first)
+Rebuild `src/pages/pps/TermsAndConditions.tsx` as one page with a tab switcher (shadcn `Tabs` component) so a single link + checkbox satisfies purchase acknowledgement flows.
 
-Your data tells two distinct stories, and the ICP cares about different parts of each depending on where they are in the journey. Forcing it all into one section flattens the message. Instead, distribute by **page intent**:
+Tabs:
+- **Terms of Service** (existing content, tightened — acceptable use, DMCA, expanded arbitration, class-action waiver + 30-day opt-out, jury trial waiver, small-claims/IP carve-outs)
+- **Privacy Policy** (full GDPR + UK GDPR + CCPA/CPRA + PIPEDA + Québec Law 25 coverage)
+- **Cookie Policy** (no banner — disclosure + browser-management guidance + GA disclosure)
 
-| Page | Audience mindset | Story to tell | Stat type |
-|---|---|---|---|
-| **Home** (`/`) | "Is this for me?" — broad, skim-reading | Reality check that this isn't a niche problem. Hook attention. | Headline scrollers + 1 hero stat band |
-| **`/partner`** (org hub) | "We have a real change initiative. Is this serious?" | Why org architecture (not training, not management) is the gap. | McKinsey "shifts" stats, framed against Pillars |
-| **`/partner/embody`** | "We're committing 6–12 months. Convince me the human cost is real." | The human cost of unarchitected change. Justifies the depth of the engagement. | Human/burnout stats |
+Shared header: "Last Updated: June 3, 2026" (replaces "Effective"). Deep links: `?tab=privacy`, `?tab=cookies`, `?tab=terms` so external acknowledgement links can land on a specific tab.
 
-This matches your three frameworks: **Pillars** answer the org-structure problem (partner hub), **Phase Zero™** answers the change-fatigue problem (home), **EMBODY's** depth is justified by burnout data.
+`/privacy` and `/cookies` routes will redirect to `/terms?tab=privacy` and `/terms?tab=cookies` so any link out in the wild still resolves.
+
+## 2. Unified policy contact
+
+All terms / privacy / cookie / DMCA / data-subject-rights inquiries route to **policies@onthepaintedporch.com**. Replace every prior email reference (privacy@, dmca@, legal@) in the drafts with this single address.
+
+## 3. Sub-processors list (expanded + corrected)
+
+| Sub-processor | Purpose | Region |
+|---|---|---|
+| Lovable Cloud (Supabase infra) | Hosting, database, auth, storage | US |
+| Stripe | Payments (Blue Door, future products) | US |
+| GoHighLevel | CRM, lead capture, course access & delivery, email/SMS automation | US |
+| AidaForm | Assessment intake forms | EU |
+| Anthropic (Claude) | AI-assisted analysis of assessment responses | US |
+| Resend / Lovable Emails (Mailgun) | Transactional email delivery | US/EU |
+| YouTube (Google) | Video embeds | US |
+| Sanity | Content management (if/where used) | US/EU |
+| Firecrawl | LinkedIn article import (admin-only, no end-user PII) | US |
+| Google Analytics | Site analytics — see Cookie tab | US |
+| ClickUp | Project management & support ticketing *(only if client PII lands in tasks — confirm before including)* |
+
+I'll mark ClickUp pending your confirmation. The rest get full entries with purpose + data categories + region.
+
+## 4. Google Analytics handling (no banner yet)
+
+Per discussion above, going with **Option 2**:
+- Disclose GA in Cookie tab (cookies set, data collected, retention, opt-out link to Google's browser add-on).
+- Disclose in Privacy tab under "Analytics" with legitimate-interest basis (EU) / disclosed collection (CA).
+- Add a TODO note in the page header comment to revisit when marketing pixels are added — that's when we add the real consent banner.
+- **Recommend** (not in this plan, separate task if you want): tighten GA config to Consent Mode v2 + anonymize IP + disable Google Signals.
+
+## 5. Voice & easter eggs (preserved + new)
+
+Keep Amy's "huggable bear" voice throughout. Existing eggs preserved. New ones planted:
+- *sine ira et studio* (Stoic nod)
+- "interpretive dance" (arbitration section)
+- "a very alert cup of coffee" (data retention)
+- "apologies to anyone who came here looking for actual baked goods" (Cookie tab opener)
+- "The Dude would not abide" + "Inconceivable" (Acceptable Use)
+- **Updated closing easter egg paragraph** — donate $25 language, refreshed riddle, still routes to `/found-it`
+
+## 6. Policy-update email notifier
+
+**The trigger problem:** you'll likely save 3–5 times in a session before a change is "really" done. So we don't auto-fire on save.
+
+**Solution: Explicit "Notify subscribers" admin action.**
+
+- New admin route: `/admin/policy-notifications` (admin-only, gated by `PageGate`)
+- Lists past notifications (date sent, recipient count, which tab(s) changed, who triggered)
+- Big button: **"Send Policy Update Notification"** with:
+  - Checkbox group: which sections changed (Terms / Privacy / Cookies / All)
+  - Text field: short plain-English summary of what changed (goes in the email)
+  - Preview button (renders the email)
+  - Confirm dialog: "This will email **N** recipients. Continue?"
+
+**Recipients:** all addresses currently in `suppressed_emails` are excluded automatically. Source list = union of:
+- `email_unsubscribe_tokens` table (everyone we've ever sent transactional mail to)
+- *(optionally)* GHL contacts — flag this for later, since GHL is the source of truth for your real audience and we'd want a dedicated edge function
+
+**New pieces required:**
+- New table: `policy_update_notifications` (id, sent_at, sent_by, sections jsonb, summary, recipient_count) — admin RLS only
+- New transactional email template: `policy-update-notification.tsx` in `_shared/transactional-email-templates/` + registry entry
+- New edge function: `send-policy-update-notification` (admin-auth-gated, iterates recipients in batches, calls existing `send-transactional-email`, writes the row)
+- Admin page component + sidebar link
+
+The email itself: branded (navy/teal/gold), plain English, explains what changed, links to `/terms?tab=<changed>`, includes one-click unsubscribe (auto-appended by existing infra).
+
+## 7. Routing & sitemap
+
+- `/terms` — existing route, now hosts all three tabs
+- `/privacy` — new redirect → `/terms?tab=privacy`
+- `/cookies` — new redirect → `/terms?tab=cookies`
+- Sitemap (`/sitemap`) + `page_status` rows: add `/privacy` and `/cookies` as **Live** (per memory rule — confirming below)
+- `/admin/policy-notifications` — Draft / admin-only
+
+## 8. Footer
+
+Add Privacy and Cookies links alongside the existing Terms link in `PPSFooter.tsx`, all pointing into the appropriate tab.
 
 ---
 
-## What gets built
+## Open confirmations before I build
 
-### 1. Home page — "The 3AM Stats Bar" + one inline data moment
-**Why here:** Home visitors are scanning. We need pattern interrupts, not paragraphs.
-
-- **A. Stat Marquee Bar** — slim, animated horizontal scroller (similar feel to the 3AM Questions strip you referenced), placed after the welcome/positioning section, before the P.A.T.H. ladder. Cycles 4 short stats with sources:
-  - "86% of organizations aren't ready to adopt AI at scale" — McKinsey
-  - "2 in 3 leaders say their organization is overly complex and inefficient" — McKinsey
-  - "Only 32% of leaders say their last change effort actually stuck" — Gartner
-  - "Global employee engagement fell to 20% in 2025" — Gallup
-- **B. Inline pull-quote stat** woven into existing copy: "$10 trillion in lost productivity. 9% of global GDP. That's the cost of asking people to adapt to change their organization wasn't built to hold." (Gallup, cited)
-
-### 2. `/partner` (Partner With Us hub) — McKinsey "Reality vs. The Shift" section
-**Why here:** This is the page where decision-makers evaluate whether PPS understands their problem. Show we've read the room.
-
-- New section: **"The Architecture Gap"** (placed before "How To Choose")
-- **Style B (Editorial data band)** with split-row "Reality → Shift" cards using **Style C** treatment:
-  - **Reality:** 86% not ready for AI · The Shift: Foundational Architecture must hold tech, not chase it
-  - **Reality:** 2 in 3 say overly complex · The Shift: Operational Intelligence redesigns flow
-  - **Reality:** Only 32% saw change stick · The Shift: Phase Zero™ authors what gets built
-  - **Reality:** 79% have low trust in change · The Shift: Human Capacity makes adoption durable
-- Color-codes each row to its matching Pillar (Teal, Lime, Raspberry, Navy).
-- Small superscript citations linking to a `[Sources]` accordion at the bottom.
-
-### 3. `/partner/embody` — "The Human Cost" stat band
-**Why here:** EMBODY is the deepest, most expensive tier. The investment is justified by the magnitude of the human problem. Placed before the final CTA.
-
-- **Style A (Bold stat cards)** — 3-card grid in raspberry/gold on a muted background:
-  - **20%** — Global employee engagement, lowest since 2020 (Gallup 2026)
-  - **1 in 4** — Employees report burnout symptoms (McKinsey Health)
-  - **52% / 49%** — "Always" or "often" exhausted / stressed (Deloitte)
-- Single line of PPS framing underneath: *"This is what unarchitected change does to people. EMBODY exists so it stops happening on your watch."*
-
----
-
-## Shared infrastructure
-
-- **New component:** `src/components/pps/StatCard.tsx` — reusable big-number card (number, label, source). Variants: `bold` | `editorial` | `inline`.
-- **New component:** `src/components/pps/StatMarquee.tsx` — slim, auto-scrolling stat bar (CSS marquee, pauses on hover, respects `prefers-reduced-motion`).
-- **New data file:** `src/data/research-stats.ts` — single source of truth so the same stat appears identically wherever it's cited (one place to update if numbers change).
-- **Citations:** small `<sup>` numbers next to each stat, footnoted at the bottom of each section. Match the citation style used in your "Architecture of Change" article.
+1. **ClickUp** — does any client/user PII (names, emails, support messages) actually land in ClickUp tasks? If yes, include it; if no, skip.
+2. **GA Consent Mode tightening** — want me to do that in a follow-up task, or leave GA as-is?
+3. **Sitemap** — confirm `/privacy` and `/cookies` redirects should be **Live** on the sitemap page.
+4. **GHL recipients for notifier** — start with just our internal email list (`email_unsubscribe_tokens`), or wire up GHL contacts now?
+5. **Draft document review** — last round you asked for the drafts before I built. Want me to produce the **final merged document** (all three tabs in one markdown doc) for one more red-line pass before I write code?
 
 ## Technical notes
 
-- All stats live in `src/data/research-stats.ts` keyed by ID; components accept a `statId`.
-- Trademark rule respected: Phase Zero™ already used on `/partner`, so the new section uses it without re-marking. Pillars references use the shorthand "Porch Pillars" after first use on the page.
-- No new routes, so no `page_status` / Sitemap entries needed.
-- No backend changes.
-- Files touched: ~3 new components/data file, edits to `PPSHome.tsx`, `PartnerWithUs.tsx` (or equivalent partner hub), and the EMBODY page.
-
-## Out of scope (flag for later)
-- Animated count-up on stat reveal (could add later if you want; `useCountUp` already exists).
-- A dedicated "Research & Data" resources page that aggregates all citations — worth considering once you have 10+ cited stats across the site.
-
----
-
-Want me to proceed exactly as above, or adjust any of the three placements / stat picks first?
+- Tabs implemented with shadcn `Tabs` + URL sync via `useSearchParams` so deep links work and tab state survives refresh.
+- Redirects via React Router `<Navigate>` (preserves query strings).
+- The notifier edge function uses the existing pgmq queue path (one enqueue per recipient with idempotency key = `policy-update-{notification_id}-{email}`) so the queue's retry/suppression/throttle logic just works.
+- DB migration: new `policy_update_notifications` table with GRANTs + RLS (admin select/insert only).
