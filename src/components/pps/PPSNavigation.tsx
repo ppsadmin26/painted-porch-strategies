@@ -60,6 +60,33 @@ export default function PPSNavigation() {
   const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
   const location = useLocation();
 
+  // Collect every internal path used in the nav so we can check status in a
+  // single query and filter draft items out for non-admin visitors.
+  const allPaths = useMemo(() => {
+    const paths: string[] = [];
+    for (const l of navLinks) {
+      paths.push(l.href);
+      if (l.children) for (const c of l.children) paths.push(c.href);
+    }
+    paths.push("/start-here");
+    return paths;
+  }, []);
+  const { liveMap, canPreview } = useArePagesLive(allPaths);
+
+  const visibleNav = useMemo(() => {
+    return navLinks
+      .map((l) => {
+        const children = l.children?.filter((c) => liveMap[c.href] !== false);
+        const parentLive = liveMap[l.href] !== false;
+        // If parent is draft AND no live children, hide entirely.
+        if (!parentLive && (!children || children.length === 0)) return null;
+        return { ...l, children };
+      })
+      .filter(Boolean) as typeof navLinks;
+  }, [liveMap]);
+
+  const startHereLive = liveMap["/start-here"] !== false;
+
   const isActiveLink = (href: string) => {
     if (href === "/") return location.pathname === "/";
     return location.pathname === href || location.pathname.startsWith(href + "/");
