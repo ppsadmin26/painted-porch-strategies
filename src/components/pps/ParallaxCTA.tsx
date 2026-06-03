@@ -66,6 +66,7 @@ const variantClasses: Record<NonNullable<CTAAction["variant"]>, string> = {
 
 function ActionEl({ action }: { action: CTAAction }) {
   const className = cn(baseAction, variantClasses[action.variant ?? "primary"]);
+  const { isLive } = useIsPageLive(action.to ?? null);
   const inner = (
     <>
       {action.label}
@@ -83,6 +84,17 @@ function ActionEl({ action }: { action: CTAAction }) {
       >
         {inner}
       </a>
+    );
+  }
+  if (!isLive) {
+    return (
+      <span
+        aria-disabled="true"
+        title="This page isn't published yet."
+        className={cn(className, "opacity-70 cursor-not-allowed")}
+      >
+        Coming Soon
+      </span>
     );
   }
   return (
