@@ -16,6 +16,12 @@ const formSchema = z.object({
   email: z.string().min(1, "We need a valid email to send your confirmation.").email("We need a valid email to send your confirmation."),
   explanation: z.string().min(10, "Just a line or two — we want to know you got it."),
   charity: z.string().min(1, "Name the organization and we'll take it from here."),
+  charityWebsite: z
+    .string()
+    .trim()
+    .url("Please enter a valid URL (include https://).")
+    .optional()
+    .or(z.literal("")),
   comments: z.string().optional(),
 });
 
@@ -38,6 +44,7 @@ const EasterEggForm = () => {
       
       explanation: "",
       charity: "",
+      charityWebsite: "",
       comments: "",
     },
   });
@@ -51,10 +58,13 @@ const EasterEggForm = () => {
       const [firstName, ...rest] = data.name.trim().split(/\s+/);
       const lastName = rest.join(" ") || "—";
 
+      const charityWebsite = data.charityWebsite?.trim() || "";
+
       const detailsMessage =
         `[Easter Egg Hunt — /found-it]\n\n` +
         `What they found:\n${data.explanation}\n\n` +
-        `Charity to donate $50 to:\n${data.charity}` +
+        `Charity to donate $25 to:\n${data.charity}` +
+        (charityWebsite ? `\nWebsite: ${charityWebsite}` : "") +
         (data.comments ? `\n\nAdditional comments:\n${data.comments}` : "");
 
       // 1. Push to GHL (contact + opportunity, tagged for the Easter egg hunt)
@@ -79,6 +89,7 @@ const EasterEggForm = () => {
         email: data.email.trim(),
         explanation: data.explanation.trim(),
         charity: data.charity.trim(),
+        charityWebsite: charityWebsite || undefined,
         comments: data.comments?.trim() || undefined,
       };
 
@@ -125,10 +136,10 @@ const EasterEggForm = () => {
                 🎉🐣 You Found Something.
               </h1>
               <p className="font-poppins text-base md:text-xl text-foreground mb-3">
-                Most people don't make it this far. Tell us what you found and where — we'll donate $50 to a charity of your choice.
+                Most people don't make it this far. Tell us what you found and where — we'll donate $25 to a charity of your choice.
               </p>
               <p className="text-sm text-muted-foreground">
-                There are five Easter eggs hidden in our Terms of The Porch. Find any one of them and we'll donate $50 to a cause you care about.
+                There are five Easter eggs hidden in our Terms of The Porch. Find any one of them and we'll donate $25 to a cause you care about.
               </p>
             </div>
 
@@ -220,7 +231,30 @@ const EasterEggForm = () => {
                           />
                         </FormControl>
                         <FormDescription className="text-xs text-muted-foreground">
-                          We'll make a $50 donation on your behalf. We reserve the right to redirect donations away from organizations that conflict with our values — we'll let you know if that happens and ask for an alternative.
+                          We'll make a $25 donation on your behalf. We reserve the right to redirect donations away from organizations that conflict with our values — we'll let you know if that happens and ask for an alternative.
+                        </FormDescription>
+                        <FormMessage className="text-raspberry" />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="charityWebsite"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-montserrat font-semibold text-sm text-foreground">Charity Website</FormLabel>
+                        <FormControl>
+                          <Input
+                            type="url"
+                            inputMode="url"
+                            placeholder="https://example.org"
+                            className="h-12 rounded-lg border-[#CCCCCC] focus:border-primary focus-visible:ring-primary text-base"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormDescription className="text-xs text-muted-foreground">
+                          Helps us find the right organization (especially when names overlap). Include https://.
                         </FormDescription>
                         <FormMessage className="text-raspberry" />
                       </FormItem>
