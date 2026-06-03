@@ -107,8 +107,8 @@ export default function PPSNavigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-3">
-            {navLinks.map((link) =>
-              link.children ? (
+            {visibleNav.map((link) =>
+              link.children && link.children.length > 0 ? (
                 <DropdownMenu key={link.href}>
                   <div className="flex items-center">
                     <Link
