@@ -425,6 +425,20 @@ function PrivacyTabBody() {
         <Block title="Contact">
           <p>Painted Porch Strategies, LLC<br />Arizona, USA<br /><PolicyLink /></p>
         </Block>
+
+        <div className="bg-muted/30 rounded-xl p-8 border-l-4 border-gold space-y-4">
+          <p className="text-foreground leading-relaxed font-semibold">One more thing before you go...</p>
+          <p className="text-foreground leading-relaxed">
+            If you made it this far into the fine print, you are exactly our kind of people. There is a small reward waiting at the bottom of the{" "}
+            <Link to="/terms?tab=terms" className="text-primary font-semibold underline underline-offset-2 hover:text-primary/80 transition-colors">
+              Terms tab
+            </Link>
+            {" "}for anyone curious enough to read all the way to the end. Think of it as a thank-you from the Porch for taking us seriously.
+          </p>
+          <p className="text-foreground leading-relaxed italic">
+            Hint: it involves charity, a Douglas Adams reference, and the number 25. No spoilers.
+          </p>
+        </div>
       </div>
     </section>
   );
@@ -473,6 +487,20 @@ function CookiesTabBody() {
         <Block title="Questions">
           <p>Email <PolicyLink /> with the subject "Cookies" and we'll get back to you.</p>
         </Block>
+
+        <div className="bg-muted/30 rounded-xl p-8 border-l-4 border-gold space-y-4">
+          <p className="text-foreground leading-relaxed font-semibold">Still with us? Good.</p>
+          <p className="text-foreground leading-relaxed">
+            There is a little something hidden at the bottom of the{" "}
+            <Link to="/terms?tab=terms" className="text-primary font-semibold underline underline-offset-2 hover:text-primary/80 transition-colors">
+              Terms tab
+            </Link>
+            {" "}for the patient and the curious. If you have read this far, you have already proven you qualify.
+          </p>
+          <p className="text-foreground leading-relaxed italic">
+            We will not tell you what it is. That would ruin the fun. But it is worth the scroll.
+          </p>
+        </div>
       </div>
     </section>
   );
