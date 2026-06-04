@@ -67,8 +67,6 @@ function AssessmentIcon({ icon }: { icon: string }) {
       return <img src={dualGearsIcon} alt="Working Genius" className={iconClass} style={invertFilter} />;
     case "dna":
       return <img src={dnaHelixIcon} alt="Performance DNA" className={iconClass} style={invertFilter} />;
-    case "shift-architect":
-      return <img src={shiftArchitectIcon} alt="Shift Architect" className={iconClass} style={invertFilter} />;
     default:
       return <Heart className={`${iconClass} text-white`} />;
   }
