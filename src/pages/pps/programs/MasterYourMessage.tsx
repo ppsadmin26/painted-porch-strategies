@@ -309,25 +309,11 @@ export default function MasterYourMessage() {
 
       {/* FAQ */}
       <AnimatedSection>
-        <section className="py-20 bg-muted/30">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy text-center mb-12">
-              You've Got Questions. We've Got Answers.
-            </h2>
-            <Accordion type="single" collapsible className="space-y-3">
-              {faqs.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="bg-white rounded-xl border border-border px-6">
-                  <AccordionTrigger className="font-poppins font-semibold text-pps-navy text-left hover:no-underline py-5">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-charcoal leading-relaxed pb-5">
-                    <span dangerouslySetInnerHTML={{ __html: faq.a }} />
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </section>
+        <FAQSection
+          tierName="Master Your Message"
+          subheadline="Everything you need to know about the Master Your Message program."
+          faqs={faqs.map((f) => ({ question: f.q, answer: <span dangerouslySetInnerHTML={{ __html: f.a }} /> }))}
+        />
       </AnimatedSection>
 
       {/* Virtuous Cycle */}
