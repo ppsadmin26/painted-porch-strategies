@@ -4,6 +4,9 @@ import { ArrowLeft, CheckCircle, ExternalLink, Calendar, Users } from "lucide-re
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
 import dualGearsIcon from "@/assets/icons/dual-gears.svg";
+import { RotatingGears } from "@/components/pps/RotatingGears";
+import widgetImage from "@/assets/working-genius-widget.jpg";
+
 
 const wgFaqCategories = [
   {
@@ -172,24 +175,32 @@ export default function WorkingGeniusAssessment() {
           <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl" />
         </div>
-        <div className="container max-w-5xl mx-auto px-6 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-            <img src={dualGearsIcon} alt="Working Genius" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
-            <span className="text-sm font-semibold">The 6 Types of Working Genius</span>
+        <div className="container max-w-6xl mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+                <img src={dualGearsIcon} alt="" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
+                <span className="text-sm font-semibold">The 6 Types of Working Genius</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
+                Discover your gifts. Transform your work.
+              </h1>
+              <p className="text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 mb-8 text-white/90">
+                Some work gives you energy. Some drains it. Working Genius names the kinds of work that fit your natural gifts so you can spend more time doing what brings you joy and impact.
+              </p>
+              <a href="#get-started">
+                <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold text-lg px-8">
+                  Get Started
+                </Button>
+              </a>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <RotatingGears />
+            </div>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
-            Discover your gifts. Transform your work.
-          </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/90">
-            Some work gives you energy. Some drains it. Working Genius names the kinds of work that fit your natural gifts so you can spend more time doing what brings you joy and impact.
-          </p>
-          <a href="#get-started">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold text-lg px-8">
-              Get Started
-            </Button>
-          </a>
         </div>
       </section>
+
 
       {/* Stat Callout */}
       <section className="py-16 bg-navy text-white text-center">
