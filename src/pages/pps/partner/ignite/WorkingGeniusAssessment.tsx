@@ -296,7 +296,7 @@ export default function WorkingGeniusAssessment() {
               The 6 Types of Working Genius
             </h2>
             <p className="text-foreground max-w-3xl mx-auto leading-relaxed">
-              Every project, big or small, moves through these six stages. The people on your team have natural gifts in two of them. Knowing which two changes everything.
+              Every project, big or small, moves through these six stages. You (and the people on your team) have natural gifts in two of them. Knowing which two changes everything - in how you show up, speak, and get shIFt done.
             </p>
           </div>
 
