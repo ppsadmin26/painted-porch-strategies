@@ -8,7 +8,7 @@ import { igniteFaqCategories } from "./igniteFaqs";
 import brainEqIcon from "@/assets/icons/brain-eq.svg";
 import dualGearsIcon from "@/assets/icons/dual-gears.svg";
 import dnaHelixIcon from "@/assets/icons/dna-helix.svg";
-import shiftArchitectIcon from "@/assets/icons/shift-architect.svg";
+
 
 const assessments = [
   {
