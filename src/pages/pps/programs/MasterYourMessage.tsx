@@ -43,6 +43,18 @@ const programDetails = [
 
 const pricingTiers = [
   {
+    name: "Mini Course",
+    subtitle: "Coming Soon",
+    features: [
+      "Key lessons from Rob's Master Your Message course (~60 min of learning)",
+      "Lifetime Access",
+      "7-day 100% Money Back Guarantee",
+    ],
+    cta: "Coming Soon",
+    popular: false,
+    comingSoon: true,
+  },
+  {
     name: "Self-Paced Program",
     price: "$697",
     subtitle: "Go at Your Own Pace",
