@@ -52,6 +52,7 @@ import IgniteCourses from "./pages/pps/partner/ignite/IgniteCourses";
 import IgniteAssessments from "./pages/pps/partner/ignite/IgniteAssessments";
 import IgniteMasterclasses from "./pages/pps/partner/ignite/IgniteMasterclasses";
 import EQAssessment from "./pages/pps/partner/ignite/EQAssessment";
+import WorkingGeniusAssessment from "./pages/pps/partner/ignite/WorkingGeniusAssessment";
 import EQChangeLeaderMini from "./pages/pps/EQChangeLeaderMini";
 
 // AMPLIFY Subpages
