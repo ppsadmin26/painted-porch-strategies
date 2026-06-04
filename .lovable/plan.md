@@ -1,66 +1,32 @@
 ## Goal
 
-When a page is set to Draft in `/admin/pages` (or via the inline switch on `/sitemap`), it should disappear from navigation and any internal links to it should become non-clickable with a "Coming Soon" treatment — instead of relying solely on `PageGate` to redirect visitors *after* they click.
+Add a looping equalizer animation along the bottom of the Master Your Message hero (`/communication`) that mimics a classic broadcast/studio sound meter — dense, segmented LED-style bars with a green → yellow → orange → red vertical gradient, like the reference images.
 
-Admins (logged-in users with admin role) continue to see and use draft links normally so they can preview.
+## What you'll see
 
-## Approach
+- Hero image and headline stay exactly as they are.
+- A horizontal row of ~40–60 thin, segmented vertical bars sits flush along the bottom edge of the hero, behind the dark gradient.
+- Each bar is made of small stacked rectangles ("LED segments") that light up from bottom to top.
+- Segment colors run green at the bottom, yellow in the middle, orange/red at the top — matching the reference equalizer image.
+- Bars rise and fall independently in a smooth, looping pattern (no audio input — purely visual choreography).
+- Unlit segments stay dim (low-opacity charcoal) so the meter shape is always visible, like a real VU meter.
+- Soft fade on the left edge so the headline stays fully legible; soft fade on the right edge for polish.
+- `prefers-reduced-motion`: bars freeze at mid-level instead of animating.
 
-Build a small, shared layer on top of the existing `usePageStatuses` hook + `resolvePageStatus` resolver, then apply it in three places.
+## Implementation
 
-### 1. New hook: `useIsPageLive(path)`
+- New component: `src/components/pps/SoundMeter.tsx`
+  - Props: `barCount` (default 56), `className`.
+  - Renders a flex row of bars; each bar is a stack of ~16 segment divs.
+  - A single CSS keyframe drives bar height; per-bar `animation-delay` and `animation-duration` (varied via deterministic pseudo-random offsets) create the choreographed rise/fall.
+  - Segments use a 4-stop color map: green (#70A300 lime), yellow (#FFB900), orange (#FF8000), raspberry (#DB0043). Lit/unlit state is controlled by a CSS variable `--lit-count` set per-bar by the keyframe.
+- Wire into hero in `src/pages/pps/programs/MasterYourMessage.tsx`:
+  - Insert `<SoundMeter className="absolute inset-x-0 bottom-0 z-[1] opacity-70 mix-blend-screen" />` between the `<img>` and the dark gradient overlay.
+  - Keep existing `from-black/70 via-black/50 to-transparent` gradient so the headline retains contrast.
+- No new dependencies. Pure CSS keyframes + Tailwind.
 
-`src/hooks/useIsPageLive.ts`
-- Wraps `usePageStatuses` + `resolvePageStatus`.
-- Returns `{ isLive, isDraft, isAdmin, loading }`.
-- `isAdmin` comes from the existing auth/profile context so admins always get `isLive: true` (preview behavior).
-- Also expose a batch variant `useArePagesLive(paths[])` to avoid repeated work in nav menus.
+## Out of scope
 
-### 2. New shared component: `<SmartLink>` / `<SmartCTA>`
-
-`src/components/pps/SmartLink.tsx`
-- Props: same as `Link` plus optional `comingSoonLabel` (default "Coming Soon") and `variant` (`"link" | "button" | "card"`).
-- Resolves the `to`/`href` against `useIsPageLive`.
-- If live (or viewer is admin): renders a normal `<Link>` / `<Button asChild>`.
-- If draft:
-  - `variant="link"`: render plain `<span>` styled muted, no navigation, with a small "Coming Soon" badge.
-  - `variant="button"`: render disabled `<Button>` with label replaced by "Coming Soon" (or appended badge).
-  - `variant="card"`: render the card as non-interactive (no `<Link>` wrapper, `cursor-default`, reduced opacity), overlay a "Coming Soon" ribbon/badge in the top-right using the gold token.
-- Tooltip on hover: "This page isn't published yet."
-
-### 3. Apply in three layers
-
-**a. Navigation (`src/components/pps/PPSNavigation.tsx`)**
-- Filter out top-level items and sub-links whose path resolves to draft (for non-admins).
-- If a dropdown becomes empty after filtering, hide the dropdown entirely.
-- Admins see everything with a small "Draft" pill.
-
-**b. Footer (`src/components/pps/PPSFooter.tsx`)**
-- Same filter logic for link columns.
-
-**c. In-page cards & CTAs**
-- Replace `<Link>` / `<Button asChild><Link>` usages that point to gated internal routes with `<SmartLink variant="...">` on the high-traffic hubs first:
-  - Home (`src/pages/pps/Index.tsx`) hero/secondary CTAs
-  - P.A.T.H. Hub, Partner Hub, Resources Hub, Speaking Hub card grids
-  - `ParallaxCTA` component (so every final-CTA section inherits the behavior)
-- Leave shared "always-live" routes (`/contact`, `/sitemap`, `/admin/*`, `/blue-door`) alone — they're already in `ALWAYS_LIVE_PREFIXES` and will always resolve to live.
-
-### 4. Admin affordance
-
-- On `/sitemap` and `/admin/pages`, when admin toggles a page to Draft, show a small inline hint: "Hidden from nav and shown as 'Coming Soon' on cards/CTAs for visitors."
-
-### 5. Tests
-
-Extend `src/test/privacy-cookies-routing.test.ts` (or a new file) with:
-- `resolvePageStatus` returns `draft` → `SmartLink` renders disabled "Coming Soon".
-- `resolvePageStatus` returns `live` → `SmartLink` renders a normal anchor.
-- Nav filter helper removes draft paths for non-admin viewers and keeps them for admins.
-
-## Files touched
-
-- New: `src/hooks/useIsPageLive.ts`, `src/components/pps/SmartLink.tsx`, test file
-- Edited: `PPSNavigation.tsx`, `PPSFooter.tsx`, `ParallaxCTA.tsx`, hub pages (Index, P.A.T.H., Partner, Resources, Speaking), `Sitemap.tsx` + `PageStatusManager.tsx` (admin hint copy)
-
-## Open question
-
-Do you want the "Coming Soon" badge to also block **external** mentions (e.g. text-only references in body copy that aren't links)? My plan covers links/cards/CTAs only — body prose stays untouched unless you'd like a follow-up sweep.
+- No changes to the hero image, headline, badge, or CTA button.
+- No audio.
+- No edits elsewhere on the page (pricing, FAQ, CTA stay as-is).
