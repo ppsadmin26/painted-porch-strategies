@@ -426,8 +426,8 @@ export default function WorkingGeniusAssessment() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white">
-                  Buy on WorkingGenius.com <ExternalLink className="ml-2 w-4 h-4" />
+                <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white whitespace-normal h-auto py-3 text-sm">
+                  Buy on WorkingGenius.com <ExternalLink className="ml-2 w-4 h-4 flex-shrink-0" />
                 </Button>
               </a>
               <p className="text-xs text-muted-foreground mt-3 text-center">
