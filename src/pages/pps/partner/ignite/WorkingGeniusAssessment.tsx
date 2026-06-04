@@ -40,8 +40,12 @@ const wgFaqCategories = [
       },
       {
         question: "Can my whole team take this together?",
-        answer:
-          "Yes. Working Genius is built for teams. We can run it as a team or organizational package with an optional 2 to 4 hour facilitated workshop where we map your team's collective genius, identify gaps, and redesign how work flows so people spend more time in their genius. Reach out through our contact form to design the right package for your team.",
+        answer: (
+          <>
+            Yes. Working Genius is built for teams. We can run it as a team or organizational package with an optional 2 to 4 hour facilitated workshop where we map your team's collective genius, identify gaps, and redesign how work flows so people spend more time in their genius. Reach out through our{" "}
+            <Link to="/contact" className="text-primary underline hover:text-primary/80">contact form</Link> to design the right package for your team.
+          </>
+        ),
       },
       {
         question: "Who created Working Genius?",
