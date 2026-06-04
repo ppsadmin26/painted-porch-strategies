@@ -65,7 +65,7 @@ const pricingTiers = [
   },
   {
     name: "Self-Paced Program",
-    price: "$767",
+    price: "$697",
     subtitle: "Complete Program at Your Own Pace",
     features: [
       "Complete Radical Mindfulness program (over 8 hours of On-Demand Video)",
