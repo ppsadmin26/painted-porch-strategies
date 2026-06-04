@@ -40,7 +40,7 @@ import {
 
 export interface FAQItem {
   question: string;
-  answer: string;
+  answer: React.ReactNode;
 }
 
 export interface FAQCategory {
