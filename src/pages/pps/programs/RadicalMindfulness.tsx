@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ArrowLeft, Sparkles, Heart, Brain, BookOpen, Users, Star, Check } from "lucide-react";
+import { ArrowRight, Sparkles, Heart, Brain, BookOpen, Users, Star, Check } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
+import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
+import { FAQSection } from "@/components/pps/FAQSection";
 import heroImg from "@/assets/programs/radical-mindfulness-emojis.jpg.asset.json";
 import businessCtaImg from "@/assets/programs/radical-mindfulness-business-cta.jpg.asset.json";
 import sierraHeadshot from "@/assets/team/sierra-ramm-cantrell.jpg";
@@ -80,6 +81,14 @@ const pricingTiers = [
 export default function RadicalMindfulness() {
   return (
     <div>
+      <PPSBreadcrumb
+        segments={[
+          { label: "Home", href: "/" },
+          { label: "IGNITE", href: "/partner/ignite" },
+          { label: "Courses", href: "/partner/ignite/courses" },
+          { label: "Radical Mindfulness" },
+        ]}
+      />
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-center">
         <div className="absolute inset-0">
@@ -91,9 +100,6 @@ export default function RadicalMindfulness() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <Link to="/partner/ignite/courses" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white mb-6 transition-colors">
-            <ArrowLeft className="w-4 h-4" /> Back to Courses
-          </Link>
           <span className="inline-block text-pps-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
             From Overwhelm to Om
           </span>
@@ -321,25 +327,11 @@ export default function RadicalMindfulness() {
 
       {/* FAQ */}
       <AnimatedSection>
-        <section className="py-20 bg-muted/30">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy text-center mb-12">
-              You've Got Questions. We've Got Answers.
-            </h2>
-            <Accordion type="single" collapsible className="space-y-3">
-              {faqs.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="bg-white rounded-xl border border-border px-6">
-                  <AccordionTrigger className="font-poppins font-semibold text-pps-navy text-left hover:no-underline py-5">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-charcoal leading-relaxed pb-5">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </section>
+        <FAQSection
+          tierName="Radical Mindfulness"
+          subheadline="Everything you need to know about the Radical Mindfulness course"
+          faqs={faqs.map((f) => ({ question: f.q, answer: f.a }))}
+        />
       </AnimatedSection>
 
       {/* Virtuous Cycle */}
