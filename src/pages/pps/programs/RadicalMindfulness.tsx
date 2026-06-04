@@ -83,15 +83,10 @@ export default function RadicalMindfulness() {
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-center">
         <div className="absolute inset-0">
-          <video
-            src={heroVideo.url}
-            poster={heroImg.url}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-            aria-label="Radical Mindfulness"
+          <LazyHeroVideo
+            slotKey="radical-mindfulness"
+            posterUrl={heroImg.url}
+            className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
