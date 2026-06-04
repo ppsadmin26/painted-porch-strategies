@@ -290,6 +290,16 @@ export default function WorkingGeniusAssessment() {
               Every project, big or small, moves through these six stages. The people on your team have natural gifts in two of them. Knowing which two changes everything.
             </p>
           </div>
+
+          <div className="max-w-3xl mx-auto mb-12">
+            <img
+              src={widgetImage}
+              alt="The 6 Types of Working Genius shown as gears spelling W I D G E T: Wonder, Invention, Discernment, Galvanizing, Enablement, Tenacity"
+              loading="lazy"
+              className="w-full h-auto rounded-xl shadow-lg"
+            />
+          </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {sixTypes.map((t) => (
               <div
