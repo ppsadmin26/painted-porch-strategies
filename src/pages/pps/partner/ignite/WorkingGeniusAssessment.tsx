@@ -4,8 +4,8 @@ import { ArrowLeft, CheckCircle, ExternalLink, Calendar, Users } from "lucide-re
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
 import dualGearsIcon from "@/assets/icons/dual-gears.svg";
-import { RotatingGears } from "@/components/pps/RotatingGears";
 import widgetImage from "@/assets/working-genius-widget.jpg";
+import gearsVideo from "@/assets/working-genius-gears.mp4.asset.json";
 
 
 const wgFaqCategories = [
@@ -195,7 +195,16 @@ export default function WorkingGeniusAssessment() {
               </a>
             </div>
             <div className="flex justify-center lg:justify-end">
-              <RotatingGears />
+              <video
+                src={gearsVideo.url}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label="Six interlocked brass and steel gears rotating together"
+                className="w-full max-w-md rounded-2xl shadow-2xl"
+              />
             </div>
           </div>
         </div>
