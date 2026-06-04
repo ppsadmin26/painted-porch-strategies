@@ -30,6 +30,30 @@ export type CTAAction = {
   ariaLabel?: string;
 };
 
+/**
+ * Preset overlay color tones. Use to vary the final-CTA background across the
+ * site so it never blends with the navy footer. Pick one that fits the page's
+ * theme (teal = calm/learning, purple = strategic, raspberry = bold/urgency,
+ * charcoal = neutral, gold = warm/celebratory). `navy` remains available but
+ * should be used sparingly because it sits directly above the navy footer.
+ */
+export type CTAOverlayTone =
+  | "teal"
+  | "purple"
+  | "raspberry"
+  | "charcoal"
+  | "gold"
+  | "navy";
+
+const overlayToneClasses: Record<CTAOverlayTone, string> = {
+  teal: "bg-gradient-to-b from-primary/90 via-primary/85 to-primary/85",
+  purple: "bg-gradient-to-b from-strategic/90 via-strategic/85 to-strategic/85",
+  raspberry: "bg-gradient-to-b from-raspberry/90 via-raspberry/85 to-raspberry/85",
+  charcoal: "bg-gradient-to-b from-charcoal/90 via-charcoal/85 to-charcoal/85",
+  gold: "bg-gradient-to-b from-navy/80 via-navy/70 to-navy/70", // gold-tinted bg w/ dark overlay for readability
+  navy: "bg-gradient-to-b from-navy/90 via-navy/85 to-navy/85",
+};
+
 interface ParallaxCTAProps {
   /** Background image URL (imported asset) */
   backgroundImage: string;
@@ -43,7 +67,9 @@ interface ParallaxCTAProps {
   maxWidthClass?: string;
   /** Vertical padding override */
   paddingClass?: string;
-  /** Override the dark overlay (kept dark by default for AA contrast) */
+  /** Preset overlay color; defaults to "teal" (avoid "navy" above the footer) */
+  overlayTone?: CTAOverlayTone;
+  /** Full override of the overlay class. Takes precedence over overlayTone. */
   overlayClass?: string;
   /** Extra classes on the root <section> */
   className?: string;
@@ -52,8 +78,9 @@ interface ParallaxCTAProps {
 const focusRingDark =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy";
 
+// Sized to match the rest of the site's "size=lg" buttons (h-12, text-base).
 const baseAction =
-  "inline-flex items-center justify-center font-poppins font-semibold text-lg px-8 py-6 rounded-md transition-colors shadow-xl w-full sm:w-auto sm:min-w-[280px] " +
+  "inline-flex items-center justify-center font-poppins font-semibold text-base px-8 h-12 rounded-md transition-colors shadow-lg w-full sm:w-auto sm:min-w-[200px] " +
   focusRingDark;
 
 const variantClasses: Record<NonNullable<CTAAction["variant"]>, string> = {
