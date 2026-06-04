@@ -302,7 +302,7 @@ export default function WorkingGeniusAssessment() {
 
           <div className="max-w-3xl mx-auto mb-12">
             <img
-              src={widgetImage}
+              src={widgetImage.url}
               alt="The 6 Types of Working Genius shown as gears spelling W I D G E T: Wonder, Invention, Discernment, Galvanizing, Enablement, Tenacity"
               loading="lazy"
               className="w-full h-auto rounded-xl shadow-lg"
