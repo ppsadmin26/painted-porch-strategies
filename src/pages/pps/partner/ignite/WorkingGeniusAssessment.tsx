@@ -258,7 +258,7 @@ export default function WorkingGeniusAssessment() {
             Working Genius answers both. In about 10 minutes you'll know which work to lean into and which to stop blaming yourself for.
           </p>
           <a href="#get-started">
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-navy">
+            <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-navy focus-ring-on-dark">
               Get Started
             </Button>
           </a>
