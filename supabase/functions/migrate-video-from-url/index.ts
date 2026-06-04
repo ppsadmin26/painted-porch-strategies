@@ -65,7 +65,7 @@ Deno.serve(async (req) => {
 
     const body = await req.json();
     const slotKey: string = body?.slot_key;
-    const sourceUrl: string = body?.source_url;
+    let sourceUrl: string = body?.source_url;
     if (!slotKey || !sourceUrl) {
       return new Response(
         JSON.stringify({ error: "slot_key and source_url required" }),
@@ -74,6 +74,28 @@ Deno.serve(async (req) => {
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         },
       );
+    }
+
+    // Resolve relative URLs (e.g. "/__l5e/assets-v1/...") against the caller's origin
+    if (sourceUrl.startsWith("/")) {
+      const origin =
+        req.headers.get("origin") ||
+        (req.headers.get("referer")
+          ? new URL(req.headers.get("referer")!).origin
+          : null);
+      if (!origin) {
+        return new Response(
+          JSON.stringify({
+            error:
+              "source_url is a relative path and no Origin/Referer header was provided",
+          }),
+          {
+            status: 400,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          },
+        );
+      }
+      sourceUrl = origin + sourceUrl;
     }
 
     // Fetch the video from anywhere (Lovable CDN, external generator, etc.)
