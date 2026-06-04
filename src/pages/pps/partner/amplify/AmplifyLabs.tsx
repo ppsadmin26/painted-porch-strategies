@@ -31,7 +31,7 @@ const labFaqCategories: FAQCategory[] = [
     faqs: [
       {
         question: "When is the next cohort?",
-        answer: "We run Leadership Labs a few times per year. Join the waitlist and you'll be the first to know when new dates are announced, along with early-bird pricing details.",
+        answer: "We run Leadership Labs a few times per year. Join the waitlist and you'll be the first to know when new dates are announced.",
       },
       {
         question: "What happens after I join the waitlist?",
