@@ -431,7 +431,7 @@ export default function WorkingGeniusAssessment() {
                 </Button>
               </a>
               <p className="text-xs text-muted-foreground mt-3 text-center">
-                Same price we'd charge. No reason to mark it up.
+                Cheaper than what we'd charge (due to additional administrative set-up). No reason to mark it up.
               </p>
             </div>
 
