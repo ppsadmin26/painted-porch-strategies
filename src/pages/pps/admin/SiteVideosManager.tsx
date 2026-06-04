@@ -338,10 +338,14 @@ export default function SiteVideosManager() {
   const handleMigrate = async () => {
     if (!migrateSlot || !migrateUrl.trim()) return;
     setMigrating(true);
+    // Resolve relative paths (e.g. "/__l5e/assets-v1/...") against the current
+    // browser origin so the edge function always receives an absolute URL.
+    let src = migrateUrl.trim();
+    if (src.startsWith("/")) src = window.location.origin + src;
     try {
       const { data, error } = await supabase.functions.invoke(
         "migrate-video-from-url",
-        { body: { slot_key: migrateSlot, source_url: migrateUrl.trim() } },
+        { body: { slot_key: migrateSlot, source_url: src } },
       );
       if (error) throw error;
       if ((data as any)?.error) throw new Error((data as any).error);
