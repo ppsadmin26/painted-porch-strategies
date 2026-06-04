@@ -4,8 +4,8 @@ import { ArrowRight, Sparkles, Heart, Brain, BookOpen, Users, Star, Check } from
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
+import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
 import heroImg from "@/assets/programs/radical-mindfulness-emojis.jpg.asset.json";
-import heroVideo from "@/assets/programs/radical-mindfulness-bounce.mp4.asset.json";
 import businessCtaImg from "@/assets/programs/radical-mindfulness-business-cta.jpg.asset.json";
 import sierraHeadshot from "@/assets/team/sierra-ramm-cantrell.jpg";
 
@@ -83,15 +83,10 @@ export default function RadicalMindfulness() {
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-center">
         <div className="absolute inset-0">
-          <video
-            src={heroVideo.url}
-            poster={heroImg.url}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-            aria-label="Radical Mindfulness"
+          <LazyHeroVideo
+            slotKey="radical-mindfulness"
+            posterUrl={heroImg.url}
+            className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
