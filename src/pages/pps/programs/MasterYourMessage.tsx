@@ -287,9 +287,6 @@ export default function MasterYourMessage() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-1">{tier.name}</h3>
                   <div className="flex items-baseline gap-2 mb-2">
                     <p className="text-4xl font-poppins font-bold text-pps-navy">{tier.price}</p>
-                    {tier.originalPrice && (
-                      <span className="text-lg text-muted-foreground line-through">{tier.originalPrice}</span>
-                    )}
                   </div>
                   <p className="text-sm text-charcoal mb-6">{tier.subtitle}</p>
                   <ul className="space-y-3 mb-8">
