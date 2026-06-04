@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Mic, MessageSquare, HelpCircle, BookOpen, Users, Brain, Check } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { FAQSection } from "@/components/pps/FAQSection";
+import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import heroImg from "@/assets/programs/master-your-message-hero.jpg";
+import mymCtaImg from "@/assets/programs/master-your-message.jpg";
 import robHeadshot from "@/assets/team/rob-hunter.jpg";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
