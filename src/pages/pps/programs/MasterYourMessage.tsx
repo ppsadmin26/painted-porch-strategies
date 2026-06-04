@@ -5,6 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import heroImg from "@/assets/programs/master-your-message-hero.jpg";
+import robHeadshot from "@/assets/team/rob-hunter.jpg";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
