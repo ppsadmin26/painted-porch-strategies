@@ -19,8 +19,7 @@ Disallow: /home-archive
 Disallow: /home-verbatim
 Disallow: /mym-journal-challenge
 Disallow: /overview
-Disallow: /partner/ignite/courses
-Disallow: /partner/ignite/masterclasses
+Disallow: /partner/ignite/assessments/working-genius
 Disallow: /radical-mindfulness
 Disallow: /resources/youtube
 Disallow: /rob
