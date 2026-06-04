@@ -7,6 +7,7 @@ import heroImg from "@/assets/programs/extraordinary-teams-hero.jpg";
 import ctaBg from "@/assets/team/team-cta-puzzles.jpg";
 import amyPhoto from "@/assets/team/amy-yackowski.png";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
+import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
