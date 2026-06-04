@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, CheckCircle, ExternalLink, Calendar, Users } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
-import { FAQSection } from "@/components/pps/FAQSection";
+import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import dualGearsIcon from "@/assets/icons/dual-gears.svg";
 import widgetImage from "@/assets/working-genius-widget.png.asset.json";
 import heroBg from "@/assets/working-genius-hero-bg.jpg";
