@@ -4,7 +4,7 @@ import { ArrowLeft, CheckCircle, ExternalLink, Calendar, Users } from "lucide-re
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
 import dualGearsIcon from "@/assets/icons/dual-gears.svg";
-import widgetImage from "@/assets/working-genius-widget.jpg";
+import widgetImage from "@/assets/working-genius-widget.png.asset.json";
 import gearsVideo from "@/assets/working-genius-gears.mp4.asset.json";
 
 
@@ -302,7 +302,7 @@ export default function WorkingGeniusAssessment() {
 
           <div className="max-w-3xl mx-auto mb-12">
             <img
-              src={widgetImage}
+              src={widgetImage.url}
               alt="The 6 Types of Working Genius shown as gears spelling W I D G E T: Wonder, Invention, Discernment, Galvanizing, Enablement, Tenacity"
               loading="lazy"
               className="w-full h-auto rounded-xl shadow-lg"
