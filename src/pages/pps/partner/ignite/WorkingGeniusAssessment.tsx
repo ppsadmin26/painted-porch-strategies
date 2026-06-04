@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/pps/FAQSection";
 import dualGearsIcon from "@/assets/icons/dual-gears.svg";
 import widgetImage from "@/assets/working-genius-widget.png.asset.json";
 import gearsVideo from "@/assets/working-genius-gears.mp4.asset.json";
+import certifiedBadge from "@/assets/working-genius-certified-badge.png.asset.json";
 
 
 const wgFaqCategories = [
@@ -512,9 +513,26 @@ export default function WorkingGeniusAssessment() {
           </div>
         </div>
       </section>
-
-
-
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+            <img
+              src={certifiedBadge.url}
+              alt="The 6 Types of Working Genius Certified Badge"
+              className="w-40 h-40 md:w-48 md:h-48 flex-shrink-0"
+              loading="lazy"
+            />
+            <div>
+              <h2 className="font-poppins font-bold text-2xl md:text-3xl text-navy mb-3">
+                A Certified Working Genius Facilitator
+              </h2>
+              <p className="font-montserrat text-charcoal-gray text-lg leading-relaxed">
+                Painted Porch Strategies is a certified Working Genius Facilitator through The Table Group. That means when you work with us, you're getting more than an assessment - you're getting trained guidance to turn your results into real shIFt in how you and your team show up, collaborate, and get work done.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <FAQSection tierName="Working Genius" categories={wgFaqCategories} />
     </div>
