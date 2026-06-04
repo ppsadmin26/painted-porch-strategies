@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles, Heart, Brain, BookOpen, Users, Star, Check } from
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import heroImg from "@/assets/programs/radical-mindfulness-hero.jpg";
+import sierraHeadshot from "@/assets/team/sierra-ramm-cantrell.jpg";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
