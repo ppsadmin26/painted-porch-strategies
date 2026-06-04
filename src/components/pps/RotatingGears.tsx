@@ -35,15 +35,18 @@ const Gear = ({ cx, cy, r, letter, duration, reverse, fill = "#fff", textFill = 
   }
   const animName = reverse ? "wg-spin-reverse" : "wg-spin";
   return (
-    <g
-      style={{
-        transformOrigin: `${cx}px ${cy}px`,
-        animation: `${animName} ${duration}s linear infinite`,
-      }}
-      className="motion-reduce:[animation:none]"
-    >
-      <polygon points={points.join(" ")} fill={fill} />
-      <circle cx={cx} cy={cy} r={r * 0.55} fill="#fff" />
+    <g>
+      <g
+        style={{
+          transformOrigin: `${cx}px ${cy}px`,
+          animation: `${animName} ${duration}s linear infinite`,
+        }}
+        className="motion-reduce:[animation:none]"
+      >
+        <polygon points={points.join(" ")} fill={fill} />
+        <circle cx={cx} cy={cy} r={r * 0.55} fill="#fff" />
+      </g>
+      {/* Letter stays upright, not affected by the gear rotation */}
       <text
         x={cx}
         y={cy}
@@ -53,13 +56,13 @@ const Gear = ({ cx, cy, r, letter, duration, reverse, fill = "#fff", textFill = 
         fontWeight={700}
         fontSize={r * 0.85}
         fill={textFill}
-        style={{ transform: reverse ? `rotate(0deg)` : undefined }}
       >
         {letter}
       </text>
     </g>
   );
 };
+
 
 interface RotatingGearsProps {
   className?: string;
