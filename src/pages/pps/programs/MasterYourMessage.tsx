@@ -336,19 +336,13 @@ export default function MasterYourMessage() {
       </AnimatedSection>
 
       {/* Business CTA */}
-      <section className="py-20 bg-pps-navy text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-6">
-            Interested in Master Your Message for your Business?
-          </h2>
-          <p className="text-lg text-white/80 leading-relaxed mb-8">
-            Bring communication mastery training to your teams. Explore our business programs to build confident, clear, and influential communicators across your organization.
-          </p>
-          <Button asChild size="lg" className="bg-pps-gold hover:bg-pps-gold/90 text-pps-navy font-poppins font-semibold rounded-lg px-8">
-            <Link to="/business-programs">Explore Business Programs <ArrowRight className="ml-2 h-5 w-5" /></Link>
-          </Button>
-        </div>
-      </section>
+      <ParallaxCTA
+        backgroundImage={mymCtaImg}
+        overlayTone="teal"
+        headline="Interested in Master Your Message for your Business?"
+        description="Bring communication mastery training to your teams. Explore our business programs to build confident, clear, and influential communicators across your organization."
+        actions={[{ label: "Contact Us", to: "/contact", variant: "primary" }]}
+      />
     </div>
   );
 }
