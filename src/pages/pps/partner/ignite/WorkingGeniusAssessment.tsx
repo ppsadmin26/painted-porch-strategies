@@ -483,17 +483,8 @@ export default function WorkingGeniusAssessment() {
         </div>
       </section>
 
-      {/* Back link */}
-      <section className="py-8 bg-white border-t border-border">
-        <div className="container max-w-5xl mx-auto px-6">
-          <Link
-            to="/partner/ignite/assessments"
-            className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Strategic Assessments
-          </Link>
-        </div>
-      </section>
+
+
 
       <FAQSection tierName="Working Genius" categories={wgFaqCategories} />
     </div>
