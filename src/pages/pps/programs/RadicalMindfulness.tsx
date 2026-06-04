@@ -271,10 +271,10 @@ export default function RadicalMindfulness() {
           <AnimatedSection>
             <div className="text-center mb-4">
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-4">
-                Take Advantage of Early Bird Pricing!
+                Pricing
               </h2>
               <p className="text-lg text-charcoal max-w-2xl mx-auto leading-relaxed">
-                We're offering <strong>special early bird pricing + bonus</strong> — that's over <strong>$550 in savings!</strong>
+                Choose the option that fits your journey.
               </p>
             </div>
           </AnimatedSection>
