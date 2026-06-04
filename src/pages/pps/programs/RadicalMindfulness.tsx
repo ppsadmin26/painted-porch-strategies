@@ -359,7 +359,7 @@ export default function RadicalMindfulness() {
             Bring mindfulness and emotional resilience training to your teams. Explore our business programs to create a foundation for lasting organizational transformation.
           </p>
           <Button asChild size="lg" className="bg-pps-gold hover:bg-pps-gold/90 text-pps-navy font-poppins font-semibold rounded-lg px-8">
-            <Link to="/business-programs">Explore Business Programs <ArrowRight className="ml-2 h-5 w-5" /></Link>
+            <Link to="/contact">Contact Us <ArrowRight className="ml-2 h-5 w-5" /></Link>
           </Button>
         </div>
       </section>
