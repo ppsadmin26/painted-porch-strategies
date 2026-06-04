@@ -1,3 +1,4 @@
+import type React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -40,7 +41,7 @@ import {
 
 export interface FAQItem {
   question: string;
-  answer: string;
+  answer: React.ReactNode;
 }
 
 export interface FAQCategory {
