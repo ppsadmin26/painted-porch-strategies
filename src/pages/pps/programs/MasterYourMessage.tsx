@@ -42,7 +42,7 @@ const programDetails = [
 const pricingTiers = [
   {
     name: "Self-Paced Program",
-    price: "$767",
+    price: "$697",
     subtitle: "Go at Your Own Pace",
     features: [
       "Private, Interactive Community",
@@ -51,23 +51,6 @@ const pricingTiers = [
       "14-day 100% Money Back Guarantee",
     ],
     cta: "Purchase Program",
-    popular: false,
-  },
-  {
-    name: "Mindful Mastery Bundle",
-    price: "$75/mo",
-    originalPrice: "$149/mo",
-    subtitle: "12 monthly payments — Save over $1,500!",
-    features: [
-      "Access to ALL signature programs: Radical Mindfulness, Create Extraordinary Teams, and Master Your Message",
-      "On-Demand Video Lessons & Exercises (Over 24+ hrs)",
-      "Lifetime Access",
-      "Private, Interactive Communities",
-      "12 Weekly, Live 60-min. Group Coaching Calls (4 per program)",
-      "BONUS! THREE 30-min. 1-on-1 Coaching Calls with Sierra, Rob, and Amy",
-      "21-day 100% Money Back Guarantee",
-    ],
-    cta: "Purchase Bundle",
     popular: true,
   },
 ];
@@ -292,7 +275,7 @@ export default function MasterYourMessage() {
             </div>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
+          <div className="grid md:grid-cols-1 gap-8 mt-12 max-w-lg mx-auto">
             {pricingTiers.map((tier) => (
               <AnimatedSection key={tier.name}>
                 <div className={`rounded-2xl border-2 p-8 relative ${tier.popular ? "border-pps-teal shadow-lg" : "border-border"}`}>
@@ -304,9 +287,6 @@ export default function MasterYourMessage() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-1">{tier.name}</h3>
                   <div className="flex items-baseline gap-2 mb-2">
                     <p className="text-4xl font-poppins font-bold text-pps-navy">{tier.price}</p>
-                    {tier.originalPrice && (
-                      <span className="text-lg text-muted-foreground line-through">{tier.originalPrice}</span>
-                    )}
                   </div>
                   <p className="text-sm text-charcoal mb-6">{tier.subtitle}</p>
                   <ul className="space-y-3 mb-8">
