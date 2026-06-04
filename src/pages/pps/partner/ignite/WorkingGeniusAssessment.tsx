@@ -5,7 +5,7 @@ import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
 import dualGearsIcon from "@/assets/icons/dual-gears.svg";
 import widgetImage from "@/assets/working-genius-widget.png.asset.json";
-import gearsVideo from "@/assets/working-genius-gears.mp4.asset.json";
+import heroBg from "@/assets/working-genius-hero-bg.jpg";
 import certifiedBadge from "@/assets/working-genius-certified-badge.png.asset.json";
 
 
@@ -170,43 +170,33 @@ export default function WorkingGeniusAssessment() {
       </section>
 
       {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary/90 via-primary to-primary/80 text-white overflow-hidden">
+      <section className="relative py-20 md:py-28 text-white overflow-hidden isolate">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroBg})` }}
+          aria-hidden="true"
+        />
+        {/* Overlay for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30" aria-hidden="true" />
 
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl" />
-        </div>
         <div className="container max-w-6xl mx-auto px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-                <img src={dualGearsIcon} alt="" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
-                <span className="text-sm font-semibold">The 6 Types of Working Genius</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
-                Discover your gifts. Transform your work.
-              </h1>
-              <p className="text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 mb-8 text-white/90">
-                Some work gives you energy. Some drains it. Working Genius names the kinds of work that fit your natural gifts so you can spend more time doing what brings you joy and impact.
-              </p>
-              <a href="#get-started">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold text-lg px-8">
-                  Get Started
-                </Button>
-              </a>
+          <div className="max-w-2xl text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+              <img src={dualGearsIcon} alt="" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
+              <span className="text-sm font-semibold">The 6 Types of Working Genius</span>
             </div>
-            <div className="flex justify-center lg:justify-end">
-              <video
-                src={gearsVideo.url}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                aria-label="Six interlocked brass and steel gears rotating together"
-                className="w-full max-w-md rounded-2xl shadow-2xl"
-              />
-            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
+              Discover your gifts. Transform your work.
+            </h1>
+            <p className="text-lg md:text-xl mb-8 text-white/90">
+              Some work gives you energy. Some drains it. Working Genius names the kinds of work that fit your natural gifts so you can spend more time doing what brings you joy and impact.
+            </p>
+            <a href="#get-started">
+              <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-semibold text-lg px-8">
+                Get Started
+              </Button>
+            </a>
           </div>
         </div>
       </section>
