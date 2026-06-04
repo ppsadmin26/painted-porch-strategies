@@ -295,10 +295,10 @@ export default function RadicalMindfulness() {
             </div>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
+          <div className="grid md:grid-cols-2 gap-8 mt-12 items-stretch">
             {pricingTiers.map((tier) => (
-              <AnimatedSection key={tier.name}>
-                <div className={`rounded-2xl border-2 p-8 relative ${tier.popular ? "border-pps-teal shadow-lg" : "border-border"}`}>
+              <AnimatedSection key={tier.name} className="h-full">
+                <div className={`h-full flex flex-col rounded-2xl border-2 p-8 relative ${tier.popular ? "border-pps-teal shadow-lg" : "border-border"}`}>
                   {tier.popular && (
                     <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-pps-teal text-white text-xs font-poppins font-bold uppercase tracking-wider px-4 py-1 rounded-full">
                       Most Popular
@@ -315,7 +315,7 @@ export default function RadicalMindfulness() {
                       </li>
                     ))}
                   </ul>
-                  <Button asChild className={`w-full font-poppins font-semibold rounded-lg ${tier.popular ? "bg-pps-teal hover:bg-pps-teal/90 text-white" : "bg-pps-navy hover:bg-pps-navy/90 text-white"}`}>
+                  <Button asChild className={`w-full mt-auto font-poppins font-semibold rounded-lg ${tier.popular ? "bg-pps-teal hover:bg-pps-teal/90 text-white" : "bg-pps-navy hover:bg-pps-navy/90 text-white"}`}>
                     <Link to="/contact?scope=Yourself&interest=self-paced&message=I'm interested in the Radical Mindfulness program.">{tier.cta}</Link>
                   </Button>
                 </div>
