@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Heart, Brain, BookOpen, Users, Star, Check } from "lucide-react";
+import { ArrowRight, ArrowLeft, Sparkles, Heart, Brain, BookOpen, Users, Star, Check } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
