@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Heart, Brain, BookOpen, Users, Star, Check } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import heroImg from "@/assets/programs/radical-mindfulness-hero.jpg";
+import heroImg from "@/assets/programs/radical-mindfulness-emojis.jpg.asset.json";
 import sierraHeadshot from "@/assets/team/sierra-ramm-cantrell.jpg";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
