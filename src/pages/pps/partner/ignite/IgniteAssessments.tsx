@@ -8,7 +8,7 @@ import { igniteFaqCategories } from "./igniteFaqs";
 import brainEqIcon from "@/assets/icons/brain-eq.svg";
 import dualGearsIcon from "@/assets/icons/dual-gears.svg";
 import dnaHelixIcon from "@/assets/icons/dna-helix.svg";
-import shiftArchitectIcon from "@/assets/icons/shift-architect.svg";
+
 
 const assessments = [
   {
@@ -55,20 +55,6 @@ const assessments = [
     hoverBg: "hover:bg-lime",
     icon: "dna",
   },
-  {
-    title: "Shift Architect Assessment",
-    subtitle: "Change Leadership Capacity",
-    tagline: "Architect Transformation, Don't Just Manage It",
-    description: "Your organization might be exploring transformation, but are you ready to architect and lead it? This assessment measures your personal capacity across seven critical dimensions—your design thinking, Phase Zero™ foundations, and ability to create change versus respond to it.",
-    investment: "$136 | Team pricing available",
-    link: "#",
-    color: "bg-gold/10",
-    borderColor: "border-gold",
-    iconColor: "text-gold",
-    pillColor: "bg-gold text-white",
-    hoverBg: "hover:bg-gold",
-    icon: "shift-architect",
-  },
 ];
 
 function AssessmentIcon({ icon }: { icon: string }) {
@@ -81,8 +67,6 @@ function AssessmentIcon({ icon }: { icon: string }) {
       return <img src={dualGearsIcon} alt="Working Genius" className={iconClass} style={invertFilter} />;
     case "dna":
       return <img src={dnaHelixIcon} alt="Performance DNA" className={iconClass} style={invertFilter} />;
-    case "shift-architect":
-      return <img src={shiftArchitectIcon} alt="Shift Architect" className={iconClass} style={invertFilter} />;
     default:
       return <Heart className={`${iconClass} text-white`} />;
   }
