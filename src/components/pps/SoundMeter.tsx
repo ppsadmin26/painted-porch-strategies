@@ -8,9 +8,9 @@ interface SoundMeterProps {
 
 /**
  * LED-style equalizer / VU meter. Pure CSS animation, no audio.
- * Each bar: full-height colored segment stack, overlaid by an animated
- * black "shutter" from the top that hides the unlit upper portion.
- * Colors ramp green → yellow → orange → red, bottom to top.
+ * Each bar layers a dim full-height segment stack with a bright stack
+ * revealed bottom-up via animated clip-path inset — so segments stay
+ * pixel-aligned. Colors ramp green → yellow → orange → red.
  */
 export const SoundMeter = ({
   barCount = 56,
@@ -28,9 +28,9 @@ export const SoundMeter = ({
           i,
           duration: 0.7 + r1 * 1.6,
           delay: -r2 * 2.5,
-          // shutter covers this much from the top (inverse of bar height)
-          coverMax: 65 + r1 * 25, // dim peak height ~15-35%
-          coverMin: 0 + r2 * 35, // bright peak height ~65-100%
+          // clip-path inset from the top: high = mostly hidden (low bar)
+          insetMax: 75 - r1 * 20, // 55-75% covered → bar at 25-45%
+          insetMin: 10 + r2 * 25, // 10-35% covered → bar at 65-90%
         };
       }),
     [barCount]
@@ -56,13 +56,13 @@ export const SoundMeter = ({
       }}
     >
       <style>{`
-        @keyframes sm-shutter {
-          0%   { height: var(--cov-max); }
-          50%  { height: var(--cov-min); }
-          100% { height: var(--cov-max); }
+        @keyframes sm-clip {
+          0%   { clip-path: inset(var(--ins-max) 0 0 0); }
+          50%  { clip-path: inset(var(--ins-min) 0 0 0); }
+          100% { clip-path: inset(var(--ins-max) 0 0 0); }
         }
         @media (prefers-reduced-motion: reduce) {
-          .sm-shutter { animation: none !important; height: 45% !important; }
+          .sm-lit { animation: none !important; clip-path: inset(50% 0 0 0) !important; }
         }
         .sm-seg {
           flex: 1 1 0;
@@ -71,60 +71,41 @@ export const SoundMeter = ({
           border-radius: 1px;
           background: currentColor;
         }
-        .sm-shutter {
-          animation: sm-shutter var(--dur) ease-in-out infinite;
+        .sm-lit {
+          animation: sm-clip var(--dur) ease-in-out infinite;
           animation-delay: var(--delay);
         }
       `}</style>
       {bars.map((b) => (
         <div key={b.i} className="relative h-full w-[6px] sm:w-[8px]">
-          {/* Lit colored stack — full height of bar */}
+          {/* Dim ghost stack — full height, low opacity */}
           <div className="absolute inset-0 flex flex-col-reverse">
             {segments.map((c, s) => (
               <span
                 key={s}
                 className="sm-seg"
-                style={{ color: c, boxShadow: `0 0 3px ${c}` }}
+                style={{ color: c, opacity: 0.16 }}
               />
             ))}
           </div>
-          {/* Dim ghost overlay — replaces the lit colors above the shutter */}
+          {/* Bright lit stack — same full-height layout, clipped from top */}
           <div
-            className="sm-shutter absolute top-0 left-0 right-0 flex flex-col overflow-hidden"
+            className="sm-lit absolute inset-0 flex flex-col-reverse"
             style={
               {
-                "--cov-max": `${b.coverMax}%`,
-                "--cov-min": `${b.coverMin}%`,
+                "--ins-max": `${b.insetMax}%`,
+                "--ins-min": `${b.insetMin}%`,
                 "--dur": `${b.duration}s`,
                 "--delay": `${b.delay}s`,
-                height: `${b.coverMax}%`,
+                clipPath: `inset(${b.insetMax}% 0 0 0)`,
               } as React.CSSProperties
             }
           >
-            {/* Render the SAME stack from the top down, but very dim, so segments
-                align perfectly with the lit stack below. */}
-            <div
-              className="absolute top-0 left-0 right-0 flex flex-col-reverse"
-              style={{ height: `${(segmentCount / segmentCount) * 100}%` }}
-            >
-              {/* black backdrop so colored segs are hidden */}
-              <span className="absolute inset-0 bg-black" />
-            </div>
-            {/* Dim segment outlines drawn on top of the black backdrop */}
-            <div
-              className="absolute left-0 right-0 flex flex-col-reverse"
-              style={{
-                bottom: `calc(-100% * (100 / var(--bar-cover, 100)))`,
-              }}
-            />
-          </div>
-          {/* Separate full-height dim ghost stack, behind everything */}
-          <div className="absolute inset-0 flex flex-col-reverse -z-10">
             {segments.map((c, s) => (
               <span
                 key={s}
                 className="sm-seg"
-                style={{ color: c, opacity: 0.15 }}
+                style={{ color: c, boxShadow: `0 0 3px ${c}` }}
               />
             ))}
           </div>
