@@ -164,7 +164,7 @@ export function ParallaxCTA({
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       {/* Decorative overlay — hidden from assistive tech */}
-      <div aria-hidden="true" className={cn("absolute inset-0", overlayClass)} />
+      <div aria-hidden="true" className={cn("absolute inset-0", resolvedOverlay)} />
 
       <div
         className={cn(
