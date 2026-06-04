@@ -114,7 +114,7 @@ const reportIncludes = [
   },
   {
     tag: "APPLY WITH A GUIDE",
-    title: "Your 45-Minute Debrief Call (PPS Package)",
+    title: "Your 45-Minute Debrief Call (Optional Package)",
     description:
       "With our $297 package, you sit down with our team to make the report real for your life and work. We'll work with you to:",
     items: [
