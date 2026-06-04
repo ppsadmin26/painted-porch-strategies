@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Mic, MessageSquare, HelpCircle, BookOpen, Users, Brain, Check } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import heroImg from "@/assets/programs/master-your-message-hero.jpg";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
