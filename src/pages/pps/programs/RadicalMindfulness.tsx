@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles, Heart, Brain, BookOpen, Users, Star, Check } from
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import heroImg from "@/assets/programs/radical-mindfulness-emojis.jpg.asset.json";
+import heroVideo from "@/assets/programs/radical-mindfulness-bounce.mp4.asset.json";
 import sierraHeadshot from "@/assets/team/sierra-ramm-cantrell.jpg";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -80,7 +81,16 @@ export default function RadicalMindfulness() {
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-center">
         <div className="absolute inset-0">
-          <img src={heroImg.url} alt="Radical Mindfulness" className="w-full h-full object-cover" width={1920} height={800} />
+          <video
+            src={heroVideo.url}
+            poster={heroImg.url}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+            aria-label="Radical Mindfulness"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
