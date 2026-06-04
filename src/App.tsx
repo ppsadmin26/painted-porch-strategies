@@ -52,6 +52,7 @@ import IgniteCourses from "./pages/pps/partner/ignite/IgniteCourses";
 import IgniteAssessments from "./pages/pps/partner/ignite/IgniteAssessments";
 import IgniteMasterclasses from "./pages/pps/partner/ignite/IgniteMasterclasses";
 import EQAssessment from "./pages/pps/partner/ignite/EQAssessment";
+import WorkingGeniusAssessment from "./pages/pps/partner/ignite/WorkingGeniusAssessment";
 import EQChangeLeaderMini from "./pages/pps/EQChangeLeaderMini";
 
 // AMPLIFY Subpages
@@ -256,6 +257,7 @@ const App = () => (
             <Route path="partner/ignite" element={<IgnitePathAlt />} />
             <Route path="partner/ignite/courses" element={<IgniteCourses />} />
             <Route path="partner/ignite/assessments" element={<IgniteAssessments />} />
+            <Route path="partner/ignite/assessments/working-genius" element={<WorkingGeniusAssessment />} />
             <Route path="partner/ignite/masterclasses" element={<IgniteMasterclasses />} />
             <Route path="eq" element={<EQAssessment />} />
             <Route path="eq-change-leader" element={<EQChangeLeaderMini />} />
