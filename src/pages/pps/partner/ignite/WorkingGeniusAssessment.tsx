@@ -441,7 +441,7 @@ export default function WorkingGeniusAssessment() {
                 Most Popular
               </div>
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
-                Assessment + PPS Debrief
+                Assessment + 1:1 Debrief
               </h3>
               <p className="text-4xl font-bold text-primary mb-4">$297</p>
               <p className="text-sm font-medium text-foreground mb-4">
