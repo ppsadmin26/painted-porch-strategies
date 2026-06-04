@@ -144,12 +144,14 @@ export function ParallaxCTA({
   footnote,
   maxWidthClass = "max-w-3xl",
   paddingClass = "py-20 md:py-28",
-  // Default overlay opacity intentionally high — guarantees 4.5:1 white-on-bg
-  // contrast even on the brightest part of the image.
-  overlayClass = "bg-gradient-to-b from-navy/90 via-navy/85 to-navy/85",
+  // Default away from navy so the CTA doesn't blend into the navy footer.
+  // Opacity stays high to guarantee 4.5:1 white-on-bg contrast.
+  overlayTone = "teal",
+  overlayClass,
   className,
 }: ParallaxCTAProps) {
   const headingId = useId();
+  const resolvedOverlay = overlayClass ?? overlayToneClasses[overlayTone];
 
   return (
     <section
