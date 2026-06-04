@@ -53,23 +53,6 @@ const pricingTiers = [
     cta: "Purchase Program",
     popular: true,
   },
-  {
-    name: "Mindful Mastery Bundle",
-    price: "$75/mo",
-    originalPrice: "$149/mo",
-    subtitle: "12 monthly payments — Save over $1,500!",
-    features: [
-      "Access to ALL signature programs: Radical Mindfulness, Create Extraordinary Teams, and Master Your Message",
-      "On-Demand Video Lessons & Exercises (Over 24+ hrs)",
-      "Lifetime Access",
-      "Private, Interactive Communities",
-      "12 Weekly, Live 60-min. Group Coaching Calls (4 per program)",
-      "BONUS! THREE 30-min. 1-on-1 Coaching Calls with Sierra, Rob, and Amy",
-      "21-day 100% Money Back Guarantee",
-    ],
-    cta: "Purchase Bundle",
-    popular: true,
-  },
 ];
 
 const faqs = [
