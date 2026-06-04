@@ -354,6 +354,7 @@ export default function RadicalMindfulness() {
       {/* Business CTA */}
       <ParallaxCTA
         backgroundImage={businessCtaImg.url}
+        overlayTone="purple"
         headline="Interested in Radical Mindfulness for your Business?"
         description="Bring mindfulness and emotional resilience training to your teams. Explore our business programs to create a foundation for lasting organizational transformation."
         actions={[{ label: "Contact Us", to: "/contact", variant: "primary" }]}
