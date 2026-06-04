@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/pps/FAQSection";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import heroImg from "@/assets/programs/master-your-message-hero.jpg";
+import { SoundMeter } from "@/components/pps/SoundMeter";
 import mymCtaImg from "@/assets/programs/master-your-message.jpg";
 import robHeadshot from "@/assets/team/rob-hunter.jpg";
 
