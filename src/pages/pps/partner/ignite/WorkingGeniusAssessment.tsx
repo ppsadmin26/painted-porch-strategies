@@ -9,45 +9,55 @@ import heroBg from "@/assets/working-genius-hero-bg.jpg";
 import certifiedBadge from "@/assets/working-genius-certified-badge.png.asset.json";
 
 
-const wgFaqs = [
+const wgFaqCategories: FAQCategory[] = [
   {
-    question: "Is the Working Genius assessment for me?",
-    answer:
-      "If you've ever wondered why some work energizes you while other tasks drain you (even when you're good at them), Working Genius is for you. It's a 10-minute assessment that helps anyone, in any role, understand the kinds of work that fit their natural gifts and the kinds that frustrate them. It's especially powerful for leaders, teams, and anyone wanting to do work that brings them joy.",
+    name: "About Working Genius",
+    faqs: [
+      {
+        question: "Is the Working Genius assessment for me?",
+        answer:
+          "If you've ever wondered why some work energizes you while other tasks drain you (even when you're good at them), Working Genius is for you. It's a 10-minute assessment that helps anyone, in any role, understand the kinds of work that fit their natural gifts and the kinds that frustrate them. It's especially powerful for leaders, teams, and anyone wanting to do work that brings them joy.",
+      },
+      {
+        question: "How long does the assessment take?",
+        answer:
+          "The online Working Genius assessment takes about 10 minutes to complete. There are no right or wrong answers. You'll answer questions about how you naturally think and work, and you'll receive a personalized report identifying your two areas of genius, two areas of competency, and two areas of frustration.",
+      },
+      {
+        question: "What are the 6 Types of Working Genius?",
+        answer:
+          "The 6 types spell out the acronym W.I.D.G.E.T.: Wonder (asking the big questions), Invention (generating new ideas and solutions), Discernment (evaluating ideas and giving feedback), Galvanizing (rallying people to action), Enablement (jumping in to help), and Tenacity (driving work across the finish line). Everyone has two types they're naturally great at (their genius), two they can do but find draining, and two that frustrate them.",
+      },
+      {
+        question: "Who created Working Genius?",
+        answer:
+          "Working Genius was created by Patrick Lencioni and The Table Group. Painted Porch Strategies is a Working Genius Certified Facilitator, which means we're trained and licensed to apply Working Genius results with individuals and teams.",
+      },
+    ],
   },
   {
-    question: "How long does the assessment take?",
-    answer:
-      "The online Working Genius assessment takes about 10 minutes to complete. There are no right or wrong answers. You'll answer questions about how you naturally think and work, and you'll receive a personalized report identifying your two areas of genius, two areas of competency, and two areas of frustration.",
-  },
-  {
-    question: "What's the difference between the $25 option and the $297 option?",
-    answer:
-      "The $25 option is the basic Working Genius assessment purchased directly from The Table Group. You complete the assessment and receive your personalized PDF report on your own. The $297 option adds a 45-minute one-on-one debrief call with our team, where we help you understand your results, see how your genius shows up in your real-world work, and design an action plan to lean into your strengths and protect your energy.",
-  },
-  {
-    question: "What should I expect after I purchase?",
-    answer:
-      "If you purchase the assessment only directly from Working Genius, you'll receive access to immediately complete your assessment. Results will be delivered immediately thereafter. If you purchase from us, you'll receive a custom link to complete your Working Genius assessment within 24 hours. Then, once completed, you'll receive an email to book your debrief. The report will be delivered as part of the debrief session.",
-  },
-  {
-    question: "What are the 6 Types of Working Genius?",
-    answer:
-      "The 6 types spell out the acronym W.I.D.G.E.T.: Wonder (asking the big questions), Invention (generating new ideas and solutions), Discernment (evaluating ideas and giving feedback), Galvanizing (rallying people to action), Enablement (jumping in to help), and Tenacity (driving work across the finish line). Everyone has two types they're naturally great at (their genius), two they can do but find draining, and two that frustrate them.",
-  },
-  {
-    question: "Can my whole team take this together?",
-    answer: (
-      <>
-        Yes. Working Genius is built for teams. We can run it as a team or organizational package with an optional 2 to 4 hour facilitated workshop where we map your team's collective genius, identify gaps, and redesign how work flows so people spend more time in their genius. Reach out through our{" "}
-        <Link to="/contact" className="text-primary underline hover:text-primary/80">contact form</Link> to design the right package for your team.
-      </>
-    ),
-  },
-  {
-    question: "Who created Working Genius?",
-    answer:
-      "Working Genius was created by Patrick Lencioni and The Table Group. Painted Porch Strategies is a Working Genius Certified Facilitator, which means we're trained and licensed to apply Working Genius results with individuals and teams.",
+    name: "Purchase & Logistics",
+    faqs: [
+      {
+        question: "What's the difference between the $25 option and the $297 option?",
+        answer:
+          "The $25 option is the basic Working Genius assessment purchased directly from The Table Group. You complete the assessment and receive your personalized PDF report on your own. The $297 option adds a 45-minute one-on-one debrief call with our team, where we help you understand your results, see how your genius shows up in your real-world work, and design an action plan to lean into your strengths and protect your energy.",
+      },
+      {
+        question: "What should I expect after I purchase?",
+        answer:
+          "If you purchase the assessment only directly from Working Genius, you'll receive access to immediately complete your assessment. Results will be delivered immediately thereafter. If you purchase from us, you'll receive a custom link to complete your Working Genius assessment within 24 hours. Then, once completed, you'll receive an email to book your debrief. The report will be delivered as part of the debrief session.",
+      },
+      {
+        question: "Can my whole team take this together?",
+        answer: (
+          <>
+            Yes. Working Genius is built for teams. We can run it as a team or organizational package with an optional 2 to 4 hour facilitated workshop where we map your team's collective genius, identify gaps, and redesign how work flows so people spend more time in their genius. Reach out through our{" "}
+            <Link to="/contact" className="text-primary underline hover:text-primary/80">contact form</Link> to design the right package for your team.
+          </>
+        ),
+      },
+    ],
   },
 ];
 
