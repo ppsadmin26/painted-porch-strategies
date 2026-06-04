@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles, Heart, Brain, BookOpen, Users, Star, Check } from
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import heroImg from "@/assets/programs/radical-mindfulness-hero.jpg";
+import sierraHeadshot from "@/assets/team/sierra-ramm-cantrell.jpg";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -238,18 +239,27 @@ export default function RadicalMindfulness() {
         <section className="py-20 bg-muted/30">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-2xl border border-border p-8 md:p-12">
-              <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-2">
-                Hi! I'm Sierra, your Painted Porch Guide!
-              </h3>
-              <p className="text-pps-gold font-poppins font-semibold text-sm mb-6">
-                Sierra Ramm Cantrell · Chief Joy Officer
-              </p>
-              <p className="text-charcoal leading-relaxed mb-6">
-                Middle of the road is for painted lines…I'm that zany, madcap person in your life who makes animal noises, breaks out into song, and will help you balance your energy. I've taught yoga for 10+ years, traveled all 50 states, and as an early childhood development guide and mom, my true life purpose is to help everyone I cross paths with lead a more joyful, authentic life.
-              </p>
-              <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal/10 font-poppins font-semibold rounded-lg">
-                <Link to="/sierra">More About Sierra <ArrowRight className="ml-2 h-4 w-4" /></Link>
-              </Button>
+              <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-8">
+                <img
+                  src={sierraHeadshot}
+                  alt="Sierra Ramm Cantrell, Chief Joy Officer at Painted Porch Strategies"
+                  className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover flex-shrink-0 shadow-md"
+                />
+                <div className="flex-1">
+                  <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-2">
+                    Hi! I'm Sierra, your Painted Porch Guide!
+                  </h3>
+                  <p className="text-pps-gold font-poppins font-semibold text-sm mb-6">
+                    Sierra Ramm Cantrell · Chief Joy Officer
+                  </p>
+                  <p className="text-charcoal leading-relaxed mb-6">
+                    Middle of the road is for painted lines…I'm that zany, madcap person in your life who makes animal noises, breaks out into song, and will help you balance your energy. I've taught yoga for 10+ years, traveled all 50 states, and as an early childhood development guide and mom, my true life purpose is to help everyone I cross paths with lead a more joyful, authentic life.
+                  </p>
+                  <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal/10 font-poppins font-semibold rounded-lg">
+                    <Link to="/sierra">More About Sierra <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
