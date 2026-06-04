@@ -257,6 +257,7 @@ const App = () => (
             <Route path="partner/ignite" element={<IgnitePathAlt />} />
             <Route path="partner/ignite/courses" element={<IgniteCourses />} />
             <Route path="partner/ignite/assessments" element={<IgniteAssessments />} />
+            <Route path="partner/ignite/assessments/working-genius" element={<WorkingGeniusAssessment />} />
             <Route path="partner/ignite/masterclasses" element={<IgniteMasterclasses />} />
             <Route path="eq" element={<EQAssessment />} />
             <Route path="eq-change-leader" element={<EQChangeLeaderMini />} />
