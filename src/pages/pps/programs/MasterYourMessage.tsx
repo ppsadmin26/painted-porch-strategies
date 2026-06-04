@@ -42,7 +42,7 @@ const programDetails = [
 const pricingTiers = [
   {
     name: "Self-Paced Program",
-    price: "$767",
+    price: "$697",
     subtitle: "Go at Your Own Pace",
     features: [
       "Private, Interactive Community",
@@ -51,7 +51,7 @@ const pricingTiers = [
       "14-day 100% Money Back Guarantee",
     ],
     cta: "Purchase Program",
-    popular: false,
+    popular: true,
   },
   {
     name: "Mindful Mastery Bundle",
