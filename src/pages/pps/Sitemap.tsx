@@ -83,6 +83,7 @@ export const sitemapData: SitemapNode[] = [
             children: [
               { label: "EQ Assessment", path: "/eq", note: "Top-level URL kept for ease of sharing" },
               { label: "EQ Change Leader", path: "/eq-change-leader", note: "Top-level URL kept for ease of sharing" },
+              { label: "Working Genius", path: "/partner/ignite/assessments/working-genius" },
             ],
           },
           {
