@@ -29,6 +29,11 @@ const wgFaqCategories = [
           "The $25 option is the basic Working Genius assessment purchased directly from The Table Group. You complete the assessment and receive your personalized PDF report on your own. The $297 option adds a 45-minute one-on-one debrief call with our team, where we help you understand your results, see how your genius shows up in your real-world work, and design an action plan to lean into your strengths and protect your energy.",
       },
       {
+        question: "What should I expect after I purchase?",
+        answer:
+          "If you purchase the assessment only directly from Working Genius, you'll receive access to immediately complete your assessment. Results will be delivered immediately thereafter. If you purchase from us, you'll receive a custom link to complete your Working Genius assessment within 24 hours. Then, once completed, you'll receive an email to book your debrief. The report will be delivered as part of the debrief session.",
+      },
+      {
         question: "What are the 6 Types of Working Genius?",
         answer:
           "The 6 types spell out the acronym W.I.D.G.E.T.: Wonder (asking the big questions), Invention (generating new ideas and solutions), Discernment (evaluating ideas and giving feedback), Galvanizing (rallying people to action), Enablement (jumping in to help), and Tenacity (driving work across the finish line). Everyone has two types they're naturally great at (their genius), two they can do but find draining, and two that frustrate them.",
