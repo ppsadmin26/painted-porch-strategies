@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Heart, Brain, BookOpen, Users, Star, Check } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import heroImg from "@/assets/programs/radical-mindfulness-emojis.jpg.asset.json";
 import heroVideo from "@/assets/programs/radical-mindfulness-bounce.mp4.asset.json";
+import businessCtaImg from "@/assets/programs/radical-mindfulness-business-cta.jpg.asset.json";
 import sierraHeadshot from "@/assets/team/sierra-ramm-cantrell.jpg";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -360,19 +362,12 @@ export default function RadicalMindfulness() {
       </AnimatedSection>
 
       {/* Business CTA */}
-      <section className="py-20 bg-pps-navy text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-6">
-            Interested in Radical Mindfulness for your Business?
-          </h2>
-          <p className="text-lg text-white/80 leading-relaxed mb-8">
-            Bring mindfulness and emotional resilience training to your teams. Explore our business programs to create a foundation for lasting organizational transformation.
-          </p>
-          <Button asChild size="lg" className="bg-pps-gold hover:bg-pps-gold/90 text-pps-navy font-poppins font-semibold rounded-lg px-8">
-            <Link to="/contact">Contact Us <ArrowRight className="ml-2 h-5 w-5" /></Link>
-          </Button>
-        </div>
-      </section>
+      <ParallaxCTA
+        backgroundImage={businessCtaImg.url}
+        headline="Interested in Radical Mindfulness for your Business?"
+        description="Bring mindfulness and emotional resilience training to your teams. Explore our business programs to create a foundation for lasting organizational transformation."
+        actions={[{ label: "Contact Us", to: "/contact", variant: "primary" }]}
+      />
     </div>
   );
 }
