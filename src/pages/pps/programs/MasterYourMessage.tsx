@@ -292,7 +292,7 @@ export default function MasterYourMessage() {
             </div>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
+          <div className="grid md:grid-cols-1 gap-8 mt-12 max-w-lg mx-auto">
             {pricingTiers.map((tier) => (
               <AnimatedSection key={tier.name}>
                 <div className={`rounded-2xl border-2 p-8 relative ${tier.popular ? "border-pps-teal shadow-lg" : "border-border"}`}>
