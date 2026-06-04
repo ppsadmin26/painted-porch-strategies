@@ -81,6 +81,14 @@ const pricingTiers = [
 export default function RadicalMindfulness() {
   return (
     <div>
+      <PPSBreadcrumb
+        segments={[
+          { label: "Home", href: "/" },
+          { label: "IGNITE", href: "/partner/ignite" },
+          { label: "Courses", href: "/partner/ignite/courses" },
+          { label: "Radical Mindfulness" },
+        ]}
+      />
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-center">
         <div className="absolute inset-0">
@@ -92,9 +100,6 @@ export default function RadicalMindfulness() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <Link to="/partner/ignite/courses" className="inline-flex items-center gap-2 text-sm text-white/80 hover:text-white mb-6 transition-colors">
-            <ArrowLeft className="w-4 h-4" /> Back to Courses
-          </Link>
           <span className="inline-block text-pps-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
             From Overwhelm to Om
           </span>
