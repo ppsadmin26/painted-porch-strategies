@@ -69,6 +69,14 @@ const faqs = [
 export default function ExtraordinaryTeams() {
   return (
     <div>
+      <PPSBreadcrumb
+        segments={[
+          { label: "Home", href: "/" },
+          { label: "IGNITE", href: "/partner/ignite" },
+          { label: "Courses", href: "/partner/ignite/courses" },
+          { label: "Create Extraordinary Teams" },
+        ]}
+      />
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-center">
         <div className="absolute inset-0">
