@@ -5,6 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import heroImg from "@/assets/programs/master-your-message-hero.jpg";
+import robHeadshot from "@/assets/team/rob-hunter.jpg";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -251,18 +252,27 @@ export default function MasterYourMessage() {
         <section className="py-20 bg-muted/30">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-2xl border border-border p-8 md:p-12">
-              <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-2">
-                Hi! I'm Rob, your Painted Porch Guide!
-              </h3>
-              <p className="text-pps-gold font-poppins font-semibold text-sm mb-6">
-                Rob Hunter · M.C. (Master of Communication)
-              </p>
-              <p className="text-charcoal leading-relaxed mb-6">
-                Hi, I'm Rob. And I love words. Not just any words, though…ones that create connection and meaningful, lasting impact. Over my 25+ yr. career as a radio broadcaster, I've learned that communication is the most important — yet underrated — skill. When you communicate effectively, you will master your influence and inspire others.
-              </p>
-              <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal/10 font-poppins font-semibold rounded-lg">
-                <Link to="/rob">More About Rob <ArrowRight className="ml-2 h-4 w-4" /></Link>
-              </Button>
+              <div className="flex flex-col md:flex-row md:items-start gap-6 md:gap-8">
+                <img
+                  src={robHeadshot}
+                  alt="Rob Hunter, Master of Communication at Painted Porch Strategies"
+                  className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover flex-shrink-0 shadow-md"
+                />
+                <div className="flex-1">
+                  <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-2">
+                    Hi! I'm Rob, your Painted Porch Guide!
+                  </h3>
+                  <p className="text-pps-gold font-poppins font-semibold text-sm mb-6">
+                    Rob Hunter · M.C. (Master of Communication)
+                  </p>
+                  <p className="text-charcoal leading-relaxed mb-6">
+                    Hi, I'm Rob. And I love words. Not just any words, though…ones that create connection and meaningful, lasting impact. Over my 25+ yr. career as a radio broadcaster, I've learned that communication is the most important — yet underrated — skill. When you communicate effectively, you will master your influence and inspire others.
+                  </p>
+                  <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal/10 font-poppins font-semibold rounded-lg">
+                    <Link to="/rob">More About Rob <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
