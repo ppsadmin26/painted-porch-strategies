@@ -165,7 +165,7 @@ export default function WorkingGeniusAssessment() {
             <span className="text-sm font-semibold">The 6 Types of Working Genius</span>
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
-            Discover your gifts. Transform your team.
+            Discover your gifts. Transform your work.
           </h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/90">
             Some work gives you energy. Some drains it. Working Genius names the kinds of work that fit your natural gifts so you can spend more time doing what brings you joy and impact.
