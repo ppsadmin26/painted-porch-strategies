@@ -528,7 +528,7 @@ export default function WorkingGeniusAssessment() {
         </div>
       </section>
 
-      <FAQSection tierName="Working Genius" categories={wgFaqCategories} />
+      <FAQSection tierName="Working Genius" faqs={wgFaqs} />
     </div>
   );
 }
