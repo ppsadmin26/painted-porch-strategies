@@ -211,23 +211,6 @@ export default function WorkingGeniusAssessment() {
       </section>
 
 
-      {/* Stat Callout */}
-      <section className="py-16 bg-navy text-white text-center">
-        <div className="container max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
-            What do you crave? What are you crushed by?
-          </h2>
-          <p className="text-lg text-white/80 mb-6">
-            Working Genius answers both. In about 10 minutes you'll know which work to lean into and which to stop blaming yourself for.
-          </p>
-          <a href="#get-started">
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-navy">
-              Get Started
-            </Button>
-          </a>
-        </div>
-      </section>
-
       {/* What is it */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-5xl mx-auto px-6">
@@ -262,6 +245,23 @@ export default function WorkingGeniusAssessment() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* Stat Callout */}
+      <section className="py-16 bg-navy text-white text-center">
+        <div className="container max-w-3xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
+            What do you crave? What are you crushed by?
+          </h2>
+          <p className="text-lg text-white/80 mb-6">
+            Working Genius answers both. In about 10 minutes you'll know which work to lean into and which to stop blaming yourself for.
+          </p>
+          <a href="#get-started">
+            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-navy">
+              Get Started
+            </Button>
+          </a>
         </div>
       </section>
 
