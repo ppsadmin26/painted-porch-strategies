@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import teamCtaPuzzles from "@/assets/team/team-cta-puzzles.jpg";
