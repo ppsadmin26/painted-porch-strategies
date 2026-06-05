@@ -93,8 +93,8 @@ export default function MasterYourMessage() {
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImg} alt="Master Your Message" className="w-full h-full object-cover" width={1920} height={800} />
-          <SoundMeter className="absolute inset-x-0 bottom-0 z-[1] opacity-80 mix-blend-screen" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/20 z-[2]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40 z-[1]" />
+          <SoundMeter className="absolute inset-x-0 bottom-0 z-[2]" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <span className="inline-block text-pps-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
