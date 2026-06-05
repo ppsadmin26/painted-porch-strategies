@@ -436,7 +436,7 @@ export default function PhaseZero() {
       {/* Final CTA */}
       <ParallaxCTA
         backgroundImage={blueDoorHero}
-        overlayClass="bg-gradient-to-b from-navy/60 via-navy/40 to-navy/25"
+        overlayClass="bg-gradient-to-b from-navy/85 via-navy/75 to-navy/65"
         eyebrow="Begin"
         headline="The Blue Door is Phase Zero in motion."
         description="An under 30 minute organizational appraisal and debrief that turns the three Pillars into a real picture of what your organization is built to lead next."
