@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mic, MessageSquare, HelpCircle, BookOpen, Users, Brain, Check } from "lucide-react";
+import { ArrowRight, Mic, MessageSquare, HelpCircle, BookOpen, Users, Brain, Check, Bell } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { FAQSection } from "@/components/pps/FAQSection";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
+import { CourseLaunchListDialog } from "@/components/pps/CourseLaunchListDialog";
 import heroImg from "@/assets/programs/master-your-message-hero.jpg";
 import { SoundMeter } from "@/components/pps/SoundMeter";
 import mymCtaImg from "@/assets/programs/master-your-message.jpg";
