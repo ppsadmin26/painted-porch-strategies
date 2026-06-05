@@ -4,7 +4,7 @@ import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { useScrollAnimation, getAnimationClasses } from "@/hooks/useScrollAnimation";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
-import homeHero from "@/assets/heroes/home-hero.jpg";
+import blueDoorHero from "@/assets/blue-door-hero.jpg";
 import phaseZeroHero from "@/assets/heroes/phase-zero-hero.jpg";
 
 function FadeIn({ children, className = "" }: { children: React.ReactNode; className?: string }) {
@@ -434,7 +434,8 @@ export default function PhaseZero() {
 
       {/* Final CTA */}
       <ParallaxCTA
-        backgroundImage={homeHero}
+        backgroundImage={blueDoorHero}
+        overlayTone="navy"
         eyebrow="Begin"
         headline="The Blue Door is Phase Zero in motion."
         description="An under 30 minute organizational appraisal and debrief that turns the three Pillars into a real picture of where your organization stands."

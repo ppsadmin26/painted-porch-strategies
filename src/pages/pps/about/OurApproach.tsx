@@ -4,6 +4,7 @@ import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import PartnershipPromise from "@/components/pps/PartnershipPromise";
 import approachHero from "@/assets/heroes/approach-hero.jpg";
+import blueDoorHero from "@/assets/blue-door-hero.jpg";
 
 const coreValues = [
   {
@@ -254,7 +255,8 @@ export default function OurApproach() {
 
       {/* Final CTA */}
       <ParallaxCTA
-        backgroundImage={approachHero}
+        backgroundImage={blueDoorHero}
+        overlayTone="navy"
         eyebrow="Start Here"
         headline="The Blue Door is the simplest place to begin."
         description="A structured conversation about where your organization actually stands, before the next big decision gets locked in."
