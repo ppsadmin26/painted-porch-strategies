@@ -155,17 +155,17 @@ export default function IgnitePathAlt() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-4 gap-6 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {archetypes.map((archetype, index) => (
               <div 
                 key={index} 
                 className={`${archetype.color} p-6 rounded-xl border ${archetype.borderColor} transition-all hover:shadow-lg`}
               >
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex flex-row lg:flex-col items-center lg:items-start gap-3 mb-4">
                   <div className={`w-10 h-10 rounded-full ${archetype.iconBg} flex items-center justify-center flex-shrink-0`}>
                     <archetype.icon className={`w-5 h-5 ${archetype.iconColor}`} />
                   </div>
-                  <h3 className={`text-lg lg:text-xl font-poppins font-bold leading-tight min-w-0 break-words ${archetype.textColor}`}>
+                  <h3 className={`text-xl font-poppins font-bold leading-tight min-w-0 break-words ${archetype.textColor}`}>
                     {archetype.title}
                   </h3>
                 </div>
@@ -206,9 +206,9 @@ export default function IgnitePathAlt() {
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {/* Column 1: Self-Led Courses */}
-            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col">
+            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col min-w-0">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <Monitor className="w-6 h-6 text-primary" />
               </div>
@@ -245,7 +245,7 @@ export default function IgnitePathAlt() {
             </div>
 
             {/* Column 2: Strategic Assessments */}
-            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col">
+            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col min-w-0">
               <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-4">
                 <BarChart3 className="w-6 h-6 text-gold" />
               </div>
@@ -283,7 +283,7 @@ export default function IgnitePathAlt() {
             </div>
 
             {/* Column 3: Masterclasses */}
-            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col">
+            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col min-w-0">
               <div className="w-12 h-12 rounded-full bg-strategic/10 flex items-center justify-center mb-4">
                 <Video className="w-6 h-6 text-strategic" />
               </div>
@@ -344,7 +344,7 @@ export default function IgnitePathAlt() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {/* Path 1: Nurture the Spark */}
             <div className="bg-gold/10 p-8 rounded-xl border-t-4 border-gold">
               <div className="flex items-center gap-3 mb-4">
@@ -465,7 +465,7 @@ export default function IgnitePathAlt() {
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-white p-8 rounded-xl shadow-sm">
                 <div className="text-4xl text-gold mb-4">"</div>
