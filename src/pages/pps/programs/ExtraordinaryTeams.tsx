@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Puzzle, Target, BookOpen, Users, Brain, Check } from "lucide-react";
+import { ArrowRight, Shield, Puzzle, Target, BookOpen, Users, Brain, Check, Bell } from "lucide-react";
+import { CourseLaunchListDialog } from "@/components/pps/CourseLaunchListDialog";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { FAQSection } from "@/components/pps/FAQSection";
 import heroImg from "@/assets/programs/extraordinary-teams-hero.jpg";
