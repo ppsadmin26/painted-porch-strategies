@@ -604,6 +604,48 @@ export type Database = {
         }
         Relationships: []
       }
+      refund_requests: {
+        Row: {
+          admin_notes: string | null
+          created_at: string
+          email: string
+          id: string
+          name: string
+          processed_at: string | null
+          program: string
+          purchase_date: string
+          reason: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          processed_at?: string | null
+          program: string
+          purchase_date: string
+          reason?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          admin_notes?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          processed_at?: string | null
+          program?: string
+          purchase_date?: string
+          reason?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       site_video_slots: {
         Row: {
           created_at: string
