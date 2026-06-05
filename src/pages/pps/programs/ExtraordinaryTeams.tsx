@@ -69,8 +69,16 @@ const faqs = [
 ];
 
 export default function ExtraordinaryTeams() {
+  const [launchOpen, setLaunchOpen] = useState(false);
   return (
     <div>
+      <CourseLaunchListDialog
+        open={launchOpen}
+        onOpenChange={setLaunchOpen}
+        courseName="Create Extraordinary Teams"
+        courseSlug="extraordinary-teams"
+      />
+
       <PPSBreadcrumb
         segments={[
           { label: "Home", href: "/" },
