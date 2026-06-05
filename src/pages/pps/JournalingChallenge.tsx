@@ -70,16 +70,17 @@ export default function JournalingChallenge() {
               <p className="text-lg text-foreground mb-8">
                 Five days. Five short prompts. Reconnect, rediscover, and reignite your true voice — one quiet page at a time. Led by Rob Hunter, Painted Porch's Master of Communication.
               </p>
-              <a
-                href={GHL_CHECKOUT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Enroll in the Master Your Message Journaling Challenge"
+              <Button
+                disabled
+                className="bg-primary text-white font-semibold text-base px-8 py-5 rounded-full opacity-60 cursor-not-allowed"
               >
-                <Button className="bg-primary hover:bg-primary/90 text-white font-semibold text-base px-8 py-5 rounded-full">
-                  Enroll Now
-                </Button>
-              </a>
+                Coming Soon
+              </Button>
+              <p className="text-sm mt-3">
+                <Link to="/partner/ignite/masterclasses" className="text-primary hover:underline font-medium">
+                  Join the launch list →
+                </Link>
+              </p>
               <p className="text-xs text-muted-foreground mt-3">
                 On-demand. 5 short daily prompts. Go at your own pace, anytime.
               </p>
