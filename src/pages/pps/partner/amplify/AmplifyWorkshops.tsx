@@ -12,6 +12,7 @@ import communicationThumb from "@/assets/workshops/communication-architecture-th
 import stoicThumb from "@/assets/workshops/stoic-leadership-thumb.jpg";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
+import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 
 const workshopFaqCategories: FAQCategory[] = [
   {
@@ -405,41 +406,31 @@ export default function AmplifyWorkshops() {
       />
 
       {/* Final CTA */}
-      <section className="relative py-16 md:py-24 text-white overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${architectChangeThumb})` }}
-        />
-        <div className="absolute inset-0 bg-navy/60" />
-        <div className="container max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to AMPLIFY Your Team's Next Sh<span className="text-white">IF</span>t?
-          </h2>
-          <p className="text-lg text-white/90 mb-4 max-w-2xl mx-auto">
+      <ParallaxCTA
+        backgroundImage={architectChangeThumb}
+        overlayTone="purple"
+        headline={<>Ready to AMPLIFY Your Team&rsquo;s Next Sh<span className="text-white">IF</span>t?</>}
+        description={
+          <>
             Our workshops are co-designed around your context, your challenges, and your transformation goals.
-          </p>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto font-semibold">
-            Let's design the right experience for your team.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-            <Link to="/contact?scope=organization&interest=workshops&message=I'm interested in AMPLIFY workshops for our team.">
-              <Button className="bg-brand-teal border-2 border-brand-teal text-white hover:bg-white hover:text-brand-teal text-lg py-5 px-8 transition-colors font-semibold">
-                Contact Us to Get Started
-              </Button>
-            </Link>
-            <Link to="/start-here">
-              <Button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy text-lg py-5 px-8 transition-colors font-semibold">
-                Discover Your P.A.T.H.way
-              </Button>
-            </Link>
-          </div>
-
-          <Link to="/partner" className="text-white/80 hover:text-white underline text-sm">
+            <br />
+            <span className="font-semibold">Let&rsquo;s design the right experience for your team.</span>
+          </>
+        }
+        actions={[
+          {
+            label: "Contact Us to Get Started",
+            to: "/contact?scope=organization&interest=workshops&message=I'm interested in AMPLIFY workshops for our team.",
+            variant: "primary",
+          },
+          { label: "Discover Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
+        ]}
+        footnote={
+          <Link to="/partner" className="text-white/80 hover:text-white underline">
             Explore All Partnership Options
           </Link>
-        </div>
-      </section>
+        }
+      />
     </div>
   );
 }
