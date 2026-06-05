@@ -148,6 +148,14 @@ const createConditions = [
   "Cultures where the next change does not feel like the first.",
 ];
 
+const foundationalAbilities = [
+  "Show up strong, confident, and resilient when uncertainty or change shows up.",
+  "Share ideas and challenge well-worn norms and habits.",
+  "Spot and solve problems proactively and openly.",
+  "Work in healthy, collaborative, accountable teams.",
+  "Communicate with clarity, consistency, and impact.",
+];
+
 export default function OurApproach() {
   return (
     <div>
