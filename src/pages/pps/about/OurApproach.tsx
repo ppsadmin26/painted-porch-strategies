@@ -1,10 +1,96 @@
 import { Link } from "react-router-dom";
-import { CheckCircle, X } from "lucide-react";
+import { CheckCircle, X, ArrowRight, Compass, Users, Rocket, Repeat } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import PartnershipPromise from "@/components/pps/PartnershipPromise";
 import approachHero from "@/assets/heroes/approach-hero.jpg";
 import blueDoorHero from "@/assets/blue-door-hero.jpg";
+
+// Certification badges
+import workingGeniusBadge from "@/assets/certifications/working-genius.png";
+import prosciChangeBadge from "@/assets/certifications/prosci-change-practitioner.png";
+import scrumPsdBadge from "@/assets/certifications/scrum-psd.png";
+import csiBadge from "@/assets/certifications/csi.png";
+import changeNavigatorBadge from "@/assets/certifications/change-navigator.png";
+import leanChangeAgentBadge from "@/assets/certifications/lean-change-agent.png";
+import leanChangeAiBadge from "@/assets/certifications/lean-change-ai.png";
+import mawFacilitatorBadge from "@/assets/certifications/maw-facilitator.png";
+import discFacilitatorBadge from "@/assets/certifications/disc-facilitator.png";
+import eq360Badge from "@/assets/certifications/eq360.png";
+import emotionallyEffectiveBadge from "@/assets/certifications/emotionally-effective-leader.png";
+import wpcRecommendedBadge from "@/assets/certifications/wpc-recommended.png";
+import acmpMemberBadge from "@/assets/certifications/acmp-member.png";
+import asaMemberBadge from "@/assets/certifications/asa-member.png";
+
+const pathStages = [
+  {
+    letter: "P",
+    word: "Prepare",
+    subtitle: "The clarity phase",
+    icon: Compass,
+    border: "border-primary",
+    accent: "text-primary",
+    bg: "bg-primary/5",
+    iconBg: "bg-primary/10",
+    body: "Get honest about people, systems, and culture before the next shift starts. This is where we name what is real, what is shaky, and what the organization is actually built to lead next.",
+    outcome: "A shared, clear-eyed picture of where you stand.",
+    isPhaseZero: true,
+  },
+  {
+    letter: "A",
+    word: "Align",
+    subtitle: "The agreement phase",
+    icon: Users,
+    border: "border-raspberry",
+    accent: "text-raspberry",
+    bg: "bg-raspberry/5",
+    iconBg: "bg-raspberry/10",
+    body: "Leaders, teams, and plans get on the same page about what change to lead, why it matters, and who carries which part. Healthy disagreement gets surfaced here, not after launch.",
+    outcome: "A coalition that owns the work, not just approves it.",
+  },
+  {
+    letter: "T",
+    word: "Take Off",
+    subtitle: "The launch phase",
+    icon: Rocket,
+    border: "border-gold",
+    accent: "text-gold",
+    bg: "bg-gold/5",
+    iconBg: "bg-gold/10",
+    body: "The change goes live with the right people, sequence, and support in place. Communication is clear. Course corrections are expected. Momentum is paced, not panicked.",
+    outcome: "Launch energy that holds past the first 90 days.",
+  },
+  {
+    letter: "H",
+    word: "Habits",
+    subtitle: "The staying-power phase",
+    icon: Repeat,
+    border: "border-lime",
+    accent: "text-lime",
+    bg: "bg-lime/5",
+    iconBg: "bg-lime/10",
+    body: "New ways of working become the default through small, repeated behaviors. Leaders reinforce. Systems support. The team stops needing the scaffolding we built together.",
+    outcome: "A team that can carry the next change without us.",
+  },
+];
+
+const certifications = [
+  { name: "Working Genius Certified", badge: workingGeniusBadge },
+  { name: "Prosci Change Practitioner", badge: prosciChangeBadge },
+  { name: "Scrum.org PSD", badge: scrumPsdBadge },
+  { name: "CSI Certified", badge: csiBadge },
+  { name: "Change Navigator", badge: changeNavigatorBadge },
+  { name: "Lean Change Agent", badge: leanChangeAgentBadge },
+  { name: "Lean Change AI", badge: leanChangeAiBadge },
+  { name: "MAW Facilitator", badge: mawFacilitatorBadge },
+  { name: "DiSC Facilitator", badge: discFacilitatorBadge },
+  { name: "EQ-360 Certified", badge: eq360Badge },
+  { name: "Emotionally Effective Leader", badge: emotionallyEffectiveBadge },
+  { name: "WPC Recommended", badge: wpcRecommendedBadge },
+  { name: "ACMP Member", badge: acmpMemberBadge },
+  { name: "ASA Member", badge: asaMemberBadge },
+];
+
 
 const coreValues = [
   {
