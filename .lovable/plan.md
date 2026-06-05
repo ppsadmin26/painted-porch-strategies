@@ -1,32 +1,31 @@
-## Goal
+## What changes
 
-Add a looping equalizer animation along the bottom of the Master Your Message hero (`/communication`) that mimics a classic broadcast/studio sound meter — dense, segmented LED-style bars with a green → yellow → orange → red vertical gradient, like the reference images.
+Update the "The clarity that accelerates your next big ShIFt" Phase Zero CTA section on `src/pages/pps/PPSHome.tsx` (the section currently styled `bg-gradient-strategic text-white`) to use a brand-aligned background image evoking clarity and readiness, with a heavy purple/navy overlay so the current look is preserved and text contrast is maintained.
 
-## What you'll see
+## Steps
 
-- Hero image and headline stay exactly as they are.
-- A horizontal row of ~40–60 thin, segmented vertical bars sits flush along the bottom edge of the hero, behind the dark gradient.
-- Each bar is made of small stacked rectangles ("LED segments") that light up from bottom to top.
-- Segment colors run green at the bottom, yellow in the middle, orange/red at the top — matching the reference equalizer image.
-- Bars rise and fall independently in a smooth, looping pattern (no audio input — purely visual choreography).
-- Unlit segments stay dim (low-opacity charcoal) so the meter shape is always visible, like a real VU meter.
-- Soft fade on the left edge so the headline stays fully legible; soft fade on the right edge for polish.
-- `prefers-reduced-motion`: bars freeze at mid-level instead of animating.
+1. **Generate background image** (`imagegen` standard tier, 1920x1024):
+   - Abstract light & geometry: soft luminous gradient washes in deep purple/navy with subtle geometric line work (thin gold/light scaffolding lines, faint architectural grid, gentle light bloom from one side).
+   - Brand palette: Strategic Purple (#523387), Navy (#00006B), a whisper of Gold (#E8A231) for warmth.
+   - Save to `src/assets/phase-zero-clarity-bg.jpg`.
 
-## Implementation
+2. **Wire it into the section** in `src/pages/pps/PPSHome.tsx`:
+   - Import the image.
+   - Replace the flat `bg-gradient-strategic` section with a `relative` section that has the image as an absolutely-positioned background (`bg-cover bg-center`).
+   - Layer a heavy overlay on top: `bg-gradient-strategic` at `~88–92%` opacity (so the image reads as a subtle texture rather than a focal photo).
+   - Keep all text content, the gold pill badge, headline, paragraphs, and the gold "Explore Phase Zero" CTA exactly as-is, wrapped in a `relative z-10` container.
 
-- New component: `src/components/pps/SoundMeter.tsx`
-  - Props: `barCount` (default 56), `className`.
-  - Renders a flex row of bars; each bar is a stack of ~16 segment divs.
-  - A single CSS keyframe drives bar height; per-bar `animation-delay` and `animation-duration` (varied via deterministic pseudo-random offsets) create the choreographed rise/fall.
-  - Segments use a 4-stop color map: green (#70A300 lime), yellow (#FFB900), orange (#FF8000), raspberry (#DB0043). Lit/unlit state is controlled by a CSS variable `--lit-count` set per-bar by the keyframe.
-- Wire into hero in `src/pages/pps/programs/MasterYourMessage.tsx`:
-  - Insert `<SoundMeter className="absolute inset-x-0 bottom-0 z-[1] opacity-70 mix-blend-screen" />` between the `<img>` and the dark gradient overlay.
-  - Keep existing `from-black/70 via-black/50 to-transparent` gradient so the headline retains contrast.
-- No new dependencies. Pure CSS keyframes + Tailwind.
+3. **Verify**: read the file back, confirm text contrast still passes against the dark overlay, and confirm no layout shifts.
+
+## Technical details
+
+- Section currently at `src/pages/pps/PPSHome.tsx` around lines 328–352.
+- Pattern mirrors `TierHeroSection` background image usage already in the codebase (image + overlay), keeping it consistent.
+- No new route, no nav change, no copy change.
+- Image stays as a local `src/assets/*.jpg` import (standard for hero/section backgrounds in this project).
 
 ## Out of scope
 
-- No changes to the hero image, headline, badge, or CTA button.
-- No audio.
-- No edits elsewhere on the page (pricing, FAQ, CTA stay as-is).
+- No changes to other sections of the home page.
+- No copy edits.
+- No changes to the `/phase-zero` page itself (user specified home page).
