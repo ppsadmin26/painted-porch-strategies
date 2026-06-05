@@ -109,11 +109,9 @@ export default function PPSPricing() {
                       </li>
                     ))}
                   </ul>
-                  <Link to={tierContactUrls[tier.name as keyof typeof tierContactUrls]}>
-                    <Button className={`w-full ${tier.solidButtonClasses} transition-colors`}>
-                      {cta} <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </Link>
+                  <Button asChild className={`w-full ${tier.solidButtonClasses} transition-colors`}>
+                  <Link to={tierContactUrls[tier.name as keyof typeof tierContactUrls]}>{cta} <ArrowRight className="ml-2 w-4 h-4" /></Link>
+                </Button>
                 </div>
               );
             })}

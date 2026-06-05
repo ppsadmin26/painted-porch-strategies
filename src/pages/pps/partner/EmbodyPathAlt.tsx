@@ -781,11 +781,9 @@ export default function EmbodyPathAlt() {
               <p className="text-foreground mb-6">
                 Our <strong className="text-bluedoor">Blue Door Organizational Appraisal</strong> provides the diagnostic foundation for EMBODY partnership fit. Complete the appraisal, receive your strategic report, then we'll schedule a partnership exploration conversation.
               </p>
-              <Link to="/blue-door">
-                <Button className="bg-bluedoor border-2 border-bluedoor text-white font-semibold w-full py-6 hover:bg-transparent hover:text-bluedoor transition-colors">
-                  Open the Blue Door
+              <Button asChild className="bg-bluedoor border-2 border-bluedoor text-white font-semibold w-full py-6 hover:bg-transparent hover:text-bluedoor transition-colors">
+                  <Link to="/blue-door">Open the Blue Door</Link>
                 </Button>
-              </Link>
             </div>
             <div className="bg-white p-8 rounded-xl border border-border">
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-4">
@@ -794,11 +792,9 @@ export default function EmbodyPathAlt() {
               <p className="text-foreground mb-6">
                 Complete our partnership inquiry form with your organizational context and questions. We'll review and connect with resources and next steps.
               </p>
-              <Link to="/contact?scope=organization&interest=strategic-partnership&message=I'm interested in an EMBODY strategic partnership.">
-                <Button className="bg-transparent border-2 border-navy text-navy hover:bg-navy hover:text-white w-full py-6 transition-colors">
-                  Contact Us About Partnership
+              <Button asChild className="bg-transparent border-2 border-navy text-navy hover:bg-navy hover:text-white w-full py-6 transition-colors">
+                  <Link to="/contact?scope=organization&interest=strategic-partnership&message=I'm interested in an EMBODY strategic partnership.">Contact Us About Partnership</Link>
                 </Button>
-              </Link>
             </div>
           </div>
         </div>

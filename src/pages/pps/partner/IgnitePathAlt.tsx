@@ -411,11 +411,9 @@ export default function IgnitePathAlt() {
               <p className="text-xs text-muted-foreground italic mb-4">
                 Best for: Leaders ready for community engagement or team development
               </p>
-              <Link to="/partner/amplify">
-                <Button className="bg-transparent border-2 border-strategic text-strategic hover:bg-strategic hover:text-white w-full transition-colors">
-                  Explore AMPLIFY <ArrowRight className="ml-2 w-4 h-4" />
+              <Button asChild className="bg-transparent border-2 border-strategic text-strategic hover:bg-strategic hover:text-white w-full transition-colors">
+                  <Link to="/partner/amplify">Explore AMPLIFY <ArrowRight className="ml-2 w-4 h-4" /></Link>
                 </Button>
-              </Link>
             </div>
 
             {/* Path 3: Open the Blue Door */}
@@ -450,11 +448,9 @@ export default function IgnitePathAlt() {
               <p className="text-xs text-muted-foreground italic mb-4">
                 Best for: Executives exploring what shift to lead next
               </p>
-              <Link to="/blue-door">
-                <Button className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor w-full transition-colors">
-                  Open the Blue Door
+              <Button asChild className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor w-full transition-colors">
+                  <Link to="/blue-door">Open the Blue Door</Link>
                 </Button>
-              </Link>
             </div>
           </div>
         </div>

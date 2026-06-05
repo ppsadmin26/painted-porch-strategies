@@ -149,11 +149,9 @@ export default function AmplifyLabs() {
                       </Link>
                     </div>
                   ) : (
-                    <Link to={cohort.link || "/contact?scope=Yourself&interest=leadership-lab&message=I'm interested in a Leadership Lab."}>
-                      <Button variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
-                        Learn More
-                      </Button>
-                    </Link>
+                    <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
+                  <Link to={cohort.link || "/contact?scope=Yourself&interest=leadership-lab&message=I'm interested in a Leadership Lab."}>Learn More</Link>
+                </Button>
                   )}
                 </div>
               </div>

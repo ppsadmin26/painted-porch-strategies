@@ -76,11 +76,9 @@ export function HowToChooseSection() {
               </ul>
               
               <div className="mt-auto">
-                <Link to={card.cta.primary.href}>
-                  <Button className={`w-full ${card.tier.solidButtonClasses} transition-colors text-sm`}>
-                    Explore <strong>{card.tier.name}</strong>
-                  </Button>
-                </Link>
+                <Button asChild className={`w-full ${card.tier.solidButtonClasses} transition-colors text-sm`}>
+                  <Link to={card.cta.primary.href}>Explore <strong>{card.tier.name}</strong></Link>
+                </Button>
               </div>
             </div>
           ))}

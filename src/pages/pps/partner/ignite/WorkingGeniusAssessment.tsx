@@ -508,11 +508,9 @@ export default function WorkingGeniusAssessment() {
                   </li>
                 ))}
               </ul>
-              <Link to="/contact?scope=Team&interest=Working+Genius&message=I%27m+interested+in+a+Working+Genius+team+or+organization+package.">
-                <Button variant="outline" className="w-full border-navy text-navy hover:bg-navy hover:text-white">
-                  Contact Us <Calendar className="ml-2 w-4 h-4" />
+              <Button asChild variant="outline" className="w-full border-navy text-navy hover:bg-navy hover:text-white">
+                  <Link to="/contact?scope=Team&interest=Working+Genius&message=I%27m+interested+in+a+Working+Genius+team+or+organization+package.">Contact Us <Calendar className="ml-2 w-4 h-4" /></Link>
                 </Button>
-              </Link>
             </div>
           </div>
         </div>

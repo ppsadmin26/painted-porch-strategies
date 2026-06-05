@@ -264,11 +264,9 @@ export default function PPSForLeaders() {
                   <span>Clear next steps and pricing</span>
                 </li>
               </ul>
-              <Link to="/contact?scope=Yourself&interest=assessments&message=I'm interested in a leadership assessment.">
-                <Button className="w-full bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary text-lg py-5 transition-colors">
-                  Contact Us
+              <Button asChild className="w-full bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary text-lg py-5 transition-colors">
+                  <Link to="/contact?scope=Yourself&interest=assessments&message=I'm interested in a leadership assessment.">Contact Us</Link>
                 </Button>
-              </Link>
             </div>
           </div>
         </div>

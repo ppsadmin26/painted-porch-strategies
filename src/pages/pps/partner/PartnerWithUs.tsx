@@ -101,11 +101,9 @@ export default function PartnerWithUs() {
                       </li>
                     ))}
                   </ul>
-                  <Link to={tier.href}>
-                    <Button className={`w-full ${tier.solidButtonClasses} transition-colors`}>
-                      {cta} <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </Link>
+                  <Button asChild className={`w-full ${tier.solidButtonClasses} transition-colors`}>
+                  <Link to={tier.href}>{cta} <ArrowRight className="ml-2 w-4 h-4" /></Link>
+                </Button>
                 </div>
               );
             })}

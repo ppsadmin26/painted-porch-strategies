@@ -130,11 +130,9 @@ export function PathwayComparisonSection() {
                   <p className="text-xs text-foreground mb-4">
                     <span className="font-semibold">Timeline:</span> {content.timeline}
                   </p>
-                  <Link to={tier.href}>
-                    <Button className={`w-full ${tier.solidButtonClasses} transition-colors`}>
-                      Explore <strong>{tier.name}</strong> <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </Link>
+                  <Button asChild className={`w-full ${tier.solidButtonClasses} transition-colors`}>
+                  <Link to={tier.href}>Explore <strong>{tier.name}</strong> <ArrowRight className="ml-2 w-4 h-4" /></Link>
+                </Button>
                 </div>
               </div>
             );
