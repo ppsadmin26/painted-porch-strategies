@@ -81,8 +81,16 @@ const faqs = [
 ];
 
 export default function MasterYourMessage() {
+  const [launchOpen, setLaunchOpen] = useState(false);
   return (
     <div>
+      <CourseLaunchListDialog
+        open={launchOpen}
+        onOpenChange={setLaunchOpen}
+        courseName="Master Your Message"
+        courseSlug="master-your-message"
+      />
+
       <PPSBreadcrumb
         segments={[
           { label: "Home", href: "/" },
