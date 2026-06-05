@@ -309,9 +309,13 @@ export default function PPSAbout() {
           <p className="text-base text-foreground/80">
             See the framework that holds it together in{" "}
             <Link to="/about/approach#path" className="font-semibold text-primary hover:underline">
-              Our Approach
+              our P.A.T.H. methodology
             </Link>
-            , including the P.A.T.H. methodology and our certifications.
+            , backed by{" "}
+            <Link to="/about/approach#certifications" className="font-semibold text-primary hover:underline">
+              our certifications
+            </Link>
+            .
           </p>
         </div>
       </section>
