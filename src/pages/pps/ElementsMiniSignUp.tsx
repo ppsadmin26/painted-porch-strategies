@@ -240,11 +240,9 @@ export default function ElementsMiniSignUp() {
                   </li>
                 ))}
               </ul>
-              <Link to="/contact?interest=elements-mini-team">
-                <Button className="w-full bg-purple hover:bg-purple/90 text-white text-lg py-6 rounded-full">
-                  Contact Us for Team Pricing
+              <Button asChild className="w-full bg-purple hover:bg-purple/90 text-white text-lg py-6 rounded-full">
+                  <Link to="/contact?interest=elements-mini-team">Contact Us for Team Pricing</Link>
                 </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -305,14 +303,12 @@ export default function ElementsMiniSignUp() {
                 Start the Mini Course — $99
               </Button>
             </a>
-            <Link to="/contact?interest=elements-mini-team">
-              <Button
+            <Button asChild
                 variant="outline"
                 className="border-2 border-white text-white hover:bg-white hover:text-navy text-lg py-6 px-10 rounded-full w-full sm:w-auto"
               >
-                Team Pricing
-              </Button>
-            </Link>
+                  <Link to="/contact?interest=elements-mini-team">Team Pricing</Link>
+                </Button>
           </div>
         </div>
       </section>

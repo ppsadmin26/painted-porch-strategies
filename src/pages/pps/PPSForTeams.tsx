@@ -261,11 +261,9 @@ export default function PPSForTeams() {
                   <span className="text-foreground">Clear next steps and transparent pricing</span>
                 </li>
               </ul>
-              <Link to="/contact?scope=organization&interest=workshops&message=I'm interested in team development.">
-                <Button className="w-full bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary text-lg py-5 transition-colors">
-                  Contact Us
+              <Button asChild className="w-full bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary text-lg py-5 transition-colors">
+                  <Link to="/contact?scope=organization&interest=workshops&message=I'm interested in team development.">Contact Us</Link>
                 </Button>
-              </Link>
             </div>
           </div>
         </div>

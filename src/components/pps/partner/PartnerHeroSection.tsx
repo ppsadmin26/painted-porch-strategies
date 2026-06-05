@@ -43,11 +43,9 @@ export function PartnerHeroSection() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/start-here">
-                <Button className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-6 px-8 transition-colors w-full sm:w-auto">
-                  Discover Your P.A.T.H.way
+              <Button asChild className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-6 px-8 transition-colors w-full sm:w-auto">
+                  <Link to="/start-here">Discover Your P.A.T.H.way</Link>
                 </Button>
-              </Link>
             </div>
           </div>
         </div>

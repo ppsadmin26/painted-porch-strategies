@@ -255,11 +255,9 @@ export default function AmplifyPathAlt() {
                 If any of these resonate, AMPLIFY team workshops or strategic sprints are designed for you.
               </p>
               <div className="mt-auto pt-6">
-                <Link to="/partner/amplify/workshops" className="block">
-                  <Button className="bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors w-full">
-                    Explore Team Options
-                  </Button>
-                </Link>
+                <Button asChild className="bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors w-full">
+                  <Link to="/partner/amplify/workshops" className="block">Explore Team Options</Link>
+                </Button>
               </div>
             </div>
 
@@ -285,11 +283,9 @@ export default function AmplifyPathAlt() {
                 If this resonates, AMPLIFY Leadership Labs are designed for you.
               </p>
               <div className="mt-auto pt-6">
-                <Link to="/partner/amplify/labs" className="block">
-                  <Button variant="outline" className="border-teal text-teal hover:bg-teal hover:text-white hover:border-teal transition-colors w-full">
-                    Explore Leader Options
-                  </Button>
-                </Link>
+                <Button asChild variant="outline" className="border-teal text-teal hover:bg-teal hover:text-white hover:border-teal transition-colors w-full">
+                  <Link to="/partner/amplify/labs" className="block">Explore Leader Options</Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -356,11 +352,9 @@ export default function AmplifyPathAlt() {
                     <p className="text-xs text-foreground"><span className="font-semibold">Investment:</span> {format.investment}</p>
                   </div>
 
-                  <Link to={format.ctaLink} className="block mt-4">
-                    <Button className={`w-full ${format.color.replace('border-', 'bg-')} text-white border-2 ${format.color} hover:bg-white ${format.color.replace('border-', 'hover:text-')} transition-colors`}>
-                      {format.cta}
-                    </Button>
-                  </Link>
+                  <Button asChild className={`w-full ${format.color.replace('border-', 'bg-')} text-white border-2 ${format.color} hover:bg-white ${format.color.replace('border-', 'hover:text-')} transition-colors`}>
+                  <Link to={format.ctaLink} className="block mt-4">{format.cta}</Link>
+                </Button>
                 </div>
               </div>
             ))}
@@ -488,11 +482,9 @@ export default function AmplifyPathAlt() {
                   <span className="text-sm text-foreground">You want to test Phase Zero concepts before deeper commitment</span>
                 </li>
               </ul>
-              <Link to="/partner/amplify/workshops" className="block mt-6">
-                <Button className="w-full bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors">
-                  Explore Workshops
+              <Button asChild className="w-full bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors">
+                  <Link to="/partner/amplify/workshops" className="block mt-6">Explore Workshops</Link>
                 </Button>
-              </Link>
             </div>
 
             <div className="bg-lime/5 p-6 rounded-xl flex flex-col">
@@ -518,11 +510,9 @@ export default function AmplifyPathAlt() {
                   <span className="text-sm text-foreground">Your team needs more than single workshop</span>
                 </li>
               </ul>
-              <Link to="/partner/amplify/sprints" className="block mt-6">
-                <Button className="w-full bg-lime text-white border-2 border-lime hover:bg-white hover:text-lime transition-colors">
-                  Explore Strategic Sprints
+              <Button asChild className="w-full bg-lime text-white border-2 border-lime hover:bg-white hover:text-lime transition-colors">
+                  <Link to="/partner/amplify/sprints" className="block mt-6">Explore Strategic Sprints</Link>
                 </Button>
-              </Link>
             </div>
 
             <div className="bg-teal/5 p-6 rounded-xl flex flex-col">
@@ -548,11 +538,9 @@ export default function AmplifyPathAlt() {
                   <span className="text-sm text-foreground">You want structured development over 6-12 weeks</span>
                 </li>
               </ul>
-              <Link to="/partner/amplify/labs" className="block mt-6">
-                <Button className="w-full bg-teal text-white border-2 border-teal hover:bg-white hover:text-teal transition-colors">
-                  Explore Leader Labs
+              <Button asChild className="w-full bg-teal text-white border-2 border-teal hover:bg-white hover:text-teal transition-colors">
+                  <Link to="/partner/amplify/labs" className="block mt-6">Explore Leader Labs</Link>
                 </Button>
-              </Link>
             </div>
           </div>
 
@@ -627,11 +615,9 @@ export default function AmplifyPathAlt() {
               <p className="text-xs text-muted-foreground italic mb-4">
                 Best for: Organizations ready for permanent capacity-building with sustained partnership
               </p>
-              <Link to="/partner/embody">
-                <Button className="bg-transparent border-2 border-navy text-navy hover:bg-navy hover:text-white w-full transition-colors">
-                  Explore EMBODY <ArrowRight className="ml-2 w-4 h-4" />
+              <Button asChild className="bg-transparent border-2 border-navy text-navy hover:bg-navy hover:text-white w-full transition-colors">
+                  <Link to="/partner/embody">Explore EMBODY <ArrowRight className="ml-2 w-4 h-4" /></Link>
                 </Button>
-              </Link>
             </div>
 
             <div className="bg-white p-8 rounded-xl">
@@ -689,11 +675,9 @@ export default function AmplifyPathAlt() {
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl text-center">
               <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4">For Organizations & Teams</h3>
               <p className="text-white/90 mb-6">Start with strategic clarity.</p>
-              <Link to="/blue-door">
-                <Button className="bg-bluedoor hover:bg-bluedoor/90 text-white w-full mb-4">
-                  Start Your Organizational Appraisal
+              <Button asChild className="bg-bluedoor hover:bg-bluedoor/90 text-white w-full mb-4">
+                  <Link to="/blue-door">Start Your Organizational Appraisal</Link>
                 </Button>
-              </Link>
               <p className="text-sm text-white/70">
                 Our Blue Door Organizational Appraisal provides the diagnostic foundation for workshop focus and sprint partnerships.
               </p>
@@ -702,11 +686,9 @@ export default function AmplifyPathAlt() {
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl text-center">
               <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4">For Individual Leaders</h3>
               <p className="text-white/90 mb-6">Apply for a Leadership Lab.</p>
-              <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I'm interested in applying for a Leadership Lab.">
-                <Button className="bg-teal hover:bg-teal/90 text-white w-full mb-4">
-                  Submit Leader Lab Application
+              <Button asChild className="bg-teal hover:bg-teal/90 text-white w-full mb-4">
+                  <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I'm interested in applying for a Leadership Lab.">Submit Leader Lab Application</Link>
                 </Button>
-              </Link>
               <p className="text-sm text-white/70">
                 We review all applications and contact qualified participants with leadership lab details.
               </p>

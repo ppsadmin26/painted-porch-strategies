@@ -238,11 +238,9 @@ export default function IgnitePathAlt() {
                 </li>
               </ul>
               <div className="mt-6">
-                <Link to="/partner/ignite/courses">
-                  <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-colors">
-                    Explore Courses →
-                  </Button>
-                </Link>
+                <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+                  <Link to="/partner/ignite/courses">Explore Courses →</Link>
+                </Button>
               </div>
             </div>
 
@@ -278,11 +276,9 @@ export default function IgnitePathAlt() {
               </ul>
               <p className="text-xs text-muted-foreground mt-3 italic">*Optional, based on assessment</p>
               <div className="mt-6">
-                <Link to="/partner/ignite/assessments">
-                  <Button variant="outline" className="w-full border-gold text-gold hover:bg-gold hover:text-white transition-colors">
-                    Explore Assessments →
-                  </Button>
-                </Link>
+                <Button asChild variant="outline" className="w-full border-gold text-gold hover:bg-gold hover:text-white transition-colors">
+                  <Link to="/partner/ignite/assessments">Explore Assessments →</Link>
+                </Button>
               </div>
             </div>
 
@@ -317,11 +313,9 @@ export default function IgnitePathAlt() {
                 </li>
               </ul>
               <div className="mt-6">
-                <Link to="/partner/ignite/masterclasses">
-                  <Button variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
-                    Explore Masterclasses →
-                  </Button>
-                </Link>
+                <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
+                  <Link to="/partner/ignite/masterclasses">Explore Masterclasses →</Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -417,11 +411,9 @@ export default function IgnitePathAlt() {
               <p className="text-xs text-muted-foreground italic mb-4">
                 Best for: Leaders ready for community engagement or team development
               </p>
-              <Link to="/partner/amplify">
-                <Button className="bg-transparent border-2 border-strategic text-strategic hover:bg-strategic hover:text-white w-full transition-colors">
-                  Explore AMPLIFY <ArrowRight className="ml-2 w-4 h-4" />
+              <Button asChild className="bg-transparent border-2 border-strategic text-strategic hover:bg-strategic hover:text-white w-full transition-colors">
+                  <Link to="/partner/amplify">Explore AMPLIFY <ArrowRight className="ml-2 w-4 h-4" /></Link>
                 </Button>
-              </Link>
             </div>
 
             {/* Path 3: Open the Blue Door */}
@@ -456,11 +448,9 @@ export default function IgnitePathAlt() {
               <p className="text-xs text-muted-foreground italic mb-4">
                 Best for: Executives exploring what shift to lead next
               </p>
-              <Link to="/blue-door">
-                <Button className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor w-full transition-colors">
-                  Open the Blue Door
+              <Button asChild className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor w-full transition-colors">
+                  <Link to="/blue-door">Open the Blue Door</Link>
                 </Button>
-              </Link>
             </div>
           </div>
         </div>
