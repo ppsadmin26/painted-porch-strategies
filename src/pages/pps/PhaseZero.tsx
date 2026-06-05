@@ -287,7 +287,7 @@ export default function PhaseZero() {
       <section id="foundations" className="py-20 md:py-28 bg-white scroll-mt-24">
         <div className="container max-w-6xl mx-auto px-6">
           <FadeIn className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
               The Foundations Phase Zero Examines
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
