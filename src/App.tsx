@@ -152,6 +152,7 @@ import EmailOps from "./pages/pps/admin/EmailOps";
 import ResetPassword from "./pages/pps/admin/ResetPassword";
 import PolicyNotifications from "./pages/pps/admin/PolicyNotifications";
 import RefundRequestsManager from "./pages/pps/admin/RefundRequestsManager";
+import CourseLaunchManager from "./pages/pps/admin/CourseLaunchManager";
 
 // Legacy redirect: forward /pps/* paths to clean URLs
 function LegacyPPSRedirect() {
