@@ -312,9 +312,17 @@ export default function ExtraordinaryTeams() {
                       </li>
                     ))}
                   </ul>
-                  <Button disabled className="w-full font-poppins font-semibold rounded-lg bg-gray-300 text-gray-600 cursor-not-allowed">
-                    {tier.cta}
-                  </Button>
+                  {isLive && launch?.checkout_url ? (
+                    <Button asChild className="w-full font-poppins font-semibold rounded-lg bg-pps-teal text-white hover:bg-pps-teal/90">
+                      <a href={launch.checkout_url} target="_blank" rel="noreferrer">
+                        {tier.cta} <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button disabled className="w-full font-poppins font-semibold rounded-lg bg-gray-300 text-gray-600 cursor-not-allowed">
+                      {tier.cta}
+                    </Button>
+                  )}
                 </div>
               </AnimatedSection>
             ))}
