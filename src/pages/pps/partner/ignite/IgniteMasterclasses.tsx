@@ -136,14 +136,36 @@ export default function IgniteMasterclasses() {
                     </div>
                     <div className="mt-auto pt-4">
                       <p className="text-sm font-bold text-navy mb-2">${item.price ?? 36}</p>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        disabled
-                        className={`border-2 border-${item.themeColor} text-${item.themeColor} hover:bg-${item.themeColor} hover:text-white w-full opacity-60 cursor-not-allowed`}
-                      >
-                        Coming Soon
-                      </Button>
+                      {item.href ? (
+                        <Link to={item.href} className="block">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className={`border-2 border-${item.themeColor} text-${item.themeColor} hover:bg-${item.themeColor} hover:text-white w-full transition-colors`}
+                          >
+                            Explore
+                          </Button>
+                        </Link>
+                      ) : item.launchSlug ? (
+                        <div className="w-full [&_button]:w-full [&>div]:!items-stretch [&>div]:!flex-col [&>div]:gap-1 [&>div]:items-center">
+                          <LaunchListCTA
+                            slug={item.launchSlug}
+                            courseName={item.title}
+                            liveLabel="Enroll"
+                            buttonClasses={`border-2 border-${item.themeColor} text-${item.themeColor} hover:bg-${item.themeColor} hover:text-white transition-colors`}
+                            textColorClass={`text-${item.themeColor}`}
+                          />
+                        </div>
+                      ) : (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          disabled
+                          className={`border-2 border-${item.themeColor} text-${item.themeColor} hover:bg-${item.themeColor} hover:text-white w-full opacity-60 cursor-not-allowed`}
+                        >
+                          Coming Soon
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </div>
