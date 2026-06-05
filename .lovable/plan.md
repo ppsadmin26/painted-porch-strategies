@@ -1,22 +1,22 @@
 ## Goal
-Make the Final CTA section on `/phase-zero` and `/about/approach` (Our Approach) visually echo the Blue Door hero — same blue-door imagery and navy treatment — so the "Open the Blue Door" CTA feels like a direct continuation of that page.
+Make the Final CTA overlay on `/phase-zero` and `/about/approach` noticeably lighter so the blue door image shows through more and the section separates cleanly from the navy footer.
 
-## Changes
+## Current State
+Both pages use `overlayTone="navy"`, which renders:
+```
+bg-gradient-to-b from-navy/90 via-navy/85 to-navy/85
+```
 
-### 1. `src/pages/pps/PhaseZero.tsx`
-- Swap the Final CTA `backgroundImage` from `homeHero` to the Blue Door hero asset (`@/assets/blue-door-hero.jpg`, same file the Blue Door page uses).
-- Set `overlayTone="navy"` so the dark navy gradient matches the Blue Door hero's `navy/85 → navy/70` wash (instead of the current teal default).
-- Remove the now-unused `homeHero` import if no other section references it.
+## Proposed Change
+Switch both Final `<ParallaxCTA>` components to a custom `overlayClass`:
+```
+bg-gradient-to-b from-navy/55 via-navy/35 to-navy/20
+```
 
-### 2. `src/pages/pps/about/OurApproach.tsx`
-- Same swap: change `backgroundImage` from `approachHero` to the Blue Door hero asset.
-- Add `overlayTone="navy"` for the matching dark navy treatment.
-- Leave `approachHero` import in place only if still used elsewhere on the page; otherwise remove.
+This drops the top from 90% to 55%, middle from 85% to 35%, and bottom from 85% to 20% — letting the door image breathe while keeping text readable via the component's built-in `drop-shadow` on headline and description.
 
-### Not changing
-- Copy, headlines, eyebrows, CTA buttons, ordering, or the `PartnershipPromise` block on Our Approach.
-- The Blue Door hero itself.
-- The `ParallaxCTA` component (it already supports `overlayTone="navy"`).
+## Files
+- `src/pages/pps/PhaseZero.tsx` — Final CTA
+- `src/pages/pps/about/OurApproach.tsx` — Final CTA
 
-### Verification
-- View `/phase-zero` and `/about/approach` in the preview, confirm the Final CTA shows the blue door image with a navy overlay, white headline/description remain AA-legible, and the cobalt "Open the Blue Door" + secondary outline buttons render unchanged.
+Both will change from `overlayTone="navy"` to the lighter `overlayClass` above.

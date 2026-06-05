@@ -256,7 +256,7 @@ export default function OurApproach() {
       {/* Final CTA */}
       <ParallaxCTA
         backgroundImage={blueDoorHero}
-        overlayTone="navy"
+        overlayClass="bg-gradient-to-b from-navy/55 via-navy/35 to-navy/20"
         eyebrow="Start Here"
         headline="The Blue Door is the simplest place to begin."
         description="A structured conversation about where your organization actually stands, before the next big decision gets locked in."
