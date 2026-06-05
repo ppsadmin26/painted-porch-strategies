@@ -43,6 +43,7 @@ export default function AdminDashboard() {
     { title: "Migrate", count: 0, icon: PackageOpen, href: "/admin/migrate", description: "Export everything for a remix or import into a new project" },
     { title: "Site Emails", count: 0, icon: Mail, href: "/admin/emails", description: "Preview, test, and view source for every system email" },
     { title: "Refund Requests", count: 0, icon: Receipt, href: "/admin/refunds", description: "Review refund requests and notify customers" },
+    { title: "Course Launches", count: 0, icon: Rocket, href: "/admin/course-launches", description: "Flip courses Live and notify the launch list" },
   ];
 
   return (
