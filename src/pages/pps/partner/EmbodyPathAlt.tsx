@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Building2, Cpu, Users, HeartPulse, HandHeart, Compass, Brain } from "lucide-react";
 import embodyHero from "@/assets/embody-concept-blueprint.jpg";
