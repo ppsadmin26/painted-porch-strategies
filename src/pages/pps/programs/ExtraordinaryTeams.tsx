@@ -71,6 +71,7 @@ const faqs = [
 
 export default function ExtraordinaryTeams() {
   const [launchOpen, setLaunchOpen] = useState(false);
+  const { isLive, data: launch } = useCourseLaunchStatus("extraordinary-teams");
   return (
     <div>
       <CourseLaunchListDialog
