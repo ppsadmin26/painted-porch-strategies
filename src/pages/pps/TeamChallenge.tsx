@@ -287,16 +287,17 @@ export default function TeamChallenge() {
           <p className="text-white/90 mb-8 text-lg drop-shadow">
             Five days from now your team could know their superpowers, cover their kryptonite, and finally feel like they're playing on the same side. Let's go.
           </p>
-          <a
-            href={GHL_CHECKOUT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Enroll in the Superpowers of a Team 5-Day Challenge"
+          <Button
+            disabled
+            className="bg-gold text-navy font-semibold text-base px-8 py-5 rounded-full shadow-xl opacity-70 cursor-not-allowed"
           >
-            <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold text-base px-8 py-5 rounded-full shadow-xl">
-              Enroll Now
-            </Button>
-          </a>
+            Coming Soon
+          </Button>
+          <p className="text-sm text-white/90 mt-4">
+            <Link to="/partner/ignite/masterclasses" className="underline hover:text-white font-medium">
+              Join the launch list →
+            </Link>
+          </p>
           <p className="text-xs text-white/80 mt-4">
             Questions? <Link to="/contact" className="underline hover:text-white">Contact us</Link>.
           </p>
