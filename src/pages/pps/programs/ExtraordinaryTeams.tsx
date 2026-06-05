@@ -322,7 +322,7 @@ export default function ExtraordinaryTeams() {
           <AnimatedSection>
             <div className="mt-10 max-w-3xl mx-auto text-center bg-pps-teal/5 border border-pps-teal/20 rounded-2xl p-6 md:p-8">
               <p className="text-charcoal leading-relaxed mb-5">
-                Our courses will be re-launching soon as we move our learning and community to a new course platform (Go High Level). If you'd like to be the first to know when the <strong>Create Extraordinary Teams</strong> bundle is ready, join our launch list.
+                Our courses will be re-launching soon as we move our learning and community to a new course platform. If you'd like to be the first to know when the <strong>Create Extraordinary Teams</strong> bundle is ready, join our launch list.
               </p>
               <Button
                 onClick={() => setLaunchOpen(true)}
