@@ -81,8 +81,16 @@ const pricingTiers = [
 ];
 
 export default function RadicalMindfulness() {
+  const [launchOpen, setLaunchOpen] = useState(false);
   return (
     <div>
+      <CourseLaunchListDialog
+        open={launchOpen}
+        onOpenChange={setLaunchOpen}
+        courseName="Radical Mindfulness"
+        courseSlug="radical-mindfulness"
+      />
+
       <PPSBreadcrumb
         segments={[
           { label: "Home", href: "/" },
