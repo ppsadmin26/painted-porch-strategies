@@ -60,7 +60,7 @@ export default function ImportLinkedInDialog({ onImported }: ImportLinkedInDialo
         title: data.reimported ? "Article re-imported!" : "Article imported!",
         description: data.reimported
           ? `"${data.title}" content overwritten.`
-          : `"${data.title}" saved as approved — ready for review.`,
+          : `"${data.title}" saved as approved, ready for review.`,
       });
 
       setUrl("");

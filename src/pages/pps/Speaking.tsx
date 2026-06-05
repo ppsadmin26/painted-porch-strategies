@@ -60,7 +60,7 @@ const speakers = [
     badge: "Mindful Resilience",
     tagline: "Sierra guides burnt-out teams back to balance with grace.",
     description:
-      "With humor, heart, and science-backed tools, she guides people to reclaim their energy, focus, and joy — even in the midst of constant change.",
+      "With humor, heart, and science-backed tools, she guides people to reclaim their energy, focus, and joy, even in the midst of constant change.",
     photo: sierraPhoto,
     specialties: ["Burnout Recovery", "Mindfulness", "Team Well-being"],
     href: "/speaking/sierra",
@@ -98,7 +98,7 @@ export default function Speaking() {
             Grounded in Stoicism. Built for Change.
           </h2>
           <p className="text-white/90 text-lg leading-relaxed">
-            At Painted Porch Strategies, we partner with leaders to become change-ready — not just on paper, but in practice. Grounded in Stoic wisdom and driven by emotional intelligence, our speakers bring clarity, energy, and actionable strategies to every audience. Whether you're addressing burnout, navigating organizational transformation, or aligning your team, we design speaking experiences that create lasting impact.
+            At Painted Porch Strategies, we partner with leaders to become change-ready, not just on paper, but in practice. Grounded in Stoic wisdom and driven by emotional intelligence, our speakers bring clarity, energy, and actionable strategies to every audience. Whether you're addressing burnout, navigating organizational transformation, or aligning your team, we design speaking experiences that create lasting impact.
           </p>
         </div>
       </section>

@@ -28,7 +28,7 @@ export default function WFHSignUp() {
       const { error } = await supabase.functions.invoke("submit-ghl-lead", {
         body: {
           firstName: firstName.trim(),
-          lastName: lastName.trim() || "—",
+          lastName: lastName.trim() || "Unknown",
           email: email.trim(),
           newsletter,
           tags: ["WFH Mini Course"],
@@ -76,7 +76,7 @@ export default function WFHSignUp() {
               MISSION #WFH: Accomplished
             </h2>
             <p className="text-lg text-charcoal mb-8">
-              Sign up for access to our <strong>FREE Mini-Course</strong> focused on tackling your Work From Home day —
+              Sign up for access to our <strong>FREE Mini-Course</strong> focused on tackling your Work From Home day , 
               with your family, your colleagues, and yourself.
             </p>
 

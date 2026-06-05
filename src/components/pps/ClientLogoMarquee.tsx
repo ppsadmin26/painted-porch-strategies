@@ -60,7 +60,7 @@ interface Testimonial {
 
 const placeholderTestimonials: Testimonial[] = [
   {
-    quote: "[Testimonial placeholder — to be replaced with client testimonials as they become available]",
+    quote: "[Testimonial placeholder, to be replaced with client testimonials as they become available]",
     name: "[Name]",
     title: "[Title]",
     organization: "[Organization]",
@@ -154,7 +154,7 @@ export default function ClientLogoMarquee({
                   "{testimonials[activeIndex].quote}"
                 </blockquote>
                 <p className="text-sm text-muted-foreground">
-                  — {testimonials[activeIndex].name}, {testimonials[activeIndex].title}, {testimonials[activeIndex].organization}
+                 , {testimonials[activeIndex].name}, {testimonials[activeIndex].title}, {testimonials[activeIndex].organization}
                 </p>
               </div>
 

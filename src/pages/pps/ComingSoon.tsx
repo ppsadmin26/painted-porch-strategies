@@ -7,7 +7,7 @@ import { ArrowLeft, Mail } from "lucide-react";
  * src/config/pageStatus.ts. Logged-in staff bypass this and see the real page.
  *
  * Features a branded animated SVG scene of a builder painting the
- * Painted Porch — using brand colors (teal, lime, gold, raspberry, purple, navy).
+ * Painted Porch, using brand colors (teal, lime, gold, raspberry, purple, navy).
  */
 export default function ComingSoon() {
   useDocumentSeo({
@@ -48,21 +48,21 @@ export default function ComingSoon() {
             <polygon points="110,110 410,110 380,80 140,80" fill="#00006B" />
             <rect x="110" y="108" width="300" height="6" fill="#00006B" />
 
-            {/* Pillar 1 — Foundational Architecture (Teal) */}
+            {/* Pillar 1, Foundational Architecture (Teal) */}
             <rect x="140" y="114" width="20" height="86" fill="#E5E7EB" />
             <rect x="140" y="200" width="20" height="0" fill="#007697">
               <animate attributeName="height" values="0;86" dur="2s" begin="0.2s" fill="freeze" />
               <animate attributeName="y" values="200;114" dur="2s" begin="0.2s" fill="freeze" />
             </rect>
 
-            {/* Pillar 2 — Operational Intelligence (Lime) */}
+            {/* Pillar 2, Operational Intelligence (Lime) */}
             <rect x="250" y="114" width="20" height="86" fill="#E5E7EB" />
             <rect x="250" y="200" width="20" height="0" fill="#70A300">
               <animate attributeName="height" values="0;86" dur="2s" begin="1.2s" fill="freeze" />
               <animate attributeName="y" values="200;114" dur="2s" begin="1.2s" fill="freeze" />
             </rect>
 
-            {/* Pillar 3 — Human Capacity (Raspberry) */}
+            {/* Pillar 3, Human Capacity (Raspberry) */}
             <rect x="360" y="114" width="20" height="86" fill="#E5E7EB" />
             <rect x="360" y="200" width="20" height="0" fill="#DB0043">
               <animate attributeName="height" values="0;86" dur="2s" begin="2.2s" fill="freeze" />

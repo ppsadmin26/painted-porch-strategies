@@ -40,7 +40,7 @@ export default function HeroSectionAlt() {
             </span>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-normal">
-              What Epic Sh<span className="text-raspberry">IF</span>t Could Your Organization Explore Next — and Are You Built to Lead It?
+              What Epic Sh<span className="text-raspberry">IF</span>t Could Your Organization Explore Next, and Are You Built to Lead It?
             </h1>
             
             <p className={`font-poppins font-semibold text-lg md:text-xl text-gold mb-6 transition-all duration-700 ease-out delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
@@ -48,7 +48,7 @@ export default function HeroSectionAlt() {
             </p>
             
             <p className={`text-base md:text-lg text-white/90 leading-relaxed mb-8 max-w-xl transition-all duration-700 ease-out delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-              The Blue Door is for leaders on the edge of transformation—who want clarity and confidence before decisions get made and momentum takes over.
+              The Blue Door is for leaders on the edge of transformation, who want clarity and confidence before decisions get made and momentum takes over.
             </p>
             
             <div className={`transition-all duration-700 ease-out delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>

@@ -232,7 +232,7 @@ export function BulkYouTubeImportDialog({ onImported }: BulkYouTubeImportDialogP
                         <p className="text-xs text-destructive">{r.error}</p>
                       )}
                       {r.status === "duplicate" && (
-                        <p className="text-xs text-muted-foreground">Already exists — skipped</p>
+                        <p className="text-xs text-muted-foreground">Already exists, skipped</p>
                       )}
                     </div>
                   </div>

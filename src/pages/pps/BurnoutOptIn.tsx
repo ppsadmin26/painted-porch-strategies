@@ -116,7 +116,7 @@ export default function BurnoutOptIn() {
                 >
                   I agree to receive periodic updates and insights from Painted Porch Strategies. We
                   respect your privacy and comply with CAN-SPAM regulations. You can unsubscribe at
-                  any time — though we hope you won't. 😊
+                  any time, though we hope you won't. 😊
                 </label>
               </div>
               <Button

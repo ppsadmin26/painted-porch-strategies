@@ -73,7 +73,7 @@ export default function StoicFieldGuide() {
                 <div className="absolute -inset-4 bg-gradient-to-br from-gold/30 via-teal/20 to-raspberry/20 rounded-2xl blur-2xl" aria-hidden="true" />
                 <img
                   src={stoicFieldGuideCover}
-                  alt="The Stoic Leader's Field Guide cover — a vibrantly painted porch in teal, lime, raspberry, and gold"
+                  alt="The Stoic Leader's Field Guide cover, a vibrantly painted porch in teal, lime, raspberry, and gold"
                   className="relative w-full max-w-sm md:max-w-md rounded-lg shadow-2xl ring-1 ring-white/10 rotate-[-2deg] hover:rotate-0 transition-transform duration-500"
                   loading="eager"
                 />

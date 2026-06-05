@@ -171,7 +171,7 @@ export default function MediaAppearanceList() {
                       <TableCell><span className="font-medium">{item.title}</span></TableCell>
                       <TableCell className="text-sm text-muted-foreground">{item.show_name}</TableCell>
                       <TableCell className="text-sm text-muted-foreground">
-                        {item.appearance_date ? new Date(item.appearance_date).toLocaleDateString() : "—"}
+                        {item.appearance_date ? new Date(item.appearance_date).toLocaleDateString() : ", "}
                       </TableCell>
                       <TableCell>
                         <div className="flex gap-1" onClick={(e) => e.stopPropagation()}>

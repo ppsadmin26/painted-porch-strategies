@@ -235,7 +235,7 @@ export default function SecretsHandoff() {
     try {
       // The checklist itself is a public-ish health probe: hitting the project's
       // REST root with no creds returns 401 from a live project, not a network
-      // error. We only confirm reachability here — secret presence in the
+      // error. We only confirm reachability here, secret presence in the
       // target must still be confirmed manually (no remote API exposes that).
       const probe = await fetch(`${url}/auth/v1/health`).catch(() => null);
       if (!probe) {
@@ -261,7 +261,7 @@ export default function SecretsHandoff() {
           </h1>
           <p className="text-muted-foreground mt-1">
             Re-enter these environment variables in your external Supabase project.
-            Values are never shown — only names and presence in the source project.
+            Values are never shown, only names and presence in the source project.
           </p>
         </div>
         <div className="flex gap-2 flex-wrap">

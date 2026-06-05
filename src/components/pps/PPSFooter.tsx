@@ -49,7 +49,7 @@ export default function PPSFooter() {
               <img src={ppsLogoWhite} alt="Painted Porch Strategies" className="h-16 w-auto" />
             </div>
             <p className="text-sm text-white/80 leading-relaxed">
-              Painted Porch Strategies partners with leaders to architect strategic shIFt. This is Phase Zero — the work before the work.
+              Painted Porch Strategies partners with leaders to architect strategic shIFt. This is Phase Zero, the work before the work.
             </p>
           </div>
 

@@ -14,7 +14,7 @@ import { supabase } from "@/integrations/supabase/client";
 const formSchema = z.object({
   name: z.string().min(1, "We'd love to know who found this."),
   email: z.string().min(1, "We need a valid email to send your confirmation.").email("We need a valid email to send your confirmation."),
-  explanation: z.string().min(10, "Just a line or two — we want to know you got it."),
+  explanation: z.string().min(10, "Just a line or two, we want to know you got it."),
   charity: z.string().min(1, "Name the organization and we'll take it from here."),
   charityWebsite: z
     .string()
@@ -56,12 +56,12 @@ const EasterEggForm = () => {
     setSubmitting(true);
     try {
       const [firstName, ...rest] = data.name.trim().split(/\s+/);
-      const lastName = rest.join(" ") || "—";
+      const lastName = rest.join(" ") || "Unknown";
 
       const charityWebsite = data.charityWebsite?.trim() || "";
 
       const detailsMessage =
-        `[Easter Egg Hunt — /found-it]\n\n` +
+        `[Easter Egg Hunt, /found-it]\n\n` +
         `What they found:\n${data.explanation}\n\n` +
         `Charity to donate $25 to:\n${data.charity}` +
         (charityWebsite ? `\nWebsite: ${charityWebsite}` : "") +
@@ -82,7 +82,7 @@ const EasterEggForm = () => {
       if (ghlError) throw ghlError;
 
       // 2. Fire admin notification + submitter confirmation in parallel
-      // (non-blocking — don't fail the form if emails fail)
+      // (non-blocking, don't fail the form if emails fail)
       const submissionId = crypto.randomUUID();
       const emailData = {
         name: data.name.trim(),
@@ -136,7 +136,7 @@ const EasterEggForm = () => {
                 🎉🐣 You Found Something.
               </h1>
               <p className="font-poppins text-base md:text-xl text-foreground mb-3">
-                Most people don't make it this far. Tell us what you found and where — we'll donate $25 to a charity of your choice.
+                Most people don't make it this far. Tell us what you found and where, we'll donate $25 to a charity of your choice.
               </p>
               <p className="text-sm text-muted-foreground">
                 There are five Easter eggs hidden in our Terms of The Porch. Find any one of them and we'll donate $25 to a cause you care about.
@@ -231,7 +231,7 @@ const EasterEggForm = () => {
                           />
                         </FormControl>
                         <FormDescription className="text-xs text-muted-foreground">
-                          We'll make a $25 donation on your behalf. We reserve the right to redirect donations away from organizations that conflict with our values — we'll let you know if that happens and ask for an alternative.
+                          We'll make a $25 donation on your behalf. We reserve the right to redirect donations away from organizations that conflict with our values, we'll let you know if that happens and ask for an alternative.
                         </FormDescription>
                         <FormMessage className="text-raspberry" />
                       </FormItem>
@@ -269,7 +269,7 @@ const EasterEggForm = () => {
                         <FormLabel className="font-montserrat font-semibold text-sm text-foreground">Anything else?</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Optional — but we do read every single one"
+                            placeholder="Optional, but we do read every single one"
                             className="min-h-[100px] rounded-lg border-[#CCCCCC] focus:border-primary focus-visible:ring-primary text-base"
                             {...field}
                           />
@@ -303,7 +303,7 @@ const EasterEggForm = () => {
               Thanks for actually reading the fine print. That's a more radical act than it sounds.
             </p>
             <p className="text-muted-foreground text-sm italic">
-              — The Painted Porch
+              The Painted Porch
             </p>
           </div>
         )}

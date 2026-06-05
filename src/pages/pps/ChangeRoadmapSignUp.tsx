@@ -34,7 +34,7 @@ export default function ChangeRoadmapSignUp() {
       const { error } = await supabase.functions.invoke("submit-ghl-lead", {
         body: {
           firstName: cleanFirst,
-          lastName: cleanLast || "—",
+          lastName: cleanLast || "Unknown",
           email: cleanEmail,
           newsletter,
           tags: ["Change Roadmap"],
@@ -146,7 +146,7 @@ export default function ChangeRoadmapSignUp() {
               <li className="flex gap-3">
                 <Sparkles className="w-6 h-6 text-raspberry flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
-                  Built on the <strong className="text-navy">P.A.T.H.™ methodology</strong> — Prepare, Align, Take Off, Habit
+                  Built on the <strong className="text-navy">P.A.T.H.™ methodology</strong>, Prepare, Align, Take Off, Habit
                 </span>
               </li>
             </ul>

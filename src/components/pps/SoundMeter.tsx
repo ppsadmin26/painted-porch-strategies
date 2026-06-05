@@ -9,7 +9,7 @@ interface SoundMeterProps {
 /**
  * LED-style equalizer / VU meter. Pure CSS animation, no audio.
  * Each bar layers a dim full-height segment stack with a bright stack
- * revealed bottom-up via animated clip-path inset — so segments stay
+ * revealed bottom-up via animated clip-path inset, so segments stay
  * pixel-aligned. Colors ramp green → yellow → orange → red.
  */
 export const SoundMeter = ({
@@ -78,7 +78,7 @@ export const SoundMeter = ({
       `}</style>
       {bars.map((b) => (
         <div key={b.i} className="relative h-full w-[6px] sm:w-[8px]">
-          {/* Dim ghost stack — full height, low opacity */}
+          {/* Dim ghost stack, full height, low opacity */}
           <div className="absolute inset-0 flex flex-col-reverse">
             {segments.map((c, s) => (
               <span
@@ -88,7 +88,7 @@ export const SoundMeter = ({
               />
             ))}
           </div>
-          {/* Bright lit stack — same full-height layout, clipped from top */}
+          {/* Bright lit stack, same full-height layout, clipped from top */}
           <div
             className="sm-lit absolute inset-0 flex flex-col-reverse"
             style={

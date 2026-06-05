@@ -39,7 +39,7 @@ const pillars = [
 
 const outcomes = [
   {
-    text: "Which shifts align with your organization's actual capacity—not just what sounds good strategically",
+    text: "Which shifts align with your organization's actual capacity, not just what sounds good strategically",
     icon: Target,
     color: "text-bluedoor"
   },
@@ -54,7 +54,7 @@ const outcomes = [
     color: "text-gold"
   },
   {
-    text: "Your viable P.A.T.H.ways forward—clear direction on what to pursue now vs. later",
+    text: "Your viable P.A.T.H.ways forward, clear direction on what to pursue now vs. later",
     icon: Map,
     color: "text-lime"
   }
@@ -88,7 +88,7 @@ export default function DiscoverSectionAlt() {
 
         <div className="mb-12">
           <h3 className="text-xl md:text-2xl font-semibold text-navy text-center mb-6">
-            We examine three core areas—the <span className="text-raspberry">Painted Porch Pillars</span>
+            We examine three core areas, the <span className="text-raspberry">Painted Porch Pillars</span>
           </h3>
           
           <div ref={pillarsRef} className="grid md:grid-cols-3 gap-6">

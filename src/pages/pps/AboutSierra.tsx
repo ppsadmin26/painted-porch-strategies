@@ -24,7 +24,7 @@ const offerings: OfferingCard[] = [
     emoji: "💥",
     title: "Radical Mindfulness",
     description:
-      "Beat burnout and stress with science-backed mindfulness practices designed for real life — not just the meditation cushion.",
+      "Beat burnout and stress with science-backed mindfulness practices designed for real life, not just the meditation cushion.",
     href: "/radical-mindfulness",
     color: "gold",
   },
@@ -40,7 +40,7 @@ const offerings: OfferingCard[] = [
     emoji: "✈️",
     title: "From Passenger to Pilot",
     description:
-      "A free training to help you take the driver's seat in your life — stop reacting and start leading with intention.",
+      "A free training to help you take the driver's seat in your life, stop reacting and start leading with intention.",
     href: "/resources/downloads",
     color: "teal",
   },
@@ -64,7 +64,7 @@ const offerings: OfferingCard[] = [
     emoji: "🧘",
     title: "Mindfulness for Teams",
     description:
-      "Guided workshops that bring calm, clarity, and connection into the workplace — even in high-pressure environments.",
+      "Guided workshops that bring calm, clarity, and connection into the workplace, even in high-pressure environments.",
     href: "/partner/amplify",
     color: "gold",
   },
@@ -331,7 +331,7 @@ export default function AboutSierra() {
               Ready to Lead with More Joy?
             </h2>
             <p className="mx-auto mt-4 max-w-md text-foreground/70">
-              Whether you're navigating burnout, building resilience, or simply seeking more joy in your work and life — let's chat.
+              Whether you're navigating burnout, building resilience, or simply seeking more joy in your work and life, let's chat.
             </p>
             <Link
               to="/contact?interest=general&message=I'd like to connect with Sierra."

@@ -47,7 +47,7 @@ function renderHome() {
   );
 }
 
-describe("PPSHome — Discover cards link alignment", () => {
+describe("PPSHome, Discover cards link alignment", () => {
   it("aligns the link at the bottom of each card via flex-col + mt-auto", () => {
     renderHome();
 

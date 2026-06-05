@@ -57,7 +57,7 @@ export default function PPSHomeAlt() {
               Building Change-Ready Leaders and Teams Through Stoic Principles
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
-              Most transformation fails before it starts. We help you build the foundation for lasting change through Phase Zero — the strategic preparation that makes implementation possible.
+              Most transformation fails before it starts. We help you build the foundation for lasting change through Phase Zero, the strategic preparation that makes implementation possible.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/for-leaders">

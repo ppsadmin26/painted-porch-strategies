@@ -6,7 +6,7 @@
  * that make the road look like one continuous, color-coded curve flowing
  * through the four boxes with seamless extensions on each side.
  *
- * Anything below was hand-tuned across multiple iterations — if you need to
+ * Anything below was hand-tuned across multiple iterations, if you need to
  * change the shape, update the expectations here intentionally.
  */
 import { describe, it, expect } from "vitest";
@@ -18,7 +18,7 @@ const SRC = readFileSync(
   "utf-8"
 );
 
-describe("PPSHomeVerbatim — P.A.T.H. road continuity", () => {
+describe("PPSHomeVerbatim, P.A.T.H. road continuity", () => {
   // ---------- Main road (4 colored segments, dashed centerline) ----------
 
   it("desktop road path spans the full grid as one smooth curve", () => {

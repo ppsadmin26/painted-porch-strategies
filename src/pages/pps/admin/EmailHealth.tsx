@@ -476,7 +476,7 @@ export default function EmailHealth() {
                     className="col-span-2 text-xs text-red-600 truncate"
                     title={r.error_message ?? ""}
                   >
-                    {r.error_message ?? "—"}
+                    {r.error_message ?? ", "}
                   </div>
                 </div>
               ))
@@ -642,10 +642,10 @@ export default function EmailHealth() {
                       className="grid grid-cols-12 gap-3 px-3 py-2 border-b last:border-b-0 text-sm items-center"
                     >
                       <div className="col-span-3 truncate font-medium text-navy">
-                        {m.recipient ?? "—"}
+                        {m.recipient ?? ", "}
                       </div>
                       <div className="col-span-3 truncate text-xs text-muted-foreground">
-                        {m.template ?? "—"}
+                        {m.template ?? ", "}
                       </div>
                       <div className="col-span-2 text-xs text-red-700 font-semibold">
                         {m.read_ct}

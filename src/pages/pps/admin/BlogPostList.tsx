@@ -314,10 +314,10 @@ export default function BlogPostList() {
                       </div>
                     </TableCell>
                     <TableCell className="text-sm text-muted-foreground">
-                      {post.author_name || "—"}
+                      {post.author_name || ", "}
                     </TableCell>
                     <TableCell className="text-sm text-muted-foreground">
-                      {post.primary_category || "—"}
+                      {post.primary_category || ", "}
                     </TableCell>
                     <TableCell>
                       <Badge className={statusColors[post.status]}>{post.status}</Badge>
@@ -325,7 +325,7 @@ export default function BlogPostList() {
                     <TableCell className="text-sm text-muted-foreground">
                       {post.publish_date
                         ? new Date(post.publish_date).toLocaleDateString()
-                        : "—"}
+                        : ", "}
                     </TableCell>
                     <TableCell>
                       <div className="flex gap-1" onClick={(e) => e.stopPropagation()}>

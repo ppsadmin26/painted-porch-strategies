@@ -5,15 +5,15 @@ import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
 const rob: SpeakerData = {
   name: "Rob Hunter",
   firstName: "Rob",
-  title: "Chief Storytelling Officer | M.C. — Master of Communication",
+  title: "Chief Storytelling Officer | M.C., Master of Communication",
   seriesName: "The Clear & Courageous Communication Series",
   seriesIntro:
-    "In a world full of noise, leaders who communicate with clarity and conviction rise above the rest. Rob Hunter, a #1-rated radio host and journalist turned communication impact strategist, teaches high-fidelity messaging practices to help you speak so your signal is clear — and people act.",
+    "In a world full of noise, leaders who communicate with clarity and conviction rise above the rest. Rob Hunter, a #1-rated radio host and journalist turned communication impact strategist, teaches high-fidelity messaging practices to help you speak so your signal is clear, and people act.",
   bio: [
     "Most people know me as a radio host, communicator, and storyteller. But at my core, I'm someone who believes that clear, confident communication is the most powerful leadership tool we have.",
-    "Over the past 27 years, I've hosted top-rated radio shows across the country — and I've learned what it takes to cut through the noise and truly connect. Now, I partner with leaders to do the same in meetings, keynotes, and high-stakes moments.",
+    "Over the past 27 years, I've hosted top-rated radio shows across the country, and I've learned what it takes to cut through the noise and truly connect. Now, I partner with leaders to do the same in meetings, keynotes, and high-stakes moments.",
     "I bring together the science of messaging, the rhythm of broadcasting, and the art of storytelling to help teams speak with impact, listen with intention, and lead with presence.",
-    "If you're ready to master your message and make it matter — I've got you.",
+    "If you're ready to master your message and make it matter, I've got you.",
   ],
   closingLine: "Let's cut through your communication static and broadcast with clarity and impact!",
   photo: robPhoto,
@@ -26,7 +26,7 @@ const rob: SpeakerData = {
     {
       title: "You Have 8 Seconds...",
       description:
-        "In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast — before they scroll away.",
+        "In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
     },
     {
       title: "The Power of Story",
@@ -41,12 +41,12 @@ const rob: SpeakerData = {
     {
       title: "Borderless Communication",
       description:
-        "Great leaders don't just talk — they communicate with intention. Learn how to create a culture of ownership and follow-through.",
+        "Great leaders don't just talk, they communicate with intention. Learn how to create a culture of ownership and follow-through.",
     },
     {
       title: "Radio-Ready Confidence",
       description:
-        "Tame the nerves and take the mic. From boardrooms to breakouts, learn how to show up prepared, polished, and powerful — every time you speak.",
+        "Tame the nerves and take the mic. From boardrooms to breakouts, learn how to show up prepared, polished, and powerful, every time you speak.",
     },
     {
       title: "Your 5-Minute Keynote",
@@ -56,7 +56,7 @@ const rob: SpeakerData = {
     {
       title: "Speak with Style",
       description:
-        "There are six distinct communicator styles — and knowing yours changes everything. Discover your natural style and learn to flex across all six to connect with any audience.",
+        "There are six distinct communicator styles, and knowing yours changes everything. Discover your natural style and learn to flex across all six to connect with any audience.",
     },
   ],
   outcomesHeading: "Speak with Clarity. Lead with Confidence.",

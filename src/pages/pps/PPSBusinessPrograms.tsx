@@ -26,7 +26,7 @@ const peoplePrograms = [
   {
     title: "Master Your Message",
     description:
-      "Communication is one of the most impactful, yet least practiced skills. Employees learn how to best deliver a message — in any setting or environment — to inspire collaboration and innovation, with clarity, confidence, and influence.",
+      "Communication is one of the most impactful, yet least practiced skills. Employees learn how to best deliver a message, in any setting or environment, to inspire collaboration and innovation, with clarity, confidence, and influence.",
     image: masterYourMessage,
     link: "/partner/amplify",
   },
@@ -198,7 +198,7 @@ export default function PPSBusinessPrograms() {
           <blockquote className="text-xl md:text-2xl italic text-gold leading-relaxed font-poppins">
             "You don't build a business. You build people, and people build the business."
           </blockquote>
-          <p className="text-muted-foreground mt-3 font-semibold">— Zig Ziglar</p>
+          <p className="text-muted-foreground mt-3 font-semibold">Zig Ziglar</p>
         </div>
       </section>
 
@@ -270,7 +270,7 @@ export default function PPSBusinessPrograms() {
           <blockquote className="text-xl md:text-2xl italic text-strategic leading-relaxed font-poppins">
             "The relevant question is not simply what shall we do tomorrow, but rather what shall we do today in order to get ready for tomorrow."
           </blockquote>
-          <p className="text-muted-foreground mt-3 font-semibold">— Peter Drucker</p>
+          <p className="text-muted-foreground mt-3 font-semibold">Peter Drucker</p>
         </div>
       </section>
 
@@ -348,18 +348,18 @@ export default function PPSBusinessPrograms() {
                 Flexible &amp; Transparent Pricing
               </h2>
               <p className="text-lg text-foreground leading-relaxed mb-4">
-                We like to do things differently here — in our diversity of experts across multiple
+                We like to do things differently here, in our diversity of experts across multiple
                 industries, our people-first programs, and our pricing.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-4">
                 <strong>Having flexibility</strong> in what programs and services are available to
-                you — based on your <strong>budget</strong>, <strong>resources</strong>, desired{" "}
-                <strong>outcomes</strong>, and <strong>schedule</strong> — is important. That's why
+                you, based on your <strong>budget</strong>, <strong>resources</strong>, desired{" "}
+                <strong>outcomes</strong>, and <strong>schedule</strong>, is important. That's why
                 you have your choice of <strong>three methods of program delivery</strong> to align
                 with your needs.
               </p>
               <p className="text-foreground leading-relaxed">
-                Our programs are designed to benefit <strong>EVERYONE</strong> in your company — not
+                Our programs are designed to benefit <strong>EVERYONE</strong> in your company, not
                 just those in official leadership roles. We want you to be able to{" "}
                 <strong>invest in your Company's success</strong>, not just certain individuals.
               </p>

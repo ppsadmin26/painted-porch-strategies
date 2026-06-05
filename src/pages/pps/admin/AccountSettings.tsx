@@ -299,7 +299,7 @@ export default function AccountSettings() {
         </CardContent>
       </Card>
 
-      {/* Author Profile — only shown if is_author */}
+      {/* Author Profile, only shown if is_author */}
       {profile?.is_author && (
         <>
           <Separator />

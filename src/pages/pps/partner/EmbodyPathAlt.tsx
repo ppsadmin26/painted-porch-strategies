@@ -225,7 +225,7 @@ const industries = [
 // Testimonials data
 const testimonials = [
   {
-    quote: "We thought we needed change management consultants. What we got was so much more valuable—strategic partners who helped us architect transformation capacity we'll have forever. The Blue Door revealed we weren't ready. The 18-month partnership built foundations that now support everything we do. Worth every dollar.",
+    quote: "We thought we needed change management consultants. What we got was so much more valuable, strategic partners who helped us architect transformation capacity we'll have forever. The Blue Door revealed we weren't ready. The 18-month partnership built foundations that now support everything we do. Worth every dollar.",
     name: "CEO",
     company: "Healthcare Organization",
     detail: "18-month EMBODY partnership, now independent",
@@ -248,11 +248,11 @@ const testimonials = [
 const faqs = [
   {
     question: "How is your EMBODY partnership different from traditional consulting?",
-    answer: "Traditional consultants deliver best practice solutions for you based on what worked elsewhere. We partner with you to co-design transformation architecture specific to your context. You're the expert of your organization. We're experts in transformation architecture. Together, we build permanent capacity—not packaged solutions or project deliverables.",
+    answer: "Traditional consultants deliver best practice solutions for you based on what worked elsewhere. We partner with you to co-design transformation architecture specific to your context. You're the expert of your organization. We're experts in transformation architecture. Together, we build permanent capacity, not packaged solutions or project deliverables.",
   },
   {
     question: "How is your EMBODY partnership different from change management consultants?",
-    answer: "Change management focuses on implementing predefined changes by managing resistance, driving adoption, and delivering transitions downstream. We do change origination—we partner with you to architect transformation capacity upstream, before implementation begins. After change management, you've executed a change. After EMBODY partnership, you've built the capacity to originate and architect your own transformations without external dependency.",
+    answer: "Change management focuses on implementing predefined changes by managing resistance, driving adoption, and delivering transitions downstream. We do change origination, we partner with you to architect transformation capacity upstream, before implementation begins. After change management, you've executed a change. After EMBODY partnership, you've built the capacity to originate and architect your own transformations without external dependency.",
   },
   {
     question: "Can we start with AMPLIFY and progress to EMBODY?",
@@ -272,7 +272,7 @@ const faqs = [
   },
   {
     question: "Can you work with our internal change management team?",
-    answer: "Absolutely! We often partner with internal teams, building their capacity while providing strategic guidance. We're not competitive with internal teams—we're complementary.",
+    answer: "Absolutely! We often partner with internal teams, building their capacity while providing strategic guidance. We're not competitive with internal teams, we're complementary.",
   },
   {
     question: "What happens if leadership changes during partnership?",
@@ -322,7 +322,7 @@ export default function EmbodyPathAlt() {
             It's Time to Sh<span className="text-raspberry">IF</span>t From Change Moments to an Innovation Movement.
           </h2>
           <p className="text-lg text-foreground leading-relaxed mb-10 max-w-4xl mx-auto text-center">
-            You've made the decision: you're ready for your organization to shift from managing change initiatives to leading sustainable transformation. You're not looking for consultants to fix or implement change for you—you're ready for strategic partners to co-architect permanent capability in your people, your processes, and your systems.
+            You've made the decision: you're ready for your organization to shift from managing change initiatives to leading sustainable transformation. You're not looking for consultants to fix or implement change for you, you're ready for strategic partners to co-architect permanent capability in your people, your processes, and your systems.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -353,7 +353,7 @@ export default function EmbodyPathAlt() {
                 {[
                   "Great people + great process = extraordinary outcomes",
                   "Transformation without leadership alignment and ownership fails",
-                  "You can't architect on top of assumptions—Phase Zero reveals candid clarity on operational capability and capacity",
+                  "You can't architect on top of assumptions, Phase Zero reveals candid clarity on operational capability and capacity",
                   "Quick fixes mask structural problems; foundations enable lasting change",
                   "Sustainable, repeatable transformation requires time for architecture, integration, and embedding",
                 ].map((item, i) => (
@@ -370,7 +370,7 @@ export default function EmbodyPathAlt() {
           <div className="bg-lime/10 border-l-4 border-lime p-6 rounded-r-xl mb-12">
             <h3 className="text-xl md:text-2xl font-poppins font-semibold text-lime mb-2">The <span className="text-navy">EMBODY</span> outcome you're seeking:</h3>
             <p className="text-lg text-foreground italic mb-2">
-              "We've built the internal structures and culture to architect and execute sustainable change—continual transformation is now ours to lead."
+              "We've built the internal structures and culture to architect and execute sustainable change, continual transformation is now ours to lead."
             </p>
             <p className="text-foreground">
               Transformation becomes self-sustaining and repeatable. Your organization develops permanent capacity and practices that outlasts any single initiative.
@@ -383,11 +383,11 @@ export default function EmbodyPathAlt() {
             <p className="text-muted-foreground mb-4 text-center">Comprehensive engagement for organizations ready for permanent transformation:</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                "6-12+ month embedded partnership — Strategic advisory and executive co-architecting",
-                "Complete transformation architecture — Systematic capability building across your organization",
-                "Leadership development integration — Your team learns to architect change, not just execute it",
-                "Communication strategy and execution — Organizational alignment systems that stick",
-                "Change infrastructure design — Self-sustaining transformation capability built into your DNA",
+                "6-12+ month embedded partnership, Strategic advisory and executive co-architecting",
+                "Complete transformation architecture, Systematic capability building across your organization",
+                "Leadership development integration, Your team learns to architect change, not just execute it",
+                "Communication strategy and execution, Organizational alignment systems that stick",
+                "Change infrastructure design, Self-sustaining transformation capability built into your DNA",
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3 bg-white border border-border/50 p-4 rounded-lg">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
@@ -407,7 +407,7 @@ export default function EmbodyPathAlt() {
               Organizations We Partner With
             </h2>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
-              EMBODY partnerships aren't limited by industry—they're defined by organizational readiness and executive commitment to building transformation capability that becomes permanently yours.
+              EMBODY partnerships aren't limited by industry, they're defined by organizational readiness and executive commitment to building transformation capability that becomes permanently yours.
             </p>
           </div>
 
@@ -545,7 +545,7 @@ export default function EmbodyPathAlt() {
               <strong className="text-gold">We're experts</strong> in transformation architecture and Phase Zero design.
             </p>
             <p className="text-white/90">
-              Together, we build what actually works in YOUR reality—not what works in theory.
+              Together, we build what actually works in YOUR reality, not what works in theory.
             </p>
             <p className="text-gold font-medium mt-4">
               This isn't consulting. This isn't training. This is co-architecting permanent organizational capacity.
@@ -559,7 +559,7 @@ export default function EmbodyPathAlt() {
           <blockquote className="text-2xl md:text-3xl font-poppins font-semibold text-navy italic leading-relaxed">
             "The relevant question is not simply what shall we do tomorrow, but rather what shall we do today in order to get ready for tomorrow."
           </blockquote>
-          <p className="mt-4 text-muted-foreground text-sm">— Peter Drucker</p>
+          <p className="mt-4 text-muted-foreground text-sm">Peter Drucker</p>
         </div>
       </section>
       {/* SECTION 5: THE THREE PAINTED PORCH PILLARS */}
@@ -570,7 +570,7 @@ export default function EmbodyPathAlt() {
               Architect Embodied Adaptability & Continuous Sh<span className="text-raspberry">IF</span>t
             </h2>
             <p className="text-lg text-foreground max-w-4xl mx-auto mb-4">
-              The Painted Porch Pillars are your organization's structural capabilities for leading the change you're attempting. While most advisors work on one dimension at a time—leadership first, then processes, then people—that creates fissures where transformation fumbles, fizzles, or fails.
+              The Painted Porch Pillars are your organization's structural capabilities for leading the change you're attempting. While most advisors work on one dimension at a time, leadership first, then processes, then people, that creates fissures where transformation fumbles, fizzles, or fails.
             </p>
             <p className="text-lg font-semibold text-navy max-w-3xl mx-auto">
               EMBODY partnerships integrate all three Pillars simultaneously so change capability compounds instead of cracks.
@@ -643,7 +643,7 @@ export default function EmbodyPathAlt() {
             </p>
             <p className="text-muted-foreground">(less than 1% of your annual revenue)</p>
             <p className="text-foreground mt-4">
-              This is a strategic investment in permanent organizational capacity—not a project expense.
+              This is a strategic investment in permanent organizational capacity, not a project expense.
             </p>
           </div>
 
@@ -653,11 +653,11 @@ export default function EmbodyPathAlt() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6">What You're Investing In:</h3>
               <ul className="space-y-4">
                 {[
-                  "Permanent transformation architecture we co-architect with your leadership — Designed for your context, owned by your organization",
-                  "Strategic partnership with transformation architects — Deep expertise applied to YOUR context",
-                  "Phase Zero foundations — Strategic clarity before resource commitment",
-                  "Self-sustaining organizational capacity — Your team learns to architect change independently",
-                  "Co-designed transformation infrastructure — Built specifically for your reality, not theory",
+                  "Permanent transformation architecture we co-architect with your leadership, Designed for your context, owned by your organization",
+                  "Strategic partnership with transformation architects, Deep expertise applied to YOUR context",
+                  "Phase Zero foundations, Strategic clarity before resource commitment",
+                  "Self-sustaining organizational capacity, Your team learns to architect change independently",
+                  "Co-designed transformation infrastructure, Built specifically for your reality, not theory",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
@@ -666,7 +666,7 @@ export default function EmbodyPathAlt() {
                 ))}
               </ul>
               <p className="mt-6 text-navy font-medium">
-                <strong>The outcome:</strong> You build the internal structures and culture to architect and execute sustainable change—where continual transformation becomes yours to lead.
+                <strong>The outcome:</strong> You build the internal structures and culture to architect and execute sustainable change, where continual transformation becomes yours to lead.
               </p>
             </div>
 
@@ -689,7 +689,7 @@ export default function EmbodyPathAlt() {
                 ))}
               </ul>
               <p className="mt-6 text-gold font-medium">
-                <strong>The ultimate outcome:</strong> Your team becomes transformation architects who no longer need external partnership. This is success—we build you not to need us.
+                <strong>The ultimate outcome:</strong> Your team becomes transformation architects who no longer need external partnership. This is success, we build you not to need us.
               </p>
             </div>
           </div>
@@ -739,7 +739,7 @@ export default function EmbodyPathAlt() {
             <ul className="inline-block text-left mb-8">
               {[
                 "Transformation happens through people, not to them",
-                "You need strategic partners to co-architect—not consultants to implement change for you",
+                "You need strategic partners to co-architect, not consultants to implement change for you",
                 "Your organization is asking: \"Can we even do what we're planning?\"",
                 "You're ready for permanent capability built into your DNA",
               ].map((item, i) => (
@@ -810,7 +810,7 @@ export default function EmbodyPathAlt() {
       {/* SECTION 10.5: EXPLORE BEFORE YOU COMMIT */}
       <ExploreBeforeCommitSection />
 
-      {/* SECTION 10.75: THE HUMAN COST — why EMBODY's depth is the answer */}
+      {/* SECTION 10.75: THE HUMAN COST, why EMBODY's depth is the answer */}
       <section className="py-16 md:py-24 bg-white" aria-labelledby="human-cost-heading">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
@@ -876,7 +876,7 @@ export default function EmbodyPathAlt() {
         </div>
         <div className="container max-w-3xl mx-auto px-6 text-center relative z-10">
             <p className="text-2xl font-bold text-gold mb-6">
-              Sh<span className="text-raspberry">IF</span>t happens. Will you architect it—or react to it?
+              Sh<span className="text-raspberry">IF</span>t happens. Will you architect it, or react to it?
             </p>
             <p className="text-white/90 mb-4">
               You understand <strong className="text-white">transformation happens through people, not to them</strong>. That brilliant strategy fails without organizational capacity. That you can't architect on top of assumptions.
@@ -887,7 +887,7 @@ export default function EmbodyPathAlt() {
               <strong className="text-gold">We're experts</strong> in transformation architecture and Phase Zero design.
             </p>
             <p className="text-white/90 mb-6">
-              <strong className="text-white">Together,</strong> we build what works in YOUR reality—permanent capacity where <strong className="text-gold">continual transformation becomes yours to lead</strong>.
+              <strong className="text-white">Together,</strong> we build what works in YOUR reality, permanent capacity where <strong className="text-gold">continual transformation becomes yours to lead</strong>.
             </p>
             <p className="text-xl font-semibold text-gold">
               This is your invitation to co-architect what comes next.

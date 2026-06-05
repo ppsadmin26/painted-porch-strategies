@@ -1,5 +1,5 @@
 /**
- * The Architecture Gap — McKinsey + Gartner stats framed against the Painted Porch Pillars.
+ * The Architecture Gap, McKinsey + Gartner stats framed against the Painted Porch Pillars.
  * Lives on /partner between Philosophy & Approach and How To Choose.
  */
 import StatCard, { StatSources } from "@/components/pps/StatCard";

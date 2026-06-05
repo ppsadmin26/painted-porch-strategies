@@ -31,9 +31,9 @@ type EmailItem = {
 };
 
 function formatRelative(iso?: string | null): string {
-  if (!iso) return "—";
+  if (!iso) return ", ";
   const d = new Date(iso);
-  if (isNaN(d.getTime())) return "—";
+  if (isNaN(d.getTime())) return ", ";
   const diff = Date.now() - d.getTime();
   const sec = Math.round(diff / 1000);
   if (sec < 60) return "just now";
@@ -355,7 +355,7 @@ export default function SiteEmails() {
               {active.status === "preview_data_required" && (
                 <Card className="p-3 mb-3 border-amber-500/40 bg-amber-50 text-xs">
                   This template needs runtime data and has no preview defaults. Source is shown
-                  below — request a preview-data block in chat to enable in-app preview.
+                  below, request a preview-data block in chat to enable in-app preview.
                 </Card>
               )}
 

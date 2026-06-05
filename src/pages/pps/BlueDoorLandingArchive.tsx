@@ -15,7 +15,7 @@ export default function BlueDoorLandingArchive() {
   return (
     <div className="min-h-screen">
       <div className="bg-gold/90 text-navy text-center py-2 text-sm font-semibold font-poppins">
-        ⚠️ ARCHIVE — This is the v1.0 version. <a href="/blue-door" className="underline">View current version →</a>
+        ⚠️ ARCHIVE, This is the v1.0 version. <a href="/blue-door" className="underline">View current version →</a>
       </div>
       <HeroSectionAlt />
       <ProblemSectionAlt />

@@ -20,7 +20,7 @@ vi.mock("@/lib/verifySiteVideo", () => ({
   verifySiteVideoUrl: vi.fn(),
 }));
 
-// IntersectionObserver isn't in jsdom — stub it so the lazy-mount effect is inert.
+// IntersectionObserver isn't in jsdom, stub it so the lazy-mount effect is inert.
 beforeEach(() => {
   maybeSingleMock.mockReset();
   // @ts-expect-error – test stub
@@ -38,7 +38,7 @@ import LazyPreviewVideo from "../LazyPreviewVideo";
 
 describe("LazyPreviewVideo", () => {
   it("shows loading state with aria-live=polite before slot resolves", () => {
-    // Pending promise — never resolves during this test
+    // Pending promise, never resolves during this test
     maybeSingleMock.mockReturnValue(new Promise(() => {}));
     const { container } = render(
       <LazyPreviewVideo slotKey="test-slot" fallbackVideoUrl="" />

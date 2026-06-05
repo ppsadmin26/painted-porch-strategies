@@ -19,7 +19,7 @@ const services = [
     icon: Search,
     title: "Assess Your Change Readiness",
     description:
-      "Often to evolve your business or prepare for change, it's important to understand where you're at today — right now, in the present. We'll partner with you to assess the change readiness of your organization, providing guidance and recommendations on ways to turn any identified obstacles into opportunities for growth and transformation.",
+      "Often to evolve your business or prepare for change, it's important to understand where you're at today, right now, in the present. We'll partner with you to assess the change readiness of your organization, providing guidance and recommendations on ways to turn any identified obstacles into opportunities for growth and transformation.",
     cta: { label: "Schedule a Discovery Call", href: "/contact?scope=organization&interest=organizational-advisory&message=I'm interested in a change readiness assessment." },
   },
   {
@@ -40,7 +40,7 @@ const services = [
     icon: Brain,
     title: "Build Emotionally-Intelligent Leaders & Teams",
     description:
-      "Emotional Intelligence (EI or EQ) has been shown to account for 27–45% of job success. Business is — at its core — about leadership, teamwork, customer service, and sales. Each of these is driven by human interactions. As certified EQ-i 2.0© and EQ360© practitioners, we offer EQ assessments, 360s, workshops, and coaching to develop emotionally resilient and effective leaders and teams.",
+      "Emotional Intelligence (EI or EQ) has been shown to account for 27–45% of job success. Business is, at its core, about leadership, teamwork, customer service, and sales. Each of these is driven by human interactions. As certified EQ-i 2.0© and EQ360© practitioners, we offer EQ assessments, 360s, workshops, and coaching to develop emotionally resilient and effective leaders and teams.",
     cta: { label: "Learn More About E.Q.", href: "/eq" },
   },
 ];

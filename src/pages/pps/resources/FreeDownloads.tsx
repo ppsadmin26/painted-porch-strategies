@@ -9,7 +9,7 @@ const downloads = [
   {
     icon: Flame,
     title: "Burnout-Busting Resource Kit",
-    description: "Spot the signs of burnout and take action — for yourself and your team. Includes videos, exercises, and practical tools for building resilience.",
+    description: "Spot the signs of burnout and take action, for yourself and your team. Includes videos, exercises, and practical tools for building resilience.",
     format: "Resource Page",
     color: "bg-raspberry/10",
     iconColor: "text-raspberry",
@@ -53,7 +53,7 @@ const downloads = [
   {
     icon: Compass,
     title: "The Strategic Change Canvas",
-    description: "A one-page planning tool to architect your next shIFt — surface the questions that matter before kickoff.",
+    description: "A one-page planning tool to architect your next shIFt, surface the questions that matter before kickoff.",
     format: "PDF",
     color: "bg-lime/10",
     iconColor: "text-lime",
@@ -64,7 +64,7 @@ const downloads = [
   {
     icon: Map,
     title: "Change Readiness Roadmap",
-    description: "A must-use planning worksheet to map your P.A.T.H.™ — Prepare, Align, Take Off, and Habit — before your next change initiative kicks off.",
+    description: "A must-use planning worksheet to map your P.A.T.H.™, Prepare, Align, Take Off, and Habit, before your next change initiative kicks off.",
     format: "Worksheet",
     color: "bg-teal/10",
     iconColor: "text-teal",

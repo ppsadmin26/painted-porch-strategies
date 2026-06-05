@@ -32,7 +32,7 @@ import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
 const partnerFaqs = [
   {
     question: "What's the difference between IGNITE, AMPLIFY, and EMBODY?",
-    answer: "IGNITE is self-paced individual development — courses, assessments, and masterclasses you complete on your own schedule. AMPLIFY is cohort and team-based learning through workshops, strategic sprints, and Leadership Labs. EMBODY is an embedded executive partnership for full organizational transformation. Each P.A.T.H.way builds on the last, but you can start wherever fits your needs.",
+    answer: "IGNITE is self-paced individual development, courses, assessments, and masterclasses you complete on your own schedule. AMPLIFY is cohort and team-based learning through workshops, strategic sprints, and Leadership Labs. EMBODY is an embedded executive partnership for full organizational transformation. Each P.A.T.H.way builds on the last, but you can start wherever fits your needs.",
   },
   {
     question: "Do I need to start with IGNITE before moving to AMPLIFY or EMBODY?",
@@ -48,7 +48,7 @@ const partnerFaqs = [
   },
   {
     question: "What does 'Phase Zero' mean?",
-    answer: "Phase Zero™ is the strategic preparation that happens before any project kicks off. It's the readiness work — mindset, alignment, and architectural design — that most change initiatives skip. It's the foundation everything at Painted Porch is built on.",
+    answer: "Phase Zero™ is the strategic preparation that happens before any project kicks off. It's the readiness work, mindset, alignment, and architectural design, that most change initiatives skip. It's the foundation everything at Painted Porch is built on.",
   },
   {
     question: "Is there a commitment or contract required?",
@@ -72,7 +72,7 @@ export default function PartnerWithUsAlt() {
       {/* Section 3: Our Philosophy & Approach (tabbed) */}
       <PhilosophyApproachSection />
 
-      {/* Section 3b: The Architecture Gap — research-backed reality + Pillars */}
+      {/* Section 3b: The Architecture Gap, research-backed reality + Pillars */}
       <ArchitectureGapSection />
 
       {/* Section 4: How to Choose */}

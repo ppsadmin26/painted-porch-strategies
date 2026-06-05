@@ -211,7 +211,7 @@ export default function EQAssessment() {
               The Impacts of Understanding E.Q.
             </h2>
             <p className="text-foreground max-w-3xl mx-auto text-lg leading-relaxed">
-              You've probably been told at some point — at work, in your life — to "put your emotions aside" when dealing with a difficult situation. But the truth is we are NOT thinking beings who <em>feel</em> but rather feeling beings who <em>think</em>. Whether consciously or not, your emotions impact every interaction (including the ones with yourself).
+              You've probably been told at some point, at work, in your life, to "put your emotions aside" when dealing with a difficult situation. But the truth is we are NOT thinking beings who <em>feel</em> but rather feeling beings who <em>think</em>. Whether consciously or not, your emotions impact every interaction (including the ones with yourself).
             </p>
           </div>
 
@@ -225,7 +225,7 @@ export default function EQAssessment() {
                 "Express your thoughts and ideas",
                 "Develop and maintain social relationships",
                 "Cope with challenges and change",
-                "Use emotional information in effective and meaningful ways — to lead in all areas of your life",
+                "Use emotional information in effective and meaningful ways, to lead in all areas of your life",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-raspberry flex-shrink-0 mt-0.5" />
@@ -278,7 +278,7 @@ export default function EQAssessment() {
             </h2>
             <p className="text-lg text-foreground font-medium">Skills for both Work and Life</p>
             <p className="text-foreground max-w-3xl mx-auto mt-4 leading-relaxed">
-              While there are several models of emotional intelligence in use today, the EQ-i 2.0 model is one of the most popular and one of the only validated and reliable measures of self-perceived EQ that ties directly to the skills and competencies needed to lead in all areas of your life — whether you're in an official leadership role or not.
+              While there are several models of emotional intelligence in use today, the EQ-i 2.0 model is one of the most popular and one of the only validated and reliable measures of self-perceived EQ that ties directly to the skills and competencies needed to lead in all areas of your life, whether you're in an official leadership role or not.
             </p>
           </div>
           <div className="max-w-3xl mx-auto">

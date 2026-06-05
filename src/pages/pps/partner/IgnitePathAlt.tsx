@@ -124,7 +124,7 @@ export default function IgnitePathAlt() {
         badgeLabel="IGNITE P.A.T.H.way"
         headline="Spark New ShIFt. Build Phase Zero Foundations at Your Own Pace."
         headlineHighlight="IF"
-        description="IGNITE is self-led strategic development: courses, assessments, and Phase Zero frameworks for building transformation capacity—at your own pace, on your own terms. Whether you're investing in yourself or exploring before organizational commitment, this is where the spark for extraordinary shift begins."
+        description="IGNITE is self-led strategic development: courses, assessments, and Phase Zero frameworks for building transformation capacity, at your own pace, on your own terms. Whether you're investing in yourself or exploring before organizational commitment, this is where the spark for extraordinary shift begins."
         ctas={[
           {
             label: "Browse IGNITE",
@@ -149,7 +149,7 @@ export default function IgnitePathAlt() {
               Ready to IGNITE Your Next Sh<span className="text-gold">IF</span>t?
             </h2>
             <p className="text-lg text-foreground max-w-3xl mx-auto mb-2">
-              IGNITE is the self-led entry point onto the Painted Porch — designed to spark clarity, build confidence, and prove transformative sh<span className="text-gold font-bold">IF</span>t is possible.
+              IGNITE is the self-led entry point onto the Painted Porch, designed to spark clarity, build confidence, and prove transformative sh<span className="text-gold font-bold">IF</span>t is possible.
             </p>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
               You might be ready for IGNITE if you're…
@@ -218,7 +218,7 @@ export default function IgnitePathAlt() {
                 Self-Led Courses
               </h3>
               <p className="text-foreground mb-6 leading-relaxed">
-                Transform how you lead with Phase Zero capacity on your schedule—frameworks and practices that teach you to architect change, communicate with clarity, cultivate resilience, and develop teams where everyone shines.
+                Transform how you lead with Phase Zero capacity on your schedule, frameworks and practices that teach you to architect change, communicate with clarity, cultivate resilience, and develop teams where everyone shines.
               </p>
               <p className="text-sm font-semibold text-navy mb-2">Each includes:</p>
               <ul className="space-y-1 flex-grow">
@@ -257,7 +257,7 @@ export default function IgnitePathAlt() {
                 Strategic Assessments
               </h3>
               <p className="text-foreground mb-6 leading-relaxed">
-                Decode your success—assessments that reveal your transformation architect capacity, emotional intelligence, unique strengths, and the talents that make you extraordinary.
+                Decode your success, assessments that reveal your transformation architect capacity, emotional intelligence, unique strengths, and the talents that make you extraordinary.
               </p>
               <p className="text-sm font-semibold text-navy mb-2">Each includes:</p>
               <ul className="space-y-1 flex-grow">
@@ -296,7 +296,7 @@ export default function IgnitePathAlt() {
                 Masterclasses
               </h3>
               <p className="text-foreground mb-6 leading-relaxed">
-                Strategic insights in under 90 minutes—mini-workshops that illuminate Phase Zero strategic architecture, transformation leadership, and conscious design principles one small shift at a time.
+                Strategic insights in under 90 minutes, mini-workshops that illuminate Phase Zero strategic architecture, transformation leadership, and conscious design principles one small shift at a time.
               </p>
               <p className="text-sm font-semibold text-navy mb-3">Format:</p>
               <ul className="space-y-2 mb-6 flex-grow">
@@ -334,7 +334,7 @@ export default function IgnitePathAlt() {
           <blockquote className="text-2xl md:text-3xl font-poppins font-semibold text-navy italic leading-relaxed">
             "The secret of change is to focus all of your energy not on fighting the old, but on building the new."
           </blockquote>
-          <p className="mt-4 text-muted-foreground text-sm">— Socrates</p>
+          <p className="mt-4 text-muted-foreground text-sm">Socrates</p>
         </div>
       </section>
 

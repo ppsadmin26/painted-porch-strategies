@@ -7,7 +7,7 @@ import { TierBadge } from "@/components/pps/TierBadge";
 const tierContent = {
   IGNITE: {
     tagline: "Light the spark. Prove this works.",
-    journey: "Self-led courses, strategic assessments, and frameworks you can apply immediately—at your own pace, on your own terms.",
+    journey: "Self-led courses, strategic assessments, and frameworks you can apply immediately, at your own pace, on your own terms.",
     features: [
       "Self-Led Courses (to spark new ideas and capabilities around Mindset, Communication, Team Dynamics, and more)",
       "Strategic Assessments (for uncovering your EQ, Working Genius, Performance DNA, or Change Leadership Style)",
@@ -24,7 +24,7 @@ const tierContent = {
   },
   AMPLIFY: {
     tagline: "Boost momentum and alignment for your next shIFt.",
-    journey: "Team workshops, strategic sprints, and cohort-based learning designed for leadership teams ready to align around transformation—together.",
+    journey: "Team workshops, strategic sprints, and cohort-based learning designed for leadership teams ready to align around transformation, together.",
     features: [
       "Executive Strategy & Team Workshops",
       "Strategic Sprints (90-day focused partnerships)",
@@ -41,7 +41,7 @@ const tierContent = {
   },
   EMBODY: {
     tagline: "Architect transformation that lasts.",
-    journey: "Embedded strategic partnership (6-12+ months) to co-architect permanent organizational capacity—comprehensive, deep, transformative.",
+    journey: "Embedded strategic partnership (6-12+ months) to co-architect permanent organizational capacity, comprehensive, deep, transformative.",
     features: [
       "Architect Change Sessions (Phase Zero strategic co-design)",
       "Executive Advisory Partnership (ongoing strategic guidance)",
@@ -75,7 +75,7 @@ export function PathwayComparisonSection() {
               Each P.A.T.H.way is designed for a different level of commitment and transformation ambition.
             </p>
             <p>
-              Some leaders need a spark—proof that change can work here. Some need momentum—compound results from aligned teams. Some need permanence—unshakeable foundations that outlast any single initiative.
+              Some leaders need a spark, proof that change can work here. Some need momentum, compound results from aligned teams. Some need permanence, unshakeable foundations that outlast any single initiative.
             </p>
             <p>
               <strong>Different depths. Different timelines. Different investments.</strong>

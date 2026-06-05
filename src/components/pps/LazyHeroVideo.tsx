@@ -85,13 +85,13 @@ export default function LazyHeroVideo({
 
   return (
     <div ref={containerRef} className={`${className} isolate`} style={style} data-testid="lazy-hero-video">
-      {/* Branded gradient base — shows through if poster/video fail */}
+      {/* Branded gradient base, shows through if poster/video fail */}
       {showErrorFallback ? (
         <VideoFallback variant="hero" state="error" onRetry={handleRetry} />
       ) : (
         <VideoFallback message={null} variant="hero" />
       )}
-      {/* Poster always rendered — instant paint, also covers if video fails */}
+      {/* Poster always rendered, instant paint, also covers if video fails */}
       {!posterFailed && (
         <img
           src={posterUrl}

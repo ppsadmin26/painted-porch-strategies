@@ -76,7 +76,7 @@ const roleDescriptions: Record<string, string> = {
   admin: "Full access to all admin features including user management.",
   editor: "Can create, edit, and manage content in assigned sections.",
   contributor: "Can create and edit only their own blog posts. Cannot manage post settings.",
-  author: "Author profile only — no admin portal access. Used for blog attribution.",
+  author: "Author profile only, no admin portal access. Used for blog attribution.",
 };
 
 const ALL_SECTIONS = ["Blog", "Media", "YouTube"] as const;
@@ -240,7 +240,7 @@ export default function AdminUsers() {
         if (data?.error) throw new Error(data.error);
         toast({ title: "User created", description: `${inviteEmail} has been added as ${inviteRole}.` });
 
-        // Update the profile with author/section fields if needed — wait for trigger to create it
+        // Update the profile with author/section fields if needed, wait for trigger to create it
         if (data?.userId) {
           let retries = 0;
           while (retries < 10) {
@@ -598,7 +598,7 @@ export default function AdminUsers() {
                       onCheckedChange={(v) => setInviteIsAuthor(!!v)}
                     />
                     <Label htmlFor="invite-is-author" className="text-sm font-normal cursor-pointer">
-                      Is Author — available in blog post author dropdown
+                      Is Author, available in blog post author dropdown
                     </Label>
                   </div>
                 )}
@@ -615,7 +615,7 @@ export default function AdminUsers() {
                         onCheckedChange={(v) => setInviteIsGuestAuthor(!!v)}
                       />
                       <Label htmlFor="invite-guest-author" className="text-sm font-normal cursor-pointer">
-                        Is Guest Author — displays "Guest Contributor" badge on posts
+                        Is Guest Author, displays "Guest Contributor" badge on posts
                       </Label>
                     </div>
 
@@ -726,14 +726,14 @@ export default function AdminUsers() {
                           <img src={profile.avatar_url} alt="" className="w-7 h-7 rounded-full object-cover" />
                         )}
                         <span>
-                          {profile.full_name || "—"}
+                          {profile.full_name || ", "}
                           {profile.id === user?.id && (
                             <span className="text-xs text-muted-foreground ml-2">(you)</span>
                           )}
                         </span>
                       </div>
                     </TableCell>
-                    <TableCell className="text-sm">{profile.email || "—"}</TableCell>
+                    <TableCell className="text-sm">{profile.email || ", "}</TableCell>
                     <TableCell>
                       <Badge className={roleBadgeClass[profile.role] || "bg-muted text-muted-foreground"}>
                         {profile.role}
@@ -908,7 +908,7 @@ export default function AdminUsers() {
                   onCheckedChange={(v) => setEditIsAuthor(!!v)}
                 />
                 <Label htmlFor="edit-is-author" className="text-sm font-normal cursor-pointer">
-                  Is Author — available in blog post author dropdown
+                  Is Author, available in blog post author dropdown
                 </Label>
               </div>
             )}
@@ -925,7 +925,7 @@ export default function AdminUsers() {
                     onCheckedChange={(v) => setEditIsGuestAuthor(!!v)}
                   />
                   <Label htmlFor="edit-guest-author" className="text-sm font-normal cursor-pointer">
-                    Is Guest Author — displays "Guest Contributor" badge on posts
+                    Is Guest Author, displays "Guest Contributor" badge on posts
                   </Label>
                 </div>
 

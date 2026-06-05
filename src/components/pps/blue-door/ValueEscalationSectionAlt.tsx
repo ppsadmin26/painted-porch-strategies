@@ -61,10 +61,10 @@ export default function ValueEscalationSectionAlt() {
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <p className="text-foreground text-base leading-relaxed mb-4">
-                Strategic reality through evidence-based assessment. The diagnostic reveals 3-4 shifts you're positioned to imagine and lead — assessing your organizational capability across The Painted Porch Pillars.
+                Strategic reality through evidence-based assessment. The diagnostic reveals 3-4 shifts you're positioned to imagine and lead, assessing your organizational capability across The Painted Porch Pillars.
               </p>
               <p className="font-bold text-bluedoor text-base">
-                This is awareness — you now know what's possible.
+                This is awareness, you now know what's possible.
               </p>
             </div>
             <div>
@@ -100,7 +100,7 @@ export default function ValueEscalationSectionAlt() {
               The workshop converts imagination into architectural design for your next organizational shift. One path is chosen, leadership aligns, and structural prerequisites are surfaced before building begins.
             </p>
             <p className="font-bold text-strategic text-base mb-4">
-              This is commitment — you've decided what to build.
+              This is commitment, you've decided what to build.
             </p>
             <p className="font-poppins font-semibold text-strategic text-sm mb-2">Investment Options:</p>
             <ul className="space-y-1.5 text-sm text-foreground">
@@ -126,13 +126,13 @@ export default function ValueEscalationSectionAlt() {
             </p>
             <p className="font-poppins font-bold text-2xl text-gold mb-4">Investment varies by tier</p>
             <p className="font-poppins font-semibold italic text-lg text-navy mb-4">
-              "How will we build this — what must change internally for this to succeed?"
+              "How will we build this, what must change internally for this to succeed?"
             </p>
             <p className="text-foreground text-sm leading-relaxed mb-4">
               Partnership ensures what you've architected is executed. Capability development, strategic advisory, strategies for sustained, continuous success.
             </p>
             <p className="font-bold text-gold text-base mb-4">
-              This is making shIFt happen — what was decided is delivered.
+              This is making shIFt happen, what was decided is delivered.
             </p>
             <p className="font-poppins font-semibold text-gold text-base mb-3">Three Engagement P.A.T.H.ways:</p>
             <div className="space-y-3 text-base">
@@ -172,7 +172,7 @@ export default function ValueEscalationSectionAlt() {
             <span>Only after this Phase Zero does the work to <strong>build</strong> and implement begin.</span>
           </div>
           <p className="italic text-navy mt-6">
-            Each stage creates the conditions for the next. Diagnosis creates <span className="underline">clarity</span>. Clarity creates <span className="underline">commitment</span>. Commitment makes <span className="underline">execution</span> inevitable — not managed.
+            Each stage creates the conditions for the next. Diagnosis creates <span className="underline">clarity</span>. Clarity creates <span className="underline">commitment</span>. Commitment makes <span className="underline">execution</span> inevitable, not managed.
           </p>
         </div>
       </div>

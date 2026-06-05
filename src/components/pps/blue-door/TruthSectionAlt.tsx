@@ -20,7 +20,7 @@ export default function TruthSectionAlt() {
             Most organizational changes don't fail because the pursuit was wrong. They fail because leaders discovered too late, often after 6+ months and $500K+ invested, that their organization wasn't structurally ready for the shift they were pursuing.
           </p>
           <p className="text-foreground text-lg leading-relaxed mb-6">
-            The <span className="font-bold text-bluedoor">Blue Door</span> surfaces that reality early—while you're still exploring and before direction gets locked in.
+            The <span className="font-bold text-bluedoor">Blue Door</span> surfaces that reality early, while you're still exploring and before direction gets locked in.
           </p>
           <p className="text-foreground text-lg leading-relaxed mb-6">
             In less than 30 minutes, you'll learn what might otherwise take months to figure out: whether your organization can actually lead the shift you're considering, or where some groundwork would set you up for real success.

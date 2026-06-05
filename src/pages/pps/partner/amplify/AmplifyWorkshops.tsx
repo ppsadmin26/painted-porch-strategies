@@ -98,7 +98,7 @@ const workshopTopics = [
     image: resilienceThumb,
     challenge: "Your team treats pushback as an obstacle rather than valuable feedback. You're not building organizational capacity to navigate and learn from what people are telling you.",
     highlights: [
-      "Why people don't resist change — they resist being changed",
+      "Why people don't resist change, they resist being changed",
       "How to distinguish between legitimate feedback and fear of the unknown",
       "Navigation strategies for building resilience through feedback",
       "How Phase Zero addresses pushback before it starts",
@@ -295,7 +295,7 @@ export default function AmplifyWorkshops() {
                   icon: Users,
                   title: "Building Extraordinary Teams",
                   image: teamBuildingThumb,
-                  description: "Why most team-building fails — and what high-performing teams actually do differently. Move beyond trust falls to build teams that collaborate, challenge, and create together.",
+                  description: "Why most team-building fails, and what high-performing teams actually do differently. Move beyond trust falls to build teams that collaborate, challenge, and create together.",
                   duration: "Half-day to full-day",
                   investment: "Starting at $10,000",
                   outcomes: [

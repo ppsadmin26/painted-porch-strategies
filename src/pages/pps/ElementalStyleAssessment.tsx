@@ -84,7 +84,7 @@ export default function ElementalStyleAssessment() {
               <Compass className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Strengths & Stretch Zones</h3>
               <p className="text-sm text-foreground">
-                Spot what you bring to a team — and where your style might rub others the wrong way.
+                Spot what you bring to a team, and where your style might rub others the wrong way.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">

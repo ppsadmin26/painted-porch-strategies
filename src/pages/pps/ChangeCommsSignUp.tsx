@@ -34,7 +34,7 @@ export default function ChangeCommsSignUp() {
       const { error } = await supabase.functions.invoke("submit-ghl-lead", {
         body: {
           firstName: cleanFirst,
-          lastName: cleanLast || "—",
+          lastName: cleanLast || "Unknown",
           email: cleanEmail,
           newsletter,
           tags: ["ChangeComms"],
@@ -102,7 +102,7 @@ export default function ChangeCommsSignUp() {
               Get a free copy of our guide.
             </h2>
             <p className="text-lg text-charcoal mb-6">
-              This is a <strong className="text-navy">must-use tool</strong> before you craft and send ANY communication to change-impacted audiences — both internal and external — to ensure change <strong className="text-navy">understanding, clarity, confidence, and adoption</strong>.
+              This is a <strong className="text-navy">must-use tool</strong> before you craft and send ANY communication to change-impacted audiences, both internal and external, to ensure change <strong className="text-navy">understanding, clarity, confidence, and adoption</strong>.
             </p>
             <p className="text-lg text-charcoal mb-6">
               This practical guide will help you get change-ready and prepared by intentionally and concisely planning your messaging for your organization's upcoming change project.

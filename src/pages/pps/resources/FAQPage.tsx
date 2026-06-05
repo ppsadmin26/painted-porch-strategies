@@ -14,11 +14,11 @@ const sitewideFaqCategories: FAQCategory[] = [
       },
       {
         question: "What does 'Phase Zero™' mean?",
-        answer: "Phase Zero is the strategic preparation that happens before any project kicks off. It's the readiness work — mindset, alignment, and architectural design — that most change initiatives skip. It's the foundation everything at Painted Porch is built on.",
+        answer: "Phase Zero is the strategic preparation that happens before any project kicks off. It's the readiness work, mindset, alignment, and architectural design, that most change initiatives skip. It's the foundation everything at Painted Porch is built on.",
       },
       {
         question: "Why is it called 'Painted Porch'?",
-        answer: "The name comes from the ancient stoa poikile — the 'painted porch' in Athens where Zeno taught Stoicism. It was an open-air gathering place for learning, dialogue, and practical wisdom. We carry that spirit into modern organizational change.",
+        answer: "The name comes from the ancient stoa poikile, the 'painted porch' in Athens where Zeno taught Stoicism. It was an open-air gathering place for learning, dialogue, and practical wisdom. We carry that spirit into modern organizational change.",
       },
       {
         question: "What industries do you work with?",
@@ -26,7 +26,7 @@ const sitewideFaqCategories: FAQCategory[] = [
       },
       {
         question: "How is Painted Porch different from traditional consulting?",
-        answer: "Traditional consultants deliver packaged solutions based on what worked elsewhere. We partner with you to co-design transformation architecture specific to your context. You're the expert of your organization. We're experts in transformation architecture. Together, we build permanent capacity — not dependency.",
+        answer: "Traditional consultants deliver packaged solutions based on what worked elsewhere. We partner with you to co-design transformation architecture specific to your context. You're the expert of your organization. We're experts in transformation architecture. Together, we build permanent capacity, not dependency.",
       },
     ],
   },
@@ -35,7 +35,7 @@ const sitewideFaqCategories: FAQCategory[] = [
     faqs: [
       {
         question: "What's the difference between IGNITE, AMPLIFY, and EMBODY?",
-        answer: "IGNITE is self-paced individual development — courses, assessments, and masterclasses you complete on your own schedule. AMPLIFY is cohort and team-based learning through workshops, strategic sprints, and Leadership Labs. EMBODY is an embedded executive partnership for full organizational transformation. Each P.A.T.H.way builds on the last, but you can start wherever fits your needs.",
+        answer: "IGNITE is self-paced individual development, courses, assessments, and masterclasses you complete on your own schedule. AMPLIFY is cohort and team-based learning through workshops, strategic sprints, and Leadership Labs. EMBODY is an embedded executive partnership for full organizational transformation. Each P.A.T.H.way builds on the last, but you can start wherever fits your needs.",
       },
       {
         question: "How do I know which P.A.T.H.way is right for me?",
@@ -56,7 +56,7 @@ const sitewideFaqCategories: FAQCategory[] = [
     ],
   },
   {
-    name: "IGNITE — Courses",
+    name: "IGNITE, Courses",
     faqs: [
       {
         question: "Do I need to take courses in a specific order?",
@@ -81,7 +81,7 @@ const sitewideFaqCategories: FAQCategory[] = [
     ],
   },
   {
-    name: "IGNITE — Assessments",
+    name: "IGNITE, Assessments",
     faqs: [
       {
         question: "Do assessments expire?",
@@ -106,7 +106,7 @@ const sitewideFaqCategories: FAQCategory[] = [
     ],
   },
   {
-    name: "IGNITE — Masterclasses",
+    name: "IGNITE, Masterclasses",
     faqs: [
       {
         question: "How long are masterclasses?",
@@ -131,12 +131,12 @@ const sitewideFaqCategories: FAQCategory[] = [
       },
       {
         question: "Can I start with IGNITE and progress to AMPLIFY later?",
-        answer: "Absolutely. Many leaders start with IGNITE to build personal capacity, then progress to AMPLIFY Leadership Labs for deeper peer learning—or bring Phase Zero concepts to their teams through AMPLIFY workshops and strategic sprints.",
+        answer: "Absolutely. Many leaders start with IGNITE to build personal capacity, then progress to AMPLIFY Leadership Labs for deeper peer learning, or bring Phase Zero concepts to their teams through AMPLIFY workshops and strategic sprints.",
       },
     ],
   },
   {
-    name: "AMPLIFY — Leadership Labs",
+    name: "AMPLIFY, Leadership Labs",
     faqs: [
       {
         question: "When is the next Leadership Lab cohort?",
@@ -161,7 +161,7 @@ const sitewideFaqCategories: FAQCategory[] = [
     faqs: [
       {
         question: "How is your EMBODY partnership different from change management consultants?",
-        answer: "Change management focuses on implementing predefined changes by managing resistance, driving adoption, and delivering transitions downstream. We do change origination—we partner with you to architect transformation capacity upstream, before implementation begins. After change management, you've executed a change. After EMBODY partnership, you've built the capacity to originate and architect your own transformations without external dependency.",
+        answer: "Change management focuses on implementing predefined changes by managing resistance, driving adoption, and delivering transitions downstream. We do change origination, we partner with you to architect transformation capacity upstream, before implementation begins. After change management, you've executed a change. After EMBODY partnership, you've built the capacity to originate and architect your own transformations without external dependency.",
       },
       {
         question: "Can we start with AMPLIFY and progress to EMBODY?",
@@ -177,7 +177,7 @@ const sitewideFaqCategories: FAQCategory[] = [
       },
       {
         question: "Can you work with our internal change management team?",
-        answer: "Absolutely! We often partner with internal teams, building their capacity while providing strategic guidance. We're not competitive with internal teams—we're complementary.",
+        answer: "Absolutely! We often partner with internal teams, building their capacity while providing strategic guidance. We're not competitive with internal teams, we're complementary.",
       },
       {
         question: "What happens if leadership changes during partnership?",

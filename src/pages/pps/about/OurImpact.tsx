@@ -10,7 +10,7 @@ import { verifySiteVideoUrl } from "@/lib/verifySiteVideo";
 import VideoFallback from "@/components/pps/VideoFallback";
 import impactCta from "@/assets/images/impact-cta-begin.jpg";
 // Hero video URL is loaded from the site_videos registry (slot: "impact-hero").
-// Manage at /admin/videos. No fallback file is bundled — videos must live in Cloud Storage.
+// Manage at /admin/videos. No fallback file is bundled, videos must live in Cloud Storage.
 const testimonials = [
   {
     quote: "Painted Porch helped us transform not just our processes, but our entire approach to change. The results speak for themselves.",
@@ -117,7 +117,7 @@ export default function OurImpact() {
 
   return (
     <div>
-      {/* Hero — Animated Paint Splash Video */}
+      {/* Hero, Animated Paint Splash Video */}
       <section className="relative isolate min-h-[70vh] flex items-center overflow-hidden bg-navy">
         <div className="absolute inset-0 isolate" data-testid="impact-hero-video">
           {showVideo ? (
@@ -173,7 +173,7 @@ export default function OurImpact() {
         </div>
       </section>
 
-      {/* Trusted By — reusable marquee */}
+      {/* Trusted By, reusable marquee */}
       <ClientLogoMarquee />
 
       {/* Testimonials */}

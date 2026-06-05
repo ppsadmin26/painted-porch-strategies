@@ -27,7 +27,7 @@ interface LaunchListCTAProps {
 
 /**
  * Unified "Join the Launch List" CTA for any program/course/assessment/masterclass
- * card. Reads course_launch_status by slug — when admin flips Live and adds a
+ * card. Reads course_launch_status by slug, when admin flips Live and adds a
  * checkout URL on /admin/course-launches, this auto-swaps to an enroll button.
  */
 export function LaunchListCTA({

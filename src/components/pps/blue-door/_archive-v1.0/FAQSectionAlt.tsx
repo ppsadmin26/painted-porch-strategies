@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     question: "What happens after I complete the diagnostic?",
-    answer: "Based on your results, you may be invited to go deeper through our Architect Change Design Session or P.A.T.H.ways Partnership. Not everyone who completes the diagnostic will be ready for these next steps—this partnership is based on organizational readiness and mutual fit."
+    answer: "Based on your results, you may be invited to go deeper through our Architect Change Design Session or P.A.T.H.ways Partnership. Not everyone who completes the diagnostic will be ready for these next steps, this partnership is based on organizational readiness and mutual fit."
   },
   {
     question: "Is this diagnostic right for my organization?",
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     question: "What if my organization isn't ready to shIFt?",
-    answer: "That's exactly what this diagnostic helps determine. Many organizations discover through this process that certain foundational work needs to happen first. Your Executive Blue Door Brief will identify any prerequisites and provide clarity on timing — so you don't commit resources to transformation you're not yet built to lead."
+    answer: "That's exactly what this diagnostic helps determine. Many organizations discover through this process that certain foundational work needs to happen first. Your Executive Blue Door Brief will identify any prerequisites and provide clarity on timing, so you don't commit resources to transformation you're not yet built to lead."
   },
   {
     question: "How is this different from other strategic appraisals?",
@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     question: "What is Phase Zero?",
-    answer: "Phase Zero is the strategic work before the work—the thinking and design that happens before any building begins. It makes sure you're pursuing transformations you're actually built to lead, so you don't commit to initiatives that would break under the weight of execution."
+    answer: "Phase Zero is the strategic work before the work, the thinking and design that happens before any building begins. It makes sure you're pursuing transformations you're actually built to lead, so you don't commit to initiatives that would break under the weight of execution."
   },
   {
     question: "How can I Do Good ShIFt?",

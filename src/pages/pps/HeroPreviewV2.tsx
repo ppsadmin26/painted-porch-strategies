@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 /**
- * Hero Preview V2 — "Painted Porch Sunrise"
+ * Hero Preview V2, "Painted Porch Sunrise"
  * Inset rounded canvas with warm cream → gold → soft teal gradient,
  * navy display headline, purple italic subline, raspberry IF.
  */

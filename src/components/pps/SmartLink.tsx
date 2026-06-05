@@ -103,7 +103,7 @@ function DraftPreviewBadge({ to }: { to: string }) {
   if (!canPreview) return null;
   // canPreview forces isLive=true above, so we need the raw draft check:
   // useIsPageLive returns isDraft=false for previewers; instead read raw map.
-  // For simplicity, omit the inline badge here — nav handles preview badge.
+  // For simplicity, omit the inline badge here, nav handles preview badge.
   void isDraft;
   return null;
 }

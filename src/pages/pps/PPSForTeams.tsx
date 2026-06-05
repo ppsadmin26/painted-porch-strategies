@@ -228,7 +228,7 @@ export default function PPSForTeams() {
                 Outcomes Over Hours
               </h2>
               <p className="text-lg text-foreground leading-relaxed mb-6">
-                We believe in transparent, flat-fee pricing. You'll know exactly what you're investing before we begin — no surprise bills, no scope creep charges. Our focus is on delivering results, not billing hours.
+                We believe in transparent, flat-fee pricing. You'll know exactly what you're investing before we begin, no surprise bills, no scope creep charges. Our focus is on delivering results, not billing hours.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-6">
                 Every engagement begins with a discovery conversation to understand your unique needs and determine the right approach for your organization.
