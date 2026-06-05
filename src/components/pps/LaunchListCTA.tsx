@@ -47,18 +47,20 @@ export function LaunchListCTA({
   if (isLive && data?.checkout_url) {
     const url = data.checkout_url;
     const isExternal = /^https?:\/\//i.test(url);
+    const wrapClass = layout === "block" ? "block w-full" : "";
+    const liveBtnClass = `${buttonClasses}${layout === "block" ? " w-full" : ""}`;
     if (isExternal) {
       return (
-        <a href={url} target="_blank" rel="noopener noreferrer">
-          <Button variant="outline" size={size} className={buttonClasses}>
+        <a href={url} target="_blank" rel="noopener noreferrer" className={wrapClass}>
+          <Button variant="outline" size={size} className={liveBtnClass}>
             {liveLabel} <ExternalLink className="ml-2 w-3 h-3" />
           </Button>
         </a>
       );
     }
     return (
-      <Link to={url}>
-        <Button variant="outline" size={size} className={buttonClasses}>
+      <Link to={url} className={wrapClass}>
+        <Button variant="outline" size={size} className={liveBtnClass}>
           {liveLabel}
         </Button>
       </Link>
@@ -75,15 +77,21 @@ export function LaunchListCTA({
     </button>
   );
 
+  const wrapperClass =
+    layout === "inline"
+      ? "flex items-center gap-3"
+      : layout === "block"
+        ? "flex flex-col items-center gap-1 w-full"
+        : "flex flex-col items-end gap-1";
+
+  const comingSoonBtnClass = `${buttonClasses} opacity-60 cursor-not-allowed${
+    layout === "block" ? " w-full" : ""
+  }`;
+
   return (
     <>
-      <div className={layout === "inline" ? "flex items-center gap-3" : "flex flex-col items-end gap-1"}>
-        <Button
-          variant="outline"
-          size={size}
-          disabled
-          className={`${buttonClasses} opacity-60 cursor-not-allowed`}
-        >
+      <div className={wrapperClass}>
+        <Button variant="outline" size={size} disabled className={comingSoonBtnClass}>
           {comingSoonLabel}
         </Button>
         {waitlistLink}
