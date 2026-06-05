@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useRef, useState, useCallback, useEffect } from "react";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
