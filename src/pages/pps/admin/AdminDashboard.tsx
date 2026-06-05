@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
-import { FileText, Mic, Users, Youtube, ToggleLeft, Database, PackageOpen, Mail, Receipt } from "lucide-react";
+import { FileText, Mic, Users, Youtube, ToggleLeft, Database, PackageOpen, Mail, Receipt, Rocket } from "lucide-react";
 
 interface Stats {
   posts: number;
