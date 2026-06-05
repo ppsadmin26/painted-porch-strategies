@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Clock, ExternalLink, ArrowLeft } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
+import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
 import { igniteFaqCategories } from "./igniteFaqs";
 
 import courseRadicalMindfulness from "@/assets/courses/radical-mindfulness.jpg";
