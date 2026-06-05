@@ -366,12 +366,13 @@ export default function PhaseZero() {
             </div>
             <div className="flex flex-wrap justify-center gap-2">
               {essentialElements.map((el) => (
-                <span
-                  key={el}
-                  className="bg-white text-navy font-poppins font-medium text-sm px-4 py-2 rounded-full border border-navy/10"
+                <Link
+                  key={el.label}
+                  to={el.href}
+                  className="bg-white text-navy font-poppins font-medium text-sm px-4 py-2 rounded-full border border-navy/10 hover:border-primary hover:text-primary hover:shadow-sm transition-all"
                 >
-                  {el}
-                </span>
+                  {el.label}
+                </Link>
               ))}
             </div>
           </FadeIn>
