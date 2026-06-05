@@ -83,6 +83,7 @@ const faqs = [
 
 export default function MasterYourMessage() {
   const [launchOpen, setLaunchOpen] = useState(false);
+  const { isLive, data: launch } = useCourseLaunchStatus("master-your-message");
   return (
     <div>
       <CourseLaunchListDialog
