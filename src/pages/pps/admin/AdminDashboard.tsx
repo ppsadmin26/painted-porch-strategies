@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
-import { FileText, Mic, Users, Youtube, ToggleLeft, Database, PackageOpen, Mail } from "lucide-react";
+import { FileText, Mic, Users, Youtube, ToggleLeft, Database, PackageOpen, Mail, Receipt } from "lucide-react";
 
 interface Stats {
   posts: number;
@@ -42,6 +42,7 @@ export default function AdminDashboard() {
     { title: "Backups", count: 0, icon: Database, href: "/admin/backups", description: "View history and run backups now" },
     { title: "Migrate", count: 0, icon: PackageOpen, href: "/admin/migrate", description: "Export everything for a remix or import into a new project" },
     { title: "Site Emails", count: 0, icon: Mail, href: "/admin/emails", description: "Preview, test, and view source for every system email" },
+    { title: "Refund Requests", count: 0, icon: Receipt, href: "/admin/refunds", description: "Review refund requests and notify customers" },
   ];
 
   return (
