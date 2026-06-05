@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles, Heart, Brain, BookOpen, Users, Star, Check } from "lucide-react";
+import { ArrowRight, Sparkles, Heart, Brain, BookOpen, Users, Star, Check, Bell } from "lucide-react";
+import { CourseLaunchListDialog } from "@/components/pps/CourseLaunchListDialog";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
