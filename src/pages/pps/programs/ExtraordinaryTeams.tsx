@@ -63,7 +63,7 @@ const pricingTiers = [
 const faqs = [
   { question: "How is this online course bundle structured?", answer: "This bundle includes key lessons from our THREE signature, on-demand programs: Radical Mindfulness, Master Your Message, and Create Extraordinary Teams. Each program contains about 8 hours of video lessons and supporting workbook exercises. Each lesson is about 20 minutes or less in length with action guides. You'll start with Master Your Message, then Radical Mindfulness, then Create Extraordinary Teams." },
   { question: "How long will I have access to the course?", answer: "You will have lifetime access to the courses included in this bundle. Upon purchase, you'll receive an email to access the Painted Porch Academy." },
-  { question: "This 45-Day Money Back Guarantee...what's the catch?", answer: "There's no catch. If you purchased the course bundle and it's not what you're looking for or expected, simply reach out through our contact page within 45 days and we'll refund your payment. No questions asked." },
+  { question: "This 45-Day Money Back Guarantee...what's the catch?", answer: "There's no catch. If you purchased the course bundle and it's not what you're looking for or expected, simply <a href='/refund-request' class='text-pps-teal underline'>submit a refund request</a> within 45 days and we'll process your refund promptly. No questions asked." },
   { question: "Where are the Private Communities located?", answer: "Our communities are hosted on Go High Level (our course platform), a completely private network away from data scraping and advertisers, consisting of only our members. It's free to join and easy to use." },
   { question: "What is Painted Porch Strategies?", answer: "We want you to Become the Architect of Your Life. Our teachers and programs show you how to design your own, personal Blueprint for mastering the power of your mind, the confidence of your communications, and the strength of your teams & relationships." },
 ];
@@ -340,7 +340,7 @@ export default function ExtraordinaryTeams() {
       <AnimatedSection>
         <FAQSection
           tierName="Create Extraordinary Teams"
-          faqs={faqs}
+          faqs={faqs.map((f) => ({ question: f.question, answer: <span dangerouslySetInnerHTML={{ __html: f.answer }} /> }))}
           subheadline="Everything you need to know about the Create Extraordinary Teams bundle."
         />
       </AnimatedSection>
