@@ -317,9 +317,10 @@ export default function IgnitePathAlt() {
                 </li>
               </ul>
               <div className="mt-6">
-                <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
+                <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors text-sm px-2">
                   <Link to="/partner/ignite/masterclasses">Explore Masterclasses →</Link>
                 </Button>
+
               </div>
             </div>
           </div>
