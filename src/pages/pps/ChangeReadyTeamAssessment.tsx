@@ -8,7 +8,7 @@ const ASSESSMENT_URL = "https://paintedporchstrategies.aidaform.com/change-ready
 
 export default function ChangeReadyTeamAssessment() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  // Conservative default — small enough for mobile, grows via postMessage
+  // Conservative default, small enough for mobile, grows via postMessage
   const [iframeHeight, setIframeHeight] = useState<number>(640);
 
   useEffect(() => {

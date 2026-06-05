@@ -27,12 +27,12 @@ const dailyLessons = [
   {
     day: "Day 4",
     title: "Reframe",
-    description: "Shift the inner narrative — the one you don't always realize is running in the background.",
+    description: "Shift the inner narrative, the one you don't always realize is running in the background.",
   },
   {
     day: "Day 5",
     title: "Reignite",
-    description: "Walk away with a simple journaling rhythm you'll actually keep — and a clearer voice to lead with.",
+    description: "Walk away with a simple journaling rhythm you'll actually keep, and a clearer voice to lead with.",
   },
 ];
 
@@ -40,7 +40,7 @@ const learnings = [
   "Build a 5-minute daily journaling habit you'll actually stick with",
   "Quiet the mental noise so you can hear your own voice again",
   "Spot the patterns, beliefs, and self-talk shaping your days",
-  "Reconnect with what matters most — to you, not everyone else",
+  "Reconnect with what matters most, to you, not everyone else",
   "Walk away with simple prompts you can use long after the challenge ends",
 ];
 
@@ -68,7 +68,7 @@ export default function JournalingChallenge() {
                 Thing: Journaling Challenge
               </h1>
               <p className="text-lg text-foreground mb-8">
-                Five days. Five short prompts. Reconnect, rediscover, and reignite your true voice — one quiet page at a time. Led by Rob Hunter, Painted Porch's Master of Communication.
+                Five days. Five short prompts. Reconnect, rediscover, and reignite your true voice, one quiet page at a time. Led by Rob Hunter, Painted Porch's Master of Communication.
               </p>
               <Button
                 disabled
@@ -158,7 +158,7 @@ export default function JournalingChallenge() {
               Who this is for
             </h2>
             <p className="text-foreground max-w-2xl mx-auto">
-              Anyone who's been meaning to "start journaling" for a while now — and could use a small, doable nudge to actually begin.
+              Anyone who's been meaning to "start journaling" for a while now, and could use a small, doable nudge to actually begin.
             </p>
           </div>
           <div className="grid sm:grid-cols-3 gap-6">

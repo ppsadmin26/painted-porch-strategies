@@ -57,7 +57,7 @@ interface QuickLink {
 
 const quickLinks: QuickLink[] = [
   { emoji: "🧩", label: "Discover Your Elemental Style", href: "https://paintedporchstrategies.aidaform.com/your-elemental-style-free", external: true },
-  { emoji: "🚪", label: "Open the Blue Door — Free Diagnostic", href: "/blue-door" },
+  { emoji: "🚪", label: "Open the Blue Door, Free Diagnostic", href: "/blue-door" },
   { emoji: "🧭", label: "Not Sure Where to Start? Start Here", href: "/start-here" },
   { emoji: "🤝", label: "Partner With Us", href: "/partner" },
   { emoji: "🎤", label: "Book a Speaker", href: "/speaking" },
@@ -356,7 +356,7 @@ export default function PPSOverview() {
               Ready to ShIFt?
             </h2>
             <p className="mx-auto mt-4 max-w-md text-foreground/70">
-              Whether you're exploring change for yourself, your team, or your entire organization — we'd love to hear from you.
+              Whether you're exploring change for yourself, your team, or your entire organization, we'd love to hear from you.
             </p>
             <Link
               to="/contact?interest=general"

@@ -23,16 +23,16 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
 }
 
 const highlights = [
-  { icon: Mic, title: "Eliminate Internal Static", description: "Assess your mind's inner dialogue and its power in controlling how and what is said — to yourself and others." },
+  { icon: Mic, title: "Eliminate Internal Static", description: "Assess your mind's inner dialogue and its power in controlling how and what is said, to yourself and others." },
   { icon: MessageSquare, title: "Prepare for Impact", description: "Understand how the power of language (spoken and non-verbal), word choice, and mood impacts the messages being broadcast." },
   { icon: HelpCircle, title: "Harness the Power of Why", description: "Master the message and art of effective inquiry to maximize influence, clarity, and confidence for success." },
 ];
 
 const modules = [
-  { title: "Module 1: Mind Playing Tricks on Me", description: "Begin by examining your internal communication — how you speak to yourself — to identify the 'static' that is interfering with speaking in and from your true voice." },
-  { title: "Module 2: The Way We Talk", description: "Learn about the ways in which you talk to others — how emotions impact where you communicate from, how the words you use can impact your message, and core communication style." },
+  { title: "Module 1: Mind Playing Tricks on Me", description: "Begin by examining your internal communication, how you speak to yourself, to identify the 'static' that is interfering with speaking in and from your true voice." },
+  { title: "Module 2: The Way We Talk", description: "Learn about the ways in which you talk to others, how emotions impact where you communicate from, how the words you use can impact your message, and core communication style." },
   { title: "Module 3: Stop, Collaborate & Listen", description: "Dive into the power of listening FIRST and explore ways to eliminate distractions or barriers to being fully present when communicating." },
-  { title: "Module 4: Tell Me Why", description: "Learn about the power of Questions — how to ask, what to ask — and how curiosity can lead to incredible ideas and solutions." },
+  { title: "Module 4: Tell Me Why", description: "Learn about the power of Questions, how to ask, what to ask, and how curiosity can lead to incredible ideas and solutions." },
   { title: "Module 5: Da Art of Storytellin'", description: "Explore the elements of what makes a great story and learn how to craft compelling narratives." },
   { title: "Module 6: Breaking Down Barriers", description: "Discuss common communication barriers: judgment and disputes. Both can become major roadblocks to effective communication." },
   { title: "Module 7: Breakin' Old Habits", description: "Bring awareness to and then reduce or eliminate poor speaking habits (\"um's, ah's, so's, like's\", etc.)." },
@@ -41,7 +41,7 @@ const modules = [
 
 const programDetails = [
   { icon: BookOpen, title: "Learn", description: "Over 8 hours of lessons, exercises, and supporting materials to help you develop communication, presentation, and meeting skills to promote clarity and consistency of message, confident delivery, and effective collaboration." },
-  { icon: Users, title: "Connect", description: "Through a private, online community you'll connect with Rob and your fellow students to share ideas on how you can integrate the lessons into your own life — both at home and at work." },
+  { icon: Users, title: "Connect", description: "Through a private, online community you'll connect with Rob and your fellow students to share ideas on how you can integrate the lessons into your own life, both at home and at work." },
   { icon: Brain, title: "Grow", description: "Attend monthly, live video coaching calls with Rob (optional, add-on) and fellow students to dive deeper into what you've learned and explore additional insights and methods to expand your knowledge and grow in your practice." },
 ];
 
@@ -78,7 +78,7 @@ const faqs = [
   { q: "How is this online course structured?", a: "The Master Your Message online course is organized into 8 modules, each with about 5 lessons. Each video lesson is about 20 minutes or less and includes supporting documentation and action guides to make it stick. Each week, a new module will be released to you; however, go at your own pace and as your schedule allows." },
   { q: "How long will I have access to the course?", a: "You will have lifetime access to the course. Upon purchase, you'll receive an email to access the Painted Porch Academy and any courses or coaching you've purchased or signed up for." },
   { q: "This 14-Day Money Back Guarantee...what's the catch?", a: "There's no catch. If you purchased the Master Your Message program and it's not what you're looking for or expected, simply <a href='/refund-request' class='text-pps-teal underline'>submit a refund request</a> within 14 days of your original purchase and we'll process your refund promptly. No questions asked." },
-  { q: "Where is the Private Community located?", a: "Our community is hosted on Go High Level (our course platform) — a completely private network away from data scraping and advertisers, consisting of only our members. It's free to join and easy to use." },
+  { q: "Where is the Private Community located?", a: "Our community is hosted on Go High Level (our course platform), a completely private network away from data scraping and advertisers, consisting of only our members. It's free to join and easy to use." },
   { q: "What is Painted Porch Strategies?", a: "Painted Porch Strategies is a partnership for leaders and teams ready to design real, lasting change. We guide you through Phase Zero, the strategic thinking that happens before a project kicks off, so the change you build is the one you actually want to lead. Through our P.A.T.H. approach (Prepare, Align, Take Off, Habit) and The Painted Porch Pillars, we co-design the leadership, systems, and human capacity that turn good intentions into extraordinary outcomes." },
 ];
 
@@ -134,7 +134,7 @@ export default function MasterYourMessage() {
               Communication is one of your most impactful, yet least practiced, skills.
             </h2>
             <p className="text-lg text-charcoal leading-relaxed">
-              Words have tremendous power — what we say, how, when. They can <strong>Inspire</strong>. They can <strong>Incite</strong>. They can <strong>Be Ignored</strong>. Understanding how to <strong>best deliver a message</strong> — <strong>tone</strong>, <strong>language</strong>, <strong>presentation</strong> and <strong>state</strong> — can have a transformative effect on the ability to <strong>lead</strong> and best <strong>share ideas</strong> and insights.
+              Words have tremendous power, what we say, how, when. They can <strong>Inspire</strong>. They can <strong>Incite</strong>. They can <strong>Be Ignored</strong>. Understanding how to <strong>best deliver a message</strong>, <strong>tone</strong>, <strong>language</strong>, <strong>presentation</strong> and <strong>state</strong>, can have a transformative effect on the ability to <strong>lead</strong> and best <strong>share ideas</strong> and insights.
             </p>
           </div>
         </section>
@@ -178,7 +178,7 @@ export default function MasterYourMessage() {
               What is Master Your Message?
             </h2>
             <p className="text-lg text-charcoal leading-relaxed">
-              At the Painted Porch, <strong>we like to do things a little differently</strong>. You will be <strong>up and moving</strong>, participating fully in mind, body, heart, and spirit — <strong>intentionally</strong>. You'll be <strong>actively evaluating</strong> and <strong>practicing</strong> how to communicate in your true voice — the voice that is <strong>confident</strong>, <strong>clear</strong>, <strong>rational</strong>, and <strong>effective</strong>.
+              At the Painted Porch, <strong>we like to do things a little differently</strong>. You will be <strong>up and moving</strong>, participating fully in mind, body, heart, and spirit, <strong>intentionally</strong>. You'll be <strong>actively evaluating</strong> and <strong>practicing</strong> how to communicate in your true voice, the voice that is <strong>confident</strong>, <strong>clear</strong>, <strong>rational</strong>, and <strong>effective</strong>.
             </p>
           </div>
         </section>
@@ -278,7 +278,7 @@ export default function MasterYourMessage() {
                     Rob Hunter · M.C. (Master of Communication)
                   </p>
                   <p className="text-charcoal leading-relaxed mb-6">
-                    Hi, I'm Rob. And I love words. Not just any words, though…ones that create connection and meaningful, lasting impact. Over my 25+ yr. career as a radio broadcaster, I've learned that communication is the most important — yet underrated — skill. When you communicate effectively, you will master your influence and inspire others.
+                    Hi, I'm Rob. And I love words. Not just any words, though…ones that create connection and meaningful, lasting impact. Over my 25+ yr. career as a radio broadcaster, I've learned that communication is the most important, yet underrated, skill. When you communicate effectively, you will master your influence and inspire others.
                   </p>
                   <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal hover:text-white font-poppins font-semibold rounded-lg">
                     <Link to="/rob">More About Rob <ArrowRight className="ml-2 h-4 w-4" /></Link>

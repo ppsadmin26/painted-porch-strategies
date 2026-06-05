@@ -149,7 +149,7 @@ export default function IgnitePathAlt() {
               Ready to IGNITE Your Next Sh<span className="text-gold">IF</span>t?
             </h2>
             <p className="text-lg text-foreground max-w-3xl mx-auto mb-2">
-              IGNITE is the self-led entry point onto the Painted Porch — designed to spark clarity, build confidence, and prove transformative sh<span className="text-gold font-bold">IF</span>t is possible.
+              IGNITE is the self-led entry point onto the Painted Porch, designed to spark clarity, build confidence, and prove transformative sh<span className="text-gold font-bold">IF</span>t is possible.
             </p>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
               You might be ready for IGNITE if you're…

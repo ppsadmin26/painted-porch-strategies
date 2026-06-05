@@ -158,7 +158,7 @@ export default function PPSContact() {
     if (!interests.length) errors.interests = true;
     if (!message.trim()) errors.message = true;
 
-    // Conditionally-required fields — only validate if displayed
+    // Conditionally-required fields, only validate if displayed
     if (showOrganization && !company.trim()) errors.company = true;
     if (showBudgetAuthority && !budgetAuthority) errors.budgetAuthority = true;
     if (showBudgetRange && !budgetRange) errors.budgetRange = true;
@@ -214,7 +214,7 @@ export default function PPSContact() {
 
       const submissionId = crypto.randomUUID();
 
-      // Fire both emails in parallel (non-blocking — don't fail the form if emails fail)
+      // Fire both emails in parallel (non-blocking, don't fail the form if emails fail)
       Promise.allSettled([
         supabase.functions.invoke("send-transactional-email", {
           body: {
@@ -509,7 +509,7 @@ export default function PPSContact() {
                     </>
                   )}
 
-                  {/* Message, Newsletter, Submit — shown after interests selected */}
+                  {/* Message, Newsletter, Submit, shown after interests selected */}
                   {showMessageAndSubmit && (
                     <>
                       <div>

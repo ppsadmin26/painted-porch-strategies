@@ -40,7 +40,7 @@ export default function HeroSectionAlt() {
             </span>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-normal">
-              What Epic Sh<span className="text-raspberry">IF</span>t Could Your Organization Explore Next — and Are You Built to Lead It?
+              What Epic Sh<span className="text-raspberry">IF</span>t Could Your Organization Explore Next, and Are You Built to Lead It?
             </h1>
             
             <p className={`font-poppins font-semibold text-lg md:text-xl text-gold mb-6 transition-all duration-700 ease-out delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>

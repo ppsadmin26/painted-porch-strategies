@@ -204,7 +204,7 @@ export default function RestoreWizard() {
 
       // ---- Storage manifest note (zips don't include binaries)
       for (const [b, info] of buckets) {
-        updateStep(`b:${b}`, { status: "skipped", detail: `${info.count} files listed — re-upload originals` });
+        updateStep(`b:${b}`, { status: "skipped", detail: `${info.count} files listed, re-upload originals` });
       }
 
       appendLog("✅ Restore wizard complete");
@@ -510,7 +510,7 @@ export default function RestoreWizard() {
                   <Label className="text-xs">
                     {sourceBucket === "backups"
                       ? "Source path (folder name or pps-restore-*.zip)"
-                      : "Path prefix (optional — leave blank for entire bucket)"}
+                      : "Path prefix (optional, leave blank for entire bucket)"}
                   </Label>
                   <input
                     className="w-full border rounded px-2 py-1.5 text-sm bg-background"

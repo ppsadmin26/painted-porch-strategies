@@ -140,7 +140,7 @@ export default function PolicyNotifications() {
               placeholder="Example: We merged Terms, Privacy, and Cookies onto one page and added detail for GDPR and CCPA."
             />
             <div className="text-xs text-muted-foreground mt-1">
-              {summary.trim().length}/2000 — minimum 10 characters
+              {summary.trim().length}/2000, minimum 10 characters
             </div>
           </div>
 

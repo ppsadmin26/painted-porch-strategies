@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     question: "What if my organization isn't ready to shIFt?",
-    answer: "That's exactly what this diagnostic helps determine. Many organizations discover through this process that certain foundational work needs to happen first. Your Executive Blue Door Brief will identify any prerequisites and provide clarity on timing — so you don't commit resources to transformation you're not yet built to lead."
+    answer: "That's exactly what this diagnostic helps determine. Many organizations discover through this process that certain foundational work needs to happen first. Your Executive Blue Door Brief will identify any prerequisites and provide clarity on timing, so you don't commit resources to transformation you're not yet built to lead."
   },
   {
     question: "How is this different from other strategic appraisals?",

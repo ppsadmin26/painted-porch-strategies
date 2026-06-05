@@ -417,7 +417,7 @@ export default function BlogPostEditor() {
             className="w-full text-3xl md:text-4xl font-poppins font-bold bg-transparent border-none outline-none text-navy placeholder:text-muted-foreground"
           />
 
-          {/* Excerpt — auto-synced from SEO description on save */}
+          {/* Excerpt, auto-synced from SEO description on save */}
           <div className="space-y-1">
             <Textarea
               value={(seoDescription && seoDescription.trim().length > 0) ? seoDescription : excerpt}
@@ -592,13 +592,13 @@ export default function BlogPostEditor() {
                   </div>
                   {selectedCategories.length > 0 && !primaryCategoryId && (
                     <p className="text-xs text-amber-600 font-medium">
-                      ⚠ No primary category set — hero color will default to teal.
+                      ⚠ No primary category set, hero color will default to teal.
                     </p>
                   )}
                 </AccordionContent>
               </AccordionItem>
 
-              {/* SEO / AEO / GEO — Generate All */}
+              {/* SEO / AEO / GEO, Generate All */}
               <div className="bg-card rounded-lg border border-border px-4 py-3">
                 <Button
                   size="sm"

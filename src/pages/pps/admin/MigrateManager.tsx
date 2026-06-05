@@ -27,7 +27,7 @@ function formatBytes(b: number) {
   return `${b.toFixed(1)} ${u[i]}`;
 }
 
-const COPY_BATCH = 8; // files per edge call — keeps each call well under CPU limit
+const COPY_BATCH = 8; // files per edge call, keeps each call well under CPU limit
 
 async function invoke<T = any>(fn: string, body: any): Promise<T> {
   const { data, error } = await supabase.functions.invoke(fn, { body });
@@ -115,7 +115,7 @@ export default function MigrateManager() {
       L(`  expected: ${JSON.stringify(audit.expected)}`);
       L(`  found:    ${JSON.stringify(audit.found)}`);
       if (audit.complete) {
-        L(`  ✅ schema audit PASSED — dump is complete`);
+        L(`  ✅ schema audit PASSED, dump is complete`);
       } else {
         L(`  ⚠ schema audit MISMATCH: ${JSON.stringify(audit.missing)}`);
       }
@@ -163,7 +163,7 @@ export default function MigrateManager() {
       const m = await invoke<{ manifest: any; table_order: string[] }>(
         "migrate-import", { phase: "manifest", folder: selectedFolder }
       );
-      L(`Manifest v${m.manifest.version} — ${Object.keys(m.manifest.tables ?? {}).length} tables, ${Object.keys(m.manifest.buckets ?? {}).length} buckets`);
+      L(`Manifest v${m.manifest.version}, ${Object.keys(m.manifest.tables ?? {}).length} tables, ${Object.keys(m.manifest.buckets ?? {}).length} buckets`);
 
       if (m.manifest.schema_sql) {
         L("Applying full schema dump (enums, tables, fns, triggers, policies, indexes)…");
@@ -177,7 +177,7 @@ export default function MigrateManager() {
           throw e;
         }
       } else {
-        L("⚠ Manifest has no schema.sql — skipping schema apply (older export).");
+        L("⚠ Manifest has no schema.sql, skipping schema apply (older export).");
       }
 
       L("Applying non-secret config (storage buckets, RLS, realtime)…");
@@ -240,7 +240,7 @@ export default function MigrateManager() {
     if (!confirm(
       `Import "${selectedZip}" into THIS project?\n\n` +
       `Tables will be ${upsert ? "upserted by id" : "inserted"}.\n` +
-      `Note: auto-backup zips contain DB rows + a storage manifest only — storage binaries are NOT included.`
+      `Note: auto-backup zips contain DB rows + a storage manifest only, storage binaries are NOT included.`
     )) return;
 
     setImporting(true);
@@ -271,7 +271,7 @@ export default function MigrateManager() {
       }
 
       if (m.storage_manifest?.buckets) {
-        L("Storage manifest (no binaries — re-upload originals manually):");
+        L("Storage manifest (no binaries, re-upload originals manually):");
         for (const [b, info] of Object.entries(m.storage_manifest.buckets)) {
           const c = (info as any)?.count;
           if (typeof c === "number") L(`  ${b}: ${c} files listed`);
@@ -340,7 +340,7 @@ export default function MigrateManager() {
         <div className="flex items-start gap-2 bg-amber-50 border border-amber-200 text-amber-900 rounded p-3 text-sm">
           <AlertTriangle className="h-4 w-4 mt-0.5 shrink-0" />
           <div>
-            Profiles import only succeeds for users whose <code>auth.users</code> row already exists in the destination project — re-invite team first.
+            Profiles import only succeeds for users whose <code>auth.users</code> row already exists in the destination project, re-invite team first.
           </div>
         </div>
 
@@ -402,7 +402,7 @@ export default function MigrateManager() {
               <Button variant="outline" onClick={loadFolders}>Refresh</Button>
             </div>
             <p className="text-xs text-muted-foreground">
-              Use this for <code>pps-backup-*.zip</code> snapshots produced by the automated backup. These contain DB rows + a storage manifest only — storage binaries must be re-uploaded separately.
+              Use this for <code>pps-backup-*.zip</code> snapshots produced by the automated backup. These contain DB rows + a storage manifest only, storage binaries must be re-uploaded separately.
             </p>
           </div>
         )}

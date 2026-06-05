@@ -27,7 +27,7 @@ const dailyLessons = [
   {
     day: "Day 4",
     title: "Go a Layer Deeper",
-    description: "Move past small talk into real conversation — without it feeling forced.",
+    description: "Move past small talk into real conversation, without it feeling forced.",
   },
   {
     day: "Day 5",
@@ -68,7 +68,7 @@ export default function FiveDayMasterYourMessage() {
                 Challenge
               </h1>
               <p className="text-lg text-foreground mb-8">
-                Five days. Five short lessons. One braver, more confident communicator — you. Led by Rob Hunter, Painted Porch's Master of Communication.
+                Five days. Five short lessons. One braver, more confident communicator, you. Led by Rob Hunter, Painted Porch's Master of Communication.
               </p>
               <Button
                 disabled

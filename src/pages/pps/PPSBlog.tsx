@@ -145,7 +145,7 @@ async function fetchBlogPosts(): Promise<BlogPost[]> {
       id: `appearance-${a.id}`,
       title: a.title,
       slug: null,
-      excerpt: a.description || `${a.show_name} — ${a.media_type}`,
+      excerpt: a.description || `${a.show_name}, ${a.media_type}`,
       publish_date: a.appearance_date,
       featured: a.featured,
       cover_image_url: a.thumbnail_url,
@@ -660,7 +660,7 @@ export default function PPSBlog() {
             Ready to Apply These Ideas?
           </h2>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            Reading is one thing — implementation is another. Let's discuss how
+            Reading is one thing, implementation is another. Let's discuss how
             to put these principles to work in your organization.
           </p>
           <Link to="/contact?scope=organization&interest=organizational-advisory&message=I'd like to discuss applying these ideas in our organization.">

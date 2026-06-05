@@ -42,7 +42,7 @@ export default function PositioningSectionAlt() {
             Not hypothetically. Not at full potential. But given how your leadership, systems, and people are structured right now - to decide, design, and deliver what's next.
           </p>
           <p className="text-base md:text-lg text-foreground leading-relaxed mb-6">
-            Your technology instinct may be right. Your operational focus is probably spot on. What tends to be missing in making these a success isn't a lack of clear strategy or execution — it's your organizational identity capable of holding both. That's the 20% that determines whether the other 80% sticks.
+            Your technology instinct may be right. Your operational focus is probably spot on. What tends to be missing in making these a success isn't a lack of clear strategy or execution, it's your organizational identity capable of holding both. That's the 20% that determines whether the other 80% sticks.
           </p>
         </div>
 

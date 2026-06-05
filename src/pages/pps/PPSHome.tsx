@@ -158,7 +158,7 @@ export default function PPSHome() {
             getting there.
           </p>
 
-          {/* Editorial pull stat — the human cost */}
+          {/* Editorial pull stat, the human cost */}
           <div className="mt-10 text-left">
             <StatCard
               statId="gallup_cost"
@@ -176,7 +176,7 @@ export default function PPSHome() {
       </section>
 
       {/* ============================================================ */}
-      {/* Research stats — static grid                                  */}
+      {/* Research stats, static grid                                  */}
       {/* ============================================================ */}
       <section className="py-8 md:py-10 bg-navy" aria-label="Research stats">
         <div className="container max-w-6xl mx-auto px-6">
@@ -211,7 +211,7 @@ export default function PPSHome() {
 
 
       {/* ============================================================ */}
-      {/* How we meet you — editorial 2-col                             */}
+      {/* How we meet you, editorial 2-col                             */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-muted">
         <div className="container max-w-6xl mx-auto px-6">
@@ -497,7 +497,7 @@ export default function PPSHome() {
       </section>
 
       {/* ============================================================ */}
-      {/* 3AM Questions strip — lead-in to The Blue Door                */}
+      {/* 3AM Questions strip, lead-in to The Blue Door                */}
       {/* ============================================================ */}
       <section className="py-16 md:py-20 bg-navy">
         <div className="container max-w-6xl mx-auto px-6">

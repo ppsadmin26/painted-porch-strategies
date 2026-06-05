@@ -14,9 +14,9 @@ const amy: SpeakerData = {
     "Change doesn't have to suck. In this empowering speaker series, Amy Yackowski equips modern leaders with Stoic tools, real-world frameworks, and emotional intelligence practices that keep teams grounded and united through transformation.",
   bio: [
     "Most people know me as a change strategist, coach, and founder of Painted Porch Strategies. But really? I'm just someone who believes that change doesn't have to suck.",
-    "For over 20 years, I've partnered with teams and leaders in fast-paced industries like staffing, wellness, and healthcare — turning burnout into boldness and uncertainty into aligned action.",
+    "For over 20 years, I've partnered with teams and leaders in fast-paced industries like staffing, wellness, and healthcare, turning burnout into boldness and uncertainty into aligned action.",
     "I blend Stoic philosophy with practical tools to navigate chaos with clarity, lead with emotional intelligence, and build change-ready cultures that don't fall apart when things get hard.",
-    "If you're ready to stop fighting change and start leading it — I'm your person.",
+    "If you're ready to stop fighting change and start leading it, I'm your person.",
   ],
   closingLine: "Let's do this together!",
   photo: amyPhoto,
@@ -30,7 +30,7 @@ const amy: SpeakerData = {
     {
       title: "Lead at the Speed of Change",
       description:
-        "Change is inevitable — chaos isn't. Learn how to lead adaptively, align around what matters most, and keep moving forward when the ground shifts beneath you.",
+        "Change is inevitable, chaos isn't. Learn how to lead adaptively, align around what matters most, and keep moving forward when the ground shifts beneath you.",
     },
     {
       title: "ShIFt Happens. Be Ready.",
@@ -46,7 +46,7 @@ const amy: SpeakerData = {
     {
       title: "Stoicism in the Workplace",
       description:
-        "Discover how ancient Stoic principles can transform modern leadership. Learn to focus on what you can control, build resilience, and lead with clarity and purpose — even when everything around you is shifting.",
+        "Discover how ancient Stoic principles can transform modern leadership. Learn to focus on what you can control, build resilience, and lead with clarity and purpose, even when everything around you is shifting.",
     },
     {
       title: "From Dysfunction to Dynamic Teams",
@@ -56,17 +56,17 @@ const amy: SpeakerData = {
     {
       title: "AI, EI, Oh! Guiding Change and AI Adoption",
       description:
-        "AI is here — but your people aren't ready. Discover how emotional intelligence is the missing link to successful AI adoption, and learn to lead your team through tech-driven change without leaving anyone behind.",
+        "AI is here, but your people aren't ready. Discover how emotional intelligence is the missing link to successful AI adoption, and learn to lead your team through tech-driven change without leaving anyone behind.",
     },
     {
       title: "The Alice Principles: Down the Rabbit Hole of Transformation",
       description:
-        "What can Alice's adventures teach us about navigating organizational change? Explore how curiosity, adaptability, and questioning the status quo — inspired by Lewis Carroll's timeless tale — can transform the way your team approaches uncertainty and growth.",
+        "What can Alice's adventures teach us about navigating organizational change? Explore how curiosity, adaptability, and questioning the status quo, inspired by Lewis Carroll's timeless tale, can transform the way your team approaches uncertainty and growth.",
     },
     {
       title: "Don't Panic! Navigating a Changing World",
       description:
-        "Grab your towel and don't panic — because change, much like the galaxy, is vast, unpredictable, and mostly harmless. Using Douglas Adams' Hitchhiker's Guide as a lens, discover how humor, perspective, and a good guide can turn overwhelming transformation into an adventure worth taking.",
+        "Grab your towel and don't panic, because change, much like the galaxy, is vast, unpredictable, and mostly harmless. Using Douglas Adams' Hitchhiker's Guide as a lens, discover how humor, perspective, and a good guide can turn overwhelming transformation into an adventure worth taking.",
     },
   ],
   outcomesHeading: "Lead Through Uncertainty With Clarity & Courage",
@@ -80,7 +80,7 @@ const amy: SpeakerData = {
   outcomesClosing: "It's time to stop reacting and start leading with intention.",
   workshopHeading: "Continue the Work: Team Workshops & Strategy Sessions",
   workshopIntro:
-    "Bring the keynote to life with immersive follow-up workshops designed to help your team apply Amy's change-readiness frameworks in real-time. These sessions go beyond inspiration — they're where strategy meets execution.",
+    "Bring the keynote to life with immersive follow-up workshops designed to help your team apply Amy's change-readiness frameworks in real-time. These sessions go beyond inspiration, they're where strategy meets execution.",
   workshopDetails: [
     "Pre-session alignment survey",
     "Custom journaling prompts to deepen reflection",

@@ -47,7 +47,7 @@ export function SocialProofSection() {
               </blockquote>
               <div className="border-t border-border/30 pt-4">
                 <p className={`font-semibold ${testimonial.tier.textColor}`}>
-                  — {testimonial.attribution}
+                 , {testimonial.attribution}
                 </p>
                 <p className="text-sm text-foreground/70 mt-1">
                   {testimonial.context}

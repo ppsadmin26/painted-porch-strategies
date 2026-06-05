@@ -26,7 +26,7 @@ export default function ProblemSectionAlt() {
   return (
     <section className="py-12 md:py-20 bg-white">
       <div className="container max-w-5xl mx-auto px-6">
-        {/* Opening rhythm — centered, generous spacing */}
+        {/* Opening rhythm, centered, generous spacing */}
         <div className="text-center max-w-4xl mx-auto mb-12 space-y-4" style={{ lineHeight: '1.9' }}>
           <p className="text-xl md:text-2xl text-navy font-bold leading-relaxed">
             There's a moment, often subtle, when a new idea begins to emerge in your organization.

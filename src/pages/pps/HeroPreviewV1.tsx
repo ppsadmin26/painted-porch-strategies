@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 /**
- * Hero Preview V1 — "Painted Porch Editorial"
+ * Hero Preview V1, "Painted Porch Editorial"
  * Warm cream canvas, navy headline, teal + gold + purple accents,
  * 8/4 asymmetric grid, vertical gold rule on right column.
  */

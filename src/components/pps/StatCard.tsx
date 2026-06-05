@@ -76,7 +76,7 @@ export default function StatCard({
 }
 
 /**
- * Compact citations list — pair with `footnoteNumber` props on StatCard.
+ * Compact citations list, pair with `footnoteNumber` props on StatCard.
  */
 export function StatSources({
   statIds,

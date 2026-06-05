@@ -5,15 +5,15 @@ import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
 const sierra: SpeakerData = {
   name: "Sierra Cantrell",
   firstName: "Sierra",
-  title: "Chief Joy Officer | M.B.A. — Mind-Body Architect | Mindfulness Sherpa",
+  title: "Chief Joy Officer | M.B.A., Mind-Body Architect | Mindfulness Sherpa",
   seriesName: "The Radical Mindfulness Series",
   seriesIntro:
-    "Seventy-five percent of employees report burnout — but it doesn't have to be that way. In this uplifting speaker series, Sierra guides teams to recharge, refocus, and reconnect through mindfulness-based strategies that boost resilience and well-being.",
+    "Seventy-five percent of employees report burnout, but it doesn't have to be that way. In this uplifting speaker series, Sierra guides teams to recharge, refocus, and reconnect through mindfulness-based strategies that boost resilience and well-being.",
   bio: [
-    "Most people know me as a mindfulness coach, speaker, and wellness leader. But what truly lights me up is guiding people from overwhelmed to \"Om\" — even in the middle of chaos.",
-    "For over 15 years, I've guided teams, leaders, and mission-driven humans through the stress, burnout, and pressure that come with constant change. My mission is to reconnect you with your energy, your purpose, and your inner calm — so you can lead and live with more joy.",
+    "Most people know me as a mindfulness coach, speaker, and wellness leader. But what truly lights me up is guiding people from overwhelmed to \"Om\", even in the middle of chaos.",
+    "For over 15 years, I've guided teams, leaders, and mission-driven humans through the stress, burnout, and pressure that come with constant change. My mission is to reconnect you with your energy, your purpose, and your inner calm, so you can lead and live with more joy.",
     "Through simple, science-backed practices, I teach people how to pause with intention, lead with presence, and build resilience that lasts.",
-    "If you're ready to stop surviving and start thriving — I'm here for it.",
+    "If you're ready to stop surviving and start thriving, I'm here for it.",
   ],
   closingLine: "Let's breathe new life into the way you work and lead.",
   photo: sierraPhoto,
@@ -31,7 +31,7 @@ const sierra: SpeakerData = {
     {
       title: "Finding Joy at Work",
       description:
-        "Work doesn't have to feel like a grind. Learn how to infuse your day with purpose, presence, and a little play — even in high-pressure environments.",
+        "Work doesn't have to feel like a grind. Learn how to infuse your day with purpose, presence, and a little play, even in high-pressure environments.",
     },
     {
       title: "Reigniting Resilience",
@@ -51,13 +51,13 @@ const sierra: SpeakerData = {
   ],
   outcomesHeading: "Reclaim Your Energy. Lead with Joy.",
   outcomesIntro:
-    "Blending science, joy, and practicality, Sierra guides audiences to shift from stressed to centered — so they can lead with purpose and show up fully for themselves and others.",
+    "Blending science, joy, and practicality, Sierra guides audiences to shift from stressed to centered, so they can lead with purpose and show up fully for themselves and others.",
   outcomes: [
     "Reduce stress and stay calm under pressure",
     "Increase mindfulness, creativity, and emotional agility",
     "Build cultures of wellness that thrive through change",
   ],
-  outcomesClosing: "It's time to stop running on empty — and start leading from within.",
+  outcomesClosing: "It's time to stop running on empty, and start leading from within.",
   workshopHeading: "Continue the Work: Mindfulness Workshops & Wellness Sessions",
   workshopIntro:
     "Turn inspiration into transformation with follow-up experiences designed to help your team integrate calm, clarity, and resilience into everyday life and leadership.",
@@ -67,7 +67,7 @@ const sierra: SpeakerData = {
     "Embodied activities (like movement or breathwork) to recharge creativity",
     "Group reflection that builds empathy, connection, and joy",
   ],
-  workshopClosing: "Let's go from surviving to thriving — mindfully.",
+  workshopClosing: "Let's go from surviving to thriving, mindfully.",
   themeColor: "border-gold",
   badgeColor: "bg-gold text-navy",
   icon: Heart,

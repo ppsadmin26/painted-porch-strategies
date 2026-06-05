@@ -383,11 +383,11 @@ export default function EmbodyPathAlt() {
             <p className="text-muted-foreground mb-4 text-center">Comprehensive engagement for organizations ready for permanent transformation:</p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
-                "6-12+ month embedded partnership — Strategic advisory and executive co-architecting",
-                "Complete transformation architecture — Systematic capability building across your organization",
-                "Leadership development integration — Your team learns to architect change, not just execute it",
-                "Communication strategy and execution — Organizational alignment systems that stick",
-                "Change infrastructure design — Self-sustaining transformation capability built into your DNA",
+                "6-12+ month embedded partnership, Strategic advisory and executive co-architecting",
+                "Complete transformation architecture, Systematic capability building across your organization",
+                "Leadership development integration, Your team learns to architect change, not just execute it",
+                "Communication strategy and execution, Organizational alignment systems that stick",
+                "Change infrastructure design, Self-sustaining transformation capability built into your DNA",
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3 bg-white border border-border/50 p-4 rounded-lg">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
@@ -653,11 +653,11 @@ export default function EmbodyPathAlt() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6">What You're Investing In:</h3>
               <ul className="space-y-4">
                 {[
-                  "Permanent transformation architecture we co-architect with your leadership — Designed for your context, owned by your organization",
-                  "Strategic partnership with transformation architects — Deep expertise applied to YOUR context",
-                  "Phase Zero foundations — Strategic clarity before resource commitment",
-                  "Self-sustaining organizational capacity — Your team learns to architect change independently",
-                  "Co-designed transformation infrastructure — Built specifically for your reality, not theory",
+                  "Permanent transformation architecture we co-architect with your leadership, Designed for your context, owned by your organization",
+                  "Strategic partnership with transformation architects, Deep expertise applied to YOUR context",
+                  "Phase Zero foundations, Strategic clarity before resource commitment",
+                  "Self-sustaining organizational capacity, Your team learns to architect change independently",
+                  "Co-designed transformation infrastructure, Built specifically for your reality, not theory",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
@@ -810,7 +810,7 @@ export default function EmbodyPathAlt() {
       {/* SECTION 10.5: EXPLORE BEFORE YOU COMMIT */}
       <ExploreBeforeCommitSection />
 
-      {/* SECTION 10.75: THE HUMAN COST — why EMBODY's depth is the answer */}
+      {/* SECTION 10.75: THE HUMAN COST, why EMBODY's depth is the answer */}
       <section className="py-16 md:py-24 bg-white" aria-labelledby="human-cost-heading">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">

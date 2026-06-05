@@ -71,7 +71,7 @@ export default function PPSPricing() {
               Transparent, Flat-Fee Pricing
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
-              We believe in clarity. All engagements are priced as flat fees — no surprise bills, no scope creep charges. You know exactly what you're investing before we begin.
+              We believe in clarity. All engagements are priced as flat fees, no surprise bills, no scope creep charges. You know exactly what you're investing before we begin.
             </p>
           </div>
         </div>

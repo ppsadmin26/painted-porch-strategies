@@ -98,7 +98,7 @@ const PHASES: Phase[] = [
       { id: "p4f-connect", kind: "manual", label: "Connect the new Lovable project to your personal Supabase", detail: "In the new project: Connectors → Supabase → connect to the project you provisioned in Phase 1." },
       { id: "p4f-env", kind: "manual", label: "Confirm VITE_SUPABASE_URL + VITE_SUPABASE_PUBLISHABLE_KEY point at the NEW project", detail: "Auto-written into .env by the Supabase integration." },
       { id: "p4f-types", kind: "manual", label: "Wait for src/integrations/supabase/types.ts to regenerate", detail: "Auto-generated against the new Supabase schema you applied in Phase 3." },
-      { id: "p4f-secrets-min", kind: "manual", label: "Set the minimum secrets needed for restore tooling", href: "/admin/secrets-handoff", detail: "At minimum: SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, SUPABASE_DB_URL — plus the SOURCE_* equivalents pointing at the OLD Lovable Cloud project so the wizard can pull from it. Full secrets handoff happens in Phase 7." },
+      { id: "p4f-secrets-min", kind: "manual", label: "Set the minimum secrets needed for restore tooling", href: "/admin/secrets-handoff", detail: "At minimum: SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY, SUPABASE_DB_URL, plus the SOURCE_* equivalents pointing at the OLD Lovable Cloud project so the wizard can pull from it. Full secrets handoff happens in Phase 7." },
       { id: "p4f-deploy-restore", kind: "manual", label: "Confirm restore-related edge functions deployed", detail: "auto-backup, migrate-export, migrate-import deploy automatically when the new project builds. Check Cloud → Functions in the new project." },
       { id: "p4f-admin-login", kind: "manual", label: "Sign in to /admin on the NEW project as an admin", detail: "You'll need to sign up fresh (auth users don't migrate) and grant yourself the admin role via SQL on the new Supabase." },
     ],
@@ -107,7 +107,7 @@ const PHASES: Phase[] = [
     id: "phase-5",
     number: 5,
     title: "Restore data and storage objects (run from the NEW project)",
-    goal: "Move every row and every file out of the source and into the target. All links below open the wizard in THIS project — run them from the equivalent routes in your NEW project.",
+    goal: "Move every row and every file out of the source and into the target. All links below open the wizard in THIS project, run them from the equivalent routes in your NEW project.",
     items: [
       { id: "p5-tables", kind: "moved", label: "Restore table rows via Restore Wizard", href: "/admin/restore", detail: "Auth user IDs are remapped where applicable." },
       { id: "p5-storage", kind: "moved", label: "Restore storage objects via Restore Wizard", href: "/admin/restore", detail: "Signed-URL helper streams files from old → new project." },
@@ -119,12 +119,12 @@ const PHASES: Phase[] = [
     id: "phase-6",
     number: 6,
     title: "Configure auth providers (manual)",
-    goal: "Recreate auth provider settings — these are NOT in SQL and cannot be exported.",
+    goal: "Recreate auth provider settings, these are NOT in SQL and cannot be exported.",
     items: [
       { id: "p6-email", kind: "manual", label: "Enable Email provider + set confirm-email policy", detail: "Currently: signups require email confirmation, no auto-confirm." },
       { id: "p6-google", kind: "manual", label: "Re-add Google OAuth client ID + secret", detail: "Create new OAuth app in Google Cloud or reuse existing one with new redirect URI." },
       { id: "p6-redirects", kind: "manual", label: "Add Site URL + redirect allowlist", detail: "Include production domain, preview domains, and localhost." },
-      { id: "p6-templates-code", kind: "moved", label: "Branded auth email templates (auth-email-hook + _shared/email-templates/*.tsx)", detail: "These live in the repo and travel with the Phase 4 remix. They redeploy automatically — no copy/paste needed." },
+      { id: "p6-templates-code", kind: "moved", label: "Branded auth email templates (auth-email-hook + _shared/email-templates/*.tsx)", detail: "These live in the repo and travel with the Phase 4 remix. They redeploy automatically, no copy/paste needed." },
       { id: "p6-email-infra", kind: "moved", label: "Email infrastructure ready (pgmq queues, send log, suppression, cron)", detail: "Auto-checked: pgmq + pg_cron extensions, q_auth_emails / q_transactional_emails queues, email_send_log / email_send_state / suppressed_emails / email_unsubscribe_tokens tables, enqueue_email RPC, and the process-email-queue cron job. Re-runs automatically when you re-configure the email domain." },
       { id: "p6-email-domain", kind: "manual", label: "Re-add the sender domain (e.g. notify.paintedporch.com) and verify DNS", detail: "Lovable Cloud's per-project NS delegation means the new project needs its own domain setup + DNS records at your registrar." },
       { id: "p6-templates-fallback", kind: "manual", label: "(Optional) Re-paint Supabase's built-in Auth → Email Templates", detail: "Only matters if you ever disable auth-email-hook. The branded TSX templates above are the active path." },
@@ -162,7 +162,7 @@ const PHASES: Phase[] = [
     id: "not-migrated",
     number: 0,
     title: "Intentionally NOT migrated",
-    goal: "Things we deliberately leave behind — recreate or replace by hand if needed.",
+    goal: "Things we deliberately leave behind, recreate or replace by hand if needed.",
     items: [
       { id: "skip-auth-users", kind: "skipped", label: "auth.users records (passwords, sessions)", detail: "Supabase password hashes are not portable. Users will need to reset their password OR sign in via Google to be re-provisioned." },
       { id: "skip-sessions", kind: "skipped", label: "Active sessions and refresh tokens", detail: "All users will be signed out at cutover. Communicate this." },
@@ -518,7 +518,7 @@ export default function MigrationChecklist() {
         return;
       }
 
-      // transactional path — use the contact-confirmation template (always present after scaffold)
+      // transactional path, use the contact-confirmation template (always present after scaffold)
       const t0 = performance.now();
       const { data, error } = await supabase.functions.invoke("send-transactional-email", {
         body: {
@@ -903,7 +903,7 @@ export default function MigrationChecklist() {
                 <Input
                   value={r.notes ?? ""}
                   onChange={(e) => updateRecord(r.id, { notes: e.target.value })}
-                  placeholder="Notes (optional) — e.g. 'added at Cloudflare 5/5/26'"
+                  placeholder="Notes (optional), e.g. 'added at Cloudflare 5/5/26'"
                   className="h-8 text-xs"
                 />
               </div>

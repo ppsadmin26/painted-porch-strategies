@@ -48,7 +48,7 @@ const offerings: OfferingCard[] = [
     emoji: "🎙",
     title: "1:1 Get C.L.E.A.R. Coaching",
     description:
-      "Personal coaching sessions to master your messaging, presence, and delivery — from boardrooms to breakouts.",
+      "Personal coaching sessions to master your messaging, presence, and delivery, from boardrooms to breakouts.",
     href: "/contact?scope=Yourself&interest=1on1-advisory&message=I'm interested in 1:1 coaching with Rob.",
     color: "lime",
   },
@@ -64,7 +64,7 @@ const offerings: OfferingCard[] = [
     emoji: "🎯",
     title: "5-Day Master Your Message Challenge",
     description:
-      "A quick-start challenge to transform how you communicate — in just five days.",
+      "A quick-start challenge to transform how you communicate, in just five days.",
     href: "https://www.paintedporchstrategies.com/talking-to-strangers",
     external: true,
     color: "teal",
@@ -143,7 +143,7 @@ export default function AboutRob() {
           </p>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/80">
-            Hi, I'm <strong className="text-navy">Rob Hunter</strong>. For 27 years, I honed my communication as a talk radio broadcaster, finding ways to connect with listeners… and keep them tuning in every day, retiring with #1 ratings. Now, I partner with emerging leaders and executives to master their message and broadcast with clarity — to stand out, be heard, inspire action, and make an impact.
+            Hi, I'm <strong className="text-navy">Rob Hunter</strong>. For 27 years, I honed my communication as a talk radio broadcaster, finding ways to connect with listeners… and keep them tuning in every day, retiring with #1 ratings. Now, I partner with emerging leaders and executives to master their message and broadcast with clarity, to stand out, be heard, inspire action, and make an impact.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -352,7 +352,7 @@ export default function AboutRob() {
               Ready to Get C.L.E.A.R.?
             </h2>
             <p className="mx-auto mt-4 max-w-md text-foreground/70">
-              Whether you want to sharpen your speaking skills, master your message, or build communication confidence — let's talk.
+              Whether you want to sharpen your speaking skills, master your message, or build communication confidence, let's talk.
             </p>
             <Link
               to="/contact?interest=general&message=I'd like to connect with Rob."

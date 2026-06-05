@@ -81,7 +81,7 @@ export default function ElementsMiniSignUp() {
             The Elements of <span className="text-gold">Your Team</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-6">
-            Discover the ancient wisdom and modern insights behind what truly drives your team — through the lens of the Five Elements.
+            Discover the ancient wisdom and modern insights behind what truly drives your team, through the lens of the Five Elements.
           </p>
           <p className="text-lg font-poppins font-semibold text-gold mb-8">
             Water · Wood · Fire · Earth · Metal
@@ -148,25 +148,25 @@ export default function ElementsMiniSignUp() {
             <li className="flex gap-3">
               <Users className="w-6 h-6 text-teal flex-shrink-0 mt-1" />
               <span className="text-charcoal">
-                <strong className="text-navy">Understand what drives each team member</strong> — how the Five Elemental Styles shape motivation, communication, and reactions under pressure.
+                <strong className="text-navy">Understand what drives each team member</strong>, how the Five Elemental Styles shape motivation, communication, and reactions under pressure.
               </span>
             </li>
             <li className="flex gap-3">
               <Compass className="w-6 h-6 text-lime-green flex-shrink-0 mt-1" />
               <span className="text-charcoal">
-                <strong className="text-navy">Define the Elements of a Team</strong> — spot the subtle signs of stress and strength so you can respond with empathy and insight.
+                <strong className="text-navy">Define the Elements of a Team</strong>, spot the subtle signs of stress and strength so you can respond with empathy and insight.
               </span>
             </li>
             <li className="flex gap-3">
               <Sparkles className="w-6 h-6 text-purple flex-shrink-0 mt-1" />
               <span className="text-charcoal">
-                <strong className="text-navy">Create more flow, less friction</strong> — use a simple, powerful framework to build team harmony, improve collaboration, and support well-being.
+                <strong className="text-navy">Create more flow, less friction</strong>, use a simple, powerful framework to build team harmony, improve collaboration, and support well-being.
               </span>
             </li>
             <li className="flex gap-3">
               <BookOpen className="w-6 h-6 text-raspberry flex-shrink-0 mt-1" />
               <span className="text-charcoal">
-                <strong className="text-navy">Apply it immediately</strong> — walk away with guided worksheets and reflection prompts you can use in 1:1s, team meetings, and conflict moments.
+                <strong className="text-navy">Apply it immediately</strong>, walk away with guided worksheets and reflection prompts you can use in 1:1s, team meetings, and conflict moments.
               </span>
             </li>
           </ul>
@@ -176,7 +176,7 @@ export default function ElementsMiniSignUp() {
         </div>
       </section>
 
-      {/* Pricing — Two Tiers */}
+      {/* Pricing, Two Tiers */}
       <section id="pricing" className="py-16 px-4 bg-secondary/30 scroll-mt-24">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -184,7 +184,7 @@ export default function ElementsMiniSignUp() {
               Choose Your <span className="text-teal">P.A.T.H.way</span>
             </h2>
             <p className="text-lg text-charcoal">
-              Built for individuals who want to grow — and teams ready to shift together.
+              Built for individuals who want to grow, and teams ready to shift together.
             </p>
           </div>
 
@@ -213,7 +213,7 @@ export default function ElementsMiniSignUp() {
               </ul>
               <a href={COURSE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
                 <Button className="w-full bg-teal hover:bg-teal/90 text-white text-lg py-6 rounded-full">
-                  Get Instant Access — $99
+                  Get Instant Access, $99
                 </Button>
               </a>
             </div>
@@ -294,13 +294,13 @@ export default function ElementsMiniSignUp() {
             Ready to unlock the hidden dynamics of your team?
           </h2>
           <p className="text-lg text-white/90 mb-8">
-            At Painted Porch, we don't just teach leadership — we embody it. This isn't passive training.
+            At Painted Porch, we don't just teach leadership, we embody it. This isn't passive training.
             You'll engage your mind, body, heart, and instincts to uncover what really drives your team.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={COURSE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
               <Button className="bg-gold hover:bg-gold/90 text-navy font-bold text-lg py-6 px-10 rounded-full w-full sm:w-auto">
-                Start the Mini Course — $99
+                Start the Mini Course, $99
               </Button>
             </a>
             <Button asChild

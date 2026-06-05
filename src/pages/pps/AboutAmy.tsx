@@ -26,7 +26,7 @@ const offerings: OfferingCard[] = [
     emoji: "🚪",
     title: "The Blue Door Diagnostic",
     description:
-      "A strategic 11-question assessment that reveals where your organization stands — and what shift you're positioned to lead.",
+      "A strategic 11-question assessment that reveals where your organization stands, and what shift you're positioned to lead.",
     href: "/blue-door",
     color: "teal",
   },
@@ -42,7 +42,7 @@ const offerings: OfferingCard[] = [
     emoji: "⚡",
     title: "IGNITE: Self-Led Growth",
     description:
-      "Masterclasses, assessments, and self-paced courses designed to light the fire of transformation — on your terms.",
+      "Masterclasses, assessments, and self-paced courses designed to light the fire of transformation, on your terms.",
     href: "/partner/ignite",
     color: "gold",
   },
@@ -155,7 +155,7 @@ export default function AboutAmy() {
             strategies and programs that connect people and systems to a clear
             purpose, optimized process, and noble mission. Through challenging
             business as usual with courage, curiosity, and a little play, we can
-            confidently navigate the sea of change — one small shift at a time.
+            confidently navigate the sea of change, one small shift at a time.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -367,7 +367,7 @@ export default function AboutAmy() {
               Meet for a Virtual Coffee or Cocktail
             </h2>
             <p className="mx-auto mt-4 max-w-md text-foreground/70">
-              Ready to explore how we might work together? Let's chat — no
+              Ready to explore how we might work together? Let's chat, no
               pressure, just a genuine conversation about where you are and where
               you want to be.
             </p>

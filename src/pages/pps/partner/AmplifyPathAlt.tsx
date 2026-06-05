@@ -451,7 +451,7 @@ export default function AmplifyPathAlt() {
         </div>
       </section>
 
-      {/* SECTION: Which ShIFt — Workshop vs. Sprint vs. Leader Lab */}
+      {/* SECTION: Which ShIFt, Workshop vs. Sprint vs. Leader Lab */}
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container max-w-6xl mx-auto px-6">
           <h3 className="text-xl md:text-2xl font-semibold text-navy text-center mb-8">

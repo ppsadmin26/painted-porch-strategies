@@ -115,7 +115,7 @@ export default function EmbodyPath() {
                 EMBODY partnerships are built on deep integration with your organization. We become an extension of your leadership team, providing strategic guidance, hands-on facilitation, and continuous support.
               </p>
               <p className="text-lg text-foreground leading-relaxed">
-                This isn't consulting from the outside — it's transformation from within.
+                This isn't consulting from the outside, it's transformation from within.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm">

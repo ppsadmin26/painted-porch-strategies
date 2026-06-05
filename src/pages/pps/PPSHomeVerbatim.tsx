@@ -565,7 +565,7 @@ export default function PPSHomeVerbatim() {
 
                 {/* Steps with winding road behind. Road SVG = grid width (so 4 colors align with 4 boxes). Flat extension bars stretch the road into the white card's padding on each side. */}
                 <div className="relative pb-10 md:pb-14 mb-2">
-                  {/* Left curved extension (teal) — continues the road's tangent up-and-out toward the white card's left edge */}
+                  {/* Left curved extension (teal), continues the road's tangent up-and-out toward the white card's left edge */}
                   <svg
                     viewBox="0 0 100 200"
                     className="absolute top-[42%] -translate-y-1/2 -left-6 sm:-left-8 md:-left-12 w-6 sm:w-8 md:w-12 h-[120%] sm:h-[140%] pointer-events-none"
@@ -613,7 +613,7 @@ export default function PPSHomeVerbatim() {
                       opacity="0.7"
                     />
                   </svg>
-                  {/* Right curved extension (lime) — continues the road's tangent up-and-out from the H box toward the white card's right edge */}
+                  {/* Right curved extension (lime), continues the road's tangent up-and-out from the H box toward the white card's right edge */}
                   <svg
                     viewBox="0 0 100 200"
                     className="absolute top-[42%] -translate-y-1/2 -right-6 sm:-right-8 md:-right-12 w-6 sm:w-8 md:w-12 h-[120%] sm:h-[140%] pointer-events-none"

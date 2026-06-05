@@ -135,7 +135,7 @@ export default function CommunicatorStylesWatch() {
                 Don't Forget Your One-Page Reference Sheet
               </h2>
               <p className="text-foreground mb-6">
-                Download the 6 Communicator Styles summary to use as a quick reference as you begin to chart your own — as well as others' — styles to master your message and communicate with clarity, influence, and impact.
+                Download the 6 Communicator Styles summary to use as a quick reference as you begin to chart your own, as well as others', styles to master your message and communicate with clarity, influence, and impact.
               </p>
               <a href={REFERENCE_SHEET_URL} target="_blank" rel="noopener noreferrer">
                 <Button className="bg-raspberry border-2 border-raspberry text-white hover:bg-transparent hover:text-raspberry transition-colors px-8 py-6 text-base">

@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 const VARIANTS = [
-  { id: "v1", label: "V1 — Editorial Asymmetric" },
-  { id: "v2", label: "V2 — Cinematic Stoic Dusk" },
-  { id: "v3", label: "V3 — Stoic Concentric" },
+  { id: "v1", label: "V1, Editorial Asymmetric" },
+  { id: "v2", label: "V2, Cinematic Stoic Dusk" },
+  { id: "v3", label: "V3, Stoic Concentric" },
 ];
 
 export default function HeroPreviewCompare() {

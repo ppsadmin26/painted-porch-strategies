@@ -41,7 +41,7 @@ const modules = [
 
 const programDetails = [
   { icon: BookOpen, title: "Learn", description: "Over 8 hours of on-demand, self-paced videos, exercises, and supporting materials to help you develop emotional resilience and mindfulness, and harness your inner power to take hold of your emotions." },
-  { icon: Users, title: "Connect", description: "Through a private, online community you'll connect with Sierra and your fellow students to share ideas on how you can integrate the lessons into your own life — both at home and at work." },
+  { icon: Users, title: "Connect", description: "Through a private, online community you'll connect with Sierra and your fellow students to share ideas on how you can integrate the lessons into your own life, both at home and at work." },
   { icon: Brain, title: "Grow", description: "Attend monthly, live video coaching calls with Sierra (optional, add-on) and fellow students to dive deeper into what you've learned and explore additional insights and methods to expand your knowledge." },
 ];
 
@@ -49,7 +49,7 @@ const faqs = [
   { q: "How is this online course structured?", a: "The Radical Mindfulness online course is organized into 8 modules, each with about 5–7 lessons. Each video lesson is about 15 minutes or less and includes supporting documentation and action guides to make it stick. Each week, a new module will be released to you; however, go at your own pace and as your schedule allows." },
   { q: "How long will I have access to the course?", a: "You will have lifetime access to the course. Upon purchase, you'll receive an email to access the Painted Porch Academy and any courses or coaching you've purchased or signed up for." },
   { q: "This 14-Day Money Back Guarantee...what's the catch?", a: "There's no catch. If you purchased the Radical Mindfulness program and it's not what you're looking for or expected, simply <a href='/refund-request' class='text-pps-teal underline'>submit a refund request</a> within 14 days of your original purchase and we'll process your refund promptly. No questions asked." },
-  { q: "Where is the Private Community located?", a: "Our community is hosted on Go High Level (our course platform) — a completely private network away from data scraping and advertisers, consisting of only our members. It's free to join and easy to use." },
+  { q: "Where is the Private Community located?", a: "Our community is hosted on Go High Level (our course platform), a completely private network away from data scraping and advertisers, consisting of only our members. It's free to join and easy to use." },
   { q: "What is Painted Porch Strategies?", a: "Painted Porch Strategies is a partnership for leaders and teams ready to design real, lasting change. We guide you through Phase Zero, the strategic thinking that happens before a project kicks off, so the change you build is the one you actually want to lead. Through our P.A.T.H. approach (Prepare, Align, Take Off, Habit) and The Painted Porch Pillars, we co-design the leadership, systems, and human capacity that turn good intentions into extraordinary outcomes." },
 ];
 
@@ -181,7 +181,7 @@ export default function RadicalMindfulness() {
               What is Radical Mindfulness?
             </h2>
             <p className="text-lg text-charcoal leading-relaxed">
-              At the Painted Porch, <strong>we like to do things a little differently</strong>. You'll be up and moving, participating fully in mind, body, heart, and spirit — <strong>intentionally</strong>; and <strong>actively making decisions</strong> about how to show up as your authentic self — who you want and <em>choose</em> to be — and <strong>how to make that happen</strong>.
+              At the Painted Porch, <strong>we like to do things a little differently</strong>. You'll be up and moving, participating fully in mind, body, heart, and spirit, <strong>intentionally</strong>; and <strong>actively making decisions</strong> about how to show up as your authentic self, who you want and <em>choose</em> to be, and <strong>how to make that happen</strong>.
             </p>
           </div>
         </section>

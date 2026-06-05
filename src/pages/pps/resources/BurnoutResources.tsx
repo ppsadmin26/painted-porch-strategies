@@ -141,7 +141,7 @@ const BurnoutResources = () => {
             What's a Painted Porch?
           </h2>
           <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto font-montserrat">
-            Painted Porch Strategies was founded in 2020 to address one of the most impactful but often overlooked drivers of successful innovation, transformation, and change — YOUR PEOPLE. Our training, coaching, and advisory programs prepare your people to step in, stand strong, speak up, and share and challenge ideas that can lead to lasting change that sticks.
+            Painted Porch Strategies was founded in 2020 to address one of the most impactful but often overlooked drivers of successful innovation, transformation, and change, YOUR PEOPLE. Our training, coaching, and advisory programs prepare your people to step in, stand strong, speak up, and share and challenge ideas that can lead to lasting change that sticks.
           </p>
           <Link to="/about" className="inline-flex items-center gap-2 mt-6 text-primary font-poppins font-semibold hover:underline">
             Learn more <ArrowRight className="h-4 w-4" />

@@ -229,7 +229,7 @@ export default function BackupsManager() {
         return next;
       });
     } catch {
-      // swallow — quiet poll
+      // swallow, quiet poll
     }
   }, []);
 
@@ -293,7 +293,7 @@ export default function BackupsManager() {
 
   // Poll while any run is still in 'running' state so the UI reflects
   // background progress without the admin needing to click Refresh.
-  // Uses refreshRunsQuiet so only the row data updates — the surrounding
+  // Uses refreshRunsQuiet so only the row data updates, the surrounding
   // widget never enters its loading skeleton state.
   useEffect(() => {
     const hasRunning = runs.some((r) => r.status === "running");
@@ -859,7 +859,7 @@ export default function BackupsManager() {
         <div className="text-sm font-montserrat text-muted-foreground space-y-2">
           <p>
             The backups on this page capture your <strong className="text-navy">database and storage buckets</strong>{" "}
-            — they do <strong className="text-navy">not</strong> include your React frontend or edge function source code. That code lives in
+           , they do <strong className="text-navy">not</strong> include your React frontend or edge function source code. That code lives in
             Lovable + GitHub.
           </p>
           <p>
@@ -871,7 +871,7 @@ export default function BackupsManager() {
             Lovable will package the live <code className="text-xs bg-muted px-1 rounded">src/</code>,{" "}
             <code className="text-xs bg-muted px-1 rounded">public/</code>,{" "}
             <code className="text-xs bg-muted px-1 rounded">supabase/functions/</code>, and config files into a downloadable
-            zip — independent of GitHub. Excludes <code className="text-xs bg-muted px-1 rounded">node_modules</code>,{" "}
+            zip, independent of GitHub. Excludes <code className="text-xs bg-muted px-1 rounded">node_modules</code>,{" "}
             <code className="text-xs bg-muted px-1 rounded">.git</code>, builds, and any video files (so the original problem
             can't repeat).
           </p>
@@ -1032,7 +1032,7 @@ export default function BackupsManager() {
                   </div>
                   {isUnknown ? (
                     <div className="text-xs text-[#DB0043] font-montserrat mt-1 flex items-center gap-1">
-                      <AlertTriangle className="w-3 h-3" /> Status unavailable — click Refresh or sign in as an admin.
+                      <AlertTriangle className="w-3 h-3" /> Status unavailable, click Refresh or sign in as an admin.
                     </div>
                   ) : active && computedNext ? (
                     <div className="text-xs text-muted-foreground/80 font-montserrat mt-1">
@@ -1163,7 +1163,7 @@ export default function BackupsManager() {
                               </div>
                               <div className={`text-[10px] ${stuck ? "text-[#DB0043]" : "text-muted-foreground/70"}`}>
                                 {r.started_at ? `${elapsedSec}s elapsed · ${r.log_count ?? 0} steps` : "queued"}
-                                {stuck && ` · stuck ${idleSec}s — no progress`}
+                                {stuck && ` · stuck ${idleSec}s, no progress`}
                               </div>
                             </>
                           );

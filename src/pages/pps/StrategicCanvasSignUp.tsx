@@ -86,7 +86,7 @@ export default function StrategicCanvasSignUp() {
             The <span className="text-gold">Strategic Change Canvas</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
-            A one-page planning tool to architect change before you build it — so your next shIFt actually sticks.
+            A one-page planning tool to architect change before you build it, so your next shIFt actually sticks.
           </p>
         </div>
       </section>
@@ -126,7 +126,7 @@ export default function StrategicCanvasSignUp() {
               <li className="flex gap-3">
                 <Compass className="w-6 h-6 text-teal flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
-                  <strong className="text-navy">A clear north star</strong> — name the shift you're trying to lead
+                  <strong className="text-navy">A clear north star</strong>, name the shift you're trying to lead
                 </span>
               </li>
               <li className="flex gap-3">

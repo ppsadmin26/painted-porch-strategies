@@ -23,14 +23,14 @@ const signaturePrograms = [
   {
     title: "Master Your Message",
     description:
-      "Eliminate the static from your internal and external messaging in order to communicate from your true voice — with clarity, confidence, and influence.",
+      "Eliminate the static from your internal and external messaging in order to communicate from your true voice, with clarity, confidence, and influence.",
     image: masterYourMessage,
     link: "/partner/ignite",
   },
   {
     title: "Extraordinary Teams",
     description:
-      "Better connect, collaborate, and handle conflict with your fellow humans — in the teams and people you interact with both at work and in life.",
+      "Better connect, collaborate, and handle conflict with your fellow humans, in the teams and people you interact with both at work and in life.",
     image: extraordinaryTeams,
     link: "/partner/ignite",
   },
@@ -48,7 +48,7 @@ const additionalPrograms = [
   {
     title: "Become a Work From Home Pro!",
     description:
-      "Sign up for our FREE Mini-Course focused on helping you tackle your Work From Home day — with your family, your colleagues, and yourself.",
+      "Sign up for our FREE Mini-Course focused on helping you tackle your Work From Home day, with your family, your colleagues, and yourself.",
     image: workFromHome,
     cta: "Get FREE Access",
     free: true,
@@ -70,7 +70,7 @@ const coaches = [
     name: "Sierra Ramm Cantrell",
     specialty: "Mindfulness",
     description:
-      "Struggling with finding the joy along this journey of life? Work one-on-one with Sierra Ramm Cantrell, a 10+ yr. Yoga, Mindfulness, and Movement expert, to discover ways to stand in your power — joyful, peaceful, and authentic — and kick those old stories to the curb...for good.",
+      "Struggling with finding the joy along this journey of life? Work one-on-one with Sierra Ramm Cantrell, a 10+ yr. Yoga, Mindfulness, and Movement expert, to discover ways to stand in your power, joyful, peaceful, and authentic, and kick those old stories to the curb...for good.",
     link: "/sierra",
     color: "bg-strategic/10 border-strategic/20",
     accent: "text-strategic",
@@ -164,7 +164,7 @@ export default function PPSPrograms() {
                 Signature Programs
               </h2>
               <p className="text-lg text-foreground leading-relaxed">
-                <strong>There is untapped potential and power in you</strong> — to stand{" "}
+                <strong>There is untapped potential and power in you</strong>, to stand{" "}
                 <strong>strong</strong> and resilient among the obstacles in life, to find authentic
                 and <strong>virtuous connections</strong> with others, and to{" "}
                 <strong>share your message</strong> by eliminating the static interfering with your

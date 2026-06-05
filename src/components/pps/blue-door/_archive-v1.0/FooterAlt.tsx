@@ -16,7 +16,7 @@ export default function FooterAlt() {
               Painted Porch Strategies
             </h3>
             <p className="text-sm leading-relaxed opacity-90">
-              Painted Porch Strategies partners with leaders to architect strategic sh<span className="text-raspberry">IF</span>t. This is Phase Zero™ — the work before the work.
+              Painted Porch Strategies partners with leaders to architect strategic sh<span className="text-raspberry">IF</span>t. This is Phase Zero™, the work before the work.
             </p>
           </div>
           

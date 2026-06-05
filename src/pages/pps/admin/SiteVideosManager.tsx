@@ -73,7 +73,7 @@ async function extractPosterFrame(file: File): Promise<Blob | null> {
       try {
         video.currentTime = isFinite(target) && target > 0 ? target : 0;
       } catch {
-        // Some MOV files throw on seek — bail out
+        // Some MOV files throw on seek, bail out
         clearTimeout(timeout);
         finish(null);
       }
@@ -728,7 +728,7 @@ export default function SiteVideosManager() {
             <DialogDescription>
               {editingSlotId
                 ? "Label and description are editable. The slot key is locked because pages may reference it in code."
-                : "Define a new slot that page code can reference. You don't need to upload a video right now — the slot will appear in the list above and accept uploads any time."}
+                : "Define a new slot that page code can reference. You don't need to upload a video right now, the slot will appear in the list above and accept uploads any time."}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-3 py-2">

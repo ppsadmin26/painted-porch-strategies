@@ -23,13 +23,13 @@ function AnimatedSection({ children, className = "" }: { children: React.ReactNo
 
 const highlights = [
   { icon: Shield, title: "Develop Healthy Conflict", description: "Tackle assumptions, frustrations, disagreements, and misalignments using rational, logical, and practical methods for conflict resolution." },
-  { icon: Puzzle, title: "Define the Elements of a Team", description: "Learn each team member's Elemental style that — when healthy — can overcome any obstacle that arises; but, when stressed, can turn Hero into Villain." },
+  { icon: Puzzle, title: "Define the Elements of a Team", description: "Learn each team member's Elemental style that, when healthy, can overcome any obstacle that arises; but, when stressed, can turn Hero into Villain." },
   { icon: Target, title: "Design a Blueprint for Success", description: "Establish a clear, mission-focused, and aligned operating model so each team member can contribute and succeed." },
 ];
 
 const modules = [
   { title: "Module 1: The State of Your (Team) Union", description: "Begin by doing a quick assessment of the health of your team. This serves as a way to set the baseline for team growth." },
-  { title: "Module 2: The Mind of Your Team", description: "Dive deeper into how you and your team thinks — and what presumptions, frustrations, and habits tend to interfere with team excellence." },
+  { title: "Module 2: The Mind of Your Team", description: "Dive deeper into how you and your team thinks, and what presumptions, frustrations, and habits tend to interfere with team excellence." },
   { title: "Module 3: Team Motivation", description: "Understand what motivates (and de-motivates) your team; what and how your personal values and beliefs influence team dynamics." },
   { title: "Module 4: Get in Your Element", description: "Learn about your own core elemental style, as well as those of your team members. Each 'element' has traits where you can shine, and others that can dull performance." },
   { title: "Module 5: Conflict is NOT a 4-Letter Word", description: "Explore how to turn conflict into constructive debate and decision making." },
@@ -40,7 +40,7 @@ const modules = [
 
 const programDetails = [
   { icon: BookOpen, title: "Learn", description: "Over 8 hours of on-demand, self-paced videos, exercises, and supporting materials to help you develop strong connections and mission-focused, aligned teams." },
-  { icon: Users, title: "Connect", description: "Through a private, online community you'll connect with Amy and your fellow students to share ideas on how you can integrate the lessons into your own life — both at home and at work." },
+  { icon: Users, title: "Connect", description: "Through a private, online community you'll connect with Amy and your fellow students to share ideas on how you can integrate the lessons into your own life, both at home and at work." },
   { icon: Brain, title: "Grow", description: "Attend monthly, live video coaching calls with Amy (optional, add-on) and fellow students to dive deeper into what you've learned and explore additional insights and methods to expand your knowledge and grow in your people dynamics." },
 ];
 
@@ -103,7 +103,7 @@ export default function ExtraordinaryTeams() {
             Create Extraordinary Teams
           </h1>
           <p className="text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed mb-8">
-            Better <strong>connect</strong>, <strong>collaborate</strong>, and <strong>handle conflict</strong> with your fellow humans — with the teams and people you interact with both at work and in life.
+            Better <strong>connect</strong>, <strong>collaborate</strong>, and <strong>handle conflict</strong> with your fellow humans, with the teams and people you interact with both at work and in life.
           </p>
           <Button asChild size="lg" className="bg-pps-orange hover:bg-pps-orange/90 text-white font-poppins font-semibold rounded-lg px-8">
             <a href="#pricing">Join the Program <ArrowRight className="ml-2 h-5 w-5" /></a>
@@ -163,7 +163,7 @@ export default function ExtraordinaryTeams() {
               How to Create Extraordinary Teams
             </h2>
             <p className="text-lg text-charcoal leading-relaxed">
-              At the Painted Porch, <strong>we like to do things a little differently</strong>. You'll be <strong>up and moving</strong>, participating fully in mind, body, heart, and spirit — <strong>intentionally</strong>; and <strong>actively making decisions</strong> about how to approach and resolve conflict, overcome obstacles as a team unit, and design a blueprint for <strong>how to make that happen</strong>.
+              At the Painted Porch, <strong>we like to do things a little differently</strong>. You'll be <strong>up and moving</strong>, participating fully in mind, body, heart, and spirit, <strong>intentionally</strong>; and <strong>actively making decisions</strong> about how to approach and resolve conflict, overcome obstacles as a team unit, and design a blueprint for <strong>how to make that happen</strong>.
             </p>
           </div>
         </section>
@@ -262,7 +262,7 @@ export default function ExtraordinaryTeams() {
                     Amy Yackowski · Founder & Organizational Shift Strategist
                   </p>
                   <p className="text-charcoal leading-relaxed mb-6">
-                    Welcome to the Porch! You can call me Amy Yack — my friends do. I've spent the last 20+ years seeking out and partnering with organizations to design programs that <strong>connect</strong> people and <strong>process</strong> to a <strong>clear purpose</strong>, strategic vision, and noble <strong>mission</strong>. Through <strong>challenging business as usual</strong>, we can navigate the sea of change and build amazing teams, focused on <strong>contribution</strong>, <strong>service</strong>, and <strong>connection</strong>.
+                    Welcome to the Porch! You can call me Amy Yack, my friends do. I've spent the last 20+ years seeking out and partnering with organizations to design programs that <strong>connect</strong> people and <strong>process</strong> to a <strong>clear purpose</strong>, strategic vision, and noble <strong>mission</strong>. Through <strong>challenging business as usual</strong>, we can navigate the sea of change and build amazing teams, focused on <strong>contribution</strong>, <strong>service</strong>, and <strong>connection</strong>.
                   </p>
                   <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal hover:text-white font-poppins font-semibold rounded-lg">
                     <Link to="/amy">More About Amy <ArrowRight className="ml-2 h-4 w-4" /></Link>

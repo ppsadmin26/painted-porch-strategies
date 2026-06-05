@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 /**
- * Hero Preview V3 — "Painted Color-Block"
+ * Hero Preview V3, "Painted Color-Block"
  * Split canvas: warm ivory left for content, vibrant teal panel right
  * with concentric gold porch rings. Navy headline, raspberry IF, purple subline.
  */

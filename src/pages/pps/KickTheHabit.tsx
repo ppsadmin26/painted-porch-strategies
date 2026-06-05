@@ -59,7 +59,7 @@ export default function KickTheHabit() {
         </div>
       </section>
 
-      {/* Video Preview — lazy mounted, click to play, admin-swappable */}
+      {/* Video Preview, lazy mounted, click to play, admin-swappable */}
       <section className="bg-navy py-12">
         <div className="container max-w-3xl mx-auto px-6">
           <LazyPreviewVideo

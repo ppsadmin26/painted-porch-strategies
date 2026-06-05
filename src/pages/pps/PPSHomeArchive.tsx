@@ -56,7 +56,7 @@ export default function PPSHomeArchive() {
           </span>
         }
         headline="Building Change-Ready Leaders and Teams Through Stoic Principles"
-        description="Most transformation fails before it starts. We partner with you to build the foundation for lasting change through Phase Zero — the strategic preparation that makes implementation possible."
+        description="Most transformation fails before it starts. We partner with you to build the foundation for lasting change through Phase Zero, the strategic preparation that makes implementation possible."
         ctas={[
           { label: "For Leaders", href: "/for-leaders", isPrimary: true, icon: <ArrowRight className="ml-2 w-5 h-5" /> },
           { label: "For Teams", href: "/for-teams", icon: <ArrowRight className="ml-2 w-5 h-5" /> },

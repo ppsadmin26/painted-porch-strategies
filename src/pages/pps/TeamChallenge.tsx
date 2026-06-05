@@ -15,7 +15,7 @@ const dailyLessons = [
   {
     day: "Day 1",
     title: "Find Your Superpower",
-    description: "Pinpoint the natural strength you bring to every team you're on — and how to lean into it on purpose.",
+    description: "Pinpoint the natural strength you bring to every team you're on, and how to lean into it on purpose.",
   },
   {
     day: "Day 2",
@@ -30,7 +30,7 @@ const dailyLessons = [
   {
     day: "Day 4",
     title: "Cover the Kryptonite",
-    description: "Name the gaps and blind spots — then build simple ways to back each other up.",
+    description: "Name the gaps and blind spots, then build simple ways to back each other up.",
   },
   {
     day: "Day 5",
@@ -116,7 +116,7 @@ export default function TeamChallenge() {
                 of a Team Challenge
               </h1>
               <p className="text-lg text-foreground mb-8">
-                Five days. Five short lessons. One stronger, more aligned team — yours. Led by Amy Yackowski, Founder &amp; Organizational Shift Strategist.
+                Five days. Five short lessons. One stronger, more aligned team, yours. Led by Amy Yackowski, Founder &amp; Organizational Shift Strategist.
               </p>
               <Button
                 disabled
@@ -239,7 +239,7 @@ export default function TeamChallenge() {
               Who this is for
             </h2>
             <p className="text-foreground max-w-2xl mx-auto">
-              Anyone who's tired of teams being labeled "good" or "bad" — and is ready to find the real superpowers hiding underneath.
+              Anyone who's tired of teams being labeled "good" or "bad", and is ready to find the real superpowers hiding underneath.
             </p>
           </div>
           <div className="grid sm:grid-cols-3 gap-6">

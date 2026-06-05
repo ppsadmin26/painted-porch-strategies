@@ -44,7 +44,7 @@ export default function PilotTraining() {
     },
     {
       title: "Be Fully Present",
-      description: "Through the power of listening, discover how to be fully present — for yourself and others.",
+      description: "Through the power of listening, discover how to be fully present, for yourself and others.",
     },
     {
       title: "Re-Connect",
@@ -85,7 +85,7 @@ export default function PilotTraining() {
         </div>
       </section>
 
-      {/* Preview video — lazy mounted, click to play */}
+      {/* Preview video, lazy mounted, click to play */}
       <section className="bg-white pb-12 md:pb-16">
         <div className="container max-w-3xl mx-auto px-6">
           <LazyPreviewVideo
@@ -112,7 +112,7 @@ export default function PilotTraining() {
             <p>Being fully present, active, and in control of what's happening in your life may feel difficult.</p>
           </div>
           <p className="italic text-foreground max-w-2xl mx-auto mt-8">
-            Get instant access to a replay of Chief Joy Officer Sierra Ramm Cantrell's interactive, insightful, and empowering training session focused on guiding you on a path toward presence and purpose — where you are at the controls.
+            Get instant access to a replay of Chief Joy Officer Sierra Ramm Cantrell's interactive, insightful, and empowering training session focused on guiding you on a path toward presence and purpose, where you are at the controls.
           </p>
         </div>
       </section>

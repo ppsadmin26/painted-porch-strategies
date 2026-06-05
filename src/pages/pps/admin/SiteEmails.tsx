@@ -355,7 +355,7 @@ export default function SiteEmails() {
               {active.status === "preview_data_required" && (
                 <Card className="p-3 mb-3 border-amber-500/40 bg-amber-50 text-xs">
                   This template needs runtime data and has no preview defaults. Source is shown
-                  below — request a preview-data block in chat to enable in-app preview.
+                  below, request a preview-data block in chat to enable in-app preview.
                 </Card>
               )}
 
