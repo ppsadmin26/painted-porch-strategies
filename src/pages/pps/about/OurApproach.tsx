@@ -57,7 +57,7 @@ const pathStages = [
     accent: "text-gold",
     bg: "bg-gold/5",
     iconBg: "bg-gold/10",
-    body: "The change goes live with the right people, sequence, and support in place. Communication is clear. Course corrections are expected. Momentum is paced, not panicked.",
+    body: "The new change initiative begins with the right people, sequence, and support in place. Communication is clear. Course corrections are expected. Momentum is paced, not panicked.",
     outcome: "Launch energy that holds past the first 90 days.",
   },
   {
