@@ -238,11 +238,9 @@ export default function IgnitePathAlt() {
                 </li>
               </ul>
               <div className="mt-6">
-                <Link to="/partner/ignite/courses">
-                  <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-colors">
-                    Explore Courses →
-                  </Button>
-                </Link>
+                <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+                  <Link to="/partner/ignite/courses">Explore Courses →</Link>
+                </Button>
               </div>
             </div>
 
@@ -278,11 +276,9 @@ export default function IgnitePathAlt() {
               </ul>
               <p className="text-xs text-muted-foreground mt-3 italic">*Optional, based on assessment</p>
               <div className="mt-6">
-                <Link to="/partner/ignite/assessments">
-                  <Button variant="outline" className="w-full border-gold text-gold hover:bg-gold hover:text-white transition-colors">
-                    Explore Assessments →
-                  </Button>
-                </Link>
+                <Button asChild variant="outline" className="w-full border-gold text-gold hover:bg-gold hover:text-white transition-colors">
+                  <Link to="/partner/ignite/assessments">Explore Assessments →</Link>
+                </Button>
               </div>
             </div>
 
@@ -317,11 +313,9 @@ export default function IgnitePathAlt() {
                 </li>
               </ul>
               <div className="mt-6">
-                <Link to="/partner/ignite/masterclasses">
-                  <Button variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
-                    Explore Masterclasses →
-                  </Button>
-                </Link>
+                <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
+                  <Link to="/partner/ignite/masterclasses">Explore Masterclasses →</Link>
+                </Button>
               </div>
             </div>
           </div>
