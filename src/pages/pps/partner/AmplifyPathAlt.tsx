@@ -586,7 +586,7 @@ export default function AmplifyPathAlt() {
                 <div className="w-10 h-10 rounded-full bg-amplify/10 flex items-center justify-center">
                   <TIERS.AMPLIFY.icon className="w-5 h-5 text-amplify" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Continue in AMPLIFY</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Continue in <span className="text-strategic">AMPLIFY</span></h3>
               </div>
               <ul className="space-y-2 mb-6">
                 <li className="text-sm text-foreground">• Additional workshops on different topics</li>
