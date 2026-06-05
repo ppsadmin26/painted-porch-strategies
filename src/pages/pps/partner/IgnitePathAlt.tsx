@@ -208,7 +208,8 @@ export default function IgnitePathAlt() {
           
           <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {/* Column 1: Self-Led Courses */}
-            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col min-w-0">
+            <div className="bg-white p-6 lg:p-8 rounded-xl shadow-sm flex flex-col min-w-0">
+
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
                 <Monitor className="w-6 h-6 text-primary" />
               </div>
@@ -238,14 +239,16 @@ export default function IgnitePathAlt() {
                 </li>
               </ul>
               <div className="mt-6">
-                <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+                <Button asChild variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-white transition-colors text-sm px-2">
                   <Link to="/partner/ignite/courses">Explore Courses →</Link>
                 </Button>
+
               </div>
             </div>
 
             {/* Column 2: Strategic Assessments */}
-            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col min-w-0">
+            <div className="bg-white p-6 lg:p-8 rounded-xl shadow-sm flex flex-col min-w-0">
+
               <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-4">
                 <BarChart3 className="w-6 h-6 text-gold" />
               </div>
@@ -276,14 +279,15 @@ export default function IgnitePathAlt() {
               </ul>
               <p className="text-xs text-muted-foreground mt-3 italic">*Optional, based on assessment</p>
               <div className="mt-6">
-                <Button asChild variant="outline" className="w-full border-gold text-gold hover:bg-gold hover:text-white transition-colors">
+                <Button asChild variant="outline" className="w-full border-gold text-gold hover:bg-gold hover:text-white transition-colors text-sm px-2">
                   <Link to="/partner/ignite/assessments">Explore Assessments →</Link>
                 </Button>
+
               </div>
             </div>
 
             {/* Column 3: Masterclasses */}
-            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col min-w-0">
+            <div className="bg-white p-6 lg:p-8 rounded-xl shadow-sm flex flex-col min-w-0">
               <div className="w-12 h-12 rounded-full bg-strategic/10 flex items-center justify-center mb-4">
                 <Video className="w-6 h-6 text-strategic" />
               </div>
@@ -313,9 +317,10 @@ export default function IgnitePathAlt() {
                 </li>
               </ul>
               <div className="mt-6">
-                <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
+                <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors text-sm px-2">
                   <Link to="/partner/ignite/masterclasses">Explore Masterclasses →</Link>
                 </Button>
+
               </div>
             </div>
           </div>
@@ -411,9 +416,10 @@ export default function IgnitePathAlt() {
               <p className="text-xs text-muted-foreground italic mb-4">
                 Best for: Leaders ready for community engagement or team development
               </p>
-              <Button asChild className="bg-transparent border-2 border-strategic text-strategic hover:bg-strategic hover:text-white w-full transition-colors">
+              <Button asChild className="bg-transparent border-2 border-strategic text-strategic hover:bg-strategic hover:text-white w-full transition-colors text-sm px-2">
                   <Link to="/partner/amplify">Explore AMPLIFY <ArrowRight className="ml-2 w-4 h-4" /></Link>
                 </Button>
+
             </div>
 
             {/* Path 3: Open the Blue Door */}
