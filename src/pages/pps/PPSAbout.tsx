@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
+import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import teamCtaPuzzles from "@/assets/team/team-cta-puzzles.jpg";
 import letsChangeImg from "@/assets/about/lets-change.png";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
