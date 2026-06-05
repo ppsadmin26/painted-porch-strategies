@@ -239,7 +239,7 @@ export default function AmplifyPathAlt() {
                 <Users className="w-8 h-8 text-gold" />
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-gold">Organizations & Teams</h3>
               </div>
-              <p className="text-sm font-semibold text-gold mb-4">4 Signals Your Team is Ready for AMPLIFY Workshop or Strategic Sprint:</p>
+              <p className="text-sm font-semibold text-strategic mb-4">4 Signals Your Team is Ready for AMPLIFY Workshop or Strategic Sprint:</p>
               <div className="space-y-4">
                 {teamSignals.map((signal, index) => (
                   <div key={index} className="flex items-start gap-3">
