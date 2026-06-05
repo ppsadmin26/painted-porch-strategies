@@ -22,6 +22,7 @@ import { RESEARCH_STATS } from "@/data/research-stats";
 import { useFeaturedPosts } from "@/hooks/useFeaturedPosts";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import homeHero from "@/assets/heroes/home-hero.jpg";
+import phaseZeroClarityBg from "@/assets/phase-zero-clarity-bg.jpg";
 
 /* "shIFt" with raspberry IF */
 const ShIFt = () => (
