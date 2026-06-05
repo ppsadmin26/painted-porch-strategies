@@ -302,7 +302,7 @@ export default function OurApproach() {
               The P.A.T.H.<sup className="text-[0.4em] align-super">™</sup> to Sustainable Change
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
-              Philosophy is how we think. P.A.T.H. is how we work. Four stages
+              Stoicism is the GPS for how we think. P.A.T.H. is roadmap for how we work. Four stages
               that move a real change from clarity to commitment to launch to
               lasting habit.
             </p>
