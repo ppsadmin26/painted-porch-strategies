@@ -341,29 +341,8 @@ export default function PPSAbout() {
         </div>
       </section>
 
-      {/* Certifications */}
-      <section className="py-12 md:py-16 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
-          <div className="text-center mb-8">
-            <h3 className="text-xl md:text-2xl font-bold text-navy">Our Certifications & Credentials</h3>
-          </div>
-          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 md:gap-6">
-            {certifications.map((cert, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg p-3 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow h-20 md:h-24"
-                title={cert.name}
-              >
-                <img
-                  src={cert.badge}
-                  alt={cert.name}
-                  className="max-h-14 md:max-h-18 max-w-full object-contain"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Certifications moved to /about/approach (Our Methodology) */}
+
 
       {/* What's a Painted Porch */}
       <section className="py-16 md:py-24 bg-white">
