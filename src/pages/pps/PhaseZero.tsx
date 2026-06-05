@@ -104,13 +104,13 @@ const pillars = [
   },
 ];
 
-const essentialElements = [
-  "Communication",
-  "Collaboration",
-  "Clarity",
-  "Resilience",
-  "Alignment",
-  "Organizational Health",
+const essentialElements: { label: string; href: string }[] = [
+  { label: "Communication", href: "/communication" },
+  { label: "Collaboration", href: "/extraordinary-teams" },
+  { label: "Clarity", href: "/blue-door" },
+  { label: "Resilience", href: "/radical-mindfulness" },
+  { label: "Alignment", href: "/working-genius" },
+  { label: "Organizational Health", href: "/eq" },
 ];
 
 const wherePhaseZeroLeads = [
@@ -366,12 +366,13 @@ export default function PhaseZero() {
             </div>
             <div className="flex flex-wrap justify-center gap-2">
               {essentialElements.map((el) => (
-                <span
-                  key={el}
-                  className="bg-white text-navy font-poppins font-medium text-sm px-4 py-2 rounded-full border border-navy/10"
+                <Link
+                  key={el.label}
+                  to={el.href}
+                  className="bg-white text-navy font-poppins font-medium text-sm px-4 py-2 rounded-full border border-navy/10 hover:border-primary hover:text-primary hover:shadow-sm transition-all"
                 >
-                  {el}
-                </span>
+                  {el.label}
+                </Link>
               ))}
             </div>
           </FadeIn>
