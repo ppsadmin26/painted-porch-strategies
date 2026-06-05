@@ -165,7 +165,7 @@ export default function IgnitePathAlt() {
                   <div className={`w-10 h-10 rounded-full ${archetype.iconBg} flex items-center justify-center flex-shrink-0`}>
                     <archetype.icon className={`w-5 h-5 ${archetype.iconColor}`} />
                   </div>
-                  <h3 className={`text-xl md:text-2xl font-poppins font-bold ${archetype.textColor}`}>
+                  <h3 className={`text-lg lg:text-xl font-poppins font-bold leading-tight min-w-0 break-words ${archetype.textColor}`}>
                     {archetype.title}
                   </h3>
                 </div>
