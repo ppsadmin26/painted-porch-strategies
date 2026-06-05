@@ -151,6 +151,7 @@ import SiteEmails from "./pages/pps/admin/SiteEmails";
 import EmailOps from "./pages/pps/admin/EmailOps";
 import ResetPassword from "./pages/pps/admin/ResetPassword";
 import PolicyNotifications from "./pages/pps/admin/PolicyNotifications";
+import RefundRequestsManager from "./pages/pps/admin/RefundRequestsManager";
 
 // Legacy redirect: forward /pps/* paths to clean URLs
 function LegacyPPSRedirect() {
@@ -405,6 +406,7 @@ const App = () => (
             <Route path="emails/health" element={<Navigate to="/admin/emails/queue" replace />} />
             <Route path="emails/queue" element={<EmailOps />} />
             <Route path="policy-notifications" element={<PolicyNotifications />} />
+            <Route path="refunds" element={<RefundRequestsManager />} />
           </Route>
           
           {/* Legacy /pps/* redirects + 404 catch-all */}
