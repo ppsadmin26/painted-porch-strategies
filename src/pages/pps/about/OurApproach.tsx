@@ -148,6 +148,14 @@ const createConditions = [
   "Cultures where the next change does not feel like the first.",
 ];
 
+const foundationalAbilities = [
+  "Show up strong, confident, and resilient when uncertainty or change shows up.",
+  "Share ideas and challenge well-worn norms and habits.",
+  "Spot and solve problems proactively and openly.",
+  "Work in healthy, collaborative, accountable teams.",
+  "Communicate with clarity, consistency, and impact.",
+];
+
 export default function OurApproach() {
   return (
     <div>
@@ -181,42 +189,6 @@ export default function OurApproach() {
         overlayClass="bg-navy/50"
         minHeightClass="min-h-[60vh]"
       />
-
-      {/* Core Values */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Our Core Values
-            </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
-              Three values that decide how we show up in every partnership.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {coreValues.map((value, index) => (
-              <div
-                key={index}
-                className={`${value.color} p-8 rounded-xl border-t-4 ${value.borderColor}`}
-              >
-                <span className="text-4xl font-bold text-navy/20 font-poppins">
-                  {value.number}
-                </span>
-                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-2 mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-foreground leading-relaxed mb-4">
-                  {value.description}
-                </p>
-                <p className="text-foreground/80 text-sm leading-relaxed">
-                  {value.detail}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Manifesto: What we believe / reject */}
       <section className="py-16 md:py-24 bg-muted/60">
@@ -261,10 +233,82 @@ export default function OurApproach() {
         </div>
       </section>
 
-      {/* What we create the conditions for */}
+      {/* Core Values */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-4xl mx-auto px-6">
-          <div className="text-center mb-10">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
+              How We Show Up
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              Our Core Values
+            </h2>
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
+              Three values that decide how we show up in every partnership.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {coreValues.map((value, index) => (
+              <div
+                key={index}
+                className={`${value.color} p-8 rounded-xl border-t-4 ${value.borderColor}`}
+              >
+                <span className="text-4xl font-bold text-navy/20 font-poppins">
+                  {value.number}
+                </span>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-2 mb-4">
+                  {value.title}
+                </h3>
+                <p className="text-foreground leading-relaxed mb-4">
+                  {value.description}
+                </p>
+                <p className="text-foreground/80 text-sm leading-relaxed">
+                  {value.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* R.L.P.V. - How we think */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+              How We Think
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              R.L.P.V.
+            </h2>
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
+              The Stoic operating system behind every recommendation we make.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {[
+              { letter: "R", word: "Reason", desc: "Clear, logical thinking drives every recommendation.", bg: "bg-strategic" },
+              { letter: "L", word: "Logic", desc: "Structured frameworks that produce consistent results.", bg: "bg-primary" },
+              { letter: "P", word: "Purpose", desc: "Every engagement tied to meaningful outcomes.", bg: "bg-lime" },
+              { letter: "V", word: "Virtue", desc: "Integrity and ethics at the center of our work.", bg: "bg-gold" },
+            ].map((v) => (
+              <div key={v.letter} className="bg-white rounded-xl p-6 shadow-sm">
+                <div className={`w-12 h-12 rounded-full ${v.bg} flex items-center justify-center mb-4`}>
+                  <span className="text-white font-poppins font-bold text-xl">{v.letter}</span>
+                </div>
+                <h3 className="font-poppins font-bold text-navy text-lg mb-2">{v.word}</h3>
+                <p className="text-sm text-foreground leading-relaxed">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What our work makes possible - two-column: people + org */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12 max-w-3xl mx-auto">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
               The Conditions We Build Together
             </p>
@@ -273,21 +317,48 @@ export default function OurApproach() {
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
               We do not deliver change. We build the conditions where the
-              right change becomes possible, and where your team can carry
-              it.
+              right change becomes possible, in your people and across your
+              organization.
             </p>
           </div>
-          <ul className="space-y-4 max-w-2xl mx-auto">
-            {createConditions.map((c) => (
-              <li
-                key={c}
-                className="flex items-start gap-3 bg-muted/50 rounded-lg p-4"
-              >
-                <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                <span className="text-foreground leading-relaxed">{c}</span>
-              </li>
-            ))}
-          </ul>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* What we build in people */}
+            <div className="bg-muted/40 rounded-xl p-7 border-t-4 border-gold">
+              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.15em] text-gold mb-2">
+                In your people
+              </p>
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-5">
+                Five foundational abilities.
+              </h3>
+              <ul className="space-y-3">
+                {foundationalAbilities.map((a) => (
+                  <li key={a} className="flex items-start gap-3 text-foreground leading-relaxed">
+                    <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
+                    <span>{a}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* What we build in the org */}
+            <div className="bg-muted/40 rounded-xl p-7 border-t-4 border-primary">
+              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.15em] text-primary mb-2">
+                In your organization
+              </p>
+              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-5">
+                Four conditions that hold.
+              </h3>
+              <ul className="space-y-3">
+                {createConditions.map((c) => (
+                  <li key={c} className="flex items-start gap-3 text-foreground leading-relaxed">
+                    <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 

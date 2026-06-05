@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
+import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import teamCtaPuzzles from "@/assets/team/team-cta-puzzles.jpg";
 import letsChangeImg from "@/assets/about/lets-change.png";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
@@ -81,6 +81,39 @@ export default function PPSAbout() {
         minHeightClass="min-h-[60vh]"
       />
 
+      {/* What's a Painted Porch (moved up: ground the brand right after the hero) */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="badge-strategic mb-4 inline-block bg-gold">Our Philosophy</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
+                What's a "Painted Porch"?
+              </h2>
+              <p className="text-lg text-foreground leading-relaxed mb-6">
+                In ancient Greece, philosophers gathered at the Stoa Poikile, also known as the "Painted Porch," to discuss ideas that would shape Western thought. Those Stoic principles of reason, logic, purpose, and virtue still hold up today.
+              </p>
+              <p className="text-lg text-foreground leading-relaxed mb-6">
+                We bring these timeless principles to modern business, helping leaders and teams build the mental and organizational architecture needed to navigate change successfully.
+              </p>
+              <p className="text-lg font-semibold text-primary">
+                Eudaimonia: prosperity and well-being through purposeful action.
+              </p>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src={paintedPorchImg}
+                alt="A warm painted porch with colorful Adirondack chairs in teal, lime, orange, and gold"
+                className="w-full h-full object-cover"
+                loading="lazy"
+                width={1024}
+                height={768}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* On Becoming */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-3xl mx-auto px-6 text-center">
@@ -144,30 +177,8 @@ export default function PPSAbout() {
         </div>
       </section>
 
-      {/* The Patterns We Found - breathing section */}
-      <section className="py-14 md:py-20 bg-lime">
-        <div className="container max-w-4xl mx-auto px-6">
-          <p className="text-center text-white/80 font-poppins text-sm uppercase tracking-widest mb-8">
-            The Foundational Abilities That Make Change Stick
-          </p>
-          <div className="space-y-5">
-            {[
-              "Show up strong, confident, energized, and resilient when uncertainty or change is presented",
-              "Share ideas and challenge well-worn norms and habits",
-              "Spot and solve problems proactively and openly",
-              "Work in healthy, collaborative, accountable teams",
-              "Communicate with clarity, consistency, and impact",
-            ].map((ability, i) => (
-              <div key={i} className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-gold font-poppins font-bold text-sm">{i + 1}</span>
-                </div>
-                <p className="text-white/90 text-lg leading-relaxed">{ability}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+
 
       {/* Transformation Partners Intro */}
       <section className="py-16 md:py-20 bg-white">
@@ -253,56 +264,12 @@ export default function PPSAbout() {
       {/* Trust Signals */}
       <ClientLogoMarquee />
 
-      {/* What Makes Us Different */}
-      <section className="py-12 md:py-16 bg-muted/30">
-        <div className="container max-w-6xl mx-auto px-6">
-          <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-8 text-center">
-            What Makes Us Different
-          </h3>
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-strategic flex items-center justify-center flex-shrink-0">
-                <span className="text-white text-sm font-bold">R</span>
-              </div>
-              <div>
-                <span className="font-semibold text-navy">Reason</span>
-                <p className="text-foreground text-sm">Clear, logical thinking drives every recommendation</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                <span className="text-white text-sm font-bold">L</span>
-              </div>
-              <div>
-                <span className="font-semibold text-navy">Logic</span>
-                <p className="text-foreground text-sm">Structured frameworks that produce consistent results</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-lime flex items-center justify-center flex-shrink-0">
-                <span className="text-white text-sm font-bold">P</span>
-              </div>
-              <div>
-                <span className="font-semibold text-navy">Purpose</span>
-                <p className="text-foreground text-sm">Every engagement tied to meaningful outcomes</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <div className="w-8 h-8 rounded-full bg-gold flex items-center justify-center flex-shrink-0">
-                <span className="text-white text-sm font-bold">V</span>
-              </div>
-              <div>
-                <span className="font-semibold text-navy">Virtue</span>
-                <p className="text-foreground text-sm">Integrity and ethics at the center of our work</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Response */}
-      <section className="py-16 md:py-20 bg-white">
+      {/* Bridge to How we think / How we work */}
+      <section className="py-16 md:py-20 bg-muted/30">
         <div className="container max-w-4xl mx-auto px-6 text-center">
+          <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+            How We Think + How We Work
+          </p>
           <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
             By leaning on over <span className="font-semibold text-navy">50 years of our team's combined experience</span> and real-world solutions, we developed (and continually evolve) training, coaching, and advisory programs to partner with you in taking <span className="font-semibold text-primary">definitive, purposeful action</span> to prepare yourself and others to lean in, embrace, adopt, and make change stick.
           </p>
@@ -320,64 +287,22 @@ export default function PPSAbout() {
         </div>
       </section>
 
-
-
-      {/* What's a Painted Porch */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="badge-strategic mb-4 inline-block bg-gold">Our Philosophy</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-                What's a "Painted Porch"?
-              </h2>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
-                In ancient Greece, philosophers gathered at the Stoa Poikile, also known as the "Painted Porch," to discuss ideas that would shape Western thought. Those Stoic principles of reason, logic, purpose, and virtue still hold up today.
-              </p>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
-                We bring these timeless principles to modern business, helping leaders and teams build the mental and organizational architecture needed to navigate change successfully.
-              </p>
-              <p className="text-lg font-semibold text-primary">
-                Eudaimonia: prosperity and well-being through purposeful action.
-              </p>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img
-                src={paintedPorchImg}
-                alt="A warm painted porch with colorful Adirondack chairs in teal, lime, orange, and gold"
-                className="w-full h-full object-cover"
-                loading="lazy"
-                width={1024}
-                height={768}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="relative isolate py-16 md:py-24 text-white overflow-hidden">
-        <img
-          src={teamCtaPuzzles}
-          alt="Colorful puzzle pieces interlocking, symbolizing collaboration"
-          className="absolute inset-0 w-full h-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-navy/60" />
-        <div className="container max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Start Your Transformation Journey?
-          </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            Reach out to learn more about how we can partner with you to get started.
-          </p>
-          <Link to="/contact?interest=general&message=I'd like to learn more about partnering with Painted Porch Strategies.">
-            <Button className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-5 px-8 transition-colors">
-              Contact Us
-            </Button>
-          </Link>
-        </div>
-      </section>
+      {/* Final CTA */}
+      <ParallaxCTA
+        backgroundImage={teamCtaPuzzles}
+        overlayTone="teal"
+        eyebrow="Begin"
+        headline="Ready to start your transformation journey?"
+        description="Reach out to learn more about how we can partner with you to get started."
+        actions={[
+          {
+            label: "Contact Us",
+            to: "/contact?interest=general&message=I'd like to learn more about partnering with Painted Porch Strategies.",
+            variant: "primary",
+          },
+          { label: "Find Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
+        ]}
+      />
     </div>
   );
 }
