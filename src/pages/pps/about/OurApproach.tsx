@@ -180,7 +180,7 @@ export default function OurApproach() {
         <div className="container max-w-4xl mx-auto px-6">
           <div className="text-center mb-10">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
-              The Conditions We Build
+              The Conditions We Build Together
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               What our work makes possible.
