@@ -112,7 +112,7 @@ const BurnoutResources = () => {
       </div>
 
       {/* GET PREPARED */}
-      <section id="resources-start" className="py-20 bg-background">
+      <section id="resources-start" className="py-20 bg-background scroll-mt-24">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">

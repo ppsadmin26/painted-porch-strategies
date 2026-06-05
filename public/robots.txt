@@ -5,8 +5,6 @@ Disallow: /admin/
 Disallow: /reset-password
 
 # Draft pages — hidden from search engines
-Disallow: /about/approach
-Disallow: /about/impact
 Disallow: /amy
 Disallow: /change-ready-leader-assessment
 Disallow: /change-ready-team-assessment

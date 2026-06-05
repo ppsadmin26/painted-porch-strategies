@@ -118,7 +118,7 @@ export default function StracticalLeaderGuide() {
       </section>
 
       {/* GHL FORM EMBED */}
-      <section id="get-guide" className="py-16 md:py-24 bg-muted">
+      <section id="get-guide" className="py-16 md:py-24 bg-muted scroll-mt-24">
         <div className="container max-w-xl mx-auto px-6">
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-border/40">
             <div className="text-center mb-8">
