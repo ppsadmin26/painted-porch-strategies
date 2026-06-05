@@ -259,6 +259,45 @@ export type Database = {
           },
         ]
       }
+      course_launch_status: {
+        Row: {
+          checkout_url: string | null
+          course_name: string
+          course_path: string
+          created_at: string
+          last_notify_error: string | null
+          notified_at: string | null
+          notified_count: number
+          slug: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          checkout_url?: string | null
+          course_name: string
+          course_path: string
+          created_at?: string
+          last_notify_error?: string | null
+          notified_at?: string | null
+          notified_count?: number
+          slug: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          checkout_url?: string | null
+          course_name?: string
+          course_path?: string
+          created_at?: string
+          last_notify_error?: string | null
+          notified_at?: string | null
+          notified_count?: number
+          slug?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       email_send_log: {
         Row: {
           attempt: number | null
