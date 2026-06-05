@@ -117,6 +117,11 @@ const testimonials = [
 
 // FAQ data imported from shared file
 export default function IgnitePathAlt() {
+  useDocumentSeo({
+    title: "IGNITE P.A.T.H.way | Self-Led Phase Zero | Painted Porch",
+    description: "Spark new shIFt. Build Phase Zero foundations at your own pace with IGNITE: assessments, courses, and masterclasses for change-curious leaders.",
+    ogImage: igniteHeroFlame,
+  });
   return (
     <div>
       {/* SECTION 1: HERO */}
