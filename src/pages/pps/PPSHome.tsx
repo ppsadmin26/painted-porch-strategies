@@ -326,8 +326,18 @@ export default function PPSHome() {
       {/* ============================================================ */}
       {/* Phase Zero gradient CTA                                       */}
       {/* ============================================================ */}
-      <section className="py-16 md:py-24 bg-gradient-strategic text-white">
-        <div className="container max-w-4xl mx-auto px-6 text-center">
+      <section className="relative py-16 md:py-24 text-white overflow-hidden">
+        <img
+          src={phaseZeroClarityBg}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          width={1920}
+          height={1080}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-strategic opacity-90" aria-hidden="true" />
+        <div className="relative z-10 container max-w-4xl mx-auto px-6 text-center">
           <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
             Phase Zero
           </span>
