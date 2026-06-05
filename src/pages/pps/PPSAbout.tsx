@@ -81,6 +81,39 @@ export default function PPSAbout() {
         minHeightClass="min-h-[60vh]"
       />
 
+      {/* What's a Painted Porch (moved up: ground the brand right after the hero) */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="badge-strategic mb-4 inline-block bg-gold">Our Philosophy</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
+                What's a "Painted Porch"?
+              </h2>
+              <p className="text-lg text-foreground leading-relaxed mb-6">
+                In ancient Greece, philosophers gathered at the Stoa Poikile, also known as the "Painted Porch," to discuss ideas that would shape Western thought. Those Stoic principles of reason, logic, purpose, and virtue still hold up today.
+              </p>
+              <p className="text-lg text-foreground leading-relaxed mb-6">
+                We bring these timeless principles to modern business, helping leaders and teams build the mental and organizational architecture needed to navigate change successfully.
+              </p>
+              <p className="text-lg font-semibold text-primary">
+                Eudaimonia: prosperity and well-being through purposeful action.
+              </p>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src={paintedPorchImg}
+                alt="A warm painted porch with colorful Adirondack chairs in teal, lime, orange, and gold"
+                className="w-full h-full object-cover"
+                loading="lazy"
+                width={1024}
+                height={768}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* On Becoming */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-3xl mx-auto px-6 text-center">
