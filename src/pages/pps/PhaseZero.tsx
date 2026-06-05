@@ -126,7 +126,7 @@ const wherePhaseZeroLeads = [
   {
     icon: Route,
     title: "Your P.A.T.H.way",
-    body: "A short quiz that points you to the right starting place: IGNITE, AMPLIFY, or EMBODY.",
+    body: "A short quiz that points you to the right starting place on your P.A.T.H.",
     to: "/start-here",
     cta: "Find Your P.A.T.H.way",
     accent: "text-primary",
