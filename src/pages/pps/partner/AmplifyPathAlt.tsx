@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Users, User, Landmark, Link2, AlertTriangle, Radio, Crosshair } from "lucide-react";
 import amplifyHeroImage from "@/assets/amplify-hero-lightbulb-v3.jpg";
