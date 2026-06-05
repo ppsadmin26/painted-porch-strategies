@@ -381,7 +381,7 @@ export default function AmplifyWorkshops() {
                         ))}
                       </ul>
                     </div>
-                    <p className="text-xs text-foreground/70 italic mt-4">No Blue Door required</p>
+                    <p className="text-xs text-foreground/70 italic mt-4">No <span className="font-bold text-bluedoor">Blue Door</span> required</p>
                   </div>
                 );
               })}
