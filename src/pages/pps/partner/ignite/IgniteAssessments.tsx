@@ -51,6 +51,7 @@ const assessments = [
     description: "You came without an instruction manual. Performance DNA creates it. Discover your unique success formula—what makes you extraordinary at work and in life—by decoding your natural strengths, decision patterns, work preferences, and conditions where you excel.",
     investment: "Starting at $69 | Team pricing available",
     link: "#",
+    launchSlug: "performance-dna",
     color: "bg-lime/10",
     borderColor: "border-lime",
     iconColor: "text-lime",
@@ -58,7 +59,23 @@ const assessments = [
     hoverBg: "hover:bg-lime",
     icon: "dna",
   },
+  {
+    title: "Shift Architect",
+    subtitle: "Change Leadership Capacity",
+    tagline: "Reveal Your Capacity to Architect Change",
+    description: "Most leaders learn change the hard way—mid-crisis, mid-implementation. Shift Architect surfaces how you currently think about, prepare for, and lead through change so you can build the strategic capacity required to architect transformation instead of react to it.",
+    investment: "Coming Soon | Pricing TBD",
+    link: "#",
+    launchSlug: "shift-architect",
+    color: "bg-strategic/10",
+    borderColor: "border-strategic",
+    iconColor: "text-strategic",
+    pillColor: "bg-strategic text-white",
+    hoverBg: "hover:bg-strategic",
+    icon: "shift-architect",
+  },
 ];
+
 
 function AssessmentIcon({ icon }: { icon: string }) {
   const iconClass = "w-8 h-8";
