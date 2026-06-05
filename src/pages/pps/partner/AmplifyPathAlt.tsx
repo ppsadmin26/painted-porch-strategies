@@ -194,6 +194,11 @@ const whatAmplifyEnables = [
 ];
 
 export default function AmplifyPathAlt() {
+  useDocumentSeo({
+    title: "AMPLIFY P.A.T.H.way | 90-Day Sprints | Painted Porch Strategies",
+    description: "Boost momentum that aligns, activates, and accelerates your team's next shIFt. AMPLIFY pairs Phase Zero work with focused 90-day partnership sprints.",
+    ogImage: amplifyHeroImage,
+  });
   return (
     <div>
       {/* SECTION 1: HERO */}
