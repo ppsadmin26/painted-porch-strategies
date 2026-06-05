@@ -277,7 +277,7 @@ export default function MasterYourMessage() {
                   <p className="text-charcoal leading-relaxed mb-6">
                     Hi, I'm Rob. And I love words. Not just any words, though…ones that create connection and meaningful, lasting impact. Over my 25+ yr. career as a radio broadcaster, I've learned that communication is the most important — yet underrated — skill. When you communicate effectively, you will master your influence and inspire others.
                   </p>
-                  <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal/10 font-poppins font-semibold rounded-lg">
+                  <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal hover:text-white font-poppins font-semibold rounded-lg">
                     <Link to="/rob">More About Rob <ArrowRight className="ml-2 h-4 w-4" /></Link>
                   </Button>
                 </div>
