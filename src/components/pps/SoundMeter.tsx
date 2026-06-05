@@ -84,7 +84,7 @@ export const SoundMeter = ({
               <span
                 key={s}
                 className="sm-seg"
-                style={{ color: c, opacity: 0.16 }}
+                style={{ color: c, opacity: 0.28 }}
               />
             ))}
           </div>
@@ -105,7 +105,7 @@ export const SoundMeter = ({
               <span
                 key={s}
                 className="sm-seg"
-                style={{ color: c, boxShadow: `0 0 3px ${c}` }}
+                style={{ color: c, boxShadow: `0 0 6px ${c}, 0 0 12px ${c}` }}
               />
             ))}
           </div>
