@@ -173,7 +173,7 @@ export default function AmplifySprints() {
               <div>
                 <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-2">Strategic Sprint Investment</h2>
                 <p className="text-3xl font-bold text-lime mb-4">Starting at $36,000</p>
-                <p className="text-sm text-foreground">(based on scope and timeline; Prerequisite: Blue Door)</p>
+                <p className="text-sm text-foreground">(based on scope and timeline; Prerequisite: <span className="font-bold text-bluedoor">Blue Door</span>)</p>
               </div>
               <div className="bg-white p-6 rounded-lg">
                 <p className="text-sm font-semibold text-navy mb-3">Includes:</p>
