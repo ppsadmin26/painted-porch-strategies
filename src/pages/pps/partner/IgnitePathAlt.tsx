@@ -416,9 +416,10 @@ export default function IgnitePathAlt() {
               <p className="text-xs text-muted-foreground italic mb-4">
                 Best for: Leaders ready for community engagement or team development
               </p>
-              <Button asChild className="bg-transparent border-2 border-strategic text-strategic hover:bg-strategic hover:text-white w-full transition-colors">
+              <Button asChild className="bg-transparent border-2 border-strategic text-strategic hover:bg-strategic hover:text-white w-full transition-colors text-sm px-2">
                   <Link to="/partner/amplify">Explore AMPLIFY <ArrowRight className="ml-2 w-4 h-4" /></Link>
                 </Button>
+
             </div>
 
             {/* Path 3: Open the Blue Door */}
