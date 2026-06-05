@@ -287,7 +287,7 @@ export default function IgnitePathAlt() {
             </div>
 
             {/* Column 3: Masterclasses */}
-            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col min-w-0">
+            <div className="bg-white p-6 lg:p-8 rounded-xl shadow-sm flex flex-col min-w-0">
               <div className="w-12 h-12 rounded-full bg-strategic/10 flex items-center justify-center mb-4">
                 <Video className="w-6 h-6 text-strategic" />
               </div>
