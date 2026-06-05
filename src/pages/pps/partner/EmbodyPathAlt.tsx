@@ -728,7 +728,7 @@ export default function EmbodyPathAlt() {
               "Continual Transformation Is Now Ours to Lead."
             </h2>
             <p className="text-lg text-foreground mb-4">
-              <strong className="text-gold">That's the EMBODY outcome.</strong> But not every organization is ready for it yet.
+              <strong className="text-navy">That's the <span className="text-navy">EMBODY</span> outcome.</strong> But not every organization is ready for it yet.
             </p>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
               Some need to start with IGNITE (individual capacity). Some need AMPLIFY first (team alignment). Some need to build organizational readiness before deep partnership makes sense.
