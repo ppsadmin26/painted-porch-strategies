@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useUserRole } from "@/hooks/useUserRole";
@@ -8,20 +8,15 @@ import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Trash2, FileWarning, RefreshCw } from "lucide-react";
+import { Plus, Trash2, FileWarning, RefreshCw, Search, Sparkles } from "lucide-react";
 import { collectSitemapPaths } from "@/pages/pps/Sitemap";
 import { supabase } from "@/integrations/supabase/client";
+import PageSeoEditorDialog from "@/components/pps/admin/PageSeoEditorDialog";
 
 /**
- * Admin-only manager for page publish status. Lets admins:
- *   - See every override in the page_status table at a glance
- *   - Flip Live/Draft with a switch
- *   - Edit the optional internal note
- *   - Add a brand-new override for any path (e.g. an in-progress URL)
- *   - Remove an override entirely (page reverts to Live default)
- *
- * The sitemap (/sitemap) shows the same controls inline. This page is a
- * focused, scrollable list when you have many drafts to manage.
+ * Admin-only manager for page publish status + per-page SEO overrides.
+ * Status (Live/Draft) lives in `page_status`; SEO overrides live in `page_seo`.
+ * Either can be edited per route, independently.
  */
 export default function PageStatusManager() {
   const { user, loading: authLoading } = useAuth();
@@ -34,11 +29,27 @@ export default function PageStatusManager() {
   const [adding, setAdding] = useState(false);
   const [syncing, setSyncing] = useState(false);
 
+  const [seoPaths, setSeoPaths] = useState<Set<string>>(new Set());
+  const [seoEditPath, setSeoEditPath] = useState<string | null>(null);
+  const [pageSearch, setPageSearch] = useState("");
+
+  const loadSeoPaths = async () => {
+    const { data } = await supabase.from("page_seo").select("path");
+    if (data) setSeoPaths(new Set(data.map((r) => r.path)));
+  };
+  useEffect(() => {
+    loadSeoPaths();
+  }, []);
+
+  const sitemapPaths = useMemo(
+    () => collectSitemapPaths().filter((p) => !p.startsWith("/admin")),
+    [],
+  );
+
   const syncFromSitemap = async () => {
     setSyncing(true);
     try {
-      const paths = collectSitemapPaths().filter((p) => !p.startsWith("/admin"));
-      const missing = paths.filter((p) => !map[p]);
+      const missing = sitemapPaths.filter((p) => !map[p]);
       if (missing.length === 0) {
         toast({ title: "Already in sync", description: "Every sitemap route has a row." });
         return;
@@ -72,6 +83,12 @@ export default function PageStatusManager() {
     [map],
   );
 
+  const filteredSitemap = useMemo(() => {
+    const q = pageSearch.trim().toLowerCase();
+    if (!q) return sitemapPaths;
+    return sitemapPaths.filter((p) => p.toLowerCase().includes(q));
+  }, [sitemapPaths, pageSearch]);
+
   if (authLoading || roleLoading) return null;
   if (!user) return <Navigate to="/admin/login" replace />;
   if (!isAdmin) {
@@ -83,8 +100,8 @@ export default function PageStatusManager() {
             <div>
               <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-pps-navy mb-1">Admins only</h2>
               <p className="font-montserrat text-sm text-pps-charcoal">
-                Page status changes are limited to admin accounts. Reach out to an admin if you
-                need a page flipped between Live and Draft.
+                Page status and SEO changes are limited to admin accounts. Reach out to an admin if you
+                need a page flipped between Live and Draft, or its SEO updated.
               </p>
             </div>
           </div>
@@ -130,12 +147,12 @@ export default function PageStatusManager() {
     <div className="p-6 max-w-4xl mx-auto">
       <div className="mb-8 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
         <div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-pps-navy">Page Status</h1>
-          <p className="text-sm text-muted-foreground mt-1">
-            Mark pages as Live or Draft. Drafts are hidden from navigation and
-            footer, replaced with a "Coming Soon" badge on cards and CTAs that
-            link to them, and show a friendly Coming Soon page if visited
-            directly. Signed-in admins and editors still see everything.
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-pps-navy">Pages</h1>
+          <p className="text-sm text-muted-foreground mt-1 max-w-2xl">
+            Manage page publish status and per-page SEO. Drafts hide pages from
+            navigation and replace CTAs with a Coming Soon badge. SEO overrides
+            replace the hardcoded title, description, OG tags, canonical, and
+            JSON-LD on the public page.
           </p>
         </div>
         <Button
@@ -151,7 +168,7 @@ export default function PageStatusManager() {
 
       <Card className="p-5 mb-6">
         <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-pps-navy mb-3">
-          Add a new override
+          Add a new status override
         </h2>
         <div className="flex flex-col sm:flex-row gap-2">
           <Input
@@ -172,15 +189,14 @@ export default function PageStatusManager() {
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
           Tip: every new URL is Draft by default. Flip it to Live here (or on the
-          sitemap) when it's ready for the public. Admin, auth, and sitemap
-          routes stay Live automatically.
+          sitemap) when it's ready for the public.
         </p>
       </Card>
 
       <div className="mb-3 flex items-center justify-between">
         <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-pps-navy">
-          Overrides {overrides.length > 0 && (
-            <span className="text-muted-foreground font-normal">
+          Status overrides {overrides.length > 0 && (
+            <span className="text-muted-foreground font-normal text-base">
               ({draftCount} draft, {overrides.length - draftCount} live)
             </span>
           )}
@@ -193,13 +209,13 @@ export default function PageStatusManager() {
       {loading ? (
         <p className="text-sm text-muted-foreground">Loading…</p>
       ) : overrides.length === 0 ? (
-        <Card className="p-6 text-center">
+        <Card className="p-6 text-center mb-10">
           <p className="font-montserrat text-sm text-pps-charcoal">
-            No overrides yet. Every page on the site is currently Live.
+            No status overrides yet. Every page on the site is currently Live.
           </p>
         </Card>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-2 mb-10">
           {overrides.map((entry) => (
             <Card key={entry.id} className="p-4">
               <div className="flex flex-col sm:flex-row sm:items-center gap-3">
@@ -220,6 +236,11 @@ export default function PageStatusManager() {
                     >
                       {entry.status}
                     </span>
+                    {seoPaths.has(entry.path) && (
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-poppins font-semibold bg-pps-teal/10 text-pps-teal border border-pps-teal/30">
+                        SEO
+                      </span>
+                    )}
                   </div>
                   <NoteEditor
                     initial={entry.note ?? ""}
@@ -229,7 +250,14 @@ export default function PageStatusManager() {
                     }}
                   />
                 </div>
-                <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+                <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setSeoEditPath(entry.path)}
+                  >
+                    <Sparkles className="w-3.5 h-3.5 mr-1" /> SEO
+                  </Button>
                   <label className="flex items-center gap-2 text-xs text-pps-charcoal">
                     <span>Draft</span>
                     <Switch
@@ -260,6 +288,79 @@ export default function PageStatusManager() {
           ))}
         </div>
       )}
+
+      {/* ============= SEO browser for every sitemap page ============= */}
+      <div className="mb-3 flex items-center justify-between">
+        <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-pps-navy">
+          SEO by page{" "}
+          <span className="text-muted-foreground font-normal text-base">
+            ({seoPaths.size} customized)
+          </span>
+        </h2>
+      </div>
+      <Card className="p-4 mb-3">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input
+            value={pageSearch}
+            onChange={(e) => setPageSearch(e.target.value)}
+            placeholder="Search routes (e.g. /partner)"
+            className="pl-9"
+          />
+        </div>
+      </Card>
+      <Card className="divide-y max-h-[480px] overflow-y-auto">
+        {filteredSitemap.length === 0 ? (
+          <p className="p-6 text-sm text-muted-foreground text-center">No matching routes.</p>
+        ) : (
+          filteredSitemap.map((path) => {
+            const hasSeo = seoPaths.has(path);
+            const statusEntry = map[path];
+            return (
+              <div key={path} className="flex items-center gap-3 px-4 py-2.5">
+                <div className="flex-1 min-w-0 flex items-center gap-2 flex-wrap">
+                  <Link
+                    to={path}
+                    className="font-poppins text-sm text-pps-navy hover:text-pps-teal hover:underline truncate"
+                  >
+                    {path}
+                  </Link>
+                  {statusEntry?.status === "draft" && (
+                    <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-poppins font-bold uppercase tracking-wide bg-pps-gold/20 text-pps-navy border border-pps-gold/40">
+                      draft
+                    </span>
+                  )}
+                  {hasSeo && (
+                    <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-poppins font-semibold bg-pps-teal/10 text-pps-teal border border-pps-teal/30">
+                      SEO set
+                    </span>
+                  )}
+                </div>
+                <Button
+                  variant={hasSeo ? "outline" : "ghost"}
+                  size="sm"
+                  onClick={() => setSeoEditPath(path)}
+                  className="shrink-0"
+                >
+                  <Sparkles className="w-3.5 h-3.5 mr-1" />
+                  {hasSeo ? "Edit SEO" : "Add SEO"}
+                </Button>
+              </div>
+            );
+          })
+        )}
+      </Card>
+
+      <PageSeoEditorDialog
+        path={seoEditPath}
+        open={seoEditPath !== null}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSeoEditPath(null);
+            loadSeoPaths();
+          }
+        }}
+      />
     </div>
   );
 }
