@@ -368,7 +368,7 @@ export default function EmbodyPathAlt() {
 
           {/* Outcome seeking */}
           <div className="bg-lime/10 border-l-4 border-lime p-6 rounded-r-xl mb-12">
-            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-lime mb-2">The EMBODY outcome you're seeking:</h3>
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold text-lime mb-2">The <span className="text-navy">EMBODY</span> outcome you're seeking:</h3>
             <p className="text-lg text-foreground italic mb-2">
               "We've built the internal structures and culture to architect and execute sustainable change—continual transformation is now ours to lead."
             </p>
@@ -728,7 +728,7 @@ export default function EmbodyPathAlt() {
               "Continual Transformation Is Now Ours to Lead."
             </h2>
             <p className="text-lg text-foreground mb-4">
-              <strong className="text-gold">That's the EMBODY outcome.</strong> But not every organization is ready for it yet.
+              <strong className="text-navy">That's the <span className="text-navy">EMBODY</span> outcome.</strong> But not every organization is ready for it yet.
             </p>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
               Some need to start with IGNITE (individual capacity). Some need AMPLIFY first (team alignment). Some need to build organizational readiness before deep partnership makes sense.

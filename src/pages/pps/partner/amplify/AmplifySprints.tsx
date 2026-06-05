@@ -173,7 +173,7 @@ export default function AmplifySprints() {
               <div>
                 <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-2">Strategic Sprint Investment</h2>
                 <p className="text-3xl font-bold text-lime mb-4">Starting at $36,000</p>
-                <p className="text-sm text-foreground">(based on scope and timeline; Prerequisite: Blue Door)</p>
+                <p className="text-sm text-foreground">(based on scope and timeline; Prerequisite: <span className="font-bold text-bluedoor">Blue Door</span>)</p>
               </div>
               <div className="bg-white p-6 rounded-lg">
                 <p className="text-sm font-semibold text-navy mb-3">Includes:</p>
@@ -196,14 +196,14 @@ export default function AmplifySprints() {
           </div>
 
           {/* Blue Door Callout */}
-          <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div className="bg-bluedoor/5 border border-bluedoor/20 rounded-xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <Info className="w-5 h-5 text-primary" />
-                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">About The Blue Door</h3>
+                <Info className="w-5 h-5 text-bluedoor" />
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">About The <span className="text-bluedoor">Blue Door</span></h3>
               </div>
               <p className="text-sm text-foreground mb-2">
-                The Blue Door is our strategic appraisal (less than 30 minutes) that reveals where your organization stands on the path to transformation—and what's blocking progress.
+                The <span className="font-bold text-bluedoor">Blue Door</span> is our strategic appraisal (less than 30 minutes) that reveals where your organization stands on the path to transformation—and what's blocking progress.
               </p>
               <p className="text-sm text-foreground/70 italic mb-3">
                 Required for Strategic Sprints and workshops. Not needed for Leadership Labs.

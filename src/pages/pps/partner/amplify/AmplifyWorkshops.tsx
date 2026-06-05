@@ -249,11 +249,11 @@ export default function AmplifyWorkshops() {
           <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 md:pr-12 flex flex-col md:flex-row items-start md:items-center gap-6 mb-12">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <Info className="w-5 h-5 text-primary" />
-                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy whitespace-nowrap">Authoring Your Next Sh<span className="text-raspberry">IF</span>t Begins At the Blue Door</h3>
+                <Info className="w-5 h-5 text-bluedoor" />
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy whitespace-nowrap">Authoring Your Next Sh<span className="text-raspberry">IF</span>t Begins At the <span className="text-bluedoor">Blue Door</span></h3>
               </div>
               <p className="text-sm text-foreground mb-2 mt-4">
-                The Blue Door is our organizational appraisal (less than 30 minutes) that reveals where your business and leadership stands on the path to transformation so that you can lead with clarity and build with confidence.
+                The <span className="font-bold text-bluedoor">Blue Door</span> is our organizational appraisal (less than 30 minutes) that reveals where your business and leadership stands on the path to transformation so that you can lead with clarity and build with confidence.
               </p>
               <p className="text-sm text-foreground/70 italic mb-3">
                 Required for Strategic Sprints and workshops. Not needed for Leadership Labs.
@@ -381,7 +381,7 @@ export default function AmplifyWorkshops() {
                         ))}
                       </ul>
                     </div>
-                    <p className="text-xs text-foreground/70 italic mt-4">No Blue Door required</p>
+                    <p className="text-xs text-foreground/70 italic mt-4">No <span className="font-bold text-bluedoor">Blue Door</span> required</p>
                   </div>
                 );
               })}

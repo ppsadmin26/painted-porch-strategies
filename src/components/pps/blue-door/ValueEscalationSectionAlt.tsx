@@ -137,15 +137,15 @@ export default function ValueEscalationSectionAlt() {
             <p className="font-poppins font-semibold text-gold text-base mb-3">Three Engagement P.A.T.H.ways:</p>
             <div className="space-y-3 text-base">
               <div>
-                <p className="font-bold text-foreground text-sm">🔥 IGNITE - Light the spark. Prove it works.</p>
+                <p className="font-bold text-foreground text-sm">🔥 <span className="text-gold">IGNITE</span> - Light the spark. Prove it works.</p>
                 <p className="text-foreground text-xs mt-0.5">Self-led tools, frameworks, masterclasses.</p>
               </div>
               <div>
-                <p className="font-bold text-foreground text-sm">🚀 AMPLIFY - Boost momentum that compounds.</p>
+                <p className="font-bold text-foreground text-sm">🚀 <span className="text-strategic">AMPLIFY</span> - Boost momentum that compounds.</p>
                 <p className="text-foreground text-xs mt-0.5">Workshops, team sprints, strategic cohorts.</p>
               </div>
               <div>
-                <p className="font-bold text-foreground text-sm">🏛️ EMBODY - Build transformation that lasts.</p>
+                <p className="font-bold text-foreground text-sm">🏛️ <span className="text-navy">EMBODY</span> - Build transformation that lasts.</p>
                 <p className="text-foreground text-xs mt-0.5">6-12+ month embedded partnership.</p>
               </div>
             </div>

@@ -54,7 +54,7 @@ export default function InvestmentSectionAlt() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-strategic flex-shrink-0 mt-0.5" />
-                <span className="text-foreground">Executive Blue Door Brief delivered via email</span>
+                <span className="text-foreground">Executive <span className="font-bold text-bluedoor">Blue Door</span> Brief delivered via email</span>
               </li>
             </ul>
           </div>
