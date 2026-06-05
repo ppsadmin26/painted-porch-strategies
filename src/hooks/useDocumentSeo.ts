@@ -1,4 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import { getCurrentPageUrl, getSiteUrl, toAbsoluteSiteUrl } from "@/lib/site-url";
 
 type SeoConfig = {
@@ -12,6 +14,18 @@ type SeoConfig = {
   ogType?: string;
   ogImage?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+};
+
+type SeoOverride = {
+  title: string | null;
+  description: string | null;
+  og_title: string | null;
+  og_description: string | null;
+  og_image: string | null;
+  canonical: string | null;
+  keywords: string[] | null;
+  robots: string | null;
+  jsonld: Record<string, unknown> | Record<string, unknown>[] | null;
 };
 
 const DEFAULT_SEO = {
@@ -77,6 +91,44 @@ function upsertJsonLd(jsonLd?: SeoConfig["jsonLd"]) {
   script.textContent = JSON.stringify(payload.length === 1 ? payload[0] : payload);
 }
 
+// Tiny in-memory cache so we don't refetch the same path on every nav.
+const overrideCache = new Map<string, SeoOverride | null>();
+
+function useSeoOverride(pathname: string): SeoOverride | null {
+  const [override, setOverride] = useState<SeoOverride | null>(
+    overrideCache.has(pathname) ? overrideCache.get(pathname)! : null,
+  );
+
+  useEffect(() => {
+    let cancelled = false;
+    if (overrideCache.has(pathname)) {
+      setOverride(overrideCache.get(pathname)!);
+      return;
+    }
+    supabase
+      .from("page_seo")
+      .select("title,description,og_title,og_description,og_image,canonical,keywords,robots,jsonld")
+      .eq("path", pathname)
+      .maybeSingle()
+      .then(({ data }) => {
+        const value = (data as SeoOverride | null) ?? null;
+        overrideCache.set(pathname, value);
+        if (!cancelled) setOverride(value);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [pathname]);
+
+  return override;
+}
+
+/** Clear cached SEO overrides — call after admin edits so the live site picks up changes. */
+export function invalidateSeoOverrideCache(pathname?: string) {
+  if (pathname) overrideCache.delete(pathname);
+  else overrideCache.clear();
+}
+
 export function useDocumentSeo({
   title,
   description,
@@ -89,38 +141,66 @@ export function useDocumentSeo({
   ogImage,
   jsonLd,
 }: SeoConfig) {
+  const location = useLocation();
+  const override = useSeoOverride(location.pathname);
+
   useEffect(() => {
     const defaultSeo = getDefaultSeo();
-    const resolvedCanonical = canonical ? toAbsoluteSiteUrl(canonical) : defaultSeo.canonical;
-    const resolvedOgImage = ogImage ? toAbsoluteSiteUrl(ogImage) : defaultSeo.ogImage;
 
-    document.title = title || defaultSeo.title;
+    // Resolution order: DB override > inline hook arg > default
+    const resolvedTitle = override?.title || title || defaultSeo.title;
+    const resolvedDescription = override?.description || description || defaultSeo.description;
+    const resolvedOgTitle = override?.og_title || ogTitle || resolvedTitle;
+    const resolvedOgDescription =
+      override?.og_description || ogDescription || resolvedDescription;
+    const resolvedOgType = ogType || defaultSeo.ogType;
+    const resolvedKeywords = override?.keywords?.length
+      ? override.keywords
+      : keywords?.length
+        ? keywords
+        : null;
+    const resolvedRobots = override?.robots || robots || defaultSeo.robots;
+    const resolvedJsonLd = override?.jsonld ?? jsonLd;
 
-    setMeta("name", "description", description || defaultSeo.description);
-    setMeta("name", "keywords", keywords?.length ? keywords.join(", ") : "");
-    setMeta("name", "robots", robots || defaultSeo.robots);
-    setMeta("property", "og:title", ogTitle || title || defaultSeo.ogTitle);
-    setMeta(
-      "property",
-      "og:description",
-      ogDescription || description || defaultSeo.ogDescription,
-    );
-    setMeta("property", "og:type", ogType || defaultSeo.ogType);
+    const canonicalSource = override?.canonical || canonical;
+    const resolvedCanonical = canonicalSource
+      ? toAbsoluteSiteUrl(canonicalSource)
+      : defaultSeo.canonical;
+
+    const ogImageSource = override?.og_image || ogImage;
+    const resolvedOgImage = ogImageSource ? toAbsoluteSiteUrl(ogImageSource) : defaultSeo.ogImage;
+
+    document.title = resolvedTitle;
+
+    setMeta("name", "description", resolvedDescription);
+    setMeta("name", "keywords", resolvedKeywords ? resolvedKeywords.join(", ") : "");
+    setMeta("name", "robots", resolvedRobots);
+    setMeta("property", "og:title", resolvedOgTitle);
+    setMeta("property", "og:description", resolvedOgDescription);
+    setMeta("property", "og:type", resolvedOgType);
     setMeta("property", "og:image", resolvedOgImage);
     setMeta("property", "og:url", resolvedCanonical);
-    setMeta("name", "twitter:title", ogTitle || title || defaultSeo.ogTitle);
-    setMeta(
-      "name",
-      "twitter:description",
-      ogDescription || description || defaultSeo.ogDescription,
-    );
+    setMeta("name", "twitter:title", resolvedOgTitle);
+    setMeta("name", "twitter:description", resolvedOgDescription);
     setMeta("name", "twitter:image", resolvedOgImage);
     setLink("canonical", resolvedCanonical);
-    upsertJsonLd(jsonLd);
+    upsertJsonLd(resolvedJsonLd ?? undefined);
 
     return () => {
       const jsonLdScript = document.head.querySelector('script[data-lovable-seo="json-ld"]');
       jsonLdScript?.remove();
     };
-  }, [title, description, keywords, canonical, robots, ogTitle, ogDescription, ogType, ogImage, jsonLd]);
+  }, [
+    title,
+    description,
+    keywords,
+    canonical,
+    robots,
+    ogTitle,
+    ogDescription,
+    ogType,
+    ogImage,
+    jsonLd,
+    override,
+  ]);
 }
