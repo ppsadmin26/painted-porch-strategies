@@ -29,6 +29,7 @@ import { template as courseLaunchList } from './course-launch-list.tsx'
 import { template as courseLaunchAvailable } from './course-launch-available.tsx'
 import { template as refundRequestConfirmation } from './refund-request-confirmation.tsx'
 import { template as refundRequestNotification } from './refund-request-notification.tsx'
+import { template as refundRequestProcessed } from './refund-request-processed.tsx'
 
 export const TEMPLATES: Record<string, TemplateEntry> = {
   'contact-confirmation': contactConfirmation,
@@ -51,4 +52,5 @@ export const TEMPLATES: Record<string, TemplateEntry> = {
   'course-launch-available': courseLaunchAvailable,
   'refund-request-confirmation': refundRequestConfirmation,
   'refund-request-notification': refundRequestNotification,
+  'refund-request-processed': refundRequestProcessed,
 }
