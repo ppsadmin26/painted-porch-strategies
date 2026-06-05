@@ -104,13 +104,13 @@ const pillars = [
   },
 ];
 
-const essentialElements = [
-  "Communication",
-  "Collaboration",
-  "Clarity",
-  "Resilience",
-  "Alignment",
-  "Organizational Health",
+const essentialElements: { label: string; href: string }[] = [
+  { label: "Communication", href: "/communication" },
+  { label: "Collaboration", href: "/extraordinary-teams" },
+  { label: "Clarity", href: "/blue-door" },
+  { label: "Resilience", href: "/radical-mindfulness" },
+  { label: "Alignment", href: "/working-genius" },
+  { label: "Organizational Health", href: "/eq" },
 ];
 
 const wherePhaseZeroLeads = [
