@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Heart, Brain, BookOpen, Users, Star, Check, Bell } from "lucide-react";
 import { CourseLaunchListDialog } from "@/components/pps/CourseLaunchListDialog";
+import { useCourseLaunchStatus } from "@/hooks/useCourseLaunchStatus";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
@@ -82,6 +83,7 @@ const pricingTiers = [
 
 export default function RadicalMindfulness() {
   const [launchOpen, setLaunchOpen] = useState(false);
+  const { isLive, data: launch } = useCourseLaunchStatus("radical-mindfulness");
   return (
     <div>
       <CourseLaunchListDialog
@@ -325,28 +327,38 @@ export default function RadicalMindfulness() {
                       </li>
                     ))}
                   </ul>
-                  <Button disabled className="w-full mt-auto font-poppins font-semibold rounded-lg bg-gray-300 text-gray-600 cursor-not-allowed">
-                    {tier.cta}
-                  </Button>
+                  {isLive && launch?.checkout_url ? (
+                    <Button asChild className="w-full mt-auto font-poppins font-semibold rounded-lg bg-pps-teal text-white hover:bg-pps-teal/90">
+                      <a href={launch.checkout_url} target="_blank" rel="noreferrer">
+                        {tier.cta} <ArrowRight className="ml-2 h-4 w-4" />
+                      </a>
+                    </Button>
+                  ) : (
+                    <Button disabled className="w-full mt-auto font-poppins font-semibold rounded-lg bg-gray-300 text-gray-600 cursor-not-allowed">
+                      {tier.cta}
+                    </Button>
+                  )}
                 </div>
               </AnimatedSection>
             ))}
           </div>
 
-          {/* Launch list note */}
-          <AnimatedSection>
-            <div className="mt-10 max-w-3xl mx-auto text-center bg-pps-teal/5 border border-pps-teal/20 rounded-2xl p-6 md:p-8">
-              <p className="text-charcoal leading-relaxed mb-5">
-                Our courses will be re-launching soon as we move our learning and community to a new course platform. If you'd like to be the first to know when <strong>Radical Mindfulness</strong> is ready, join our launch list.
-              </p>
-              <Button
-                onClick={() => setLaunchOpen(true)}
-                className="bg-gold border-2 border-gold text-pps-navy font-poppins font-semibold hover:bg-transparent hover:text-gold transition-colors"
-              >
-                Join the Launch List <Bell className="ml-2 w-4 h-4" />
-              </Button>
-            </div>
-          </AnimatedSection>
+          {/* Launch list note (hidden once the course is live) */}
+          {!isLive && (
+            <AnimatedSection>
+              <div className="mt-10 max-w-3xl mx-auto text-center bg-pps-teal/5 border border-pps-teal/20 rounded-2xl p-6 md:p-8">
+                <p className="text-charcoal leading-relaxed mb-5">
+                  Our courses will be re-launching soon as we move our learning and community to a new course platform. If you'd like to be the first to know when <strong>Radical Mindfulness</strong> is ready, join our launch list.
+                </p>
+                <Button
+                  onClick={() => setLaunchOpen(true)}
+                  className="bg-gold border-2 border-gold text-pps-navy font-poppins font-semibold hover:bg-transparent hover:text-gold transition-colors"
+                >
+                  Join the Launch List <Bell className="ml-2 w-4 h-4" />
+                </Button>
+              </div>
+            </AnimatedSection>
+          )}
         </div>
       </section>
 
