@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PartnershipPromise from "@/components/pps/PartnershipPromise";
 import { Building2, Compass, Brain, ArrowRight, CheckCircle, DoorOpen, Route, Users } from "lucide-react";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { useScrollAnimation, getAnimationClasses } from "@/hooks/useScrollAnimation";
@@ -445,6 +446,7 @@ export default function PhaseZero() {
           { label: "Find Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
         ]}
       />
+      <PartnershipPromise />
     </div>
   );
 }
