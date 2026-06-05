@@ -281,7 +281,7 @@ export default function RadicalMindfulness() {
                   <p className="text-charcoal leading-relaxed mb-6">
                     Middle of the road is for painted lines…I'm that zany, madcap person in your life who makes animal noises, breaks out into song, and will help you balance your energy. I've taught yoga for 10+ years, traveled all 50 states, and as an early childhood development guide and mom, my true life purpose is to help everyone I cross paths with lead a more joyful, authentic life.
                   </p>
-                  <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal/10 font-poppins font-semibold rounded-lg">
+                  <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal hover:text-white font-poppins font-semibold rounded-lg">
                     <Link to="/sierra">More About Sierra <ArrowRight className="ml-2 h-4 w-4" /></Link>
                   </Button>
                 </div>
