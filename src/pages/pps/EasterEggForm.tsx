@@ -303,7 +303,7 @@ const EasterEggForm = () => {
               Thanks for actually reading the fine print. That's a more radical act than it sounds.
             </p>
             <p className="text-muted-foreground text-sm italic">
-             , The Painted Porch
+              The Painted Porch
             </p>
           </div>
         )}
