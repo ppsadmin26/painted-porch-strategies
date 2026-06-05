@@ -179,7 +179,7 @@ export default function OurApproach() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-4xl mx-auto px-6">
           <div className="text-center mb-10">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
               The Conditions We Build Together
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
