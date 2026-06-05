@@ -56,7 +56,7 @@ const EasterEggForm = () => {
     setSubmitting(true);
     try {
       const [firstName, ...rest] = data.name.trim().split(/\s+/);
-      const lastName = rest.join(" ") || "—";
+      const lastName = rest.join(" ") || "Unknown";
 
       const charityWebsite = data.charityWebsite?.trim() || "";
 

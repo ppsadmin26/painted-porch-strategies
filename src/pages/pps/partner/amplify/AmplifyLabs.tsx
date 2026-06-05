@@ -14,7 +14,7 @@ const labFaqCategories: FAQCategory[] = [
       },
       {
         question: "How do I know if a Leadership Lab is right for me?",
-        answer: "Leadership Labs are designed for individual leaders ready to deepen their transformation capacity through peer learning—whether you're developing yourself before bringing concepts to your team or investing in your own leadership independent of organizational initiatives.",
+        answer: "Leadership Labs are designed for individual leaders ready to deepen their transformation capacity through peer learning, whether you're developing yourself before bringing concepts to your team or investing in your own leadership independent of organizational initiatives.",
       },
       {
         question: "Can I join a Leadership Lab if I'm also bringing my team to a workshop?",

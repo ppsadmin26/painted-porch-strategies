@@ -35,7 +35,7 @@ type VerifyResult = {
 };
 
 function fmt(b?: number) {
-  if (!b) return "—";
+  if (!b) return ", ";
   const u = ["B", "KB", "MB", "GB"]; let i = 0; let v = b;
   while (v >= 1024 && i < u.length - 1) { v /= 1024; i++; }
   return `${v.toFixed(1)} ${u[i]}`;
@@ -149,7 +149,7 @@ export default function IntegrityCheck() {
               onChange={(e) => setSelectedZip(e.target.value)}
               disabled={running}
             >
-              <option value="">— select zip —</option>
+              <option value="">,  select zip , </option>
               {zips.map((z) => <option key={z.name} value={z.name}>{z.name} ({fmt(z.size)})</option>)}
             </select>
             <Button variant="outline" onClick={loadSources} disabled={running}>Refresh</Button>
@@ -162,7 +162,7 @@ export default function IntegrityCheck() {
               onChange={(e) => setSelectedFolder(e.target.value)}
               disabled={running}
             >
-              <option value="">— select folder —</option>
+              <option value="">,  select folder , </option>
               {folders.map((f) => <option key={f} value={f}>{f}</option>)}
             </select>
             <Button variant="outline" onClick={loadSources} disabled={running}>Refresh</Button>
@@ -283,10 +283,10 @@ export default function IntegrityCheck() {
                   {result.buckets.map((b) => (
                     <tr key={b.bucket} className="border-t">
                       <td className="px-3 py-2 font-mono text-xs">{b.bucket}</td>
-                      <td className="px-3 py-2 text-right">{b.expected || "—"}</td>
+                      <td className="px-3 py-2 text-right">{b.expected || ", "}</td>
                       <td className="px-3 py-2 text-right">{b.actual}</td>
                       <td className={`px-3 py-2 text-right font-medium ${b.diff === 0 ? "text-muted-foreground" : b.diff < 0 ? "text-destructive" : "text-amber-700"}`}>
-                        {b.status === "unknown" ? "—" : b.diff > 0 ? `+${b.diff}` : b.diff}
+                        {b.status === "unknown" ? ", " : b.diff > 0 ? `+${b.diff}` : b.diff}
                       </td>
                       <td className="px-3 py-2 text-right text-xs text-muted-foreground">{fmt(b.expected_bytes)}</td>
                       <td className="px-3 py-2 text-right text-xs text-muted-foreground">{fmt(b.actual_bytes)}</td>

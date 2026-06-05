@@ -34,7 +34,7 @@ export default function ChangeCommsSignUp() {
       const { error } = await supabase.functions.invoke("submit-ghl-lead", {
         body: {
           firstName: cleanFirst,
-          lastName: cleanLast || "—",
+          lastName: cleanLast || "Unknown",
           email: cleanEmail,
           newsletter,
           tags: ["ChangeComms"],

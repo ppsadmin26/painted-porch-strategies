@@ -18,7 +18,7 @@ const teamSignals = [
   },
   {
     title: "Surface-Level Change",
-    description: "You've tried transformation initiatives that resulted in \"checkbox change\"—compliance without shared commitment, activity without lasting adoption.",
+    description: "You've tried transformation initiatives that resulted in \"checkbox change\", compliance without shared commitment, activity without lasting adoption.",
   },
   {
     title: "Reactive Mode",
@@ -38,7 +38,7 @@ const leaderSignals = [
   },
   {
     title: "Craving Community",
-    description: "You want to learn with other executives who understand your challenges—creating accountability, shared wisdom, and lasting professional relationships.",
+    description: "You want to learn with other executives who understand your challenges, creating accountability, shared wisdom, and lasting professional relationships.",
   },
   {
     title: "Need for Structure",
@@ -46,7 +46,7 @@ const leaderSignals = [
   },
   {
     title: "Transformation Mindset",
-    description: "You want to become a transformation architect—someone who can design and lead change with confidence, not just react to it.",
+    description: "You want to become a transformation architect, someone who can design and lead change with confidence, not just react to it.",
   },
 ];
 
@@ -143,7 +143,7 @@ const faqItems = [
   },
   {
     question: "How do I know if a Leadership Lab is right for me?",
-    answer: "Leadership Labs are designed for individual leaders ready to deepen their transformation capacity through peer learning—whether you're developing yourself before bringing concepts to your team or investing in your own leadership independent of organizational initiatives.",
+    answer: "Leadership Labs are designed for individual leaders ready to deepen their transformation capacity through peer learning, whether you're developing yourself before bringing concepts to your team or investing in your own leadership independent of organizational initiatives.",
   },
   {
     question: "Can I join a Leadership Lab if I'm also bringing my team to a workshop?",
@@ -173,7 +173,7 @@ const costOfSkipping = [
   "Millions invested in technology that isn't fully adopted or ROI realized",
   "Leadership teams misaligned, working in different directions",
   "Employee burnout and turnover from constant change without clarity",
-  "Change theater—activity without real transformation",
+  "Change theater, activity without real transformation",
 ];
 
 const whatAmplifyEliminates = [
@@ -201,7 +201,7 @@ export default function AmplifyPathAlt() {
         badgeLabel="AMPLIFY P.A.T.H.way"
         headline={<>Boost Momentum That Aligns, Activates, and Accelerates Your Next Sh<span className="text-strategic">IF</span>t.</>}
         subheadline="When you're ready to architect change with clarity and confidence."
-        description="AMPLIFY is for leadership teams seeking alignment AND individual leaders pursuing peer learning—creating compound momentum through team workshops, strategic sprints, and leadership labs."
+        description="AMPLIFY is for leadership teams seeking alignment AND individual leaders pursuing peer learning, creating compound momentum through team workshops, strategic sprints, and leadership labs."
         ctas={[
           {
             label: "Explore AMPLIFY",
@@ -225,10 +225,10 @@ export default function AmplifyPathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              You Know What Sh<span className="text-strategic">IF</span>t You Want to Make Happen— Now You Need to Build the Capacity for It.
+              You Know What Sh<span className="text-strategic">IF</span>t You Want to Make Happen,  Now You Need to Build the Capacity for It.
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
-              Our AMPLIFY P.A.T.H.way is designed for two audiences—organizations/teams seeking alignment AND individual leaders wanting peer learning.
+              Our AMPLIFY P.A.T.H.way is designed for two audiences, organizations/teams seeking alignment AND individual leaders wanting peer learning.
             </p>
           </div>
 

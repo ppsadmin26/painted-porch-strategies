@@ -131,7 +131,7 @@ const sitewideFaqCategories: FAQCategory[] = [
       },
       {
         question: "Can I start with IGNITE and progress to AMPLIFY later?",
-        answer: "Absolutely. Many leaders start with IGNITE to build personal capacity, then progress to AMPLIFY Leadership Labs for deeper peer learning—or bring Phase Zero concepts to their teams through AMPLIFY workshops and strategic sprints.",
+        answer: "Absolutely. Many leaders start with IGNITE to build personal capacity, then progress to AMPLIFY Leadership Labs for deeper peer learning, or bring Phase Zero concepts to their teams through AMPLIFY workshops and strategic sprints.",
       },
     ],
   },
@@ -161,7 +161,7 @@ const sitewideFaqCategories: FAQCategory[] = [
     faqs: [
       {
         question: "How is your EMBODY partnership different from change management consultants?",
-        answer: "Change management focuses on implementing predefined changes by managing resistance, driving adoption, and delivering transitions downstream. We do change origination—we partner with you to architect transformation capacity upstream, before implementation begins. After change management, you've executed a change. After EMBODY partnership, you've built the capacity to originate and architect your own transformations without external dependency.",
+        answer: "Change management focuses on implementing predefined changes by managing resistance, driving adoption, and delivering transitions downstream. We do change origination, we partner with you to architect transformation capacity upstream, before implementation begins. After change management, you've executed a change. After EMBODY partnership, you've built the capacity to originate and architect your own transformations without external dependency.",
       },
       {
         question: "Can we start with AMPLIFY and progress to EMBODY?",
@@ -177,7 +177,7 @@ const sitewideFaqCategories: FAQCategory[] = [
       },
       {
         question: "Can you work with our internal change management team?",
-        answer: "Absolutely! We often partner with internal teams, building their capacity while providing strategic guidance. We're not competitive with internal teams—we're complementary.",
+        answer: "Absolutely! We often partner with internal teams, building their capacity while providing strategic guidance. We're not competitive with internal teams, we're complementary.",
       },
       {
         question: "What happens if leadership changes during partnership?",

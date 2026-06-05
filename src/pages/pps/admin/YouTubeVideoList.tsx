@@ -176,10 +176,10 @@ export default function YouTubeVideoList() {
                     <TableCell>
                       <span className="text-sm capitalize">{item.content_type}</span>
                     </TableCell>
-                    <TableCell className="text-sm text-muted-foreground">{item.playlist || "—"}</TableCell>
-                    <TableCell className="text-sm text-muted-foreground">{item.duration || "—"}</TableCell>
+                    <TableCell className="text-sm text-muted-foreground">{item.playlist || ", "}</TableCell>
+                    <TableCell className="text-sm text-muted-foreground">{item.duration || ", "}</TableCell>
                     <TableCell className="text-sm text-muted-foreground">
-                      {item.published_date ? new Date(item.published_date).toLocaleDateString() : "—"}
+                      {item.published_date ? new Date(item.published_date).toLocaleDateString() : ", "}
                     </TableCell>
                     <TableCell>
                       <div className="flex gap-1" onClick={(e) => e.stopPropagation()}>

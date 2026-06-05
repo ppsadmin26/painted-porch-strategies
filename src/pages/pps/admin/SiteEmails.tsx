@@ -31,9 +31,9 @@ type EmailItem = {
 };
 
 function formatRelative(iso?: string | null): string {
-  if (!iso) return "—";
+  if (!iso) return ", ";
   const d = new Date(iso);
-  if (isNaN(d.getTime())) return "—";
+  if (isNaN(d.getTime())) return ", ";
   const diff = Date.now() - d.getTime();
   const sec = Math.round(diff / 1000);
   if (sec < 60) return "just now";

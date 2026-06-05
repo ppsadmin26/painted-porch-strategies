@@ -419,10 +419,10 @@ export default function EmailQueue() {
                           className="grid grid-cols-12 gap-3 px-4 py-2.5 border-b last:border-b-0 text-sm items-center hover:bg-muted/20"
                         >
                           <div className="col-span-3 truncate font-medium text-navy">
-                            {m.recipient ?? <span className="text-muted-foreground">—</span>}
+                            {m.recipient ?? <span className="text-muted-foreground">, </span>}
                           </div>
                           <div className="col-span-3 truncate text-xs text-muted-foreground">
-                            <div className="truncate">{m.template ?? "—"}</div>
+                            <div className="truncate">{m.template ?? ", "}</div>
                             {m.subject && (
                               <div className="truncate text-[11px]">{m.subject}</div>
                             )}

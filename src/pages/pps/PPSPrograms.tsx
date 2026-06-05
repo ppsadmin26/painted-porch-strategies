@@ -365,7 +365,7 @@ export default function PPSPrograms() {
             </h2>
             <blockquote className="text-xl md:text-2xl italic text-white/80 mb-8 leading-relaxed">
               "You don't build a business. You build people, and people build the business."
-              <span className="block text-base mt-2 not-italic text-white/60">— Zig Ziglar</span>
+              <span className="block text-base mt-2 not-italic text-white/60">,  Zig Ziglar</span>
             </blockquote>
             <p className="text-lg text-white/90 leading-relaxed mb-10 max-w-2xl mx-auto">
               Success starts at the foundation: <strong>Your People</strong>. When you invest in

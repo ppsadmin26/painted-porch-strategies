@@ -4,7 +4,7 @@ const differentiators = [
   {
     icon: Building2,
     title: "We Start in Phase Zero (Everyone Else Starts at Launch)",
-    description: "Most advisors work with you to execute change decisions already made. We partner with you BEFORE the decision—in that critical Phase Zero moment when you're determining what change you could credibly lead.",
+    description: "Most advisors work with you to execute change decisions already made. We partner with you BEFORE the decision, in that critical Phase Zero moment when you're determining what change you could credibly lead.",
     contrast: "We architect foundations. They implement initiatives.",
   },
   {
@@ -16,13 +16,13 @@ const differentiators = [
   {
     icon: Target,
     title: "We Architect Capacity, Not Implement Projects",
-    description: "Most advisors focus on making THIS change successful. We focus on building the capacity to lead ANY change—now and in the future. We don't make you dependent on us.",
+    description: "Most advisors focus on making THIS change successful. We focus on building the capacity to lead ANY change, now and in the future. We don't make you dependent on us.",
     contrast: "When we're done, you've become transformation architects yourselves.",
   },
   {
     icon: BookOpen,
     title: "We're Grounded in 2,300 Years of Wisdom",
-    description: "Most leadership development is built on trendy frameworks. We're built on Stoic philosophy—the 2,300-year-old principles of strategic preparation, resilience, and conscious design.",
+    description: "Most leadership development is built on trendy frameworks. We're built on Stoic philosophy, the 2,300-year-old principles of strategic preparation, resilience, and conscious design.",
     contrast: "Premeditatio Malorum: Prepare for adversity before pressure demands it. That's the original Phase Zero.",
   },
 ];

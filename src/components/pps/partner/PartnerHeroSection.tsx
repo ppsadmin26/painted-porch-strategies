@@ -34,10 +34,10 @@ export function PartnerHeroSection() {
             {/* Description */}
             <div className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl">
               <p className="mb-4">
-                We partner with you to co-architect transformation—whether you're exploring Phase Zero concepts on your own, aligning your team, or building permanent organizational capacity.
+                We partner with you to co-architect transformation, whether you're exploring Phase Zero concepts on your own, aligning your team, or building permanent organizational capacity.
               </p>
               <p className="text-white/80 italic text-base">
-                Your commitment level and current capacity determine your P.A.T.H.way—not your title or organization size.
+                Your commitment level and current capacity determine your P.A.T.H.way, not your title or organization size.
               </p>
             </div>
 

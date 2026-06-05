@@ -77,7 +77,7 @@ export const igniteFaqCategories: FAQCategory[] = [
       },
       {
         question: "Can I start with IGNITE and progress to AMPLIFY later?",
-        answer: "Absolutely. Many leaders start with IGNITE to build personal capacity, then progress to AMPLIFY Leadership Labs for deeper peer learning—or bring Phase Zero concepts to their teams through AMPLIFY workshops and strategic sprints.",
+        answer: "Absolutely. Many leaders start with IGNITE to build personal capacity, then progress to AMPLIFY Leadership Labs for deeper peer learning, or bring Phase Zero concepts to their teams through AMPLIFY workshops and strategic sprints.",
       },
     ],
   },

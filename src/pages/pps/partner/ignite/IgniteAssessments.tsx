@@ -18,7 +18,7 @@ const assessments = [
     title: "EQ-i 2.0",
     subtitle: "Emotional Intelligence",
     tagline: "Emotional Intelligence for Leadership and Life",
-    description: "Intelligence gets you in the room. Emotional intelligence determines what happens next. The EQ-i 2.0 reveals the invisible patterns that determine whether you connect or clash, inspire or irritate, lead or manage—the competencies behind every powerful connection, brilliant decision under pressure, and moment you've truly been heard.",
+    description: "Intelligence gets you in the room. Emotional intelligence determines what happens next. The EQ-i 2.0 reveals the invisible patterns that determine whether you connect or clash, inspire or irritate, lead or manage, the competencies behind every powerful connection, brilliant decision under pressure, and moment you've truly been heard.",
     investment: "Starting at $897 | Team pricing available",
     link: "/eq",
     isInternal: true,
@@ -33,7 +33,7 @@ const assessments = [
     title: "Working Genius",
     subtitle: "Optimal Productivity",
     tagline: "Discover Where You Thrive in Team Work",
-    description: "Some work gives you energy. Some drains it—no matter how competent or skilled you are. Working Genius identifies your natural gifts and frustrations across six essential types of work, so you understand when you're operating in genius versus outside it.",
+    description: "Some work gives you energy. Some drains it, no matter how competent or skilled you are. Working Genius identifies your natural gifts and frustrations across six essential types of work, so you understand when you're operating in genius versus outside it.",
     investment: "Starting at $25 | Team pricing available",
     link: "/partner/ignite/assessments/working-genius",
     isInternal: true,
@@ -48,7 +48,7 @@ const assessments = [
     title: "Performance DNA",
     subtitle: "Your Success Blueprint",
     tagline: "Decode What Makes You Extraordinary",
-    description: "You came without an instruction manual. Performance DNA creates it. Discover your unique success formula—what makes you extraordinary at work and in life—by decoding your natural strengths, decision patterns, work preferences, and conditions where you excel.",
+    description: "You came without an instruction manual. Performance DNA creates it. Discover your unique success formula, what makes you extraordinary at work and in life, by decoding your natural strengths, decision patterns, work preferences, and conditions where you excel.",
     investment: "Starting at $69 | Team pricing available",
     link: "#",
     launchSlug: "performance-dna",
@@ -63,7 +63,7 @@ const assessments = [
     title: "Shift Architect",
     subtitle: "Change Leadership Capacity",
     tagline: "Reveal Your Capacity to Architect Change",
-    description: "Most leaders learn change the hard way—mid-crisis, mid-implementation. Shift Architect surfaces how you currently think about, prepare for, and lead through change so you can build the strategic capacity required to architect transformation instead of react to it.",
+    description: "Most leaders learn change the hard way, mid-crisis, mid-implementation. Shift Architect surfaces how you currently think about, prepare for, and lead through change so you can build the strategic capacity required to architect transformation instead of react to it.",
     investment: "Coming Soon | Pricing TBD",
     link: "#",
     launchSlug: "shift-architect",
@@ -119,7 +119,7 @@ export default function IgniteAssessments() {
               Uncover Your Talents. Architect Your Future.
             </h1>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
-              Decode what makes you shine—assessments that reveal your transformation architect capacity, emotional intelligence, unique talents, and success patterns. Discover the blueprint for your extraordinary performance.
+              Decode what makes you shine, assessments that reveal your transformation architect capacity, emotional intelligence, unique talents, and success patterns. Discover the blueprint for your extraordinary performance.
             </p>
           </div>
 

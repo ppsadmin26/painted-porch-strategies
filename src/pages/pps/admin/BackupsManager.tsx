@@ -100,7 +100,7 @@ interface ScheduleRow {
 }
 
 function formatBytes(bytes: number | null): string {
-  if (!bytes) return "—";
+  if (!bytes) return ", ";
   const k = 1024;
   const sizes = ["B", "KB", "MB", "GB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
@@ -1046,7 +1046,7 @@ export default function BackupsManager() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-muted-foreground font-montserrat">
-                    {isUnknown ? "—" : active ? "On" : "Off"}
+                    {isUnknown ? ", " : active ? "On" : "Off"}
                   </span>
                   <Switch
                     checked={active}
@@ -1130,7 +1130,7 @@ export default function BackupsManager() {
                       {totalRows(r.table_row_counts).toLocaleString()}
                     </TableCell>
                     <TableCell className="text-right text-sm font-mono">
-                      {r.storage_object_count ?? "—"}
+                      {r.storage_object_count ?? ", "}
                     </TableCell>
                     <TableCell className="text-xs font-mono text-muted-foreground max-w-xs">
                       {r.status === "running" ? (
@@ -1406,7 +1406,7 @@ export default function BackupsManager() {
                           <Download className="w-3 h-3" /> Download
                         </a>
                       ) : (
-                        <span className="text-muted-foreground shrink-0">—</span>
+                        <span className="text-muted-foreground shrink-0">, </span>
                       )}
                     </div>
                   );

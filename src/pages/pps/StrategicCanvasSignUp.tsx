@@ -33,7 +33,7 @@ export default function StrategicCanvasSignUp() {
       const { error } = await supabase.functions.invoke("submit-ghl-lead", {
         body: {
           firstName: cleanFirst,
-          lastName: cleanLast || "—",
+          lastName: cleanLast || "Unknown",
           email: cleanEmail,
           newsletter,
           tags: ["Strategic Canvas"],

@@ -117,7 +117,7 @@ export default function AmplifySprints() {
               Strategic Sprints: Phase Zero Partnership for Your Next Shift
             </h1>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
-              Strategic Sprints provide focused 90-day partnerships to architect Phase Zero foundations for your next shift—building strategic clarity and organizational capacity before implementation begins.
+              Strategic Sprints provide focused 90-day partnerships to architect Phase Zero foundations for your next shift, building strategic clarity and organizational capacity before implementation begins.
             </p>
           </div>
 
@@ -203,7 +203,7 @@ export default function AmplifySprints() {
                 <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">About The <span className="text-bluedoor">Blue Door</span></h3>
               </div>
               <p className="text-sm text-foreground mb-2">
-                The <span className="font-bold text-bluedoor">Blue Door</span> is our strategic appraisal (less than 30 minutes) that reveals where your organization stands on the path to transformation—and what's blocking progress.
+                The <span className="font-bold text-bluedoor">Blue Door</span> is our strategic appraisal (less than 30 minutes) that reveals where your organization stands on the path to transformation, and what's blocking progress.
               </p>
               <p className="text-sm text-foreground/70 italic mb-3">
                 Required for Strategic Sprints and workshops. Not needed for Leadership Labs.

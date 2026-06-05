@@ -4,7 +4,7 @@ const principles = [
   {
     icon: Building2,
     title: "Start in Phase Zero",
-    description: "Whether you're working on yourself, your team, or your organization, extraordinary transformation begins with strategic preparation—before pressure demands it.",
+    description: "Whether you're working on yourself, your team, or your organization, extraordinary transformation begins with strategic preparation, before pressure demands it.",
   },
   {
     icon: Handshake,
@@ -14,7 +14,7 @@ const principles = [
   {
     icon: TrendingUp,
     title: "Progression, Not Prescription",
-    description: "You might start with IGNITE and stay there. Or progress to AMPLIFY when you're ready for more depth. Or jump straight to EMBODY. Your pathway emerges from exploration and clarity—not prescription.",
+    description: "You might start with IGNITE and stay there. Or progress to AMPLIFY when you're ready for more depth. Or jump straight to EMBODY. Your pathway emerges from exploration and clarity, not prescription.",
   },
 ];
 

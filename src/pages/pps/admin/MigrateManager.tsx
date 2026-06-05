@@ -377,7 +377,7 @@ export default function MigrateManager() {
                 value={selectedFolder}
                 onChange={(e) => setSelectedFolder(e.target.value)}
               >
-                <option value="">— select —</option>
+                <option value="">,  select , </option>
                 {folders.map((f) => <option key={f.name} value={f.name}>{f.name}</option>)}
               </select>
               <Button variant="outline" onClick={loadFolders}>Refresh</Button>
@@ -392,7 +392,7 @@ export default function MigrateManager() {
                 value={selectedZip}
                 onChange={(e) => setSelectedZip(e.target.value)}
               >
-                <option value="">— select —</option>
+                <option value="">,  select , </option>
                 {zips.map((z) => (
                   <option key={z.name} value={z.name}>
                     {z.name} {z.size ? `(${formatBytes(z.size)})` : ""}

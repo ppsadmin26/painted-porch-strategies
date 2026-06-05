@@ -568,7 +568,7 @@ export default function RestoreWizard() {
                 onChange={(e) => setSelectedZip(e.target.value)}
                 disabled={running}
               >
-                <option value="">— select —</option>
+                <option value="">,  select , </option>
                 {zips.map((z) => (
                   <option key={z.name} value={z.name}>{z.name} {z.size ? `(${fmt(z.size)})` : ""}</option>
                 ))}
@@ -586,7 +586,7 @@ export default function RestoreWizard() {
                 onChange={(e) => setSelectedFolder(e.target.value)}
                 disabled={running}
               >
-                <option value="">— select —</option>
+                <option value="">,  select , </option>
                 {folders.map((f) => <option key={f} value={f}>{f}</option>)}
               </select>
               <Button variant="outline" onClick={loadSources} disabled={running}>Refresh</Button>

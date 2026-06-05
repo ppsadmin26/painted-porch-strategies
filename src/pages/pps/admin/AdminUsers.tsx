@@ -726,14 +726,14 @@ export default function AdminUsers() {
                           <img src={profile.avatar_url} alt="" className="w-7 h-7 rounded-full object-cover" />
                         )}
                         <span>
-                          {profile.full_name || "—"}
+                          {profile.full_name || ", "}
                           {profile.id === user?.id && (
                             <span className="text-xs text-muted-foreground ml-2">(you)</span>
                           )}
                         </span>
                       </div>
                     </TableCell>
-                    <TableCell className="text-sm">{profile.email || "—"}</TableCell>
+                    <TableCell className="text-sm">{profile.email || ", "}</TableCell>
                     <TableCell>
                       <Badge className={roleBadgeClass[profile.role] || "bg-muted text-muted-foreground"}>
                         {profile.role}
