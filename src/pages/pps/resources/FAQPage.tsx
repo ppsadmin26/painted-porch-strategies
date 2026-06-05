@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
 import faqHero from "@/assets/faq-hero.jpg";
