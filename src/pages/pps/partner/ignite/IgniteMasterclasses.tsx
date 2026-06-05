@@ -122,13 +122,18 @@ export default function IgniteMasterclasses() {
               const colors = categoryColors[item.category];
               return (
                 <div key={item.title} className={`bg-muted rounded-xl border-t-4 border-${item.themeColor} transition-all hover:shadow-lg flex flex-col overflow-hidden`}>
-                  {item.href ? (
-                    <Link to={item.href}>
-                      <img src={item.image} alt={item.title} className="w-full h-40 object-cover hover:opacity-90 transition-opacity" />
-                    </Link>
-                  ) : (
-                    <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
-                  )}
+                  <div className="relative">
+                    {item.href ? (
+                      <Link to={item.href}>
+                        <img src={item.image} alt={item.title} className="w-full h-40 object-cover hover:opacity-90 transition-opacity" />
+                      </Link>
+                    ) : (
+                      <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
+                    )}
+                    <span className="absolute top-2 right-2 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide bg-navy/90 text-white shadow-sm">
+                      <Video className="w-3 h-3" /> Replay
+                    </span>
+                  </div>
                   <div className="p-5 flex flex-col flex-1">
                     <div className="mb-3">
                       <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium ${colors.bg} ${colors.text} mb-2`}>
