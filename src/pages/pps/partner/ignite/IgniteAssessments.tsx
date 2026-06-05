@@ -161,14 +161,13 @@ export default function IgniteAssessments() {
                       </a>
                     )
                   ) : (
-                    <div className="text-right">
-                      <Button variant="outline" size="sm" className={`border-current ${assessment.iconColor}`} disabled>
-                        Coming Soon
-                      </Button>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        <a href="/contact?scope=Yourself&interest=assessments&message=I'm interested in joining the waitlist for an assessment." className="underline hover:text-primary">Join the Waitlist</a>
-                      </p>
-                    </div>
+                    <LaunchListCTA
+                      slug={assessment.launchSlug ?? ""}
+                      courseName={assessment.title}
+                      liveLabel="Explore"
+                      buttonClasses={`border-2 ${assessment.borderColor} ${assessment.iconColor} ${assessment.hoverBg} hover:text-white transition-colors`}
+                      textColorClass={assessment.iconColor}
+                    />
                   )}
                 </div>
               </div>
