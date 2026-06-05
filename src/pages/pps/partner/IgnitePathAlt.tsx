@@ -247,7 +247,8 @@ export default function IgnitePathAlt() {
             </div>
 
             {/* Column 2: Strategic Assessments */}
-            <div className="bg-white p-8 rounded-xl shadow-sm flex flex-col min-w-0">
+            <div className="bg-white p-6 lg:p-8 rounded-xl shadow-sm flex flex-col min-w-0">
+
               <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center mb-4">
                 <BarChart3 className="w-6 h-6 text-gold" />
               </div>
