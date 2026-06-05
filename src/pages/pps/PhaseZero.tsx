@@ -117,7 +117,7 @@ const wherePhaseZeroLeads = [
   {
     icon: DoorOpen,
     title: "The Blue Door",
-    body: "A structured organizational appraisal that shows where you stand across the three Pillars before you spend another dollar.",
+    body: "An under 30 minute organizational appraisal and debrief that turns the three Pillars into a real picture of what your organization is built to lead next.",
     to: "/blue-door",
     cta: "Open the Blue Door",
     accent: "text-bluedoor",
@@ -439,7 +439,7 @@ export default function PhaseZero() {
         overlayClass="bg-gradient-to-b from-navy/60 via-navy/40 to-navy/25"
         eyebrow="Begin"
         headline="The Blue Door is Phase Zero in motion."
-        description="An under 30 minute organizational appraisal and debrief that turns the three Pillars into a real picture of where your organization stands."
+        description="An under 30 minute organizational appraisal and debrief that turns the three Pillars into a real picture of what your organization is built to lead next."
         actions={[
           { label: "Open the Blue Door", to: "/blue-door", variant: "bluedoor" },
           { label: "Find Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
