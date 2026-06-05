@@ -161,11 +161,11 @@ export default function IgnitePathAlt() {
                 key={index} 
                 className={`${archetype.color} p-6 rounded-xl border ${archetype.borderColor} transition-all hover:shadow-lg`}
               >
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex flex-row lg:flex-col items-center lg:items-start gap-3 mb-4">
                   <div className={`w-10 h-10 rounded-full ${archetype.iconBg} flex items-center justify-center flex-shrink-0`}>
                     <archetype.icon className={`w-5 h-5 ${archetype.iconColor}`} />
                   </div>
-                  <h3 className={`text-lg lg:text-xl font-poppins font-bold leading-tight min-w-0 break-words ${archetype.textColor}`}>
+                  <h3 className={`text-xl font-poppins font-bold leading-tight min-w-0 break-words ${archetype.textColor}`}>
                     {archetype.title}
                   </h3>
                 </div>
