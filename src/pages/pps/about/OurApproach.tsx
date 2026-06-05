@@ -4,6 +4,7 @@ import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import PartnershipPromise from "@/components/pps/PartnershipPromise";
 import approachHero from "@/assets/heroes/approach-hero.jpg";
+import blueDoorHero from "@/assets/blue-door-hero.jpg";
 
 const coreValues = [
   {
