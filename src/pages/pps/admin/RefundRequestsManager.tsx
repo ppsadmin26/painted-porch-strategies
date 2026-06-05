@@ -53,7 +53,8 @@ const FILTERS: { value: "all" | Status; label: string }[] = [
 
 export default function RefundRequestsManager() {
   const { user, loading: authLoading } = useAuth();
-  const { isAdmin, isEditor, loading: roleLoading } = useUserRole();
+  const { role, isAdmin, loading: roleLoading } = useUserRole();
+  const isEditor = role === "editor";
   const { toast } = useToast();
 
   const [rows, setRows] = useState<RefundRow[]>([]);
