@@ -374,7 +374,7 @@ export default function EQChangeLeaderMini() {
       </section>
 
       {/* Pricing */}
-      <section id="get-started" className="py-16 md:py-24 bg-white">
+      <section id="get-started" className="py-16 md:py-24 bg-white scroll-mt-24">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold tracking-widest text-raspberry uppercase">

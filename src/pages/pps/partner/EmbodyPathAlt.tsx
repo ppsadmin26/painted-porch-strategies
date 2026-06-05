@@ -817,7 +817,7 @@ export default function EmbodyPathAlt() {
             <span className="inline-block bg-raspberry/10 text-raspberry font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
               The Human Cost
             </span>
-            <h2 id="human-cost-heading" className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h2 id="human-cost-heading" className="text-3xl md:text-4xl font-bold text-navy mb-4 scroll-mt-24">
               This is what unarchitected change does to people.
             </h2>
             <p className="text-lg text-foreground leading-relaxed">

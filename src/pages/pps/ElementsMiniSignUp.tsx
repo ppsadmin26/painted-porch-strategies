@@ -177,7 +177,7 @@ export default function ElementsMiniSignUp() {
       </section>
 
       {/* Pricing — Two Tiers */}
-      <section id="pricing" className="py-16 px-4 bg-secondary/30">
+      <section id="pricing" className="py-16 px-4 bg-secondary/30 scroll-mt-24">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
