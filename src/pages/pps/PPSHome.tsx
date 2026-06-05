@@ -363,7 +363,7 @@ export default function PPSHome() {
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
               Three dimensions that influence what your organization is built to
-              carry. When all three are load-bearing, your porch is fortified.
+              carry. When all three are load-bearing, your porch is fortified and structurally ready to design and construct your next big move.
             </p>
           </div>
 
