@@ -13,22 +13,6 @@ import amyPhoto from "@/assets/team/amy-yackowski.png";
 import sierraPhoto from "@/assets/team/sierra-ramm-cantrell.jpg";
 import robPhoto from "@/assets/team/rob-hunter.jpg";
 
-// Certification badges
-import workingGeniusBadge from "@/assets/certifications/working-genius.png";
-import prosciChangeBadge from "@/assets/certifications/prosci-change-practitioner.png";
-import scrumPsdBadge from "@/assets/certifications/scrum-psd.png";
-import csiBadge from "@/assets/certifications/csi.png";
-import changeNavigatorBadge from "@/assets/certifications/change-navigator.png";
-import leanChangeAgentBadge from "@/assets/certifications/lean-change-agent.png";
-import leanChangeAiBadge from "@/assets/certifications/lean-change-ai.png";
-import mawFacilitatorBadge from "@/assets/certifications/maw-facilitator.png";
-import discFacilitatorBadge from "@/assets/certifications/disc-facilitator.png";
-import eq360Badge from "@/assets/certifications/eq360.png";
-import emotionallyEffectiveBadge from "@/assets/certifications/emotionally-effective-leader.png";
-import wpcRecommendedBadge from "@/assets/certifications/wpc-recommended.png";
-import acmpMemberBadge from "@/assets/certifications/acmp-member.png";
-import asaMemberBadge from "@/assets/certifications/asa-member.png";
-
 const team = [
   {
     name: "Amy Yackowski",
@@ -62,22 +46,6 @@ const team = [
   },
 ];
 
-const certifications = [
-  { name: "Working Genius Certified", badge: workingGeniusBadge },
-  { name: "Prosci Change Practitioner", badge: prosciChangeBadge },
-  { name: "Scrum.org PSD", badge: scrumPsdBadge },
-  { name: "CSI Certified", badge: csiBadge },
-  { name: "Change Navigator", badge: changeNavigatorBadge },
-  { name: "Lean Change Agent", badge: leanChangeAgentBadge },
-  { name: "Lean Change AI", badge: leanChangeAiBadge },
-  { name: "MAW Facilitator", badge: mawFacilitatorBadge },
-  { name: "DiSC Facilitator", badge: discFacilitatorBadge },
-  { name: "EQ-360 Certified", badge: eq360Badge },
-  { name: "Emotionally Effective Leader", badge: emotionallyEffectiveBadge },
-  { name: "WPC Recommended", badge: wpcRecommendedBadge },
-  { name: "ACMP Member", badge: acmpMemberBadge },
-  { name: "ASA Member", badge: asaMemberBadge },
-];
 
 export default function PPSAbout() {
   return (
@@ -338,32 +306,17 @@ export default function PPSAbout() {
           <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
             By leaning on over <span className="font-semibold text-navy">50 years of our team's combined experience</span> and real-world solutions, we developed (and continually evolve) training, coaching, and advisory programs to partner with you in taking <span className="font-semibold text-primary">definitive, purposeful action</span> to prepare yourself and others to lean in, embrace, adopt, and make change stick.
           </p>
+          <p className="text-base text-foreground/80">
+            See the framework that holds it together in{" "}
+            <Link to="/about/approach#path" className="font-semibold text-primary hover:underline">
+              Our Approach
+            </Link>
+            , including the P.A.T.H. methodology and our certifications.
+          </p>
         </div>
       </section>
 
-      {/* Certifications */}
-      <section className="py-12 md:py-16 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
-          <div className="text-center mb-8">
-            <h3 className="text-xl md:text-2xl font-bold text-navy">Our Certifications & Credentials</h3>
-          </div>
-          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 md:gap-6">
-            {certifications.map((cert, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg p-3 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow h-20 md:h-24"
-                title={cert.name}
-              >
-                <img
-                  src={cert.badge}
-                  alt={cert.name}
-                  className="max-h-14 md:max-h-18 max-w-full object-contain"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* What's a Painted Porch */}
       <section className="py-16 md:py-24 bg-white">

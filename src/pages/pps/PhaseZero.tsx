@@ -185,8 +185,31 @@ export default function PhaseZero() {
         minHeightClass="min-h-[60vh]"
       />
 
+      {/* P.A.T.H. context strip */}
+      <section className="py-8 md:py-10 bg-primary/5 border-y border-primary/10">
+        <div className="container max-w-4xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 text-center md:text-left">
+            <div className="flex-1">
+              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-1">
+                Where Phase Zero Fits
+              </p>
+              <p className="text-base md:text-lg text-foreground leading-relaxed">
+                Phase Zero is the <span className="font-semibold text-primary">Prepare</span> stage of our P.A.T.H. methodology, the clarity work that comes before Align, Take Off, and Habits.
+              </p>
+            </div>
+            <Link
+              to="/about/approach#path"
+              className="flex-shrink-0 inline-flex items-center gap-2 text-primary font-poppins font-semibold hover:underline"
+            >
+              See the full P.A.T.H. <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Why Phase Zero Exists */}
       <section className="py-16 md:py-24 bg-muted/40">
+
         <FadeIn className="container max-w-3xl mx-auto px-6">
           <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-4">
             Why Phase Zero Exists

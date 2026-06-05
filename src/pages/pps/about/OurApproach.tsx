@@ -1,10 +1,96 @@
 import { Link } from "react-router-dom";
-import { CheckCircle, X } from "lucide-react";
+import { CheckCircle, X, ArrowRight, Compass, Users, Rocket, Repeat } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import PartnershipPromise from "@/components/pps/PartnershipPromise";
 import approachHero from "@/assets/heroes/approach-hero.jpg";
 import blueDoorHero from "@/assets/blue-door-hero.jpg";
+
+// Certification badges
+import workingGeniusBadge from "@/assets/certifications/working-genius.png";
+import prosciChangeBadge from "@/assets/certifications/prosci-change-practitioner.png";
+import scrumPsdBadge from "@/assets/certifications/scrum-psd.png";
+import csiBadge from "@/assets/certifications/csi.png";
+import changeNavigatorBadge from "@/assets/certifications/change-navigator.png";
+import leanChangeAgentBadge from "@/assets/certifications/lean-change-agent.png";
+import leanChangeAiBadge from "@/assets/certifications/lean-change-ai.png";
+import mawFacilitatorBadge from "@/assets/certifications/maw-facilitator.png";
+import discFacilitatorBadge from "@/assets/certifications/disc-facilitator.png";
+import eq360Badge from "@/assets/certifications/eq360.png";
+import emotionallyEffectiveBadge from "@/assets/certifications/emotionally-effective-leader.png";
+import wpcRecommendedBadge from "@/assets/certifications/wpc-recommended.png";
+import acmpMemberBadge from "@/assets/certifications/acmp-member.png";
+import asaMemberBadge from "@/assets/certifications/asa-member.png";
+
+const pathStages = [
+  {
+    letter: "P",
+    word: "Prepare",
+    subtitle: "The clarity phase",
+    icon: Compass,
+    border: "border-primary",
+    accent: "text-primary",
+    bg: "bg-primary/5",
+    iconBg: "bg-primary/10",
+    body: "Get honest about people, systems, and culture before the next shift starts. This is where we name what is real, what is shaky, and what the organization is actually built to lead next.",
+    outcome: "A shared, clear-eyed picture of where you stand.",
+    isPhaseZero: true,
+  },
+  {
+    letter: "A",
+    word: "Align",
+    subtitle: "The agreement phase",
+    icon: Users,
+    border: "border-raspberry",
+    accent: "text-raspberry",
+    bg: "bg-raspberry/5",
+    iconBg: "bg-raspberry/10",
+    body: "Leaders, teams, and plans get on the same page about what change to lead, why it matters, and who carries which part. Healthy disagreement gets surfaced here, not after launch.",
+    outcome: "A coalition that owns the work, not just approves it.",
+  },
+  {
+    letter: "T",
+    word: "Take Off",
+    subtitle: "The launch phase",
+    icon: Rocket,
+    border: "border-gold",
+    accent: "text-gold",
+    bg: "bg-gold/5",
+    iconBg: "bg-gold/10",
+    body: "The change goes live with the right people, sequence, and support in place. Communication is clear. Course corrections are expected. Momentum is paced, not panicked.",
+    outcome: "Launch energy that holds past the first 90 days.",
+  },
+  {
+    letter: "H",
+    word: "Habits",
+    subtitle: "The staying-power phase",
+    icon: Repeat,
+    border: "border-lime",
+    accent: "text-lime",
+    bg: "bg-lime/5",
+    iconBg: "bg-lime/10",
+    body: "New ways of working become the default through small, repeated behaviors. Leaders reinforce. Systems support. The team stops needing the scaffolding we built together.",
+    outcome: "A team that can carry the next change without us.",
+  },
+];
+
+const certifications = [
+  { name: "Working Genius Certified", badge: workingGeniusBadge },
+  { name: "Prosci Change Practitioner", badge: prosciChangeBadge },
+  { name: "Scrum.org PSD", badge: scrumPsdBadge },
+  { name: "CSI Certified", badge: csiBadge },
+  { name: "Change Navigator", badge: changeNavigatorBadge },
+  { name: "Lean Change Agent", badge: leanChangeAgentBadge },
+  { name: "Lean Change AI", badge: leanChangeAiBadge },
+  { name: "MAW Facilitator", badge: mawFacilitatorBadge },
+  { name: "DiSC Facilitator", badge: discFacilitatorBadge },
+  { name: "EQ-360 Certified", badge: eq360Badge },
+  { name: "Emotionally Effective Leader", badge: emotionallyEffectiveBadge },
+  { name: "WPC Recommended", badge: wpcRecommendedBadge },
+  { name: "ACMP Member", badge: acmpMemberBadge },
+  { name: "ASA Member", badge: asaMemberBadge },
+];
+
 
 const coreValues = [
   {
@@ -202,6 +288,121 @@ export default function OurApproach() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Our Methodology: The P.A.T.H. */}
+      <section id="path" className="py-20 md:py-28 bg-white scroll-mt-24">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
+              Our Methodology
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5">
+              The P.A.T.H.<sup className="text-[0.4em] align-super">™</sup> to Sustainable Change
+            </h2>
+            <p className="text-lg text-foreground leading-relaxed">
+              Philosophy is how we think. P.A.T.H. is how we work. Four stages
+              that move a real change from clarity to commitment to launch to
+              lasting habit.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            {pathStages.map((s, i) => (
+              <div
+                key={s.letter}
+                className={`${s.bg} rounded-xl border-t-4 ${s.border} p-6 flex flex-col`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-12 h-12 ${s.iconBg} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                    <s.icon className={`w-6 h-6 ${s.accent}`} />
+                  </div>
+                  <div>
+                    <p className={`font-poppins font-bold text-3xl leading-none ${s.accent}`}>{s.letter}</p>
+                    <p className={`font-poppins font-semibold text-sm uppercase tracking-wider ${s.accent}`}>
+                      {s.word}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-xs font-poppins font-semibold uppercase tracking-[0.15em] text-navy/60 mb-3">
+                  Stage {i + 1} &middot; {s.subtitle}
+                </p>
+                <p className="text-sm text-foreground leading-relaxed mb-4 flex-grow">
+                  {s.body}
+                </p>
+                <div className="pt-4 border-t border-navy/10">
+                  <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-navy/70 mb-1">
+                    You walk away with
+                  </p>
+                  <p className={`text-sm font-semibold ${s.accent}`}>{s.outcome}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Prepare = Phase Zero callout */}
+          <div className="bg-gradient-to-br from-primary/10 to-primary/5 border-l-4 border-primary rounded-xl p-6 md:p-8 max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-center gap-5">
+              <div className="flex-shrink-0 w-14 h-14 rounded-full bg-primary/15 flex items-center justify-center">
+                <Compass className="w-7 h-7 text-primary" />
+              </div>
+              <div className="flex-1">
+                <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-1">
+                  Where Most Of Our Work Begins
+                </p>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">
+                  Prepare is Phase Zero.
+                </h3>
+                <p className="text-foreground leading-relaxed">
+                  Most advisors start at Take Off. We start at Prepare, the
+                  work before the work, where you decide if the change is
+                  worth leading and whether your organization can carry it.
+                </p>
+              </div>
+              <Link
+                to="/phase-zero"
+                className="flex-shrink-0 inline-flex items-center gap-2 bg-primary text-white font-poppins font-semibold px-5 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                Explore Phase Zero <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications & Credentials */}
+      <section className="py-16 md:py-20 bg-muted">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+              The Credentials Behind The Method
+            </p>
+            <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
+              Trained, certified, and accountable.
+            </h2>
+            <p className="text-foreground leading-relaxed">
+              Our team brings recognized certifications across change
+              management, team dynamics, communication, and emotional
+              intelligence, so the P.A.T.H. you walk is grounded in proven
+              practice, not opinion.
+            </p>
+          </div>
+          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 md:gap-6">
+            {certifications.map((cert) => (
+              <div
+                key={cert.name}
+                className="bg-white rounded-lg p-3 flex items-center justify-center shadow-sm hover:shadow-md transition-shadow h-20 md:h-24"
+                title={cert.name}
+              >
+                <img
+                  src={cert.badge}
+                  alt={cert.name}
+                  className="max-h-14 md:max-h-18 max-w-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
