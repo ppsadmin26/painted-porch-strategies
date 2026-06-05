@@ -3,11 +3,14 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, ArrowLeft, Heart } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
+import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
 import { igniteFaqCategories } from "./igniteFaqs";
 
 import brainEqIcon from "@/assets/icons/brain-eq.svg";
 import dualGearsIcon from "@/assets/icons/dual-gears.svg";
 import dnaHelixIcon from "@/assets/icons/dna-helix.svg";
+import shiftArchitectIcon from "@/assets/icons/shift-architect.svg";
+
 
 
 const assessments = [
