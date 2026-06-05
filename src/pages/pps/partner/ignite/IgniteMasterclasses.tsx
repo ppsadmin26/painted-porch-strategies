@@ -47,16 +47,16 @@ const categoryColors: Record<Category, { bg: string; text: string; border: strin
 };
 
 const allMasterclasses: MasterclassItem[] = [
-  { title: "The Elements of a Team", leader: "Amy", themeColor: "primary", image: mcElementsOfTeam, category: "Leadership & Change", launchSlug: "mc-elements-of-team" },
-  { title: "Superpowers of a Team Challenge", leader: "Amy", themeColor: "primary", image: mcSuperpowersOfTeam, description: "A 5-day challenge to uncover your team's hidden superpowers and turn everyday differences into your biggest competitive edge.", price: 27, category: "Leadership & Change", href: "/team-superpowers", launchSlug: "mc-team-superpowers" },
-  { title: "Leading Change Mini Course", leader: "Amy", themeColor: "strategic", image: mcLeadingChange, category: "Leadership & Change", launchSlug: "mc-leading-change-mini" },
+  { title: "The Elements of a Team", leader: "Amy Yackowski", themeColor: "primary", image: mcElementsOfTeam, category: "Leadership & Change", launchSlug: "mc-elements-of-team" },
+  { title: "Superpowers of a Team Challenge", leader: "Amy Yackowski", themeColor: "primary", image: mcSuperpowersOfTeam, description: "A 5-day challenge to uncover your team's hidden superpowers and turn everyday differences into your biggest competitive edge.", price: 27, category: "Leadership & Change", href: "/team-superpowers", launchSlug: "mc-team-superpowers" },
+  { title: "Leading Change Mini Course", leader: "Amy Yackowski", themeColor: "strategic", image: mcLeadingChange, category: "Leadership & Change", launchSlug: "mc-leading-change-mini" },
 
-  { title: "Master Your Message Mini Course", leader: "Rob", image: mcMasterYourMessage, themeColor: "foreground", category: "Communication & Connection", launchSlug: "mc-master-your-message-mini" },
-  { title: "Talking to Strangers", leader: "Rob", image: mcTalkingToStrangers, themeColor: "primary", description: "A 5-day challenge to help you start better conversations — with strangers, colleagues, and everyone in between.", price: 27, category: "Communication & Connection", href: "/talking-to-strangers", launchSlug: "mc-talking-to-strangers" },
-  { title: "Master Your Message Journaling Challenge", leader: "Rob", image: mcJournalingChallenge, themeColor: "primary", description: "A 5-day journaling challenge to reconnect, rediscover, and reignite your true voice — five short prompts, on your time.", price: 15, category: "Communication & Connection", href: "/mym-journal-challenge", launchSlug: "mc-mym-journal-challenge" },
-  { title: "Radical Mindfulness Mini Course", leader: "Sierra", image: mcRadicalMindfulness, themeColor: "gold", category: "Mindfulness & Resilience", launchSlug: "mc-radical-mindfulness-mini" },
-  { title: "Meditation Challenge", leader: "Sierra", image: mcMeditationChallenge, themeColor: "gold", price: 15, category: "Mindfulness & Resilience", launchSlug: "mc-meditation-challenge" },
-  { title: "Gratitude Challenge", leader: "Sierra", image: mcGratitudeChallenge, themeColor: "gold", price: 15, category: "Mindfulness & Resilience", launchSlug: "mc-gratitude-challenge" },
+  { title: "Master Your Message Mini Course", leader: "Rob Hunter", image: mcMasterYourMessage, themeColor: "foreground", category: "Communication & Connection", launchSlug: "mc-master-your-message-mini" },
+  { title: "Talking to Strangers", leader: "Rob Hunter", image: mcTalkingToStrangers, themeColor: "primary", description: "A 5-day challenge to help you start better conversations — with strangers, colleagues, and everyone in between.", price: 27, category: "Communication & Connection", href: "/talking-to-strangers", launchSlug: "mc-talking-to-strangers" },
+  { title: "Master Your Message Journaling Challenge", leader: "Rob Hunter", image: mcJournalingChallenge, themeColor: "primary", description: "A 5-day journaling challenge to reconnect, rediscover, and reignite your true voice — five short prompts, on your time.", price: 15, category: "Communication & Connection", href: "/mym-journal-challenge", launchSlug: "mc-mym-journal-challenge" },
+  { title: "Radical Mindfulness Mini Course", leader: "Sierra Ramm Cantrell", image: mcRadicalMindfulness, themeColor: "gold", category: "Mindfulness & Resilience", launchSlug: "mc-radical-mindfulness-mini" },
+  { title: "Meditation Challenge", leader: "Sierra Ramm Cantrell", image: mcMeditationChallenge, themeColor: "gold", price: 15, category: "Mindfulness & Resilience", launchSlug: "mc-meditation-challenge" },
+  { title: "Gratitude Challenge", leader: "Sierra Ramm Cantrell", image: mcGratitudeChallenge, themeColor: "gold", price: 15, category: "Mindfulness & Resilience", launchSlug: "mc-gratitude-challenge" },
 ];
 
 export default function IgniteMasterclasses() {
