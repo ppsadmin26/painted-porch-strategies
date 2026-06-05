@@ -19,7 +19,7 @@ import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 const PROGRAMS = [
   "Master Your Message",
   "Radical Mindfulness",
-  "Create Extraordinary Teams (Bundle)",
+  "Create Extraordinary Teams",
   "Other",
 ];
 
