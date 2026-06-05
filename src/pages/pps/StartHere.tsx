@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { TIER_LIST } from "@/config/tiers";
 import { TierBadge } from "@/components/pps/TierBadge";
