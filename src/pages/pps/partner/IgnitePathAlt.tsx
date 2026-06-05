@@ -279,9 +279,10 @@ export default function IgnitePathAlt() {
               </ul>
               <p className="text-xs text-muted-foreground mt-3 italic">*Optional, based on assessment</p>
               <div className="mt-6">
-                <Button asChild variant="outline" className="w-full border-gold text-gold hover:bg-gold hover:text-white transition-colors">
+                <Button asChild variant="outline" className="w-full border-gold text-gold hover:bg-gold hover:text-white transition-colors text-sm px-2">
                   <Link to="/partner/ignite/assessments">Explore Assessments →</Link>
                 </Button>
+
               </div>
             </div>
 
