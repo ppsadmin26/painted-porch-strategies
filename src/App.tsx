@@ -103,6 +103,7 @@ import StoicFieldGuideAccess from "./pages/pps/StoicFieldGuideAccess";
 import PilotTraining from "./pages/pps/PilotTraining";
 import PilotTrainingWatch from "./pages/pps/PilotTrainingWatch";
 import FiveDayMasterYourMessage from "./pages/pps/FiveDayMasterYourMessage";
+import RefundRequest from "./pages/pps/RefundRequest";
 import TeamChallenge from "./pages/pps/TeamChallenge";
 import JournalingChallenge from "./pages/pps/JournalingChallenge";
 import KickTheHabitWatch from "./pages/pps/KickTheHabitWatch";
@@ -342,6 +343,7 @@ const App = () => (
             <Route path="sitemap" element={<Sitemap />} />
             <Route path="found-it" element={<EasterEggForm />} />
             <Route path="unsubscribe" element={<Unsubscribe />} />
+            <Route path="refund-request" element={<RefundRequest />} />
             
             {/* Legacy routes — now 301-equivalent redirects to nearest new page */}
             <Route path="for-leaders" element={<Navigate to="/start-here" replace />} />
