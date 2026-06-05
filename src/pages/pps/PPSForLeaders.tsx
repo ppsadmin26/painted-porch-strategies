@@ -126,7 +126,7 @@ export default function PPSForLeaders() {
               <blockquote className="text-xl italic text-navy mb-4">
                 "How long are you going to wait before you demand the best for yourself?"
               </blockquote>
-              <p className="text-strategic font-semibold">,  Epictetus</p>
+              <p className="text-strategic font-semibold">Epictetus</p>
               <p className="text-sm text-muted-foreground mt-1">Stoic teacher & Former slave</p>
               <div className="mt-6 pt-6 border-t border-border">
                 <p className="text-sm text-muted-foreground">

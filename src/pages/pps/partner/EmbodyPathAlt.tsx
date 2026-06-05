@@ -559,7 +559,7 @@ export default function EmbodyPathAlt() {
           <blockquote className="text-2xl md:text-3xl font-poppins font-semibold text-navy italic leading-relaxed">
             "The relevant question is not simply what shall we do tomorrow, but rather what shall we do today in order to get ready for tomorrow."
           </blockquote>
-          <p className="mt-4 text-muted-foreground text-sm">,  Peter Drucker</p>
+          <p className="mt-4 text-muted-foreground text-sm">Peter Drucker</p>
         </div>
       </section>
       {/* SECTION 5: THE THREE PAINTED PORCH PILLARS */}

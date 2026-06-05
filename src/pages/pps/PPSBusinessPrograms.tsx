@@ -198,7 +198,7 @@ export default function PPSBusinessPrograms() {
           <blockquote className="text-xl md:text-2xl italic text-gold leading-relaxed font-poppins">
             "You don't build a business. You build people, and people build the business."
           </blockquote>
-          <p className="text-muted-foreground mt-3 font-semibold">,  Zig Ziglar</p>
+          <p className="text-muted-foreground mt-3 font-semibold">Zig Ziglar</p>
         </div>
       </section>
 
@@ -270,7 +270,7 @@ export default function PPSBusinessPrograms() {
           <blockquote className="text-xl md:text-2xl italic text-strategic leading-relaxed font-poppins">
             "The relevant question is not simply what shall we do tomorrow, but rather what shall we do today in order to get ready for tomorrow."
           </blockquote>
-          <p className="text-muted-foreground mt-3 font-semibold">,  Peter Drucker</p>
+          <p className="text-muted-foreground mt-3 font-semibold">Peter Drucker</p>
         </div>
       </section>
 

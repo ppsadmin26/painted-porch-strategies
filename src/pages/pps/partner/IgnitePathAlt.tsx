@@ -334,7 +334,7 @@ export default function IgnitePathAlt() {
           <blockquote className="text-2xl md:text-3xl font-poppins font-semibold text-navy italic leading-relaxed">
             "The secret of change is to focus all of your energy not on fighting the old, but on building the new."
           </blockquote>
-          <p className="mt-4 text-muted-foreground text-sm">,  Socrates</p>
+          <p className="mt-4 text-muted-foreground text-sm">Socrates</p>
         </div>
       </section>
 
