@@ -177,30 +177,8 @@ export default function PPSAbout() {
         </div>
       </section>
 
-      {/* The Patterns We Found - breathing section */}
-      <section className="py-14 md:py-20 bg-lime">
-        <div className="container max-w-4xl mx-auto px-6">
-          <p className="text-center text-white/80 font-poppins text-sm uppercase tracking-widest mb-8">
-            The Foundational Abilities That Make Change Stick
-          </p>
-          <div className="space-y-5">
-            {[
-              "Show up strong, confident, energized, and resilient when uncertainty or change is presented",
-              "Share ideas and challenge well-worn norms and habits",
-              "Spot and solve problems proactively and openly",
-              "Work in healthy, collaborative, accountable teams",
-              "Communicate with clarity, consistency, and impact",
-            ].map((ability, i) => (
-              <div key={i} className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-gold/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-gold font-poppins font-bold text-sm">{i + 1}</span>
-                </div>
-                <p className="text-white/90 text-lg leading-relaxed">{ability}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+
 
       {/* Transformation Partners Intro */}
       <section className="py-16 md:py-20 bg-white">
