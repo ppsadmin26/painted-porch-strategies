@@ -60,7 +60,13 @@ const partnerFaqs = [
   },
 ];
 
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
+
 export default function PartnerWithUsAlt() {
+  useDocumentSeo({
+    title: "Partner With Us | Three P.A.T.H.ways | Painted Porch Strategies",
+    description: "Three P.A.T.H.ways to architect epic shIFt: IGNITE, AMPLIFY, and EMBODY. Find the right partnership for your team and your next big change.",
+  });
   return (
     <div>
       {/* Section 1: Hero */}
