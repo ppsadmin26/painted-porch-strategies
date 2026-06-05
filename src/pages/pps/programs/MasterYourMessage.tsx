@@ -48,7 +48,8 @@ const programDetails = [
 const pricingTiers = [
   {
     name: "Mini Course",
-    subtitle: "Coming Soon",
+    price: "$36",
+    subtitle: "60 Minutes to Master Your Message",
     features: [
       "Key lessons from Rob's Master Your Message course (~60 min of learning)",
       "Lifetime Access",
