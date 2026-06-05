@@ -65,7 +65,7 @@ const faqs = [
   { question: "How long will I have access to the course?", answer: "You will have lifetime access to the courses included in this bundle. Upon purchase, you'll receive an email to access the Painted Porch Academy." },
   { question: "This 45-Day Money Back Guarantee...what's the catch?", answer: "There's no catch. If you purchased the course bundle and it's not what you're looking for or expected, simply <a href='/refund-request' class='text-pps-teal underline'>submit a refund request</a> within 45 days and we'll process your refund promptly. No questions asked." },
   { question: "Where are the Private Communities located?", answer: "Our communities are hosted on Go High Level (our course platform), a completely private network away from data scraping and advertisers, consisting of only our members. It's free to join and easy to use." },
-  { question: "What is Painted Porch Strategies?", answer: "We want you to Become the Architect of Your Life. Our teachers and programs show you how to design your own, personal Blueprint for mastering the power of your mind, the confidence of your communications, and the strength of your teams & relationships." },
+  { question: "What is Painted Porch Strategies?", answer: "Painted Porch Strategies is a partnership for leaders and teams ready to design real, lasting change. We guide you through Phase Zero, the strategic thinking that happens before a project kicks off, so the change you build is the one you actually want to lead. Through our P.A.T.H. approach (Prepare, Align, Take Off, Habit) and The Painted Porch Pillars, we co-design the leadership, systems, and human capacity that turn good intentions into extraordinary outcomes." },
 ];
 
 export default function ExtraordinaryTeams() {
