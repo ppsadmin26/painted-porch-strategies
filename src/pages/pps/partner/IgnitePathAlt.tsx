@@ -351,7 +351,7 @@ export default function IgnitePathAlt() {
                 <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
                   <TIERS.IGNITE.icon className="w-5 h-5 text-gold" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Nurture the Spark</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-gold">Nurture the Spark</h3>
               </div>
               <p className="text-sm font-medium text-foreground/80 mb-4">
                 Stay in IGNITE, go deeper
@@ -385,7 +385,7 @@ export default function IgnitePathAlt() {
                 <div className="w-10 h-10 rounded-full bg-strategic/20 flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-strategic" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Amplify What You've Started</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-strategic">Amplify What You've Started</h3>
               </div>
               <p className="text-sm font-medium text-foreground/80 mb-4">
                 Join cohorts or bring your team
@@ -417,31 +417,31 @@ export default function IgnitePathAlt() {
             </div>
 
             {/* Path 3: Open the Blue Door */}
-            <div className="bg-primary/10 p-8 rounded-xl border-t-4 border-primary">
+            <div className="bg-bluedoor/10 p-8 rounded-xl border-t-4 border-bluedoor">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Landmark className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-full bg-bluedoor/20 flex items-center justify-center">
+                  <Landmark className="w-5 h-5 text-bluedoor" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Open the Door to Strategic Shift</h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-bold text-bluedoor">Open the Door to Strategic Shift</h3>
               </div>
               <p className="text-sm font-medium text-foreground/80 mb-4">
                 Organizational Clarity Before Implementation Commitment
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-center gap-2 text-sm text-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-bluedoor" />
                   Comprehensive organizational assessment
                 </li>
                 <li className="flex items-center gap-2 text-sm text-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-bluedoor" />
                   Identify shifts you're built to lead
                 </li>
                 <li className="flex items-center gap-2 text-sm text-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-bluedoor" />
                   Painted Porch Pillars analysis
                 </li>
                 <li className="flex items-center gap-2 text-sm text-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-bluedoor" />
                   Determines AMPLIFY or EMBODY fit
                 </li>
               </ul>
