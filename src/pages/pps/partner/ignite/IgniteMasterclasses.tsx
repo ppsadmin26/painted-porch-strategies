@@ -147,15 +147,14 @@ export default function IgniteMasterclasses() {
                           </Button>
                         </Link>
                       ) : item.launchSlug ? (
-                        <div className="w-full [&_button]:w-full [&>div]:!items-stretch [&>div]:!flex-col [&>div]:gap-1 [&>div]:items-center">
-                          <LaunchListCTA
-                            slug={item.launchSlug}
-                            courseName={item.title}
-                            liveLabel="Enroll"
-                            buttonClasses={`border-2 border-${item.themeColor} text-${item.themeColor} hover:bg-${item.themeColor} hover:text-white transition-colors`}
-                            textColorClass={`text-${item.themeColor}`}
-                          />
-                        </div>
+                        <LaunchListCTA
+                          slug={item.launchSlug}
+                          courseName={item.title}
+                          liveLabel="Enroll"
+                          layout="block"
+                          buttonClasses={`border-2 border-${item.themeColor} text-${item.themeColor} hover:bg-${item.themeColor} hover:text-white transition-colors`}
+                          textColorClass={`text-${item.themeColor}`}
+                        />
                       ) : (
                         <Button
                           variant="outline"
