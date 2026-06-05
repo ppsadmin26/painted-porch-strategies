@@ -290,6 +290,11 @@ const pathwaySteps = [
 ];
 
 export default function EmbodyPathAlt() {
+  useDocumentSeo({
+    title: "EMBODY P.A.T.H.way | Embedded Partnership | Painted Porch",
+    description: "Architect epic shIFt that lasts. EMBODY is the deep, embedded C-suite partnership that builds the foundational architecture of adaptive organizations.",
+    ogImage: embodyHero,
+  });
   return (
     <div>
       {/* SECTION 1: HERO */}
