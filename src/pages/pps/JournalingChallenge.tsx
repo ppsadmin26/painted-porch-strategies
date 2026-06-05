@@ -70,16 +70,17 @@ export default function JournalingChallenge() {
               <p className="text-lg text-foreground mb-8">
                 Five days. Five short prompts. Reconnect, rediscover, and reignite your true voice — one quiet page at a time. Led by Rob Hunter, Painted Porch's Master of Communication.
               </p>
-              <a
-                href={GHL_CHECKOUT_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Enroll in the Master Your Message Journaling Challenge"
+              <Button
+                disabled
+                className="bg-primary text-white font-semibold text-base px-8 py-5 rounded-full opacity-60 cursor-not-allowed"
               >
-                <Button className="bg-primary hover:bg-primary/90 text-white font-semibold text-base px-8 py-5 rounded-full">
-                  Enroll Now
-                </Button>
-              </a>
+                Coming Soon
+              </Button>
+              <p className="text-sm mt-3">
+                <Link to="/partner/ignite/masterclasses" className="text-primary hover:underline font-medium">
+                  Join the launch list →
+                </Link>
+              </p>
               <p className="text-xs text-muted-foreground mt-3">
                 On-demand. 5 short daily prompts. Go at your own pace, anytime.
               </p>
@@ -205,16 +206,17 @@ export default function JournalingChallenge() {
           <p className="text-white/90 mb-8 text-lg drop-shadow">
             Five days from now you could have a simple daily rhythm, a quieter mind, and a much clearer sense of your own voice. Let's go.
           </p>
-          <a
-            href={GHL_CHECKOUT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Enroll in the Master Your Message Journaling Challenge"
+          <Button
+            disabled
+            className="bg-gold text-navy font-semibold text-base px-8 py-5 rounded-full shadow-xl opacity-70 cursor-not-allowed"
           >
-            <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold text-base px-8 py-5 rounded-full shadow-xl">
-              Enroll Now
-            </Button>
-          </a>
+            Coming Soon
+          </Button>
+          <p className="text-sm text-white/90 mt-4">
+            <Link to="/partner/ignite/masterclasses" className="underline hover:text-white font-medium">
+              Join the launch list →
+            </Link>
+          </p>
           <p className="text-xs text-white/80 mt-4">
             Questions? <Link to="/contact" className="underline hover:text-white">Contact us</Link>.
           </p>
