@@ -32,6 +32,11 @@ const pathwayDetails = {
 };
 
 export default function StartHere() {
+  useDocumentSeo({
+    title: "Start Here | Discover Your P.A.T.H.way | Painted Porch",
+    description: "Not sure where to start? Discover the P.A.T.H.way that fits your team: IGNITE, AMPLIFY, or EMBODY. Find your partnership in a few minutes.",
+    ogImage: startHereHero,
+  });
   return (
     <div>
       {/* Hero */}
