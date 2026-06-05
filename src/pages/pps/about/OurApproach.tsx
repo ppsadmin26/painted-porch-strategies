@@ -372,7 +372,7 @@ export default function OurApproach() {
       </section>
 
       {/* Certifications & Credentials */}
-      <section className="py-16 md:py-20 bg-muted">
+      <section id="certifications" className="py-16 md:py-20 bg-muted scroll-mt-24">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">

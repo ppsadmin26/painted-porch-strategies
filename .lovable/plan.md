@@ -1,74 +1,82 @@
+# Plan: Anchor Wiring + Resume Content Audit
 
-# P.A.T.H. + About-suite Audit
+## Part 1 — Anchor & Deep-Link Wiring (execute first)
 
-## 1. Where P.A.T.H. lives today
+Goal: every cross-page mention of P.A.T.H., Phase Zero, or Certifications lands the user directly on the right section, not the top of a long page.
 
-| Page | P.A.T.H. treatment |
-|---|---|
-| `/` (Home) | The richest visual: "Your P.A.T.H. to Sustainable Change" — 4-step winding-road graphic (Prepare / Align / Take Off / Habits) in colored cards. **Letters + words only — zero explanation of what each step actually means.** |
-| `/start-here` | The quiz that routes people to a P.A.T.H.way (uses the term as a navigation device, not a methodology page). |
-| `/partner` & tier pages | Use "P.A.T.H." as the partnership hub vocabulary (Ignite/Amplify/Embody as "P.A.T.H.ways"). Tier pages reference it but don't teach the framework. |
-| `/phase-zero` | Currently teaches **The Painted Porch Pillars** (Foundational Architecture / Operational Intelligence / Human Capacity) — the WHO/WHERE framework. Does **not** mention P.A.T.H. as a methodology. |
-| `/about`, `/about/approach`, `/about/impact` | **P.A.T.H. is entirely absent** as a framework. Only a CTA button label ("Find Your P.A.T.H.way") on the Approach final CTA. |
+### 1. `src/pages/pps/about/OurApproach.tsx`
+- Add `id="certifications"` + `scroll-mt-24` to the Certifications section wrapper (currently line 375).
+- Confirm existing `id="path"` on the Methodology section already has `scroll-mt-24` (it does).
 
-**Verdict:** P.A.T.H. is a brand motif everywhere but is **never actually taught** anywhere on the site. The home graphic shows the steps; nothing explains them.
+### 2. `src/pages/pps/PPSAbout.tsx`
+- In the "Our Response" / methodology bridge copy, split the dual mention so:
+  - "P.A.T.H. methodology" → `/about/approach#path`
+  - "our certifications" → `/about/approach#certifications`
+- Keep copy intact; only swap the link targets.
 
-## 2. Phase Zero link from `/about/approach`
+### 3. `src/pages/pps/PhaseZero.tsx`
+- Above the "Where Phase Zero Leads" cards, add a short back-link sentence:
+  "Phase Zero is the Prepare stage of our broader P.A.T.H. methodology →" linking to `/about/approach#path`.
+- No other content changes.
 
-`/about/approach` mentions "the work we call Phase Zero" with a link to `/phase-zero` (lines 242–249). The link **exists and is correct**. What's weak is that it's a single inline sentence in the "Where We Fit" card — Phase Zero deserves a stronger callout given how central it is.
+### 4. Verify
+- `ScrollToHash` in `App.tsx` already handles cross-page hash scroll (100ms smooth) — no changes.
+- Spot-check anchors render correctly at top of viewport (scroll-mt-24 accounts for sticky nav).
 
-## 3. Overlap + gap audit across the About suite
+No changes to: `/about/impact`, methodology copy, Approach Prepare callout, shared components.
 
-### `/about` (PPSAbout.tsx, 426 lines)
-Sections: Hero → "On Becoming" → Our Story → Foundational Abilities (5) → Team intro → Team cards → Marquee → **R.L.P.V.** (Reason/Logic/Purpose/Virtue) → Our Response → **Certifications grid (14 badges)** → What's a Painted Porch → Contact CTA.
+---
 
-### `/about/approach` (OurApproach.tsx, 272 lines)
-Sections: Hero → **Core Values** (Purpose/Partnership/Stewardship) → Manifesto (believe vs. reject) → "Conditions We Build" → Promise + Where We Fit → Blue Door CTA → PartnershipPromise.
+## Part 2 — Resume About-Suite Content Audit (execute after Part 1)
 
-### `/about/impact` (OurImpact.tsx, 324 lines)
-Sections: Video hero → Marquee → 3 Testimonials → **Do Good ShIFt** + counter ($31,199) → Charities grid (29) → Parallax CTA.
+Pick up the re-homing recommendations that were paused. Proposed execution order:
 
-### Overlaps
-- **Marquee** appears on `/about` and `/about/impact` (fine — site-wide pattern).
-- **"What we partner on / upstream of rollout" idea** lives on both `/about` ("On Becoming") and `/about/approach` ("Where We Fit"). Same point, different words.
-- **Stoic / Painted Porch story** lives on `/about` ("What's a Painted Porch") and is *referenced* by `/about/approach` via tone but never told there. Not a real overlap.
-- **Values vs. R.L.P.V.** — `/about/approach` has Purpose/Partnership/Stewardship; `/about` has Reason/Logic/Purpose/Virtue. Two different "values" frameworks on adjacent pages risks confusion. Worth deciding which is *the* values list and where it lives.
-- **PartnershipPromise component** is on `/about/approach` and `/phase-zero` (intentional, fine).
+### Step A — `/about/approach` (OurApproach.tsx)
+New section flow:
+1. Hero
+2. Manifesto (move up — current opener)
+3. Core Values
+4. **R.L.P.V.** (moved IN from `/about`)
+5. The Conditions We Build Together
+6. **5 Foundational Abilities** (moved IN from `/about`) — rendered as a side-by-side pair with Conditions ("What we build in people" vs "What we build in the org")
+7. P.A.T.H. Methodology (with `#path`)
+8. Certifications (with `#certifications`)
+9. Partnership Promise
+10. Final Blue Door ParallaxCTA
 
-### Gaps
-- **No P.A.T.H. methodology explainer** anywhere on the site.
-- **Certifications + credentials** live only on `/about` (mixed into a long page). They're a trust asset that pairs naturally with methodology.
-- **No "how we do the work" walkthrough** — `/about/approach` is philosophy (values, beliefs, conditions) but never shows the *mechanics* (P.A.T.H. stages, what happens in each).
-- **Phase Zero ↔ P.A.T.H. relationship is never named.** Phase Zero is the "Prepare" stage; that connection is invisible to readers.
+### Step B — `/about` (PPSAbout.tsx)
+New section flow:
+1. Hero
+2. **What's a Painted Porch** (Stoa Poikile — moved up right after hero)
+3. On Becoming
+4. Our Story
+5. Team grid
+6. Client marquee / trust signals
+7. "How we think + how we work" bridge (links to `#path` and `#certifications`)
+8. Final CTA (convert to `<ParallaxCTA>`, non-navy tone)
 
-## 4. Proposed home for the full P.A.T.H. framework
+Removed from `/about`: R.L.P.V., 5 Foundational Abilities (now on Approach).
 
-Your instinct (put it on `/about/approach`) is the right *neighborhood* — but the page is currently a philosophy/manifesto page. Two viable options:
+### Step C — Style/flow polish on `/about`
+- Alternate section backgrounds (`bg-white` ↔ `bg-muted/30`) so no two whites touch.
+- Normalize eyebrow tag styling across sections.
+- Enforce single H1; primary vs secondary H2 hierarchy.
+- Team grid contrast check (Amy's `bg-strategic/10` card).
+- Trademark hygiene: ≤ 1 ™ on `/about` (primary mention only).
+- Tighten "Our Response" copy as part of the bridge section.
 
-**Option A — Expand `/about/approach` into the methodology page (recommended)**
-Add a dedicated "Our Methodology: The P.A.T.H." section between "Conditions We Build" and "Promise + Where We Fit":
-- Intro: P.A.T.H. as the navigational framework (Prepare → Align → Take Off → Habits).
-- Four stage cards (color-coded to match the home graphic) with: what it is, what we do in this stage, what you walk away with.
-- Call out: **"Prepare = Phase Zero"** with link to `/phase-zero`.
-- Move **Certifications grid** off `/about` and onto `/about/approach` directly under the methodology (credentials reinforce the method).
-- Rename page H1 from "Our Approach" → keep "Our Approach" but reframe: philosophy *and* methodology, in that order.
+### Step D — `/about/impact`
+No changes this round (confirmed last time).
 
-**Option B — New dedicated `/path` page**
-Pure framework page. Cleaner separation but adds another route to maintain and splits attention from `/phase-zero`.
+### Open question to resolve before Step A
+For the Approach page: **merge Foundational Abilities + Conditions into one list, or keep as two side-by-side cards?**
+My recommendation: two side-by-side cards (abilities = individuals, conditions = organization). Confirm or override.
 
-Recommendation: **Option A**. Keeps the IA flat, gives `/about/approach` the substance it currently lacks, and naturally links to `/phase-zero` (Prepare stage) and the partner tiers (Habits stage).
+---
 
-## 5. Proposed changes (if you approve)
-
-1. **`/about/approach`** — Add P.A.T.H. methodology section (4 stage cards + Phase-Zero callout). Strengthen Phase Zero link from inline mention to a bordered callout block.
-2. **`/about/approach`** — Move Certifications grid here from `/about`.
-3. **`/about`** — Remove certifications, tighten R.L.P.V. (or replace with link to Approach), and let it stay focused on *story + team + Stoic origin*.
-4. **`/phase-zero`** — Add a short "Phase Zero is the *Prepare* stage of our P.A.T.H. methodology" lead-in near the top, with a link back to `/about/approach`.
-5. **Optional content cleanup** — Decide on a single canonical "values" framework (Core Values vs. R.L.P.V.); keep both only if you can articulate the distinction clearly.
-
-## Open questions before I build
-
-- Confirm Option A (expand `/about/approach`) vs. Option B (new `/path` page)?
-- OK to move Certifications off `/about` onto `/about/approach`?
-- Keep both Core Values *and* R.L.P.V., or consolidate?
-- Should the Certifications section also include team headshots / "who's certified in what" — or just badges as today?
+## Order of operations
+1. Execute Part 1 (anchors) — small, low-risk, ~3 file edits.
+2. Confirm Part 2 scope + the side-by-side vs merge question.
+3. Execute Step A (Approach restructure).
+4. Execute Step B (About restructure).
+5. Execute Step C (About polish).
