@@ -16,8 +16,8 @@ interface LaunchListCTAProps {
   buttonClasses?: string;
   /** Tailwind text-color class for the "Join the Launch List" link. */
   textColorClass?: string;
-  /** Layout: full-width (default) or right-aligned with stacked waitlist link beneath. */
-  layout?: "stacked" | "inline";
+  /** Layout: stacked (button on top right, link beneath right-aligned), inline (button + link in a row), or block (full-width button, link centered below). */
+  layout?: "stacked" | "inline" | "block";
   /** Optional override for the disabled "Coming Soon" label. */
   comingSoonLabel?: string;
   /** Hide the launch-list link entirely (still respects Live status). */
