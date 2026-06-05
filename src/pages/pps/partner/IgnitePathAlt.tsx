@@ -19,6 +19,7 @@ import { TierBadge, TIERS } from "@/components/pps/TierBadge";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { FAQSection } from "@/components/pps/FAQSection";
 import { ExploreBeforeCommitSection } from "@/components/pps/partner/ExploreBeforeCommitSection";
+import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import { igniteFaqCategories } from "./ignite/igniteFaqs";
 
 // Hero background - colorful flame for IGNITE spark theme
@@ -499,26 +500,16 @@ export default function IgnitePathAlt() {
       <ExploreBeforeCommitSection />
 
       {/* SECTION 9: FINAL CTA */}
-      <section className="relative py-16 md:py-24 text-white overflow-hidden">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${igniteCtaBg})` }} />
-        <div className="absolute inset-0 bg-navy/75" />
-        <div className="container max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            What Sh<span className="text-gold">IF</span>t Will You Ignite First?
-          </h2>
-          <p className="text-lg text-white/90 mb-4 max-w-2xl mx-auto">
-            <strong>Your Phase Zero journey starts with one program, one assessment, or one decision to invest in your transformation capacity.</strong>
-          </p>
-          <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-            Not sure where to start? Take our free P.A.T.H.finder quiz to get personalized recommendations based on your development priorities.
-          </p>
-          <Link to="/start-here">
-            <Button className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-6 px-10 transition-colors">
-              Take Free P.A.T.H.finder Quiz
-            </Button>
-          </Link>
-        </div>
-      </section>
+      <ParallaxCTA
+        backgroundImage={igniteCtaBg}
+        overlayTone="teal"
+        headline={<>What Sh<span className="text-gold">IF</span>t Will You Ignite First?</>}
+        description={<><strong>Your Phase Zero journey starts with one program, one assessment, or one decision to invest in your transformation capacity.</strong></>}
+        footnote="Not sure where to start? Take our free P.A.T.H.finder quiz to get personalized recommendations based on your development priorities."
+        actions={[
+          { label: "Take Free P.A.T.H.finder Quiz", to: "/start-here", variant: "primary" },
+        ]}
+      />
     </div>
   );
 }

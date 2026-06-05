@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useRef, useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
+import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import { useParallax } from "@/hooks/useParallax";
 import { useCountUp } from "@/hooks/useCountUp";
 import { supabase } from "@/integrations/supabase/client";
@@ -295,30 +296,15 @@ export default function OurImpact() {
       </section>
 
 
-      <section ref={ctaRef} className="relative py-20 md:py-28 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat will-change-transform"
-          style={{
-            backgroundImage: `url(${impactCta})`,
-            transform: `translateY(${parallaxOffset}px) scale(1.15)`,
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-navy/65 via-navy/55 to-navy/65" />
-        </div>
-        <div className="container max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Make an Impact?
-          </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            Join the leaders, teams, and organizations that have transformed their approach to change, starting at Phase Zero.
-          </p>
-          <Link to="/start-here">
-            <Button className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-5 px-8 transition-colors">
-              Start Your Journey
-            </Button>
-          </Link>
-        </div>
-      </section>
+      <ParallaxCTA
+        backgroundImage={impactCta}
+        overlayTone="gold"
+        headline="Ready to Make an Impact?"
+        description="Join the leaders, teams, and organizations that have transformed their approach to change, starting at Phase Zero."
+        actions={[
+          { label: "Start Your Journey", to: "/start-here", variant: "primary" },
+        ]}
+      />
     </div>
   );
 }
