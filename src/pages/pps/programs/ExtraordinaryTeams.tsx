@@ -262,7 +262,7 @@ export default function ExtraordinaryTeams() {
                   <p className="text-charcoal leading-relaxed mb-6">
                     Welcome to the Porch! You can call me Amy Yack — my friends do. I've spent the last 20+ years seeking out and partnering with organizations to design programs that <strong>connect</strong> people and <strong>process</strong> to a <strong>clear purpose</strong>, strategic vision, and noble <strong>mission</strong>. Through <strong>challenging business as usual</strong>, we can navigate the sea of change and build amazing teams, focused on <strong>contribution</strong>, <strong>service</strong>, and <strong>connection</strong>.
                   </p>
-                  <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal/10 font-poppins font-semibold rounded-lg">
+                  <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal hover:text-white font-poppins font-semibold rounded-lg">
                     <Link to="/amy">More About Amy <ArrowRight className="ml-2 h-4 w-4" /></Link>
                   </Button>
                 </div>
