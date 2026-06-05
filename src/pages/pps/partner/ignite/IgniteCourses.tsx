@@ -153,14 +153,13 @@ export default function IgniteCourses() {
                     <div className="flex items-center justify-between">
                       <span className={`text-2xl font-bold ${course.textColor}`}>{course.investment}</span>
                       {course.comingSoon ? (
-                        <div className="flex flex-col items-end gap-1">
-                          <Button variant="outline" className={`${course.buttonClasses} transition-colors opacity-50 cursor-not-allowed`} disabled>
-                            Coming Soon
-                          </Button>
-                          <Link to="/contact?scope=Yourself&interest=self-paced&message=I'm interested in joining the waitlist for an IGNITE course." className={`text-xs ${course.textColor} hover:underline`}>
-                            Join the Waitlist →
-                          </Link>
-                        </div>
+                        <LaunchListCTA
+                          slug={course.launchSlug ?? ""}
+                          courseName={course.title}
+                          liveLabel="Enroll"
+                          buttonClasses={`${course.buttonClasses} transition-colors`}
+                          textColorClass={course.textColor}
+                        />
                       ) : course.internal ? (
                         <Link to={course.link}>
                           <Button variant="outline" className={`${course.buttonClasses} transition-colors`}>
