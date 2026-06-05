@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Clock, ExternalLink, ArrowLeft } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
+import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
 import { igniteFaqCategories } from "./igniteFaqs";
 
 import courseRadicalMindfulness from "@/assets/courses/radical-mindfulness.jpg";
@@ -65,7 +66,7 @@ const courses = [
     description: "Change initiatives fail long before implementation when strategic architecture is missing. This 8-module program teaches P.A.T.H. framework, Phase Zero principles, and how to architect change.",
     format: "8 modules | Video lessons + strategic frameworks | Lifetime access",
     investment: "$697",
-    link: "https://www.paintedporchstrategies.com/offers/5kPUqzzc/checkout",
+    link: "#",
     color: "bg-strategic/10",
     borderColor: "border-strategic",
     pillColor: "bg-strategic text-white",
@@ -74,6 +75,7 @@ const courses = [
     buttonClasses: "border-strategic text-strategic hover:bg-strategic hover:text-white",
     image: courseLeadingChange,
     comingSoon: true,
+    launchSlug: "leading-change-course",
   },
 ];
 
@@ -151,14 +153,13 @@ export default function IgniteCourses() {
                     <div className="flex items-center justify-between">
                       <span className={`text-2xl font-bold ${course.textColor}`}>{course.investment}</span>
                       {course.comingSoon ? (
-                        <div className="flex flex-col items-end gap-1">
-                          <Button variant="outline" className={`${course.buttonClasses} transition-colors opacity-50 cursor-not-allowed`} disabled>
-                            Coming Soon
-                          </Button>
-                          <Link to="/contact?scope=Yourself&interest=self-paced&message=I'm interested in joining the waitlist for an IGNITE course." className={`text-xs ${course.textColor} hover:underline`}>
-                            Join the Waitlist →
-                          </Link>
-                        </div>
+                        <LaunchListCTA
+                          slug={course.launchSlug ?? ""}
+                          courseName={course.title}
+                          liveLabel="Enroll"
+                          buttonClasses={`${course.buttonClasses} transition-colors`}
+                          textColorClass={course.textColor}
+                        />
                       ) : course.internal ? (
                         <Link to={course.link}>
                           <Button variant="outline" className={`${course.buttonClasses} transition-colors`}>

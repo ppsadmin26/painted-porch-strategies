@@ -3,11 +3,14 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, ArrowLeft, Heart } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
+import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
 import { igniteFaqCategories } from "./igniteFaqs";
 
 import brainEqIcon from "@/assets/icons/brain-eq.svg";
 import dualGearsIcon from "@/assets/icons/dual-gears.svg";
 import dnaHelixIcon from "@/assets/icons/dna-helix.svg";
+import shiftArchitectIcon from "@/assets/icons/shift-architect.svg";
+
 
 
 const assessments = [
@@ -48,6 +51,7 @@ const assessments = [
     description: "You came without an instruction manual. Performance DNA creates it. Discover your unique success formula—what makes you extraordinary at work and in life—by decoding your natural strengths, decision patterns, work preferences, and conditions where you excel.",
     investment: "Starting at $69 | Team pricing available",
     link: "#",
+    launchSlug: "performance-dna",
     color: "bg-lime/10",
     borderColor: "border-lime",
     iconColor: "text-lime",
@@ -55,7 +59,23 @@ const assessments = [
     hoverBg: "hover:bg-lime",
     icon: "dna",
   },
+  {
+    title: "Shift Architect",
+    subtitle: "Change Leadership Capacity",
+    tagline: "Reveal Your Capacity to Architect Change",
+    description: "Most leaders learn change the hard way—mid-crisis, mid-implementation. Shift Architect surfaces how you currently think about, prepare for, and lead through change so you can build the strategic capacity required to architect transformation instead of react to it.",
+    investment: "Coming Soon | Pricing TBD",
+    link: "#",
+    launchSlug: "shift-architect",
+    color: "bg-strategic/10",
+    borderColor: "border-strategic",
+    iconColor: "text-strategic",
+    pillColor: "bg-strategic text-white",
+    hoverBg: "hover:bg-strategic",
+    icon: "shift-architect",
+  },
 ];
+
 
 function AssessmentIcon({ icon }: { icon: string }) {
   const iconClass = "w-8 h-8";
@@ -67,6 +87,8 @@ function AssessmentIcon({ icon }: { icon: string }) {
       return <img src={dualGearsIcon} alt="Working Genius" className={iconClass} style={invertFilter} />;
     case "dna":
       return <img src={dnaHelixIcon} alt="Performance DNA" className={iconClass} style={invertFilter} />;
+    case "shift-architect":
+      return <img src={shiftArchitectIcon} alt="Shift Architect" className={iconClass} style={invertFilter} />;
     default:
       return <Heart className={`${iconClass} text-white`} />;
   }
@@ -139,14 +161,13 @@ export default function IgniteAssessments() {
                       </a>
                     )
                   ) : (
-                    <div className="text-right">
-                      <Button variant="outline" size="sm" className={`border-current ${assessment.iconColor}`} disabled>
-                        Coming Soon
-                      </Button>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        <a href="/contact?scope=Yourself&interest=assessments&message=I'm interested in joining the waitlist for an assessment." className="underline hover:text-primary">Join the Waitlist</a>
-                      </p>
-                    </div>
+                    <LaunchListCTA
+                      slug={assessment.launchSlug ?? ""}
+                      courseName={assessment.title}
+                      liveLabel="Explore"
+                      buttonClasses={`border-2 ${assessment.borderColor} ${assessment.iconColor} ${assessment.hoverBg} hover:text-white transition-colors`}
+                      textColorClass={assessment.iconColor}
+                    />
                   )}
                 </div>
               </div>
