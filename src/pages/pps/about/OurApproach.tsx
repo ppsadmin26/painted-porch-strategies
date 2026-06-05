@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { CheckCircle, X, ArrowRight, Compass, Users, Rocket, Repeat } from "lucide-react";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import PartnershipPromise from "@/components/pps/PartnershipPromise";
