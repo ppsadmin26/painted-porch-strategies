@@ -56,7 +56,7 @@ const faqs = [
 const pricingTiers = [
   {
     name: "Mini-Course",
-    price: "$57",
+    price: "$36",
     subtitle: "60 Minutes to Radical Mindfulness",
     features: [
       "Key lessons from Sierra's Radical Mindfulness course (~60 min of learning)",
