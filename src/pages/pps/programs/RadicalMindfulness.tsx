@@ -83,6 +83,7 @@ const pricingTiers = [
 
 export default function RadicalMindfulness() {
   const [launchOpen, setLaunchOpen] = useState(false);
+  const { isLive, data: launch } = useCourseLaunchStatus("radical-mindfulness");
   return (
     <div>
       <CourseLaunchListDialog
