@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
 import faqHero from "@/assets/faq-hero.jpg";
@@ -188,6 +189,11 @@ const sitewideFaqCategories: FAQCategory[] = [
 ];
 
 export default function FAQPage() {
+  useDocumentSeo({
+    title: "FAQ | Painted Porch Strategies",
+    description: "Answers to the most common questions about Painted Porch Strategies, Phase Zero, the Blue Door, and our IGNITE, AMPLIFY, and EMBODY P.A.T.H.ways.",
+    ogImage: faqHero,
+  });
   return (
     <div>
       {/* Hero */}

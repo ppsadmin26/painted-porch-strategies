@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useRef, useState, useCallback, useEffect } from "react";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
@@ -33,6 +34,11 @@ const testimonials = [
 ];
 
 export default function OurImpact() {
+  useDocumentSeo({
+    title: "Our Impact | Do Good ShIFt | Painted Porch Strategies",
+    description: "5% of every engagement funds charities our clients care about. See the impact partners and the Do Good ShIFt story behind Painted Porch Strategies.",
+    ogImage: impactCta,
+  });
   const { ref: ctaRef, parallaxOffset } = useParallax<HTMLElement>({ mode: "viewport", range: 80, offset: 40 });
   const { value: totalGiven, ref: counterRef } = useCountUp({ end: 31199, duration: 2500 });
 

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import teamCtaPuzzles from "@/assets/team/team-cta-puzzles.jpg";
@@ -48,6 +49,11 @@ const team = [
 
 
 export default function PPSAbout() {
+  useDocumentSeo({
+    title: "About Painted Porch Strategies | Our Story & Team",
+    description: "Meet the team behind Painted Porch Strategies. We partner with leaders to architect epic shIFt through Phase Zero work, before momentum outruns alignment.",
+    ogImage: aboutHero,
+  });
   return (
     <div>
       {/* Hero */}

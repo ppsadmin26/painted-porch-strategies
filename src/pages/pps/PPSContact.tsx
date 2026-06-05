@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -56,6 +57,11 @@ const budgetRangeOptions = [
 ];
 
 export default function PPSContact() {
+  useDocumentSeo({
+    title: "Contact Painted Porch Strategies | Start the Conversation",
+    description: "Tell us about your shIFt. We partner with leaders, teams, and organizations ready to architect change that lasts. Start the conversation here.",
+    ogImage: contactHero,
+  });
   const { toast } = useToast();
   const [searchParams] = useSearchParams();
   const [submitting, setSubmitting] = useState(false);

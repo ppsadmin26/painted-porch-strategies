@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { ArrowRight, Flame, Mic, Heart } from "lucide-react";
 import ClientLogoMarquee, { type LogoItem } from "@/components/pps/ClientLogoMarquee";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
@@ -71,6 +72,11 @@ const speakers = [
 ];
 
 export default function Speaking() {
+  useDocumentSeo({
+    title: "Speaking | Book Amy, Rob & Sierra | Painted Porch Strategies",
+    description: "Three dynamic speakers. One Stoic mission. Book Amy, Rob, and Sierra for keynotes and workshops on change, leadership, and epic shIFt.",
+    ogImage: speakingHero,
+  });
   return (
     <div>
       {/* Hero */}
