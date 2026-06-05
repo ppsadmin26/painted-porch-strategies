@@ -306,10 +306,16 @@ export default function PPSAbout() {
           <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
             By leaning on over <span className="font-semibold text-navy">50 years of our team's combined experience</span> and real-world solutions, we developed (and continually evolve) training, coaching, and advisory programs to partner with you in taking <span className="font-semibold text-primary">definitive, purposeful action</span> to prepare yourself and others to lean in, embrace, adopt, and make change stick.
           </p>
+          <p className="text-base text-foreground/80">
+            See the framework that holds it together in{" "}
+            <Link to="/about/approach#path" className="font-semibold text-primary hover:underline">
+              Our Approach
+            </Link>
+            , including the P.A.T.H. methodology and our certifications.
+          </p>
         </div>
       </section>
 
-      {/* Certifications moved to /about/approach (Our Methodology) */}
 
 
       {/* What's a Painted Porch */}
