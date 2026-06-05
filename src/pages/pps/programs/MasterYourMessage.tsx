@@ -1,10 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Mic, MessageSquare, HelpCircle, BookOpen, Users, Brain, Check } from "lucide-react";
+import { ArrowRight, Mic, MessageSquare, HelpCircle, BookOpen, Users, Brain, Check, Bell } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { FAQSection } from "@/components/pps/FAQSection";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
+import { CourseLaunchListDialog } from "@/components/pps/CourseLaunchListDialog";
 import heroImg from "@/assets/programs/master-your-message-hero.jpg";
 import { SoundMeter } from "@/components/pps/SoundMeter";
 import mymCtaImg from "@/assets/programs/master-your-message.jpg";
@@ -79,8 +81,16 @@ const faqs = [
 ];
 
 export default function MasterYourMessage() {
+  const [launchOpen, setLaunchOpen] = useState(false);
   return (
     <div>
+      <CourseLaunchListDialog
+        open={launchOpen}
+        onOpenChange={setLaunchOpen}
+        courseName="Master Your Message"
+        courseSlug="master-your-message"
+      />
+
       <PPSBreadcrumb
         segments={[
           { label: "Home", href: "/" },
@@ -315,21 +325,31 @@ export default function MasterYourMessage() {
                       </li>
                     ))}
                   </ul>
-                  {tier.comingSoon ? (
-                    <Button disabled className="w-full mt-auto font-poppins font-semibold rounded-lg bg-gray-300 text-gray-600 cursor-not-allowed">
-                      Coming Soon
-                    </Button>
-                  ) : (
-                    <Button asChild className={`w-full mt-auto font-poppins font-semibold rounded-lg ${tier.popular ? "bg-pps-teal hover:bg-pps-teal/90 text-white" : "bg-pps-navy hover:bg-pps-navy/90 text-white"}`}>
-                      <Link to="/contact?scope=Yourself&interest=self-paced&message=I'm interested in the Master Your Message program.">{tier.cta}</Link>
-                    </Button>
-                  )}
+                  <Button disabled className="w-full mt-auto font-poppins font-semibold rounded-lg bg-gray-300 text-gray-600 cursor-not-allowed">
+                    {tier.comingSoon ? "Coming Soon" : tier.cta}
+                  </Button>
                 </div>
               </AnimatedSection>
             ))}
           </div>
+
+          {/* Launch list note */}
+          <AnimatedSection>
+            <div className="mt-10 max-w-3xl mx-auto text-center bg-pps-teal/5 border border-pps-teal/20 rounded-2xl p-6 md:p-8">
+              <p className="text-charcoal leading-relaxed mb-5">
+                Our courses will be re-launching soon as we move our learning and community to a new course platform (Go High Level). If you'd like to be the first to know when <strong>Master Your Message</strong> is ready, join our launch list.
+              </p>
+              <Button
+                onClick={() => setLaunchOpen(true)}
+                className="bg-gold border-2 border-gold text-pps-navy font-poppins font-semibold hover:bg-transparent hover:text-gold transition-colors"
+              >
+                Join the Launch List <Bell className="ml-2 w-4 h-4" />
+              </Button>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
+
 
       {/* FAQ */}
       <AnimatedSection>

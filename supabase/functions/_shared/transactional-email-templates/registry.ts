@@ -25,6 +25,8 @@ import { template as easterEggNotification } from './easter-egg-notification.tsx
 import { template as easterEggConfirmation } from './easter-egg-confirmation.tsx'
 import { template as githubSyncAlert } from './github-sync-alert.tsx'
 import { template as policyUpdateNotification } from './policy-update-notification.tsx'
+import { template as courseLaunchList } from './course-launch-list.tsx'
+import { template as courseLaunchAvailable } from './course-launch-available.tsx'
 
 export const TEMPLATES: Record<string, TemplateEntry> = {
   'contact-confirmation': contactConfirmation,
@@ -43,4 +45,6 @@ export const TEMPLATES: Record<string, TemplateEntry> = {
   'stoic-field-guide': stoicFieldGuide,
   'github-sync-alert': githubSyncAlert,
   'policy-update-notification': policyUpdateNotification,
+  'course-launch-list': courseLaunchList,
+  'course-launch-available': courseLaunchAvailable,
 }
