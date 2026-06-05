@@ -196,11 +196,11 @@ export default function AmplifySprints() {
           </div>
 
           {/* Blue Door Callout */}
-          <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div className="bg-bluedoor/5 border border-bluedoor/20 rounded-xl p-6 flex flex-col md:flex-row items-start md:items-center gap-6">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <Info className="w-5 h-5 text-primary" />
-                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">About The Blue Door</h3>
+                <Info className="w-5 h-5 text-bluedoor" />
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">About The <span className="text-bluedoor">Blue Door</span></h3>
               </div>
               <p className="text-sm text-foreground mb-2">
                 The Blue Door is our strategic appraisal (less than 30 minutes) that reveals where your organization stands on the path to transformation—and what's blocking progress.
