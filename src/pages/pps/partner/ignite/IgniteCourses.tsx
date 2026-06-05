@@ -66,7 +66,7 @@ const courses = [
     description: "Change initiatives fail long before implementation when strategic architecture is missing. This 8-module program teaches P.A.T.H. framework, Phase Zero principles, and how to architect change.",
     format: "8 modules | Video lessons + strategic frameworks | Lifetime access",
     investment: "$697",
-    link: "https://www.paintedporchstrategies.com/offers/5kPUqzzc/checkout",
+    link: "#",
     color: "bg-strategic/10",
     borderColor: "border-strategic",
     pillColor: "bg-strategic text-white",
@@ -75,6 +75,7 @@ const courses = [
     buttonClasses: "border-strategic text-strategic hover:bg-strategic hover:text-white",
     image: courseLeadingChange,
     comingSoon: true,
+    launchSlug: "leading-change-course",
   },
 ];
 
