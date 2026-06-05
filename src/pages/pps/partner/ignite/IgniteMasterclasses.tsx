@@ -122,31 +122,35 @@ export default function IgniteMasterclasses() {
               const colors = categoryColors[item.category];
               return (
                 <div key={item.title} className={`bg-muted rounded-xl border-t-4 border-${item.themeColor} transition-all hover:shadow-lg flex flex-col overflow-hidden`}>
-                  <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
+                  {item.href ? (
+                    <Link to={item.href}>
+                      <img src={item.image} alt={item.title} className="w-full h-40 object-cover hover:opacity-90 transition-opacity" />
+                    </Link>
+                  ) : (
+                    <img src={item.image} alt={item.title} className="w-full h-40 object-cover" />
+                  )}
                   <div className="p-5 flex flex-col flex-1">
                     <div className="mb-3">
                       <span className={`inline-block px-2.5 py-0.5 rounded-full text-xs font-medium ${colors.bg} ${colors.text} mb-2`}>
                         {item.category}
                       </span>
-                      <h3 className={`text-xl md:text-2xl font-poppins font-bold text-${item.themeColor} leading-tight`}>
-                        {item.title}
-                      </h3>
+                      {item.href ? (
+                        <Link to={item.href}>
+                          <h3 className={`text-xl md:text-2xl font-poppins font-bold text-${item.themeColor} leading-tight hover:underline`}>
+                            {item.title}
+                          </h3>
+                        </Link>
+                      ) : (
+                        <h3 className={`text-xl md:text-2xl font-poppins font-bold text-${item.themeColor} leading-tight`}>
+                          {item.title}
+                        </h3>
+                      )}
                       {item.leader && <p className="text-sm font-medium text-navy mt-1">Led by {item.leader}</p>}
                       {item.description && <p className="text-xs text-foreground mt-2">{item.description}</p>}
                     </div>
                     <div className="mt-auto pt-4">
                       <p className="text-sm font-bold text-navy mb-2">${item.price ?? 36}</p>
-                      {item.href ? (
-                        <Link to={item.href} className="block">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className={`border-2 border-${item.themeColor} text-${item.themeColor} hover:bg-${item.themeColor} hover:text-white w-full transition-colors`}
-                          >
-                            Explore
-                          </Button>
-                        </Link>
-                      ) : item.launchSlug ? (
+                      {item.launchSlug ? (
                         <LaunchListCTA
                           slug={item.launchSlug}
                           courseName={item.title}
@@ -160,10 +164,15 @@ export default function IgniteMasterclasses() {
                           variant="outline"
                           size="sm"
                           disabled
-                          className={`border-2 border-${item.themeColor} text-${item.themeColor} hover:bg-${item.themeColor} hover:text-white w-full opacity-60 cursor-not-allowed`}
+                          className={`border-2 border-${item.themeColor} text-${item.themeColor} w-full opacity-60 cursor-not-allowed`}
                         >
                           Coming Soon
                         </Button>
+                      )}
+                      {item.href && (
+                        <Link to={item.href} className={`block text-center text-xs mt-2 text-${item.themeColor} hover:underline`}>
+                          Learn more →
+                        </Link>
                       )}
                     </div>
                   </div>
