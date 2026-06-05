@@ -168,11 +168,12 @@ export default function CourseLaunchManager() {
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <div className="mb-6">
-        <h1 className="text-3xl font-poppins font-bold text-navy">Course Launches</h1>
+        <h1 className="text-3xl font-poppins font-bold text-navy">Program Launches</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Toggle a course from Coming Soon to Live. Going live automatically emails everyone on
-          the launch list using the <code>course-launch-available</code> template, so the CTA on
-          the course page and the notification can't get out of sync.
+          Toggle a program (course, assessment, masterclass, leadership lab, etc.) from Coming Soon
+          to Live. Going live automatically emails everyone on the launch list using the{" "}
+          <code>course-launch-available</code> template, so the CTA on the program page and the
+          notification can't get out of sync.
         </p>
       </div>
 
