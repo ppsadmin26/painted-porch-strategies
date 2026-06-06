@@ -138,6 +138,10 @@ export default function IgnitePathAlt() {
             isPrimary: true,
             isAnchor: true,
           },
+          {
+            label: "Discover Your P.A.T.H.way",
+            href: "/start-here",
+          },
         ]}
         background={{
           type: "video",
