@@ -145,9 +145,9 @@ function useSeoOverride(pathname: string): SeoOverride | null {
     }
     supabase
       .from("page_seo")
-      .select("title,description,og_title,og_description,og_image,canonical,keywords,robots,jsonld")
-      .eq("path", pathname)
-      .maybeSingle()
+      .select(
+        "title,description,og_title,og_description,og_image,canonical,keywords,robots,jsonld,aeo_summary,aeo_faqs",
+      )
       .then(({ data }) => {
         const value = (data as SeoOverride | null) ?? null;
         overrideCache.set(pathname, value);
