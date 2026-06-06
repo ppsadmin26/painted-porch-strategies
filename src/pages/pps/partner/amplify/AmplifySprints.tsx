@@ -181,7 +181,7 @@ export default function AmplifySprints() {
               What to expect, week by week
             </h2>
             <p className="text-base text-foreground">
-              A Strategic Sprint follows our P.A.T.H. framework, but compresses the architectural work into a focused 90-day window. Here's what your team can expect at each stage.
+              A Strategic Sprint follows our <Link to="/approach" className="font-semibold text-primary hover:underline">P.A.T.H.</Link> framework, but compresses the architectural work into a focused 90-day window. Here's what your team can expect at each stage.
             </p>
           </div>
 
