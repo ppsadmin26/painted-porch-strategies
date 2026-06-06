@@ -91,13 +91,6 @@ const amplifyFormats = [
       "Preparing strategic planning for major change",
       "Building alignment before launch",
     ],
-    includes: [
-      "Initial diagnostic assessment",
-      "3-6 strategic design sessions",
-      "Framework application & tools",
-      "Ongoing access between sessions",
-      "Executive guidance from Amy Yackowski and Painted Porch Team advisors",
-    ],
     timeline: "90 days (focused engagement)",
     investment: "Starting at $18,000",
     cta: "Explore Strategic Sprints",
@@ -115,13 +108,6 @@ const amplifyFormats = [
       "Exploring Phase Zero with accountability",
       "Building network of transformation architects",
       "Deepening strategic capacity over time",
-    ],
-    includes: [
-      "Cohort-style Leadership Lab capped at 25 leaders",
-      "6-12 week structured program",
-      "Monthly group sessions + peer accountability",
-      "Phase Zero framework deep-dives",
-      "Individual coaching touchpoints",
     ],
     timeline: "6-12 weeks (cohort-based)",
     investment: "Starts at $2,000 per participant",
@@ -331,16 +317,6 @@ export default function AmplifyPathAlt() {
                 </ul>
 
 
-                {format.includes && (
-                  <>
-                    <p className="text-xs font-semibold text-navy uppercase tracking-wide mb-2">What's Included:</p>
-                    <ul className="space-y-1 mb-4">
-                      {format.includes.map((item, i) => (
-                        <li key={i} className="text-xs text-foreground">• {item}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
 
                 <div className="mt-auto">
                   <div className="border-t border-foreground/10 pt-4">
