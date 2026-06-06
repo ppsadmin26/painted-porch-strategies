@@ -109,25 +109,27 @@ _Draft v1 — for review before any page edits_
 │                                                             │
 │  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐        │
 │  │ WEEKS 1–2    │ │ WEEKS 3–8    │ │ WEEKS 9–12   │        │
-│  │ Diagnose     │ │ Design       │ │ Deliver      │        │
+│  │ Diagnose     │ │ Design       │ │ Roadmap      │        │
 │  │              │ │              │ │              │        │
 │  │ What we do:  │ │ What we do:  │ │ What we do:  │        │
 │  │ • Stakeholder│ │ • 3–6 design │ │ • Alignment  │        │
 │  │   interviews │ │   sessions   │ │   sessions   │        │
 │  │ • Pillars    │ │ • Framework  │ │ • Rollout    │        │
-│  │   assessment │ │   co-design  │ │   planning   │        │
+│  │   assessment │ │   co-design  │ │   sequencing │        │
 │  │              │ │ • Async      │ │ • Handoff or │        │
 │  │ What you get:│ │   advisory   │ │   EMBODY     │        │
 │  │ Diagnostic   │ │              │ │              │        │
 │  │ report       │ │ What you get:│ │ What you get:│        │
-│  │              │ │ Architecture │ │ Launch       │        │
-│  │              │ │ blueprint    │ │ readiness    │        │
-│  │              │ │              │ │ plan         │        │
+│  │              │ │ Architecture │ │ Launch-ready │        │
+│  │              │ │ blueprint    │ │ roadmap for  │        │
+│  │              │ │              │ │ what you'll  │        │
+│  │              │ │              │ │ implement    │        │
 │  └──────────────┘ └──────────────┘ └──────────────┘        │
 │                                                             │
-│  Footnote line:                                             │
-│  "Want the full methodology? Read about P.A.T.H. on         │
-│   /approach or download the Sprints Playbook."              │
+│  Plain-language note under the strip:                       │
+│  "You won't have implemented anything in 90 days — and      │
+│   that's the point. You'll have a clear, owned plan for     │
+│   what you'll build, in what order, and why."               │
 │  (Removes: 5-row "Common Applications" grid — moves to PDF) │
 └─────────────────────────────────────────────────────────────┘
 ┌─────────────────────────────────────────────────────────────┐
