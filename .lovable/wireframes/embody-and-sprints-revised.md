@@ -96,8 +96,8 @@ _Draft v1 — for review before any page edits_
 - ❌ Hero stats strip → already on Home
 - ❌ Painted Porch Pillars deep-dive → 1 line + white paper download
 - ❌ Partnership Model band → already on /partner
-- ❌ Human Cost of Inaction → 1 pull-quote inside "Who EMBODY Is For" (optional)
-- ❌ Comparison vs. traditional consulting → already on /partner & /approach
+- ✅ "Human Cost of Inaction" → distilled to 1 pull-quote inside "Who EMBODY Is For"
+- ➕ NEW "This isn't a traditional implementation engagement" contrast strip (replaces the cut "vs. traditional consulting" deep section)
 - ❌ Full ROI of Strategic Architecture → 3 bullets inside Investment
 - ❌ P.A.T.H. recap → single sentence + link to /approach#path
 
