@@ -232,7 +232,7 @@ export default function EmbodyPathAlt() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
-            <p className="text-sm font-poppins font-semibold tracking-widest text-gold uppercase mb-3">
+            <p className="text-sm font-poppins font-semibold tracking-widest text-teal uppercase mb-3">
               Who EMBODY is for
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
@@ -244,12 +244,18 @@ export default function EmbodyPathAlt() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {audienceCards.map((card) => {
+            {audienceCards.map((card, idx) => {
               const Icon = card.icon;
+              const accents = [
+                { bg: "bg-teal/15", text: "text-teal" },
+                { bg: "bg-raspberry/15", text: "text-raspberry" },
+                { bg: "bg-purple/15", text: "text-purple" },
+              ];
+              const accent = accents[idx % accents.length];
               return (
-                <div key={card.title} className="bg-muted/40 p-6 rounded-xl border border-border">
-                  <div className="w-12 h-12 rounded-lg bg-gold/15 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-gold" aria-hidden="true" />
+                <div key={card.title} className="bg-muted/40 p-6 rounded-xl border border-border border-t-4 border-t-navy">
+                  <div className={`w-12 h-12 rounded-lg ${accent.bg} flex items-center justify-center mb-4`}>
+                    <Icon className={`w-6 h-6 ${accent.text}`} aria-hidden="true" />
                   </div>
                   <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{card.title}</h3>
                   <p className="text-sm text-foreground">{card.body}</p>
