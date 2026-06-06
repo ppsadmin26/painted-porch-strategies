@@ -117,8 +117,8 @@ const differenceRows = [
     sprint: "Starts at: \"What shift, and are we built to lead it?\"",
   },
   {
-    traditional: "Sells you their playbook.",
-    sprint: "Co-designs yours.",
+    traditional: "Sells you their playbook to execute.",
+    sprint: "Installs a new way for your team to prepare and design every shift that follows.",
   },
   {
     traditional: "Optimizes for go-live.",
@@ -126,7 +126,7 @@ const differenceRows = [
   },
   {
     traditional: "You hand off and hope.",
-    sprint: "You walk out with the architecture in hand.",
+    sprint: "Your team walks out owning the architecture and the approach behind it.",
   },
 ];
 
@@ -263,10 +263,10 @@ export default function AmplifySprints() {
               Different by design
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
-              This isn't a traditional implementation engagement.
+              A new way to prepare and design strategic shifts, installed in your team.
             </h2>
             <p className="text-base text-white/85 max-w-2xl mx-auto">
-              Most consultancies sell you their playbook and optimize for go-live. A Strategic Sprint is an advisory partnership that builds <em>your</em> architecture, so what comes after go-live actually holds.
+              Most consultancies sell you their playbook and optimize for go-live. A Strategic Sprint is an advisory partnership that builds <em>your</em> architecture and implements a new approach to how your team prepares for and designs every shift that follows.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-white/15 rounded-xl overflow-hidden border border-white/15">
@@ -371,7 +371,7 @@ export default function AmplifySprints() {
             Architect the sh<span className="text-gold">IF</span>t before you implement it.
           </>
         }
-        description="A 90-day Strategic Sprint gives you the architecture, the roadmap, and the clarity to lead what comes next."
+        description="A 90-day Strategic Sprint installs a new way for your team to prepare and design every shift that follows, with the architecture and roadmap to lead what comes next."
         actions={[
           { label: "Contact Us", to: "/contact?scope=organization&interest=organizational-advisory" },
           { label: "Start with the Blue Door", to: "/blue-door", variant: "bluedoor" },
