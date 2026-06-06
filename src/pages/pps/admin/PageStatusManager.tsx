@@ -290,6 +290,9 @@ export default function PageStatusManager() {
         </div>
       )}
 
+      {/* ============= Bulk canonical audit ============= */}
+      <CanonicalAuditCard sitemapPaths={sitemapPaths} onChanged={loadSeoPaths} />
+
       {/* ============= SEO browser for every sitemap page ============= */}
       <div className="mb-3 flex items-center justify-between">
         <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-pps-navy">
