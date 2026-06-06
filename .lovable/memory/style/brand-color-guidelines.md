@@ -20,19 +20,19 @@ A cool → warm temperature gradient representing the journey from structural ab
 
 ### Pillar Details
 
-**Foundational Architecture — Navy**
+**Cultural Cornerstone — Navy**
 - Hex: #00006B | HSL: 240 100% 21%
 - Card Background: `bg-[hsl(220,60%,95%)]` (cool blue-tinted)
 - Icon Background: `bg-[hsl(220,50%,90%)]`
 - Represents: Systems, processes, frameworks—the foundation everything else builds upon
 
-**Operational Intelligence — Purple (Strategic)**
+**Operational Frame — Purple (Strategic)**
 - Hex: #523387 | HSL: 263 44% 36%
 - Card Background: `bg-strategic/10`
 - Icon Background: `bg-strategic/15`
 - Represents: The "wise advisor"—bridges analytical (blue undertones) and innovative (red undertones)
 
-**Human Capacity — Gold**
+**Living Ecosystem — Gold**
 - Hex: #E8A231 | HSL: 40 81% 55%
 - Card Background: `bg-gold/10`
 - Icon Background: `bg-gold/15`
