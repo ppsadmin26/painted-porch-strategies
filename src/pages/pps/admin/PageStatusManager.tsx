@@ -12,6 +12,7 @@ import { Plus, Trash2, FileWarning, RefreshCw, Search, Sparkles } from "lucide-r
 import { collectSitemapPaths } from "@/pages/pps/Sitemap";
 import { supabase } from "@/integrations/supabase/client";
 import PageSeoEditorDialog from "@/components/pps/admin/PageSeoEditorDialog";
+import CanonicalAuditCard from "@/components/pps/admin/CanonicalAuditCard";
 
 /**
  * Admin-only manager for page publish status + per-page SEO overrides.
@@ -288,6 +289,9 @@ export default function PageStatusManager() {
           ))}
         </div>
       )}
+
+      {/* ============= Bulk canonical audit ============= */}
+      <CanonicalAuditCard sitemapPaths={sitemapPaths} onChanged={loadSeoPaths} />
 
       {/* ============= SEO browser for every sitemap page ============= */}
       <div className="mb-3 flex items-center justify-between">
