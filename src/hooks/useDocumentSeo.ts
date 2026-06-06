@@ -148,8 +148,10 @@ function useSeoOverride(pathname: string): SeoOverride | null {
       .select(
         "title,description,og_title,og_description,og_image,canonical,keywords,robots,jsonld,aeo_summary,aeo_faqs",
       )
+      .eq("path", pathname)
+      .maybeSingle()
       .then(({ data }) => {
-        const value = (data as SeoOverride | null) ?? null;
+        const value = (data as unknown as SeoOverride | null) ?? null;
         overrideCache.set(pathname, value);
         if (!cancelled) setOverride(value);
       });
