@@ -31,7 +31,7 @@ const downloads = [
   {
     icon: MessageCircle,
     title: "The 6 Communicator Styles Replay",
-    description: "Free training replay with Amy Yackowski. Spot each person's dominant communicator style and craft messages that actually land.",
+    description: "Free training replay with Rob Hunter. Spot each person's dominant communicator style and craft messages that actually land.",
     format: "Video Replay",
     color: "bg-primary/10",
     iconColor: "text-primary",
