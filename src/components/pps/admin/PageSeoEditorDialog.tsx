@@ -532,11 +532,28 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
                 </Field>
                 <Field
                   label="Keywords"
-                  hint="Comma-separated"
+                  hint="Press Enter or click Add to create a keyword pill. Click a pill to remove it."
                   defaultValue={defaults?.keywords?.join(", ")}
                   onUseDefault={() => useDefault("keywords", defaults?.keywords?.join(", "))}
                 >
-                  <Input value={form.keywords} onChange={update("keywords")} placeholder={defaults?.keywords?.join(", ") || "leadership, change, phase zero"} />
+                  <div className="flex gap-2">
+                    <Input
+                      value={keywordInput}
+                      onChange={(e) => setKeywordInput(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addKeyword(keywordInput))}
+                      placeholder={defaults?.keywords?.join(", ") || "Add keyword"}
+                    />
+                    <Button size="sm" variant="outline" onClick={() => addKeyword(keywordInput)}>
+                      <Plus className="w-4 h-4 mr-1" /> Add
+                    </Button>
+                  </div>
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {form.keywords.map((tag) => (
+                      <Badge key={tag} variant="secondary" className="cursor-pointer" onClick={() => removeKeyword(tag)}>
+                        {tag} <X className="h-3 w-3 ml-1" />
+                      </Badge>
+                    ))}
+                  </div>
                 </Field>
               </TabsContent>
 
