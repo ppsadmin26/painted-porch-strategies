@@ -209,7 +209,7 @@ export default function EmbodyPathAlt() {
           {
             label: "Contact Us",
             href: "/contact?scope=organization&interest=strategic-partnership&message=I'm interested in exploring an EMBODY partnership.",
-            buttonClassName: "bg-gold border-2 border-gold text-navy hover:bg-white hover:text-navy",
+            buttonClassName: "bg-white border-2 border-white text-navy hover:bg-gold hover:border-gold hover:text-navy",
           },
           {
             label: "Open the Blue Door",
@@ -232,7 +232,7 @@ export default function EmbodyPathAlt() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
-            <p className="text-sm font-poppins font-semibold tracking-widest text-gold uppercase mb-3">
+            <p className="text-sm font-poppins font-semibold tracking-widest text-teal uppercase mb-3">
               Who EMBODY is for
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
@@ -244,12 +244,18 @@ export default function EmbodyPathAlt() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {audienceCards.map((card) => {
+            {audienceCards.map((card, idx) => {
               const Icon = card.icon;
+              const accents = [
+                { bg: "bg-teal/15", text: "text-teal" },
+                { bg: "bg-raspberry/15", text: "text-raspberry" },
+                { bg: "bg-purple/15", text: "text-purple" },
+              ];
+              const accent = accents[idx % accents.length];
               return (
-                <div key={card.title} className="bg-muted/40 p-6 rounded-xl border border-border">
-                  <div className="w-12 h-12 rounded-lg bg-gold/15 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-gold" aria-hidden="true" />
+                <div key={card.title} className="bg-muted/40 p-6 rounded-xl border border-border border-t-4 border-t-navy">
+                  <div className={`w-12 h-12 rounded-lg ${accent.bg} flex items-center justify-center mb-4`}>
+                    <Icon className={`w-6 h-6 ${accent.text}`} aria-hidden="true" />
                   </div>
                   <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{card.title}</h3>
                   <p className="text-sm text-foreground">{card.body}</p>
@@ -279,24 +285,28 @@ export default function EmbodyPathAlt() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {industries.map((industry) => (
-              <div key={industry.title} className="bg-white p-6 rounded-xl">
-                <div className="flex items-center gap-3 mb-3">
-                  <industry.icon className="w-8 h-8 text-gold shrink-0" />
-                  <h3 className="text-base font-poppins font-semibold text-navy leading-tight">
-                    {industry.title}
-                  </h3>
+            {industries.map((industry, idx) => {
+              const accents = ["text-teal", "text-lime", "text-raspberry", "text-purple"];
+              const accent = accents[idx % accents.length];
+              return (
+                <div key={industry.title} className="bg-white p-6 rounded-xl border-t-2 border-navy/80">
+                  <div className="flex items-center gap-3 mb-3">
+                    <industry.icon className={`w-8 h-8 ${accent} shrink-0`} />
+                    <h3 className="text-base font-poppins font-semibold text-navy leading-tight">
+                      {industry.title}
+                    </h3>
+                  </div>
+                  <ul className="space-y-2">
+                    {industry.items.map((item) => (
+                      <li key={item} className="text-sm text-foreground flex items-start gap-2">
+                        <span className={`${accent} mt-1`}>•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-2">
-                  {industry.items.map((item) => (
-                    <li key={item} className="text-sm text-foreground flex items-start gap-2">
-                      <span className="text-gold mt-1">•</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -313,15 +323,23 @@ export default function EmbodyPathAlt() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {embodyIncludes.map((item, i) => (
-              <div key={item.title} className="bg-muted/40 p-6 rounded-xl border-t-4 border-gold">
-                <p className="text-xs font-poppins font-semibold tracking-widest text-gold uppercase mb-2">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{item.title}</h3>
-                <p className="text-sm text-foreground">{item.body}</p>
-              </div>
-            ))}
+            {embodyIncludes.map((item, i) => {
+              const accents = [
+                { border: "border-teal", text: "text-teal" },
+                { border: "border-raspberry", text: "text-raspberry" },
+                { border: "border-purple", text: "text-purple" },
+              ];
+              const accent = accents[i % accents.length];
+              return (
+                <div key={item.title} className={`bg-muted/40 p-6 rounded-xl border-t-4 ${accent.border}`}>
+                  <p className={`text-xs font-poppins font-semibold tracking-widest ${accent.text} uppercase mb-2`}>
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{item.title}</h3>
+                  <p className="text-sm text-foreground">{item.body}</p>
+                </div>
+              );
+            })}
           </div>
           <div className="max-w-3xl mx-auto text-center bg-muted/40 rounded-xl p-6">
             <p className="text-sm text-foreground mb-4">
@@ -352,7 +370,7 @@ export default function EmbodyPathAlt() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
                 Investment
               </h2>
-              <p className="text-2xl md:text-3xl font-poppins font-bold text-gold mb-2">
+              <p className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-2">
                 $90,000 – $360,000+
               </p>
               <p className="text-sm text-muted-foreground">
@@ -442,13 +460,13 @@ export default function EmbodyPathAlt() {
                 ))}
               </ul>
             </div>
-            <div className="bg-gold/95 p-6">
-              <p className="text-xs font-poppins font-semibold tracking-widest text-navy uppercase mb-4">
+            <div className="bg-teal p-6">
+              <p className="text-xs font-poppins font-semibold tracking-widest text-white uppercase mb-4">
                 EMBODY embedded partnership
               </p>
               <ul className="space-y-3">
                 {traditionalVsEmbody.map((row) => (
-                  <li key={row.embody} className="text-sm text-navy font-medium">
+                  <li key={row.embody} className="text-sm text-white font-medium">
                     {row.embody}
                   </li>
                 ))}
@@ -475,7 +493,7 @@ export default function EmbodyPathAlt() {
                 <tr className="border-b-2 border-navy">
                   <th className="py-3 px-4 font-poppins font-semibold text-navy">Dimension</th>
                   <th className="py-3 px-4 font-poppins font-semibold text-primary">AMPLIFY Sprint</th>
-                  <th className="py-3 px-4 font-poppins font-semibold text-gold">EMBODY Partnership</th>
+                  <th className="py-3 px-4 font-poppins font-semibold text-teal">EMBODY Partnership</th>
                 </tr>
               </thead>
               <tbody>
