@@ -46,7 +46,7 @@ const sprintFaqCategories: FAQCategory[] = [
       {
         question: "How long is a Strategic Sprint?",
         answer:
-          "90 days, in three focused stages: Diagnose (weeks 1–2), Design (weeks 3–8), and Direction (weeks 9–12).","
+          "90 days, in three focused stages: Diagnose (weeks 1–2), Design (weeks 3–8), and Direction (weeks 9–12).",
       },
       {
         question: "Will we have implemented anything by the end?",
