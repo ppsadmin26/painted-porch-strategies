@@ -209,7 +209,7 @@ export default function IgnitePathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              What You'll Ign<span className="text-gold">IF</span>e
+              What You'll <span className="text-gold">Ignite</span>
             </h2>
           </div>
           
