@@ -381,13 +381,13 @@ export default function EmbodyPathAlt() {
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="bg-lime/10 p-6 rounded-lg border-l-4 border-lime">
                 <h3 className="text-base font-poppins font-semibold text-navy mb-3">
-                  What this gets you
+                  What you walk away embodying
                 </h3>
                 <ul className="space-y-2">
                   {[
-                    "Compresses 18-month transformations into 9",
-                    "Replaces 3–5 fragmented vendors with one architect",
-                    "Builds internal capacity that outlasts the engagement",
+                    "A team that prepares and leads change faster than the market shifts",
+                    "One strategic partnership instead of fragmented vendors to manage",
+                    "Permanent internal capacity to architect change without us",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-foreground">
                       <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
