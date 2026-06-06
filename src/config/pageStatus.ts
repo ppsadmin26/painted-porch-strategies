@@ -28,9 +28,15 @@ export const ALWAYS_LIVE_PREFIXES = [
   "/contact",
 ];
 
+function stripQuery(pathname: string): string {
+  const q = pathname.indexOf("?");
+  return q === -1 ? pathname : pathname.slice(0, q);
+}
+
 function isAlwaysLive(pathname: string): boolean {
+  const clean = stripQuery(pathname);
   return ALWAYS_LIVE_PREFIXES.some(
-    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
+    (prefix) => clean === prefix || clean.startsWith(`${prefix}/`),
   );
 }
 
