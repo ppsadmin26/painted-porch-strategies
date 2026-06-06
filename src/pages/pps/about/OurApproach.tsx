@@ -385,6 +385,79 @@ export default function OurApproach() {
             </p>
           </div>
 
+          {/* P.A.T.H. visual: winding road + lettered cards (mirrors home page) */}
+          <div className="max-w-5xl mx-auto mb-12">
+            <div className="relative pb-10 md:pb-14 mb-2 px-6 sm:px-8 md:px-12">
+              {/* Mobile road */}
+              <svg
+                viewBox="0 0 1200 200"
+                className="sm:hidden absolute top-[42%] -translate-y-1/2 inset-x-0 w-full h-[120%] pointer-events-none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <defs>
+                  <path id="ppsApproachRoadMobile" d="M 0 100 C 100 100, 200 70, 300 100 S 500 130, 600 100 S 800 70, 900 100 S 1100 130, 1200 100" />
+                  <clipPath id="ppsApproachRoadMobileClip1"><rect x="0" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsApproachRoadMobileClip2"><rect x="300" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsApproachRoadMobileClip3"><rect x="600" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsApproachRoadMobileClip4"><rect x="900" y="0" width="300" height="200" /></clipPath>
+                </defs>
+                <g fill="none" strokeWidth="20" strokeLinecap="butt" opacity="0.4">
+                  <use href="#ppsApproachRoadMobile" stroke="hsl(var(--primary))" clipPath="url(#ppsApproachRoadMobileClip1)" />
+                  <use href="#ppsApproachRoadMobile" stroke="hsl(var(--raspberry))" clipPath="url(#ppsApproachRoadMobileClip2)" />
+                  <use href="#ppsApproachRoadMobile" stroke="hsl(var(--gold))" clipPath="url(#ppsApproachRoadMobileClip3)" />
+                  <use href="#ppsApproachRoadMobile" stroke="hsl(var(--lime))" clipPath="url(#ppsApproachRoadMobileClip4)" />
+                </g>
+                <use href="#ppsApproachRoadMobile" fill="none" stroke="white" strokeWidth="1.5" strokeDasharray="6 6" strokeLinecap="round" opacity="0.6" />
+              </svg>
+
+              {/* Desktop road */}
+              <svg
+                viewBox="0 0 1200 200"
+                className="hidden sm:block absolute top-[42%] -translate-y-1/2 inset-x-0 w-full h-[140%] pointer-events-none"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <defs>
+                  <path id="ppsApproachRoadDesktop" d="M 0 100 C 100 100, 200 50, 300 100 S 500 150, 600 100 S 800 50, 900 100 S 1100 150, 1200 100" />
+                  <clipPath id="ppsApproachRoadDesktopClip1"><rect x="0" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsApproachRoadDesktopClip2"><rect x="300" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsApproachRoadDesktopClip3"><rect x="600" y="0" width="300" height="200" /></clipPath>
+                  <clipPath id="ppsApproachRoadDesktopClip4"><rect x="900" y="0" width="300" height="200" /></clipPath>
+                </defs>
+                <g fill="none" strokeWidth="28" strokeLinecap="butt" opacity="0.6">
+                  <use href="#ppsApproachRoadDesktop" stroke="hsl(var(--primary))" clipPath="url(#ppsApproachRoadDesktopClip1)" />
+                  <use href="#ppsApproachRoadDesktop" stroke="hsl(var(--raspberry))" clipPath="url(#ppsApproachRoadDesktopClip2)" />
+                  <use href="#ppsApproachRoadDesktop" stroke="hsl(var(--gold))" clipPath="url(#ppsApproachRoadDesktopClip3)" />
+                  <use href="#ppsApproachRoadDesktop" stroke="hsl(var(--lime))" clipPath="url(#ppsApproachRoadDesktopClip4)" />
+                </g>
+                <use href="#ppsApproachRoadDesktop" fill="none" stroke="white" strokeWidth="2" strokeDasharray="8 8" strokeLinecap="round" opacity="0.7" />
+              </svg>
+
+              <ol className="relative grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3">
+                {[
+                  { letter: "P", word: "Prepare", border: "border-primary", text: "text-primary", bg: "bg-primary", dot: "bg-primary" },
+                  { letter: "A", word: "Align", border: "border-raspberry", text: "text-raspberry", bg: "bg-raspberry", dot: "bg-raspberry" },
+                  { letter: "T", word: "Take Off", border: "border-gold", text: "text-gold", bg: "bg-gold", dot: "bg-gold" },
+                  { letter: "H", word: "Habits", border: "border-lime", text: "text-lime", bg: "bg-lime", dot: "bg-lime" },
+                ].map((step, idx, arr) => (
+                  <li
+                    key={step.letter}
+                    className={`relative flex flex-col items-center justify-center py-4 rounded-xl border-2 bg-white shadow-sm ${step.border}`}
+                    aria-label={`Step ${idx + 1} of ${arr.length}: ${step.letter}, ${step.word}`}
+                  >
+                    <span aria-hidden="true" className={`absolute -top-3 left-1/2 -translate-x-1/2 w-0.5 h-3 ${step.bg} opacity-60`} />
+                    <span aria-hidden="true" className={`absolute -top-[14px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full ring-2 ring-white ${step.dot}`} />
+                    <span className={`font-poppins font-bold text-2xl ${step.text}`} aria-hidden="true">{step.letter}</span>
+                    <span className={`text-[10px] md:text-xs font-poppins font-semibold uppercase tracking-widest mt-1 ${step.text}`} aria-hidden="true">{step.word}</span>
+                    <span aria-hidden="true" className={`absolute -bottom-3 left-1/2 -translate-x-1/2 w-0.5 h-3 ${step.bg} opacity-60`} />
+                    <span aria-hidden="true" className={`absolute -bottom-[14px] left-1/2 -translate-x-1/2 w-2 h-2 rounded-full ring-2 ring-white ${step.dot}`} />
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             {pathStages.map((s, i) => (
               <div
