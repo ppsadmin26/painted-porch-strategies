@@ -690,6 +690,55 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
                     </div>
                   )}
                 </div>
+
+                {/* AEO JSON-LD lint preview */}
+                <div className="rounded-md border border-border overflow-hidden">
+                  <button
+                    type="button"
+                    onClick={() => setAeoPreviewOpen((v) => !v)}
+                    className="w-full flex items-center justify-between px-3 py-2 bg-muted/30 hover:bg-muted/50 transition"
+                  >
+                    <div className="flex items-center gap-2">
+                      <Code className="w-3.5 h-3.5 text-muted-foreground" />
+                      <span className="text-xs font-medium text-pps-navy">FAQPage JSON-LD preview & lint</span>
+                      {aeoCheck.issue ? (
+                        aeoCheck.issue.level === "error" ? (
+                          <span className="inline-flex items-center gap-1 text-[10px] font-medium text-pps-raspberry bg-pps-raspberry/10 px-1.5 py-0.5 rounded">
+                            <AlertCircle className="w-3 h-3" /> Error
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1 text-[10px] font-medium text-pps-navy bg-pps-gold/15 px-1.5 py-0.5 rounded">
+                            <AlertTriangle className="w-3 h-3" /> Warning
+                          </span>
+                        )
+                      ) : aeoPreview ? (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">
+                          <CheckCircle2 className="w-3 h-3" /> Valid
+                        </span>
+                      ) : null}
+                    </div>
+                    <span className="text-[10px] text-muted-foreground">{aeoPreviewOpen ? "Hide" : "Show"}</span>
+                  </button>
+                  {aeoPreviewOpen && (
+                    <div className="p-3 bg-muted/20">
+                      {aeoPreview ? (
+                        <>
+                          <pre className="font-mono text-[11px] text-muted-foreground whitespace-pre-wrap break-all bg-muted/40 rounded-md p-2 border border-border">
+                            {aeoPreview}
+                          </pre>
+                          <p className="text-[10px] text-muted-foreground mt-1.5">
+                            This FAQPage structured data is emitted automatically on the live page.
+                            Do not duplicate it in the JSON-LD tab.
+                          </p>
+                        </>
+                      ) : (
+                        <p className="text-xs text-muted-foreground py-2">
+                          {aeoCheck.issue?.message ?? "Add at least one complete FAQ pair to generate FAQPage JSON-LD."}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
               </TabsContent>
 
               <TabsContent value="advanced" className="space-y-4 pt-4">
