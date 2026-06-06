@@ -109,13 +109,6 @@ const amplifyFormats = [
       "Building network of transformation architects",
       "Deepening strategic capacity over time",
     ],
-    includes: [
-      "Cohort-style Leadership Lab capped at 25 leaders",
-      "6-12 week structured program",
-      "Monthly group sessions + peer accountability",
-      "Phase Zero framework deep-dives",
-      "Individual coaching touchpoints",
-    ],
     timeline: "6-12 weeks (cohort-based)",
     investment: "Starts at $2,000 per participant",
     cta: "Explore Leader Labs",
