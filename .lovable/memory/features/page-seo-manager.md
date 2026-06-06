@@ -8,7 +8,7 @@ type: feature
 
 ## Where
 - Admin UI: `/admin/pages` (PageStatusManager.tsx). Sidebar label: "Pages & SEO".
-- Dialog: `src/components/pps/admin/PageSeoEditorDialog.tsx` — tabbed (Basic / Social / Advanced / JSON-LD).
+- Dialog: `src/components/pps/admin/PageSeoEditorDialog.tsx` — tabbed (Basic / Social / AEO / Advanced / JSON-LD).
 - Table: `public.page_seo` keyed by `path` (unique). Anyone can read (public site needs it). Admins+editors can insert/update; admins can delete.
 - Triggered on every status-override row AND on every sitemap route via a searchable list section below the override list.
 
@@ -18,8 +18,18 @@ type: feature
 
 Hook also exports `invalidateSeoOverrideCache(path?)` — the dialog calls this on save/delete so the live site picks up changes without reload.
 
+The hook ALSO writes a `SeoDefaultsSnapshot` to `localStorage` under `pps:seo-defaults:<path>` every time a page renders, capturing the resolved code-level defaults (title/desc/canonical/robots/og*/jsonLd). The editor reads this via `readSeoDefaultsSnapshot(path)` to display "Default: …" + a "Use default" button under every field. If the admin hasn't visited the page yet, the dialog shows a hint to visit it once.
+
 ## Fields
-title, description, og_title, og_description, og_image, canonical, keywords (text[]), robots, jsonld (Json). All nullable; blank = fall back to code.
+title, description, og_title, og_description, og_image, canonical, keywords (text[]), robots, jsonld (Json), aeo_summary (text), aeo_faqs (jsonb array of {question, answer}). All nullable; blank = fall back to code.
+
+## AEO (Answer Engine Optimization)
+- `aeo_summary` renders as `<meta name="ai-summary">` for AI engines (ChatGPT, Perplexity, AI Overviews).
+- `aeo_faqs` is auto-emitted as `FAQPage` JSON-LD, merged with any code-supplied jsonLd. Admins should NOT duplicate FAQs in the JSON-LD tab.
+- The `generate-page-seo` edge function returns both `aeo_summary` and `aeo_faqs` alongside the standard SEO fields.
+
+## Robots
+Stored as a free-form string but the editor presents a Select with presets (Use site default / index,follow / noindex,follow / index,nofollow / noindex,nofollow / noindex,nofollow,noarchive / Custom…). Custom reveals a text input.
 
 ## Gotchas
 - Override is async, so initial render uses hardcoded values, then DB swaps in. No flicker for crawlers that execute JS.
