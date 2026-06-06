@@ -336,7 +336,8 @@ export default function PPSHome() {
           height={1080}
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-strategic opacity-90" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-strategic opacity-75" aria-hidden="true" />
+        <div className="absolute inset-0 bg-navy/20" aria-hidden="true" />
         <div className="relative z-10 container max-w-4xl mx-auto px-6 text-center">
           <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
             Phase Zero
