@@ -271,12 +271,14 @@ const App = () => (
             <Route path="partner/amplify" element={<AmplifyPathAlt />} />
             <Route path="partner/amplify/workshops" element={<AmplifyWorkshops />} />
             <Route path="partner/amplify/sprints" element={<AmplifySprints />} />
+            <Route path="partner/amplify/sprints-archive" element={<AmplifySprintsArchive />} />
             <Route path="partner/amplify/labs" element={<AmplifyLabs />} />
             <Route path="partner/amplify/stractical-leader" element={<StracticalLeaderWorkshop />} />
             <Route path="partner/amplify/stractical-leader/enroll" element={<StracticalLeaderCheckout />} />
             <Route path="partner/amplify-archive" element={<AmplifyPath />} />
             <Route path="partner/embody" element={<EmbodyPathAlt />} />
             <Route path="partner/embody-archive" element={<EmbodyPath />} />
+            <Route path="partner/embody-archive-v2" element={<EmbodyPathAltArchiveV2 />} />
             
             {/* Resources Section */}
             <Route path="resources" element={<ResourcesHub />} />
