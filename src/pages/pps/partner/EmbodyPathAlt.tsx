@@ -460,13 +460,13 @@ export default function EmbodyPathAlt() {
                 ))}
               </ul>
             </div>
-            <div className="bg-gold/95 p-6">
-              <p className="text-xs font-poppins font-semibold tracking-widest text-navy uppercase mb-4">
+            <div className="bg-teal p-6">
+              <p className="text-xs font-poppins font-semibold tracking-widest text-white uppercase mb-4">
                 EMBODY embedded partnership
               </p>
               <ul className="space-y-3">
                 {traditionalVsEmbody.map((row) => (
-                  <li key={row.embody} className="text-sm text-navy font-medium">
+                  <li key={row.embody} className="text-sm text-white font-medium">
                     {row.embody}
                   </li>
                 ))}
