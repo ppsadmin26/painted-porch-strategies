@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import CostCalculatorDialog from "./CostCalculatorDialog";
+import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 
 const includedItems = [
   "15 strategic questions assessing opportunity + capability",
@@ -34,7 +35,7 @@ export default function InvestmentSectionAlt() {
             <span className="inline-block bg-bluedoor/10 text-bluedoor font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-3">
               The Blue Door
             </span>
-            <p className="font-poppins font-bold text-5xl text-bluedoor">$1,500</p>
+            <p className="font-poppins font-bold text-5xl text-bluedoor">{BLUE_DOOR_PRICE_DISPLAY}</p>
           </div>
         </Link>
         

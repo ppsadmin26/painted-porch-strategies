@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Info, ArrowRight } from "lucide-react";
 import { TIERS } from "@/config/tiers";
+import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 
 const choiceCards = [
   {
@@ -116,7 +117,7 @@ export function BlueDoorCalloutSection() {
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-4 text-sm">
-              <span className="font-bold text-bluedoor">$1,500</span>
+              <span className="font-bold text-bluedoor">{BLUE_DOOR_PRICE_DISPLAY}</span>
               <span className="text-foreground/60">|</span>
               <span className="text-foreground/70">Less than 30 minutes</span>
             </div>

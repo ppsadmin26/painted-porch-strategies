@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Check, Clock, ArrowLeft, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
-import { isBlueDoorPreLaunch } from "@/config/blueDoor";
+import { isBlueDoorPreLaunch, BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 
 const checkoutSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
@@ -129,7 +129,7 @@ export default function BlueDoorPurchase() {
               <span className="inline-block bg-bluedoor text-white font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-3">
                 Blue Door Strategic Organizational Appraisal
               </span>
-              <p className="font-poppins font-bold text-4xl text-bluedoor mb-4">$1,500</p>
+              <p className="font-poppins font-bold text-4xl text-bluedoor mb-4">{BLUE_DOOR_PRICE_DISPLAY}</p>
               
               <div className="flex items-center gap-2 text-foreground mb-4">
                 <Clock className="w-5 h-5 text-bluedoor" />
