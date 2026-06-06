@@ -294,6 +294,18 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
 
   const fieldIssue = (field: string) => issues.find((i) => i.field === field);
 
+  const addKeyword = (input: string) => {
+    const trimmed = input.trim().toLowerCase();
+    if (trimmed && !form.keywords.includes(trimmed)) {
+      setForm((f) => ({ ...f, keywords: [...f.keywords, trimmed] }));
+    }
+    setKeywordInput("");
+  };
+
+  const removeKeyword = (tag: string) => {
+    setForm((f) => ({ ...f, keywords: f.keywords.filter((k) => k !== tag) }));
+  };
+
   const handleGenerate = async () => {
     if (!path) return;
     setGenerating(true);
