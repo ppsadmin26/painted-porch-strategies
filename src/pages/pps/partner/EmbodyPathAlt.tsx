@@ -248,36 +248,40 @@ const testimonials = [
 // FAQ data
 const faqs = [
   {
-    question: "How is your EMBODY partnership different from traditional consulting?",
-    answer: "Traditional consultants deliver best practice solutions for you based on what worked elsewhere. We partner with you to co-design transformation architecture specific to your context. You're the expert of your organization. We're experts in transformation architecture. Together, we build permanent capacity, not packaged solutions or project deliverables.",
+    question: "How is EMBODY different from traditional consulting?",
+    answer: "Traditional consultants hand you a best-practice playbook from somewhere else and call it a strategy. EMBODY is a true partnership. You're the expert of your organization. We're experts in the architecture that lets shIFt stick. Together, we co-design what your organization is built to lead, then build the structural capacity to sustain it. You leave with permanent capability, not a binder.",
   },
   {
-    question: "How is your EMBODY partnership different from change management consultants?",
-    answer: "Change management focuses on implementing predefined changes by managing resistance, driving adoption, and delivering transitions downstream. We do change origination, we partner with you to architect transformation capacity upstream, before implementation begins. After change management, you've executed a change. After EMBODY partnership, you've built the capacity to originate and architect your own transformations without external dependency.",
+    question: "How is EMBODY different from change management?",
+    answer: "Change management starts after the direction is set. It manages resistance and pushes adoption of decisions already made. EMBODY is change origination. We partner upstream, at the strategic authorship moment, to architect the shIFt you intend to lead before a single tool gets launched. This is Phase Zero™ work, the work before the work, and it's where market leadership is actually decided.",
   },
   {
-    question: "Can we start with AMPLIFY and progress to EMBODY?",
-    answer: "Absolutely. Many organizations start with AMPLIFY workshop or sprint to test partnership fit, then progress to EMBODY when deeper work makes sense.",
+    question: "Why does EMBODY start with The Blue Door?",
+    answer: "The Blue Door Organizational Appraisal is how we see your three Painted Porch Pillars™ clearly: Foundational Architecture, Operational Intelligence, and Human Capacity. It surfaces what your organization is built to carry right now and what needs to be reinforced. Without that reading, any partnership is a guess. With it, we co-design an EMBODY engagement that fits your actual architecture, not a template. Your $1,500 investment is fully credited toward the engagement.",
   },
   {
-    question: "Do we need the Blue Door Organizational Appraisal before discovery?",
-    answer: "Not required, but highly recommended. Our Blue Door Organizational Appraisal provides the diagnostic foundation that informs discovery conversation and partnership design.",
+    question: "What if the Blue Door shows we're not ready for EMBODY yet?",
+    answer: "That's one of the most valuable things The Blue Door can surface. Your P.A.T.H. Compass will include a Reinforcement Path that maps what needs strengthening first, often through AMPLIFY sprints or IGNITE work. We'll be straightforward. We'd rather point you to the right starting line than sell you an engagement your organization can't yet carry.",
   },
   {
-    question: "What if we complete the Blue Door Appraisal and don't qualify?",
-    answer: "We'll be straightforward about readiness. If gaps exist, we'll recommend how to build capacity (often through AMPLIFY or IGNITE first). When organizational readiness improves, we can reassess.",
+    question: "Can we start with AMPLIFY or IGNITE and grow into EMBODY?",
+    answer: "Yes, and many partners do exactly that. IGNITE builds individual capacity. AMPLIFY builds team and sprint-level momentum. EMBODY is the embedded, organization-wide partnership for leaders ready to architect transformation at the structural level. Starting smaller is a smart way to feel the partnership before committing to the deeper work.",
   },
   {
-    question: "How often do you meet with us during our EMBODY partnership?",
-    answer: "Typically bi-weekly or monthly formal sessions, plus regular office hours access between sessions. Exact cadence is co-designed based on your needs and transformation pace.",
+    question: "What does an EMBODY partnership actually look like week to week?",
+    answer: "Typically bi-weekly or monthly strategic sessions with senior leadership, plus office hours access in between. We move through the full P.A.T.H.™: Prepare, Align, Take Off, and Habit. The exact cadence is co-designed with you. EMBODY is not a fixed program. It's an embedded partnership shaped around the shIFt you're authoring.",
   },
   {
-    question: "Can you work with our internal change management team?",
-    answer: "Absolutely! We often partner with internal teams, building their capacity while providing strategic guidance. We're not competitive with internal teams, we're complementary.",
+    question: "Can you partner alongside our internal change team?",
+    answer: "Absolutely. We're complementary, not competitive. Internal teams often own execution and adoption beautifully. We work upstream of that, co-designing the strategic architecture and building your team's capacity so the work continues long after our partnership ends.",
   },
   {
-    question: "What happens if leadership changes during partnership?",
-    answer: "We work through leadership transitions as part of the partnership. Often, leadership transition is exactly when transformation architecture matters most.",
+    question: "What happens if our leadership changes mid-partnership?",
+    answer: "Leadership transitions are exactly when architecture matters most. We've designed EMBODY to live in your organization's structure, not in a single relationship. When leadership shifts, we re-anchor the work, bring new leaders into the architecture, and keep the transformation grounded in what your organization is built to lead.",
+  },
+  {
+    question: "What outcomes can we expect from EMBODY?",
+    answer: "EMBODY partners leave with three things: a clearly authored direction for the shIFt you intend to lead, an organizational architecture built to sustain it across the three Painted Porch Pillars™, and the internal capacity to originate the next shIFt without us. The goal isn't dependence on Painted Porch. It's a fortified habitat where your people can lead change instead of being changed by it.",
   },
 ];
 
