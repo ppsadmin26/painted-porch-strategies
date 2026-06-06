@@ -770,7 +770,7 @@ export default function PPSHome() {
         eyebrow="Phase Zero™"
         headline={
           <>
-            Step onto the porch. Begin with What <span className="text-bluedoor">IF</span>.
+            Step onto the porch. Begin with What <span className="text-raspberry">IF</span>.
           </>
         }
         description="The future will keep asking your organization to evolve. The question is whether you'll do it in ways you can actually sustain together."
