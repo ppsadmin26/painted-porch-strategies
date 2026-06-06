@@ -127,7 +127,7 @@ const coreValues = [
 ];
 
 const beliefs = [
-  "People are the load-bearing part of every transformation.",
+  "People are the most critical infrastructure of every transformation.",
   "Clarity comes before strategy, not after it.",
   "Real questions are more useful than confident answers.",
   "Frameworks are tools, not religions.",
