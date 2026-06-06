@@ -51,7 +51,7 @@ const sprintFaqCategories: FAQCategory[] = [
       {
         question: "Will we have implemented anything by the end?",
         answer:
-          "No, and that's intentional. A Sprint is the Phase Zero work that comes before implementation. You'll leave with an architecture blueprint and a clear roadmap of what to build, in what order, and why. Many teams continue with an EMBODY partnership through implementation.",
+          "You will have implemented a whole new approach to how you prepare for and design future strategic initiatives and direction. A Sprint is the Phase Zero work that comes before broad implementation. You'll leave with an architecture blueprint and a clear roadmap of what to build, in what order, and why. Many teams continue with an EMBODY partnership through implementation.",
       },
       {
         question: "What if our team is geographically distributed?",
@@ -224,7 +224,7 @@ export default function AmplifySprints() {
           </div>
 
           <p className="text-center text-sm text-foreground/80 italic max-w-2xl mx-auto">
-            You won't have implemented anything in 90 days, and that's the point. You'll have a clear, owned plan for what you'll build, in what order, and why.
+            You will have implemented a new approach to how you prepare for and design strategic initiatives. You'll also have a clear, owned plan for what you'll build next, in what order, and why.
           </p>
         </div>
       </section>
