@@ -200,7 +200,25 @@ export function useDocumentSeo({
         ? keywords
         : null;
     const resolvedRobots = override?.robots || robots || defaultSeo.robots;
-    const resolvedJsonLd = override?.jsonld ?? jsonLd;
+
+    // Merge FAQ JSON-LD from AEO overrides with any code-supplied jsonLd.
+    const baseJsonLd = override?.jsonld ?? jsonLd;
+    const aeoFaqs = override?.aeo_faqs;
+    let resolvedJsonLd: SeoConfig["jsonLd"] | null = baseJsonLd ?? null;
+    if (Array.isArray(aeoFaqs) && aeoFaqs.length > 0) {
+      const faqEntry = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: aeoFaqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      };
+      if (!resolvedJsonLd) resolvedJsonLd = faqEntry;
+      else if (Array.isArray(resolvedJsonLd)) resolvedJsonLd = [...resolvedJsonLd, faqEntry];
+      else resolvedJsonLd = [resolvedJsonLd, faqEntry];
+    }
 
     const canonicalSource = override?.canonical || canonical;
     const resolvedCanonical = canonicalSource
@@ -226,9 +244,34 @@ export function useDocumentSeo({
     setLink("canonical", resolvedCanonical);
     upsertJsonLd(resolvedJsonLd ?? undefined);
 
+    // AEO: plain-language summary for AI engines.
+    const aeoSummary = override?.aeo_summary?.trim();
+    if (aeoSummary) {
+      setMeta("name", "ai-summary", aeoSummary);
+    } else {
+      document.head.querySelector('meta[name="ai-summary"]')?.remove();
+    }
+
+    // Record the code-level defaults for this route so the admin editor
+    // can show "what would render without an override".
+    writeSeoDefaultsSnapshot(location.pathname, {
+      title: title || defaultSeo.title,
+      description: description || defaultSeo.description,
+      keywords: keywords?.length ? keywords : null,
+      canonical: canonical ? toAbsoluteSiteUrl(canonical) : defaultSeo.canonical,
+      robots: robots || defaultSeo.robots,
+      ogTitle: ogTitle || title || defaultSeo.title,
+      ogDescription: ogDescription || description || defaultSeo.description,
+      ogType: ogType || defaultSeo.ogType,
+      ogImage: ogImage ? toAbsoluteSiteUrl(ogImage) : defaultSeo.ogImage,
+      jsonLd: (jsonLd as SeoDefaultsSnapshot["jsonLd"]) ?? null,
+      recordedAt: Date.now(),
+    });
+
     return () => {
       const jsonLdScript = document.head.querySelector('script[data-lovable-seo="json-ld"]');
       jsonLdScript?.remove();
+      document.head.querySelector('meta[name="ai-summary"]')?.remove();
     };
   }, [
     title,
