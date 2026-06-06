@@ -285,5 +285,6 @@ export function useDocumentSeo({
     ogImage,
     jsonLd,
     override,
+    location.pathname,
   ]);
 }
