@@ -104,6 +104,55 @@ function validateJsonLd(raw: string): { parsed: unknown; issue?: Issue } {
   return { parsed };
 }
 
+function buildAeoJsonLd(faqs: FaqPair[]): Record<string, unknown> | null {
+  const clean = faqs
+    .map((f) => ({ question: f.question.trim(), answer: f.answer.trim() }))
+    .filter((f) => f.question && f.answer);
+  if (clean.length === 0) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: clean.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+}
+
+function validateAeoJsonLd(faqs: FaqPair[]): { preview: string | null; issue?: Issue } {
+  const clean = faqs
+    .map((f) => ({ question: f.question.trim(), answer: f.answer.trim() }))
+    .filter((f) => f.question || f.answer);
+
+  if (clean.length === 0) {
+    if (faqs.length > 0) {
+      return { preview: null, issue: { level: "warn", message: "All FAQ pairs are empty — no FAQPage JSON-LD will be emitted.", field: "aeo_faqs" } };
+    }
+    return { preview: null };
+  }
+
+  for (let i = 0; i < clean.length; i++) {
+    const f = clean[i];
+    if (!f.question) {
+      return { preview: null, issue: { level: "error", message: `FAQ #${i + 1} has an answer but no question. FAQPage JSON-LD will be malformed.`, field: "aeo_faqs" } };
+    }
+    if (!f.answer) {
+      return { preview: null, issue: { level: "error", message: `FAQ #${i + 1} has a question but no answer. FAQPage JSON-LD will be malformed.`, field: "aeo_faqs" } };
+    }
+    if (f.question.length < 10) {
+      return { preview: null, issue: { level: "warn", message: `FAQ #${i + 1} question is very short (${f.question.length} chars). AI engines prefer natural-language questions.`, field: "aeo_faqs" } };
+    }
+    if (f.answer.length < 20) {
+      return { preview: null, issue: { level: "warn", message: `FAQ #${i + 1} answer is very short (${f.answer.length} chars). Provide a complete, quotable answer.`, field: "aeo_faqs" } };
+    }
+  }
+
+  const jsonLd = buildAeoJsonLd(faqs);
+  const preview = jsonLd ? JSON.stringify(jsonLd, null, 2) : null;
+  return { preview };
+}
+
 export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props) {
   const { toast } = useToast();
   const [form, setForm] = useState<FormState>(EMPTY);
@@ -116,6 +165,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
   const [uploading, setUploading] = useState(false);
   const [defaults, setDefaults] = useState<SeoDefaultsSnapshot | null>(null);
   const [robotsMode, setRobotsMode] = useState<string>("__default__");
+  const [aeoPreviewOpen, setAeoPreviewOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -192,6 +242,8 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
   }, [form.canonical, open, path]);
 
   const jsonldCheck = useMemo(() => validateJsonLd(form.jsonld), [form.jsonld]);
+  const aeoCheck = useMemo(() => validateAeoJsonLd(form.aeo_faqs), [form.aeo_faqs]);
+  const aeoPreview = aeoCheck.preview;
 
   const issues = useMemo<Issue[]>(() => {
     const out: Issue[] = [];
@@ -225,9 +277,10 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
     });
 
     if (jsonldCheck.issue) out.push(jsonldCheck.issue);
+    if (aeoCheck.issue) out.push(aeoCheck.issue);
 
     return out;
-  }, [form, canonicalConflict, jsonldCheck]);
+  }, [form, canonicalConflict, jsonldCheck, aeoCheck]);
 
   const errors = issues.filter((i) => i.level === "error");
   const warnings = issues.filter((i) => i.level === "warn");
