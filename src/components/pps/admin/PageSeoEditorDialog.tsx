@@ -11,6 +11,8 @@ import { useToast } from "@/hooks/use-toast";
 import {
   AlertCircle,
   AlertTriangle,
+  CheckCircle2,
+  Code,
   Eye,
   Image as ImageIcon,
   Loader2,
