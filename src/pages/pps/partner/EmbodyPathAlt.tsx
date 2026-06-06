@@ -247,7 +247,7 @@ export default function EmbodyPathAlt() {
             {audienceCards.map((card) => {
               const Icon = card.icon;
               return (
-                <div key={card.title} className="bg-cream/30 p-6 rounded-xl border border-border">
+                <div key={card.title} className="bg-muted/40 p-6 rounded-xl border border-border">
                   <div className="w-12 h-12 rounded-lg bg-gold/15 flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-gold" aria-hidden="true" />
                   </div>
@@ -314,7 +314,7 @@ export default function EmbodyPathAlt() {
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
             {embodyIncludes.map((item, i) => (
-              <div key={item.title} className="bg-cream/30 p-6 rounded-xl border-t-4 border-gold">
+              <div key={item.title} className="bg-muted/40 p-6 rounded-xl border-t-4 border-gold">
                 <p className="text-xs font-poppins font-semibold tracking-widest text-gold uppercase mb-2">
                   {String(i + 1).padStart(2, "0")}
                 </p>

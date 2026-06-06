@@ -174,7 +174,7 @@ export default function AmplifySprints() {
       </section>
 
       {/* TIMELINE */}
-      <section className="py-16 md:py-24 bg-cream/30">
+      <section className="py-16 md:py-24 bg-muted/40">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
@@ -242,7 +242,7 @@ export default function AmplifySprints() {
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             {sprintApplications.map((application, index) => (
-              <div key={application.lead} className="flex items-start gap-3 bg-cream/30 p-4 rounded-lg">
+              <div key={application.lead} className="flex items-start gap-3 bg-muted/40 p-4 rounded-lg">
                 <span className="w-7 h-7 rounded-full bg-lime/20 flex items-center justify-center flex-shrink-0 text-sm font-bold text-lime">
                   {index + 1}
                 </span>
