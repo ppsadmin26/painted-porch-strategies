@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     question: "What happens after I complete the appraisal?",
-    answer: "You'll get an immediate confirmation. Within 72 business hours, your P.A.T.H. Compass is delivered as both a PDF and portal access. If your responses show strong alignment for strategic co-design partnership, we'll include a debrief invitation to walk through your results together. Your $1,500 investment is fully credited toward any future engagement."
+    answer: "You'll get an immediate confirmation. Within 72 business hours, your P.A.T.H. Compass is delivered as both a PDF and portal access. If your responses show strong alignment for strategic co-design partnership, we'll include a debrief invitation to walk through your results together. Your investment is fully credited toward any future engagement."
   },
   {
     question: "What's included in my P.A.T.H. Compass?",

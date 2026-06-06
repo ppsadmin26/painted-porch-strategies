@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Info } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
+import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 
 const sprintFaqCategories: FAQCategory[] = [
   {
@@ -209,7 +210,7 @@ export default function AmplifySprints() {
                 Required for Strategic Sprints and workshops. Not needed for Leadership Labs.
               </p>
               <div className="flex items-center gap-4 text-sm">
-                <span className="font-semibold text-navy">$1,500</span>
+                <span className="font-semibold text-navy">{BLUE_DOOR_PRICE_DISPLAY}</span>
                 <span className="text-foreground/70">|</span>
                 <span className="text-foreground/70">Less than 30 minutes</span>
               </div>

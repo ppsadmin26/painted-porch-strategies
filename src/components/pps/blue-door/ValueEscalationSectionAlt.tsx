@@ -2,6 +2,7 @@ import { Check, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 
 export default function ValueEscalationSectionAlt() {
   const imagineRef = useRef<HTMLDivElement>(null);
@@ -53,7 +54,7 @@ export default function ValueEscalationSectionAlt() {
           <p className="font-poppins font-bold text-2xl md:text-3xl text-bluedoor mb-2">
             The Blue Door
           </p>
-          <p className="font-poppins font-bold text-2xl text-bluedoor mb-4">$1,500</p>
+          <p className="font-poppins font-bold text-2xl text-bluedoor mb-4">{BLUE_DOOR_PRICE_DISPLAY}</p>
           <p className="font-poppins font-semibold italic text-lg text-navy mb-4">
             "What sh<span className="font-bold text-bluedoor">IF</span>ts could we imagine and make happen next?"
           </p>

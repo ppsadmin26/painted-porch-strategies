@@ -13,6 +13,7 @@ import stoicThumb from "@/assets/workshops/stoic-leadership-thumb.jpg";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
+import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 
 const workshopFaqCategories: FAQCategory[] = [
   {
@@ -263,7 +264,7 @@ export default function AmplifyWorkshops() {
                 The Blue Door investment will be credited toward any booked engagement.
               </p>
               <div className="flex items-center gap-4 text-sm">
-                <span className="font-semibold text-navy">$1,500</span>
+                <span className="font-semibold text-navy">{BLUE_DOOR_PRICE_DISPLAY}</span>
                 <span className="text-foreground/70">|</span>
                 <span className="text-foreground/70">Less than 30 minutes</span>
               </div>

@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Calculator, AlertTriangle } from "lucide-react";
+import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 
 const PROJECT_TIME_OVERRUN = 0.30;
 const IN_HOUSE_WORK_WEEK_HOURS = 45;
@@ -229,7 +230,7 @@ export default function CostCalculatorDialog() {
             </div>
 
             <p className="text-sm text-center text-strategic font-medium pt-2">
-              The Blue Door: <span className="font-bold">$1,500</span> to know before you go.
+              The Blue Door: <span className="font-bold">{BLUE_DOOR_PRICE_DISPLAY}</span> to know before you go.
             </p>
           </div>
         )}
