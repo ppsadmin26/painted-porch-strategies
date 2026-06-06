@@ -257,7 +257,7 @@ const faqs = [
   },
   {
     question: "Why does EMBODY start with The Blue Door?",
-    answer: "The Blue Door Organizational Appraisal is how we see your three Painted Porch Pillars™ clearly: Foundational Architecture, Operational Intelligence, and Human Capacity. It surfaces what your organization is built to carry right now and what needs to be reinforced. Without that reading, any partnership is a guess. With it, we co-design an EMBODY engagement that fits your actual architecture, not a template. Your $1,500 investment is fully credited toward the engagement.",
+    answer: "The Blue Door Organizational Appraisal is how we see your three Painted Porch Pillars™ clearly: Cultural Cornerstone, Operational Frame, and Living Ecosystem. It surfaces what your organization is built to carry right now and what needs to be reinforced. Without that reading, any partnership is a guess. With it, we co-design an EMBODY engagement that fits your actual architecture, not a template. Your $1,500 investment is fully credited toward the engagement.",
   },
   {
     question: "What if the Blue Door shows we're not ready for EMBODY yet?",
