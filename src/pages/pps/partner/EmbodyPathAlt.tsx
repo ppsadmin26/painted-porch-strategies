@@ -209,7 +209,7 @@ export default function EmbodyPathAlt() {
           {
             label: "Contact Us",
             href: "/contact?scope=organization&interest=strategic-partnership&message=I'm interested in exploring an EMBODY partnership.",
-            buttonClassName: "bg-gold border-2 border-gold text-navy hover:bg-white hover:text-navy",
+            buttonClassName: "bg-white border-2 border-white text-navy hover:bg-gold hover:border-gold hover:text-navy",
           },
           {
             label: "Open the Blue Door",
