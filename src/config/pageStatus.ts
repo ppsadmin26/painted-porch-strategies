@@ -76,10 +76,11 @@ export function resolvePageStatusEntry(
   pathname: string,
   map: PageStatusMap,
 ): PageStatusRecord | undefined {
-  if (isAlwaysLive(pathname)) return undefined;
-  if (map[pathname]) return map[pathname];
+  const clean = stripQuery(pathname);
+  if (isAlwaysLive(clean)) return undefined;
+  if (map[clean]) return map[clean];
   for (const record of Object.values(map)) {
-    if (matchesPath(record.path, pathname)) return record;
+    if (matchesPath(record.path, clean)) return record;
   }
   return undefined;
 }

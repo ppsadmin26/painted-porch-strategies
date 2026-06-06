@@ -1,0 +1,1 @@
+UPDATE public.page_status SET status = 'live' WHERE path = '/start-here';
