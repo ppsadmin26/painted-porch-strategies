@@ -33,7 +33,7 @@ const archetypes = [
     title: "The Curious Explorer",
     icon: Compass,
     traits: [
-      "You're curious about Phase Zero™ concepts",
+      "You're curious about Phase Zero concepts",
       "You want to test before full commitment",
       "You're asking \"Could this work for me?\"",
       "You prefer self-paced learning",
@@ -128,9 +128,9 @@ export default function IgnitePathAlt() {
       <TierHeroSection
         tier={TIERS.IGNITE}
         badgeLabel="IGNITE P.A.T.H.way"
-        headline="Spark New ShIFt. Build Phase Zero Foundations at Your Own Pace."
+        headline="Spark New ShIFt. Build Phase Zero™ Foundations at Your Own Pace."
         headlineHighlight="IF"
-        description="IGNITE is self-led strategic development: courses, assessments, and Phase Zero frameworks for building transformation capacity, at your own pace, on your own terms. Whether you're investing in yourself or exploring before organizational commitment, this is where the spark for extraordinary shift begins."
+        description="IGNITE is self-led strategic development: courses, assessments, and Phase Zero frameworks you can work through at your own pace, on your own terms. Whether you're investing in yourself or exploring before an organizational commitment, this is where the spark for extraordinary shift begins."
         ctas={[
           {
             label: "Browse IGNITE",
@@ -209,7 +209,7 @@ export default function IgnitePathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              What You'll <span className="text-gold">Ignite</span>
+              Three Ways to Spark Sh<span className="text-gold">IF</span>t
             </h2>
           </div>
           
@@ -224,9 +224,9 @@ export default function IgnitePathAlt() {
                 Self-Led Courses
               </h3>
               <p className="text-foreground mb-6 leading-relaxed">
-                Transform how you lead with Phase Zero capacity on your schedule, frameworks and practices that teach you to architect change, communicate with clarity, cultivate resilience, and develop teams where everyone shines.
+                Transform how you lead, on your schedule. These courses teach you to architect change, communicate with clarity, build resilience, and develop teams where everyone shines.
               </p>
-              <p className="text-sm font-semibold text-navy mb-2">Each includes:</p>
+              <p className="text-sm font-semibold text-navy mb-2">What You'll Ignite:</p>
               <ul className="space-y-1 flex-grow">
                 <li className="flex items-center gap-2 text-sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
@@ -263,9 +263,9 @@ export default function IgnitePathAlt() {
                 Strategic Assessments
               </h3>
               <p className="text-foreground mb-6 leading-relaxed">
-                Decode your success, assessments that reveal your transformation architect capacity, emotional intelligence, unique strengths, and the talents that make you extraordinary.
+                Decode what drives your success. These assessments reveal your emotional intelligence, unique strengths, and the talents that make you extraordinary.
               </p>
-              <p className="text-sm font-semibold text-navy mb-2">Each includes:</p>
+              <p className="text-sm font-semibold text-navy mb-2">What You'll Ignite:</p>
               <ul className="space-y-1 flex-grow">
                 <li className="flex items-center gap-2 text-sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
@@ -302,9 +302,9 @@ export default function IgnitePathAlt() {
                 Masterclasses
               </h3>
               <p className="text-foreground mb-6 leading-relaxed">
-                Strategic insights in under 90 minutes, mini-workshops that illuminate Phase Zero strategic architecture, transformation leadership, and conscious design principles one small shift at a time.
+                Strategic insights in under 90 minutes. These mini-workshops illuminate Phase Zero strategic architecture, transformation leadership, and conscious design, one small shift at a time.
               </p>
-              <p className="text-sm font-semibold text-navy mb-3">Format:</p>
+              <p className="text-sm font-semibold text-navy mb-3">What You'll Ignite:</p>
               <ul className="space-y-2 mb-6 flex-grow">
                 <li className="flex items-center gap-2 text-sm text-foreground">
                   <Clock className="w-4 h-4 text-strategic flex-shrink-0" />
