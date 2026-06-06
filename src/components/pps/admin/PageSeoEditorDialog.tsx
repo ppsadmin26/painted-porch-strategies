@@ -265,7 +265,9 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
     else if (d.length > DESC_WARN) out.push({ level: "warn", message: `Description is ${d.length} chars — recommended under ${DESC_WARN}.`, field: "description" });
 
     if (!c) {
-      out.push({ level: "warn", message: "Canonical URL is empty — make sure a default canonical is set elsewhere.", field: "canonical" });
+      if (!defaults?.canonical) {
+        out.push({ level: "warn", message: "Canonical URL is empty — make sure a default canonical is set elsewhere.", field: "canonical" });
+      }
     } else {
       if (!/^(https?:\/\/|\/)/.test(c)) out.push({ level: "warn", message: 'Canonical should start with "https://" or "/".', field: "canonical" });
       if (canonicalConflict) out.push({ level: "error", message: `Duplicate canonical — already used by ${canonicalConflict}.`, field: "canonical" });
@@ -284,7 +286,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
     if (aeoCheck.issue) out.push(aeoCheck.issue);
 
     return out;
-  }, [form, canonicalConflict, jsonldCheck, aeoCheck]);
+  }, [form, canonicalConflict, jsonldCheck, aeoCheck, defaults]);
 
   const errors = issues.filter((i) => i.level === "error");
   const warnings = issues.filter((i) => i.level === "warn");
