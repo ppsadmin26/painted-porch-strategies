@@ -717,7 +717,7 @@ export default function EmbodyPathAlt() {
           </p>
           <div className="flex justify-center">
             <Link to="/blue-door">
-              <Button className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor text-lg py-6 px-8 transition-colors">
+              <Button className="bg-white border-2 border-white text-bluedoor hover:bg-transparent hover:text-white text-lg py-6 px-8 transition-colors">
                 Learn more about the Blue Door
               </Button>
             </Link>
