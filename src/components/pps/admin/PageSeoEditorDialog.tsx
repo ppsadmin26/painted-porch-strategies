@@ -5,10 +5,25 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { AlertCircle, AlertTriangle, Image as ImageIcon, Loader2, Sparkles, Trash2, Upload, X } from "lucide-react";
-import { invalidateSeoOverrideCache } from "@/hooks/useDocumentSeo";
+import {
+  AlertCircle,
+  AlertTriangle,
+  Eye,
+  Image as ImageIcon,
+  Loader2,
+  Plus,
+  Sparkles,
+  Trash2,
+  Undo2,
+  Upload,
+  X,
+} from "lucide-react";
+import { invalidateSeoOverrideCache, readSeoDefaultsSnapshot, type SeoDefaultsSnapshot } from "@/hooks/useDocumentSeo";
+
+type FaqPair = { question: string; answer: string };
 
 type FormState = {
   title: string;
@@ -20,6 +35,8 @@ type FormState = {
   keywords: string;
   robots: string;
   jsonld: string;
+  aeo_summary: string;
+  aeo_faqs: FaqPair[];
 };
 
 const EMPTY: FormState = {
@@ -32,6 +49,8 @@ const EMPTY: FormState = {
   keywords: "",
   robots: "",
   jsonld: "",
+  aeo_summary: "",
+  aeo_faqs: [],
 };
 
 type Props = {
@@ -44,8 +63,20 @@ const TITLE_WARN = 60;
 const TITLE_ERR = 70;
 const DESC_WARN = 160;
 const DESC_ERR = 200;
+const AEO_WARN = 320;
+const AEO_ERR = 500;
 const SEO_IMAGE_PREFIX = "seo/";
 const SEO_BUCKET = "blog-images";
+
+const ROBOTS_OPTIONS: { value: string; label: string; description: string }[] = [
+  { value: "__default__", label: "Use site default", description: "Falls back to the page's hardcoded value, or 'index, follow'." },
+  { value: "index, follow", label: "index, follow", description: "Standard — indexed and links followed." },
+  { value: "noindex, follow", label: "noindex, follow", description: "Hidden from search but links still followed." },
+  { value: "index, nofollow", label: "index, nofollow", description: "Indexed but links not followed." },
+  { value: "noindex, nofollow", label: "noindex, nofollow", description: "Completely hidden from search engines." },
+  { value: "noindex, nofollow, noarchive", label: "noindex, nofollow, noarchive", description: "Hidden + no cached copy stored." },
+  { value: "__custom__", label: "Custom…", description: "Enter your own directive string." },
+];
 
 type Issue = { level: "warn" | "error"; message: string; field?: string };
 
@@ -83,12 +114,15 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
   const [generating, setGenerating] = useState(false);
   const [libraryOpen, setLibraryOpen] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [defaults, setDefaults] = useState<SeoDefaultsSnapshot | null>(null);
+  const [robotsMode, setRobotsMode] = useState<string>("__default__");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!open || !path) return;
     setLoading(true);
     setCanonicalConflict(null);
+    setDefaults(readSeoDefaultsSnapshot(path));
     supabase
       .from("page_seo")
       .select("*")
@@ -100,6 +134,18 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
         }
         if (data) {
           setExists(true);
+          const robots = data.robots ?? "";
+          const knownRobots = ROBOTS_OPTIONS.find((o) => o.value === robots);
+          setRobotsMode(robots ? (knownRobots ? robots : "__custom__") : "__default__");
+          const rawFaqs = (data as { aeo_faqs?: unknown }).aeo_faqs;
+          const faqs: FaqPair[] = Array.isArray(rawFaqs)
+            ? (rawFaqs as Array<Record<string, unknown>>)
+                .map((f) => ({
+                  question: String(f.question ?? ""),
+                  answer: String(f.answer ?? ""),
+                }))
+                .filter((f) => f.question || f.answer)
+            : [];
           setForm({
             title: data.title ?? "",
             description: data.description ?? "",
@@ -108,11 +154,14 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
             og_image: data.og_image ?? "",
             canonical: data.canonical ?? "",
             keywords: (data.keywords ?? []).join(", "),
-            robots: data.robots ?? "",
+            robots,
             jsonld: data.jsonld ? JSON.stringify(data.jsonld, null, 2) : "",
+            aeo_summary: (data as { aeo_summary?: string | null }).aeo_summary ?? "",
+            aeo_faqs: faqs,
           });
         } else {
           setExists(false);
+          setRobotsMode("__default__");
           setForm(EMPTY);
         }
         setLoading(false);
@@ -149,6 +198,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
     const t = form.title.trim();
     const d = form.description.trim();
     const c = form.canonical.trim();
+    const a = form.aeo_summary.trim();
 
     if (!t) out.push({ level: "warn", message: "Title is empty — page will fall back to hardcoded value.", field: "title" });
     else if (t.length > TITLE_ERR) out.push({ level: "error", message: `Title is ${t.length} chars (max ${TITLE_ERR}). Search engines will truncate it.`, field: "title" });
@@ -164,6 +214,15 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
       if (!/^(https?:\/\/|\/)/.test(c)) out.push({ level: "warn", message: 'Canonical should start with "https://" or "/".', field: "canonical" });
       if (canonicalConflict) out.push({ level: "error", message: `Duplicate canonical — already used by ${canonicalConflict}.`, field: "canonical" });
     }
+
+    if (a.length > AEO_ERR) out.push({ level: "error", message: `AEO summary is ${a.length} chars (max ${AEO_ERR}).`, field: "aeo_summary" });
+    else if (a.length > AEO_WARN) out.push({ level: "warn", message: `AEO summary is ${a.length} chars — recommended under ${AEO_WARN}.`, field: "aeo_summary" });
+
+    form.aeo_faqs.forEach((f, i) => {
+      if ((f.question && !f.answer) || (!f.question && f.answer)) {
+        out.push({ level: "warn", message: `FAQ #${i + 1} is missing a ${f.question ? "answer" : "question"}.`, field: "aeo_faqs" });
+      }
+    });
 
     if (jsonldCheck.issue) out.push(jsonldCheck.issue);
 
@@ -182,7 +241,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
     if (!path) return;
     setGenerating(true);
     try {
-      const context = [form.title, form.description, form.og_description].filter(Boolean).join("\n");
+      const context = [form.title, form.description, form.og_description, form.aeo_summary].filter(Boolean).join("\n");
       const { data, error } = await supabase.functions.invoke("generate-page-seo", {
         body: { path, context },
       });
@@ -195,8 +254,16 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
         og_title: data.og_title || f.og_title,
         og_description: data.og_description || f.og_description,
         keywords: Array.isArray(data.keywords) && data.keywords.length ? data.keywords.join(", ") : f.keywords,
+        aeo_summary: data.aeo_summary || f.aeo_summary,
+        aeo_faqs:
+          Array.isArray(data.aeo_faqs) && data.aeo_faqs.length
+            ? data.aeo_faqs.map((p: { question?: string; answer?: string }) => ({
+                question: String(p.question ?? ""),
+                answer: String(p.answer ?? ""),
+              }))
+            : f.aeo_faqs,
       }));
-      toast({ title: "SEO generated", description: "Review and tweak before saving." });
+      toast({ title: "SEO + AEO generated", description: "Review and tweak before saving." });
     } catch (err) {
       toast({ title: "Generate failed", description: String((err as Error).message || err), variant: "destructive" });
     } finally {
@@ -239,6 +306,9 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
     setSaving(true);
     try {
       const keywordsArr = form.keywords.split(",").map((k) => k.trim()).filter(Boolean);
+      const cleanFaqs = form.aeo_faqs
+        .map((f) => ({ question: f.question.trim(), answer: f.answer.trim() }))
+        .filter((f) => f.question && f.answer);
       const { data: userRes } = await supabase.auth.getUser();
       const payload = {
         path,
@@ -251,6 +321,8 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
         keywords: keywordsArr.length ? keywordsArr : null,
         robots: form.robots.trim() || null,
         jsonld: jsonldCheck.parsed as never,
+        aeo_summary: form.aeo_summary.trim() || null,
+        aeo_faqs: cleanFaqs.length ? (cleanFaqs as unknown as never) : null,
         updated_by: userRes.user?.id ?? null,
       };
       const { error } = await supabase.from("page_seo").upsert(payload, { onConflict: "path" });
@@ -284,6 +356,13 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
 
   const titleLen = form.title.length;
   const descLen = form.description.length;
+  const aeoLen = form.aeo_summary.length;
+
+  // Default-value helpers
+  const useDefault = (overrideKey: keyof FormState, defaultValue?: string | null) => {
+    if (!defaultValue) return;
+    setForm((f) => ({ ...f, [overrideKey]: defaultValue }));
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -292,10 +371,10 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
           <div className="flex items-start justify-between gap-3">
             <div>
               <DialogTitle className="font-poppins">
-                SEO for <span className="text-pps-teal">{path}</span>
+                SEO + AEO for <span className="text-pps-teal">{path}</span>
               </DialogTitle>
               <DialogDescription>
-                Anything you set here overrides the page's hardcoded SEO. Leave a field blank to fall back to code defaults.
+                Anything you set here overrides the page's hardcoded SEO. Leave a field blank to fall back to the default.
               </DialogDescription>
             </div>
             <Button
@@ -317,6 +396,19 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
           </div>
         ) : (
           <>
+            {!defaults && (
+              <div className="flex items-start gap-2 text-xs bg-muted text-muted-foreground rounded-md px-3 py-2 mt-2">
+                <Eye className="w-3.5 h-3.5 mt-0.5 shrink-0" />
+                <span>
+                  Defaults haven't been recorded for this page yet. Visit{" "}
+                  <a href={path ?? "#"} target="_blank" rel="noreferrer" className="underline text-pps-teal">
+                    {path}
+                  </a>{" "}
+                  once, then reopen this dialog to see what would render without an override.
+                </span>
+              </div>
+            )}
+
             {(errors.length > 0 || warnings.length > 0) && (
               <div className="space-y-1.5 mt-2">
                 {errors.map((iss, i) => (
@@ -335,9 +427,10 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
             )}
 
             <Tabs defaultValue="basic" className="mt-2">
-              <TabsList className="grid w-full grid-cols-4">
+              <TabsList className="grid w-full grid-cols-5">
                 <TabsTrigger value="basic">Basic</TabsTrigger>
                 <TabsTrigger value="social">Social / OG</TabsTrigger>
+                <TabsTrigger value="aeo">AEO</TabsTrigger>
                 <TabsTrigger value="advanced">Advanced</TabsTrigger>
                 <TabsTrigger value="jsonld">JSON-LD</TabsTrigger>
               </TabsList>
@@ -348,41 +441,65 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
                   hint={`${titleLen}/${TITLE_WARN} recommended (hard cap ${TITLE_ERR})`}
                   hintTone={titleLen > TITLE_ERR ? "error" : titleLen > TITLE_WARN ? "warn" : undefined}
                   fieldIssue={fieldIssue("title")}
+                  defaultValue={defaults?.title}
+                  onUseDefault={() => useDefault("title", defaults?.title)}
                 >
-                  <Input value={form.title} onChange={update("title")} placeholder="Page title" maxLength={120} />
+                  <Input value={form.title} onChange={update("title")} placeholder={defaults?.title || "Page title"} maxLength={120} />
                 </Field>
                 <Field
                   label="Meta description"
                   hint={`${descLen}/${DESC_WARN} recommended (hard cap ${DESC_ERR})`}
                   hintTone={descLen > DESC_ERR ? "error" : descLen > DESC_WARN ? "warn" : undefined}
                   fieldIssue={fieldIssue("description")}
+                  defaultValue={defaults?.description}
+                  onUseDefault={() => useDefault("description", defaults?.description)}
                 >
                   <Textarea
                     value={form.description}
                     onChange={update("description")}
                     rows={3}
-                    placeholder="Short description shown in search results"
+                    placeholder={defaults?.description || "Short description shown in search results"}
                     maxLength={300}
                   />
                 </Field>
-                <Field label="Keywords" hint="Comma-separated">
-                  <Input value={form.keywords} onChange={update("keywords")} placeholder="leadership, change, phase zero" />
+                <Field
+                  label="Keywords"
+                  hint="Comma-separated"
+                  defaultValue={defaults?.keywords?.join(", ")}
+                  onUseDefault={() => useDefault("keywords", defaults?.keywords?.join(", "))}
+                >
+                  <Input value={form.keywords} onChange={update("keywords")} placeholder={defaults?.keywords?.join(", ") || "leadership, change, phase zero"} />
                 </Field>
               </TabsContent>
 
               <TabsContent value="social" className="space-y-4 pt-4">
-                <Field label="OG title" hint="Defaults to the Title above">
-                  <Input value={form.og_title} onChange={update("og_title")} />
+                <Field
+                  label="OG title"
+                  hint="Defaults to the Title above"
+                  defaultValue={defaults?.ogTitle}
+                  onUseDefault={() => useDefault("og_title", defaults?.ogTitle)}
+                >
+                  <Input value={form.og_title} onChange={update("og_title")} placeholder={defaults?.ogTitle} />
                 </Field>
-                <Field label="OG description" hint="Defaults to the meta description above">
-                  <Textarea value={form.og_description} onChange={update("og_description")} rows={2} />
+                <Field
+                  label="OG description"
+                  hint="Defaults to the meta description above"
+                  defaultValue={defaults?.ogDescription}
+                  onUseDefault={() => useDefault("og_description", defaults?.ogDescription)}
+                >
+                  <Textarea value={form.og_description} onChange={update("og_description")} rows={2} placeholder={defaults?.ogDescription} />
                 </Field>
-                <Field label="OG image" hint="Use the page's hardcoded hero (clear field), pick from the library, upload, or paste a URL.">
+                <Field
+                  label="OG image"
+                  hint="Use the page's hardcoded hero (clear field), pick from the library, upload, or paste a URL."
+                  defaultValue={defaults?.ogImage}
+                  onUseDefault={() => useDefault("og_image", defaults?.ogImage)}
+                >
                   <div className="space-y-2">
                     <Input
                       value={form.og_image}
                       onChange={update("og_image")}
-                      placeholder="https://… or /images/og.jpg"
+                      placeholder={defaults?.ogImage || "https://… or /images/og.jpg"}
                     />
                     <div className="flex flex-wrap gap-2">
                       <Button
@@ -394,12 +511,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
                       >
                         <X className="w-3.5 h-3.5 mr-1.5" /> Use page hero
                       </Button>
-                      <Button
-                        type="button"
-                        size="sm"
-                        variant="outline"
-                        onClick={() => setLibraryOpen(true)}
-                      >
+                      <Button type="button" size="sm" variant="outline" onClick={() => setLibraryOpen(true)}>
                         <ImageIcon className="w-3.5 h-3.5 mr-1.5" /> Choose from library
                       </Button>
                       <Button
@@ -438,26 +550,147 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
                 </Field>
               </TabsContent>
 
+              <TabsContent value="aeo" className="space-y-4 pt-4">
+                <div className="text-xs text-muted-foreground bg-muted/40 rounded-md px-3 py-2 border border-border">
+                  <strong className="text-pps-navy">Answer Engine Optimization</strong> shapes how AI engines (ChatGPT,
+                  Perplexity, Google AI Overviews) quote this page. The summary becomes a citable answer; FAQs are emitted
+                  as FAQPage structured data.
+                </div>
+
+                <Field
+                  label="AEO summary"
+                  hint={`${aeoLen}/${AEO_WARN} recommended (hard cap ${AEO_ERR}). Lead with the answer — what is this page about, in plain language.`}
+                  hintTone={aeoLen > AEO_ERR ? "error" : aeoLen > AEO_WARN ? "warn" : undefined}
+                  fieldIssue={fieldIssue("aeo_summary")}
+                >
+                  <Textarea
+                    value={form.aeo_summary}
+                    onChange={update("aeo_summary")}
+                    rows={4}
+                    placeholder="In 2-3 sentences, answer the question this page is the answer to."
+                    maxLength={800}
+                  />
+                </Field>
+
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label className="font-poppins text-sm text-pps-navy">FAQ pairs</Label>
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant="outline"
+                      onClick={() =>
+                        setForm((f) => ({ ...f, aeo_faqs: [...f.aeo_faqs, { question: "", answer: "" }] }))
+                      }
+                    >
+                      <Plus className="w-3.5 h-3.5 mr-1.5" /> Add FAQ
+                    </Button>
+                  </div>
+                  {form.aeo_faqs.length === 0 ? (
+                    <p className="text-xs text-muted-foreground">
+                      No FAQs yet. Add 3-5 natural-language questions a user might ask an AI engine.
+                    </p>
+                  ) : (
+                    <div className="space-y-3">
+                      {form.aeo_faqs.map((faq, idx) => (
+                        <div key={idx} className="rounded-md border border-border p-3 space-y-2 bg-muted/20">
+                          <div className="flex items-start gap-2">
+                            <Input
+                              value={faq.question}
+                              onChange={(e) =>
+                                setForm((f) => {
+                                  const next = [...f.aeo_faqs];
+                                  next[idx] = { ...next[idx], question: e.target.value };
+                                  return { ...f, aeo_faqs: next };
+                                })
+                              }
+                              placeholder={`Question ${idx + 1}`}
+                            />
+                            <Button
+                              type="button"
+                              size="icon"
+                              variant="ghost"
+                              className="text-pps-raspberry hover:bg-pps-raspberry/10 shrink-0"
+                              onClick={() =>
+                                setForm((f) => ({ ...f, aeo_faqs: f.aeo_faqs.filter((_, i) => i !== idx) }))
+                              }
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </Button>
+                          </div>
+                          <Textarea
+                            value={faq.answer}
+                            onChange={(e) =>
+                              setForm((f) => {
+                                const next = [...f.aeo_faqs];
+                                next[idx] = { ...next[idx], answer: e.target.value };
+                                return { ...f, aeo_faqs: next };
+                              })
+                            }
+                            rows={2}
+                            placeholder="Direct, quotable answer in 2-4 sentences."
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </TabsContent>
+
               <TabsContent value="advanced" className="space-y-4 pt-4">
                 <Field
                   label="Canonical URL"
                   hint="Override the canonical link (full URL or /-relative path)"
                   fieldIssue={fieldIssue("canonical")}
+                  defaultValue={defaults?.canonical}
+                  onUseDefault={() => useDefault("canonical", defaults?.canonical)}
                 >
-                  <Input value={form.canonical} onChange={update("canonical")} placeholder="https://pps-website.lovable.app/this-page" />
+                  <Input value={form.canonical} onChange={update("canonical")} placeholder={defaults?.canonical || "https://pps-website.lovable.app/this-page"} />
                 </Field>
+
                 <Field
-                  label="Robots"
-                  hint='e.g. "index, follow" or "noindex, nofollow"'
+                  label="Robots directive"
+                  hint={`Default: ${defaults?.robots || "index, follow"}`}
                 >
-                  <Input value={form.robots} onChange={update("robots")} placeholder="index, follow" />
+                  <div className="space-y-2">
+                    <Select
+                      value={robotsMode}
+                      onValueChange={(v) => {
+                        setRobotsMode(v);
+                        if (v === "__default__") setForm((f) => ({ ...f, robots: "" }));
+                        else if (v === "__custom__") setForm((f) => ({ ...f, robots: f.robots || "" }));
+                        else setForm((f) => ({ ...f, robots: v }));
+                      }}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {ROBOTS_OPTIONS.map((opt) => (
+                          <SelectItem key={opt.value} value={opt.value}>
+                            <div className="flex flex-col items-start">
+                              <span>{opt.label}</span>
+                              <span className="text-[10px] text-muted-foreground">{opt.description}</span>
+                            </div>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {robotsMode === "__custom__" && (
+                      <Input
+                        value={form.robots}
+                        onChange={update("robots")}
+                        placeholder="e.g. noindex, follow, max-snippet:-1"
+                      />
+                    )}
+                  </div>
                 </Field>
               </TabsContent>
 
               <TabsContent value="jsonld" className="space-y-4 pt-4">
                 <Field
                   label="JSON-LD"
-                  hint="Paste a single object or an array of objects. Must be valid JSON with @context and @type."
+                  hint="Paste a single object or an array of objects. Must be valid JSON with @context and @type. AEO FAQs are emitted automatically — don't duplicate them here."
                   fieldIssue={fieldIssue("jsonld")}
                 >
                   <Textarea
@@ -512,12 +745,16 @@ function Field({
   hint,
   hintTone,
   fieldIssue,
+  defaultValue,
+  onUseDefault,
   children,
 }: {
   label: string;
   hint?: string;
   hintTone?: "warn" | "error";
   fieldIssue?: Issue;
+  defaultValue?: string | null;
+  onUseDefault?: () => void;
   children: React.ReactNode;
 }) {
   const toneClass =
@@ -528,8 +765,26 @@ function Field({
       : "text-muted-foreground";
   return (
     <div className="space-y-1.5">
-      <Label className="font-poppins text-sm text-pps-navy">{label}</Label>
+      <div className="flex items-center justify-between gap-2">
+        <Label className="font-poppins text-sm text-pps-navy">{label}</Label>
+        {defaultValue && onUseDefault && (
+          <Button
+            type="button"
+            size="sm"
+            variant="ghost"
+            className="h-6 px-2 text-[10px] text-pps-teal hover:bg-pps-teal/10"
+            onClick={onUseDefault}
+          >
+            <Undo2 className="w-3 h-3 mr-1" /> Use default
+          </Button>
+        )}
+      </div>
       {children}
+      {defaultValue && (
+        <p className="text-[10px] text-muted-foreground italic line-clamp-2" title={defaultValue}>
+          <span className="font-semibold not-italic">Default:</span> {defaultValue}
+        </p>
+      )}
       {hint && <p className={`text-[11px] ${toneClass}`}>{hint}</p>}
     </div>
   );
