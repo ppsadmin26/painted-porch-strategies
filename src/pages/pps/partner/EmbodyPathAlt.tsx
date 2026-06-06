@@ -15,7 +15,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import embodyHero from "@/assets/embody-concept-blueprint.jpg";
-import { TierBadge, TIERS } from "@/components/pps/TierBadge";
+import { TIERS } from "@/components/pps/TierBadge";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { FAQSection } from "@/components/pps/FAQSection";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
