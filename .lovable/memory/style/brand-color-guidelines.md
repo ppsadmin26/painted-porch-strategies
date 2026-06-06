@@ -14,9 +14,9 @@ A cool → warm temperature gradient representing the journey from structural ab
 
 | Pillar | Color | Hex | CSS Variable | Card BG | Psychology |
 |--------|-------|-----|--------------|---------|------------|
-| **Foundational Architecture** | Navy | #00006B | `--navy` | `bg-[hsl(220,60%,95%)]` | Deep, authoritative, stable - "The Blueprint" |
-| **Operational Intelligence** | Purple | #523387 | `--strategic` | `bg-strategic/10` | Wisdom, strategic depth - "The Framework" |
-| **Human Capacity** | Gold | #E8A231 | `--gold` | `bg-gold/10` | Warm, human value, potential - "The Living Ecosystem" |
+| **Cultural Cornerstone** | Navy | #00006B | `--navy` | `bg-[hsl(220,60%,95%)]` | Deep, authoritative, stable - "The Blueprint" |
+| **Operational Frame** | Purple | #523387 | `--strategic` | `bg-strategic/10` | Wisdom, strategic depth - "The Framework" |
+| **Living Ecosystem** | Gold | #E8A231 | `--gold` | `bg-gold/10` | Warm, human value, potential - "Human Capacity" |
 
 ### Pillar Details
 
