@@ -429,6 +429,11 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
   // Default-value helpers
   const useDefault = (overrideKey: keyof FormState, defaultValue?: string | null) => {
     if (!defaultValue) return;
+    if (overrideKey === "keywords") {
+      const arr = defaultValue.split(",").map((k) => k.trim().toLowerCase()).filter(Boolean);
+      setForm((f) => ({ ...f, keywords: arr }));
+      return;
+    }
     setForm((f) => ({ ...f, [overrideKey]: defaultValue }));
   };
 
