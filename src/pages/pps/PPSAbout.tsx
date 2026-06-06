@@ -301,12 +301,12 @@ export default function PPSAbout() {
         headline="Ready to start your transformation journey?"
         description="Reach out to learn more about how we can partner with you to get started."
         actions={[
+          { label: "Find Your P.A.T.H.way", to: "/start-here", variant: "primary" },
           {
             label: "Contact Us",
             to: "/contact?interest=general&message=I'd like to learn more about partnering with Painted Porch Strategies.",
-            variant: "primary",
+            variant: "secondary",
           },
-          { label: "Find Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
         ]}
       />
     </div>
