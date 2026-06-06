@@ -11,8 +11,8 @@ import amplifyFinalCtaBg from "@/assets/amplify-final-cta-bg.jpg";
  * Strategic Sprints — focused 90-day Phase Zero partnership.
  *
  * Refactored per the wireframe (.lovable/wireframes/embody-and-sprints-revised.md):
- *  - Timeline labels: Diagnose → Design → Roadmap (no "Deliver"; nothing is
- *    actually implemented in 90 days; the output is a plan + roadmap).
+ *  - Timeline labels: Diagnose → Design → Direction (no "Deliver"; nothing is
+ *    actually implemented in 90 days; the output is a plan + direction).
  *  - Kept "Common Applications" (helps tactical self-qualification).
  *  - NEW contrast strip: "Not a traditional implementation engagement".
  *  - Merged Blue Door prerequisite into the Investment row.
@@ -46,7 +46,7 @@ const sprintFaqCategories: FAQCategory[] = [
       {
         question: "How long is a Strategic Sprint?",
         answer:
-          "90 days, in three focused stages: Diagnose (weeks 1–2), Design (weeks 3–8), and Roadmap (weeks 9–12).",
+          "90 days, in three focused stages: Diagnose (weeks 1–2), Design (weeks 3–8), and Direction (weeks 9–12).","
       },
       {
         question: "Will we have implemented anything by the end?",
@@ -93,13 +93,13 @@ const sprintPhases = [
   {
     icon: Map,
     weeks: "Weeks 9–12",
-    title: "Roadmap",
+    title: "Direction",
     activities: [
       "Stakeholder alignment sessions",
       "Rollout sequencing and communication strategy",
       "Handoff to your team, or transition into an EMBODY partnership",
     ],
-    deliverable: "A launch-ready roadmap for what you'll implement next",
+    deliverable: "A clear direction for what you'll implement next",
   },
 ];
 
@@ -317,7 +317,7 @@ export default function AmplifySprints() {
                   <li className="text-sm text-foreground">• Initial organizational appraisal and strategic brief</li>
                   <li className="text-sm text-foreground">• 3–6 strategic design sessions</li>
                   <li className="text-sm text-foreground">• Framework tools and templates</li>
-                  <li className="text-sm text-foreground">• Launch-ready roadmap</li>
+                  <li className="text-sm text-foreground">• Clear direction</li>
                 </ul>
               </div>
               <div className="bg-bluedoor/5 border border-bluedoor/20 rounded-lg p-6">
@@ -371,7 +371,7 @@ export default function AmplifySprints() {
             Architect the sh<span className="text-gold">IF</span>t before you implement it.
           </>
         }
-        description="A 90-day Strategic Sprint installs a new way for your team to prepare and design every shift that follows, with the architecture and roadmap to lead what comes next."
+        description="A 90-day Strategic Sprint installs a new way for your team to prepare and design every shift that follows, with the architecture and direction to lead what comes next."
         actions={[
           { label: "Contact Us", to: "/contact?scope=organization&interest=organizational-advisory" },
           { label: "Start with the Blue Door", to: "/blue-door", variant: "bluedoor" },
