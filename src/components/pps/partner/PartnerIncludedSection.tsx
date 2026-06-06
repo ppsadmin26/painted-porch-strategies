@@ -3,11 +3,6 @@ import { CheckCircle, DollarSign, Heart } from "lucide-react";
 const includedItems = [
   {
     icon: CheckCircle,
-    title: "Discovery Conversation",
-    description: "Partnership call to explore fit and approach",
-  },
-  {
-    icon: CheckCircle,
     title: "Clear Scope & Timeline",
     description: "Detailed proposal with deliverables and milestones",
   },

@@ -130,13 +130,6 @@ export default function PPSPricing() {
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
                 <div>
-                  <span className="font-semibold text-navy">Discovery Conversation</span>
-                  <p className="text-sm text-foreground">Partnership call to explore fit and approach</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
-                <div>
                   <span className="font-semibold text-navy">Clear Scope & Timeline</span>
                   <p className="text-sm text-foreground">Detailed proposal with deliverables and milestones</p>
                 </div>
