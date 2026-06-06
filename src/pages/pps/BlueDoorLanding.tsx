@@ -1,3 +1,4 @@
+import PartnershipPromise from "@/components/pps/PartnershipPromise";
 import HeroSectionAlt from "@/components/pps/blue-door/HeroSectionAlt";
 import ProblemSectionAlt from "@/components/pps/blue-door/ProblemSectionAlt";
 import CostOfGapSection from "@/components/pps/blue-door/CostOfGapSection";
@@ -28,7 +29,7 @@ export default function BlueDoorLanding() {
       <TrustSignalsSection />
       <FAQSectionAlt />
       <FinalCTASectionAlt />
-      
+      <PartnershipPromise />
     </div>
   );
 }
