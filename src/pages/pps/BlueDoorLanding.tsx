@@ -29,7 +29,7 @@ export default function BlueDoorLanding() {
       <TrustSignalsSection />
       <FAQSectionAlt />
       <FinalCTASectionAlt />
-      
+      <PartnershipPromise />
     </div>
   );
 }
