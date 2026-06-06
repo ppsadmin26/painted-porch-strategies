@@ -91,13 +91,6 @@ const amplifyFormats = [
       "Preparing strategic planning for major change",
       "Building alignment before launch",
     ],
-    includes: [
-      "Initial diagnostic assessment",
-      "3-6 strategic design sessions",
-      "Framework application & tools",
-      "Ongoing access between sessions",
-      "Executive guidance from Amy Yackowski and Painted Porch Team advisors",
-    ],
     timeline: "90 days (focused engagement)",
     investment: "Starting at $18,000",
     cta: "Explore Strategic Sprints",
