@@ -325,7 +325,7 @@ export default function EmbodyPathAlt() {
           </div>
           <div className="max-w-3xl mx-auto text-center bg-muted/40 rounded-xl p-6">
             <p className="text-sm text-foreground mb-4">
-              Built on the <strong>Painted Porch Pillars</strong> and our <strong>P.A.T.H.</strong> framework. See{" "}
+              Built on the <strong>Painted Porch Pillars</strong> and our <Link to="/approach" className="font-semibold text-primary hover:underline">P.A.T.H.</Link> framework. See{" "}
               <Link to="/approach" className="font-semibold text-primary hover:underline">
                 /approach
               </Link>{" "}
