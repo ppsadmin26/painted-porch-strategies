@@ -281,7 +281,7 @@ const faqs = [
   },
   {
     question: "What outcomes can we expect from EMBODY?",
-    answer: "EMBODY partners leave with three things: a clearly authored direction for the shIFt you intend to lead, an organizational architecture built to sustain it across the three Painted Porch Pillars™, and the internal capacity to originate the next shIFt without us. The goal isn't dependence on Painted Porch. It's a fortified habitat where your people can lead change instead of being changed by it.",
+    answer: "EMBODY partners leave with three things: a clearly authored direction for the shIFt you intend to lead, an organizational architecture built to sustain it across the three Painted Porch Pillars™, and the internal capacity to originate the next shIFt without us. The goal isn't dependence on Painted Porch. It's a fortified porch where your people can lead change instead of being changed by it.",
   },
 ];
 
