@@ -26,7 +26,45 @@ type SeoOverride = {
   keywords: string[] | null;
   robots: string | null;
   jsonld: Record<string, unknown> | Record<string, unknown>[] | null;
+  aeo_summary: string | null;
+  aeo_faqs: Array<{ question: string; answer: string }> | null;
 };
+
+/** Snapshot of code-level SEO defaults per route — written by useDocumentSeo, read by admin editor. */
+export type SeoDefaultsSnapshot = {
+  title: string;
+  description: string;
+  keywords: string[] | null;
+  canonical: string;
+  robots: string;
+  ogTitle: string;
+  ogDescription: string;
+  ogType: string;
+  ogImage: string;
+  jsonLd: Record<string, unknown> | Record<string, unknown>[] | null;
+  recordedAt: number;
+};
+
+const DEFAULTS_STORAGE_PREFIX = "pps:seo-defaults:";
+
+export function readSeoDefaultsSnapshot(pathname: string): SeoDefaultsSnapshot | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(DEFAULTS_STORAGE_PREFIX + pathname);
+    return raw ? (JSON.parse(raw) as SeoDefaultsSnapshot) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeSeoDefaultsSnapshot(pathname: string, snap: SeoDefaultsSnapshot) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(DEFAULTS_STORAGE_PREFIX + pathname, JSON.stringify(snap));
+  } catch {
+    /* ignore */
+  }
+}
 
 const DEFAULT_SEO = {
   title: "Painted Porch Strategies | Architect Extraordinary Outcomes",
