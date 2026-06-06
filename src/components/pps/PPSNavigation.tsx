@@ -25,7 +25,7 @@ const navLinks = [
     ],
   },
   {
-    label: "Insights",
+    label: "Insights & Resources",
     href: "/resources",
     children: [
       { label: "Insights", href: "/resources/insights" },
