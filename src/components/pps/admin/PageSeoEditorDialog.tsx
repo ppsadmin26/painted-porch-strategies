@@ -35,7 +35,7 @@ type FormState = {
   og_description: string;
   og_image: string;
   canonical: string;
-  keywords: string;
+  keywords: string[];
   robots: string;
   jsonld: string;
   aeo_summary: string;
@@ -49,7 +49,7 @@ const EMPTY: FormState = {
   og_description: "",
   og_image: "",
   canonical: "",
-  keywords: "",
+  keywords: [],
   robots: "",
   jsonld: "",
   aeo_summary: "",
