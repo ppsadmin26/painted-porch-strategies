@@ -93,9 +93,12 @@ const sprintApplications = [
   { lead: "Leadership Transition", detail: "Prepare organization for new leadership before arrival" },
 ];
 
-export default function AmplifySprints() {
+export default function AmplifySprintsArchive() {
   return (
     <div>
+      <div className="bg-gold/90 text-navy text-center py-2 text-sm font-semibold font-poppins">
+        ⚠️ ARCHIVE — preserved for reference. <a href="/partner/amplify/sprints" className="underline">View current version →</a>
+      </div>
       <PPSBreadcrumb
         segments={[
           { label: "Partner", href: "/partner" },

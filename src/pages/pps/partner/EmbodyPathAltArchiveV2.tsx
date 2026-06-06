@@ -293,14 +293,17 @@ const pathwaySteps = [
   { step: 4, title: "Partnership Agreement", desc: "Formalize commitment and begin designing and building your transformation architecture" },
 ];
 
-export default function EmbodyPathAlt() {
+export default function EmbodyPathAltArchiveV2() {
   useDocumentSeo({
-    title: "EMBODY P.A.T.H.way | Embedded Partnership | Painted Porch",
-    description: "Architect epic shIFt that lasts. EMBODY is the deep, embedded C-suite partnership that builds the foundational architecture of adaptive organizations.",
+    title: "EMBODY (Archive v2) | Painted Porch",
+    description: "Archived version of the EMBODY page preserved for reference and marketing material reuse.",
     ogImage: embodyHero,
   });
   return (
     <div>
+      <div className="bg-gold/90 text-navy text-center py-2 text-sm font-semibold font-poppins">
+        ⚠️ ARCHIVE (v2) — preserved for reference. <a href="/partner/embody" className="underline">View current version →</a>
+      </div>
       {/* SECTION 1: HERO */}
       <TierHeroSection
         tier={TIERS.EMBODY}

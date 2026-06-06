@@ -43,6 +43,7 @@ import AmplifyPath from "./pages/pps/partner/AmplifyPath";
 import AmplifyPathAlt from "./pages/pps/partner/AmplifyPathAlt";
 import EmbodyPath from "./pages/pps/partner/EmbodyPath";
 import EmbodyPathAlt from "./pages/pps/partner/EmbodyPathAlt";
+import EmbodyPathAltArchiveV2 from "./pages/pps/partner/EmbodyPathAltArchiveV2";
 
 // NOTE: "Alt" components are now the PRIMARY pages.
 // Original components are archived at -archive routes.
@@ -58,6 +59,7 @@ import EQChangeLeaderMini from "./pages/pps/EQChangeLeaderMini";
 // AMPLIFY Subpages
 import AmplifyWorkshops from "./pages/pps/partner/amplify/AmplifyWorkshops";
 import AmplifySprints from "./pages/pps/partner/amplify/AmplifySprints";
+import AmplifySprintsArchive from "./pages/pps/partner/amplify/AmplifySprintsArchive";
 import AmplifyLabs from "./pages/pps/partner/amplify/AmplifyLabs";
 import StracticalLeaderWorkshop from "./pages/pps/partner/amplify/StracticalLeaderWorkshop";
 import StracticalLeaderCheckout from "./pages/pps/partner/amplify/StracticalLeaderCheckout";
