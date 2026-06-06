@@ -130,7 +130,7 @@ export default function IgnitePathAlt() {
         badgeLabel="IGNITE P.A.T.H.way"
         headline="Spark New ShIFt. Build Phase Zero™ Foundations at Your Own Pace."
         headlineHighlight="IF"
-        description="IGNITE is self-led strategic development: courses, assessments, and Phase Zero frameworks you can work through at your own pace, on your own terms. Whether you're investing in yourself or exploring before an organizational commitment, this is where the spark for extraordinary shift begins."
+        description={<>IGNITE is self-led strategic development: courses, assessments, and Phase Zero frameworks you can work through at your own pace, on your own terms. Whether you're investing in yourself or exploring before an organizational commitment, this is where the spark for extraordinary sh<span className="font-bold text-gold">IF</span>t begins.</>}
         ctas={[
           {
             label: "Browse IGNITE",
