@@ -50,7 +50,7 @@ const operationalPrograms = [
   {
     title: "Operations on Purpose",
     description:
-      "Inefficient processes and misaligned roles result in lost time, money, resources, and clients. Tap into the hidden talents of your team and cut operational bloat to maximize your outcomes.",
+      "Inefficient processes and misaligned roles result in lost time, money, resources, and revenue. Tap into the hidden talents of your team to create flexible, future-ready people who can maximize your outcomes and meet whatever shIFt happens next.",
     image: operationsOnPurpose,
     link: "/partner/amplify",
   },
