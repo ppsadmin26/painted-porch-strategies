@@ -330,16 +330,6 @@ export default function AmplifyPathAlt() {
                   ))}
                 </ul>
 
-                {format.topics && (
-                  <>
-                    <p className="text-xs font-semibold text-navy uppercase tracking-wide mb-2">Topics Include:</p>
-                    <ul className="space-y-1 mb-4">
-                      {format.topics.map((topic, i) => (
-                        <li key={i} className="text-xs text-foreground">• {topic}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
 
                 {format.includes && (
                   <>
