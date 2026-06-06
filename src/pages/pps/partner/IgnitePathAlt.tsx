@@ -130,7 +130,7 @@ export default function IgnitePathAlt() {
         badgeLabel="IGNITE P.A.T.H.way"
         headline="Spark New ShIFt. Build Phase Zero™ Foundations at Your Own Pace."
         headlineHighlight="IF"
-        description="IGNITE is self-led strategic development: courses, assessments, and Phase Zero frameworks you can work through at your own pace, on your own terms. Whether you're investing in yourself or exploring before an organizational commitment, this is where the spark for extraordinary shift begins."
+        description={<>IGNITE is self-led strategic development: courses, assessments, and Phase Zero frameworks you can work through at your own pace, on your own terms. Whether you're investing in yourself or exploring before an organizational commitment, this is where the spark for extraordinary sh<span className="font-bold text-gold">IF</span>t begins.</>}
         ctas={[
           {
             label: "Browse IGNITE",
@@ -226,7 +226,7 @@ export default function IgnitePathAlt() {
               <p className="text-foreground mb-6 leading-relaxed">
                 Transform how you lead, on your schedule. These courses teach you to architect change, communicate with clarity, build resilience, and develop teams where everyone shines.
               </p>
-              <p className="text-sm font-semibold text-navy mb-2">What You'll Ignite:</p>
+              <p className="text-sm font-semibold text-navy mb-2">What's Inside:</p>
               <ul className="space-y-1 flex-grow">
                 <li className="flex items-center gap-2 text-sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
@@ -265,7 +265,7 @@ export default function IgnitePathAlt() {
               <p className="text-foreground mb-6 leading-relaxed">
                 Decode what drives your success. These assessments reveal your emotional intelligence, unique strengths, and the talents that make you extraordinary.
               </p>
-              <p className="text-sm font-semibold text-navy mb-2">What You'll Ignite:</p>
+              <p className="text-sm font-semibold text-navy mb-2">What's Inside:</p>
               <ul className="space-y-1 flex-grow">
                 <li className="flex items-center gap-2 text-sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
@@ -304,7 +304,7 @@ export default function IgnitePathAlt() {
               <p className="text-foreground mb-6 leading-relaxed">
                 Strategic insights in under 90 minutes. These mini-workshops illuminate Phase Zero strategic architecture, transformation leadership, and conscious design, one small shift at a time.
               </p>
-              <p className="text-sm font-semibold text-navy mb-3">What You'll Ignite:</p>
+              <p className="text-sm font-semibold text-navy mb-3">What's Inside:</p>
               <ul className="space-y-2 mb-6 flex-grow">
                 <li className="flex items-center gap-2 text-sm text-foreground">
                   <Clock className="w-4 h-4 text-strategic flex-shrink-0" />
