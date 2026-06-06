@@ -169,6 +169,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
   const [defaults, setDefaults] = useState<SeoDefaultsSnapshot | null>(null);
   const [robotsMode, setRobotsMode] = useState<string>("__default__");
   const [aeoPreviewOpen, setAeoPreviewOpen] = useState(false);
+  const [keywordInput, setKeywordInput] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
