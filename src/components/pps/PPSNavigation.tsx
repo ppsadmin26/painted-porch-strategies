@@ -30,7 +30,7 @@ const navLinks = [
     children: [
       { label: "Insights", href: "/resources/insights" },
       { label: "YouTube", href: "/resources/youtube" },
-      { label: "Media", href: "/speaking/media" },
+      { label: "Media Appearances", href: "/speaking/media" },
       { label: "Free Resources", href: "/resources/free" },
       { label: "FAQ", href: "/resources/faq" },
     ],
