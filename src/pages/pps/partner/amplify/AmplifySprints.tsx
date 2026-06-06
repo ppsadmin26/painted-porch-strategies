@@ -77,7 +77,7 @@ const sprintPhases = [
       "Painted Porch Pillars capacity assessment",
       "Phase Zero gap analysis",
     ],
-    deliverable: "A clear-eyed diagnostic report on where you really stand",
+    deliverable: "A clear-eyed organizational appraisal of where you really stand",
   },
   {
     icon: PencilRuler,
@@ -314,7 +314,7 @@ export default function AmplifySprints() {
                   Based on scope and timeline. Includes:
                 </p>
                 <ul className="space-y-2">
-                  <li className="text-sm text-foreground">• Initial diagnostic</li>
+                  <li className="text-sm text-foreground">• Initial organizational appraisal and strategic brief</li>
                   <li className="text-sm text-foreground">• 3–6 strategic design sessions</li>
                   <li className="text-sm text-foreground">• Framework tools and templates</li>
                   <li className="text-sm text-foreground">• Launch-ready roadmap</li>
