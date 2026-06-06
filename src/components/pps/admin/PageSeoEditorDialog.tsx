@@ -309,7 +309,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
         description: data.description || f.description,
         og_title: data.og_title || f.og_title,
         og_description: data.og_description || f.og_description,
-        keywords: Array.isArray(data.keywords) && data.keywords.length ? data.keywords.join(", ") : f.keywords,
+        keywords: Array.isArray(data.keywords) && data.keywords.length ? data.keywords : f.keywords,
         aeo_summary: data.aeo_summary || f.aeo_summary,
         aeo_faqs:
           Array.isArray(data.aeo_faqs) && data.aeo_faqs.length
@@ -361,7 +361,6 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
     }
     setSaving(true);
     try {
-      const keywordsArr = form.keywords.split(",").map((k) => k.trim()).filter(Boolean);
       const cleanFaqs = form.aeo_faqs
         .map((f) => ({ question: f.question.trim(), answer: f.answer.trim() }))
         .filter((f) => f.question && f.answer);
@@ -374,7 +373,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
         og_description: form.og_description.trim() || null,
         og_image: form.og_image.trim() || null,
         canonical: form.canonical.trim() || null,
-        keywords: keywordsArr.length ? keywordsArr : null,
+        keywords: form.keywords.length ? form.keywords : null,
         robots: form.robots.trim() || null,
         jsonld: jsonldCheck.parsed as never,
         aeo_summary: form.aeo_summary.trim() || null,
