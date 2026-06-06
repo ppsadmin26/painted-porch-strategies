@@ -206,7 +206,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
             og_description: data.og_description ?? "",
             og_image: data.og_image ?? "",
             canonical: data.canonical ?? "",
-            keywords: (data.keywords ?? []).join(", "),
+            keywords: data.keywords ?? [],
             robots,
             jsonld: data.jsonld ? JSON.stringify(data.jsonld, null, 2) : "",
             aeo_summary: (data as { aeo_summary?: string | null }).aeo_summary ?? "",
