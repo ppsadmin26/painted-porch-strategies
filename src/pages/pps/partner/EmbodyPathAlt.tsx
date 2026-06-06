@@ -285,24 +285,28 @@ export default function EmbodyPathAlt() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {industries.map((industry) => (
-              <div key={industry.title} className="bg-white p-6 rounded-xl">
-                <div className="flex items-center gap-3 mb-3">
-                  <industry.icon className="w-8 h-8 text-gold shrink-0" />
-                  <h3 className="text-base font-poppins font-semibold text-navy leading-tight">
-                    {industry.title}
-                  </h3>
+            {industries.map((industry, idx) => {
+              const accents = ["text-teal", "text-lime", "text-raspberry", "text-purple"];
+              const accent = accents[idx % accents.length];
+              return (
+                <div key={industry.title} className="bg-white p-6 rounded-xl border-t-2 border-navy/80">
+                  <div className="flex items-center gap-3 mb-3">
+                    <industry.icon className={`w-8 h-8 ${accent} shrink-0`} />
+                    <h3 className="text-base font-poppins font-semibold text-navy leading-tight">
+                      {industry.title}
+                    </h3>
+                  </div>
+                  <ul className="space-y-2">
+                    {industry.items.map((item) => (
+                      <li key={item} className="text-sm text-foreground flex items-start gap-2">
+                        <span className={`${accent} mt-1`}>•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="space-y-2">
-                  {industry.items.map((item) => (
-                    <li key={item} className="text-sm text-foreground flex items-start gap-2">
-                      <span className="text-gold mt-1">•</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
