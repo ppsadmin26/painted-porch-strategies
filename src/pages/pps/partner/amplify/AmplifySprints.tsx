@@ -117,8 +117,8 @@ const differenceRows = [
     sprint: "Starts at: \"What shift, and are we built to lead it?\"",
   },
   {
-    traditional: "Sells you their playbook.",
-    sprint: "Co-designs yours.",
+    traditional: "Sells you their playbook to execute.",
+    sprint: "Installs a new way for your team to prepare and design every shift that follows.",
   },
   {
     traditional: "Optimizes for go-live.",
@@ -126,7 +126,7 @@ const differenceRows = [
   },
   {
     traditional: "You hand off and hope.",
-    sprint: "You walk out with the architecture in hand.",
+    sprint: "Your team walks out owning the architecture and the approach behind it.",
   },
 ];
 
