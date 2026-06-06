@@ -149,7 +149,7 @@ export function TierHeroSection({
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4">
               {ctas.map((cta, index) => {
                 const buttonClasses = cta.buttonClassName
                   ? `${cta.buttonClassName} text-lg py-6 px-8 transition-colors w-full sm:w-auto`
