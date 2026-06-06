@@ -160,7 +160,14 @@ export default function PPSAbout() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="rounded-xl overflow-hidden shadow-lg md:order-1">
+              <img
+                src={letsChangeImg}
+                alt="Let's Change neon sign on a classic building facade"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="md:order-2">
               <span className="badge-strategic mb-4 inline-block bg-gold">Our Story</span>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 We Saw What Was Missing.
@@ -171,13 +178,6 @@ export default function PPSAbout() {
               <p className="text-lg text-foreground leading-relaxed">
                 The patterns of change struggle and failure (in work <em>and</em> in life) repeatedly boiled down to a few missing or underdeveloped foundational principles.
               </p>
-            </div>
-            <div className="rounded-xl overflow-hidden shadow-lg">
-              <img
-                src={letsChangeImg}
-                alt="Let's Change neon sign on a classic building facade"
-                className="w-full h-full object-cover"
-              />
             </div>
           </div>
         </div>
