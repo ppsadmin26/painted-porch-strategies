@@ -537,6 +537,8 @@ export type Database = {
       }
       page_seo: {
         Row: {
+          aeo_faqs: Json | null
+          aeo_summary: string | null
           canonical: string | null
           created_at: string
           description: string | null
@@ -553,6 +555,8 @@ export type Database = {
           updated_by: string | null
         }
         Insert: {
+          aeo_faqs?: Json | null
+          aeo_summary?: string | null
           canonical?: string | null
           created_at?: string
           description?: string | null
@@ -569,6 +573,8 @@ export type Database = {
           updated_by?: string | null
         }
         Update: {
+          aeo_faqs?: Json | null
+          aeo_summary?: string | null
           canonical?: string | null
           created_at?: string
           description?: string | null
