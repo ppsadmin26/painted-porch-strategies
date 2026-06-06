@@ -371,6 +371,8 @@ export default function EmbodyPathAlt() {
                 Investment
               </h2>
               <p className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-2">
+                $90,000 – $360,000+
+              </p>
               <p className="text-sm text-muted-foreground">
                 Typically less than 1% of annual revenue. A strategic investment in permanent capacity, not a project line item.
               </p>
