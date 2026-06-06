@@ -371,7 +371,7 @@ export default function AmplifySprints() {
             Architect the sh<span className="text-gold">IF</span>t before you implement it.
           </>
         }
-        description="A 90-day Strategic Sprint gives you the architecture, the roadmap, and the clarity to lead what comes next."
+        description="A 90-day Strategic Sprint installs a new way for your team to prepare and design every shift that follows, with the architecture and roadmap to lead what comes next."
         actions={[
           { label: "Contact Us", to: "/contact?scope=organization&interest=organizational-advisory" },
           { label: "Start with the Blue Door", to: "/blue-door", variant: "bluedoor" },
