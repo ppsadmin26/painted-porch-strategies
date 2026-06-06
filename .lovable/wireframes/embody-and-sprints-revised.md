@@ -151,6 +151,31 @@ _Draft v1 — for review before any page edits_
 │  (Removes: 5-row "Common Applications" grid — moves to PDF) │
 └─────────────────────────────────────────────────────────────┘
 ┌─────────────────────────────────────────────────────────────┐
+│  COMMON STRATEGIC SPRINT APPLICATIONS  (KEEP)               │
+│  Existing 5-row grid stays — helps prospects self-qualify   │
+│  at a tactical level ("do I actually need this?"):          │
+│   • Major technology implementation                         │
+│   • Organizational restructure                              │
+│   • Cultural transformation                                 │
+│   • Strategic planning (3–5 yr)                             │
+│   • Leadership transition                                   │
+│  Lead-in line: "Sprints typically architect the front-end   │
+│  of one of these shifts. If yours isn't listed, the Blue    │
+│  Door will tell us whether a Sprint fits."                  │
+└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
+│  THIS ISN'T TRADITIONAL IMPLEMENTATION CONSULTING           │
+│  2-column "what typically happens vs. a Sprint":            │
+│  Traditional implementation  →  Strategic Sprint            │
+│  • Starts at "what tool/      • Starts at "what shift, and  │
+│    vendor do we pick?"          are we architectured for it?│
+│  • Sells you their playbook   • Co-designs yours            │
+│  • Optimizes for go-live      • Optimizes for the decade    │
+│                                 after go-live               │
+│  • You hand off & hope        • You walk out with the       │
+│                                 architecture in hand        │
+└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
 │  INVESTMENT + BLUE DOOR PREREQUISITE  (merged)              │
 │  Left: "Starting at $36,000 · Includes…" (4 bullets, was 5) │
 │  Right: Blue Door callout (cobalt) — required prerequisite  │
@@ -166,8 +191,9 @@ _Draft v1 — for review before any page edits_
 ```
 
 **Sections removed / moved:**
-- ❌ Phase cards as P.A.T.H. retelling → reframed as WEEKS / DIAGNOSE-DESIGN-DELIVER timeline
-- ❌ "Common Strategic Sprint Applications" 5-row grid → Sprints Playbook PDF
+- ❌ Phase cards as P.A.T.H. retelling → reframed as WEEKS / Diagnose → Design → Roadmap timeline
+- ✅ "Common Strategic Sprint Applications" 5-row grid → KEPT (helps self-qualification)
+- ➕ NEW "This isn't traditional implementation consulting" contrast strip
 - ❌ Standalone Blue Door explainer card → merged into Investment row
 - ❌ Duplicate "Back to AMPLIFY" link (breadcrumb already covers it)
 
@@ -194,15 +220,17 @@ _Draft v1 — for review before any page edits_
 
 ## Downloadables to Produce (later, post-approval)
 
-1. **EMBODY Brief** (2-page PDF) — who it's for, what's included, investment range, sample 12-month arc
-2. **Pillars White Paper** (already referenced in brand kit as "The Architecture of Adaptability") — confirm if existing asset or new
-3. **Sprints Playbook** (4-page PDF) — full week-by-week breakdown, common applications grid, sample deliverables, prerequisite checklist
+1. **EMBODY Brief** (2-page PDF) — who it's for, what's included, investment range, sample 12-month arc. _Status: new draft, "Coming soon" on the page._
+2. **Pillars White Paper** ("The Architecture of Adaptability"). _Status: in refinement — link shows as "Coming soon" for now._
+3. **Sprints Playbook** (4-page PDF) — full week-by-week breakdown, sample deliverables, prerequisite checklist. _Status: new draft, "Coming soon" on the page._
 
 ---
 
-## Open Questions for You
+## Decisions Locked (from your last review)
 
-1. **Timeline labels:** OK with **Diagnose → Design → Deliver** (alliterative, timeline-feel) instead of the current **Diagnose → Decide → Design**? Or keep current names but lead with WEEKS 1-2 / 3-8 / 9-12?
-2. **EMBODY pull-quote:** Want to retain one line from "Human Cost of Inaction" as a pull-quote, or cut it entirely?
-3. **Pillars White Paper:** Does the PDF already exist somewhere we can link, or do we draft a placeholder + "Coming soon"?
-4. **Sprints Playbook:** Same question — existing asset or new draft?
+1. ✅ **Timeline labels:** **Diagnose → Design → Roadmap** (avoiding "Deliver" — nothing is actually delivered/implemented inside 90 days; the output is a clear plan and roadmap for what they'll go build).
+2. ✅ **EMBODY pull-quote:** Include — one line from "Human Cost of Inaction" sits inside the "Who EMBODY Is For" section.
+3. ✅ **Pillars White Paper:** Mark as "Coming soon" (in refinement).
+4. ✅ **Sprints Playbook:** New draft — also "Coming soon" on the page until ready.
+5. ✅ **Common Strategic Sprint Applications:** KEEP on the page (tactical self-qualification).
+6. ✅ **"Different than a traditional implementation consultancy" contrast:** NEW strip added to both EMBODY and Sprints.
