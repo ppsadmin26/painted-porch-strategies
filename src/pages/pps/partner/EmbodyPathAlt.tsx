@@ -249,7 +249,7 @@ const testimonials = [
 const faqs = [
   {
     question: "How is EMBODY different from traditional consulting?",
-    answer: "Traditional consultants hand you a best-practice playbook from somewhere else and call it a strategy. EMBODY is a true partnership. You're the expert of your organization. We're experts in the architecture that lets shIFt stick. Together, we co-design what your organization is built to lead, then build the structural capacity to sustain it. You leave with permanent capability, not a binder.",
+    answer: "Traditional consultants hand you a best-practice playbook and call it a strategy. EMBODY is a true partnership. You're the expert of your organization. We're experts in the architecture that positions shIFt to stick. Together, we co-design what your organization is built to lead, then build the structural capacity to sustain it. You leave with permanent capability.",
   },
   {
     question: "How is EMBODY different from change management?",
