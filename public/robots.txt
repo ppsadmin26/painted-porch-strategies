@@ -24,7 +24,6 @@ Disallow: /sierra
 Disallow: /speaking/amy
 Disallow: /speaking/rob
 Disallow: /speaking/sierra
-Disallow: /start-here
 Disallow: /talking-to-strangers
 Disallow: /team-health-assessment
 Disallow: /team-superpowers
