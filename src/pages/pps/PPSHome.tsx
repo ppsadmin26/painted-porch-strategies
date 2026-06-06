@@ -218,7 +218,7 @@ export default function PPSHome() {
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left: manifesto */}
             <div className="lg:col-span-5 lg:sticky lg:top-24">
-              <span className="badge-gold mb-4 inline-block">How We Meet You</span>
+              <span className="badge-gold mb-4 inline-block">How We Meet You On The Porch</span>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
                 We&rsquo;re partners who sit alongside you.
               </h2>
