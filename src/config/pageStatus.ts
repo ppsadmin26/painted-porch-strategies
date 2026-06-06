@@ -28,9 +28,15 @@ export const ALWAYS_LIVE_PREFIXES = [
   "/contact",
 ];
 
+function stripQuery(pathname: string): string {
+  const q = pathname.indexOf("?");
+  return q === -1 ? pathname : pathname.slice(0, q);
+}
+
 function isAlwaysLive(pathname: string): boolean {
+  const clean = stripQuery(pathname);
   return ALWAYS_LIVE_PREFIXES.some(
-    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
+    (prefix) => clean === prefix || clean.startsWith(`${prefix}/`),
   );
 }
 
@@ -54,13 +60,14 @@ function matchesPath(pattern: string, pathname: string): boolean {
  * (admin, auth, sitemap, 404, contact) bypass this and stay Live.
  */
 export function resolvePageStatus(pathname: string, map: PageStatusMap): PageStatus {
-  if (isAlwaysLive(pathname)) return "live";
+  const clean = stripQuery(pathname);
+  if (isAlwaysLive(clean)) return "live";
   // Exact match first (fast path).
-  const exact = map[pathname];
+  const exact = map[clean];
   if (exact) return exact.status;
   // Pattern match (for routes registered with :param patterns in the DB).
   for (const record of Object.values(map)) {
-    if (matchesPath(record.path, pathname)) return record.status;
+    if (matchesPath(record.path, clean)) return record.status;
   }
   return "draft";
 }
@@ -69,10 +76,11 @@ export function resolvePageStatusEntry(
   pathname: string,
   map: PageStatusMap,
 ): PageStatusRecord | undefined {
-  if (isAlwaysLive(pathname)) return undefined;
-  if (map[pathname]) return map[pathname];
+  const clean = stripQuery(pathname);
+  if (isAlwaysLive(clean)) return undefined;
+  if (map[clean]) return map[clean];
   for (const record of Object.values(map)) {
-    if (matchesPath(record.path, pathname)) return record;
+    if (matchesPath(record.path, clean)) return record;
   }
   return undefined;
 }
