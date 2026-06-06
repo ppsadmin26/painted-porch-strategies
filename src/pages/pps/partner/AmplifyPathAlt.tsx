@@ -317,16 +317,6 @@ export default function AmplifyPathAlt() {
                 </ul>
 
 
-                {format.includes && (
-                  <>
-                    <p className="text-xs font-semibold text-navy uppercase tracking-wide mb-2">What's Included:</p>
-                    <ul className="space-y-1 mb-4">
-                      {format.includes.map((item, i) => (
-                        <li key={i} className="text-xs text-foreground">• {item}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
 
                 <div className="mt-auto">
                   <div className="border-t border-foreground/10 pt-4">
