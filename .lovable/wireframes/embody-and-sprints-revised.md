@@ -33,7 +33,12 @@ _Draft v1 — for review before any page edits_
 │   • C-suite leading a defining shift                        │
 │   • Boards investing in long-arc transformation             │
 │   • Founders past product-market fit, into market-leader fit│
-│  (Replaces: "Human Cost of Inaction" + "Hero Stats" — cut.) │
+│                                                             │
+│  Pull-quote strip (from "Human Cost of Inaction"):          │
+│  "The cost of staying the same is rarely on the balance     │
+│   sheet — it shows up in the people who leave, the          │
+│   decisions that stall, and the shifts you watched          │
+│   competitors lead."                                        │
 └─────────────────────────────────────────────────────────────┘
 ┌─────────────────────────────────────────────────────────────┐
 │  INDUSTRIES WE PARTNER WITH                                 │
@@ -61,9 +66,22 @@ _Draft v1 — for review before any page edits_
 │  Prerequisite line: Blue Door ($1,500) — cobalt CTA         │
 └─────────────────────────────────────────────────────────────┘
 ┌─────────────────────────────────────────────────────────────┐
+│  THIS ISN'T A TRADITIONAL IMPLEMENTATION ENGAGEMENT         │
+│  2-column "what typically happens vs. embedded advisory"    │
+│  Traditional implementation consultancy  →  EMBODY          │
+│  • Hands you a deck and leaves    • Stays at the table for  │
+│                                     6–12 months             │
+│  • Sells a methodology            • Co-designs the          │
+│                                     architecture with you   │
+│  • Optimizes for one project      • Builds capacity that    │
+│                                     outlasts the engagement │
+│  • You "get through" the change   • You "make it permanent" │
+│  Single line: Built for leaders who want something that     │
+│  lasts — not something to survive.                          │
+└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────┐
 │  EMBODY vs. AMPLIFY  (single comparison table)              │
-│  Keep only this comparison. Cut "vs. traditional consulting"│
-│  (lives on /partner and /approach).                         │
+│  Keep only this comparison.                                 │
 └─────────────────────────────────────────────────────────────┘
 ┌─────────────────────────────────────────────────────────────┐
 │  FAQ  (FAQSection — keep, already trimmed)                  │
