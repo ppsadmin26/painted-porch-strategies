@@ -60,13 +60,14 @@ function matchesPath(pattern: string, pathname: string): boolean {
  * (admin, auth, sitemap, 404, contact) bypass this and stay Live.
  */
 export function resolvePageStatus(pathname: string, map: PageStatusMap): PageStatus {
-  if (isAlwaysLive(pathname)) return "live";
+  const clean = stripQuery(pathname);
+  if (isAlwaysLive(clean)) return "live";
   // Exact match first (fast path).
-  const exact = map[pathname];
+  const exact = map[clean];
   if (exact) return exact.status;
   // Pattern match (for routes registered with :param patterns in the DB).
   for (const record of Object.values(map)) {
-    if (matchesPath(record.path, pathname)) return record.status;
+    if (matchesPath(record.path, clean)) return record.status;
   }
   return "draft";
 }
