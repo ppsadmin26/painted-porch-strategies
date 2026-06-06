@@ -5,10 +5,10 @@ Disallow: /admin/
 Disallow: /reset-password
 
 # Draft pages — hidden from search engines
+Disallow: /about/impact
 Disallow: /amy
 Disallow: /change-ready-leader-assessment
 Disallow: /change-ready-team-assessment
-Disallow: /communication
 Disallow: /elemental-style-assessment
 Disallow: /elements-mini
 Disallow: /eq-change-leader
@@ -18,10 +18,13 @@ Disallow: /home-verbatim
 Disallow: /mym-journal-challenge
 Disallow: /overview
 Disallow: /partner/ignite/assessments/working-genius
-Disallow: /radical-mindfulness
 Disallow: /resources/youtube
 Disallow: /rob
 Disallow: /sierra
+Disallow: /speaking/amy
+Disallow: /speaking/rob
+Disallow: /speaking/sierra
+Disallow: /start-here
 Disallow: /talking-to-strangers
 Disallow: /team-health-assessment
 Disallow: /team-superpowers

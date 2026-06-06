@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
@@ -34,7 +35,7 @@ type FormState = {
   og_description: string;
   og_image: string;
   canonical: string;
-  keywords: string;
+  keywords: string[];
   robots: string;
   jsonld: string;
   aeo_summary: string;
@@ -48,7 +49,7 @@ const EMPTY: FormState = {
   og_description: "",
   og_image: "",
   canonical: "",
-  keywords: "",
+  keywords: [],
   robots: "",
   jsonld: "",
   aeo_summary: "",
@@ -168,6 +169,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
   const [defaults, setDefaults] = useState<SeoDefaultsSnapshot | null>(null);
   const [robotsMode, setRobotsMode] = useState<string>("__default__");
   const [aeoPreviewOpen, setAeoPreviewOpen] = useState(false);
+  const [keywordInput, setKeywordInput] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -205,7 +207,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
             og_description: data.og_description ?? "",
             og_image: data.og_image ?? "",
             canonical: data.canonical ?? "",
-            keywords: (data.keywords ?? []).join(", "),
+            keywords: data.keywords ?? [],
             robots,
             jsonld: data.jsonld ? JSON.stringify(data.jsonld, null, 2) : "",
             aeo_summary: (data as { aeo_summary?: string | null }).aeo_summary ?? "",
@@ -292,6 +294,18 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
 
   const fieldIssue = (field: string) => issues.find((i) => i.field === field);
 
+  const addKeyword = (input: string) => {
+    const trimmed = input.trim().toLowerCase();
+    if (trimmed && !form.keywords.includes(trimmed)) {
+      setForm((f) => ({ ...f, keywords: [...f.keywords, trimmed] }));
+    }
+    setKeywordInput("");
+  };
+
+  const removeKeyword = (tag: string) => {
+    setForm((f) => ({ ...f, keywords: f.keywords.filter((k) => k !== tag) }));
+  };
+
   const handleGenerate = async () => {
     if (!path) return;
     setGenerating(true);
@@ -308,7 +322,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
         description: data.description || f.description,
         og_title: data.og_title || f.og_title,
         og_description: data.og_description || f.og_description,
-        keywords: Array.isArray(data.keywords) && data.keywords.length ? data.keywords.join(", ") : f.keywords,
+        keywords: Array.isArray(data.keywords) && data.keywords.length ? data.keywords : f.keywords,
         aeo_summary: data.aeo_summary || f.aeo_summary,
         aeo_faqs:
           Array.isArray(data.aeo_faqs) && data.aeo_faqs.length
@@ -360,7 +374,6 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
     }
     setSaving(true);
     try {
-      const keywordsArr = form.keywords.split(",").map((k) => k.trim()).filter(Boolean);
       const cleanFaqs = form.aeo_faqs
         .map((f) => ({ question: f.question.trim(), answer: f.answer.trim() }))
         .filter((f) => f.question && f.answer);
@@ -373,7 +386,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
         og_description: form.og_description.trim() || null,
         og_image: form.og_image.trim() || null,
         canonical: form.canonical.trim() || null,
-        keywords: keywordsArr.length ? keywordsArr : null,
+        keywords: form.keywords.length ? form.keywords : null,
         robots: form.robots.trim() || null,
         jsonld: jsonldCheck.parsed as never,
         aeo_summary: form.aeo_summary.trim() || null,
@@ -416,6 +429,11 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
   // Default-value helpers
   const useDefault = (overrideKey: keyof FormState, defaultValue?: string | null) => {
     if (!defaultValue) return;
+    if (overrideKey === "keywords") {
+      const arr = defaultValue.split(",").map((k) => k.trim().toLowerCase()).filter(Boolean);
+      setForm((f) => ({ ...f, keywords: arr }));
+      return;
+    }
     setForm((f) => ({ ...f, [overrideKey]: defaultValue }));
   };
 
@@ -519,11 +537,28 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
                 </Field>
                 <Field
                   label="Keywords"
-                  hint="Comma-separated"
+                  hint="Press Enter or click Add to create a keyword pill. Click a pill to remove it."
                   defaultValue={defaults?.keywords?.join(", ")}
                   onUseDefault={() => useDefault("keywords", defaults?.keywords?.join(", "))}
                 >
-                  <Input value={form.keywords} onChange={update("keywords")} placeholder={defaults?.keywords?.join(", ") || "leadership, change, phase zero"} />
+                  <div className="flex gap-2">
+                    <Input
+                      value={keywordInput}
+                      onChange={(e) => setKeywordInput(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addKeyword(keywordInput))}
+                      placeholder={defaults?.keywords?.join(", ") || "Add keyword"}
+                    />
+                    <Button size="sm" variant="outline" onClick={() => addKeyword(keywordInput)}>
+                      <Plus className="w-4 h-4 mr-1" /> Add
+                    </Button>
+                  </div>
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {form.keywords.map((tag) => (
+                      <Badge key={tag} variant="secondary" className="cursor-pointer" onClick={() => removeKeyword(tag)}>
+                        {tag} <X className="h-3 w-3 ml-1" />
+                      </Badge>
+                    ))}
+                  </div>
                 </Field>
               </TabsContent>
 
