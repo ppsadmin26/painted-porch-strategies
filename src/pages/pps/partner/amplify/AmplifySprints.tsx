@@ -263,10 +263,10 @@ export default function AmplifySprints() {
               Different by design
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
-              This isn't a traditional implementation engagement.
+              A new way to prepare and design strategic shifts, installed in your team.
             </h2>
             <p className="text-base text-white/85 max-w-2xl mx-auto">
-              Most consultancies sell you their playbook and optimize for go-live. A Strategic Sprint is an advisory partnership that builds <em>your</em> architecture, so what comes after go-live actually holds.
+              Most consultancies sell you their playbook and optimize for go-live. A Strategic Sprint is an advisory partnership that builds <em>your</em> architecture and implements a new approach to how your team prepares for and designs every shift that follows.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-white/15 rounded-xl overflow-hidden border border-white/15">
