@@ -323,15 +323,23 @@ export default function EmbodyPathAlt() {
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {embodyIncludes.map((item, i) => (
-              <div key={item.title} className="bg-muted/40 p-6 rounded-xl border-t-4 border-gold">
-                <p className="text-xs font-poppins font-semibold tracking-widest text-gold uppercase mb-2">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{item.title}</h3>
-                <p className="text-sm text-foreground">{item.body}</p>
-              </div>
-            ))}
+            {embodyIncludes.map((item, i) => {
+              const accents = [
+                { border: "border-teal", text: "text-teal" },
+                { border: "border-raspberry", text: "text-raspberry" },
+                { border: "border-purple", text: "text-purple" },
+              ];
+              const accent = accents[i % accents.length];
+              return (
+                <div key={item.title} className={`bg-muted/40 p-6 rounded-xl border-t-4 ${accent.border}`}>
+                  <p className={`text-xs font-poppins font-semibold tracking-widest ${accent.text} uppercase mb-2`}>
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{item.title}</h3>
+                  <p className="text-sm text-foreground">{item.body}</p>
+                </div>
+              );
+            })}
           </div>
           <div className="max-w-3xl mx-auto text-center bg-muted/40 rounded-xl p-6">
             <p className="text-sm text-foreground mb-4">
