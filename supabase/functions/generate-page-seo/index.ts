@@ -22,19 +22,24 @@ ${BRAND_CONTEXT}
 PAGE PATH: ${path}
 ${context ? `PAGE CONTEXT / SUMMARY:\n${context.slice(0, 4000)}` : "(No extra context provided — infer from the path and brand context above.)"}
 
-Generate optimized SEO metadata. Return RAW JSON only (no markdown fences):
+Generate optimized SEO + AEO (Answer Engine Optimization) metadata. Return RAW JSON only (no markdown fences):
 
 {
   "title": "Page title under 60 chars, includes primary keyword",
   "description": "Compelling meta description under 160 chars",
   "keywords": ["array", "of", "8-12", "relevant", "keywords"],
   "og_title": "Social-friendly title (can match title)",
-  "og_description": "Social-friendly description (can match description)"
+  "og_description": "Social-friendly description (can match description)",
+  "aeo_summary": "A plain-language 2-3 sentence answer that an AI engine (ChatGPT, Perplexity, Google AI Overviews) could quote directly. Lead with the answer. Under 320 chars.",
+  "aeo_faqs": [
+    { "question": "Natural-language question a user would ask an AI", "answer": "Direct, quotable answer in 2-4 sentences" }
+  ]
 }
 
 RULES:
 - Title under 60 characters (hard cap 70)
 - Description under 160 characters (hard cap 200)
+- 3-5 AEO FAQ pairs, phrased the way real people ask AI engines
 - NEVER use em-dashes (—) — use a comma, period, or colon
 - Use partnership/momentum language, not servant language
 - Include brand terms when relevant (Painted Porch Strategies, Phase Zero, P.A.T.H., Blue Door, IGNITE/AMPLIFY/EMBODY)
