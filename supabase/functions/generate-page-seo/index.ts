@@ -8,7 +8,7 @@ const corsHeaders = {
 const BRAND_CONTEXT = `Painted Porch Strategies (PPS) is an organizational change consultancy.
 Voice: conversational yet authoritative, "huggable bear" — supportive and challenging.
 Frameworks: Phase Zero™ (strategic authorship before implementation), P.A.T.H.™ (Prepare, Align, Take Off, Habit), The Painted Porch Pillars™ (Foundational Architecture, Operational Intelligence, Human Capacity).
-Tiers: IGNITE (self-led), AMPLIFY (3-6mo partnership), EMBODY (6-12mo+ embedded). Blue Door = $1,500 strategic diagnostic, prerequisite for engagements.
+Tiers: IGNITE (self-led), AMPLIFY (3-6mo partnership), EMBODY (6-12mo+ embedded). Blue Door = $1,500 strategic appraisal, prerequisite for engagements.
 Tone: 6th-grade reading level, NEVER use em-dashes (—). Avoid servant language (help, assist); use partnership language (partner, co-design, activate, architect).`;
 
 async function generateSeo(path: string, context: string) {
