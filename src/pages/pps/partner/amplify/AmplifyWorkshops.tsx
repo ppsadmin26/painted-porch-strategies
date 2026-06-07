@@ -375,7 +375,7 @@ export default function AmplifyWorkshops() {
             Many can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive workshop</strong> tailored to your team.
           </p>
           <Link to="/speaking">
-            <Button variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal hover:text-white font-poppins font-semibold rounded-lg px-6">
+            <Button variant="outline" className="border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white font-poppins font-semibold rounded-lg h-12 px-8 text-base">
               View Speaking Topics <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
