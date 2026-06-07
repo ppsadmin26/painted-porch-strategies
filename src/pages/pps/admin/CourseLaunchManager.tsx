@@ -225,7 +225,7 @@ export default function CourseLaunchManager() {
                     )}
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Slug: <code>{row.slug}</code> · Page:{" "}
+                    Slug: <code>{row.slug}</code> · Type: <span className="capitalize">{row.program_type}</span> · Page:{" "}
                     <a href={row.course_path} className="text-pps-teal underline" target="_blank" rel="noreferrer">
                       {row.course_path}
                     </a>
