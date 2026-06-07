@@ -1,9 +1,11 @@
 /**
  * The Architecture Gap, McKinsey + Gartner stats framed against the Painted Porch Pillars.
  * Lives on /partner between Philosophy & Approach and How To Choose.
+ *
+ * Sources are surfaced inline via SourcedTooltip on each StatCard (site standard).
  */
-import StatCard, { StatSources } from "@/components/pps/StatCard";
-import { Building2, Compass, Brain, ArrowRight } from "lucide-react";
+import StatCard from "@/components/pps/StatCard";
+import { Building2, Compass, Brain } from "lucide-react";
 
 const rows = [
   {
@@ -56,8 +58,6 @@ const rows = [
   },
 ];
 
-const statIds = rows.map((r) => r.statId);
-
 export default function ArchitectureGapSection() {
   return (
     <section className="py-16 md:py-24 bg-white" aria-labelledby="architecture-gap-heading">
@@ -90,7 +90,6 @@ export default function ArchitectureGapSection() {
                   statId={row.statId}
                   variant="editorial"
                   accentClass={row.accentText}
-                  footnoteNumber={row.footnote}
                   className="border-l-0 pl-0 py-0"
                 />
               </div>
@@ -119,14 +118,11 @@ export default function ArchitectureGapSection() {
           ))}
         </div>
 
-        {/* Sources */}
-        <div className="mt-10 pt-6 border-t border-border/60 max-w-3xl mx-auto">
-          <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-muted-foreground mb-2">
-            Sources
-          </p>
-          <StatSources statIds={statIds} />
-        </div>
+        <p className="text-xs text-muted-foreground text-center mt-8 italic">
+          Hover the info icon on any stat to view the source.
+        </p>
       </div>
     </section>
   );
 }
+

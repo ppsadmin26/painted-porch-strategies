@@ -1,5 +1,6 @@
 import { RESEARCH_STATS } from "@/data/research-stats";
 import { cn } from "@/lib/utils";
+import SourcedTooltip from "@/components/pps/SourcedTooltip";
 
 type Variant = "bold" | "editorial";
 
@@ -10,8 +11,13 @@ interface StatCardProps {
   accentClass?: string;
   /** Optional PPS framing line under the stat */
   framing?: React.ReactNode;
-  /** Footnote number to display as a superscript next to the figure */
+  /**
+   * @deprecated Footnote numbering is being phased out in favor of inline
+   * info-icon tooltips. Leave unset — sources now render via SourcedTooltip.
+   */
   footnoteNumber?: number;
+  /** Show the inline source tooltip (default true). */
+  showSourceTooltip?: boolean;
   className?: string;
 }
 
@@ -19,27 +25,37 @@ interface StatCardProps {
  * Reusable stat card used across home, /partner, and EMBODY.
  * - "bold": large stat tile for high-impact moments (EMBODY)
  * - "editorial": text-led pull-stat used inside flowing copy
+ *
+ * Sources render inline as a hover/focus info-icon tooltip (site standard).
  */
 export default function StatCard({
   statId,
   variant = "bold",
   accentClass = "text-raspberry",
   framing,
-  footnoteNumber,
+  showSourceTooltip = true,
   className,
 }: StatCardProps) {
   const s = RESEARCH_STATS[statId];
   if (!s) return null;
+
+  const tooltip = showSourceTooltip ? (
+    <SourcedTooltip
+      source={s.source}
+      sourceUrl={s.sourceUrl}
+      year={s.year}
+      size="xs"
+      iconClassName="text-muted-foreground hover:text-foreground ml-1 align-middle"
+    />
+  ) : null;
 
   if (variant === "editorial") {
     return (
       <div className={cn("border-l-4 border-gold pl-5 py-2", className)}>
         <p className={cn("text-2xl md:text-3xl font-poppins font-bold leading-tight", accentClass)}>
           {s.figure}
-          {footnoteNumber !== undefined && (
-            <sup className="text-xs ml-1 text-muted-foreground font-normal">{footnoteNumber}</sup>
-          )}
           <span className="text-navy"> {s.label.replace(/\.$/, "")}.</span>
+          {tooltip}
         </p>
         {framing && <p className="mt-2 text-foreground/80 italic">{framing}</p>}
       </div>
@@ -56,14 +72,10 @@ export default function StatCard({
     >
       <p className={cn("text-5xl md:text-6xl font-poppins font-bold tabular-nums leading-none", accentClass)}>
         {s.figure}
-        {footnoteNumber !== undefined && (
-          <sup className="text-base ml-1 text-muted-foreground font-normal align-super">
-            {footnoteNumber}
-          </sup>
-        )}
       </p>
       <p className="mt-4 text-base md:text-lg text-navy font-montserrat leading-snug">
         {s.label.replace(/\.$/, "")}.
+        {tooltip}
       </p>
       {framing && (
         <p className="mt-4 text-sm text-foreground/80 italic leading-relaxed">{framing}</p>
@@ -76,7 +88,8 @@ export default function StatCard({
 }
 
 /**
- * Compact citations list, pair with `footnoteNumber` props on StatCard.
+ * @deprecated Use inline `SourcedTooltip` (info-icon) on each stat instead of
+ * a separate citations list. Kept for backward compatibility with archived pages.
  */
 export function StatSources({
   statIds,
