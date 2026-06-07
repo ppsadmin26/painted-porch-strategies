@@ -5,6 +5,12 @@ import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
 import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL } from "./stracticalConfig";
+import stracticalImg from "@/assets/labs/stractical-leadership.jpg";
+import leadingChangeImg from "@/assets/labs/leading-change.jpg";
+import dysfunctionImg from "@/assets/labs/dysfunction-to-dynamic.jpg";
+import goldilocksImg from "@/assets/labs/goldilocks-leadership.jpg";
+import missionImg from "@/assets/labs/mission-unstoppable.jpg";
+import operationsImg from "@/assets/labs/operations-on-purpose.jpg";
 
 const labFaqCategories: FAQCategory[] = [
   {
@@ -70,7 +76,7 @@ const cohorts = [
     slug: "lab-stractical-leadership",
     tagline: "Balance vision with execution",
     description: "Learn to operate at both strategic and tactical levels simultaneously.",
-    image: "/placeholder.svg",
+    image: stracticalImg,
     link: "/stracticalleader",
     showUpcomingCohort: true,
   },
@@ -79,7 +85,7 @@ const cohorts = [
     slug: "lab-leading-change",
     tagline: "Architect transformation",
     description: "Develop Phase Zero™ foundations before implementation begins.",
-    image: "/placeholder.svg",
+    image: leadingChangeImg,
     comingSoon: true,
   },
   {
@@ -87,7 +93,7 @@ const cohorts = [
     slug: "lab-dysfunction-to-dynamic",
     tagline: "Build high-performing cultures",
     description: "Design team operating models and sustainable capacity.",
-    image: "/placeholder.svg",
+    image: dysfunctionImg,
     comingSoon: true,
   },
   {
@@ -95,7 +101,7 @@ const cohorts = [
     slug: "lab-goldilocks-leadership",
     tagline: "Lead with Emotional Intelligence",
     description: "Is your leadership style 'too hot' or 'too cold'? Unlock the power of Emotional Intelligence to find the right balance and lead your teams 'just right.'",
-    image: "/placeholder.svg",
+    image: goldilocksImg,
     comingSoon: true,
   },
   {
@@ -103,7 +109,7 @@ const cohorts = [
     slug: "lab-mission-unstoppable",
     tagline: "Align goals and strategy",
     description: "Eliminate strategic goal and mission inconsistency. Create a crystal clear mission and strategies to provide direction for your teams to realize operational excellence and strategic success.",
-    image: "/placeholder.svg",
+    image: missionImg,
     comingSoon: true,
   },
   {
@@ -111,7 +117,7 @@ const cohorts = [
     slug: "lab-operations-on-purpose",
     tagline: "Cut bloat, maximize outcomes",
     description: "Inefficient processes and misaligned roles result in lost time, money, resources, and revenue. Tap into the hidden talents of your team to create flexible, future-ready people who can maximize your outcomes and meet whatever shIFt happens next.",
-    image: "/placeholder.svg",
+    image: operationsImg,
     comingSoon: true,
   },
 ];
