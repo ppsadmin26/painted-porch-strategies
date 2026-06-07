@@ -256,9 +256,14 @@ export default function StracticalLeaderWorkshop() {
         <div aria-hidden="true" className="absolute -bottom-32 -left-24 w-[28rem] h-[28rem] rounded-full bg-strategic/20 blur-3xl" />
         <div className="container max-w-5xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
-            <span className="inline-block bg-gold text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
-              6-Week Intensive Leader Lab
-            </span>
+            <div className="flex flex-wrap items-center gap-2 mb-6">
+              <span className="inline-block bg-gold text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full">
+                6-Week Intensive Leader Lab
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-white/10 text-white/90 backdrop-blur-sm border border-white/20 font-poppins font-medium text-xs px-3 py-1.5 rounded-full">
+                <Sparkles className="w-3 h-3 text-gold" /> Strategic + Tactical
+              </span>
+            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-4 leading-tight">
               Become a <span className="text-gold">Stractical Leader</span>
             </h1>
