@@ -239,9 +239,21 @@ export default function StracticalLeaderWorkshop() {
     <div>
       <WaitlistDialog open={waitlistOpen} onOpenChange={setWaitlistOpen} />
 
+      <PPSBreadcrumb
+        segments={[
+          { label: "Partner", href: "/partner" },
+          { label: "AMPLIFY", href: "/partner/amplify" },
+          { label: "Leadership Labs", href: "/partner/amplify/labs" },
+          { label: "Stractical Leader" },
+        ]}
+      />
+
       {/* ═══ HERO ═══ */}
       <section className="bg-navy py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy/95 to-strategic/20" />
+        {/* Layered gradient + soft glow accents for visual depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy/95 to-strategic/30" />
+        <div aria-hidden="true" className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gold/10 blur-3xl" />
+        <div aria-hidden="true" className="absolute -bottom-32 -left-24 w-[28rem] h-[28rem] rounded-full bg-strategic/20 blur-3xl" />
         <div className="container max-w-5xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
             <span className="inline-block bg-gold text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
