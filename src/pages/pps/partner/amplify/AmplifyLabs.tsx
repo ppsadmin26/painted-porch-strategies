@@ -93,7 +93,7 @@ const cohorts = [
     slug: "lab-dysfunction-to-dynamic",
     tagline: "Build high-performing cultures",
     description: "Design team operating models and sustainable capacity.",
-    image: "/placeholder.svg",
+    image: dysfunctionImg,
     comingSoon: true,
   },
   {
