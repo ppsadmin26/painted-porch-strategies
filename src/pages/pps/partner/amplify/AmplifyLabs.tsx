@@ -163,9 +163,12 @@ export default function AmplifyLabs() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-2">Leadership Lab Investment</h2>
             <p className="text-2xl font-bold text-strategic mb-2">$2,000 - $5,000 per participant</p>
             <p className="text-sm text-foreground mb-6">6-12 week cohort | Capped at 25 leaders per cohort</p>
-            <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I'm interested in applying for a Leadership Lab.">
+            <p className="text-sm text-foreground/80 max-w-2xl mx-auto mb-6 italic">
+              A full application process is coming soon. In the meantime, reach out with any questions and we'll point you toward the right cohort.
+            </p>
+            <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I have questions about your Leadership Labs.">
               <Button className="bg-strategic border-2 border-strategic text-white hover:bg-transparent hover:text-strategic transition-colors">
-                Submit Leader Lab Application
+                Inquire About Leadership Labs <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
           </div>
