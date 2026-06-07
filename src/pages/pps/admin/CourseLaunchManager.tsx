@@ -195,8 +195,9 @@ export default function CourseLaunchManager() {
         <p className="text-sm text-muted-foreground mt-1">
           Toggle a program (course, assessment, masterclass, leadership lab, etc.) from Coming Soon
           to Live. Going live automatically emails everyone on the launch list using the{" "}
-          <code>course-launch-available</code> template, so the CTA on the program page and the
-          notification can't get out of sync.
+          <code>course-launch-available</code> template. The two switches on each card control
+          whether a confirmation email goes to the person who joins the launch list and whether the
+          team gets an alert on every signup.
         </p>
       </div>
 
