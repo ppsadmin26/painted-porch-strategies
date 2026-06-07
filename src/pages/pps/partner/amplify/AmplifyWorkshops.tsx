@@ -168,52 +168,9 @@ export default function AmplifyWorkshops() {
             </p>
           </div>
 
-          {/* Top row: Architect Change + Pillars */}
+          {/* All Phase Zero workshops */}
           <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {workshopTopics.slice(0, 2).map((workshop, index) => {
-              return (
-                <div key={index} className="rounded-xl flex flex-col overflow-hidden border border-border">
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-start gap-4 mb-3">
-                      <img
-                        src={workshop.image}
-                        alt={workshop.title}
-                        loading="lazy"
-                        className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
-                      />
-                      <div>
-                        <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy leading-tight mb-1">{workshop.title}</h3>
-                        <div className="flex flex-wrap gap-2 text-sm">
-                          <span className="text-foreground font-medium">{workshop.format}</span>
-                          <span className="text-foreground">|</span>
-                          <span className="text-lime font-semibold">{workshop.investment}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-4 bg-raspberry/5 border border-raspberry/20 rounded-lg p-4">
-                      <p className="text-sm font-semibold text-raspberry mb-1">The Challenge:</p>
-                      <p className="text-sm text-foreground">{workshop.challenge}</p>
-                    </div>
-                    <div className="flex-grow">
-                      <p className="text-sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
-                      <ul className="space-y-1">
-                        {workshop.highlights.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <CheckCircle className="w-3 h-3 text-lime flex-shrink-0 mt-1" />
-                            <span className="text-xs text-foreground">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Remaining workshops grid */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {workshopTopics.slice(2).map((workshop, index) => {
+            {workshopTopics.map((workshop, index) => {
               return (
                 <div key={index} className="rounded-xl flex flex-col overflow-hidden border border-border">
                   <div className="p-6 flex flex-col flex-grow">
