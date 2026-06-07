@@ -47,7 +47,7 @@ const programDetails = [
 const pricingTiers = [
   {
     name: "Self-Paced Bundle",
-    price: "$1,297",
+    price: "$1,497",
     subtitle: "Go at Your Own Pace",
     features: [
       "Access to Master Your Message, Radical Mindfulness, and Create Extraordinary Teams",
