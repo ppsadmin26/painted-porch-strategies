@@ -92,7 +92,7 @@ const amplifyFormats = [
       "Building alignment before launch",
     ],
     timeline: "90 days (focused engagement)",
-    investment: "Starting at $18,000",
+    investment: "Starting at $36,000",
     cta: "Explore Strategic Sprints",
     ctaLink: "/partner/amplify/sprints",
   },
