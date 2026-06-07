@@ -79,6 +79,36 @@ export default function CourseLaunchManager() {
     }
   };
 
+  const toggleFlag = async (
+    slug: string,
+    field: "signup_confirmation_enabled" | "admin_alert_enabled",
+    value: boolean,
+  ) => {
+    // Optimistic UI
+    setRows((prev) => prev.map((r) => (r.slug === slug ? { ...r, [field]: value } : r)));
+    const { error } = await supabase
+      .from("course_launch_status")
+      .update({ [field]: value })
+      .eq("slug", slug);
+    if (error) {
+      toast({ title: "Update failed", description: error.message, variant: "destructive" });
+      load();
+    }
+  };
+
+    const { error } = await supabase
+      .from("course_launch_status")
+      .update({ checkout_url: drafts[slug]?.trim() || null })
+      .eq("slug", slug);
+    setWorking(null);
+    if (error) {
+      toast({ title: "Save failed", description: error.message, variant: "destructive" });
+    } else {
+      toast({ title: "Saved", description: "Checkout URL updated." });
+      load();
+    }
+  };
+
   const revertToComingSoon = async (slug: string) => {
     setWorking(slug);
     const { error } = await supabase
