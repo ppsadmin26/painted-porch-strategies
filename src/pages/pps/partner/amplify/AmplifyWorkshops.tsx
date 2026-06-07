@@ -21,7 +21,7 @@ const workshopFaqCategories: FAQCategory[] = [
     faqs: [
       {
         question: "Do we need the Blue Door before a workshop?",
-        answer: "Required for multi-day workshops. Highly recommended (but not required) for single-day workshops. Our Blue Door Organizational Appraisal provides the diagnostic foundation for workshop focus and sprint partnerships.",
+        answer: "The Blue Door organizational appraisal is required for all Phase Zero Strategic Workshops and Strategic Sprints. It's not required for our Leadership & Team Development Workshops, though many teams still find it valuable for context. Your Blue Door investment is credited toward any booked engagement.",
       },
       {
         question: "Can we do a workshop first, then decide on a Strategic Sprint?",
@@ -354,13 +354,27 @@ export default function AmplifyWorkshops() {
             </div>
           </div>
 
-          <div className="text-center mt-10">
-            <Link to="/contact?scope=organization&interest=workshops&message=I'm interested in booking a workshop for our team.">
-              <Button className="bg-brand-teal text-white hover:bg-brand-teal/90 h-12 px-8 text-base font-semibold">
-                Contact Us to Book Your Workshop
-              </Button>
-            </Link>
+          <div className="text-center mt-12 bg-muted/40 border border-border rounded-xl p-8">
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
+              Not sure which workshop is the right fit?
+            </h3>
+            <p className="text-foreground max-w-2xl mx-auto mb-6">
+              Every team is different. Let's talk through your goals, context, and challenges so we can recommend the workshop (or combination) that best aligns with where you're headed.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link to="/contact?scope=organization&interest=workshops&message=I'd like to explore workshop options and find the right fit for our team.">
+                <Button variant="outline" className="border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white h-12 px-8 text-base font-semibold">
+                  Contact Us to Explore Options
+                </Button>
+              </Link>
+              <Link to="/contact?scope=organization&interest=workshops&message=I'm interested in booking a workshop for our team.">
+                <Button className="bg-brand-teal text-white hover:bg-brand-teal/90 h-12 px-8 text-base font-semibold">
+                  Ready to Book a Workshop
+                </Button>
+              </Link>
+            </div>
           </div>
+
         </div>
       </section>
 
