@@ -4,6 +4,8 @@ import { Clock, ExternalLink, ArrowLeft } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
 import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
+import { TierBadge } from "@/components/pps/TierBadge";
+import { TIERS } from "@/config/tiers";
 import { igniteFaqCategories } from "./igniteFaqs";
 
 import courseRadicalMindfulness from "@/assets/courses/radical-mindfulness.jpg";
@@ -79,27 +81,6 @@ const courses = [
   },
 ];
 
-const bundles = [
-  {
-    name: "Foundation Bundle",
-    courses: "Radical Mindfulness + Master Your Message",
-    price: "$1,197",
-    savings: "Save $197",
-  },
-  {
-    name: "Leadership Bundle",
-    courses: "Create Extraordinary Teams + Leading Change",
-    price: "$1,497",
-    savings: "Save $297",
-  },
-  {
-    name: "Complete IGNITE",
-    courses: "All 4 Programs",
-    price: "$2,497",
-    savings: "Save $594",
-  },
-];
-
 export default function IgniteCourses() {
   return (
     <div>
@@ -121,8 +102,9 @@ export default function IgniteCourses() {
           </Link>
 
           <div className="text-center mb-12">
+            <TierBadge tier={TIERS.IGNITE} className="mb-4" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
-              Ignite New Capabilities...at Your Own Pace
+              Ignite New Capabilities...<span className="text-gold">at Your Own Pace</span>
             </h1>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
               Transform how you lead with Phase Zero capacity on your schedule through our on-demand, self-paced courses. Learn frameworks and practices that teach you to architect change, communicate with clarity, cultivate resilience, and develop teams where everyone shines.
@@ -181,29 +163,6 @@ export default function IgniteCourses() {
             ))}
           </div>
 
-          {/* Bundle Options */}
-          <div className="bg-gold/10 p-8 rounded-xl">
-            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-6 text-center">
-              Bundle Options
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {bundles.map((bundle, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg text-center">
-                  <h3 className="text-xl md:text-2xl font-semibold text-navy mb-2">{bundle.name}</h3>
-                  <p className="text-sm text-foreground mb-3">{bundle.courses}</p>
-                  <p className="text-2xl font-bold text-navy mb-1">{bundle.price}</p>
-                  <p className="text-sm text-lime font-medium">{bundle.savings}</p>
-                </div>
-              ))}
-            </div>
-            <div className="text-center mt-6">
-              <Link to="/contact?scope=Yourself&interest=self-paced&message=I'm interested in IGNITE course bundles.">
-                <Button className="bg-gold border-2 border-gold text-navy hover:bg-transparent hover:text-gold transition-colors">
-                  Explore Bundles
-                </Button>
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
 
