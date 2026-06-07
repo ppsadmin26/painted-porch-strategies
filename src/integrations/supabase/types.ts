@@ -261,6 +261,7 @@ export type Database = {
       }
       course_launch_status: {
         Row: {
+          admin_alert_enabled: boolean
           checkout_url: string | null
           course_name: string
           course_path: string
@@ -268,11 +269,14 @@ export type Database = {
           last_notify_error: string | null
           notified_at: string | null
           notified_count: number
+          program_type: string
+          signup_confirmation_enabled: boolean
           slug: string
           status: string
           updated_at: string
         }
         Insert: {
+          admin_alert_enabled?: boolean
           checkout_url?: string | null
           course_name: string
           course_path: string
@@ -280,11 +284,14 @@ export type Database = {
           last_notify_error?: string | null
           notified_at?: string | null
           notified_count?: number
+          program_type?: string
+          signup_confirmation_enabled?: boolean
           slug: string
           status?: string
           updated_at?: string
         }
         Update: {
+          admin_alert_enabled?: boolean
           checkout_url?: string | null
           course_name?: string
           course_path?: string
@@ -292,6 +299,8 @@ export type Database = {
           last_notify_error?: string | null
           notified_at?: string | null
           notified_count?: number
+          program_type?: string
+          signup_confirmation_enabled?: boolean
           slug?: string
           status?: string
           updated_at?: string
