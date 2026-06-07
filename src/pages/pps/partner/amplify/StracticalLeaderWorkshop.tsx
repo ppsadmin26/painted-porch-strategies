@@ -8,6 +8,7 @@ import {
   PlayCircle, Target, MessageSquare, Compass, FileText, Sparkles, Clock, Bell
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import amyPhoto from "@/assets/team/amy-yackowski.png";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
@@ -238,14 +239,31 @@ export default function StracticalLeaderWorkshop() {
     <div>
       <WaitlistDialog open={waitlistOpen} onOpenChange={setWaitlistOpen} />
 
+      <PPSBreadcrumb
+        segments={[
+          { label: "Partner", href: "/partner" },
+          { label: "AMPLIFY", href: "/partner/amplify" },
+          { label: "Leadership Labs", href: "/partner/amplify/labs" },
+          { label: "Stractical Leader" },
+        ]}
+      />
+
       {/* ═══ HERO ═══ */}
       <section className="bg-navy py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy/95 to-strategic/20" />
+        {/* Layered gradient + soft glow accents for visual depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy/95 to-strategic/30" />
+        <div aria-hidden="true" className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gold/10 blur-3xl" />
+        <div aria-hidden="true" className="absolute -bottom-32 -left-24 w-[28rem] h-[28rem] rounded-full bg-strategic/20 blur-3xl" />
         <div className="container max-w-5xl mx-auto px-6 relative z-10">
           <div className="max-w-3xl">
-            <span className="inline-block bg-gold text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
-              6-Week Intensive Leader Lab
-            </span>
+            <div className="flex flex-wrap items-center gap-2 mb-6">
+              <span className="inline-block bg-gold text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full">
+                6-Week Intensive Leader Lab
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-white/10 text-white/90 backdrop-blur-sm border border-white/20 font-poppins font-medium text-xs px-3 py-1.5 rounded-full">
+                <Sparkles className="w-3 h-3 text-gold" /> Strategic + Tactical
+              </span>
+            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-4 leading-tight">
               Become a <span className="text-gold">Stractical Leader</span>
             </h1>
@@ -626,7 +644,7 @@ export default function StracticalLeaderWorkshop() {
                 This workshop gives you the framework, the practice, and the accountability to make that transformation real.
               </p>
               <p className="text-gold font-poppins font-semibold text-xl mb-8">
-                Stop feeling like "just a manager."<br />Start shaping the next big sh<span className="text-raspberry font-bold">IF</span>t for your organization.
+                Stop feeling like "just a manager."<br />Start shaping the next big sh<span className="text-strategic font-bold">IF</span>t for your organization.
               </p>
               <Button
                 onClick={goToEnroll}
@@ -642,7 +660,7 @@ export default function StracticalLeaderWorkshop() {
               Questions? <a href="/contact?scope=Yourself&interest=leadership-lab&message=I%20have%20questions%20about%20your%20Stractical%20Leader%20Lab" className="text-gold hover:text-gold/80 underline">Contact Us</a>
             </p>
             <p className="text-white/40 italic mt-4">
-              Sh<span className="text-raspberry font-bold">IF</span>t happens. The question is: are you ready?
+              Sh<span className="text-strategic font-bold">IF</span>t happens. The question is: are you ready?
             </p>
           </div>
         </div>

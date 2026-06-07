@@ -8,7 +8,7 @@ import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 import amplifyFinalCtaBg from "@/assets/amplify-final-cta-bg.jpg";
 
 /**
- * Strategic Sprints — focused 90-day Phase Zero partnership.
+ * Strategic Sprints: focused 90-day Phase Zero partnership.
  *
  * Refactored per the wireframe (.lovable/wireframes/embody-and-sprints-revised.md):
  *  - Timeline labels: Diagnose → Design → Direction (no "Deliver"; nothing is
@@ -148,7 +148,7 @@ export default function AmplifySprints() {
             AMPLIFY · Strategic Sprints
           </p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy mb-6">
-            A 90-day Phase Zero<span className="align-super text-xs ml-0.5">™</span> partnership for your next sh<span className="text-raspberry">IF</span>t.
+            A 90-day Phase Zero<span className="align-super text-xs ml-0.5">™</span> partnership for your next sh<span className="text-strategic">IF</span>t.
           </h1>
           <p className="text-lg md:text-xl text-foreground max-w-3xl mx-auto mb-8">
             Focused. Time-boxed. Built to architect the foundation <em>before</em> implementation begins, so what you build next actually lasts.
@@ -364,7 +364,7 @@ export default function AmplifySprints() {
 
       <ParallaxCTA
         backgroundImage={amplifyFinalCtaBg}
-        overlayTone="teal"
+        overlayTone="purple"
         eyebrow="Architect first"
         headline={
           <>
