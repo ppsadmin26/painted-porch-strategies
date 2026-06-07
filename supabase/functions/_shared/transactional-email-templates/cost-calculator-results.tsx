@@ -72,7 +72,7 @@ const Email = (p: CalcResultsProps) => {
           <Section style={heroBox}>
             <Text style={heroLabel}>The Blue Door impact</Text>
             <Text style={heroValue}>
-              A $1,500 Blue Door can de-risk an estimated{' '}
+              A $1,500 Blue Door operational appraisal can provide the clarity needed to reduce the risked{' '}
               <strong>{fmt(p.exposureLow)}–{fmt(p.exposureHigh)}</strong> of this exposure.
             </Text>
             <Button href="https://onthepaintedporch.com/blue-door" style={ctaButton}>
