@@ -381,7 +381,7 @@ export default function EmbodyPathAlt() {
               className="border-navy/30 text-navy/60 cursor-not-allowed"
               title="The white paper is being refined."
             >
-              <Download className="mr-2 w-4 h-4" /> The Architecture of Organizational Sh<span className="italic">IF</span>t (Coming Soon)
+              <Download className="mr-2 w-4 h-4" /> The Architecture of Organizational Sh<span className="text-navy font-semibold">IF</span>t (Coming Soon)
             </Button>
           </div>
 
