@@ -390,12 +390,9 @@ export default function IgnitePathAlt() {
                   Build comprehensive strategic capacity
                 </li>
               </ul>
-              <p className="text-xs text-muted-foreground italic mb-4">
+              <p className="text-xs text-muted-foreground italic">
                 Best for: Leaders who want continued self-paced development
               </p>
-              <Button asChild className="mt-auto bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-white w-full transition-colors text-sm px-2">
-                <a href="#experience">Browse IGNITE Programs <ArrowRight className="ml-2 w-4 h-4" /></a>
-              </Button>
             </div>
 
             {/* Path 2: Amplify What You've Started */}
