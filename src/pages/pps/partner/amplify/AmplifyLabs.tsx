@@ -135,44 +135,51 @@ export default function AmplifyLabs() {
             <p className="text-lg text-foreground max-w-3xl mx-auto">
               Explore Phase Zero concepts with other leaders navigating similar challenges. Each Leadership Lab is a 6–12 week cohort-style program with peer accountability, monthly group sessions, and individual coaching touchpoints.
             </p>
-            {hasUpcomingCohort && (
-              <div className="mt-6 inline-flex items-center gap-2 bg-strategic/10 border border-strategic/30 text-navy px-5 py-3 rounded-full">
-                <Calendar className="w-4 h-4 text-strategic" />
-                <span className="text-sm md:text-base">
-                  Our next cohort starts on <span className="font-semibold text-strategic">{WORKSHOP_DATE_LABEL}</span>
-                </span>
-              </div>
-            )}
           </div>
 
 
           <div className="flex flex-wrap justify-center gap-6 mb-12">
-            {cohorts.map((cohort, index) => (
-              <div key={index} className="bg-muted rounded-xl overflow-hidden flex flex-col w-full md:w-[calc(33.333%-1rem)] max-w-sm">
-                <div className="aspect-[16/9] bg-strategic/10 flex items-center justify-center">
-                  <img src={cohort.image} alt={cohort.title} className="w-full h-full object-cover" />
-                </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-1">{cohort.title}</h2>
-                  <p className="text-sm font-semibold text-strategic mb-2">{cohort.tagline}</p>
-                  <p className="text-sm text-foreground mb-4 flex-1">{cohort.description}</p>
-                  {cohort.comingSoon ? (
-                    <div className="flex flex-col items-center gap-1">
-                      <Button disabled className="w-full bg-muted-foreground/20 text-muted-foreground cursor-not-allowed flex items-center gap-2">
-                        <Clock className="w-4 h-4" /> Coming Soon
+            {cohorts.map((cohort, index) => {
+              const showCohortBanner = cohort.showUpcomingCohort && hasUpcomingCohort;
+              const waitlistMessage = `I'm interested in joining the waitlist for the ${cohort.title} Leadership Lab.`;
+              const waitlistHref = `/contact?scope=Yourself&interest=leadership-lab&lab=${encodeURIComponent(cohort.title)}&message=${encodeURIComponent(waitlistMessage)}`;
+              return (
+                <div key={index} className="bg-muted rounded-xl overflow-hidden flex flex-col w-full md:w-[calc(33.333%-1rem)] max-w-sm">
+                  <div className="aspect-[16/9] bg-strategic/10 flex items-center justify-center">
+                    <img src={cohort.image} alt={cohort.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="p-5 flex flex-col flex-1">
+                    <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-1">{cohort.title}</h2>
+                    <p className="text-sm font-semibold text-strategic mb-2">{cohort.tagline}</p>
+                    <p className="text-sm text-foreground mb-4 flex-1">{cohort.description}</p>
+                    {showCohortBanner && (
+                      <div className="mb-4 flex items-start gap-2 bg-strategic/10 border border-strategic/30 text-navy px-3 py-2 rounded-md">
+                        <Calendar className="w-4 h-4 text-strategic mt-0.5 shrink-0" />
+                        <span className="text-xs leading-snug">
+                          Our next cohort starts on{" "}
+                          <span className="font-semibold text-strategic">{WORKSHOP_DATE_LABEL}</span>
+                        </span>
+                      </div>
+                    )}
+                    {cohort.comingSoon ? (
+                      <div className="flex flex-col items-center gap-1">
+                        <Button disabled className="w-full bg-muted-foreground/20 text-muted-foreground cursor-not-allowed flex items-center gap-2">
+                          <Clock className="w-4 h-4" /> Coming Soon
+                        </Button>
+                        <Link to={waitlistHref} className="text-xs text-strategic hover:underline mt-1">
+                          Join the Waitlist →
+                        </Link>
+                      </div>
+                    ) : (
+                      <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
+                        <Link to={cohort.link || waitlistHref}>Learn More</Link>
                       </Button>
-                      <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I'm interested in joining the waitlist for a Leadership Lab." className="text-xs text-strategic hover:underline mt-1">
-                        Join the Waitlist →
-                      </Link>
-                    </div>
-                  ) : (
-                    <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
-                  <Link to={cohort.link || "/contact?scope=Yourself&interest=leadership-lab&message=I'm interested in a Leadership Lab."}>Learn More</Link>
-                </Button>
-                  )}
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
+
           </div>
 
           {/* Investment Info */}
