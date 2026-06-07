@@ -1,103 +1,120 @@
-# Site-Wide Audit & Remediation Plan
 
-Scope: content, anchors, CTAs, SEO across all PPS pages. Findings prioritized P0 → P3. Nothing executed yet — confirm scope before I start.
+# Plan: Sourcing Standardization + Calculator v2
 
----
-
-## P0 — Broken / wrong (fix first)
-
-1. **Dead anchors `#coaching` and `#advisory` on `/services`**
-   - Used by `PPSHomeArchive.tsx` (lines 185, 200) and `PPSHomeAlt.tsx` (195, 210) linking `to="/services#coaching"` and `to="/services#advisory"`.
-   - `PPSServices.tsx` defines neither ID. Either add the IDs (with `scroll-mt-24`) to the matching sections, or strip the hash. Note both files are archive/alt variants; lowest-risk fix = remove the hash.
-
-2. **`/services` itself has no `useDocumentSeo`** — bare `<title>Lovable App</title>` fallback for a key page. Same gap on **/about**, **/about/approach**, **/about/impact**, **/contact**, **/start-here**, **/blue-door**, **/phase-zero** sub-pages, **/partner/***, **/programs/***, **/speaking**, **/resources/***. Only 8 of ~60 pages currently call the SEO hook.
-
-3. **`scroll-mt` missing on most in-page anchor targets**
-   - Confirmed only 9 files use `scroll-mt-*`. Pages with `<section id="...">` but no offset class will scroll under the sticky nav: `BurnoutResources` (`#resources-start`), `StracticalLeaderGuide` (`#get-guide`), `CommunicatorStyles`, `StoicFieldGuide`, `KickTheHabit`, `PilotTraining`, `ElementsMiniSignUp` (`#pricing`), `EQChangeLeaderMini`, `PPSPrograms` (`#signature-programs`), `partner/ignite/EQAssessment`, `partner/ignite/WorkingGeniusAssessment` (`#get-started`), `partner/EmbodyPathAlt` (`#human-cost-heading`).
-   - Fix: add `scroll-mt-24` to each target section.
+Two parallel workstreams. Both ship this turn.
 
 ---
 
-## P1 — Hand-rolled final CTAs to replace with `<ParallaxCTA>`
+## Workstream A — Sourced Stat Tooltip (site-wide)
 
-Confirmed via `bg-fixed|bg-cover` scan, excluding intentional hero sections and archives:
+### A1. Create shared component
+**New file:** `src/components/pps/SourcedStat.tsx`
 
-| File | Section | Suggested tone |
-|---|---|---|
-| `pages/pps/about/OurImpact.tsx` | final CTA band | `gold` (warm/celebratory) |
-| `pages/pps/Speaking.tsx` | "Book Amy" closing | `purple` |
-| `pages/pps/partner/IgnitePathAlt.tsx` | bottom CTA | `teal` (tier-aligned) |
-| `pages/pps/partner/AmplifyPathAlt.tsx` | bottom CTA | `purple` |
-| `pages/pps/partner/amplify/AmplifyWorkshops.tsx` | bottom CTA | `purple` |
-| `pages/pps/partner/ignite/WorkingGeniusAssessment.tsx` | bottom CTA | `teal` |
-| `components/pps/partner/FinalInvitationSection.tsx` | Partner hub closer | `charcoal` (neutral, sits above teal sections) |
-| `pages/pps/ChangeCommsSignUp.tsx`, `ChangeRoadmapSignUp.tsx`, `ChangeCommsThankYou.tsx`, `ChangeRoadmapThankYou.tsx` | final CTA | `teal` |
+A single reusable primitive that renders a stat figure/label with an inline info-icon tooltip. Tooltip shows source name + clickable URL (opens new tab). Replaces every footnote+source-section pattern.
 
-Excluded (correctly hand-rolled or intentional): Blue Door `FinalCTASectionAlt` (custom raspberry per memory), `TierHeroSection` (heroes, not final CTAs), `PPSBlog` (list page CTA).
+Props:
+- `figure` (string) — big number e.g. "70%+"
+- `label` (string) — short description
+- `source` (string) — citation text
+- `sourceUrl` (string, optional) — clickable link
+- `year` (string|number, optional) — appended to source
+- `variant`: `"inline" | "editorial" | "bold"` — matches existing StatCard variants
+- `accentClass` — preserve current color logic
 
----
+### A2. Identify and migrate all instances
+Targets to convert (will grep for `StatSources`, `footnoteNumber`, manual `<ol>` source lists, `<sup>` footnotes, and "Sources" headings):
+- `src/components/pps/partner/ArchitectureGapSection.tsx` (footnotes 1–4 + Sources block)
+- `src/components/pps/StatCard.tsx` (`footnoteNumber` + `StatSources` helper — keep StatCard but make footnote optional and route new usage through SourcedStat)
+- AMPLIFY ROI section already done as reference impl (`AmplifyPathAlt.tsx`)
+- Any other page using `RESEARCH_STATS` with footnote chrome (will sweep)
+- "Sources" sections in EMBODY pages if present
 
-## P2 — Content audit (copy, headings, structure)
+For each: delete the bottom "Sources" `<ol>` and `<sup>` markers; render inline info-icon tooltip instead.
 
-### Hierarchy / headings
-- **Multiple H1 risk**: spot-check `PPSAbout`, `PartnerWithUsAlt`, `PhaseZero`, `OurApproach` — confirm exactly one `<h1>` after the recent restructures. Demote stray `text-4xl`s used as visual H1s.
-- **Eyebrow normalization**: standardize on `text-sm uppercase tracking-wide font-semibold text-primary` across all section eyebrows. Currently inconsistent (some text-xs, some text-gold, some no tracking).
-
-### Copy hygiene (per memory rules)
-- **Em-dashes (—)**: ban per Core rule. Sweep all `/pps` pages with `rg "—"` and convert to commas, colons, or split sentences. Last sweep was partial.
-- **Trademark linter**: run `npm run brand:validate` and fix all `> 1 ™` per page violations. Shared components (footer, search, partner sections) must be 0.
-- **"Schedule a call" / `mailto:`**: do a final pass; per memory all CTAs should resolve to `/contact`.
-- **"shIFt" / "What IF?" casing**: verify capitalization on home, about, approach, blog headings.
-
-### Cross-link health
-- Sweep every `<Link to="/...">` for routes deleted/renamed in the recent restructure (`/about` reordering moved R.L.P.V. + Foundational Abilities → `/about/approach`). Verify no nav/footer/sitemap link points to a removed section ID on `/about`.
-- `/about/approach#path` and `#certifications` confirmed valid (P0-2 audit already done).
-- `/phase-zero#foundations` confirmed valid.
-- `/about/impact#do-good-shift` confirmed valid.
-
-### Page-by-page quick wins
-- **`/about`**: alternate `bg-white` ↔ `bg-muted/30` (now partial). Team grid contrast for Amy's `bg-strategic/10` card — verify text-foreground meets AA.
-- **`/about/approach`**: confirm new R.L.P.V. + side-by-side abilities/conditions sections have matching vertical rhythm (py-20/py-24) and consistent eyebrow style.
-- **`/phase-zero`**: now has back-link to `#path` — verify the new sentence sits above (not inside) the "Where Phase Zero Leads" grid as designed.
-- **`/partner/amplify`**: confirm phase cards use navy colon-separated leads per memory.
-- **`/programs/*`**: three program pages duplicate the `#pricing` CTA pattern — consider a shared `<ProgramPricingCTA>` to dedupe.
-- **`/resources/blog`**: media + LinkedIn imports — verify primary-category color coding still renders correctly on grid cards.
+### A3. Keep `RESEARCH_STATS` registry; deprecate `StatSources` helper
+`StatSources` export stays for backward-compat one release, marked `@deprecated`.
 
 ---
 
-## P3 — SEO metadata rollout
+## Workstream B — Calculator v2
 
-For each public page, set via `useDocumentSeo({ title, description, canonical, ogTitle, ogDescription, ogImage, jsonLd })`:
+### B1. Data file
+**New:** `src/data/calculatorBenchmarks.ts`
+- `INDUSTRY_BENCHMARKS` — 8 industries × `{ avgLoadedSalary, overrunRate, failureRate, sources[] }` (BLS 2024 + McKinsey/Gartner/BCG)
+- `SIZE_PRESETS` — Small (10 ppl), Mid (35), Enterprise (100) with default tech spend per seat
+- `PHASE_ZERO_IMPACT` — `{ min: 0.10, max: 0.15 }` (10–15% exposure reduction)
 
-**Priority pages (do first):**
-1. `/` (PPSHome — already done ✓)
-2. `/about`, `/about/approach`, `/about/impact`
-3. `/phase-zero`, `/blue-door`
-4. `/partner`, `/partner/ignite`, `/partner/amplify`, `/partner/embody`
-5. `/services`, `/programs`, `/business-programs`
-6. `/contact`, `/start-here`, `/speaking`
-7. `/resources/blog`, `/resources/faq`
+### B2. New dialog
+**Replace:** `src/components/pps/blue-door/CostCalculatorDialog.tsx` (archive current as `_archive-v1.0/` already exists)
 
-**Per page:** unique `<title>` (≤60 chars w/ primary keyword), description ≤160 chars in Amy's voice, canonical = current path, og:image = page-specific hero (fallback `/og-image.jpg`). Add JSON-LD: `WebPage` for content pages, `BreadcrumbList` for subpages, `Service` for tier pages, `Person` for /amy /rob /sierra.
+Inputs (3 always-visible):
+1. Industry (radio cards)
+2. Initiative size (S/M/E)
+3. Duration (3/6/12/18/24 month stepper)
 
-**robots.txt cleanup**: `/about/approach` and `/about/impact` are currently `Disallow:` (left over from draft). With the restructure they're live core pages — remove both Disallow lines so they get indexed.
+Optional expander:
+- Override avg fully-loaded salary
+- Outside consultants (toggle)
+
+Outputs (3 stacked cards):
+- Planned investment ($X)
+- Likely overrun range ($X–$Y, using industry overrun rate ±10%)
+- Failure scenario write-off ($Z, using industry failure rate)
+
+Hero strip: **"A $1,500 Blue Door can de-risk an est. $X–$Y of this exposure"** → cobalt CTA to `/blue-door`.
+
+Footer: "How we calculated this" collapsible with formulas + sources (info-icon tooltip pattern).
+
+### B3. Email-me-results (lead gen)
+- Inline form inside dialog: First name, Last name, Email, Company (optional), Role (optional).
+- On submit → `submit-calculator-results` edge function.
+
+### B4. New edge function
+**New:** `supabase/functions/submit-calculator-results/index.ts`
+
+Mirrors existing `submit-ghl-lead` pattern. Does:
+1. Validate input (Zod).
+2. Upsert contact in GHL (`GHL_API_KEY` + `GHL_LOCATION_ID`).
+3. Add tag: `calc-cost-of-skipping`.
+4. POST contact **note** with full calculator inputs + results breakdown (formatted text).
+5. If `GHL_COST_CALC_WORKFLOW_ID` secret is set, subscribe contact to that workflow. If unset, skip silently (no error).
+6. Also send a transactional email to the lead via existing `send-transactional-email` queue with their results (new template `cost-calculator-results.tsx`).
+
+### B5. New email template
+**New:** `supabase/functions/_shared/transactional-email-templates/cost-calculator-results.tsx`
+- Brand-styled (white bg, Poppins/Montserrat inline)
+- Shows the three result cards as HTML
+- Cobalt CTA: "Step through the Blue Door → $1,500"
+- Soft secondary CTA: "Talk to us about this → /contact"
+- Register in `registry.ts`.
+
+### B6. Placement
+- `/blue-door` — existing dialog trigger keeps working (component swap is transparent).
+- `/partner/amplify` AmplifyPathAlt — add **"Calculate your ROI"** button under the ROI table, opens same `<CostCalculatorDialog>`.
+
+### B7. Secret
+Request new secret `GHL_COST_CALC_WORKFLOW_ID` (optional; user adds later when they build the GHL workflow). Edge function works with or without it.
 
 ---
 
-## Execution order (proposed)
+## Technical details
 
-1. **P0 fixes** (~30 min): dead `#coaching`/`#advisory` anchors, robots.txt unblock for /about/approach + /about/impact, add `scroll-mt-24` to all hash targets.
-2. **P1 ParallaxCTA migration** (~1 hr): swap 11 hand-rolled CTAs in batches by tier.
-3. **P3 SEO rollout** (~1.5 hr): add `useDocumentSeo` to the 16 priority pages.
-4. **P2 content polish** (~2 hr): em-dash sweep, trademark linter, eyebrow normalization, heading hierarchy audit.
-
-Each phase is independent and reversible. Recommend approving phase-by-phase so we can sanity-check before moving on.
+- **GHL workflow subscribe endpoint:** `POST /contacts/{contactId}/workflow/{workflowId}` (LeadConnector v1) — exactly the same pattern other PPS edge functions use.
+- **Contact note format** (plain text, readable in GHL UI):
+  ```
+  Cost-of-Skipping Calculator — [date]
+  Industry: Technology  |  Size: Mid (35 ppl)  |  Duration: 12 mo
+  Planned: $X  •  Overrun: $Y–$Z  •  Failure write-off: $W
+  Blue Door de-risks: est. $A–$B
+  ```
+- **Tag:** `calc-cost-of-skipping` (kebab-case, matches existing GHL tag convention).
+- **No DB tables** — purely GHL-side persistence per project's lead-capture rule.
+- **Tooltip primitive:** reuses existing shadcn `<Tooltip>` from `components/ui/tooltip` (already used in AmplifyPathAlt update).
+- All TM/brand/Blue-Door color rules respected.
 
 ---
 
-## Open questions before I start
-
-1. **P0-1**: Strip the `#coaching`/`#advisory` hashes, or add the IDs to `/services`? (Strip is safer since both callers are archive variants.)
-2. **P1**: OK to use the tone mapping above, or override any specific one?
-3. **P3 og:images**: use existing per-page hero assets, or generate fresh 1200×630 OG images for the priority 16?
-4. **Sequencing**: tackle phases 1→4 in order, or want any phase deferred?
+## Out of scope (future)
+- Shareable URL with query params for results (deferred — adds complexity for marginal lift)
+- A/B testing variants
+- Industry benchmark refresh automation (annual manual refresh per `costOfSkippingStats.ts` pattern)
