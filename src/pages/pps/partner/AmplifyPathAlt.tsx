@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Users, User, Landmark, Link2, AlertTriangle, Radio, Crosshair } from "lucide-react";
+import { CheckCircle, ArrowRight, Users, User, Landmark, Link2, AlertTriangle, Radio, Crosshair, Info } from "lucide-react";
 import amplifyHeroImage from "@/assets/amplify-hero-lightbulb-v3.jpg";
 import amplifyFinalCtaBg from "@/assets/amplify-final-cta-bg.jpg";
 import { TierBadge, TIERS } from "@/components/pps/TierBadge";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { FAQSection, type FAQItem } from "@/components/pps/FAQSection";
 import { PartnerIncludedSection, ExploreBeforeCommitSection } from "@/components/pps/partner";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { costOfSkippingStats } from "@/data/costOfSkippingStats";
 
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
 
