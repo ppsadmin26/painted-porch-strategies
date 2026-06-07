@@ -54,4 +54,5 @@ export const TEMPLATES: Record<string, TemplateEntry> = {
   'refund-request-confirmation': refundRequestConfirmation,
   'refund-request-notification': refundRequestNotification,
   'refund-request-processed': refundRequestProcessed,
+  'launch-list-signup-admin': launchListSignupAdmin,
 }
