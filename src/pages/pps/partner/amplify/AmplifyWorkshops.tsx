@@ -401,7 +401,7 @@ export default function AmplifyWorkshops() {
       </section>
 
       {/* Speaking Cross-Promo */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h3 className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-4">
             Explore More Workshop Options
