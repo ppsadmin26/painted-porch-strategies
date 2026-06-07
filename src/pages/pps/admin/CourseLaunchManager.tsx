@@ -273,7 +273,38 @@ export default function CourseLaunchManager() {
                 </p>
               )}
 
+              <div className="grid sm:grid-cols-2 gap-3 mb-4 p-3 bg-muted/40 rounded-md border border-border">
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <Switch
+                    checked={row.signup_confirmation_enabled}
+                    onCheckedChange={(v) => toggleFlag(row.slug, "signup_confirmation_enabled", v)}
+                  />
+                  <span className="text-sm">
+                    <span className="font-semibold text-navy block">Signup confirmation</span>
+                    <span className="text-xs text-muted-foreground">
+                      Email the person who joins the launch list ({" "}
+                      <code>course-launch-list</code> template).
+                    </span>
+                  </span>
+                </label>
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <Switch
+                    checked={row.admin_alert_enabled}
+                    onCheckedChange={(v) => toggleFlag(row.slug, "admin_alert_enabled", v)}
+                  />
+                  <span className="text-sm">
+                    <span className="font-semibold text-navy block">Admin alert</span>
+                    <span className="text-xs text-muted-foreground">
+                      Notify the team on every signup ({" "}
+                      <code>launch-list-signup-admin</code>, sent to{" "}
+                      <code>ADMIN_NOTIFICATION_EMAIL</code>).
+                    </span>
+                  </span>
+                </label>
+              </div>
+
               <div className="flex flex-wrap gap-2">
+
                 {!isLive ? (
                   <Button
                     onClick={() => setConfirmGoLive(row)}
