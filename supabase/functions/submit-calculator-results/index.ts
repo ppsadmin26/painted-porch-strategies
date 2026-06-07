@@ -29,6 +29,9 @@ interface CalcResults {
   size: string;
   sizeKey: string;
   teamSize: number;
+  impactScope?: string;
+  impactScopeKey?: string;
+  impactMultiplier?: number;
   durationMonths: number;
   avgLoadedSalary: number;
   outsideConsultants: boolean;
