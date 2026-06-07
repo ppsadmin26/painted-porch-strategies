@@ -176,20 +176,26 @@ export default function AmplifyLabs() {
                         </span>
                       </div>
                     )}
-                    {cohort.comingSoon ? (
-                      <LaunchListCTA
-                        slug={cohort.slug}
-                        courseName={`${cohort.title} Lab`}
-                        layout="block"
-                        liveLabel="Enroll"
-                        textColorClass="text-strategic"
-                        buttonClasses="border-strategic text-strategic hover:bg-strategic hover:text-white"
-                      />
-                    ) : (
-                      <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
-                        <Link to={cohort.link!}>Learn More</Link>
-                      </Button>
-                    )}
+                    <div className="mt-auto">
+                      {cohort.comingSoon ? (
+                        <LaunchListCTA
+                          slug={cohort.slug}
+                          courseName={`${cohort.title} Lab`}
+                          layout="block"
+                          liveLabel="Enroll"
+                          textColorClass="text-strategic"
+                          buttonClasses="border-strategic text-strategic hover:bg-strategic hover:text-white"
+                        />
+                      ) : (
+                        <>
+                          <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
+                            <Link to={cohort.link!}>Learn More</Link>
+                          </Button>
+                          {/* Spacer to match launch list link height on sibling cards */}
+                          <div className="text-sm mt-1 invisible" aria-hidden="true">&nbsp;</div>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
               );
