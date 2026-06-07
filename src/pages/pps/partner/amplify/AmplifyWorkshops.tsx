@@ -148,7 +148,7 @@ export default function AmplifyWorkshops() {
 
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
-              Executive Workshops That Architect Your Next Sh<span className="text-raspberry">IF</span>t™
+              Workshops That Architect Your Next Sh<span className="text-raspberry">IF</span>t™
             </h1>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
               From Phase Zero strategy sessions to leadership and team development, our workshops align teams and build the capacity to lead change well.
