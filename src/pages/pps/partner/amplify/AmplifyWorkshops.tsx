@@ -222,7 +222,7 @@ export default function AmplifyWorkshops() {
                 The <span className="font-bold text-bluedoor">Blue Door</span> is our organizational appraisal (less than 30 minutes) that reveals where your business and leadership stands on the path to transformation so that you can lead with clarity and build with confidence.
               </p>
               <p className="text-sm text-foreground/70 italic mb-3">
-                Required for Strategic Sprints and workshops. Not needed for Leadership Labs.
+                Required for Phase Zero Strategic Workshops and all Strategic Sprints. Not required for Leadership &amp; Team Development Workshops.
               </p>
               <p className="text-sm text-foreground/70 italic mb-3">
                 The Blue Door investment will be credited toward any booked engagement.
