@@ -216,7 +216,7 @@ export default function AmplifyWorkshops() {
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
                 <Info className="w-5 h-5 text-bluedoor" />
-                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy whitespace-nowrap">Authoring Your Next Sh<span className="text-raspberry">IF</span>t Begins At the <span className="text-bluedoor">Blue Door</span></h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy whitespace-nowrap">Authoring Your Next Sh<span className="text-strategic">IF</span>t Begins At the <span className="text-bluedoor">Blue Door</span></h3>
               </div>
               <p className="text-sm text-foreground mb-2 mt-4">
                 The <span className="font-bold text-bluedoor">Blue Door</span> is our organizational appraisal (less than 30 minutes) that reveals where your business and leadership stands on the path to transformation so that you can lead with clarity and build with confidence.
