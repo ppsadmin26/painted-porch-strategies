@@ -1,9 +1,11 @@
 /**
  * The Architecture Gap, McKinsey + Gartner stats framed against the Painted Porch Pillars.
  * Lives on /partner between Philosophy & Approach and How To Choose.
+ *
+ * Sources are surfaced inline via SourcedTooltip on each StatCard (site standard).
  */
-import StatCard, { StatSources } from "@/components/pps/StatCard";
-import { Building2, Compass, Brain, ArrowRight } from "lucide-react";
+import StatCard from "@/components/pps/StatCard";
+import { Building2, Compass, Brain } from "lucide-react";
 
 const rows = [
   {
