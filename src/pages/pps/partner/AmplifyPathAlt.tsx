@@ -201,6 +201,11 @@ export default function AmplifyPathAlt() {
             isAnchor: true,
             isPrimary: true,
           },
+          {
+            label: "Discover Your P.A.T.H.way",
+            href: "/start-here",
+            isPrimary: false,
+          },
         ]}
         background={{
           type: "video",
