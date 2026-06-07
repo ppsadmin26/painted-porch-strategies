@@ -148,10 +148,23 @@ export default function AmplifyWorkshops() {
 
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
-              Executive Workshops That Build Phase Zero Foundations
+              Executive Workshops That Build Phase Zero™ Foundations
             </h1>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
-              Our signature workshops are designed to align leadership teams and author your next strategic shift.
+              Our signature workshops align leadership teams and author your next strategic sh<span className="text-raspberry font-semibold">IF</span>t.
+            </p>
+          </div>
+
+          {/* Phase Zero Strategic Workshops header */}
+          <div className="text-center mb-8">
+            <span className="inline-block bg-bluedoor/10 text-bluedoor font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
+              Blue Door Required
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
+              Phase Zero Strategic Workshops
+            </h2>
+            <p className="text-foreground max-w-2xl mx-auto">
+              Design the architecture of your next transformation before you build it. These workshops align your leadership team around what you're authoring and why.
             </p>
           </div>
 
@@ -169,7 +182,7 @@ export default function AmplifyWorkshops() {
                         className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
                       />
                       <div>
-                        <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-1">{workshop.title}</h2>
+                        <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy leading-tight mb-1">{workshop.title}</h3>
                         <div className="flex flex-wrap gap-2 text-sm">
                           <span className="text-foreground font-medium">{workshop.format}</span>
                           <span className="text-foreground">|</span>
@@ -192,9 +205,6 @@ export default function AmplifyWorkshops() {
                         ))}
                       </ul>
                     </div>
-                    {workshop.note && (
-                      <p className="text-xs text-foreground italic mt-4">*{workshop.note}</p>
-                    )}
                   </div>
                 </div>
               );
