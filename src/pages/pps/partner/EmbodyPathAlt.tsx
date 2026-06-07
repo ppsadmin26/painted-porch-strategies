@@ -364,9 +364,13 @@ export default function EmbodyPathAlt() {
           </div>
           <div className="max-w-3xl mx-auto text-center bg-muted/40 rounded-xl p-6">
             <p className="text-sm text-foreground mb-4">
-              Built on the <strong>Painted Porch Pillars</strong> and our <Link to="/approach" className="font-semibold text-primary hover:underline">P.A.T.H.</Link> framework. See{" "}
-              <Link to="/approach" className="font-semibold text-primary hover:underline">
-                /approach
+              Built on the{" "}
+              <Link to="/about/approach#pillars" className="font-semibold text-primary hover:underline">
+                Painted Porch Pillars
+              </Link>{" "}
+              and our <Link to="/about/approach" className="font-semibold text-primary hover:underline">P.A.T.H.</Link> framework. See{" "}
+              <Link to="/about/approach" className="font-semibold text-primary hover:underline">
+                Our Approach
               </Link>{" "}
               for the full model, or download the white paper for the deep architecture.
             </p>
@@ -375,11 +379,12 @@ export default function EmbodyPathAlt() {
               disabled
               aria-disabled="true"
               className="border-navy/30 text-navy/60 cursor-not-allowed"
-              title="The Pillars White Paper is being refined."
+              title="The white paper is being refined."
             >
-              <Download className="mr-2 w-4 h-4" /> Pillars White Paper (Coming Soon)
+              <Download className="mr-2 w-4 h-4" /> The Architecture of Organizational Sh<span className="italic">IF</span>t (Coming Soon)
             </Button>
           </div>
+
         </div>
       </section>
 
