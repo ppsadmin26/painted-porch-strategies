@@ -660,7 +660,7 @@ export default function StracticalLeaderWorkshop() {
               Questions? <a href="/contact?scope=Yourself&interest=leadership-lab&message=I%20have%20questions%20about%20your%20Stractical%20Leader%20Lab" className="text-gold hover:text-gold/80 underline">Contact Us</a>
             </p>
             <p className="text-white/40 italic mt-4">
-              Sh<span className="text-raspberry font-bold">IF</span>t happens. The question is: are you ready?
+              Sh<span className="text-strategic font-bold">IF</span>t happens. The question is: are you ready?
             </p>
           </div>
         </div>
