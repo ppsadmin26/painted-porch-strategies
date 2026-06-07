@@ -198,18 +198,15 @@ export default function EmbodyPathAlt() {
       {/* HERO */}
       <TierHeroSection
         tier={TIERS.EMBODY}
-        badgeLabel="EMBODY"
-        headline={
-          <>
-            Make the sh<span className="text-raspberry">IF</span>t permanent.
-          </>
-        }
-        description="A 6–12+ month embedded partnership for C-suites architecting transformation they intend to lead, not transformation they're reacting to. Built so what you build next actually lasts."
+        badgeLabel="EMBODY P.A.T.H.way"
+        headline={<>Architect Epic Sh<span className="text-raspberry">IF</span>t That Lasts.</>}
+        description="EMBODY is for founders and leaders ready to build permanent organizational capacity through deep, sustained partnership. This isn't consulting or change management. This is co-architecting an unshakeable foundation for sustainable transformation."
         ctas={[
           {
-            label: "Contact Us",
-            href: "/contact?scope=organization&interest=strategic-partnership&message=I'm interested in exploring an EMBODY partnership.",
-            buttonClassName: "bg-white border-2 border-white text-navy hover:bg-gold hover:border-gold hover:text-navy",
+            label: "Explore EMBODY",
+            href: "#who-embody-is-for",
+            isPrimary: true,
+            isAnchor: true,
           },
           {
             label: "Open the Blue Door",
@@ -224,12 +221,12 @@ export default function EmbodyPathAlt() {
           poster: embodyHero,
           slotKey: "embody-hero",
         }}
-        overlayClass="bg-navy/40"
+        overlayClass="bg-navy/30"
         minHeightClass="min-h-[500px]"
       />
 
       {/* WHO EMBODY IS FOR */}
-      <section className="py-16 md:py-24 bg-white">
+      <section id="who-embody-is-for" className="py-16 md:py-24 bg-white scroll-mt-24">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <p className="text-sm font-poppins font-semibold tracking-widest text-teal uppercase mb-3">
