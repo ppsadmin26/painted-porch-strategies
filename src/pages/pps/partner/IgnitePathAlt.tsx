@@ -362,7 +362,7 @@ export default function IgnitePathAlt() {
           
           <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {/* Path 1: Nurture the Spark */}
-            <div className="bg-gold/10 p-8 rounded-xl border-t-4 border-gold">
+            <div className="bg-gold/10 p-8 rounded-xl border-t-4 border-gold flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
                   <TIERS.IGNITE.icon className="w-5 h-5 text-gold" />
@@ -390,9 +390,12 @@ export default function IgnitePathAlt() {
                   Build comprehensive strategic capacity
                 </li>
               </ul>
-              <p className="text-xs text-muted-foreground italic">
+              <p className="text-xs text-muted-foreground italic mb-4">
                 Best for: Leaders who want continued self-paced development
               </p>
+              <Button asChild className="mt-auto bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-white w-full transition-colors text-sm px-2">
+                <a href="#experience">Browse IGNITE Programs <ArrowRight className="ml-2 w-4 h-4" /></a>
+              </Button>
             </div>
 
             {/* Path 2: Amplify What You've Started */}
