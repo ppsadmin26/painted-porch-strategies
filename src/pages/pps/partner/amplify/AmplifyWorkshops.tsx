@@ -161,7 +161,7 @@ export default function AmplifyWorkshops() {
               Blue Door Required
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
-              Phase Zero Strategic Workshops
+              Phase Zero&trade; Strategic Workshops
             </h2>
             <p className="text-foreground max-w-2xl mx-auto">
               Design the architecture of your next transformation before you build it. These workshops align your leadership team around what you're authoring and why.
