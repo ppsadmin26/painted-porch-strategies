@@ -51,7 +51,7 @@ const courses = [
     tagline: "Team Collaboration & High-Performance Dynamics",
     description: "Skilled individuals don't automatically function as cohesive units. This 12-module program teaches the anatomy of high-performing teams, conflict navigation, and coalition-building for transformation.",
     format: "12 modules | Video lessons + team exercises | Lifetime access",
-    investment: "$997",
+    investment: "$1,497",
     link: "/extraordinary-teams",
     color: "bg-primary/10",
     borderColor: "border-primary",
