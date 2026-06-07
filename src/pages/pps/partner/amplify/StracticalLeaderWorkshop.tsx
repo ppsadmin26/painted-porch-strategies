@@ -644,7 +644,7 @@ export default function StracticalLeaderWorkshop() {
                 This workshop gives you the framework, the practice, and the accountability to make that transformation real.
               </p>
               <p className="text-gold font-poppins font-semibold text-xl mb-8">
-                Stop feeling like "just a manager."<br />Start shaping the next big sh<span className="text-raspberry font-bold">IF</span>t for your organization.
+                Stop feeling like "just a manager."<br />Start shaping the next big sh<span className="text-strategic font-bold">IF</span>t for your organization.
               </p>
               <Button
                 onClick={goToEnroll}
