@@ -212,7 +212,7 @@ export default function EmbodyPathAlt() {
             label: "Open the Blue Door",
             href: "/blue-door",
             buttonClassName:
-              "bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor",
+              "bg-transparent border-2 border-bluedoor text-white hover:bg-bluedoor hover:text-white",
           },
         ]}
         background={{
