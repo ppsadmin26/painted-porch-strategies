@@ -8,7 +8,7 @@ import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 import amplifyFinalCtaBg from "@/assets/amplify-final-cta-bg.jpg";
 
 /**
- * Strategic Sprints — focused 90-day Phase Zero partnership.
+ * Strategic Sprints: focused 90-day Phase Zero partnership.
  *
  * Refactored per the wireframe (.lovable/wireframes/embody-and-sprints-revised.md):
  *  - Timeline labels: Diagnose → Design → Direction (no "Deliver"; nothing is
