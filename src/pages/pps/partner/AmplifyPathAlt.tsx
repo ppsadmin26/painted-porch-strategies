@@ -10,6 +10,7 @@ import { FAQSection, type FAQItem } from "@/components/pps/FAQSection";
 import { PartnerIncludedSection, ExploreBeforeCommitSection } from "@/components/pps/partner";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { costOfSkippingStats } from "@/data/costOfSkippingStats";
+import CostCalculatorDialog from "@/components/pps/blue-door/CostCalculatorDialog";
 
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
 
@@ -437,7 +438,17 @@ export default function AmplifyPathAlt() {
             <p className="text-xs text-navy/60 text-center mt-3 italic">
               Estimates above are industry benchmarks (2022-2025) from McKinsey, Gartner, BCG, IDC, and LSA Global. Hover the <Info className="w-3 h-3 inline -mt-0.5" /> icon for each source.
             </p>
+
+            {/* Calculate your ROI */}
+            <div className="flex justify-center mt-6">
+              <CostCalculatorDialog
+                triggerLabel="Calculate your ROI"
+                triggerVariant="outline"
+                triggerClassName="border-gold text-gold hover:bg-gold hover:text-white transition-all"
+              />
+            </div>
           </div>
+
 
           <p className="text-center text-navy mt-12 text-lg italic">
             Strategic architecture isn't optional for transformation that lasts; it's foundational. AMPLIFY provides the partnership to build it properly.
