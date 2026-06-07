@@ -26,6 +26,10 @@ const labFaqCategories: FAQCategory[] = [
         question: "Do I need the Blue Door before joining a Leadership Lab?",
         answer: "No. The Blue Door is not required for Leadership Labs. Labs are designed for individual leaders and don't require an organizational assessment.",
       },
+      {
+        question: "What if I'm not in an official leadership capacity?",
+        answer: "We believe leadership isn't based on your title or role. It's based on your ambition, attitude, and desire. We welcome all - official \"capital L\" Leaders, as well as those aspiring to lead themselves and others with courage, curiosity, clarity, and the capacity to make shIFt happen.",
+      },
     ],
   },
   {
