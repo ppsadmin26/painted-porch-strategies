@@ -148,10 +148,10 @@ export default function AmplifyWorkshops() {
 
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
-              Executive Workshops That Build Phase Zero™ Foundations
+              Executive Workshops That Architect Your Next Sh<span className="text-raspberry">IF</span>t™
             </h1>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
-              Our signature workshops align leadership teams and author your next strategic sh<span className="text-raspberry font-semibold">IF</span>t.
+              From Phase Zero strategy sessions to leadership and team development, our workshops align teams and build the capacity to lead change well.
             </p>
           </div>
 
@@ -168,52 +168,9 @@ export default function AmplifyWorkshops() {
             </p>
           </div>
 
-          {/* Top row: Architect Change + Pillars */}
+          {/* All Phase Zero workshops */}
           <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {workshopTopics.slice(0, 2).map((workshop, index) => {
-              return (
-                <div key={index} className="rounded-xl flex flex-col overflow-hidden border border-border">
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-start gap-4 mb-3">
-                      <img
-                        src={workshop.image}
-                        alt={workshop.title}
-                        loading="lazy"
-                        className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
-                      />
-                      <div>
-                        <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy leading-tight mb-1">{workshop.title}</h3>
-                        <div className="flex flex-wrap gap-2 text-sm">
-                          <span className="text-foreground font-medium">{workshop.format}</span>
-                          <span className="text-foreground">|</span>
-                          <span className="text-lime font-semibold">{workshop.investment}</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-4 bg-raspberry/5 border border-raspberry/20 rounded-lg p-4">
-                      <p className="text-sm font-semibold text-raspberry mb-1">The Challenge:</p>
-                      <p className="text-sm text-foreground">{workshop.challenge}</p>
-                    </div>
-                    <div className="flex-grow">
-                      <p className="text-sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
-                      <ul className="space-y-1">
-                        {workshop.highlights.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <CheckCircle className="w-3 h-3 text-lime flex-shrink-0 mt-1" />
-                            <span className="text-xs text-foreground">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Remaining workshops grid */}
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {workshopTopics.slice(2).map((workshop, index) => {
+            {workshopTopics.map((workshop, index) => {
               return (
                 <div key={index} className="rounded-xl flex flex-col overflow-hidden border border-border">
                   <div className="p-6 flex flex-col flex-grow">
@@ -265,7 +222,7 @@ export default function AmplifyWorkshops() {
                 The <span className="font-bold text-bluedoor">Blue Door</span> is our organizational appraisal (less than 30 minutes) that reveals where your business and leadership stands on the path to transformation so that you can lead with clarity and build with confidence.
               </p>
               <p className="text-sm text-foreground/70 italic mb-3">
-                Required for Strategic Sprints and workshops. Not needed for Leadership Labs.
+                Required for Phase Zero Strategic Workshops and all Strategic Sprints. Not required for Leadership &amp; Team Development Workshops.
               </p>
               <p className="text-sm text-foreground/70 italic mb-3">
                 The Blue Door investment will be credited toward any booked engagement.
@@ -293,7 +250,7 @@ export default function AmplifyWorkshops() {
                 Leadership & Team Development Workshops
               </h2>
               <p className="text-foreground max-w-2xl mx-auto">
-                Build the capacity your organization needs to lead and adapt to change. These workshops strengthen the foundational skills that make transformation possible and extraordinary achievable.
+                Build the capacity your organization needs to lead and adapt to change. These workshops strengthen the foundational skills that make transformation possible and the extraordinary achievable.
               </p>
             </div>
 
@@ -399,7 +356,7 @@ export default function AmplifyWorkshops() {
 
           <div className="text-center mt-10">
             <Link to="/contact?scope=organization&interest=workshops&message=I'm interested in booking a workshop for our team.">
-              <Button className="bg-brand-teal text-white hover:bg-brand-teal/90 px-8 py-3 text-base font-semibold">
+              <Button className="bg-brand-teal text-white hover:bg-brand-teal/90 h-12 px-8 text-base font-semibold">
                 Contact Us to Book Your Workshop
               </Button>
             </Link>
@@ -418,7 +375,7 @@ export default function AmplifyWorkshops() {
             Many can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive workshop</strong> tailored to your team.
           </p>
           <Link to="/speaking">
-            <Button variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal hover:text-white font-poppins font-semibold rounded-lg px-6">
+            <Button variant="outline" className="border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white font-poppins font-semibold rounded-lg h-12 px-8 text-base">
               View Speaking Topics <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
