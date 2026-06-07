@@ -368,8 +368,8 @@ export default function EmbodyPathAlt() {
               <Link to="/phase-zero#pillars" className="font-semibold text-primary hover:underline">
                 Painted Porch Pillars
               </Link>{" "}
-              and our <Link to="/phase-zero" className="font-semibold text-primary hover:underline">P.A.T.H.</Link> framework. See{" "}
-              <Link to="/phase-zero" className="font-semibold text-primary hover:underline">
+              and our <Link to="/about/approach#path" className="font-semibold text-primary hover:underline">P.A.T.H.</Link> framework. See{" "}
+              <Link to="/about/approach" className="font-semibold text-primary hover:underline">
                 Our Approach
               </Link>{" "}
               for the full model, or download the white paper for the deep architecture.
