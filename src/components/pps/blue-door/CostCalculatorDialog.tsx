@@ -62,6 +62,7 @@ export default function CostCalculatorDialog({
   // Inputs
   const [industry, setIndustry] = useState<IndustryKey>("tech");
   const [size, setSize] = useState<SizeKey>("mid");
+  const [impactScope, setImpactScope] = useState<ImpactScopeKey>("department");
   const [duration, setDuration] = useState<DurationMonths>(12);
 
   // Advanced
