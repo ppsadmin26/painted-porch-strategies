@@ -102,6 +102,8 @@ const cohorts = [
 ];
 
 export default function AmplifyLabs() {
+  const hasUpcomingCohort = WORKSHOP_START_DATE.getTime() > Date.now();
+
   return (
     <div>
       <PPSBreadcrumb
