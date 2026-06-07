@@ -17,6 +17,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Bell, CheckCircle2, Clock, Loader2, Rocket } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
 import { format } from "date-fns";
 
 interface CourseRow {
@@ -29,6 +30,9 @@ interface CourseRow {
   notified_count: number;
   last_notify_error: string | null;
   updated_at: string;
+  program_type: "course" | "masterclass" | "assessment" | "lab";
+  signup_confirmation_enabled: boolean;
+  admin_alert_enabled: boolean;
 }
 
 export default function CourseLaunchManager() {
