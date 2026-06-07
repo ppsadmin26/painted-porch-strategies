@@ -337,7 +337,7 @@ export default function EmbodyPathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-10 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
-              What EMBODY includes
+              What EMBODY looks like
             </h2>
             <p className="text-base text-foreground">
               Custom-designed to your context. Always anchored by these three.
