@@ -66,24 +66,28 @@ const cohorts = [
     description: "Learn to operate at both strategic and tactical levels simultaneously.",
     image: "/placeholder.svg",
     link: "/stracticalleader",
+    showUpcomingCohort: true,
   },
   {
     title: "Leading Change",
     tagline: "Architect transformation",
     description: "Develop Phase Zero™ foundations before implementation begins.",
     image: "/placeholder.svg",
+    comingSoon: true,
   },
   {
     title: "From Dysfunction to Dynamic",
     tagline: "Build high-performing cultures",
     description: "Design team operating models and sustainable capacity.",
     image: "/placeholder.svg",
+    comingSoon: true,
   },
   {
     title: "Goldilocks Leadership",
     tagline: "Lead with Emotional Intelligence",
     description: "Is your leadership style 'too hot' or 'too cold'? Unlock the power of Emotional Intelligence to find the right balance and lead your teams 'just right.'",
     image: "/placeholder.svg",
+    comingSoon: true,
   },
   {
     title: "Mission: Unstoppable",
@@ -100,6 +104,7 @@ const cohorts = [
     comingSoon: true,
   },
 ];
+
 
 export default function AmplifyLabs() {
   const hasUpcomingCohort = WORKSHOP_START_DATE.getTime() > Date.now();
