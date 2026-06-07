@@ -356,7 +356,7 @@ export default function AmplifyWorkshops() {
 
           <div className="text-center mt-10">
             <Link to="/contact?scope=organization&interest=workshops&message=I'm interested in booking a workshop for our team.">
-              <Button className="bg-brand-teal text-white hover:bg-brand-teal/90 px-8 py-3 text-base font-semibold">
+              <Button className="bg-brand-teal text-white hover:bg-brand-teal/90 h-12 px-8 text-base font-semibold">
                 Contact Us to Book Your Workshop
               </Button>
             </Link>
