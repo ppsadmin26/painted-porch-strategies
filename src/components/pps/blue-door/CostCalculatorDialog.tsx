@@ -26,11 +26,13 @@ import SourcedTooltip from "@/components/pps/SourcedTooltip";
 import {
   INDUSTRY_BENCHMARKS,
   SIZE_PRESETS,
+  IMPACT_SCOPES,
   DURATION_OPTIONS,
   PHASE_ZERO_IMPACT,
   PROJECT_TIME_ALLOCATION,
   type IndustryKey,
   type SizeKey,
+  type ImpactScopeKey,
   type DurationMonths,
 } from "@/data/calculatorBenchmarks";
 
