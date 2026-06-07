@@ -300,7 +300,7 @@ export default function AmplifyWorkshops() {
                 },
                 {
                   icon: Landmark,
-                  title: "Stoicism in the Workplace: Ancient Lessons for Modern Leadership",
+                  title: "Stoicism in the Workplace",
                   image: stoicThumb,
                   description: "Ancient philosophy meets contemporary challenges. How reason, logic, purpose, and virtue create resilient leaders who navigate complexity with clarity and conviction.",
                   duration: "Half-day to full-day",
