@@ -253,6 +253,43 @@ export default function CostCalculatorDialog({
             </div>
           </div>
 
+          {/* Impact scope */}
+          <div className="space-y-2">
+            <Label className="text-navy font-semibold">Impact scope</Label>
+            <p className="text-xs text-muted-foreground -mt-1">
+              How wide is the blast radius? Broader scope means more coordination and higher failure exposure.
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {Object.values(IMPACT_SCOPES).map((s) => {
+                const active = impactScope === s.key;
+                return (
+                  <button
+                    key={s.key}
+                    type="button"
+                    onClick={() => setImpactScope(s.key)}
+                    className={`p-3 rounded-lg border text-left transition-colors ${
+                      active
+                        ? "border-strategic bg-strategic/10 ring-2 ring-strategic/30"
+                        : "border-input hover:border-strategic/50"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="font-semibold text-sm text-navy">{s.label}</div>
+                      <div className="text-[10px] font-semibold text-strategic">
+                        {s.multiplier.toFixed(1)}x
+                      </div>
+                    </div>
+                    <div className="text-xs text-muted-foreground mt-0.5">
+                      {s.description}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+
+
           {/* Duration */}
           <div className="space-y-2">
             <Label className="text-navy font-semibold">
