@@ -154,6 +154,50 @@ export const DURATION_OPTIONS = [3, 6, 12, 18, 24] as const;
 export type DurationMonths = typeof DURATION_OPTIONS[number];
 
 /**
+ * Impact scope multiplier — adjusts exposure (overrun + write-off) based on
+ * the blast radius of the change. Broader scope = more coordination, more
+ * stakeholder friction, higher chance of failure compounding.
+ * Source: BCG "Flipping the Odds" and Prosci Best Practices in Change
+ * Management — failure rates rise ~1.3-1.6x for enterprise-wide/customer-
+ * facing change vs. single-team initiatives.
+ */
+export type ImpactScopeKey = "team" | "department" | "org" | "customer";
+
+export type ImpactScope = {
+  key: ImpactScopeKey;
+  label: string;
+  description: string;
+  multiplier: number;
+};
+
+export const IMPACT_SCOPES: Record<ImpactScopeKey, ImpactScope> = {
+  team: {
+    key: "team",
+    label: "Single team",
+    description: "Contained to one team or function",
+    multiplier: 1.0,
+  },
+  department: {
+    key: "department",
+    label: "Department",
+    description: "Multiple teams in one business unit",
+    multiplier: 1.2,
+  },
+  org: {
+    key: "org",
+    label: "Org-wide",
+    description: "Touches most of the organization",
+    multiplier: 1.4,
+  },
+  customer: {
+    key: "customer",
+    label: "Customer-facing",
+    description: "Changes customer or partner experience",
+    multiplier: 1.6,
+  },
+};
+
+/**
  * Conservative range of exposure reduction a Blue Door + Phase Zero
  * engagement is expected to deliver, based on McKinsey "Losing from Day One"
  * and BCG "Flipping the Odds" research showing well-architected pre-work

@@ -26,11 +26,13 @@ import SourcedTooltip from "@/components/pps/SourcedTooltip";
 import {
   INDUSTRY_BENCHMARKS,
   SIZE_PRESETS,
+  IMPACT_SCOPES,
   DURATION_OPTIONS,
   PHASE_ZERO_IMPACT,
   PROJECT_TIME_ALLOCATION,
   type IndustryKey,
   type SizeKey,
+  type ImpactScopeKey,
   type DurationMonths,
 } from "@/data/calculatorBenchmarks";
 
@@ -60,6 +62,7 @@ export default function CostCalculatorDialog({
   // Inputs
   const [industry, setIndustry] = useState<IndustryKey>("tech");
   const [size, setSize] = useState<SizeKey>("mid");
+  const [impactScope, setImpactScope] = useState<ImpactScopeKey>("department");
   const [duration, setDuration] = useState<DurationMonths>(12);
 
   // Advanced
@@ -80,6 +83,7 @@ export default function CostCalculatorDialog({
   const calc = useMemo(() => {
     const ind = INDUSTRY_BENCHMARKS[industry];
     const preset = SIZE_PRESETS[size];
+    const scope = IMPACT_SCOPES[impactScope];
     const salary = parseFloat(salaryOverride) || ind.avgLoadedSalary;
 
     const teamLaborMonthly = preset.teamSize * (salary / 12) * PROJECT_TIME_ALLOCATION;
@@ -89,11 +93,11 @@ export default function CostCalculatorDialog({
     const monthlyBurn = teamLaborMonthly + techMonthly + outsideMonthly;
     const plannedTotal = monthlyBurn * duration;
 
-    // Range using industry overrun rate ± 10%
-    const overrunLow = plannedTotal * Math.max(0, ind.overrunRate - 0.10);
-    const overrunHigh = plannedTotal * (ind.overrunRate + 0.10);
+    // Range using industry overrun rate ± 10%, scaled by impact scope
+    const overrunLow = plannedTotal * Math.max(0, ind.overrunRate - 0.10) * scope.multiplier;
+    const overrunHigh = plannedTotal * (ind.overrunRate + 0.10) * scope.multiplier;
 
-    const failureWriteOff = plannedTotal * ind.failureRate;
+    const failureWriteOff = plannedTotal * ind.failureRate * scope.multiplier;
 
     const exposureLow = (overrunLow + failureWriteOff) * PHASE_ZERO_IMPACT.min;
     const exposureHigh = (overrunHigh + failureWriteOff) * PHASE_ZERO_IMPACT.max;
@@ -101,6 +105,7 @@ export default function CostCalculatorDialog({
     return {
       ind,
       preset,
+      scope,
       salary,
       plannedTotal,
       overrunLow,
@@ -109,7 +114,7 @@ export default function CostCalculatorDialog({
       exposureLow,
       exposureHigh,
     };
-  }, [industry, size, duration, salaryOverride, outsideConsultants]);
+  }, [industry, size, impactScope, duration, salaryOverride, outsideConsultants]);
 
   const resultsForPayload = () => ({
     industry: calc.ind.label,
@@ -117,6 +122,9 @@ export default function CostCalculatorDialog({
     size: calc.preset.label,
     sizeKey: size,
     teamSize: calc.preset.teamSize,
+    impactScope: calc.scope.label,
+    impactScopeKey: impactScope,
+    impactMultiplier: calc.scope.multiplier,
     durationMonths: duration,
     avgLoadedSalary: calc.salary,
     outsideConsultants,
@@ -244,6 +252,43 @@ export default function CostCalculatorDialog({
               })}
             </div>
           </div>
+
+          {/* Impact scope */}
+          <div className="space-y-2">
+            <Label className="text-navy font-semibold">Impact scope</Label>
+            <p className="text-xs text-muted-foreground -mt-1">
+              How wide is the blast radius? Broader scope means more coordination and higher failure exposure.
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {Object.values(IMPACT_SCOPES).map((s) => {
+                const active = impactScope === s.key;
+                return (
+                  <button
+                    key={s.key}
+                    type="button"
+                    onClick={() => setImpactScope(s.key)}
+                    className={`p-3 rounded-lg border text-left transition-colors ${
+                      active
+                        ? "border-strategic bg-strategic/10 ring-2 ring-strategic/30"
+                        : "border-input hover:border-strategic/50"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="font-semibold text-sm text-navy">{s.label}</div>
+                      <div className="text-[10px] font-semibold text-strategic">
+                        {s.multiplier.toFixed(1)}x
+                      </div>
+                    </div>
+                    <div className="text-xs text-muted-foreground mt-0.5">
+                      {s.description}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+
 
           {/* Duration */}
           <div className="space-y-2">

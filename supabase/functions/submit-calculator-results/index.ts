@@ -29,6 +29,9 @@ interface CalcResults {
   size: string;
   sizeKey: string;
   teamSize: number;
+  impactScope?: string;
+  impactScopeKey?: string;
+  impactMultiplier?: number;
   durationMonths: number;
   avgLoadedSalary: number;
   outsideConsultants: boolean;
@@ -56,6 +59,7 @@ function buildNoteText(b: Body): string {
     ``,
     `Industry: ${r.industry}`,
     `Initiative size: ${r.size} (${r.teamSize} ppl)`,
+    r.impactScope ? `Impact scope: ${r.impactScope}${r.impactMultiplier ? ` (${r.impactMultiplier.toFixed(1)}x)` : ""}` : null,
     `Duration: ${r.durationMonths} months`,
     `Avg loaded salary: ${fmt(r.avgLoadedSalary)}`,
     `Outside consultants: ${r.outsideConsultants ? "Yes" : "No"}`,
