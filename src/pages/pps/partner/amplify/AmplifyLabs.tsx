@@ -214,6 +214,30 @@ export default function AmplifyLabs() {
         </div>
       </section>
 
+      {/* Team & Event Offerings */}
+      <section className="py-16 bg-white">
+        <div className="container max-w-4xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
+            Want to bring one of these labs into your team, organization, or event?
+          </h2>
+          <p className="text-lg text-foreground mb-8 max-w-2xl mx-auto">
+            We offer several of these (and more!) as team and leadership workshops and keynotes.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/workshops">
+              <Button className="bg-strategic border-2 border-strategic text-white hover:bg-transparent hover:text-strategic transition-colors px-8">
+                View Workshops <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+            <Link to="/speaking">
+              <Button variant="outline" className="border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors px-8">
+                View Speaking <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <FAQSection
         tierName="AMPLIFY"
         categories={labFaqCategories}
