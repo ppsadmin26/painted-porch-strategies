@@ -657,12 +657,12 @@ export default function AmplifyPathAlt() {
 
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl text-center">
               <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4">For Individual Leaders</h3>
-              <p className="text-white/90 mb-6">Apply for a Leadership Lab.</p>
+              <p className="text-white/90 mb-6">Have questions about a Leadership Lab?</p>
               <Button asChild className="bg-teal hover:bg-teal/90 text-white w-full mb-4">
-                  <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I'm interested in applying for a Leadership Lab.">Submit Leader Lab Application</Link>
+                  <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I have questions about Leadership Labs and would like to learn more.">Inquire About Leadership Labs</Link>
                 </Button>
               <p className="text-sm text-white/70">
-                We review all applications and contact qualified participants with leadership lab details.
+                Submit your inquiry and we will reach out with details about upcoming leadership lab opportunities.
               </p>
             </div>
           </div>
