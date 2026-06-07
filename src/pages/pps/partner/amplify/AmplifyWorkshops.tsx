@@ -308,7 +308,7 @@ export default function AmplifyWorkshops() {
                 },
                 {
                   icon: Brain,
-                  title: "Mindful Leadership",
+                  title: "Radically Mindful Leadership",
                   image: mindfulnessThumb,
                   description: "Practical mindfulness techniques for executives who don't have time for mindfulness. Build the awareness, focus, and emotional regulation that transform how leaders show up.",
                   duration: "Half-day to full-day",
