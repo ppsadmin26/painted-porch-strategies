@@ -226,7 +226,7 @@ export default function EmbodyPathAlt() {
       />
 
       {/* WHO EMBODY IS FOR */}
-      <section className="py-16 md:py-24 bg-white">
+      <section id="who-embody-is-for" className="py-16 md:py-24 bg-white scroll-mt-24">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <p className="text-sm font-poppins font-semibold tracking-widest text-teal uppercase mb-3">
