@@ -107,20 +107,20 @@ const embodyIncludes = [
 
 const traditionalVsEmbody = [
   {
-    traditional: "Hands you a deck and leaves.",
-    embody: "Stays at the table for 6–12 months.",
+    traditional: "Hands you a deck, a workbook, and a project plan.",
+    embody: "Stays at the table for 6+ months.",
   },
   {
     traditional: "Sells a methodology.",
-    embody: "Co-designs the architecture with you.",
+    embody: "Co-designs the architecture of sustained change.",
   },
   {
-    traditional: "Optimizes for one project.",
+    traditional: "Executes for the near-term need.",
     embody: "Builds capacity that outlasts the engagement.",
   },
   {
-    traditional: "You \"get through\" the change.",
-    embody: "You make it permanent.",
+    traditional: "\"Gets you through\" the change.",
+    embody: "Change is now your habit on repeat.",
   },
 ];
 
