@@ -50,7 +50,7 @@ const workshopFaqCategories: FAQCategory[] = [
 
 const workshopTopics = [
   {
-    title: "Architect Change: Phase Zero™ Strategic Design",
+    title: "Architect Change: Phase Zero Strategic Design",
     image: architectChangeThumb,
     challenge: "Your team jumps straight to execution without designing what you're building. Projects launch before strategic foundations exist.",
     highlights: [
