@@ -198,7 +198,7 @@ export default function CostCalculatorDialog({
           </DialogTitle>
           <DialogDescription>
             Pick three things. We'll estimate what's at risk and how a Blue Door
-            diagnostic de-risks it.
+            operational appraisal can provide the clarity needed to reduce that exposure.
           </DialogDescription>
         </DialogHeader>
 
@@ -391,8 +391,8 @@ export default function CostCalculatorDialog({
               The Blue Door impact
             </p>
             <p className="text-base text-navy mt-1 leading-snug">
-              A <span className="font-bold text-[hsl(216,100%,30%)]">{BLUE_DOOR_PRICE_DISPLAY} Blue Door</span> diagnostic
-              can de-risk an estimated{" "}
+              A <span className="font-bold text-[hsl(216,100%,30%)]">{BLUE_DOOR_PRICE_DISPLAY} Blue Door</span>{" "}
+              operational appraisal can provide the clarity needed to reduce the risked{" "}
               <span className="font-bold text-[hsl(216,100%,30%)] tabular-nums">
                 {fmt(calc.exposureLow)}–{fmt(calc.exposureHigh)}
               </span>{" "}

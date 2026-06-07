@@ -68,7 +68,7 @@ function buildNoteText(b: Body): string {
     `• Planned investment: ${fmt(r.plannedTotal)}`,
     `• Likely overrun: ${fmt(r.overrunLow)} – ${fmt(r.overrunHigh)}`,
     `• Failure write-off: ${fmt(r.failureWriteOff)}`,
-    `• Blue Door de-risks: est. ${fmt(r.exposureLow)} – ${fmt(r.exposureHigh)}`,
+    `• Blue Door operational appraisal reduces risked exposure by: est. ${fmt(r.exposureLow)} – ${fmt(r.exposureHigh)}`,
     ``,
     b.company ? `Company: ${b.company}` : null,
     b.role ? `Role: ${b.role}` : null,
