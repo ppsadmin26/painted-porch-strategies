@@ -356,43 +356,28 @@ export default function AmplifyWorkshops() {
 
           <div className="text-center mt-12 bg-muted/40 border border-border rounded-xl p-8">
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
-              Not sure which workshop is the right fit?
+              Not sure which workshop is right for your team?
             </h3>
+            <p className="text-foreground max-w-2xl mx-auto mb-2">
+              Every team is different. Let's talk through your goals, context, and challenges so we can recommend the workshop (or combination) that best fits where you're headed.
+            </p>
             <p className="text-foreground max-w-2xl mx-auto mb-6">
-              Every team is different. Let's talk through your goals, context, and challenges so we can recommend the workshop (or combination) that best aligns with where you're headed.
+              We also offer several other workshops drawn from our most requested <strong>speaking topics</strong>. Many can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive workshop</strong> tailored to your team.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/contact?scope=organization&interest=workshops&message=I'd like to explore workshop options and find the right fit for our team.">
-                <Button variant="outline" className="border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white h-12 px-8 text-base font-semibold">
+                <Button className="bg-brand-teal text-white hover:bg-brand-teal/90 h-12 px-8 text-base font-semibold">
                   Contact Us to Explore Options
                 </Button>
               </Link>
-              <Link to="/contact?scope=organization&interest=workshops&message=I'm interested in booking a workshop for our team.">
-                <Button className="bg-brand-teal text-white hover:bg-brand-teal/90 h-12 px-8 text-base font-semibold">
-                  Ready to Book a Workshop
+              <Link to="/speaking">
+                <Button variant="outline" className="border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white h-12 px-8 text-base font-semibold">
+                  View Speaking Topics <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
             </div>
           </div>
 
-        </div>
-      </section>
-
-      {/* Speaking Cross-Promo */}
-      <section className="py-8 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-4">
-            Explore More Workshop Options
-          </h3>
-          <p className="text-lg md:text-xl text-charcoal leading-relaxed mb-6">
-            We offer several other workshops drawn from our most requested speaking topics.
-            Many can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive workshop</strong> tailored to your team.
-          </p>
-          <Link to="/speaking">
-            <Button variant="outline" className="border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white font-poppins font-semibold rounded-lg h-12 px-8 text-base">
-              View Speaking Topics <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
         </div>
       </section>
 
