@@ -101,7 +101,7 @@ const cohorts = [
     slug: "lab-goldilocks-leadership",
     tagline: "Lead with Emotional Intelligence",
     description: "Is your leadership style 'too hot' or 'too cold'? Unlock the power of Emotional Intelligence to find the right balance and lead your teams 'just right.'",
-    image: "/placeholder.svg",
+    image: goldilocksImg,
     comingSoon: true,
   },
   {
