@@ -228,6 +228,29 @@ export default function EmbodyPathAlt() {
       {/* WHO EMBODY IS FOR */}
       <section id="who-embody-is-for" className="py-16 md:py-24 bg-white scroll-mt-24">
         <div className="container max-w-6xl mx-auto px-6">
+          {/* Stage-setter */}
+          <div className="text-center mb-10 max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
+              It's time to sh<span className="text-raspberry">IF</span>t from change moments to an innovation movement.
+            </h2>
+            <p className="text-lg text-foreground leading-relaxed">
+              You've made the decision: you're ready for your organization to move from managing change initiatives to leading sustainable transformation. Not consultants to fix or implement change for you. Strategic partners to co-architect permanent capability in your people, your processes, and your systems.
+            </p>
+          </div>
+
+          {/* The EMBODY outcome */}
+          <div className="max-w-4xl mx-auto bg-lime/10 border-l-4 border-lime p-6 rounded-r-xl mb-14">
+            <h3 className="text-lg md:text-xl font-poppins font-semibold text-navy mb-2">
+              The <span className="text-lime">EMBODY</span> outcome you're seeking:
+            </h3>
+            <p className="text-lg text-foreground italic mb-2">
+              We've built the internal structures and culture to architect and execute sustainable change. Continual transformation is now ours to lead.
+            </p>
+            <p className="text-sm text-foreground">
+              Transformation becomes self-sustaining and repeatable. Your organization develops permanent capacity and practices that outlast any single initiative.
+            </p>
+          </div>
+
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <p className="text-sm font-poppins font-semibold tracking-widest text-teal uppercase mb-3">
               Who EMBODY is for
@@ -264,11 +287,12 @@ export default function EmbodyPathAlt() {
           {/* Pull-quote */}
           <div className="max-w-3xl mx-auto bg-muted/40 border-l-4 border-raspberry p-6 rounded-r-xl">
             <p className="text-lg md:text-xl font-poppins italic text-navy leading-relaxed">
-              "The cost of staying the same is rarely on the balance sheet. It shows up in the people who leave, the decisions that stall, and the sh<span className="text-raspberry not-italic font-semibold">IF</span>ts you watched competitors lead."
+              The cost of staying the same is rarely on the balance sheet. It shows up in the people who leave, the decisions that stall, and the sh<span className="text-raspberry font-semibold italic">IF</span>ts you watched competitors lead.
             </p>
           </div>
         </div>
       </section>
+
 
       {/* INDUSTRIES */}
       <section className="py-16 md:py-24 bg-muted">
