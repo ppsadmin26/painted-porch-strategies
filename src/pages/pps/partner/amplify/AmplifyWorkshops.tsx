@@ -322,7 +322,7 @@ export default function AmplifyWorkshops() {
                 },
                 {
                   icon: MessageSquare,
-                  title: "The Art & Architecture of Communicating Change",
+                  title: "Master Your Message",
                   image: communicationThumb,
                   description: "Beyond the announcement email: How to design communication that actually drives behavior change. Build the messaging infrastructure that makes change stick.",
                   duration: "Half-day to full-day",
