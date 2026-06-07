@@ -364,7 +364,7 @@ export default function AmplifySprints() {
 
       <ParallaxCTA
         backgroundImage={amplifyFinalCtaBg}
-        overlayTone="teal"
+        overlayTone="purple"
         eyebrow="Architect first"
         headline={
           <>
