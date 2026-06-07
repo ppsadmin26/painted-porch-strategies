@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Clock } from "lucide-react";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
+import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL } from "./stracticalConfig";
 
 const labFaqCategories: FAQCategory[] = [
   {
