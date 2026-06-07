@@ -225,7 +225,7 @@ export default function AmplifyWorkshops() {
                         className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
                       />
                       <div>
-                        <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-1">{workshop.title}</h2>
+                        <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy leading-tight mb-1">{workshop.title}</h3>
                         <div className="flex flex-wrap gap-2 text-sm">
                           <span className="text-foreground font-medium">{workshop.format}</span>
                           <span className="text-foreground">|</span>
@@ -248,9 +248,6 @@ export default function AmplifyWorkshops() {
                         ))}
                       </ul>
                     </div>
-                    {workshop.note && (
-                      <p className="text-xs text-foreground italic mt-4">*{workshop.note}</p>
-                    )}
                   </div>
                 </div>
               );
