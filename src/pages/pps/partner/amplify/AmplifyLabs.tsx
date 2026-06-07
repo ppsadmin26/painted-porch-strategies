@@ -117,7 +117,7 @@ const cohorts = [
     slug: "lab-operations-on-purpose",
     tagline: "Cut bloat, maximize outcomes",
     description: "Inefficient processes and misaligned roles result in lost time, money, resources, and revenue. Tap into the hidden talents of your team to create flexible, future-ready people who can maximize your outcomes and meet whatever shIFt happens next.",
-    image: "/placeholder.svg",
+    image: operationsImg,
     comingSoon: true,
   },
 ];
