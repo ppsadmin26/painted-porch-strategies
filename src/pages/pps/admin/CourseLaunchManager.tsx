@@ -17,6 +17,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Bell, CheckCircle2, Clock, Loader2, Rocket } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
 import { format } from "date-fns";
 
 interface CourseRow {
@@ -29,6 +30,9 @@ interface CourseRow {
   notified_count: number;
   last_notify_error: string | null;
   updated_at: string;
+  program_type: "course" | "masterclass" | "assessment" | "lab";
+  signup_confirmation_enabled: boolean;
+  admin_alert_enabled: boolean;
 }
 
 export default function CourseLaunchManager() {
@@ -74,6 +78,25 @@ export default function CourseLaunchManager() {
       load();
     }
   };
+
+  const toggleFlag = async (
+    slug: string,
+    field: "signup_confirmation_enabled" | "admin_alert_enabled",
+    value: boolean,
+  ) => {
+    // Optimistic UI
+    setRows((prev) => prev.map((r) => (r.slug === slug ? { ...r, [field]: value } : r)));
+    const { error } = await supabase
+      .from("course_launch_status")
+      .update({ [field]: value })
+      .eq("slug", slug);
+    if (error) {
+      toast({ title: "Update failed", description: error.message, variant: "destructive" });
+      load();
+    }
+  };
+
+
 
   const revertToComingSoon = async (slug: string) => {
     setWorking(slug);
@@ -172,8 +195,9 @@ export default function CourseLaunchManager() {
         <p className="text-sm text-muted-foreground mt-1">
           Toggle a program (course, assessment, masterclass, leadership lab, etc.) from Coming Soon
           to Live. Going live automatically emails everyone on the launch list using the{" "}
-          <code>course-launch-available</code> template, so the CTA on the program page and the
-          notification can't get out of sync.
+          <code>course-launch-available</code> template. The two switches on each card control
+          whether a confirmation email goes to the person who joins the launch list and whether the
+          team gets an alert on every signup.
         </p>
       </div>
 
@@ -201,7 +225,7 @@ export default function CourseLaunchManager() {
                     )}
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Slug: <code>{row.slug}</code> · Page:{" "}
+                    Slug: <code>{row.slug}</code> · Type: <span className="capitalize">{row.program_type}</span> · Page:{" "}
                     <a href={row.course_path} className="text-pps-teal underline" target="_blank" rel="noreferrer">
                       {row.course_path}
                     </a>
@@ -250,7 +274,38 @@ export default function CourseLaunchManager() {
                 </p>
               )}
 
+              <div className="grid sm:grid-cols-2 gap-3 mb-4 p-3 bg-muted/40 rounded-md border border-border">
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <Switch
+                    checked={row.signup_confirmation_enabled}
+                    onCheckedChange={(v) => toggleFlag(row.slug, "signup_confirmation_enabled", v)}
+                  />
+                  <span className="text-sm">
+                    <span className="font-semibold text-navy block">Signup confirmation</span>
+                    <span className="text-xs text-muted-foreground">
+                      Email the person who joins the launch list ({" "}
+                      <code>course-launch-list</code> template).
+                    </span>
+                  </span>
+                </label>
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <Switch
+                    checked={row.admin_alert_enabled}
+                    onCheckedChange={(v) => toggleFlag(row.slug, "admin_alert_enabled", v)}
+                  />
+                  <span className="text-sm">
+                    <span className="font-semibold text-navy block">Admin alert</span>
+                    <span className="text-xs text-muted-foreground">
+                      Notify the team on every signup ({" "}
+                      <code>launch-list-signup-admin</code>, sent to{" "}
+                      <code>ADMIN_NOTIFICATION_EMAIL</code>).
+                    </span>
+                  </span>
+                </label>
+              </div>
+
               <div className="flex flex-wrap gap-2">
+
                 {!isLive ? (
                   <Button
                     onClick={() => setConfirmGoLive(row)}

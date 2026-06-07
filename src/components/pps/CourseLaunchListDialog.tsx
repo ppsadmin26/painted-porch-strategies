@@ -42,7 +42,6 @@ export function CourseLaunchListDialog({
     setLoading(true);
 
     try {
-      const id = crypto.randomUUID();
       const { error } = await supabase.functions.invoke("submit-ghl-lead", {
         body: {
           firstName: firstName.trim(),
@@ -55,19 +54,18 @@ export function CourseLaunchListDialog({
       });
       if (error) throw error;
 
+      // Fire confirmation + admin alert via single fn that respects per-program toggles
       supabase.functions
-        .invoke("send-transactional-email", {
+        .invoke("notify-launch-signup", {
           body: {
-            templateName: "course-launch-list",
-            recipientEmail: email.trim(),
-            idempotencyKey: `course-launch-${courseSlug}-${id}`,
-            templateData: {
-              firstName: firstName.trim(),
-              courseName,
-            },
+            slug: courseSlug,
+            firstName: firstName.trim(),
+            lastName: lastName.trim(),
+            email: email.trim(),
+            newsletter,
           },
         })
-        .catch((err) => console.error("Launch list email error:", err));
+        .catch((err) => console.error("Launch signup notify error:", err));
 
       setSubmitted(true);
     } catch (err) {

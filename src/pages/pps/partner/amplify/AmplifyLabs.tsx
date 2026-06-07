@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
+import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
 import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL } from "./stracticalConfig";
 
 const labFaqCategories: FAQCategory[] = [
@@ -62,6 +63,7 @@ const labFaqCategories: FAQCategory[] = [
 const cohorts = [
   {
     title: "Stractical Leadership",
+    slug: "lab-stractical-leadership",
     tagline: "Balance vision with execution",
     description: "Learn to operate at both strategic and tactical levels simultaneously.",
     image: "/placeholder.svg",
@@ -70,6 +72,7 @@ const cohorts = [
   },
   {
     title: "Leading Change",
+    slug: "lab-leading-change",
     tagline: "Architect transformation",
     description: "Develop Phase Zero™ foundations before implementation begins.",
     image: "/placeholder.svg",
@@ -77,6 +80,7 @@ const cohorts = [
   },
   {
     title: "From Dysfunction to Dynamic",
+    slug: "lab-dysfunction-to-dynamic",
     tagline: "Build high-performing cultures",
     description: "Design team operating models and sustainable capacity.",
     image: "/placeholder.svg",
@@ -84,6 +88,7 @@ const cohorts = [
   },
   {
     title: "Goldilocks Leadership",
+    slug: "lab-goldilocks-leadership",
     tagline: "Lead with Emotional Intelligence",
     description: "Is your leadership style 'too hot' or 'too cold'? Unlock the power of Emotional Intelligence to find the right balance and lead your teams 'just right.'",
     image: "/placeholder.svg",
@@ -91,6 +96,7 @@ const cohorts = [
   },
   {
     title: "Mission: Unstoppable",
+    slug: "lab-mission-unstoppable",
     tagline: "Align goals and strategy",
     description: "Eliminate strategic goal and mission inconsistency. Create a crystal clear mission and strategies to provide direction for your teams to realize operational excellence and strategic success.",
     image: "/placeholder.svg",
@@ -98,6 +104,7 @@ const cohorts = [
   },
   {
     title: "Operations on Purpose",
+    slug: "lab-operations-on-purpose",
     tagline: "Cut bloat, maximize outcomes",
     description: "Inefficient processes and misaligned roles result in lost time, money, resources, and revenue. Tap into the hidden talents of your team to create flexible, future-ready people who can maximize your outcomes and meet whatever shIFt happens next.",
     image: "/placeholder.svg",
@@ -141,8 +148,6 @@ export default function AmplifyLabs() {
           <div className="flex flex-wrap justify-center gap-6 mb-12">
             {cohorts.map((cohort, index) => {
               const showCohortBanner = cohort.showUpcomingCohort && hasUpcomingCohort;
-              const waitlistMessage = `I'm interested in joining the waitlist for the ${cohort.title} Leadership Lab.`;
-              const waitlistHref = `/contact?scope=Yourself&interest=leadership-lab&lab=${encodeURIComponent(cohort.title)}&message=${encodeURIComponent(waitlistMessage)}`;
               return (
                 <div key={index} className="bg-muted rounded-xl overflow-hidden flex flex-col w-full md:w-[calc(33.333%-1rem)] max-w-sm">
                   <div className="aspect-[16/9] bg-strategic/10 flex items-center justify-center">
@@ -162,17 +167,17 @@ export default function AmplifyLabs() {
                       </div>
                     )}
                     {cohort.comingSoon ? (
-                      <div className="flex flex-col items-center gap-1">
-                        <Button disabled className="w-full bg-muted-foreground/20 text-muted-foreground cursor-not-allowed flex items-center gap-2">
-                          <Clock className="w-4 h-4" /> Coming Soon
-                        </Button>
-                        <Link to={waitlistHref} className="text-xs text-strategic hover:underline mt-1">
-                          Join the Waitlist →
-                        </Link>
-                      </div>
+                      <LaunchListCTA
+                        slug={cohort.slug}
+                        courseName={`${cohort.title} Lab`}
+                        layout="block"
+                        liveLabel="Enroll"
+                        textColorClass="text-strategic"
+                        buttonClasses="border-strategic text-strategic hover:bg-strategic hover:text-white"
+                      />
                     ) : (
                       <Button asChild variant="outline" className="w-full border-strategic text-strategic hover:bg-strategic hover:text-white transition-colors">
-                        <Link to={cohort.link || waitlistHref}>Learn More</Link>
+                        <Link to={cohort.link!}>Learn More</Link>
                       </Button>
                     )}
                   </div>
