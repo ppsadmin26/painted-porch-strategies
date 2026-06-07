@@ -366,12 +366,12 @@ export default function AmplifyWorkshops() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/contact?scope=organization&interest=workshops&message=I'd like to explore workshop options and find the right fit for our team.">
-                <Button className="bg-brand-teal text-white hover:bg-brand-teal/90 h-12 px-8 text-base font-semibold">
+                <Button className="bg-teal text-white hover:bg-teal/90 h-12 px-8 text-base font-semibold">
                   Contact Us to Explore Options
                 </Button>
               </Link>
               <Link to="/speaking">
-                <Button variant="outline" className="border-2 border-brand-teal text-brand-teal hover:bg-brand-teal hover:text-white h-12 px-8 text-base font-semibold">
+                <Button variant="outline" className="border-2 border-teal text-teal hover:bg-teal hover:text-white h-12 px-8 text-base font-semibold">
                   View Speaking Topics <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
