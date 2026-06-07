@@ -136,7 +136,7 @@ export default function AmplifyLabs() {
         ]}
       />
 
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container max-w-6xl mx-auto px-6">
           <Link
             to="/partner/amplify"
@@ -155,16 +155,16 @@ export default function AmplifyLabs() {
           </div>
 
 
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {cohorts.map((cohort, index) => {
               const showCohortBanner = cohort.showUpcomingCohort && hasUpcomingCohort;
               return (
-                <div key={index} className="bg-muted rounded-xl overflow-hidden flex flex-col w-full md:w-[calc(33.333%-1rem)] max-w-sm">
+                <div key={index} className="bg-white rounded-xl overflow-hidden flex flex-col shadow-sm">
                   <div className="aspect-[16/9] bg-strategic/10 flex items-center justify-center">
                     <img src={cohort.image} alt={cohort.title} className="w-full h-full object-cover" />
                   </div>
                   <div className="p-5 flex flex-col flex-1">
-                    <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-1">{cohort.title}</h2>
+                    <h2 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-1 leading-tight">{cohort.title}</h2>
                     <p className="text-sm font-semibold text-strategic mb-2">{cohort.tagline}</p>
                     <p className="text-sm text-foreground mb-4 flex-1">{cohort.description}</p>
                     {showCohortBanner && (
@@ -215,7 +215,7 @@ export default function AmplifyLabs() {
       </section>
 
       {/* Team & Event Offerings */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white border-t border-border/50">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
             Want to bring one of these labs into your team, organization, or event?
