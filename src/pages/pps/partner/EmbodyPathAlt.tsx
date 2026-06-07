@@ -107,20 +107,20 @@ const embodyIncludes = [
 
 const traditionalVsEmbody = [
   {
-    traditional: "Hands you a deck and leaves.",
-    embody: "Stays at the table for 6–12 months.",
+    traditional: "Hands you a deck, a workbook, and a project plan.",
+    embody: "Stays at the table for 6+ months.",
   },
   {
     traditional: "Sells a methodology.",
-    embody: "Co-designs the architecture with you.",
+    embody: "Co-designs the architecture of sustained change.",
   },
   {
-    traditional: "Optimizes for one project.",
+    traditional: "Executes for the near-term need.",
     embody: "Builds capacity that outlasts the engagement.",
   },
   {
-    traditional: "You \"get through\" the change.",
-    embody: "You make it permanent.",
+    traditional: "\"Gets you through\" the change.",
+    embody: "Change is now your habit on repeat.",
   },
 ];
 
@@ -470,7 +470,7 @@ export default function EmbodyPathAlt() {
               This isn't a traditional implementation engagement.
             </h2>
             <p className="text-base text-white/85 max-w-2xl mx-auto">
-              Most consultancies optimize for the deliverable. EMBODY is an embedded advisory partnership that optimizes for what your organization is still doing five years after we're gone.
+              Typical consultancies execute for the deliverable. EMBODY is an embedded advisory partnership that optimizes for what your organization is still doing five years after we're gone.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-white/15 rounded-xl overflow-hidden border border-white/15">
