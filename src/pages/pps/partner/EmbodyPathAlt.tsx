@@ -412,7 +412,7 @@ export default function EmbodyPathAlt() {
                 <ul className="space-y-2">
                   {[
                     "A team that prepares and leads change faster than the market shifts",
-                    "One strategic partnership instead of fragmented vendors to manage",
+                    "One strategic plan and direction instead of fragmented vendor projects to manage",
                     "Permanent internal capacity to architect change without us",
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-foreground">
