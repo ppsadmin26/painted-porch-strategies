@@ -10,230 +10,492 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Calculator, AlertTriangle } from "lucide-react";
+import {
+  Calculator,
+  AlertTriangle,
+  ChevronDown,
+  CheckCircle2,
+  Loader2,
+  ArrowRight,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import SourcedTooltip from "@/components/pps/SourcedTooltip";
+import {
+  INDUSTRY_BENCHMARKS,
+  SIZE_PRESETS,
+  DURATION_OPTIONS,
+  PHASE_ZERO_IMPACT,
+  PROJECT_TIME_ALLOCATION,
+  type IndustryKey,
+  type SizeKey,
+  type DurationMonths,
+} from "@/data/calculatorBenchmarks";
 
-const PROJECT_TIME_OVERRUN = 0.30;
-const IN_HOUSE_WORK_WEEK_HOURS = 45;
-const IN_HOUSE_PROJECT_ALLOCATION = 0.65;
-const IN_HOUSE_PROJECT_HOURS_PER_WEEK = IN_HOUSE_WORK_WEEK_HOURS * IN_HOUSE_PROJECT_ALLOCATION;
-const OUTSIDE_RESOURCES = 3;
-const OUTSIDE_HOURS_PER_WEEK = 12;
-const WEEKS_PER_MONTH = 4.33;
-const OUTSIDE_BILLABLE_RATE = 200;
+interface CostCalculatorDialogProps {
+  /** Override the default trigger button styling/copy. */
+  triggerLabel?: string;
+  triggerVariant?: "outline" | "default";
+  triggerClassName?: string;
+}
 
-export default function CostCalculatorDialog() {
+const fmt = (n: number) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(Math.round(n));
+
+export default function CostCalculatorDialog({
+  triggerLabel = "Calculate Your ROI",
+  triggerVariant = "outline",
+  triggerClassName,
+}: CostCalculatorDialogProps = {}) {
   const [open, setOpen] = useState(false);
-  const [teamMembers, setTeamMembers] = useState<string>("");
-  const [avgSalary, setAvgSalary] = useState<string>("");
-  const [licenseFee, setLicenseFee] = useState<string>("");
-  const [projectMonths, setProjectMonths] = useState<string>("");
-  const [resourceType, setResourceType] = useState<"in-house" | "outside">("in-house");
+  const { toast } = useToast();
 
-  const calculations = useMemo(() => {
-    const members = parseFloat(teamMembers) || 0;
-    const salary = parseFloat(avgSalary) || 0;
-    const license = parseFloat(licenseFee) || 0;
-    const months = parseFloat(projectMonths) || 0;
+  // Inputs
+  const [industry, setIndustry] = useState<IndustryKey>("tech");
+  const [size, setSize] = useState<SizeKey>("mid");
+  const [duration, setDuration] = useState<DurationMonths>(12);
 
-    if (members === 0 || months === 0) return null;
+  // Advanced
+  const [showAdvanced, setShowAdvanced] = useState(false);
+  const [salaryOverride, setSalaryOverride] = useState<string>("");
+  const [outsideConsultants, setOutsideConsultants] = useState(false);
 
-    const annualHours = IN_HOUSE_WORK_WEEK_HOURS * 52;
-    const hourlyRate = salary / annualHours;
-    
-    let plannedLaborCost: number;
-    let outsideResourceCost = 0;
+  // Lead form
+  const [showLeadForm, setShowLeadForm] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [role, setRole] = useState("");
 
-    if (resourceType === "in-house") {
-      const monthlyProjectHours = IN_HOUSE_PROJECT_HOURS_PER_WEEK * WEEKS_PER_MONTH;
-      plannedLaborCost = members * hourlyRate * monthlyProjectHours * months;
-    } else {
-      plannedLaborCost = members * (salary / 12) * months;
-      outsideResourceCost = OUTSIDE_RESOURCES * OUTSIDE_HOURS_PER_WEEK * WEEKS_PER_MONTH * OUTSIDE_BILLABLE_RATE * months;
-    }
-    
-    const plannedTechCost = members * license * months;
-    const plannedTotal = plannedLaborCost + plannedTechCost + outsideResourceCost;
-    const overrunMonths = months * PROJECT_TIME_OVERRUN;
-    
-    const overrunLaborCost = resourceType === "in-house"
-      ? members * hourlyRate * IN_HOUSE_PROJECT_HOURS_PER_WEEK * WEEKS_PER_MONTH * overrunMonths
-      : members * (salary / 12) * overrunMonths;
-    const overrunTechCost = members * license * overrunMonths;
-    const overrunOutsideCost = resourceType === "outside"
-      ? OUTSIDE_RESOURCES * OUTSIDE_HOURS_PER_WEEK * WEEKS_PER_MONTH * OUTSIDE_BILLABLE_RATE * overrunMonths
-      : 0;
-    const overrunTotal = overrunLaborCost + overrunTechCost + overrunOutsideCost;
-    const failureCost = plannedTotal * 0.5;
+  const calc = useMemo(() => {
+    const ind = INDUSTRY_BENCHMARKS[industry];
+    const preset = SIZE_PRESETS[size];
+    const salary = parseFloat(salaryOverride) || ind.avgLoadedSalary;
+
+    const teamLaborMonthly = preset.teamSize * (salary / 12) * PROJECT_TIME_ALLOCATION;
+    const techMonthly = preset.teamSize * preset.techCostPerSeat;
+    const outsideMonthly = outsideConsultants ? 3 * 48 * 200 : 0; // 3 consultants × ~48 hrs/mo × $200
+
+    const monthlyBurn = teamLaborMonthly + techMonthly + outsideMonthly;
+    const plannedTotal = monthlyBurn * duration;
+
+    // Range using industry overrun rate ± 10%
+    const overrunLow = plannedTotal * Math.max(0, ind.overrunRate - 0.10);
+    const overrunHigh = plannedTotal * (ind.overrunRate + 0.10);
+
+    const failureWriteOff = plannedTotal * ind.failureRate;
+
+    const exposureLow = (overrunLow + failureWriteOff) * PHASE_ZERO_IMPACT.min;
+    const exposureHigh = (overrunHigh + failureWriteOff) * PHASE_ZERO_IMPACT.max;
 
     return {
+      ind,
+      preset,
+      salary,
       plannedTotal,
-      overrunTotal,
-      actualTotal: plannedTotal + overrunTotal,
-      failureCost,
-      overrunMonths,
-      outsideResourceCost,
+      overrunLow,
+      overrunHigh,
+      failureWriteOff,
+      exposureLow,
+      exposureHigh,
     };
-  }, [teamMembers, avgSalary, licenseFee, projectMonths, resourceType]);
+  }, [industry, size, duration, salaryOverride, outsideConsultants]);
 
-  const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(value);
+  const resultsForPayload = () => ({
+    industry: calc.ind.label,
+    industryKey: industry,
+    size: calc.preset.label,
+    sizeKey: size,
+    teamSize: calc.preset.teamSize,
+    durationMonths: duration,
+    avgLoadedSalary: calc.salary,
+    outsideConsultants,
+    plannedTotal: Math.round(calc.plannedTotal),
+    overrunLow: Math.round(calc.overrunLow),
+    overrunHigh: Math.round(calc.overrunHigh),
+    failureWriteOff: Math.round(calc.failureWriteOff),
+    exposureLow: Math.round(calc.exposureLow),
+    exposureHigh: Math.round(calc.exposureHigh),
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!firstName.trim() || !email.trim()) return;
+    setSubmitting(true);
+    try {
+      const { error } = await supabase.functions.invoke("submit-calculator-results", {
+        body: {
+          firstName: firstName.trim(),
+          lastName: lastName.trim(),
+          email: email.trim(),
+          company: company.trim() || undefined,
+          role: role.trim() || undefined,
+          results: resultsForPayload(),
+        },
+      });
+      if (error) throw error;
+      setSubmitted(true);
+      toast({
+        title: "Results sent.",
+        description: "Check your inbox in the next minute or two.",
+      });
+    } catch (err) {
+      console.error("submit-calculator-results failed", err);
+      toast({
+        title: "Something went sideways.",
+        description: "We couldn't send the email just now. Try again in a moment.",
+        variant: "destructive",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={(o) => {
+      setOpen(o);
+      if (!o) {
+        // reset lead form on close so it's fresh next time
+        setShowLeadForm(false);
+        setSubmitted(false);
+      }
+    }}>
       <DialogTrigger asChild>
         <Button
-          variant="outline"
-          className="mt-6 border-raspberry text-raspberry hover:bg-raspberry hover:text-white transition-all"
+          variant={triggerVariant}
+          className={
+            triggerClassName ??
+            "mt-6 border-raspberry text-raspberry hover:bg-raspberry hover:text-white transition-all"
+          }
         >
           <Calculator className="w-4 h-4 mr-2" />
-          Calculate Your Clarity Gap
+          {triggerLabel}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-lg max-h-[85vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-navy flex items-center gap-2">
+          <DialogTitle className="text-navy flex items-center gap-2 font-poppins">
             <AlertTriangle className="w-5 h-5 text-raspberry" />
-            The Cost of the Capability Gap
+            The Cost of Skipping Phase Zero
           </DialogTitle>
           <DialogDescription>
-            Enter your project details to estimate the potential cost of pursuing transformation where a capability gap exists.
+            Pick three things. We'll estimate what's at risk and how a Blue Door
+            diagnostic de-risks it.
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-4 py-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="teamMembers">Project Team Members</Label>
-              <Input
-                id="teamMembers"
-                type="number"
-                placeholder="e.g., 12"
-                value={teamMembers}
-                onChange={(e) => setTeamMembers(e.target.value)}
-                min="1"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="avgSalary">Avg. Annual Salary ($)</Label>
-              <Input
-                id="avgSalary"
-                type="number"
-                placeholder="e.g., 85000"
-                value={avgSalary}
-                onChange={(e) => setAvgSalary(e.target.value)}
-                min="0"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="licenseFee">Monthly License Fee/User ($)</Label>
-              <Input
-                id="licenseFee"
-                type="number"
-                placeholder="e.g., 150"
-                value={licenseFee}
-                onChange={(e) => setLicenseFee(e.target.value)}
-                min="0"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="projectMonths">Project Length (months)</Label>
-              <Input
-                id="projectMonths"
-                type="number"
-                placeholder="e.g., 12"
-                value={projectMonths}
-                onChange={(e) => setProjectMonths(e.target.value)}
-                min="1"
-              />
-            </div>
-          </div>
-
+        {/* INPUTS */}
+        <div className="space-y-5 py-2">
+          {/* Industry */}
           <div className="space-y-2">
-            <Label>In-House or Partnering with Outside Resources?</Label>
-            <RadioGroup
-              value={resourceType}
-              onValueChange={(v) => setResourceType(v as "in-house" | "outside")}
-              className="flex gap-4"
+            <Label htmlFor="industry" className="text-navy font-semibold">
+              Industry
+            </Label>
+            <select
+              id="industry"
+              value={industry}
+              onChange={(e) => setIndustry(e.target.value as IndustryKey)}
+              className="w-full h-10 rounded-md border border-input bg-background px-3 text-sm"
             >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="in-house" id="in-house" />
-                <Label htmlFor="in-house" className="cursor-pointer text-sm">In-House</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="outside" id="outside" />
-                <Label htmlFor="outside" className="cursor-pointer text-sm">Partnering with Outside</Label>
-              </div>
-            </RadioGroup>
-            <p className="text-xs text-muted-foreground">
-              {resourceType === "in-house"
-                ? "Assumes team dedicates ~65% of their time to the project."
-                : "Adds 3 outside resources at ~12 hrs/week each, billed at $200/hr."}
-            </p>
+              {Object.values(INDUSTRY_BENCHMARKS).map((b) => (
+                <option key={b.key} value={b.key}>
+                  {b.label}
+                </option>
+              ))}
+            </select>
           </div>
 
-          <p className="text-xs text-muted-foreground italic">
-            * Calculations include a 30% average project time overrun based on industry data.
-            {resourceType === "in-house"
-              ? " In-house teams are estimated at 65% time allocation to the project."
-              : " Outside partner costs assume 3 resources × 12 hours/week × $200/hr billable rate."}
-          </p>
+          {/* Size */}
+          <div className="space-y-2">
+            <Label className="text-navy font-semibold">Initiative size</Label>
+            <div className="grid grid-cols-3 gap-2">
+              {Object.values(SIZE_PRESETS).map((p) => {
+                const active = size === p.key;
+                return (
+                  <button
+                    key={p.key}
+                    type="button"
+                    onClick={() => setSize(p.key)}
+                    className={`p-3 rounded-lg border text-left transition-colors ${
+                      active
+                        ? "border-strategic bg-strategic/10 ring-2 ring-strategic/30"
+                        : "border-input hover:border-strategic/50"
+                    }`}
+                  >
+                    <div className="font-semibold text-sm text-navy">{p.label}</div>
+                    <div className="text-xs text-muted-foreground mt-0.5">
+                      {p.description}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Duration */}
+          <div className="space-y-2">
+            <Label className="text-navy font-semibold">
+              Duration ({duration} months)
+            </Label>
+            <div className="flex flex-wrap gap-2">
+              {DURATION_OPTIONS.map((m) => {
+                const active = duration === m;
+                return (
+                  <button
+                    key={m}
+                    type="button"
+                    onClick={() => setDuration(m)}
+                    className={`px-4 py-1.5 rounded-full text-sm border transition-colors ${
+                      active
+                        ? "border-strategic bg-strategic text-white"
+                        : "border-input text-navy hover:border-strategic/50"
+                    }`}
+                  >
+                    {m} mo
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Advanced toggle */}
+          <button
+            type="button"
+            onClick={() => setShowAdvanced((v) => !v)}
+            className="text-xs text-strategic font-semibold inline-flex items-center gap-1 hover:underline"
+          >
+            <ChevronDown
+              className={`w-3 h-3 transition-transform ${showAdvanced ? "rotate-180" : ""}`}
+            />
+            Advanced options
+          </button>
+
+          {showAdvanced && (
+            <div className="space-y-3 p-3 rounded-lg bg-muted/40 border border-border/60">
+              <div className="space-y-1">
+                <Label htmlFor="salaryOverride" className="text-xs">
+                  Override fully-loaded annual salary (USD)
+                </Label>
+                <Input
+                  id="salaryOverride"
+                  type="number"
+                  placeholder={`Default: ${fmt(calc.ind.avgLoadedSalary)}`}
+                  value={salaryOverride}
+                  onChange={(e) => setSalaryOverride(e.target.value)}
+                  min={0}
+                />
+              </div>
+              <label className="flex items-center gap-2 text-sm cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={outsideConsultants}
+                  onChange={(e) => setOutsideConsultants(e.target.checked)}
+                  className="rounded border-input"
+                />
+                <span>Include outside consultants (3 × ~48 hrs/mo × $200)</span>
+              </label>
+            </div>
+          )}
         </div>
 
-        {calculations && (
-          <div className="space-y-3 border-t pt-4">
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-muted-foreground">Planned Investment:</span>
-              <span className="font-semibold text-navy">
-                {formatCurrency(calculations.plannedTotal)}
-              </span>
-            </div>
-            
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-muted-foreground">
-                Typical Overrun Cost (+{calculations.overrunMonths.toFixed(1)} months):
-              </span>
-              <span className="font-semibold text-gold">
-                +{formatCurrency(calculations.overrunTotal)}
-              </span>
-            </div>
-
-            <div className="h-px bg-border" />
-
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-medium">Realistic Total:</span>
-              <span className="font-bold text-strategic text-lg">
-                {formatCurrency(calculations.actualTotal)}
-              </span>
-            </div>
-
-            <div className="bg-raspberry/10 border border-raspberry/20 rounded-lg p-4 mt-4">
-              <p className="text-sm text-raspberry font-medium mb-1">
-                If this transformation fails or stalls:
+        {/* RESULTS */}
+        <div className="space-y-3 border-t pt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div className="p-3 rounded-lg bg-navy/5 border border-navy/15">
+              <p className="text-[0.65rem] uppercase tracking-wider text-navy/70 font-poppins font-semibold">
+                Planned investment
               </p>
-              <p className="text-2xl font-bold text-raspberry">
-                {formatCurrency(calculations.failureCost)} - {formatCurrency(calculations.actualTotal)}
-              </p>
-              <p className="text-xs text-muted-foreground mt-2">
-                Potential wasted investment, not including opportunity cost, leadership credibility, or organizational fatigue.
+              <p className="text-xl font-bold text-navy mt-1 tabular-nums">
+                {fmt(calc.plannedTotal)}
               </p>
             </div>
-
-            <p className="text-sm text-center text-strategic font-medium pt-2">
-              The Blue Door: <span className="font-bold">{BLUE_DOOR_PRICE_DISPLAY}</span> to know before you go.
-            </p>
+            <div className="p-3 rounded-lg bg-gold/10 border border-gold/30">
+              <p className="text-[0.65rem] uppercase tracking-wider text-gold font-poppins font-semibold">
+                Likely overrun
+              </p>
+              <p className="text-xl font-bold text-gold mt-1 tabular-nums">
+                {fmt(calc.overrunLow)}–{fmt(calc.overrunHigh)}
+              </p>
+            </div>
+            <div className="p-3 rounded-lg bg-raspberry/10 border border-raspberry/30">
+              <p className="text-[0.65rem] uppercase tracking-wider text-raspberry font-poppins font-semibold">
+                Failure write-off
+              </p>
+              <p className="text-xl font-bold text-raspberry mt-1 tabular-nums">
+                {fmt(calc.failureWriteOff)}
+              </p>
+            </div>
           </div>
-        )}
+
+          {/* Phase Zero impact hero strip */}
+          <div className="p-4 rounded-lg bg-[hsl(216,100%,30%)]/5 border-2 border-[hsl(216,100%,30%)]/30">
+            <p className="text-xs uppercase tracking-wider text-[hsl(216,100%,30%)] font-poppins font-semibold">
+              The Blue Door impact
+            </p>
+            <p className="text-base text-navy mt-1 leading-snug">
+              A <span className="font-bold text-[hsl(216,100%,30%)]">{BLUE_DOOR_PRICE_DISPLAY} Blue Door</span> diagnostic
+              can de-risk an estimated{" "}
+              <span className="font-bold text-[hsl(216,100%,30%)] tabular-nums">
+                {fmt(calc.exposureLow)}–{fmt(calc.exposureHigh)}
+              </span>{" "}
+              of this exposure.
+            </p>
+            <Button
+              asChild
+              className="mt-3 bg-bluedoor text-white hover:bg-bluedoor/90 h-12 px-8 text-base"
+            >
+              <Link to="/blue-door" onClick={() => setOpen(false)}>
+                Step Through the Blue Door <ArrowRight className="ml-2 w-4 h-4" />
+              </Link>
+            </Button>
+          </div>
+
+          {/* How we calculated this */}
+          <details className="text-xs text-muted-foreground">
+            <summary className="cursor-pointer font-semibold hover:text-foreground">
+              How we calculated this
+            </summary>
+            <div className="mt-2 space-y-2 leading-relaxed">
+              <p>
+                <span className="font-semibold">Planned investment</span> = team size
+                × (loaded salary ÷ 12) × {Math.round(PROJECT_TIME_ALLOCATION * 100)}%
+                allocation + tech/license + (optional) outside consultants, over the
+                selected duration.
+              </p>
+              <p>
+                <span className="font-semibold">Likely overrun</span> = planned ×
+                industry overrun rate (
+                {Math.round((calc.ind.overrunRate - 0.1) * 100)}–
+                {Math.round((calc.ind.overrunRate + 0.1) * 100)}% for{" "}
+                {calc.ind.label}).
+              </p>
+              <p>
+                <span className="font-semibold">Failure write-off</span> = planned ×
+                industry failure rate ({Math.round(calc.ind.failureRate * 100)}% for{" "}
+                {calc.ind.label}).
+              </p>
+              <p>
+                <span className="font-semibold">Blue Door impact</span> = (overrun +
+                failure) × {Math.round(PHASE_ZERO_IMPACT.min * 100)}–
+                {Math.round(PHASE_ZERO_IMPACT.max * 100)}% (McKinsey + BCG research
+                on Phase Zero exposure reduction).
+              </p>
+              <div className="pt-2">
+                <p className="font-semibold mb-1">Industry sources:</p>
+                <ul className="space-y-1 pl-3">
+                  {calc.ind.sources.map((s, i) => (
+                    <li key={i} className="flex items-start gap-1.5">
+                      <span>•</span>
+                      <span>
+                        {s.label}{" "}
+                        <SourcedTooltip
+                          source={s.label}
+                          sourceUrl={s.url}
+                          size="xs"
+                        />
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        {/* LEAD CAPTURE */}
+        <div className="border-t pt-4 mt-2">
+          {!submitted && !showLeadForm && (
+            <button
+              type="button"
+              onClick={() => setShowLeadForm(true)}
+              className="w-full text-center py-2 px-4 rounded-lg border-2 border-dashed border-strategic/40 text-strategic font-semibold hover:bg-strategic/5 transition-colors text-sm"
+            >
+              📧 Email me these results
+            </button>
+          )}
+
+          {submitted && (
+            <div className="flex items-center gap-2 text-sm text-lime font-semibold">
+              <CheckCircle2 className="w-4 h-4" />
+              Sent. Check your inbox.
+            </div>
+          )}
+
+          {showLeadForm && !submitted && (
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <p className="text-sm text-navy font-semibold">
+                Get these results in your inbox
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Great for sharing with your team or championing the case
+                internally.
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                <Input
+                  required
+                  placeholder="First name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  maxLength={60}
+                />
+                <Input
+                  placeholder="Last name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  maxLength={60}
+                />
+              </div>
+              <Input
+                required
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                maxLength={255}
+              />
+              <div className="grid grid-cols-2 gap-2">
+                <Input
+                  placeholder="Company (optional)"
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                  maxLength={100}
+                />
+                <Input
+                  placeholder="Role (optional)"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                  maxLength={80}
+                />
+              </div>
+              <Button
+                type="submit"
+                disabled={submitting}
+                className="w-full bg-strategic text-white hover:bg-strategic/90"
+              >
+                {submitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" /> Sending...
+                  </>
+                ) : (
+                  <>Send me my results</>
+                )}
+              </Button>
+              <p className="text-[0.65rem] text-muted-foreground">
+                We'll send your results plus occasional Phase Zero insights. Unsubscribe anytime.
+              </p>
+            </form>
+          )}
+        </div>
       </DialogContent>
     </Dialog>
   );
