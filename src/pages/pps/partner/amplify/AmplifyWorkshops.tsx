@@ -294,7 +294,7 @@ export default function AmplifyWorkshops() {
               {[
                 {
                   icon: Users,
-                  title: "Building Extraordinary Teams",
+                  title: "Create Extraordinary Teams",
                   image: teamBuildingThumb,
                   description: "Why most team-building fails, and what high-performing teams actually do differently. Move beyond trust falls to build teams that collaborate, challenge, and create together.",
                   duration: "Half-day to full-day",
