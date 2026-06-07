@@ -157,13 +157,9 @@ const faqItems = [
 ];
 
 // ROI Lists
-const costOfSkipping = [
-  "Transformation initiative fumbles (delays), fizzles (descoped), or failures (Over 70% - industry research)",
-  "Millions invested in technology that isn't fully adopted or ROI realized",
-  "Leadership teams misaligned, working in different directions",
-  "Employee burnout and turnover from constant change without clarity",
-  "Change theater, activity without real transformation",
-];
+// NOTE: "Cost of Skipping" rows are sourced from `@/data/costOfSkippingStats`
+// so the citations stay in one place and can be refreshed annually.
+
 
 const whatAmplifyEliminates = [
   "Failed initiatives due to lack of Phase Zero preparation",
