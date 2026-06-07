@@ -74,7 +74,7 @@ const amplifyFormats = [
       "Leadership Operating Model Design",
     ],
     timeline: "Half-day to multi-day workshops",
-    investment: "Starting at $7,500",
+    investment: "Starting at $5,000",
     cta: "Explore Workshops",
     ctaLink: "/partner/amplify/workshops",
   },
