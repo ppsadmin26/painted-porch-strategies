@@ -8,6 +8,7 @@ import {
   PlayCircle, Target, MessageSquare, Compass, FileText, Sparkles, Clock, Bell
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import amyPhoto from "@/assets/team/amy-yackowski.png";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
