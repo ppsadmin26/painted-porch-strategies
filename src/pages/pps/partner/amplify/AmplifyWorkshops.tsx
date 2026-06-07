@@ -403,12 +403,16 @@ export default function AmplifyWorkshops() {
       {/* Speaking Cross-Promo */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-4">
+            Explore More Workshop Options
+          </h3>
           <p className="text-lg md:text-xl text-charcoal leading-relaxed mb-6">
-            Many of our speaking topics can be delivered as a <strong>60-minute keynote</strong> or a <strong>2+ hour workshop</strong>.
+            We offer several other workshops drawn from our most requested speaking topics.
+            Many can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive workshop</strong> tailored to your team.
           </p>
           <Link to="/speaking">
             <Button variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal hover:text-white font-poppins font-semibold rounded-lg px-6">
-              Learn More <ArrowRight className="ml-2 h-4 w-4" />
+              View Speaking Topics <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>
