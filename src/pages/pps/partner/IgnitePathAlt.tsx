@@ -156,7 +156,7 @@ export default function IgnitePathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Ready to IGNITE Your Next Sh<span className="text-gold">IF</span>t?
+              Ready to IGNITE Your Next Sh<span className="text-gold font-bold">IF</span>t?
             </h2>
             <p className="text-lg text-foreground max-w-3xl mx-auto mb-2">
               IGNITE is the self-led entry point onto the Painted Porch, designed to spark clarity, build confidence, and prove transformative sh<span className="text-gold font-bold">IF</span>t is possible.
@@ -194,7 +194,7 @@ export default function IgnitePathAlt() {
           
           <div className="text-center">
             <p className="text-lg text-foreground mb-6">
-              <strong>If any of these spark a "Sh<span className="text-gold">IF</span>t Yeah!", then stepping onto the IGNITE path is just right for you.</strong>
+              <strong>If any of these spark a "Sh<span className="text-gold font-bold">IF</span>t Yeah!", then stepping onto the IGNITE path is just right for you.</strong>
             </p>
             <p className="text-foreground mb-8 max-w-2xl mx-auto">
               Take our free P.A.T.H.finder quiz to discover which programs fit your specific development priorities.
@@ -213,7 +213,7 @@ export default function IgnitePathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Three Ways to Spark Sh<span className="text-gold">IF</span>t
+              Three Ways to Spark Sh<span className="text-gold font-bold">IF</span>t
             </h2>
           </div>
           
@@ -362,7 +362,7 @@ export default function IgnitePathAlt() {
           
           <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {/* Path 1: Nurture the Spark */}
-            <div className="bg-gold/10 p-8 rounded-xl border-t-4 border-gold">
+            <div className="bg-gold/10 p-8 rounded-xl border-t-4 border-gold flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
                   <TIERS.IGNITE.icon className="w-5 h-5 text-gold" />
@@ -390,9 +390,12 @@ export default function IgnitePathAlt() {
                   Build comprehensive strategic capacity
                 </li>
               </ul>
-              <p className="text-xs text-muted-foreground italic">
+              <p className="text-xs text-muted-foreground italic mb-4">
                 Best for: Leaders who want continued self-paced development
               </p>
+              <Button asChild className="mt-auto bg-transparent border-2 border-gold text-gold hover:bg-gold hover:text-white w-full transition-colors text-sm px-2">
+                <a href="#experience">Browse IGNITE Programs <ArrowRight className="ml-2 w-4 h-4" /></a>
+              </Button>
             </div>
 
             {/* Path 2: Amplify What You've Started */}
@@ -515,7 +518,7 @@ export default function IgnitePathAlt() {
       <ParallaxCTA
         backgroundImage={igniteCtaBg}
         overlayTone="teal"
-        headline={<>What Sh<span className="text-gold">IF</span>t Will You Ignite First?</>}
+        headline={<>What Sh<span className="text-gold font-bold">IF</span>t Will You Ignite First?</>}
         description={<><strong>Your Phase Zero journey starts with one program, one assessment, or one decision to invest in your transformation capacity.</strong></>}
         footnote="Not sure where to start? Take our free P.A.T.H.finder quiz to get personalized recommendations based on your development priorities."
         actions={[
