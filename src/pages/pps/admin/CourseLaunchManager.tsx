@@ -96,18 +96,7 @@ export default function CourseLaunchManager() {
     }
   };
 
-    const { error } = await supabase
-      .from("course_launch_status")
-      .update({ checkout_url: drafts[slug]?.trim() || null })
-      .eq("slug", slug);
-    setWorking(null);
-    if (error) {
-      toast({ title: "Save failed", description: error.message, variant: "destructive" });
-    } else {
-      toast({ title: "Saved", description: "Checkout URL updated." });
-      load();
-    }
-  };
+
 
   const revertToComingSoon = async (slug: string) => {
     setWorking(slug);
