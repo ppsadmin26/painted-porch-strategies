@@ -365,11 +365,11 @@ export default function EmbodyPathAlt() {
           <div className="max-w-3xl mx-auto text-center bg-muted/40 rounded-xl p-6">
             <p className="text-sm text-foreground mb-4">
               Built on the{" "}
-              <Link to="/about/approach#pillars" className="font-semibold text-primary hover:underline">
+              <Link to="/phase-zero#pillars" className="font-semibold text-primary hover:underline">
                 Painted Porch Pillars
               </Link>{" "}
-              and our <Link to="/about/approach" className="font-semibold text-primary hover:underline">P.A.T.H.</Link> framework. See{" "}
-              <Link to="/about/approach" className="font-semibold text-primary hover:underline">
+              and our <Link to="/phase-zero" className="font-semibold text-primary hover:underline">P.A.T.H.</Link> framework. See{" "}
+              <Link to="/phase-zero" className="font-semibold text-primary hover:underline">
                 Our Approach
               </Link>{" "}
               for the full model, or download the white paper for the deep architecture.
