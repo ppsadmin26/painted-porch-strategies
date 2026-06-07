@@ -217,7 +217,7 @@ export default function AmplifyPathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              You Know What Sh<span className="text-strategic">IF</span>t You Want to Make Happen,  Now You Need to Build the Capacity for It.
+              You Know What Sh<span className="text-[hsl(263,70%,55%)]">IF</span>t You Want to Make Happen,  Now You Need to Build the Capacity for It.
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
               Our AMPLIFY P.A.T.H.way is designed for two audiences, organizations/teams seeking alignment AND individual leaders wanting peer learning.
@@ -289,10 +289,10 @@ export default function AmplifyPathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Three Ways to AMPLIFY Your Next Sh<span className="text-strategic">IF</span>t
+              Three Ways to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)]">IF</span>t
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
-              Choose a P.A.T.H.way based on whether you're developing or expanding capabilities to sh<span className="text-strategic font-bold">IF</span>t for your team/organization or yourself as an individual leader.
+              Choose a P.A.T.H.way based on whether you're developing or expanding capabilities to sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t for your team/organization or yourself as an individual leader.
             </p>
           </div>
 
@@ -343,7 +343,7 @@ export default function AmplifyPathAlt() {
               The ROI of Phase Zero Architecture
             </h2>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
-              When strategic authorship & architecture is intentionally designed, innovation amplifies and sh<span className="text-strategic font-bold">IF</span>t happens. AMPLIFY partnerships represent a strategic investment in transformation. Leaders invest because the cost of skipping Phase Zero far exceeds the investment in building it.
+              When strategic authorship & architecture is intentionally designed, innovation amplifies and sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t happens. AMPLIFY partnerships represent a strategic investment in transformation. Leaders invest because the cost of skipping Phase Zero far exceeds the investment in building it.
             </p>
           </div>
 
@@ -545,7 +545,7 @@ export default function AmplifyPathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Taking Your Sh<span className="text-strategic">IF</span>t to the Next Level
+              Taking Your Sh<span className="text-[hsl(263,70%,55%)]">IF</span>t to the Next Level
             </h2>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
               Most AMPLIFY partnerships reveal one of two things: your team got what you needed and you're ready to execute, or you realize you need deeper, ongoing partnership. That's exactly what EMBODY is designed for.
@@ -636,7 +636,7 @@ export default function AmplifyPathAlt() {
         <div className="container max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to AMPLIFY Your Next Sh<span className="text-strategic">IF</span>t?
+              Ready to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)]">IF</span>t?
             </h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto">
               Strategic architecture creates transformation that lasts. Choose your pathway below.
