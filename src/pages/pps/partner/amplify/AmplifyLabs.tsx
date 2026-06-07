@@ -130,7 +130,16 @@ export default function AmplifyLabs() {
             <p className="text-lg text-foreground max-w-3xl mx-auto">
               Explore Phase Zero concepts with other leaders navigating similar challenges. Each Leadership Lab is a 6–12 week cohort-style program with peer accountability, monthly group sessions, and individual coaching touchpoints.
             </p>
+            {hasUpcomingCohort && (
+              <div className="mt-6 inline-flex items-center gap-2 bg-strategic/10 border border-strategic/30 text-navy px-5 py-3 rounded-full">
+                <Calendar className="w-4 h-4 text-strategic" />
+                <span className="text-sm md:text-base">
+                  Our next cohort starts on <span className="font-semibold text-strategic">{WORKSHOP_DATE_LABEL}</span>
+                </span>
+              </div>
+            )}
           </div>
+
 
           <div className="flex flex-wrap justify-center gap-6 mb-12">
             {cohorts.map((cohort, index) => (
