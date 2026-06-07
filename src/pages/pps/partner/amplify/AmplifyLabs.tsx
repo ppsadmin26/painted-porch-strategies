@@ -109,7 +109,7 @@ const cohorts = [
     slug: "lab-mission-unstoppable",
     tagline: "Align goals and strategy",
     description: "Eliminate strategic goal and mission inconsistency. Create a crystal clear mission and strategies to provide direction for your teams to realize operational excellence and strategic success.",
-    image: "/placeholder.svg",
+    image: missionImg,
     comingSoon: true,
   },
   {
