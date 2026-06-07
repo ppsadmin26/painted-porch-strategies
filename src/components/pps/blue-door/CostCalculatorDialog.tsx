@@ -83,6 +83,7 @@ export default function CostCalculatorDialog({
   const calc = useMemo(() => {
     const ind = INDUSTRY_BENCHMARKS[industry];
     const preset = SIZE_PRESETS[size];
+    const scope = IMPACT_SCOPES[impactScope];
     const salary = parseFloat(salaryOverride) || ind.avgLoadedSalary;
 
     const teamLaborMonthly = preset.teamSize * (salary / 12) * PROJECT_TIME_ALLOCATION;
@@ -92,11 +93,11 @@ export default function CostCalculatorDialog({
     const monthlyBurn = teamLaborMonthly + techMonthly + outsideMonthly;
     const plannedTotal = monthlyBurn * duration;
 
-    // Range using industry overrun rate ± 10%
-    const overrunLow = plannedTotal * Math.max(0, ind.overrunRate - 0.10);
-    const overrunHigh = plannedTotal * (ind.overrunRate + 0.10);
+    // Range using industry overrun rate ± 10%, scaled by impact scope
+    const overrunLow = plannedTotal * Math.max(0, ind.overrunRate - 0.10) * scope.multiplier;
+    const overrunHigh = plannedTotal * (ind.overrunRate + 0.10) * scope.multiplier;
 
-    const failureWriteOff = plannedTotal * ind.failureRate;
+    const failureWriteOff = plannedTotal * ind.failureRate * scope.multiplier;
 
     const exposureLow = (overrunLow + failureWriteOff) * PHASE_ZERO_IMPACT.min;
     const exposureHigh = (overrunHigh + failureWriteOff) * PHASE_ZERO_IMPACT.max;
@@ -104,6 +105,7 @@ export default function CostCalculatorDialog({
     return {
       ind,
       preset,
+      scope,
       salary,
       plannedTotal,
       overrunLow,
@@ -112,7 +114,7 @@ export default function CostCalculatorDialog({
       exposureLow,
       exposureHigh,
     };
-  }, [industry, size, duration, salaryOverride, outsideConsultants]);
+  }, [industry, size, impactScope, duration, salaryOverride, outsideConsultants]);
 
   const resultsForPayload = () => ({
     industry: calc.ind.label,
@@ -120,6 +122,9 @@ export default function CostCalculatorDialog({
     size: calc.preset.label,
     sizeKey: size,
     teamSize: calc.preset.teamSize,
+    impactScope: calc.scope.label,
+    impactScopeKey: impactScope,
+    impactMultiplier: calc.scope.multiplier,
     durationMonths: duration,
     avgLoadedSalary: calc.salary,
     outsideConsultants,
