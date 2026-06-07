@@ -427,7 +427,7 @@ export default function AmplifyPathAlt() {
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container max-w-6xl mx-auto px-6">
           <h3 className="text-xl md:text-2xl font-semibold text-navy text-center mb-8">
-            Which Sh<span className="text-strategic">IF</span>t: Workshop vs. Sprint vs. Leader Lab
+            Which Sh<span className="text-[hsl(263,70%,55%)]">IF</span>t: Workshop vs. Sprint vs. Leader Lab
           </h3>
 
           <div className="grid md:grid-cols-3 gap-8">
