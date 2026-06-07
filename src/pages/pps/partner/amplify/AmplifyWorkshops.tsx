@@ -250,7 +250,7 @@ export default function AmplifyWorkshops() {
                 Leadership & Team Development Workshops
               </h2>
               <p className="text-foreground max-w-2xl mx-auto">
-                Build the capacity your organization needs to lead and adapt to change. These workshops strengthen the foundational skills that make transformation possible and extraordinary achievable.
+                Build the capacity your organization needs to lead and adapt to change. These workshops strengthen the foundational skills that make transformation possible and the extraordinary achievable.
               </p>
             </div>
 
