@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, ArrowRight, Users, User, Landmark, Link2, AlertTriangle, Radio, Crosshair } from "lucide-react";
+import { CheckCircle, ArrowRight, Users, User, Landmark, Link2, AlertTriangle, Radio, Crosshair, Info } from "lucide-react";
 import amplifyHeroImage from "@/assets/amplify-hero-lightbulb-v3.jpg";
 import amplifyFinalCtaBg from "@/assets/amplify-final-cta-bg.jpg";
 import { TierBadge, TIERS } from "@/components/pps/TierBadge";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { FAQSection, type FAQItem } from "@/components/pps/FAQSection";
 import { PartnerIncludedSection, ExploreBeforeCommitSection } from "@/components/pps/partner";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { costOfSkippingStats } from "@/data/costOfSkippingStats";
 
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
 
@@ -155,13 +157,9 @@ const faqItems = [
 ];
 
 // ROI Lists
-const costOfSkipping = [
-  "Transformation initiative fumbles (delays), fizzles (descoped), or failures (Over 70% - industry research)",
-  "Millions invested in technology that isn't fully adopted or ROI realized",
-  "Leadership teams misaligned, working in different directions",
-  "Employee burnout and turnover from constant change without clarity",
-  "Change theater, activity without real transformation",
-];
+// NOTE: "Cost of Skipping" rows are sourced from `@/data/costOfSkippingStats`
+// so the citations stay in one place and can be refreshed annually.
+
 
 const whatAmplifyEliminates = [
   "Failed initiatives due to lack of Phase Zero preparation",
@@ -372,13 +370,45 @@ export default function AmplifyPathAlt() {
                 </tr>
               </thead>
               <tbody>
-                {Array.from({ length: Math.max(costOfSkipping.length, whatAmplifyEliminates.length, whatAmplifyEnables.length) }).map((_, i) => (
+                <TooltipProvider delayDuration={150}>
+                {Array.from({ length: Math.max(costOfSkippingStats.length, whatAmplifyEliminates.length, whatAmplifyEnables.length) }).map((_, i) => {
+                  const skip = costOfSkippingStats[i];
+                  return (
                   <tr key={i} className="align-top">
                     <td className="p-4 text-sm text-foreground bg-gold/5 border-b border-gold/15">
-                      {costOfSkipping[i] ? (
+                      {skip ? (
                         <div className="flex items-start gap-2">
                           <AlertTriangle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
-                          <span>{costOfSkipping[i]}</span>
+                          <div className="flex-1">
+                            <span>{skip.text}</span>
+                            <div className="mt-1 flex items-start gap-1.5 text-xs italic text-navy/80">
+                              <span className="font-semibold not-italic text-gold">Est.</span>
+                              <span>{skip.stat}</span>
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <button
+                                    type="button"
+                                    aria-label={`Source: ${skip.source}`}
+                                    className="inline-flex shrink-0 text-navy/60 hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-full"
+                                  >
+                                    <Info className="w-3.5 h-3.5" />
+                                  </button>
+                                </TooltipTrigger>
+                                <TooltipContent side="top" className="max-w-xs text-xs">
+                                  <p className="font-semibold mb-1">Source</p>
+                                  <p className="mb-1">{skip.source}</p>
+                                  <a
+                                    href={skip.sourceUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-strategic underline break-all"
+                                  >
+                                    View source →
+                                  </a>
+                                </TooltipContent>
+                              </Tooltip>
+                            </div>
+                          </div>
                         </div>
                       ) : null}
                     </td>
@@ -399,9 +429,14 @@ export default function AmplifyPathAlt() {
                       ) : null}
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
+                </TooltipProvider>
               </tbody>
             </table>
+            <p className="text-xs text-navy/60 text-center mt-3 italic">
+              Estimates above are industry benchmarks (2022-2025) from McKinsey, Gartner, BCG, IDC, and LSA Global. Hover the <Info className="w-3 h-3 inline -mt-0.5" /> icon for each source.
+            </p>
           </div>
 
           <p className="text-center text-navy mt-12 text-lg italic">
