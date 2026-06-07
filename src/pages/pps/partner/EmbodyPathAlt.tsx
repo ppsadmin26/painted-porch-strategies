@@ -233,7 +233,7 @@ export default function EmbodyPathAlt() {
               Who EMBODY is for
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
-              For leaders who want something that lasts, not something to get through.
+              For leaders who want to build something that lasts, not something to get through.
             </h2>
             <p className="text-base text-foreground">
               EMBODY isn't a longer engagement because we like longer engagements. It's longer because the structural change you're after doesn't move with a workshop, a deck, or a two-quarter sprint.
