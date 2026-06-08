@@ -198,8 +198,8 @@ export default function EmbodyPathAlt() {
       {/* HERO */}
       <TierHeroSection
         tier={TIERS.EMBODY}
-        badgeLabel="EMBODY P.A.T.H.way"
-        headline={<>Architect Epic Sh<span className="text-raspberry">IF</span>t That Lasts.</>}
+        badgeLabel={<>EMBODY<sup className="text-xs">™</sup> P.A.T.H.way</>}
+        headline={<>Architect Epic Sh<span className="text-white">IF</span>t That Lasts.</>}
         description="EMBODY is for founders and leaders ready to build permanent organizational capacity through deep, sustained partnership. This isn't consulting or change management. This is co-architecting an unshakeable foundation for sustainable transformation."
         ctas={[
           {
