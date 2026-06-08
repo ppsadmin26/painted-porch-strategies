@@ -340,13 +340,6 @@ export default function AmplifySprints() {
                 </Link>
               </div>
             </div>
-            <div className="mt-8 text-center">
-              <Link to="/contact?scope=organization&interest=organizational-advisory&message=I'm interested in exploring a Strategic Sprint for our organization.">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                  Contact Us to Explore a Sprint <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
       </section>
