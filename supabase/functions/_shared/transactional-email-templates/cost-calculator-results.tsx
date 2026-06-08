@@ -121,7 +121,7 @@ export const template = {
 // Styles
 const main = { backgroundColor: '#ffffff', fontFamily: "'Montserrat', Arial, sans-serif" }
 const container = { padding: '32px 24px', maxWidth: '600px', margin: '0 auto' }
-const logo = { margin: '0 0 24px', display: 'block' as const }
+const logo = { margin: '0 0 24px', backgroundColor: '#ffffff', padding: '20px 24px', borderRadius: '8px', display: 'block' as const, border: '1px solid #ffffff' }
 const h1 = { fontSize: '24px', fontWeight: 'bold' as const, color: '#00006B', margin: '0 0 16px', fontFamily: "'Poppins', Arial, sans-serif" }
 const text = { fontSize: '15px', color: '#545454', lineHeight: '1.6', margin: '0 0 16px' }
 const smallText = { fontSize: '12px', color: '#888', lineHeight: '1.5', margin: '8px 0 0', fontStyle: 'italic' as const }
