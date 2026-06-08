@@ -535,8 +535,8 @@ export default function AmplifyPathAlt() {
                   <span className="text-sm text-foreground">Your team needs more than single workshop</span>
                 </li>
               </ul>
-              <Button asChild className="w-full bg-lime text-white border-2 border-lime hover:bg-white hover:text-lime transition-colors">
-                  <Link to="/partner/amplify/sprints" className="block mt-6">Explore Strategic Sprints</Link>
+              <Button asChild className="w-full mt-6 h-auto min-h-11 whitespace-normal text-center px-3 bg-lime text-white border-2 border-lime hover:bg-white hover:text-lime transition-colors">
+                  <Link to="/partner/amplify/sprints">Explore Strategic Sprints</Link>
                 </Button>
             </div>
 
