@@ -6,7 +6,7 @@ import {
 import type { TemplateEntry } from './registry.ts'
 
 const SITE_NAME = "Painted Porch Strategies"
-const LOGO_URL = 'https://kzbcudiorvnsqqgyzusl.supabase.co/storage/v1/object/public/email-assets/pps-logo.png'
+const LOGO_URL = 'https://dkpxjivoupqpmvzwxpef.supabase.co/storage/v1/object/public/email-assets/pps-logo-white.png'
 const CANVAS_PDF_URL = 'https://onthepaintedporch.com/downloads/Strategic_Change_Canvas_Painted_Porch_Strategies.pdf'
 const THANK_YOU_URL = 'https://onthepaintedporch.com/thank-you-strategic-plan'
 
