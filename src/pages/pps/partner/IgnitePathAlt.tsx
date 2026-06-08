@@ -199,11 +199,9 @@ export default function IgnitePathAlt() {
             <p className="text-foreground mb-8 max-w-2xl mx-auto">
               Take our free P.A.T.H.finder quiz to discover which programs fit your specific development priorities.
             </p>
-            <Link to="/start-here">
-              <Button className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary transition-colors">
-                Take Free P.A.T.H.finder Quiz
-              </Button>
-            </Link>
+            <Button asChild className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary transition-colors">
+              <Link to="/start-here">Take Free P.A.T.H.finder Quiz</Link>
+            </Button>
           </div>
         </div>
       </section>
