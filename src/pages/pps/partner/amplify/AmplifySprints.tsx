@@ -368,7 +368,6 @@ export default function AmplifySprints() {
         }
         description="A 90-day Strategic Sprint installs a new way for your team to prepare and design every shift that follows, with the architecture and direction to lead what comes next."
         actions={[
-          { label: "Contact Us", to: "/contact?scope=organization&interest=organizational-advisory" },
           { label: "Start with the Blue Door", to: "/blue-door", variant: "bluedoor" },
         ]}
       />
