@@ -368,7 +368,7 @@ export default function AmplifySprints() {
         eyebrow="Architect first"
         headline={
           <>
-            Architect the sh<span className="text-gold">IF</span>t before you implement it.
+            Architect your next sh<span className="text-gold">IF</span>t before you implement it.
           </>
         }
         description="A 90-day Strategic Sprint installs a new way for your team to prepare and design every shift that follows, with the architecture and direction to lead what comes next."
