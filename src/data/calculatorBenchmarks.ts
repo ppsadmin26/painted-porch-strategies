@@ -198,6 +198,92 @@ export const IMPACT_SCOPES: Record<ImpactScopeKey, ImpactScope> = {
 };
 
 /**
+ * Change type — what kind of change is being attempted.
+ *
+ * Selection rules (enforced in UI):
+ *   • operational   — always on (every change touches process/people).
+ *   • tech          — selecting this forces operational on.
+ *   • mna           — selecting this forces operational AND tech on.
+ *   • regulatory    — selecting this forces operational on; tech is optional add.
+ *   • cultural      — independent toggle.
+ *
+ * When multiple types are active, effective overrun/failure rates use the
+ * MAX across selected types (worst-case honest read), and replace the
+ * industry baseline if higher.
+ *
+ * Sources:
+ *   • McKinsey "Delivering large-scale IT projects" (tech 45–70% overrun, 70%+ fail)
+ *   • BCG/HBR M&A integration studies (50–80% PMI overrun, 70–83% fail)
+ *   • Prosci Best Practices in Change Management (operational/cultural rates)
+ *   • Gartner regulatory program benchmarks (compliance: deadline-driven, lower fail)
+ */
+export type ChangeTypeKey =
+  | "operational"
+  | "tech"
+  | "mna"
+  | "regulatory"
+  | "cultural";
+
+export type ChangeType = {
+  key: ChangeTypeKey;
+  label: string;
+  shortLabel: string;
+  description: string;
+  overrunRate: number;
+  failureRate: number;
+  /** Other change types automatically activated when this one is selected. */
+  forces: ChangeTypeKey[];
+};
+
+export const CHANGE_TYPES: Record<ChangeTypeKey, ChangeType> = {
+  operational: {
+    key: "operational",
+    label: "Operational / Process",
+    shortLabel: "Operational",
+    description: "Restructure, workflow redesign, new operating model",
+    overrunRate: 0.32,
+    failureRate: 0.62,
+    forces: [],
+  },
+  tech: {
+    key: "tech",
+    label: "Technology / Digital",
+    shortLabel: "Technology",
+    description: "ERP, platform migration, AI rollout, system replacement",
+    overrunRate: 0.55,
+    failureRate: 0.72,
+    forces: ["operational"],
+  },
+  mna: {
+    key: "mna",
+    label: "M&A / Post-Merger Integration",
+    shortLabel: "M&A / PMI",
+    description: "Acquisition, merger, divestiture integration",
+    overrunRate: 0.65,
+    failureRate: 0.78,
+    forces: ["operational", "tech"],
+  },
+  regulatory: {
+    key: "regulatory",
+    label: "Regulatory / Compliance",
+    shortLabel: "Regulatory",
+    description: "Deadline-driven compliance program (HIPAA, SOX, etc.)",
+    overrunRate: 0.22,
+    failureRate: 0.35,
+    forces: ["operational"],
+  },
+  cultural: {
+    key: "cultural",
+    label: "Cultural / Leadership",
+    shortLabel: "Cultural",
+    description: "Values shift, leadership transition, mindset reset",
+    overrunRate: 0.28,
+    failureRate: 0.55,
+    forces: [],
+  },
+};
+
+/**
  * Conservative range of exposure reduction a Blue Door + Phase Zero
  * engagement is expected to deliver, based on McKinsey "Losing from Day One"
  * and BCG "Flipping the Odds" research showing well-architected pre-work
