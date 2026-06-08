@@ -471,34 +471,9 @@ export default function IgnitePathAlt() {
         </div>
       </section>
 
-      {/* SECTION 7: TESTIMONIALS — hidden until real quotes are available */}
-      {false && (
-        <section className="py-16 md:py-24 bg-white">
-          <div className="container max-w-6xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-                Leaders Who Lit the Spark with IGNITE
-              </h2>
-            </div>
+      {/* SECTION 7: TESTIMONIALS — removed; reintroduce when real quotes are available */}
 
-            <div className="grid md:grid-cols-3 gap-8 items-stretch">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white p-8 rounded-xl shadow-sm">
-                  <div className="text-4xl text-gold mb-4">"</div>
-                  <p className="text-foreground italic mb-6 leading-relaxed">
-                    {testimonial.quote}
-                  </p>
-                  <div className="border-t pt-4">
-                    <p className="font-semibold text-navy">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                    <p className="text-xs text-gold mt-1">{testimonial.context}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+
 
       {/* SECTION 8: FAQ */}
       <FAQSection 
