@@ -330,8 +330,8 @@ export default function AmplifyPathAlt() {
                     <p className="text-xs text-foreground"><span className="font-semibold">Investment:</span> {format.investment}</p>
                   </div>
 
-                  <Button asChild className={`w-full ${format.color.replace('border-', 'bg-')} text-white border-2 ${format.color} hover:bg-white ${format.color.replace('border-', 'hover:text-')} transition-colors`}>
-                  <Link to={format.ctaLink} className="block mt-4">{format.cta}</Link>
+                  <Button asChild className={`w-full mt-4 h-auto min-h-11 whitespace-normal text-center px-3 ${format.color.replace('border-', 'bg-')} text-white border-2 ${format.color} hover:bg-white ${format.color.replace('border-', 'hover:text-')} transition-colors`}>
+                  <Link to={format.ctaLink}>{format.cta}</Link>
                 </Button>
                 </div>
               </div>
