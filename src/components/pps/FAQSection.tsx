@@ -64,6 +64,8 @@ interface FAQSectionProps {
   showContactCTA?: boolean;
   /** Custom contact URL (defaults to "/contact") */
   contactUrl?: string;
+  /** Custom eyebrow label color class (defaults to "text-gold") */
+  eyebrowClassName?: string;
 }
 
 export function FAQSection({
