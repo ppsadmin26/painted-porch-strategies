@@ -381,7 +381,7 @@ export default function ExtraordinaryTeams() {
         headline={<>Interested in Creating Extraordinary Teams for Your Company?</>}
         description="Bring team-building and conflict resolution training to your organization. Explore our business programs to build connected, collaborative, mission-focused teams."
         actions={[
-          { label: "Contact Us", to: "/contact?interest=general", variant: "secondary" },
+          { label: "Contact Us", to: "/contact?interest=general", variant: "primary" },
         ]}
         overlayClass="bg-gradient-to-b from-navy/75 via-navy/70 to-navy/80"
       />
