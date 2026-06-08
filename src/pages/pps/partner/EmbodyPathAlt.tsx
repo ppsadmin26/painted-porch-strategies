@@ -198,8 +198,8 @@ export default function EmbodyPathAlt() {
       {/* HERO */}
       <TierHeroSection
         tier={TIERS.EMBODY}
-        badgeLabel="EMBODY™ P.A.T.H.way"
-        headline={<>Architect Epic Sh<span className="text-white">IF</span>t That Lasts.</>}
+        badgeLabel="EMBODY P.A.T.H.way"
+        headline={<>Architect Epic Sh<span className="text-raspberry">IF</span>t That Lasts.</>}
         description="EMBODY is for founders and leaders ready to build permanent organizational capacity through deep, sustained partnership. This isn't consulting or change management. This is co-architecting an unshakeable foundation for sustainable transformation."
         ctas={[
           {
@@ -231,7 +231,7 @@ export default function EmbodyPathAlt() {
           {/* Stage-setter */}
           <div className="text-center mb-10 max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
-              It's time to sh<span className="text-navy">IF</span>t from change moments to an innovation movement.
+              It's time to sh<span className="text-raspberry">IF</span>t from change moments to an innovation movement.
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
               You've made the decision: you're ready for your organization to move from managing change initiatives to leading sustainable transformation. Not consultants to fix or implement change for you. Strategic partners to co-architect permanent capability in your people, your processes, and your systems.
@@ -307,7 +307,7 @@ export default function EmbodyPathAlt() {
           </div>
           <div className="flex flex-wrap justify-center gap-6">
             {industries.map((industry, idx) => {
-              const accents = ["text-teal", "text-lime", "text-raspberry", "text-purple"];
+              const accents = ["text-raspberry", "text-charcoal", "text-teal", "text-lime"];
               const accent = accents[idx % accents.length];
               return (
                 <div key={industry.title} className="bg-white p-6 rounded-xl border-t-2 border-navy/80 flex-1 min-w-[240px] max-w-[300px]">
@@ -439,22 +439,13 @@ export default function EmbodyPathAlt() {
                 </div>
                 <Button
                   asChild
-                  variant="outline"
-                  className="bg-transparent border-2 border-bluedoor text-bluedoor hover:bg-bluedoor hover:text-white transition-colors w-full"
+                  className="bg-bluedoor hover:bg-bluedoor/90 text-white w-full"
                 >
                   <Link to="/blue-door">
                     Open the Blue Door <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
                 </Button>
               </div>
-            </div>
-
-            <div className="text-center">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white whitespace-normal h-auto min-h-11 text-center px-6 py-2">
-                <Link to="/contact?scope=organization&interest=strategic-partnership&message=I'm interested in an EMBODY strategic partnership.">
-                  Contact Us About a Partnership <ArrowRight className="ml-2 w-4 h-4" />
-                </Link>
-              </Button>
             </div>
           </div>
         </div>
@@ -551,7 +542,7 @@ export default function EmbodyPathAlt() {
         tierName="EMBODY"
         faqs={faqs}
         subheadline="Common questions about EMBODY partnerships"
-        eyebrowClassName="text-bluedoor"
+        eyebrowClassName="text-gold"
       />
 
       {/* PARALLAX CTA */}
