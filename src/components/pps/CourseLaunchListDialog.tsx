@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
@@ -145,8 +146,10 @@ export function CourseLaunchListDialog({
                   htmlFor={`launch-consent-${courseSlug}`}
                   className="text-sm text-foreground/70 cursor-pointer leading-tight"
                 >
-                  Yes, I'd like to receive updates about this course's launch
-                  and other Painted Porch programs and insights.
+                  I agree to receive emails and understand I can unsubscribe anytime. See our{" "}
+                  <Link to="/terms?tab=privacy" className="underline hover:text-foreground">
+                    Privacy Policy
+                  </Link>.
                 </label>
               </div>
               <Button
