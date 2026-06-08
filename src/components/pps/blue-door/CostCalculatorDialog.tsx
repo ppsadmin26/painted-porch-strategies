@@ -111,6 +111,12 @@ export default function CostCalculatorDialog({
     const scope = IMPACT_SCOPES[impactScope];
     const salary = parseFloat(salaryOverride) || ind.avgLoadedSalary;
 
+    // Effective overrun/failure = MAX across industry baseline and all active change types
+    const typeOverruns = activeTypes.map((k) => CHANGE_TYPES[k].overrunRate);
+    const typeFailures = activeTypes.map((k) => CHANGE_TYPES[k].failureRate);
+    const effOverrun = Math.max(ind.overrunRate, ...typeOverruns);
+    const effFailure = Math.max(ind.failureRate, ...typeFailures);
+
     const teamLaborMonthly = preset.teamSize * (salary / 12) * PROJECT_TIME_ALLOCATION;
     const techMonthly = preset.teamSize * preset.techCostPerSeat;
     const outsideMonthly = outsideConsultants ? 3 * 48 * 200 : 0; // 3 consultants × ~48 hrs/mo × $200
@@ -118,11 +124,11 @@ export default function CostCalculatorDialog({
     const monthlyBurn = teamLaborMonthly + techMonthly + outsideMonthly;
     const plannedTotal = monthlyBurn * duration;
 
-    // Range using industry overrun rate ± 10%, scaled by impact scope
-    const overrunLow = plannedTotal * Math.max(0, ind.overrunRate - 0.10) * scope.multiplier;
-    const overrunHigh = plannedTotal * (ind.overrunRate + 0.10) * scope.multiplier;
+    // Range using effective overrun rate ± 10%, scaled by impact scope
+    const overrunLow = plannedTotal * Math.max(0, effOverrun - 0.10) * scope.multiplier;
+    const overrunHigh = plannedTotal * (effOverrun + 0.10) * scope.multiplier;
 
-    const failureWriteOff = plannedTotal * ind.failureRate * scope.multiplier;
+    const failureWriteOff = plannedTotal * effFailure * scope.multiplier;
 
     const exposureLow = (overrunLow + failureWriteOff) * PHASE_ZERO_IMPACT.min;
     const exposureHigh = (overrunHigh + failureWriteOff) * PHASE_ZERO_IMPACT.max;
@@ -132,6 +138,8 @@ export default function CostCalculatorDialog({
       preset,
       scope,
       salary,
+      effOverrun,
+      effFailure,
       plannedTotal,
       overrunLow,
       overrunHigh,
@@ -139,7 +147,7 @@ export default function CostCalculatorDialog({
       exposureLow,
       exposureHigh,
     };
-  }, [industry, size, impactScope, duration, salaryOverride, outsideConsultants]);
+  }, [industry, size, impactScope, duration, salaryOverride, outsideConsultants, activeTypes.join("|")]);
 
   const resultsForPayload = () => ({
     industry: calc.ind.label,
@@ -150,6 +158,10 @@ export default function CostCalculatorDialog({
     impactScope: calc.scope.label,
     impactScopeKey: impactScope,
     impactMultiplier: calc.scope.multiplier,
+    changeTypes: activeTypes.map((k) => CHANGE_TYPES[k].shortLabel),
+    changeTypeKeys: activeTypes,
+    effectiveOverrunRate: Number(calc.effOverrun.toFixed(2)),
+    effectiveFailureRate: Number(calc.effFailure.toFixed(2)),
     durationMonths: duration,
     avgLoadedSalary: calc.salary,
     outsideConsultants,
