@@ -252,7 +252,7 @@ export default function EmbodyPathAlt() {
           </div>
 
           <div className="text-center mb-12 max-w-3xl mx-auto">
-            <p className="text-sm font-poppins font-semibold tracking-widest text-teal uppercase mb-3">
+            <p className="text-sm font-poppins font-semibold tracking-widest text-bluedoor uppercase mb-3">
               Who EMBODY is for
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
