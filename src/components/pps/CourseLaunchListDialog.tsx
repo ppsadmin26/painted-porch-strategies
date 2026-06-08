@@ -146,10 +146,10 @@ export function CourseLaunchListDialog({
                   htmlFor={`launch-consent-${courseSlug}`}
                   className="text-sm text-foreground/70 cursor-pointer leading-tight"
                 >
-                  I agree to receive emails and understand I can unsubscribe anytime. See our{" "}
+                  I agree to receive emails about <strong>{courseName}</strong> launch updates and other relevant invitations to join us on the Painted Porch. I know I can unsubscribe anytime using the link in any email. See our{" "}
                   <Link to="/terms?tab=privacy" className="underline hover:text-foreground">
                     Privacy Policy
-                  </Link>.
+                  </Link>. We never share or sell your information.
                 </label>
               </div>
               <Button
@@ -160,11 +160,6 @@ export function CourseLaunchListDialog({
                 {loading ? "Signing Up..." : "JOIN THE LAUNCH LIST"}
                 {!loading && <Bell className="ml-2 w-4 h-4" />}
               </Button>
-              <p className="text-xs text-foreground/60 leading-snug text-center">
-                We only send updates related to this course and Painted Porch programs.
-                You can unsubscribe anytime using the link in any email. We never
-                share or sell your information.
-              </p>
             </form>
 
           </>
