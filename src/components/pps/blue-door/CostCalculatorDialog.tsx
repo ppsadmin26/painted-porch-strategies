@@ -325,6 +325,64 @@ export default function CostCalculatorDialog({
             </div>
           </div>
 
+          {/* Change type — multi-select with auto-inclusion rules */}
+          <div className="space-y-2">
+            <Label className="text-navy font-semibold">Change type</Label>
+            <p className="text-xs text-muted-foreground -mt-1">
+              Most changes are layered. Selecting Tech or M&amp;A auto-includes the layers underneath.
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {(["operational", "tech", "mna", "regulatory", "cultural"] as ChangeTypeKey[]).map((key) => {
+                const ct = CHANGE_TYPES[key];
+                let active = false;
+                let locked = false;
+                let onClick: () => void = () => {};
+                if (key === "operational") {
+                  active = true;
+                  locked = true;
+                } else if (key === "tech") {
+                  active = techActive;
+                  locked = techLocked;
+                  onClick = () => !techLocked && setUserTech((v) => !v);
+                } else if (key === "mna") {
+                  active = mnaActive;
+                  onClick = () => setUserMna((v) => !v);
+                } else if (key === "regulatory") {
+                  active = regulatoryActive;
+                  onClick = () => setUserRegulatory((v) => !v);
+                } else if (key === "cultural") {
+                  active = culturalActive;
+                  onClick = () => setUserCultural((v) => !v);
+                }
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={onClick}
+                    aria-pressed={active}
+                    disabled={locked}
+                    className={`p-3 rounded-lg border text-left transition-colors ${
+                      active
+                        ? "border-strategic bg-strategic/10 ring-2 ring-strategic/30"
+                        : "border-input hover:border-strategic/50"
+                    } ${locked ? "cursor-not-allowed opacity-95" : ""}`}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="font-semibold text-sm text-navy">{ct.shortLabel}</div>
+                      {locked && (
+                        <div className="text-[9px] font-semibold uppercase tracking-wider text-strategic/70">
+                          Included
+                        </div>
+                      )}
+                    </div>
+                    <div className="text-xs text-muted-foreground mt-0.5">
+                      {ct.description}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
 
           {/* Duration */}
