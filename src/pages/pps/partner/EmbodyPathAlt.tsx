@@ -557,7 +557,7 @@ export default function EmbodyPathAlt() {
       <ParallaxCTA
         backgroundImage={embodyFinalCtaBg}
         overlayTone="purple"
-        eyebrow="Built to last"
+        eyebrow="Built for continual transformation"
         headline={
           <>
             Ready to architect what's next?
