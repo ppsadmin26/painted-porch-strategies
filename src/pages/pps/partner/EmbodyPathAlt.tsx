@@ -542,7 +542,7 @@ export default function EmbodyPathAlt() {
         tierName="EMBODY"
         faqs={faqs}
         subheadline="Common questions about EMBODY partnerships"
-        eyebrowClassName="text-bluedoor"
+        eyebrowClassName="text-gold"
       />
 
       {/* PARALLAX CTA */}
