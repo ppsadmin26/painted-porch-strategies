@@ -74,12 +74,12 @@ export default function CostCalculatorDialog({
   const [userCultural, setUserCultural] = useState(false);
 
   // Derived active set with locking rules
-  const techActive = userTech || userMna;
+  const techActive = userTech;
   const operationalActive = true; // always
   const regulatoryActive = userRegulatory;
   const mnaActive = userMna;
   const culturalActive = userCultural;
-  const techLocked = userMna; // M&A forces tech on
+  const techLocked = false;
   const operationalLocked = true; // always on
 
   const activeTypes: ChangeTypeKey[] = [
