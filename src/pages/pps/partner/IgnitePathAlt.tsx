@@ -93,27 +93,8 @@ const archetypes = [
 
 // Data arrays moved to subpages: IgniteCourses, IgniteAssessments, IgniteMasterclasses
 
-// Testimonial data (placeholders)
-const testimonials = [
-  {
-    quote: "I bought Radical Mindfulness thinking it was about meditation. It completely changed how I lead. I went from reactive firefighting to conscious design. Now I'm bringing these concepts to my entire team through an AMPLIFY workshop.",
-    name: "[Name]",
-    title: "[Title]",
-    context: "Started with IGNITE, now exploring AMPLIFY",
-  },
-  {
-    quote: "The EQ-i assessment revealed blind spots I didn't know existed. The debrief with the Painted Porch team gave me a roadmap I'm still working through six months later. Best investment I've made in my development.",
-    name: "[Name]",
-    title: "[Title]",
-    context: "EQ-i Assessment + Radical Mindfulness",
-  },
-  {
-    quote: "I took all four IGNITE courses over six months. Each one built on the last. Now I'm facilitating these concepts with my team and they're asking where I learned this stuff. Phase Zero is a game-changer.",
-    name: "[Name]",
-    title: "[Title]",
-    context: "Complete IGNITE Bundle",
-  },
-];
+
+
 
 // FAQ data imported from shared file
 export default function IgnitePathAlt() {
@@ -199,11 +180,9 @@ export default function IgnitePathAlt() {
             <p className="text-foreground mb-8 max-w-2xl mx-auto">
               Take our free P.A.T.H.finder quiz to discover which programs fit your specific development priorities.
             </p>
-            <Link to="/start-here">
-              <Button className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary transition-colors">
-                Take Free P.A.T.H.finder Quiz
-              </Button>
-            </Link>
+            <Button asChild className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary transition-colors">
+              <Link to="/start-here">Take Free P.A.T.H.finder Quiz</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -473,34 +452,9 @@ export default function IgnitePathAlt() {
         </div>
       </section>
 
-      {/* SECTION 7: TESTIMONIALS — hidden until real quotes are available */}
-      {false && (
-        <section className="py-16 md:py-24 bg-white">
-          <div className="container max-w-6xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-                Leaders Who Lit the Spark with IGNITE
-              </h2>
-            </div>
+      {/* SECTION 7: TESTIMONIALS — removed; reintroduce when real quotes are available */}
 
-            <div className="grid md:grid-cols-3 gap-8 items-stretch">
-              {testimonials.map((testimonial, index) => (
-                <div key={index} className="bg-white p-8 rounded-xl shadow-sm">
-                  <div className="text-4xl text-gold mb-4">"</div>
-                  <p className="text-foreground italic mb-6 leading-relaxed">
-                    {testimonial.quote}
-                  </p>
-                  <div className="border-t pt-4">
-                    <p className="font-semibold text-navy">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                    <p className="text-xs text-gold mt-1">{testimonial.context}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+
 
       {/* SECTION 8: FAQ */}
       <FAQSection 
