@@ -199,7 +199,6 @@ export default function EmbodyPathAlt() {
       <TierHeroSection
         tier={TIERS.EMBODY}
         badgeLabel="EMBODY P.A.T.H.way"
-        // IF color exception: raspberry on dark navy hero for visual distinction even though it's not framing pain
         headline={<>Architect Epic Sh<span className="text-raspberry">IF</span>t That Lasts.</>}
         description="EMBODY is for founders and leaders ready to build permanent organizational capacity through deep, sustained partnership. This isn't consulting or change management. This is co-architecting an unshakeable foundation for sustainable transformation."
         ctas={[
