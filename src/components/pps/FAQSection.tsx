@@ -64,6 +64,8 @@ interface FAQSectionProps {
   showContactCTA?: boolean;
   /** Custom contact URL (defaults to "/contact") */
   contactUrl?: string;
+  /** Custom eyebrow label color class (defaults to "text-gold") */
+  eyebrowClassName?: string;
 }
 
 export function FAQSection({
@@ -74,6 +76,7 @@ export function FAQSection({
   subheadline,
   showContactCTA = true,
   contactUrl = "/contact?interest=general",
+  eyebrowClassName = "text-gold",
 }: FAQSectionProps) {
   const defaultSubheadline = `Everything you need to know about ${tierName}`;
   
@@ -99,7 +102,7 @@ export function FAQSection({
     <section className="py-12 md:py-16 bg-white">
       <div className="container max-w-3xl mx-auto px-6">
         <div className="text-center mb-10">
-          <p className="text-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-3">
+          <p className={`${eyebrowClassName} font-poppins font-semibold text-sm tracking-widest uppercase mb-3`}>
             Got Questions?
           </p>
           <h2 className="text-3xl md:text-4xl font-bold font-poppins text-navy mb-3">
