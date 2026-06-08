@@ -27,12 +27,14 @@ import {
   INDUSTRY_BENCHMARKS,
   SIZE_PRESETS,
   IMPACT_SCOPES,
+  CHANGE_TYPES,
   DURATION_OPTIONS,
   PHASE_ZERO_IMPACT,
   PROJECT_TIME_ALLOCATION,
   type IndustryKey,
   type SizeKey,
   type ImpactScopeKey,
+  type ChangeTypeKey,
   type DurationMonths,
 } from "@/data/calculatorBenchmarks";
 
