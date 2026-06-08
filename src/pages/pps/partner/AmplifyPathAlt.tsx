@@ -247,14 +247,15 @@ export default function AmplifyPathAlt() {
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-foreground mt-6 italic">
-                If any of these resonate, AMPLIFY team workshops or strategic sprints are designed for you.
-              </p>
               <div className="mt-auto pt-6">
+                <p className="text-sm text-foreground mb-6 italic min-h-[3rem]">
+                  If any of these resonate, AMPLIFY team workshops or strategic sprints are designed for you.
+                </p>
                 <Button asChild className="bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors w-full">
                   <Link to="/partner/amplify/workshops" className="block">Explore Team Options</Link>
                 </Button>
               </div>
+
             </div>
 
             {/* Individual Leaders Column */}
@@ -275,14 +276,15 @@ export default function AmplifyPathAlt() {
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-foreground mt-6 italic">
-                If this resonates, AMPLIFY Leadership Labs are designed for you.
-              </p>
               <div className="mt-auto pt-6">
+                <p className="text-sm text-foreground mb-6 italic min-h-[3rem]">
+                  If this resonates, AMPLIFY Leadership Labs are designed for you.
+                </p>
                 <Button asChild variant="outline" className="border-teal text-teal hover:bg-teal hover:text-white hover:border-teal transition-colors w-full">
                   <Link to="/partner/amplify/labs" className="block">Explore Leader Options</Link>
                 </Button>
               </div>
+
             </div>
           </div>
         </div>
