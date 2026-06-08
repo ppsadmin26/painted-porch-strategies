@@ -507,8 +507,8 @@ export default function AmplifyPathAlt() {
                   <span className="text-sm text-foreground">You want to test Phase Zero concepts before deeper commitment</span>
                 </li>
               </ul>
-              <Button asChild className="w-full bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors">
-                  <Link to="/partner/amplify/workshops" className="block mt-6">Explore Workshops</Link>
+              <Button asChild className="w-full mt-6 h-auto min-h-11 whitespace-normal text-center px-3 bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors">
+                  <Link to="/partner/amplify/workshops">Explore Workshops</Link>
                 </Button>
             </div>
 
@@ -535,8 +535,8 @@ export default function AmplifyPathAlt() {
                   <span className="text-sm text-foreground">Your team needs more than single workshop</span>
                 </li>
               </ul>
-              <Button asChild className="w-full bg-lime text-white border-2 border-lime hover:bg-white hover:text-lime transition-colors">
-                  <Link to="/partner/amplify/sprints" className="block mt-6">Explore Strategic Sprints</Link>
+              <Button asChild className="w-full mt-6 h-auto min-h-11 whitespace-normal text-center px-3 bg-lime text-white border-2 border-lime hover:bg-white hover:text-lime transition-colors">
+                  <Link to="/partner/amplify/sprints">Explore Strategic Sprints</Link>
                 </Button>
             </div>
 
@@ -563,8 +563,8 @@ export default function AmplifyPathAlt() {
                   <span className="text-sm text-foreground">You want structured development over 6-12 weeks</span>
                 </li>
               </ul>
-              <Button asChild className="w-full bg-teal text-white border-2 border-teal hover:bg-white hover:text-teal transition-colors">
-                  <Link to="/partner/amplify/labs" className="block mt-6">Explore Leader Labs</Link>
+              <Button asChild className="w-full mt-6 h-auto min-h-11 whitespace-normal text-center px-3 bg-teal text-white border-2 border-teal hover:bg-white hover:text-teal transition-colors">
+                  <Link to="/partner/amplify/labs">Explore Leader Labs</Link>
                 </Button>
             </div>
           </div>
@@ -640,8 +640,8 @@ export default function AmplifyPathAlt() {
               <p className="text-xs text-muted-foreground italic mb-4">
                 Best for: Organizations ready for permanent capacity-building with sustained partnership
               </p>
-              <Button asChild className="bg-transparent border-2 border-navy text-navy hover:bg-navy hover:text-white w-full transition-colors">
-                  <Link to="/partner/embody">Explore EMBODY <ArrowRight className="ml-2 w-4 h-4" /></Link>
+              <Button asChild className="w-full h-auto min-h-11 whitespace-normal text-center px-3 py-2 bg-transparent border-2 border-navy text-navy hover:bg-navy hover:text-white transition-colors">
+                  <Link to="/partner/embody"><span className="inline-flex items-center gap-2">Explore EMBODY <ArrowRight className="w-4 h-4 flex-shrink-0" /></span></Link>
                 </Button>
             </div>
 
