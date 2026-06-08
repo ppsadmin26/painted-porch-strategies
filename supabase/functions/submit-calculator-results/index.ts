@@ -201,7 +201,7 @@ Deno.serve(async (req) => {
       body: {
         templateName: "cost-calculator-results",
         recipientEmail: body.email,
-        idempotencyKey: `calc-results-${contactId}-${Date.now()}`,
+        idempotencyKey: `calc-results-${contactId ?? body.email}-${Date.now()}`,
         templateData: {
           firstName: body.firstName,
           industry: r.industry,
