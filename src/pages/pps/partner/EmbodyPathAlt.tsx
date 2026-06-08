@@ -437,23 +437,24 @@ export default function EmbodyPathAlt() {
                   <span className="text-foreground/70">·</span>
                   <span className="text-foreground/70">Under 30 minutes</span>
                 </div>
-                <Link to="/blue-door">
-                  <Button
-                    variant="outline"
-                    className="bg-transparent border-2 border-bluedoor text-bluedoor hover:bg-bluedoor hover:text-white transition-colors w-full"
-                  >
+                <Button
+                  asChild
+                  variant="outline"
+                  className="bg-transparent border-2 border-bluedoor text-bluedoor hover:bg-bluedoor hover:text-white transition-colors w-full"
+                >
+                  <Link to="/blue-door">
                     Open the Blue Door <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </div>
 
             <div className="text-center">
-              <Link to="/contact?scope=organization&interest=strategic-partnership&message=I'm interested in an EMBODY strategic partnership.">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white whitespace-normal h-auto min-h-11 text-center px-6 py-2">
+                <Link to="/contact?scope=organization&interest=strategic-partnership&message=I'm interested in an EMBODY strategic partnership.">
                   Contact Us About a Partnership <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
