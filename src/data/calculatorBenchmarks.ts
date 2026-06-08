@@ -203,7 +203,7 @@ export const IMPACT_SCOPES: Record<ImpactScopeKey, ImpactScope> = {
  * Selection rules (enforced in UI):
  *   • operational   — always on (every change touches process/people).
  *   • tech          — selecting this forces operational on.
- *   • mna           — selecting this forces operational AND tech on.
+ *   • mna           — selecting this forces operational on; tech is optional add.
  *   • regulatory    — selecting this forces operational on; tech is optional add.
  *   • cultural      — independent toggle.
  *
