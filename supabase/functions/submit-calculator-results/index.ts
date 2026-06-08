@@ -168,20 +168,27 @@ Deno.serve(async (req) => {
       });
     }
 
+    // GHL sync is best-effort. If credentials are missing or the token has expired,
+    // we still want the user to receive their results email.
+    let contactId: string | null = null;
     const apiKey = Deno.env.get("GHL_API_KEY");
     const locationId = Deno.env.get("GHL_LOCATION_ID");
-    if (!apiKey || !locationId) throw new Error("GHL credentials not configured");
-
-    const contactId = await upsertContact(apiKey, locationId, body);
-    console.log("Contact upserted:", contactId);
-
-    await addNote(apiKey, contactId, buildNoteText(body));
-
-    const workflowId = Deno.env.get("GHL_COST_CALC_WORKFLOW_ID");
-    if (workflowId) {
-      await subscribeToWorkflow(apiKey, contactId, workflowId);
+    if (apiKey && locationId) {
+      try {
+        contactId = await upsertContact(apiKey, locationId, body);
+        console.log("Contact upserted:", contactId);
+        await addNote(apiKey, contactId, buildNoteText(body));
+        const workflowId = Deno.env.get("GHL_COST_CALC_WORKFLOW_ID");
+        if (workflowId) {
+          await subscribeToWorkflow(apiKey, contactId, workflowId);
+        } else {
+          console.log("GHL_COST_CALC_WORKFLOW_ID not set; skipping workflow subscribe");
+        }
+      } catch (ghlErr) {
+        console.error("GHL sync failed (continuing to send email):", ghlErr);
+      }
     } else {
-      console.log("GHL_COST_CALC_WORKFLOW_ID not set; skipping workflow subscribe");
+      console.warn("GHL credentials not configured; skipping CRM sync");
     }
 
     // Queue branded results email via existing transactional system
@@ -194,7 +201,7 @@ Deno.serve(async (req) => {
       body: {
         templateName: "cost-calculator-results",
         recipientEmail: body.email,
-        idempotencyKey: `calc-results-${contactId}-${Date.now()}`,
+        idempotencyKey: `calc-results-${contactId ?? body.email}-${Date.now()}`,
         templateData: {
           firstName: body.firstName,
           industry: r.industry,
