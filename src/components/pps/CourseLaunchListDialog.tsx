@@ -157,7 +157,13 @@ export function CourseLaunchListDialog({
                 {loading ? "Signing Up..." : "JOIN THE LAUNCH LIST"}
                 {!loading && <Bell className="ml-2 w-4 h-4" />}
               </Button>
+              <p className="text-xs text-foreground/60 leading-snug text-center">
+                We only send updates related to this course and Painted Porch programs.
+                You can unsubscribe anytime using the link in any email. We never
+                share or sell your information.
+              </p>
             </form>
+
           </>
         ) : (
           <div className="text-center py-6">
