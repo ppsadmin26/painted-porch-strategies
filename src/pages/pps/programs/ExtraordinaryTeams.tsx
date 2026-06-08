@@ -6,11 +6,12 @@ import { CourseLaunchListDialog } from "@/components/pps/CourseLaunchListDialog"
 import { useCourseLaunchStatus } from "@/hooks/useCourseLaunchStatus";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { FAQSection } from "@/components/pps/FAQSection";
-import heroImg from "@/assets/programs/extraordinary-teams-hero.jpg";
+import heroImg from "@/assets/programs/extraordinary-teams-monkeys.jpg.asset.json";
 import ctaBg from "@/assets/team/team-cta-puzzles.jpg";
 import amyPhoto from "@/assets/team/amy-yackowski.png";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
+import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
