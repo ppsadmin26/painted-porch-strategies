@@ -305,7 +305,7 @@ export default function EmbodyPathAlt() {
               Not limited by industry. Defined by C-suite commitment and a partnership mindset.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {industries.map((industry, idx) => {
               const accents = ["text-teal", "text-lime", "text-raspberry", "text-purple"];
               const accent = accents[idx % accents.length];
