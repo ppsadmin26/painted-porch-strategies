@@ -67,6 +67,29 @@ export default function CostCalculatorDialog({
   const [impactScope, setImpactScope] = useState<ImpactScopeKey>("department");
   const [duration, setDuration] = useState<DurationMonths>(12);
 
+  // Change type — user toggles (operational is always on; others may force operational/tech on)
+  const [userTech, setUserTech] = useState(false);
+  const [userMna, setUserMna] = useState(false);
+  const [userRegulatory, setUserRegulatory] = useState(false);
+  const [userCultural, setUserCultural] = useState(false);
+
+  // Derived active set with locking rules
+  const techActive = userTech || userMna;
+  const operationalActive = true; // always
+  const regulatoryActive = userRegulatory;
+  const mnaActive = userMna;
+  const culturalActive = userCultural;
+  const techLocked = userMna; // M&A forces tech on
+  const operationalLocked = true; // always on
+
+  const activeTypes: ChangeTypeKey[] = [
+    "operational",
+    ...(techActive ? (["tech"] as ChangeTypeKey[]) : []),
+    ...(mnaActive ? (["mna"] as ChangeTypeKey[]) : []),
+    ...(regulatoryActive ? (["regulatory"] as ChangeTypeKey[]) : []),
+    ...(culturalActive ? (["cultural"] as ChangeTypeKey[]) : []),
+  ];
+
   // Advanced
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [salaryOverride, setSalaryOverride] = useState<string>("");
