@@ -19,6 +19,8 @@ import { TIERS } from "@/components/pps/TierBadge";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { FAQSection } from "@/components/pps/FAQSection";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
+import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
+import { PartnerIncludedSection } from "@/components/pps/partner";
 import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 import embodyFinalCtaBg from "@/assets/embody-final-cta-bg.png";
 
@@ -537,6 +539,9 @@ export default function EmbodyPathAlt() {
         </div>
       </section>
 
+      {/* TRUST SIGNALS: Logo marquee */}
+      <ClientLogoMarquee />
+
       {/* FAQ */}
       <FAQSection
         tierName="EMBODY"
@@ -544,6 +549,9 @@ export default function EmbodyPathAlt() {
         subheadline="Common questions about EMBODY partnerships"
         eyebrowClassName="text-gold"
       />
+
+      {/* WHAT'S INCLUDED IN EVERY ENGAGEMENT */}
+      <PartnerIncludedSection />
 
       {/* PARALLAX CTA */}
       <ParallaxCTA
