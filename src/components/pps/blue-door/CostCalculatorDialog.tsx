@@ -67,23 +67,28 @@ export default function CostCalculatorDialog({
   const [impactScope, setImpactScope] = useState<ImpactScopeKey>("department");
   const [duration, setDuration] = useState<DurationMonths>(12);
 
-  // Change type — user toggles (operational is always on; others may force operational/tech on)
+  // Change type — user toggles. Operational starts OFF; cascade rules below force inclusions.
+  const [userOperational, setUserOperational] = useState(false);
   const [userTech, setUserTech] = useState(false);
   const [userMna, setUserMna] = useState(false);
   const [userRegulatory, setUserRegulatory] = useState(false);
   const [userCultural, setUserCultural] = useState(false);
 
-  // Derived active set with locking rules
-  const techActive = userTech;
-  const operationalActive = true; // always
-  const regulatoryActive = userRegulatory;
+  // Cascading rules:
+  //   • Regulatory forces Tech (and Tech forces Operational)
+  //   • M&A forces Cultural + Operational
+  //   • Tech / M&A / Regulatory all force Operational
+  const techActive = userTech || userRegulatory;
+  const techLocked = userRegulatory;
+  const culturalActive = userCultural || userMna;
+  const culturalLocked = userMna;
+  const operationalActive = userOperational || userTech || userMna || userRegulatory;
+  const operationalLocked = userTech || userMna || userRegulatory;
   const mnaActive = userMna;
-  const culturalActive = userCultural;
-  const techLocked = false;
-  const operationalLocked = true; // always on
+  const regulatoryActive = userRegulatory;
 
   const activeTypes: ChangeTypeKey[] = [
-    "operational",
+    ...(operationalActive ? (["operational"] as ChangeTypeKey[]) : []),
     ...(techActive ? (["tech"] as ChangeTypeKey[]) : []),
     ...(mnaActive ? (["mna"] as ChangeTypeKey[]) : []),
     ...(regulatoryActive ? (["regulatory"] as ChangeTypeKey[]) : []),
