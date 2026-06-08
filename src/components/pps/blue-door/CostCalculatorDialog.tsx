@@ -517,15 +517,15 @@ export default function CostCalculatorDialog({
               </p>
               <p>
                 <span className="font-semibold">Likely overrun</span> = planned ×
-                industry overrun rate (
-                {Math.round((calc.ind.overrunRate - 0.1) * 100)}–
-                {Math.round((calc.ind.overrunRate + 0.1) * 100)}% for{" "}
-                {calc.ind.label}).
+                effective overrun rate ({Math.round((calc.effOverrun - 0.1) * 100)}–
+                {Math.round((calc.effOverrun + 0.1) * 100)}%), the worst-case across{" "}
+                {calc.ind.label} and the selected change types (
+                {activeTypes.map((k) => CHANGE_TYPES[k].shortLabel).join(", ")}).
               </p>
               <p>
                 <span className="font-semibold">Failure write-off</span> = planned ×
-                industry failure rate ({Math.round(calc.ind.failureRate * 100)}% for{" "}
-                {calc.ind.label}).
+                effective failure rate ({Math.round(calc.effFailure * 100)}%), same
+                worst-case logic.
               </p>
               <p>
                 <span className="font-semibold">Blue Door impact</span> = (overrun +
