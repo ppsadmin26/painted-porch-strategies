@@ -6,7 +6,7 @@ import {
 import type { TemplateEntry } from './registry.ts'
 
 const SITE_NAME = "Painted Porch Strategies"
-const LOGO_URL = 'https://kzbcudiorvnsqqgyzusl.supabase.co/storage/v1/object/public/email-assets/pps-logo.png'
+const LOGO_URL = 'https://dkpxjivoupqpmvzwxpef.supabase.co/storage/v1/object/public/email-assets/pps-logo-white.png'
 
 interface Props {
   programName?: string
