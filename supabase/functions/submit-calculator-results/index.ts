@@ -32,6 +32,10 @@ interface CalcResults {
   impactScope?: string;
   impactScopeKey?: string;
   impactMultiplier?: number;
+  changeTypes?: string[];
+  changeTypeKeys?: string[];
+  effectiveOverrunRate?: number;
+  effectiveFailureRate?: number;
   durationMonths: number;
   avgLoadedSalary: number;
   outsideConsultants: boolean;
@@ -60,6 +64,10 @@ function buildNoteText(b: Body): string {
     `Industry: ${r.industry}`,
     `Initiative size: ${r.size} (${r.teamSize} ppl)`,
     r.impactScope ? `Impact scope: ${r.impactScope}${r.impactMultiplier ? ` (${r.impactMultiplier.toFixed(1)}x)` : ""}` : null,
+    r.changeTypes && r.changeTypes.length ? `Change type(s): ${r.changeTypes.join(", ")}` : null,
+    (r.effectiveOverrunRate != null && r.effectiveFailureRate != null)
+      ? `Effective rates: overrun ${Math.round(r.effectiveOverrunRate * 100)}% · failure ${Math.round(r.effectiveFailureRate * 100)}%`
+      : null,
     `Duration: ${r.durationMonths} months`,
     `Avg loaded salary: ${fmt(r.avgLoadedSalary)}`,
     `Outside consultants: ${r.outsideConsultants ? "Yes" : "No"}`,
