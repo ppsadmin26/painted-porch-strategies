@@ -329,7 +329,7 @@ export default function CostCalculatorDialog({
           <div className="space-y-2">
             <Label className="text-navy font-semibold">Change type</Label>
             <p className="text-xs text-muted-foreground -mt-1">
-              Most changes are layered. Selecting Tech or M&amp;A auto-includes the layers underneath.
+              Most changes are layered. Selecting Tech auto-includes Operational underneath. M&amp;A always includes Operational; you can add Tech if it applies.
             </p>
             <div className="grid grid-cols-2 gap-2">
               {(["operational", "tech", "mna", "regulatory", "cultural"] as ChangeTypeKey[]).map((key) => {
