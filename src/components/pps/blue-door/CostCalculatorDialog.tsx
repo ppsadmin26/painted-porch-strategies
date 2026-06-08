@@ -116,11 +116,14 @@ export default function CostCalculatorDialog({
     const scope = IMPACT_SCOPES[impactScope];
     const salary = parseFloat(salaryOverride) || ind.avgLoadedSalary;
 
-    // Effective overrun/failure = MAX across industry baseline and all active change types
+    // Effective overrun/failure = MAX across industry baseline and all active change types.
+    // Cultural is a layered amplifier (adoption friction compounds on top of any change),
+    // so it applies as a ~15% multiplier rather than a floor.
     const typeOverruns = activeTypes.map((k) => CHANGE_TYPES[k].overrunRate);
     const typeFailures = activeTypes.map((k) => CHANGE_TYPES[k].failureRate);
-    const effOverrun = Math.max(ind.overrunRate, ...typeOverruns);
-    const effFailure = Math.max(ind.failureRate, ...typeFailures);
+    const culturalMult = activeTypes.includes("cultural") ? 1.15 : 1.0;
+    const effOverrun = Math.min(0.95, Math.max(ind.overrunRate, ...typeOverruns) * culturalMult);
+    const effFailure = Math.min(0.95, Math.max(ind.failureRate, ...typeFailures) * culturalMult);
 
     const teamLaborMonthly = preset.teamSize * (salary / 12) * PROJECT_TIME_ALLOCATION;
     const techMonthly = preset.teamSize * preset.techCostPerSeat;
