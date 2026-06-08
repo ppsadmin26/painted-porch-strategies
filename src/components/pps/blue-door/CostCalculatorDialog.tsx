@@ -27,12 +27,14 @@ import {
   INDUSTRY_BENCHMARKS,
   SIZE_PRESETS,
   IMPACT_SCOPES,
+  CHANGE_TYPES,
   DURATION_OPTIONS,
   PHASE_ZERO_IMPACT,
   PROJECT_TIME_ALLOCATION,
   type IndustryKey,
   type SizeKey,
   type ImpactScopeKey,
+  type ChangeTypeKey,
   type DurationMonths,
 } from "@/data/calculatorBenchmarks";
 
@@ -65,6 +67,29 @@ export default function CostCalculatorDialog({
   const [impactScope, setImpactScope] = useState<ImpactScopeKey>("department");
   const [duration, setDuration] = useState<DurationMonths>(12);
 
+  // Change type — user toggles (operational is always on; others may force operational/tech on)
+  const [userTech, setUserTech] = useState(false);
+  const [userMna, setUserMna] = useState(false);
+  const [userRegulatory, setUserRegulatory] = useState(false);
+  const [userCultural, setUserCultural] = useState(false);
+
+  // Derived active set with locking rules
+  const techActive = userTech || userMna;
+  const operationalActive = true; // always
+  const regulatoryActive = userRegulatory;
+  const mnaActive = userMna;
+  const culturalActive = userCultural;
+  const techLocked = userMna; // M&A forces tech on
+  const operationalLocked = true; // always on
+
+  const activeTypes: ChangeTypeKey[] = [
+    "operational",
+    ...(techActive ? (["tech"] as ChangeTypeKey[]) : []),
+    ...(mnaActive ? (["mna"] as ChangeTypeKey[]) : []),
+    ...(regulatoryActive ? (["regulatory"] as ChangeTypeKey[]) : []),
+    ...(culturalActive ? (["cultural"] as ChangeTypeKey[]) : []),
+  ];
+
   // Advanced
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [salaryOverride, setSalaryOverride] = useState<string>("");
@@ -86,6 +111,12 @@ export default function CostCalculatorDialog({
     const scope = IMPACT_SCOPES[impactScope];
     const salary = parseFloat(salaryOverride) || ind.avgLoadedSalary;
 
+    // Effective overrun/failure = MAX across industry baseline and all active change types
+    const typeOverruns = activeTypes.map((k) => CHANGE_TYPES[k].overrunRate);
+    const typeFailures = activeTypes.map((k) => CHANGE_TYPES[k].failureRate);
+    const effOverrun = Math.max(ind.overrunRate, ...typeOverruns);
+    const effFailure = Math.max(ind.failureRate, ...typeFailures);
+
     const teamLaborMonthly = preset.teamSize * (salary / 12) * PROJECT_TIME_ALLOCATION;
     const techMonthly = preset.teamSize * preset.techCostPerSeat;
     const outsideMonthly = outsideConsultants ? 3 * 48 * 200 : 0; // 3 consultants × ~48 hrs/mo × $200
@@ -93,11 +124,11 @@ export default function CostCalculatorDialog({
     const monthlyBurn = teamLaborMonthly + techMonthly + outsideMonthly;
     const plannedTotal = monthlyBurn * duration;
 
-    // Range using industry overrun rate ± 10%, scaled by impact scope
-    const overrunLow = plannedTotal * Math.max(0, ind.overrunRate - 0.10) * scope.multiplier;
-    const overrunHigh = plannedTotal * (ind.overrunRate + 0.10) * scope.multiplier;
+    // Range using effective overrun rate ± 10%, scaled by impact scope
+    const overrunLow = plannedTotal * Math.max(0, effOverrun - 0.10) * scope.multiplier;
+    const overrunHigh = plannedTotal * (effOverrun + 0.10) * scope.multiplier;
 
-    const failureWriteOff = plannedTotal * ind.failureRate * scope.multiplier;
+    const failureWriteOff = plannedTotal * effFailure * scope.multiplier;
 
     const exposureLow = (overrunLow + failureWriteOff) * PHASE_ZERO_IMPACT.min;
     const exposureHigh = (overrunHigh + failureWriteOff) * PHASE_ZERO_IMPACT.max;
@@ -107,6 +138,8 @@ export default function CostCalculatorDialog({
       preset,
       scope,
       salary,
+      effOverrun,
+      effFailure,
       plannedTotal,
       overrunLow,
       overrunHigh,
@@ -114,7 +147,7 @@ export default function CostCalculatorDialog({
       exposureLow,
       exposureHigh,
     };
-  }, [industry, size, impactScope, duration, salaryOverride, outsideConsultants]);
+  }, [industry, size, impactScope, duration, salaryOverride, outsideConsultants, activeTypes.join("|")]);
 
   const resultsForPayload = () => ({
     industry: calc.ind.label,
@@ -125,6 +158,10 @@ export default function CostCalculatorDialog({
     impactScope: calc.scope.label,
     impactScopeKey: impactScope,
     impactMultiplier: calc.scope.multiplier,
+    changeTypes: activeTypes.map((k) => CHANGE_TYPES[k].shortLabel),
+    changeTypeKeys: activeTypes,
+    effectiveOverrunRate: Number(calc.effOverrun.toFixed(2)),
+    effectiveFailureRate: Number(calc.effFailure.toFixed(2)),
     durationMonths: duration,
     avgLoadedSalary: calc.salary,
     outsideConsultants,
@@ -288,6 +325,64 @@ export default function CostCalculatorDialog({
             </div>
           </div>
 
+          {/* Change type — multi-select with auto-inclusion rules */}
+          <div className="space-y-2">
+            <Label className="text-navy font-semibold">Change type</Label>
+            <p className="text-xs text-muted-foreground -mt-1">
+              Most changes are layered. Selecting Tech or M&amp;A auto-includes the layers underneath.
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {(["operational", "tech", "mna", "regulatory", "cultural"] as ChangeTypeKey[]).map((key) => {
+                const ct = CHANGE_TYPES[key];
+                let active = false;
+                let locked = false;
+                let onClick: () => void = () => {};
+                if (key === "operational") {
+                  active = true;
+                  locked = true;
+                } else if (key === "tech") {
+                  active = techActive;
+                  locked = techLocked;
+                  onClick = () => !techLocked && setUserTech((v) => !v);
+                } else if (key === "mna") {
+                  active = mnaActive;
+                  onClick = () => setUserMna((v) => !v);
+                } else if (key === "regulatory") {
+                  active = regulatoryActive;
+                  onClick = () => setUserRegulatory((v) => !v);
+                } else if (key === "cultural") {
+                  active = culturalActive;
+                  onClick = () => setUserCultural((v) => !v);
+                }
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={onClick}
+                    aria-pressed={active}
+                    disabled={locked}
+                    className={`p-3 rounded-lg border text-left transition-colors ${
+                      active
+                        ? "border-strategic bg-strategic/10 ring-2 ring-strategic/30"
+                        : "border-input hover:border-strategic/50"
+                    } ${locked ? "cursor-not-allowed opacity-95" : ""}`}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="font-semibold text-sm text-navy">{ct.shortLabel}</div>
+                      {locked && (
+                        <div className="text-[9px] font-semibold uppercase tracking-wider text-strategic/70">
+                          Included
+                        </div>
+                      )}
+                    </div>
+                    <div className="text-xs text-muted-foreground mt-0.5">
+                      {ct.description}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
 
           {/* Duration */}
@@ -422,15 +517,15 @@ export default function CostCalculatorDialog({
               </p>
               <p>
                 <span className="font-semibold">Likely overrun</span> = planned ×
-                industry overrun rate (
-                {Math.round((calc.ind.overrunRate - 0.1) * 100)}–
-                {Math.round((calc.ind.overrunRate + 0.1) * 100)}% for{" "}
-                {calc.ind.label}).
+                effective overrun rate ({Math.round((calc.effOverrun - 0.1) * 100)}–
+                {Math.round((calc.effOverrun + 0.1) * 100)}%), the worst-case across{" "}
+                {calc.ind.label} and the selected change types (
+                {activeTypes.map((k) => CHANGE_TYPES[k].shortLabel).join(", ")}).
               </p>
               <p>
                 <span className="font-semibold">Failure write-off</span> = planned ×
-                industry failure rate ({Math.round(calc.ind.failureRate * 100)}% for{" "}
-                {calc.ind.label}).
+                effective failure rate ({Math.round(calc.effFailure * 100)}%), same
+                worst-case logic.
               </p>
               <p>
                 <span className="font-semibold">Blue Door impact</span> = (overrun +
