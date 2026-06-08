@@ -67,23 +67,28 @@ export default function CostCalculatorDialog({
   const [impactScope, setImpactScope] = useState<ImpactScopeKey>("department");
   const [duration, setDuration] = useState<DurationMonths>(12);
 
-  // Change type — user toggles (operational is always on; others may force operational/tech on)
+  // Change type — user toggles. Operational starts OFF; cascade rules below force inclusions.
+  const [userOperational, setUserOperational] = useState(false);
   const [userTech, setUserTech] = useState(false);
   const [userMna, setUserMna] = useState(false);
   const [userRegulatory, setUserRegulatory] = useState(false);
   const [userCultural, setUserCultural] = useState(false);
 
-  // Derived active set with locking rules
-  const techActive = userTech;
-  const operationalActive = true; // always
-  const regulatoryActive = userRegulatory;
+  // Cascading rules:
+  //   • Regulatory forces Tech (and Tech forces Operational)
+  //   • M&A forces Cultural + Operational
+  //   • Tech / M&A / Regulatory all force Operational
+  const techActive = userTech || userRegulatory;
+  const techLocked = userRegulatory;
+  const culturalActive = userCultural || userMna;
+  const culturalLocked = userMna;
+  const operationalActive = userOperational || userTech || userMna || userRegulatory;
+  const operationalLocked = userTech || userMna || userRegulatory;
   const mnaActive = userMna;
-  const culturalActive = userCultural;
-  const techLocked = false;
-  const operationalLocked = true; // always on
+  const regulatoryActive = userRegulatory;
 
   const activeTypes: ChangeTypeKey[] = [
-    "operational",
+    ...(operationalActive ? (["operational"] as ChangeTypeKey[]) : []),
     ...(techActive ? (["tech"] as ChangeTypeKey[]) : []),
     ...(mnaActive ? (["mna"] as ChangeTypeKey[]) : []),
     ...(regulatoryActive ? (["regulatory"] as ChangeTypeKey[]) : []),
@@ -329,7 +334,7 @@ export default function CostCalculatorDialog({
           <div className="space-y-2">
             <Label className="text-navy font-semibold">Change type</Label>
             <p className="text-xs text-muted-foreground -mt-1">
-              Most changes are layered. Selecting Tech auto-includes Operational underneath. M&amp;A always includes Operational; you can add Tech if it applies.
+              Pick what applies. Tech auto-adds Operational. M&amp;A auto-adds Operational and Cultural. Regulatory auto-adds Operational and Tech.
             </p>
             <div className="grid grid-cols-2 gap-2">
               {(["operational", "tech", "mna", "regulatory", "cultural"] as ChangeTypeKey[]).map((key) => {
@@ -338,8 +343,9 @@ export default function CostCalculatorDialog({
                 let locked = false;
                 let onClick: () => void = () => {};
                 if (key === "operational") {
-                  active = true;
-                  locked = true;
+                  active = operationalActive;
+                  locked = operationalLocked;
+                  onClick = () => !operationalLocked && setUserOperational((v) => !v);
                 } else if (key === "tech") {
                   active = techActive;
                   locked = techLocked;
@@ -352,7 +358,8 @@ export default function CostCalculatorDialog({
                   onClick = () => setUserRegulatory((v) => !v);
                 } else if (key === "cultural") {
                   active = culturalActive;
-                  onClick = () => setUserCultural((v) => !v);
+                  locked = culturalLocked;
+                  onClick = () => !culturalLocked && setUserCultural((v) => !v);
                 }
                 return (
                   <button

@@ -201,11 +201,11 @@ export const IMPACT_SCOPES: Record<ImpactScopeKey, ImpactScope> = {
  * Change type — what kind of change is being attempted.
  *
  * Selection rules (enforced in UI):
- *   • operational   — always on (every change touches process/people).
+ *   • operational   — independent toggle, BUT forced on by tech/mna/regulatory.
  *   • tech          — selecting this forces operational on.
- *   • mna           — selecting this forces operational on; tech is optional add.
- *   • regulatory    — selecting this forces operational on; tech is optional add.
- *   • cultural      — independent toggle.
+ *   • mna           — selecting this forces operational + cultural on.
+ *   • regulatory    — selecting this forces operational + tech on.
+ *   • cultural      — independent toggle, forced on by mna.
  *
  * When multiple types are active, effective overrun/failure rates use the
  * MAX across selected types (worst-case honest read), and replace the
@@ -261,7 +261,7 @@ export const CHANGE_TYPES: Record<ChangeTypeKey, ChangeType> = {
     description: "Acquisition, merger, divestiture integration",
     overrunRate: 0.65,
     failureRate: 0.78,
-    forces: ["operational", "tech"],
+    forces: ["operational", "cultural"],
   },
   regulatory: {
     key: "regulatory",
@@ -270,7 +270,7 @@ export const CHANGE_TYPES: Record<ChangeTypeKey, ChangeType> = {
     description: "Deadline-driven compliance program (HIPAA, SOX, etc.)",
     overrunRate: 0.22,
     failureRate: 0.35,
-    forces: ["operational"],
+    forces: ["operational", "tech"],
   },
   cultural: {
     key: "cultural",
