@@ -193,7 +193,7 @@ export default function EQAssessment() {
             Learn how you can better listen, understand, be heard, and lead through E.Q.
           </p>
           <a href="#get-started">
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-navy">
+            <Button className="bg-gold text-navy hover:bg-gold/90 font-semibold">
               Get Started
             </Button>
           </a>
