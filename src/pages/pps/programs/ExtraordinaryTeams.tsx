@@ -6,11 +6,12 @@ import { CourseLaunchListDialog } from "@/components/pps/CourseLaunchListDialog"
 import { useCourseLaunchStatus } from "@/hooks/useCourseLaunchStatus";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { FAQSection } from "@/components/pps/FAQSection";
-import heroImg from "@/assets/programs/extraordinary-teams-hero.jpg";
+import heroImg from "@/assets/programs/extraordinary-teams-monkeys.jpg.asset.json";
 import ctaBg from "@/assets/team/team-cta-puzzles.jpg";
 import amyPhoto from "@/assets/team/amy-yackowski.png";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
+import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -92,7 +93,11 @@ export default function ExtraordinaryTeams() {
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-center">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="Create Extraordinary Teams" className="w-full h-full object-cover" width={1920} height={800} />
+          <LazyHeroVideo
+            slotKey="extraordinary-teams-hero"
+            posterUrl={heroImg.url}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
