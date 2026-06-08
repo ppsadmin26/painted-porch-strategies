@@ -97,11 +97,11 @@ export default function PPSNavigation() {
       <div className="container max-w-6xl mx-auto px-6">
         <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center flex-shrink-0 mr-4">
             <img
               src={ppsLogo}
               alt="Painted Porch Strategies"
-              className="h-16 md:h-20 w-auto"
+              className="h-16 md:h-20 w-auto object-contain"
             />
           </Link>
 
