@@ -120,15 +120,12 @@ export default function MasterYourMessage() {
             <strong>Eliminate the static</strong> from your internal and external messaging in order to{" "}
             <strong>communicate with clarity</strong>, <strong>confidence</strong>, and <strong>influence</strong>.
           </p>
+          {/* CTA anchored over the green band of the SoundMeter, aligned with hero content */}
+          <Button asChild size="lg" className="absolute left-4 sm:left-6 lg:left-8 bottom-8 sm:bottom-12 z-20 bg-pps-orange hover:bg-pps-orange/90 text-white font-poppins font-semibold rounded-lg px-8 shadow-xl">
+            <a href="#pricing">Join the Program <ArrowRight className="ml-2 h-5 w-5" /></a>
+          </Button>
         </div>
-        {/* CTA anchored over the green band of the SoundMeter */}
-        <div className="absolute inset-x-0 bottom-8 sm:bottom-12 z-20 pointer-events-none">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <Button asChild size="lg" className="pointer-events-auto bg-pps-orange hover:bg-pps-orange/90 text-white font-poppins font-semibold rounded-lg px-8 shadow-xl">
-              <a href="#pricing">Join the Program <ArrowRight className="ml-2 h-5 w-5" /></a>
-            </Button>
-          </div>
-        </div>
+
 
       </section>
 
