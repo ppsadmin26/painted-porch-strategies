@@ -154,11 +154,6 @@ export default function AmplifySprints() {
             Focused. Time-boxed. Built to architect the foundation <em>before</em> implementation begins, so what you build next actually lasts.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-            <Link to="/contact?scope=organization&interest=organizational-advisory&message=I'm interested in exploring a Strategic Sprint for our organization.">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                Contact Us <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
             <Button
               size="lg"
               variant="outline"
@@ -373,7 +368,6 @@ export default function AmplifySprints() {
         }
         description="A 90-day Strategic Sprint installs a new way for your team to prepare and design every shift that follows, with the architecture and direction to lead what comes next."
         actions={[
-          { label: "Contact Us", to: "/contact?scope=organization&interest=organizational-advisory" },
           { label: "Start with the Blue Door", to: "/blue-door", variant: "bluedoor" },
         ]}
       />
