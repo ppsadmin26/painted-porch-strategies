@@ -76,6 +76,7 @@ export function FAQSection({
   subheadline,
   showContactCTA = true,
   contactUrl = "/contact?interest=general",
+  eyebrowClassName = "text-gold",
 }: FAQSectionProps) {
   const defaultSubheadline = `Everything you need to know about ${tierName}`;
   
