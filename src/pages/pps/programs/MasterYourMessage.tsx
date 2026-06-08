@@ -109,21 +109,27 @@ export default function MasterYourMessage() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40 z-[1]" />
           <SoundMeter className="absolute inset-x-0 bottom-0 z-[2]" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-44 sm:pb-56">
           <span className="inline-block text-pps-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
             Ignite Your True Voice
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
             Master Your Message
           </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed mb-8">
+          <p className="text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed">
             <strong>Eliminate the static</strong> from your internal and external messaging in order to{" "}
             <strong>communicate with clarity</strong>, <strong>confidence</strong>, and <strong>influence</strong>.
           </p>
-          <Button asChild size="lg" className="bg-pps-orange hover:bg-pps-orange/90 text-white font-poppins font-semibold rounded-lg px-8">
-            <a href="#pricing">Join the Program <ArrowRight className="ml-2 h-5 w-5" /></a>
-          </Button>
         </div>
+        {/* CTA anchored over the green band of the SoundMeter */}
+        <div className="absolute inset-x-0 bottom-8 sm:bottom-12 z-20 pointer-events-none">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Button asChild size="lg" className="pointer-events-auto bg-pps-orange hover:bg-pps-orange/90 text-white font-poppins font-semibold rounded-lg px-8 shadow-xl">
+              <a href="#pricing">Join the Program <ArrowRight className="ml-2 h-5 w-5" /></a>
+            </Button>
+          </div>
+        </div>
+
       </section>
 
       {/* Problem Statement */}
