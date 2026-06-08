@@ -59,7 +59,7 @@ export default function DiscoverSectionAlt() {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Go from "What IF" to "Where Next"
+            Go from "What <span className="text-raspberry">IF</span>" to "Where Next"
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto">
             What's possible for your organization <em>right now</em>? Not in theory, not at full potential, but given how your leadership, systems, and people are structured today.
