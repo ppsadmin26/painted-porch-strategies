@@ -109,7 +109,7 @@ export default function MasterYourMessage() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40 z-[1]" />
           <SoundMeter className="absolute inset-x-0 bottom-0 z-[2]" />
         </div>
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-44 sm:pb-56">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-44 sm:pb-56">
           <span className="inline-block text-pps-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
             Ignite Your True Voice
           </span>
