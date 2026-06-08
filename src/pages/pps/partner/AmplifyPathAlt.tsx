@@ -507,8 +507,8 @@ export default function AmplifyPathAlt() {
                   <span className="text-sm text-foreground">You want to test Phase Zero concepts before deeper commitment</span>
                 </li>
               </ul>
-              <Button asChild className="w-full bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors">
-                  <Link to="/partner/amplify/workshops" className="block mt-6">Explore Workshops</Link>
+              <Button asChild className="w-full mt-6 h-auto min-h-11 whitespace-normal text-center px-3 bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors">
+                  <Link to="/partner/amplify/workshops">Explore Workshops</Link>
                 </Button>
             </div>
 
