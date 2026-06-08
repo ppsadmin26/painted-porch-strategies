@@ -307,7 +307,7 @@ export default function EmbodyPathAlt() {
           </div>
           <div className="flex flex-wrap justify-center gap-6">
             {industries.map((industry, idx) => {
-              const accents = ["text-teal", "text-lime", "text-raspberry", "text-purple"];
+              const accents = ["text-raspberry", "text-charcoal", "text-teal", "text-lime"];
               const accent = accents[idx % accents.length];
               return (
                 <div key={industry.title} className="bg-white p-6 rounded-xl border-t-2 border-navy/80 flex-1 min-w-[240px] max-w-[300px]">
