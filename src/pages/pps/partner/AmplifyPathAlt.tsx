@@ -563,8 +563,8 @@ export default function AmplifyPathAlt() {
                   <span className="text-sm text-foreground">You want structured development over 6-12 weeks</span>
                 </li>
               </ul>
-              <Button asChild className="w-full bg-teal text-white border-2 border-teal hover:bg-white hover:text-teal transition-colors">
-                  <Link to="/partner/amplify/labs" className="block mt-6">Explore Leader Labs</Link>
+              <Button asChild className="w-full mt-6 h-auto min-h-11 whitespace-normal text-center px-3 bg-teal text-white border-2 border-teal hover:bg-white hover:text-teal transition-colors">
+                  <Link to="/partner/amplify/labs">Explore Leader Labs</Link>
                 </Button>
             </div>
           </div>
