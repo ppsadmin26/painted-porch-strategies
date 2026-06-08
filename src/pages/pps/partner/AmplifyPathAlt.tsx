@@ -640,8 +640,8 @@ export default function AmplifyPathAlt() {
               <p className="text-xs text-muted-foreground italic mb-4">
                 Best for: Organizations ready for permanent capacity-building with sustained partnership
               </p>
-              <Button asChild className="bg-transparent border-2 border-navy text-navy hover:bg-navy hover:text-white w-full transition-colors">
-                  <Link to="/partner/embody">Explore EMBODY <ArrowRight className="ml-2 w-4 h-4" /></Link>
+              <Button asChild className="w-full h-auto min-h-11 whitespace-normal text-center px-3 py-2 bg-transparent border-2 border-navy text-navy hover:bg-navy hover:text-white transition-colors">
+                  <Link to="/partner/embody"><span className="inline-flex items-center gap-2">Explore EMBODY <ArrowRight className="w-4 h-4 flex-shrink-0" /></span></Link>
                 </Button>
             </div>
 
