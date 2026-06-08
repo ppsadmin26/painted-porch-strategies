@@ -8,7 +8,7 @@ export default function PPSFooter() {
     { label: "About Us", href: "/about" },
     { label: "The Blue Door", href: "/blue-door" },
     { label: "Partner with Us", href: "/partner" },
-    { label: "Resources", href: "/resources" },
+    { label: "Insights & Resources", href: "/resources" },
     { label: "FAQ", href: "/resources/faq" },
     { label: "Speaking", href: "/speaking" },
   ];
