@@ -93,27 +93,8 @@ const archetypes = [
 
 // Data arrays moved to subpages: IgniteCourses, IgniteAssessments, IgniteMasterclasses
 
-// Testimonial data (placeholders)
-const testimonials = [
-  {
-    quote: "I bought Radical Mindfulness thinking it was about meditation. It completely changed how I lead. I went from reactive firefighting to conscious design. Now I'm bringing these concepts to my entire team through an AMPLIFY workshop.",
-    name: "[Name]",
-    title: "[Title]",
-    context: "Started with IGNITE, now exploring AMPLIFY",
-  },
-  {
-    quote: "The EQ-i assessment revealed blind spots I didn't know existed. The debrief with the Painted Porch team gave me a roadmap I'm still working through six months later. Best investment I've made in my development.",
-    name: "[Name]",
-    title: "[Title]",
-    context: "EQ-i Assessment + Radical Mindfulness",
-  },
-  {
-    quote: "I took all four IGNITE courses over six months. Each one built on the last. Now I'm facilitating these concepts with my team and they're asking where I learned this stuff. Phase Zero is a game-changer.",
-    name: "[Name]",
-    title: "[Title]",
-    context: "Complete IGNITE Bundle",
-  },
-];
+
+
 
 // FAQ data imported from shared file
 export default function IgnitePathAlt() {
