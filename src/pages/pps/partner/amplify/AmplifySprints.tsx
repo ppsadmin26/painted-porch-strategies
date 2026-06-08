@@ -353,7 +353,7 @@ export default function AmplifySprints() {
       <ParallaxCTA
         backgroundImage={amplifyFinalCtaBg}
         overlayTone="purple"
-        eyebrow="Architect first"
+        eyebrow="Architect First, Lead with Clarity"
         headline={
           <>
             Architect your next sh<span className="text-gold">IF</span>t before you implement it.
