@@ -334,7 +334,7 @@ export default function CostCalculatorDialog({
           <div className="space-y-2">
             <Label className="text-navy font-semibold">Change type</Label>
             <p className="text-xs text-muted-foreground -mt-1">
-              Most changes are layered. Selecting Tech auto-includes Operational underneath. M&amp;A always includes Operational; you can add Tech if it applies.
+              Pick what applies. Tech auto-adds Operational. M&amp;A auto-adds Operational and Cultural. Regulatory auto-adds Operational and Tech.
             </p>
             <div className="grid grid-cols-2 gap-2">
               {(["operational", "tech", "mna", "regulatory", "cultural"] as ChangeTypeKey[]).map((key) => {
@@ -343,8 +343,9 @@ export default function CostCalculatorDialog({
                 let locked = false;
                 let onClick: () => void = () => {};
                 if (key === "operational") {
-                  active = true;
-                  locked = true;
+                  active = operationalActive;
+                  locked = operationalLocked;
+                  onClick = () => !operationalLocked && setUserOperational((v) => !v);
                 } else if (key === "tech") {
                   active = techActive;
                   locked = techLocked;
@@ -357,7 +358,8 @@ export default function CostCalculatorDialog({
                   onClick = () => setUserRegulatory((v) => !v);
                 } else if (key === "cultural") {
                   active = culturalActive;
-                  onClick = () => setUserCultural((v) => !v);
+                  locked = culturalLocked;
+                  onClick = () => !culturalLocked && setUserCultural((v) => !v);
                 }
                 return (
                   <button
