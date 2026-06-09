@@ -128,6 +128,9 @@ const stats = [
     headline: "More Innovative",
     text: "of people with highly empathetic leaders report often or always being innovative at work",
     footnote: "vs. only 13% with less empathetic leaders",
+    source: "Catalyst, The Power of Empathy in Times of Crisis and Beyond",
+    sourceUrl: "https://www.catalyst.org/reports/empathy-work-strategy-crisis/",
+    sourceYear: 2021,
   },
   {
     type: "bar" as const,
@@ -136,6 +139,9 @@ const stats = [
     color: "gold",
     headline: "Engagement Variance",
     text: "of the variance in employee engagement is driven by Effective Communication & Flexibility",
+    source: "Gallup, State of the American Manager",
+    sourceUrl: "https://www.gallup.com/services/182138/state-american-manager.aspx",
+    sourceYear: 2015,
   },
   {
     type: "range" as const,
@@ -145,8 +151,12 @@ const stats = [
     color: "lime",
     headline: "Revenue Outperformance",
     text: "revenue target outperformance by teams led by high-EI leaders",
+    source: "Multi-Health Systems (MHS), EQ-i 2.0 Technical Manual",
+    sourceUrl: "https://tap.mhs.com/EQi20.aspx",
+    sourceYear: 2011,
   },
 ];
+
 
 const colorMap: Record<string, { text: string; bg: string; ring: string; bgSoft: string; hex: string }> = {
   raspberry: { text: "text-raspberry", bg: "bg-raspberry", ring: "stroke-raspberry", bgSoft: "bg-raspberry/10", hex: "#DB0043" },
