@@ -10,9 +10,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, ArrowRight, CheckCircle2, Compass, Loader2, Mail, RotateCcw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { usePathFinderOverrides } from "@/hooks/usePathFinderOverrides";
 import {
   PQ1, PQ2_B2C, B2C_QUESTIONS, ORG_PQ2, TEAM_BRANCH, CHANGE_BRANCH, CAP_BRANCH, STRATEGIC_BRANCH,
-  buildResult, type Answers, type Question, type QuizResult, type Track,
+  buildResult, type Answers, type Question, type QuizResult, type Track, type Offering,
 } from "@/data/pathFinderQuiz";
 
 interface Props {
