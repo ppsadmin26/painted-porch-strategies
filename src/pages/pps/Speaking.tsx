@@ -162,11 +162,6 @@ export default function Speaking() {
                       ))}
                     </div>
 
-                    <Link to={speaker.href}>
-                      <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white transition-colors">
-                        Explore {speaker.name.split(" ")[0]}'s Topics <ArrowRight className="ml-2 w-4 h-4" />
-                      </Button>
-                    </Link>
                   </div>
                 </div>
               );
