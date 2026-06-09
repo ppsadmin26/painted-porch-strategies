@@ -176,23 +176,25 @@ export default function EQAssessment() {
         {/* Readability overlay — gradient navy wash matching other hero sections */}
         <div className="absolute inset-0 bg-gradient-to-br from-navy/85 via-navy/70 to-navy/40" />
         <div className="container max-w-6xl mx-auto px-6 relative z-10 text-center w-full">
-          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6 ring-1 ring-white/25">
-            <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
-            <span className="text-sm font-semibold">EQ-i 2.0 Assessment</span>
+          <div className="bg-black/50 backdrop-blur-sm p-8 md:p-12 rounded-xl">
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6 ring-1 ring-white/25">
+              <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
+              <span className="text-sm font-semibold">EQ-i 2.0 Assessment</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 leading-tight drop-shadow-lg">
+              What Can <span className="text-gold">E.Q.</span> Do For You?
+            </h1>
+            <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/95 drop-shadow-md">
+              Uncover your own strengths and opportunities to show up, be heard,
+              connect, drive change, and have resilience to the challenges
+              presented in life, work, and anywhere in between.
+            </p>
+            <a href="#get-started">
+              <Button size="lg" className="bg-gold text-navy hover:bg-white hover:text-navy font-semibold text-lg px-8">
+                Get Started
+              </Button>
+            </a>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 leading-tight drop-shadow-lg">
-            What Can <span className="text-gold">E.Q.</span> Do For You?
-          </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/95 drop-shadow-md">
-            Uncover your own strengths and opportunities to show up, be heard,
-            connect, drive change, and have resilience to the challenges
-            presented in life, work, and anywhere in between.
-          </p>
-          <a href="#get-started">
-            <Button size="lg" className="bg-gold text-navy hover:bg-white hover:text-navy font-semibold text-lg px-8">
-              Get Started
-            </Button>
-          </a>
         </div>
       </section>
 
