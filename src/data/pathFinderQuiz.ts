@@ -628,7 +628,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     track: "b2b",
     resultType: rt,
     headline,
-    subhead: rt === "RT-D" ? "Blue Door™ Primary | Pathway B Alongside" : "Pathway B Workshops | Blue Door™",
+    subhead: rt === "RT-D" ? "Blue Door™ Primary | Workshops Alongside" : "Workshops | Blue Door™",
     narrative,
     primaryGroup: grp(primaryHeading, ...primaryKeys),
     groups: [
