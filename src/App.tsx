@@ -414,6 +414,7 @@ const App = () => (
             <Route path="policy-notifications" element={<PolicyNotifications />} />
             <Route path="refunds" element={<RefundRequestsManager />} />
             <Route path="course-launches" element={<CourseLaunchManager />} />
+            <Route path="path-finder" element={<PathFinderOfferings />} />
           </Route>
           
           {/* Legacy /pps/* redirects + 404 catch-all */}
