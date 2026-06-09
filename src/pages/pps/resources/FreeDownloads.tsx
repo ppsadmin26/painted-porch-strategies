@@ -117,6 +117,7 @@ const downloads = [
     href: "/elemental-style-assessment",
     ctaIcon: ClipboardCheck,
     ctaLabel: "Take Assessment",
+    comingSoon: true,
   },
   {
     icon: ClipboardCheck,
