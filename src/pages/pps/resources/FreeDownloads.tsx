@@ -93,6 +93,7 @@ const downloads = [
     href: "/change-ready-team-assessment",
     ctaIcon: ClipboardCheck,
     ctaLabel: "Take Assessment",
+    comingSoon: true,
   },
   {
     icon: ClipboardCheck,
@@ -104,6 +105,7 @@ const downloads = [
     href: "/change-ready-leader-assessment",
     ctaIcon: ClipboardCheck,
     ctaLabel: "Take Assessment",
+    comingSoon: true,
   },
   {
     icon: ClipboardCheck,
@@ -126,6 +128,7 @@ const downloads = [
     href: "/team-health-assessment",
     ctaIcon: ClipboardCheck,
     ctaLabel: "Take Assessment",
+    comingSoon: true,
   },
   {
     icon: BookOpen,
@@ -190,7 +193,12 @@ export default function FreeDownloads() {
                       <download.icon className="w-6 h-6" />
                     </div>
                     <div className="flex-1">
-                      <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{download.format}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{download.format}</span>
+                        {download.comingSoon && (
+                          <span className="text-xs font-semibold text-gold uppercase tracking-wide">Coming Soon</span>
+                        )}
+                      </div>
                       <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-1">
                         {download.title}
                       </h3>
@@ -200,7 +208,12 @@ export default function FreeDownloads() {
                     {download.description}
                   </p>
                   <div className="pl-[4.5rem]">
-                    {download.href ? (
+                    {download.comingSoon ? (
+                      <Button disabled className="bg-muted border-2 border-muted-foreground/30 text-muted-foreground cursor-not-allowed opacity-60">
+                        <CtaIcon className="w-4 h-4 mr-2" />
+                        {ctaLabel}
+                      </Button>
+                    ) : download.href ? (
                       <Link to={download.href}>
                         <Button className="bg-navy border-2 border-navy text-white hover:bg-transparent hover:text-navy transition-colors">
                           <CtaIcon className="w-4 h-4 mr-2" />
