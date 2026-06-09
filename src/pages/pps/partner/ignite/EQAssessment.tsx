@@ -165,11 +165,16 @@ export default function EQAssessment() {
       />
 
       {/* Hero */}
-      <section className="relative py-20 md:py-28 text-white overflow-hidden isolate">
-        <ColorSplashBackground />
+      <section className="relative py-20 md:py-28 text-white overflow-hidden isolate min-h-[60vh] flex items-center">
+        <LazyHeroVideo
+          slotKey="eq-hero"
+          posterUrl={eqHeroVideo.url}
+          fallbackVideoUrl={eqHeroVideo.url}
+          className="absolute inset-0 w-full h-full"
+        />
         {/* Readability overlay */}
-        <div className="absolute inset-0 bg-navy/40" />
-        <div className="container max-w-5xl mx-auto px-6 relative z-10 text-center">
+        <div className="absolute inset-0 bg-navy/55" />
+        <div className="container max-w-5xl mx-auto px-6 relative z-10 text-center w-full">
           <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6 ring-1 ring-white/25">
             <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
             <span className="text-sm font-semibold">EQ-i 2.0 Assessment</span>
