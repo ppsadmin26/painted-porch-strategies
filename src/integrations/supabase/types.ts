@@ -631,6 +631,57 @@ export type Database = {
         }
         Relationships: []
       }
+      path_finder_offerings: {
+        Row: {
+          anchor_id: string | null
+          blurb: string
+          created_at: string
+          current_url: string
+          dedicated_url: string | null
+          facilitator: string | null
+          id: string
+          is_live: boolean
+          name: string
+          notes: string | null
+          offering_key: string
+          sort_order: number
+          tier: string
+          updated_at: string
+        }
+        Insert: {
+          anchor_id?: string | null
+          blurb: string
+          created_at?: string
+          current_url: string
+          dedicated_url?: string | null
+          facilitator?: string | null
+          id?: string
+          is_live?: boolean
+          name: string
+          notes?: string | null
+          offering_key: string
+          sort_order?: number
+          tier: string
+          updated_at?: string
+        }
+        Update: {
+          anchor_id?: string | null
+          blurb?: string
+          created_at?: string
+          current_url?: string
+          dedicated_url?: string | null
+          facilitator?: string | null
+          id?: string
+          is_live?: boolean
+          name?: string
+          notes?: string | null
+          offering_key?: string
+          sort_order?: number
+          tier?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       policy_update_notifications: {
         Row: {
           created_at: string
