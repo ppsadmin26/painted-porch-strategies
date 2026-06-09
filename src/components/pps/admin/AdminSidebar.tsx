@@ -29,6 +29,7 @@ const navItems: { title: string; url: string; icon: any; section?: AdminSection 
   { title: "Email Health & Queue", url: "/admin/emails/queue", icon: Inbox },
   { title: "Policy Notifications", url: "/admin/policy-notifications", icon: ScrollText },
   { title: "Pages & SEO", url: "/admin/pages", icon: ToggleLeft },
+  { title: "P.A.T.H. Finder", url: "/admin/path-finder", icon: Compass },
   { title: "Sitemap", url: "/sitemap", icon: Map },
   { title: "Users", url: "/admin/users", icon: Users },
   { title: "Account", url: "/admin/account", icon: Settings },
