@@ -173,8 +173,8 @@ export default function EQAssessment() {
           className="absolute inset-0 w-full h-full"
           style={{ transform: "scale(1.35)", transformOrigin: "center center" }}
         />
-        {/* Readability overlay — single solid-ish navy wash for consistency with other hero overlays */}
-        <div className="absolute inset-0 bg-navy/80" />
+        {/* Readability overlay — gradient navy wash matching other hero sections */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy/85 via-navy/70 to-navy/40" />
         <div className="container max-w-6xl mx-auto px-6 relative z-10 text-center w-full">
           <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6 ring-1 ring-white/25">
             <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
