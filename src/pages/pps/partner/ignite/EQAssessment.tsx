@@ -4,6 +4,7 @@ import { ArrowLeft, CheckCircle, ExternalLink, Calendar } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
 import brainEqIcon from "@/assets/icons/brain-eq.svg";
+import ColorSplashBackground from "@/components/pps/ColorSplashBackground";
 import eqModelImg from "@/assets/eq/eq-model.png";
 import reportOverviewImg from "@/assets/eq/report-overview.png";
 import reportLeadershipPotentialImg from "@/assets/eq/report-leadership-potential.png";
@@ -141,29 +142,30 @@ export default function EQAssessment() {
       />
 
       {/* Hero */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-raspberry/90 via-raspberry to-raspberry/80 text-white overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl" />
-        </div>
+      <section className="relative py-20 md:py-28 text-white overflow-hidden isolate">
+        <ColorSplashBackground />
+        {/* Readability overlay */}
+        <div className="absolute inset-0 bg-navy/40" />
         <div className="container max-w-5xl mx-auto px-6 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6 ring-1 ring-white/25">
             <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
             <span className="text-sm font-semibold">EQ-i 2.0 Assessment</span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
-            What Can E.Q. Do For You?
-          </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/90">
-            Uncover your own strengths and opportunities to show up, be heard,
-            connect, drive change, and have resilience to the challenges
-            presented in life, work, and anywhere in between.
-          </p>
-          <a href="#get-started">
-            <Button size="lg" className="bg-white text-raspberry hover:bg-white/90 font-semibold text-lg px-8">
-              Get Started
-            </Button>
-          </a>
+          <div className="bg-black/35 backdrop-blur-sm rounded-2xl px-6 py-10 md:px-12 md:py-14 inline-block max-w-4xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 leading-tight">
+              What Can <span className="text-gold">E.Q.</span> Do For You?
+            </h1>
+            <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/95">
+              Uncover your own strengths and opportunities to show up, be heard,
+              connect, drive change, and have resilience to the challenges
+              presented in life, work, and anywhere in between.
+            </p>
+            <a href="#get-started">
+              <Button size="lg" className="bg-gold text-navy hover:bg-white hover:text-navy font-semibold text-lg px-8">
+                Get Started
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
 
