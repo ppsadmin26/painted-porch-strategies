@@ -113,7 +113,7 @@ export default function PPSHome() {
             hardens, before announcements activate, and before resources commit
             to what comes next. Painted Porch exists in the space before
             acceleration compounds complexity, so you create extraordinary
-            outcomes and can navigate whatever <ShIFt /> happens next.
+            outcomes and can navigate whatever sh<strong>IF</strong>t happens next.
           </>
         }
 
