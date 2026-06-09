@@ -49,6 +49,16 @@ type PersistedState = {
   showResult: boolean;
 };
 
+function BoldShiftName({ name }: { name: string }) {
+  if (!name.includes("shIFt")) return <>{name}</>;
+  const [before, after] = name.split("shIFt");
+  return (
+    <>
+      {before}sh<span className="font-bold">IF</span>t{after}
+    </>
+  );
+}
+
 function loadPersisted(): PersistedState | null {
   try {
     const raw = sessionStorage.getItem(SESSION_KEY);
