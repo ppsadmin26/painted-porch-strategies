@@ -13,6 +13,7 @@ import reportLeaderBarImg from "@/assets/eq/report-leader-bar.png";
 import reportActionPlanImg from "@/assets/eq/report-action-plan.png";
 import reportAdditionalLeaderImg from "@/assets/eq/report-additional-leader.png";
 import { useCountUp } from "@/hooks/useCountUp";
+import SourcedTooltip from "@/components/pps/SourcedTooltip";
 
 
 const eqFaqCategories = [
