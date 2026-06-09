@@ -33,13 +33,13 @@ export interface Offering {
 
 export const OFFERINGS = {
   // ===== B2C IGNITE =====
-  radicalMindfulness: { key: "radicalMindfulness", name: "Radical Mindfulness", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "8-week self-paced program building conscious awareness, emotional regulation, and reflective capacity." },
-  radicalMindfulnessMini: { key: "radicalMindfulnessMini", name: "Radical Mindfulness Mini Course", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "Condensed entry point before the full 8-week commitment." },
+  radicalMindfulness: { key: "radicalMindfulness", name: "Radical Mindfulness", facilitator: "Sierra", tier: "IGNITE", url: "/radical-mindfulness", blurb: "8-week self-paced program building conscious awareness, emotional regulation, and reflective capacity." },
+  radicalMindfulnessMini: { key: "radicalMindfulnessMini", name: "Radical Mindfulness Mini Course", facilitator: "Sierra", tier: "IGNITE", url: "/radical-mindfulness", blurb: "Condensed entry point before the full 8-week commitment." },
   passengerToPilot: { key: "passengerToPilot", name: "Passenger to Pilot (Masterclass)", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Shift from reactive to proactive leadership." },
-  masterYourMessage: { key: "masterYourMessage", name: "Master Your Message", facilitator: "Rob", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "6-week self-paced program: authentic communication and influence without authority." },
-  masterYourMessageMini: { key: "masterYourMessageMini", name: "Master Your Message Mini Course", facilitator: "Rob", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "Core framework condensed." },
-  talkingToStrangers: { key: "talkingToStrangers", name: "Talking to Strangers (Masterclass)", facilitator: "Rob", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Authentic connection in unfamiliar contexts." },
-  createExtraordinaryTeams: { key: "createExtraordinaryTeams", name: "Create Extraordinary Teams", facilitator: "Painted Porch Team", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "Deep, comprehensive program on team dynamics that work." },
+  masterYourMessage: { key: "masterYourMessage", name: "Master Your Message", facilitator: "Rob", tier: "IGNITE", url: "/master-your-message", blurb: "6-week self-paced program: authentic communication and influence without authority." },
+  masterYourMessageMini: { key: "masterYourMessageMini", name: "Master Your Message Mini Course", facilitator: "Rob", tier: "IGNITE", url: "/master-your-message", blurb: "Core framework condensed." },
+  talkingToStrangers: { key: "talkingToStrangers", name: "Talking to Strangers (Masterclass)", facilitator: "Rob", tier: "IGNITE", url: "/talking-to-strangers", blurb: "Authentic connection in unfamiliar contexts." },
+  createExtraordinaryTeams: { key: "createExtraordinaryTeams", name: "Create Extraordinary Teams", facilitator: "Painted Porch Team", tier: "IGNITE", url: "/extraordinary-teams", blurb: "Deep, comprehensive program on team dynamics that work." },
   elementsOfATeam: { key: "elementsOfATeam", name: "Elements of a Team (Masterclass)", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Core components of team health. Strong as precursor or standalone." },
   leadingChangeMini: { key: "leadingChangeMini", name: "Leading Change Mini Course", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "Change leadership fundamentals: how change works, where resistance comes from." },
 
