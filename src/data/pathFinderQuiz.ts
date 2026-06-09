@@ -614,14 +614,17 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     extra.push(grp("Strategic Design", "architectChange", "pillarsReinforcement"));
   }
 
-  if (commOn) extra.push(grp("If Communication Is Part of the Challenge — Rob Hunter", "masterYourMessageB2B", "powerOfStory", "eightByEight", "communicateWithStyle", "borderlessCommunication", "fiveMinuteKeynote"));
-  if (resOn) extra.push(grp("If Resilience or Wellbeing Is Part of the Challenge — Sierra Ramm Cantrell", "reignitingResilience", "fromPassengerToPilot", "findingJoyAtWork", "moveShakeInnovate"));
+  // Simplified: cap recommendations at 3 in the primary group only.
+  // Secondary-signal extras (comm/resilience) are intentionally suppressed
+  // so results stay focused. `extra` is built but not surfaced.
+  void extra; void commOn; void resOn;
+  const trimmedPrimary = primaryKeys.slice(0, 3);
 
   const strongestNextStep =
     strongest === "blueDoor"
       ? { kind: "blueDoor" as const, offering: blueDoorOff, label: "Strongest Next Step — The Blue Door" }
       : strongest === "workshop"
-        ? { kind: "workshop" as const, offering: O[primaryKeys[0]], label: "Strongest Next Step — Workshop" }
+        ? { kind: "workshop" as const, offering: O[trimmedPrimary[0]], label: "Strongest Next Step — Workshop" }
         : undefined;
 
   return {
@@ -630,9 +633,8 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     headline,
     subhead: rt === "RT-D" ? "Blue Door™ Primary | Workshops Alongside" : "Workshops | Blue Door™",
     narrative,
-    primaryGroup: grp(primaryHeading, ...primaryKeys),
+    primaryGroup: grp(primaryHeading, ...trimmedPrimary),
     groups: [
-      ...extra,
       grp("Deeper Option — Blue Door Organizational Appraisal", "blueDoor"),
     ],
     strongestNextStep,
