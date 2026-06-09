@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { ArrowRight, CheckCircle } from "lucide-react";
@@ -40,12 +40,15 @@ export default function StartHere() {
     ogImage: startHereHero,
   });
   const { open: openQuiz } = usePathFinderQuiz();
+  const location = useLocation();
 
-  // Auto-open the quiz when landing here (any link to /start-here triggers the dialog)
+  // Auto-open the quiz on landing AND whenever the user re-navigates to /start-here
+  // (e.g., clicking "Discover Your P.A.T.H.way" in the nav while already on this page).
+  // location.key changes on every navigation, even to the same path.
   useEffect(() => {
     const t = setTimeout(openQuiz, 350);
     return () => clearTimeout(t);
-  }, [openQuiz]);
+  }, [openQuiz, location.key]);
 
   return (
     <div>
