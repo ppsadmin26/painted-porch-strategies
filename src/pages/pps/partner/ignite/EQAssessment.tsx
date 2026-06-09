@@ -12,6 +12,8 @@ import reportLeadershipPotentialImg from "@/assets/eq/report-leadership-potentia
 import reportLeaderBarImg from "@/assets/eq/report-leader-bar.png";
 import reportActionPlanImg from "@/assets/eq/report-action-plan.png";
 import reportAdditionalLeaderImg from "@/assets/eq/report-additional-leader.png";
+import { useCountUp } from "@/hooks/useCountUp";
+
 
 const eqFaqCategories = [
   {
@@ -150,6 +152,104 @@ const colorMap: Record<string, { text: string; bg: string; ring: string; bgSoft:
   gold: { text: "text-gold", bg: "bg-gold", ring: "stroke-gold", bgSoft: "bg-gold/10", hex: "#E8A231" },
   lime: { text: "text-lime", bg: "bg-lime", ring: "stroke-lime", bgSoft: "bg-lime/10", hex: "#70A300" },
 };
+
+
+type Stat = (typeof stats)[number];
+
+function AnimatedStatCard({ stat: s, index: i }: { stat: Stat; index: number }) {
+  const c = colorMap[s.color];
+  const primary = s.type === "range" ? s.high : s.value!;
+  const { value: count, ref } = useCountUp({ end: primary, duration: 1600 });
+  const { value: lowCount } = useCountUp({ end: s.type === "range" ? s.low : 0, duration: 1600 });
+  const progress = primary > 0 ? count / primary : 0;
+  const starsFilled = Math.round(progress * 5);
+
+  return (
+    <div
+      ref={ref}
+      className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-foreground/5 overflow-hidden animate-fade-in"
+      style={{ animationDelay: `${i * 120}ms` }}
+    >
+      {/* Top color bar */}
+      <div className={`absolute top-0 left-0 right-0 h-1.5 ${c.bg}`} />
+      {/* Corner number */}
+      <div className={`absolute -right-4 -top-4 text-[8rem] font-poppins font-black ${c.text} opacity-[0.06] leading-none select-none`}>
+        0{i + 1}
+      </div>
+
+      {/* Visual */}
+      <div className="flex justify-center mb-6 mt-2">
+        {s.type === "ring" && (
+          <div className="relative w-40 h-40">
+            <svg viewBox="0 0 120 120" className="w-full h-full -rotate-90">
+              <circle cx="60" cy="60" r="52" className="stroke-foreground/10" strokeWidth="10" fill="none" />
+              <circle
+                cx="60" cy="60" r="52" fill="none" strokeWidth="10" strokeLinecap="round"
+                className={c.ring}
+                strokeDasharray={`${(count / 100) * 326.7} 326.7`}
+                style={{ filter: `drop-shadow(0 0 8px ${c.hex}55)` }}
+              />
+            </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <span className={`text-4xl font-poppins font-bold ${c.text}`}>{count}{s.suffix}</span>
+              <span className="text-xs uppercase tracking-wider text-foreground/60 mt-1">empathetic</span>
+            </div>
+          </div>
+        )}
+
+        {s.type === "bar" && (
+          <div className="w-full max-w-[200px] flex flex-col items-center">
+            <span className={`text-6xl font-poppins font-black ${c.text} leading-none mb-3`}>
+              {count}<span className="text-3xl align-top">{s.suffix}</span>
+            </span>
+            <div className="w-full h-4 rounded-full bg-foreground/10 overflow-hidden">
+              <div
+                className={`h-full ${c.bg} rounded-full`}
+                style={{ width: `${count}%`, transition: "width 80ms linear" }}
+              />
+            </div>
+            <div className="flex justify-between w-full text-[10px] text-foreground/50 mt-1 font-medium">
+              <span>0%</span><span>100%</span>
+            </div>
+          </div>
+        )}
+
+        {s.type === "range" && (
+          <div className="flex flex-col items-center">
+            <div className="flex items-baseline gap-1">
+              <span className={`text-6xl font-poppins font-black ${c.text} leading-none`}>{lowCount}</span>
+              <span className={`text-4xl font-poppins font-bold ${c.text}/70`}>–</span>
+              <span className={`text-6xl font-poppins font-black ${c.text} leading-none`}>{count}</span>
+              <span className={`text-3xl font-bold ${c.text} ml-1`}>{s.suffix}</span>
+            </div>
+            <div className="mt-4 flex items-center gap-1">
+              {[...Array(5)].map((_, idx) => (
+                <svg
+                  key={idx}
+                  className={`w-5 h-5 ${c.text} transition-all duration-300 ${idx < starsFilled ? "opacity-100 scale-100" : "opacity-20 scale-90"}`}
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path d="M10 1l2.6 6 6.4.5-4.9 4.2 1.5 6.3L10 14.8 4.4 18l1.5-6.3L1 7.5 7.4 7z" />
+                </svg>
+              ))}
+            </div>
+            <span className="text-xs uppercase tracking-wider text-foreground/60 mt-2">above target</span>
+          </div>
+        )}
+      </div>
+
+      {/* Text */}
+      <div className="text-center relative z-10">
+        <h3 className={`font-poppins font-bold text-lg ${c.text} mb-2`}>{s.headline}</h3>
+        <p className="text-foreground text-sm leading-relaxed">{s.text}</p>
+        {s.footnote && (
+          <p className="text-xs text-foreground/60 italic mt-2">{s.footnote}</p>
+        )}
+      </div>
+    </div>
+  );
+}
 
 
 export default function EQAssessment() {
@@ -296,93 +396,11 @@ export default function EQAssessment() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
-            {stats.map((s, i) => {
-              const c = colorMap[s.color];
-              return (
-                <div
-                  key={i}
-                  className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-foreground/5 overflow-hidden animate-fade-in"
-                  style={{ animationDelay: `${i * 120}ms` }}
-                >
-                  {/* Top color bar */}
-                  <div className={`absolute top-0 left-0 right-0 h-1.5 ${c.bg}`} />
-                  {/* Corner number */}
-                  <div className={`absolute -right-4 -top-4 text-[8rem] font-poppins font-black ${c.text} opacity-[0.06] leading-none select-none`}>
-                    0{i + 1}
-                  </div>
-
-                  {/* Visual */}
-                  <div className="flex justify-center mb-6 mt-2">
-                    {s.type === "ring" && (
-                      <div className="relative w-40 h-40">
-                        <svg viewBox="0 0 120 120" className="w-full h-full -rotate-90">
-                          <circle cx="60" cy="60" r="52" className="stroke-foreground/10" strokeWidth="10" fill="none" />
-                          <circle
-                            cx="60" cy="60" r="52" fill="none" strokeWidth="10" strokeLinecap="round"
-                            className={c.ring}
-                            strokeDasharray={`${(s.value! / 100) * 326.7} 326.7`}
-                            style={{
-                              transition: "stroke-dasharray 1.2s ease-out",
-                              filter: `drop-shadow(0 0 8px ${c.hex}55)`,
-                            }}
-                          />
-                        </svg>
-                        <div className="absolute inset-0 flex flex-col items-center justify-center">
-                          <span className={`text-4xl font-poppins font-bold ${c.text}`}>{s.value}{s.suffix}</span>
-                          <span className="text-xs uppercase tracking-wider text-foreground/60 mt-1">empathetic</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {s.type === "bar" && (
-                      <div className="w-full max-w-[200px] flex flex-col items-center">
-                        <span className={`text-6xl font-poppins font-black ${c.text} leading-none mb-3`}>
-                          {s.value}<span className="text-3xl align-top">{s.suffix}</span>
-                        </span>
-                        <div className="w-full h-4 rounded-full bg-foreground/10 overflow-hidden">
-                          <div
-                            className={`h-full ${c.bg} rounded-full origin-left animate-scale-in`}
-                            style={{ width: `${s.value}%`, animationDuration: "1s" }}
-                          />
-                        </div>
-                        <div className="flex justify-between w-full text-[10px] text-foreground/50 mt-1 font-medium">
-                          <span>0%</span><span>100%</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {s.type === "range" && (
-                      <div className="flex flex-col items-center">
-                        <div className="flex items-baseline gap-1">
-                          <span className={`text-6xl font-poppins font-black ${c.text} leading-none`}>{s.low}</span>
-                          <span className={`text-4xl font-poppins font-bold ${c.text}/70`}>–</span>
-                          <span className={`text-6xl font-poppins font-black ${c.text} leading-none`}>{s.high}</span>
-                          <span className={`text-3xl font-bold ${c.text} ml-1`}>{s.suffix}</span>
-                        </div>
-                        <div className="mt-4 flex items-center gap-1">
-                          {[...Array(5)].map((_, idx) => (
-                            <svg key={idx} className={`w-5 h-5 ${c.text}`} viewBox="0 0 20 20" fill="currentColor">
-                              <path d="M10 1l2.6 6 6.4.5-4.9 4.2 1.5 6.3L10 14.8 4.4 18l1.5-6.3L1 7.5 7.4 7z" />
-                            </svg>
-                          ))}
-                        </div>
-                        <span className="text-xs uppercase tracking-wider text-foreground/60 mt-2">above target</span>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Text */}
-                  <div className="text-center relative z-10">
-                    <h3 className={`font-poppins font-bold text-lg ${c.text} mb-2`}>{s.headline}</h3>
-                    <p className="text-foreground text-sm leading-relaxed">{s.text}</p>
-                    {s.footnote && (
-                      <p className="text-xs text-foreground/60 italic mt-2">{s.footnote}</p>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+            {stats.map((s, i) => (
+              <AnimatedStatCard key={i} stat={s} index={i} />
+            ))}
           </div>
+
 
           <p className="text-center text-foreground mt-12 max-w-2xl mx-auto text-lg">
             People higher in EI communicate effectively, form strong relationships, and create powerful coping strategies.
