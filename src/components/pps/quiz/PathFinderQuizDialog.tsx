@@ -178,7 +178,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         <DialogHeader className="px-6 pt-6 pb-2">
           <DialogTitle className="font-poppins text-2xl text-navy flex items-center gap-2">
             <Compass className="w-6 h-6 text-primary" />
-            P.A.T.H. Finder<sup className="text-xs">™</sup>
+            P.A.T.H.finder
           </DialogTitle>
           <DialogDescription className="text-foreground">
             {showResult ? "Your starting point and what's available when you're ready for more." : "About 3 minutes. You'll leave knowing exactly where to start."}
