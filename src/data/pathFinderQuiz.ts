@@ -83,16 +83,42 @@ export const OFFERINGS = {
   fromPassengerToPilot: { key: "fromPassengerToPilot", name: "From Passenger to Pilot", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Reclaiming individual agency within team and organizational systems." },
   radicalMindfulnessB2B: { key: "radicalMindfulnessB2B", name: "Radical Mindfulness (B2B)", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Mindfulness as a leadership practice for organizational wellbeing." },
 
+  // Rob — additional Pathway B
+  borderlessCommunication: { key: "borderlessCommunication", name: "Borderless Communication", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Communication across cultures, geographies, and modalities without losing signal." },
+  fiveMinuteKeynote: { key: "fiveMinuteKeynote", name: "The 5-Minute Keynote", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Crafting the high-stakes short message that has to land in a hallway, a board room, or an elevator." },
+
+  // Sierra — additional Pathway B
+  moveShakeInnovate: { key: "moveShakeInnovate", name: "Move, Shake, Innovate", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Reawakening creative capacity and innovation culture in teams that have gone flat." },
+
+  // Amy — additional Pathway B
+  architectChange: { key: "architectChange", name: "Architect Change (Strategic Design Intensive)", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Phase Zero™ strategic design — author what you're about to build before you build it." },
+  pillarsReinforcement: { key: "pillarsReinforcement", name: "Painted Porch Pillars™ Organizational Reinforcement", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Workshop that diagnoses and reinforces the three Pillars: Foundational Architecture, Operational Intelligence, Human Capacity." },
+  stoicismB2B: { key: "stoicismB2B", name: "Stoicism in the Workplace (Workshop)", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Stoic philosophy translated into leadership and team practice at the organizational level." },
+
+  // Pre-Blue-Door scoping
+  currentStateLight: { key: "currentStateLight", name: "Current State Analysis — Light", tier: "Assessment", url: "/blue-door", blurb: "Lightweight organizational snapshot. Quick read on where the architecture stands." },
+  currentStateDeep: { key: "currentStateDeep", name: "Current State Analysis — Deep", tier: "Assessment", url: "/blue-door", blurb: "Deeper organizational diagnostic. For leaders who already know something structural needs to shift." },
+
   // Assessments / Free
   eqi: { key: "eqi", name: "EQ-i 2.0 Assessment", tier: "Assessment", url: "/eq", blurb: "Emotional intelligence baseline. Data on where reflective and relational capacity sits." },
   eq360: { key: "eq360", name: "EQ360 Assessment", tier: "Assessment", url: "/eq", blurb: "Multi-perspective EQ feedback." },
   workingGenius: { key: "workingGenius", name: "Working Genius Assessment", tier: "Assessment", url: "/partner/ignite/assessments/working-genius", blurb: "Natural contribution style surfaces gaps you may not have named yet." },
   performanceDNA: { key: "performanceDNA", name: "Performance DNA Assessment", tier: "Assessment", url: "/partner/ignite/assessments", blurb: "Behavioral architecture at the elevation level." },
+
+  // IGNITE Challenges (B2C)
+  meditationChallenge: { key: "meditationChallenge", name: "Meditation Challenge", facilitator: "Sierra", tier: "IGNITE", url: "/resources/free", blurb: "Short daily meditation practice to build the reflective muscle." },
+  gratitudeChallenge: { key: "gratitudeChallenge", name: "Gratitude Challenge", facilitator: "Sierra", tier: "IGNITE", url: "/resources/free", blurb: "Daily gratitude practice that resets perspective and steadies the inner game." },
+  journalingChallenge: { key: "journalingChallenge", name: "Journaling Challenge", facilitator: "Rob", tier: "IGNITE", url: "/mym-journal-challenge", blurb: "Daily journaling prompts that sharpen how you think, speak, and write as a leader." },
+  kickTheHabitB2C: { key: "kickTheHabitB2C", name: "Kick the Habit (Masterclass)", facilitator: "Amy", tier: "IGNITE", url: "/kick-the-habit", blurb: "Short masterclass on the behavioral patterns that quietly keep change from sticking." },
+
+  // Free Resources
   fiftyTwoStoicism: { key: "fiftyTwoStoicism", name: "52 Weeks of Stoicism", tier: "Free", url: "/resources/free", blurb: "Weekly Stoic principles for leadership. Free." },
   burnoutResources: { key: "burnoutResources", name: "Burnout Resources", tier: "Free", url: "/resources/burnout", blurb: "If exhaustion is part of your reality, start here. Free." },
   strategicChangeCanvas: { key: "strategicChangeCanvas", name: "Strategic Change Canvas", tier: "Free", url: "/change-canvas", blurb: "Visual planning tool for mapping change before you launch it. Free." },
   communicatingChangeWorkbook: { key: "communicatingChangeWorkbook", name: "Communicating Change Workbook", tier: "Free", url: "/change-comms", blurb: "Templates for the conversations that make or break transformation. Free." },
   stracticalMini: { key: "stracticalMini", name: "Stractical Leader Mini Workbook", tier: "Free", url: "/resources/stractical-mini", blurb: "Taste of the strategic-tactical integration work. Free." },
+  resolutionRemix: { key: "resolutionRemix", name: "Resolution Remix", tier: "Free", url: "/resources/free", blurb: "Reframe annual resolutions into sustainable leadership practices. Free." },
+  workFromHomePro: { key: "workFromHomePro", name: "Become a Work-From-Home Pro", tier: "Free", url: "/wfh-sign-up", blurb: "Practical guide to remote-work rhythm, focus, and energy. Free." },
 
   // Blue Door
   blueDoor: { key: "blueDoor", name: "The Blue Door Organizational Appraisal", tier: "Blue Door", url: "/blue-door", blurb: "About 20 minutes. Produces the P.A.T.H. Compass: architecture, capacity signal, Move Now Map, Reinforce First priorities. No prerequisites." },
