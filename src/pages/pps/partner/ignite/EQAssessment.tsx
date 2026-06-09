@@ -172,14 +172,14 @@ export default function EQAssessment() {
           fallbackVideoUrl={eqHeroVideo.url}
           className="absolute inset-0 w-full h-full"
         />
-        {/* Readability overlay — lighter so the animation shows through */}
-        <div className="absolute inset-0 bg-navy/30" />
+        {/* Readability overlay — navy gradient keeps text legible while animation shows through */}
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-navy/70" />
         <div className="container max-w-6xl mx-auto px-6 relative z-10 text-center w-full">
           <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6 ring-1 ring-white/25">
             <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
             <span className="text-sm font-semibold">EQ-i 2.0 Assessment</span>
           </div>
-          <div className="bg-black/25 backdrop-blur-[2px] rounded-2xl px-6 py-12 md:px-16 md:py-20 inline-block max-w-5xl">
+          <div className="bg-navy/45 backdrop-blur-sm rounded-2xl px-6 py-12 md:px-16 md:py-20 inline-block max-w-5xl ring-1 ring-white/10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 leading-tight">
               What Can <span className="text-gold">E.Q.</span> Do For You?
             </h1>
