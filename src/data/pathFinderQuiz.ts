@@ -85,7 +85,6 @@ export const OFFERINGS = {
 
   // Rob — additional Pathway B
   borderlessCommunication: { key: "borderlessCommunication", name: "Borderless Communication", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Communication across cultures, geographies, and modalities without losing signal." },
-  fiveMinuteKeynote: { key: "fiveMinuteKeynote", name: "The 5-Minute Keynote", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Crafting the high-stakes short message that has to land in a hallway, a board room, or an elevator." },
 
   // Sierra — additional Pathway B
   moveShakeInnovate: { key: "moveShakeInnovate", name: "Move, Shake, Innovate", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Reawakening creative capacity and innovation culture in teams that have gone flat." },
