@@ -361,7 +361,7 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
                 <p className="font-semibold text-navy text-sm">{o.name}</p>
                 <p className="text-xs text-foreground/70 mt-0.5">{o.blurb}</p>
               </div>
-              <span className="text-[10px] uppercase tracking-wider font-bold text-primary whitespace-nowrap mt-0.5">{o.tier}</span>
+              <span className="text-[10px] uppercase tracking-wider font-bold text-primary whitespace-nowrap mt-0.5">{o.tier === "Pathway B" ? "Workshop" : o.tier}</span>
             </div>
           </Link>
         ))}
