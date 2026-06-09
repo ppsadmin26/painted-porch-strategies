@@ -535,9 +535,16 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         subhead: "Start on Your Terms",
         narrative: "You're paying attention, and that matters. Something is pulling you toward this work even if you're not yet sure what you need. That's a reasonable place to be. Start here. Take your time. There's no pressure to commit before you're ready, and there's a lot here that's free.",
         groups: [
-          grp("If your inner game is the gap", "fiftyTwoStoicism", "burnoutResources"),
-          grp("If communication is the gap", "communicatingChangeWorkbook"),
-          grp("If team or change leadership is on your mind", "strategicChangeCanvas", "stracticalMini"),
+          grp("If your inner game is the gap", "fiftyTwoStoicism", "burnoutResources", "meditationChallenge", "gratitudeChallenge"),
+          grp("If communication is the gap", "communicatingChangeWorkbook", "journalingChallenge"),
+          grp("If team or change leadership is on your mind", "strategicChangeCanvas", "stracticalMini", "kickTheHabitB2C"),
+          grp("Quick daily resets", "resolutionRemix", "workFromHomePro"),
+          grp("When you're ready to go deeper", "radicalMindfulnessMini", "masterYourMessageMini", "leadingChangeMini"),
+        ],
+        whatComesNext: "Retake the P.A.T.H. Finder in 60–90 days. Or reach out directly. Sometimes the right starting point is a conversation, not a quiz.",
+      };
+  }
+}
           grp("When you're ready to go deeper", "radicalMindfulnessMini", "masterYourMessageMini", "leadingChangeMini"),
         ],
         whatComesNext: "Retake the P.A.T.H. Finder in 60–90 days. Or reach out directly. Sometimes the right starting point is a conversation, not a quiz.",
