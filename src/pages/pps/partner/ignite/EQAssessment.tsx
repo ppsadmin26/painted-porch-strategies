@@ -116,18 +116,40 @@ const reportIncludes = [
 
 const stats = [
   {
-    stat: "61%",
-    text: "of people with highly empathetic leaders reported often or always being innovative at work, compared to only 13% with less empathetic leaders",
+    type: "ring" as const,
+    value: 61,
+    suffix: "%",
+    compare: 13,
+    color: "raspberry",
+    headline: "More Innovative",
+    text: "of people with highly empathetic leaders report often or always being innovative at work",
+    footnote: "vs. only 13% with less empathetic leaders",
   },
   {
-    stat: "70%",
-    text: "variance in levels of employee engagement accounted for by Effective Communication and Flexibility",
+    type: "bar" as const,
+    value: 70,
+    suffix: "%",
+    color: "gold",
+    headline: "Engagement Variance",
+    text: "of the variance in employee engagement is driven by Effective Communication & Flexibility",
   },
   {
-    stat: "15-20%",
-    text: "revenue target outperformance by teams with high EI leaders",
+    type: "range" as const,
+    low: 15,
+    high: 20,
+    suffix: "%",
+    color: "lime",
+    headline: "Revenue Outperformance",
+    text: "revenue target outperformance by teams led by high-EI leaders",
   },
 ];
+
+const colorMap: Record<string, { text: string; bg: string; ring: string; bgSoft: string; hex: string }> = {
+  raspberry: { text: "text-raspberry", bg: "bg-raspberry", ring: "stroke-raspberry", bgSoft: "bg-raspberry/10", hex: "#DB0043" },
+  gold: { text: "text-gold", bg: "bg-gold", ring: "stroke-gold", bgSoft: "bg-gold/10", hex: "#E8A231" },
+  lime: { text: "text-lime", bg: "bg-lime", ring: "stroke-lime", bgSoft: "bg-lime/10", hex: "#70A300" },
+};
+
 
 export default function EQAssessment() {
   return (
