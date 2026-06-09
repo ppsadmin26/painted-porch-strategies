@@ -10,9 +10,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, ArrowRight, CheckCircle2, Compass, Loader2, Mail, RotateCcw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { usePathFinderOverrides } from "@/hooks/usePathFinderOverrides";
 import {
   PQ1, PQ2_B2C, B2C_QUESTIONS, ORG_PQ2, TEAM_BRANCH, CHANGE_BRANCH, CAP_BRANCH, STRATEGIC_BRANCH,
-  buildResult, type Answers, type Question, type QuizResult, type Track,
+  buildResult, type Answers, type Question, type QuizResult, type Track, type Offering,
 } from "@/data/pathFinderQuiz";
 
 interface Props {
@@ -65,10 +66,26 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     }
   }, [open]);
 
+  const overrides = usePathFinderOverrides();
+
+  const applyOverrides = (o: Offering): Offering =>
+    overrides[o.key] ? { ...o, url: overrides[o.key] } : o;
+
   const result: QuizResult | null = useMemo(() => {
     if (!showResult || !track) return null;
-    return buildResult(track, answers);
-  }, [showResult, track, answers]);
+    const r = buildResult(track, answers);
+    return {
+      ...r,
+      primaryGroup: r.primaryGroup
+        ? { ...r.primaryGroup, offerings: r.primaryGroup.offerings.map(applyOverrides) }
+        : undefined,
+      groups: r.groups.map((g) => ({ ...g, offerings: g.offerings.map(applyOverrides) })),
+      strongestNextStep: r.strongestNextStep
+        ? { ...r.strongestNextStep, offering: applyOverrides(r.strongestNextStep.offering) }
+        : undefined,
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showResult, track, answers, overrides]);
 
   const setAnswer = (qid: string, value: string | string[]) => {
     setAnswers((prev) => ({ ...prev, [qid]: value }));

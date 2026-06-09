@@ -143,6 +143,7 @@ import YouTubeVideoEditor from "./pages/pps/admin/YouTubeVideoEditor";
 import AccountSettings from "./pages/pps/admin/AccountSettings";
 import SiteVideosManager from "./pages/pps/admin/SiteVideosManager";
 import PageStatusManager from "./pages/pps/admin/PageStatusManager";
+import PathFinderOfferings from "./pages/pps/admin/PathFinderOfferings";
 import BackupsManager from "./pages/pps/admin/BackupsManager";
 import MigrateManager from "./pages/pps/admin/MigrateManager";
 import RestoreWizard from "./pages/pps/admin/RestoreWizard";
@@ -413,6 +414,7 @@ const App = () => (
             <Route path="policy-notifications" element={<PolicyNotifications />} />
             <Route path="refunds" element={<RefundRequestsManager />} />
             <Route path="course-launches" element={<CourseLaunchManager />} />
+            <Route path="path-finder" element={<PathFinderOfferings />} />
           </Route>
           
           {/* Legacy /pps/* redirects + 404 catch-all */}

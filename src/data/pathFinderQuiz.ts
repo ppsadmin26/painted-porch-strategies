@@ -33,13 +33,13 @@ export interface Offering {
 
 export const OFFERINGS = {
   // ===== B2C IGNITE =====
-  radicalMindfulness: { key: "radicalMindfulness", name: "Radical Mindfulness", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "8-week self-paced program building conscious awareness, emotional regulation, and reflective capacity." },
-  radicalMindfulnessMini: { key: "radicalMindfulnessMini", name: "Radical Mindfulness Mini Course", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "Condensed entry point before the full 8-week commitment." },
+  radicalMindfulness: { key: "radicalMindfulness", name: "Radical Mindfulness", facilitator: "Sierra", tier: "IGNITE", url: "/radical-mindfulness", blurb: "8-week self-paced program building conscious awareness, emotional regulation, and reflective capacity." },
+  radicalMindfulnessMini: { key: "radicalMindfulnessMini", name: "Radical Mindfulness Mini Course", facilitator: "Sierra", tier: "IGNITE", url: "/radical-mindfulness", blurb: "Condensed entry point before the full 8-week commitment." },
   passengerToPilot: { key: "passengerToPilot", name: "Passenger to Pilot (Masterclass)", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Shift from reactive to proactive leadership." },
-  masterYourMessage: { key: "masterYourMessage", name: "Master Your Message", facilitator: "Rob", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "6-week self-paced program: authentic communication and influence without authority." },
-  masterYourMessageMini: { key: "masterYourMessageMini", name: "Master Your Message Mini Course", facilitator: "Rob", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "Core framework condensed." },
-  talkingToStrangers: { key: "talkingToStrangers", name: "Talking to Strangers (Masterclass)", facilitator: "Rob", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Authentic connection in unfamiliar contexts." },
-  createExtraordinaryTeams: { key: "createExtraordinaryTeams", name: "Create Extraordinary Teams", facilitator: "Painted Porch Team", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "Deep, comprehensive program on team dynamics that work." },
+  masterYourMessage: { key: "masterYourMessage", name: "Master Your Message", facilitator: "Rob", tier: "IGNITE", url: "/master-your-message", blurb: "6-week self-paced program: authentic communication and influence without authority." },
+  masterYourMessageMini: { key: "masterYourMessageMini", name: "Master Your Message Mini Course", facilitator: "Rob", tier: "IGNITE", url: "/master-your-message", blurb: "Core framework condensed." },
+  talkingToStrangers: { key: "talkingToStrangers", name: "Talking to Strangers (Masterclass)", facilitator: "Rob", tier: "IGNITE", url: "/talking-to-strangers", blurb: "Authentic connection in unfamiliar contexts." },
+  createExtraordinaryTeams: { key: "createExtraordinaryTeams", name: "Create Extraordinary Teams", facilitator: "Painted Porch Team", tier: "IGNITE", url: "/extraordinary-teams", blurb: "Deep, comprehensive program on team dynamics that work." },
   elementsOfATeam: { key: "elementsOfATeam", name: "Elements of a Team (Masterclass)", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Core components of team health. Strong as precursor or standalone." },
   leadingChangeMini: { key: "leadingChangeMini", name: "Leading Change Mini Course", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "Change leadership fundamentals: how change works, where resistance comes from." },
 
@@ -90,8 +90,8 @@ export const OFFERINGS = {
   performanceDNA: { key: "performanceDNA", name: "Performance DNA Assessment", tier: "Assessment", url: "/partner/ignite/assessments", blurb: "Behavioral architecture at the elevation level." },
   fiftyTwoStoicism: { key: "fiftyTwoStoicism", name: "52 Weeks of Stoicism", tier: "Free", url: "/resources/free", blurb: "Weekly Stoic principles for leadership. Free." },
   burnoutResources: { key: "burnoutResources", name: "Burnout Resources", tier: "Free", url: "/resources/burnout", blurb: "If exhaustion is part of your reality, start here. Free." },
-  strategicChangeCanvas: { key: "strategicChangeCanvas", name: "Strategic Change Canvas", tier: "Free", url: "/resources/free", blurb: "Visual planning tool for mapping change before you launch it. Free." },
-  communicatingChangeWorkbook: { key: "communicatingChangeWorkbook", name: "Communicating Change Workbook", tier: "Free", url: "/resources/free", blurb: "Templates for the conversations that make or break transformation. Free." },
+  strategicChangeCanvas: { key: "strategicChangeCanvas", name: "Strategic Change Canvas", tier: "Free", url: "/change-canvas", blurb: "Visual planning tool for mapping change before you launch it. Free." },
+  communicatingChangeWorkbook: { key: "communicatingChangeWorkbook", name: "Communicating Change Workbook", tier: "Free", url: "/change-comms", blurb: "Templates for the conversations that make or break transformation. Free." },
   stracticalMini: { key: "stracticalMini", name: "Stractical Leader Mini Workbook", tier: "Free", url: "/resources/stractical-mini", blurb: "Taste of the strategic-tactical integration work. Free." },
 
   // Blue Door

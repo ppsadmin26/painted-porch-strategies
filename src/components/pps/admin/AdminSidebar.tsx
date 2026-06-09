@@ -1,4 +1,4 @@
-import { FileText, Mic, Users, LayoutDashboard, Settings, Youtube, Video, Database, Wand2, ShieldCheck, KeyRound, ListChecks, Mail, Inbox, ScrollText, ToggleLeft, Map } from "lucide-react";
+import { FileText, Mic, Users, LayoutDashboard, Settings, Youtube, Video, Database, Wand2, ShieldCheck, KeyRound, ListChecks, Mail, Inbox, ScrollText, ToggleLeft, Map, Compass } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
 import { useAdminSections, type AdminSection } from "@/hooks/useAdminSections";
@@ -29,6 +29,7 @@ const navItems: { title: string; url: string; icon: any; section?: AdminSection 
   { title: "Email Health & Queue", url: "/admin/emails/queue", icon: Inbox },
   { title: "Policy Notifications", url: "/admin/policy-notifications", icon: ScrollText },
   { title: "Pages & SEO", url: "/admin/pages", icon: ToggleLeft },
+  { title: "P.A.T.H. Finder", url: "/admin/path-finder", icon: Compass },
   { title: "Sitemap", url: "/sitemap", icon: Map },
   { title: "Users", url: "/admin/users", icon: Users },
   { title: "Account", url: "/admin/account", icon: Settings },
@@ -60,6 +61,7 @@ export function AdminSidebar() {
     if (item.url === "/admin/emails/queue" && role !== "admin") return false;
     if (item.url === "/admin/policy-notifications" && role !== "admin") return false;
     if (item.url === "/admin/pages" && role !== "admin") return false;
+    if (item.url === "/admin/path-finder" && role !== "admin") return false;
     // Section-gated items
     if (item.section) return canAccess(item.section);
     return true;
