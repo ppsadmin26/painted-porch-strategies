@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
@@ -5,6 +6,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 import { TIER_LIST } from "@/config/tiers";
 import { TierBadge } from "@/components/pps/TierBadge";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
+import { usePathFinderQuiz } from "@/components/pps/quiz/PathFinderQuizProvider";
 import startHereHero from "@/assets/heroes/start-here-hero.jpg";
 
 const pathwayDetails = {
@@ -37,6 +39,14 @@ export default function StartHere() {
     description: "Not sure where to start? Discover the P.A.T.H.way that fits your team: IGNITE, AMPLIFY, or EMBODY. Find your partnership in a few minutes.",
     ogImage: startHereHero,
   });
+  const { open: openQuiz } = usePathFinderQuiz();
+
+  // Auto-open the quiz when landing here (any link to /start-here triggers the dialog)
+  useEffect(() => {
+    const t = setTimeout(openQuiz, 350);
+    return () => clearTimeout(t);
+  }, [openQuiz]);
+
   return (
     <div>
       {/* Hero */}
@@ -47,14 +57,26 @@ export default function StartHere() {
           </span>
         }
         headline="Find Your P.A.T.H.way"
-        description="Not sure where to begin? This guide will help you identify the right engagement level for your needs, goals, and readiness."
-        ctas={[
-          { label: "Take the P.A.T.H.finder Quiz", href: "/blue-door", buttonClassName: "bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor" },
-        ]}
+        description="Not sure where to begin? The P.A.T.H. Finder quiz will surface the right partnership style and the specific programs to start with."
+        ctas={[]}
         background={{ type: "image", src: startHereHero }}
         overlayClass="bg-navy/50"
         minHeightClass="min-h-[60vh]"
       />
+
+      {/* Reopen quiz button — sits just under hero so the user always has it */}
+      <section className="bg-white py-8">
+        <div className="container max-w-3xl mx-auto px-6 text-center">
+          <Button
+            onClick={openQuiz}
+            className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-10 py-6 text-lg font-semibold rounded-lg transition-colors"
+          >
+            Take the P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+          <p className="text-sm text-foreground/70 mt-3">About 3 minutes. Email yourself the results when you're done.</p>
+        </div>
+      </section>
+
 
       {/* Quick Assessment */}
       <section className="py-16 md:py-24 bg-white">

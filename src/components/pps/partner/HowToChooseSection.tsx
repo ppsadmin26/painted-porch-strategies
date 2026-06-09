@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Info, ArrowRight } from "lucide-react";
 import { TIERS } from "@/config/tiers";
 import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
+import { usePathFinderQuiz } from "@/components/pps/quiz/PathFinderQuizProvider";
 
 const choiceCards = [
   {
@@ -46,6 +47,7 @@ const choiceCards = [
 ];
 
 export function HowToChooseSection() {
+  const { open: openQuiz } = usePathFinderQuiz();
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-muted to-white">
       <div className="container max-w-6xl mx-auto px-6">
@@ -90,11 +92,12 @@ export function HowToChooseSection() {
           <p className="text-foreground mb-4 text-center">
             At a fork in your P.A.T.H.way decision? Take our free P.A.T.H.finder quiz to determine which direction is best based on your needs.
           </p>
-          <Link to="/start-here">
-            <Button className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-12 py-6 text-lg font-semibold rounded-lg transition-colors">
-              Take Free P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </Link>
+          <Button
+            onClick={openQuiz}
+            className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-12 py-6 text-lg font-semibold rounded-lg transition-colors"
+          >
+            Take Free P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
         </div>
       </div>
     </section>

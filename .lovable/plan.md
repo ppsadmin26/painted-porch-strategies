@@ -1,120 +1,73 @@
 
-# Plan: Sourcing Standardization + Calculator v2
+# Plan: P.A.T.H. Finder™ Quiz Dialog
 
-Two parallel workstreams. Both ship this turn.
-
----
-
-## Workstream A — Sourced Stat Tooltip (site-wide)
-
-### A1. Create shared component
-**New file:** `src/components/pps/SourcedStat.tsx`
-
-A single reusable primitive that renders a stat figure/label with an inline info-icon tooltip. Tooltip shows source name + clickable URL (opens new tab). Replaces every footnote+source-section pattern.
-
-Props:
-- `figure` (string) — big number e.g. "70%+"
-- `label` (string) — short description
-- `source` (string) — citation text
-- `sourceUrl` (string, optional) — clickable link
-- `year` (string|number, optional) — appended to source
-- `variant`: `"inline" | "editorial" | "bold"` — matches existing StatCard variants
-- `accentClass` — preserve current color logic
-
-### A2. Identify and migrate all instances
-Targets to convert (will grep for `StatSources`, `footnoteNumber`, manual `<ol>` source lists, `<sup>` footnotes, and "Sources" headings):
-- `src/components/pps/partner/ArchitectureGapSection.tsx` (footnotes 1–4 + Sources block)
-- `src/components/pps/StatCard.tsx` (`footnoteNumber` + `StatSources` helper — keep StatCard but make footnote optional and route new usage through SourcedStat)
-- AMPLIFY ROI section already done as reference impl (`AmplifyPathAlt.tsx`)
-- Any other page using `RESEARCH_STATS` with footnote chrome (will sweep)
-- "Sources" sections in EMBODY pages if present
-
-For each: delete the bottom "Sources" `<ol>` and `<sup>` markers; render inline info-icon tooltip instead.
-
-### A3. Keep `RESEARCH_STATS` registry; deprecate `StatSources` helper
-`StatSources` export stays for backward-compat one release, marked `@deprecated`.
+Builds the full quiz from the spec doc as a **popup dialog** triggered from every "P.A.T.H.finder Quiz" link on the site. No new route.
 
 ---
 
-## Workstream B — Calculator v2
+## Workstream A — Quiz UI (dialog)
 
-### B1. Data file
-**New:** `src/data/calculatorBenchmarks.ts`
-- `INDUSTRY_BENCHMARKS` — 8 industries × `{ avgLoadedSalary, overrunRate, failureRate, sources[] }` (BLS 2024 + McKinsey/Gartner/BCG)
-- `SIZE_PRESETS` — Small (10 ppl), Mid (35), Enterprise (100) with default tech spend per seat
-- `PHASE_ZERO_IMPACT` — `{ min: 0.10, max: 0.15 }` (10–15% exposure reduction)
+### A1. Data/logic module
+**New:** `src/data/pathFinderQuiz.ts`
+- All questions (PQ1, B2C Q1–Q6, B2B PQ2 + branch trees Team/Change/Cap/Strategic + PQ3 + decision-maker Q4)
+- Branching graph (which questions follow based on prior answers)
+- Scoring functions:
+  - B2C → RT1–RT6 per Section 6 logic (zone counts, Q6=A hard override, Q6=B/C/D modifiers)
+  - B2B → RT-A/B/C/D/E per routing matrix (Section 4)
+- Offering catalog with name, tier (IGNITE / AMPLIFY / Blue Door / Pathway B), facilitator (Amy / Rob / Sierra), and on-site URL
+- Result-type → recommendation set resolver that:
+  - Picks primary offerings from Q1 routing
+  - Layers in secondary signals (Communication → Rob, Resilience → Sierra)
+  - Computes "Strongest Next Step" tag per routing matrix
+  - Adds Blue Door alongside all org results
+  - Triggers reverse-crossover note when org Q1-Cap=B + Q2-Cap=C
 
-### B2. New dialog
-**Replace:** `src/components/pps/blue-door/CostCalculatorDialog.tsx` (archive current as `_archive-v1.0/` already exists)
+### A2. Dialog component
+**New:** `src/components/pps/quiz/PathFinderQuizDialog.tsx`
+- Controlled `<Dialog>` (shadcn) with `<PathFinderQuizContext>` provider so any link can trigger it
+- Step UI: progress bar, one question at a time, back/next, multi-select for secondary-signal questions
+- Result screen renders branded result card with:
+  - Headline + intro copy per RT (from spec)
+  - "Strongest Next Step" highlighted box (cobalt for Blue Door, primary teal for workshops)
+  - Recommendation grid: name, facilitator, tier badge, short description, **Link to offering page**
+  - Reverse-crossover callout when triggered
+  - Email-me-results form (First name, Email + checkbox: "Also subscribe to updates")
+  - Retake / close actions
+- All styling follows brand tokens; Poppins headings, Montserrat body; ™ on first Phase Zero / P.A.T.H. / Painted Porch Pillars mention
 
-Inputs (3 always-visible):
-1. Industry (radio cards)
-2. Initiative size (S/M/E)
-3. Duration (3/6/12/18/24 month stepper)
-
-Optional expander:
-- Override avg fully-loaded salary
-- Outside consultants (toggle)
-
-Outputs (3 stacked cards):
-- Planned investment ($X)
-- Likely overrun range ($X–$Y, using industry overrun rate ±10%)
-- Failure scenario write-off ($Z, using industry failure rate)
-
-Hero strip: **"A $1,500 Blue Door can de-risk an est. $X–$Y of this exposure"** → cobalt CTA to `/blue-door`.
-
-Footer: "How we calculated this" collapsible with formulas + sources (info-icon tooltip pattern).
-
-### B3. Email-me-results (lead gen)
-- Inline form inside dialog: First name, Last name, Email, Company (optional), Role (optional).
-- On submit → `submit-calculator-results` edge function.
-
-### B4. New edge function
-**New:** `supabase/functions/submit-calculator-results/index.ts`
-
-Mirrors existing `submit-ghl-lead` pattern. Does:
-1. Validate input (Zod).
-2. Upsert contact in GHL (`GHL_API_KEY` + `GHL_LOCATION_ID`).
-3. Add tag: `calc-cost-of-skipping`.
-4. POST contact **note** with full calculator inputs + results breakdown (formatted text).
-5. If `GHL_COST_CALC_WORKFLOW_ID` secret is set, subscribe contact to that workflow. If unset, skip silently (no error).
-6. Also send a transactional email to the lead via existing `send-transactional-email` queue with their results (new template `cost-calculator-results.tsx`).
-
-### B5. New email template
-**New:** `supabase/functions/_shared/transactional-email-templates/cost-calculator-results.tsx`
-- Brand-styled (white bg, Poppins/Montserrat inline)
-- Shows the three result cards as HTML
-- Cobalt CTA: "Step through the Blue Door → $1,500"
-- Soft secondary CTA: "Talk to us about this → /contact"
-- Register in `registry.ts`.
-
-### B6. Placement
-- `/blue-door` — existing dialog trigger keeps working (component swap is transparent).
-- `/partner/amplify` AmplifyPathAlt — add **"Calculate your ROI"** button under the ROI table, opens same `<CostCalculatorDialog>`.
-
-### B7. Secret
-Request new secret `GHL_COST_CALC_WORKFLOW_ID` (optional; user adds later when they build the GHL workflow). Edge function works with or without it.
+### A3. Global trigger
+**New:** `src/components/pps/quiz/PathFinderQuizProvider.tsx` mounted in `PPSLayout` so `usePathFinderQuiz()` exposes `open()`
+- Replace existing "Take Free P.A.T.H.finder Quiz" `<Link to="/start-here">` and the `/start-here` hero CTA (currently links to /blue-door) so they call `open()` instead
+- Sweep `rg -l "P.A.T.H.finder Quiz\|start-here"` and migrate each CTA in nav, HowToChooseSection, StartHere hero, etc.
 
 ---
 
-## Technical details
+## Workstream B — Submission + Email
 
-- **GHL workflow subscribe endpoint:** `POST /contacts/{contactId}/workflow/{workflowId}` (LeadConnector v1) — exactly the same pattern other PPS edge functions use.
-- **Contact note format** (plain text, readable in GHL UI):
-  ```
-  Cost-of-Skipping Calculator — [date]
-  Industry: Technology  |  Size: Mid (35 ppl)  |  Duration: 12 mo
-  Planned: $X  •  Overrun: $Y–$Z  •  Failure write-off: $W
-  Blue Door de-risks: est. $A–$B
-  ```
-- **Tag:** `calc-cost-of-skipping` (kebab-case, matches existing GHL tag convention).
-- **No DB tables** — purely GHL-side persistence per project's lead-capture rule.
-- **Tooltip primitive:** reuses existing shadcn `<Tooltip>` from `components/ui/tooltip` (already used in AmplifyPathAlt update).
-- All TM/brand/Blue-Door color rules respected.
+### B1. Edge function
+**New:** `supabase/functions/submit-path-finder-quiz/index.ts`
+- Body (Zod-validated): `firstName, email, subscribe: boolean, track: 'b2c'|'b2b', resultType, answers, recommendations[]`
+- Always: enqueue `path-finder-results` transactional email to the user with their RT + recommendation list (each with absolute URL to offering page)
+- If `subscribe === true`: upsert contact in GHL with tag `PathQuiz` + post a note with full answer log + result. Skip GHL entirely otherwise.
+- Uses existing `GHL_API_KEY` + `GHL_LOCATION_ID`. Mirrors `submit-calculator-results` pattern.
+
+### B2. Email template
+**New:** `supabase/functions/_shared/transactional-email-templates/path-finder-results.tsx`
+- Brand-styled white-bg React Email
+- Sections: greeting → result headline → "Your Strongest Next Step" callout → full recommendation list (name, tier, link button) → soft CTA to /contact
+- Register in `registry.ts`
 
 ---
 
-## Out of scope (future)
-- Shareable URL with query params for results (deferred — adds complexity for marginal lift)
-- A/B testing variants
-- Industry benchmark refresh automation (annual manual refresh per `costOfSkippingStats.ts` pattern)
+## Out of scope (deferred)
+- Post-completion 3-touch email flywheel (Section 9) — not requested, ship later
+- Re-take history storage in DB — results just emailed; no PPS DB table
+- A/B variants of opening copy per Aspiring Leader tag — single copy first pass
+
+---
+
+## Sitemap / page status
+No new public route is added (dialog only), so no Sitemap.tsx or `page_status` change needed.
+
+## Secrets
+All required (`GHL_API_KEY`, `GHL_LOCATION_ID`) already set. No new secrets.

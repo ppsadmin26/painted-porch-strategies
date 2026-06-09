@@ -32,6 +32,7 @@ import { template as refundRequestNotification } from './refund-request-notifica
 import { template as refundRequestProcessed } from './refund-request-processed.tsx'
 import { template as launchListSignupAdmin } from './launch-list-signup-admin.tsx'
 import { template as costCalculatorResults } from './cost-calculator-results.tsx'
+import { template as pathFinderResults } from './path-finder-results.tsx'
 
 export const TEMPLATES: Record<string, TemplateEntry> = {
   'contact-confirmation': contactConfirmation,
@@ -57,4 +58,5 @@ export const TEMPLATES: Record<string, TemplateEntry> = {
   'refund-request-processed': refundRequestProcessed,
   'launch-list-signup-admin': launchListSignupAdmin,
   'cost-calculator-results': costCalculatorResults,
+  'path-finder-results': pathFinderResults,
 }
