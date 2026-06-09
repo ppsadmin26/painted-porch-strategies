@@ -597,10 +597,12 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     narrative = "What you're describing isn't a program gap or training need. It's an architectural question: whether your organization's current identity is built to carry what you're trying to create. The Blue Door is where organizations at strategic inflection points begin.";
     const q1 = val(answers, "Q1Strategic");
     primaryHeading = "Pathway B Workshops — Activate Your Team While the Appraisal Work Is Underway";
-    if (q1 === "A") primaryKeys = ["architectureOfAdaptability", "pillarsOfLastingChange", "pathToLastingChange"];
-    else if (q1 === "B") primaryKeys = ["leadershipOM", "stracticalLeader", "leadAtSpeed"];
-    else if (q1 === "C") primaryKeys = ["aiEiOh", "architectureOfAdaptability"];
-    else primaryKeys = ["architectureOfAdaptability", "pathToLastingChange"];
+    if (q1 === "A") primaryKeys = ["architectChange", "pillarsReinforcement", "architectureOfAdaptability"];
+    else if (q1 === "B") primaryKeys = ["leadershipOM", "stracticalLeader", "architectChange"];
+    else if (q1 === "C") primaryKeys = ["aiEiOh", "architectureOfAdaptability", "architectChange"];
+    else primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
+    extra.push(grp("Pre-Blue-Door Scoping", "currentStateLight", "currentStateDeep"));
+    extra.push(grp("Stoic Grounding for the Senior Team", "stoicismB2B"));
   } else {
     // RT-E
     headline = "Exploring Your Options";
@@ -609,10 +611,11 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     primaryKeys = ["fromConflictToConnection", "fromDysfunctionToDynamic", "heroesAssemble"];
     extra.push(grp("Change & Transformation", "leadAtSpeed", "pathToLastingChange", "cultivatingChangeResilience"));
     extra.push(grp("Leadership Capability", "goldilocks", "stracticalLeader", "pillarsOfLastingChange"));
+    extra.push(grp("Strategic Design", "architectChange", "pillarsReinforcement"));
   }
 
-  if (commOn) extra.push(grp("If Communication Is Part of the Challenge — Rob Hunter", "masterYourMessageB2B", "powerOfStory", "eightByEight", "communicateWithStyle"));
-  if (resOn) extra.push(grp("If Resilience or Wellbeing Is Part of the Challenge — Sierra Ramm Cantrell", "reignitingResilience", "fromPassengerToPilot", "findingJoyAtWork"));
+  if (commOn) extra.push(grp("If Communication Is Part of the Challenge — Rob Hunter", "masterYourMessageB2B", "powerOfStory", "eightByEight", "communicateWithStyle", "borderlessCommunication", "fiveMinuteKeynote"));
+  if (resOn) extra.push(grp("If Resilience or Wellbeing Is Part of the Challenge — Sierra Ramm Cantrell", "reignitingResilience", "fromPassengerToPilot", "findingJoyAtWork", "moveShakeInnovate"));
 
   const strongestNextStep =
     strongest === "blueDoor"
