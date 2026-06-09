@@ -446,7 +446,7 @@ export default function EQAssessment() {
                 ))}
               </ul>
               <a
-                href="https://www.paintedporchstrategies.com/resource_redirect/offers/MyBZo9qL"
+                href="https://explore.onthepaintedporch.com/payment-link/69e67e7a557558e89e521471"
                 target="_blank"
                 rel="noopener noreferrer"
               >
