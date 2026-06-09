@@ -4,6 +4,7 @@ import PPSNavigation from "@/components/pps/PPSNavigation";
 import PPSFooter from "@/components/pps/PPSFooter";
 import PageGate from "@/components/pps/PageGate";
 import GitHubSyncBanner from "@/components/pps/admin/GitHubSyncBanner";
+import { PathFinderQuizProvider } from "@/components/pps/quiz/PathFinderQuizProvider";
 
 function scrollToTop() {
   window.scrollTo({ top: 0, left: 0, behavior: "instant" });
@@ -25,16 +26,18 @@ export default function PPSLayout() {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <GitHubSyncBanner />
-      <PPSNavigation />
-      <main className="flex-1">
-        <PageGate>
-          <Outlet />
-        </PageGate>
-      </main>
-      <PPSFooter />
-    </div>
+    <PathFinderQuizProvider>
+      <div className="min-h-screen flex flex-col">
+        <GitHubSyncBanner />
+        <PPSNavigation />
+        <main className="flex-1">
+          <PageGate>
+            <Outlet />
+          </PageGate>
+        </main>
+        <PPSFooter />
+      </div>
+    </PathFinderQuizProvider>
   );
 }
 
