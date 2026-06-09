@@ -174,8 +174,8 @@ export default function EQAssessment() {
           style={{ transform: "scale(1.35)", transformOrigin: "center center" }}
         />
         {/* Readability overlays keep the generated animation behind the copy without letting video text show through */}
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/90 via-navy/58 to-navy/78" />
-        <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-navy via-navy/95 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/95 via-navy/78 to-navy/88" />
+        <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-navy via-navy/98 to-transparent" />
         <div className="container max-w-6xl mx-auto px-6 relative z-10 text-center w-full">
           <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6 ring-1 ring-white/25">
             <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
