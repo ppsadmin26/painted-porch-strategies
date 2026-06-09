@@ -92,11 +92,12 @@ export function HowToChooseSection() {
           <p className="text-foreground mb-4 text-center">
             At a fork in your P.A.T.H.way decision? Take our free P.A.T.H.finder quiz to determine which direction is best based on your needs.
           </p>
-          <Link to="/start-here">
-            <Button className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-12 py-6 text-lg font-semibold rounded-lg transition-colors">
-              Take Free P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-          </Link>
+          <Button
+            onClick={openQuiz}
+            className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-12 py-6 text-lg font-semibold rounded-lg transition-colors"
+          >
+            Take Free P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
         </div>
       </div>
     </section>
