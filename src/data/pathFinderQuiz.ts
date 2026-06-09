@@ -596,7 +596,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     headline = "Strategic / Architectural";
     narrative = "What you're describing isn't a program gap or training need. It's an architectural question: whether your organization's current identity is built to carry what you're trying to create. The Blue Door is where organizations at strategic inflection points begin.";
     const q1 = val(answers, "Q1Strategic");
-    primaryHeading = "Pathway B Workshops — Activate Your Team While the Appraisal Work Is Underway";
+    primaryHeading = "Workshops — Activate Your Team While the Appraisal Work Is Underway";
     if (q1 === "A") primaryKeys = ["architectChange", "pillarsReinforcement", "architectureOfAdaptability"];
     else if (q1 === "B") primaryKeys = ["leadershipOM", "stracticalLeader", "architectChange"];
     else if (q1 === "C") primaryKeys = ["aiEiOh", "architectureOfAdaptability", "architectChange"];
