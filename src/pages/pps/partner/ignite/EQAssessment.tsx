@@ -165,7 +165,7 @@ export default function EQAssessment() {
       />
 
       {/* Hero */}
-      <section className="relative py-24 md:py-36 text-white overflow-hidden isolate min-h-[78vh] flex items-center bg-navy">
+      <section className="relative py-16 md:py-24 text-white overflow-hidden isolate min-h-[70vh] flex items-center bg-navy">
         <LazyHeroVideo
           slotKey="eq-hero"
           posterUrl="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E"
@@ -173,15 +173,14 @@ export default function EQAssessment() {
           className="absolute inset-0 w-full h-full"
           style={{ transform: "scale(1.35)", transformOrigin: "center center" }}
         />
-        {/* Readability overlays keep the generated animation behind the copy without letting video text show through */}
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/95 via-navy/78 to-navy/88" />
-        <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-navy via-navy/98 to-transparent" />
+        {/* Readability overlay — single solid-ish navy wash for consistency with other hero overlays */}
+        <div className="absolute inset-0 bg-navy/80" />
         <div className="container max-w-6xl mx-auto px-6 relative z-10 text-center w-full">
           <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6 ring-1 ring-white/25">
             <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
             <span className="text-sm font-semibold">EQ-i 2.0 Assessment</span>
           </div>
-          <div className="bg-navy/68 backdrop-blur-md rounded-2xl px-6 py-12 md:px-16 md:py-20 inline-block max-w-5xl ring-1 ring-white/15 shadow-2xl">
+          <div className="bg-navy/85 backdrop-blur-md rounded-2xl px-6 py-12 md:px-16 md:py-20 inline-block max-w-5xl ring-1 ring-white/15 shadow-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 leading-tight">
               What Can <span className="text-gold">E.Q.</span> Do For You?
             </h1>
