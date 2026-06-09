@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
@@ -5,6 +6,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 import { TIER_LIST } from "@/config/tiers";
 import { TierBadge } from "@/components/pps/TierBadge";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
+import { usePathFinderQuiz } from "@/components/pps/quiz/PathFinderQuizProvider";
 import startHereHero from "@/assets/heroes/start-here-hero.jpg";
 
 const pathwayDetails = {
