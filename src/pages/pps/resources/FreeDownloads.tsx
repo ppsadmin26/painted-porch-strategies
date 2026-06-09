@@ -193,7 +193,12 @@ export default function FreeDownloads() {
                       <download.icon className="w-6 h-6" />
                     </div>
                     <div className="flex-1">
-                      <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{download.format}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{download.format}</span>
+                        {download.comingSoon && (
+                          <span className="text-xs font-semibold text-gold uppercase tracking-wide">Coming Soon</span>
+                        )}
+                      </div>
                       <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-1">
                         {download.title}
                       </h3>
