@@ -93,6 +93,7 @@ const downloads = [
     href: "/change-ready-team-assessment",
     ctaIcon: ClipboardCheck,
     ctaLabel: "Take Assessment",
+    comingSoon: true,
   },
   {
     icon: ClipboardCheck,
@@ -104,6 +105,7 @@ const downloads = [
     href: "/change-ready-leader-assessment",
     ctaIcon: ClipboardCheck,
     ctaLabel: "Take Assessment",
+    comingSoon: true,
   },
   {
     icon: ClipboardCheck,
@@ -126,6 +128,7 @@ const downloads = [
     href: "/team-health-assessment",
     ctaIcon: ClipboardCheck,
     ctaLabel: "Take Assessment",
+    comingSoon: true,
   },
   {
     icon: BookOpen,
