@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ClipboardCheck, Compass, Lightbulb, Target } from "lucide-react";
+import { ClipboardCheck, Compass, Lightbulb, Target } from "lucide-react";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import teamsCtaBg from "@/assets/heroes/teams-hero.jpg";
 
@@ -41,13 +40,6 @@ export default function ElementalStyleAssessment() {
       {/* Hero */}
       <section className="bg-white py-16 md:py-20">
         <div className="container max-w-5xl mx-auto px-6">
-          <Link
-            to="/resources/free"
-            className="inline-flex items-center gap-2 text-sm text-primary hover:underline mb-8"
-          >
-            <ArrowLeft className="w-4 h-4" /> Back to Free Resources
-          </Link>
-
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-purple/20 text-navy mb-4">
               <ClipboardCheck className="w-3.5 h-3.5" /> Free Assessment
