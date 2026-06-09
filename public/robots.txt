@@ -12,15 +12,12 @@ Disallow: /change-ready-team-assessment
 Disallow: /elemental-style-assessment
 Disallow: /elements-mini
 Disallow: /eq-change-leader
-Disallow: /extraordinary-teams
 Disallow: /home-archive
 Disallow: /home-verbatim
 Disallow: /mym-journal-challenge
 Disallow: /overview
 Disallow: /partner/amplify/sprints-archive
 Disallow: /partner/embody-archive-v2
-Disallow: /partner/ignite/assessments/working-genius
-Disallow: /resources/youtube
 Disallow: /rob
 Disallow: /sierra
 Disallow: /speaking/amy

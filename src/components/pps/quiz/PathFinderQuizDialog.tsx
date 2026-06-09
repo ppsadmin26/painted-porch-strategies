@@ -49,6 +49,16 @@ type PersistedState = {
   showResult: boolean;
 };
 
+function BoldShiftName({ name }: { name: string }) {
+  if (!name.includes("shIFt")) return <>{name}</>;
+  const [before, after] = name.split("shIFt");
+  return (
+    <>
+      {before}sh<span className="font-bold">IF</span>t{after}
+    </>
+  );
+}
+
 function loadPersisted(): PersistedState | null {
   try {
     const raw = sessionStorage.getItem(SESSION_KEY);
@@ -288,7 +298,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                   {result.strongestNextStep.label}
                 </p>
                 <p className="font-poppins text-lg text-navy font-semibold mb-2">
-                  {result.strongestNextStep.offering.name}
+                  <BoldShiftName name={result.strongestNextStep.offering.name} />
                 </p>
                 <Button asChild className={
                   result.strongestNextStep.kind === "blueDoor"
@@ -382,7 +392,7 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
           >
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
-                <p className="font-semibold text-navy text-sm">{o.name}</p>
+                <p className="font-semibold text-navy text-sm"><BoldShiftName name={o.name} /></p>
                 <p className="text-xs text-foreground/70 mt-0.5">{o.blurb}</p>
               </div>
               <span className="text-[10px] uppercase tracking-wider font-bold text-primary whitespace-nowrap mt-0.5">{o.tier === "Pathway B" ? "Workshop" : o.tier}</span>
