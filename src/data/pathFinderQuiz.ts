@@ -600,7 +600,6 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     else if (q1 === "B") primaryKeys = ["leadershipOM", "stracticalLeader", "architectChange"];
     else if (q1 === "C") primaryKeys = ["aiEiOh", "architectureOfAdaptability", "architectChange"];
     else primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
-    extra.push(grp("Pre-Blue-Door Scoping", "currentStateLight", "currentStateDeep"));
     extra.push(grp("Stoic Grounding for the Senior Team", "stoicismB2B"));
   } else {
     // RT-E
