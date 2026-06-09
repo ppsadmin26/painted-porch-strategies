@@ -168,7 +168,7 @@ export default function EQAssessment() {
       <section className="relative py-24 md:py-36 text-white overflow-hidden isolate min-h-[78vh] flex items-center">
         <LazyHeroVideo
           slotKey="eq-hero"
-          posterUrl={eqHeroVideo.url}
+          posterUrl="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 9'%3E%3C/svg%3E"
           fallbackVideoUrl={eqHeroVideo.url}
           className="absolute inset-0 w-full h-full"
         />
