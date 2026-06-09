@@ -4,6 +4,7 @@ import { ArrowLeft, CheckCircle, ExternalLink, Calendar } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
 import brainEqIcon from "@/assets/icons/brain-eq.svg";
+import ColorSplashBackground from "@/components/pps/ColorSplashBackground";
 import eqModelImg from "@/assets/eq/eq-model.png";
 import reportOverviewImg from "@/assets/eq/report-overview.png";
 import reportLeadershipPotentialImg from "@/assets/eq/report-leadership-potential.png";
