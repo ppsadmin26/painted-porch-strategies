@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { ClipboardCheck, Compass, Lightbulb, Target } from "lucide-react";
+import { ArrowLeft, ClipboardCheck, Compass, Lightbulb, Target } from "lucide-react";
+import { Link } from "react-router-dom";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import teamsCtaBg from "@/assets/heroes/teams-hero.jpg";
 
