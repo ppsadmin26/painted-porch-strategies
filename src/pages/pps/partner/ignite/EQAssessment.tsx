@@ -252,7 +252,16 @@ function AnimatedStatCard({ stat: s, index: i }: { stat: Stat; index: number }) 
 
       {/* Text */}
       <div className="text-center relative z-10">
-        <h3 className={`font-poppins font-bold text-lg ${c.text} mb-2`}>{s.headline}</h3>
+        <h3 className={`font-poppins font-bold text-lg ${c.text} mb-2 inline-flex items-center gap-1.5`}>
+          {s.headline}
+          <SourcedTooltip
+            source={s.source}
+            sourceUrl={s.sourceUrl}
+            year={s.sourceYear}
+            size="xs"
+            iconClassName={`${c.text} opacity-60 hover:opacity-100`}
+          />
+        </h3>
         <p className="text-foreground text-sm leading-relaxed">{s.text}</p>
         {s.footnote && (
           <p className="text-xs text-foreground/60 italic mt-2">{s.footnote}</p>
