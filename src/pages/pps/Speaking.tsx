@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
-import { ArrowRight, Flame, Mic, Heart } from "lucide-react";
+import { Flame, Mic, Heart } from "lucide-react";
 import ClientLogoMarquee, { type LogoItem } from "@/components/pps/ClientLogoMarquee";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import speakingHero from "@/assets/heroes/speaking-hero.jpg";
