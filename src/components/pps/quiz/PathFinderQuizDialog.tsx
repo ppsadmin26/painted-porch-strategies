@@ -66,10 +66,26 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     }
   }, [open]);
 
+  const overrides = usePathFinderOverrides();
+
+  const applyOverrides = (o: Offering): Offering =>
+    overrides[o.key] ? { ...o, url: overrides[o.key] } : o;
+
   const result: QuizResult | null = useMemo(() => {
     if (!showResult || !track) return null;
-    return buildResult(track, answers);
-  }, [showResult, track, answers]);
+    const r = buildResult(track, answers);
+    return {
+      ...r,
+      primaryGroup: r.primaryGroup
+        ? { ...r.primaryGroup, offerings: r.primaryGroup.offerings.map(applyOverrides) }
+        : undefined,
+      groups: r.groups.map((g) => ({ ...g, offerings: g.offerings.map(applyOverrides) })),
+      strongestNextStep: r.strongestNextStep
+        ? { ...r.strongestNextStep, offering: applyOverrides(r.strongestNextStep.offering) }
+        : undefined,
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showResult, track, answers, overrides]);
 
   const setAnswer = (qid: string, value: string | string[]) => {
     setAnswers((prev) => ({ ...prev, [qid]: value }));
