@@ -116,7 +116,7 @@ export const OFFERINGS = {
   strategicChangeCanvas: { key: "strategicChangeCanvas", name: "Strategic Change Canvas", tier: "Free", url: "/change-canvas", blurb: "Visual planning tool for mapping change before you launch it. Free." },
   communicatingChangeWorkbook: { key: "communicatingChangeWorkbook", name: "Communicating Change Workbook", tier: "Free", url: "/change-comms", blurb: "Templates for the conversations that make or break transformation. Free." },
   stracticalMini: { key: "stracticalMini", name: "Stractical Leader Mini Workbook", tier: "Free", url: "/resources/stractical-mini", blurb: "Taste of the strategic-tactical integration work. Free." },
-  resolutionRemix: { key: "resolutionRemix", name: "Resolution Remix", tier: "Free", url: "/resources/free", blurb: "Reframe annual resolutions into sustainable leadership practices. Free." },
+  resolutionRemix: { key: "resolutionRemix", name: "Resolution Remix", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Reframe annual resolutions into sustainable leadership practices." },
   workFromHomePro: { key: "workFromHomePro", name: "Become a Work-From-Home Pro", tier: "Free", url: "/wfh-sign-up", blurb: "Practical guide to remote-work rhythm, focus, and energy. Free." },
 
   // Blue Door
