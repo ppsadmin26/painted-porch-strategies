@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Info, ArrowRight } from "lucide-react";
 import { TIERS } from "@/config/tiers";
 import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
+import { usePathFinderQuiz } from "@/components/pps/quiz/PathFinderQuizProvider";
 
 const choiceCards = [
   {
@@ -46,6 +47,7 @@ const choiceCards = [
 ];
 
 export function HowToChooseSection() {
+  const { open: openQuiz } = usePathFinderQuiz();
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-muted to-white">
       <div className="container max-w-6xl mx-auto px-6">
