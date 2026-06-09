@@ -41,11 +41,32 @@ function buildQuestionPath(answers: Answers): { questions: Question[]; track: Tr
   return { questions: [...base, ...branch], track: "b2b" };
 }
 
+const SESSION_KEY = "pps:pathfinder:state:v1";
+
+type PersistedState = {
+  answers: Answers;
+  index: number;
+  showResult: boolean;
+};
+
+function loadPersisted(): PersistedState | null {
+  try {
+    const raw = sessionStorage.getItem(SESSION_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as PersistedState;
+    if (!parsed || typeof parsed !== "object") return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
 export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const { toast } = useToast();
-  const [answers, setAnswers] = useState<Answers>({});
-  const [index, setIndex] = useState(0);
-  const [showResult, setShowResult] = useState(false);
+  const persisted = typeof window !== "undefined" ? loadPersisted() : null;
+  const [answers, setAnswers] = useState<Answers>(persisted?.answers ?? {});
+  const [index, setIndex] = useState(persisted?.index ?? 0);
+  const [showResult, setShowResult] = useState(persisted?.showResult ?? false);
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [subscribe, setSubscribe] = useState(false);
@@ -55,16 +76,18 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const { questions, track } = useMemo(() => buildQuestionPath(answers), [answers]);
   const current = questions[index];
 
-  // Reset on close
+  // Persist progress per session so closing/reopening resumes where they left off.
   useEffect(() => {
-    if (!open) {
-      const t = setTimeout(() => {
-        setAnswers({}); setIndex(0); setShowResult(false);
-        setEmail(""); setFirstName(""); setSubscribe(false); setSubmitted(false);
-      }, 250);
-      return () => clearTimeout(t);
+    try {
+      sessionStorage.setItem(
+        SESSION_KEY,
+        JSON.stringify({ answers, index, showResult } satisfies PersistedState),
+      );
+    } catch {
+      /* ignore */
     }
-  }, [open]);
+  }, [answers, index, showResult]);
+
 
   const overrides = usePathFinderOverrides();
 
