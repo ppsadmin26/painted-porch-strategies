@@ -66,7 +66,7 @@ export const OFFERINGS = {
   architectureOfAdaptability: { key: "architectureOfAdaptability", name: "The Architecture of Adaptability", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Building organizational systems designed to navigate uncertainty rather than react to it." },
   goldilocks: { key: "goldilocks", name: "Goldilocks Leadership", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Calibrated, context-sensitive EQ in leadership." },
   pillarsOfLastingChange: { key: "pillarsOfLastingChange", name: "The Pillars of Lasting Change & Continuous Innovation", facilitator: "Painted Porch Team", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Culture, operations, and human capacity as one living system." },
-  stracticalLeader: { key: "stracticalLeader", name: "The Stractical Leader", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Integrating strategic vision with tactical execution for leadership teams." },
+  stracticalLeader: { key: "stracticalLeader", name: "The Stractical Leader", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/stractical-leader", blurb: "Integrating strategic vision with tactical execution for leadership teams." },
   leadershipOM: { key: "leadershipOM", name: "Leadership OM", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Redesigning the leadership operating model to distribute decisions and accountability." },
 
   // Rob Hunter
@@ -86,8 +86,8 @@ export const OFFERINGS = {
   // Assessments / Free
   eqi: { key: "eqi", name: "EQ-i 2.0 Assessment", tier: "Assessment", url: "/eq", blurb: "Emotional intelligence baseline. Data on where reflective and relational capacity sits." },
   eq360: { key: "eq360", name: "EQ360 Assessment", tier: "Assessment", url: "/eq", blurb: "Multi-perspective EQ feedback." },
-  workingGenius: { key: "workingGenius", name: "Working Genius Assessment", tier: "Assessment", url: "/partner/ignite/working-genius-assessment", blurb: "Natural contribution style surfaces gaps you may not have named yet." },
-  performanceDNA: { key: "performanceDNA", name: "Performance DNA Assessment", tier: "Assessment", url: "/partner/ignite", blurb: "Behavioral architecture at the elevation level." },
+  workingGenius: { key: "workingGenius", name: "Working Genius Assessment", tier: "Assessment", url: "/partner/ignite/assessments/working-genius", blurb: "Natural contribution style surfaces gaps you may not have named yet." },
+  performanceDNA: { key: "performanceDNA", name: "Performance DNA Assessment", tier: "Assessment", url: "/partner/ignite/assessments", blurb: "Behavioral architecture at the elevation level." },
   fiftyTwoStoicism: { key: "fiftyTwoStoicism", name: "52 Weeks of Stoicism", tier: "Free", url: "/resources/free", blurb: "Weekly Stoic principles for leadership. Free." },
   burnoutResources: { key: "burnoutResources", name: "Burnout Resources", tier: "Free", url: "/resources/burnout", blurb: "If exhaustion is part of your reality, start here. Free." },
   strategicChangeCanvas: { key: "strategicChangeCanvas", name: "Strategic Change Canvas", tier: "Free", url: "/resources/free", blurb: "Visual planning tool for mapping change before you launch it. Free." },
