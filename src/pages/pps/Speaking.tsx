@@ -179,7 +179,7 @@ export default function Speaking() {
           { quote: "[Combined testimonial placeholder #2]", name: "[Name]", title: "[Title]", organization: "[Organization]" },
           { quote: "[Combined testimonial placeholder #3]", name: "[Name]", title: "[Title]", organization: "[Organization]" },
         ]}
-        showTestimonials={true}
+        showTestimonials={false}
       />
 
       {/* CTA */}
