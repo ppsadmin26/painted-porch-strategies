@@ -1,73 +1,91 @@
+## Goal
 
-# Plan: P.A.T.H. Finder™ Quiz Dialog
+Eliminate quiz-vs-page drift by making the AMPLIFY Workshops and AMPLIFY Labs pages, and the P.A.T.H.finder Quiz catalog, all read from one canonical registry. After this work, every quiz recommendation will resolve to a real card on the destination page, and any future workshop/lab is added in exactly one place.
 
-Builds the full quiz from the spec doc as a **popup dialog** triggered from every "P.A.T.H.finder Quiz" link on the site. No new route.
+## Scope (this pass)
 
----
+In scope:
+- `/partner/amplify/workshops` — all workshop cards
+- `/partner/amplify/labs` — all lab cards
+- P.A.T.H.finder Quiz B2B catalog entries that point to those two pages
+- Deep-link anchors (e.g. `/partner/amplify/workshops#ai-ei-oh`) so quiz cards jump straight to the card
 
-## Workstream A — Quiz UI (dialog)
+Out of scope (deliberately, to keep the change reviewable):
+- IGNITE masterclasses / courses / assessments registries
+- B2C offering pages (Radical Mindfulness, Master Your Message, etc.)
+- Visual redesign of the cards themselves
 
-### A1. Data/logic module
-**New:** `src/data/pathFinderQuiz.ts`
-- All questions (PQ1, B2C Q1–Q6, B2B PQ2 + branch trees Team/Change/Cap/Strategic + PQ3 + decision-maker Q4)
-- Branching graph (which questions follow based on prior answers)
-- Scoring functions:
-  - B2C → RT1–RT6 per Section 6 logic (zone counts, Q6=A hard override, Q6=B/C/D modifiers)
-  - B2B → RT-A/B/C/D/E per routing matrix (Section 4)
-- Offering catalog with name, tier (IGNITE / AMPLIFY / Blue Door / Pathway B), facilitator (Amy / Rob / Sierra), and on-site URL
-- Result-type → recommendation set resolver that:
-  - Picks primary offerings from Q1 routing
-  - Layers in secondary signals (Communication → Rob, Resilience → Sierra)
-  - Computes "Strongest Next Step" tag per routing matrix
-  - Adds Blue Door alongside all org results
-  - Triggers reverse-crossover note when org Q1-Cap=B + Q2-Cap=C
+## The Registry
 
-### A2. Dialog component
-**New:** `src/components/pps/quiz/PathFinderQuizDialog.tsx`
-- Controlled `<Dialog>` (shadcn) with `<PathFinderQuizContext>` provider so any link can trigger it
-- Step UI: progress bar, one question at a time, back/next, multi-select for secondary-signal questions
-- Result screen renders branded result card with:
-  - Headline + intro copy per RT (from spec)
-  - "Strongest Next Step" highlighted box (cobalt for Blue Door, primary teal for workshops)
-  - Recommendation grid: name, facilitator, tier badge, short description, **Link to offering page**
-  - Reverse-crossover callout when triggered
-  - Email-me-results form (First name, Email + checkbox: "Also subscribe to updates")
-  - Retake / close actions
-- All styling follows brand tokens; Poppins headings, Montserrat body; ™ on first Phase Zero / P.A.T.H. / Painted Porch Pillars mention
+New file: `src/data/amplifyOfferings.ts`
 
-### A3. Global trigger
-**New:** `src/components/pps/quiz/PathFinderQuizProvider.tsx` mounted in `PPSLayout` so `usePathFinderQuiz()` exposes `open()`
-- Replace existing "Take Free P.A.T.H.finder Quiz" `<Link to="/start-here">` and the `/start-here` hero CTA (currently links to /blue-door) so they call `open()` instead
-- Sweep `rg -l "P.A.T.H.finder Quiz\|start-here"` and migrate each CTA in nav, HowToChooseSection, StartHere hero, etc.
+```ts
+export interface AmplifyOffering {
+  slug: string;                  // url-safe id, also the anchor (#slug)
+  kind: "workshop" | "lab";
+  title: string;
+  facilitator: "Amy" | "Rob" | "Sierra" | "Painted Porch Team";
+  category: string;              // e.g. "Change Leadership", "Communication", "Team Health"
+  shortBlurb: string;            // 1 line, used by quiz + card
+  longDescription: string;       // card body
+  learnings?: string[];
+  outcomes?: string[];
+  pillar?: "Foundational" | "Operational" | "Human";
+  featured?: boolean;            // appears in the top "signature" row
+  status?: "live" | "waitlist";
+}
+```
 
----
+One exported `AMPLIFY_OFFERINGS: AmplifyOffering[]` array, ordered for page display. Helpers:
 
-## Workstream B — Submission + Email
+- `getWorkshops()` / `getLabs()` — page consumers
+- `getOfferingBySlug(slug)` — quiz consumers
+- `getOfferingsByFacilitator(name)` — speaker pages later
 
-### B1. Edge function
-**New:** `supabase/functions/submit-path-finder-quiz/index.ts`
-- Body (Zod-validated): `firstName, email, subscribe: boolean, track: 'b2c'|'b2b', resultType, answers, recommendations[]`
-- Always: enqueue `path-finder-results` transactional email to the user with their RT + recommendation list (each with absolute URL to offering page)
-- If `subscribe === true`: upsert contact in GHL with tag `PathQuiz` + post a note with full answer log + result. Skip GHL entirely otherwise.
-- Uses existing `GHL_API_KEY` + `GHL_LOCATION_ID`. Mirrors `submit-calculator-results` pattern.
+## Page changes
 
-### B2. Email template
-**New:** `supabase/functions/_shared/transactional-email-templates/path-finder-results.tsx`
-- Brand-styled white-bg React Email
-- Sections: greeting → result headline → "Your Strongest Next Step" callout → full recommendation list (name, tier, link button) → soft CTA to /contact
-- Register in `registry.ts`
+**`AmplifyWorkshops.tsx`** — replace the hard-coded workshop arrays with `getWorkshops()`. Group by `category`. Keep the existing card visual layout. Each card gets `id={slug}` so anchor scroll works.
 
----
+**`AmplifyLabs.tsx`** — same pattern with `getLabs()`.
 
-## Out of scope (deferred)
-- Post-completion 3-touch email flywheel (Section 9) — not requested, ship later
-- Re-take history storage in DB — results just emailed; no PPS DB table
-- A/B variants of opening copy per Aspiring Leader tag — single copy first pass
+Existing scroll-to-hash logic in `PPSLayout` already handles `#anchor` deep-linking, so no router changes.
 
----
+## Quiz changes (`src/data/pathFinderQuiz.ts`)
 
-## Sitemap / page status
-No new public route is added (dialog only), so no Sitemap.tsx or `page_status` change needed.
+- Remove the duplicated workshop/lab entries from `OFFERINGS` for anything that belongs to AMPLIFY.
+- Replace them with thin proxies generated from the registry:
+  ```ts
+  ...buildOfferingsFromRegistry(AMPLIFY_OFFERINGS)
+  ```
+  Each becomes `{ key: slug, name: title, blurb: shortBlurb, url: '/partner/amplify/{workshops|labs}#{slug}', tier: 'Pathway B'|'AMPLIFY' }`.
+- Quiz recommendation logic keeps using the same keys; we just rename a handful to match new slugs and remove the ones that referenced nonexistent offerings.
 
-## Secrets
-All required (`GHL_API_KEY`, `GHL_LOCATION_ID`) already set. No new secrets.
+## Filling in the missing offerings
+
+For the audit gap, the user gets to decide per offering: add a real card to the registry, or remove the quiz reference. I will produce one short follow-up question with the gap list grouped (clear adds vs. likely-drop) before writing any card copy. I will NOT invent long-form descriptions without that confirmation.
+
+Minimum two new cards confirmed already:
+- **AI, EI, Oh** (workshop) — registry + card
+- **AI, EI, Oh! Lab** — registry + card
+
+## Validation
+
+After the refactor I will:
+1. Run a CI-style audit script (the one used above) and confirm zero `MISSING` rows for the two AMPLIFY pages.
+2. Visually inspect `/partner/amplify/workshops#ai-ei-oh` and `/partner/amplify/labs#ai-ei-oh` in the preview to confirm anchor scrolls land on the right cards.
+3. Take the quiz with the same answers the user used last time and confirm every recommended card opens to a real card.
+
+## Technical notes (skip if non-technical)
+
+- Registry lives in `src/data/` (matches existing conventions).
+- No DB migration needed — pure code refactor.
+- Slugs are stable; once chosen they cannot change without breaking saved quiz-result links.
+- Card visuals on the pages stay byte-identical for offerings that already exist; only the data source changes.
+
+## Deliverables order
+
+1. Confirm gap-resolution choices (1 quick question with grouped list).
+2. Build `amplifyOfferings.ts` registry with all current cards + AI, EI, Oh additions.
+3. Refactor `AmplifyWorkshops.tsx` and `AmplifyLabs.tsx` to consume the registry.
+4. Refactor `pathFinderQuiz.ts` to consume the registry; remove dead entries.
+5. Run audit script, walk the preview, report results.
