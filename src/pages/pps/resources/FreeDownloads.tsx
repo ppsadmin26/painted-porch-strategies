@@ -208,7 +208,12 @@ export default function FreeDownloads() {
                     {download.description}
                   </p>
                   <div className="pl-[4.5rem]">
-                    {download.href ? (
+                    {download.comingSoon ? (
+                      <Button disabled className="bg-muted border-2 border-muted-foreground/30 text-muted-foreground cursor-not-allowed opacity-60">
+                        <CtaIcon className="w-4 h-4 mr-2" />
+                        {ctaLabel}
+                      </Button>
+                    ) : download.href ? (
                       <Link to={download.href}>
                         <Button className="bg-navy border-2 border-navy text-white hover:bg-transparent hover:text-navy transition-colors">
                           <CtaIcon className="w-4 h-4 mr-2" />
