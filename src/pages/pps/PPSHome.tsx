@@ -253,7 +253,7 @@ export default function PPSHome() {
                     </h3>
                     <p className="text-foreground leading-relaxed mb-3">
                       From free resources, masterclasses, courses, assessments,
-                      and more. For leaders sensing something needs to <ShIFt />,
+                      and more. For leaders sensing something needs to sh<strong>IF</strong>t,
                       but not sure where to get started.
                     </p>
                     <span className="text-sm font-semibold text-primary inline-flex items-center">
