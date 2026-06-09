@@ -90,8 +90,8 @@ export const OFFERINGS = {
   performanceDNA: { key: "performanceDNA", name: "Performance DNA Assessment", tier: "Assessment", url: "/partner/ignite/assessments", blurb: "Behavioral architecture at the elevation level." },
   fiftyTwoStoicism: { key: "fiftyTwoStoicism", name: "52 Weeks of Stoicism", tier: "Free", url: "/resources/free", blurb: "Weekly Stoic principles for leadership. Free." },
   burnoutResources: { key: "burnoutResources", name: "Burnout Resources", tier: "Free", url: "/resources/burnout", blurb: "If exhaustion is part of your reality, start here. Free." },
-  strategicChangeCanvas: { key: "strategicChangeCanvas", name: "Strategic Change Canvas", tier: "Free", url: "/resources/free", blurb: "Visual planning tool for mapping change before you launch it. Free." },
-  communicatingChangeWorkbook: { key: "communicatingChangeWorkbook", name: "Communicating Change Workbook", tier: "Free", url: "/resources/free", blurb: "Templates for the conversations that make or break transformation. Free." },
+  strategicChangeCanvas: { key: "strategicChangeCanvas", name: "Strategic Change Canvas", tier: "Free", url: "/change-canvas", blurb: "Visual planning tool for mapping change before you launch it. Free." },
+  communicatingChangeWorkbook: { key: "communicatingChangeWorkbook", name: "Communicating Change Workbook", tier: "Free", url: "/change-comms", blurb: "Templates for the conversations that make or break transformation. Free." },
   stracticalMini: { key: "stracticalMini", name: "Stractical Leader Mini Workbook", tier: "Free", url: "/resources/stractical-mini", blurb: "Taste of the strategic-tactical integration work. Free." },
 
   // Blue Door
