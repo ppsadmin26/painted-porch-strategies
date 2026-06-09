@@ -180,21 +180,19 @@ export default function EQAssessment() {
             <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
             <span className="text-sm font-semibold">EQ-i 2.0 Assessment</span>
           </div>
-          <div className="bg-navy/85 backdrop-blur-md rounded-2xl px-6 py-12 md:px-16 md:py-20 inline-block max-w-5xl ring-1 ring-white/15 shadow-2xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 leading-tight">
-              What Can <span className="text-gold">E.Q.</span> Do For You?
-            </h1>
-            <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/95">
-              Uncover your own strengths and opportunities to show up, be heard,
-              connect, drive change, and have resilience to the challenges
-              presented in life, work, and anywhere in between.
-            </p>
-            <a href="#get-started">
-              <Button size="lg" className="bg-gold text-navy hover:bg-white hover:text-navy font-semibold text-lg px-8">
-                Get Started
-              </Button>
-            </a>
-          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 leading-tight drop-shadow-lg">
+            What Can <span className="text-gold">E.Q.</span> Do For You?
+          </h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/95 drop-shadow-md">
+            Uncover your own strengths and opportunities to show up, be heard,
+            connect, drive change, and have resilience to the challenges
+            presented in life, work, and anywhere in between.
+          </p>
+          <a href="#get-started">
+            <Button size="lg" className="bg-gold text-navy hover:bg-white hover:text-navy font-semibold text-lg px-8">
+              Get Started
+            </Button>
+          </a>
         </div>
       </section>
 
