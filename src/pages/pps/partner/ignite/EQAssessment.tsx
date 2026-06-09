@@ -13,6 +13,7 @@ import reportLeaderBarImg from "@/assets/eq/report-leader-bar.png";
 import reportActionPlanImg from "@/assets/eq/report-action-plan.png";
 import reportAdditionalLeaderImg from "@/assets/eq/report-additional-leader.png";
 import { useCountUp } from "@/hooks/useCountUp";
+import SourcedTooltip from "@/components/pps/SourcedTooltip";
 
 
 const eqFaqCategories = [
@@ -127,6 +128,9 @@ const stats = [
     headline: "More Innovative",
     text: "of people with highly empathetic leaders report often or always being innovative at work",
     footnote: "vs. only 13% with less empathetic leaders",
+    source: "Catalyst, The Power of Empathy in Times of Crisis and Beyond",
+    sourceUrl: "https://www.catalyst.org/reports/empathy-work-strategy-crisis/",
+    sourceYear: 2021,
   },
   {
     type: "bar" as const,
@@ -135,6 +139,9 @@ const stats = [
     color: "gold",
     headline: "Engagement Variance",
     text: "of the variance in employee engagement is driven by Effective Communication & Flexibility",
+    source: "Gallup, State of the American Manager",
+    sourceUrl: "https://www.gallup.com/services/182138/state-american-manager.aspx",
+    sourceYear: 2015,
   },
   {
     type: "range" as const,
@@ -144,8 +151,12 @@ const stats = [
     color: "lime",
     headline: "Revenue Outperformance",
     text: "revenue target outperformance by teams led by high-EI leaders",
+    source: "Multi-Health Systems (MHS), EQ-i 2.0 Technical Manual",
+    sourceUrl: "https://tap.mhs.com/EQi20.aspx",
+    sourceYear: 2011,
   },
 ];
+
 
 const colorMap: Record<string, { text: string; bg: string; ring: string; bgSoft: string; hex: string }> = {
   raspberry: { text: "text-raspberry", bg: "bg-raspberry", ring: "stroke-raspberry", bgSoft: "bg-raspberry/10", hex: "#DB0043" },
@@ -241,7 +252,16 @@ function AnimatedStatCard({ stat: s, index: i }: { stat: Stat; index: number }) 
 
       {/* Text */}
       <div className="text-center relative z-10">
-        <h3 className={`font-poppins font-bold text-lg ${c.text} mb-2`}>{s.headline}</h3>
+        <h3 className={`font-poppins font-bold text-lg ${c.text} mb-2 inline-flex items-center gap-1.5`}>
+          {s.headline}
+          <SourcedTooltip
+            source={s.source}
+            sourceUrl={s.sourceUrl}
+            year={s.sourceYear}
+            size="xs"
+            iconClassName={`${c.text} opacity-60 hover:opacity-100`}
+          />
+        </h3>
         <p className="text-foreground text-sm leading-relaxed">{s.text}</p>
         {s.footnote && (
           <p className="text-xs text-foreground/60 italic mt-2">{s.footnote}</p>
