@@ -165,21 +165,21 @@ export default function EQAssessment() {
       />
 
       {/* Hero */}
-      <section className="relative py-20 md:py-28 text-white overflow-hidden isolate min-h-[60vh] flex items-center">
+      <section className="relative py-24 md:py-36 text-white overflow-hidden isolate min-h-[78vh] flex items-center">
         <LazyHeroVideo
           slotKey="eq-hero"
           posterUrl={eqHeroVideo.url}
           fallbackVideoUrl={eqHeroVideo.url}
           className="absolute inset-0 w-full h-full"
         />
-        {/* Readability overlay */}
-        <div className="absolute inset-0 bg-navy/55" />
-        <div className="container max-w-5xl mx-auto px-6 relative z-10 text-center w-full">
+        {/* Readability overlay — lighter so the animation shows through */}
+        <div className="absolute inset-0 bg-navy/30" />
+        <div className="container max-w-6xl mx-auto px-6 relative z-10 text-center w-full">
           <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6 ring-1 ring-white/25">
             <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
             <span className="text-sm font-semibold">EQ-i 2.0 Assessment</span>
           </div>
-          <div className="bg-black/35 backdrop-blur-sm rounded-2xl px-6 py-10 md:px-12 md:py-14 inline-block max-w-4xl">
+          <div className="bg-black/25 backdrop-blur-[2px] rounded-2xl px-6 py-12 md:px-16 md:py-20 inline-block max-w-5xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 leading-tight">
               What Can <span className="text-gold">E.Q.</span> Do For You?
             </h1>
