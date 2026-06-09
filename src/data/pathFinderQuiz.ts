@@ -83,16 +83,42 @@ export const OFFERINGS = {
   fromPassengerToPilot: { key: "fromPassengerToPilot", name: "From Passenger to Pilot", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Reclaiming individual agency within team and organizational systems." },
   radicalMindfulnessB2B: { key: "radicalMindfulnessB2B", name: "Radical Mindfulness (B2B)", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Mindfulness as a leadership practice for organizational wellbeing." },
 
+  // Rob — additional Pathway B
+  borderlessCommunication: { key: "borderlessCommunication", name: "Borderless Communication", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Communication across cultures, geographies, and modalities without losing signal." },
+  fiveMinuteKeynote: { key: "fiveMinuteKeynote", name: "The 5-Minute Keynote", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Crafting the high-stakes short message that has to land in a hallway, a board room, or an elevator." },
+
+  // Sierra — additional Pathway B
+  moveShakeInnovate: { key: "moveShakeInnovate", name: "Move, Shake, Innovate", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Reawakening creative capacity and innovation culture in teams that have gone flat." },
+
+  // Amy — additional Pathway B
+  architectChange: { key: "architectChange", name: "Architect Change (Strategic Design Intensive)", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Phase Zero™ strategic design — author what you're about to build before you build it." },
+  pillarsReinforcement: { key: "pillarsReinforcement", name: "Painted Porch Pillars™ Organizational Reinforcement", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Workshop that diagnoses and reinforces the three Pillars: Foundational Architecture, Operational Intelligence, Human Capacity." },
+  stoicismB2B: { key: "stoicismB2B", name: "Stoicism in the Workplace (Workshop)", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Stoic philosophy translated into leadership and team practice at the organizational level." },
+
+  // Pre-Blue-Door scoping
+  currentStateLight: { key: "currentStateLight", name: "Current State Analysis — Light", tier: "Assessment", url: "/blue-door", blurb: "Lightweight organizational snapshot. Quick read on where the architecture stands." },
+  currentStateDeep: { key: "currentStateDeep", name: "Current State Analysis — Deep", tier: "Assessment", url: "/blue-door", blurb: "Deeper organizational diagnostic. For leaders who already know something structural needs to shift." },
+
   // Assessments / Free
   eqi: { key: "eqi", name: "EQ-i 2.0 Assessment", tier: "Assessment", url: "/eq", blurb: "Emotional intelligence baseline. Data on where reflective and relational capacity sits." },
   eq360: { key: "eq360", name: "EQ360 Assessment", tier: "Assessment", url: "/eq", blurb: "Multi-perspective EQ feedback." },
   workingGenius: { key: "workingGenius", name: "Working Genius Assessment", tier: "Assessment", url: "/partner/ignite/assessments/working-genius", blurb: "Natural contribution style surfaces gaps you may not have named yet." },
   performanceDNA: { key: "performanceDNA", name: "Performance DNA Assessment", tier: "Assessment", url: "/partner/ignite/assessments", blurb: "Behavioral architecture at the elevation level." },
+
+  // IGNITE Challenges (B2C)
+  meditationChallenge: { key: "meditationChallenge", name: "Meditation Challenge", facilitator: "Sierra", tier: "IGNITE", url: "/resources/free", blurb: "Short daily meditation practice to build the reflective muscle." },
+  gratitudeChallenge: { key: "gratitudeChallenge", name: "Gratitude Challenge", facilitator: "Sierra", tier: "IGNITE", url: "/resources/free", blurb: "Daily gratitude practice that resets perspective and steadies the inner game." },
+  journalingChallenge: { key: "journalingChallenge", name: "Journaling Challenge", facilitator: "Rob", tier: "IGNITE", url: "/mym-journal-challenge", blurb: "Daily journaling prompts that sharpen how you think, speak, and write as a leader." },
+  kickTheHabitB2C: { key: "kickTheHabitB2C", name: "Kick the Habit (Masterclass)", facilitator: "Amy", tier: "IGNITE", url: "/kick-the-habit", blurb: "Short masterclass on the behavioral patterns that quietly keep change from sticking." },
+
+  // Free Resources
   fiftyTwoStoicism: { key: "fiftyTwoStoicism", name: "52 Weeks of Stoicism", tier: "Free", url: "/resources/free", blurb: "Weekly Stoic principles for leadership. Free." },
   burnoutResources: { key: "burnoutResources", name: "Burnout Resources", tier: "Free", url: "/resources/burnout", blurb: "If exhaustion is part of your reality, start here. Free." },
   strategicChangeCanvas: { key: "strategicChangeCanvas", name: "Strategic Change Canvas", tier: "Free", url: "/change-canvas", blurb: "Visual planning tool for mapping change before you launch it. Free." },
   communicatingChangeWorkbook: { key: "communicatingChangeWorkbook", name: "Communicating Change Workbook", tier: "Free", url: "/change-comms", blurb: "Templates for the conversations that make or break transformation. Free." },
   stracticalMini: { key: "stracticalMini", name: "Stractical Leader Mini Workbook", tier: "Free", url: "/resources/stractical-mini", blurb: "Taste of the strategic-tactical integration work. Free." },
+  resolutionRemix: { key: "resolutionRemix", name: "Resolution Remix", tier: "Free", url: "/resources/free", blurb: "Reframe annual resolutions into sustainable leadership practices. Free." },
+  workFromHomePro: { key: "workFromHomePro", name: "Become a Work-From-Home Pro", tier: "Free", url: "/wfh-sign-up", blurb: "Practical guide to remote-work rhythm, focus, and energy. Free." },
 
   // Blue Door
   blueDoor: { key: "blueDoor", name: "The Blue Door Organizational Appraisal", tier: "Blue Door", url: "/blue-door", blurb: "About 20 minutes. Produces the P.A.T.H. Compass: architecture, capacity signal, Move Now Map, Reinforce First priorities. No prerequisites." },
@@ -509,9 +535,10 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         subhead: "Start on Your Terms",
         narrative: "You're paying attention, and that matters. Something is pulling you toward this work even if you're not yet sure what you need. That's a reasonable place to be. Start here. Take your time. There's no pressure to commit before you're ready, and there's a lot here that's free.",
         groups: [
-          grp("If your inner game is the gap", "fiftyTwoStoicism", "burnoutResources"),
-          grp("If communication is the gap", "communicatingChangeWorkbook"),
-          grp("If team or change leadership is on your mind", "strategicChangeCanvas", "stracticalMini"),
+          grp("If your inner game is the gap", "fiftyTwoStoicism", "burnoutResources", "meditationChallenge", "gratitudeChallenge"),
+          grp("If communication is the gap", "communicatingChangeWorkbook", "journalingChallenge"),
+          grp("If team or change leadership is on your mind", "strategicChangeCanvas", "stracticalMini", "kickTheHabitB2C"),
+          grp("Quick daily resets", "resolutionRemix", "workFromHomePro"),
           grp("When you're ready to go deeper", "radicalMindfulnessMini", "masterYourMessageMini", "leadingChangeMini"),
         ],
         whatComesNext: "Retake the P.A.T.H. Finder in 60–90 days. Or reach out directly. Sometimes the right starting point is a conversation, not a quiz.",
@@ -570,10 +597,12 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     narrative = "What you're describing isn't a program gap or training need. It's an architectural question: whether your organization's current identity is built to carry what you're trying to create. The Blue Door is where organizations at strategic inflection points begin.";
     const q1 = val(answers, "Q1Strategic");
     primaryHeading = "Pathway B Workshops — Activate Your Team While the Appraisal Work Is Underway";
-    if (q1 === "A") primaryKeys = ["architectureOfAdaptability", "pillarsOfLastingChange", "pathToLastingChange"];
-    else if (q1 === "B") primaryKeys = ["leadershipOM", "stracticalLeader", "leadAtSpeed"];
-    else if (q1 === "C") primaryKeys = ["aiEiOh", "architectureOfAdaptability"];
-    else primaryKeys = ["architectureOfAdaptability", "pathToLastingChange"];
+    if (q1 === "A") primaryKeys = ["architectChange", "pillarsReinforcement", "architectureOfAdaptability"];
+    else if (q1 === "B") primaryKeys = ["leadershipOM", "stracticalLeader", "architectChange"];
+    else if (q1 === "C") primaryKeys = ["aiEiOh", "architectureOfAdaptability", "architectChange"];
+    else primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
+    extra.push(grp("Pre-Blue-Door Scoping", "currentStateLight", "currentStateDeep"));
+    extra.push(grp("Stoic Grounding for the Senior Team", "stoicismB2B"));
   } else {
     // RT-E
     headline = "Exploring Your Options";
@@ -582,10 +611,11 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     primaryKeys = ["fromConflictToConnection", "fromDysfunctionToDynamic", "heroesAssemble"];
     extra.push(grp("Change & Transformation", "leadAtSpeed", "pathToLastingChange", "cultivatingChangeResilience"));
     extra.push(grp("Leadership Capability", "goldilocks", "stracticalLeader", "pillarsOfLastingChange"));
+    extra.push(grp("Strategic Design", "architectChange", "pillarsReinforcement"));
   }
 
-  if (commOn) extra.push(grp("If Communication Is Part of the Challenge — Rob Hunter", "masterYourMessageB2B", "powerOfStory", "eightByEight", "communicateWithStyle"));
-  if (resOn) extra.push(grp("If Resilience or Wellbeing Is Part of the Challenge — Sierra Ramm Cantrell", "reignitingResilience", "fromPassengerToPilot", "findingJoyAtWork"));
+  if (commOn) extra.push(grp("If Communication Is Part of the Challenge — Rob Hunter", "masterYourMessageB2B", "powerOfStory", "eightByEight", "communicateWithStyle", "borderlessCommunication", "fiveMinuteKeynote"));
+  if (resOn) extra.push(grp("If Resilience or Wellbeing Is Part of the Challenge — Sierra Ramm Cantrell", "reignitingResilience", "fromPassengerToPilot", "findingJoyAtWork", "moveShakeInnovate"));
 
   const strongestNextStep =
     strongest === "blueDoor"
