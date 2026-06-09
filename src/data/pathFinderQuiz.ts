@@ -545,12 +545,6 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
       };
   }
 }
-          grp("When you're ready to go deeper", "radicalMindfulnessMini", "masterYourMessageMini", "leadingChangeMini"),
-        ],
-        whatComesNext: "Retake the P.A.T.H. Finder in 60–90 days. Or reach out directly. Sometimes the right starting point is a conversation, not a quiz.",
-      };
-  }
-}
 
 function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | "blueDoor" | "equal"): QuizResult {
   const blueDoorOff = O.blueDoor;
