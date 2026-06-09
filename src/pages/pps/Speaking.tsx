@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
-import { ArrowRight, Flame, Mic, Heart } from "lucide-react";
+import { Flame, Mic, Heart } from "lucide-react";
 import ClientLogoMarquee, { type LogoItem } from "@/components/pps/ClientLogoMarquee";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import speakingHero from "@/assets/heroes/speaking-hero.jpg";
@@ -162,11 +162,6 @@ export default function Speaking() {
                       ))}
                     </div>
 
-                    <Link to={speaker.href}>
-                      <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white transition-colors">
-                        Explore {speaker.name.split(" ")[0]}'s Topics <ArrowRight className="ml-2 w-4 h-4" />
-                      </Button>
-                    </Link>
                   </div>
                 </div>
               );
@@ -184,7 +179,7 @@ export default function Speaking() {
           { quote: "[Combined testimonial placeholder #2]", name: "[Name]", title: "[Title]", organization: "[Organization]" },
           { quote: "[Combined testimonial placeholder #3]", name: "[Name]", title: "[Title]", organization: "[Organization]" },
         ]}
-        showTestimonials={true}
+        showTestimonials={false}
       />
 
       {/* CTA */}
