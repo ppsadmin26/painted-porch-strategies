@@ -60,4 +60,5 @@ export const TEMPLATES: Record<string, TemplateEntry> = {
   'launch-list-signup-admin': launchListSignupAdmin,
   'cost-calculator-results': costCalculatorResults,
   'path-finder-results': pathFinderResults,
+  'admin-test-notification': adminTestNotification,
 }
