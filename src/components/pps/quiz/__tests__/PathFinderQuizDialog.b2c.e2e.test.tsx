@@ -14,9 +14,17 @@
  * recommendation resolver → rendered result — that the unit-level
  * pathFinderQuiz.b2c.test.ts can't catch on its own.
  */
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, within, cleanup, fireEvent } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach, beforeAll } from "vitest";
+import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
+
+// jsdom doesn't ship ResizeObserver, which Radix's Dialog relies on.
+beforeAll(() => {
+  if (typeof (globalThis as { ResizeObserver?: unknown }).ResizeObserver === "undefined") {
+    class RO { observe() {} unobserve() {} disconnect() {} }
+    (globalThis as { ResizeObserver: typeof RO }).ResizeObserver = RO;
+  }
+});
 
 // Mock Supabase before importing the dialog (it pulls in the client).
 vi.mock("@/integrations/supabase/client", () => ({
