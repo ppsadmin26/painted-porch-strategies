@@ -98,20 +98,30 @@ export default function PPSNavigation() {
   };
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav
+      className={`bg-white sticky top-0 z-50 transition-shadow ${
+        scrolled ? "shadow-md" : "shadow-sm"
+      }`}
+    >
       <div className="container max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20 md:h-24">
+        <div
+          className={`flex items-center justify-between transition-all duration-300 ${
+            scrolled ? "h-14" : "h-20 md:h-24"
+          }`}
+        >
           {/* Logo */}
           <Link to="/" className="flex items-center flex-shrink-0 mr-4">
             <img
               src={ppsLogo}
               alt="Painted Porch Strategies"
-              className="h-16 md:h-20 w-auto object-contain"
+              className={`w-auto object-contain transition-all duration-300 ${
+                scrolled ? "h-10" : "h-12 md:h-14"
+              }`}
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className={`${scrolled ? "hidden" : "hidden lg:flex"} items-center gap-4`}>
             {visibleNav.map((link) =>
               link.children && link.children.length > 0 ? (
                 <DropdownMenu key={link.href}>
