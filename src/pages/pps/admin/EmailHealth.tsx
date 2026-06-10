@@ -23,7 +23,9 @@ import {
   Shield,
   Inbox,
   AlertTriangle,
+  Settings,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
 type Stats = {
