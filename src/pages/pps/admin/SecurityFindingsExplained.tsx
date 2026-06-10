@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { ShieldCheck, Lock, FolderOpen, AlertTriangle, Shield } from "lucide-react";
+import { ShieldCheck, Lock, FolderOpen, AlertTriangle } from "lucide-react";
 
 export default function SecurityFindingsExplained() {
   return (
