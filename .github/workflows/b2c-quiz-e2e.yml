@@ -11,6 +11,7 @@ on:
       - "src/components/pps/quiz/**"
       - "src/pages/pps/StartHere.tsx"
       - "e2e/b2c-quiz.spec.ts"
+      - "e2e/b2c-quiz-keyboard.spec.ts"
       - "playwright.config.ts"
       - "playwright-fixture.ts"
       - ".github/workflows/b2c-quiz-e2e.yml"
