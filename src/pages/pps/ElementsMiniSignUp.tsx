@@ -87,7 +87,7 @@ export default function ElementsMiniSignUp() {
             Water · Wood · Fire · Earth · Metal
           </p>
           <a href="#pricing">
-            <Button className="bg-raspberry hover:bg-raspberry/90 text-white text-lg py-6 px-10 rounded-full">
+            <Button className="bg-raspberry hover:bg-raspberry/90 text-white text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-10 rounded-full max-w-full whitespace-normal h-auto">
               See Pricing & Get Access
             </Button>
           </a>
@@ -279,7 +279,7 @@ export default function ElementsMiniSignUp() {
 
           <div className="text-center mt-10">
             <a href="#pricing">
-              <Button className="bg-teal hover:bg-teal/90 text-white text-lg py-6 px-10 rounded-full">
+              <Button className="bg-teal hover:bg-teal/90 text-white text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-10 rounded-full max-w-full whitespace-normal h-auto">
                 See Pricing & Get Access
               </Button>
             </a>
@@ -299,13 +299,13 @@ export default function ElementsMiniSignUp() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={COURSE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold text-lg py-6 px-10 rounded-full w-full sm:w-auto">
+              <Button className="bg-gold hover:bg-gold/90 text-navy font-bold text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-10 rounded-full w-full sm:w-auto max-w-full whitespace-normal h-auto">
                 Start the Mini Course, $99
               </Button>
             </a>
             <Button asChild
                 variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-navy text-lg py-6 px-10 rounded-full w-full sm:w-auto"
+                className="border-2 border-white text-white hover:bg-white hover:text-navy text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-10 rounded-full w-full sm:w-auto max-w-full whitespace-normal h-auto"
               >
                   <Link to="/contact?interest=elements-mini-team">Team Pricing</Link>
                 </Button>

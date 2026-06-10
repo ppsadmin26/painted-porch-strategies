@@ -166,7 +166,7 @@ export default function HowItWorksInvestmentSection() {
 
         <div className="text-center">
           <Link to="/blue-door/purchase">
-            <Button className="bg-bluedoor text-white border-2 border-bluedoor text-lg md:text-xl py-5 px-12 shadow-lg hover:shadow-xl hover:bg-white hover:text-bluedoor transition-all">
+            <Button className="bg-bluedoor text-white border-2 border-bluedoor text-base sm:text-lg md:text-xl py-4 sm:py-5 px-6 sm:px-12 shadow-lg hover:shadow-xl hover:bg-white hover:text-bluedoor transition-all max-w-full whitespace-normal h-auto">
               Open your Blue Door →
             </Button>
           </Link>
