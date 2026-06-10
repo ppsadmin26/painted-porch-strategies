@@ -24,6 +24,7 @@ import {
   Inbox,
   AlertTriangle,
   Settings,
+  Send,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
@@ -177,6 +178,24 @@ export default function EmailHealth() {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [testingEmail, setTestingEmail] = useState(false);
+
+  const sendTestEmail = useCallback(async () => {
+    setTestingEmail(true);
+    try {
+      const { data, error: invokeErr } = await supabase.functions.invoke(
+        "send-admin-test-email",
+        { body: {} },
+      );
+      if (invokeErr) throw invokeErr;
+      const recipient = (data as { recipient?: string })?.recipient ?? "the admin address";
+      toast.success(`Test email queued to ${recipient}. Check the inbox in a moment.`);
+    } catch (e: any) {
+      toast.error(e?.message ?? "Failed to send test email");
+    } finally {
+      setTestingEmail(false);
+    }
+  }, []);
 
   const since = useMemo(
     () => new Date(Date.now() - hours * 3600 * 1000).toISOString(),
@@ -282,6 +301,16 @@ export default function EmailHealth() {
           <Button variant="outline" size="sm" onClick={load} disabled={loading}>
             <RefreshCw className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`} />
             Refresh
+          </Button>
+          <Button
+            variant="default"
+            size="sm"
+            onClick={sendTestEmail}
+            disabled={testingEmail}
+            title="Send a test email to the configured admin notification address"
+          >
+            <Send className={`h-4 w-4 mr-2 ${testingEmail ? "animate-pulse" : ""}`} />
+            {testingEmail ? "Sending…" : "Send test email"}
           </Button>
         </div>
       </div>
