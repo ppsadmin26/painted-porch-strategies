@@ -56,6 +56,7 @@ export function useAdminSections() {
     "/admin/migration-checklist",
     "/admin/emails",
     "/admin/policy-notifications",
+    "/admin/security",
   ];
 
   const canAccessRoute = (path: string) => {
