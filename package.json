@@ -20,6 +20,8 @@
     "test:visual": "playwright test e2e/ppshome-card-alignment.spec.ts",
     "test:visual:update": "playwright test e2e/ppshome-card-alignment.spec.ts --update-snapshots",
     "test:visual:ci": "playwright test e2e/ppshome-card-alignment.spec.ts --reporter=github,html",
+    "test:a11y": "playwright test e2e/site-a11y.spec.ts",
+    "test:a11y:ci": "playwright test e2e/site-a11y.spec.ts --reporter=github,html",
     "seo:validate": "node scripts/validate-seo.mjs",
     "brand:validate": "node scripts/validate-trademarks.mjs",
     "brand:fix": "node scripts/validate-trademarks.mjs --fix",
