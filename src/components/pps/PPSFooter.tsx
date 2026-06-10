@@ -23,9 +23,11 @@ export default function PPSFooter() {
     { label: "Organizational Advisory", href: "/partner/embody" },
   ];
 
-  const { liveMap } = useArePagesLive([...quickLinks, ...pathways].map((l) => l.href));
-  const visibleQuick = quickLinks.filter((l) => liveMap[l.href] !== false);
-  const visiblePathways = pathways.filter((l) => liveMap[l.href] !== false);
+  const { liveMap, loading: statusLoading } = useArePagesLive([...quickLinks, ...pathways].map((l) => l.href));
+  // While statuses load, show all links (treat as live) so the footer renders
+  // at full height immediately and doesn't cause a layout shift when data arrives.
+  const visibleQuick = statusLoading ? quickLinks : quickLinks.filter((l) => liveMap[l.href] !== false);
+  const visiblePathways = statusLoading ? pathways : pathways.filter((l) => liveMap[l.href] !== false);
 
 
 
