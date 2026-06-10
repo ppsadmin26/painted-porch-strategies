@@ -23,6 +23,7 @@ const navItems: { title: string; url: string; icon: any; section?: AdminSection 
   { title: "Backups", url: "/admin/backups", icon: Database },
   { title: "Restore Wizard", url: "/admin/restore", icon: Wand2 },
   { title: "Integrity Check", url: "/admin/verify", icon: ShieldCheck },
+  { title: "Security Findings", url: "/admin/security", icon: Shield },
   { title: "Secrets Handoff", url: "/admin/secrets-handoff", icon: KeyRound },
   { title: "Migration Checklist", url: "/admin/migration-checklist", icon: ListChecks },
   { title: "Site Emails", url: "/admin/emails", icon: Mail },
