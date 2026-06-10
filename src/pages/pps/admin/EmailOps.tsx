@@ -1,12 +1,29 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { useSearchParams } from "react-router-dom";
 import EmailHealth from "./EmailHealth";
 import EmailQueue from "./EmailQueue";
 import GitHubSyncHealth from "./GitHubSyncHealth";
 
+const VALID = ["health", "queue", "github"] as const;
+type TabValue = (typeof VALID)[number];
+
 export default function EmailOps() {
+  const [params, setParams] = useSearchParams();
+  const raw = params.get("tab");
+  const tab: TabValue = (VALID as readonly string[]).includes(raw ?? "")
+    ? (raw as TabValue)
+    : "health";
+
+  const onChange = (v: string) => {
+    const next = new URLSearchParams(params);
+    if (v === "health") next.delete("tab");
+    else next.set("tab", v);
+    setParams(next, { replace: true });
+  };
+
   return (
     <div className="p-0">
-      <Tabs defaultValue="health" className="w-full">
+      <Tabs value={tab} onValueChange={onChange} className="w-full">
         <div className="px-6 pt-6 max-w-7xl mx-auto">
           <TabsList>
             <TabsTrigger value="health">Health & Send log</TabsTrigger>
@@ -27,4 +44,3 @@ export default function EmailOps() {
     </div>
   );
 }
-
