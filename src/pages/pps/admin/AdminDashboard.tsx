@@ -44,6 +44,7 @@ export default function AdminDashboard() {
     { title: "Site Emails", count: 0, icon: Mail, href: "/admin/emails", description: "Preview, test, and view source for every system email" },
     { title: "Refund Requests", count: 0, icon: Receipt, href: "/admin/refunds", description: "Review refund requests and notify customers" },
     { title: "Program Launches", count: 0, icon: Rocket, href: "/admin/course-launches", description: "Flip programs Live and notify the launch list" },
+    { title: "Security Findings", count: 0, icon: Shield, href: "/admin/security", description: "Why scanner warnings are intentional in this app" },
   ];
 
   return (
