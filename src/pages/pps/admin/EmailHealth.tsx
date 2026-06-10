@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import { useSidebar } from "@/components/ui/sidebar";
 
 type Stats = {
   since: string;
@@ -159,6 +160,10 @@ function statusBadge(status: string) {
 }
 
 export default function EmailHealth() {
+  const { isMobile, setOpenMobile } = useSidebar();
+  const closeMobileNav = () => {
+    if (isMobile) setOpenMobile(false);
+  };
   const [hours, setHours] = useState(24 * 7);
   const [stats, setStats] = useState<Stats | null>(null);
   const [rows, setRows] = useState<LogRow[]>([]);
@@ -548,7 +553,10 @@ export default function EmailHealth() {
                         </Badge>
                       )}
                       <Button asChild size="sm" variant="outline" className="h-8">
-                        <Link to="/admin/emails/queue?tab=queue">
+                        <Link
+                          to="/admin/emails/queue?tab=queue"
+                          onClick={closeMobileNav}
+                        >
                           <Settings className="h-3.5 w-3.5 mr-1.5" />
                           Manage queue
                         </Link>
