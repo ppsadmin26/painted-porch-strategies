@@ -160,6 +160,10 @@ function statusBadge(status: string) {
 }
 
 export default function EmailHealth() {
+  const { isMobile, setOpenMobile } = useSidebar();
+  const closeMobileNav = () => {
+    if (isMobile) setOpenMobile(false);
+  };
   const [hours, setHours] = useState(24 * 7);
   const [stats, setStats] = useState<Stats | null>(null);
   const [rows, setRows] = useState<LogRow[]>([]);
