@@ -787,6 +787,18 @@
       "with_check": "is_admin(auth.uid())"
     },
     {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Service role inserts refund requests",
+      "qual": null,
+      "roles": [
+        "service_role"
+      ],
+      "schemaname": "public",
+      "tablename": "refund_requests",
+      "with_check": "true"
+    },
+    {
       "cmd": "DELETE",
       "permissive": "PERMISSIVE",
       "policyname": "Admins or editors can delete slots",
@@ -1015,6 +1027,30 @@
       "with_check": null
     },
     {
+      "cmd": "DELETE",
+      "permissive": "PERMISSIVE",
+      "policyname": "Admins and editors can delete site-images",
+      "qual": "((bucket_id = 'site-images'::text) AND is_admin_or_editor(auth.uid()))",
+      "roles": [
+        "authenticated"
+      ],
+      "schemaname": "storage",
+      "tablename": "objects",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Admins and editors can read site-images",
+      "qual": "((bucket_id = 'site-images'::text) AND is_admin_or_editor(auth.uid()))",
+      "roles": [
+        "authenticated"
+      ],
+      "schemaname": "storage",
+      "tablename": "objects",
+      "with_check": null
+    },
+    {
       "cmd": "UPDATE",
       "permissive": "PERMISSIVE",
       "policyname": "Admins and editors can update blog images",
@@ -1027,6 +1063,18 @@
       "with_check": null
     },
     {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "Admins and editors can update site-images",
+      "qual": "((bucket_id = 'site-images'::text) AND is_admin_or_editor(auth.uid()))",
+      "roles": [
+        "authenticated"
+      ],
+      "schemaname": "storage",
+      "tablename": "objects",
+      "with_check": "((bucket_id = 'site-images'::text) AND is_admin_or_editor(auth.uid()))"
+    },
+    {
       "cmd": "INSERT",
       "permissive": "PERMISSIVE",
       "policyname": "Admins and editors can upload blog images",
@@ -1037,6 +1085,18 @@
       "schemaname": "storage",
       "tablename": "objects",
       "with_check": "((bucket_id = 'blog-images'::text) AND is_admin_or_editor(auth.uid()))"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Admins and editors can upload site-images",
+      "qual": null,
+      "roles": [
+        "authenticated"
+      ],
+      "schemaname": "storage",
+      "tablename": "objects",
+      "with_check": "((bucket_id = 'site-images'::text) AND is_admin_or_editor(auth.uid()))"
     },
     {
       "cmd": "DELETE",
