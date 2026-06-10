@@ -204,7 +204,7 @@ export default function PPSNavigation() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t">
+          <div className={`${scrolled ? "" : "lg:hidden"} py-4 border-t`}>
             <div className="flex flex-col gap-2">
               {visibleNav.map((link) => (
                 <div key={link.href}>
