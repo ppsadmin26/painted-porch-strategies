@@ -1,10 +1,44 @@
 import { test, expect, type Page } from "../playwright-fixture";
+import AxeBuilder from "@axe-core/playwright";
 import {
   PQ1,
   PQ2_B2C,
   B2C_QUESTIONS,
   OFFERINGS,
 } from "../src/data/pathFinderQuiz";
+
+/**
+ * Run axe-core against the open quiz result dialog and fail on any
+ * critical (or serious) violation. Color-contrast is excluded because
+ * the dialog renders over a backdrop that axe can't always sample
+ * correctly in headless Chromium — contrast is covered by the design
+ * system tests, not by these flow tests.
+ */
+async function assertNoCriticalA11yViolations(page: Page, context: string) {
+  const results = await new AxeBuilder({ page })
+    .include('[role="dialog"]')
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+    .disableRules(["color-contrast"])
+    .analyze();
+
+  const blocking = results.violations.filter(
+    (v) => v.impact === "critical" || v.impact === "serious",
+  );
+
+  if (blocking.length > 0) {
+    const summary = blocking
+      .map(
+        (v) =>
+          `- [${v.impact}] ${v.id}: ${v.help} (${v.nodes.length} node${
+            v.nodes.length === 1 ? "" : "s"
+          })\n    ${v.helpUrl}`,
+      )
+      .join("\n");
+    throw new Error(
+      `Accessibility violations on ${context}:\n${summary}`,
+    );
+  }
+}
 
 /**
  * Real-browser smoke for the B2C P.A.T.H.finder quiz.
