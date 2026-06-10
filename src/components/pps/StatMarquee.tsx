@@ -50,7 +50,7 @@ export default function StatMarquee({
               <span className="text-sm md:text-base font-montserrat text-white/90">
                 {s.label}
               </span>
-              <span className="text-[0.65rem] md:text-xs uppercase tracking-wider text-white/50 ml-1">
+              <span className="text-[0.65rem] md:text-xs uppercase tracking-wider text-white/80 ml-1">
                 {s.source.split(",")[0]}
               </span>
             </div>
