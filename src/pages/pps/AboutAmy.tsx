@@ -4,7 +4,6 @@ import {
   Coffee,
   ExternalLink,
   ArrowRight,
-  Podcast,
 } from "lucide-react";
 
 const amyPhoto =
@@ -304,18 +303,17 @@ export default function AboutAmy() {
         </div>
       </section>
 
-      {/* ── SPOTIFY + PODCAST ────────────────────────────────────────── */}
+      {/* ── SPOTIFY ────────────────────────────────────────── */}
       <section className="bg-navy py-16 md:py-20">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-3xl md:text-4xl text-center font-poppins font-bold text-white">
             Listen In
           </h2>
           <p className="mt-3 text-center text-white/60">
-            Our dance party playlist & podcast
+            Our dance party playlist
           </p>
 
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            {/* Spotify */}
+          <div className="mt-10 max-w-md mx-auto">
             <div className="overflow-hidden rounded-xl shadow-lg">
               <iframe
                 src="https://open.spotify.com/embed/playlist/1F6mkBYTllBzwawCXDEmry?utm_source=generator&theme=0"
@@ -326,33 +324,6 @@ export default function AboutAmy() {
                 className="rounded-xl border-0"
                 title="Painted Porch Playlist on Spotify"
               />
-            </div>
-
-            {/* Podcast */}
-            <div className="flex flex-col items-center justify-center rounded-xl bg-white/10 p-8 text-center">
-              <div className="mb-4 overflow-hidden rounded-xl shadow-lg">
-                <img
-                  src="https://images.pod.co/-Cj9qH3q7WsT68E1m-CVTQZQSgUHyTatyn5EJWF8SY4/resize:fill:300:300/plain/artwork/1c402a42-483b-4573-be65-f154ea2bee00/on-the-porch.jpg"
-                  alt="Life & Logos on The Painted Porch podcast artwork"
-                  className="h-40 w-40 rounded-xl object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="text-xl md:text-2xl font-poppins font-bold text-white">
-                Life & Logos on The Painted Porch
-              </h3>
-              <p className="mt-2 text-sm text-white/60">
-                The Team at Painted Porch Strategies
-              </p>
-              <a
-                href="https://pod.co/life-logos-on-the-painted-porch"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-semibold text-white transition hover:opacity-90"
-              >
-                <Podcast className="h-4 w-4" />
-                Listen Now
-              </a>
             </div>
           </div>
         </div>
