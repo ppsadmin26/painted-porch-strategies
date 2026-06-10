@@ -1,0 +1,45 @@
+# Painted Porch Strategies
+
+> Organizational shift strategy and change origination for leaders ready to architect extraordinary outcomes.
+
+Painted Porch Strategies partners with organizations at the moment of strategic authorship—before decisions are made and before initiatives are scoped. The site offers strategic assessments, workshops, courses, and ongoing partnership programs built around Phase Zero preparation, the P.A.T.H. methodology, and The Painted Porch Pillars framework.
+
+## Pages
+
+- [/](/): Home — explore the three-track ecosystem and partnership tiers.
+- [/about](/about): About Painted Porch Strategies and the team.
+- [/about/approach](/about/approach): The five core philosophy principles behind the work.
+- [/about/impact](/about/impact): Client stories, charity work, and organizational impact.
+- [/phase-zero](/phase-zero): Phase Zero strategic positioning framework.
+- [/partner](/partner): Partner With Us (P.A.T.H. Hub) — overview of IGNITE, AMPLIFY, and EMBODY tiers.
+- [/partner/ignite](/partner/ignite): IGNITE tier — self-led courses, assessments, and masterclasses.
+- [/partner/ignite/courses](/partner/ignite/courses): On-demand leadership and communication courses.
+- [/partner/ignite/assessments](/partner/ignite/assessments): EQ, Working Genius, and change-readiness assessments.
+- [/partner/ignite/masterclasses](/partner/ignite/masterclasses): Short-form intensives and challenges.
+- [/partner/amplify](/partner/amplify): AMPLIFY tier — workshops, sprints, and labs.
+- [/partner/amplify/workshops](/partner/amplify/workshops): Leadership development workshops.
+- [/partner/amplify/sprints](/partner/amplify/sprints): 90-day focused capability sprints.
+- [/partner/amplify/labs](/partner/amplify/labs): Deep-dive labs and intensives.
+- [/partner/embody](/partner/embody): EMBODY tier — embedded partnership and executive advisory.
+- [/resources](/resources): Resources hub — free downloads, insights, and media.
+- [/resources/free](/resources/free): Free tools and guides (change canvas, roadmaps, field guides, assessments).
+- [/resources/insights](/resources/insights): Blog and thought leadership articles.
+- [/resources/youtube](/resources/youtube): Curated video content and speaking appearances.
+- [/resources/faq](/resources/faq): Frequently asked questions.
+- [/speaking](/speaking): Speaking hub — keynote and workshop topics.
+- [/speaking/amy](/speaking/amy): Amy Yackowski speaker profile.
+- [/speaking/rob](/speaking/rob): Rob Yackowski speaker profile.
+- [/speaking/sierra](/speaking/sierra): Sierra speaker profile.
+- [/speaking/media](/speaking/media): Media appearances and press coverage.
+- [/blue-door](/blue-door): The Blue Door Diagnostic — 11-question strategic assessment.
+- [/start-here](/start-here): P.A.T.H.finder quiz — discover your recommended partnership tier.
+- [/contact](/contact): Contact the team.
+- [/terms](/terms): Terms, privacy, and cookie policies.
+- [/amy](/amy): Amy Yackowski personal hub.
+- [/rob](/rob): Rob Yackowski personal hub.
+- [/sierra](/sierra): Sierra personal hub.
+- [/overview](/overview): Core team overview.
+
+## Optional
+
+- [/sitemap](/sitemap): Full page directory (staff-only access).
