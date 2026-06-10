@@ -169,6 +169,9 @@ test.describe("B2C P.A.T.H.finder quiz (real browser)", () => {
 
       // "What Comes Next" panel renders on every non-RT6 result.
       await expect(page.getByText(/What Comes Next/i)).toBeVisible();
+
+      // Accessibility: result dialog must have no critical/serious violations.
+      await assertNoCriticalA11yViolations(page, `result page for "${flow.name}"`);
     });
   }
 
