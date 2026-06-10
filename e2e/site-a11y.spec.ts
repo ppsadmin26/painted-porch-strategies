@@ -45,7 +45,7 @@ const ROUTES: Array<{ name: string; path: string }> = [
   { name: "Speaker — Amy",              path: "/speaking/amy" },
   { name: "Speaker — Rob",              path: "/speaking/rob" },
   { name: "Speaker — Sierra",           path: "/speaking/sierra" },
-  { name: "Start Here (quiz)",          path: "/start-here" },
+  // /start-here auto-opens the quiz dialog and is covered by b2c-quiz.spec.ts.
   { name: "Contact",                    path: "/contact" },
   { name: "Terms",                      path: "/terms" },
   { name: "Sitemap",                    path: "/sitemap" },
@@ -87,18 +87,6 @@ async function runAxe(page: Page, label: string) {
 }
 
 test.describe("Site-wide accessibility", () => {
-  test.beforeEach(async ({ page }) => {
-    // Auto-dismiss the quiz dialog so it doesn't dominate every result.
-    // Pages that intentionally open it (e.g. /start-here) have their own
-    // dedicated a11y coverage in e2e/b2c-quiz.spec.ts.
-    await page.addInitScript(() => {
-      try {
-        sessionStorage.setItem("pps-pathfinder-quiz-dismissed", "1");
-      } catch {
-        /* noop */
-      }
-    });
-  });
 
   for (const route of ROUTES) {
     test(`${route.name} (${route.path})`, async ({ page }) => {
