@@ -156,6 +156,7 @@ import ResetPassword from "./pages/pps/admin/ResetPassword";
 import PolicyNotifications from "./pages/pps/admin/PolicyNotifications";
 import RefundRequestsManager from "./pages/pps/admin/RefundRequestsManager";
 import CourseLaunchManager from "./pages/pps/admin/CourseLaunchManager";
+import SecurityFindingsExplained from "./pages/pps/admin/SecurityFindingsExplained";
 
 // Legacy redirect: forward /pps/* paths to clean URLs
 function LegacyPPSRedirect() {
@@ -195,6 +196,7 @@ function RouteSeoGuards() {
     "/change-comms-thank-you",
     "/stractical-mini-thank-you",
     "/sitemap",
+    "/admin/security",
   ].includes(pathname);
   const isSystemOutcomeRoute = /(thank-you|success)$/.test(pathname);
   const shouldNoIndex = isAdminRoute || isApiRoute || isInternalOnlyRoute || isSystemOutcomeRoute;
@@ -415,6 +417,7 @@ const App = () => (
             <Route path="refunds" element={<RefundRequestsManager />} />
             <Route path="course-launches" element={<CourseLaunchManager />} />
             <Route path="path-finder" element={<PathFinderOfferings />} />
+            <Route path="security" element={<SecurityFindingsExplained />} />
           </Route>
           
           {/* Legacy /pps/* redirects + 404 catch-all */}

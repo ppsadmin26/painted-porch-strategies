@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
-import { FileText, Mic, Users, Youtube, ToggleLeft, Database, PackageOpen, Mail, Receipt, Rocket } from "lucide-react";
+import { FileText, Mic, Users, Youtube, ToggleLeft, Database, PackageOpen, Mail, Receipt, Rocket, Shield } from "lucide-react";
 
 interface Stats {
   posts: number;
@@ -44,6 +44,7 @@ export default function AdminDashboard() {
     { title: "Site Emails", count: 0, icon: Mail, href: "/admin/emails", description: "Preview, test, and view source for every system email" },
     { title: "Refund Requests", count: 0, icon: Receipt, href: "/admin/refunds", description: "Review refund requests and notify customers" },
     { title: "Program Launches", count: 0, icon: Rocket, href: "/admin/course-launches", description: "Flip programs Live and notify the launch list" },
+    { title: "Security Findings", count: 0, icon: Shield, href: "/admin/security", description: "Why scanner warnings are intentional in this app" },
   ];
 
   return (
