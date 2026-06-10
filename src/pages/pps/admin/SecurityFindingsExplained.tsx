@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { ShieldCheck, Lock, FolderOpen, AlertTriangle } from "lucide-react";
+import { ShieldCheck, Lock, FolderOpen, AlertTriangle, Shield } from "lucide-react";
 
 export default function SecurityFindingsExplained() {
   return (
@@ -93,7 +93,7 @@ export default function SecurityFindingsExplained() {
 
       <Card className="p-6 space-y-4">
         <div className="flex items-start gap-3">
-          <div className="p-2 bg-amber/10 rounded-lg shrink-0">
+          <div className="p-2 bg-amber-100 rounded-lg shrink-0">
             <AlertTriangle className="h-5 w-5 text-amber-600" />
           </div>
           <div className="space-y-2">
