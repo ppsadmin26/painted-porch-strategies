@@ -584,7 +584,7 @@ export default function PPSBlog() {
 
               {/* Pagination */}
               {totalPages > 1 && (
-                <nav className="flex items-center justify-center gap-2 mt-12">
+                <nav className="flex flex-wrap items-center justify-center gap-2 mt-12 px-2">
                   <Button
                     variant="outline"
                     size="sm"
@@ -595,23 +595,42 @@ export default function PPSBlog() {
                     <ChevronLeft className="w-4 h-4" /> Prev
                   </Button>
 
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                    (page) => (
-                      <Button
-                        key={page}
-                        variant={page === currentPage ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => setCurrentPage(page)}
-                        className={
-                          page === currentPage
-                            ? "bg-primary text-white pointer-events-none"
-                            : ""
-                        }
-                      >
-                        {page}
-                      </Button>
-                    )
-                  )}
+                  {(() => {
+                    const pages: (number | "ellipsis")[] = [];
+                    const w = 1;
+                    for (let i = 1; i <= totalPages; i++) {
+                      if (
+                        i === 1 ||
+                        i === totalPages ||
+                        (i >= currentPage - w && i <= currentPage + w)
+                      ) {
+                        pages.push(i);
+                      } else if (pages[pages.length - 1] !== "ellipsis") {
+                        pages.push("ellipsis");
+                      }
+                    }
+                    return pages.map((page, idx) =>
+                      page === "ellipsis" ? (
+                        <span key={`e-${idx}`} className="px-1 text-muted-foreground select-none">
+                          …
+                        </span>
+                      ) : (
+                        <Button
+                          key={page}
+                          variant={page === currentPage ? "default" : "outline"}
+                          size="sm"
+                          onClick={() => setCurrentPage(page)}
+                          className={
+                            page === currentPage
+                              ? "bg-primary text-white pointer-events-none"
+                              : ""
+                          }
+                        >
+                          {page}
+                        </Button>
+                      )
+                    );
+                  })()}
 
                   <Button
                     variant="outline"
