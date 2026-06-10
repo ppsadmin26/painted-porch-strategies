@@ -1,0 +1,45 @@
+name: B2C quiz E2E (nightly)
+
+on:
+  schedule:
+    # 07:15 UTC daily (~03:15 ET). Catches drift overnight without blocking PRs.
+    - cron: "15 7 * * *"
+  pull_request:
+    # Also run on PRs that touch the quiz code or this workflow.
+    paths:
+      - "src/data/pathFinderQuiz.ts"
+      - "src/components/pps/quiz/**"
+      - "src/pages/pps/StartHere.tsx"
+      - "e2e/b2c-quiz.spec.ts"
+      - "playwright.config.ts"
+      - "playwright-fixture.ts"
+      - ".github/workflows/b2c-quiz-e2e.yml"
+  workflow_dispatch:
+
+jobs:
+  b2c-quiz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Install Playwright (Chromium)
+        run: npx playwright install --with-deps chromium
+
+      - name: Run B2C quiz E2E
+        run: npm run test:e2e:b2c:ci
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b2c-quiz-playwright-report
+          path: playwright-report/
+          retention-days: 14
