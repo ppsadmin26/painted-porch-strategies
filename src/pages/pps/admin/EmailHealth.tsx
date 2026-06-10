@@ -537,15 +537,24 @@ export default function EmailHealth() {
                           : "Normal-priority queue. Drained after auth emails."}
                       </p>
                     </div>
-                    {hasDlq && (
-                      <Badge
-                        variant="outline"
-                        className="bg-red-50 text-red-700 border-red-300"
-                      >
-                        <AlertTriangle className="h-3 w-3 mr-1" />
-                        Needs attention
-                      </Badge>
-                    )}
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {hasDlq && (
+                        <Badge
+                          variant="outline"
+                          className="bg-red-50 text-red-700 border-red-300"
+                        >
+                          <AlertTriangle className="h-3 w-3 mr-1" />
+                          Needs attention
+                        </Badge>
+                      )}
+                      <Button asChild size="sm" variant="outline" className="h-8">
+                        <Link to="/admin/emails/queue">
+                          <Settings className="h-3.5 w-3.5 mr-1.5" />
+                          Manage queue
+                        </Link>
+                      </Button>
+                    </div>
+
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
