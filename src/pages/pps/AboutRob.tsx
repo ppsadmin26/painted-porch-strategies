@@ -282,12 +282,11 @@ export default function AboutRob() {
             Listen In
           </h2>
           <p className="mt-3 text-center text-white/60">
-            Equal Matters Podcast &amp; Life &amp; Logos on The Painted Porch
+            Equal Matters Podcast
           </p>
 
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
-            {/* Equal Matters */}
-            <div className="flex flex-col items-center justify-center rounded-xl bg-white/10 p-8 text-center">
+          <div className="mt-10 flex justify-center">
+            <div className="flex flex-col items-center justify-center rounded-xl bg-white/10 p-8 text-center max-w-sm">
               <div className="mb-4 overflow-hidden rounded-xl shadow-lg">
                 <img
                   src="https://images.pod.co/BDojqLokk-XUwSn0QlNHrCPZfjqFkeyZ3jUw3RlidmM/resize:fill:300:300/plain/artwork/0a538a7b-cc6a-4bb9-b9d5-4a0b290dadc1/equalmatters.jpg"
@@ -304,33 +303,6 @@ export default function AboutRob() {
               </p>
               <a
                 href="https://podcasts.apple.com/us/podcast/equal-matters/id1693631305"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-semibold text-white transition hover:opacity-90"
-              >
-                <Podcast className="h-4 w-4" />
-                Listen Now
-              </a>
-            </div>
-
-            {/* Life & Logos */}
-            <div className="flex flex-col items-center justify-center rounded-xl bg-white/10 p-8 text-center">
-              <div className="mb-4 overflow-hidden rounded-xl shadow-lg">
-                <img
-                  src="https://images.pod.co/-Cj9qH3q7WsT68E1m-CVTQZQSgUHyTatyn5EJWF8SY4/resize:fill:300:300/plain/artwork/1c402a42-483b-4573-be65-f154ea2bee00/on-the-porch.jpg"
-                  alt="Life & Logos on The Painted Porch podcast artwork"
-                  className="h-40 w-40 rounded-xl object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="text-xl md:text-2xl font-poppins font-bold text-white">
-                Life & Logos on The Painted Porch
-              </h3>
-              <p className="mt-2 text-sm text-white/60">
-                The Team at Painted Porch Strategies
-              </p>
-              <a
-                href="https://pod.co/life-logos-on-the-painted-porch"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-semibold text-white transition hover:opacity-90"
