@@ -302,6 +302,16 @@ export default function EmailHealth() {
             <RefreshCw className={`h-4 w-4 mr-2 ${loading ? "animate-spin" : ""}`} />
             Refresh
           </Button>
+          <Button
+            variant="default"
+            size="sm"
+            onClick={sendTestEmail}
+            disabled={testingEmail}
+            title="Send a test email to the configured admin notification address"
+          >
+            <Send className={`h-4 w-4 mr-2 ${testingEmail ? "animate-pulse" : ""}`} />
+            {testingEmail ? "Sending…" : "Send test email"}
+          </Button>
         </div>
       </div>
 
