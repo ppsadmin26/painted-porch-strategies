@@ -199,7 +199,7 @@ export default function PPSHome() {
                   <p className="mt-2 text-xs md:text-sm text-white/90 font-montserrat leading-snug">
                     {s.label.replace(/\.$/, "")}
                   </p>
-                  <p className="mt-2 text-[0.6rem] md:text-[0.65rem] uppercase tracking-wider text-white/50">
+                  <p className="mt-2 text-[0.6rem] md:text-[0.65rem] uppercase tracking-wider text-white/80">
                     {s.source}{s.year && !s.source.includes(s.year) ? ` · ${s.year}` : ""}
                   </p>
                 </div>
