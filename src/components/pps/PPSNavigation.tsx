@@ -165,7 +165,7 @@ export default function PPSNavigation() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`text-xs font-medium transition-colors whitespace-nowrap ${
+                  className={`text-sm font-medium transition-colors whitespace-nowrap ${
                     isActiveLink(link.href)
                       ? "text-primary"
                       : "text-foreground hover:text-primary"
