@@ -100,7 +100,7 @@ export default function ChangeRoadmapSignUp() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
           {/* Left: What you get */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold text-navy mb-4 break-words">
               A must-use tool before your next change initiative.
             </h2>
             <p className="text-lg text-charcoal mb-6">
