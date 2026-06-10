@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -22,6 +23,7 @@ import {
   RotateCcw,
   PlayCircle,
   Skull,
+  X,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -101,6 +103,10 @@ function ageMinutes(iso: string) {
   return (Date.now() - new Date(iso).getTime()) / 60000;
 }
 
+function selKey(table: string, msgId: number) {
+  return `${table}-${msgId}`;
+}
+
 export default function EmailQueue() {
   const [data, setData] = useState<Response | null>(null);
   const [loading, setLoading] = useState(true);
@@ -112,6 +118,12 @@ export default function EmailQueue() {
   const [ttlFilter, setTtlFilter] = useState<string>("all");
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
+
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [bulkConfirm, setBulkConfirm] = useState<
+    | null
+    | { action: "requeue" | "delete"; queue: string; kind: "active" | "dlq"; ids: number[] }
+  >(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -202,6 +214,47 @@ export default function EmailQueue() {
       sb.rpc("admin_email_purge_dlq", { _queue: queue }),
     );
 
+  const bulkRequeue = async (queue: string, ids: number[]) => {
+    setBusy("bulk-requeue");
+    try {
+      const { data: res, error } = await sb.rpc("admin_email_requeue_dlq_batch", {
+        _queue: queue,
+        _msg_ids: ids,
+      });
+      if (error) throw error;
+      const requeued = res?.requeued ?? ids.length;
+      toast.success(`Requeued ${requeued} message${requeued === 1 ? "" : "s"}`);
+      setSelected(new Set());
+      await load();
+    } catch (e: any) {
+      toast.error(e?.message ?? "Bulk requeue failed");
+    } finally {
+      setBusy(null);
+      setBulkConfirm(null);
+    }
+  };
+
+  const bulkDelete = async (queue: string, kind: "active" | "dlq", ids: number[]) => {
+    setBusy("bulk-delete");
+    try {
+      const { data: res, error } = await sb.rpc("admin_email_delete_message_batch", {
+        _queue: queue,
+        _kind: kind,
+        _msg_ids: ids,
+      });
+      if (error) throw error;
+      const deleted = res?.deleted ?? ids.length;
+      toast.success(`Deleted ${deleted} message${deleted === 1 ? "" : "s"}`);
+      setSelected(new Set());
+      await load();
+    } catch (e: any) {
+      toast.error(e?.message ?? "Bulk delete failed");
+    } finally {
+      setBusy(null);
+      setBulkConfirm(null);
+    }
+  };
+
   const ttlFor = useCallback(
     (q: string) =>
       q === "auth_emails"
@@ -236,6 +289,54 @@ export default function EmailQueue() {
   const totalActive = filteredGroups
     .filter((g) => g.kind === "active")
     .reduce((a, g) => a + g.messages.length, 0);
+
+  const selectedByGroup = useMemo(() => {
+    const map = new Map<string, { queue: string; kind: "active" | "dlq"; ids: number[] }>();
+    for (const key of selected) {
+      const [table, ...rest] = key.split("-");
+      const msgId = Number(rest.join("-"));
+      const g = filteredGroups.find((x) => x.table === table);
+      if (!g) continue;
+      const existing = map.get(g.table);
+      if (existing) {
+        existing.ids.push(msgId);
+      } else {
+        map.set(g.table, { queue: g.queue, kind: g.kind, ids: [msgId] });
+      }
+    }
+    return map;
+  }, [selected, filteredGroups]);
+
+  const allSelectedAreDlq = useMemo(() => {
+    for (const [, info] of selectedByGroup) {
+      if (info.kind !== "dlq") return false;
+    }
+    return selected.size > 0;
+  }, [selectedByGroup, selected.size]);
+
+  const toggleSelect = (table: string, msgId: number, checked: boolean) => {
+    const key = selKey(table, msgId);
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (checked) next.add(key);
+      else next.delete(key);
+      return next;
+    });
+  };
+
+  const toggleGroup = (g: QueueGroup, checked: boolean) => {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      for (const m of g.messages) {
+        const key = selKey(g.table, m.msg_id);
+        if (checked) next.add(key);
+        else next.delete(key);
+      }
+      return next;
+    });
+  };
+
+  const anyGroupSelected = selected.size > 0;
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
@@ -348,6 +449,53 @@ export default function EmailQueue() {
         </Select>
       </Card>
 
+      {anyGroupSelected && (
+        <Card className="p-3 mb-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-primary/30 bg-primary/5">
+          <div className="text-sm font-medium text-navy">
+            {selected.size} message{selected.size === 1 ? "" : "s"} selected
+          </div>
+          <div className="flex items-center gap-2 flex-wrap">
+            {allSelectedAreDlq && selectedByGroup.size === 1 && (
+              <Button
+                size="sm"
+                variant="outline"
+                className="h-8 text-xs border-primary text-primary hover:bg-primary/10"
+                disabled={busy === "bulk-requeue"}
+                onClick={() => {
+                  const [table, info] = selectedByGroup.entries().next().value as [string, ReturnType<typeof selectedByGroup.get>] & { 1: NonNullable<ReturnType<typeof selectedByGroup.get>> };
+                  if (info) setBulkConfirm({ action: "requeue", queue: info.queue, kind: info.kind, ids: info.ids });
+                }}
+              >
+                <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
+                Requeue selected
+              </Button>
+            )}
+            <Button
+              size="sm"
+              variant="outline"
+              className="h-8 text-xs border-destructive text-destructive hover:bg-destructive/10"
+              disabled={busy === "bulk-delete"}
+              onClick={() => {
+                const [table, info] = selectedByGroup.entries().next().value as [string, ReturnType<typeof selectedByGroup.get>] & { 1: NonNullable<ReturnType<typeof selectedByGroup.get>> };
+                if (info) setBulkConfirm({ action: "delete", queue: info.queue, kind: info.kind, ids: info.ids });
+              }}
+            >
+              <Trash2 className="h-3.5 w-3.5 mr-1.5" />
+              Delete selected
+            </Button>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="h-8 text-xs"
+              onClick={() => setSelected(new Set())}
+            >
+              <X className="h-3.5 w-3.5 mr-1.5" />
+              Clear
+            </Button>
+          </div>
+        </Card>
+      )}
+
       {loading && !data ? (
         <Card className="p-6 text-sm text-muted-foreground">Loading queue…</Card>
       ) : filteredGroups.length === 0 ? (
@@ -356,10 +504,25 @@ export default function EmailQueue() {
         <div className="space-y-4">
           {filteredGroups.map((g) => {
             const ttl = ttlFor(g.queue);
+            const allInGroupChecked =
+              g.messages.length > 0 &&
+              g.messages.every((m) => selected.has(selKey(g.table, m.msg_id)));
+            const someInGroupChecked =
+              g.messages.some((m) => selected.has(selKey(g.table, m.msg_id))) &&
+              !allInGroupChecked;
+
             return (
               <Card key={`${g.queue}-${g.kind}`} className="overflow-hidden">
                 <div className="px-4 py-2.5 border-b bg-muted/30 flex items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
+                    {g.messages.length > 0 && (
+                      <Checkbox
+                        checked={allInGroupChecked}
+                        className={someInGroupChecked ? "opacity-80" : ""}
+                        onCheckedChange={(checked) => toggleGroup(g, checked === true)}
+                        aria-label={`Select all ${g.queue} ${g.kind} messages`}
+                      />
+                    )}
                     {g.kind === "dlq" ? (
                       <AlertTriangle className="h-4 w-4 text-red-600" />
                     ) : (
@@ -413,16 +576,28 @@ export default function EmailQueue() {
                     {g.messages.map((m) => {
                       const age = ageMinutes(m.enqueued_at);
                       const expired = age > ttl;
+                      const isSelected = selected.has(selKey(g.table, m.msg_id));
                       return (
                         <div
                           key={`${g.table}-${m.msg_id}`}
-                          className="grid grid-cols-12 gap-3 px-4 py-2.5 border-b last:border-b-0 text-sm items-center hover:bg-muted/20"
+                          className={`grid grid-cols-12 gap-3 px-4 py-2.5 border-b last:border-b-0 text-sm items-center hover:bg-muted/20 ${
+                            isSelected ? "bg-primary/5" : ""
+                          }`}
                         >
-                          <div className="col-span-3 truncate font-medium text-navy">
-                            {m.recipient ?? <span className="text-muted-foreground">, </span>}
+                          <div className="col-span-3 flex items-center gap-2">
+                            <Checkbox
+                              checked={isSelected}
+                              onCheckedChange={(checked) =>
+                                toggleSelect(g.table, m.msg_id, checked === true)
+                              }
+                              aria-label={`Select message ${m.msg_id}`}
+                            />
+                            <span className="truncate font-medium text-navy">
+                              {m.recipient ?? <span className="text-muted-foreground">-</span>}
+                            </span>
                           </div>
                           <div className="col-span-3 truncate text-xs text-muted-foreground">
-                            <div className="truncate">{m.template ?? ", "}</div>
+                            <div className="truncate">{m.template ?? "-"}</div>
                             {m.subject && (
                               <div className="truncate text-[11px]">{m.subject}</div>
                             )}
@@ -520,6 +695,50 @@ export default function EmailQueue() {
               }}
             >
               Purge all
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog
+        open={!!bulkConfirm}
+        onOpenChange={(o) => !o && setBulkConfirm(null)}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              {bulkConfirm?.action === "requeue"
+                ? "Requeue selected messages?"
+                : "Delete selected messages?"}
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              {bulkConfirm?.action === "requeue"
+                ? `This will move ${bulkConfirm?.ids.length ?? 0} selected dead-letter message${
+                    (bulkConfirm?.ids.length ?? 0) === 1 ? "" : "s"
+                  } back to the active queue for retry.`
+                : `This will permanently delete ${bulkConfirm?.ids.length ?? 0} selected message${
+                    (bulkConfirm?.ids.length ?? 0) === 1 ? "" : "s"
+                  }. They cannot be recovered.`}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className={
+                bulkConfirm?.action === "delete"
+                  ? "bg-red-600 hover:bg-red-700"
+                  : "bg-primary hover:bg-primary/90"
+              }
+              onClick={() => {
+                if (!bulkConfirm) return;
+                if (bulkConfirm.action === "requeue") {
+                  bulkRequeue(bulkConfirm.queue, bulkConfirm.ids);
+                } else {
+                  bulkDelete(bulkConfirm.queue, bulkConfirm.kind, bulkConfirm.ids);
+                }
+              }}
+            >
+              {bulkConfirm?.action === "requeue" ? "Requeue" : "Delete"}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
