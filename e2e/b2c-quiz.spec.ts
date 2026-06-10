@@ -202,5 +202,3 @@ test.describe("B2C P.A.T.H.finder quiz (real browser)", () => {
     await assertNoCriticalA11yViolations(page, "RT6 result page");
   });
 });
-  });
-});
