@@ -86,10 +86,10 @@ export default function ChangeRoadmapSignUp() {
             <Sparkles className="w-4 h-4" />
             FREE PLANNING WORKSHEET
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 break-words">
             Your <span className="text-gold">Change Readiness Roadmap</span> Planner
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
             A simple worksheet to map out your P.A.T.H. before your next big change initiative kicks off.
           </p>
         </div>
@@ -97,10 +97,10 @@ export default function ChangeRoadmapSignUp() {
 
       {/* Content + Form */}
       <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           {/* Left: What you get */}
           <div>
-            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-poppins font-bold text-navy mb-4" style={{ overflowWrap: "anywhere", wordBreak: "break-word" }}>
               A must-use tool before your next change initiative.
             </h2>
             <p className="text-lg text-charcoal mb-6">

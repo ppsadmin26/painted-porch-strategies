@@ -27,7 +27,7 @@ export default function PPSLayout() {
 
   return (
     <PathFinderQuizProvider>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col overflow-x-hidden">
         <GitHubSyncBanner />
         <PPSNavigation />
         <main className="flex-1">

@@ -175,6 +175,8 @@
     color-scheme: light !important;
     background-color: white !important;
     color: hsl(0 0% 33%) !important;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   /* Aggressive dark mode prevention for Telegram in-app browser */

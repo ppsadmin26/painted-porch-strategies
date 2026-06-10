@@ -274,7 +274,7 @@ export default function CostCalculatorDialog({
             <p className="text-xs text-muted-foreground -mt-1">
               People actively working on the initiative (not total impacted stakeholders).
             </p>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
               {Object.values(SIZE_PRESETS).map((p) => {
                 const active = size === p.key;
                 return (
