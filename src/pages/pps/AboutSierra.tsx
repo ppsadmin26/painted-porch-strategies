@@ -41,7 +41,7 @@ const offerings: OfferingCard[] = [
     title: "From Passenger to Pilot",
     description:
       "A free training to help you take the driver's seat in your life, stop reacting and start leading with intention.",
-    href: "/resources/downloads",
+    href: "/pilot-training",
     color: "teal",
   },
   {
