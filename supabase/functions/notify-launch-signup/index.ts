@@ -32,7 +32,10 @@ Deno.serve(async (req) => {
 
     const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
     const SERVICE_ROLE = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-    const ADMIN_EMAIL = Deno.env.get("ADMIN_NOTIFICATION_EMAIL") || "explore@onthepaintedporch.com";
+    const ADMIN_FALLBACK = "explore@onthepaintedporch.com";
+    const ADMIN_RAW = Deno.env.get("ADMIN_NOTIFICATION_EMAIL") || "";
+    // Guard against unset / placeholder values from infra setup
+    const ADMIN_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ADMIN_RAW) ? ADMIN_RAW : ADMIN_FALLBACK;
 
     const admin = createClient(SUPABASE_URL, SERVICE_ROLE);
 
