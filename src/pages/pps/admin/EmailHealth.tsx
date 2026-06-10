@@ -177,6 +177,24 @@ export default function EmailHealth() {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [testingEmail, setTestingEmail] = useState(false);
+
+  const sendTestEmail = useCallback(async () => {
+    setTestingEmail(true);
+    try {
+      const { data, error: invokeErr } = await supabase.functions.invoke(
+        "send-admin-test-email",
+        { body: {} },
+      );
+      if (invokeErr) throw invokeErr;
+      const recipient = (data as { recipient?: string })?.recipient ?? "the admin address";
+      toast.success(`Test email queued to ${recipient}. Check the inbox in a moment.`);
+    } catch (e: any) {
+      toast.error(e?.message ?? "Failed to send test email");
+    } finally {
+      setTestingEmail(false);
+    }
+  }, []);
 
   const since = useMemo(
     () => new Date(Date.now() - hours * 3600 * 1000).toISOString(),
