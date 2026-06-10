@@ -87,7 +87,7 @@ export default function ElementsMiniSignUp() {
             Water · Wood · Fire · Earth · Metal
           </p>
           <a href="#pricing">
-            <Button className="bg-raspberry hover:bg-raspberry/90 text-white text-lg py-6 px-10 rounded-full">
+            <Button className="bg-raspberry hover:bg-raspberry/90 text-white text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-10 rounded-full max-w-full whitespace-normal h-auto">
               See Pricing & Get Access
             </Button>
           </a>
