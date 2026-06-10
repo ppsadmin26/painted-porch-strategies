@@ -140,7 +140,7 @@ export default function PPSPrograms() {
               <strong>lead</strong> with courage, curiosity, and confidence.
             </p>
             <a href="#signature-programs">
-              <Button className="bg-lime hover:bg-lime/90 text-navy font-semibold text-lg py-6 px-10 rounded-lg transition-all hover:scale-[1.02]">
+              <Button className="bg-lime hover:bg-lime/90 text-navy font-semibold text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-10 rounded-lg transition-all hover:scale-[1.02] max-w-full whitespace-normal h-auto">
                 Explore Programs &amp; Services
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
