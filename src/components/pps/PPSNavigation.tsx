@@ -185,8 +185,8 @@ export default function PPSNavigation() {
             )}
           </div>
 
-          {/* Mobile: Search + Menu Button */}
-          <div className="lg:hidden flex items-center gap-3">
+          {/* Compact / Mobile: Search + Menu Button */}
+          <div className={`${scrolled ? "flex" : "lg:hidden flex"} items-center gap-3`}>
             <SiteSearch />
             <button
               className="p-2"
