@@ -144,6 +144,26 @@ Deno.serve(async (req) => {
     )
   }
 
+  // === AuthZ: restrict templates anon/authenticated callers can send ===
+  // Service role and admin/editor users may send any template. Everyone else
+  // is limited to the public allowlist of user-initiated confirmations.
+  const privileged = await callerCanSendAnyTemplate(
+    req.headers.get('authorization'),
+    supabaseUrl,
+    supabaseServiceKey,
+    Deno.env.get('SUPABASE_ANON_KEY') || ''
+  )
+  if (!privileged && !PUBLIC_TEMPLATES.has(templateName)) {
+    return new Response(
+      JSON.stringify({ error: 'Template not permitted for this caller' }),
+      {
+        status: 403,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
+    )
+  }
+
+
   // Resolve effective recipient: template-level `to` takes precedence over
   // the caller-provided recipientEmail. This allows notification templates
   // to always send to a fixed address (e.g., site owner from env var).
