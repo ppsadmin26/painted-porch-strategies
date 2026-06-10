@@ -7,7 +7,6 @@
  * Usage:
  *   <SourcedTooltip source="McKinsey, 2024" sourceUrl="https://..." />
  */
-import { useState } from "react";
 import { Info } from "lucide-react";
 import {
   Popover,
@@ -45,18 +44,13 @@ export default function SourcedTooltip({
   focusRingClassName = "focus-visible:ring-2 focus-visible:ring-primary",
 }: SourcedTooltipProps) {
   const label = year ? `${source} (${year})` : source;
-  const [open, setOpen] = useState(false);
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover>
       <PopoverTrigger asChild>
         <button
           type="button"
           aria-label={`Source: ${label}`}
-          onMouseEnter={() => setOpen(true)}
-          onMouseLeave={() => setOpen(false)}
-          onFocus={() => setOpen(true)}
-          onBlur={() => setOpen(false)}
           className={cn(
             "inline-flex shrink-0 align-middle rounded-full transition-colors focus:outline-none",
             iconClassName,
@@ -87,3 +81,4 @@ export default function SourcedTooltip({
     </Popover>
   );
 }
+
