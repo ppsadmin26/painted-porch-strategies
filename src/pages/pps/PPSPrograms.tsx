@@ -376,13 +376,13 @@ export default function PPSPrograms() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/partner">
-                <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold text-lg py-6 px-10 rounded-lg transition-all hover:scale-[1.02]">
+                <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-10 rounded-lg transition-all hover:scale-[1.02] max-w-full whitespace-normal h-auto">
                   Explore Partnership Options
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
               <Link to="/contact?scope=organization&interest=organizational-advisory&message=I'm interested in your programs.">
-                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy font-semibold text-lg py-6 px-10 rounded-lg transition-all">
+                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-navy font-semibold text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-10 rounded-lg transition-all max-w-full whitespace-normal h-auto">
                   Contact Us
                 </Button>
               </Link>
