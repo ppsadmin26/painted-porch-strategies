@@ -35,7 +35,7 @@ export const OFFERINGS = {
   // ===== B2C IGNITE =====
   radicalMindfulness: { key: "radicalMindfulness", name: "Radical Mindfulness", facilitator: "Sierra", tier: "IGNITE", url: "/radical-mindfulness", blurb: "8-week self-paced program building conscious awareness, emotional regulation, and reflective capacity." },
   radicalMindfulnessMini: { key: "radicalMindfulnessMini", name: "Radical Mindfulness Mini Course", facilitator: "Sierra", tier: "IGNITE", url: "/radical-mindfulness", blurb: "Condensed entry point before the full 8-week commitment." },
-  passengerToPilot: { key: "passengerToPilot", name: "Passenger to Pilot (Masterclass)", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Shift from reactive to proactive leadership." },
+  passengerToPilot: { key: "passengerToPilot", name: "Passenger to Pilot (Masterclass)", facilitator: "Sierra", tier: "IGNITE", url: "/pilot-training", blurb: "Shift from reactive to proactive leadership." },
   masterYourMessage: { key: "masterYourMessage", name: "Master Your Message", facilitator: "Rob", tier: "IGNITE", url: "/master-your-message", blurb: "6-week self-paced program: authentic communication and influence without authority." },
   masterYourMessageMini: { key: "masterYourMessageMini", name: "Master Your Message Mini Course", facilitator: "Rob", tier: "IGNITE", url: "/master-your-message", blurb: "Core framework condensed." },
   talkingToStrangers: { key: "talkingToStrangers", name: "Talking to Strangers (Masterclass)", facilitator: "Rob", tier: "IGNITE", url: "/talking-to-strangers", blurb: "Authentic connection in unfamiliar contexts." },
