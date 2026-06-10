@@ -37,10 +37,14 @@ const navItems: { title: string; url: string; icon: any; section?: AdminSection 
 ];
 
 export function AdminSidebar() {
-  const { state } = useSidebar();
+  const { state, isMobile, setOpenMobile } = useSidebar();
   const collapsed = state === "collapsed";
   const location = useLocation();
   const { role, canAccess } = useAdminSections();
+
+  const handleNavClick = () => {
+    if (isMobile) setOpenMobile(false);
+  };
 
   const isActive = (path: string) =>
     path === "/admin"
@@ -86,6 +90,7 @@ export function AdminSidebar() {
                       end={item.url === "/admin"}
                       className="hover:bg-muted/50"
                       activeClassName="bg-muted text-primary font-medium"
+                      onClick={handleNavClick}
                     >
                       <item.icon className="mr-2 h-4 w-4" />
                       {!collapsed && <span>{item.title}</span>}
