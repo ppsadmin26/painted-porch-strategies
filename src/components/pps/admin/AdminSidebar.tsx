@@ -90,6 +90,7 @@ export function AdminSidebar() {
                       end={item.url === "/admin"}
                       className="hover:bg-muted/50"
                       activeClassName="bg-muted text-primary font-medium"
+                      onClick={handleNavClick}
                     >
                       <item.icon className="mr-2 h-4 w-4" />
                       {!collapsed && <span>{item.title}</span>}
