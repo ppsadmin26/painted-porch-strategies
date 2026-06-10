@@ -128,7 +128,7 @@ export default function PPSNavigation() {
                   <div className="flex items-center">
                     <Link
                       to={link.href}
-                      className={`text-xs font-medium transition-colors whitespace-nowrap ${
+                      className={`text-sm font-medium transition-colors whitespace-nowrap ${
                         isActiveLink(link.href)
                           ? "text-primary"
                           : "text-foreground hover:text-primary"
