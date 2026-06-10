@@ -196,8 +196,8 @@ describe("B2C P.A.T.H.finder quiz (UI integration)", () => {
     ids.forEach((id, i) => answerCurrent(labelFor(i, id), i === ids.length - 1));
 
     expect(await screen.findByRole("heading", { name: /Explore Before Committing/i })).toBeInTheDocument();
-    // No "Your Starting Point" primary heading on RT6.
-    expect(screen.queryByText(/Your Starting Point/i)).not.toBeInTheDocument();
+    // No "Your Starting Point" primary-group heading on RT6 (RT1–RT5 always have one).
+    expect(screen.queryByRole("heading", { name: /Your Starting Point/i })).not.toBeInTheDocument();
     // An exploration offering link is present.
     const fifty2 = OFFERINGS.fiftyTwoStoicism;
     const links = screen.getAllByRole("link").filter((a) => a.getAttribute("href") === fifty2.url);
