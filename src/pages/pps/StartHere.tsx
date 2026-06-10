@@ -72,9 +72,9 @@ export default function StartHere() {
         <div className="container max-w-3xl mx-auto px-6 text-center">
           <Button
             onClick={openQuiz}
-            className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-10 py-6 text-lg font-semibold rounded-lg transition-colors"
+            className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-6 sm:px-10 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-lg transition-colors max-w-full whitespace-normal h-auto"
           >
-            Take the P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5" />
+            Take the P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5 shrink-0" />
           </Button>
           <p className="text-sm text-foreground/70 mt-3">About 3 minutes. Email yourself the results when you're done.</p>
         </div>
