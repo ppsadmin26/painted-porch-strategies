@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Download, FileText, BarChart, Flame, BookOpen, Compass, Play, MessageCircle, Plane, Map, Megaphone, ClipboardCheck } from "lucide-react";
+import { Download, FileText, BarChart, Flame, BookOpen, Compass, Play, MessageCircle, Plane, Map, Megaphone, ClipboardCheck, Calendar, Repeat } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { Button } from "@/components/ui/button";
 import downloadsHero from "@/assets/heroes/downloads-hero.jpg";
