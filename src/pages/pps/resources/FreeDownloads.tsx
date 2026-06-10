@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Download, FileText, BarChart, Flame, BookOpen, Compass, Play, MessageCircle, Plane, Map, Megaphone, ClipboardCheck } from "lucide-react";
+import { Download, FileText, BarChart, Flame, BookOpen, Compass, Play, MessageCircle, Plane, Map, Megaphone, ClipboardCheck, Calendar, Repeat } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { Button } from "@/components/ui/button";
 import downloadsHero from "@/assets/heroes/downloads-hero.jpg";
@@ -153,6 +153,29 @@ const downloads = [
     ctaIcon: BookOpen,
     ctaLabel: "Get Guide",
   },
+  {
+    icon: Calendar,
+    title: "52 Weeks of Stoicism",
+    description: "A free YouTube playlist with a weekly Stoic principle for leaders. Short, practical videos to build a steady, change-ready mindset across the year.",
+    format: "Video Playlist",
+    color: "bg-gold/10",
+    iconColor: "text-gold",
+    href: "https://youtube.com/playlist?list=PLhdPibIQvwhHBAdRRSuk2JmGT9GO7lNBs&si=5gSyg-aAllEOSCSr",
+    external: true,
+    ctaIcon: Play,
+    ctaLabel: "Watch Playlist",
+  },
+  {
+    icon: Repeat,
+    title: "Resolution Remix",
+    description: "Reframe annual resolutions into sustainable leadership practices that actually stick. A short masterclass with Sierra.",
+    format: "Masterclass",
+    color: "bg-purple/10",
+    iconColor: "text-purple",
+    ctaIcon: Play,
+    ctaLabel: "Notify Me",
+    comingSoon: true,
+  },
 ];
 
 export default function FreeDownloads() {
@@ -215,12 +238,21 @@ export default function FreeDownloads() {
                         {ctaLabel}
                       </Button>
                     ) : download.href ? (
-                      <Link to={download.href}>
-                        <Button className="bg-navy border-2 border-navy text-white hover:bg-transparent hover:text-navy transition-colors">
-                          <CtaIcon className="w-4 h-4 mr-2" />
-                          {ctaLabel}
-                        </Button>
-                      </Link>
+                      download.external ? (
+                        <a href={download.href} target="_blank" rel="noopener noreferrer">
+                          <Button className="bg-navy border-2 border-navy text-white hover:bg-transparent hover:text-navy transition-colors">
+                            <CtaIcon className="w-4 h-4 mr-2" />
+                            {ctaLabel}
+                          </Button>
+                        </a>
+                      ) : (
+                        <Link to={download.href}>
+                          <Button className="bg-navy border-2 border-navy text-white hover:bg-transparent hover:text-navy transition-colors">
+                            <CtaIcon className="w-4 h-4 mr-2" />
+                            {ctaLabel}
+                          </Button>
+                        </Link>
+                      )
                     ) : (
                       <Button className="bg-navy border-2 border-navy text-white hover:bg-transparent hover:text-navy transition-colors">
                         <CtaIcon className="w-4 h-4 mr-2" />

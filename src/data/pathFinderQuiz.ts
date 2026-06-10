@@ -35,7 +35,7 @@ export const OFFERINGS = {
   // ===== B2C IGNITE =====
   radicalMindfulness: { key: "radicalMindfulness", name: "Radical Mindfulness", facilitator: "Sierra", tier: "IGNITE", url: "/radical-mindfulness", blurb: "8-week self-paced program building conscious awareness, emotional regulation, and reflective capacity." },
   radicalMindfulnessMini: { key: "radicalMindfulnessMini", name: "Radical Mindfulness Mini Course", facilitator: "Sierra", tier: "IGNITE", url: "/radical-mindfulness", blurb: "Condensed entry point before the full 8-week commitment." },
-  passengerToPilot: { key: "passengerToPilot", name: "Passenger to Pilot (Masterclass)", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Shift from reactive to proactive leadership." },
+  passengerToPilot: { key: "passengerToPilot", name: "Passenger to Pilot (Masterclass)", facilitator: "Sierra", tier: "IGNITE", url: "/pilot-training", blurb: "Shift from reactive to proactive leadership." },
   masterYourMessage: { key: "masterYourMessage", name: "Master Your Message", facilitator: "Rob", tier: "IGNITE", url: "/master-your-message", blurb: "6-week self-paced program: authentic communication and influence without authority." },
   masterYourMessageMini: { key: "masterYourMessageMini", name: "Master Your Message Mini Course", facilitator: "Rob", tier: "IGNITE", url: "/master-your-message", blurb: "Core framework condensed." },
   talkingToStrangers: { key: "talkingToStrangers", name: "Talking to Strangers (Masterclass)", facilitator: "Rob", tier: "IGNITE", url: "/talking-to-strangers", blurb: "Authentic connection in unfamiliar contexts." },
@@ -111,7 +111,7 @@ export const OFFERINGS = {
   kickTheHabitB2C: { key: "kickTheHabitB2C", name: "Kick the Habit (Masterclass)", facilitator: "Amy", tier: "IGNITE", url: "/kick-the-habit", blurb: "Short masterclass on the behavioral patterns that quietly keep change from sticking." },
 
   // Free Resources
-  fiftyTwoStoicism: { key: "fiftyTwoStoicism", name: "52 Weeks of Stoicism", tier: "Free", url: "/resources/free", blurb: "Weekly Stoic principles for leadership. Free." },
+  fiftyTwoStoicism: { key: "fiftyTwoStoicism", name: "52 Weeks of Stoicism", tier: "Free", url: "https://youtube.com/playlist?list=PLhdPibIQvwhHBAdRRSuk2JmGT9GO7lNBs&si=5gSyg-aAllEOSCSr", blurb: "Weekly Stoic principles for leadership. Free YouTube playlist." },
   burnoutResources: { key: "burnoutResources", name: "Burnout Resources", tier: "Free", url: "/resources/burnout", blurb: "If exhaustion is part of your reality, start here. Free." },
   strategicChangeCanvas: { key: "strategicChangeCanvas", name: "Strategic Change Canvas", tier: "Free", url: "/change-canvas", blurb: "Visual planning tool for mapping change before you launch it. Free." },
   communicatingChangeWorkbook: { key: "communicatingChangeWorkbook", name: "Communicating Change Workbook", tier: "Free", url: "/change-comms", blurb: "Templates for the conversations that make or break transformation. Free." },
