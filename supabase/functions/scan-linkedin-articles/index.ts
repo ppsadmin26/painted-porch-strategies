@@ -27,7 +27,39 @@ Deno.serve(async (req) => {
   try {
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
     const firecrawlKey = Deno.env.get("FIRECRAWL_API_KEY");
+
+    // === AuthN + AuthZ: admin/editor only ===
+    const authHeader = req.headers.get("authorization") || "";
+    if (!authHeader.startsWith("Bearer ")) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const userClient = createClient(supabaseUrl, anonKey, {
+      global: { headers: { Authorization: authHeader } },
+    });
+    const { data: userData, error: userErr } = await userClient.auth.getUser();
+    if (userErr || !userData?.user) {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        status: 401,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const adminClientAuth = createClient(supabaseUrl, serviceKey);
+    const { data: profile } = await adminClientAuth
+      .from("profiles")
+      .select("role")
+      .eq("id", userData.user.id)
+      .maybeSingle();
+    if (!profile || !["admin", "editor"].includes(profile.role)) {
+      return new Response(JSON.stringify({ error: "Forbidden" }), {
+        status: 403,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     if (!firecrawlKey) {
       return new Response(
@@ -38,6 +70,7 @@ Deno.serve(async (req) => {
 
     const body = await req.json().catch(() => ({}));
     const adminClient = createClient(supabaseUrl, serviceKey);
+
 
     // MODE 1: Manual import of a specific URL
     if (body.url && body.url.includes("linkedin.com/pulse/")) {
