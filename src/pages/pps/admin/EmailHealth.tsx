@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
+import { useSidebar } from "@/components/ui/sidebar";
 
 type Stats = {
   since: string;
