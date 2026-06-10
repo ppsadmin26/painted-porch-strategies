@@ -178,7 +178,7 @@ export default function PPSNavigation() {
             <SiteSearch />
             {startHereLive && (
               <Link to="/start-here">
-                <Button className="bg-primary hover:bg-primary/90 text-xs px-3 py-1 h-8">
+                <Button className="bg-primary hover:bg-primary/90 text-sm px-4 py-1 h-9">
                   Discover Your P.A.T.H.way
                 </Button>
               </Link>
