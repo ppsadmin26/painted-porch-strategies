@@ -197,5 +197,10 @@ test.describe("B2C P.A.T.H.finder quiz (real browser)", () => {
     await expect(
       page.locator(`a[href="${fifty2.url}"]`).first(),
     ).toBeVisible();
+
+    // Accessibility: RT6 result dialog must also be clean.
+    await assertNoCriticalA11yViolations(page, "RT6 result page");
+  });
+});
   });
 });
