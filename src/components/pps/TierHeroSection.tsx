@@ -104,9 +104,14 @@ export function TierHeroSection({
           />
         )
       ) : (
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${background.src})` }}
+        <img
+          src={background.src}
+          alt=""
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover"
         />
       )}
       
