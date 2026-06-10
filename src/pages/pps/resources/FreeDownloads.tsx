@@ -238,12 +238,21 @@ export default function FreeDownloads() {
                         {ctaLabel}
                       </Button>
                     ) : download.href ? (
-                      <Link to={download.href}>
-                        <Button className="bg-navy border-2 border-navy text-white hover:bg-transparent hover:text-navy transition-colors">
-                          <CtaIcon className="w-4 h-4 mr-2" />
-                          {ctaLabel}
-                        </Button>
-                      </Link>
+                      download.external ? (
+                        <a href={download.href} target="_blank" rel="noopener noreferrer">
+                          <Button className="bg-navy border-2 border-navy text-white hover:bg-transparent hover:text-navy transition-colors">
+                            <CtaIcon className="w-4 h-4 mr-2" />
+                            {ctaLabel}
+                          </Button>
+                        </a>
+                      ) : (
+                        <Link to={download.href}>
+                          <Button className="bg-navy border-2 border-navy text-white hover:bg-transparent hover:text-navy transition-colors">
+                            <CtaIcon className="w-4 h-4 mr-2" />
+                            {ctaLabel}
+                          </Button>
+                        </Link>
+                      )
                     ) : (
                       <Button className="bg-navy border-2 border-navy text-white hover:bg-transparent hover:text-navy transition-colors">
                         <CtaIcon className="w-4 h-4 mr-2" />
