@@ -4,7 +4,6 @@ import {
   Coffee,
   ExternalLink,
   ArrowRight,
-  Podcast,
 } from "lucide-react";
 import sierraPhoto from "@/assets/team/sierra-ramm-cantrell.jpg";
 
