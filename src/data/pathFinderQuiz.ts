@@ -44,12 +44,12 @@ export const OFFERINGS = {
   leadingChangeMini: { key: "leadingChangeMini", name: "Leading Change Mini Course", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "Change leadership fundamentals: how change works, where resistance comes from." },
 
   // ===== B2C AMPLIFY Labs =====
-  conflictToConnectionLab: { key: "conflictToConnectionLab", name: "From Conflict to Connection Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs", blurb: "Peer cohort tackling team friction at the relational and structural root." },
-  goldilocksLab: { key: "goldilocksLab", name: "Goldilocks Leadership Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs", blurb: "Calibrated, context-sensitive EQ that makes team leadership feel like design." },
-  leadingChangeLab: { key: "leadingChangeLab", name: "Leading Change / P.A.T.H. Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs", blurb: "Cohort lab applying the full P.A.T.H. framework to real change challenges." },
+  conflictToConnectionLab: { key: "conflictToConnectionLab", name: "From Conflict to Connection Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-conflict-to-connection", blurb: "Peer cohort tackling team friction at the relational and structural root." },
+  goldilocksLab: { key: "goldilocksLab", name: "Goldilocks Leadership Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-goldilocks-leadership", blurb: "Calibrated, context-sensitive EQ that makes team leadership feel like design." },
+  leadingChangeLab: { key: "leadingChangeLab", name: "Leading Change / P.A.T.H. Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-leading-change", blurb: "Cohort lab applying the full P.A.T.H. framework to real change challenges." },
   stracticalLeaderLab: { key: "stracticalLeaderLab", name: "Stractical Leader Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/stractical-leader", blurb: "Strategic vision and tactical execution integration at the leadership-team level." },
-  stoicismLab: { key: "stoicismLab", name: "Stoicism in the Workplace Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs", blurb: "Philosophical grounding made permanent." },
-  aiEiOhLab: { key: "aiEiOhLab", name: "AI, EI, Oh! Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs", blurb: "Leading AI adoption with human wisdom." },
+  stoicismLab: { key: "stoicismLab", name: "Stoicism in the Workplace Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-stoicism-workplace", blurb: "Philosophical grounding made permanent." },
+  aiEiOhLab: { key: "aiEiOhLab", name: "AI, EI, Oh! Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-ai-ei-oh", blurb: "Leading AI adoption with human wisdom." },
 
   // ===== B2B Pathway B Workshops =====
   fromConflictToConnection: { key: "fromConflictToConnection", name: "From Conflict to Connection", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Addresses team friction at the relational and structural root, not the symptom." },
