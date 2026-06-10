@@ -755,6 +755,21 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Role check: only admin/editor may import LinkedIn articles as blog posts
+    const adminAuthClient = createClient(supabaseUrl, serviceKey);
+    const { data: profile } = await adminAuthClient
+      .from("profiles")
+      .select("role")
+      .eq("id", user.id)
+      .maybeSingle();
+    if (!profile || !["admin", "editor"].includes(profile.role)) {
+      return new Response(JSON.stringify({ error: "Forbidden" }), {
+        status: 403,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+
     const { url, reimport } = await req.json();
     if (!url || !url.includes("linkedin.com/pulse/")) {
       return new Response(

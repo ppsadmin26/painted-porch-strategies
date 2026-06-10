@@ -30,9 +30,48 @@ function generateToken(): string {
     .join('')
 }
 
-// Auth note: this function uses verify_jwt = true in config.toml, so Supabase's
-// gateway validates the caller's JWT (anon or service_role) before the request
-// reaches this code. No in-function auth check is needed.
+// Templates that may be invoked from client-side / anon JWT callers. These are
+// strictly user-initiated confirmations and lead-magnet deliveries. Notification
+// templates with a fixed `template.to` (admin alerts, webhooks, internal emails)
+// are NOT in this list — they are server-only and must be invoked via the
+// service role from a trusted edge function.
+const PUBLIC_TEMPLATES = new Set([
+  'contact-confirmation',
+  'contact-notification',
+  'easter-egg-notification',
+  'easter-egg-confirmation',
+  'strategic-canvas',
+  'change-readiness-roadmap',
+  'change-comms-guide',
+  'stractical-waitlist',
+])
+
+async function callerCanSendAnyTemplate(
+  authHeader: string | null,
+  supabaseUrl: string,
+  serviceKey: string,
+  anonKey: string
+): Promise<boolean> {
+  if (!authHeader?.startsWith('Bearer ')) return false
+  const token = authHeader.slice(7)
+  // Fast path: service_role JWT is signed by Supabase with role=service_role.
+  // Decode payload (validated by gateway already) to detect role.
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1] || ''))
+    if (payload?.role === 'service_role') return true
+    if (payload?.role !== 'authenticated' || !payload?.sub) return false
+    const admin = createClient(supabaseUrl, serviceKey)
+    const { data: profile } = await admin
+      .from('profiles')
+      .select('role')
+      .eq('id', payload.sub)
+      .maybeSingle()
+    return !!profile && ['admin', 'editor'].includes(profile.role)
+  } catch {
+    return false
+  }
+}
+
 
 Deno.serve(async (req) => {
   // Handle CORS preflight
@@ -104,6 +143,26 @@ Deno.serve(async (req) => {
       }
     )
   }
+
+  // === AuthZ: restrict templates anon/authenticated callers can send ===
+  // Service role and admin/editor users may send any template. Everyone else
+  // is limited to the public allowlist of user-initiated confirmations.
+  const privileged = await callerCanSendAnyTemplate(
+    req.headers.get('authorization'),
+    supabaseUrl,
+    supabaseServiceKey,
+    Deno.env.get('SUPABASE_ANON_KEY') || ''
+  )
+  if (!privileged && !PUBLIC_TEMPLATES.has(templateName)) {
+    return new Response(
+      JSON.stringify({ error: 'Template not permitted for this caller' }),
+      {
+        status: 403,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
+    )
+  }
+
 
   // Resolve effective recipient: template-level `to` takes precedence over
   // the caller-provided recipientEmail. This allows notification templates
