@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -55,7 +55,15 @@ const navLinks = [
 export default function PPSNavigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Collect every internal path used in the nav so we can check status in a
   // single query and filter draft items out for non-admin visitors.
@@ -90,27 +98,37 @@ export default function PPSNavigation() {
   };
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
+    <nav
+      className={`bg-white sticky top-0 z-50 transition-shadow ${
+        scrolled ? "shadow-md" : "shadow-sm"
+      }`}
+    >
       <div className="container max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20 md:h-24">
+        <div
+          className={`flex items-center justify-between transition-all duration-300 ${
+            scrolled ? "h-14" : "h-20 md:h-24"
+          }`}
+        >
           {/* Logo */}
           <Link to="/" className="flex items-center flex-shrink-0 mr-4">
             <img
               src={ppsLogo}
               alt="Painted Porch Strategies"
-              className="h-16 md:h-20 w-auto object-contain"
+              className={`w-auto object-contain transition-all duration-300 ${
+                scrolled ? "h-10" : "h-12 md:h-14"
+              }`}
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className={`${scrolled ? "hidden" : "hidden lg:flex"} items-center gap-4`}>
             {visibleNav.map((link) =>
               link.children && link.children.length > 0 ? (
                 <DropdownMenu key={link.href}>
                   <div className="flex items-center">
                     <Link
                       to={link.href}
-                      className={`text-xs font-medium transition-colors whitespace-nowrap ${
+                      className={`text-sm font-medium transition-colors whitespace-nowrap ${
                         isActiveLink(link.href)
                           ? "text-primary"
                           : "text-foreground hover:text-primary"
@@ -147,7 +165,7 @@ export default function PPSNavigation() {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`text-xs font-medium transition-colors whitespace-nowrap ${
+                  className={`text-sm font-medium transition-colors whitespace-nowrap ${
                     isActiveLink(link.href)
                       ? "text-primary"
                       : "text-foreground hover:text-primary"
@@ -160,15 +178,15 @@ export default function PPSNavigation() {
             <SiteSearch />
             {startHereLive && (
               <Link to="/start-here">
-                <Button className="bg-primary hover:bg-primary/90 text-xs px-3 py-1 h-8">
+                <Button className="bg-primary hover:bg-primary/90 text-sm px-4 py-1 h-9">
                   Discover Your P.A.T.H.way
                 </Button>
               </Link>
             )}
           </div>
 
-          {/* Mobile: Search + Menu Button */}
-          <div className="lg:hidden flex items-center gap-3">
+          {/* Compact / Mobile: Search + Menu Button */}
+          <div className={`${scrolled ? "flex" : "lg:hidden flex"} items-center gap-3`}>
             <SiteSearch />
             <button
               className="p-2"
@@ -186,7 +204,7 @@ export default function PPSNavigation() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t">
+          <div className={`${scrolled ? "" : "lg:hidden"} py-4 border-t`}>
             <div className="flex flex-col gap-2">
               {visibleNav.map((link) => (
                 <div key={link.href}>
