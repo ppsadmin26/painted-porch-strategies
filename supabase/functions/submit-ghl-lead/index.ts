@@ -29,6 +29,32 @@ function ghlHeaders(apiKey: string): GHLHeaders {
   };
 }
 
+// ── Tag allowlist ───────────────────────────────────────────────────────
+// Tags are forwarded to GHL and can trigger marketing automations, so we
+// only accept a fixed set plus the dynamic `course-launch-<slug>` pattern.
+const ALLOWED_TAGS = new Set<string>([
+  "contact-form",
+  "newsletter-opt-in",
+  "Change Roadmap",
+  "ChangeComms",
+  "Strategic Canvas",
+  "WFH Mini Course",
+  "found it charity",
+  "stractical-waitlist",
+  "course-launch-list",
+]);
+const COURSE_LAUNCH_TAG = /^course-launch-[a-z0-9-]{1,64}$/;
+
+function sanitizeTags(input: unknown): string[] {
+  if (!Array.isArray(input)) return ["contact-form"];
+  const cleaned = input
+    .filter((t): t is string => typeof t === "string")
+    .map((t) => t.trim())
+    .filter((t) => t.length > 0 && t.length <= 80)
+    .filter((t) => ALLOWED_TAGS.has(t) || COURSE_LAUNCH_TAG.test(t));
+  return cleaned.length > 0 ? cleaned : ["contact-form"];
+}
+
 // ── Value Mappings: Form → GHL ──────────────────────────────────────────
 
 const INTEREST_MAP: Record<string, string> = {
