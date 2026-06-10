@@ -485,7 +485,7 @@ Deno.serve(async (req) => {
       phone,
       company,
       newsletter,
-      tags: tags ?? ["contact-form"],
+      tags: sanitizeTags(tags),
     });
 
     console.log("Contact upserted:", contactId);
