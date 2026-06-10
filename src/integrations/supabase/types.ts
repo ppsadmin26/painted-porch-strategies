@@ -978,6 +978,39 @@ export type Database = {
       }
     }
     Views: {
+      course_launch_status_public: {
+        Row: {
+          checkout_url: string | null
+          course_name: string | null
+          course_path: string | null
+          notified_at: string | null
+          notified_count: number | null
+          program_type: string | null
+          slug: string | null
+          status: string | null
+        }
+        Insert: {
+          checkout_url?: string | null
+          course_name?: string | null
+          course_path?: string | null
+          notified_at?: string | null
+          notified_count?: number | null
+          program_type?: string | null
+          slug?: string | null
+          status?: string | null
+        }
+        Update: {
+          checkout_url?: string | null
+          course_name?: string | null
+          course_path?: string | null
+          notified_at?: string | null
+          notified_count?: number | null
+          program_type?: string | null
+          slug?: string | null
+          status?: string | null
+        }
+        Relationships: []
+      }
       public_authors: {
         Row: {
           author_bio: string | null
