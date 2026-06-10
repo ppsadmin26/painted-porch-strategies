@@ -153,6 +153,29 @@ const downloads = [
     ctaIcon: BookOpen,
     ctaLabel: "Get Guide",
   },
+  {
+    icon: Calendar,
+    title: "52 Weeks of Stoicism",
+    description: "A free YouTube playlist with a weekly Stoic principle for leaders. Short, practical videos to build a steady, change-ready mindset across the year.",
+    format: "Video Playlist",
+    color: "bg-gold/10",
+    iconColor: "text-gold",
+    href: "https://youtube.com/playlist?list=PLhdPibIQvwhHBAdRRSuk2JmGT9GO7lNBs&si=5gSyg-aAllEOSCSr",
+    external: true,
+    ctaIcon: Play,
+    ctaLabel: "Watch Playlist",
+  },
+  {
+    icon: Repeat,
+    title: "Resolution Remix",
+    description: "Reframe annual resolutions into sustainable leadership practices that actually stick. A short masterclass with Sierra.",
+    format: "Masterclass",
+    color: "bg-purple/10",
+    iconColor: "text-purple",
+    ctaIcon: Play,
+    ctaLabel: "Notify Me",
+    comingSoon: true,
+  },
 ];
 
 export default function FreeDownloads() {
