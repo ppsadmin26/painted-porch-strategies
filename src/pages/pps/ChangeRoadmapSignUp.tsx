@@ -86,10 +86,10 @@ export default function ChangeRoadmapSignUp() {
             <Sparkles className="w-4 h-4" />
             FREE PLANNING WORKSHEET
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 break-words">
             Your <span className="text-gold">Change Readiness Roadmap</span> Planner
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
             A simple worksheet to map out your P.A.T.H. before your next big change initiative kicks off.
           </p>
         </div>
