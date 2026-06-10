@@ -44,12 +44,12 @@ export const OFFERINGS = {
   leadingChangeMini: { key: "leadingChangeMini", name: "Leading Change Mini Course", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "Change leadership fundamentals: how change works, where resistance comes from." },
 
   // ===== B2C AMPLIFY Labs =====
-  conflictToConnectionLab: { key: "conflictToConnectionLab", name: "From Conflict to Connection Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs", blurb: "Peer cohort tackling team friction at the relational and structural root." },
-  goldilocksLab: { key: "goldilocksLab", name: "Goldilocks Leadership Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs", blurb: "Calibrated, context-sensitive EQ that makes team leadership feel like design." },
-  leadingChangeLab: { key: "leadingChangeLab", name: "Leading Change / P.A.T.H. Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs", blurb: "Cohort lab applying the full P.A.T.H. framework to real change challenges." },
+  conflictToConnectionLab: { key: "conflictToConnectionLab", name: "From Conflict to Connection Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-conflict-to-connection", blurb: "Peer cohort tackling team friction at the relational and structural root." },
+  goldilocksLab: { key: "goldilocksLab", name: "Goldilocks Leadership Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-goldilocks-leadership", blurb: "Calibrated, context-sensitive EQ that makes team leadership feel like design." },
+  leadingChangeLab: { key: "leadingChangeLab", name: "Leading Change / P.A.T.H. Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-leading-change", blurb: "Cohort lab applying the full P.A.T.H. framework to real change challenges." },
   stracticalLeaderLab: { key: "stracticalLeaderLab", name: "Stractical Leader Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/stractical-leader", blurb: "Strategic vision and tactical execution integration at the leadership-team level." },
-  stoicismLab: { key: "stoicismLab", name: "Stoicism in the Workplace Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs", blurb: "Philosophical grounding made permanent." },
-  aiEiOhLab: { key: "aiEiOhLab", name: "AI, EI, Oh! Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs", blurb: "Leading AI adoption with human wisdom." },
+  stoicismLab: { key: "stoicismLab", name: "Stoicism in the Workplace Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-stoicism-workplace", blurb: "Philosophical grounding made permanent." },
+  aiEiOhLab: { key: "aiEiOhLab", name: "AI, EI, Oh! Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-ai-ei-oh", blurb: "Leading AI adoption with human wisdom." },
 
   // ===== B2B Pathway B Workshops =====
   fromConflictToConnection: { key: "fromConflictToConnection", name: "From Conflict to Connection", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Addresses team friction at the relational and structural root, not the symptom." },
@@ -563,7 +563,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
 
   if (rt === "RT-A") {
     headline = "Team & People";
-    narrative = "Your responses point clearly to the team. Not the strategy, not the systems — the people dynamics underneath the work. Whether it's conflict that keeps surfacing, collaboration that's harder than it should be, or team patterns that are costing more than you want to admit, this is addressable.";
+    narrative = "Your responses point clearly to the team. Not the strategy, not the systems — the people dynamics underneath the work. Whether it's conflict that keeps surfacing, collaboration that's harder than it should be, or team patterns that are costing more than you want to admit, this is addressable. A workshop is a strong starting point. The Blue Door Organizational Appraisal is the prerequisite for any deeper, multi-team engagement and gives you the architecture map before you commit.";
     const q1 = val(answers, "Q1Team");
     primaryHeading = "Team Dynamics — Conflict, Friction, and Collaboration";
     if (q1 === "A" || q1 === "D") primaryKeys = ["fromConflictToConnection", "fromDysfunctionToDynamic", "elementsOfATeam"];
@@ -572,7 +572,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     extra.push(grp("Team Performance — Contribution, Capability, and Cohesion", "geniusAtWork", "heroesAssemble"));
   } else if (rt === "RT-B") {
     headline = "Change & Transformation";
-    narrative = "Your organization is moving through something significant, or about to. The question isn't whether the change is necessary. It's whether your leaders and your organization have the architecture to carry it.";
+    narrative = "Your organization is moving through something significant, or about to. The question isn't whether the change is necessary. It's whether your leaders and your organization have the architecture to carry it. A workshop can get traction quickly. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and surfaces the structural readiness gaps a workshop alone won't address.";
     const q1 = val(answers, "Q1Change");
     primaryHeading = "Change Leadership — Frameworks for Leading Transformation";
     if (q1 === "A") primaryKeys = ["pathToLastingChange", "leadAtSpeed", "drivingChange3Shifts"];
@@ -583,7 +583,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     extra.push(grp("AI & Technology Transformation", "aiEiOh", "architectureOfAdaptability"));
   } else if (rt === "RT-C") {
     headline = "Leadership Capability";
-    narrative = "The challenge you're describing is a capability gap. Your leaders need to develop, and you need a way to build that capacity that actually holds rather than fades after the training day ends.";
+    narrative = "The challenge you're describing is a capability gap. Your leaders need to develop, and you need a way to build that capacity that actually holds rather than fades after the training day ends. A workshop is a good first move. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and shows you which capabilities the architecture is quietly blocking.";
     const q1 = val(answers, "Q1Cap");
     primaryHeading = "Emotional Intelligence — How Leaders Show Up";
     if (q1 === "A") primaryKeys = ["goldilocks", "fromConflictToConnection", "pillarsOfLastingChange"];
@@ -593,7 +593,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     extra.push(grp("Strategic Capability — Thinking and Execution", "stracticalLeader", "leadershipOM", "architectureOfAdaptability"));
   } else if (rt === "RT-D") {
     headline = "Strategic / Architectural";
-    narrative = "What you're describing isn't a program gap or training need. It's an architectural question: whether your organization's current identity is built to carry what you're trying to create. The Blue Door is where organizations at strategic inflection points begin.";
+    narrative = "What you're describing isn't a program gap or training need. It's an architectural question: whether your organization's current identity is built to carry what you're trying to create. The Blue Door Organizational Appraisal is where organizations at strategic inflection points begin, and it's the prerequisite for any deeper engagement with us.";
     const q1 = val(answers, "Q1Strategic");
     primaryHeading = "Workshops — Activate Your Team While the Appraisal Work Is Underway";
     if (q1 === "A") primaryKeys = ["architectChange", "pillarsReinforcement", "architectureOfAdaptability"];
@@ -604,7 +604,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
   } else {
     // RT-E
     headline = "Exploring Your Options";
-    narrative = "You're in the right place even if you're not sure exactly what you need yet. Organizational development rarely announces itself with a clear brief. Start with a defined experience that gives your team traction and a shared framework. The right next step will become clearer from there.";
+    narrative = "You're in the right place even if you're not sure exactly what you need yet. Organizational development rarely announces itself with a clear brief. Start with a defined experience that gives your team traction and a shared framework. When you're ready to go deeper, the Blue Door Organizational Appraisal is the prerequisite for any larger engagement and the fastest way to see your architecture clearly.";
     primaryHeading = "Team Dynamics & People";
     primaryKeys = ["fromConflictToConnection", "fromDysfunctionToDynamic", "heroesAssemble"];
     extra.push(grp("Change & Transformation", "leadAtSpeed", "pathToLastingChange", "cultivatingChangeResilience"));
