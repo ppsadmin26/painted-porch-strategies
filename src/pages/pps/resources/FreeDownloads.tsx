@@ -168,7 +168,7 @@ const downloads = [
   {
     icon: Repeat,
     title: "Resolution Remix",
-    description: "Reframe annual resolutions into sustainable leadership practices that actually stick. A short masterclass with Sierra.",
+    description: "Reframe annual resolutions into sustainable leadership practices that actually stick. A short masterclass with Amy.",
     format: "Masterclass",
     color: "bg-purple/10",
     iconColor: "text-purple",
