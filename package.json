@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prebuild": "node scripts/generate-robots-txt.mjs",
+    "predev": "node scripts/generate-sitemap.mjs",
+    "prebuild": "node scripts/generate-sitemap.mjs && node scripts/generate-robots-txt.mjs",
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
