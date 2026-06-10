@@ -160,7 +160,7 @@ export function TierHeroSection({
 
                 const content = (
                   <Button className={buttonClasses}>
-                    {cta.label}
+                    <span className="min-w-0 whitespace-normal">{cta.label}</span>
                     {cta.icon}
                   </Button>
                 );
