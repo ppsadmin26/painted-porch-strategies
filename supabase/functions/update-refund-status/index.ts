@@ -49,7 +49,7 @@ Deno.serve(async (req) => {
     const admin = createClient(SUPABASE_URL, SERVICE_ROLE);
     const { data: profile } = await admin
       .from("profiles").select("role").eq("id", userRes.user.id).single();
-    if (!profile || !["admin", "editor"].includes((profile as any).role)) {
+    if (!profile || (profile as any).role !== "admin") {
       return new Response(JSON.stringify({ error: "Forbidden" }), {
         status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });

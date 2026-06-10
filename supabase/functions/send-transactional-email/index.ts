@@ -54,19 +54,26 @@ async function callerCanSendAnyTemplate(
 ): Promise<boolean> {
   if (!authHeader?.startsWith('Bearer ')) return false
   const token = authHeader.slice(7)
-  // Fast path: service_role JWT is signed by Supabase with role=service_role.
-  // Decode payload (validated by gateway already) to detect role.
+  if (!token) return false
+
+  // Service-role fast path: only matches when the caller presented the actual
+  // service-role secret as a Bearer token (used by trusted edge functions).
+  // Constant-time-ish comparison via length+char check is unnecessary — the
+  // secret value comparison itself is enough to reject forged "role" claims.
+  if (token === serviceKey) return true
+
+  // Otherwise, cryptographically verify the JWT by asking Supabase Auth.
+  // getUser(token) validates the signature server-side and returns the user.
+  const admin = createClient(supabaseUrl, serviceKey)
   try {
-    const payload = JSON.parse(atob(token.split('.')[1] || ''))
-    if (payload?.role === 'service_role') return true
-    if (payload?.role !== 'authenticated' || !payload?.sub) return false
-    const admin = createClient(supabaseUrl, serviceKey)
+    const { data: userRes, error: userErr } = await admin.auth.getUser(token)
+    if (userErr || !userRes?.user) return false
     const { data: profile } = await admin
       .from('profiles')
       .select('role')
-      .eq('id', payload.sub)
+      .eq('id', userRes.user.id)
       .maybeSingle()
-    return !!profile && ['admin', 'editor'].includes(profile.role)
+    return !!profile && ['admin', 'editor'].includes((profile as any).role)
   } catch {
     return false
   }
