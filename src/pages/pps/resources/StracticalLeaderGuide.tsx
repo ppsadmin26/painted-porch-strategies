@@ -72,7 +72,7 @@ export default function StracticalLeaderGuide() {
               </p>
             </div>
             <a href="#get-guide">
-              <Button className="bg-gold border-2 border-gold text-navy font-poppins font-bold text-lg py-6 px-10 rounded-lg hover:bg-transparent hover:text-gold transition-colors">
+              <Button className="bg-gold border-2 border-gold text-navy font-poppins font-bold text-base sm:text-lg py-4 sm:py-6 px-6 sm:px-10 rounded-lg hover:bg-transparent hover:text-gold transition-colors max-w-full whitespace-normal h-auto">
                 <Download className="mr-2 w-5 h-5" /> GET THE FREE GUIDE
               </Button>
             </a>
