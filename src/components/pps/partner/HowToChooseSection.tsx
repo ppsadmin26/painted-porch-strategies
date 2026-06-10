@@ -94,9 +94,9 @@ export function HowToChooseSection() {
           </p>
           <Button
             onClick={openQuiz}
-            className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-12 py-6 text-lg font-semibold rounded-lg transition-colors"
+            className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-6 sm:px-12 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-lg transition-colors max-w-full whitespace-normal h-auto"
           >
-            Take Free P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5" />
+            Take Free P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5 shrink-0" />
           </Button>
         </div>
       </div>
