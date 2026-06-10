@@ -7,13 +7,13 @@
  * Usage:
  *   <SourcedTooltip source="McKinsey, 2024" sourceUrl="https://..." />
  */
+import { useState } from "react";
 import { Info } from "lucide-react";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
 interface SourcedTooltipProps {
@@ -26,7 +26,7 @@ interface SourcedTooltipProps {
   iconClassName?: string;
   /** Focus ring color class */
   focusRingClassName?: string;
-  /** Wrap with TooltipProvider (true) or rely on an ancestor (false). Default true. */
+  /** Retained for backwards compatibility — no longer needed with Popover. */
   withProvider?: boolean;
 }
 
@@ -43,16 +43,20 @@ export default function SourcedTooltip({
   size = "sm",
   iconClassName = "text-muted-foreground hover:text-foreground",
   focusRingClassName = "focus-visible:ring-2 focus-visible:ring-primary",
-  withProvider = true,
 }: SourcedTooltipProps) {
   const label = year ? `${source} (${year})` : source;
+  const [open, setOpen] = useState(false);
 
-  const trigger = (
-    <Tooltip>
-      <TooltipTrigger asChild>
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
         <button
           type="button"
           aria-label={`Source: ${label}`}
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
+          onFocus={() => setOpen(true)}
+          onBlur={() => setOpen(false)}
           className={cn(
             "inline-flex shrink-0 align-middle rounded-full transition-colors focus:outline-none",
             iconClassName,
@@ -61,8 +65,12 @@ export default function SourcedTooltip({
         >
           <Info className={sizeMap[size]} aria-hidden="true" />
         </button>
-      </TooltipTrigger>
-      <TooltipContent side="top" className="max-w-xs text-xs">
+      </PopoverTrigger>
+      <PopoverContent
+        side="top"
+        className="max-w-xs w-auto text-xs p-3"
+        onOpenAutoFocus={(e) => e.preventDefault()}
+      >
         <p className="font-semibold mb-1">Source</p>
         <p className="mb-1">{label}</p>
         {sourceUrl && (
@@ -75,11 +83,7 @@ export default function SourcedTooltip({
             View source →
           </a>
         )}
-      </TooltipContent>
-    </Tooltip>
+      </PopoverContent>
+    </Popover>
   );
-
-  if (!withProvider) return trigger;
-
-  return <TooltipProvider delayDuration={150}>{trigger}</TooltipProvider>;
 }
