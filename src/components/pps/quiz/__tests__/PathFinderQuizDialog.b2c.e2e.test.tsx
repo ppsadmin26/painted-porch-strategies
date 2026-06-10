@@ -20,9 +20,10 @@ import { MemoryRouter } from "react-router-dom";
 
 // jsdom doesn't ship ResizeObserver, which Radix's Dialog relies on.
 beforeAll(() => {
-  if (typeof (globalThis as { ResizeObserver?: unknown }).ResizeObserver === "undefined") {
+  const g = globalThis as unknown as { ResizeObserver?: unknown };
+  if (typeof g.ResizeObserver === "undefined") {
     class RO { observe() {} unobserve() {} disconnect() {} }
-    (globalThis as { ResizeObserver: typeof RO }).ResizeObserver = RO;
+    g.ResizeObserver = RO;
   }
 });
 
