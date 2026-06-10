@@ -127,7 +127,7 @@ async function upsertContact(
     tags?: string[];
   }
 ) {
-  const contactTags = [...(payload.tags ?? ["contact-form"])];
+  const contactTags = [...sanitizeTags(payload.tags)];
   if (payload.newsletter) {
     contactTags.push("newsletter-opt-in");
   }
