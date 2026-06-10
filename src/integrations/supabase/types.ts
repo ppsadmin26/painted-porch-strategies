@@ -1015,6 +1015,10 @@ export type Database = {
         Args: { _kind: string; _msg_id: number; _queue: string }
         Returns: Json
       }
+      admin_email_delete_message_batch: {
+        Args: { _kind: string; _msg_ids: number[]; _queue: string }
+        Returns: Json
+      }
       admin_email_dlq_list: { Args: { _limit?: number }; Returns: Json }
       admin_email_log: {
         Args: {
@@ -1042,6 +1046,10 @@ export type Database = {
       }
       admin_email_requeue_dlq: {
         Args: { _msg_id: number; _queue: string }
+        Returns: Json
+      }
+      admin_email_requeue_dlq_batch: {
+        Args: { _msg_ids: number[]; _queue: string }
         Returns: Json
       }
       admin_email_reset_stuck: {
