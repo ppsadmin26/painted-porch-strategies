@@ -42,9 +42,9 @@ export function PartnerHeroSection() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-6 px-8 transition-colors w-full sm:w-auto">
-                  <Link to="/start-here">Discover Your P.A.T.H.way</Link>
+            <div className="flex flex-col sm:flex-row gap-4 max-w-full">
+              <Button asChild className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-base sm:text-lg py-4 sm:py-6 px-4 sm:px-8 transition-colors w-full max-w-[20rem] sm:w-auto sm:max-w-full whitespace-normal h-auto leading-tight text-center">
+                   <Link to="/start-here">Discover Your P.A.T.H.way</Link>
                 </Button>
             </div>
           </div>

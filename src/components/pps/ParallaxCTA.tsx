@@ -80,7 +80,7 @@ const focusRingDark =
 
 // Sized to match the rest of the site's "size=lg" buttons (h-12, text-base).
 const baseAction =
-  "inline-flex items-center justify-center font-poppins font-semibold text-base px-8 h-12 rounded-md transition-colors shadow-lg w-full sm:w-auto sm:min-w-[200px] " +
+  "inline-flex items-center justify-center font-poppins font-semibold text-sm sm:text-base px-4 sm:px-8 min-h-12 py-3 rounded-md transition-colors shadow-lg w-full max-w-[20rem] sm:w-auto sm:max-w-full sm:min-w-[200px] whitespace-normal leading-tight text-center " +
   focusRingDark;
 
 const variantClasses: Record<NonNullable<CTAAction["variant"]>, string> = {
@@ -96,7 +96,7 @@ function ActionEl({ action }: { action: CTAAction }) {
   const { isLive } = useIsPageLive(action.to ?? null);
   const inner = (
     <>
-      {action.label}
+      <span className="min-w-0 whitespace-normal">{action.label}</span>
       <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
     </>
   );
@@ -189,7 +189,7 @@ export function ParallaxCTA({
           </p>
         )}
         {actions.length > 0 && (
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-4 max-w-full">
             {actions.map((action) => (
               <ActionEl key={action.label} action={action} />
             ))}

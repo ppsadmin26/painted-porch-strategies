@@ -88,15 +88,15 @@ export function HowToChooseSection() {
         </div>
 
         {/* P.A.T.H.finder Quiz CTA */}
-        <div className="flex flex-col items-center mt-12">
+        <div className="flex flex-col items-center mt-12 px-4">
           <p className="text-foreground mb-4 text-center">
             At a fork in your P.A.T.H.way decision? Take our free P.A.T.H.finder quiz to determine which direction is best based on your needs.
           </p>
           <Button
             onClick={openQuiz}
-            className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-6 sm:px-12 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-lg transition-colors max-w-full whitespace-normal h-auto"
+            className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-4 sm:px-12 py-4 sm:py-6 text-sm sm:text-lg font-semibold rounded-lg transition-colors w-full max-w-[20rem] sm:w-auto sm:max-w-full whitespace-normal h-auto leading-tight text-center"
           >
-            Take Free P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5 shrink-0" />
+            <span className="min-w-0 whitespace-normal">Take Free P.A.T.H.finder Quiz</span> <ArrowRight className="ml-2 w-5 h-5 shrink-0" />
           </Button>
         </div>
       </div>

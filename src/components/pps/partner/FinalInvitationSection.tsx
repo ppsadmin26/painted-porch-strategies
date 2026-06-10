@@ -30,19 +30,19 @@ export function FinalInvitationSection() {
           </p>
         </div>
         
-        <div className="mb-8">
-          <Link to="/start-here">
-            <Button className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-5 px-8 transition-colors font-semibold">
-              Discover Your P.A.T.H.way
+        <div className="mb-8 flex justify-center px-4">
+          <Link to="/start-here" className="w-full max-w-[20rem] sm:w-auto sm:max-w-full">
+            <Button className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-sm sm:text-lg py-4 sm:py-5 px-4 sm:px-8 transition-colors font-semibold w-full sm:w-auto max-w-full whitespace-normal h-auto leading-tight text-center">
+              <span className="min-w-0 whitespace-normal">Discover Your P.A.T.H.way</span>
             </Button>
           </Link>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6 px-4">
           {TIER_LIST.map((tier) => (
-            <Link key={tier.name} to={tier.href}>
+            <Link key={tier.name} to={tier.href} className="w-full max-w-[20rem] sm:w-auto sm:max-w-full">
               <Button 
-                className={`bg-transparent border-2 border-white text-white transition-colors
+                className={`bg-transparent border-2 border-white text-white transition-colors w-full sm:w-auto max-w-full whitespace-normal h-auto
                   ${tier.name === "IGNITE" ? "hover:bg-gold hover:border-gold hover:text-navy" : ""}
                   ${tier.name === "AMPLIFY" ? "hover:bg-strategic hover:border-strategic hover:text-white" : ""}
                   ${tier.name === "EMBODY" ? "hover:bg-navy hover:border-navy hover:text-white" : ""}

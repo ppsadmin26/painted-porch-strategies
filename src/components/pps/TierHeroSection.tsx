@@ -149,31 +149,32 @@ export function TierHeroSection({
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 max-w-full">
               {ctas.map((cta, index) => {
+                const responsiveButtonSizing = "text-base sm:text-lg py-4 sm:py-6 px-4 sm:px-8 transition-colors w-full sm:w-auto max-w-full whitespace-normal h-auto leading-tight text-center min-w-0";
                 const buttonClasses = cta.buttonClassName
-                  ? `${cta.buttonClassName} text-lg py-6 px-8 transition-colors w-full sm:w-auto`
+                  ? `${cta.buttonClassName} ${responsiveButtonSizing}`
                   : cta.isPrimary
-                  ? `${getPrimaryButtonClasses()} text-lg py-6 px-8 transition-colors w-full sm:w-auto`
-                  : "bg-transparent border-2 border-white/70 text-white hover:bg-white hover:text-navy text-lg py-6 px-8 transition-colors w-full sm:w-auto";
+                  ? `${getPrimaryButtonClasses()} ${responsiveButtonSizing}`
+                  : `bg-transparent border-2 border-white/70 text-white hover:bg-white hover:text-navy ${responsiveButtonSizing}`;
 
                 const content = (
                   <Button className={buttonClasses}>
-                    {cta.label}
+                    <span className="min-w-0 whitespace-normal">{cta.label}</span>
                     {cta.icon}
                   </Button>
                 );
 
                 if (cta.isAnchor) {
                   return (
-                    <a key={index} href={cta.href}>
+                    <a key={index} href={cta.href} className="w-full sm:w-auto max-w-full">
                       {content}
                     </a>
                   );
                 }
 
                 return (
-                  <Link key={index} to={cta.href}>
+                  <Link key={index} to={cta.href} className="w-full sm:w-auto max-w-full">
                     {content}
                   </Link>
                 );
