@@ -213,8 +213,11 @@ export default function EmbodyPathAlt() {
           {
             label: "Open the Blue Door",
             href: "/blue-door",
+            // White outline on the dark navy hero (cobalt/bluedoor would be
+            // unreadable here per brand rules), with a bluedoor focus ring
+            // so the CTA still carries the cobalt brand signal.
             buttonClassName:
-              "bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy",
+              "bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy focus-visible:ring-2 focus-visible:ring-bluedoor",
           },
         ]}
         background={{
@@ -443,7 +446,7 @@ export default function EmbodyPathAlt() {
                   asChild
                   className="bg-bluedoor hover:bg-bluedoor/90 text-white w-full"
                 >
-                  <Link to="/blue-door">
+                  <Link to="/blue-door" data-cta="bluedoor">
                     Open the Blue Door <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
                 </Button>
