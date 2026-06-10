@@ -120,6 +120,30 @@ const cohorts = [
     image: operationsImg,
     comingSoon: true,
   },
+  {
+    title: "AI, EI, Oh!",
+    slug: "lab-ai-ei-oh",
+    tagline: "Lead AI adoption with human wisdom",
+    description: "AI is changing how work gets done. The leaders who get this right pair AI fluency with the emotional intelligence and organizational judgment it takes to roll it out without breaking trust, culture, or people.",
+    image: leadingChangeImg,
+    comingSoon: true,
+  },
+  {
+    title: "From Conflict to Connection",
+    slug: "lab-conflict-to-connection",
+    tagline: "Address friction at the root",
+    description: "Peer cohort for leaders ready to stop managing the same recurring conflict and start redesigning the conditions underneath it. Relational skill paired with structural redesign.",
+    image: dysfunctionImg,
+    comingSoon: true,
+  },
+  {
+    title: "Stoicism in the Workplace",
+    slug: "lab-stoicism-workplace",
+    tagline: "Ancient wisdom, modern leadership",
+    description: "A grounded, philosophy-led cohort for leaders who want a steadier inner game and a sharper sense of what they can actually control at work. Stoic practice translated into daily leadership.",
+    image: goldilocksImg,
+    comingSoon: true,
+  },
 ];
 
 
@@ -159,7 +183,7 @@ export default function AmplifyLabs() {
             {cohorts.map((cohort, index) => {
               const showCohortBanner = cohort.showUpcomingCohort && hasUpcomingCohort;
               return (
-                <div key={index} className="bg-white rounded-xl overflow-hidden flex flex-col shadow-sm">
+                <div key={index} id={cohort.slug} className="bg-white rounded-xl overflow-hidden flex flex-col shadow-sm scroll-mt-24">
                   <div className="aspect-[16/9] bg-strategic/10 flex items-center justify-center">
                     <img src={cohort.image} alt={cohort.title} className="w-full h-full object-cover" />
                   </div>
