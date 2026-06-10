@@ -26,6 +26,7 @@ export const ALWAYS_LIVE_PREFIXES = [
   "/sitemap",
   "/404",
   "/contact",
+  "/resources/insights",
 ];
 
 function stripQuery(pathname: string): string {
