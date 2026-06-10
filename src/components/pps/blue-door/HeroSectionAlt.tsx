@@ -50,7 +50,7 @@ export default function HeroSectionAlt() {
             
             <div className={`transition-all duration-700 ease-out delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
               <Link to="/blue-door/purchase">
-                <Button className="bg-bluedoor text-white border-2 border-bluedoor text-lg md:text-xl py-5 px-12 shadow-lg hover:shadow-xl hover:bg-white hover:text-bluedoor transition-all">
+                <Button className="bg-bluedoor text-white border-2 border-bluedoor text-base sm:text-lg md:text-xl py-4 sm:py-5 px-6 sm:px-12 shadow-lg hover:shadow-xl hover:bg-white hover:text-bluedoor transition-all max-w-full whitespace-normal h-auto">
                   {isBlueDoorPreLaunch() ? "Reserve your Blue Door →" : "Open your Blue Door →"}
                 </Button>
               </Link>
