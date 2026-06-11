@@ -52,7 +52,7 @@ export default function SourcedTooltip({
           type="button"
           aria-label={`Source: ${label}`}
           className={cn(
-            "inline-flex shrink-0 align-middle rounded-full transition-colors focus:outline-none",
+            "inline-flex shrink-0 items-center justify-center align-middle rounded-full p-1.5 -m-1 transition-colors focus:outline-none touch-manipulation cursor-pointer",
             iconClassName,
             focusRingClassName,
           )}
