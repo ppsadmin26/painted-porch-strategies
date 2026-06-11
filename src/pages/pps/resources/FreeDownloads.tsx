@@ -228,10 +228,11 @@ export default function FreeDownloads() {
                       </h3>
                     </div>
                   </div>
-                  <p className="text-foreground mb-6 text-sm leading-relaxed pl-[4.5rem]">
+                  <p className="text-foreground mb-6 text-sm leading-relaxed sm:pl-[4.5rem]">
                     {download.description}
                   </p>
-                  <div className="pl-[4.5rem]">
+                  <div className="sm:pl-[4.5rem]">
+
                     {download.comingSoon ? (
                       <Button disabled className="bg-muted border-2 border-muted-foreground/30 text-muted-foreground cursor-not-allowed opacity-60">
                         <CtaIcon className="w-4 h-4 mr-2" />
