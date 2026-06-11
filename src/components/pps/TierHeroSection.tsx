@@ -47,6 +47,8 @@ interface TierHeroSectionProps {
   overlayClass?: string;
   /** Minimum height class (default: "min-h-[70vh]") */
   minHeightClass?: string;
+  /** Extra classes (e.g. object-position) applied to the background media element */
+  mediaClassName?: string;
 }
 
 /**
