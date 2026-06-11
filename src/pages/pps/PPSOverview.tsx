@@ -57,7 +57,7 @@ interface QuickLink {
 
 const quickLinks: QuickLink[] = [
   { emoji: "🧩", label: "Discover Your Elemental Style", href: "https://paintedporchstrategies.aidaform.com/your-elemental-style-free", external: true },
-  { emoji: "🚪", label: "Open the Blue Door, Free Diagnostic", href: "/blue-door" },
+  { emoji: "🚪", label: "Open the Blue Door, Free Organizational Appraisal", href: "/blue-door" },
   { emoji: "🧭", label: "Not Sure Where to Start? Start Here", href: "/start-here" },
   { emoji: "🤝", label: "Partner With Us", href: "/partner" },
   { emoji: "🎤", label: "Book a Speaker", href: "/speaking" },
