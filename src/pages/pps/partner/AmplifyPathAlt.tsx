@@ -214,6 +214,7 @@ export default function AmplifyPathAlt() {
         }}
         overlayClass="bg-navy/30"
         minHeightClass="min-h-[500px]"
+        mediaClassName="object-[68%_center] md:object-center"
       />
 
       {/* SECTION 2: WHO AMPLIFY IS FOR */}
