@@ -511,7 +511,8 @@ export default function EmbodyPathAlt() {
               Not every leader needs an embedded partnership. Many start with a 90-day AMPLIFY Strategic Sprint and grow from there.
             </p>
           </div>
-          <div className="overflow-x-auto">
+          {/* Desktop / tablet: full table */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b-2 border-navy">
@@ -530,6 +531,35 @@ export default function EmbodyPathAlt() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Mobile: stacked dimension blocks with side-by-side tier columns */}
+          <div className="md:hidden space-y-4">
+            {/* Sticky-feel header showing which column is which tier */}
+            <div className="grid grid-cols-2 gap-3 pb-2 border-b-2 border-navy">
+              <div className="text-center font-poppins font-semibold text-primary text-xs uppercase tracking-wider">
+                AMPLIFY Sprint
+              </div>
+              <div className="text-center font-poppins font-semibold text-teal text-xs uppercase tracking-wider">
+                EMBODY Partnership
+              </div>
+            </div>
+
+            {embodyVsAmplify.map((row) => (
+              <div key={row.dimension}>
+                <div className="text-center font-poppins font-bold text-navy text-xs uppercase tracking-widest mb-2">
+                  {row.dimension}
+                </div>
+                <div className="grid grid-cols-2 gap-px bg-border/60 rounded-lg overflow-hidden border border-border/60 shadow-sm">
+                  <div className="bg-background p-3">
+                    <p className="text-sm text-foreground leading-snug">{row.amplify}</p>
+                  </div>
+                  <div className="bg-background p-3">
+                    <p className="text-sm text-foreground leading-snug">{row.embody}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
           <div className="text-center mt-8">
             <Link
