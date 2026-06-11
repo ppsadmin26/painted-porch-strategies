@@ -8,22 +8,39 @@ import { PathFinderQuizProvider } from "@/components/pps/quiz/PathFinderQuizProv
 
 function scrollToTop() {
   window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  // Also reset documentElement/body in case overflow is on a different root
+  if (document.documentElement) document.documentElement.scrollTop = 0;
+  if (document.body) document.body.scrollTop = 0;
+}
+
+// Disable browser's automatic scroll restoration so we control it
+if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
 }
 
 export default function PPSLayout() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
-  // Immediate scroll before paint
+  // Immediate scroll before paint — skip when navigating to an in-page anchor
   useLayoutEffect(() => {
+    if (hash) return;
     scrollToTop();
-  }, [pathname]);
+  }, [pathname, hash]);
 
-  // Safety net: scroll again after async content (images/videos) may have shifted layout
+  // Safety net: scroll again after async content (images/videos/lazy routes) may have shifted layout
   useEffect(() => {
+    if (hash) return;
     scrollToTop();
-    const timer = setTimeout(scrollToTop, 50);
-    return () => clearTimeout(timer);
-  }, [pathname]);
+    const t1 = setTimeout(scrollToTop, 50);
+    const t2 = setTimeout(scrollToTop, 200);
+    const t3 = setTimeout(scrollToTop, 500);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  }, [pathname, hash]);
+
 
   return (
     <PathFinderQuizProvider>
