@@ -1,5 +1,4 @@
-import { createLovableConfig } from "lovable-agent-playwright-config/config";
-import { devices } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 
 /**
  * Visual regression strategy:
@@ -10,7 +9,13 @@ import { devices } from "@playwright/test";
  *    with no per-platform suffix, since we're pinned to one platform.
  *  - 2% diff ratio matches the per-spec `toHaveScreenshot` options.
  */
-export default createLovableConfig({
+export default defineConfig({
+  testDir: "./e2e",
+  fullyParallel: true,
+  forbidOnly: !!process.env.CI,
+  retries: process.env.CI ? 2 : 0,
+  workers: process.env.CI ? 1 : undefined,
+  reporter: "list",
   projects: [
     {
       name: "chromium",
