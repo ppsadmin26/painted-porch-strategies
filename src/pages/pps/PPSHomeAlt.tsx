@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Target, Lightbulb, Settings } from "lucide-react";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 
 const pillars = [
   {
@@ -44,6 +45,11 @@ const stats = [
 ];
 
 export default function PPSHomeAlt() {
+  useDocumentSeo({
+    title: "Home (Alt Archive) | Painted Porch Strategies",
+    description: "Archived alternate home page kept for internal reference.",
+    robots: "noindex, nofollow",
+  });
   return (
     <div>
       {/* Hero Section */}
