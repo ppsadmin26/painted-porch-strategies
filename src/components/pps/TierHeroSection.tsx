@@ -74,6 +74,7 @@ export function TierHeroSection({
   background,
   overlayClass = "bg-navy/40",
   minHeightClass = "min-h-[70vh]",
+  mediaClassName = "",
 }: TierHeroSectionProps) {
   // Determine primary button styling based on tier or default
   const getPrimaryButtonClasses = () => {
