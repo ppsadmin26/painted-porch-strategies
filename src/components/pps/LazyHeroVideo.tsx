@@ -36,7 +36,7 @@ export default function LazyHeroVideo({
   style,
 }: LazyHeroVideoProps) {
   const [videoUrl, setVideoUrl] = useState<string | null>(fallbackVideoUrl ?? null);
-  const [shouldMount, setShouldMount] = useState(false);
+  const [shouldMount, setShouldMount] = useState(true);
   const [errored, setErrored] = useState(false);
   const [posterFailed, setPosterFailed] = useState(false);
   const [retryToken, setRetryToken] = useState(0);
