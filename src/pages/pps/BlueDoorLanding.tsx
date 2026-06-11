@@ -15,8 +15,8 @@ import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 
 export default function BlueDoorLanding() {
   useDocumentSeo({
-    title: "The Blue Door | Strategic Diagnostic | Painted Porch Strategies",
-    description: `Step through the Blue Door. A ${BLUE_DOOR_PRICE_DISPLAY} strategic diagnostic that opens the door to sustainable shIFt, before you commit to a larger engagement.`,
+    title: "The Blue Door Organizational Appraisal | Painted Porch Strategies",
+    description: `Step through the Blue Door. A ${BLUE_DOOR_PRICE_DISPLAY} organizational appraisal that opens the door to sustainable shIFt, before you commit to a larger engagement.`,
     ogImage: blueDoorHero,
   });
   return (
