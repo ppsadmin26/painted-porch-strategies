@@ -174,12 +174,12 @@ export default function AmplifyWorkshops() {
               return (
                 <div key={index} className="rounded-xl flex flex-col overflow-hidden border border-border">
                   <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-start gap-4 mb-3">
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-3">
                       <img
                         src={workshop.image}
                         alt={workshop.title}
                         loading="lazy"
-                        className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
+                        className="w-full h-40 sm:w-28 sm:h-20 rounded-lg object-cover flex-shrink-0"
                       />
                       <div>
                         <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy leading-tight mb-1">{workshop.title}</h3>
@@ -319,12 +319,12 @@ export default function AmplifyWorkshops() {
                     id={workshop.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
                     className="rounded-xl border border-border p-6 flex flex-col scroll-mt-24"
                   >
-                    <div className="flex items-start gap-4 mb-3">
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-3">
                       <img
                         src={workshop.image}
                         alt={workshop.title}
                         loading="lazy"
-                        className="w-28 h-20 rounded-lg object-cover flex-shrink-0"
+                        className="w-full h-40 sm:w-28 sm:h-20 rounded-lg object-cover flex-shrink-0"
                       />
                       <div>
                         <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy leading-tight mb-1">{workshop.title}</h3>
