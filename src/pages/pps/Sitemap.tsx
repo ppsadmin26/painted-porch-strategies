@@ -43,16 +43,6 @@ export const sitemapData: SitemapNode[] = [
     path: "/phase-zero",
   },
   {
-    label: "Home (Archive)",
-    path: "/home-archive",
-    note: "Previous home page kept for reference",
-  },
-  {
-    label: "Home (Verbatim)",
-    path: "/home-verbatim",
-    note: "Alt home, verbatim copy with numbered 3AM strip",
-  },
-  {
     label: "About",
     path: "/about",
     children: [
