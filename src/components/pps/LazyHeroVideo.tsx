@@ -12,6 +12,8 @@ interface LazyHeroVideoProps {
   fallbackVideoUrl?: string;
   /** className applied to the <video> / poster container */
   className?: string;
+  /** Extra classes applied to the inner <img>/<video> (e.g. object-position overrides) */
+  mediaClassName?: string;
   /** Style applied to the <video> / poster container */
   style?: React.CSSProperties;
 }
@@ -30,6 +32,7 @@ export default function LazyHeroVideo({
   posterUrl,
   fallbackVideoUrl,
   className = "absolute inset-0 w-full h-full object-cover",
+  mediaClassName = "",
   style,
 }: LazyHeroVideoProps) {
   const [videoUrl, setVideoUrl] = useState<string | null>(fallbackVideoUrl ?? null);
@@ -98,7 +101,7 @@ export default function LazyHeroVideo({
           alt=""
           aria-hidden="true"
           onError={() => setPosterFailed(true)}
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
         />
       )}
       {shouldMount && videoUrl && !errored && (
@@ -111,7 +114,7 @@ export default function LazyHeroVideo({
           playsInline
           preload="auto"
           onError={() => setErrored(true)}
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
         />
       )}
     </div>

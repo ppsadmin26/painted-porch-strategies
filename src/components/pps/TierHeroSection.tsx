@@ -47,6 +47,8 @@ interface TierHeroSectionProps {
   overlayClass?: string;
   /** Minimum height class (default: "min-h-[70vh]") */
   minHeightClass?: string;
+  /** Extra classes (e.g. object-position) applied to the background media element */
+  mediaClassName?: string;
 }
 
 /**
@@ -72,6 +74,7 @@ export function TierHeroSection({
   background,
   overlayClass = "bg-navy/40",
   minHeightClass = "min-h-[70vh]",
+  mediaClassName = "",
 }: TierHeroSectionProps) {
   // Determine primary button styling based on tier or default
   const getPrimaryButtonClasses = () => {
@@ -91,6 +94,7 @@ export function TierHeroSection({
             posterUrl={background.poster ?? background.src}
             fallbackVideoUrl={background.src}
             className="absolute inset-0 w-full h-full"
+            mediaClassName={mediaClassName}
           />
         ) : (
           <video
@@ -100,7 +104,7 @@ export function TierHeroSection({
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
           />
         )
       ) : (
@@ -111,7 +115,7 @@ export function TierHeroSection({
           height={1080}
           fetchPriority="high"
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
         />
       )}
       
