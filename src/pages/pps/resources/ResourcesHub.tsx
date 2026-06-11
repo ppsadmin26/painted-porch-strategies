@@ -104,7 +104,7 @@ export default function ResourcesHub() {
               <p className="text-sm text-foreground mb-4">
                 The biggest mistake in organizational change? Jumping to implementation before building readiness.
               </p>
-              <Link to="/resources/insights" className="text-primary font-semibold text-sm hover:underline">
+              <Link to="/resources/insights/implementation-comes-last" className="text-primary font-semibold text-sm hover:underline">
                 Read More →
               </Link>
             </div>
