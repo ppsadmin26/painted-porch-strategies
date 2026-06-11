@@ -161,9 +161,9 @@ const faqs = [
       "Change management starts after the direction is set. EMBODY is change origination. We partner upstream, at the strategic authorship moment, to architect the shIFt you intend to lead before a single tool gets launched.",
   },
   {
-    question: "Why does EMBODY start with the Blue Door?",
+    question: "Why does EMBODY start with the Blue Door Organizational Appraisal?",
     answer:
-      "The Blue Door is how we (and you) see the three Painted Porch Pillars clearly. Without that reading, any partnership is a guess. With it, we co-design an EMBODY engagement that fits your actual architecture, not a template. Your investment is fully credited toward the engagement.",
+      "The Blue Door Organizational Appraisal is how we (and you) see the three Painted Porch Pillars clearly. Without that reading, any partnership is a guess. With it, we co-design an EMBODY engagement that fits your actual architecture, not a template. Your investment is fully credited toward the engagement.",
   },
   {
     question: "What if the Blue Door shows we're not ready for EMBODY yet?",
