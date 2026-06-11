@@ -94,6 +94,7 @@ export function TierHeroSection({
             posterUrl={background.poster ?? background.src}
             fallbackVideoUrl={background.src}
             className="absolute inset-0 w-full h-full"
+            mediaClassName={mediaClassName}
           />
         ) : (
           <video
@@ -103,7 +104,7 @@ export function TierHeroSection({
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
           />
         )
       ) : (
@@ -114,7 +115,7 @@ export function TierHeroSection({
           height={1080}
           fetchPriority="high"
           decoding="async"
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
         />
       )}
       
