@@ -65,7 +65,7 @@ export function PathwayComparisonSection() {
       <div className="container max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Your P.A.T.H.way to Extraordinary Sh<span className="text-raspberry">IF</span>t
+            Your P.A.T.H.way to Extraordinary Sh<span className="text-raspberry font-bold">IF</span>t
           </h2>
           <div className="text-foreground space-y-4">
             <p>

@@ -308,7 +308,7 @@ export default function EmbodyPathAltArchiveV2() {
       <TierHeroSection
         tier={TIERS.EMBODY}
         badgeLabel="EMBODY P.A.T.H.way"
-        headline={<>Architect Epic Sh<span className="text-raspberry">IF</span>t That Lasts.</>}
+        headline={<>Architect Epic Sh<span className="text-raspberry font-bold">IF</span>t That Lasts.</>}
         
         description="EMBODY is for founders and leaders ready to build permanent organizational capacity through deep, sustained partnership. This isn't consulting or change management. This is co-architecting an unshakeable foundation for sustainable transformation."
         ctas={[
@@ -332,7 +332,7 @@ export default function EmbodyPathAltArchiveV2() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 text-center">
-            It's Time to Sh<span className="text-raspberry">IF</span>t From Change Moments to an Innovation Movement.
+            It's Time to Sh<span className="text-raspberry font-bold">IF</span>t From Change Moments to an Innovation Movement.
           </h2>
           <p className="text-lg text-foreground leading-relaxed mb-10 max-w-4xl mx-auto text-center">
             You've made the decision: you're ready for your organization to shift from managing change initiatives to leading sustainable transformation. You're not looking for consultants to fix or implement change for you, you're ready for strategic partners to co-architect permanent capability in your people, your processes, and your systems.
@@ -580,7 +580,7 @@ export default function EmbodyPathAltArchiveV2() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Architect Embodied Adaptability & Continuous Sh<span className="text-raspberry">IF</span>t
+              Architect Embodied Adaptability & Continuous Sh<span className="text-raspberry font-bold">IF</span>t
             </h2>
             <p className="text-lg text-foreground max-w-4xl mx-auto mb-4">
               The Painted Porch Pillars are your organization's structural capabilities for leading the change you're attempting. While most advisors work on one dimension at a time, leadership first, then processes, then people, that creates fissures where transformation fumbles, fizzles, or fails.
@@ -889,7 +889,7 @@ export default function EmbodyPathAltArchiveV2() {
         </div>
         <div className="container max-w-3xl mx-auto px-6 text-center relative z-10">
             <p className="text-2xl font-bold text-gold mb-6">
-              Sh<span className="text-raspberry">IF</span>t happens. Will you architect it, or react to it?
+              Sh<span className="text-raspberry font-bold">IF</span>t happens. Will you architect it, or react to it?
             </p>
             <p className="text-white/90 mb-4">
               You understand <strong className="text-white">transformation happens through people, not to them</strong>. That brilliant strategy fails without organizational capacity. That you can't architect on top of assumptions.

@@ -109,7 +109,7 @@ export default function PPSFooter() {
         {/* Charity Note */}
         <div className="mt-6 pt-6 text-center">
           <h4 className="text-base md:text-lg font-poppins font-bold text-lime mb-2">
-            Let's Do Good Sh<span className="text-red-500">IF</span>t
+            Let's Do Good Sh<span className="text-red-500 font-bold">IF</span>t
           </h4>
           <p className="text-sm text-white/80">
             To do <em>well</em>, we must also do <em>good</em>.{" "}

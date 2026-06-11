@@ -148,7 +148,7 @@ export default function AmplifySprints() {
             AMPLIFY · Strategic Sprints
           </p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy mb-6">
-            A 90-day Phase Zero<span className="align-super text-xs ml-0.5">™</span> partnership for your next sh<span className="text-strategic">IF</span>t.
+            A 90-day Phase Zero<span className="align-super text-xs ml-0.5">™</span> partnership for your next sh<span className="text-strategic font-bold">IF</span>t.
           </h1>
           <p className="text-lg md:text-xl text-foreground max-w-3xl mx-auto mb-8">
             Focused. Time-boxed. Built to architect the foundation <em>before</em> implementation begins, so what you build next actually lasts.
@@ -356,7 +356,7 @@ export default function AmplifySprints() {
         eyebrow="Architect First, Lead with Clarity"
         headline={
           <>
-            Architect your next sh<span className="text-gold">IF</span>t before you implement it.
+            Architect your next sh<span className="text-gold font-bold">IF</span>t before you implement it.
           </>
         }
         description="A 90-day Strategic Sprint installs a new way for your team to prepare and design every shift that follows, with the architecture and direction to lead what comes next."

@@ -24,7 +24,7 @@ export default function PositioningSectionAlt() {
           <span>
             The <span className="text-bluedoor">Blue Door</span> Opens Before
             <br />
-            Your Next Sh<span className="text-bluedoor">IF</span>t Happens
+            Your Next Sh<span className="text-bluedoor font-bold">IF</span>t Happens
           </span>
         </h2>
 

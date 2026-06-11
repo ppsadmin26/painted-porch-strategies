@@ -32,7 +32,7 @@ export default function HeroPreviewV3() {
             {/* Headline */}
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold leading-[1.05] tracking-tight text-navy">
               It's Time to Do <br />
-              Epic Sh<span className="text-raspberry">IF</span>t.
+              Epic Sh<span className="text-raspberry font-bold">IF</span>t.
             </h1>
 
             <p className="font-montserrat text-xl font-medium italic tracking-wide text-[#523387] md:text-2xl">

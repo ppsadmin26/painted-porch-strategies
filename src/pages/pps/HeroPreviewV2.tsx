@@ -38,7 +38,7 @@ export default function HeroPreviewV2() {
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold leading-[0.95] tracking-tighter text-navy">
               It's Time to Do <br />
-              Epic Sh<span className="text-raspberry">IF</span>t.
+              Epic Sh<span className="text-raspberry font-bold">IF</span>t.
             </h1>
             <p className="mt-6 font-montserrat text-xl font-medium italic tracking-wide text-[#523387] md:text-2xl">
               Before momentum outruns alignment.

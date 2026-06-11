@@ -96,7 +96,7 @@ interface ClientLogoMarqueeProps {
 export default function ClientLogoMarquee({
   heading = (
     <>
-      Our Partners &amp; Clients Making Sh<span className="text-raspberry">IF</span>t Happen
+      Our Partners &amp; Clients Making Sh<span className="text-raspberry font-bold">IF</span>t Happen
     </>
   ),
   className = "",
