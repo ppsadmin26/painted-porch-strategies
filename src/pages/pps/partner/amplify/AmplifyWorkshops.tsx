@@ -262,7 +262,7 @@ export default function AmplifyWorkshops() {
                   image: teamBuildingThumb,
                   description: "Why most team-building fails, and what high-performing teams actually do differently. Move beyond trust falls to build teams that collaborate, challenge, and create together.",
                   duration: "Half-day to full-day",
-                  investment: "Starting at $5,000",
+                  investment: "Starting at $7,500",
                   outcomes: [
                     "Identify team dynamics that accelerate (or block) performance",
                     "Build shared language for healthy conflict and collaboration",
@@ -276,7 +276,7 @@ export default function AmplifyWorkshops() {
                   image: mindfulnessThumb,
                   description: "Practical mindfulness techniques for executives who don't have time for mindfulness. Build the awareness, focus, and emotional regulation that transform how leaders show up.",
                   duration: "Half-day to full-day",
-                  investment: "Starting at $5,000",
+                  investment: "Starting at $7,500",
                   outcomes: [
                     "Develop a personal mindfulness practice that fits your schedule",
                     "Strengthen emotional regulation under pressure",
@@ -290,7 +290,7 @@ export default function AmplifyWorkshops() {
                   image: communicationThumb,
                   description: "Beyond the announcement email: How to design communication that actually drives behavior change. Build the messaging infrastructure that makes change stick.",
                   duration: "Half-day to full-day",
-                  investment: "Starting at $5,000",
+                  investment: "Starting at $7,500",
                   outcomes: [
                     "Design communication cadences that build momentum",
                     "Craft messages that address the 'why' people actually need",
@@ -304,7 +304,7 @@ export default function AmplifyWorkshops() {
                   image: stoicThumb,
                   description: "Ancient philosophy meets contemporary challenges. How reason, logic, purpose, and virtue create resilient leaders who navigate complexity with clarity and conviction.",
                   duration: "Half-day to full-day",
-                  investment: "Starting at $5,000",
+                  investment: "Starting at $7,500",
                   outcomes: [
                     "Apply Stoic principles to everyday leadership decisions",
                     "Build resilience through strategic preparation (Premeditatio Malorum)",
