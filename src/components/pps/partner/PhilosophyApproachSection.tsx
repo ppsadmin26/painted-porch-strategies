@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { Building2, Handshake, TrendingUp, Target, BookOpen } from "lucide-react";
 
 const principles = [
@@ -34,7 +35,7 @@ const principles = [
     icon: TrendingUp,
     title: "Progression, Not Prescription",
     tagline: "Your pathway emerges from clarity.",
-    description: <>You might start with <span className="font-bold text-gold">IGNITE</span> and stay there. Or progress to <span className="font-bold text-strategic">AMPLIFY</span> when you're ready for more depth. Or jump straight to <span className="font-bold text-navy">EMBODY</span>. Your pathway emerges from exploration, not prescription.</>,
+    description: <>You might start with <Link to="/partner/ignite" className="font-bold text-gold hover:underline">IGNITE</Link> and stay there. Or progress to <Link to="/partner/amplify" className="font-bold text-strategic hover:underline">AMPLIFY</Link> when you're ready for more depth. Or jump straight to <Link to="/partner/embody" className="font-bold text-navy hover:underline">EMBODY</Link>. Your pathway emerges from exploration, not prescription.</>,
     contrast: <span className="font-bold">Your starting point is yours to choose. Your momentum is yours to own.</span>,
     isEncapsulation: true,
   },
