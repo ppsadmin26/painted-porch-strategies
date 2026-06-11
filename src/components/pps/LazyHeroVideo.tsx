@@ -114,7 +114,7 @@ export default function LazyHeroVideo({
           playsInline
           preload="auto"
           onError={() => setErrored(true)}
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
         />
       )}
     </div>
