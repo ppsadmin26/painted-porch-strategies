@@ -11,6 +11,9 @@ import dysfunctionImg from "@/assets/labs/dysfunction-to-dynamic.jpg";
 import goldilocksImg from "@/assets/labs/goldilocks-leadership.jpg";
 import missionImg from "@/assets/labs/mission-unstoppable.jpg";
 import operationsImg from "@/assets/labs/operations-on-purpose.jpg";
+import aiEiOhImg from "@/assets/labs/ai-ei-oh.jpg";
+import conflictConnectionImg from "@/assets/labs/conflict-to-connection.jpg";
+import stoicismImg from "@/assets/labs/stoicism-workplace.jpg";
 
 const labFaqCategories: FAQCategory[] = [
   {
