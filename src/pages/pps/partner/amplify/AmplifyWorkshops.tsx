@@ -365,13 +365,13 @@ export default function AmplifyWorkshops() {
               We also offer several other workshops drawn from our most requested <strong>speaking topics</strong>. Many can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive workshop</strong> tailored to your team.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link to="/contact?scope=organization&interest=workshops&message=I'd like to explore workshop options and find the right fit for our team.">
-                <Button className="bg-teal text-white hover:bg-teal/90 h-12 px-8 text-base font-semibold">
+              <Link to="/contact?scope=organization&interest=workshops&message=I'd like to explore workshop options and find the right fit for our team." className="w-full sm:w-auto">
+                <Button className="bg-teal text-white hover:bg-teal/90 h-12 px-8 text-base font-semibold w-full sm:w-auto">
                   Contact Us to Explore Options
                 </Button>
               </Link>
-              <Link to="/speaking">
-                <Button variant="outline" className="border-2 border-teal text-teal hover:bg-teal hover:text-white h-12 px-8 text-base font-semibold">
+              <Link to="/speaking" className="w-full sm:w-auto">
+                <Button variant="outline" className="border-2 border-teal text-teal hover:bg-teal hover:text-white h-12 px-8 text-base font-semibold w-full sm:w-auto">
                   View Speaking Topics <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
