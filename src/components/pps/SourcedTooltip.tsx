@@ -61,8 +61,12 @@ export default function SourcedTooltip({
         </button>
       </PopoverTrigger>
       <PopoverContent
-        side="top"
-        className="max-w-xs w-auto text-xs p-3"
+        side="bottom"
+        align="center"
+        sideOffset={6}
+        collisionPadding={12}
+        avoidCollisions
+        className="max-w-[90vw] sm:max-w-xs w-auto text-xs p-3 z-[60]"
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
         <p className="font-semibold mb-1">Source</p>
