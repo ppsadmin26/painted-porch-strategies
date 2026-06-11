@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Target, Lightbulb, Settings } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import homeHero from "@/assets/heroes/home-hero.jpg";
 
 const pillars = [
@@ -46,6 +47,11 @@ const stats = [
 ];
 
 export default function PPSHomeArchive() {
+  useDocumentSeo({
+    title: "Home (Archive) | Painted Porch Strategies",
+    description: "Archived previous home page kept for internal reference.",
+    robots: "noindex, nofollow",
+  });
   return (
     <div>
       {/* Hero Section */}

@@ -126,9 +126,9 @@ const discover = [
 
 export default function PPSHomeVerbatim() {
   useDocumentSeo({
-    title: "Painted Porch Strategies | It's Time to Do Epic ShIFt",
-    description:
-      "Phase Zero is the work before the work. Find clarity before momentum outruns alignment.",
+    title: "Home (Verbatim Archive) | Painted Porch Strategies",
+    description: "Archived verbatim home page kept for internal reference.",
+    robots: "noindex, nofollow",
   });
 
   const { data: posts } = useFeaturedPosts(3);
