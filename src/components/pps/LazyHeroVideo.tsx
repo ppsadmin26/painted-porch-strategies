@@ -12,6 +12,8 @@ interface LazyHeroVideoProps {
   fallbackVideoUrl?: string;
   /** className applied to the <video> / poster container */
   className?: string;
+  /** Extra classes applied to the inner <img>/<video> (e.g. object-position overrides) */
+  mediaClassName?: string;
   /** Style applied to the <video> / poster container */
   style?: React.CSSProperties;
 }
