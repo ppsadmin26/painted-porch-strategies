@@ -354,92 +354,164 @@ export default function AmplifyPathAlt() {
             </p>
           </div>
 
-          {/* Side-by-side comparison table */}
-          <div className="overflow-x-auto">
+          {/* Side-by-side comparison */}
+          <div>
             <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy text-center mb-6">
               Quick Comparison: Cost vs. Eliminates vs. Enables
             </h3>
-            <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
-              <thead>
-                <tr>
-                  <th className="text-center p-4 font-poppins font-semibold text-gold border-b-2 border-gold/40 bg-gold/10 w-1/3">
-                    Cost of Skipping Phase Zero
-                  </th>
-                  <th className="text-center p-4 font-poppins font-semibold text-raspberry border-b-2 border-raspberry/40 bg-raspberry/10 w-1/3">
-                    What AMPLIFY Eliminates
-                  </th>
-                  <th className="text-center p-4 font-poppins font-semibold text-lime border-b-2 border-lime/40 bg-lime/10 w-1/3">
-                    What AMPLIFY Enables
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <TooltipProvider delayDuration={150}>
+
+            <TooltipProvider delayDuration={150}>
+              {/* Mobile: stacked cards (no horizontal scroll) */}
+              <div className="md:hidden space-y-4">
                 {Array.from({ length: Math.max(costOfSkippingStats.length, whatAmplifyEliminates.length, whatAmplifyEnables.length) }).map((_, i) => {
                   const skip = costOfSkippingStats[i];
                   return (
-                  <tr key={i} className="align-top">
-                    <td className="p-4 text-sm text-foreground bg-gold/5 border-b border-gold/15">
+                    <div key={i} className="bg-white rounded-xl shadow-sm border border-navy/10 overflow-hidden">
                       {skip ? (
-                        <div className="flex items-start gap-2">
-                          <AlertTriangle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
-                          <div className="flex-1">
-                            <span>{skip.text}</span>
-                            <div className="mt-1 flex items-start gap-1.5 text-xs italic text-navy/80">
-                              <span className="font-semibold not-italic text-gold">Est.</span>
-                              <span>{skip.stat}</span>
-                              <Tooltip>
-                                <TooltipTrigger asChild>
-                                  <button
-                                    type="button"
-                                    aria-label={`Source: ${skip.source}`}
-                                    className="inline-flex shrink-0 text-navy/60 hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-full"
-                                  >
-                                    <Info className="w-3.5 h-3.5" />
-                                  </button>
-                                </TooltipTrigger>
-                                <TooltipContent side="top" className="max-w-xs text-xs">
-                                  <p className="font-semibold mb-1">Source</p>
-                                  <p className="mb-1">{skip.source}</p>
-                                  <a
-                                    href={skip.sourceUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-strategic underline break-all"
-                                  >
-                                    View source →
-                                  </a>
-                                </TooltipContent>
-                              </Tooltip>
+                        <div className="p-4 bg-gold/5 border-l-4 border-gold">
+                          <p className="text-[11px] font-poppins font-semibold uppercase tracking-wider text-gold mb-2">Cost of Skipping Phase Zero</p>
+                          <div className="flex items-start gap-2 text-sm text-foreground">
+                            <AlertTriangle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                            <div className="flex-1">
+                              <span>{skip.text}</span>
+                              <div className="mt-1 flex items-start gap-1.5 text-xs italic text-navy/80">
+                                <span className="font-semibold not-italic text-gold">Est.</span>
+                                <span>{skip.stat}</span>
+                                <Tooltip>
+                                  <TooltipTrigger asChild>
+                                    <button
+                                      type="button"
+                                      aria-label={`Source: ${skip.source}`}
+                                      className="inline-flex shrink-0 text-navy/60 hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-full p-1 -m-1"
+                                    >
+                                      <Info className="w-3.5 h-3.5" />
+                                    </button>
+                                  </TooltipTrigger>
+                                  <TooltipContent side="bottom" sideOffset={6} collisionPadding={12} className="max-w-[90vw] sm:max-w-xs text-xs">
+                                    <p className="font-semibold mb-1">Source</p>
+                                    <p className="mb-1">{skip.source}</p>
+                                    <a
+                                      href={skip.sourceUrl}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="text-strategic underline break-all"
+                                    >
+                                      View source →
+                                    </a>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </div>
                             </div>
                           </div>
                         </div>
                       ) : null}
-                    </td>
-                    <td className="p-4 text-sm text-foreground bg-raspberry/5 border-b border-raspberry/15">
                       {whatAmplifyEliminates[i] ? (
-                        <div className="flex items-start gap-2">
-                          <span className="text-raspberry font-bold">✗</span>
-                          <span>{whatAmplifyEliminates[i]}</span>
+                        <div className="p-4 bg-raspberry/5 border-l-4 border-raspberry">
+                          <p className="text-[11px] font-poppins font-semibold uppercase tracking-wider text-raspberry mb-2">What AMPLIFY Eliminates</p>
+                          <div className="flex items-start gap-2 text-sm text-foreground">
+                            <span className="text-raspberry font-bold">✗</span>
+                            <span>{whatAmplifyEliminates[i]}</span>
+                          </div>
                         </div>
                       ) : null}
-                    </td>
-                    <td className="p-4 text-sm text-foreground bg-lime/5 border-b border-lime/15">
                       {whatAmplifyEnables[i] ? (
-                        <div className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
-                          <span>{whatAmplifyEnables[i]}</span>
+                        <div className="p-4 bg-lime/5 border-l-4 border-lime">
+                          <p className="text-[11px] font-poppins font-semibold uppercase tracking-wider text-lime mb-2">What AMPLIFY Enables</p>
+                          <div className="flex items-start gap-2 text-sm text-foreground">
+                            <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
+                            <span>{whatAmplifyEnables[i]}</span>
+                          </div>
                         </div>
                       ) : null}
-                    </td>
-                  </tr>
+                    </div>
                   );
                 })}
-                </TooltipProvider>
-              </tbody>
-            </table>
+              </div>
+
+              {/* Tablet/Desktop: original table */}
+              <div className="hidden md:block">
+                <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+                  <thead>
+                    <tr>
+                      <th className="text-center p-4 font-poppins font-semibold text-gold border-b-2 border-gold/40 bg-gold/10 w-1/3">
+                        Cost of Skipping Phase Zero
+                      </th>
+                      <th className="text-center p-4 font-poppins font-semibold text-raspberry border-b-2 border-raspberry/40 bg-raspberry/10 w-1/3">
+                        What AMPLIFY Eliminates
+                      </th>
+                      <th className="text-center p-4 font-poppins font-semibold text-lime border-b-2 border-lime/40 bg-lime/10 w-1/3">
+                        What AMPLIFY Enables
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Array.from({ length: Math.max(costOfSkippingStats.length, whatAmplifyEliminates.length, whatAmplifyEnables.length) }).map((_, i) => {
+                      const skip = costOfSkippingStats[i];
+                      return (
+                        <tr key={i} className="align-top">
+                          <td className="p-4 text-sm text-foreground bg-gold/5 border-b border-gold/15">
+                            {skip ? (
+                              <div className="flex items-start gap-2">
+                                <AlertTriangle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                                <div className="flex-1">
+                                  <span>{skip.text}</span>
+                                  <div className="mt-1 flex items-start gap-1.5 text-xs italic text-navy/80">
+                                    <span className="font-semibold not-italic text-gold">Est.</span>
+                                    <span>{skip.stat}</span>
+                                    <Tooltip>
+                                      <TooltipTrigger asChild>
+                                        <button
+                                          type="button"
+                                          aria-label={`Source: ${skip.source}`}
+                                          className="inline-flex shrink-0 text-navy/60 hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-full"
+                                        >
+                                          <Info className="w-3.5 h-3.5" />
+                                        </button>
+                                      </TooltipTrigger>
+                                      <TooltipContent side="top" className="max-w-xs text-xs">
+                                        <p className="font-semibold mb-1">Source</p>
+                                        <p className="mb-1">{skip.source}</p>
+                                        <a
+                                          href={skip.sourceUrl}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="text-strategic underline break-all"
+                                        >
+                                          View source →
+                                        </a>
+                                      </TooltipContent>
+                                    </Tooltip>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : null}
+                          </td>
+                          <td className="p-4 text-sm text-foreground bg-raspberry/5 border-b border-raspberry/15">
+                            {whatAmplifyEliminates[i] ? (
+                              <div className="flex items-start gap-2">
+                                <span className="text-raspberry font-bold">✗</span>
+                                <span>{whatAmplifyEliminates[i]}</span>
+                              </div>
+                            ) : null}
+                          </td>
+                          <td className="p-4 text-sm text-foreground bg-lime/5 border-b border-lime/15">
+                            {whatAmplifyEnables[i] ? (
+                              <div className="flex items-start gap-2">
+                                <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
+                                <span>{whatAmplifyEnables[i]}</span>
+                              </div>
+                            ) : null}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </TooltipProvider>
+
             <p className="text-xs text-navy/60 text-center mt-3 italic">
-              Estimates above are industry benchmarks (2022-2025) from McKinsey, Gartner, BCG, IDC, and LSA Global. Hover the <Info className="w-3 h-3 inline -mt-0.5" /> icon for each source.
+              Estimates above are industry benchmarks (2022-2025) from McKinsey, Gartner, BCG, IDC, and LSA Global. Tap the <Info className="w-3 h-3 inline -mt-0.5" /> icon for each source.
             </p>
 
             {/* Calculate your ROI */}
