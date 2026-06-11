@@ -219,7 +219,7 @@ export default function AmplifySprintsArchive() {
               </div>
             </div>
             <Link to="/blue-door">
-              <Button variant="outline" className="bg-transparent border-2 border-bluedoor text-bluedoor hover:bg-bluedoor hover:text-white whitespace-nowrap transition-colors">
+              <Button variant="outline" className="bg-transparent border-2 border-bluedoor text-bluedoor hover:bg-bluedoor hover:text-white transition-colors">
                 Learn More <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
