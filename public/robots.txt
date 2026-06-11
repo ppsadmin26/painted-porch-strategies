@@ -12,6 +12,7 @@ Disallow: /change-ready-team-assessment
 Disallow: /elemental-style-assessment
 Disallow: /elements-mini
 Disallow: /eq-change-leader
+Disallow: /home-alt
 Disallow: /home-archive
 Disallow: /home-verbatim
 Disallow: /mym-journal-challenge
