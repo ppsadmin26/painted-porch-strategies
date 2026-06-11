@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { Building2, Handshake, TrendingUp, Target, BookOpen } from "lucide-react";
 
 const principles = [
