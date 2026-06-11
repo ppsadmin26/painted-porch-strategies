@@ -34,6 +34,15 @@ jobs:
       - name: Install Playwright (Chromium)
         run: npx playwright install --with-deps chromium
 
+      - name: Print resolved Playwright config and installed packages
+        run: |
+          echo "=== Installed packages ==="
+          npm ls --depth=0
+          echo "=== Playwright version ==="
+          npx playwright --version
+          echo "=== Resolved Playwright config ==="
+          cat playwright.config.ts
+
       - name: Run B2C quiz E2E
         run: npm run test:e2e:b2c:ci
 
