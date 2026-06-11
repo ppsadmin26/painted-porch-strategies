@@ -32,6 +32,7 @@ export default function LazyHeroVideo({
   posterUrl,
   fallbackVideoUrl,
   className = "absolute inset-0 w-full h-full object-cover",
+  mediaClassName = "",
   style,
 }: LazyHeroVideoProps) {
   const [videoUrl, setVideoUrl] = useState<string | null>(fallbackVideoUrl ?? null);
