@@ -101,7 +101,7 @@ export default function LazyHeroVideo({
           alt=""
           aria-hidden="true"
           onError={() => setPosterFailed(true)}
-          className="absolute inset-0 w-full h-full object-cover"
+          className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
         />
       )}
       {shouldMount && videoUrl && !errored && (
