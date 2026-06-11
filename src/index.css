@@ -373,6 +373,14 @@
       background-attachment: scroll !important;
     }
   }
+
+  /* Brand rule: the "IF" inside shIFt is ALWAYS bold (any color/size).
+   * Use this utility on the inline span wrapping "IF" so the weight is
+   * enforced even if a developer forgets `font-bold`. Pairs with the
+   * regression guard at scripts/validate-shift-if.mjs (`npm run brand:shift-if`). */
+  .shift-if {
+    font-weight: 700 !important;
+  }
 }
 
 
