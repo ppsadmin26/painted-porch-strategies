@@ -23,7 +23,7 @@ interface OfferingCard {
 const offerings: OfferingCard[] = [
   {
     emoji: "🚪",
-    title: "The Blue Door Diagnostic",
+    title: "The Blue Door Organizational Appraisal",
     description:
       "A strategic 11-question assessment that reveals where your organization stands, and what shift you're positioned to lead.",
     href: "/blue-door",
