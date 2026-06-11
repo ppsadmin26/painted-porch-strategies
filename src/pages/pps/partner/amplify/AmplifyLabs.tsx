@@ -128,7 +128,7 @@ const cohorts = [
     slug: "lab-ai-ei-oh",
     tagline: "Lead AI adoption with human wisdom",
     description: "AI is changing how work gets done. The leaders who get this right pair AI fluency with the emotional intelligence and organizational judgment it takes to roll it out without breaking trust, culture, or people.",
-    image: leadingChangeImg,
+    image: aiEiOhImg,
     comingSoon: true,
   },
   {
@@ -136,7 +136,7 @@ const cohorts = [
     slug: "lab-conflict-to-connection",
     tagline: "Address friction at the root",
     description: "Peer cohort for leaders ready to stop managing the same recurring conflict and start redesigning the conditions underneath it. Relational skill paired with structural redesign.",
-    image: dysfunctionImg,
+    image: conflictConnectionImg,
     comingSoon: true,
   },
   {
@@ -144,7 +144,7 @@ const cohorts = [
     slug: "lab-stoicism-workplace",
     tagline: "Ancient wisdom, modern leadership",
     description: "A grounded, philosophy-led cohort for leaders who want a steadier inner game and a sharper sense of what they can actually control at work. Stoic practice translated into daily leadership.",
-    image: goldilocksImg,
+    image: stoicismImg,
     comingSoon: true,
   },
 ];
