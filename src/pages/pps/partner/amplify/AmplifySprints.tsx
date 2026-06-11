@@ -295,10 +295,10 @@ export default function AmplifySprints() {
 
       {/* INVESTMENT + BLUE DOOR */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-5xl mx-auto px-6">
-          <div className="bg-lime/10 p-8 md:p-10 rounded-xl border-t-4 border-lime">
+        <div className="container max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="bg-lime/10 p-5 sm:p-8 md:p-10 rounded-xl border-t-4 border-lime overflow-hidden">
             <div className="grid md:grid-cols-2 gap-8 items-start">
-              <div>
+              <div className="min-w-0">
                 <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
                   Investment
                 </h2>
@@ -315,10 +315,10 @@ export default function AmplifySprints() {
                   <li className="text-sm text-foreground">• Clear direction</li>
                 </ul>
               </div>
-              <div className="bg-bluedoor/5 border border-bluedoor/20 rounded-lg p-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <Info className="w-5 h-5 text-bluedoor" />
-                  <h3 className="text-xl font-poppins font-semibold text-navy">
+              <div className="bg-bluedoor/5 border border-bluedoor/20 rounded-lg p-5 sm:p-6 min-w-0">
+                <div className="flex items-start gap-2 mb-2">
+                  <Info className="w-5 h-5 text-bluedoor flex-shrink-0 mt-1" />
+                  <h3 className="text-xl font-poppins font-semibold text-navy break-words">
                     Prerequisite: The <span className="text-bluedoor">Blue Door</span>
                   </h3>
                 </div>
