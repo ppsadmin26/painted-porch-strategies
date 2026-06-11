@@ -216,7 +216,7 @@ export default function AmplifyWorkshops() {
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
                 <Info className="w-5 h-5 text-bluedoor" />
-                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy whitespace-nowrap">Authoring Your Next Sh<span className="text-strategic">IF</span>t Begins At the <span className="text-bluedoor">Blue Door</span></h3>
+                <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">Authoring Your Next Sh<span className="text-strategic">IF</span>t Begins At the <span className="text-bluedoor">Blue Door</span></h3>
               </div>
               <p className="text-sm text-foreground mb-2 mt-4">
                 The <span className="font-bold text-bluedoor">Blue Door</span> is our organizational appraisal (less than 30 minutes) that reveals where your business and leadership stands on the path to transformation so that you can lead with clarity and build with confidence.
@@ -365,13 +365,13 @@ export default function AmplifyWorkshops() {
               We also offer several other workshops drawn from our most requested <strong>speaking topics</strong>. Many can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive workshop</strong> tailored to your team.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link to="/contact?scope=organization&interest=workshops&message=I'd like to explore workshop options and find the right fit for our team.">
-                <Button className="bg-teal text-white hover:bg-teal/90 h-12 px-8 text-base font-semibold">
+              <Link to="/contact?scope=organization&interest=workshops&message=I'd like to explore workshop options and find the right fit for our team." className="w-full sm:w-auto">
+                <Button className="bg-teal text-white hover:bg-teal/90 h-12 px-8 text-base font-semibold w-full sm:w-auto">
                   Contact Us to Explore Options
                 </Button>
               </Link>
-              <Link to="/speaking">
-                <Button variant="outline" className="border-2 border-teal text-teal hover:bg-teal hover:text-white h-12 px-8 text-base font-semibold">
+              <Link to="/speaking" className="w-full sm:w-auto">
+                <Button variant="outline" className="border-2 border-teal text-teal hover:bg-teal hover:text-white h-12 px-8 text-base font-semibold w-full sm:w-auto">
                   View Speaking Topics <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
