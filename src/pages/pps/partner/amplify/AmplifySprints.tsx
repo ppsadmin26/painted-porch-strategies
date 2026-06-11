@@ -232,7 +232,7 @@ export default function AmplifySprints() {
               Where Strategic Sprints typically fit
             </h2>
             <p className="text-base text-foreground max-w-2xl mx-auto">
-              Sprints usually architect the front-end of one of these shifts. If yours isn't listed, the Blue Door will tell us whether a Sprint is the right fit.
+              Sprints usually architect the front-end of one of these shifts. If yours isn't listed, the <strong className="font-bold text-bluedoor">Blue Door</strong> Organizational Appraisal will tell us whether a Sprint is the right fit.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
