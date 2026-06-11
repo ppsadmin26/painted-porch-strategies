@@ -28,7 +28,7 @@ export function PartnerHeroSection() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Three Ways to Partner.<br />
               One Philosophy:<br />
-              <span className="text-primary">You Architect Your Next Sh<span className="text-raspberry">IF</span>t.</span>
+              <span className="text-primary">You Architect Your Next Sh<span className="text-raspberry font-bold">IF</span>t.</span>
             </h1>
 
             {/* Description */}

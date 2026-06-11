@@ -27,7 +27,7 @@ import phaseZeroClarityBg from "@/assets/phase-zero-clarity-bg.jpg";
 /* "shIFt" with raspberry IF */
 const ShIFt = () => (
   <>
-    Sh<span className="text-raspberry">IF</span>t
+    Sh<span className="text-raspberry font-bold">IF</span>t
   </>
 );
 
@@ -770,7 +770,7 @@ export default function PPSHome() {
         eyebrow="Phase Zero™"
         headline={
           <>
-            Step onto the porch. Begin with What <span className="text-raspberry">IF</span>.
+            Step onto the porch. Begin with What <span className="text-raspberry font-bold">IF</span>.
           </>
         }
         description="The future will keep asking your organization to evolve. The question is whether you'll do it in ways you can actually sustain together."

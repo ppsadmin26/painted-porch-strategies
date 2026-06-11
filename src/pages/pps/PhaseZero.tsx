@@ -22,7 +22,7 @@ function FadeIn({ children, className = "" }: { children: React.ReactNode; class
 
 const ShIFt = () => (
   <>
-    Sh<span className="text-raspberry">IF</span>t
+    Sh<span className="text-raspberry font-bold">IF</span>t
   </>
 );
 

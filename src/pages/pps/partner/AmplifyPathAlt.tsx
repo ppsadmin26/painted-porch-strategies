@@ -190,7 +190,7 @@ export default function AmplifyPathAlt() {
       <TierHeroSection
         tier={TIERS.AMPLIFY}
         badgeLabel="AMPLIFY P.A.T.H.way"
-        headline={<>Boost Momentum That Aligns, Activates, and Accelerates Your Next Sh<span className="text-[hsl(263,85%,78%)]">IF</span>t.</>}
+        headline={<>Boost Momentum That Aligns, Activates, and Accelerates Your Next Sh<span className="text-[hsl(263,85%,78%)] font-bold">IF</span>t.</>}
         subheadline="When you're ready to architect change with clarity and confidence."
         description="AMPLIFY is for leadership teams seeking alignment AND individual leaders pursuing peer learning, creating compound momentum through team workshops, strategic sprints, and leadership labs."
         ctas={[
@@ -222,7 +222,7 @@ export default function AmplifyPathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              You Know What Sh<span className="text-[hsl(263,70%,55%)]">IF</span>t You Want to Make Happen,  Now You Need to Build the Capacity for It.
+              You Know What Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t You Want to Make Happen,  Now You Need to Build the Capacity for It.
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
               Our AMPLIFY P.A.T.H.way is designed for two audiences, organizations/teams seeking alignment AND individual leaders wanting peer learning.
@@ -296,7 +296,7 @@ export default function AmplifyPathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Three Ways to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)]">IF</span>t
+              Three Ways to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
               Choose a P.A.T.H.way based on whether you're developing or expanding capabilities to sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t for your team/organization or yourself as an individual leader.
@@ -553,7 +553,7 @@ export default function AmplifyPathAlt() {
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container max-w-6xl mx-auto px-6">
           <h3 className="text-xl md:text-2xl font-semibold text-navy text-center mb-8">
-            Which Sh<span className="text-[hsl(263,70%,55%)]">IF</span>t: Workshop vs. Sprint vs. Leader Lab
+            Which Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t: Workshop vs. Sprint vs. Leader Lab
           </h3>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -671,7 +671,7 @@ export default function AmplifyPathAlt() {
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Taking Your Sh<span className="text-[hsl(263,70%,55%)]">IF</span>t to the Next Level
+              Taking Your Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t to the Next Level
             </h2>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
               Most AMPLIFY partnerships reveal one of two things: your team got what you needed and you're ready to execute, or you realize you need deeper, ongoing partnership. That's exactly what EMBODY is designed for.
@@ -762,7 +762,7 @@ export default function AmplifyPathAlt() {
         <div className="container max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)]">IF</span>t?
+              Ready to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t?
             </h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto">
               Strategic architecture creates transformation that lasts. Choose your pathway below.

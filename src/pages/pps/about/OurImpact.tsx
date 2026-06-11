@@ -212,7 +212,7 @@ export default function OurImpact() {
       {/* Charitable Giving */}
       <section id="do-good-shift" className="py-16 md:py-24 bg-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <span className="bg-lime/10 text-lime font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4 inline-block">Do Good Sh<span className="text-raspberry">IF</span>t</span>
+          <span className="bg-lime/10 text-lime font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4 inline-block">Do Good Sh<span className="text-raspberry font-bold">IF</span>t</span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             A Virtuous Cycle of Giving
           </h2>

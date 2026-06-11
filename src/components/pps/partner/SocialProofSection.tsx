@@ -28,7 +28,7 @@ export function SocialProofSection() {
       <div className="container max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Leaders Making Sh<span className="text-raspberry">IF</span>t Happen
+            Leaders Making Sh<span className="text-raspberry font-bold">IF</span>t Happen
           </h2>
           <p className="text-lg text-foreground">
             From individual exploration to full organizational transformation, here's what's possible at each P.A.T.H.way.

@@ -14,7 +14,7 @@ export default function TruthSectionAlt() {
           className={`text-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-            The Truth of Why Most Sh<span className="text-raspberry">IF</span>t Fails
+            The Truth of Why Most Sh<span className="text-raspberry font-bold">IF</span>t Fails
           </h2>
           <p className="text-foreground text-lg leading-relaxed mb-6">
             Most organizational changes don't fail because the pursuit was wrong. They fail because leaders discovered too late, often after 6+ months and $500K+ invested, that their organization wasn't structurally ready for the shift they were pursuing.
@@ -37,7 +37,7 @@ export default function TruthSectionAlt() {
             If you're standing at the edge of something new and want to understand what shift your organization can truly lead next, before you try to make it happen:
           </p>
           <p className="font-poppins font-bold text-xl text-bluedoor italic mb-6">
-            This is where your next P.A.T.H. to Do Epic Sh<span className="text-raspberry">IF</span>t begins.
+            This is where your next P.A.T.H. to Do Epic Sh<span className="text-raspberry font-bold">IF</span>t begins.
           </p>
           <Link to="/blue-door/purchase">
             <Button className="bg-bluedoor text-white border-2 border-bluedoor text-lg md:text-xl py-5 px-12 shadow-lg hover:shadow-xl hover:bg-white hover:text-bluedoor transition-all">

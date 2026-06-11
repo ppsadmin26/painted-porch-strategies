@@ -41,7 +41,7 @@ export default function HeroSectionAlt() {
             </span>
             
             <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-normal transition-all duration-700 ease-out delay-150 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-              Is Your Organization Built to Make Your Next Sh<span className="text-raspberry">IF</span>t Happen?
+              Is Your Organization Built to Make Your Next Sh<span className="text-raspberry font-bold">IF</span>t Happen?
             </h1>
             
             <p className={`font-poppins font-normal text-lg md:text-xl text-gold mb-8 transition-all duration-700 ease-out delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>

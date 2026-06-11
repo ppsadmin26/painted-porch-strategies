@@ -32,7 +32,7 @@ export default function FinalCTASectionAlt() {
         <h2 
           className={`text-3xl md:text-4xl font-bold text-white mb-8 transition-all duration-700 ease-out delay-150 ${ isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6' }`}
         >
-          Ready to Discover Which Sh<span className="text-raspberry">IF</span>ts You're Built to Lead Next?
+          Ready to Discover Which Sh<span className="text-raspberry font-bold">IF</span>ts You're Built to Lead Next?
         </h2>
         
         <div

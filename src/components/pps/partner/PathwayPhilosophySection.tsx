@@ -24,7 +24,7 @@ export function PathwayPhilosophySection() {
       <div className="container max-w-6xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Why Three P.A.T.H.ways? Because No Two Sh<span className="text-raspberry">IF</span>ts are the Same.
+            Why Three P.A.T.H.ways? Because No Two Sh<span className="text-raspberry font-bold">IF</span>ts are the Same.
           </h2>
           <p className="text-foreground max-w-2xl mx-auto">
             Each P.A.T.H.way is designed for a different level of commitment and transformation ambition. Where are you right now?

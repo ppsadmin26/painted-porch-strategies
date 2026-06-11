@@ -32,7 +32,7 @@ export default function FinalCTASectionAlt() {
         <h2 
           className={`text-3xl md:text-4xl font-bold text-white mb-8 max-w-[700px] mx-auto transition-all duration-700 ease-out delay-150 ${ isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6' }`}
         >
-          The sh<span className="text-raspberry">IF</span>t you're considering might be exactly right. Now find out if your organization is built to make it happen.
+          The sh<span className="text-raspberry font-bold">IF</span>t you're considering might be exactly right. Now find out if your organization is built to make it happen.
         </h2>
         
         <div

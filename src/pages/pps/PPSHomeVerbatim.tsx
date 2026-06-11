@@ -27,7 +27,7 @@ import homeHero from "@/assets/heroes/home-hero.jpg";
 /* "shIFt" with raspberry IF */
 const ShIFt = () => (
   <>
-    Sh<span className="text-raspberry">IF</span>t
+    Sh<span className="text-raspberry font-bold">IF</span>t
   </>
 );
 
@@ -1120,7 +1120,7 @@ export default function PPSHomeVerbatim() {
         eyebrow="The porch is Open"
         headline={
           <>
-            Step onto the porch. Begin the <span className="text-raspberry">IF</span>.
+            Step onto the porch. Begin the <span className="text-raspberry font-bold">IF</span>.
           </>
         }
         description={
