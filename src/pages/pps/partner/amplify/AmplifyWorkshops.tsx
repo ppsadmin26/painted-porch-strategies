@@ -76,7 +76,7 @@ const workshopTopics = [
       "Clear decision on whether to proceed, pause, or redesign your initiative",
     ],
     format: "Full to multi-day workshop",
-    investment: "Starting at $25,000",
+    investment: "Starting at $36,000",
     note: "Prerequisite: Blue Door",
   },
   {
@@ -91,7 +91,7 @@ const workshopTopics = [
       "Roadmap for completing Phase Zero preparation",
     ],
     format: "Full-day workshop",
-    investment: "$25,000",
+    investment: "Starting at $36,000",
     note: "Prerequisite: Blue Door",
   },
   {
