@@ -9,6 +9,8 @@ import { defineConfig, devices } from "@playwright/test";
  *    with no per-platform suffix, since we're pinned to one platform.
  *  - 2% diff ratio matches the per-spec `toHaveScreenshot` options.
  */
+const BASE_URL = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:8080";
+
 export default defineConfig({
   testDir: "./e2e",
   fullyParallel: true,
@@ -16,12 +18,23 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: "list",
+  use: {
+    baseURL: BASE_URL,
+  },
   projects: [
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
   ],
+  webServer: process.env.PLAYWRIGHT_BASE_URL
+    ? undefined
+    : {
+        command: "npm run dev -- --port 8080",
+        url: BASE_URL,
+        reuseExistingServer: !process.env.CI,
+        timeout: 120_000,
+      },
   snapshotPathTemplate: "{testDir}/__snapshots__/{testFileName}/{arg}{ext}",
   expect: {
     toHaveScreenshot: {
