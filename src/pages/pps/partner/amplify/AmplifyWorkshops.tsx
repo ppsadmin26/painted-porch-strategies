@@ -106,7 +106,7 @@ const workshopTopics = [
       "A navigation playbook for building organizational resilience",
     ],
     format: "Half to full-day workshop",
-    investment: "Starting at $10,000",
+    investment: "Starting at $15,000",
     note: "Prerequisite: Blue Door",
   },
   {
