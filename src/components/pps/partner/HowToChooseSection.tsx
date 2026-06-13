@@ -56,7 +56,7 @@ export function HowToChooseSection() {
             Not Sure Which P.A.T.H.way Fits Where You Are?
           </h2>
           <p className="text-lg text-foreground max-w-2xl mx-auto">
-            That's completely normal. Here's how to think about it:
+            No problem, we've got you. Here's how to think about it:
           </p>
         </div>
 
