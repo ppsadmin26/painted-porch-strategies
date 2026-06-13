@@ -111,6 +111,7 @@ const amy: SpeakerData = {
       { name: "City of Chandler", src: "/logos/city-of-chandler.png", href: "https://www.chandleraz.gov" },
       { name: "AZ Tech Week", src: "/logos/az-tech-week.jpg", href: "https://www.azcommerce.com/az-tech-week/" },
       { name: "Co+Hoots", src: "/logos/co-hoots.png", href: "https://cohoots.com/" },
+      { name: "APC Canada", src: "/logos/apc-canada.jpg", href: "https://www.apccanada.com/" },
     ],
     testimonials: [
       { quote: "[Amy testimonial placeholder #1]", name: "[Name]", title: "[Title]", organization: "[Organization]" },
