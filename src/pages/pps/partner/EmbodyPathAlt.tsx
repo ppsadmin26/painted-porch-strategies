@@ -520,8 +520,8 @@ export default function EmbodyPathAlt() {
               <thead>
                 <tr className="border-b-2 border-navy">
                   <th className="py-3 px-4 font-poppins font-semibold text-navy">Dimension</th>
-                  <th className="py-3 px-4 font-poppins font-semibold text-primary">AMPLIFY Sprint</th>
-                  <th className="py-3 px-4 font-poppins font-semibold text-teal">EMBODY Partnership</th>
+                  <th className="py-3 px-4 font-poppins font-semibold text-primary">AMPLIFY Strategic Sprint</th>
+                  <th className="py-3 px-4 font-poppins font-semibold text-teal">EMBODY Embedded Partnership</th>
                 </tr>
               </thead>
               <tbody>
