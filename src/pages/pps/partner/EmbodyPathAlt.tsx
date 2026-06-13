@@ -470,7 +470,7 @@ export default function EmbodyPathAlt() {
               This isn't a traditional implementation engagement.
             </h2>
             <p className="text-base text-white/85 max-w-2xl mx-auto">
-              Typical consultancies execute for the deliverable. EMBODY is an embedded advisory partnership that optimizes for what your organization is still doing five years after we're gone.
+              Typical consultancies execute for the deliverable of the moment. EMBODY is an embedded advisory partnership that optimizes for what your organization is continuing to move and mold years after we're gone.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-white/15 rounded-xl overflow-hidden border border-white/15">
