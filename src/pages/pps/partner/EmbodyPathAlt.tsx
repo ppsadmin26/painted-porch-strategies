@@ -238,7 +238,7 @@ export default function EmbodyPathAlt() {
               What EMBODY looks like
             </h2>
             <p className="text-base text-foreground">
-              Custom-designed to your context. Always anchored by these three.
+              Custom-designed to your context. Always anchored by these three commitments.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
