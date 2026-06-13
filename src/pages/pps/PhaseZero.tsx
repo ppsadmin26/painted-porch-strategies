@@ -5,6 +5,7 @@ import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { useScrollAnimation, getAnimationClasses } from "@/hooks/useScrollAnimation";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
+import HandwrittenUnderline from "@/components/pps/HandwrittenUnderline";
 import blueDoorHero from "@/assets/blue-door-hero.jpg";
 import phaseZeroHero from "@/assets/heroes/phase-zero-hero.jpg";
 
