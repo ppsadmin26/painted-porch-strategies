@@ -92,7 +92,7 @@ const pillars = [
     iconBg: "bg-gold/15",
     accent: "text-gold",
     definition:
-      "The judgment, communication, resilience, and mindset your people bring to the work. This is the pillar of people - human capacity that decides whether change holds up over time.",
+      "The judgment, communication, resilience, and mindset your people bring to the work. This is the pillar of people that decides whether change holds up over time.",
     questions: [
       "Can our people navigate the unknown, or only follow set steps?",
       "Is good judgment spread through the organization, or stuck at the top?",
