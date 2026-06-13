@@ -5,7 +5,7 @@
  * Sources are surfaced inline via SourcedTooltip on each StatCard (site standard).
  */
 import StatCard from "@/components/pps/StatCard";
-import { Building2, Compass, Brain } from "lucide-react";
+import { Building2, Compass, Brain, PenTool } from "lucide-react";
 
 const rows = [
   {
@@ -33,18 +33,6 @@ const rows = [
     border: "border-strategic",
   },
   {
-    statId: "gartner_adoption" as const,
-    footnote: 3,
-    pillar: "Phase Zero Authorship",
-    pillarSub: "The work before the work",
-    shift:
-      "Adoption fails when leaders skip the authorship phase. Phase Zero is where you decide what's worth building before you ask people to build it.",
-    icon: Brain,
-    accentText: "text-gold",
-    accentBg: "bg-gold/15",
-    border: "border-gold",
-  },
-  {
     statId: "gartner_trust" as const,
     footnote: 4,
     pillar: "Living Ecosystem",
@@ -52,6 +40,18 @@ const rows = [
     shift:
       "Trust isn't a comms problem. It's the byproduct of an architecture that respects the people inside it. That's where adoption becomes durable.",
     icon: Brain,
+    accentText: "text-gold",
+    accentBg: "bg-gold/15",
+    border: "border-gold",
+  },
+  {
+    statId: "gartner_adoption" as const,
+    footnote: 3,
+    pillar: "Phase Zero Authorship",
+    pillarSub: "The work before the work",
+    shift:
+      "Adoption fails when leaders skip the authorship phase. Phase Zero is where you decide what's worth building before you ask people to build it.",
+    icon: PenTool,
     accentText: "text-raspberry",
     accentBg: "bg-raspberry/15",
     border: "border-raspberry",
