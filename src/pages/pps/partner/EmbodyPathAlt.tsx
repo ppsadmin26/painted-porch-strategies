@@ -231,7 +231,7 @@ export default function EmbodyPathAlt() {
       />
 
       {/* WHAT EMBODY INCLUDES */}
-      <section className="py-16 md:py-24 bg-white">
+      <section id="what-embody-looks-like" className="py-16 md:py-24 bg-white scroll-mt-24">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-10 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
@@ -299,7 +299,7 @@ export default function EmbodyPathAlt() {
           </div>
 
           {/* The EMBODY outcome */}
-          <div className="max-w-4xl mx-auto bg-lime/10 border-l-4 border-lime p-6 rounded-r-xl mb-14">
+          <div className="max-w-4xl mx-auto bg-white border-l-4 border-lime p-6 rounded-r-xl mb-14 shadow-sm">
             <h3 className="text-lg md:text-xl font-poppins font-semibold text-navy mb-2">
               The <span className="text-lime">EMBODY</span> outcome you're seeking:
             </h3>
@@ -345,7 +345,7 @@ export default function EmbodyPathAlt() {
           </div>
 
           {/* Pull-quote */}
-          <div className="max-w-3xl mx-auto bg-white border-l-4 border-raspberry p-6 rounded-r-xl">
+          <div className="max-w-3xl mx-auto bg-white border-l-4 border-raspberry p-6 rounded-r-xl shadow-sm">
             <p className="text-lg md:text-xl font-poppins italic text-navy leading-relaxed">
               The cost of staying the same is rarely on the balance sheet. It shows up in the people who leave, the decisions that stall, and the sh<span className="text-raspberry font-semibold italic">IF</span>ts you watched competitors lead.
             </p>
@@ -369,7 +369,7 @@ export default function EmbodyPathAlt() {
               const accents = ["text-raspberry", "text-charcoal", "text-teal", "text-lime"];
               const accent = accents[idx % accents.length];
               return (
-                <div key={industry.title} className="bg-white p-6 rounded-xl border-t-2 border-navy/80 flex-1 min-w-[240px] max-w-[300px]">
+                <div key={industry.title} className="bg-muted/40 p-6 rounded-xl border-t-2 border-navy/80 flex-1 min-w-[240px] max-w-[300px]">
                   <div className="flex items-center gap-3 mb-3">
                     <industry.icon className={`w-8 h-8 ${accent} shrink-0`} />
                     <h3 className="text-base font-poppins font-semibold text-navy leading-tight">
