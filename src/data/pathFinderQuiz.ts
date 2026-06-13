@@ -572,7 +572,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     extra.push(grp("Team Performance — Contribution, Capability, and Cohesion", "geniusAtWork", "heroesAssemble"));
   } else if (rt === "RT-B") {
     headline = "Change & Transformation";
-    narrative = "Your organization is moving through something significant, or about to. The question isn't whether the change is necessary. It's whether your leaders and your organization have the architecture to carry it. A workshop can get traction quickly. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and surfaces the structural readiness gaps a workshop alone won't address.";
+    narrative = "Your organization is moving through something significant, or about to. The question isn't whether the change is necessary, but whether your leaders and your organization have the architecture to carry it. A workshop can get traction quickly. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and surfaces the structural readiness gaps a workshop alone won't address.";
     const q1 = val(answers, "Q1Change");
     primaryHeading = "Change Leadership — Frameworks for Leading Transformation";
     if (q1 === "A") primaryKeys = ["pathToLastingChange", "leadAtSpeed", "drivingChange3Shifts"];
