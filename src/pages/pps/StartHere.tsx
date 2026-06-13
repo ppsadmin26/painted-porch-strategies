@@ -60,7 +60,7 @@ export default function StartHere() {
           </span>
         }
         headline="Find Your P.A.T.H.way"
-        description="Not sure where to begin? The P.A.T.H. Finder quiz will surface the right partnership style and the specific programs to start with."
+        description="Not sure where to begin? Our P.A.T.H.finder quiz will surface the right partnership style and specific programs to start with on the Painted Porch."
         ctas={[]}
         background={{ type: "image", src: startHereHero }}
         overlayClass="bg-navy/50"
