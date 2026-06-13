@@ -434,6 +434,9 @@ export default function BlogPostEditor() {
       }
 
       toast({ title: "Saved!", description: `Post ${isNew ? "created" : "updated"} successfully.` });
+      lastSavedSnapshotRef.current = JSON.stringify(buildDraftValues());
+      localStorage.removeItem(draftStorageKey);
+      setHasUnsavedChanges(false);
       if (isNew) navigate(`/admin/posts/${postId}`, { replace: true });
     } catch (err: any) {
       toast({ title: "Save failed", description: err.message, variant: "destructive" });
