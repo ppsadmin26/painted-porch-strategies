@@ -79,6 +79,11 @@ export default function LazyHeroVideo({
         if (resolved) {
           setVideoUrl((current) => (current === resolved ? current : resolved));
           writeCachedUrl(slotKey, resolved);
+        } else {
+          // No row in registry — clear any stale cached URL and drop the
+          // <video> so we don't flash a different/darker frame over the poster.
+          setVideoUrl(null);
+          writeCachedUrl(slotKey, null);
         }
         verifySiteVideoUrl(slotKey, resolved);
       });
