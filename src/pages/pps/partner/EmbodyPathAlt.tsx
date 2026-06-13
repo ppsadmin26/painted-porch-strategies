@@ -541,10 +541,10 @@ export default function EmbodyPathAlt() {
             {/* Sticky-feel header showing which column is which tier */}
             <div className="grid grid-cols-2 gap-3 pb-2 border-b-2 border-navy">
               <div className="text-center font-poppins font-semibold text-primary text-xs uppercase tracking-wider">
-                AMPLIFY Sprint
+                AMPLIFY Strategic Sprint
               </div>
               <div className="text-center font-poppins font-semibold text-teal text-xs uppercase tracking-wider">
-                EMBODY Partnership
+                EMBODY Embedded Partnership
               </div>
             </div>
 
