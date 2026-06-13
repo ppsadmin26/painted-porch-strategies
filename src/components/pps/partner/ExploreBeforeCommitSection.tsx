@@ -15,7 +15,7 @@ export function ExploreBeforeCommitSection() {
               Free Resources
             </h3>
             <p className="text-sm text-foreground mb-4">
-              Get a taste of our frameworks and tools with our free resources.
+              Get a peek of our Porch frameworks and tools with our free resources.
             </p>
             <span className="text-primary font-semibold text-sm mt-auto">
               Browse Resources →
