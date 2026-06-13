@@ -69,7 +69,7 @@ export function PathwayComparisonSection() {
           </h2>
           <div className="text-foreground space-y-4">
             <p>
-              Most transformation programs offer you two options: buy a course or hire a consultant. But real transformation doesn't work that way.
+              Most transformation programs offer you two options: buy a certification course or hire a consultant. But real transformation doesn't work that way.
             </p>
             <p>
               Each P.A.T.H.way is designed for a different level of commitment and transformation ambition.
