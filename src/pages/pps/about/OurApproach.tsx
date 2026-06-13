@@ -33,7 +33,7 @@ const pathStages = [
     accent: "text-primary",
     bg: "bg-primary/5",
     iconBg: "bg-primary/10",
-    body: "Get honest about people, systems, and culture before the next shift starts. This is where we name what is real, what is shaky, and what the organization is actually built to lead next.",
+    body: "Get honest about people, systems, and culture before the next shIFt starts. This is where we call out what's strong, what's shaky, and what your organization is actually built to become and lead next.",
     outcome: "A shared, clear-eyed picture of where you stand.",
     isPhaseZero: true,
   },
