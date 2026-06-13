@@ -18,13 +18,34 @@ interface LazyHeroVideoProps {
   style?: React.CSSProperties;
 }
 
+const CACHE_PREFIX = "site_videos:url:";
+
+function readCachedUrl(slotKey: string): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    return window.localStorage.getItem(CACHE_PREFIX + slotKey);
+  } catch {
+    return null;
+  }
+}
+
+function writeCachedUrl(slotKey: string, url: string | null): void {
+  if (typeof window === "undefined") return;
+  try {
+    if (url) window.localStorage.setItem(CACHE_PREFIX + slotKey, url);
+    else window.localStorage.removeItem(CACHE_PREFIX + slotKey);
+  } catch {
+    /* ignore quota / private-mode errors */
+  }
+}
+
 /**
  * Background-video version of LazyPreviewVideo.
  *
  * - Renders the poster image immediately so the section never looks blank.
- * - Pulls the latest video URL from `site_videos` (admins can swap without code).
- * - Defers mounting the <video> element until the section nears the viewport.
- * - Once visible, autoplays muted/looped/inline (browser-friendly autoplay).
+ * - Uses a localStorage-cached URL on first paint so the <video> can mount
+ *   *before* the Supabase round-trip finishes (the cache is revalidated in
+ *   the background and replaced if the admin swapped the asset).
  * - Falls back to the poster if the video fails to load.
  */
 export default function LazyHeroVideo({
@@ -35,14 +56,16 @@ export default function LazyHeroVideo({
   mediaClassName = "",
   style,
 }: LazyHeroVideoProps) {
-  const [videoUrl, setVideoUrl] = useState<string | null>(fallbackVideoUrl ?? null);
-  const [shouldMount, setShouldMount] = useState(true);
+  // Seed from cache (or fallback) so the <video> element can mount on first render.
+  const [videoUrl, setVideoUrl] = useState<string | null>(
+    () => readCachedUrl(slotKey) ?? fallbackVideoUrl ?? null,
+  );
   const [errored, setErrored] = useState(false);
   const [posterFailed, setPosterFailed] = useState(false);
   const [retryToken, setRetryToken] = useState(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // Resolve the latest URL from the registry
+  // Revalidate the URL from the registry in the background.
   useEffect(() => {
     let cancelled = false;
     supabase
@@ -53,7 +76,10 @@ export default function LazyHeroVideo({
       .then(({ data }) => {
         if (cancelled) return;
         const resolved = data?.video_url ?? null;
-        if (resolved) setVideoUrl(resolved);
+        if (resolved) {
+          setVideoUrl((current) => (current === resolved ? current : resolved));
+          writeCachedUrl(slotKey, resolved);
+        }
         verifySiteVideoUrl(slotKey, resolved);
       });
     return () => {
@@ -61,28 +87,10 @@ export default function LazyHeroVideo({
     };
   }, [slotKey, retryToken]);
 
-  // Mount the <video> only when the hero is near the viewport
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el || shouldMount) return;
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setShouldMount(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [shouldMount]);
-
   const showErrorFallback = errored || posterFailed;
   const handleRetry = () => {
     setErrored(false);
     setPosterFailed(false);
-    setShouldMount(true);
     setRetryToken((n) => n + 1);
   };
 
@@ -104,8 +112,9 @@ export default function LazyHeroVideo({
           className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
         />
       )}
-      {shouldMount && videoUrl && !errored && (
+      {videoUrl && !errored && (
         <video
+          key={videoUrl}
           src={videoUrl}
           poster={posterUrl}
           autoPlay
