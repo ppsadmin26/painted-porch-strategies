@@ -299,22 +299,16 @@ export default function BlogPostEditor() {
   useEffect(() => {
     if (!draftReady) return;
 
-    const snapshot = JSON.stringify(buildDraftValues());
+    const values = buildDraftValues();
+    latestDraftRef.current = values;
+    const snapshot = JSON.stringify(values);
     const changed = snapshot !== lastSavedSnapshotRef.current;
     setHasUnsavedChanges(changed);
 
     if (!changed) return;
 
-    const draft: BlogPostLocalDraft = {
-      version: 1,
-      savedAt: new Date().toISOString(),
-      values: buildDraftValues(),
-    };
-    const timer = window.setTimeout(() => {
-      localStorage.setItem(draftStorageKey, JSON.stringify(draft));
-    }, 300);
+    persistLocalDraft(values);
 
-    return () => window.clearTimeout(timer);
   }, [
     draftReady,
     draftStorageKey,
