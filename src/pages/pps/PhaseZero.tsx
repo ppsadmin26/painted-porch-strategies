@@ -169,7 +169,7 @@ export default function PhaseZero() {
         description={
           <>
             <p className="text-xl md:text-2xl mb-4">
-              Before the kickoff. Before the rollout. Before the next big <ShIFt />.
+              Before the kickoff. Before the rollout. Before the next big sh<span className="text-raspberry font-bold">IF</span>t.
             </p>
             <p className="text-lg text-white/85">
               Phase Zero is the clear-eyed look at people, systems, and culture
