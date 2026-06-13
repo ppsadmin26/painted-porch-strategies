@@ -215,7 +215,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
             P.A.T.H.finder {showResult ? "Quiz Results" : "Quiz"}
           </DialogTitle>
           <DialogDescription className="text-foreground">
-            {showResult ? "Your starting point and what's available when you're ready for more." : "About 3 minutes. You'll leave knowing exactly where to start."}
+            {showResult ? "Your starting point and what's available when you're ready for more." : "About 3 minutes. You'll know exactly where to step onto the Porch."}
           </DialogDescription>
           {!showResult && (
             <div className="mt-3 h-1.5 bg-muted rounded-full overflow-hidden">
