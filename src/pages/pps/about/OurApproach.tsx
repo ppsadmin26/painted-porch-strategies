@@ -129,7 +129,7 @@ const coreValues = [
 const beliefs = [
   "People are the most critical infrastructure of every transformation.",
   "Clarity comes before strategy, not after it.",
-  "Real questions are more useful than confident answers.",
+  "Curious questions are more useful than confident answers.",
   "Frameworks are tools, not religions.",
   "Change that does not respect culture will not hold.",
 ];
