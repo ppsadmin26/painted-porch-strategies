@@ -284,53 +284,6 @@ export default function EmbodyPathAlt() {
           </div>
         </div>
       </section>
-              Custom-designed to your context. Always anchored by these three.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {embodyIncludes.map((item, i) => {
-              const accents = [
-                { border: "border-teal", text: "text-teal" },
-                { border: "border-raspberry", text: "text-raspberry" },
-                { border: "border-purple", text: "text-purple" },
-              ];
-              const accent = accents[i % accents.length];
-              return (
-                <div key={item.title} className={`bg-muted/40 p-6 rounded-xl border-t-4 ${accent.border}`}>
-                  <p className={`text-xs font-poppins font-semibold tracking-widest ${accent.text} uppercase mb-2`}>
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{item.title}</h3>
-                  <p className="text-sm text-foreground">{item.body}</p>
-                </div>
-              );
-            })}
-          </div>
-          <div className="max-w-3xl mx-auto text-center bg-muted/40 rounded-xl p-6">
-            <p className="text-sm text-foreground mb-4">
-              Built on the{" "}
-              <Link to="/phase-zero#pillars" className="font-semibold text-primary hover:underline">
-                Painted Porch Pillars
-              </Link>{" "}
-              and our <Link to="/about/approach#path" className="font-semibold text-primary hover:underline">P.A.T.H.</Link> framework. See{" "}
-              <Link to="/about/approach" className="font-semibold text-primary hover:underline">
-                Our Approach
-              </Link>{" "}
-              for the full model, or download the white paper for the deep architecture.
-            </p>
-            <Button
-              variant="outline"
-              disabled
-              aria-disabled="true"
-              className="border-navy/30 text-navy/60 cursor-not-allowed"
-              title="The white paper is being refined."
-            >
-              <Download className="mr-2 w-4 h-4" /> <span>The Architecture of Organizational Sh<span className="text-navy font-semibold">IF</span>t (Coming Soon)</span>
-            </Button>
-          </div>
-
-        </div>
-      </section>
 
       {/* WHO EMBODY IS FOR */}
       <section id="who-embody-is-for" className="py-16 md:py-24 bg-muted scroll-mt-24">
