@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, Video as VideoIcon, Loader2, Trash2, Play, Download, Link2, Plus, Pencil, X } from "lucide-react";
+import { Upload, Video as VideoIcon, Loader2, Trash2, Play, Download, Link2, Plus, Pencil, X, Wand2 } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
@@ -15,6 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { transcodeHeroVideo, formatMB } from "@/lib/transcodeHeroVideo";
 
 interface SiteVideo {
   id: string;
@@ -138,6 +140,9 @@ export default function SiteVideosManager() {
   const [slots, setSlots] = useState<SiteVideoSlot[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploadingKey, setUploadingKey] = useState<string | null>(null);
+  const [transcodeProgress, setTranscodeProgress] = useState(0);
+  const [transcodePhase, setTranscodePhase] = useState<"idle" | "transcoding" | "uploading">("idle");
+  const [optimize, setOptimize] = useState(true);
   const [migrateSlot, setMigrateSlot] = useState<string | null>(null);
   const [migrateUrl, setMigrateUrl] = useState("");
   const [migrating, setMigrating] = useState(false);
