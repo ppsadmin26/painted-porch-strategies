@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
 import colorfulPath from "@/assets/colorful-path.jpg";
 
 export function PartnerHeroSection() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setIsLoaded(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <section className="relative isolate min-h-[60vh] flex items-center overflow-hidden">
       {/* Admin-managed hero video with instant poster fallback */}
@@ -20,19 +27,31 @@ export function PartnerHeroSection() {
         <div className="md:w-4/5">
           <div className="bg-black/65 backdrop-blur-sm p-8 md:p-12 rounded-xl">
             {/* Badge */}
-            <span className="inline-block bg-primary/90 text-white font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
+            <span
+              className={`inline-block bg-primary/90 text-white font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6 transition-all duration-700 ease-out ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+              }`}
+            >
               Join Us on the Porch
             </span>
 
             {/* Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1
+              className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all duration-700 ease-out delay-150 ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
               Three Ways to Partner.<br />
               One Philosophy:<br />
               <span className="text-primary">You Architect Your Next Sh<span className="text-raspberry font-bold">IF</span>t.</span>
             </h1>
 
             {/* Description */}
-            <div className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl">
+            <div
+              className={`text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl transition-all duration-700 ease-out delay-300 ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
               <p className="mb-4">
                 We partner with you to co-architect transformation, whether you're exploring Phase Zero concepts on your own, aligning your team, or building permanent organizational capacity.
               </p>
@@ -42,10 +61,14 @@ export function PartnerHeroSection() {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 max-w-full">
+            <div
+              className={`flex flex-col sm:flex-row gap-4 max-w-full transition-all duration-700 ease-out delay-500 ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
               <Button asChild className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-base sm:text-lg py-4 sm:py-6 px-4 sm:px-8 transition-colors w-full max-w-[20rem] sm:w-auto sm:max-w-full whitespace-normal h-auto leading-tight text-center">
-                   <Link to="/start-here">Discover Your P.A.T.H.way</Link>
-                </Button>
+                <Link to="/start-here">Discover Your P.A.T.H.way</Link>
+              </Button>
             </div>
           </div>
         </div>

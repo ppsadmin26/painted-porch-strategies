@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { TierBadge } from "@/components/pps/TierBadge";
 import { type TierConfig } from "@/config/tiers";
@@ -76,6 +76,13 @@ export function TierHeroSection({
   minHeightClass = "min-h-[70vh]",
   mediaClassName = "",
 }: TierHeroSectionProps) {
+  // Staggered text fade-in (matches Blue Door HeroSectionAlt)
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setIsLoaded(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+
   // Determine primary button styling based on tier or default
   const getPrimaryButtonClasses = () => {
     if (tier) {
@@ -83,6 +90,7 @@ export function TierHeroSection({
     }
     return "bg-gold border-2 border-gold text-navy hover:bg-white hover:text-gold";
   };
+
 
   return (
     <section className={`relative isolate ${minHeightClass} flex items-center`}>
@@ -126,14 +134,24 @@ export function TierHeroSection({
         <div className="md:w-4/5">
           <div className="bg-black/50 backdrop-blur-sm p-8 md:p-12 rounded-xl">
             {/* Badge */}
-            {customBadge ? (
-              customBadge
-            ) : tier ? (
-              <TierBadge tier={tier} label={badgeLabel} className="mb-6" />
-            ) : null}
+            {(customBadge || tier) && (
+              <div
+                className={`transition-all duration-700 ease-out ${
+                  isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"
+                }`}
+              >
+                {customBadge ? customBadge : tier ? (
+                  <TierBadge tier={tier} label={badgeLabel} className="mb-6" />
+                ) : null}
+              </div>
+            )}
 
             {/* Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1
+              className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all duration-700 ease-out delay-150 ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
               {typeof headline === "string" && headlineHighlight ? (
                 <>
                   {headline.split(headlineHighlight)[0]}
@@ -147,18 +165,30 @@ export function TierHeroSection({
 
             {/* Subheadline */}
             {subheadline && (
-              <p className="text-gold font-medium italic mb-4">
+              <p
+                className={`text-gold font-medium italic mb-4 transition-all duration-700 ease-out delay-300 ${
+                  isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                }`}
+              >
                 {subheadline}
               </p>
             )}
 
             {/* Description */}
-            <div className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl">
+            <div
+              className={`text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl transition-all duration-700 ease-out delay-300 ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
               {typeof description === "string" ? <p>{description}</p> : description}
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 max-w-full">
+            <div
+              className={`flex flex-col sm:flex-row sm:flex-wrap gap-4 max-w-full transition-all duration-700 ease-out delay-500 ${
+                isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+            >
               {ctas.map((cta, index) => {
                 const responsiveButtonSizing = "text-base sm:text-lg py-4 sm:py-6 px-4 sm:px-8 transition-colors w-full sm:w-auto max-w-full whitespace-normal h-auto leading-tight text-center min-w-0";
                 const buttonClasses = cta.buttonClassName

@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light only" />
+
+    <!-- Preconnect to Supabase (REST + storage for site-videos) so the first
+         hero-video URL fetch and the subsequent MP4 download skip DNS/TLS cost. -->
+    <link rel="preconnect" href="https://dkpxjivoupqpmvzwxpef.supabase.co" crossorigin />
+    <link rel="dns-prefetch" href="https://dkpxjivoupqpmvzwxpef.supabase.co" />
+
+    
     
     <!-- Google Analytics (Consent Mode v2 — privacy-first defaults) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-N7SY09HQJ3"></script>
