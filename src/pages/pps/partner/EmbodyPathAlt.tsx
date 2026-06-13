@@ -39,12 +39,12 @@ const audienceCards = [
   {
     icon: Briefcase,
     title: "C-suites leading a defining shIFt",
-    body: "You're authoring the change, not reacting to a competitor's. You want partners at the strategic table, not vendors at the side table.",
+    body: "You're authoring the change, not reacting to a competitor's. You want partners at the strategic table, not vendors on the side.",
   },
   {
     icon: Users,
     title: "Boards backing long-arc transformation",
-    body: "You're funding the architecture, not a project. You measure success in the decade after go-live, not the quarter before it.",
+    body: "You're funding the architecture, not a project. You measure success in the years after go-live, not the quarter before or immediately proceeding it.",
   },
   {
     icon: Sparkles,
@@ -264,7 +264,7 @@ export default function EmbodyPathAlt() {
               For leaders who want to build something that lasts, not something to get through.
             </h2>
             <p className="text-base text-foreground">
-              EMBODY isn't a longer engagement because we like longer engagements. It's longer because the structural change you're after doesn't move with a workshop, a deck, or a two-quarter sprint.
+              EMBODY is our highest style of partnership over a committed 6+ month period. It isn't longer because we like longer engagements. It's longer because the structural change you're after doesn't move with a workshop, a deck, or a two-quarter sprint.
             </p>
           </div>
 
