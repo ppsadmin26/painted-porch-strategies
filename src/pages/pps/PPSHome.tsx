@@ -143,7 +143,7 @@ export default function PPSHome() {
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <span className="badge-gold mb-4 inline-block">It&rsquo;s Not Just You...</span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-            There&rsquo;s a lot of <span className="text-raspberry lowercase font-bold">IF</span>t happening right now.
+            There&rsquo;s a lot of shift happening right now.
           </h2>
           <p className="text-lg text-foreground leading-relaxed mb-4">
             Sometimes it feels like every important conversation is happening at
