@@ -143,7 +143,7 @@ export default function PPSHome() {
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <span className="badge-gold mb-4 inline-block">It&rsquo;s Not Just You...</span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-            There&rsquo;s a lot of shift happening right now.
+            There&rsquo;s a lot of sh<span className="text-raspberry font-bold">IF</span>t happening right now.
           </h2>
           <p className="text-lg text-foreground leading-relaxed mb-4">
             Sometimes it feels like every important conversation is happening at
@@ -343,7 +343,7 @@ export default function PPSHome() {
             Phase Zero is where we begin
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Get the clarity that accelerates vs. exhausts your next big shift.
+            Get the clarity that accelerates vs. exhausts your next big sh<span className="text-raspberry font-bold">IF</span>t.
           </h2>
           <p className="text-lg text-white/90 mb-4 max-w-2xl mx-auto leading-relaxed">
             Before another initiative is announced. Before another restructuring
@@ -375,7 +375,7 @@ export default function PPSHome() {
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
               Three dimensions that influence what your organization is built to
-              carry. When all three are structurally-sound and load-bearing, you&rsquo;re fortified and ready to design and built your next big move.
+              carry. When all three are structurally-sound and load-bearing, you&rsquo;re fortified and ready to design and built your next big now.
             </p>
           </div>
 
@@ -503,7 +503,7 @@ export default function PPSHome() {
       <section className="py-16 md:py-20 bg-navy">
         <div className="container max-w-6xl mx-auto px-6">
           <p className="text-center text-xs md:text-sm font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-10">
-            The questions leaders are asking at 3AM
+            THE QUESTIONS LEADERS ARE WEIGHING AT 3AM
           </p>
           <div className="grid md:grid-cols-3 gap-10 md:gap-8">
             {threeAmQuestions.map((q, i) => (
@@ -537,14 +537,14 @@ export default function PPSHome() {
               </h2>
               <p className="text-lg text-foreground leading-relaxed mb-4">
                 The questions that keep you up at 3AM deserve more than a pep
-                talk or another planning deck. They deserve clarity &mdash; the
+                talk or another planning deck. They deserve clarity - the
                 kind that comes from seeing your organization clearly before
                 deciding what comes next.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-4">
                 The Blue Door is a structured reflection process, not a health
                 assessment and not a readiness score. It answers what kind of
-                change your organization can confidently execute &mdash; so you
+                change your organization can confidently execute, so you
                 stop wondering if you are solving the right problem and start
                 knowing you are.
               </p>
