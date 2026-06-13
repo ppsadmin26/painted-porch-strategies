@@ -564,6 +564,48 @@ export default function SiteVideosManager() {
         </Button>
       </div>
 
+      {/* Hero-loop optimizer */}
+      <Card className="mb-4 p-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:justify-between bg-muted/30">
+        <div className="flex items-start gap-3 min-w-0">
+          <Wand2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+          <div className="min-w-0">
+            <Label htmlFor="optimize-toggle" className="font-semibold text-navy cursor-pointer block">
+              Optimize for hero loop on upload
+            </Label>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              1280×720, 24 fps, ≤10 s, audio stripped, MP4 + faststart. Typically 22 MB → 2–4 MB. Runs in your browser; first run downloads ~30 MB of ffmpeg.
+            </p>
+          </div>
+        </div>
+        <Switch
+          id="optimize-toggle"
+          checked={optimize}
+          onCheckedChange={setOptimize}
+          disabled={!!uploadingKey || migrating}
+        />
+      </Card>
+
+      {transcodePhase !== "idle" && (
+        <Card className="mb-4 p-3 flex items-center gap-3 bg-background border-primary/30">
+          <Loader2 className="h-4 w-4 animate-spin text-primary shrink-0" />
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-navy">
+              {transcodePhase === "transcoding"
+                ? `Optimizing video... ${Math.round(transcodeProgress * 100)}%`
+                : "Uploading to bucket..."}
+            </p>
+            {transcodePhase === "transcoding" && (
+              <div className="mt-1.5 h-1.5 w-full bg-muted rounded overflow-hidden">
+                <div
+                  className="h-full bg-primary transition-all"
+                  style={{ width: `${Math.round(transcodeProgress * 100)}%` }}
+                />
+              </div>
+            )}
+          </div>
+        </Card>
+      )}
+
       {loading ? (
         <div className="flex items-center gap-2 text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" /> Loading...
