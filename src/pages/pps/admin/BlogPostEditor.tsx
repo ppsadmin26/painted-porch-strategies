@@ -251,6 +251,85 @@ export default function BlogPostEditor() {
     loadPost();
   }, [id, isNew, navigate]);
 
+  useEffect(() => {
+    if (!postLoaded || restoredDraftRef.current) return;
+
+    const snapshot = JSON.stringify(buildDraftValues());
+    lastSavedSnapshotRef.current = snapshot;
+    restoredDraftRef.current = true;
+
+    try {
+      const rawDraft = localStorage.getItem(draftStorageKey);
+      if (rawDraft) {
+        const draft = JSON.parse(rawDraft) as BlogPostLocalDraft;
+        if (draft?.version === 1 && draft.values) {
+          applyDraftValues(draft.values);
+          setHasUnsavedChanges(true);
+          toast({
+            title: "Unsaved edits restored",
+            description: "Your browser kept a local copy after the page refreshed.",
+          });
+        }
+      }
+    } catch {
+      localStorage.removeItem(draftStorageKey);
+    } finally {
+      setDraftReady(true);
+    }
+  }, [postLoaded, draftStorageKey]);
+
+  useEffect(() => {
+    if (!draftReady) return;
+
+    const snapshot = JSON.stringify(buildDraftValues());
+    const changed = snapshot !== lastSavedSnapshotRef.current;
+    setHasUnsavedChanges(changed);
+
+    if (!changed) return;
+
+    const draft: BlogPostLocalDraft = {
+      version: 1,
+      savedAt: new Date().toISOString(),
+      values: buildDraftValues(),
+    };
+    const timer = window.setTimeout(() => {
+      localStorage.setItem(draftStorageKey, JSON.stringify(draft));
+    }, 300);
+
+    return () => window.clearTimeout(timer);
+  }, [
+    draftReady,
+    draftStorageKey,
+    title,
+    slug,
+    excerpt,
+    bodyJson,
+    coverImageUrl,
+    status,
+    featured,
+    publishDate,
+    seoTitle,
+    seoDescription,
+    seoKeywords,
+    geoTags,
+    aeoTags,
+    selectedCategories,
+    primaryCategoryId,
+    authorId,
+  ]);
+
+  useEffect(() => {
+    if (!hasUnsavedChanges) return;
+
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [hasUnsavedChanges]);
+
   const generateSlug = (text: string) =>
     text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
