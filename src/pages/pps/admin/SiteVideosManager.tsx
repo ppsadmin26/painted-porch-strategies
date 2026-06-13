@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, Video as VideoIcon, Loader2, Trash2, Play, Download, Link2, Plus, Pencil, X } from "lucide-react";
+import { Upload, Video as VideoIcon, Loader2, Trash2, Play, Download, Link2, Plus, Pencil, X, Wand2 } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
@@ -15,6 +16,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { transcodeHeroVideo, formatMB } from "@/lib/transcodeHeroVideo";
 
 interface SiteVideo {
   id: string;
@@ -138,6 +140,9 @@ export default function SiteVideosManager() {
   const [slots, setSlots] = useState<SiteVideoSlot[]>([]);
   const [loading, setLoading] = useState(true);
   const [uploadingKey, setUploadingKey] = useState<string | null>(null);
+  const [transcodeProgress, setTranscodeProgress] = useState(0);
+  const [transcodePhase, setTranscodePhase] = useState<"idle" | "transcoding" | "uploading">("idle");
+  const [optimize, setOptimize] = useState(true);
   const [migrateSlot, setMigrateSlot] = useState<string | null>(null);
   const [migrateUrl, setMigrateUrl] = useState("");
   const [migrating, setMigrating] = useState(false);
@@ -184,16 +189,34 @@ export default function SiteVideosManager() {
       return;
     }
     setUploadingKey(slotKey);
+    setTranscodeProgress(0);
+    setTranscodePhase("idle");
     try {
-      const kind = detectVideoKind(file);
-      const ext = file.name.split(".").pop() || (kind === "webm" ? "webm" : kind === "mov" ? "mov" : "mp4");
+      // 1. Optional: transcode in the browser to the standard hero-loop spec
+      //    (1280×720 max, 24fps, ≤10s, CRF 30, no audio, faststart). This
+      //    keeps every uploaded hero on a consistent footprint (~2–4 MB).
+      let workingFile = file;
+      let originalSize = file.size;
+      if (optimize) {
+        setTranscodePhase("transcoding");
+        const result = await transcodeHeroVideo(file, slotKey, {
+          onProgress: (p) => setTranscodeProgress(p),
+        });
+        workingFile = result.file;
+        toast({
+          title: "Optimized",
+          description: `${formatMB(originalSize)} → ${formatMB(result.sizeBytes)} (720p / 24fps / muted / 10s)`,
+        });
+      }
+      setTranscodePhase("uploading");
+
+      const kind = detectVideoKind(workingFile);
+      const ext = workingFile.name.split(".").pop() || (kind === "webm" ? "webm" : kind === "mov" ? "mov" : "mp4");
       const stamp = Date.now();
       const path = `${slotKey}/${stamp}.${ext}`;
 
-      // 1. Try to grab a poster frame from the file BEFORE uploading.
-      // For MP4/WebM this works in all modern browsers. For MOV it works in
-      // Safari and on some Chromium builds; if it fails we just skip the poster.
-      const posterBlob = await extractPosterFrame(file);
+      // 2. Try to grab a poster frame from the (possibly transcoded) file
+      const posterBlob = await extractPosterFrame(workingFile);
       let posterUrl: string | null = null;
       let posterPath: string | null = null;
 
@@ -214,10 +237,10 @@ export default function SiteVideosManager() {
         }
       }
 
-      // 2. Upload the video itself
+      // 3. Upload the video itself
       const { error: upErr } = await supabase.storage
         .from("site-videos")
-        .upload(path, file, { cacheControl: "3600", upsert: false, contentType: file.type });
+        .upload(path, workingFile, { cacheControl: "3600", upsert: false, contentType: workingFile.type });
       if (upErr) throw upErr;
 
       const publicUrl = supabase.storage.from("site-videos").getPublicUrl(path).data.publicUrl;
@@ -269,6 +292,8 @@ export default function SiteVideosManager() {
       });
     } finally {
       setUploadingKey(null);
+      setTranscodePhase("idle");
+      setTranscodeProgress(0);
       if (fileRefs.current[slotKey]) fileRefs.current[slotKey]!.value = "";
     }
   };
@@ -338,26 +363,74 @@ export default function SiteVideosManager() {
   const handleMigrate = async () => {
     if (!migrateSlot || !migrateUrl.trim()) return;
     setMigrating(true);
-    // Resolve relative paths (e.g. "/__l5e/assets-v1/...") against the current
-    // browser origin so the edge function always receives an absolute URL.
+    setTranscodeProgress(0);
+    setTranscodePhase("idle");
     let src = migrateUrl.trim();
     if (src.startsWith("/")) src = window.location.origin + src;
     try {
-      const { data, error } = await supabase.functions.invoke(
-        "migrate-video-from-url",
-        { body: { slot_key: migrateSlot, source_url: src } },
-      );
-      if (error) throw error;
-      if ((data as any)?.error) throw new Error((data as any).error);
-      const sizeMb = (data as any)?.size_bytes
-        ? ((data as any).size_bytes / 1024 / 1024).toFixed(1)
-        : null;
-      toast({
-        title: "Video migrated to your bucket",
-        description: sizeMb
-          ? `Stored ${sizeMb} MB at ${(data as any).storage_path}. Repo untouched.`
-          : "Stored in site-videos bucket. Repo untouched.",
-      });
+      if (optimize) {
+        // Pull the source into the browser, run the standard hero preset,
+        // then push the optimized MP4 straight into storage. This means
+        // even "Migrate from URL" lands the same shape as a direct upload.
+        const sourceRes = await fetch(src, { mode: "cors" });
+        if (!sourceRes.ok) throw new Error(`Source fetch failed: HTTP ${sourceRes.status}`);
+        const sourceBlob = await sourceRes.blob();
+        const originalSize = sourceBlob.size;
+        setTranscodePhase("transcoding");
+        const result = await transcodeHeroVideo(sourceBlob, migrateSlot, {
+          onProgress: (p) => setTranscodeProgress(p),
+        });
+        setTranscodePhase("uploading");
+
+        const stamp = Date.now();
+        const path = `${migrateSlot}/${stamp}.mp4`;
+        const { error: upErr } = await supabase.storage
+          .from("site-videos")
+          .upload(path, result.file, {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: "video/mp4",
+          });
+        if (upErr) throw upErr;
+        const publicUrl = supabase.storage.from("site-videos").getPublicUrl(path).data.publicUrl;
+
+        const { data: userRes } = await supabase.auth.getUser();
+        const existing = videos[migrateSlot];
+        const row = {
+          video_url: publicUrl,
+          storage_path: path,
+          updated_by: userRes.user?.id ?? null,
+        };
+        if (existing) {
+          await supabase.from("site_videos").update(row).eq("slot_key", migrateSlot);
+          if (existing.storage_path) {
+            await supabase.storage.from("site-videos").remove([existing.storage_path]);
+          }
+        } else {
+          await supabase.from("site_videos").insert({ slot_key: migrateSlot, ...row });
+        }
+        toast({
+          title: "Video migrated & optimized",
+          description: `${formatMB(originalSize)} → ${formatMB(result.sizeBytes)} (720p / 24fps / muted / 10s). Repo untouched.`,
+        });
+      } else {
+        // Raw passthrough via the edge function (no transcoding)
+        const { data, error } = await supabase.functions.invoke(
+          "migrate-video-from-url",
+          { body: { slot_key: migrateSlot, source_url: src } },
+        );
+        if (error) throw error;
+        if ((data as any)?.error) throw new Error((data as any).error);
+        const sizeMb = (data as any)?.size_bytes
+          ? ((data as any).size_bytes / 1024 / 1024).toFixed(1)
+          : null;
+        toast({
+          title: "Video migrated to your bucket",
+          description: sizeMb
+            ? `Stored ${sizeMb} MB at ${(data as any).storage_path}. Repo untouched.`
+            : "Stored in site-videos bucket. Repo untouched.",
+        });
+      }
       setMigrateSlot(null);
       setMigrateUrl("");
       await load();
@@ -370,6 +443,8 @@ export default function SiteVideosManager() {
       });
     } finally {
       setMigrating(false);
+      setTranscodePhase("idle");
+      setTranscodeProgress(0);
     }
   };
 
@@ -488,6 +563,48 @@ export default function SiteVideosManager() {
           <Plus className="h-4 w-4 mr-1.5" /> New slot
         </Button>
       </div>
+
+      {/* Hero-loop optimizer */}
+      <Card className="mb-4 p-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:justify-between bg-muted/30">
+        <div className="flex items-start gap-3 min-w-0">
+          <Wand2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+          <div className="min-w-0">
+            <Label htmlFor="optimize-toggle" className="font-semibold text-navy cursor-pointer block">
+              Optimize for hero loop on upload
+            </Label>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              1280×720, 24 fps, ≤10 s, audio stripped, MP4 + faststart. Typically 22 MB → 2–4 MB. Runs in your browser; first run downloads ~30 MB of ffmpeg.
+            </p>
+          </div>
+        </div>
+        <Switch
+          id="optimize-toggle"
+          checked={optimize}
+          onCheckedChange={setOptimize}
+          disabled={!!uploadingKey || migrating}
+        />
+      </Card>
+
+      {transcodePhase !== "idle" && (
+        <Card className="mb-4 p-3 flex items-center gap-3 bg-background border-primary/30">
+          <Loader2 className="h-4 w-4 animate-spin text-primary shrink-0" />
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-navy">
+              {transcodePhase === "transcoding"
+                ? `Optimizing video... ${Math.round(transcodeProgress * 100)}%`
+                : "Uploading to bucket..."}
+            </p>
+            {transcodePhase === "transcoding" && (
+              <div className="mt-1.5 h-1.5 w-full bg-muted rounded overflow-hidden">
+                <div
+                  className="h-full bg-primary transition-all"
+                  style={{ width: `${Math.round(transcodeProgress * 100)}%` }}
+                />
+              </div>
+            )}
+          </div>
+        </Card>
+      )}
 
       {loading ? (
         <div className="flex items-center gap-2 text-muted-foreground">
@@ -680,8 +797,18 @@ export default function SiteVideosManager() {
           <DialogHeader>
             <DialogTitle>Migrate video from URL</DialogTitle>
             <DialogDescription>
-              Paste a public video URL (Lovable CDN, generator output, anywhere). It will be downloaded server-side and stored in your <code className="font-mono text-xs">site-videos</code> bucket for slot{" "}
+              Paste a public video URL (Lovable CDN, generator output, anywhere). It will be stored in your <code className="font-mono text-xs">site-videos</code> bucket for slot{" "}
               <code className="font-mono text-xs">{migrateSlot}</code>. Your repo is never touched.
+              {optimize ? (
+                <span className="block mt-2 text-xs text-primary">
+                  <Wand2 className="inline h-3 w-3 mr-1 align-text-bottom" />
+                  Optimizer is ON — video will be transcoded in your browser to 720p / 24 fps / ≤10 s / muted before upload.
+                </span>
+              ) : (
+                <span className="block mt-2 text-xs text-muted-foreground">
+                  Optimizer is OFF — original file will be stored as-is via the server.
+                </span>
+              )}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-2 py-2">
@@ -711,8 +838,15 @@ export default function SiteVideosManager() {
             >
               {migrating ? (
                 <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" /> Migrating...
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />{" "}
+                  {transcodePhase === "transcoding"
+                    ? `Optimizing ${Math.round(transcodeProgress * 100)}%`
+                    : transcodePhase === "uploading"
+                    ? "Uploading..."
+                    : "Migrating..."}
                 </>
+              ) : optimize ? (
+                "Optimize & migrate"
               ) : (
                 "Migrate to bucket"
               )}
