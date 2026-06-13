@@ -49,7 +49,7 @@ const pillars = [
     iconBg: "bg-[hsl(220,50%,90%)]",
     accent: "text-navy",
     definition:
-      "Your leaders, your culture, your values, and the way people work together. This is the load-bearing wall that decides how your organization leads, decides, and grows.",
+      "Your leaders, your culture, your values, and the way people work together. This is the pillar of progress that decides how your organization leads, decides, and grows.",
     questions: [
       "Can our leaders shape direction, or are they only reacting to pressure?",
       "Will our culture support this change, or quietly (or loudly) push against it?",
