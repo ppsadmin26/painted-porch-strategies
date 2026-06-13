@@ -333,14 +333,29 @@ export default function BlogPostEditor() {
   useEffect(() => {
     if (!hasUnsavedChanges) return;
 
+    const persistLatestDraft = () => {
+      if (latestDraftRef.current) persistLocalDraft(latestDraftRef.current);
+    };
+
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      persistLatestDraft();
       event.preventDefault();
       event.returnValue = "";
     };
 
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") persistLatestDraft();
+    };
+
     window.addEventListener("beforeunload", handleBeforeUnload);
-    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
-  }, [hasUnsavedChanges]);
+    window.addEventListener("pagehide", persistLatestDraft);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("pagehide", persistLatestDraft);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [hasUnsavedChanges, draftStorageKey]);
 
   const generateSlug = (text: string) =>
     text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
