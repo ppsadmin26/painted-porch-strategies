@@ -45,6 +45,8 @@ interface TierHeroSectionProps {
   };
   /** Overlay color class (default: "bg-navy/40") */
   overlayClass?: string;
+  /** Inner text box class (default: "bg-black/50 backdrop-blur-sm") */
+  textBoxClass?: string;
   /** Minimum height class (default: "min-h-[70vh]") */
   minHeightClass?: string;
   /** Extra classes (e.g. object-position) applied to the background media element */
