@@ -41,9 +41,8 @@ export function PartnerHeroSection() {
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              Three Ways to Partner.<br />
-              One Philosophy:<br />
-              <span className="text-primary">You Architect Your Next Sh<span className="text-raspberry font-bold">IF</span>t.</span>
+              Your P.A.T.H.way to&nbsp;<br />
+              <span className="text-primary">Extraordinary Sh<span className="text-raspberry font-bold">IF</span>t.</span>
             </h1>
 
             {/* Description */}

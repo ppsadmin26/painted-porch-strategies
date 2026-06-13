@@ -65,7 +65,7 @@ export function PathwayComparisonSection() {
       <div className="container max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Your P.A.T.H.way to Extraordinary Sh<span className="text-raspberry font-bold">IF</span>t
+            Three Ways to Partner, One Philosophy.
           </h2>
           <div className="text-foreground space-y-4">
             <p>
@@ -81,7 +81,7 @@ export function PathwayComparisonSection() {
               <strong>Different depths. Different timelines. Different investments.</strong>
             </p>
             <p className="text-primary font-medium">
-              But the same underlying principle: You can't architect transformation by skipping Phase Zero.
+              But the same underlying philosophy: You can't architect transformation by skipping Phase Zero.
             </p>
             <p className="font-bold">
               Where are you right now? And where do you want to go and start some new sh<strong className="text-raspberry">IF</strong>t next?
