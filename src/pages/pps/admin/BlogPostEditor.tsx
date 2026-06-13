@@ -118,6 +118,8 @@ export default function BlogPostEditor() {
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const restoredDraftRef = useRef(false);
   const lastSavedSnapshotRef = useRef<string | null>(null);
+  const latestDraftRef = useRef<BlogPostDraftValues | null>(null);
+  const lastPersistedDraftRef = useRef<string | null>(null);
   const draftStorageKey = getDraftStorageKey(id);
 
   const isContributor = userRole === "contributor";
@@ -158,6 +160,22 @@ export default function BlogPostEditor() {
     setSelectedCategories(values.selectedCategories || []);
     setPrimaryCategoryId(values.primaryCategoryId || null);
     setAuthorId(values.authorId || null);
+  };
+
+  const persistLocalDraft = (values: BlogPostDraftValues) => {
+    try {
+      const payload = JSON.stringify({
+        version: 1,
+        savedAt: new Date().toISOString(),
+        values,
+      } satisfies BlogPostLocalDraft);
+      if (payload !== lastPersistedDraftRef.current) {
+        localStorage.setItem(draftStorageKey, payload);
+        lastPersistedDraftRef.current = payload;
+      }
+    } catch {
+      // If local storage is unavailable or full, keep editing without blocking the page.
+    }
   };
 
   // Default author to current user for contributors (and new posts)
