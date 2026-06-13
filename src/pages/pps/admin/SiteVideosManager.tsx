@@ -189,16 +189,34 @@ export default function SiteVideosManager() {
       return;
     }
     setUploadingKey(slotKey);
+    setTranscodeProgress(0);
+    setTranscodePhase("idle");
     try {
-      const kind = detectVideoKind(file);
-      const ext = file.name.split(".").pop() || (kind === "webm" ? "webm" : kind === "mov" ? "mov" : "mp4");
+      // 1. Optional: transcode in the browser to the standard hero-loop spec
+      //    (1280×720 max, 24fps, ≤10s, CRF 30, no audio, faststart). This
+      //    keeps every uploaded hero on a consistent footprint (~2–4 MB).
+      let workingFile = file;
+      let originalSize = file.size;
+      if (optimize) {
+        setTranscodePhase("transcoding");
+        const result = await transcodeHeroVideo(file, slotKey, {
+          onProgress: (p) => setTranscodeProgress(p),
+        });
+        workingFile = result.file;
+        toast({
+          title: "Optimized",
+          description: `${formatMB(originalSize)} → ${formatMB(result.sizeBytes)} (720p / 24fps / muted / 10s)`,
+        });
+      }
+      setTranscodePhase("uploading");
+
+      const kind = detectVideoKind(workingFile);
+      const ext = workingFile.name.split(".").pop() || (kind === "webm" ? "webm" : kind === "mov" ? "mov" : "mp4");
       const stamp = Date.now();
       const path = `${slotKey}/${stamp}.${ext}`;
 
-      // 1. Try to grab a poster frame from the file BEFORE uploading.
-      // For MP4/WebM this works in all modern browsers. For MOV it works in
-      // Safari and on some Chromium builds; if it fails we just skip the poster.
-      const posterBlob = await extractPosterFrame(file);
+      // 2. Try to grab a poster frame from the (possibly transcoded) file
+      const posterBlob = await extractPosterFrame(workingFile);
       let posterUrl: string | null = null;
       let posterPath: string | null = null;
 
@@ -219,10 +237,10 @@ export default function SiteVideosManager() {
         }
       }
 
-      // 2. Upload the video itself
+      // 3. Upload the video itself
       const { error: upErr } = await supabase.storage
         .from("site-videos")
-        .upload(path, file, { cacheControl: "3600", upsert: false, contentType: file.type });
+        .upload(path, workingFile, { cacheControl: "3600", upsert: false, contentType: workingFile.type });
       if (upErr) throw upErr;
 
       const publicUrl = supabase.storage.from("site-videos").getPublicUrl(path).data.publicUrl;
@@ -274,6 +292,8 @@ export default function SiteVideosManager() {
       });
     } finally {
       setUploadingKey(null);
+      setTranscodePhase("idle");
+      setTranscodeProgress(0);
       if (fileRefs.current[slotKey]) fileRefs.current[slotKey]!.value = "";
     }
   };
