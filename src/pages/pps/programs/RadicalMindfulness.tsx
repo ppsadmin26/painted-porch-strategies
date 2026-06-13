@@ -7,6 +7,7 @@ import { useCourseLaunchStatus } from "@/hooks/useCourseLaunchStatus";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
+import { useHeroLoaded } from "@/hooks/useHeroLoaded";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
 import heroImg from "@/assets/programs/radical-mindfulness-emojis.jpg.asset.json";
@@ -84,6 +85,7 @@ const pricingTiers = [
 export default function RadicalMindfulness() {
   const [launchOpen, setLaunchOpen] = useState(false);
   const { isLive, data: launch } = useCourseLaunchStatus("radical-mindfulness");
+  const isLoaded = useHeroLoaded();
   return (
     <div>
       <CourseLaunchListDialog
@@ -112,20 +114,22 @@ export default function RadicalMindfulness() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <span className="inline-block text-pps-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
+          <span className={`inline-block text-pps-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-4 transition-all duration-700 ease-out ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>
             From Overwhelm to Om
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
+          <h1 className={`text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6 transition-all duration-700 ease-out delay-150 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             Radical Mindfulness
           </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed mb-8">
+          <p className={`text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed mb-8 transition-all duration-700 ease-out delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             Tap into your <strong>inner power</strong> to <strong>take control of your emotions</strong>, find{" "}
             <strong>peace among the obstacles</strong> in life and work, and <strong>build up emotional resilience</strong>{" "}
             to what's outside of your control.
           </p>
-          <Button asChild size="lg" className="bg-pps-orange hover:bg-pps-orange/90 text-white font-poppins font-semibold rounded-lg px-8">
-            <a href="#pricing">Join the Program <ArrowRight className="ml-2 h-5 w-5" /></a>
-          </Button>
+          <div className={`transition-all duration-700 ease-out delay-500 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <Button asChild size="lg" className="bg-pps-orange hover:bg-pps-orange/90 text-white font-poppins font-semibold rounded-lg px-8">
+              <a href="#pricing">Join the Program <ArrowRight className="ml-2 h-5 w-5" /></a>
+            </Button>
+          </div>
         </div>
       </section>
 
