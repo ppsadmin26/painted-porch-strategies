@@ -42,17 +42,14 @@ export default function OurImpact() {
   const { ref: ctaRef, parallaxOffset } = useParallax<HTMLElement>({ mode: "viewport", range: 80, offset: 40 });
   const { value: totalGiven, ref: counterRef } = useCountUp({ end: 31199, duration: 2500 });
 
-  // Dual-video crossfade for seamless looping
-  const videoARef = useRef<HTMLVideoElement>(null);
-  const videoBRef = useRef<HTMLVideoElement>(null);
-  const [activeVideo, setActiveVideo] = useState<"A" | "B">("A");
+  // Single looping hero video (uses native `loop` for reliable continuous playback)
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [heroVideoUrl, setHeroVideoUrl] = useState<string>("");
   const [videoFailed, setVideoFailed] = useState(false);
   const [retryToken, setRetryToken] = useState(0);
-  const switchingRef = useRef(false);
   const showVideo = Boolean(heroVideoUrl) && !videoFailed;
 
-  // Resolve admin-managed hero video URL (falls back to bundled CDN URL)
+  // Resolve admin-managed hero video URL
   useEffect(() => {
     let cancelled = false;
     supabase
@@ -81,45 +78,18 @@ export default function OurImpact() {
     setRetryToken((n) => n + 1);
   };
 
-  const FADE_MS = 1500;
-
-  const handleTimeUpdate = useCallback((source: "A" | "B") => {
-    // Ignore events from the inactive video or during a switch
-    if (switchingRef.current || activeVideo !== source) return;
-    const current = source === "A" ? videoARef.current : videoBRef.current;
-    const next = source === "A" ? videoBRef.current : videoARef.current;
-    if (!current || !next || !current.duration) return;
-
-    if (current.currentTime >= current.duration - FADE_MS / 1000) {
-      switchingRef.current = true;
-      next.currentTime = 0;
-      next.play().then(() => {
-        setActiveVideo(source === "A" ? "B" : "A");
-        // Pause and reset the outgoing video after the fade completes
-        setTimeout(() => {
-          current.pause();
-          current.currentTime = 0;
-          switchingRef.current = false;
-        }, FADE_MS);
-      }).catch(() => { switchingRef.current = false; });
-    }
-  }, [activeVideo]);
-
   useEffect(() => {
-    const vA = videoARef.current;
-    const vB = videoBRef.current;
-    if (vA) vA.playbackRate = 0.6;
-    if (vB) vB.playbackRate = 0.6;
-
-    const onTimeA = () => handleTimeUpdate("A");
-    const onTimeB = () => handleTimeUpdate("B");
-    vA?.addEventListener("timeupdate", onTimeA);
-    vB?.addEventListener("timeupdate", onTimeB);
-    return () => {
-      vA?.removeEventListener("timeupdate", onTimeA);
-      vB?.removeEventListener("timeupdate", onTimeB);
+    const v = videoRef.current;
+    if (!v) return;
+    v.playbackRate = 0.6;
+    // Safety net: if the browser ever fires `ended` despite `loop`, restart manually.
+    const onEnded = () => {
+      v.currentTime = 0;
+      v.play().catch(() => {});
     };
-  }, [handleTimeUpdate]);
+    v.addEventListener("ended", onEnded);
+    return () => v.removeEventListener("ended", onEnded);
+  }, [heroVideoUrl]);
 
   return (
     <div>
