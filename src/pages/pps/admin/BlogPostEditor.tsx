@@ -203,7 +203,16 @@ export default function BlogPostEditor() {
 
   // Load post if editing
   useEffect(() => {
-    if (isNew || !id) return;
+    restoredDraftRef.current = false;
+    setDraftReady(false);
+    setHasUnsavedChanges(false);
+
+    if (isNew || !id) {
+      setPostLoaded(true);
+      return;
+    }
+
+    setPostLoaded(false);
     const loadPost = async () => {
       const { data: post } = await supabase
         .from("blog_posts")
@@ -216,7 +225,7 @@ export default function BlogPostEditor() {
       setSlug(post.slug || "");
       setExcerpt(post.excerpt || "");
       setAuthorId(post.author_id || null);
-      setBodyJson(post.body_json || { type: "doc", content: [{ type: "paragraph" }] });
+      setBodyJson(post.body_json || emptyBodyJson);
       setCoverImageUrl(post.cover_image_url || "");
       setStatus(post.status as PostStatus);
       setFeatured(post.featured);
@@ -237,6 +246,7 @@ export default function BlogPostEditor() {
         const primary = postCats.find((c: any) => c.is_primary);
         if (primary) setPrimaryCategoryId(primary.category_id);
       }
+      setPostLoaded(true);
     };
     loadPost();
   }, [id, isNew, navigate]);
