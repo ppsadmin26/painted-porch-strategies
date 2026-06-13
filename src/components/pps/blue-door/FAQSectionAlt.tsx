@@ -79,7 +79,7 @@ export default function FAQSectionAlt() {
                         {compassSections.map((section, i) => (
                           <li key={i} className="flex items-start gap-2">
                             <span className="text-lime font-bold">•</span>
-                            <span><strong>{section.name}</strong>, {section.desc}</span>
+                            <span><strong>{section.name}:</strong>&nbsp;{section.desc}</span>
                           </li>
                         ))}
                       </ul>
