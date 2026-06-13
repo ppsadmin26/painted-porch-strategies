@@ -304,7 +304,7 @@ export default function PPSHome() {
                       03 &middot; Build what&rsquo;s next, together
                     </p>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-pps-purple transition-colors">
-                      Partner through Your Next <ShIFt />
+                      Partner through your next sh<span className="text-raspberry font-bold">IF</span>t
                     </h3>
                     <p className="text-foreground leading-relaxed mb-3">
                       Once the Blue Door reveals what&rsquo;s real, we partner
@@ -343,7 +343,7 @@ export default function PPSHome() {
             Phase Zero is where we begin
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Get the clarity that accelerates vs. exhausts your next big <span className="text-raspberry lowercase font-bold">IF</span>t.
+            Get the clarity that accelerates vs. exhausts your next big shift.
           </h2>
           <p className="text-lg text-white/90 mb-4 max-w-2xl mx-auto leading-relaxed">
             Before another initiative is announced. Before another restructuring
