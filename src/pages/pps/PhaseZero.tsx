@@ -237,6 +237,7 @@ export default function PhaseZero() {
               triggerClassName="bg-raspberry text-white hover:bg-raspberry/90"
             />
           </div>
+        </FadeIn>
       </section>
 
       {/* P.A.T.H. context strip */}
