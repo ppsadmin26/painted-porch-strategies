@@ -230,15 +230,122 @@ export default function EmbodyPathAlt() {
         minHeightClass="min-h-[500px]"
       />
 
+      {/* WHO EMBODY IS FOR */}
+      <section id="who-embody-is-for" className="py-16 md:py-24 bg-white scroll-mt-24">
+        <div className="container max-w-6xl mx-auto px-6">
+          {/* Stage-setter */}
+          <div className="text-center mb-10 max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
+              It's time to sh<span className="text-raspberry font-bold">IF</span>t from change moments to an innovation movement.
+            </h2>
+            <p className="text-lg text-foreground leading-relaxed">
+              You've made the decision: you're ready for your organization to move from managing change initiatives to leading sustainable transformation. Not consultants to fix or implement change for you. Strategic partners to co-architect permanent capability in your people, your processes, and your systems.
+            </p>
+          </div>
+
+          {/* The EMBODY outcome */}
+          <div className="max-w-4xl mx-auto bg-lime/10 border-l-4 border-lime p-6 rounded-r-xl mb-14">
+            <h3 className="text-lg md:text-xl font-poppins font-semibold text-navy mb-2">
+              The <span className="text-lime">EMBODY</span> outcome you're seeking:
+            </h3>
+            <p className="text-lg text-foreground italic mb-2">
+              We've built the internal structures and culture to architect and execute sustainable change. Continual transformation is now ours to lead.
+            </p>
+            <p className="text-sm text-foreground">
+              Transformation becomes self-sustaining and repeatable. Your organization develops permanent capacity and practices that outlast any single initiative.
+            </p>
+          </div>
+
+          <div className="text-center mb-12 max-w-3xl mx-auto">
+            <p className="text-sm font-poppins font-semibold tracking-widest text-bluedoor uppercase mb-3">
+              Who EMBODY is for
+            </p>
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
+              For leaders who want to build something that lasts, not something to get through.
+            </h2>
+            <p className="text-base text-foreground">
+              EMBODY is our highest style of partnership over a committed 6+ month period. It isn't longer because we like longer engagements. It's longer because the structural change you're after doesn't move with a workshop, a deck, or a two-quarter sprint.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {audienceCards.map((card, idx) => {
+              const Icon = card.icon;
+              const accents = [
+                { bg: "bg-teal/15", text: "text-teal" },
+                { bg: "bg-raspberry/15", text: "text-raspberry" },
+                { bg: "bg-purple/15", text: "text-purple" },
+              ];
+              const accent = accents[idx % accents.length];
+              return (
+                <div key={card.title} className="bg-muted/40 p-6 rounded-xl border border-border border-t-4 border-t-navy">
+                  <div className={`w-12 h-12 rounded-lg ${accent.bg} flex items-center justify-center mb-4`}>
+                    <Icon className={`w-6 h-6 ${accent.text}`} aria-hidden="true" />
+                  </div>
+                  <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{card.title}</h3>
+                  <p className="text-sm text-foreground">{card.body}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Pull-quote */}
+          <div className="max-w-3xl mx-auto bg-muted/40 border-l-4 border-raspberry p-6 rounded-r-xl">
+            <p className="text-lg md:text-xl font-poppins italic text-navy leading-relaxed">
+              The cost of staying the same is rarely on the balance sheet. It shows up in the people who leave, the decisions that stall, and the sh<span className="text-raspberry font-semibold italic">IF</span>ts you watched competitors lead.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      {/* INDUSTRIES */}
+      <section className="py-16 md:py-24 bg-muted">
+        <div className="container max-w-6xl mx-auto px-6">
+          <div className="text-center mb-10 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
+              Industries we partner with
+            </h2>
+            <p className="text-base text-foreground">
+              Not limited by industry. Defined by C-suite commitment and a partnership mindset.
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-6">
+            {industries.map((industry, idx) => {
+              const accents = ["text-raspberry", "text-charcoal", "text-teal", "text-lime"];
+              const accent = accents[idx % accents.length];
+              return (
+                <div key={industry.title} className="bg-white p-6 rounded-xl border-t-2 border-navy/80 flex-1 min-w-[240px] max-w-[300px]">
+                  <div className="flex items-center gap-3 mb-3">
+                    <industry.icon className={`w-8 h-8 ${accent} shrink-0`} />
+                    <h3 className="text-base font-poppins font-semibold text-navy leading-tight">
+                      {industry.title}
+                    </h3>
+                  </div>
+                  <ul className="space-y-2">
+                    {industry.items.map((item) => (
+                      <li key={item} className="text-sm text-foreground flex items-start gap-2">
+                        <span className={`${accent} mt-1`}>•</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* WHAT EMBODY INCLUDES */}
-      <section id="what-embody-looks-like" className="py-16 md:py-24 bg-white scroll-mt-24">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-10 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               What EMBODY looks like
             </h2>
             <p className="text-base text-foreground">
-              Custom-designed to your context. Always anchored by these three commitments.
+              Custom-designed to your context. Always anchored by these three.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -282,112 +389,7 @@ export default function EmbodyPathAlt() {
               <Download className="mr-2 w-4 h-4" /> <span>The Architecture of Organizational Sh<span className="text-navy font-semibold">IF</span>t (Coming Soon)</span>
             </Button>
           </div>
-        </div>
-      </section>
 
-      {/* WHO EMBODY IS FOR */}
-      <section id="who-embody-is-for" className="py-16 md:py-24 bg-muted scroll-mt-24">
-        <div className="container max-w-6xl mx-auto px-6">
-          {/* Stage-setter */}
-          <div className="text-center mb-10 max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
-              It's time to sh<span className="text-raspberry font-bold">IF</span>t from change moments to an innovation movement.
-            </h2>
-            <p className="text-lg text-foreground leading-relaxed">
-              You've made the decision: you're ready for your organization to move from managing change initiatives to leading sustainable transformation. Not consultants to fix or implement change for you. Strategic partners to co-architect permanent capability in your people, your processes, and your systems.
-            </p>
-          </div>
-
-          {/* The EMBODY outcome */}
-          <div className="max-w-4xl mx-auto bg-white border-l-4 border-lime p-6 rounded-r-xl mb-14 shadow-sm">
-            <h3 className="text-lg md:text-xl font-poppins font-semibold text-navy mb-2">
-              The <span className="text-lime">EMBODY</span> outcome you're seeking:
-            </h3>
-            <p className="text-lg text-foreground italic mb-2">
-              We've built the internal structures and culture to architect and execute sustainable change. Continual transformation is now ours to lead.
-            </p>
-            <p className="text-sm text-foreground">
-              Transformation becomes self-sustaining and repeatable. Your organization develops permanent capacity and practices that outlast any single initiative.
-            </p>
-          </div>
-
-          <div className="text-center mb-12 max-w-3xl mx-auto">
-            <p className="text-sm font-poppins font-semibold tracking-widest text-bluedoor uppercase mb-3">
-              Who EMBODY is for
-            </p>
-            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
-              For leaders who want to build something that lasts, not something to get through.
-            </h2>
-            <p className="text-base text-foreground">
-              EMBODY is our highest style of partnership over a committed 6+ month period. It isn't longer because we like longer engagements. It's longer because the structural change you're after doesn't move with a workshop, a deck, or a two-quarter sprint.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {audienceCards.map((card, idx) => {
-              const Icon = card.icon;
-              const accents = [
-                { bg: "bg-teal/15", text: "text-teal" },
-                { bg: "bg-raspberry/15", text: "text-raspberry" },
-                { bg: "bg-purple/15", text: "text-purple" },
-              ];
-              const accent = accents[idx % accents.length];
-              return (
-                <div key={card.title} className="bg-white p-6 rounded-xl border border-border border-t-4 border-t-navy">
-                  <div className={`w-12 h-12 rounded-lg ${accent.bg} flex items-center justify-center mb-4`}>
-                    <Icon className={`w-6 h-6 ${accent.text}`} aria-hidden="true" />
-                  </div>
-                  <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{card.title}</h3>
-                  <p className="text-sm text-foreground">{card.body}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Pull-quote */}
-          <div className="max-w-3xl mx-auto bg-white border-l-4 border-raspberry p-6 rounded-r-xl shadow-sm">
-            <p className="text-lg md:text-xl font-poppins italic text-navy leading-relaxed">
-              The cost of staying the same is rarely on the balance sheet. It shows up in the people who leave, the decisions that stall, and the sh<span className="text-raspberry font-semibold italic">IF</span>ts you watched competitors lead.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* INDUSTRIES */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
-          <div className="text-center mb-10 max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
-              Industries we partner with
-            </h2>
-            <p className="text-base text-foreground">
-              Not limited by industry. Defined by Executive commitment and a partnership mindset.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            {industries.map((industry, idx) => {
-              const accents = ["text-raspberry", "text-charcoal", "text-teal", "text-lime"];
-              const accent = accents[idx % accents.length];
-              return (
-                <div key={industry.title} className="bg-muted/40 p-6 rounded-xl border-t-2 border-navy/80 flex-1 min-w-[240px] max-w-[300px]">
-                  <div className="flex items-center gap-3 mb-3">
-                    <industry.icon className={`w-8 h-8 ${accent} shrink-0`} />
-                    <h3 className="text-base font-poppins font-semibold text-navy leading-tight">
-                      {industry.title}
-                    </h3>
-                  </div>
-                  <ul className="space-y-2">
-                    {industry.items.map((item) => (
-                      <li key={item} className="text-sm text-foreground flex items-start gap-2">
-                        <span className={`${accent} mt-1`}>•</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </section>
 
