@@ -5,6 +5,7 @@ import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { useScrollAnimation, getAnimationClasses } from "@/hooks/useScrollAnimation";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
+import HandwrittenUnderline from "@/components/pps/HandwrittenUnderline";
 import blueDoorHero from "@/assets/blue-door-hero.jpg";
 import phaseZeroHero from "@/assets/heroes/phase-zero-hero.jpg";
 
@@ -276,21 +277,13 @@ export default function PhaseZero() {
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight">
               What Phase Zero{" "}
-              <span className="relative inline-block">
+              <HandwrittenUnderline color="hsl(var(--lime))" delay={300} duration={800}>
                 is
-                <span
-                  aria-hidden="true"
-                  className="absolute left-0 -bottom-1 h-[3px] w-full bg-lime origin-left animate-[underline-grow_0.7s_ease-out_0.3s_both]"
-                />
-              </span>
+              </HandwrittenUnderline>
               , and what it is{" "}
-              <span className="relative inline-block">
+              <HandwrittenUnderline color="hsl(var(--raspberry))" delay={1200} duration={900}>
                 not
-                <span
-                  aria-hidden="true"
-                  className="absolute left-0 -bottom-1 h-[3px] w-full bg-raspberry origin-left animate-[underline-grow_0.7s_ease-out_0.9s_both]"
-                />
-              </span>
+              </HandwrittenUnderline>
               .
             </h2>
           </div>
