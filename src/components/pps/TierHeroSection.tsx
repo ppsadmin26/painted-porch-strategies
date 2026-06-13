@@ -75,6 +75,7 @@ export function TierHeroSection({
   ctas,
   background,
   overlayClass = "bg-navy/40",
+  textBoxClass = "bg-black/50 backdrop-blur-sm",
   minHeightClass = "min-h-[70vh]",
   mediaClassName = "",
 }: TierHeroSectionProps) {
