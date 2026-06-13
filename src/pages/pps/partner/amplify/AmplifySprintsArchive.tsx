@@ -23,8 +23,8 @@ const sprintFaqCategories: FAQCategory[] = [
     name: "Strategic Sprints",
     faqs: [
       {
-        question: "Do we need the Blue Door before a Strategic Sprint?",
-        answer: "Yes. The Blue Door is required for Strategic Sprints. It provides the strategic clarity needed to focus your sprint investment effectively.",
+        question: "Do we need the Blue Door Organizational Appraisal before a Strategic Sprint?",
+        answer: "Yes. The Blue Door Organizational Appraisal is required for Strategic Sprints. It provides the strategic clarity needed to focus your sprint investment effectively.",
       },
       {
         question: "Can we do a workshop first, then decide on a Strategic Sprint?",
