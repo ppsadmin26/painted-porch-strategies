@@ -405,10 +405,10 @@ export default function EmbodyPathAlt() {
                 Investment
               </h2>
               <p className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-2">
-                $90,000 – $360,000+
+                Starting at $96,000
               </p>
               <p className="text-sm text-muted-foreground">
-                Typically less than 1% of annual revenue. A strategic investment in permanent capacity, not a project line item.
+                Typically less than 1% of annual revenue. A strategic investment in permanent capacity, not a project support line item.
               </p>
             </div>
 
@@ -470,7 +470,7 @@ export default function EmbodyPathAlt() {
               This isn't a traditional implementation engagement.
             </h2>
             <p className="text-base text-white/85 max-w-2xl mx-auto">
-              Typical consultancies execute for the deliverable. EMBODY is an embedded advisory partnership that optimizes for what your organization is still doing five years after we're gone.
+              Typical consultancies execute for the deliverable of the moment. EMBODY is an embedded advisory partnership that optimizes for what your organization is continuing to move and mold years after we're gone.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-white/15 rounded-xl overflow-hidden border border-white/15">
@@ -511,7 +511,7 @@ export default function EmbodyPathAlt() {
               EMBODY or AMPLIFY?
             </h2>
             <p className="text-base text-foreground max-w-2xl mx-auto">
-              Not every leader needs an embedded partnership. Many start with a 90-day AMPLIFY Strategic Sprint and grow from there.
+              Not every leader needs an embedded partnership. Many start with a 90-day Strategic Sprint and grow from there.
             </p>
           </div>
           {/* Desktop / tablet: full table */}
@@ -520,8 +520,8 @@ export default function EmbodyPathAlt() {
               <thead>
                 <tr className="border-b-2 border-navy">
                   <th className="py-3 px-4 font-poppins font-semibold text-navy">Dimension</th>
-                  <th className="py-3 px-4 font-poppins font-semibold text-primary">AMPLIFY Sprint</th>
-                  <th className="py-3 px-4 font-poppins font-semibold text-teal">EMBODY Partnership</th>
+                  <th className="py-3 px-4 font-poppins font-semibold text-primary">AMPLIFY Strategic Sprint</th>
+                  <th className="py-3 px-4 font-poppins font-semibold text-teal">EMBODY Embedded Partnership</th>
                 </tr>
               </thead>
               <tbody>
@@ -541,10 +541,10 @@ export default function EmbodyPathAlt() {
             {/* Sticky-feel header showing which column is which tier */}
             <div className="grid grid-cols-2 gap-3 pb-2 border-b-2 border-navy">
               <div className="text-center font-poppins font-semibold text-primary text-xs uppercase tracking-wider">
-                AMPLIFY Sprint
+                AMPLIFY Strategic Sprint
               </div>
               <div className="text-center font-poppins font-semibold text-teal text-xs uppercase tracking-wider">
-                EMBODY Partnership
+                EMBODY Embedded Partnership
               </div>
             </div>
 
