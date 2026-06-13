@@ -162,6 +162,23 @@ const sitewideFaqCategories: FAQCategory[] = [
     ],
   },
   {
+    name: "AMPLIFY, Workshops",
+    faqs: [
+      {
+        question: "Do we need the Blue Door Organizational Appraisal before a workshop?",
+        answer: "The Blue Door Organizational Appraisal is required for all Phase Zero Strategic Workshops and Strategic Sprints. It's not required for our Leadership & Team Development Workshops, though many teams still find it valuable for context. Your Blue Door investment is credited toward any booked engagement.",
+      },
+      {
+        question: "Can we do a workshop first, then decide on a Strategic Sprint?",
+        answer: "Absolutely. Many teams start with a workshop to test fit, then progress to a sprint if deeper partnership makes sense.",
+      },
+      {
+        question: "What if our team is geographically distributed?",
+        answer: "We facilitate virtual workshops effectively. In-person is ideal when possible, but not required.",
+      },
+    ],
+  },
+  {
     name: "EMBODY",
     faqs: [
       {
