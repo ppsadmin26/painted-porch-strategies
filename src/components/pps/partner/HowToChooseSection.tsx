@@ -90,7 +90,7 @@ export function HowToChooseSection() {
         {/* P.A.T.H.finder Quiz CTA */}
         <div className="flex flex-col items-center mt-12 px-4">
           <p className="text-foreground mb-4 text-center">
-            At a fork in your P.A.T.H.way decision? Take our free P.A.T.H.finder quiz to determine which direction is best based on your needs.
+            At a fork in your P.A.T.H.way decision? Take our P.A.T.H.finder quiz to determine which direction is best based on your needs.
           </p>
           <Button
             onClick={openQuiz}

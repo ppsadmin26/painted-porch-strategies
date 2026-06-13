@@ -19,16 +19,16 @@ const principles = [
   },
   {
     icon: Target,
-    title: "We Architect Capacity",
+    title: "We Architect Capacity & Capability",
     tagline: "Not implement projects.",
-    description: "Most advisors focus on making THIS change successful. We focus on building the capacity to lead ANY change, now and in the future. We don't make you dependent on us.",
+    description: "Most advisors focus on making THIS change successful. We focus on building the capacity and capability to lead ANY change, now and in the future. We don't make you dependent on us.",
     contrast: "When we're done, you've become transformation architects yourselves.",
   },
   {
     icon: BookOpen,
     title: "Grounded in 2,300 Years of Wisdom",
     tagline: "Not trendy frameworks.",
-    description: "Most leadership development is built on trendy frameworks. We're built on Stoic philosophy, the principles of strategic preparation, resilience, and conscious design.",
+    description: "Most leadership development is built on trendy frameworks. We're built on Stoic philosophy and the principles of strategic preparation, resilience, and conscious design.",
     contrast: "Premeditatio Malorum: Prepare for adversity before pressure demands it. That's the original Phase Zero.",
   },
   {
@@ -50,7 +50,7 @@ export function PhilosophyApproachSection() {
             Why Partner With Painted Porch Strategies?
           </h2>
           <p className="text-lg text-foreground max-w-2xl mx-auto">
-            Because we do transformation architecture differently than anyone else in the space.
+            Because we do transformation differently than anyone else in the space.
           </p>
         </div>
 
