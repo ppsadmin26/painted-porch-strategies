@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -44,6 +44,35 @@ interface Category {
   slug: string;
   color: string;
 }
+
+interface BlogPostDraftValues {
+  title: string;
+  slug: string;
+  excerpt: string;
+  bodyJson: any;
+  coverImageUrl: string;
+  status: PostStatus;
+  featured: boolean;
+  publishDate: string;
+  seoTitle: string;
+  seoDescription: string;
+  seoKeywords: string[];
+  geoTags: string[];
+  aeoTags: string[];
+  selectedCategories: string[];
+  primaryCategoryId: string | null;
+  authorId: string | null;
+}
+
+interface BlogPostLocalDraft {
+  version: 1;
+  savedAt: string;
+  values: BlogPostDraftValues;
+}
+
+const emptyBodyJson = { type: "doc", content: [{ type: "paragraph" }] };
+
+const getDraftStorageKey = (postId?: string | null) => `pps-blog-post-editor-draft:${postId || "new"}`;
 
 export default function BlogPostEditor() {
   const { id } = useParams<{ id: string }>();
