@@ -108,7 +108,7 @@ const coreValues = [
     number: "02",
     title: "Partnership",
     description:
-      "You are the expert on your life and your organization. We bring frameworks, real questions, and outside perspective. You bring the context only you can see.",
+      "You are the expert of you (and your teams and organization). We bring frameworks, genuine curiosity, and outside perspective. You bring the context only you can see.",
     detail:
       "We act as a guide and advisor, not a vendor. The win is when you can carry the work without us.",
     color: "bg-primary/10",
