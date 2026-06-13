@@ -307,7 +307,7 @@ export default function EmbodyPathAlt() {
               Industries we partner with
             </h2>
             <p className="text-base text-foreground">
-              Not limited by industry. Defined by C-suite commitment and a partnership mindset.
+              Not limited by industry. Defined by Executive commitment and a partnership mindset.
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
