@@ -141,9 +141,9 @@ export default function PPSHome() {
       {/* ============================================================ */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <span className="badge-gold mb-4 inline-block">It&rsquo;s Not Just You</span>
+          <span className="badge-gold mb-4 inline-block">It&rsquo;s Not Just You...</span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-            There&rsquo;s a lot of <ShIFt /> happening right now.
+            There&rsquo;s a lot of <span className="text-raspberry lowercase font-bold">IF</span>t happening right now.
           </h2>
           <p className="text-lg text-foreground leading-relaxed mb-4">
             Sometimes it feels like every important conversation is happening at
@@ -153,7 +153,7 @@ export default function PPSHome() {
           </p>
           <p className="text-lg text-foreground leading-relaxed mb-8">
             Often the issue isn&rsquo;t effort. It&rsquo;s that your organization
-            has outgrown the structures that worked well enough to get here. And
+            has outgrown the structures that worked well enough to get you here. And
             pushing harder in the wrong direction simply compounds the cost of
             getting there.
           </p>
@@ -166,7 +166,7 @@ export default function PPSHome() {
               accentClass="text-raspberry"
               framing={
                 <>
-                  That&rsquo;s the cost of asking people to adapt to change
+                  And it&rsquo;s the cost of asking people to adapt to change
                   their organization wasn&rsquo;t built to hold.
                 </>
               }
@@ -224,13 +224,13 @@ export default function PPSHome() {
               </h2>
               <p className="text-lg text-foreground leading-relaxed mb-4">
                 We don&rsquo;t arrive with a slide deck of answers or a packaged
-                program waiting for your name on it. We meet you at the threshold 
-                of transformation, with the questions that haven&rsquo;t been 
-                asked yet, before the next big decision begins.
+                program waiting for your name and logo on it. We meet you at the 
+                threshold of transformation, with the questions that haven&rsquo;t 
+                been asked yet, before the next big decision begins.
               </p>
               <p className="text-lg text-foreground leading-relaxed">
                 Most leaders find us in one of three places. Wherever you start,
-                you start with clarity, not a contract.
+                you begin with clarity, not a contract.
               </p>
             </div>
 
@@ -281,7 +281,7 @@ export default function PPSHome() {
                     </h3>
                     <p className="text-foreground leading-relaxed mb-3">
                       A structured organizational appraisal that surfaces what
-                      your organization is actually positioned to carry.
+                      your organization is actually positioned to carry before your next kick-off is annnounced.
                     </p>
                     <span className="text-sm font-semibold text-bluedoor inline-flex items-center">
                       Open the Blue Door
@@ -309,10 +309,10 @@ export default function PPSHome() {
                     <p className="text-foreground leading-relaxed mb-3">
                       Once the Blue Door reveals what&rsquo;s real, we partner
                       with you to architect, align, and sustain the change.
-                      Three engagement styles, shaped to how you want to engage and what you need, when: Ignite, Amplify, Embody.
+                      Three engagement styles, shaped to how you want to engage, what you need, and when.
                     </p>
                     <span className="text-sm font-semibold text-pps-purple inline-flex items-center">
-                      Explore Partnership
+                      Explore P.A.T.H.way Partnership
                       <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
@@ -340,18 +340,18 @@ export default function PPSHome() {
         <div className="absolute inset-0 bg-navy/20" aria-hidden="true" />
         <div className="relative z-10 container max-w-4xl mx-auto px-6 text-center">
           <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
-            Phase Zero
+            Phase Zero is where we begin
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            The clarity that accelerates your next big <ShIFt />.
+            Get the clarity that accelerates vs. exhausts your next big <span className="text-raspberry lowercase font-bold">IF</span>t.
           </h2>
           <p className="text-lg text-white/90 mb-4 max-w-2xl mx-auto leading-relaxed">
             Before another initiative is announced. Before another restructuring
-            kicks off. Before scaling something that already feels stretched.
+            kicks off. Before you begin scaling something that already feels stretched.
           </p>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
             Phase Zero exists to create clarity before your next major decision
-            hardens into execution &mdash; the threshold work that helps your
+            hardens into execution. it&rsquo;s the threshold work that helps your
             organization see itself clearly before deciding what comes next.
           </p>
           <Link to="/phase-zero">
@@ -369,13 +369,13 @@ export default function PPSHome() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="badge-gold mb-4 inline-block">Our Painted Porch</span>
+            <span className="badge-gold mb-4 inline-block">Our Painted Porch Pillars</span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               The foundation beneath the movement.
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
               Three dimensions that influence what your organization is built to
-              carry. When all three are load-bearing, your porch is fortified and structurally ready to design and construct your next big move.
+              carry. When all three are structurally-sound and load-bearing, you&rsquo;re fortified and ready to design and built your next big move.
             </p>
           </div>
 

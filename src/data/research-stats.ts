@@ -71,7 +71,7 @@ export const RESEARCH_STATS: Record<string, ResearchStat> = {
   gallup_cost: {
     id: "gallup_cost",
     figure: "$10T",
-    label: "in lost productivity each year — 9% of global GDP",
+    label: "in lost productivity each year. That's 9% of global GDP",
     long: "Disengagement costs the global economy an estimated $10 trillion a year, or 9% of global GDP.",
     source: "Gallup, State of the Global Workplace 2026",
     sourceUrl: "https://www.gallup.com/workplace/349484/state-of-the-global-workplace.aspx",
