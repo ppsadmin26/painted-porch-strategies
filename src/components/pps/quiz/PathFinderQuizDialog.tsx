@@ -50,11 +50,16 @@ type PersistedState = {
 };
 
 function BoldShiftName({ name }: { name: string }) {
-  if (!name.includes("shIFt")) return <>{name}</>;
-  const [before, after] = name.split("shIFt");
+  if (!name.toLowerCase().includes("shift")) return <>{name}</>;
+  
+  // Match shIFt or ShIFt
+  const match = name.match(/([sS])hIFt/);
+  if (!match) return <>{name}</>;
+  
+  const [before, after] = name.split(match[0]);
   return (
     <>
-      {before}sh<span className="font-bold">IF</span>t{after}
+      {before}{match[1]}h<span className="font-bold">IF</span>t{after}
     </>
   );
 }

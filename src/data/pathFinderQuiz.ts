@@ -62,8 +62,8 @@ export const OFFERINGS = {
   changeForGood: { key: "changeForGood", name: "Change for Good: Immunity to Change", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Surfacing the hidden competing commitments quietly defeating your change efforts." },
   cultivatingChangeResilience: { key: "cultivatingChangeResilience", name: "Cultivating Change Resilience", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Resilience as organizational infrastructure: distributed across systems and culture." },
   kickTheHabit: { key: "kickTheHabit", name: "Kick the Habit", facilitator: "Amy", tier: "Pathway B", url: "/resources/kick-the-habit", blurb: "Addressing the behavioral patterns and mental models that make change fail to stick." },
-  aiEiOh: { key: "aiEiOh", name: "AI, EI, Oh", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Leading AI integration with the EI and organizational wisdom it requires." },
-  architectureOfAdaptability: { key: "architectureOfAdaptability", name: "The Architecture of Organizational shIFt", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Building organizational systems designed to navigate uncertainty rather than react to it." },
+  aiEiOh: { key: "aiEiOh", name: "AI, EI, Oh", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Leading AI integration with the emotional intelligence and organizational wisdom it requires." },
+  architectureOfAdaptability: { key: "architectureOfAdaptability", name: "The Architecture of Organizational ShIFt", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Building organizational systems designed to navigate uncertainty rather than react to it." },
   goldilocks: { key: "goldilocks", name: "Goldilocks Leadership", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Calibrated, context-sensitive EQ in leadership." },
   pillarsOfLastingChange: { key: "pillarsOfLastingChange", name: "The Pillars of Lasting Change & Continuous Innovation", facilitator: "Painted Porch Team", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Culture, operations, and human capacity as one living system." },
   stracticalLeader: { key: "stracticalLeader", name: "The Stractical Leader", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/stractical-leader", blurb: "Integrating strategic vision with tactical execution for leadership teams." },
@@ -572,7 +572,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     extra.push(grp("Team Performance — Contribution, Capability, and Cohesion", "geniusAtWork", "heroesAssemble"));
   } else if (rt === "RT-B") {
     headline = "Change & Transformation";
-    narrative = "Your organization is moving through something significant, or about to. The question isn't whether the change is necessary. It's whether your leaders and your organization have the architecture to carry it. A workshop can get traction quickly. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and surfaces the structural readiness gaps a workshop alone won't address.";
+    narrative = "Your organization is moving through something significant, or about to. The question isn't whether the change is necessary, but whether your leaders and your organization have the architecture to carry it. A workshop can get traction quickly. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and surfaces the structural readiness gaps a workshop alone won't address.";
     const q1 = val(answers, "Q1Change");
     primaryHeading = "Change Leadership — Frameworks for Leading Transformation";
     if (q1 === "A") primaryKeys = ["pathToLastingChange", "leadAtSpeed", "drivingChange3Shifts"];
