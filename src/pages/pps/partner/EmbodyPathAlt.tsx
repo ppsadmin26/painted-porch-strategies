@@ -307,7 +307,7 @@ export default function EmbodyPathAlt() {
               Painted Porch Partners
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
-              Industries we partner with
+              Industries we love to work with
             </h2>
             <p className="text-base text-foreground">
               Not limited by industry. Defined by Executive commitment and a partnership mindset.
