@@ -128,6 +128,7 @@ const workshopTopics = [
 ];
 
 export default function AmplifyWorkshops() {
+  const { open: openQuiz } = usePathFinderQuiz();
   return (
     <div>
       <PPSBreadcrumb
