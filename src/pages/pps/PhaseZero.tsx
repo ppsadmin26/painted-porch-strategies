@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import PartnershipPromise from "@/components/pps/PartnershipPromise";
-import { Building2, Compass, Brain, ArrowRight, CheckCircle, DoorOpen, Route, Users } from "lucide-react";
+import { Building2, Compass, Brain, ArrowRight, CheckCircle, XCircle, DoorOpen, Route, Users } from "lucide-react";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { useScrollAnimation, getAnimationClasses } from "@/hooks/useScrollAnimation";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
@@ -308,7 +308,7 @@ export default function PhaseZero() {
               <ul className="space-y-3">
                 {isIsNot.isNot.map((s) => (
                   <li key={s} className="flex items-start gap-3 text-foreground leading-relaxed">
-                    <span className="text-raspberry mt-1">•</span>
+                    <XCircle className="w-5 h-5 text-raspberry flex-shrink-0 mt-1" />
                     <span>{s}</span>
                   </li>
                 ))}
