@@ -175,7 +175,7 @@ export default function IgnitePathAlt() {
           
           <div className="text-center">
             <p className="text-lg text-foreground mb-6">
-              <strong>If any of these spark a "Sh<span className="text-gold font-bold">IF</span>t Yeah!", then stepping onto the IGNITE path is just right for you.</strong>
+              <strong>If any of these spark a "Sh<span className="text-gold font-bold">IF</span>t Yeah!", then stepping onto the IGNITE P.A.T.H.way is just right for you.</strong>
             </p>
             <p className="text-foreground mb-8 max-w-2xl mx-auto">
               Take our free P.A.T.H.finder quiz to discover which programs fit your specific development priorities.
@@ -285,7 +285,7 @@ export default function IgnitePathAlt() {
                 Masterclasses
               </h3>
               <p className="text-foreground mb-6 leading-relaxed">
-                Strategic insights in under 90 minutes. These mini-workshops illuminate Phase Zero strategic architecture, transformation leadership, and conscious design, one small shift at a time.
+                Strategic insights in under 90 minutes. These mini-workshops illuminate Phase Zero strategic architecture, transformation design, and conscious leadership, one small shift at a time.
               </p>
               <p className="text-sm font-semibold text-navy mb-3">What's Inside:</p>
               <ul className="space-y-2 mb-6 flex-grow">
