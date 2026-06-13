@@ -838,8 +838,15 @@ export default function SiteVideosManager() {
             >
               {migrating ? (
                 <>
-                  <Loader2 className="h-4 w-4 mr-2 animate-spin" /> Migrating...
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />{" "}
+                  {transcodePhase === "transcoding"
+                    ? `Optimizing ${Math.round(transcodeProgress * 100)}%`
+                    : transcodePhase === "uploading"
+                    ? "Uploading..."
+                    : "Migrating..."}
                 </>
+              ) : optimize ? (
+                "Optimize & migrate"
               ) : (
                 "Migrate to bucket"
               )}
