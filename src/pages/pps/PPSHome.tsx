@@ -130,7 +130,7 @@ export default function PPSHome() {
             icon: <ArrowRight className="ml-2 w-5 h-5" />,
           },
         ]}
-        background={{ type: "image", src: homeHero }}
+        background={{ type: "video", src: homeHero, poster: homeHero, slotKey: "home-hero" }}
         overlayClass="bg-navy/55"
       />
 
