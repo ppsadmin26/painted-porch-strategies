@@ -118,7 +118,7 @@ const coreValues = [
     number: "03",
     title: "Stewardship",
     description:
-      "Real results come from shared commitment, trust, and clear accountability on both sides of the table.",
+      "Real results come from shared commitment, trust, and clear accountability on both seats on the porch.",
     detail:
       "We are here to do good work that is financially worth it and personally worth it, where talent, purpose, and contribution all line up.",
     color: "bg-lime/10",
