@@ -16,7 +16,7 @@ const navLinks = [
   { label: "What is Phase Zero?", href: "/phase-zero" },
   { label: "Open Your Blue Door", href: "/blue-door" },
   {
-    label: "P.A.T.H.ways",
+    label: "Partner with Us",
     href: "/partner",
     children: [
       { label: "Ignite ShIFt", href: "/partner/ignite" },
