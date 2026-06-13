@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
+import { useHeroLoaded } from "@/hooks/useHeroLoaded";
 import faqHero from "@/assets/faq-hero.jpg";
 
 const sitewideFaqCategories: FAQCategory[] = [
@@ -223,6 +224,7 @@ export default function FAQPage() {
     description: "Answers to the most common questions about Painted Porch Strategies, Phase Zero, the Blue Door, and our IGNITE, AMPLIFY, and EMBODY P.A.T.H.ways.",
     ogImage: faqHero,
   });
+  const isLoaded = useHeroLoaded();
   return (
     <div>
       {/* Hero */}
@@ -236,13 +238,13 @@ export default function FAQPage() {
         <div className="container max-w-6xl mx-auto px-6 relative z-10 py-16 md:py-24">
           <div className="md:w-4/5">
             <div className="bg-black/65 backdrop-blur-sm p-8 md:p-12 rounded-xl">
-              <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
+              <span className={`inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6 transition-all duration-700 ease-out ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>
                 Resources
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all duration-700 ease-out delay-150 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
                 Frequently Asked Questions
               </h1>
-              <p className="text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl">
+              <p className={`text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl transition-all duration-700 ease-out delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
                 Everything you need to know about Painted Porch Strategies, our P.A.T.H.ways, and how we partner with leaders to architect extraordinary outcomes.
               </p>
             </div>
