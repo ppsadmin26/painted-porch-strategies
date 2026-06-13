@@ -322,7 +322,7 @@ export default function OurApproach() {
               What our work makes possible.
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
-              We do not deliver change. We build the conditions where the
+              We do not deliver or manage change for you. We build the conditions where the
               right change becomes possible, in your people and across your
               organization.
             </p>
