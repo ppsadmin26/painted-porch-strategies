@@ -131,7 +131,8 @@ export default function PPSHome() {
           },
         ]}
         background={{ type: "video", src: homeHero, poster: homeHero, slotKey: "home-hero" }}
-        overlayClass="bg-navy/55"
+        overlayClass="bg-gradient-to-r from-navy/70 via-navy/45 to-transparent"
+        textBoxClass="bg-navy/30 backdrop-blur-sm"
       />
 
       {/* 3AM Questions + Research stats moved further down the page */}

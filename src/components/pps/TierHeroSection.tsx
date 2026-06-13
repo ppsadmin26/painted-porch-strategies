@@ -45,6 +45,8 @@ interface TierHeroSectionProps {
   };
   /** Overlay color class (default: "bg-navy/40") */
   overlayClass?: string;
+  /** Inner text box class (default: "bg-black/50 backdrop-blur-sm") */
+  textBoxClass?: string;
   /** Minimum height class (default: "min-h-[70vh]") */
   minHeightClass?: string;
   /** Extra classes (e.g. object-position) applied to the background media element */
@@ -73,6 +75,7 @@ export function TierHeroSection({
   ctas,
   background,
   overlayClass = "bg-navy/40",
+  textBoxClass = "bg-black/50 backdrop-blur-sm",
   minHeightClass = "min-h-[70vh]",
   mediaClassName = "",
 }: TierHeroSectionProps) {
@@ -132,7 +135,7 @@ export function TierHeroSection({
 
       <div className="container max-w-6xl mx-auto px-6 relative z-10 py-16 md:py-24">
         <div className="md:w-4/5">
-          <div className="bg-black/50 backdrop-blur-sm p-8 md:p-12 rounded-xl">
+          <div className={`${textBoxClass} p-8 md:p-12 rounded-xl`}>
             {/* Badge */}
             {(customBadge || tier) && (
               <div
