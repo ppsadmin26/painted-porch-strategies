@@ -118,6 +118,8 @@ export default function BlogPostEditor() {
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const restoredDraftRef = useRef(false);
   const lastSavedSnapshotRef = useRef<string | null>(null);
+  const latestDraftRef = useRef<BlogPostDraftValues | null>(null);
+  const lastPersistedDraftRef = useRef<string | null>(null);
   const draftStorageKey = getDraftStorageKey(id);
 
   const isContributor = userRole === "contributor";
@@ -158,6 +160,22 @@ export default function BlogPostEditor() {
     setSelectedCategories(values.selectedCategories || []);
     setPrimaryCategoryId(values.primaryCategoryId || null);
     setAuthorId(values.authorId || null);
+  };
+
+  const persistLocalDraft = (values: BlogPostDraftValues) => {
+    try {
+      const payload = JSON.stringify({
+        version: 1,
+        savedAt: new Date().toISOString(),
+        values,
+      } satisfies BlogPostLocalDraft);
+      if (payload !== lastPersistedDraftRef.current) {
+        localStorage.setItem(draftStorageKey, payload);
+        lastPersistedDraftRef.current = payload;
+      }
+    } catch {
+      // If local storage is unavailable or full, keep editing without blocking the page.
+    }
   };
 
   // Default author to current user for contributors (and new posts)
@@ -281,22 +299,16 @@ export default function BlogPostEditor() {
   useEffect(() => {
     if (!draftReady) return;
 
-    const snapshot = JSON.stringify(buildDraftValues());
+    const values = buildDraftValues();
+    latestDraftRef.current = values;
+    const snapshot = JSON.stringify(values);
     const changed = snapshot !== lastSavedSnapshotRef.current;
     setHasUnsavedChanges(changed);
 
     if (!changed) return;
 
-    const draft: BlogPostLocalDraft = {
-      version: 1,
-      savedAt: new Date().toISOString(),
-      values: buildDraftValues(),
-    };
-    const timer = window.setTimeout(() => {
-      localStorage.setItem(draftStorageKey, JSON.stringify(draft));
-    }, 300);
+    persistLocalDraft(values);
 
-    return () => window.clearTimeout(timer);
   }, [
     draftReady,
     draftStorageKey,
@@ -321,14 +333,29 @@ export default function BlogPostEditor() {
   useEffect(() => {
     if (!hasUnsavedChanges) return;
 
+    const persistLatestDraft = () => {
+      if (latestDraftRef.current) persistLocalDraft(latestDraftRef.current);
+    };
+
     const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      persistLatestDraft();
       event.preventDefault();
       event.returnValue = "";
     };
 
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") persistLatestDraft();
+    };
+
     window.addEventListener("beforeunload", handleBeforeUnload);
-    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
-  }, [hasUnsavedChanges]);
+    window.addEventListener("pagehide", persistLatestDraft);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("pagehide", persistLatestDraft);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [hasUnsavedChanges, draftStorageKey]);
 
   const generateSlug = (text: string) =>
     text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
