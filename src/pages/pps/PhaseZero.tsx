@@ -198,9 +198,7 @@ export default function PhaseZero() {
           <div className="space-y-5 text-lg md:text-xl text-charcoal/85 leading-relaxed">
             <p>And not every change creates the conditions needed to sustain what comes after it.</p>
             <p>
-              Some organizations get worn down not from a lack of effort, but from the
-              weight that builds up underneath it. Unfinished work. Competing priorities.
-              Fragmented initiatives. Directions that never fully aligned in the first place.
+              Your organization isn't getting worn down from a lack of effort, but from the weight that builds up underneath the continual drive to innovate, accelerate, adapt, and grow.
             </p>
             <p>
               Pushing harder in the wrong direction does not change the direction. It just{" "}
