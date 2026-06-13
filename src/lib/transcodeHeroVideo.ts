@@ -135,9 +135,12 @@ export async function transcodeHeroVideo(
     await ff.exec(args);
 
     const data = await ff.readFile(outputName);
-    const outputBuffer =
+    const outputBytes =
       data instanceof Uint8Array ? data : new TextEncoder().encode(String(data));
-    const blob = new Blob([outputBuffer], { type: "video/mp4" });
+    // Copy into a fresh ArrayBuffer so TS doesn't widen to SharedArrayBuffer.
+    const ab = new ArrayBuffer(outputBytes.byteLength);
+    new Uint8Array(ab).set(outputBytes);
+    const blob = new Blob([ab], { type: "video/mp4" });
 
     // Best-effort cleanup so the in-memory FS doesn't grow across runs.
     try {
