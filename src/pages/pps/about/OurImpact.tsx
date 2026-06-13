@@ -97,28 +97,17 @@ export default function OurImpact() {
       <section className="relative isolate min-h-[70vh] flex items-center overflow-hidden bg-navy">
         <div className="absolute inset-0 isolate" data-testid="impact-hero-video">
           {showVideo ? (
-            <>
-              {/* Dual video crossfade */}
-              <video
-                ref={videoARef}
-                src={heroVideoUrl}
-                autoPlay
-                muted
-                playsInline
-                onError={() => setVideoFailed(true)}
-                className="absolute inset-0 h-full w-full object-cover"
-                style={{ opacity: activeVideo === "A" ? 1 : 0, transition: "opacity 1.5s ease-in-out" }}
-              />
-              <video
-                ref={videoBRef}
-                src={heroVideoUrl}
-                muted
-                playsInline
-                onError={() => setVideoFailed(true)}
-                className="absolute inset-0 h-full w-full object-cover"
-                style={{ opacity: activeVideo === "B" ? 1 : 0, transition: "opacity 1.5s ease-in-out" }}
-              />
-            </>
+            <video
+              ref={videoRef}
+              src={heroVideoUrl}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              onError={() => setVideoFailed(true)}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
           ) : (
             // Friendly fallback: branded gradient + soft animated paint-splash glow.
             // Shown when the impact-hero slot has no URL or the video fails to load.
