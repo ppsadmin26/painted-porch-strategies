@@ -275,7 +275,23 @@ export default function PhaseZero() {
               Clear About the Work
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight">
-              What Phase Zero is, and what it is not.
+              What Phase Zero{" "}
+              <span className="relative inline-block">
+                is
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 -bottom-1 h-[3px] w-full bg-lime origin-left animate-[underline-grow_0.7s_ease-out_0.3s_both]"
+                />
+              </span>
+              , and what it is{" "}
+              <span className="relative inline-block">
+                not
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 -bottom-1 h-[3px] w-full bg-raspberry origin-left animate-[underline-grow_0.7s_ease-out_0.9s_both]"
+                />
+              </span>
+              .
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
