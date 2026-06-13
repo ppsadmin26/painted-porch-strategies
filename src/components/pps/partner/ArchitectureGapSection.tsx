@@ -63,15 +63,15 @@ export default function ArchitectureGapSection() {
     <section className="py-16 md:py-24 bg-white" aria-labelledby="architecture-gap-heading">
       <div className="container max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 max-w-3xl mx-auto">
-          <span className="badge-gold mb-4 inline-block">The Architecture Gap</span>
+          <span className="badge-gold mb-4 inline-block">The Transformation Gap</span>
           <h2 id="architecture-gap-heading" className="text-3xl md:text-4xl font-bold text-navy mb-4">
             The reality every leader is navigating right now.
           </h2>
           <p className="text-lg text-foreground leading-relaxed">
             The data tells the same story we hear from leaders every week: the
-            problem isn&rsquo;t the strategy. It&rsquo;s the architecture
+            problem isn&rsquo;t the strategy, it&rsquo;s the architecture
             underneath it. Here&rsquo;s what we&rsquo;re working with, and where
-            the Porch Pillars come in.
+            the Painted Porch Pillars come in.
           </p>
         </div>
 

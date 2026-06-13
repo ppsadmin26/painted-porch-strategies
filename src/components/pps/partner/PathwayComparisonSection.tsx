@@ -41,7 +41,7 @@ const tierContent = {
   },
   EMBODY: {
     tagline: "Architect transformation that lasts.",
-    journey: "Embedded strategic partnership (6-12+ months) to co-architect permanent organizational capacity, comprehensive, deep, transformative.",
+    journey: "Embedded strategic partnership (6+ months) to co-architect permanent organizational capacity, comprehensive, deep, transformative.",
     features: [
       "Architect Change Sessions (Phase Zero strategic co-design)",
       "Executive Advisory Partnership (ongoing strategic guidance)",
@@ -54,7 +54,7 @@ const tierContent = {
       "Leaders ready for long-term embedded partnership",
       "Anyone committed to \"This is who we're becoming\"",
     ],
-    timeline: "6-12+ months (with option to continue)",
+    timeline: "6+ months (with option to continue)",
     cta: "Explore EMBODY",
   },
 };
@@ -75,7 +75,7 @@ export function PathwayComparisonSection() {
               Each P.A.T.H.way is designed for a different level of commitment and transformation ambition.
             </p>
             <p>
-              Some leaders need a spark, proof that change can work here. Some need momentum, compound results from aligned teams. Some need permanence, unshakeable foundations that outlast any single initiative.
+              Some leaders need a spark, proof that change can work here. Some need momentum, compounded results from aligned teams. Some need permanence, unshakeable foundations that outlast any single initiative.
             </p>
             <p>
               <strong>Different depths. Different timelines. Different investments.</strong>
