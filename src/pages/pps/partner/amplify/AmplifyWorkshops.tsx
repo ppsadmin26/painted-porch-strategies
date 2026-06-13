@@ -13,6 +13,7 @@ import stoicThumb from "@/assets/workshops/stoic-leadership-thumb.jpg";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
+import { usePathFinderQuiz } from "@/components/pps/quiz/PathFinderQuizProvider";
 import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 
 const workshopFaqCategories: FAQCategory[] = [
