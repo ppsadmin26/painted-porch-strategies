@@ -797,8 +797,18 @@ export default function SiteVideosManager() {
           <DialogHeader>
             <DialogTitle>Migrate video from URL</DialogTitle>
             <DialogDescription>
-              Paste a public video URL (Lovable CDN, generator output, anywhere). It will be downloaded server-side and stored in your <code className="font-mono text-xs">site-videos</code> bucket for slot{" "}
+              Paste a public video URL (Lovable CDN, generator output, anywhere). It will be stored in your <code className="font-mono text-xs">site-videos</code> bucket for slot{" "}
               <code className="font-mono text-xs">{migrateSlot}</code>. Your repo is never touched.
+              {optimize ? (
+                <span className="block mt-2 text-xs text-primary">
+                  <Wand2 className="inline h-3 w-3 mr-1 align-text-bottom" />
+                  Optimizer is ON — video will be transcoded in your browser to 720p / 24 fps / ≤10 s / muted before upload.
+                </span>
+              ) : (
+                <span className="block mt-2 text-xs text-muted-foreground">
+                  Optimizer is OFF — original file will be stored as-is via the server.
+                </span>
+              )}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-2 py-2">
