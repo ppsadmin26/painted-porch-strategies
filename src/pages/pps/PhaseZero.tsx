@@ -21,16 +21,16 @@ function FadeIn({ children, className = "" }: { children: React.ReactNode; class
   );
 }
 
-const ShIFt = () => (
+const ShIFt = ({ lowercase = false }: { lowercase?: boolean }) => (
   <>
-    Sh<span className="text-raspberry font-bold">IF</span>t
+    {lowercase ? "sh" : "Sh"}<span className="text-raspberry font-bold">IF</span>t
   </>
 );
 
 const isIsNot = {
   is: [
     "A clear look at what your organization can actually carry right now.",
-    "Real questions about leadership, systems, and people before money or momentum gets locked in.",
+    "Deep questions about leadership, systems, and people before money or momentum gets locked in.",
     "The design phase that decides whether your next big move strengthens you or stretches you thin.",
   ],
   isNot: [
@@ -71,7 +71,7 @@ const pillars = [
     iconBg: "bg-strategic/15",
     accent: "text-strategic",
     definition:
-      "Your systems, workflows, and decision pathways. This is how strategy actually moves through the building and turns into real work.",
+      "Your systems, workflows, and decision pathways. This pillar of process is how strategy actually moves through the building and turns into real work.",
     questions: [
       "Do our workflows support the position we want to lead in our market?",
       "Are our systems built for value, or just for speed?",
@@ -92,7 +92,7 @@ const pillars = [
     iconBg: "bg-gold/15",
     accent: "text-gold",
     definition:
-      "The judgment, communication, resilience, and mindset your people bring to the work. This is the human capacity that decides whether change holds up over time.",
+      "The judgment, communication, resilience, and mindset your people bring to the work. This is the pillar of people - human capacity that decides whether change holds up over time.",
     questions: [
       "Can our people navigate the unknown, or only follow set steps?",
       "Is good judgment spread through the organization, or stuck at the top?",
@@ -210,7 +210,7 @@ export default function PhaseZero() {
             </p>
             <p>
               Phase Zero is the pause that prevents that cost. A deliberate stop, before
-              the next big <ShIFt /> hardens into execution, to look clearly at what your
+              the next big <ShIFt lowercase /> hardens into execution, to look clearly at what your
               organization can carry and what it cannot.
             </p>
           </div>
@@ -253,13 +253,13 @@ export default function PhaseZero() {
             Phase Zero is where the real choices get made.
           </h2>
           <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-5">
-            It's the phase where you decide what <ShIFt /> your organization
+            It's the phase where you decide what <ShIFt lowercase /> your organization
             can credibly lead. Not what to copy or catch up to, but what to{" "}
             <strong className="font-bold">author</strong>.
           </p>
           <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed">
             That sounds simple; it's not. Most teams skip it because the
-            pressure to move feels louder than the cost of moving in the
+            pressure to move feels heavier than the cost of moving in the
             wrong direction.
           </p>
           <p className="text-2xl md:text-3xl font-poppins italic text-navy mt-10 border-l-4 border-gold pl-6">
