@@ -135,7 +135,7 @@ export function TierHeroSection({
 
       <div className="container max-w-6xl mx-auto px-6 relative z-10 py-16 md:py-24">
         <div className="md:w-4/5">
-          <div className="bg-black/50 backdrop-blur-sm p-8 md:p-12 rounded-xl">
+          <div className={`${textBoxClass} p-8 md:p-12 rounded-xl`}>
             {/* Badge */}
             {(customBadge || tier) && (
               <div
