@@ -47,15 +47,17 @@ export const HandwrittenUnderline = ({
         preserveAspectRatio="none"
         className="absolute left-0 right-0 -bottom-2 w-full h-[0.5em] pointer-events-none overflow-visible"
       >
-        <path
-          d="M1.5 7 C 15 3, 32 10, 50 6 S 85 3, 98.5 6.5"
-          fill="none"
+        <line
+          x1="2"
+          y1="6"
+          x2="98"
+          y2="6"
           stroke={color}
           strokeWidth="2.5"
           strokeLinecap="round"
           style={{
-            strokeDasharray: 120,
-            strokeDashoffset: inView ? 0 : 120,
+            strokeDasharray: 96,
+            strokeDashoffset: inView ? 0 : 96,
             transition: `stroke-dashoffset ${duration}ms cubic-bezier(0.65, 0, 0.35, 1) ${delay}ms`,
           }}
         />
