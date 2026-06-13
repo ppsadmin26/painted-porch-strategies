@@ -511,7 +511,7 @@ export default function EmbodyPathAlt() {
               EMBODY or AMPLIFY?
             </h2>
             <p className="text-base text-foreground max-w-2xl mx-auto">
-              Not every leader needs an embedded partnership. Many start with a 90-day AMPLIFY Strategic Sprint and grow from there.
+              Not every leader needs an embedded partnership. Many start with a 90-day Strategic Sprint and grow from there.
             </p>
           </div>
           {/* Desktop / tablet: full table */}
