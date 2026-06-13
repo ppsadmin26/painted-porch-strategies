@@ -5,14 +5,12 @@ Disallow: /admin/
 Disallow: /reset-password
 
 # Draft pages — hidden from search engines
-Disallow: /about/impact
 Disallow: /amy
 Disallow: /change-ready-leader-assessment
 Disallow: /change-ready-team-assessment
 Disallow: /elemental-style-assessment
 Disallow: /elements-mini
 Disallow: /eq-change-leader
-Disallow: /home-alt
 Disallow: /home-archive
 Disallow: /home-verbatim
 Disallow: /mym-journal-challenge
