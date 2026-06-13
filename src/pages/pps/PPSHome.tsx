@@ -767,7 +767,7 @@ export default function PPSHome() {
       {/* ============================================================ */}
       <ParallaxCTA
         backgroundImage={homeHero}
-        eyebrow="Phase Zero™"
+        eyebrow="GET CLARITY STARTING AT PHASE ZERO™"
         headline={
           <>
             Step onto the porch. Begin with What <span className="text-raspberry font-bold">IF</span>.
