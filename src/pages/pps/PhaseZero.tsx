@@ -313,15 +313,16 @@ export default function PhaseZero() {
         <div className="container max-w-6xl mx-auto px-6">
           <FadeIn className="text-center max-w-3xl mx-auto mb-12">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
-              The Foundations Phase Zero Examines
+              The Foundations Phase Zero Fortifies
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
               The Painted Porch Pillars.
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
-              Every organization stands on three load-bearing structures.
-              When one is weak, change cracks. When all three are strong and
-              healthy, change holds. Phase Zero looks at each one.
+              Your organization stands on three load-bearing structures.
+              When one is weak, change cracks and resilience weakens. When all
+              three are strong and healthy, change holds and builds. Phase Zero
+              examines and fortifies each one.
             </p>
           </FadeIn>
 
