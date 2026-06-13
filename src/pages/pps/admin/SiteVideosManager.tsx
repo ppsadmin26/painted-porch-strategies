@@ -363,26 +363,74 @@ export default function SiteVideosManager() {
   const handleMigrate = async () => {
     if (!migrateSlot || !migrateUrl.trim()) return;
     setMigrating(true);
-    // Resolve relative paths (e.g. "/__l5e/assets-v1/...") against the current
-    // browser origin so the edge function always receives an absolute URL.
+    setTranscodeProgress(0);
+    setTranscodePhase("idle");
     let src = migrateUrl.trim();
     if (src.startsWith("/")) src = window.location.origin + src;
     try {
-      const { data, error } = await supabase.functions.invoke(
-        "migrate-video-from-url",
-        { body: { slot_key: migrateSlot, source_url: src } },
-      );
-      if (error) throw error;
-      if ((data as any)?.error) throw new Error((data as any).error);
-      const sizeMb = (data as any)?.size_bytes
-        ? ((data as any).size_bytes / 1024 / 1024).toFixed(1)
-        : null;
-      toast({
-        title: "Video migrated to your bucket",
-        description: sizeMb
-          ? `Stored ${sizeMb} MB at ${(data as any).storage_path}. Repo untouched.`
-          : "Stored in site-videos bucket. Repo untouched.",
-      });
+      if (optimize) {
+        // Pull the source into the browser, run the standard hero preset,
+        // then push the optimized MP4 straight into storage. This means
+        // even "Migrate from URL" lands the same shape as a direct upload.
+        const sourceRes = await fetch(src, { mode: "cors" });
+        if (!sourceRes.ok) throw new Error(`Source fetch failed: HTTP ${sourceRes.status}`);
+        const sourceBlob = await sourceRes.blob();
+        const originalSize = sourceBlob.size;
+        setTranscodePhase("transcoding");
+        const result = await transcodeHeroVideo(sourceBlob, migrateSlot, {
+          onProgress: (p) => setTranscodeProgress(p),
+        });
+        setTranscodePhase("uploading");
+
+        const stamp = Date.now();
+        const path = `${migrateSlot}/${stamp}.mp4`;
+        const { error: upErr } = await supabase.storage
+          .from("site-videos")
+          .upload(path, result.file, {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: "video/mp4",
+          });
+        if (upErr) throw upErr;
+        const publicUrl = supabase.storage.from("site-videos").getPublicUrl(path).data.publicUrl;
+
+        const { data: userRes } = await supabase.auth.getUser();
+        const existing = videos[migrateSlot];
+        const row = {
+          video_url: publicUrl,
+          storage_path: path,
+          updated_by: userRes.user?.id ?? null,
+        };
+        if (existing) {
+          await supabase.from("site_videos").update(row).eq("slot_key", migrateSlot);
+          if (existing.storage_path) {
+            await supabase.storage.from("site-videos").remove([existing.storage_path]);
+          }
+        } else {
+          await supabase.from("site_videos").insert({ slot_key: migrateSlot, ...row });
+        }
+        toast({
+          title: "Video migrated & optimized",
+          description: `${formatMB(originalSize)} → ${formatMB(result.sizeBytes)} (720p / 24fps / muted / 10s). Repo untouched.`,
+        });
+      } else {
+        // Raw passthrough via the edge function (no transcoding)
+        const { data, error } = await supabase.functions.invoke(
+          "migrate-video-from-url",
+          { body: { slot_key: migrateSlot, source_url: src } },
+        );
+        if (error) throw error;
+        if ((data as any)?.error) throw new Error((data as any).error);
+        const sizeMb = (data as any)?.size_bytes
+          ? ((data as any).size_bytes / 1024 / 1024).toFixed(1)
+          : null;
+        toast({
+          title: "Video migrated to your bucket",
+          description: sizeMb
+            ? `Stored ${sizeMb} MB at ${(data as any).storage_path}. Repo untouched.`
+            : "Stored in site-videos bucket. Repo untouched.",
+        });
+      }
       setMigrateSlot(null);
       setMigrateUrl("");
       await load();
@@ -395,6 +443,8 @@ export default function SiteVideosManager() {
       });
     } finally {
       setMigrating(false);
+      setTranscodePhase("idle");
+      setTranscodeProgress(0);
     }
   };
 
