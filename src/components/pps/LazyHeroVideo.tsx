@@ -87,7 +87,10 @@ export default function LazyHeroVideo({
     };
   }, [slotKey, retryToken]);
 
-  const showErrorFallback = errored || posterFailed;
+  // Only show the "Video unavailable" overlay when we also can't show the poster.
+  // Otherwise the poster is a perfectly fine hero image and we shouldn't draw
+  // an alert icon on top of it.
+  const showErrorFallback = posterFailed;
   const handleRetry = () => {
     setErrored(false);
     setPosterFailed(false);
