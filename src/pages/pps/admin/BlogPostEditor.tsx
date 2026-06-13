@@ -85,7 +85,7 @@ export default function BlogPostEditor() {
   const [title, setTitle] = useState("Untitled Post");
   const [slug, setSlug] = useState("");
   const [excerpt, setExcerpt] = useState("");
-  const [bodyJson, setBodyJson] = useState<any>({ type: "doc", content: [{ type: "paragraph" }] });
+  const [bodyJson, setBodyJson] = useState<any>(emptyBodyJson);
   const [coverImageUrl, setCoverImageUrl] = useState("");
   const [status, setStatus] = useState<PostStatus>("draft");
   const [featured, setFeatured] = useState(false);
@@ -113,8 +113,52 @@ export default function BlogPostEditor() {
   const [saving, setSaving] = useState(false);
   const [uploadingCover, setUploadingCover] = useState(false);
   const [generatingTags, setGeneratingTags] = useState(false);
+  const [postLoaded, setPostLoaded] = useState(isNew);
+  const [draftReady, setDraftReady] = useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const restoredDraftRef = useRef(false);
+  const lastSavedSnapshotRef = useRef<string | null>(null);
+  const draftStorageKey = getDraftStorageKey(id);
 
   const isContributor = userRole === "contributor";
+
+  const buildDraftValues = (): BlogPostDraftValues => ({
+    title,
+    slug,
+    excerpt,
+    bodyJson,
+    coverImageUrl,
+    status,
+    featured,
+    publishDate,
+    seoTitle,
+    seoDescription,
+    seoKeywords,
+    geoTags,
+    aeoTags,
+    selectedCategories,
+    primaryCategoryId,
+    authorId,
+  });
+
+  const applyDraftValues = (values: BlogPostDraftValues) => {
+    setTitle(values.title);
+    setSlug(values.slug);
+    setExcerpt(values.excerpt);
+    setBodyJson(values.bodyJson || emptyBodyJson);
+    setCoverImageUrl(values.coverImageUrl || "");
+    setStatus(values.status || "draft");
+    setFeatured(Boolean(values.featured));
+    setPublishDate(values.publishDate || "");
+    setSeoTitle(values.seoTitle || "");
+    setSeoDescription(values.seoDescription || "");
+    setSeoKeywords(values.seoKeywords || []);
+    setGeoTags(values.geoTags || []);
+    setAeoTags(values.aeoTags || []);
+    setSelectedCategories(values.selectedCategories || []);
+    setPrimaryCategoryId(values.primaryCategoryId || null);
+    setAuthorId(values.authorId || null);
+  };
 
   // Default author to current user for contributors (and new posts)
   useEffect(() => {
