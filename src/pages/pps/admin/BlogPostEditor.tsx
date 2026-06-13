@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -45,6 +45,35 @@ interface Category {
   color: string;
 }
 
+interface BlogPostDraftValues {
+  title: string;
+  slug: string;
+  excerpt: string;
+  bodyJson: any;
+  coverImageUrl: string;
+  status: PostStatus;
+  featured: boolean;
+  publishDate: string;
+  seoTitle: string;
+  seoDescription: string;
+  seoKeywords: string[];
+  geoTags: string[];
+  aeoTags: string[];
+  selectedCategories: string[];
+  primaryCategoryId: string | null;
+  authorId: string | null;
+}
+
+interface BlogPostLocalDraft {
+  version: 1;
+  savedAt: string;
+  values: BlogPostDraftValues;
+}
+
+const emptyBodyJson = { type: "doc", content: [{ type: "paragraph" }] };
+
+const getDraftStorageKey = (postId?: string | null) => `pps-blog-post-editor-draft:${postId || "new"}`;
+
 export default function BlogPostEditor() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
@@ -56,7 +85,7 @@ export default function BlogPostEditor() {
   const [title, setTitle] = useState("Untitled Post");
   const [slug, setSlug] = useState("");
   const [excerpt, setExcerpt] = useState("");
-  const [bodyJson, setBodyJson] = useState<any>({ type: "doc", content: [{ type: "paragraph" }] });
+  const [bodyJson, setBodyJson] = useState<any>(emptyBodyJson);
   const [coverImageUrl, setCoverImageUrl] = useState("");
   const [status, setStatus] = useState<PostStatus>("draft");
   const [featured, setFeatured] = useState(false);
@@ -84,8 +113,52 @@ export default function BlogPostEditor() {
   const [saving, setSaving] = useState(false);
   const [uploadingCover, setUploadingCover] = useState(false);
   const [generatingTags, setGeneratingTags] = useState(false);
+  const [postLoaded, setPostLoaded] = useState(isNew);
+  const [draftReady, setDraftReady] = useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const restoredDraftRef = useRef(false);
+  const lastSavedSnapshotRef = useRef<string | null>(null);
+  const draftStorageKey = getDraftStorageKey(id);
 
   const isContributor = userRole === "contributor";
+
+  const buildDraftValues = (): BlogPostDraftValues => ({
+    title,
+    slug,
+    excerpt,
+    bodyJson,
+    coverImageUrl,
+    status,
+    featured,
+    publishDate,
+    seoTitle,
+    seoDescription,
+    seoKeywords,
+    geoTags,
+    aeoTags,
+    selectedCategories,
+    primaryCategoryId,
+    authorId,
+  });
+
+  const applyDraftValues = (values: BlogPostDraftValues) => {
+    setTitle(values.title);
+    setSlug(values.slug);
+    setExcerpt(values.excerpt);
+    setBodyJson(values.bodyJson || emptyBodyJson);
+    setCoverImageUrl(values.coverImageUrl || "");
+    setStatus(values.status || "draft");
+    setFeatured(Boolean(values.featured));
+    setPublishDate(values.publishDate || "");
+    setSeoTitle(values.seoTitle || "");
+    setSeoDescription(values.seoDescription || "");
+    setSeoKeywords(values.seoKeywords || []);
+    setGeoTags(values.geoTags || []);
+    setAeoTags(values.aeoTags || []);
+    setSelectedCategories(values.selectedCategories || []);
+    setPrimaryCategoryId(values.primaryCategoryId || null);
+    setAuthorId(values.authorId || null);
+  };
 
   // Default author to current user for contributors (and new posts)
   useEffect(() => {
@@ -130,7 +203,16 @@ export default function BlogPostEditor() {
 
   // Load post if editing
   useEffect(() => {
-    if (isNew || !id) return;
+    restoredDraftRef.current = false;
+    setDraftReady(false);
+    setHasUnsavedChanges(false);
+
+    if (isNew || !id) {
+      setPostLoaded(true);
+      return;
+    }
+
+    setPostLoaded(false);
     const loadPost = async () => {
       const { data: post } = await supabase
         .from("blog_posts")
@@ -143,7 +225,7 @@ export default function BlogPostEditor() {
       setSlug(post.slug || "");
       setExcerpt(post.excerpt || "");
       setAuthorId(post.author_id || null);
-      setBodyJson(post.body_json || { type: "doc", content: [{ type: "paragraph" }] });
+      setBodyJson(post.body_json || emptyBodyJson);
       setCoverImageUrl(post.cover_image_url || "");
       setStatus(post.status as PostStatus);
       setFeatured(post.featured);
@@ -164,9 +246,89 @@ export default function BlogPostEditor() {
         const primary = postCats.find((c: any) => c.is_primary);
         if (primary) setPrimaryCategoryId(primary.category_id);
       }
+      setPostLoaded(true);
     };
     loadPost();
   }, [id, isNew, navigate]);
+
+  useEffect(() => {
+    if (!postLoaded || restoredDraftRef.current) return;
+
+    const snapshot = JSON.stringify(buildDraftValues());
+    lastSavedSnapshotRef.current = snapshot;
+    restoredDraftRef.current = true;
+
+    try {
+      const rawDraft = localStorage.getItem(draftStorageKey);
+      if (rawDraft) {
+        const draft = JSON.parse(rawDraft) as BlogPostLocalDraft;
+        if (draft?.version === 1 && draft.values) {
+          applyDraftValues(draft.values);
+          setHasUnsavedChanges(true);
+          toast({
+            title: "Unsaved edits restored",
+            description: "Your browser kept a local copy after the page refreshed.",
+          });
+        }
+      }
+    } catch {
+      localStorage.removeItem(draftStorageKey);
+    } finally {
+      setDraftReady(true);
+    }
+  }, [postLoaded, draftStorageKey]);
+
+  useEffect(() => {
+    if (!draftReady) return;
+
+    const snapshot = JSON.stringify(buildDraftValues());
+    const changed = snapshot !== lastSavedSnapshotRef.current;
+    setHasUnsavedChanges(changed);
+
+    if (!changed) return;
+
+    const draft: BlogPostLocalDraft = {
+      version: 1,
+      savedAt: new Date().toISOString(),
+      values: buildDraftValues(),
+    };
+    const timer = window.setTimeout(() => {
+      localStorage.setItem(draftStorageKey, JSON.stringify(draft));
+    }, 300);
+
+    return () => window.clearTimeout(timer);
+  }, [
+    draftReady,
+    draftStorageKey,
+    title,
+    slug,
+    excerpt,
+    bodyJson,
+    coverImageUrl,
+    status,
+    featured,
+    publishDate,
+    seoTitle,
+    seoDescription,
+    seoKeywords,
+    geoTags,
+    aeoTags,
+    selectedCategories,
+    primaryCategoryId,
+    authorId,
+  ]);
+
+  useEffect(() => {
+    if (!hasUnsavedChanges) return;
+
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [hasUnsavedChanges]);
 
   const generateSlug = (text: string) =>
     text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -272,6 +434,9 @@ export default function BlogPostEditor() {
       }
 
       toast({ title: "Saved!", description: `Post ${isNew ? "created" : "updated"} successfully.` });
+      lastSavedSnapshotRef.current = JSON.stringify(buildDraftValues());
+      localStorage.removeItem(draftStorageKey);
+      setHasUnsavedChanges(false);
       if (isNew) navigate(`/admin/posts/${postId}`, { replace: true });
     } catch (err: any) {
       toast({ title: "Save failed", description: err.message, variant: "destructive" });
