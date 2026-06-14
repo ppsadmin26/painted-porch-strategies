@@ -44,7 +44,7 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
       // The accordion IS the canonical home, so we show every workshop row.
       const { data, error } = await supabase
         .from("path_finder_offerings")
-        .select("offering_key, name, blurb, anchor_id, facilitator, current_url, is_live")
+        .select("offering_key, name, blurb, anchor_id, facilitator, current_url, is_live, topic")
         .eq("current_url", "/partner/amplify/workshops")
         .order("name", { ascending: true });
       if (error || !data || cancelled) return;
