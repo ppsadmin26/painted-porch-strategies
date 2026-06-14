@@ -157,7 +157,6 @@ export default function PathFinderOfferings() {
               <div key={row.id} className="border rounded-lg p-4 bg-white">
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="font-poppins font-semibold text-navy">{row.name}</h3>
                     <Badge variant="outline" className={TIER_COLORS[row.tier] ?? ""}>{row.tier}</Badge>
                     {row.facilitator && <Badge variant="outline">{row.facilitator}</Badge>}
                     <code className="text-xs text-muted-foreground">{row.offering_key}</code>
