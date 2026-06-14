@@ -30,6 +30,14 @@ const fullName = (f: string | null) => (f ? FACILITATOR_FULL_NAME[f] ?? f : "");
 
 const UNTAGGED = "More";
 
+/** Map raw DB topics into merged display tabs. */
+function displayTopic(raw: string | null): string {
+  const t = raw?.trim() || UNTAGGED;
+  if (t === "Resilience" || t === "Wellbeing") return "Resilience & Wellbeing";
+  if (t === "Innovation" || t === "Change") return "Change & Innovation";
+  return t;
+}
+
 /**
  * Full, canonical catalog of every workshop topic. Grouped into topic tabs
  * so it doesn't overwhelm, with each workshop as an accordion item inside its
