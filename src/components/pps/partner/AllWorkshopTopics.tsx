@@ -31,11 +31,13 @@ export function AllWorkshopTopics() {
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      // NOTE: do NOT filter by is_live here. For workshop rows, `is_live` means
+      // "has a dedicated standalone page" (most don't — they live on this hub).
+      // The accordion IS the canonical home, so we show every workshop row.
       const { data, error } = await supabase
         .from("path_finder_offerings")
         .select("offering_key, name, blurb, anchor_id, facilitator, current_url, is_live")
         .eq("current_url", "/partner/amplify/workshops")
-        .eq("is_live", true)
         .order("name", { ascending: true });
       if (error || !data || cancelled) return;
       setRows(data as Row[]);

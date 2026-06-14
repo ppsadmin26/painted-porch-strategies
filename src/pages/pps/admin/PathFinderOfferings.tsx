@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Save, ExternalLink, Search } from "lucide-react";
@@ -156,7 +157,6 @@ export default function PathFinderOfferings() {
               <div key={row.id} className="border rounded-lg p-4 bg-white">
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="font-poppins font-semibold text-navy">{row.name}</h3>
                     <Badge variant="outline" className={TIER_COLORS[row.tier] ?? ""}>{row.tier}</Badge>
                     {row.facilitator && <Badge variant="outline">{row.facilitator}</Badge>}
                     <code className="text-xs text-muted-foreground">{row.offering_key}</code>
@@ -181,6 +181,24 @@ export default function PathFinderOfferings() {
                       {savingId === row.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4 mr-1" />}
                       Save
                     </Button>
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-2 gap-3 text-sm mb-3">
+                  <div>
+                    <Label className="text-xs">Display name (shown in quiz results)</Label>
+                    <Input
+                      value={valueOf(row, "name") ?? ""}
+                      onChange={(e) => patch(row.id, { name: e.target.value })}
+                      className="font-poppins font-semibold text-navy"
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-xs">Blurb (shown under the name)</Label>
+                    <Textarea
+                      rows={2}
+                      value={valueOf(row, "blurb") ?? ""}
+                      onChange={(e) => patch(row.id, { blurb: e.target.value })}
+                    />
                   </div>
                 </div>
 
