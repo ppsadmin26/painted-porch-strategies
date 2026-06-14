@@ -362,7 +362,7 @@ export default function AmplifyWorkshops() {
               // Only exclude workshops already shown as featured cards on this page
               // Phase Zero featured cards (top section)
               "architectChange", "architect-change",
-              "pillarsReinforcement", "pillars-reinforcement",
+              
               "pathToLastingChange",
               "cultivatingChangeResilience",
               "leadershipOM",
