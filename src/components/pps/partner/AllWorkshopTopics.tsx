@@ -30,6 +30,14 @@ const fullName = (f: string | null) => (f ? FACILITATOR_FULL_NAME[f] ?? f : "");
 
 const UNTAGGED = "More";
 
+/** Map raw DB topics into merged display tabs. */
+function displayTopic(raw: string | null): string {
+  const t = raw?.trim() || UNTAGGED;
+  if (t === "Resilience" || t === "Wellbeing") return "Resilience & Wellbeing";
+  if (t === "Innovation" || t === "Change") return "Change & Innovation";
+  return t;
+}
+
 /**
  * Full, canonical catalog of every workshop topic. Grouped into topic tabs
  * so it doesn't overwhelm, with each workshop as an accordion item inside its
@@ -60,10 +68,10 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
     return rows.filter((r) => !skip.has(r.offering_key) && !(r.anchor_id && skip.has(r.anchor_id)));
   }, [rows, excludeKeys]);
 
-  // Build topic groups (alphabetical), with an "All" tab first.
+  // Build merged topic groups (alphabetical), with an "All" tab first.
   const topics = useMemo(() => {
     const set = new Set<string>();
-    visibleRows.forEach((r) => set.add(r.topic?.trim() || UNTAGGED));
+    visibleRows.forEach((r) => set.add(displayTopic(r.topic)));
     return Array.from(set).sort((a, b) => {
       if (a === UNTAGGED) return 1;
       if (b === UNTAGGED) return -1;
@@ -73,17 +81,16 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
 
   const rowsForTab = useMemo(() => {
     if (activeTab === "all") return visibleRows;
-    return visibleRows.filter((r) => (r.topic?.trim() || UNTAGGED) === activeTab);
+    return visibleRows.filter((r) => displayTopic(r.topic) === activeTab);
   }, [visibleRows, activeTab]);
 
-  // Hash deep-link: switch to the matching topic tab and open the item.
+  // Hash deep-link: switch to the matching merged topic tab and open the item.
   useEffect(() => {
     if (!hash || visibleRows.length === 0) return;
     const target = hash.replace(/^#/, "");
     const match = visibleRows.find((r) => (r.anchor_id || r.offering_key) === target);
     if (!match) return;
-    const topic = match.topic?.trim() || UNTAGGED;
-    setActiveTab(topic);
+    setActiveTab(displayTopic(match.topic));
     setOpenItems((prev) => (prev.includes(target) ? prev : [...prev, target]));
     setTimeout(() => {
       const el = document.getElementById(target);
@@ -110,7 +117,7 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
             All ({visibleRows.length})
           </TabsTrigger>
           {topics.map((t) => {
-            const count = visibleRows.filter((r) => (r.topic?.trim() || UNTAGGED) === t).length;
+            const count = visibleRows.filter((r) => displayTopic(r.topic) === t).length;
             return (
               <TabsTrigger
                 key={t}
@@ -147,7 +154,7 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
                       <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                         {r.topic && (
                           <span className="inline-flex items-center rounded-full bg-teal/10 text-teal px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
-                            {r.topic}
+                            {displayTopic(r.topic)}
                           </span>
                         )}
                         {r.facilitator && (
