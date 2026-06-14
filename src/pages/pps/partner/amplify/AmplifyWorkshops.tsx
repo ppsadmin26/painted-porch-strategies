@@ -384,7 +384,7 @@ export default function AmplifyWorkshops() {
               Every team is different. Take the P.A.T.H.finder quiz and talk through your goals, context, and challenges so we can recommend the workshop (or partnership combination) that best fits where you're headed.
             </p>
             <p className="text-foreground max-w-2xl mx-auto mb-6">
-              We also offer several other workshops drawn from our most requested <strong>speaking topics</strong>. Many can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive workshop</strong> tailored to your team.
+              The topics above cover our full workshop catalog, including speaking topics that can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive session</strong> tailored to your team.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button
