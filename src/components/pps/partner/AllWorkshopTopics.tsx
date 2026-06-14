@@ -15,6 +15,7 @@ type Row = {
   offering_key: string;
   name: string;
   blurb: string | null;
+  description: string | null;
   anchor_id: string | null;
   facilitator: string | null;
   topic: string | null;
@@ -45,7 +46,7 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
     (async () => {
       const { data, error } = await supabase
         .from("path_finder_offerings")
-        .select("offering_key, name, blurb, anchor_id, facilitator, current_url, is_live, topic")
+        .select("offering_key, name, blurb, description, anchor_id, facilitator, current_url, is_live, topic")
         .eq("current_url", "/partner/amplify/workshops")
         .order("name", { ascending: true });
       if (error || !data || cancelled) return;
@@ -158,8 +159,8 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="pb-5">
-                    {r.blurb && (
-                      <p className="text-sm sm:text-base text-foreground mb-4">{r.blurb}</p>
+                    {(r.description || r.blurb) && (
+                      <p className="text-sm sm:text-base text-foreground mb-4">{r.description || r.blurb}</p>
                     )}
                     <div className="flex flex-col sm:flex-row gap-2">
                       <Link

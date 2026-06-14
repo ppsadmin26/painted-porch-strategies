@@ -17,6 +17,7 @@ interface Row {
   facilitator: string | null;
   tier: string;
   blurb: string;
+  description: string | null;
   current_url: string;
   dedicated_url: string | null;
   anchor_id: string | null;
@@ -210,6 +211,16 @@ export default function PathFinderOfferings() {
                       placeholder="e.g. Comms, Teams, Change"
                     />
                   </div>
+                </div>
+
+                <div className="mb-3">
+                  <Label className="text-xs">Workshop description (shown in accordion body)</Label>
+                  <Textarea
+                    rows={3}
+                    value={valueOf(row, "description") ?? ""}
+                    onChange={(e) => patch(row.id, { description: e.target.value || null as any })}
+                    placeholder="Full description shown when the accordion is expanded..."
+                  />
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-3 text-sm">
