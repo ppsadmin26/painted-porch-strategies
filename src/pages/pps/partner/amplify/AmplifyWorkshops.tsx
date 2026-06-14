@@ -359,6 +359,7 @@ export default function AmplifyWorkshops() {
 
           <AllWorkshopTopics
             excludeKeys={[
+              // Only exclude workshops already shown as featured cards on this page
               // Phase Zero featured cards (top section)
               "architectChange", "architect-change",
               "pillarsReinforcement", "pillars-reinforcement",
@@ -370,16 +371,8 @@ export default function AmplifyWorkshops() {
               "masterYourMessageB2B",
               "stoicismB2B", "stoicism",
               "heroesAssemble", // "Create Extraordinary Teams" maps closest to this catalog entry
-              // Already presented as speaking topics on /speaking/{amy,rob,sierra}
-              // Amy
-              "leadAtSpeed", "goldilocks", "fromDysfunctionToDynamic", "aiEiOh",
-              // Rob
-              "highFidelityCommunication", "eightByEight", "powerOfStory",
-              "getClearBeHeard", "borderlessCommunication", "fiveMinuteKeynote",
-              "communicateWithStyle",
-              // Sierra
-              "fromPassengerToPilot", "moveShakeInnovate",
-              "findingJoyAtWork", "reignitingResilience",
+              // NOTE: Speaking topics are intentionally INCLUDED — any topic can run as a
+              // keynote or workshop, and we want them surfaced here too.
             ]}
           />
 
