@@ -23,6 +23,7 @@ interface Row {
   is_live: boolean;
   sort_order: number;
   notes: string | null;
+  topic: string | null;
 }
 
 const TIER_COLORS: Record<string, string> = {
@@ -69,7 +70,8 @@ export default function PathFinderOfferings() {
           !r.name.toLowerCase().includes(q) &&
           !r.offering_key.toLowerCase().includes(q) &&
           !(r.facilitator ?? "").toLowerCase().includes(q) &&
-          !r.tier.toLowerCase().includes(q)
+          !r.tier.toLowerCase().includes(q) &&
+          !(r.topic ?? "").toLowerCase().includes(q)
         ) return false;
       }
       return true;
@@ -183,7 +185,7 @@ export default function PathFinderOfferings() {
                     </Button>
                   </div>
                 </div>
-                <div className="grid md:grid-cols-2 gap-3 text-sm mb-3">
+                <div className="grid md:grid-cols-3 gap-3 text-sm mb-3">
                   <div>
                     <Label className="text-xs">Display name (shown in quiz results)</Label>
                     <Input
@@ -198,6 +200,14 @@ export default function PathFinderOfferings() {
                       rows={2}
                       value={valueOf(row, "blurb") ?? ""}
                       onChange={(e) => patch(row.id, { blurb: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-xs">Topic tag (shown on workshop hub)</Label>
+                    <Input
+                      value={valueOf(row, "topic") ?? ""}
+                      onChange={(e) => patch(row.id, { topic: e.target.value || null as any })}
+                      placeholder="e.g. Comms, Teams, Change"
                     />
                   </div>
                 </div>

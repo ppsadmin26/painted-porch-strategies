@@ -16,6 +16,7 @@ type Row = {
   blurb: string | null;
   anchor_id: string | null;
   facilitator: string | null;
+  topic: string | null;
 };
 
 const FACILITATOR_FULL_NAME: Record<string, string> = {
@@ -43,7 +44,7 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
       // The accordion IS the canonical home, so we show every workshop row.
       const { data, error } = await supabase
         .from("path_finder_offerings")
-        .select("offering_key, name, blurb, anchor_id, facilitator, current_url, is_live")
+        .select("offering_key, name, blurb, anchor_id, facilitator, current_url, is_live, topic")
         .eq("current_url", "/partner/amplify/workshops")
         .order("name", { ascending: true });
       if (error || !data || cancelled) return;
@@ -110,11 +111,18 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
                 <div className="font-poppins font-semibold text-navy text-base sm:text-lg">
                   {r.name}
                 </div>
-                {r.facilitator && (
-                  <div className="text-xs text-foreground/60 mt-0.5">
-                    Facilitated by {fullName(r.facilitator)}
-                  </div>
-                )}
+                <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                  {r.topic && (
+                    <span className="inline-flex items-center rounded-full bg-teal/10 text-teal px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
+                      {r.topic}
+                    </span>
+                  )}
+                  {r.facilitator && (
+                    <span className="text-xs text-foreground/60">
+                      Facilitated by {fullName(r.facilitator)}
+                    </span>
+                  )}
+                </div>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pb-5">
