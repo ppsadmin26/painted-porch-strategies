@@ -16,6 +16,7 @@ type Row = {
   blurb: string | null;
   anchor_id: string | null;
   facilitator: string | null;
+  topic: string | null;
 };
 
 const FACILITATOR_FULL_NAME: Record<string, string> = {
