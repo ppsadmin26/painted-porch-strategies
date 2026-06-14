@@ -70,7 +70,8 @@ export default function PathFinderOfferings() {
           !r.name.toLowerCase().includes(q) &&
           !r.offering_key.toLowerCase().includes(q) &&
           !(r.facilitator ?? "").toLowerCase().includes(q) &&
-          !r.tier.toLowerCase().includes(q)
+          !r.tier.toLowerCase().includes(q) &&
+          !(r.topic ?? "").toLowerCase().includes(q)
         ) return false;
       }
       return true;
