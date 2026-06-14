@@ -64,6 +64,12 @@ async function runAxe(page: Page, label: string) {
   const results = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
     .disableRules(["color-contrast"])
+    // Third-party embeds (YouTube, GHL forms, etc.) ship their own HTML we
+    // cannot fix; only audit our own DOM.
+    .exclude('iframe[src*="youtube.com"]')
+    .exclude('iframe[src*="youtube-nocookie.com"]')
+    .exclude('iframe[src*="leadconnectorhq.com"]')
+    .exclude('iframe[src*="gohighlevel.com"]')
     .analyze();
 
   const blocking = results.violations.filter(
