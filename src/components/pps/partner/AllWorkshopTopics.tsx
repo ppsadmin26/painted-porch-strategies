@@ -45,6 +45,7 @@ function displayTopic(raw: string | null): string {
  */
 export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[] } = {}) {
   const [rows, setRows] = useState<Row[]>([]);
+  const [liveSpeakerPaths, setLiveSpeakerPaths] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<string>("all");
   const [openItems, setOpenItems] = useState<string[]>([]);
   const { hash } = useLocation();
@@ -52,23 +53,41 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const { data, error } = await supabase
-        .from("path_finder_offerings")
-        .select("offering_key, name, blurb, description, anchor_id, facilitator, current_url, is_live, topic, include_in_workshops")
-        .or("current_url.eq./partner/amplify/workshops,include_in_workshops.eq.true")
-        .order("name", { ascending: true });
-      if (error || !data || cancelled) return;
-      // Dedupe by offering_key in case both filters match
-      const seen = new Set<string>();
-      const deduped = (data as Row[]).filter((r) => {
-        if (seen.has(r.offering_key)) return false;
-        seen.add(r.offering_key);
-        return true;
-      });
-      setRows(deduped);
+      const [offeringsRes, statusRes] = await Promise.all([
+        supabase
+          .from("path_finder_offerings")
+          .select("offering_key, name, blurb, description, anchor_id, facilitator, current_url, is_live, topic, include_in_workshops")
+          .or("current_url.eq./partner/amplify/workshops,include_in_workshops.eq.true")
+          .order("name", { ascending: true }),
+        supabase
+          .from("page_status")
+          .select("path, status")
+          .in("path", ["/speaking/amy", "/speaking/rob", "/speaking/sierra"])
+          .eq("status", "live"),
+      ]);
+      if (cancelled) return;
+      if (!offeringsRes.error && offeringsRes.data) {
+        const seen = new Set<string>();
+        const deduped = (offeringsRes.data as Row[]).filter((r) => {
+          if (seen.has(r.offering_key)) return false;
+          seen.add(r.offering_key);
+          return true;
+        });
+        setRows(deduped);
+      }
+      if (!statusRes.error && statusRes.data) {
+        setLiveSpeakerPaths(new Set(statusRes.data.map((s: any) => s.path)));
+      }
     })();
     return () => { cancelled = true; };
   }, []);
+
+  const speakerLinkFor = (facilitator: string | null): string => {
+    if (!facilitator) return "/speaking";
+    const slug = facilitator.toLowerCase();
+    const path = `/speaking/${slug}`;
+    return liveSpeakerPaths.has(path) ? path : "/speaking";
+  };
 
   const visibleRows = useMemo(() => {
     const skip = new Set(excludeKeys);
