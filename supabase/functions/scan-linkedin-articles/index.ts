@@ -596,6 +596,7 @@ function cleanLinkedInMarkdown(md: string): string {
 function normalizeText(s: string): string {
   return (s || "")
     .toLowerCase()
+    .replace(/<\/?(strong|b|em|i|mark)[^>]*>/gi, "")
     .replace(/!\[[^\]]*\]\([^)]+\)/g, "")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
     .replace(/[*_`>#]+/g, " ")
@@ -646,6 +647,58 @@ function splitInlineImageLines(markdown: string): string {
       return parts.map((p) => p.trim()).filter((p) => p.length > 0);
     })
     .join("\n");
+}
+
+function normalizeInlineHtmlFormatting(text: string): string {
+  return text
+    .replace(/<\s*(strong|b)\b[^>]*>(.*?)<\s*\/\s*\1\s*>/gis, "**$2**")
+    .replace(/<\s*(em|i)\b[^>]*>(.*?)<\s*\/\s*\1\s*>/gis, "*$2*")
+    .replace(/<\s*mark\b[^>]*>(.*?)<\s*\/\s*mark\s*>/gis, "$1");
+}
+
+function countFormattingSignals(markdown: string): number {
+  const normalized = normalizeInlineHtmlFormatting(markdown || "");
+  return (
+    normalized.match(/\*\*\*[^*]+\*\*\*|\*\*[^*]+\*\*|(?<!\*)\*[^*]+\*(?!\*)|_[^_]+_/g) || []
+  ).length;
+}
+
+function hasChromeLeak(markdown: string): boolean {
+  return /recommended by linkedin|more articles for you|more articles by|people also viewed|others also viewed|to view or add a comment|add a comment|\bcomments?\s*⚙/i.test(markdown || "");
+}
+
+function prepareBodyMarkdown(markdown: string, title: string, coverUrl: string | null): string {
+  if (!markdown) return "";
+  let prepared = normalizeInlineHtmlFormatting(markdown);
+  prepared = stripLeadingTitleAndCover(prepared, title, coverUrl);
+  prepared = stripInlineRelatedSections(prepared);
+  prepared = scrubResidualChrome(prepared, coverUrl);
+  return prepared.trim();
+}
+
+function chooseFormattedBodyMarkdown(
+  rawMarkdown: string,
+  candidateMarkdown: string,
+  title: string,
+  coverUrl: string | null,
+  firstSnippet: string,
+  lastSnippet: string
+): string {
+  const raw = prepareBodyMarkdown(rawMarkdown, title, coverUrl);
+  const candidate = prepareBodyMarkdown(candidateMarkdown || "", title, coverUrl);
+  if (!raw) return candidate;
+  if (!candidate || hasChromeLeak(candidate)) return raw;
+
+  const rawNorm = normalizeText(raw);
+  const candidateNorm = normalizeText(candidate);
+  if (candidateNorm.length < rawNorm.length * 0.75) return raw;
+
+  const firstNeedle = normalizeText(firstSnippet).slice(0, 40);
+  const lastNeedle = normalizeText(lastSnippet).slice(0, 40);
+  if (firstNeedle && !candidateNorm.includes(firstNeedle)) return raw;
+  if (lastNeedle && !candidateNorm.includes(lastNeedle)) return raw;
+
+  return countFormattingSignals(candidate) > countFormattingSignals(raw) ? candidate : raw;
 }
 
 function parseInlineMarks(text: string): any[] {
