@@ -926,28 +926,20 @@ Deno.serve(async (req) => {
     // bold/italic/links/in-body images survive (LLM body_markdown tends to
     // flatten inline marks, drop images, AND silently summarize the body —
     // which is why we no longer fall back to it).
-    let markdown = sliceRawByBoundaries(
+    const slicedRawMarkdown = sliceRawByBoundaries(
       cleanedRaw,
       extracted.first_paragraph_snippet || "",
       extracted.last_paragraph_snippet || ""
     );
 
-    // If the boundary slice couldn't be located, trust the cleaned raw scrape.
-    // truncateAtArticleEnd + cleanLinkedInMarkdown already strip the newsletter
-    // widget, comments, and footer. We deliberately do NOT use the LLM's
-    // body_markdown — it has been observed to summarize the article (literally
-    // inserting "...and so on..." mid-body) and to flatten inline formatting.
-    if (!markdown) {
-      markdown = cleanedRaw;
-    }
-
-    // Strip leading H1 (title) and leading cover image — they're stored on the
-    // post record separately, so leaving them in the body causes duplicates.
-    if (markdown) {
-      markdown = stripLeadingTitleAndCover(markdown, title, coverUrlForStrip);
-      markdown = stripInlineRelatedSections(markdown);
-      markdown = scrubResidualChrome(markdown, coverUrlForStrip);
-    }
+    let markdown = chooseFormattedBodyMarkdown(
+      slicedRawMarkdown || cleanedRaw,
+      extracted.body_markdown || "",
+      title,
+      coverUrlForStrip,
+      extracted.first_paragraph_snippet || "",
+      extracted.last_paragraph_snippet || ""
+    );
 
 
     if (!markdown) {
