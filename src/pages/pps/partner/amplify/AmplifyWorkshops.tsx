@@ -357,6 +357,8 @@ export default function AmplifyWorkshops() {
             </div>
           </div>
 
+          <AllWorkshopTopics />
+
           <div className="text-center mt-12 bg-muted/40 border border-border rounded-xl p-8">
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
               Not sure which workshop is right for your team?
