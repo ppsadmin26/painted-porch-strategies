@@ -39,14 +39,9 @@ const sierra: SpeakerData = {
         "When the tank is empty, resilience is the fuel. Learn a framework to simplify your energy management and boost team engagement and retention.",
     },
     {
-      title: "The Mindful Leader",
+      title: "Radically Mindful Leadership",
       description:
         "Practical mindfulness techniques for executives who don't have time for mindfulness. Lead with calm, clarity, and intentional presence.",
-    },
-    {
-      title: "Stress to Strength",
-      description:
-        "Tame the nerves and reclaim your power. From high-pressure meetings to high-stakes moments, learn to show up centered and confident.",
     },
   ],
   outcomesHeading: "Reclaim Your Energy. Lead with Joy.",
