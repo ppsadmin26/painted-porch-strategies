@@ -205,11 +205,23 @@ export default function PathFinderOfferings() {
                   </div>
                   <div>
                     <Label className="text-xs">Topic tag (shown on workshop hub)</Label>
-                    <Input
+                    <select
                       value={valueOf(row, "topic") ?? ""}
-                      onChange={(e) => patch(row.id, { topic: e.target.value || null as any })}
-                      placeholder="e.g. Comms, Teams, Change"
-                    />
+                      onChange={(e) => patch(row.id, { topic: e.target.value || null })}
+                      className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
+                    >
+                      <option value="">— Untagged —</option>
+                      <option value="Change">Change</option>
+                      <option value="Comms">Comms</option>
+                      <option value="EQ">EQ</option>
+                      <option value="Innovation">Innovation</option>
+                      <option value="Leadership">Leadership</option>
+                      <option value="Mindfulness">Mindfulness</option>
+                      <option value="Philosophy">Philosophy</option>
+                      <option value="Resilience">Resilience</option>
+                      <option value="Teams">Teams</option>
+                      <option value="Wellbeing">Wellbeing</option>
+                    </select>
                   </div>
                 </div>
 
