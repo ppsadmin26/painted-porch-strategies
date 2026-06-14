@@ -137,6 +137,7 @@ export default function PPSNavigation() {
                       {link.label}
                     </Link>
                     <DropdownMenuTrigger
+                      aria-label={`Open ${link.label} submenu`}
                       className={`ml-1 p-1 transition-colors ${
                         isActiveLink(link.href)
                           ? "text-primary"
