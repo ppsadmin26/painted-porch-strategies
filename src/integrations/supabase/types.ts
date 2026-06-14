@@ -646,6 +646,7 @@ export type Database = {
           offering_key: string
           sort_order: number
           tier: string
+          topic: string | null
           updated_at: string
         }
         Insert: {
@@ -662,6 +663,7 @@ export type Database = {
           offering_key: string
           sort_order?: number
           tier: string
+          topic?: string | null
           updated_at?: string
         }
         Update: {
@@ -678,6 +680,7 @@ export type Database = {
           offering_key?: string
           sort_order?: number
           tier?: string
+          topic?: string | null
           updated_at?: string
         }
         Relationships: []
