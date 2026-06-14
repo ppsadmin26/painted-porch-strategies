@@ -23,6 +23,7 @@ interface Row {
   is_live: boolean;
   sort_order: number;
   notes: string | null;
+  topic: string | null;
 }
 
 const TIER_COLORS: Record<string, string> = {
