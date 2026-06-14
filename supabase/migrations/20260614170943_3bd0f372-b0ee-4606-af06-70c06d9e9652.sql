@@ -1,0 +1,1 @@
+ALTER TABLE public.path_finder_offerings ADD COLUMN IF NOT EXISTS include_in_workshops boolean NOT NULL DEFAULT false;

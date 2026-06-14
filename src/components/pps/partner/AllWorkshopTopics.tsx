@@ -54,11 +54,18 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
     (async () => {
       const { data, error } = await supabase
         .from("path_finder_offerings")
-        .select("offering_key, name, blurb, description, anchor_id, facilitator, current_url, is_live, topic")
-        .eq("current_url", "/partner/amplify/workshops")
+        .select("offering_key, name, blurb, description, anchor_id, facilitator, current_url, is_live, topic, include_in_workshops")
+        .or("current_url.eq./partner/amplify/workshops,include_in_workshops.eq.true")
         .order("name", { ascending: true });
       if (error || !data || cancelled) return;
-      setRows(data as Row[]);
+      // Dedupe by offering_key in case both filters match
+      const seen = new Set<string>();
+      const deduped = (data as Row[]).filter((r) => {
+        if (seen.has(r.offering_key)) return false;
+        seen.add(r.offering_key);
+        return true;
+      });
+      setRows(deduped);
     })();
     return () => { cancelled = true; };
   }, []);
