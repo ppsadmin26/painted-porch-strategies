@@ -585,7 +585,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     narrative = "The challenge you're describing is a capability gap. Your leaders need to develop, and you need a way to build that capacity that actually holds rather than fades after the training day ends. A workshop is a good first move. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and shows you which capabilities the architecture is quietly blocking.";
     const q1 = val(answers, "Q1Cap");
     primaryHeading = "Emotional Intelligence — How Leaders Show Up";
-    if (q1 === "A") primaryKeys = ["goldilocks", "fromConflictToConnection", "pillarsOfLastingChange"];
+    if (q1 === "A") primaryKeys = ["goldilocks", "fromConflictToConnection", "architectureOfAdaptability"];
     else if (q1 === "B") primaryKeys = ["stracticalLeader", "architectureOfAdaptability", "leadershipOM"];
     else if (q1 === "C") primaryKeys = ["masterYourMessageB2B", "highFidelityCommunication", "communicateWithStyle"];
     else primaryKeys = ["reignitingResilience", "fromPassengerToPilot", "findingJoyAtWork"];
