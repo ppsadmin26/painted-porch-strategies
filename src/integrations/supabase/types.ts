@@ -641,6 +641,7 @@ export type Database = {
           description: string | null
           facilitator: string | null
           id: string
+          include_in_workshops: boolean
           is_live: boolean
           name: string
           notes: string | null
@@ -659,6 +660,7 @@ export type Database = {
           description?: string | null
           facilitator?: string | null
           id?: string
+          include_in_workshops?: boolean
           is_live?: boolean
           name: string
           notes?: string | null
@@ -677,6 +679,7 @@ export type Database = {
           description?: string | null
           facilitator?: string | null
           id?: string
+          include_in_workshops?: boolean
           is_live?: boolean
           name?: string
           notes?: string | null
