@@ -236,6 +236,21 @@ export default function PathFinderOfferings() {
                   />
                 </div>
 
+                <div className="mb-3 flex items-center gap-2 rounded-md border border-dashed border-teal/40 bg-teal/5 px-3 py-2">
+                  <Switch
+                    id={`workshop-${row.id}`}
+                    checked={!!valueOf(row, "include_in_workshops")}
+                    onCheckedChange={(v) => patch(row.id, { include_in_workshops: v })}
+                  />
+                  <Label htmlFor={`workshop-${row.id}`} className="text-sm">
+                    Show in the <strong>Browse All Workshop Topics</strong> accordion
+                    <span className="block text-xs text-muted-foreground">
+                      Use this to flag a speaking topic (or any offering) as also bookable as a workshop.
+                    </span>
+                  </Label>
+                </div>
+
+
                 <div className="grid md:grid-cols-3 gap-3 text-sm">
                   <div>
                     <Label className="text-xs">Hub / fallback URL</Label>
