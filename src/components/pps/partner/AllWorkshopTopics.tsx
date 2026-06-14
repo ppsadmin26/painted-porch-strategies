@@ -112,7 +112,7 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
                 </div>
                 {r.facilitator && (
                   <div className="text-xs text-foreground/60 mt-0.5">
-                    Facilitated by {r.facilitator}
+                    Facilitated by {fullName(r.facilitator)}
                   </div>
                 )}
               </div>
