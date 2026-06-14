@@ -206,7 +206,7 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
                           Inquire About This Topic <ArrowRight className="ml-1 h-4 w-4" />
                         </Button>
                       </Link>
-                      <Link to="/speaking" className="w-full sm:w-auto">
+                      <Link to={speakerLinkFor(r.facilitator)} className="w-full sm:w-auto">
                         <Button
                           variant="outline"
                           className="border-2 border-teal text-teal hover:bg-teal hover:text-white w-full sm:w-auto h-11 px-5 text-sm"
