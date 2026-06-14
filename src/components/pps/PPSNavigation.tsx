@@ -224,6 +224,8 @@ export default function PPSNavigation() {
                         </Link>
                         <button
                           type="button"
+                          aria-label={`Toggle ${link.label} submenu`}
+                          aria-expanded={expandedMobileItem === link.href}
                           className={`px-3 py-2 ${
                             isActiveLink(link.href) ? "text-primary" : "text-foreground"
                           }`}
@@ -234,10 +236,12 @@ export default function PPSNavigation() {
                           }
                         >
                           <ChevronDown
+                            aria-hidden="true"
                             className={`w-4 h-4 transition-transform ${
                               expandedMobileItem === link.href ? "rotate-180" : ""
                             }`}
                           />
+                          <span className="sr-only">Toggle {link.label} submenu</span>
                         </button>
                       </div>
                       {expandedMobileItem === link.href && (
