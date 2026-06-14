@@ -253,24 +253,19 @@ async function importSingleArticle(
       extractedCover = extracted.cover_image_url || null;
       const coverForStrip = metadata.ogImage || metadata.image || extractedCover || null;
 
-      // Prefer raw-markdown slice between LLM boundaries — preserves bold/italic/links/images.
-      markdown = sliceRawByBoundaries(
+      const slicedRawMarkdown = sliceRawByBoundaries(
         cleanedRaw,
         extracted.first_paragraph_snippet || "",
         extracted.last_paragraph_snippet || ""
       );
-      // Do NOT trust LLM body_markdown — it has been observed to summarize the
-      // article and flatten inline formatting. truncateAtArticleEnd inside
-      // cleanLinkedInMarkdown already strips the newsletter widget + comments,
-      // so cleanedRaw is the right fallback.
-      if (!markdown) markdown = cleanedRaw;
-
-      // Strip leading H1 (title) and leading cover image — stored separately.
-      if (markdown) {
-        markdown = stripLeadingTitleAndCover(markdown, extractedTitle, coverForStrip);
-        markdown = stripInlineRelatedSections(markdown);
-        markdown = scrubResidualChrome(markdown, coverForStrip);
-      }
+      markdown = chooseFormattedBodyMarkdown(
+        slicedRawMarkdown || cleanedRaw,
+        extracted.body_markdown || "",
+        extractedTitle,
+        coverForStrip,
+        extracted.first_paragraph_snippet || "",
+        extracted.last_paragraph_snippet || ""
+      );
 
     } else {
       console.warn(`Firecrawl scrape failed for ${articleUrl}, status: ${scrapeRes.status}`);
