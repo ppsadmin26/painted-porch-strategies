@@ -144,7 +144,8 @@ export default function PPSNavigation() {
                           : "text-foreground hover:text-primary"
                       }`}
                     >
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className="w-4 h-4" aria-hidden="true" />
+                      <span className="sr-only">Open {link.label} submenu</span>
                     </DropdownMenuTrigger>
                   </div>
                   <DropdownMenuContent align="start" className="w-48 bg-white z-50">
