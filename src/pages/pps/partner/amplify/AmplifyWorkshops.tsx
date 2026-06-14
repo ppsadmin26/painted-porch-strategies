@@ -357,7 +357,21 @@ export default function AmplifyWorkshops() {
             </div>
           </div>
 
-          <AllWorkshopTopics />
+          <AllWorkshopTopics
+            excludeKeys={[
+              // Phase Zero featured cards (top section)
+              "architectChange", "architect-change",
+              "pillarsReinforcement", "pillars-reinforcement",
+              "pathToLastingChange",
+              "cultivatingChangeResilience",
+              "leadershipOM",
+              // Leadership & Team Development featured cards (bottom section)
+              "radicalMindfulnessB2B",
+              "masterYourMessageB2B",
+              "stoicismB2B", "stoicism",
+              "heroesAssemble", // "Create Extraordinary Teams" maps closest to this catalog entry
+            ]}
+          />
 
           <div className="text-center mt-12 bg-muted/40 border border-border rounded-xl p-8">
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
