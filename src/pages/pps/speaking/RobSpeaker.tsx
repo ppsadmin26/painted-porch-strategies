@@ -24,9 +24,9 @@ const rob: SpeakerData = {
         "The way you speak your thoughts is your brand. Learn the three pillars of clear communication: preparation, conciseness, and attentiveness.",
     },
     {
-      title: "You Have 8 Seconds...",
+      title: "8:8",
       description:
-        "In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
+        "Capturing & Keeping Attention in a Distracted World. In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
     },
     {
       title: "The Power of Story",
