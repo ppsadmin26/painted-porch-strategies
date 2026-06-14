@@ -638,6 +638,7 @@ export type Database = {
           created_at: string
           current_url: string
           dedicated_url: string | null
+          description: string | null
           facilitator: string | null
           id: string
           is_live: boolean
@@ -655,6 +656,7 @@ export type Database = {
           created_at?: string
           current_url: string
           dedicated_url?: string | null
+          description?: string | null
           facilitator?: string | null
           id?: string
           is_live?: boolean
@@ -672,6 +674,7 @@ export type Database = {
           created_at?: string
           current_url?: string
           dedicated_url?: string | null
+          description?: string | null
           facilitator?: string | null
           id?: string
           is_live?: boolean
