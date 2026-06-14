@@ -15,6 +15,7 @@ import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import { usePathFinderQuiz } from "@/components/pps/quiz/PathFinderQuizProvider";
 import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
+import { AllWorkshopTopics } from "@/components/pps/partner/AllWorkshopTopics";
 
 const workshopFaqCategories: FAQCategory[] = [
   {
