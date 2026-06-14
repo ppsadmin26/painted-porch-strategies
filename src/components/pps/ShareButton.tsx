@@ -114,25 +114,33 @@ export default function ShareButton({ title, url }: ShareButtonProps) {
   return (
     <div className="relative inline-block">
       <button
+        type="button"
         onClick={() => setOpen(!open)}
+        aria-haspopup="dialog"
+        aria-expanded={open}
         className="inline-flex items-center gap-2 font-poppins font-semibold text-sm px-6 py-2.5 rounded-full border-2 border-muted-foreground/30 text-muted-foreground hover:border-primary hover:text-primary transition-colors"
       >
-        <Share2 className="w-4 h-4" />
+        <Share2 className="w-4 h-4" aria-hidden="true" />
         Share
       </button>
 
       {open && (
         <div
           ref={popoverRef}
+          role="dialog"
+          aria-label="Share this post"
           className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-72 bg-background rounded-xl shadow-xl border border-border p-4 z-50 animate-in fade-in slide-in-from-bottom-2 duration-200"
         >
           {/* Close button */}
           <button
+            type="button"
+            aria-label="Close share menu"
             onClick={() => setOpen(false)}
             className="absolute top-3 right-3 text-muted-foreground hover:text-foreground transition-colors"
           >
-            <X className="w-4 h-4" />
+            <X className="w-4 h-4" aria-hidden="true" />
           </button>
+
 
           <p className="font-poppins font-semibold text-foreground mb-4">Share this post</p>
 
