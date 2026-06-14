@@ -107,7 +107,7 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
           Browse All Workshop Topics
         </h3>
         <p className="text-foreground/80 max-w-2xl mx-auto">
-          Pick a topic to explore. Many also work as a 60-minute keynote or expand into a 2+ hour interactive workshop, tailored to your team.
+          The topics above cover our full workshop catalog, including speaking topics that can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive session</strong> tailored to your team.
         </p>
       </div>
 
