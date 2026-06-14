@@ -595,7 +595,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     narrative = "What you're describing isn't a program gap or training need. It's an architectural question: whether your organization's current identity is built to carry what you're trying to create. The Blue Door Organizational Appraisal is where organizations at strategic inflection points begin, and it's the prerequisite for any deeper engagement with us.";
     const q1 = val(answers, "Q1Strategic");
     primaryHeading = "Workshops — Activate Your Team While the Appraisal Work Is Underway";
-    if (q1 === "A") primaryKeys = ["architectChange", "pillarsOfLastingChange", "architectureOfAdaptability"];
+    if (q1 === "A") primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
     else if (q1 === "B") primaryKeys = ["leadershipOM", "stracticalLeader", "architectChange"];
     else if (q1 === "C") primaryKeys = ["aiEiOh", "architectureOfAdaptability", "architectChange"];
     else primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
