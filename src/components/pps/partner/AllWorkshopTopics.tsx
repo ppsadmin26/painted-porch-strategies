@@ -15,6 +15,7 @@ type Row = {
   offering_key: string;
   name: string;
   blurb: string | null;
+  description: string | null;
   anchor_id: string | null;
   facilitator: string | null;
   topic: string | null;
