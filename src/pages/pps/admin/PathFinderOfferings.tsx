@@ -25,6 +25,7 @@ interface Row {
   sort_order: number;
   notes: string | null;
   topic: string | null;
+  include_in_workshops: boolean;
 }
 
 const TIER_COLORS: Record<string, string> = {
