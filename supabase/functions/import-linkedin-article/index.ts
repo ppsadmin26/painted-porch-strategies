@@ -192,12 +192,16 @@ function scrubResidualChrome(md: string, coverUrl: string | null): string {
 function stripInlineRelatedSections(md: string): string {
   const lines = md.split("\n");
   const headerRe =
-    /^(#{1,6}\s+)?\s*(recommended (next|reading|for you|articles)|explore (topics|more)|related (articles|posts|reading)|more (like this|articles by|from)|you (might|may) (also )?(like|enjoy)|keep reading|see also|further reading|published by)\b/i;
+    /^(#{1,6}\s+)?\s*(recommended (next|reading|for you|by linkedin|articles)|explore (topics|more)|related (articles|posts|reading)|more (like this|articles by|from)|you (might|may) (also )?(like|enjoy)|keep reading|see also|further reading|published by)\b/i;
   const cardLineRe = [
     /^!\[[^\]]*\]\([^)]+\)\s*$/, // standalone image
     /^\[[^\]]+\]\(https?:\/\/(www\.)?linkedin\.com\/[^)]+\)\s*$/i, // linkedin link line
     /^\[[^\]]+\]\(https?:\/\/[^)]+\)\s*$/i, // bare link line
+    /^\[[^\]]+$/i, // LinkedIn sometimes splits a card link over several lines
+    /^[^\[]+\]\(https?:\/\/[^)]+\)\s*$/i, // closing half of a split card link
     /^\d+\s+(min read|minute read|reactions?|comments?|followers?)\s*$/i,
+    /^\d+\s+(day|week|month|year)s?\s+ago\s*$/i,
+    /^\d+\s+(day|week|month|year)s?\s+ago\]\(https?:\/\/[^)]+\)\s*$/i,
     /^(by\s+)?[A-Z][\w .'’-]{1,80}\s*$/, // author byline (capitalized words)
     /^\w{3,9}\.?\s+\d{1,2},?\s+\d{4}\s*$/i, // date line "Jan 5, 2024"
     /^\d+\s+(likes?|views?)\s*$/i,
@@ -447,6 +451,7 @@ function cleanLinkedInMarkdown(markdown: string, titleHint?: string): string {
 function normalizeText(s: string): string {
   return (s || "")
     .toLowerCase()
+    .replace(/<\/?(strong|b|em|i|mark)[^>]*>/gi, "")
     .replace(/!\[[^\]]*\]\([^)]+\)/g, "") // strip image markdown
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1") // unwrap link markdown to text
     .replace(/[*_`>#]+/g, " ") // strip md emphasis/heading markers
@@ -540,6 +545,58 @@ function splitInlineImageLines(markdown: string): string {
       return parts.map((p) => p.trim()).filter((p) => p.length > 0);
     })
     .join("\n");
+}
+
+function normalizeInlineHtmlFormatting(text: string): string {
+  return text
+    .replace(/<\s*(strong|b)\b[^>]*>(.*?)<\s*\/\s*\1\s*>/gis, "**$2**")
+    .replace(/<\s*(em|i)\b[^>]*>(.*?)<\s*\/\s*\1\s*>/gis, "*$2*")
+    .replace(/<\s*mark\b[^>]*>(.*?)<\s*\/\s*mark\s*>/gis, "$1");
+}
+
+function countFormattingSignals(markdown: string): number {
+  const normalized = normalizeInlineHtmlFormatting(markdown || "");
+  return (
+    normalized.match(/\*\*\*[^*]+\*\*\*|\*\*[^*]+\*\*|(?<!\*)\*[^*]+\*(?!\*)|_[^_]+_/g) || []
+  ).length;
+}
+
+function hasChromeLeak(markdown: string): boolean {
+  return /recommended by linkedin|more articles for you|more articles by|people also viewed|others also viewed|to view or add a comment|add a comment|\bcomments?\s*⚙/i.test(markdown || "");
+}
+
+function prepareBodyMarkdown(markdown: string, title: string, coverUrl: string | null): string {
+  if (!markdown) return "";
+  let prepared = normalizeInlineHtmlFormatting(markdown);
+  prepared = stripLeadingTitleAndCover(prepared, title, coverUrl);
+  prepared = stripInlineRelatedSections(prepared);
+  prepared = scrubResidualChrome(prepared, coverUrl);
+  return prepared.trim();
+}
+
+function chooseFormattedBodyMarkdown(
+  rawMarkdown: string,
+  candidateMarkdown: string,
+  title: string,
+  coverUrl: string | null,
+  firstSnippet: string,
+  lastSnippet: string
+): string {
+  const raw = prepareBodyMarkdown(rawMarkdown, title, coverUrl);
+  const candidate = prepareBodyMarkdown(candidateMarkdown || "", title, coverUrl);
+  if (!raw) return candidate;
+  if (!candidate || hasChromeLeak(candidate)) return raw;
+
+  const rawNorm = normalizeText(raw);
+  const candidateNorm = normalizeText(candidate);
+  if (candidateNorm.length < rawNorm.length * 0.75) return raw;
+
+  const firstNeedle = normalizeText(firstSnippet).slice(0, 40);
+  const lastNeedle = normalizeText(lastSnippet).slice(0, 40);
+  if (firstNeedle && !candidateNorm.includes(firstNeedle)) return raw;
+  if (lastNeedle && !candidateNorm.includes(lastNeedle)) return raw;
+
+  return countFormattingSignals(candidate) > countFormattingSignals(raw) ? candidate : raw;
 }
 
 function markdownToTiptap(markdown: string): any {
@@ -869,28 +926,20 @@ Deno.serve(async (req) => {
     // bold/italic/links/in-body images survive (LLM body_markdown tends to
     // flatten inline marks, drop images, AND silently summarize the body —
     // which is why we no longer fall back to it).
-    let markdown = sliceRawByBoundaries(
+    const slicedRawMarkdown = sliceRawByBoundaries(
       cleanedRaw,
       extracted.first_paragraph_snippet || "",
       extracted.last_paragraph_snippet || ""
     );
 
-    // If the boundary slice couldn't be located, trust the cleaned raw scrape.
-    // truncateAtArticleEnd + cleanLinkedInMarkdown already strip the newsletter
-    // widget, comments, and footer. We deliberately do NOT use the LLM's
-    // body_markdown — it has been observed to summarize the article (literally
-    // inserting "...and so on..." mid-body) and to flatten inline formatting.
-    if (!markdown) {
-      markdown = cleanedRaw;
-    }
-
-    // Strip leading H1 (title) and leading cover image — they're stored on the
-    // post record separately, so leaving them in the body causes duplicates.
-    if (markdown) {
-      markdown = stripLeadingTitleAndCover(markdown, title, coverUrlForStrip);
-      markdown = stripInlineRelatedSections(markdown);
-      markdown = scrubResidualChrome(markdown, coverUrlForStrip);
-    }
+    let markdown = chooseFormattedBodyMarkdown(
+      slicedRawMarkdown || cleanedRaw,
+      extracted.body_markdown || "",
+      title,
+      coverUrlForStrip,
+      extracted.first_paragraph_snippet || "",
+      extracted.last_paragraph_snippet || ""
+    );
 
 
     if (!markdown) {

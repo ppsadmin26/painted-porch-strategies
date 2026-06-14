@@ -253,22 +253,19 @@ async function importSingleArticle(
       extractedCover = extracted.cover_image_url || null;
       const coverForStrip = metadata.ogImage || metadata.image || extractedCover || null;
 
-      // Prefer raw-markdown slice between LLM boundaries — preserves bold/italic/links/images.
-      markdown = sliceRawByBoundaries(
+      const slicedRawMarkdown = sliceRawByBoundaries(
         cleanedRaw,
         extracted.first_paragraph_snippet || "",
         extracted.last_paragraph_snippet || ""
       );
-      // Do NOT trust LLM body_markdown — it has been observed to summarize the
-      // article and flatten inline formatting. truncateAtArticleEnd inside
-      // cleanLinkedInMarkdown already strips the newsletter widget + comments,
-      // so cleanedRaw is the right fallback.
-      if (!markdown) markdown = cleanedRaw;
-
-      // Strip leading H1 (title) and leading cover image — stored separately.
-      if (markdown) {
-        markdown = stripLeadingTitleAndCover(markdown, extractedTitle, coverForStrip);
-      }
+      markdown = chooseFormattedBodyMarkdown(
+        slicedRawMarkdown || cleanedRaw,
+        extracted.body_markdown || "",
+        extractedTitle,
+        coverForStrip,
+        extracted.first_paragraph_snippet || "",
+        extracted.last_paragraph_snippet || ""
+      );
 
     } else {
       console.warn(`Firecrawl scrape failed for ${articleUrl}, status: ${scrapeRes.status}`);
@@ -386,6 +383,94 @@ function stripLeadingTitleAndCover(md: string, title: string, coverUrl: string |
     }
   }
   return lines.slice(i).join("\n").trim();
+}
+
+function scrubResidualChrome(md: string, coverUrl: string | null): string {
+  const coverBase = (coverUrl || "").split("?")[0];
+  const bareBoilerplate = [
+    /^\[?\s*skip to main content/i,
+    /^image (imagined|generated|created) (via|by|with)\b/i,
+    /^image (credit|source|by)[:\s]/i,
+    /^photo (credit|source|by)[:\s]/i,
+    /^\[?\s*\+\s*subscribe\b/i,
+    /^subscribe\b.*newsletter/i,
+    /^\d+\s+(followers?|comments?|reactions?)\s*$/i,
+    /^like\s*$/i,
+    /^comment\s*$/i,
+    /^share\s*$/i,
+    /^report this\b/i,
+    /^to view or add a comment/i,
+  ];
+  const out: string[] = [];
+  for (const raw of md.split("\n")) {
+    let line = raw
+      .replace(/[\u200B-\u200D\uFEFF\u00a0]/g, " ")
+      .replace(/^[\s`\\]+/, "")
+      .replace(/[\s`\\]+$/, "");
+    if (!line || /^[`\s\-–—_*]+$/.test(line)) { out.push(""); continue; }
+    if (bareBoilerplate.some((r) => r.test(line))) continue;
+    const img = line.match(/^!\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)\s*$/);
+    if (img) {
+      const src = img[1];
+      if (coverUrl && (src === coverUrl || src.split("?")[0] === coverBase)) continue;
+    }
+    out.push(line);
+  }
+  const collapsed: string[] = [];
+  for (const l of out) {
+    if (l === "" && collapsed[collapsed.length - 1] === "") continue;
+    collapsed.push(l);
+  }
+  while (collapsed[0] === "") collapsed.shift();
+  while (collapsed[collapsed.length - 1] === "") collapsed.pop();
+  return collapsed.join("\n");
+}
+
+function stripInlineRelatedSections(md: string): string {
+  const lines = md.split("\n");
+  const headerRe =
+    /^(#{1,6}\s+)?\s*(recommended (next|reading|for you|by linkedin|articles)|explore (topics|more)|related (articles|posts|reading)|more (like this|articles by|from)|you (might|may) (also )?(like|enjoy)|keep reading|see also|further reading|published by)\b/i;
+  const cardLineRe = [
+    /^!\[[^\]]*\]\([^)]+\)\s*$/,
+    /^\[[^\]]+\]\(https?:\/\/(www\.)?linkedin\.com\/[^)]+\)\s*$/i,
+    /^\[[^\]]+\]\(https?:\/\/[^)]+\)\s*$/i,
+    /^\[[^\]]+$/i,
+    /^[^\[]+\]\(https?:\/\/[^)]+\)\s*$/i,
+    /^\d+\s+(min read|minute read|reactions?|comments?|followers?)\s*$/i,
+    /^\d+\s+(day|week|month|year)s?\s+ago\s*$/i,
+    /^\d+\s+(day|week|month|year)s?\s+ago\]\(https?:\/\/[^)]+\)\s*$/i,
+    /^(by\s+)?[A-Z][\w .'’-]{1,80}\s*$/,
+    /^\w{3,9}\.?\s+\d{1,2},?\s+\d{4}\s*$/i,
+    /^\d+\s+(likes?|views?)\s*$/i,
+  ];
+  const out: string[] = [];
+  let i = 0;
+  while (i < lines.length) {
+    const t = lines[i].trim();
+    if (headerRe.test(t)) {
+      i++;
+      let consumed = 0;
+      while (i < lines.length) {
+        const u = lines[i].trim();
+        if (u === "") { i++; continue; }
+        if (cardLineRe.some((r) => r.test(u))) { i++; consumed++; continue; }
+        if (consumed === 0) out.push(lines[i - 1]);
+        break;
+      }
+      if (out.length && out[out.length - 1] !== "") out.push("");
+      continue;
+    }
+    out.push(lines[i]);
+    i++;
+  }
+  const collapsed: string[] = [];
+  for (const l of out) {
+    if (l.trim() === "" && collapsed[collapsed.length - 1]?.trim() === "") continue;
+    collapsed.push(l);
+  }
+  while (collapsed[0]?.trim() === "") collapsed.shift();
+  while (collapsed[collapsed.length - 1]?.trim() === "") collapsed.pop();
+  return collapsed.join("\n");
 }
 
 /** Remove LinkedIn cookie banners, nav, comments, and other boilerplate */
@@ -506,6 +591,7 @@ function cleanLinkedInMarkdown(md: string): string {
 function normalizeText(s: string): string {
   return (s || "")
     .toLowerCase()
+    .replace(/<\/?(strong|b|em|i|mark)[^>]*>/gi, "")
     .replace(/!\[[^\]]*\]\([^)]+\)/g, "")
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
     .replace(/[*_`>#]+/g, " ")
@@ -556,6 +642,58 @@ function splitInlineImageLines(markdown: string): string {
       return parts.map((p) => p.trim()).filter((p) => p.length > 0);
     })
     .join("\n");
+}
+
+function normalizeInlineHtmlFormatting(text: string): string {
+  return text
+    .replace(/<\s*(strong|b)\b[^>]*>(.*?)<\s*\/\s*\1\s*>/gis, "**$2**")
+    .replace(/<\s*(em|i)\b[^>]*>(.*?)<\s*\/\s*\1\s*>/gis, "*$2*")
+    .replace(/<\s*mark\b[^>]*>(.*?)<\s*\/\s*mark\s*>/gis, "$1");
+}
+
+function countFormattingSignals(markdown: string): number {
+  const normalized = normalizeInlineHtmlFormatting(markdown || "");
+  return (
+    normalized.match(/\*\*\*[^*]+\*\*\*|\*\*[^*]+\*\*|(?<!\*)\*[^*]+\*(?!\*)|_[^_]+_/g) || []
+  ).length;
+}
+
+function hasChromeLeak(markdown: string): boolean {
+  return /recommended by linkedin|more articles for you|more articles by|people also viewed|others also viewed|to view or add a comment|add a comment|\bcomments?\s*⚙/i.test(markdown || "");
+}
+
+function prepareBodyMarkdown(markdown: string, title: string, coverUrl: string | null): string {
+  if (!markdown) return "";
+  let prepared = normalizeInlineHtmlFormatting(markdown);
+  prepared = stripLeadingTitleAndCover(prepared, title, coverUrl);
+  prepared = stripInlineRelatedSections(prepared);
+  prepared = scrubResidualChrome(prepared, coverUrl);
+  return prepared.trim();
+}
+
+function chooseFormattedBodyMarkdown(
+  rawMarkdown: string,
+  candidateMarkdown: string,
+  title: string,
+  coverUrl: string | null,
+  firstSnippet: string,
+  lastSnippet: string
+): string {
+  const raw = prepareBodyMarkdown(rawMarkdown, title, coverUrl);
+  const candidate = prepareBodyMarkdown(candidateMarkdown || "", title, coverUrl);
+  if (!raw) return candidate;
+  if (!candidate || hasChromeLeak(candidate)) return raw;
+
+  const rawNorm = normalizeText(raw);
+  const candidateNorm = normalizeText(candidate);
+  if (candidateNorm.length < rawNorm.length * 0.75) return raw;
+
+  const firstNeedle = normalizeText(firstSnippet).slice(0, 40);
+  const lastNeedle = normalizeText(lastSnippet).slice(0, 40);
+  if (firstNeedle && !candidateNorm.includes(firstNeedle)) return raw;
+  if (lastNeedle && !candidateNorm.includes(lastNeedle)) return raw;
+
+  return countFormattingSignals(candidate) > countFormattingSignals(raw) ? candidate : raw;
 }
 
 function parseInlineMarks(text: string): any[] {
