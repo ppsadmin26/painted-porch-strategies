@@ -63,9 +63,8 @@ export const OFFERINGS = {
   cultivatingChangeResilience: { key: "cultivatingChangeResilience", name: "Cultivating Change Resilience", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Resilience as organizational infrastructure: distributed across systems and culture." },
   kickTheHabit: { key: "kickTheHabit", name: "Kick the Habit", facilitator: "Amy", tier: "Pathway B", url: "/resources/kick-the-habit", blurb: "Addressing the behavioral patterns and mental models that make change fail to stick." },
   aiEiOh: { key: "aiEiOh", name: "AI, EI, Oh", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Leading AI integration with the emotional intelligence and organizational wisdom it requires." },
-  architectureOfAdaptability: { key: "architectureOfAdaptability", name: "The Architecture of Organizational ShIFt", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Building organizational systems designed to navigate uncertainty rather than react to it." },
+  architectureOfAdaptability: { key: "architectureOfAdaptability", name: "The Architecture of Organizational ShIFt", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Building organizational systems designed to navigate uncertainty rather than react to it. Diagnoses and reinforces the three Pillars: Foundational Architecture, Operational Intelligence, and Human Capacity as one living system." },
   goldilocks: { key: "goldilocks", name: "Goldilocks Leadership", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Calibrated, context-sensitive EQ in leadership." },
-  pillarsOfLastingChange: { key: "pillarsOfLastingChange", name: "The Pillars of Lasting Change", facilitator: "Painted Porch Team", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Culture, operations, and human capacity as one living system. Diagnoses and reinforces the three Pillars: Foundational Architecture, Operational Intelligence, and Human Capacity." },
   stracticalLeader: { key: "stracticalLeader", name: "The Stractical Leader", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/stractical-leader", blurb: "Integrating strategic vision with tactical execution for leadership teams." },
   leadershipOM: { key: "leadershipOM", name: "Leadership OM", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Redesigning the leadership operating model to distribute decisions and accountability." },
 
@@ -586,7 +585,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     narrative = "The challenge you're describing is a capability gap. Your leaders need to develop, and you need a way to build that capacity that actually holds rather than fades after the training day ends. A workshop is a good first move. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and shows you which capabilities the architecture is quietly blocking.";
     const q1 = val(answers, "Q1Cap");
     primaryHeading = "Emotional Intelligence — How Leaders Show Up";
-    if (q1 === "A") primaryKeys = ["goldilocks", "fromConflictToConnection", "pillarsOfLastingChange"];
+    if (q1 === "A") primaryKeys = ["goldilocks", "fromConflictToConnection", "architectureOfAdaptability"];
     else if (q1 === "B") primaryKeys = ["stracticalLeader", "architectureOfAdaptability", "leadershipOM"];
     else if (q1 === "C") primaryKeys = ["masterYourMessageB2B", "highFidelityCommunication", "communicateWithStyle"];
     else primaryKeys = ["reignitingResilience", "fromPassengerToPilot", "findingJoyAtWork"];
@@ -596,7 +595,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     narrative = "What you're describing isn't a program gap or training need. It's an architectural question: whether your organization's current identity is built to carry what you're trying to create. The Blue Door Organizational Appraisal is where organizations at strategic inflection points begin, and it's the prerequisite for any deeper engagement with us.";
     const q1 = val(answers, "Q1Strategic");
     primaryHeading = "Workshops — Activate Your Team While the Appraisal Work Is Underway";
-    if (q1 === "A") primaryKeys = ["architectChange", "pillarsOfLastingChange", "architectureOfAdaptability"];
+    if (q1 === "A") primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
     else if (q1 === "B") primaryKeys = ["leadershipOM", "stracticalLeader", "architectChange"];
     else if (q1 === "C") primaryKeys = ["aiEiOh", "architectureOfAdaptability", "architectChange"];
     else primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
@@ -608,8 +607,8 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     primaryHeading = "Team Dynamics & People";
     primaryKeys = ["fromConflictToConnection", "fromDysfunctionToDynamic", "heroesAssemble"];
     extra.push(grp("Change & Transformation", "leadAtSpeed", "pathToLastingChange", "cultivatingChangeResilience"));
-    extra.push(grp("Leadership Capability", "goldilocks", "stracticalLeader", "pillarsOfLastingChange"));
-    extra.push(grp("Strategic Design", "architectChange", "pillarsOfLastingChange"));
+    extra.push(grp("Leadership Capability", "goldilocks", "stracticalLeader", "architectureOfAdaptability"));
+    extra.push(grp("Strategic Design", "architectChange", "architectureOfAdaptability"));
   }
 
   // Simplified: cap recommendations at 3 in the primary group only.
