@@ -111,11 +111,18 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
                 <div className="font-poppins font-semibold text-navy text-base sm:text-lg">
                   {r.name}
                 </div>
-                {r.facilitator && (
-                  <div className="text-xs text-foreground/60 mt-0.5">
-                    Facilitated by {fullName(r.facilitator)}
-                  </div>
-                )}
+                <div className="flex items-center gap-2 mt-0.5 flex-wrap">
+                  {r.topic && (
+                    <span className="inline-flex items-center rounded-full bg-teal/10 text-teal px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
+                      {r.topic}
+                    </span>
+                  )}
+                  {r.facilitator && (
+                    <span className="text-xs text-foreground/60">
+                      Facilitated by {fullName(r.facilitator)}
+                    </span>
+                  )}
+                </div>
               </div>
             </AccordionTrigger>
             <AccordionContent className="pb-5">
