@@ -183,6 +183,24 @@ export default function PathFinderOfferings() {
                     </Button>
                   </div>
                 </div>
+                <div className="grid md:grid-cols-2 gap-3 text-sm mb-3">
+                  <div>
+                    <Label className="text-xs">Display name (shown in quiz results)</Label>
+                    <Input
+                      value={valueOf(row, "name") ?? ""}
+                      onChange={(e) => patch(row.id, { name: e.target.value })}
+                      className="font-poppins font-semibold text-navy"
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-xs">Blurb (shown under the name)</Label>
+                    <Textarea
+                      rows={2}
+                      value={valueOf(row, "blurb") ?? ""}
+                      onChange={(e) => patch(row.id, { blurb: e.target.value })}
+                    />
+                  </div>
+                </div>
 
                 <div className="grid md:grid-cols-3 gap-3 text-sm">
                   <div>
