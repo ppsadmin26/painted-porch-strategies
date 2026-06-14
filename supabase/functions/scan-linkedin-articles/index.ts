@@ -431,6 +431,53 @@ function scrubResidualChrome(md: string, coverUrl: string | null): string {
   return collapsed.join("\n");
 }
 
+function stripInlineRelatedSections(md: string): string {
+  const lines = md.split("\n");
+  const headerRe =
+    /^(#{1,6}\s+)?\s*(recommended (next|reading|for you|by linkedin|articles)|explore (topics|more)|related (articles|posts|reading)|more (like this|articles by|from)|you (might|may) (also )?(like|enjoy)|keep reading|see also|further reading|published by)\b/i;
+  const cardLineRe = [
+    /^!\[[^\]]*\]\([^)]+\)\s*$/,
+    /^\[[^\]]+\]\(https?:\/\/(www\.)?linkedin\.com\/[^)]+\)\s*$/i,
+    /^\[[^\]]+\]\(https?:\/\/[^)]+\)\s*$/i,
+    /^\[[^\]]+$/i,
+    /^[^\[]+\]\(https?:\/\/[^)]+\)\s*$/i,
+    /^\d+\s+(min read|minute read|reactions?|comments?|followers?)\s*$/i,
+    /^\d+\s+(day|week|month|year)s?\s+ago\s*$/i,
+    /^\d+\s+(day|week|month|year)s?\s+ago\]\(https?:\/\/[^)]+\)\s*$/i,
+    /^(by\s+)?[A-Z][\w .'’-]{1,80}\s*$/,
+    /^\w{3,9}\.?\s+\d{1,2},?\s+\d{4}\s*$/i,
+    /^\d+\s+(likes?|views?)\s*$/i,
+  ];
+  const out: string[] = [];
+  let i = 0;
+  while (i < lines.length) {
+    const t = lines[i].trim();
+    if (headerRe.test(t)) {
+      i++;
+      let consumed = 0;
+      while (i < lines.length) {
+        const u = lines[i].trim();
+        if (u === "") { i++; continue; }
+        if (cardLineRe.some((r) => r.test(u))) { i++; consumed++; continue; }
+        if (consumed === 0) out.push(lines[i - 1]);
+        break;
+      }
+      if (out.length && out[out.length - 1] !== "") out.push("");
+      continue;
+    }
+    out.push(lines[i]);
+    i++;
+  }
+  const collapsed: string[] = [];
+  for (const l of out) {
+    if (l.trim() === "" && collapsed[collapsed.length - 1]?.trim() === "") continue;
+    collapsed.push(l);
+  }
+  while (collapsed[0]?.trim() === "") collapsed.shift();
+  while (collapsed[collapsed.length - 1]?.trim() === "") collapsed.pop();
+  return collapsed.join("\n");
+}
+
 /** Remove LinkedIn cookie banners, nav, comments, and other boilerplate */
 function cleanLinkedInMarkdown(md: string): string {
   const rawLines = truncateAtArticleEnd(md)
