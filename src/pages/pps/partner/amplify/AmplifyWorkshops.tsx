@@ -370,6 +370,16 @@ export default function AmplifyWorkshops() {
               "masterYourMessageB2B",
               "stoicismB2B", "stoicism",
               "heroesAssemble", // "Create Extraordinary Teams" maps closest to this catalog entry
+              // Already presented as speaking topics on /speaking/{amy,rob,sierra}
+              // Amy
+              "leadAtSpeed", "goldilocks", "fromDysfunctionToDynamic", "aiEiOh",
+              // Rob
+              "highFidelityCommunication", "eightByEight", "powerOfStory",
+              "getClearBeHeard", "borderlessCommunication", "fiveMinuteKeynote",
+              "communicateWithStyle",
+              // Sierra
+              "fromPassengerToPilot", "moveShakeInnovate",
+              "findingJoyAtWork", "reignitingResilience",
             ]}
           />
 
