@@ -23,7 +23,7 @@ type Row = {
  * Lives in a collapsible accordion so it doesn't overwhelm the featured cards
  * above, while still giving quiz recommendations a real anchor to land on.
  */
-export function AllWorkshopTopics() {
+export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[] } = {}) {
   const [rows, setRows] = useState<Row[]>([]);
   const [openItems, setOpenItems] = useState<string[]>([]);
   const { hash } = useLocation();
@@ -45,11 +45,17 @@ export function AllWorkshopTopics() {
     return () => { cancelled = true; };
   }, []);
 
+  // Filter out anything already featured as a card on the page (by offering_key or anchor_id).
+  const visibleRows = useMemo(() => {
+    const skip = new Set(excludeKeys);
+    return rows.filter((r) => !skip.has(r.offering_key) && !(r.anchor_id && skip.has(r.anchor_id)));
+  }, [rows, excludeKeys]);
+
   // Open the accordion item that matches the URL hash, and scroll to it.
   useEffect(() => {
-    if (!hash || rows.length === 0) return;
+    if (!hash || visibleRows.length === 0) return;
     const target = hash.replace(/^#/, "");
-    const match = rows.find((r) => (r.anchor_id || r.offering_key) === target);
+    const match = visibleRows.find((r) => (r.anchor_id || r.offering_key) === target);
     if (!match) return;
     setOpenItems((prev) => (prev.includes(target) ? prev : [...prev, target]));
     // Give DOM a tick to expand, then scroll.
@@ -57,16 +63,16 @@ export function AllWorkshopTopics() {
       const el = document.getElementById(target);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 120);
-  }, [hash, rows]);
+  }, [hash, visibleRows]);
 
   const grouped = useMemo(() => {
-    return rows.map((r) => ({
+    return visibleRows.map((r) => ({
       id: r.anchor_id || r.offering_key,
       ...r,
     }));
-  }, [rows]);
+  }, [visibleRows]);
 
-  if (rows.length === 0) return null;
+  if (visibleRows.length === 0) return null;
 
   return (
     <div className="mt-12 scroll-mt-24" id="all-workshop-topics">
