@@ -144,7 +144,8 @@ export default function PPSNavigation() {
                           : "text-foreground hover:text-primary"
                       }`}
                     >
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className="w-4 h-4" aria-hidden="true" />
+                      <span className="sr-only">Open {link.label} submenu</span>
                     </DropdownMenuTrigger>
                   </div>
                   <DropdownMenuContent align="start" className="w-48 bg-white z-50">
@@ -223,6 +224,8 @@ export default function PPSNavigation() {
                         </Link>
                         <button
                           type="button"
+                          aria-label={`Toggle ${link.label} submenu`}
+                          aria-expanded={expandedMobileItem === link.href}
                           className={`px-3 py-2 ${
                             isActiveLink(link.href) ? "text-primary" : "text-foreground"
                           }`}
@@ -233,10 +236,12 @@ export default function PPSNavigation() {
                           }
                         >
                           <ChevronDown
+                            aria-hidden="true"
                             className={`w-4 h-4 transition-transform ${
                               expandedMobileItem === link.href ? "rotate-180" : ""
                             }`}
                           />
+                          <span className="sr-only">Toggle {link.label} submenu</span>
                         </button>
                       </div>
                       {expandedMobileItem === link.href && (
