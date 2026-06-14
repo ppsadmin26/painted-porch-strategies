@@ -607,8 +607,8 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     primaryHeading = "Team Dynamics & People";
     primaryKeys = ["fromConflictToConnection", "fromDysfunctionToDynamic", "heroesAssemble"];
     extra.push(grp("Change & Transformation", "leadAtSpeed", "pathToLastingChange", "cultivatingChangeResilience"));
-    extra.push(grp("Leadership Capability", "goldilocks", "stracticalLeader", "pillarsOfLastingChange"));
-    extra.push(grp("Strategic Design", "architectChange", "pillarsOfLastingChange"));
+    extra.push(grp("Leadership Capability", "goldilocks", "stracticalLeader", "architectureOfAdaptability"));
+    extra.push(grp("Strategic Design", "architectChange", "architectureOfAdaptability"));
   }
 
   // Simplified: cap recommendations at 3 in the primary group only.
