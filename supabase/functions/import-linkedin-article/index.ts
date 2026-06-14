@@ -192,12 +192,16 @@ function scrubResidualChrome(md: string, coverUrl: string | null): string {
 function stripInlineRelatedSections(md: string): string {
   const lines = md.split("\n");
   const headerRe =
-    /^(#{1,6}\s+)?\s*(recommended (next|reading|for you|articles)|explore (topics|more)|related (articles|posts|reading)|more (like this|articles by|from)|you (might|may) (also )?(like|enjoy)|keep reading|see also|further reading|published by)\b/i;
+    /^(#{1,6}\s+)?\s*(recommended (next|reading|for you|by linkedin|articles)|explore (topics|more)|related (articles|posts|reading)|more (like this|articles by|from)|you (might|may) (also )?(like|enjoy)|keep reading|see also|further reading|published by)\b/i;
   const cardLineRe = [
     /^!\[[^\]]*\]\([^)]+\)\s*$/, // standalone image
     /^\[[^\]]+\]\(https?:\/\/(www\.)?linkedin\.com\/[^)]+\)\s*$/i, // linkedin link line
     /^\[[^\]]+\]\(https?:\/\/[^)]+\)\s*$/i, // bare link line
+    /^\[[^\]]+$/i, // LinkedIn sometimes splits a card link over several lines
+    /^[^\[]+\]\(https?:\/\/[^)]+\)\s*$/i, // closing half of a split card link
     /^\d+\s+(min read|minute read|reactions?|comments?|followers?)\s*$/i,
+    /^\d+\s+(day|week|month|year)s?\s+ago\s*$/i,
+    /^\d+\s+(day|week|month|year)s?\s+ago\]\(https?:\/\/[^)]+\)\s*$/i,
     /^(by\s+)?[A-Z][\w .'’-]{1,80}\s*$/, // author byline (capitalized words)
     /^\w{3,9}\.?\s+\d{1,2},?\s+\d{4}\s*$/i, // date line "Jan 5, 2024"
     /^\d+\s+(likes?|views?)\s*$/i,
