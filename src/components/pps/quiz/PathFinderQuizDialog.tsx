@@ -389,13 +389,10 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
     <div className={`mt-4 ${primary ? "" : ""}`}>
       <h4 className="font-poppins text-base font-semibold text-navy mb-2">{heading}</h4>
       <div className="grid gap-2">
-        {offerings.map((o) => (
-          <Link
-            key={o.key}
-            to={o.url}
-            onClick={onClose}
-            className="block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all group"
-          >
+        {offerings.map((o) => {
+          const isExternal = /^https?:\/\//i.test(o.url);
+          const className = "block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
+          const inner = (
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
                 <p className="font-semibold text-navy text-sm"><BoldShiftName name={o.name} /></p>
@@ -403,9 +400,29 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
               </div>
               <span className="text-[10px] uppercase tracking-wider font-bold text-primary whitespace-nowrap mt-0.5">{o.tier === "Pathway B" ? "Workshop" : o.tier}</span>
             </div>
-          </Link>
-        ))}
+          );
+          if (isExternal) {
+            return (
+              <a
+                key={o.key}
+                href={o.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
+                className={className}
+              >
+                {inner}
+              </a>
+            );
+          }
+          return (
+            <Link key={o.key} to={o.url} onClick={onClose} className={className}>
+              {inner}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
 }
+
