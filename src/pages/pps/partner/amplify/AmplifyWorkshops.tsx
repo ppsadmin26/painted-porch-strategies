@@ -380,25 +380,15 @@ export default function AmplifyWorkshops() {
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
               Not sure which workshop is right for your team?
             </h3>
-            <p className="text-foreground max-w-2xl mx-auto mb-2">
+            <p className="text-foreground max-w-2xl mx-auto mb-6">
               Every team is different. Take the P.A.T.H.finder quiz and talk through your goals, context, and challenges so we can recommend the workshop (or partnership combination) that best fits where you're headed.
             </p>
-            <p className="text-foreground max-w-2xl mx-auto mb-6">
-              The topics above cover our full workshop catalog, including speaking topics that can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive session</strong> tailored to your team.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button
-                onClick={openQuiz}
-                className="bg-teal text-white hover:bg-teal/90 h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold w-full sm:w-auto whitespace-normal"
-              >
-                Take the P.A.T.H.finder Quiz <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Link to="/speaking" className="w-full sm:w-auto">
-                <Button variant="outline" className="border-2 border-teal text-teal hover:bg-teal hover:text-white h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold w-full sm:w-auto whitespace-normal">
-                  View Speaking Topics <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-            </div>
+            <Button
+              onClick={openQuiz}
+              className="bg-teal text-white hover:bg-teal/90 h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold whitespace-normal"
+            >
+              Take the P.A.T.H.finder Quiz <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </div>
 
         </div>
