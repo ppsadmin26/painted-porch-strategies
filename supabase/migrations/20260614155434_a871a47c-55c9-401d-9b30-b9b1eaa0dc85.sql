@@ -1,0 +1,3 @@
+UPDATE public.path_finder_offerings SET anchor_id = 'lab-conflict-to-connection' WHERE offering_key = 'conflictToConnectionLab';
+UPDATE public.path_finder_offerings SET anchor_id = 'lab-leading-change' WHERE offering_key = 'leadingChangeLab';
+UPDATE public.path_finder_offerings SET current_url = 'https://youtube.com/playlist?list=PLhdPibIQvwhHBAdRRSuk2JmGT9GO7lNBs&si=5gSyg-aAllEOSCSr', anchor_id = NULL WHERE offering_key = 'fiftyTwoStoicism';
