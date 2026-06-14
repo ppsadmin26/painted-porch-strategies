@@ -17,6 +17,7 @@ interface Row {
   facilitator: string | null;
   tier: string;
   blurb: string;
+  description: string | null;
   current_url: string;
   dedicated_url: string | null;
   anchor_id: string | null;
