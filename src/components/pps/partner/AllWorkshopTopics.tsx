@@ -18,6 +18,13 @@ type Row = {
   facilitator: string | null;
 };
 
+const FACILITATOR_FULL_NAME: Record<string, string> = {
+  Amy: "Amy Yackowski",
+  Rob: "Rob Hunter",
+  Sierra: "Sierra Ramm Cantrell",
+};
+const fullName = (f: string | null) => (f ? FACILITATOR_FULL_NAME[f] ?? f : "");
+
 /**
  * Full, canonical list of every workshop topic in the P.A.T.H.finder catalog.
  * Lives in a collapsible accordion so it doesn't overwhelm the featured cards
@@ -105,7 +112,7 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
                 </div>
                 {r.facilitator && (
                   <div className="text-xs text-foreground/60 mt-0.5">
-                    Facilitated by {r.facilitator}
+                    Facilitated by {fullName(r.facilitator)}
                   </div>
                 )}
               </div>
