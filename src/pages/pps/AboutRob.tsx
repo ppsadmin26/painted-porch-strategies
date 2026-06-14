@@ -32,7 +32,7 @@ const offerings: OfferingCard[] = [
     emoji: "🎤",
     title: "Speaking & Keynotes",
     description:
-      "From High-Fidelity Communication to Radio-Ready Confidence, Rob delivers sessions that sharpen how teams speak, connect, and lead.",
+      "From High-Fidelity Communication to On-Air Ready Confidence, Rob delivers sessions that sharpen how teams speak, connect, and lead.",
     href: "/speaking/rob",
     color: "purple",
   },

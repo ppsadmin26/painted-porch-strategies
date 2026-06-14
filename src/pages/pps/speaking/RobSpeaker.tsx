@@ -44,7 +44,7 @@ const rob: SpeakerData = {
         "Great leaders don't just talk, they communicate with intention. Learn how to create a culture of ownership and follow-through.",
     },
     {
-      title: "Radio-Ready Confidence",
+      title: "On-Air Ready Confidence",
       description:
         "Tame the nerves and take the mic. From boardrooms to breakouts, learn how to show up prepared, polished, and powerful, every time you speak.",
     },
@@ -54,7 +54,7 @@ const rob: SpeakerData = {
         "Every leader needs a signature message they can deliver at a moment's notice. Learn how to craft and deliver a powerful 5-minute keynote that leaves a lasting impression.",
     },
     {
-      title: "Speak with Style",
+      title: "Speaking with Style: The 6 Communicator Styles for Influence & Impact",
       description:
         "There are six distinct communicator styles, and knowing yours changes everything. Discover your natural style and learn to flex across all six to connect with any audience.",
     },
