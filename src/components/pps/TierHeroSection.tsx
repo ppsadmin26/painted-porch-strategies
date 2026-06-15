@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { TierBadge } from "@/components/pps/TierBadge";
 import { type TierConfig } from "@/config/tiers";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
+import { useParallax } from "@/hooks/useParallax";
 
 interface HeroCTA {
   label: string;
@@ -94,9 +95,20 @@ export function TierHeroSection({
     return "bg-gold border-2 border-gold text-navy hover:bg-white hover:text-gold";
   };
 
+  const { ref: sectionRef, parallaxOffset } = useParallax<HTMLElement>({
+    mode: "scroll",
+    speed: 0.25,
+  });
+
+  const bgTransform = `translateY(${parallaxOffset}px) scale(1.08)`;
+
   return (
-    <section className={`relative isolate ${minHeightClass} flex items-center overflow-hidden`}>
-      {/* Background */}
+    <section ref={sectionRef} className={`relative isolate ${minHeightClass} flex items-center overflow-hidden`}>
+      {/* Background (parallax wrapper) */}
+      <div
+        className="absolute inset-0 will-change-transform"
+        style={{ transform: bgTransform }}
+      >
       {background.type === "video" ? (
         background.slotKey ? (
           <LazyHeroVideo
@@ -128,6 +140,7 @@ export function TierHeroSection({
           className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
         />
       )}
+      </div>
 
       {/* Overlay */}
       <div className={`absolute inset-0 ${overlayClass}`} />
