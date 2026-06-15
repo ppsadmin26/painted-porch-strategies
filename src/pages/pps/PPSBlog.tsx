@@ -404,7 +404,7 @@ export default function PPSBlog() {
 
             {/* Per-page selector */}
             <Select value={String(perPage)} onValueChange={handlePerPageChange}>
-              <SelectTrigger className="w-full md:w-[130px] bg-muted">
+              <SelectTrigger aria-label="Posts per page" className="w-full md:w-[130px] bg-muted">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
