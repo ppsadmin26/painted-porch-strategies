@@ -83,12 +83,22 @@ export default function PPSContact() {
   const [specificDate, setSpecificDate] = useState<Date>();
   const [newsletter, setNewsletter] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({});
+  const [quizPrefillHeadline, setQuizPrefillHeadline] = useState<string | null>(null);
 
   // Pre-populate from URL query params (e.g. ?scope=Yourself&interest=leadership-lab&message=...)
+  // Falls back to a P.A.T.H.finder quiz prefill saved in sessionStorage when
+  // no URL params are present, so quiz context survives if the user visited a
+  // recommended workshop or the Blue Door page before reaching /contact.
   useEffect(() => {
-    const scope = searchParams.get("scope");
-    const interest = searchParams.get("interest");
-    const msg = searchParams.get("message");
+    const urlScope = searchParams.get("scope");
+    const urlInterest = searchParams.get("interest");
+    const urlMsg = searchParams.get("message");
+
+    const fromQuiz = !urlScope && !urlInterest && !urlMsg ? loadQuizContactPrefill() : null;
+
+    const scope = urlScope ?? fromQuiz?.scope ?? null;
+    const interest = urlInterest ?? fromQuiz?.interest ?? null;
+    const msg = urlMsg ?? fromQuiz?.message ?? null;
 
     if (scope) {
       const scopes = scope.split(",").filter((s) =>
@@ -103,7 +113,16 @@ export default function PPSContact() {
       if (interests.length > 0) setInterests(interests);
     }
     if (msg) setMessage(msg);
+    if (fromQuiz) setQuizPrefillHeadline(fromQuiz.resultHeadline);
   }, []);
+
+  const removeQuizPrefill = () => {
+    clearQuizContactPrefill();
+    setQuizPrefillHeadline(null);
+    setMessage("");
+    setInterests([]);
+    setInquiryFor([]);
+  };
 
   const hasScope = inquiryFor.length > 0;
   const isIndividualOnly = inquiryFor.length > 0 && inquiryFor.every((v) => v === "Yourself" || v === "Someone Else");
