@@ -528,6 +528,16 @@ const SPEAKING_BY_RT: Record<B2BResultType, OfferingKey[]> = {
   "RT-E": ["speakingHeroesAssemble", "speakingShIFtHappens", "speakingGoldilocks"],
 };
 
+// Free-resource candidates per B2B result type. Up to 2 surface in results,
+// filtered to admin-eligible (Live + URL/anchor) rows.
+const FREE_RESOURCES_BY_RT: Record<B2BResultType, OfferingKey[]> = {
+  "RT-A": ["communicatingChangeWorkbook", "fiftyTwoStoicism", "burnoutResources"],
+  "RT-B": ["strategicChangeCanvas", "communicatingChangeWorkbook", "fiftyTwoStoicism"],
+  "RT-C": ["stracticalMini", "fiftyTwoStoicism", "communicatingChangeWorkbook"],
+  "RT-D": ["strategicChangeCanvas", "communicatingChangeWorkbook", "stracticalMini"],
+  "RT-E": ["strategicChangeCanvas", "burnoutResources", "fiftyTwoStoicism"],
+};
+
 // Post-process a result to drop offerings not in the viewable set. Keeps
 // the original group as a fallback if filtering would empty it, so results
 // never display a blank section.
