@@ -15,6 +15,7 @@ import {
   PQ1, PQ2_B2C, B2C_QUESTIONS, ORG_PQ2, TEAM_BRANCH, CHANGE_BRANCH, CAP_BRANCH, STRATEGIC_BRANCH,
   buildResult, type Answers, type Question, type QuizResult, type Track, type Offering,
 } from "@/data/pathFinderQuiz";
+import { saveQuizContactPrefill, clearQuizContactPrefill } from "./quizContactPrefill";
 
 interface Props {
   open: boolean;
@@ -83,7 +84,7 @@ function loadPersisted(): PersistedState | null {
  * into the contact form `message` field so the submit-ghl-lead edge function
  * forwards it into the GHL opportunity's `contact_form_details` custom field.
  */
-function buildContactHref(result: QuizResult, firstName: string, email: string): string {
+function buildQuizPrefillPayload(result: QuizResult): { scope?: string; interest?: string; message: string; resultHeadline: string } {
   const picks = (result.primaryGroup?.offerings ?? []).map((o) => `• ${o.name}`).join("\n");
   const strongest = result.strongestNextStep ? `\nStrongest Next Step: ${result.strongestNextStep.offering.name}` : "";
   const lines = [
@@ -96,10 +97,20 @@ function buildContactHref(result: QuizResult, firstName: string, email: string):
     ``,
     `Please tell me which sessions in ${result.topicArea ?? "this area"} would be the best fit.`,
   ];
+  return {
+    scope: result.contactPrefill?.scope,
+    interest: result.contactPrefill?.interests?.length ? result.contactPrefill.interests.join(",") : undefined,
+    message: lines.join("\n"),
+    resultHeadline: result.headline,
+  };
+}
+
+function buildContactHref(result: QuizResult, firstName: string, email: string): string {
+  const payload = buildQuizPrefillPayload(result);
   const params = new URLSearchParams();
-  if (result.contactPrefill?.scope) params.set("scope", result.contactPrefill.scope);
-  if (result.contactPrefill?.interests?.length) params.set("interest", result.contactPrefill.interests.join(","));
-  params.set("message", lines.join("\n"));
+  if (payload.scope) params.set("scope", payload.scope);
+  if (payload.interest) params.set("interest", payload.interest);
+  params.set("message", payload.message);
   // Note: firstName/email are passed through for future use but contact form
   // doesn't currently auto-fill them — leaving the params here keeps the door open.
   if (firstName) params.set("firstName", firstName);
@@ -177,6 +188,15 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showResult, track, answers, overrides, featuredKeys]);
 
+  // Persist the prefill payload so /contact can hydrate from quiz context even
+  // if the user navigates to a recommended workshop / Blue Door page first and
+  // reaches the contact form later.
+  useEffect(() => {
+    if (result) saveQuizContactPrefill(buildQuizPrefillPayload(result));
+  }, [result]);
+
+
+
 
   const setAnswer = (qid: string, value: string | string[]) => {
     setAnswers((prev) => ({ ...prev, [qid]: value }));
@@ -218,6 +238,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     setAnswers({}); setIndex(0); setShowResult(false);
     setSubmitted(false); setEmail(""); setFirstName(""); setSubscribe(false);
     try { sessionStorage.removeItem(SESSION_KEY); } catch { /* ignore */ }
+    clearQuizContactPrefill();
   };
 
   const onEmailSubmit = async (e: React.FormEvent) => {

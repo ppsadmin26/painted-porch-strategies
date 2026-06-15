@@ -11,6 +11,8 @@ import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import contactHero from "@/assets/heroes/contact-hero.jpg";
+import { loadQuizContactPrefill, clearQuizContactPrefill } from "@/components/pps/quiz/quizContactPrefill";
+import { X } from "lucide-react";
 
 const allInterestOptions = [
   { value: "assessments", label: "Assessments" },
@@ -81,12 +83,22 @@ export default function PPSContact() {
   const [specificDate, setSpecificDate] = useState<Date>();
   const [newsletter, setNewsletter] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({});
+  const [quizPrefillHeadline, setQuizPrefillHeadline] = useState<string | null>(null);
 
   // Pre-populate from URL query params (e.g. ?scope=Yourself&interest=leadership-lab&message=...)
+  // Falls back to a P.A.T.H.finder quiz prefill saved in sessionStorage when
+  // no URL params are present, so quiz context survives if the user visited a
+  // recommended workshop or the Blue Door page before reaching /contact.
   useEffect(() => {
-    const scope = searchParams.get("scope");
-    const interest = searchParams.get("interest");
-    const msg = searchParams.get("message");
+    const urlScope = searchParams.get("scope");
+    const urlInterest = searchParams.get("interest");
+    const urlMsg = searchParams.get("message");
+
+    const fromQuiz = !urlScope && !urlInterest && !urlMsg ? loadQuizContactPrefill() : null;
+
+    const scope = urlScope ?? fromQuiz?.scope ?? null;
+    const interest = urlInterest ?? fromQuiz?.interest ?? null;
+    const msg = urlMsg ?? fromQuiz?.message ?? null;
 
     if (scope) {
       const scopes = scope.split(",").filter((s) =>
@@ -101,7 +113,16 @@ export default function PPSContact() {
       if (interests.length > 0) setInterests(interests);
     }
     if (msg) setMessage(msg);
+    if (fromQuiz) setQuizPrefillHeadline(fromQuiz.resultHeadline);
   }, []);
+
+  const removeQuizPrefill = () => {
+    clearQuizContactPrefill();
+    setQuizPrefillHeadline(null);
+    setMessage("");
+    setInterests([]);
+    setInquiryFor([]);
+  };
 
   const hasScope = inquiryFor.length > 0;
   const isIndividualOnly = inquiryFor.length > 0 && inquiryFor.every((v) => v === "Yourself" || v === "Someone Else");
@@ -299,6 +320,24 @@ export default function PPSContact() {
               </div>
             ) : (
               <div className="bg-muted p-8 rounded-xl">
+                {quizPrefillHeadline && (
+                  <div className="mb-6 flex items-start gap-3 rounded-lg border border-teal/30 bg-teal/5 p-4">
+                    <div className="flex-1 text-sm text-navy">
+                      <p className="font-semibold">Including your P.A.T.H.finder quiz results</p>
+                      <p className="text-foreground/80 mt-1">
+                        Result: <span className="font-medium">{quizPrefillHeadline}</span>. Your answers and recommended next steps are prefilled in the message below so the team has full context.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={removeQuizPrefill}
+                      className="flex-shrink-0 rounded p-1 text-foreground/60 hover:bg-teal/10 hover:text-navy focus:outline-none focus:ring-2 focus:ring-teal"
+                      aria-label="Remove quiz prefill"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
                 <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                   {/* Name */}
                   <div className="grid md:grid-cols-2 gap-6">
