@@ -320,6 +320,24 @@ export default function PPSContact() {
               </div>
             ) : (
               <div className="bg-muted p-8 rounded-xl">
+                {quizPrefillHeadline && (
+                  <div className="mb-6 flex items-start gap-3 rounded-lg border border-teal/30 bg-teal/5 p-4">
+                    <div className="flex-1 text-sm text-navy">
+                      <p className="font-semibold">Including your P.A.T.H.finder quiz results</p>
+                      <p className="text-foreground/80 mt-1">
+                        Result: <span className="font-medium">{quizPrefillHeadline}</span>. Your answers and recommended next steps are prefilled in the message below so the team has full context.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={removeQuizPrefill}
+                      className="flex-shrink-0 rounded p-1 text-foreground/60 hover:bg-teal/10 hover:text-navy focus:outline-none focus:ring-2 focus:ring-teal"
+                      aria-label="Remove quiz prefill"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
                 <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                   {/* Name */}
                   <div className="grid md:grid-cols-2 gap-6">
