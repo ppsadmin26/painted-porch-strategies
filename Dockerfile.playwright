@@ -1,0 +1,31 @@
+# Playwright cross-browser test image
+# ------------------------------------
+# Ships Chromium, Firefox, and WebKit with all required system libraries
+# (libX11-xcb, libatk, NSS, GTK, etc.) so the keyboard / a11y / visual suites
+# run consistently across browsers. The Nix-based dev sandbox cannot launch
+# Firefox or WebKit reliably; use this image locally and in CI instead.
+#
+# Build:
+#   docker build -f Dockerfile.playwright -t pps-playwright .
+#
+# Run the full keyboard suite across all three browsers:
+#   docker run --rm -it -v "$PWD:/work" -w /work pps-playwright \
+#     npx playwright test e2e/b2c-quiz-keyboard.spec.ts \
+#       --project=chromium --project=firefox --project=webkit
+#
+# Run everything (uses the webServer block in playwright.config.ts to boot Vite):
+#   docker run --rm -it -v "$PWD:/work" -w /work pps-playwright npm run test:e2e:ci
+#
+# Pinned to the same Playwright minor as package.json (@playwright/test ^1.57).
+FROM mcr.microsoft.com/playwright:v1.57.0-jammy
+
+ENV CI=1 \
+    NODE_ENV=development \
+    PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+
+WORKDIR /work
+
+# Pre-warm npm cache layer when a lockfile is mounted at build time; the actual
+# install is done at runtime against the bind mount so we don't bake stale
+# deps into the image.
+CMD ["bash", "-lc", "npm ci && npx playwright install --with-deps && npm run test:e2e:ci"]
