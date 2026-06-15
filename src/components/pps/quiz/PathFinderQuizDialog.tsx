@@ -347,6 +347,25 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               <RecGroup key={i} heading={g.heading} offerings={g.offerings} onClose={() => onOpenChange(false)} />
             ))}
 
+            {/* Topic note + Contact CTA — B2B only */}
+            {result.track === "b2b" && result.topicArea && (
+              <div className="mt-6 p-4 rounded-lg border border-primary/20 bg-primary/5">
+                <p className="text-sm text-foreground mb-3">
+                  We also offer additional <strong>speaking</strong> and <strong>workshop</strong> sessions
+                  in <strong className="text-primary">{result.topicArea}</strong>. The right fit depends on your team,
+                  timing, and goals — let's discuss on a quick call.
+                </p>
+                <Button asChild className="bg-primary text-white hover:bg-primary/90">
+                  <Link
+                    to={buildContactHref(result, firstName, email)}
+                    onClick={() => onOpenChange(false)}
+                  >
+                    Contact Us to Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                  </Link>
+                </Button>
+              </div>
+            )}
+
             {result.crossoverNote && (
               <div className="mt-4 p-4 rounded-lg bg-purple/5 border border-purple/20">
                 <p className="text-sm text-navy"><strong>Individual + Team crossover:</strong> {result.crossoverNote}</p>
@@ -357,6 +376,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               <p className="text-xs uppercase tracking-wider text-foreground/70 font-semibold mb-1">What Comes Next</p>
               <p className="text-sm text-foreground">{result.whatComesNext}</p>
             </div>
+
 
             {/* Email form */}
             <div className="mt-8 pt-6 border-t border-border">
