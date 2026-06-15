@@ -241,7 +241,7 @@ export default function PPSContact() {
         company: company.trim() || undefined,
         inquiryFor,
         interests,
-        message: message.trim(),
+        message: finalMessage,
         budgetAuthority: showBudgetAuthority ? budgetAuthority : undefined,
         budgetRange: showBudgetRange ? budgetRange : undefined,
         timeline: showBudgetRange ? timeline : undefined,
