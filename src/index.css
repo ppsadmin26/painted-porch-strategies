@@ -355,6 +355,16 @@
  * Accessibility utilities
  * ============================================================ */
 @layer utilities {
+  /* Global safety net: ANY focusable element receives a visible focus ring
+   * when reached via keyboard, even if a component author forgot to add one.
+   * Component-level focus-visible styles (button, select, input, etc.) still
+   * win because they set their own ring; this only catches the gaps. */
+  :where(a, button, [role="button"], [role="link"], [role="menuitem"], [role="option"], [role="tab"], [role="checkbox"], [role="radio"], [role="switch"], [tabindex]:not([tabindex="-1"]), input, select, textarea, summary):focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
   /* High-contrast focus ring designed for dark/navy backgrounds.
    * Use on any focusable element (a, button) sitting on navy or image bgs.
    * Pairs with the ParallaxCTA component. */
