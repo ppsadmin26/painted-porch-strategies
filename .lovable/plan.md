@@ -1,91 +1,105 @@
 ## Goal
 
-Eliminate quiz-vs-page drift by making the AMPLIFY Workshops and AMPLIFY Labs pages, and the P.A.T.H.finder Quiz catalog, all read from one canonical registry. After this work, every quiz recommendation will resolve to a real card on the destination page, and any future workshop/lab is added in exactly one place.
+Stop dumping the full workshop catalog in B2B P.A.T.H.finder results. Instead, surface up to 3 "featured" workshops/speaking topics per result, plus a soft note about additional sessions in the same topic area. A single "Contact Us to Learn More" CTA carries the quiz answers + recommendations into the contact form AND creates a GHL Opportunity (not just a tagged contact).
 
-## Scope (this pass)
+Scope: B2B track only. B2C results unchanged.
 
-In scope:
-- `/partner/amplify/workshops` — all workshop cards
-- `/partner/amplify/labs` — all lab cards
-- P.A.T.H.finder Quiz B2B catalog entries that point to those two pages
-- Deep-link anchors (e.g. `/partner/amplify/workshops#ai-ei-oh`) so quiz cards jump straight to the card
+---
 
-Out of scope (deliberately, to keep the change reviewable):
-- IGNITE masterclasses / courses / assessments registries
-- B2C offering pages (Radical Mindfulness, Master Your Message, etc.)
-- Visual redesign of the cards themselves
+## 1. Define the "featured" set (DB)
 
-## The Registry
+Add a new boolean to `path_finder_offerings`:
 
-New file: `src/data/amplifyOfferings.ts`
+- `is_featured_in_quiz boolean not null default false`
 
-```ts
-export interface AmplifyOffering {
-  slug: string;                  // url-safe id, also the anchor (#slug)
-  kind: "workshop" | "lab";
-  title: string;
-  facilitator: "Amy" | "Rob" | "Sierra" | "Painted Porch Team";
-  category: string;              // e.g. "Change Leadership", "Communication", "Team Health"
-  shortBlurb: string;            // 1 line, used by quiz + card
-  longDescription: string;       // card body
-  learnings?: string[];
-  outcomes?: string[];
-  pillar?: "Foundational" | "Operational" | "Human";
-  featured?: boolean;            // appears in the top "signature" row
-  status?: "live" | "waitlist";
-}
-```
+An offering is eligible for B2B quiz recommendations if **either**:
+- `anchor_id is not null` (already has a card on a tier/speaker page), OR
+- `is_featured_in_quiz = true` (manual override)
 
-One exported `AMPLIFY_OFFERINGS: AmplifyOffering[]` array, ordered for page display. Helpers:
+Plus existing B2B filters already in `mem://features/quiz/b2b-recommendation-rules` (workshops + Blue Door + speaking only; no labs unless individual focus).
 
-- `getWorkshops()` / `getLabs()` — page consumers
-- `getOfferingBySlug(slug)` — quiz consumers
-- `getOfferingsByFacilitator(name)` — speaker pages later
+Admin: add a checkbox in `/admin/offerings` row editor so editors can toggle `is_featured_in_quiz` per row.
 
-## Page changes
+## 2. Tag every offering with a quiz `topic_area`
 
-**`AmplifyWorkshops.tsx`** — replace the hard-coded workshop arrays with `getWorkshops()`. Group by `category`. Keep the existing card visual layout. Each card gets `id={slug}` so anchor scroll works.
+Re-use the existing `topic` column on `path_finder_offerings` (already powers the workshop topic tabs — see `AllWorkshopTopics.tsx`). For each result type, map to 1–2 `topic` values (e.g., "Innovation"/"Change" → "Change & Innovation"). This lets us write the topic note ("We also offer additional sessions in **Change & Innovation** — let's discuss on a call") without hard-coding.
 
-**`AmplifyLabs.tsx`** — same pattern with `getLabs()`.
+No new column needed; just confirm every featured offering has a `topic`.
 
-Existing scroll-to-hash logic in `PPSLayout` already handles `#anchor` deep-linking, so no router changes.
+## 3. Recommendation logic changes (B2B only)
 
-## Quiz changes (`src/data/pathFinderQuiz.ts`)
+File: `src/data/pathFinderQuiz.ts` (B2B branch) + any helper in `src/components/pps/quiz/`.
 
-- Remove the duplicated workshop/lab entries from `OFFERINGS` for anything that belongs to AMPLIFY.
-- Replace them with thin proxies generated from the registry:
-  ```ts
-  ...buildOfferingsFromRegistry(AMPLIFY_OFFERINGS)
-  ```
-  Each becomes `{ key: slug, name: title, blurb: shortBlurb, url: '/partner/amplify/{workshops|labs}#{slug}', tier: 'Pathway B'|'AMPLIFY' }`.
-- Quiz recommendation logic keeps using the same keys; we just rename a handful to match new slugs and remove the ones that referenced nonexistent offerings.
+- Filter the candidate pool to the "featured" set defined in step 1.
+- Cap the returned `recommendations` items to **up to 3 picks** for the primary recommendation group.
+- Resolve the result's `topic_area` (string) and pass it through to the dialog as `topicNote`.
+- B2C path: unchanged.
 
-## Filling in the missing offerings
+## 4. Results UI
 
-For the audit gap, the user gets to decide per offering: add a real card to the registry, or remove the quiz reference. I will produce one short follow-up question with the gap list grouped (clear adds vs. likely-drop) before writing any card copy. I will NOT invent long-form descriptions without that confirmation.
+File: `src/components/pps/quiz/PathFinderQuizDialog.tsx` (results view).
 
-Minimum two new cards confirmed already:
-- **AI, EI, Oh** (workshop) — registry + card
-- **AI, EI, Oh! Lab** — registry + card
+- Render up to 3 featured pick cards as today.
+- Below the cards, add a single muted note:
+  > "We also offer additional speaking and workshop sessions in **{topicArea}**. Let's discuss the right fit on a quick call."
+- Replace the multi-CTA stack with **one primary CTA**: "Contact Us to Learn More" → `/contact?...` (see step 5).
+- Keep the "Email me my results" path (existing `submit-path-finder-quiz`) unchanged.
 
-## Validation
+## 5. Contact handoff
 
-After the refactor I will:
-1. Run a CI-style audit script (the one used above) and confirm zero `MISSING` rows for the two AMPLIFY pages.
-2. Visually inspect `/partner/amplify/workshops#ai-ei-oh` and `/partner/amplify/labs#ai-ei-oh` in the preview to confirm anchor scrolls land on the right cards.
-3. Take the quiz with the same answers the user used last time and confirm every recommended card opens to a real card.
+When the user clicks "Contact Us to Learn More":
 
-## Technical notes (skip if non-technical)
+a. **Deep link to `/contact`** with structured query params:
+   - `scope=organization`
+   - `interest=quiz-followup`
+   - `topic={topicArea}`
+   - `resultType={resultType}`
+   - `message=` prefilled summary (result headline, top 3 picks by name, topic note)
+   - `pathQuizPayload=` base64-encoded JSON of `{ answers, recommendations, resultType, headline, strongestNextStep, topicArea }` (read-only; passed through the form to the submit handler)
 
-- Registry lives in `src/data/` (matches existing conventions).
-- No DB migration needed — pure code refactor.
-- Slugs are stable; once chosen they cannot change without breaking saved quiz-result links.
-- Card visuals on the pages stay byte-identical for offerings that already exist; only the data source changes.
+b. **Contact form** (`src/pages/pps/Contact.tsx` and its submit edge fn — likely `submit-ghl-lead`):
+   - Hydrate the existing fields from query params (already supported per `mem://features/contact-form-logic`).
+   - On submit, if `pathQuizPayload` is present, forward it to the edge function alongside the normal contact payload.
 
-## Deliverables order
+c. **Edge function** `submit-ghl-lead` (or a small new wrapper, TBD during build):
+   - Existing behavior: create/update GHL contact + add a note + send internal admin email.
+   - New behavior when `pathQuizPayload` present:
+     1. Add tag `PathQuiz-Followup` and `path-finder-{resultType}`.
+     2. Create a GHL **Opportunity** in the configured pipeline (new secrets: `GHL_PIPELINE_ID`, `GHL_PIPELINE_STAGE_ID`) with:
+        - `name`: `"P.A.T.H. Followup — {firstName} {lastName} ({resultType})"`
+        - `contactId`: from upsert above
+        - `monetaryValue`: 0
+        - `status`: `open`
+        - Notes: full quiz answers + recommendations summary.
+     3. Internal admin email (re-use existing transactional template or extend it) includes: quiz answers, top 3 recs, topic area, contact message.
 
-1. Confirm gap-resolution choices (1 quick question with grouped list).
-2. Build `amplifyOfferings.ts` registry with all current cards + AI, EI, Oh additions.
-3. Refactor `AmplifyWorkshops.tsx` and `AmplifyLabs.tsx` to consume the registry.
-4. Refactor `pathFinderQuiz.ts` to consume the registry; remove dead entries.
-5. Run audit script, walk the preview, report results.
+## 6. Admin UX
+
+- `/admin/offerings`: add `is_featured_in_quiz` toggle column + bulk-edit support.
+- Optional: small "Featured in B2B quiz pool" filter chip at the top of the offerings list.
+
+## 7. Validation
+
+- Unit test in `src/data/__tests__/pathFinderQuiz.b2b.test.ts`: every B2B result type returns ≤3 picks and all picks have `anchor_id || is_featured_in_quiz`.
+- Manual: take quiz, confirm narrowed results, click CTA, confirm `/contact` prefilled, submit, confirm GHL contact + opportunity + admin email.
+
+---
+
+## Technical notes
+
+- **Secrets to request before build:** `GHL_PIPELINE_ID`, `GHL_PIPELINE_STAGE_ID` (the user will need to grab these from GHL Settings → Pipelines).
+- **DB migration:** single `ALTER TABLE path_finder_offerings ADD COLUMN is_featured_in_quiz boolean NOT NULL DEFAULT false;` plus an index isn't required.
+- **Default backfill:** I'll flip `is_featured_in_quiz=true` for any offering that today already has both an `anchor_id` AND was previously recommended by the B2B quiz, so existing recs don't suddenly drop to zero in edge cases.
+- **No new public route**, so no sitemap/page_status entry needed.
+- **B2C untouched**, including the labs-for-individuals rule from existing memory.
+
+## Files likely touched
+
+- supabase migration (new column + admin grants already cover authenticated)
+- `src/data/pathFinderQuiz.ts`
+- `src/components/pps/quiz/PathFinderQuizDialog.tsx`
+- `src/components/pps/quiz/PathFinderQuizProvider.tsx` (if topic plumbing needed)
+- `src/pages/pps/Contact.tsx` (read + forward `pathQuizPayload`)
+- `supabase/functions/submit-ghl-lead/index.ts` (or sibling) — add Opportunity creation
+- `src/pages/pps/admin/Offerings*.tsx` — featured toggle
+- New memory entry: `mem://features/quiz/b2b-featured-pool` summarizing the rule
