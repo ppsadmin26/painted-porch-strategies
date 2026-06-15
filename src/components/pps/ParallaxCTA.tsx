@@ -163,14 +163,14 @@ export function ParallaxCTA({
     <section
       aria-labelledby={headingId}
       className={cn(
-        "relative text-white overflow-hidden bg-center bg-cover md:bg-fixed",
+        "relative text-white overflow-hidden",
         paddingClass,
         className,
       )}
-      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      {/* Decorative overlay, hidden from assistive tech */}
-      <div aria-hidden="true" className={cn("absolute inset-0", resolvedOverlay)} />
+      {/* Shared parallax image + overlay layer. Image is optional. */}
+      <ParallaxBackground image={backgroundImage} overlayClassName={resolvedOverlay} />
+
 
       <div
         className={cn(
