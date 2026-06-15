@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
-import { useParallax } from "@/hooks/useParallax";
 import colorfulPath from "@/assets/colorful-path.jpg";
 
 export function PartnerHeroSection() {
@@ -12,24 +10,15 @@ export function PartnerHeroSection() {
     const t = setTimeout(() => setIsLoaded(true), 80);
     return () => clearTimeout(t);
   }, []);
-  const { ref: sectionRef, parallaxOffset } = useParallax<HTMLElement>({
-    mode: "scroll",
-    speed: 0.25,
-  });
 
   return (
-    <section ref={sectionRef} className="relative isolate min-h-[60vh] flex items-center overflow-hidden">
-      {/* Admin-managed hero video with instant poster fallback (parallax wrapper) */}
-      <div
-        className="absolute inset-0 will-change-transform"
-        style={{ transform: `translateY(${parallaxOffset}px) scale(1.08)` }}
-      >
-        <LazyHeroVideo
-          slotKey="partner-hub-hero"
-          posterUrl={colorfulPath}
-          className="absolute inset-0 w-full h-full"
-        />
-      </div>
+    <section className="relative isolate min-h-[60vh] flex items-center overflow-hidden">
+      {/* Admin-managed hero video with instant poster fallback */}
+      <LazyHeroVideo
+        slotKey="partner-hub-hero"
+        posterUrl={colorfulPath}
+        className="absolute inset-0 w-full h-full"
+      />
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-navy/30" />
@@ -82,14 +71,6 @@ export function PartnerHeroSection() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div
-        className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
-        aria-hidden="true"
-      >
-        <ChevronDown className="w-7 h-7 text-white/80 animate-bounce" />
       </div>
     </section>
   );
