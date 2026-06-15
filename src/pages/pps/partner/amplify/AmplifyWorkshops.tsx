@@ -265,6 +265,7 @@ export default function AmplifyWorkshops() {
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 {
+                  id: "createExtraordinaryTeams",
                   icon: Users,
                   title: "Create Extraordinary Teams",
                   image: teamBuildingThumb,
@@ -279,6 +280,7 @@ export default function AmplifyWorkshops() {
                   ],
                 },
                 {
+                  id: "radicalMindfulnessB2B",
                   icon: Brain,
                   title: "Radically Mindful Leadership",
                   image: mindfulnessThumb,
@@ -293,6 +295,7 @@ export default function AmplifyWorkshops() {
                   ],
                 },
                 {
+                  id: "masterYourMessageB2B",
                   icon: MessageSquare,
                   title: "Master Your Message",
                   image: communicationThumb,
@@ -307,6 +310,7 @@ export default function AmplifyWorkshops() {
                   ],
                 },
                 {
+                  id: "stoicismB2B",
                   icon: Landmark,
                   title: "Stoicism in the Workplace",
                   image: stoicThumb,
@@ -324,7 +328,7 @@ export default function AmplifyWorkshops() {
                 return (
                   <div
                     key={index}
-                    id={workshop.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
+                    id={workshop.id}
                     className="rounded-xl border border-border p-6 flex flex-col scroll-mt-24"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-3">
