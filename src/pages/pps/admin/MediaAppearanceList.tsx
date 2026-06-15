@@ -108,10 +108,10 @@ export default function MediaAppearanceList() {
         <div className="flex gap-3 items-center">
           <div className="relative flex-1 max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Search appearances..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9" />
+            <Input aria-label="Search appearances" placeholder="Search appearances..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9" />
           </div>
           <Select value={typeFilter} onValueChange={setTypeFilter}>
-            <SelectTrigger className="w-40">
+            <SelectTrigger className="w-40" aria-label="Filter by type">
               <SelectValue placeholder="All Types" />
             </SelectTrigger>
             <SelectContent>
@@ -176,16 +176,16 @@ export default function MediaAppearanceList() {
                       <TableCell>
                         <div className="flex gap-1" onClick={(e) => e.stopPropagation()}>
                           {item.external_url && (
-                            <Button variant="ghost" size="icon" className="h-8 w-8" asChild title="View on Website">
+                            <Button variant="ghost" size="icon" className="h-8 w-8" asChild title="View on Website" aria-label="View on website">
                               <a href={item.external_url} target="_blank" rel="noopener noreferrer">
                                 <Eye className="h-4 w-4" />
                               </a>
                             </Button>
                           )}
-                          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => navigate(`/admin/media/${item.id}`)}>
+                          <Button variant="ghost" size="icon" className="h-8 w-8" aria-label="Edit appearance" onClick={() => navigate(`/admin/media/${item.id}`)}>
                             <Pencil className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive" onClick={() => handleDelete(item.id)}>
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive" aria-label="Delete appearance" onClick={() => handleDelete(item.id)}>
                             <Trash2 className="h-4 w-4" />
                           </Button>
                         </div>

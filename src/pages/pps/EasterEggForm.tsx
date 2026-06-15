@@ -167,7 +167,7 @@ const EasterEggForm = () => {
                         <FormLabel className="font-montserrat font-semibold text-sm text-foreground">Your Name</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="First and last name"
+                            aria-label="Full name" placeholder="First and last name"
                             className="h-12 rounded-lg border-[#CCCCCC] focus:border-primary focus-visible:ring-primary text-base"
                             {...field}
                           />
@@ -225,7 +225,7 @@ const EasterEggForm = () => {
                         <FormLabel className="font-montserrat font-semibold text-sm text-foreground">Charity of your choice</FormLabel>
                         <FormControl>
                           <Input
-                            placeholder="Name of the organization you'd like us to donate to"
+                            aria-label="Charity name" placeholder="Name of the organization you'd like us to donate to"
                             className="h-12 rounded-lg border-[#CCCCCC] focus:border-primary focus-visible:ring-primary text-base"
                             {...field}
                           />

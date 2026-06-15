@@ -895,6 +895,7 @@ export default function MigrationChecklist() {
                   variant="ghost"
                   onClick={() => removeRecord(r.id)}
                   title="Remove record"
+                  aria-label="Remove record"
                 >
                   <Trash2 className="h-4 w-4 text-rose-600" />
                 </Button>

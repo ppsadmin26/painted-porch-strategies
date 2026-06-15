@@ -81,14 +81,14 @@ export default function BurnoutOptIn() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <Input
-                  placeholder="First Name"
+                  aria-label="First name" placeholder="First Name"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   className="h-12"
                   required
                 />
                 <Input
-                  placeholder="Last Name"
+                  aria-label="Last name" placeholder="Last Name"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   className="h-12"
@@ -97,7 +97,7 @@ export default function BurnoutOptIn() {
               </div>
               <Input
                 type="email"
-                placeholder="Email"
+                aria-label="Email address" placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="h-12"

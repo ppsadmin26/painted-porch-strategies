@@ -703,6 +703,7 @@ export default function PageSeoEditorDialog({ path, open, onOpenChange }: Props)
                               size="icon"
                               variant="ghost"
                               className="text-pps-raspberry hover:bg-pps-raspberry/10 shrink-0"
+                              aria-label="Remove FAQ"
                               onClick={() =>
                                 setForm((f) => ({ ...f, aeo_faqs: f.aeo_faqs.filter((_, i) => i !== idx) }))
                               }

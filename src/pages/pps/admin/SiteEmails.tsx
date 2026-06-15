@@ -199,7 +199,7 @@ export default function SiteEmails() {
           <div className="relative flex-1">
             <Search className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <Input
-              placeholder="Search by name, key, or subject…"
+              aria-label="Search emails" placeholder="Search by name, key, or subject…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="pl-9"
