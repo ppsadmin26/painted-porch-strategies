@@ -489,11 +489,13 @@ export interface QuizResult {
 
 export interface BuildResultOptions {
   /**
-   * Optional allowlist of offering keys eligible for B2B recommendations.
-   * When provided, B2B primary picks are filtered to this set (falling back
-   * to the original list if filtering would leave nothing). B2C is unaffected.
+   * Allowlist of offering keys the admin has marked as having a real,
+   * clickable destination today (is_live = true AND a URL or anchor set in
+   * /admin/path-finder-offerings). When provided, recommendations on BOTH
+   * tracks are narrowed to this set. Falls back gracefully if filtering
+   * would leave a result blank.
    */
-  featuredKeys?: Set<string>;
+  viewableKeys?: Set<string>;
 }
 
 const O = OFFERINGS;
