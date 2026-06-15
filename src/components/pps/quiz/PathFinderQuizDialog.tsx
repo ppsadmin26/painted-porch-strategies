@@ -238,6 +238,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     setAnswers({}); setIndex(0); setShowResult(false);
     setSubmitted(false); setEmail(""); setFirstName(""); setSubscribe(false);
     try { sessionStorage.removeItem(SESSION_KEY); } catch { /* ignore */ }
+    clearQuizContactPrefill();
   };
 
   const onEmailSubmit = async (e: React.FormEvent) => {
