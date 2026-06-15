@@ -207,7 +207,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   // if the user navigates to a recommended workshop / Blue Door page first and
   // reaches the contact form later.
   useEffect(() => {
-    if (result) saveQuizContactPrefill(buildQuizPrefillPayload(result));
+    if (result) saveQuizContactPrefill(buildQuizPrefillPayload(result, questions, answers));
   }, [result]);
 
 
