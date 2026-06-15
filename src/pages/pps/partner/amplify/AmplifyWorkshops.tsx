@@ -52,6 +52,7 @@ const workshopFaqCategories: FAQCategory[] = [
 
 const workshopTopics = [
   {
+    id: "architectChange",
     title: "Architect Change: Phase Zero Strategic Design",
     image: architectChangeThumb,
     challenge: "Your team jumps straight to execution without designing what you're building. Projects launch before strategic foundations exist.",
@@ -67,6 +68,7 @@ const workshopTopics = [
     note: "Prerequisite: Blue Door",
   },
   {
+    id: "architectureOfAdaptability",
     title: "The Architecture of Organizational ShIFt",
     image: pillarsThumb,
     challenge: "You're not sure if your organization is built to carry the transformation you're considering. You need a clear-eyed assessment of capacity and an architecture designed to navigate uncertainty rather than react to it.",
@@ -82,6 +84,7 @@ const workshopTopics = [
     note: "Prerequisite: Blue Door",
   },
   {
+    id: "pathToLastingChange",
     title: "The P.A.T.H. to Navigating Change",
     image: pathThumb,
     challenge: "Your team doesn't have a shared framework for navigating transformation. Everyone approaches change differently.",
@@ -97,6 +100,7 @@ const workshopTopics = [
     note: "Prerequisite: Blue Door",
   },
   {
+    id: "cultivatingChangeResilience",
     title: "Cultivating Change Resilience",
     image: resilienceThumb,
     challenge: "Your team treats pushback as an obstacle rather than valuable feedback. You're not building organizational capacity to navigate and learn from what people are telling you.",
@@ -112,6 +116,7 @@ const workshopTopics = [
     note: "Prerequisite: Blue Door",
   },
   {
+    id: "leadershipOM",
     title: "Your Leadership Operating Model",
     image: leadershipOpThumb,
     challenge: "Your leadership team doesn't have clear decision-making protocols, communication rhythms, or accountability structures for transformation.",
