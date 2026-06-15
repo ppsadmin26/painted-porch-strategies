@@ -111,7 +111,7 @@ export default function YouTubeVideoList() {
             <Input aria-label="Search videos" placeholder="Search videos..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-9" />
           </div>
           <Select value={typeFilter} onValueChange={setTypeFilter}>
-            <SelectTrigger className="w-40">
+            <SelectTrigger className="w-40" aria-label="Filter by type">
               <SelectValue placeholder="All Types" />
             </SelectTrigger>
             <SelectContent>

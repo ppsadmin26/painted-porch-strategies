@@ -400,7 +400,7 @@ export default function EmailQueue() {
           />
         </form>
         <Select value={queue} onValueChange={setQueue}>
-          <SelectTrigger className="w-[200px] h-9">
+          <SelectTrigger className="w-[200px] h-9" aria-label="Filter by queue">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -412,7 +412,7 @@ export default function EmailQueue() {
           </SelectContent>
         </Select>
         <Select value={kind} onValueChange={setKind}>
-          <SelectTrigger className="w-[160px] h-9">
+          <SelectTrigger className="w-[160px] h-9" aria-label="Filter by kind">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -424,7 +424,7 @@ export default function EmailQueue() {
           </SelectContent>
         </Select>
         <Select value={ttlFilter} onValueChange={setTtlFilter}>
-          <SelectTrigger className="w-[180px] h-9">
+          <SelectTrigger className="w-[180px] h-9" aria-label="Filter by TTL">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -436,7 +436,7 @@ export default function EmailQueue() {
           </SelectContent>
         </Select>
         <Select value={String(hours)} onValueChange={(v) => setHours(Number(v))}>
-          <SelectTrigger className="w-[140px] h-9">
+          <SelectTrigger className="w-[140px] h-9" aria-label="Time range">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>

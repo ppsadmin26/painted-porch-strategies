@@ -287,7 +287,7 @@ export default function EmailHealth() {
         </div>
         <div className="flex items-center gap-2">
           <Select value={String(hours)} onValueChange={(v) => setHours(Number(v))}>
-            <SelectTrigger className="w-[160px] h-9">
+            <SelectTrigger className="w-[160px] h-9" aria-label="Time range">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -446,7 +446,7 @@ export default function EmailHealth() {
                 setTemplate(v);
               }}
             >
-              <SelectTrigger className="w-[220px] h-9">
+              <SelectTrigger className="w-[220px] h-9" aria-label="Filter by template">
                 <SelectValue placeholder="All templates" />
               </SelectTrigger>
               <SelectContent>
@@ -465,7 +465,7 @@ export default function EmailHealth() {
                 setStatus(v);
               }}
             >
-              <SelectTrigger className="w-[160px] h-9">
+              <SelectTrigger className="w-[160px] h-9" aria-label="Filter by status">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

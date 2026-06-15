@@ -213,7 +213,7 @@ export default function BlogPostList() {
             />
           </div>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="w-40">
+            <SelectTrigger className="w-40" aria-label="Filter by status">
               <SelectValue placeholder="All Statuses" />
             </SelectTrigger>
             <SelectContent>
@@ -226,7 +226,7 @@ export default function BlogPostList() {
             </SelectContent>
           </Select>
           <Select value={authorFilter} onValueChange={setAuthorFilter}>
-            <SelectTrigger className="w-40">
+            <SelectTrigger className="w-40" aria-label="Filter by author">
               <SelectValue placeholder="All Authors" />
             </SelectTrigger>
             <SelectContent>
@@ -239,7 +239,7 @@ export default function BlogPostList() {
             </SelectContent>
           </Select>
           <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-            <SelectTrigger className="w-44">
+            <SelectTrigger className="w-44" aria-label="Filter by category">
               <SelectValue placeholder="All Categories" />
             </SelectTrigger>
             <SelectContent>
