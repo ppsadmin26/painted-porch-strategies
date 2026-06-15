@@ -37,7 +37,19 @@ const TIER_COLORS: Record<string, string> = {
   "Blue Door": "bg-bluedoor/15 text-bluedoor border-bluedoor/40",
   Free: "bg-lime/15 text-lime-foreground border-lime/40",
   Assessment: "bg-raspberry/10 text-raspberry border-raspberry/40",
+  Speaking: "bg-navy/10 text-navy border-navy/40",
 };
+
+/** An offering is recommendable by the quiz if it is Live AND has at least
+ *  one of current_url / dedicated_url / anchor_id set. */
+function isQuizEligible(row: Pick<Row, "is_live" | "current_url" | "dedicated_url" | "anchor_id">): boolean {
+  if (!row.is_live) return false;
+  return Boolean(
+    (row.current_url && row.current_url.trim()) ||
+    (row.dedicated_url && row.dedicated_url.trim()) ||
+    (row.anchor_id && row.anchor_id.trim()),
+  );
+}
 
 export default function PathFinderOfferings() {
   const { toast } = useToast();
