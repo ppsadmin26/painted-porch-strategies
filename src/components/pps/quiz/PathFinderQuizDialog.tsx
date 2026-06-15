@@ -145,7 +145,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const [subscribe, setSubscribe] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [featuredKeys, setFeaturedKeys] = useState<Set<string> | null>(null);
+  const [viewableKeys, setViewableKeys] = useState<Set<string> | null>(null);
 
   const { questions, track } = useMemo(() => buildQuestionPath(answers), [answers]);
   const current = questions[index];
@@ -162,25 +162,35 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     }
   }, [answers, index, showResult]);
 
-  // Fetch the curated "featured in quiz" allowlist once the dialog opens.
-  // Only used for B2B narrowing; failures fall back to the unfiltered list.
+  // Fetch the admin-curated "eligible" allowlist once the dialog opens.
+  // Rule: an offering is recommendable if is_live=true AND it has a URL or
+  // anchor configured in /admin/path-finder-offerings. Failures fall back
+  // to the unfiltered list so quiz results never go blank.
   useEffect(() => {
-    if (!open || featuredKeys) return;
+    if (!open || viewableKeys) return;
     let cancelled = false;
     (async () => {
       const { data, error } = await supabase
         .from("path_finder_offerings")
-        .select("offering_key, is_featured_in_quiz, anchor_id")
-        .or("is_featured_in_quiz.eq.true,anchor_id.not.is.null");
+        .select("offering_key, is_live, current_url, dedicated_url, anchor_id");
       if (cancelled) return;
       if (error || !data) {
-        setFeaturedKeys(new Set()); // empty set triggers fallback in b2bResult
+        setViewableKeys(new Set());
         return;
       }
-      setFeaturedKeys(new Set(data.map((r: { offering_key: string }) => r.offering_key)));
+      const eligible = data
+        .filter((r: { is_live: boolean; current_url: string | null; dedicated_url: string | null; anchor_id: string | null }) =>
+          r.is_live && (
+            (r.current_url && r.current_url.trim().length > 0) ||
+            (r.dedicated_url && r.dedicated_url.trim().length > 0) ||
+            (r.anchor_id && r.anchor_id.trim().length > 0)
+          ),
+        )
+        .map((r: { offering_key: string }) => r.offering_key);
+      setViewableKeys(new Set(eligible));
     })();
     return () => { cancelled = true; };
-  }, [open, featuredKeys]);
+  }, [open, viewableKeys]);
 
   const overrides = usePathFinderOverrides();
 
@@ -189,7 +199,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
   const result: QuizResult | null = useMemo(() => {
     if (!showResult || !track) return null;
-    const r = buildResult(track, answers, featuredKeys ? { featuredKeys } : undefined);
+    const r = buildResult(track, answers, viewableKeys ? { viewableKeys } : undefined);
     return {
       ...r,
       primaryGroup: r.primaryGroup
@@ -201,7 +211,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         : undefined,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showResult, track, answers, overrides, featuredKeys]);
+  }, [showResult, track, answers, overrides, viewableKeys]);
 
   // Persist the prefill payload so /contact can hydrate from quiz context even
   // if the user navigates to a recommended workshop / Blue Door page first and
