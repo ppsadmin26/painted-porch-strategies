@@ -418,6 +418,7 @@ const App = () => (
             <Route path="refunds" element={<RefundRequestsManager />} />
             <Route path="course-launches" element={<CourseLaunchManager />} />
             <Route path="path-finder" element={<PathFinderOfferings />} />
+            <Route path="offerings-coverage" element={<OfferingsCoverage />} />
             <Route path="security" element={<SecurityFindingsExplained />} />
           </Route>
           
