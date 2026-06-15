@@ -336,6 +336,7 @@ export default function BlogPostList() {
                             className="h-8 w-8"
                             onClick={() => window.open(`/resources/insights/${post.slug}`, "_blank")}
                             title="View on Website"
+                            aria-label="View post on website"
                           >
                             <Eye className="h-4 w-4" />
                           </Button>
@@ -344,6 +345,7 @@ export default function BlogPostList() {
                           variant="ghost"
                           size="icon"
                           className="h-8 w-8"
+                          aria-label="Edit post"
                           onClick={() => navigate(`/admin/posts/${post.id}`)}
                         >
                           <Pencil className="h-4 w-4" />
@@ -352,6 +354,7 @@ export default function BlogPostList() {
                           variant="ghost"
                           size="icon"
                           className="h-8 w-8 text-destructive hover:text-destructive"
+                          aria-label="Delete post"
                           onClick={() => handleDelete(post.id)}
                         >
                           <Trash2 className="h-4 w-4" />

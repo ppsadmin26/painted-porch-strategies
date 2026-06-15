@@ -576,6 +576,7 @@ export default function BlogPostEditor() {
                   size="icon"
                   variant="destructive"
                   className="absolute top-2 right-2"
+                  aria-label="Remove cover image"
                   onClick={() => setCoverImageUrl("")}
                 >
                   <X className="h-4 w-4" />
