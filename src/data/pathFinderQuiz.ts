@@ -503,6 +503,53 @@ const grp = (heading: string, ...keys: OfferingKey[]): RecommendationGroup => ({
   heading, offerings: keys.map((k) => O[k]),
 });
 
+// Safe fallback for B2B if filtering would otherwise empty a primary pick.
+const SAFE_B2B_FALLBACK: OfferingKey[] = [
+  "architectureOfAdaptability",
+  "pathToLastingChange",
+  "architectChange",
+  "blueDoor",
+];
+
+// Safe fallback for B2C primary picks when filtering would empty the group.
+const SAFE_B2C_FALLBACK: OfferingKey[] = [
+  "radicalMindfulness",
+  "masterYourMessage",
+  "createExtraordinaryTeams",
+];
+
+// Speaking-topic candidates per B2B result type. Only surfaced when admin has
+// marked the row Live + clickable in /admin/path-finder-offerings.
+const SPEAKING_BY_RT: Record<B2BResultType, OfferingKey[]> = {
+  "RT-A": ["speakingHeroesAssemble", "speakingFromDysfunction", "speakingPowerOfStory", "speakingFindingJoy", "speakingReignitingResilience"],
+  "RT-B": ["speakingShIFtHappens", "speakingLeadAtSpeed", "speakingAiEiOh", "speakingAlicePrinciples", "speakingDontPanic", "speakingFromPassengerToPilot"],
+  "RT-C": ["speakingGoldilocks", "speakingStoicism", "speakingGetClear", "speaking88", "speakingCommStyle", "speakingRadicallyMindful"],
+  "RT-D": ["speakingShIFtHappens", "speakingAlicePrinciples", "speakingStoicism"],
+  "RT-E": ["speakingHeroesAssemble", "speakingShIFtHappens", "speakingGoldilocks"],
+};
+
+// Post-process a result to drop offerings not in the viewable set. Keeps
+// the original group as a fallback if filtering would empty it, so results
+// never display a blank section.
+function applyViewableFilter(r: QuizResult, viewable?: Set<string>): QuizResult {
+  if (!viewable || viewable.size === 0) return r;
+  const filterGroup = (g: RecommendationGroup): RecommendationGroup => {
+    const offerings = g.offerings.filter((o) => viewable.has(o.key));
+    return offerings.length > 0 ? { ...g, offerings } : g;
+  };
+  const filteredGroups = r.groups
+    .map((g) => ({ ...g, offerings: g.offerings.filter((o) => viewable.has(o.key)) }))
+    .filter((g) => g.offerings.length > 0);
+  return {
+    ...r,
+    primaryGroup: r.primaryGroup ? filterGroup(r.primaryGroup) : undefined,
+    groups: filteredGroups.length > 0 ? filteredGroups : r.groups,
+    strongestNextStep: r.strongestNextStep && viewable.has(r.strongestNextStep.offering.key)
+      ? r.strongestNextStep
+      : undefined,
+  };
+}
+
 function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
   const q6 = val(answers, "Q6");
   const aspiring = val(answers, "PQ2") === "aspiring";
