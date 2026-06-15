@@ -22,48 +22,57 @@ const amy: SpeakerData = {
   photo: amyPhoto,
   topics: [
     {
+      slug: "heroes-assemble",
       title: "Heroes Assemble!",
       image: heroesAssemble,
       description:
         "Unite your team through shared purpose, candor, and trust. Learn how to build stronger dynamics by fostering healthy conflict and innovative thinking.",
     },
     {
+      slug: "lead-at-the-speed-of-change",
       title: "Lead at the Speed of Change",
       description:
         "Change is inevitable, chaos isn't. Learn how to lead adaptively, align around what matters most, and keep moving forward when the ground shifts beneath you.",
     },
     {
+      slug: "shift-happens-be-ready",
       title: "ShIFt Happens. Be Ready.",
       description:
         "Using our P.A.T.H.™ method, discover a proven roadmap to navigate change that's on time, on budget, and on purpose.",
     },
     {
+      slug: "goldilocks-leadership",
       title: "Goldilocks Leadership",
       image: goldilocksLeadership,
       description:
         "Is your leadership style \"too hot\" or \"too cold\"? Find the emotional intelligence sweet spot that turns you into a \"just-right\" transformational leader.",
     },
     {
+      slug: "stoicism-in-the-workplace",
       title: "Stoicism in the Workplace",
       description:
         "Discover how ancient Stoic principles can transform modern leadership. Learn to focus on what you can control, build resilience, and lead with clarity and purpose, even when everything around you is shifting.",
     },
     {
+      slug: "from-dysfunction-to-dynamic-teams",
       title: "From Dysfunction to Dynamic Teams",
       description:
         "Turn struggling teams into high-performing powerhouses. Learn how to break through silos, rebuild trust, and create the kind of collaboration that drives extraordinary results.",
     },
     {
+      slug: "ai-ei-oh-guiding-change-and-ai-adoption",
       title: "AI, EI, Oh! Guiding Change and AI Adoption",
       description:
         "AI is here, but your people aren't ready. Discover how emotional intelligence is the missing link to successful AI adoption, and learn to lead your team through tech-driven change without leaving anyone behind.",
     },
     {
+      slug: "the-alice-principles-down-the-rabbit-hole-of-transformation",
       title: "The Alice Principles: Down the Rabbit Hole of Transformation",
       description:
         "What can Alice's adventures teach us about navigating organizational change? Explore how curiosity, adaptability, and questioning the status quo, inspired by Lewis Carroll's timeless tale, can transform the way your team approaches uncertainty and growth.",
     },
     {
+      slug: "dont-panic-navigating-a-changing-world",
       title: "Don't Panic! Navigating a Changing World",
       description:
         "Grab your towel and don't panic, because change, much like the galaxy, is vast, unpredictable, and mostly harmless. Using Douglas Adams' Hitchhiker's Guide as a lens, discover how humor, perspective, and a good guide can turn overwhelming transformation into an adventure worth taking.",

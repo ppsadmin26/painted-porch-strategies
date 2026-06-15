@@ -37,7 +37,19 @@ const TIER_COLORS: Record<string, string> = {
   "Blue Door": "bg-bluedoor/15 text-bluedoor border-bluedoor/40",
   Free: "bg-lime/15 text-lime-foreground border-lime/40",
   Assessment: "bg-raspberry/10 text-raspberry border-raspberry/40",
+  Speaking: "bg-navy/10 text-navy border-navy/40",
 };
+
+/** An offering is recommendable by the quiz if it is Live AND has at least
+ *  one of current_url / dedicated_url / anchor_id set. */
+function isQuizEligible(row: Pick<Row, "is_live" | "current_url" | "dedicated_url" | "anchor_id">): boolean {
+  if (!row.is_live) return false;
+  return Boolean(
+    (row.current_url && row.current_url.trim()) ||
+    (row.dedicated_url && row.dedicated_url.trim()) ||
+    (row.anchor_id && row.anchor_id.trim()),
+  );
+}
 
 export default function PathFinderOfferings() {
   const { toast } = useToast();
@@ -166,6 +178,28 @@ export default function PathFinderOfferings() {
                     <Badge variant="outline" className={TIER_COLORS[row.tier] ?? ""}>{row.tier}</Badge>
                     {row.facilitator && <Badge variant="outline">{row.facilitator}</Badge>}
                     <code className="text-xs text-muted-foreground">{row.offering_key}</code>
+                    {isQuizEligible({
+                      is_live: valueOf(row, "is_live"),
+                      current_url: valueOf(row, "current_url"),
+                      dedicated_url: valueOf(row, "dedicated_url"),
+                      anchor_id: valueOf(row, "anchor_id"),
+                    }) ? (
+                      <Badge
+                        variant="outline"
+                        className="bg-lime/15 text-lime-foreground border-lime/40"
+                        title="Live AND has a URL or anchor. Eligible to appear in quiz results."
+                      >
+                        Quiz eligible
+                      </Badge>
+                    ) : (
+                      <Badge
+                        variant="outline"
+                        className="bg-muted text-muted-foreground border-muted-foreground/30"
+                        title="Not eligible: needs Live + at least one of Hub URL, Dedicated URL, or Anchor."
+                      >
+                        Not eligible
+                      </Badge>
+                    )}
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-2">
@@ -259,9 +293,9 @@ export default function PathFinderOfferings() {
                     onCheckedChange={(v) => patch(row.id, { is_featured_in_quiz: v })}
                   />
                   <Label htmlFor={`featured-${row.id}`} className="text-sm">
-                    <strong>Featured in B2B P.A.T.H.finder quiz</strong>
+                    <strong>Prioritize in P.A.T.H.finder quiz</strong>
                     <span className="block text-xs text-muted-foreground">
-                      B2B quiz results only surface offerings that are featured (this toggle) OR have an anchor set above. Keep this list tight so results don't overwhelm.
+                      Eligibility is automatic: any offering that is Live AND has a URL or anchor set below will appear in quiz results. Turn this on to promote it ahead of other eligible options when the result matches.
                     </span>
                   </Label>
                 </div>

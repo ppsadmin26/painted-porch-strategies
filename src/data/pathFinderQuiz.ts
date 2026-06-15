@@ -26,7 +26,7 @@ export interface Offering {
   key: string;
   name: string;
   facilitator?: "Amy" | "Rob" | "Sierra" | "Painted Porch Team";
-  tier: "IGNITE" | "AMPLIFY" | "Pathway B" | "Blue Door" | "Free" | "Assessment";
+  tier: "IGNITE" | "AMPLIFY" | "Pathway B" | "Blue Door" | "Free" | "Assessment" | "Speaking";
   blurb: string;
   url: string;
 }
@@ -120,6 +120,35 @@ export const OFFERINGS = {
 
   // Blue Door
   blueDoor: { key: "blueDoor", name: "The Blue Door Organizational Appraisal", tier: "Blue Door", url: "/blue-door", blurb: "About 20 minutes. Produces the P.A.T.H. Compass: architecture, capacity signal, Move Now Map, Reinforce First priorities. No prerequisites." },
+
+  // ===== Speaking Topics =====
+  // Amy
+  speakingHeroesAssemble: { key: "speakingHeroesAssemble", name: "Heroes Assemble! (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-heroes-assemble", blurb: "Unite your team through shared purpose, candor, and trust." },
+  speakingLeadAtSpeed: { key: "speakingLeadAtSpeed", name: "Lead at the Speed of Change (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-lead-at-the-speed-of-change", blurb: "Lead adaptively when the ground shifts beneath you." },
+  speakingShIFtHappens: { key: "speakingShIFtHappens", name: "ShIFt Happens. Be Ready. (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-shift-happens-be-ready", blurb: "The P.A.T.H.™ method as a roadmap for change that's on time, on budget, and on purpose." },
+  speakingGoldilocks: { key: "speakingGoldilocks", name: "Goldilocks Leadership (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-goldilocks-leadership", blurb: "Find the emotional intelligence sweet spot for just-right leadership." },
+  speakingStoicism: { key: "speakingStoicism", name: "Stoicism in the Workplace (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-stoicism-in-the-workplace", blurb: "Ancient Stoic principles for modern leadership and resilience." },
+  speakingFromDysfunction: { key: "speakingFromDysfunction", name: "From Dysfunction to Dynamic Teams (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-from-dysfunction-to-dynamic-teams", blurb: "Turn struggling teams into high-performing powerhouses." },
+  speakingAiEiOh: { key: "speakingAiEiOh", name: "AI, EI, Oh! (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-ai-ei-oh-guiding-change-and-ai-adoption", blurb: "Emotional intelligence as the missing link in AI adoption." },
+  speakingAlicePrinciples: { key: "speakingAlicePrinciples", name: "The Alice Principles (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-the-alice-principles-down-the-rabbit-hole-of-transformation", blurb: "Curiosity and adaptability as the lens for navigating transformation." },
+  speakingDontPanic: { key: "speakingDontPanic", name: "Don't Panic! Navigating a Changing World (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-dont-panic-navigating-a-changing-world", blurb: "Humor, perspective, and a good guide for overwhelming change." },
+
+  // Rob
+  speakingHighFidelity: { key: "speakingHighFidelity", name: "High-Fidelity Communication (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-high-fidelity-communication", blurb: "Preparation, conciseness, and attentiveness as the three pillars of clear communication." },
+  speaking88: { key: "speaking88", name: "8:8 — Capturing & Keeping Attention (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-8-8", blurb: "Hook, hold, and inspire your audience before they scroll away." },
+  speakingPowerOfStory: { key: "speakingPowerOfStory", name: "The Power of Story (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-the-power-of-story", blurb: "Narrative to persuade, connect, and be unforgettable." },
+  speakingGetClear: { key: "speakingGetClear", name: "Get C.L.E.A.R. & Be Heard (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-get-clear-be-heard", blurb: "Clarity, Language, Energy, Attention, Relevance." },
+  speakingBorderlessKeynote: { key: "speakingBorderlessKeynote", name: "Borderless Communication (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-borderless-communication", blurb: "Create a culture of ownership and follow-through." },
+  speakingOnAir: { key: "speakingOnAir", name: "On-Air Ready Confidence (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-on-air-ready-confidence", blurb: "Tame the nerves and take the mic." },
+  speakingFiveMin: { key: "speakingFiveMin", name: "Your 5-Minute Keynote", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-your-5-minute-keynote", blurb: "Craft a signature message you can deliver at a moment's notice." },
+  speakingCommStyle: { key: "speakingCommStyle", name: "Speaking with Style — 6 Communicator Styles (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-speaking-with-style-the-6-communicator-styles-for-influence-impact", blurb: "Discover your style and flex across all six to connect with any audience." },
+
+  // Sierra
+  speakingFromPassengerToPilot: { key: "speakingFromPassengerToPilot", name: "From Passenger to Pilot (Keynote)", facilitator: "Sierra", tier: "Speaking", url: "/speaking/sierra#topic-from-passenger-to-pilot", blurb: "Bounce back from challenges and prevent burnout with science-backed resilience tools." },
+  speakingMoveShakeInnovate: { key: "speakingMoveShakeInnovate", name: "Move, Shake, Innovate (Keynote)", facilitator: "Sierra", tier: "Speaking", url: "/speaking/sierra#topic-move-shake-innovate", blurb: "Physical motion that sparks creativity, problem-solving, and presence." },
+  speakingFindingJoy: { key: "speakingFindingJoy", name: "Finding Joy at Work (Keynote)", facilitator: "Sierra", tier: "Speaking", url: "/speaking/sierra#topic-finding-joy-at-work", blurb: "Infuse your day with purpose, presence, and a little play." },
+  speakingReignitingResilience: { key: "speakingReignitingResilience", name: "Reigniting Resilience (Keynote)", facilitator: "Sierra", tier: "Speaking", url: "/speaking/sierra#topic-reigniting-resilience", blurb: "Simplify energy management and boost team engagement." },
+  speakingRadicallyMindful: { key: "speakingRadicallyMindful", name: "Radically Mindful Leadership (Keynote)", facilitator: "Sierra", tier: "Speaking", url: "/speaking/sierra#topic-radically-mindful-leadership", blurb: "Practical mindfulness for executives who don't have time for mindfulness." },
 } as const satisfies Record<string, Offering>;
 
 export type OfferingKey = keyof typeof OFFERINGS;
@@ -460,17 +489,66 @@ export interface QuizResult {
 
 export interface BuildResultOptions {
   /**
-   * Optional allowlist of offering keys eligible for B2B recommendations.
-   * When provided, B2B primary picks are filtered to this set (falling back
-   * to the original list if filtering would leave nothing). B2C is unaffected.
+   * Allowlist of offering keys the admin has marked as having a real,
+   * clickable destination today (is_live = true AND a URL or anchor set in
+   * /admin/path-finder-offerings). When provided, recommendations on BOTH
+   * tracks are narrowed to this set. Falls back gracefully if filtering
+   * would leave a result blank.
    */
-  featuredKeys?: Set<string>;
+  viewableKeys?: Set<string>;
 }
 
 const O = OFFERINGS;
 const grp = (heading: string, ...keys: OfferingKey[]): RecommendationGroup => ({
   heading, offerings: keys.map((k) => O[k]),
 });
+
+// Safe fallback for B2B if filtering would otherwise empty a primary pick.
+const SAFE_B2B_FALLBACK: OfferingKey[] = [
+  "architectureOfAdaptability",
+  "pathToLastingChange",
+  "architectChange",
+  "blueDoor",
+];
+
+// Safe fallback for B2C primary picks when filtering would empty the group.
+const SAFE_B2C_FALLBACK: OfferingKey[] = [
+  "radicalMindfulness",
+  "masterYourMessage",
+  "createExtraordinaryTeams",
+];
+
+// Speaking-topic candidates per B2B result type. Only surfaced when admin has
+// marked the row Live + clickable in /admin/path-finder-offerings.
+const SPEAKING_BY_RT: Record<B2BResultType, OfferingKey[]> = {
+  "RT-A": ["speakingHeroesAssemble", "speakingFromDysfunction", "speakingPowerOfStory", "speakingFindingJoy", "speakingReignitingResilience"],
+  "RT-B": ["speakingShIFtHappens", "speakingLeadAtSpeed", "speakingAiEiOh", "speakingAlicePrinciples", "speakingDontPanic", "speakingFromPassengerToPilot"],
+  "RT-C": ["speakingGoldilocks", "speakingStoicism", "speakingGetClear", "speaking88", "speakingCommStyle", "speakingRadicallyMindful"],
+  "RT-D": ["speakingShIFtHappens", "speakingAlicePrinciples", "speakingStoicism"],
+  "RT-E": ["speakingHeroesAssemble", "speakingShIFtHappens", "speakingGoldilocks"],
+};
+
+// Post-process a result to drop offerings not in the viewable set. Keeps
+// the original group as a fallback if filtering would empty it, so results
+// never display a blank section.
+function applyViewableFilter(r: QuizResult, viewable?: Set<string>): QuizResult {
+  if (!viewable || viewable.size === 0) return r;
+  const filterGroup = (g: RecommendationGroup): RecommendationGroup => {
+    const offerings = g.offerings.filter((o) => viewable.has(o.key));
+    return offerings.length > 0 ? { ...g, offerings } : g;
+  };
+  const filteredGroups = r.groups
+    .map((g) => ({ ...g, offerings: g.offerings.filter((o) => viewable.has(o.key)) }))
+    .filter((g) => g.offerings.length > 0);
+  return {
+    ...r,
+    primaryGroup: r.primaryGroup ? filterGroup(r.primaryGroup) : undefined,
+    groups: filteredGroups.length > 0 ? filteredGroups : r.groups,
+    strongestNextStep: r.strongestNextStep && viewable.has(r.strongestNextStep.offering.key)
+      ? r.strongestNextStep
+      : undefined,
+  };
+}
 
 function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
   const q6 = val(answers, "Q6");
@@ -616,42 +694,31 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
   // we keep results narrow.
   void extra; void commOn; void resOn;
 
-  // Defensive viewable-key allowlist: only recommend offerings that have a
-  // real, scrollable destination on the public site today. Update this set
-  // whenever a workshop is added/removed from a visible page or hub.
-  // Rule: every key here must resolve to a card, anchor, or dedicated page
-  // the user can actually reach from the recommendation link.
-  const VIEWABLE_B2B_KEYS = new Set<OfferingKey>([
-    // /partner/amplify/workshops — Phase Zero cards
-    "architectChange",
-    "architectureOfAdaptability",
-    "pathToLastingChange",
-    "cultivatingChangeResilience",
-    "leadershipOM",
-    // /partner/amplify/workshops — Leadership & Team Development cards
-    "masterYourMessageB2B",
-    "radicalMindfulnessB2B",
-    "stoicismB2B",
-    // Dedicated pages
-    "stracticalLeader",
-    "kickTheHabit",
-    "blueDoor",
-  ]);
-
-  // Narrow primary picks to the viewable allowlist, then optionally to the
-  // admin-curated "featured" allowlist when provided. If filtering would
-  // leave zero picks, fall back so results never go blank.
-  const featured = opts?.featuredKeys;
-  const viewableKeys = primaryKeys.filter((k) => VIEWABLE_B2B_KEYS.has(k)) as OfferingKey[];
-  const filteredKeys = featured
-    ? viewableKeys.filter((k) => featured.has(k))
-    : viewableKeys;
-  const usableKeys = filteredKeys.length > 0
-    ? filteredKeys
-    : viewableKeys.length > 0
-      ? viewableKeys
-      : (["architectureOfAdaptability", "pathToLastingChange", "architectChange"] as OfferingKey[]);
+  // Eligibility is admin-driven: the dialog passes the set of offering keys
+  // that are Live AND have a URL or anchor configured in
+  // /admin/path-finder-offerings. We narrow primary picks to that set,
+  // falling back gracefully so a result never goes blank.
+  const viewable = opts?.viewableKeys;
+  const filterable = viewable && viewable.size > 0 ? viewable : null;
+  const filteredPrimary = filterable
+    ? (primaryKeys.filter((k) => filterable.has(k)) as OfferingKey[])
+    : primaryKeys;
+  const safeFallback = (filterable
+    ? SAFE_B2B_FALLBACK.filter((k) => filterable.has(k))
+    : SAFE_B2B_FALLBACK) as OfferingKey[];
+  const usableKeys = filteredPrimary.length > 0
+    ? filteredPrimary
+    : safeFallback.length > 0
+      ? safeFallback
+      : primaryKeys;
   const trimmedPrimary = usableKeys.slice(0, 3);
+
+  // Speaking-topic candidates per RT. Only surfaced when admin has marked the
+  // row Live + clickable; otherwise the group disappears entirely.
+  const speakingCandidates = SPEAKING_BY_RT[rt] ?? [];
+  const eligibleSpeaking = (filterable
+    ? speakingCandidates.filter((k) => filterable.has(k))
+    : speakingCandidates).slice(0, 3) as OfferingKey[];
 
   const strongestNextStep =
     strongest === "blueDoor"
@@ -662,6 +729,13 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
 
   const meta = B2B_RESULT_META[rt];
 
+  const groups: RecommendationGroup[] = [
+    grp("Deeper Option — Blue Door Organizational Appraisal", "blueDoor"),
+  ];
+  if (eligibleSpeaking.length > 0) {
+    groups.push(grp("Speaking Topics — Bookable Keynotes", ...eligibleSpeaking));
+  }
+
   return {
     track: "b2b",
     resultType: rt,
@@ -669,9 +743,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     subhead: rt === "RT-D" ? "Blue Door™ Primary | Workshops Alongside" : "Workshops | Blue Door™",
     narrative,
     primaryGroup: grp(primaryHeading, ...trimmedPrimary),
-    groups: [
-      grp("Deeper Option — Blue Door Organizational Appraisal", "blueDoor"),
-    ],
+    groups,
     strongestNextStep,
     crossoverNote: crossover,
     topicArea: meta?.topicArea,
@@ -685,7 +757,17 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
 export function buildResult(track: Track, answers: Answers, opts?: BuildResultOptions): QuizResult {
   if (track === "b2c") {
     const { resultType } = scoreB2C(answers);
-    return b2cResult(resultType, answers);
+    const base = b2cResult(resultType, answers);
+    // Post-process to drop offerings the admin hasn't marked clickable.
+    // For B2C the primary group falls back to a safe default if filtered empty.
+    const filtered = applyViewableFilter(base, opts?.viewableKeys);
+    if (filtered.primaryGroup && filtered.primaryGroup.offerings.length === 0 && opts?.viewableKeys) {
+      const safe = SAFE_B2C_FALLBACK.filter((k) => opts.viewableKeys!.has(k)) as OfferingKey[];
+      if (safe.length > 0) {
+        filtered.primaryGroup = grp(filtered.primaryGroup.heading, ...safe);
+      }
+    }
+    return filtered;
   }
   const { resultType, strongest } = scoreB2B(answers);
   return b2bResult(resultType, answers, strongest, opts);

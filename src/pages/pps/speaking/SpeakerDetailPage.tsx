@@ -11,6 +11,8 @@ export interface SpeakingTopic {
   title: string;
   description: string;
   image?: string;
+  /** Optional kebab-case slug for deep-linking via #topic-{slug}. */
+  slug?: string;
 }
 
 export interface SpeakerData {
@@ -143,7 +145,8 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
             {speaker.topics.map((topic, i) => (
               <div
                 key={i}
-                className={`bg-white rounded-xl border-l-4 ${speaker.themeColor} hover:shadow-lg transition-shadow overflow-hidden flex flex-col`}
+                id={topic.slug ? `topic-${topic.slug}` : undefined}
+                className={`bg-white rounded-xl border-l-4 ${speaker.themeColor} hover:shadow-lg transition-shadow overflow-hidden flex flex-col scroll-mt-24`}
               >
                 {/* Image placeholder */}
                 <div className="w-full aspect-[16/9] bg-muted flex items-center justify-center">
