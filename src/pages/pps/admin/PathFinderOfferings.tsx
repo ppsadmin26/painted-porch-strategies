@@ -178,6 +178,28 @@ export default function PathFinderOfferings() {
                     <Badge variant="outline" className={TIER_COLORS[row.tier] ?? ""}>{row.tier}</Badge>
                     {row.facilitator && <Badge variant="outline">{row.facilitator}</Badge>}
                     <code className="text-xs text-muted-foreground">{row.offering_key}</code>
+                    {isQuizEligible({
+                      is_live: valueOf(row, "is_live"),
+                      current_url: valueOf(row, "current_url"),
+                      dedicated_url: valueOf(row, "dedicated_url"),
+                      anchor_id: valueOf(row, "anchor_id"),
+                    }) ? (
+                      <Badge
+                        variant="outline"
+                        className="bg-lime/15 text-lime-foreground border-lime/40"
+                        title="Live AND has a URL or anchor. Eligible to appear in quiz results."
+                      >
+                        Quiz eligible
+                      </Badge>
+                    ) : (
+                      <Badge
+                        variant="outline"
+                        className="bg-muted text-muted-foreground border-muted-foreground/30"
+                        title="Not eligible: needs Live + at least one of Hub URL, Dedicated URL, or Anchor."
+                      >
+                        Not eligible
+                      </Badge>
+                    )}
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-2">
