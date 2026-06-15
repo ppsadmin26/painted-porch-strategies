@@ -23,6 +23,8 @@
     "test:visual:ci": "playwright test e2e/ppshome-card-alignment.spec.ts --reporter=github,html",
     "test:a11y": "playwright test e2e/site-a11y.spec.ts",
     "test:a11y:ci": "playwright test e2e/site-a11y.spec.ts --reporter=github,html",
+    "test:e2e:keyboard": "playwright test e2e/b2c-quiz-keyboard.spec.ts",
+    "test:e2e:keyboard:all": "playwright test e2e/b2c-quiz-keyboard.spec.ts --project=chromium --project=firefox --project=webkit",
     "seo:validate": "node scripts/validate-seo.mjs",
     "brand:validate": "node scripts/validate-trademarks.mjs",
     "brand:fix": "node scripts/validate-trademarks.mjs --fix",
