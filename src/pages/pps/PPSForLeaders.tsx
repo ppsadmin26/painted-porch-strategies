@@ -97,7 +97,7 @@ export default function PPSForLeaders() {
 
       {/* Blueprint for Success */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
@@ -140,7 +140,7 @@ export default function PPSForLeaders() {
 
       {/* Stats Section */}
       <section className="py-16 md:py-20 bg-navy">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="text-strategic font-semibold text-sm uppercase tracking-wider">The Numbers Don't Lie</span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mt-2">
@@ -160,7 +160,7 @@ export default function PPSForLeaders() {
 
       {/* Programs Section */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="text-strategic font-semibold text-sm uppercase tracking-wider">Our Programs</span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">
@@ -201,7 +201,7 @@ export default function PPSForLeaders() {
 
       {/* Testimonials */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="text-strategic font-semibold text-sm uppercase tracking-wider">Friends of The Porch</span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mt-2">
@@ -227,7 +227,7 @@ export default function PPSForLeaders() {
 
       {/* Pricing Philosophy */}
       <section className="py-16 md:py-24 bg-strategic/5">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">

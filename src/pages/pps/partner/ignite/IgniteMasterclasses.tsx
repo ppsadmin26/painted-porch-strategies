@@ -77,7 +77,7 @@ export default function IgniteMasterclasses() {
       />
 
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <Link
             to="/partner/ignite"
             className="inline-flex items-center gap-2 text-sm text-primary hover:underline mb-8"

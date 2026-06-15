@@ -9,7 +9,7 @@ export default function FooterAlt() {
 
   return (
     <footer className="bg-gradient-to-b from-navy to-navy/95 text-white">
-      <div className="container max-w-6xl mx-auto px-6 py-12">
+      <div className="container max-w-7xl mx-auto px-6 py-12">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4 text-gold">
@@ -76,7 +76,7 @@ export default function FooterAlt() {
       </div>
       
       <div className="border-t border-white/10 py-4">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <p className="text-xs text-center opacity-70">
             © 2026 Painted Porch Strategies. All rights reserved.
           </p>

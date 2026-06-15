@@ -61,7 +61,7 @@ const rows = [
 export default function ArchitectureGapSection() {
   return (
     <section className="py-16 md:py-24 bg-white" aria-labelledby="architecture-gap-heading">
-      <div className="container max-w-6xl mx-auto px-6">
+      <div className="container max-w-7xl mx-auto px-6">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <span className="badge-gold mb-4 inline-block">The Transformation Gap</span>
           <h2 id="architecture-gap-heading" className="text-3xl md:text-4xl font-bold text-navy mb-4">

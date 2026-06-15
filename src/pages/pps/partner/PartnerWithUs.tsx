@@ -43,7 +43,7 @@ export default function PartnerWithUs() {
     <div>
       {/* Hero */}
       <section className="bg-navy py-16 md:py-24">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="max-w-3xl">
             <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
               Partner With Us
@@ -60,7 +60,7 @@ export default function PartnerWithUs() {
 
       {/* Pricing Philosophy */}
       <section className="py-12 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Transparent, Flat-Fee Pricing
@@ -74,7 +74,7 @@ export default function PartnerWithUs() {
 
       {/* Pathways Grid */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {TIER_LIST.map((tier) => {
               const features = tierFeatures[tier.name as keyof typeof tierFeatures];

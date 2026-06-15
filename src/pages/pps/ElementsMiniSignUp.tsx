@@ -114,7 +114,7 @@ export default function ElementsMiniSignUp() {
 
       {/* Five Elements grid */}
       <section className="py-16 px-4 bg-secondary/30">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy text-center mb-12">
             Meet the <span className="text-teal">Five Elements</span>
           </h2>
@@ -178,7 +178,7 @@ export default function ElementsMiniSignUp() {
 
       {/* Pricing, Two Tiers */}
       <section id="pricing" className="py-16 px-4 bg-secondary/30 scroll-mt-24">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
               Choose Your <span className="text-teal">P.A.T.H.way</span>

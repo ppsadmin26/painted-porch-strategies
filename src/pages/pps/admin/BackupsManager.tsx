@@ -728,7 +728,7 @@ export default function BackupsManager() {
   const lastFailure = runs.find((r) => r.status === "failed");
 
   return (
-    <div className="container mx-auto py-8 px-4 max-w-6xl">
+    <div className="container mx-auto py-8 px-4 max-w-7xl">
       {/* Header */}
       <div className="flex items-start justify-between gap-4 mb-8 flex-wrap">
         <div>

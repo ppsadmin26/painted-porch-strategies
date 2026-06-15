@@ -219,7 +219,7 @@ export default function AmplifyPathAlt() {
 
       {/* SECTION 2: WHO AMPLIFY IS FOR */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               You Know What Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t You Want to Make Happen,  Now You Need to Build the Capacity for It.
@@ -293,7 +293,7 @@ export default function AmplifyPathAlt() {
 
       {/* SECTION 3: THE AMPLIFY EXPERIENCE - Three Formats */}
       <section id="amplify-formats" className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Three Ways to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t
@@ -344,7 +344,7 @@ export default function AmplifyPathAlt() {
 
       {/* SECTION: INVESTMENT & ROI (moved above Which ShIFt) */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-navy">
               The ROI of Phase Zero Architecture
@@ -551,7 +551,7 @@ export default function AmplifyPathAlt() {
 
       {/* SECTION: Which ShIFt, Workshop vs. Sprint vs. Leader Lab */}
       <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <h3 className="text-xl md:text-2xl font-semibold text-navy text-center mb-8">
             Which Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t: Workshop vs. Sprint vs. Leader Lab
           </h3>
@@ -668,7 +668,7 @@ export default function AmplifyPathAlt() {
 
       {/* SECTION 9: WHAT HAPPENS AFTER AMPLIFY */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Taking Your Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t to the Next Level
@@ -759,7 +759,7 @@ export default function AmplifyPathAlt() {
       <section className="py-16 md:py-24 text-white relative">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${amplifyFinalCtaBg})` }} />
         <div className="absolute inset-0 bg-navy/60" />
-        <div className="container max-w-6xl mx-auto px-6 relative z-10">
+        <div className="container max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t?

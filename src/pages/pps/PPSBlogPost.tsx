@@ -512,7 +512,7 @@ export default function PPSBlogPost() {
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
         <section className="py-12 sm:py-16 border-t border-border">
-          <div className="container max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="container max-w-7xl mx-auto px-4 sm:px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 sm:mb-8 text-center">
               Read more about this topic
             </h2>

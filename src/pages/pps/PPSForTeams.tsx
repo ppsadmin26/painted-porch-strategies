@@ -122,7 +122,7 @@ export default function PPSForTeams() {
 
       {/* Pain Points / Stats */}
       <section className="py-12 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {painPoints.map((point, index) => (
               <div key={index} className="p-6">
@@ -136,7 +136,7 @@ export default function PPSForTeams() {
 
       {/* The Four Pillars */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="inline-block bg-strategic/10 text-strategic font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
               Our Framework
@@ -172,7 +172,7 @@ export default function PPSForTeams() {
 
       {/* Programs */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="inline-block bg-primary/10 text-primary font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
               Our Programs
@@ -218,7 +218,7 @@ export default function PPSForTeams() {
 
       {/* Pricing Philosophy */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block bg-gold/10 text-gold font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
@@ -271,7 +271,7 @@ export default function PPSForTeams() {
 
       {/* Testimonials */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               What Organizations Are Saying

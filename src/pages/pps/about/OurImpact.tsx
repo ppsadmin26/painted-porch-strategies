@@ -116,7 +116,7 @@ export default function OurImpact() {
         </div>
         {/* Subtle overlay for text legibility */}
         <div className="absolute inset-0 z-[1] bg-navy/40" />
-        <div className="container max-w-6xl mx-auto px-6 relative z-10 py-16 md:py-24">
+        <div className="container max-w-7xl mx-auto px-6 relative z-10 py-16 md:py-24">
           <div className="md:w-4/5">
             <div className="rounded-xl border border-white/10 bg-navy/35 p-8 backdrop-blur-sm md:p-12">
               <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
@@ -143,7 +143,7 @@ export default function OurImpact() {
 
       {/* Testimonials */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               What Our Partners Say
@@ -198,7 +198,7 @@ export default function OurImpact() {
 
       {/* Who You've Helped Support */}
       <section className="py-16 md:py-20 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6 text-center">
+        <div className="container max-w-7xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Who You've Helped Support
           </h2>

@@ -21,7 +21,7 @@ const principles = [
 export function PathwayPhilosophySection() {
   return (
     <section className="py-16 md:py-20 bg-muted">
-      <div className="container max-w-6xl mx-auto px-6">
+      <div className="container max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Why Three P.A.T.H.ways? Because No Two Sh<span className="text-raspberry font-bold">IF</span>ts are the Same.

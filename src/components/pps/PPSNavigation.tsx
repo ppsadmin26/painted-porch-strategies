@@ -103,7 +103,7 @@ export default function PPSNavigation() {
         scrolled ? "shadow-md" : "shadow-sm"
       }`}
     >
-      <div className="container max-w-6xl mx-auto px-6">
+      <div className="container max-w-7xl mx-auto px-6">
         <div
           className={`flex items-center justify-between transition-all duration-300 ${
             scrolled ? "h-14" : "h-20 md:h-24"
@@ -179,8 +179,8 @@ export default function PPSNavigation() {
             )}
             <SiteSearch />
             {startHereLive && (
-              <Link to="/start-here">
-                <Button className="bg-primary hover:bg-primary/90 text-sm px-4 py-1 h-9">
+              <Link to="/start-here" className="flex-shrink-0">
+                <Button className="bg-primary hover:bg-primary/90 text-sm px-4 py-1 h-9 whitespace-nowrap">
                   Discover Your P.A.T.H.way
                 </Button>
               </Link>

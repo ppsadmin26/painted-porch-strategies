@@ -25,7 +25,7 @@ export default function ProblemSectionAlt() {
 
   return (
     <section className="py-12 md:py-20 bg-white">
-      <div className="container max-w-6xl mx-auto px-6">
+      <div className="container max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-6">
           <p className="text-xl md:text-2xl text-navy font-bold leading-relaxed">
             There's a moment, often quiet, when a new idea begins to spark in your business.

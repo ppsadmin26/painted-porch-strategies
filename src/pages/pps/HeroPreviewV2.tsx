@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 export default function HeroPreviewV2() {
   return (
     <section className="flex min-h-[90vh] w-full items-center justify-center bg-[#FAF5EA] p-6 font-montserrat lg:p-12">
-      <div className="relative w-full max-w-6xl overflow-hidden rounded-3xl border border-gold/30 shadow-[0_30px_80px_-30px_rgba(0,0,107,0.25)]">
+      <div className="relative w-full max-w-7xl overflow-hidden rounded-3xl border border-gold/30 shadow-[0_30px_80px_-30px_rgba(0,0,107,0.25)]">
         {/* Sunrise gradient */}
         <div
           aria-hidden

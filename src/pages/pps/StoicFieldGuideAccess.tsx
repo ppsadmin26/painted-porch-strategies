@@ -105,7 +105,7 @@ export default function StoicFieldGuideAccess() {
 
       {/* What's inside + Download card */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
             {/* What's inside */}
             <div>

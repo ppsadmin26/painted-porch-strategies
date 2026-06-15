@@ -16,7 +16,7 @@ export default function HeroPreviewV1() {
         <div className="absolute top-1/3 left-1/2 h-[400px] w-[400px] rounded-full bg-gold/15 blur-[120px]" />
       </div>
 
-      <div className="relative z-10 grid w-full max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
+      <div className="relative z-10 grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
         <div className="lg:col-span-9">
           {/* Eyebrow */}
           <div className="mb-10 inline-flex items-center space-x-2 rounded-full border border-primary/30 bg-white/70 px-3 py-1 backdrop-blur-sm">

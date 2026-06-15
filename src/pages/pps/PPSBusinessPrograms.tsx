@@ -162,7 +162,7 @@ export default function PPSBusinessPrograms() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/65 to-navy/30" />
         </div>
-        <div className="container max-w-6xl mx-auto px-6 relative z-10 py-20">
+        <div className="container max-w-7xl mx-auto px-6 relative z-10 py-20">
           <div className="max-w-2xl">
             <span className="inline-block bg-gold text-navy font-poppins font-bold text-xs uppercase tracking-wider px-4 py-2 rounded-full mb-6">
               A System for Lasting Change &amp; Growth
@@ -204,7 +204,7 @@ export default function PPSBusinessPrograms() {
 
       {/* People Success Section */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
@@ -276,7 +276,7 @@ export default function PPSBusinessPrograms() {
 
       {/* Operational Success */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
@@ -341,7 +341,7 @@ export default function PPSBusinessPrograms() {
 
       {/* Pricing Section */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
@@ -413,7 +413,7 @@ export default function PPSBusinessPrograms() {
 
       {/* Expert Team */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">

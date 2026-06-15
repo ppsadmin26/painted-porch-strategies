@@ -330,7 +330,7 @@ export default function EmbodyPathAltArchiveV2() {
 
       {/* SECTION 2: THE EMBODY CLIENT (ICP) */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 text-center">
             It's Time to Sh<span className="text-raspberry font-bold">IF</span>t From Change Moments to an Innovation Movement.
           </h2>
@@ -414,7 +414,7 @@ export default function EmbodyPathAltArchiveV2() {
       </section>
       {/* SECTION 3: WHO WE WORK WITH (qualifier) */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Organizations We Partner With
@@ -466,7 +466,7 @@ export default function EmbodyPathAltArchiveV2() {
       </section>
       {/* SECTION 4: THE EMBODY PARTNERSHIP EXPERIENCE */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               The EMBODY Partnership Experience
@@ -577,7 +577,7 @@ export default function EmbodyPathAltArchiveV2() {
       </section>
       {/* SECTION 5: THE THREE PAINTED PORCH PILLARS */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-4">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Architect Embodied Adaptability & Continuous Sh<span className="text-raspberry font-bold">IF</span>t
@@ -642,7 +642,7 @@ export default function EmbodyPathAltArchiveV2() {
       </section>
       {/* SECTION 6: INVESTMENT & ROI */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Build Continual Innovation & Sustainable Transformation
@@ -735,7 +735,7 @@ export default function EmbodyPathAltArchiveV2() {
       <ClientLogoMarquee />
       {/* SECTION 9: CONTINUAL TRANSFORMATION / FINAL INVITATION */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
               "Continual Transformation Is Now Ours to Lead."
@@ -825,7 +825,7 @@ export default function EmbodyPathAltArchiveV2() {
 
       {/* SECTION 10.75: THE HUMAN COST, why EMBODY's depth is the answer */}
       <section className="py-16 md:py-24 bg-white" aria-labelledby="human-cost-heading">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <span className="inline-block bg-raspberry/10 text-raspberry font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
               The Human Cost

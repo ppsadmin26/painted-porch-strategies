@@ -119,7 +119,7 @@ export default function PilotTraining() {
 
       {/* Three pillars */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((f) => (
               <div key={f.title} className="text-center bg-muted/20 rounded-xl p-8 border-t-4 border-gold">

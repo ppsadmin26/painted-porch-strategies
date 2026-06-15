@@ -134,7 +134,7 @@ export default function IgnitePathAlt() {
 
       {/* SECTION 2: WHO IGNITE IS FOR */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Ready to IGNITE Your Next Sh<span className="text-gold font-bold">IF</span>t?
@@ -189,7 +189,7 @@ export default function IgnitePathAlt() {
 
       {/* SECTION 3: THE IGNITE EXPERIENCE */}
       <section id="experience" className="py-16 md:py-24 bg-muted scroll-mt-20">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Three Ways to Spark Sh<span className="text-gold font-bold">IF</span>t
@@ -329,7 +329,7 @@ export default function IgnitePathAlt() {
 
       {/* SECTION 6: WHAT HAPPENS AFTER IGNITE? */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               From Spark to Momentum

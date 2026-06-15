@@ -89,7 +89,7 @@ export default function PPSAbout() {
 
       {/* What's a Painted Porch (moved up: ground the brand right after the hero) */}
       <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <span className="badge-strategic mb-4 inline-block bg-gold">Our Philosophy</span>
@@ -158,7 +158,7 @@ export default function PPSAbout() {
 
       {/* Our Story - Opening */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="rounded-xl overflow-hidden shadow-lg md:order-1">
               <img
@@ -203,7 +203,7 @@ export default function PPSAbout() {
 
       {/* Team */}
       <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {team.map((member, index) => {
               const isAmy = member.name === "Amy Yackowski";

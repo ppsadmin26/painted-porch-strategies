@@ -20,7 +20,7 @@ interface PPSBreadcrumbProps {
 export function PPSBreadcrumb({ segments }: PPSBreadcrumbProps) {
   return (
     <div className="bg-muted border-b border-border/50">
-      <div className="container max-w-6xl mx-auto px-6 py-3">
+      <div className="container max-w-7xl mx-auto px-6 py-3">
         <Breadcrumb>
           <BreadcrumbList>
             {segments.map((segment, index) => {

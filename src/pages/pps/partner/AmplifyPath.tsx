@@ -44,7 +44,7 @@ export default function AmplifyPath() {
     <div>
       {/* Hero */}
       <section className="bg-navy py-16 md:py-24">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
         <div className="max-w-3xl">
             <TierBadge tier={TIERS.AMPLIFY} className="mb-6" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
@@ -59,7 +59,7 @@ export default function AmplifyPath() {
 
       {/* What's Included */}
       <section className="py-12 bg-strategic/10">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">What's Included in <span className="text-strategic">AMPLIFY</span></h2>
           </div>
@@ -76,7 +76,7 @@ export default function AmplifyPath() {
 
       {/* Workshop Options */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Workshop Options
@@ -103,7 +103,7 @@ export default function AmplifyPath() {
 
       {/* Process */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               How It Works

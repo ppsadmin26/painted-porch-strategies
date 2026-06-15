@@ -340,7 +340,7 @@ export default function PhaseZero() {
 
       {/* Foundations Phase Zero Examines */}
       <section id="pillars" className="py-20 md:py-28 bg-white scroll-mt-24">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <FadeIn className="text-center max-w-3xl mx-auto mb-12">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
               The Foundations Phase Zero Fortifies
@@ -455,7 +455,7 @@ export default function PhaseZero() {
 
       {/* Where Phase Zero leads */}
       <section className="py-20 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <FadeIn className="text-center max-w-2xl mx-auto mb-12">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
               Where Phase Zero Leads

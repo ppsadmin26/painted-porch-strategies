@@ -83,7 +83,7 @@ export default function StartHere() {
 
       {/* Quick Assessment */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Which P.A.T.H.way is Right for You?
@@ -143,7 +143,7 @@ export default function StartHere() {
 
       {/* Resources */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Explore Before You Commit

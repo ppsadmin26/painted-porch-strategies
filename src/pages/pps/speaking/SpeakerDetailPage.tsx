@@ -98,7 +98,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
 
       {/* Bio Section */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-12 items-center">
             {/* Photo */}
             <div className="md:w-2/5 flex-shrink-0">
@@ -135,7 +135,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
 
       {/* Speaking Topics Grid */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               What {speaker.firstName} Loves to Speak About

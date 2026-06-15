@@ -112,7 +112,7 @@ export default function Speaking() {
 
       {/* Speakers */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="space-y-20">
             {speakers.map((speaker, index) => {
               const isEven = index % 2 === 1;

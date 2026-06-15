@@ -323,7 +323,7 @@ export default function PPSBlog() {
           style={{ backgroundImage: `url(${blogHero})` }}
         />
         <div className="absolute inset-0 bg-navy/40" />
-        <div className="container max-w-6xl mx-auto px-6 relative z-10 py-16 md:py-24">
+        <div className="container max-w-7xl mx-auto px-6 relative z-10 py-16 md:py-24">
           <div className="md:w-4/5">
             <div className="bg-black/50 backdrop-blur-sm p-8 md:p-12 rounded-xl">
               <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
@@ -342,7 +342,7 @@ export default function PPSBlog() {
 
       {/* Filters & Search Bar */}
       <section className="bg-white border-b border-border sticky top-0 z-20">
-        <div className="container max-w-6xl mx-auto px-6 py-4">
+        <div className="container max-w-7xl mx-auto px-6 py-4">
           <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
             {/* Search */}
             <div className="relative flex-1 max-w-md">
@@ -446,7 +446,7 @@ export default function PPSBlog() {
 
       {/* Blog Grid */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           {isLoading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {Array.from({ length: perPage }).map((_, i) => (

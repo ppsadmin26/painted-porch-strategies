@@ -297,7 +297,7 @@ export default function EQAssessment() {
         />
         {/* Readability overlay — gradient navy wash matching other hero sections */}
         <div className="absolute inset-0 bg-gradient-to-br from-navy/85 via-navy/70 to-navy/40" />
-        <div className="container max-w-6xl mx-auto px-6 relative z-10 text-center w-full">
+        <div className="container max-w-7xl mx-auto px-6 relative z-10 text-center w-full">
           <div className="bg-black/50 backdrop-blur-sm p-8 md:p-12 rounded-xl">
             <div className={`inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm rounded-full px-4 py-2 mb-6 ring-1 ring-white/25 transition-all duration-700 ease-out ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>
               <img src={brainEqIcon} alt="EQ" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
@@ -408,7 +408,7 @@ export default function EQAssessment() {
         <div aria-hidden className="absolute top-40 right-0 w-80 h-80 rounded-full bg-gold/10 blur-3xl" />
         <div aria-hidden className="absolute bottom-0 left-1/3 w-72 h-72 rounded-full bg-lime/10 blur-3xl" />
 
-        <div className="container max-w-6xl mx-auto px-6 relative">
+        <div className="container max-w-7xl mx-auto px-6 relative">
           <div className="text-center mb-14">
             <span className="text-sm font-semibold tracking-widest text-raspberry uppercase">By the numbers</span>
             <h2 className="text-3xl md:text-5xl font-poppins font-bold text-navy mt-2">
@@ -540,7 +540,7 @@ export default function EQAssessment() {
 
       {/* Pricing */}
       <section id="get-started" className="py-16 md:py-24 bg-white scroll-mt-24">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold tracking-widest text-raspberry uppercase">
               Get Started Today

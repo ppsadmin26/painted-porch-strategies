@@ -204,7 +204,7 @@ export default function PPSHomeVerbatim() {
       {/* 3AM Questions strip                                           */}
       {/* ============================================================ */}
       <section className="py-12 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <p className="text-center text-sm font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-primary mb-8">
             The 3AM questions leaders are asking
           </p>
@@ -366,7 +366,7 @@ export default function PPSHomeVerbatim() {
       {/* The Blue Door (verbatim)                                      */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
               <span className="inline-flex items-center gap-2 bg-bluedoor/10 text-bluedoor font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
@@ -437,7 +437,7 @@ export default function PPSHomeVerbatim() {
       {/* Discover Your P.A.T.H.way (verbatim)                          */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <span className="badge-gold mb-4 inline-block">Discover Your P.A.T.H.way</span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
@@ -501,7 +501,7 @@ export default function PPSHomeVerbatim() {
       {/* Our Painted Porch (Pillars)                                   */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           {/* Opening narrative */}
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <span className="badge-gold mb-4 inline-block">Our Painted Porch</span>
@@ -1023,7 +1023,7 @@ export default function PPSHomeVerbatim() {
       {/* Insights                                                      */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-10 max-w-3xl mx-auto">
             <span className="badge-gold mb-3 inline-block">Thoughts from the Porch</span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
