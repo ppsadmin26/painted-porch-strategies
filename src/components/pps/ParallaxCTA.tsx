@@ -57,8 +57,12 @@ const overlayToneClasses: Record<CTAOverlayTone, string> = {
 };
 
 interface ParallaxCTAProps {
-  /** Background image URL (imported asset) */
-  backgroundImage: string;
+  /**
+   * Background image URL (imported asset). OPTIONAL.
+   * When omitted, the parallax image layer is skipped and only the overlay
+   * renders, so the CTA still works (it just has no shifting backdrop).
+   */
+  backgroundImage?: string;
   eyebrow?: string;
   headline: ReactNode;
   description?: ReactNode;
