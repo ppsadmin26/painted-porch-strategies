@@ -175,7 +175,7 @@
     color-scheme: light !important;
     background-color: white !important;
     color: hsl(0 0% 33%) !important;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100vw;
   }
 
