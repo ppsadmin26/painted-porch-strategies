@@ -11,7 +11,7 @@ import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import contactHero from "@/assets/heroes/contact-hero.jpg";
-import { loadQuizContactPrefill, clearQuizContactPrefill } from "@/components/pps/quiz/quizContactPrefill";
+import { loadQuizContactPrefill, clearQuizContactPrefill, formatQuizBlock, type QuizContactPrefill } from "@/components/pps/quiz/quizContactPrefill";
 import { X } from "lucide-react";
 
 const allInterestOptions = [
@@ -83,25 +83,23 @@ export default function PPSContact() {
   const [specificDate, setSpecificDate] = useState<Date>();
   const [newsletter, setNewsletter] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({});
-  const [quizPrefillHeadline, setQuizPrefillHeadline] = useState<string | null>(null);
+  const [quizPrefill, setQuizPrefill] = useState<QuizContactPrefill | null>(null);
+  const [includeQuiz, setIncludeQuiz] = useState(false);
 
   // Pre-populate from URL query params (e.g. ?scope=Yourself&interest=leadership-lab&message=...)
-  // Falls back to a P.A.T.H.finder quiz prefill saved in sessionStorage when
-  // no URL params are present, so quiz context survives if the user visited a
-  // recommended workshop or the Blue Door page before reaching /contact.
+  // Quiz context (scope/interests) is also pulled from sessionStorage when the
+  // user navigated through a recommended workshop / Blue Door page first. The
+  // quiz responses + recommendations are NEVER auto-prefilled into the message
+  // — the user opts in via a checkbox below the textarea.
   useEffect(() => {
     const urlScope = searchParams.get("scope");
     const urlInterest = searchParams.get("interest");
     const urlMsg = searchParams.get("message");
 
-    // Always check sessionStorage for quiz context so the banner shows whether
-    // the user came directly from the quiz (URL params) or navigated through a
-    // recommended workshop / Blue Door page first (sessionStorage fallback).
     const fromQuiz = loadQuizContactPrefill();
 
     const scope = urlScope ?? fromQuiz?.scope ?? null;
     const interest = urlInterest ?? fromQuiz?.interest ?? null;
-    const msg = urlMsg ?? fromQuiz?.message ?? null;
 
     if (scope) {
       const scopes = scope.split(",").filter((s) =>
@@ -115,15 +113,23 @@ export default function PPSContact() {
       );
       if (interests.length > 0) setInterests(interests);
     }
-    if (msg) setMessage(msg);
-    if (fromQuiz?.resultHeadline) setQuizPrefillHeadline(fromQuiz.resultHeadline);
+    // Only honor a URL `message` param when it's NOT the quiz auto-bundle —
+    // i.e., when there's no quiz prefill in session. This preserves legacy
+    // deep links while keeping the message empty when it comes from the quiz.
+    if (urlMsg && !fromQuiz) setMessage(urlMsg);
+    if (fromQuiz) setQuizPrefill(fromQuiz);
   }, []);
 
   const removeQuizPrefill = () => {
     clearQuizContactPrefill();
-    setQuizPrefillHeadline(null);
-    setMessage("");
+    setQuizPrefill(null);
+    setIncludeQuiz(false);
   };
+
+  const quizBlockText = useMemo(
+    () => (quizPrefill ? formatQuizBlock(quizPrefill) : ""),
+    [quizPrefill],
+  );
 
   const hasScope = inquiryFor.length > 0;
   const isIndividualOnly = inquiryFor.length > 0 && inquiryFor.every((v) => v === "Yourself" || v === "Someone Else");
@@ -200,6 +206,9 @@ export default function PPSContact() {
     }
 
     setSubmitting(true);
+    const finalMessage = includeQuiz && quizBlockText
+      ? `${message.trim()}\n\n${quizBlockText}`
+      : message.trim();
     try {
       const { error } = await supabase.functions.invoke("submit-ghl-lead", {
         body: {
@@ -210,13 +219,13 @@ export default function PPSContact() {
           company: company.trim() || undefined,
           interests,
           inquiryFor,
-          message: message.trim(),
+          message: finalMessage,
           budgetAuthority: showBudgetAuthority ? budgetAuthority : undefined,
           budgetRange: showBudgetRange ? budgetRange : undefined,
           timeline: showBudgetRange ? timeline : undefined,
           specificDate: specificDate ? format(specificDate, "yyyy-MM-dd") : undefined,
           newsletter,
-          tags: ["contact-form"],
+          tags: includeQuiz && quizPrefill ? ["contact-form", "pathfinder-quiz"] : ["contact-form"],
           source: "Painted Porch Website - Contact Form",
         },
       });
@@ -232,7 +241,7 @@ export default function PPSContact() {
         company: company.trim() || undefined,
         inquiryFor,
         interests,
-        message: message.trim(),
+        message: finalMessage,
         budgetAuthority: showBudgetAuthority ? budgetAuthority : undefined,
         budgetRange: showBudgetRange ? budgetRange : undefined,
         timeline: showBudgetRange ? timeline : undefined,
@@ -321,19 +330,19 @@ export default function PPSContact() {
               </div>
             ) : (
               <div className="bg-muted p-8 rounded-xl">
-                {quizPrefillHeadline && (
+                {quizPrefill && (
                   <div className="mb-6 flex items-start gap-3 rounded-lg border border-teal/30 bg-teal/5 p-4">
                     <div className="flex-1 text-sm text-navy">
-                      <p className="font-semibold">Including your P.A.T.H.finder quiz results</p>
+                      <p className="font-semibold">We saved your P.A.T.H.finder quiz context</p>
                       <p className="text-foreground/80 mt-1">
-                        Result: <span className="font-medium">{quizPrefillHeadline}</span>. Your answers and recommended next steps are prefilled in the message below so the team has full context.
+                        Result: <span className="font-medium">{quizPrefill.resultHeadline}</span>. We won't include it unless you check the box below the message field.
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={removeQuizPrefill}
                       className="flex-shrink-0 rounded-md p-2 text-foreground/60 hover:bg-teal/10 hover:text-navy focus:outline-none focus:ring-2 focus:ring-teal"
-                      aria-label="Remove quiz prefill"
+                      aria-label="Discard quiz context"
                     >
                       <X className="w-5 h-5" />
                     </button>
@@ -559,20 +568,9 @@ export default function PPSContact() {
                   {showMessageAndSubmit && (
                     <>
                       <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <label className="text-sm font-medium text-navy">
-                            Give Us the details <span className="text-destructive">*</span>
-                          </label>
-                          {quizPrefillHeadline && (
-                            <button
-                              type="button"
-                              onClick={removeQuizPrefill}
-                              className="text-xs text-teal hover:text-navy underline focus:outline-none focus:ring-2 focus:ring-teal rounded px-1"
-                            >
-                              Remove quiz results
-                            </button>
-                          )}
-                        </div>
+                        <label className="block text-sm font-medium text-navy mb-2">
+                          Give Us the details <span className="text-destructive">*</span>
+                        </label>
                         <textarea
                           rows={5}
                           className={cn("w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary", fieldErrors.message ? "border-destructive" : "border-border")}
@@ -580,7 +578,31 @@ export default function PPSContact() {
                           value={message}
                           onChange={(e) => { setMessage(e.target.value); setFieldErrors(prev => ({ ...prev, message: false })); }}
                         />
+                        {quizPrefill && (
+                          <div className="mt-3 rounded-lg border border-teal/30 bg-white p-3">
+                            <label className="flex items-start gap-2 cursor-pointer">
+                              <input
+                                type="checkbox"
+                                checked={includeQuiz}
+                                onChange={(e) => setIncludeQuiz(e.target.checked)}
+                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary mt-0.5"
+                              />
+                              <span className="text-sm text-foreground">
+                                <span className="font-medium text-navy">Include my P.A.T.H.finder quiz responses and recommendations</span>
+                                <span className="block text-xs text-muted-foreground mt-1">
+                                  Adds your quiz answers and the recommended next steps to your message so we have full context.
+                                </span>
+                              </span>
+                            </label>
+                            {includeQuiz && (
+                              <pre className="mt-3 max-h-48 overflow-auto whitespace-pre-wrap rounded-md border border-border bg-muted/40 p-3 text-xs text-foreground/80 font-montserrat">
+{quizBlockText}
+                              </pre>
+                            )}
+                          </div>
+                        )}
                       </div>
+
 
                       <div>
                         <label className="flex items-start gap-2 cursor-pointer">
