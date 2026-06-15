@@ -647,42 +647,31 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
   // we keep results narrow.
   void extra; void commOn; void resOn;
 
-  // Defensive viewable-key allowlist: only recommend offerings that have a
-  // real, scrollable destination on the public site today. Update this set
-  // whenever a workshop is added/removed from a visible page or hub.
-  // Rule: every key here must resolve to a card, anchor, or dedicated page
-  // the user can actually reach from the recommendation link.
-  const VIEWABLE_B2B_KEYS = new Set<OfferingKey>([
-    // /partner/amplify/workshops — Phase Zero cards
-    "architectChange",
-    "architectureOfAdaptability",
-    "pathToLastingChange",
-    "cultivatingChangeResilience",
-    "leadershipOM",
-    // /partner/amplify/workshops — Leadership & Team Development cards
-    "masterYourMessageB2B",
-    "radicalMindfulnessB2B",
-    "stoicismB2B",
-    // Dedicated pages
-    "stracticalLeader",
-    "kickTheHabit",
-    "blueDoor",
-  ]);
-
-  // Narrow primary picks to the viewable allowlist, then optionally to the
-  // admin-curated "featured" allowlist when provided. If filtering would
-  // leave zero picks, fall back so results never go blank.
-  const featured = opts?.featuredKeys;
-  const viewableKeys = primaryKeys.filter((k) => VIEWABLE_B2B_KEYS.has(k)) as OfferingKey[];
-  const filteredKeys = featured
-    ? viewableKeys.filter((k) => featured.has(k))
-    : viewableKeys;
-  const usableKeys = filteredKeys.length > 0
-    ? filteredKeys
-    : viewableKeys.length > 0
-      ? viewableKeys
-      : (["architectureOfAdaptability", "pathToLastingChange", "architectChange"] as OfferingKey[]);
+  // Eligibility is admin-driven: the dialog passes the set of offering keys
+  // that are Live AND have a URL or anchor configured in
+  // /admin/path-finder-offerings. We narrow primary picks to that set,
+  // falling back gracefully so a result never goes blank.
+  const viewable = opts?.viewableKeys;
+  const filterable = viewable && viewable.size > 0 ? viewable : null;
+  const filteredPrimary = filterable
+    ? (primaryKeys.filter((k) => filterable.has(k)) as OfferingKey[])
+    : primaryKeys;
+  const safeFallback = (filterable
+    ? SAFE_B2B_FALLBACK.filter((k) => filterable.has(k))
+    : SAFE_B2B_FALLBACK) as OfferingKey[];
+  const usableKeys = filteredPrimary.length > 0
+    ? filteredPrimary
+    : safeFallback.length > 0
+      ? safeFallback
+      : primaryKeys;
   const trimmedPrimary = usableKeys.slice(0, 3);
+
+  // Speaking-topic candidates per RT. Only surfaced when admin has marked the
+  // row Live + clickable; otherwise the group disappears entirely.
+  const speakingCandidates = SPEAKING_BY_RT[rt] ?? [];
+  const eligibleSpeaking = (filterable
+    ? speakingCandidates.filter((k) => filterable.has(k))
+    : speakingCandidates).slice(0, 3) as OfferingKey[];
 
   const strongestNextStep =
     strongest === "blueDoor"
@@ -693,6 +682,13 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
 
   const meta = B2B_RESULT_META[rt];
 
+  const groups: RecommendationGroup[] = [
+    grp("Deeper Option — Blue Door Organizational Appraisal", "blueDoor"),
+  ];
+  if (eligibleSpeaking.length > 0) {
+    groups.push(grp("Speaking Topics — Bookable Keynotes", ...eligibleSpeaking));
+  }
+
   return {
     track: "b2b",
     resultType: rt,
@@ -700,9 +696,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     subhead: rt === "RT-D" ? "Blue Door™ Primary | Workshops Alongside" : "Workshops | Blue Door™",
     narrative,
     primaryGroup: grp(primaryHeading, ...trimmedPrimary),
-    groups: [
-      grp("Deeper Option — Blue Door Organizational Appraisal", "blueDoor"),
-    ],
+    groups,
     strongestNextStep,
     crossoverNote: crossover,
     topicArea: meta?.topicArea,
