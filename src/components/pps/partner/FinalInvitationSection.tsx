@@ -7,7 +7,8 @@ export function FinalInvitationSection() {
   return (
     <section className="relative py-16 md:py-24 text-white overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        aria-hidden="true"
+        className="absolute inset-0 bg-cover bg-center md:bg-fixed"
         style={{ backgroundImage: `url(${finalInvitationBg})` }}
       />
       <div className="absolute inset-0 bg-navy/60" />
