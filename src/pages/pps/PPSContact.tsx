@@ -94,7 +94,10 @@ export default function PPSContact() {
     const urlInterest = searchParams.get("interest");
     const urlMsg = searchParams.get("message");
 
-    const fromQuiz = !urlScope && !urlInterest && !urlMsg ? loadQuizContactPrefill() : null;
+    // Always check sessionStorage for quiz context so the banner shows whether
+    // the user came directly from the quiz (URL params) or navigated through a
+    // recommended workshop / Blue Door page first (sessionStorage fallback).
+    const fromQuiz = loadQuizContactPrefill();
 
     const scope = urlScope ?? fromQuiz?.scope ?? null;
     const interest = urlInterest ?? fromQuiz?.interest ?? null;
@@ -113,7 +116,7 @@ export default function PPSContact() {
       if (interests.length > 0) setInterests(interests);
     }
     if (msg) setMessage(msg);
-    if (fromQuiz) setQuizPrefillHeadline(fromQuiz.resultHeadline);
+    if (fromQuiz?.resultHeadline) setQuizPrefillHeadline(fromQuiz.resultHeadline);
   }, []);
 
   const removeQuizPrefill = () => {
