@@ -76,6 +76,38 @@ function loadPersisted(): PersistedState | null {
   }
 }
 
+/**
+ * Build the /contact deep link for the B2B quiz "Contact Us to Learn More" CTA.
+ * Prefills scope + interests from the result and packs a human-readable summary
+ * of the quiz outcome (headline, topic area, top picks, Strongest Next Step)
+ * into the contact form `message` field so the submit-ghl-lead edge function
+ * forwards it into the GHL opportunity's `contact_form_details` custom field.
+ */
+function buildContactHref(result: QuizResult, firstName: string, email: string): string {
+  const picks = (result.primaryGroup?.offerings ?? []).map((o) => `• ${o.name}`).join("\n");
+  const strongest = result.strongestNextStep ? `\nStrongest Next Step: ${result.strongestNextStep.offering.name}` : "";
+  const lines = [
+    `I took the P.A.T.H.finder quiz and would like to learn more.`,
+    ``,
+    `Result: ${result.headline}${result.topicArea ? ` (${result.topicArea})` : ""}${strongest}`,
+    ``,
+    `Featured picks the quiz surfaced:`,
+    picks || "• (none)",
+    ``,
+    `Please tell me which sessions in ${result.topicArea ?? "this area"} would be the best fit.`,
+  ];
+  const params = new URLSearchParams();
+  if (result.contactPrefill?.scope) params.set("scope", result.contactPrefill.scope);
+  if (result.contactPrefill?.interests?.length) params.set("interest", result.contactPrefill.interests.join(","));
+  params.set("message", lines.join("\n"));
+  // Note: firstName/email are passed through for future use but contact form
+  // doesn't currently auto-fill them — leaving the params here keeps the door open.
+  if (firstName) params.set("firstName", firstName);
+  if (email) params.set("email", email);
+  return `/contact?${params.toString()}`;
+}
+
+
 export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const { toast } = useToast();
   const persisted = typeof window !== "undefined" ? loadPersisted() : null;
