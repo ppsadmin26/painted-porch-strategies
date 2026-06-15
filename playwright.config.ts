@@ -35,6 +35,12 @@ export default defineConfig({
             : undefined,
       },
     },
+    // Firefox and WebKit projects are opt-in via `--project=firefox|webkit`.
+    // They require system libraries (libX11-xcb, libatk, etc.) that the
+    // Nix-based dev sandbox does not ship — run them in CI (Ubuntu) or a
+    // container with `npx playwright install-deps`.
+    { name: "firefox", use: { ...devices["Desktop Firefox"] } },
+    { name: "webkit", use: { ...devices["Desktop Safari"] } },
   ],
   webServer: process.env.PLAYWRIGHT_BASE_URL
     ? undefined
