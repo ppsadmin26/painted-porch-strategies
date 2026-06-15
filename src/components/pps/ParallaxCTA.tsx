@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIsPageLive } from "@/hooks/useIsPageLive";
+import { ParallaxBackground } from "@/components/pps/ParallaxBackground";
+
 
 /**
  * Accessible Parallax CTA section.
