@@ -1,17 +1,13 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { TIER_LIST } from "@/config/tiers";
+import { ParallaxBackground } from "@/components/pps/ParallaxBackground";
 import finalInvitationBg from "@/assets/final-invitation-bg.jpg";
 
 export function FinalInvitationSection() {
   return (
     <section className="relative py-16 md:py-24 text-white overflow-hidden">
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-cover bg-center md:bg-fixed"
-        style={{ backgroundImage: `url(${finalInvitationBg})` }}
-      />
-      <div className="absolute inset-0 bg-navy/60" />
+      <ParallaxBackground image={finalInvitationBg} />
       <div className="container max-w-4xl mx-auto px-6 text-center relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
           Ready to Move From Reactive to Architect?
