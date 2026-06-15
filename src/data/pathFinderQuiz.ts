@@ -120,6 +120,35 @@ export const OFFERINGS = {
 
   // Blue Door
   blueDoor: { key: "blueDoor", name: "The Blue Door Organizational Appraisal", tier: "Blue Door", url: "/blue-door", blurb: "About 20 minutes. Produces the P.A.T.H. Compass: architecture, capacity signal, Move Now Map, Reinforce First priorities. No prerequisites." },
+
+  // ===== Speaking Topics =====
+  // Amy
+  speakingHeroesAssemble: { key: "speakingHeroesAssemble", name: "Heroes Assemble! (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-heroes-assemble", blurb: "Unite your team through shared purpose, candor, and trust." },
+  speakingLeadAtSpeed: { key: "speakingLeadAtSpeed", name: "Lead at the Speed of Change (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-lead-at-the-speed-of-change", blurb: "Lead adaptively when the ground shifts beneath you." },
+  speakingShIFtHappens: { key: "speakingShIFtHappens", name: "ShIFt Happens. Be Ready. (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-shift-happens-be-ready", blurb: "The P.A.T.H.™ method as a roadmap for change that's on time, on budget, and on purpose." },
+  speakingGoldilocks: { key: "speakingGoldilocks", name: "Goldilocks Leadership (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-goldilocks-leadership", blurb: "Find the emotional intelligence sweet spot for just-right leadership." },
+  speakingStoicism: { key: "speakingStoicism", name: "Stoicism in the Workplace (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-stoicism-in-the-workplace", blurb: "Ancient Stoic principles for modern leadership and resilience." },
+  speakingFromDysfunction: { key: "speakingFromDysfunction", name: "From Dysfunction to Dynamic Teams (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-from-dysfunction-to-dynamic-teams", blurb: "Turn struggling teams into high-performing powerhouses." },
+  speakingAiEiOh: { key: "speakingAiEiOh", name: "AI, EI, Oh! (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-ai-ei-oh-guiding-change-and-ai-adoption", blurb: "Emotional intelligence as the missing link in AI adoption." },
+  speakingAlicePrinciples: { key: "speakingAlicePrinciples", name: "The Alice Principles (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-the-alice-principles-down-the-rabbit-hole-of-transformation", blurb: "Curiosity and adaptability as the lens for navigating transformation." },
+  speakingDontPanic: { key: "speakingDontPanic", name: "Don't Panic! Navigating a Changing World (Keynote)", facilitator: "Amy", tier: "Speaking", url: "/speaking/amy#topic-dont-panic-navigating-a-changing-world", blurb: "Humor, perspective, and a good guide for overwhelming change." },
+
+  // Rob
+  speakingHighFidelity: { key: "speakingHighFidelity", name: "High-Fidelity Communication (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-high-fidelity-communication", blurb: "Preparation, conciseness, and attentiveness as the three pillars of clear communication." },
+  speaking88: { key: "speaking88", name: "8:8 — Capturing & Keeping Attention (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-8-8", blurb: "Hook, hold, and inspire your audience before they scroll away." },
+  speakingPowerOfStory: { key: "speakingPowerOfStory", name: "The Power of Story (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-the-power-of-story", blurb: "Narrative to persuade, connect, and be unforgettable." },
+  speakingGetClear: { key: "speakingGetClear", name: "Get C.L.E.A.R. & Be Heard (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-get-clear-be-heard", blurb: "Clarity, Language, Energy, Attention, Relevance." },
+  speakingBorderlessKeynote: { key: "speakingBorderlessKeynote", name: "Borderless Communication (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-borderless-communication", blurb: "Create a culture of ownership and follow-through." },
+  speakingOnAir: { key: "speakingOnAir", name: "On-Air Ready Confidence (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-on-air-ready-confidence", blurb: "Tame the nerves and take the mic." },
+  speakingFiveMin: { key: "speakingFiveMin", name: "Your 5-Minute Keynote", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-your-5-minute-keynote", blurb: "Craft a signature message you can deliver at a moment's notice." },
+  speakingCommStyle: { key: "speakingCommStyle", name: "Speaking with Style — 6 Communicator Styles (Keynote)", facilitator: "Rob", tier: "Speaking", url: "/speaking/rob#topic-speaking-with-style-the-6-communicator-styles-for-influence-impact", blurb: "Discover your style and flex across all six to connect with any audience." },
+
+  // Sierra
+  speakingFromPassengerToPilot: { key: "speakingFromPassengerToPilot", name: "From Passenger to Pilot (Keynote)", facilitator: "Sierra", tier: "Speaking", url: "/speaking/sierra#topic-from-passenger-to-pilot", blurb: "Bounce back from challenges and prevent burnout with science-backed resilience tools." },
+  speakingMoveShakeInnovate: { key: "speakingMoveShakeInnovate", name: "Move, Shake, Innovate (Keynote)", facilitator: "Sierra", tier: "Speaking", url: "/speaking/sierra#topic-move-shake-innovate", blurb: "Physical motion that sparks creativity, problem-solving, and presence." },
+  speakingFindingJoy: { key: "speakingFindingJoy", name: "Finding Joy at Work (Keynote)", facilitator: "Sierra", tier: "Speaking", url: "/speaking/sierra#topic-finding-joy-at-work", blurb: "Infuse your day with purpose, presence, and a little play." },
+  speakingReignitingResilience: { key: "speakingReignitingResilience", name: "Reigniting Resilience (Keynote)", facilitator: "Sierra", tier: "Speaking", url: "/speaking/sierra#topic-reigniting-resilience", blurb: "Simplify energy management and boost team engagement." },
+  speakingRadicallyMindful: { key: "speakingRadicallyMindful", name: "Radically Mindful Leadership (Keynote)", facilitator: "Sierra", tier: "Speaking", url: "/speaking/sierra#topic-radically-mindful-leadership", blurb: "Practical mindfulness for executives who don't have time for mindfulness." },
 } as const satisfies Record<string, Offering>;
 
 export type OfferingKey = keyof typeof OFFERINGS;
