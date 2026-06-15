@@ -140,6 +140,7 @@ export function TierHeroSection({
           className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
         />
       )}
+      </div>
 
       {/* Overlay */}
       <div className={`absolute inset-0 ${overlayClass}`} />
