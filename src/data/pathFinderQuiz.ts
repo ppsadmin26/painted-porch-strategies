@@ -757,7 +757,17 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
 export function buildResult(track: Track, answers: Answers, opts?: BuildResultOptions): QuizResult {
   if (track === "b2c") {
     const { resultType } = scoreB2C(answers);
-    return b2cResult(resultType, answers);
+    const base = b2cResult(resultType, answers);
+    // Post-process to drop offerings the admin hasn't marked clickable.
+    // For B2C the primary group falls back to a safe default if filtered empty.
+    const filtered = applyViewableFilter(base, opts?.viewableKeys);
+    if (filtered.primaryGroup && filtered.primaryGroup.offerings.length === 0 && opts?.viewableKeys) {
+      const safe = SAFE_B2C_FALLBACK.filter((k) => opts.viewableKeys!.has(k)) as OfferingKey[];
+      if (safe.length > 0) {
+        filtered.primaryGroup = grp(filtered.primaryGroup.heading, ...safe);
+      }
+    }
+    return filtered;
   }
   const { resultType, strongest } = scoreB2B(answers);
   return b2bResult(resultType, answers, strongest, opts);
