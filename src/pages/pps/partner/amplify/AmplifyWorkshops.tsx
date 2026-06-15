@@ -362,7 +362,7 @@ export default function AmplifyWorkshops() {
               Don&rsquo;t see exactly what you&rsquo;re looking for?
             </h3>
             <p className="text-foreground max-w-2xl mx-auto mb-3">
-              The workshops above are a sample of what we run most often. We also design sessions across our core topic areas, and most can be delivered as a <Link to="/speaking" className="font-semibold text-teal hover:text-teal/80 underline underline-offset-2">keynote or speaking session</Link> or expanded into a <strong>workshop</strong> tailored to your team:
+              The workshops above are a sample of what we run most often. We also offer other sessions across our core topic areas, and most can be delivered as a <Link to="/speaking" className="font-semibold text-teal hover:text-teal/80 underline underline-offset-2">keynote or speaking session</Link> or expanded into a <strong>workshop</strong>:
             </p>
             <p className="text-foreground max-w-2xl mx-auto mb-6">
               <span className="font-semibold text-navy">Change &amp; Innovation</span>
