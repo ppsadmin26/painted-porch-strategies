@@ -11,6 +11,8 @@ import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import contactHero from "@/assets/heroes/contact-hero.jpg";
+import { loadQuizContactPrefill, clearQuizContactPrefill } from "@/components/pps/quiz/quizContactPrefill";
+import { X } from "lucide-react";
 
 const allInterestOptions = [
   { value: "assessments", label: "Assessments" },
