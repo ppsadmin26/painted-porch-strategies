@@ -746,6 +746,15 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     groups.push(grp("Speaking Topics — Bookable Keynotes", ...eligibleSpeaking));
   }
 
+  // Free Resources — up to 2, filtered to admin-eligible rows.
+  const freeCandidates = FREE_RESOURCES_BY_RT[rt] ?? [];
+  const eligibleFree = (filterable
+    ? freeCandidates.filter((k) => filterable.has(k))
+    : freeCandidates).slice(0, 2) as OfferingKey[];
+  if (eligibleFree.length > 0) {
+    groups.push(grp("Free Resources to Start Today", ...eligibleFree));
+  }
+
   return {
     track: "b2b",
     resultType: rt,
