@@ -616,14 +616,41 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
   // we keep results narrow.
   void extra; void commOn; void resOn;
 
-  // Narrow primary picks to the "featured" allowlist when one is provided.
-  // If filtering would leave zero picks, fall back to the unfiltered list so
-  // results never go blank (defensive — admin curation issue, not a user issue).
+  // Defensive viewable-key allowlist: only recommend offerings that have a
+  // real, scrollable destination on the public site today. Update this set
+  // whenever a workshop is added/removed from a visible page or hub.
+  // Rule: every key here must resolve to a card, anchor, or dedicated page
+  // the user can actually reach from the recommendation link.
+  const VIEWABLE_B2B_KEYS = new Set<OfferingKey>([
+    // /partner/amplify/workshops — Phase Zero cards
+    "architectChange",
+    "architectureOfAdaptability",
+    "pathToLastingChange",
+    "cultivatingChangeResilience",
+    "leadershipOM",
+    // /partner/amplify/workshops — Leadership & Team Development cards
+    "masterYourMessageB2B",
+    "radicalMindfulnessB2B",
+    "stoicismB2B",
+    // Dedicated pages
+    "stracticalLeader",
+    "kickTheHabit",
+    "blueDoor",
+  ]);
+
+  // Narrow primary picks to the viewable allowlist, then optionally to the
+  // admin-curated "featured" allowlist when provided. If filtering would
+  // leave zero picks, fall back so results never go blank.
   const featured = opts?.featuredKeys;
+  const viewableKeys = primaryKeys.filter((k) => VIEWABLE_B2B_KEYS.has(k)) as OfferingKey[];
   const filteredKeys = featured
-    ? (primaryKeys.filter((k) => featured.has(k)) as OfferingKey[])
-    : primaryKeys;
-  const usableKeys = filteredKeys.length > 0 ? filteredKeys : primaryKeys;
+    ? viewableKeys.filter((k) => featured.has(k))
+    : viewableKeys;
+  const usableKeys = filteredKeys.length > 0
+    ? filteredKeys
+    : viewableKeys.length > 0
+      ? viewableKeys
+      : (["architectureOfAdaptability", "pathToLastingChange", "architectChange"] as OfferingKey[]);
   const trimmedPrimary = usableKeys.slice(0, 3);
 
   const strongestNextStep =
