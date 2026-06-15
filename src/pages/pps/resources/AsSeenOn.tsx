@@ -314,7 +314,7 @@ export default function AsSeenOn() {
 
             {/* Per-page */}
             <Select value={String(perPage)} onValueChange={handlePerPageChange}>
-              <SelectTrigger className="w-full md:w-[130px] bg-muted">
+              <SelectTrigger className="w-full md:w-[130px] bg-muted" aria-label="Items per page">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
