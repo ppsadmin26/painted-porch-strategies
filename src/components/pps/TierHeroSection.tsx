@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 import { ReactNode, useEffect, useState } from "react";
-import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TierBadge } from "@/components/pps/TierBadge";
 import { type TierConfig } from "@/config/tiers";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
-import { useParallax } from "@/hooks/useParallax";
 
 interface HeroCTA {
   label: string;
