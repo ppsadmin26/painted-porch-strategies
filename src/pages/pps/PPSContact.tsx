@@ -120,8 +120,6 @@ export default function PPSContact() {
     clearQuizContactPrefill();
     setQuizPrefillHeadline(null);
     setMessage("");
-    setInterests([]);
-    setInquiryFor([]);
   };
 
   const hasScope = inquiryFor.length > 0;
