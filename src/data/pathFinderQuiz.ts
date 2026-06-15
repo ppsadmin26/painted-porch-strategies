@@ -557,7 +557,18 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
   }
 }
 
-function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | "blueDoor" | "equal"): QuizResult {
+// Per-result-type metadata for narrowed results: plain-English topic area shown
+// in the "we also offer additional sessions in {topic}" note, plus the contact
+// form prefill (scope + interests) used by the "Contact Us to Learn More" CTA.
+const B2B_RESULT_META: Record<B2BResultType, { topicArea: string; scope: string; interests: string[] }> = {
+  "RT-A": { topicArea: "Team Dynamics & People",         scope: "Team / Department", interests: ["workshops"] },
+  "RT-B": { topicArea: "Change & Transformation",        scope: "Company",           interests: ["workshops"] },
+  "RT-C": { topicArea: "Leadership Capability",          scope: "Team / Department", interests: ["workshops"] },
+  "RT-D": { topicArea: "Strategic / Architectural Work", scope: "Company",           interests: ["blue-door", "strategic-partnership"] },
+  "RT-E": { topicArea: "Organizational Development",     scope: "Team / Department", interests: ["workshops"] },
+};
+
+function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | "blueDoor" | "equal", opts?: BuildResultOptions): QuizResult {
   const blueDoorOff = O.blueDoor;
 
   // Secondary-signal flags (any branch)
@@ -624,11 +635,19 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     extra.push(grp("Strategic Design", "architectChange", "architectureOfAdaptability"));
   }
 
-  // Simplified: cap recommendations at 3 in the primary group only.
-  // Secondary-signal extras (comm/resilience) are intentionally suppressed
-  // so results stay focused. `extra` is built but not surfaced.
+  // `extra` and secondary-signal flags are intentionally not surfaced —
+  // we keep results narrow.
   void extra; void commOn; void resOn;
-  const trimmedPrimary = primaryKeys.slice(0, 3);
+
+  // Narrow primary picks to the "featured" allowlist when one is provided.
+  // If filtering would leave zero picks, fall back to the unfiltered list so
+  // results never go blank (defensive — admin curation issue, not a user issue).
+  const featured = opts?.featuredKeys;
+  const filteredKeys = featured
+    ? (primaryKeys.filter((k) => featured.has(k)) as OfferingKey[])
+    : primaryKeys;
+  const usableKeys = filteredKeys.length > 0 ? filteredKeys : primaryKeys;
+  const trimmedPrimary = usableKeys.slice(0, 3);
 
   const strongestNextStep =
     strongest === "blueDoor"
@@ -636,6 +655,8 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
       : strongest === "workshop"
         ? { kind: "workshop" as const, offering: O[trimmedPrimary[0]], label: "Strongest Next Step — Workshop" }
         : undefined;
+
+  const meta = B2B_RESULT_META[rt];
 
   return {
     track: "b2b",
@@ -649,17 +670,20 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     ],
     strongestNextStep,
     crossoverNote: crossover,
+    topicArea: meta?.topicArea,
+    contactPrefill: meta ? { scope: meta.scope, interests: meta.interests } : undefined,
     whatComesNext: rt === "RT-D"
       ? "Blue Door produces your P.A.T.H. Compass — the organizational roadmap that informs everything that follows. From there, qualified organizations move to Architect Change and then into AMPLIFY or EMBODY partnership."
       : "A workshop is a powerful starting point. Organizations that go deeper often find the work surfaces something more structural that a single workshop addresses symptomatically but not architecturally. The Blue Door is there when you're ready for that conversation.",
   };
 }
 
-export function buildResult(track: Track, answers: Answers): QuizResult {
+export function buildResult(track: Track, answers: Answers, opts?: BuildResultOptions): QuizResult {
   if (track === "b2c") {
     const { resultType } = scoreB2C(answers);
     return b2cResult(resultType, answers);
   }
   const { resultType, strongest } = scoreB2B(answers);
-  return b2bResult(resultType, answers, strongest);
+  return b2bResult(resultType, answers, strongest, opts);
 }
+
