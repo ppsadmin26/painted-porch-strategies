@@ -73,7 +73,7 @@ const workshopTopics = [
     image: pillarsThumb,
     challenge: "You're not sure if your organization is built to carry the transformation you're considering. You need a clear-eyed assessment of capacity and an architecture designed to navigate uncertainty rather than react to it.",
     highlights: [
-      "The three Painted Porch Pillars (Foundational Architecture, Operational Intelligence, Human Capacity) and how they reveal organizational readiness",
+      "The three Painted Porch Pillars (Cultural Cornerstone, Operational Frame, Living Ecosystem) and how they reveal organizational readiness",
       "Gap analysis: where you're strong, where you're vulnerable",
       "How to design systems that navigate uncertainty instead of reacting to it",
       "Roadmap for strengthening vulnerable pillars before transformation begins",
