@@ -161,7 +161,7 @@ export default function YouTubePage() {
               />
             </div>
             <Select value={contentTypeFilter} onValueChange={setContentTypeFilter}>
-              <SelectTrigger className="w-[150px]">
+              <SelectTrigger className="w-[150px]" aria-label="Filter by content type">
                 <SelectValue placeholder="All Types" />
               </SelectTrigger>
               <SelectContent>
@@ -172,7 +172,7 @@ export default function YouTubePage() {
             </Select>
             {playlists.length > 0 && (
               <Select value={playlistFilter} onValueChange={setPlaylistFilter}>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[180px]" aria-label="Filter by playlist">
                   <SelectValue placeholder="All Playlists" />
                 </SelectTrigger>
                 <SelectContent>
@@ -185,7 +185,7 @@ export default function YouTubePage() {
             )}
             {allCategories.length > 0 && (
               <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[180px]" aria-label="Filter by category">
                   <SelectValue placeholder="All Categories" />
                 </SelectTrigger>
                 <SelectContent>
@@ -197,7 +197,7 @@ export default function YouTubePage() {
               </Select>
             )}
             <Select value={sortBy} onValueChange={(v) => setSortBy(v as SortOption)}>
-              <SelectTrigger className="w-[160px]">
+              <SelectTrigger className="w-[160px]" aria-label="Sort videos">
                 <ArrowUpDown className="h-3.5 w-3.5 mr-1.5 text-muted-foreground" />
                 <SelectValue />
               </SelectTrigger>
