@@ -84,7 +84,7 @@ function loadPersisted(): PersistedState | null {
  * into the contact form `message` field so the submit-ghl-lead edge function
  * forwards it into the GHL opportunity's `contact_form_details` custom field.
  */
-function buildContactHref(result: QuizResult, firstName: string, email: string): string {
+function buildQuizPrefillPayload(result: QuizResult): { scope?: string; interest?: string; message: string; resultHeadline: string } {
   const picks = (result.primaryGroup?.offerings ?? []).map((o) => `• ${o.name}`).join("\n");
   const strongest = result.strongestNextStep ? `\nStrongest Next Step: ${result.strongestNextStep.offering.name}` : "";
   const lines = [
@@ -97,10 +97,20 @@ function buildContactHref(result: QuizResult, firstName: string, email: string):
     ``,
     `Please tell me which sessions in ${result.topicArea ?? "this area"} would be the best fit.`,
   ];
+  return {
+    scope: result.contactPrefill?.scope,
+    interest: result.contactPrefill?.interests?.length ? result.contactPrefill.interests.join(",") : undefined,
+    message: lines.join("\n"),
+    resultHeadline: result.headline,
+  };
+}
+
+function buildContactHref(result: QuizResult, firstName: string, email: string): string {
+  const payload = buildQuizPrefillPayload(result);
   const params = new URLSearchParams();
-  if (result.contactPrefill?.scope) params.set("scope", result.contactPrefill.scope);
-  if (result.contactPrefill?.interests?.length) params.set("interest", result.contactPrefill.interests.join(","));
-  params.set("message", lines.join("\n"));
+  if (payload.scope) params.set("scope", payload.scope);
+  if (payload.interest) params.set("interest", payload.interest);
+  params.set("message", payload.message);
   // Note: firstName/email are passed through for future use but contact form
   // doesn't currently auto-fill them — leaving the params here keeps the door open.
   if (firstName) params.set("firstName", firstName);
