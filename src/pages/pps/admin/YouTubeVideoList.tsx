@@ -183,15 +183,15 @@ export default function YouTubeVideoList() {
                     </TableCell>
                     <TableCell>
                       <div className="flex gap-1" onClick={(e) => e.stopPropagation()}>
-                        <Button variant="ghost" size="icon" className="h-8 w-8" asChild title="View on YouTube">
+                        <Button variant="ghost" size="icon" className="h-8 w-8" asChild title="View on YouTube" aria-label="View on YouTube">
                           <a href={item.youtube_url} target="_blank" rel="noopener noreferrer">
                             <Eye className="h-4 w-4" />
                           </a>
                         </Button>
-                        <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => navigate(`/admin/youtube/${item.id}`)}>
+                        <Button variant="ghost" size="icon" className="h-8 w-8" aria-label="Edit video" onClick={() => navigate(`/admin/youtube/${item.id}`)}>
                           <Pencil className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive" onClick={() => handleDelete(item.id)}>
+                        <Button variant="ghost" size="icon" className="h-8 w-8 text-destructive hover:text-destructive" aria-label="Delete video" onClick={() => handleDelete(item.id)}>
                           <Trash2 className="h-4 w-4" />
                         </Button>
                       </div>
