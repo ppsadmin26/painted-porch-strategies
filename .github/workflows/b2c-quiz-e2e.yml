@@ -53,3 +53,30 @@ jobs:
           name: b2c-quiz-playwright-report
           path: playwright-report/
           retention-days: 14
+
+  cross-browser-keyboard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Install Playwright (Chromium, Firefox, WebKit)
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Run keyboard tests across Chromium, Firefox, and WebKit
+        run: npm run test:e2e:keyboard:all
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cross-browser-keyboard-report
+          path: playwright-report/
+          retention-days: 14
