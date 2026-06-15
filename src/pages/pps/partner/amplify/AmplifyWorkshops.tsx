@@ -180,7 +180,7 @@ export default function AmplifyWorkshops() {
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {workshopTopics.map((workshop, index) => {
               return (
-                <div key={index} className="rounded-xl flex flex-col overflow-hidden border border-border">
+                <div key={index} id={workshop.id} className="rounded-xl flex flex-col overflow-hidden border border-border scroll-mt-24">
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-3">
                       <img
