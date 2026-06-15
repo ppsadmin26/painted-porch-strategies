@@ -26,7 +26,9 @@ interface Row {
   notes: string | null;
   topic: string | null;
   include_in_workshops: boolean;
+  is_featured_in_quiz: boolean;
 }
+
 
 const TIER_COLORS: Record<string, string> = {
   IGNITE: "bg-gold/15 text-gold-foreground border-gold/40",
