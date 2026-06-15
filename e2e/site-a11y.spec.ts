@@ -76,6 +76,41 @@ async function runAxe(page: Page, label: string) {
     .exclude('iframe[src*="vimeo.com"]')
     .analyze();
 
+  // Third-party embeds (Spotify, Vimeo, etc.) ship inaccessible markup we
+  // cannot fix. Instead of auditing their internal DOM, validate that OUR
+  // wrapper provides an accessible name on every such iframe so screen
+  // reader users at least know what the embed is.
+  const THIRD_PARTY_EMBED_SELECTORS = [
+    'iframe[src*="spotify.com"]',
+    'iframe[src*="vimeo.com"]',
+    'iframe[src*="vids.io"]',
+    'iframe[src*="wistia"]',
+  ];
+
+  for (const selector of THIRD_PARTY_EMBED_SELECTORS) {
+    const frames = page.locator(selector);
+    const count = await frames.count();
+    for (let i = 0; i < count; i++) {
+      const frame = frames.nth(i);
+      const [title, ariaLabel, ariaLabelledBy, src] = await Promise.all([
+        frame.getAttribute("title"),
+        frame.getAttribute("aria-label"),
+        frame.getAttribute("aria-labelledby"),
+        frame.getAttribute("src"),
+      ]);
+      const accessibleName =
+        (title?.trim() || "") ||
+        (ariaLabel?.trim() || "") ||
+        (ariaLabelledBy?.trim() || "");
+      if (!accessibleName) {
+        throw new Error(
+          `Embed missing accessible name on ${label}: ${selector} (src=${src ?? "?"}). ` +
+            `Add a descriptive title, aria-label, or aria-labelledby to the iframe.`,
+        );
+      }
+    }
+  }
+
   const blocking = results.violations.filter(
     (v) => v.impact === "critical" || v.impact === "serious",
   );
