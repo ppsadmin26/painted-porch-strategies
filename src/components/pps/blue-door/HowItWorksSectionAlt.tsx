@@ -55,7 +55,7 @@ export default function HowItWorksSectionAlt() {
 
   return (
     <section className="py-12 md:py-20 bg-gradient-to-br from-primary/5 via-white to-gold/5">
-      <div className="container max-w-6xl mx-auto px-6">
+      <div className="container max-w-7xl mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-12">
           How It Works
         </h2>

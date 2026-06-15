@@ -91,7 +91,7 @@ export default function MediaAppearanceList() {
   return (
     <div className="bg-muted/30 min-h-full">
       <div className="bg-card border-b border-border px-4 py-4">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy">Media Appearances</h1>
             <p className="text-sm text-muted-foreground">Manage your As Seen On content</p>
@@ -104,7 +104,7 @@ export default function MediaAppearanceList() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-4 py-4">
         <div className="flex gap-3 items-center">
           <div className="relative flex-1 max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -127,7 +127,7 @@ export default function MediaAppearanceList() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 pb-8">
+      <div className="max-w-7xl mx-auto px-4 pb-8">
         <div className="bg-card rounded-lg border border-border overflow-hidden">
           {loading ? (
             <div className="p-8 text-center text-muted-foreground">Loading...</div>

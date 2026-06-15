@@ -179,7 +179,7 @@ export default function PPSHome() {
       {/* Research stats, static grid                                  */}
       {/* ============================================================ */}
       <section className="py-8 md:py-10 bg-navy" aria-label="Research stats">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <p className="text-center text-[0.7rem] md:text-xs font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-6 md:mb-7">
             The reality leaders are facing
           </p>
@@ -214,7 +214,7 @@ export default function PPSHome() {
       {/* How we meet you, editorial 2-col                             */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left: manifesto */}
             <div className="lg:col-span-5 lg:sticky lg:top-24">
@@ -367,7 +367,7 @@ export default function PPSHome() {
       {/* The Painted Porch Pillars                                     */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="badge-gold mb-4 inline-block">Our Painted Porch Pillars</span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
@@ -501,7 +501,7 @@ export default function PPSHome() {
       {/* 3AM Questions strip, lead-in to The Blue Door                */}
       {/* ============================================================ */}
       <section className="py-16 md:py-20 bg-navy">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <p className="text-center text-xs md:text-sm font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-10">
             THE QUESTIONS LEADERS ARE WEIGHING AT 3AM
           </p>
@@ -525,7 +525,7 @@ export default function PPSHome() {
       {/* The Blue Door                                                 */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-flex items-center gap-2 bg-bluedoor/10 text-bluedoor font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
@@ -586,7 +586,7 @@ export default function PPSHome() {
       {/* Discover Your P.A.T.H.way                                     */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="badge-gold mb-4 inline-block">Discover Your P.A.T.H.way</span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
@@ -704,7 +704,7 @@ export default function PPSHome() {
       {/* ============================================================ */}
       {posts && posts.length > 0 && (
         <section className="py-16 md:py-24 bg-white">
-          <div className="container max-w-6xl mx-auto px-6">
+          <div className="container max-w-7xl mx-auto px-6">
             <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
               <div>
                 <span className="badge-gold mb-3 inline-block">Insights, Resources &amp; Conversations</span>

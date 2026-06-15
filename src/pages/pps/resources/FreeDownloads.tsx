@@ -200,7 +200,7 @@ export default function FreeDownloads() {
 
       {/* Downloads Grid */}
       <section id="downloads" className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-8">
             {downloads.map((download, index) => {
               const CtaIcon = download.ctaIcon ?? Download;

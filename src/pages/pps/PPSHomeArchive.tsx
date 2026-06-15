@@ -74,7 +74,7 @@ export default function PPSHomeArchive() {
 
       {/* Stats Section */}
       <section className="py-12 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
@@ -90,7 +90,7 @@ export default function PPSHomeArchive() {
 
       {/* Four Pillars */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="badge-gold mb-4 inline-block">The Painted Porch Pillars</span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
@@ -152,7 +152,7 @@ export default function PPSHomeArchive() {
 
       {/* Services Preview */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               How We Help

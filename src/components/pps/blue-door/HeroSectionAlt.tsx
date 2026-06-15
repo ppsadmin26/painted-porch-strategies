@@ -33,7 +33,7 @@ export default function HeroSectionAlt() {
         <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/70 to-transparent" />
       </div>
       
-      <div className="container max-w-6xl mx-auto px-6 relative z-10">
+      <div className="container max-w-7xl mx-auto px-6 relative z-10">
         <div className="max-w-3xl">
           <div className="bg-navy/30 backdrop-blur-sm p-8 md:p-10 rounded-lg">
             <span className={`inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6 transition-all duration-700 ease-out ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>

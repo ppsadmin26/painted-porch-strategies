@@ -198,7 +198,7 @@ export default function OurApproach() {
 
       {/* Manifesto: What we believe / reject */}
       <section className="py-16 md:py-24 bg-muted/60">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
               Our Manifesto
@@ -241,7 +241,7 @@ export default function OurApproach() {
 
       {/* Core Values */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
               How We Show Up
@@ -280,7 +280,7 @@ export default function OurApproach() {
 
       {/* R.L.P.V. - How we think */}
       <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
               How We Think
@@ -313,7 +313,7 @@ export default function OurApproach() {
 
       {/* What our work makes possible - two-column: people + org */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
               The Conditions We Build Together
@@ -370,7 +370,7 @@ export default function OurApproach() {
 
       {/* Our Methodology: The P.A.T.H. */}
       <section id="path" className="py-20 md:py-28 bg-white scroll-mt-24">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
               Our Methodology
@@ -523,7 +523,7 @@ export default function OurApproach() {
 
       {/* Certifications & Credentials */}
       <section id="certifications" className="py-16 md:py-20 bg-muted scroll-mt-24">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
               The Credentials Behind The Method
@@ -558,7 +558,7 @@ export default function OurApproach() {
 
       {/* The Painted Porch promise + Where we fit */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-10">
             <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-10 border-b-4 border-gold shadow-xl">
               <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">

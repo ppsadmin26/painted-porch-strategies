@@ -41,7 +41,7 @@ export default function StoicFieldGuide() {
     <div>
       {/* Hero */}
       <section className="bg-gradient-to-br from-navy via-navy to-[#001a4d] py-16 md:py-24 overflow-hidden">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             {/* Left: Copy */}
             <div className="text-center md:text-left">

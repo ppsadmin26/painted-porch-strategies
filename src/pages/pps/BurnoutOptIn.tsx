@@ -58,7 +58,7 @@ export default function BurnoutOptIn() {
 
   return (
     <div className="min-h-[calc(100vh-200px)] bg-gradient-to-br from-raspberry/10 via-purple/10 to-navy/20 py-16 md:py-24">
-      <div className="container max-w-6xl mx-auto px-6">
+      <div className="container max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: Headline & description */}
           <div>

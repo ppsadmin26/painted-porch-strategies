@@ -208,7 +208,7 @@ export default function AsSeenOn() {
 
       {/* Filters & Search */}
       <section className="bg-white border-b border-border sticky top-0 z-20">
-        <div className="container max-w-6xl mx-auto px-6 py-4">
+        <div className="container max-w-7xl mx-auto px-6 py-4">
           <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center">
             {/* Search */}
             <div className="relative flex-1 max-w-md">
@@ -367,7 +367,7 @@ export default function AsSeenOn() {
 
       {/* Grid */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           {isLoading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {Array.from({ length: perPage }).map((_, i) => (

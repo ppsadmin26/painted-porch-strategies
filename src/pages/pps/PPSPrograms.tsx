@@ -122,7 +122,7 @@ export default function PPSPrograms() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-navy/80 via-navy/60 to-transparent" />
         </div>
-        <div className="container max-w-6xl mx-auto px-6 relative z-10 py-20">
+        <div className="container max-w-7xl mx-auto px-6 relative z-10 py-20">
           <div className="max-w-2xl">
             <span className="inline-block bg-gold text-navy font-poppins font-bold text-xs uppercase tracking-wider px-4 py-2 rounded-full mb-6">
               Join Us on the Porch
@@ -157,7 +157,7 @@ export default function PPSPrograms() {
 
       {/* Signature Programs */}
       <section id="signature-programs" className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
@@ -214,7 +214,7 @@ export default function PPSPrograms() {
 
       {/* EQ Leadership */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <AnimatedSection>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1">
@@ -254,7 +254,7 @@ export default function PPSPrograms() {
 
       {/* Additional Programs */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
@@ -310,7 +310,7 @@ export default function PPSPrograms() {
 
       {/* One-on-One Advisory */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">

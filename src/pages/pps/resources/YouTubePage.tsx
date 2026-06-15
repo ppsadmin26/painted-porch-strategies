@@ -149,7 +149,7 @@ export default function YouTubePage() {
 
       {/* Filters */}
       <section className="py-6 bg-white border-b sticky top-[72px] z-20">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="flex flex-wrap gap-3 items-center">
             <div className="relative flex-1 min-w-[200px] max-w-sm">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -230,7 +230,7 @@ export default function YouTubePage() {
 
       {/* Videos Grid */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           {isLoading ? (
             <div className="text-center py-12 text-muted-foreground">Loading videos...</div>
           ) : filtered.length === 0 ? (

@@ -43,7 +43,7 @@ export default function PPSFooter() {
 
   return (
     <footer className="bg-navy text-white">
-      <div className="container max-w-6xl mx-auto px-6 py-12">
+      <div className="container max-w-7xl mx-auto px-6 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-1">

@@ -50,7 +50,7 @@ export function HowToChooseSection() {
   const { open: openQuiz } = usePathFinderQuiz();
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-muted to-white">
-      <div className="container max-w-6xl mx-auto px-6">
+      <div className="container max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Not Sure Which P.A.T.H.way Fits Where You Are?
@@ -107,7 +107,7 @@ export function HowToChooseSection() {
 export function BlueDoorCalloutSection() {
   return (
     <section className="py-12 md:py-16 bg-white">
-      <div className="container max-w-6xl mx-auto px-6">
+      <div className="container max-w-7xl mx-auto px-6">
         <div className="bg-bluedoor/10 rounded-xl p-6 md:p-8">
           <div className="flex items-start gap-2 mb-3">
             <Info className="w-5 h-5 text-bluedoor flex-shrink-0 mt-1" />

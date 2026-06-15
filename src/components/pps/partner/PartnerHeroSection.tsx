@@ -23,7 +23,7 @@ export function PartnerHeroSection() {
       {/* Overlay */}
       <div className="absolute inset-0 bg-navy/30" />
 
-      <div className="container max-w-6xl mx-auto px-6 relative z-10 py-16 md:py-24">
+      <div className="container max-w-7xl mx-auto px-6 relative z-10 py-16 md:py-24">
         <div className="md:w-4/5">
           <div className="bg-black/65 backdrop-blur-sm p-8 md:p-12 rounded-xl">
             {/* Badge */}

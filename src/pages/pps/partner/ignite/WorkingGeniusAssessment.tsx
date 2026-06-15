@@ -184,7 +184,7 @@ export default function WorkingGeniusAssessment() {
         {/* Overlay for legibility */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30" aria-hidden="true" />
 
-        <div className="container max-w-6xl mx-auto px-6 relative z-10">
+        <div className="container max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-2xl text-center lg:text-left">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
               <img src={dualGearsIcon} alt="" className="w-6 h-6" style={{ filter: "brightness(0) invert(1)" }} />
@@ -282,7 +282,7 @@ export default function WorkingGeniusAssessment() {
 
       {/* The 6 Types */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">
               W.I.D.G.E.T.
@@ -389,7 +389,7 @@ export default function WorkingGeniusAssessment() {
 
       {/* Pricing */}
       <section id="get-started" className="py-16 md:py-24 bg-white scroll-mt-24">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="text-sm font-semibold tracking-widest text-primary uppercase">
               Get Started Today

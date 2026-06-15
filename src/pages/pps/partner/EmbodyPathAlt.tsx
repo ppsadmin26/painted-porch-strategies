@@ -232,7 +232,7 @@ export default function EmbodyPathAlt() {
 
       {/* WHO EMBODY IS FOR */}
       <section id="who-embody-is-for" className="py-16 md:py-24 bg-white scroll-mt-24">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           {/* Stage-setter */}
           <div className="text-center mb-10 max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
@@ -301,7 +301,7 @@ export default function EmbodyPathAlt() {
 
       {/* INDUSTRIES */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-10 max-w-3xl mx-auto">
             <p className="text-sm font-poppins font-semibold tracking-widest text-navy uppercase mb-3">
               Painted Porch Partners
@@ -342,7 +342,7 @@ export default function EmbodyPathAlt() {
 
       {/* WHAT EMBODY INCLUDES */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-10 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               What EMBODY looks like

@@ -351,7 +351,7 @@ export default function StracticalLeaderWorkshop() {
 
       {/* ═══ THREE PILLARS ═══ */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <span className="inline-block bg-primary/10 text-primary font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
               Your Framework

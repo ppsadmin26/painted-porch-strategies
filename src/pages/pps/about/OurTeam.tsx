@@ -90,7 +90,7 @@ export default function OurTeam() {
           height={800}
         />
         <div className="absolute inset-0 z-[1] bg-navy/40" />
-        <div className="container max-w-6xl mx-auto px-6 relative z-10 py-16 md:py-24">
+        <div className="container max-w-7xl mx-auto px-6 relative z-10 py-16 md:py-24">
           <div className="md:w-4/5">
             <div className="rounded-xl border border-white/10 bg-navy/35 p-8 backdrop-blur-sm md:p-12">
               <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
@@ -124,7 +124,7 @@ export default function OurTeam() {
 
       {/* Team */}
       <section className="py-16 md:py-24 bg-muted/30">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {team.map((member, index) => {
               const isAmy = member.name === "Amy Yackowski";
@@ -196,7 +196,7 @@ export default function OurTeam() {
 
       {/* Certifications */}
       <section className="py-12 md:py-16 bg-muted">
-        <div className="container max-w-6xl mx-auto px-6">
+        <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-8">
             <h3 className="text-xl md:text-2xl font-bold text-navy">Certifications & Credentials</h3>
           </div>

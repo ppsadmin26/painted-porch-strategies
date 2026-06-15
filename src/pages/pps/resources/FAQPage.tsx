@@ -235,7 +235,7 @@ export default function FAQPage() {
           className="absolute inset-0 w-full h-full"
         />
         
-        <div className="container max-w-6xl mx-auto px-6 relative z-10 py-16 md:py-24">
+        <div className="container max-w-7xl mx-auto px-6 relative z-10 py-16 md:py-24">
           <div className="md:w-4/5">
             <div className="bg-black/65 backdrop-blur-sm p-8 md:p-12 rounded-xl">
               <span className={`inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6 transition-all duration-700 ease-out ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>
