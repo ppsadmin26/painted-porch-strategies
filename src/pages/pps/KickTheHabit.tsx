@@ -127,7 +127,7 @@ export default function KickTheHabit() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <Input
                   type="text"
-                  placeholder="Name"
+                  aria-label="Full name" placeholder="Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
@@ -135,7 +135,7 @@ export default function KickTheHabit() {
                 />
                 <Input
                   type="email"
-                  placeholder="Email"
+                  aria-label="Email address" placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required

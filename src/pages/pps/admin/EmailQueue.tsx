@@ -393,7 +393,7 @@ export default function EmailQueue() {
         >
           <Search className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <Input
-            placeholder="Search recipient, template, subject…"
+            aria-label="Search emails" placeholder="Search recipient, template, subject…"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             className="pl-9 h-9"

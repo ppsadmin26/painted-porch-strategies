@@ -433,7 +433,7 @@ export default function EmailHealth() {
             >
               <Search className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
               <Input
-                placeholder="Search recipient email…"
+                aria-label="Search recipient email" placeholder="Search recipient email…"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 className="pl-9 h-9"

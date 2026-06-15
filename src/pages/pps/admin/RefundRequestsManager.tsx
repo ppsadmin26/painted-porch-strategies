@@ -241,7 +241,7 @@ export default function RefundRequestsManager() {
                     </label>
                     <Textarea
                       rows={3}
-                      placeholder="Optional note. Included in the email if status is Approved or Rejected."
+                      aria-label="Status update note" placeholder="Optional note. Included in the email if status is Approved or Rejected."
                       value={draft.notes}
                       onChange={(e) => updateDraft(r.id, { notes: e.target.value })}
                     />
