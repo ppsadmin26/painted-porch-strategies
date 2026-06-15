@@ -83,25 +83,23 @@ export default function PPSContact() {
   const [specificDate, setSpecificDate] = useState<Date>();
   const [newsletter, setNewsletter] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({});
-  const [quizPrefillHeadline, setQuizPrefillHeadline] = useState<string | null>(null);
+  const [quizPrefill, setQuizPrefill] = useState<QuizContactPrefill | null>(null);
+  const [includeQuiz, setIncludeQuiz] = useState(false);
 
   // Pre-populate from URL query params (e.g. ?scope=Yourself&interest=leadership-lab&message=...)
-  // Falls back to a P.A.T.H.finder quiz prefill saved in sessionStorage when
-  // no URL params are present, so quiz context survives if the user visited a
-  // recommended workshop or the Blue Door page before reaching /contact.
+  // Quiz context (scope/interests) is also pulled from sessionStorage when the
+  // user navigated through a recommended workshop / Blue Door page first. The
+  // quiz responses + recommendations are NEVER auto-prefilled into the message
+  // — the user opts in via a checkbox below the textarea.
   useEffect(() => {
     const urlScope = searchParams.get("scope");
     const urlInterest = searchParams.get("interest");
     const urlMsg = searchParams.get("message");
 
-    // Always check sessionStorage for quiz context so the banner shows whether
-    // the user came directly from the quiz (URL params) or navigated through a
-    // recommended workshop / Blue Door page first (sessionStorage fallback).
     const fromQuiz = loadQuizContactPrefill();
 
     const scope = urlScope ?? fromQuiz?.scope ?? null;
     const interest = urlInterest ?? fromQuiz?.interest ?? null;
-    const msg = urlMsg ?? fromQuiz?.message ?? null;
 
     if (scope) {
       const scopes = scope.split(",").filter((s) =>
@@ -115,15 +113,23 @@ export default function PPSContact() {
       );
       if (interests.length > 0) setInterests(interests);
     }
-    if (msg) setMessage(msg);
-    if (fromQuiz?.resultHeadline) setQuizPrefillHeadline(fromQuiz.resultHeadline);
+    // Only honor a URL `message` param when it's NOT the quiz auto-bundle —
+    // i.e., when there's no quiz prefill in session. This preserves legacy
+    // deep links while keeping the message empty when it comes from the quiz.
+    if (urlMsg && !fromQuiz) setMessage(urlMsg);
+    if (fromQuiz) setQuizPrefill(fromQuiz);
   }, []);
 
   const removeQuizPrefill = () => {
     clearQuizContactPrefill();
-    setQuizPrefillHeadline(null);
-    setMessage("");
+    setQuizPrefill(null);
+    setIncludeQuiz(false);
   };
+
+  const quizBlockText = useMemo(
+    () => (quizPrefill ? formatQuizBlock(quizPrefill) : ""),
+    [quizPrefill],
+  );
 
   const hasScope = inquiryFor.length > 0;
   const isIndividualOnly = inquiryFor.length > 0 && inquiryFor.every((v) => v === "Yourself" || v === "Someone Else");
