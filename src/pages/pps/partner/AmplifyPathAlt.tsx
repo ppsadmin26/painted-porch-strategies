@@ -13,6 +13,7 @@ import { costOfSkippingStats } from "@/data/costOfSkippingStats";
 import CostCalculatorDialog from "@/components/pps/blue-door/CostCalculatorDialog";
 
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
+import { ParallaxBackground } from "@/components/pps/ParallaxBackground";
 
 // Team Signals
 const teamSignals = [
