@@ -188,6 +188,15 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showResult, track, answers, overrides, featuredKeys]);
 
+  // Persist the prefill payload so /contact can hydrate from quiz context even
+  // if the user navigates to a recommended workshop / Blue Door page first and
+  // reaches the contact form later.
+  useEffect(() => {
+    if (result) saveQuizContactPrefill(buildQuizPrefillPayload(result));
+  }, [result]);
+
+
+
 
   const setAnswer = (qid: string, value: string | string[]) => {
     setAnswers((prev) => ({ ...prev, [qid]: value }));
