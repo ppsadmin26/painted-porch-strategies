@@ -587,66 +587,70 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
   if (rt === "RT-A") {
     headline = "Team & People";
     narrative = "Your responses point clearly to the team. Not the strategy, not the systems — the people dynamics underneath the work. Whether it's conflict that keeps surfacing, collaboration that's harder than it should be, or team patterns that are costing more than you want to admit, this is addressable. A workshop is a strong starting point. The Blue Door Organizational Appraisal is the prerequisite for any deeper, multi-team engagement and gives you the architecture map before you commit.";
-    const q1 = val(answers, "Q1Team");
     primaryHeading = "Team Dynamics — Conflict, Friction, and Collaboration";
-    if (q1 === "A" || q1 === "D") primaryKeys = ["fromConflictToConnection", "fromDysfunctionToDynamic", "elementsOfATeam"];
-    else if (q1 === "B") primaryKeys = ["fromDysfunctionToDynamic", "fromConflictToConnection", "elementsOfATeam"];
-    else primaryKeys = ["heroesAssemble", "geniusAtWork", "fromConflictToConnection"];
-    extra.push(grp("Team Performance — Contribution, Capability, and Cohesion", "geniusAtWork", "heroesAssemble"));
+    primaryKeys = ["masterYourMessageB2B", "radicalMindfulnessB2B", "stoicismB2B"];
   } else if (rt === "RT-B") {
     headline = "Change & Transformation";
     narrative = "Your organization is moving through something significant, or about to. The question isn't whether the change is necessary, but whether your leaders and your organization have the architecture to carry it. A workshop can get traction quickly. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and surfaces the structural readiness gaps a workshop alone won't address.";
-    const q1 = val(answers, "Q1Change");
     primaryHeading = "Change Leadership — Frameworks for Leading Transformation";
-    if (q1 === "A") primaryKeys = ["pathToLastingChange", "leadAtSpeed", "drivingChange3Shifts"];
-    else if (q1 === "B") primaryKeys = ["leadAtSpeed", "architectureOfAdaptability"];
-    else if (q1 === "C") primaryKeys = ["changeForGood", "kickTheHabit", "cultivatingChangeResilience"];
-    else primaryKeys = ["aiEiOh", "architectureOfAdaptability"];
-    extra.push(grp("Change Resilience — When Resistance and Exhaustion Are Part of It", "changeForGood", "cultivatingChangeResilience", "kickTheHabit"));
-    extra.push(grp("AI & Technology Transformation", "aiEiOh", "architectureOfAdaptability"));
+    primaryKeys = ["pathToLastingChange", "architectureOfAdaptability", "cultivatingChangeResilience"];
   } else if (rt === "RT-C") {
     headline = "Leadership Capability";
     narrative = "The challenge you're describing is a capability gap. Your leaders need to develop, and you need a way to build that capacity that actually holds rather than fades after the training day ends. A workshop is a good first move. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and shows you which capabilities the architecture is quietly blocking.";
-    const q1 = val(answers, "Q1Cap");
-    primaryHeading = "Emotional Intelligence — How Leaders Show Up";
-    if (q1 === "A") primaryKeys = ["goldilocks", "fromConflictToConnection", "architectureOfAdaptability"];
-    else if (q1 === "B") primaryKeys = ["stracticalLeader", "architectureOfAdaptability", "leadershipOM"];
-    else if (q1 === "C") primaryKeys = ["masterYourMessageB2B", "highFidelityCommunication", "communicateWithStyle"];
-    else primaryKeys = ["reignitingResilience", "fromPassengerToPilot", "findingJoyAtWork"];
-    extra.push(grp("Strategic Capability — Thinking and Execution", "stracticalLeader", "leadershipOM", "architectureOfAdaptability"));
+    primaryHeading = "Leadership Capability — How Leaders Show Up";
+    primaryKeys = ["leadershipOM", "stracticalLeader", "architectureOfAdaptability"];
   } else if (rt === "RT-D") {
     headline = "Strategic / Architectural";
     narrative = "What you're describing isn't a program gap or training need. It's an architectural question: whether your organization's current identity is built to carry what you're trying to create. The Blue Door Organizational Appraisal is where organizations at strategic inflection points begin, and it's the prerequisite for any deeper engagement with us.";
-    const q1 = val(answers, "Q1Strategic");
     primaryHeading = "Workshops — Activate Your Team While the Appraisal Work Is Underway";
-    if (q1 === "A") primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
-    else if (q1 === "B") primaryKeys = ["leadershipOM", "stracticalLeader", "architectChange"];
-    else if (q1 === "C") primaryKeys = ["aiEiOh", "architectureOfAdaptability", "architectChange"];
-    else primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
-    extra.push(grp("Stoic Grounding for the Senior Team", "stoicismB2B"));
+    primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
   } else {
     // RT-E
     headline = "Exploring Your Options";
     narrative = "You're in the right place even if you're not sure exactly what you need yet. Organizational development rarely announces itself with a clear brief. Start with a defined experience that gives your team traction and a shared framework. When you're ready to go deeper, the Blue Door Organizational Appraisal is the prerequisite for any larger engagement and the fastest way to see your architecture clearly.";
-    primaryHeading = "Team Dynamics & People";
-    primaryKeys = ["fromConflictToConnection", "fromDysfunctionToDynamic", "heroesAssemble"];
-    extra.push(grp("Change & Transformation", "leadAtSpeed", "pathToLastingChange", "cultivatingChangeResilience"));
-    extra.push(grp("Leadership Capability", "goldilocks", "stracticalLeader", "architectureOfAdaptability"));
-    extra.push(grp("Strategic Design", "architectChange", "architectureOfAdaptability"));
+    primaryHeading = "Workshops to Start With";
+    primaryKeys = ["pathToLastingChange", "architectureOfAdaptability", "leadershipOM"];
   }
 
   // `extra` and secondary-signal flags are intentionally not surfaced —
   // we keep results narrow.
   void extra; void commOn; void resOn;
 
-  // Narrow primary picks to the "featured" allowlist when one is provided.
-  // If filtering would leave zero picks, fall back to the unfiltered list so
-  // results never go blank (defensive — admin curation issue, not a user issue).
+  // Defensive viewable-key allowlist: only recommend offerings that have a
+  // real, scrollable destination on the public site today. Update this set
+  // whenever a workshop is added/removed from a visible page or hub.
+  // Rule: every key here must resolve to a card, anchor, or dedicated page
+  // the user can actually reach from the recommendation link.
+  const VIEWABLE_B2B_KEYS = new Set<OfferingKey>([
+    // /partner/amplify/workshops — Phase Zero cards
+    "architectChange",
+    "architectureOfAdaptability",
+    "pathToLastingChange",
+    "cultivatingChangeResilience",
+    "leadershipOM",
+    // /partner/amplify/workshops — Leadership & Team Development cards
+    "masterYourMessageB2B",
+    "radicalMindfulnessB2B",
+    "stoicismB2B",
+    // Dedicated pages
+    "stracticalLeader",
+    "kickTheHabit",
+    "blueDoor",
+  ]);
+
+  // Narrow primary picks to the viewable allowlist, then optionally to the
+  // admin-curated "featured" allowlist when provided. If filtering would
+  // leave zero picks, fall back so results never go blank.
   const featured = opts?.featuredKeys;
+  const viewableKeys = primaryKeys.filter((k) => VIEWABLE_B2B_KEYS.has(k)) as OfferingKey[];
   const filteredKeys = featured
-    ? (primaryKeys.filter((k) => featured.has(k)) as OfferingKey[])
-    : primaryKeys;
-  const usableKeys = filteredKeys.length > 0 ? filteredKeys : primaryKeys;
+    ? viewableKeys.filter((k) => featured.has(k))
+    : viewableKeys;
+  const usableKeys = filteredKeys.length > 0
+    ? filteredKeys
+    : viewableKeys.length > 0
+      ? viewableKeys
+      : (["architectureOfAdaptability", "pathToLastingChange", "architectChange"] as OfferingKey[]);
   const trimmedPrimary = usableKeys.slice(0, 3);
 
   const strongestNextStep =

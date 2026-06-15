@@ -52,6 +52,7 @@ const workshopFaqCategories: FAQCategory[] = [
 
 const workshopTopics = [
   {
+    id: "architectChange",
     title: "Architect Change: Phase Zero Strategic Design",
     image: architectChangeThumb,
     challenge: "Your team jumps straight to execution without designing what you're building. Projects launch before strategic foundations exist.",
@@ -67,6 +68,7 @@ const workshopTopics = [
     note: "Prerequisite: Blue Door",
   },
   {
+    id: "architectureOfAdaptability",
     title: "The Architecture of Organizational ShIFt",
     image: pillarsThumb,
     challenge: "You're not sure if your organization is built to carry the transformation you're considering. You need a clear-eyed assessment of capacity and an architecture designed to navigate uncertainty rather than react to it.",
@@ -82,6 +84,7 @@ const workshopTopics = [
     note: "Prerequisite: Blue Door",
   },
   {
+    id: "pathToLastingChange",
     title: "The P.A.T.H. to Navigating Change",
     image: pathThumb,
     challenge: "Your team doesn't have a shared framework for navigating transformation. Everyone approaches change differently.",
@@ -97,6 +100,7 @@ const workshopTopics = [
     note: "Prerequisite: Blue Door",
   },
   {
+    id: "cultivatingChangeResilience",
     title: "Cultivating Change Resilience",
     image: resilienceThumb,
     challenge: "Your team treats pushback as an obstacle rather than valuable feedback. You're not building organizational capacity to navigate and learn from what people are telling you.",
@@ -112,6 +116,7 @@ const workshopTopics = [
     note: "Prerequisite: Blue Door",
   },
   {
+    id: "leadershipOM",
     title: "Your Leadership Operating Model",
     image: leadershipOpThumb,
     challenge: "Your leadership team doesn't have clear decision-making protocols, communication rhythms, or accountability structures for transformation.",
@@ -175,7 +180,7 @@ export default function AmplifyWorkshops() {
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             {workshopTopics.map((workshop, index) => {
               return (
-                <div key={index} className="rounded-xl flex flex-col overflow-hidden border border-border">
+                <div key={index} id={workshop.id} className="rounded-xl flex flex-col overflow-hidden border border-border scroll-mt-24">
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-3">
                       <img
@@ -260,6 +265,7 @@ export default function AmplifyWorkshops() {
             <div className="grid md:grid-cols-2 gap-6">
               {[
                 {
+                  id: "createExtraordinaryTeams",
                   icon: Users,
                   title: "Create Extraordinary Teams",
                   image: teamBuildingThumb,
@@ -274,6 +280,7 @@ export default function AmplifyWorkshops() {
                   ],
                 },
                 {
+                  id: "radicalMindfulnessB2B",
                   icon: Brain,
                   title: "Radically Mindful Leadership",
                   image: mindfulnessThumb,
@@ -288,6 +295,7 @@ export default function AmplifyWorkshops() {
                   ],
                 },
                 {
+                  id: "masterYourMessageB2B",
                   icon: MessageSquare,
                   title: "Master Your Message",
                   image: communicationThumb,
@@ -302,6 +310,7 @@ export default function AmplifyWorkshops() {
                   ],
                 },
                 {
+                  id: "stoicismB2B",
                   icon: Landmark,
                   title: "Stoicism in the Workplace",
                   image: stoicThumb,
@@ -319,7 +328,7 @@ export default function AmplifyWorkshops() {
                 return (
                   <div
                     key={index}
-                    id={workshop.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}
+                    id={workshop.id}
                     className="rounded-xl border border-border p-6 flex flex-col scroll-mt-24"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-3">
