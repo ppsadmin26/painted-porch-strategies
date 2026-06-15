@@ -452,6 +452,19 @@ export interface QuizResult {
   strongestNextStep?: { kind: "workshop" | "blueDoor"; offering: Offering; label: string };
   crossoverNote?: string;
   whatComesNext: string;
+  /** Plain-English topic area for the result (used in "we also offer additional sessions in {topic}" note). B2B only. */
+  topicArea?: string;
+  /** Suggested contact-form prefill values for the "Contact Us to Learn More" CTA. */
+  contactPrefill?: { scope: string; interests: string[] };
+}
+
+export interface BuildResultOptions {
+  /**
+   * Optional allowlist of offering keys eligible for B2B recommendations.
+   * When provided, B2B primary picks are filtered to this set (falling back
+   * to the original list if filtering would leave nothing). B2C is unaffected.
+   */
+  featuredKeys?: Set<string>;
 }
 
 const O = OFFERINGS;
