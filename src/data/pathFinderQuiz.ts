@@ -26,7 +26,7 @@ export interface Offering {
   key: string;
   name: string;
   facilitator?: "Amy" | "Rob" | "Sierra" | "Painted Porch Team";
-  tier: "IGNITE" | "AMPLIFY" | "Pathway B" | "Blue Door" | "Free" | "Assessment";
+  tier: "IGNITE" | "AMPLIFY" | "Pathway B" | "Blue Door" | "Free" | "Assessment" | "Speaking";
   blurb: string;
   url: string;
 }
