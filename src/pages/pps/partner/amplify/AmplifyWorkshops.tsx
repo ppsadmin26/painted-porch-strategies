@@ -362,7 +362,7 @@ export default function AmplifyWorkshops() {
               Don&rsquo;t see exactly what you&rsquo;re looking for?
             </h3>
             <p className="text-foreground max-w-2xl mx-auto mb-3">
-              The workshops above are a sample of what we run most often. We also design custom sessions across our core topic areas, and most can be delivered as a <strong>keynote</strong> or expanded into a <strong>workshop</strong> tailored to your team:
+              The workshops above are a sample of what we run most often. We also design sessions across our core topic areas, and most can be delivered as a <Link to="/speaking" className="font-semibold text-teal hover:text-teal/80 underline underline-offset-2">keynote or speaking session</Link> or expanded into a <strong>workshop</strong> tailored to your team:
             </p>
             <p className="text-foreground max-w-2xl mx-auto mb-6">
               <span className="font-semibold text-navy">Change &amp; Innovation</span>
@@ -378,7 +378,7 @@ export default function AmplifyWorkshops() {
               <span className="font-semibold text-navy">Team Dynamics</span>
             </p>
             <p className="text-foreground max-w-2xl mx-auto mb-6">
-              Take the P.A.T.H.finder quiz so we can recommend the workshop or speaking session that best fits where you&rsquo;re headed, or contact us to talk through a custom topic.
+              Take the P.A.T.H.finder quiz so we can recommend the workshop or speaking session that best fits where you&rsquo;re headed, or contact us to talk through your topic.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button
@@ -392,8 +392,8 @@ export default function AmplifyWorkshops() {
                 variant="outline"
                 className="h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold whitespace-normal"
               >
-                <Link to="/contact?scope=organization&interest=workshops&message=I'd like to discuss a custom workshop or speaking topic for our team.">
-                  Contact Us About a Custom Topic
+                <Link to="/contact?scope=organization&interest=workshops&message=I'd like to discuss a workshop or speaking topic for our team.">
+                  Contact Us to Talk It Through
                 </Link>
               </Button>
             </div>
