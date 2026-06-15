@@ -83,6 +83,14 @@ export function PartnerHeroSection() {
           </div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <div
+        className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
+        aria-hidden="true"
+      >
+        <ChevronDown className="w-7 h-7 text-white/80 animate-bounce" />
+      </div>
     </section>
   );
 }
