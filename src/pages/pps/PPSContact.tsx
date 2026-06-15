@@ -329,10 +329,10 @@ export default function PPSContact() {
                     <button
                       type="button"
                       onClick={removeQuizPrefill}
-                      className="flex-shrink-0 rounded p-1 text-foreground/60 hover:bg-teal/10 hover:text-navy focus:outline-none focus:ring-2 focus:ring-teal"
+                      className="flex-shrink-0 rounded-md p-2 text-foreground/60 hover:bg-teal/10 hover:text-navy focus:outline-none focus:ring-2 focus:ring-teal"
                       aria-label="Remove quiz prefill"
                     >
-                      <X className="w-4 h-4" />
+                      <X className="w-5 h-5" />
                     </button>
                   </div>
                 )}
