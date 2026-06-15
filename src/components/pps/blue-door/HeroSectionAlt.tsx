@@ -7,6 +7,10 @@ import blueDoorHero from "@/assets/blue-door-hero.jpg";
 
 export default function HeroSectionAlt() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const { ref: sectionRef, parallaxOffset } = useParallax<HTMLElement>({
+    mode: "scroll",
+    speed: 0.4,
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
@@ -14,12 +18,13 @@ export default function HeroSectionAlt() {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden pb-12 md:pb-20">
+    <section ref={sectionRef} className="relative min-h-[90vh] flex items-center overflow-hidden pb-12 md:pb-20">
       <div 
-        className="absolute inset-0 bg-cover bg-no-repeat" 
+        className="absolute inset-0 bg-cover bg-no-repeat will-change-transform" 
         style={{
           backgroundImage: `url(${blueDoorHero})`,
           backgroundPosition: '0% center',
+          transform: `translateY(${parallaxOffset}px) scale(1.1)`,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/70 to-transparent" />
