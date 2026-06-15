@@ -47,7 +47,17 @@ Deno.serve(async (req) => {
     const payload = raw ? JSON.parse(raw) : {}
     const supabase = createClient(SUPABASE_URL, SERVICE_KEY)
 
-    // Determine pass/fail
+    // Determine pass/fail.
+    //
+    // IMPORTANT: "Sync" here means Lovable<->GitHub code replication, NOT CI
+    // test results. Test workflows (a11y, unit tests, visual regression,
+    // b2c-quiz-e2e, etc.) failing does not mean sync is broken — they're just
+    // failing tests on already-synced code. Real sync health is checked by
+    // the scheduled `github-sync-check` function.
+    //
+    // So: we still LOG workflow_run / check_suite / check_run events for
+    // visibility, but we do NOT flip sync status to error or fire the
+    // "GitHub sync issue" email for them. Only push/ping affect sync status.
     let status: 'success' | 'failure' | 'info' = 'info'
     let message = `${event}`
     let isFailure = false
@@ -61,24 +71,19 @@ Deno.serve(async (req) => {
     } else if (event === 'workflow_run') {
       const conclusion = payload?.workflow_run?.conclusion
       const action = payload?.action
+      const name = payload?.workflow_run?.name ?? 'workflow'
       if (action === 'completed') {
         if (conclusion === 'success') {
-          status = 'success'
-          message = `Workflow ${payload?.workflow_run?.name} succeeded`
+          message = `Workflow "${name}" succeeded`
         } else if (conclusion && conclusion !== 'skipped' && conclusion !== 'cancelled') {
-          status = 'failure'
-          isFailure = true
-          message = `Workflow "${payload?.workflow_run?.name}" concluded: ${conclusion}`
+          // Logged as info, not failure — CI test failure is not a sync failure.
+          message = `Workflow "${name}" concluded: ${conclusion} (CI test result, not a sync issue)`
         }
       }
     } else if (event === 'check_run' || event === 'check_suite') {
       const conclusion = payload?.[event]?.conclusion
-      if (conclusion === 'failure' || conclusion === 'timed_out') {
-        status = 'failure'
-        isFailure = true
-        message = `${event} failed: ${conclusion}`
-      } else if (conclusion === 'success') {
-        status = 'success'
+      if (conclusion) {
+        message = `${event}: ${conclusion} (CI check result, not a sync issue)`
       }
     }
 

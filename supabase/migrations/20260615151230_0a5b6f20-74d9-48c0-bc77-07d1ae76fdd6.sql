@@ -1,0 +1,1 @@
+UPDATE public.github_sync_status SET status='healthy', last_error_message=NULL, last_success_at=now(), last_check_at=now(), updated_at=now() WHERE id=1;
