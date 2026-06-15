@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { useParallax } from "@/hooks/useParallax";
 import { isBlueDoorPreLaunch } from "@/config/blueDoor";
 import blueDoorHero from "@/assets/blue-door-hero.jpg";
@@ -63,6 +64,14 @@ export default function HeroSectionAlt() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div
+        className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
+        aria-hidden="true"
+      >
+        <ChevronDown className="w-7 h-7 text-white/80 animate-bounce" />
       </div>
     </section>
   );

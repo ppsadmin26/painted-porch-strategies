@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LazyHeroVideo from "@/components/pps/LazyHeroVideo";
+import { useParallax } from "@/hooks/useParallax";
 import colorfulPath from "@/assets/colorful-path.jpg";
 
 export function PartnerHeroSection() {
