@@ -164,6 +164,26 @@ export default function PathFinderOfferings() {
         </div>
       </div>
 
+      <div className="mb-6 rounded-lg border border-bluedoor/30 bg-bluedoor/5 px-4 py-3 text-sm text-navy">
+        <p className="font-poppins font-semibold text-bluedoor mb-1">Heads up: this table is moving</p>
+        <p>
+          The Blue Door <strong>Offerings Master Register</strong> is becoming the single source of truth for every offering (B2C and B2B). In Phase 2, this table will be a one-way synced mirror of that register, with canonical fields (name, blurb, pricing, descriptions) edited only in Blue Door admin. Routing fields below (URL, anchor, Live, Prioritize in quiz) will stay editable here.
+        </p>
+        <p className="mt-2">
+          See <code>docs/offerings-master-schema.md</code> and{" "}
+          <code>.lovable/plan-offerings-sync.md</code> for the plan.{" "}
+          <a
+            href="https://bluedoordiagnostic.lovable.app/admin/offerings"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-bluedoor underline hover:no-underline"
+          >
+            Open Blue Door · Offerings Register
+          </a>
+        </p>
+      </div>
+
+
       {loading ? (
         <div className="flex items-center justify-center py-20"><Loader2 className="animate-spin" /></div>
       ) : (
