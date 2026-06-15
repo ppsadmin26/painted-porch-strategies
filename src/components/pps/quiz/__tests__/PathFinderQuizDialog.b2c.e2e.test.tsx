@@ -31,7 +31,9 @@ beforeAll(() => {
 vi.mock("@/integrations/supabase/client", () => ({
   supabase: {
     from: () => ({
-      select: async () => ({ data: [], error: null }),
+      select: () => ({
+        or: async () => ({ data: [], error: null }),
+      }),
     }),
     functions: { invoke: async () => ({ data: null, error: null }) },
   },
