@@ -565,20 +565,9 @@ export default function PPSContact() {
                   {showMessageAndSubmit && (
                     <>
                       <div>
-                        <div className="flex items-center justify-between mb-2">
-                          <label className="text-sm font-medium text-navy">
-                            Give Us the details <span className="text-destructive">*</span>
-                          </label>
-                          {quizPrefillHeadline && (
-                            <button
-                              type="button"
-                              onClick={removeQuizPrefill}
-                              className="text-xs text-teal hover:text-navy underline focus:outline-none focus:ring-2 focus:ring-teal rounded px-1"
-                            >
-                              Remove quiz results
-                            </button>
-                          )}
-                        </div>
+                        <label className="block text-sm font-medium text-navy mb-2">
+                          Give Us the details <span className="text-destructive">*</span>
+                        </label>
                         <textarea
                           rows={5}
                           className={cn("w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary", fieldErrors.message ? "border-destructive" : "border-border")}
@@ -586,7 +575,31 @@ export default function PPSContact() {
                           value={message}
                           onChange={(e) => { setMessage(e.target.value); setFieldErrors(prev => ({ ...prev, message: false })); }}
                         />
+                        {quizPrefill && (
+                          <div className="mt-3 rounded-lg border border-teal/30 bg-white p-3">
+                            <label className="flex items-start gap-2 cursor-pointer">
+                              <input
+                                type="checkbox"
+                                checked={includeQuiz}
+                                onChange={(e) => setIncludeQuiz(e.target.checked)}
+                                className="w-4 h-4 rounded border-border text-primary focus:ring-primary mt-0.5"
+                              />
+                              <span className="text-sm text-foreground">
+                                <span className="font-medium text-navy">Include my P.A.T.H.finder quiz responses and recommendations</span>
+                                <span className="block text-xs text-muted-foreground mt-1">
+                                  Adds your quiz answers and the recommended next steps to your message so we have full context.
+                                </span>
+                              </span>
+                            </label>
+                            {includeQuiz && (
+                              <pre className="mt-3 max-h-48 overflow-auto whitespace-pre-wrap rounded-md border border-border bg-muted/40 p-3 text-xs text-foreground/80 font-montserrat">
+{quizBlockText}
+                              </pre>
+                            )}
+                          </div>
+                        )}
                       </div>
+
 
                       <div>
                         <label className="flex items-start gap-2 cursor-pointer">
