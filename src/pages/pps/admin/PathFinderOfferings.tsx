@@ -252,6 +252,22 @@ export default function PathFinderOfferings() {
                   </Label>
                 </div>
 
+                <div className="mb-3 flex items-center gap-2 rounded-md border border-dashed border-primary/40 bg-primary/5 px-3 py-2">
+                  <Switch
+                    id={`featured-${row.id}`}
+                    checked={!!valueOf(row, "is_featured_in_quiz")}
+                    onCheckedChange={(v) => patch(row.id, { is_featured_in_quiz: v })}
+                  />
+                  <Label htmlFor={`featured-${row.id}`} className="text-sm">
+                    <strong>Featured in B2B P.A.T.H.finder quiz</strong>
+                    <span className="block text-xs text-muted-foreground">
+                      B2B quiz results only surface offerings that are featured (this toggle) OR have an anchor set above. Keep this list tight so results don't overwhelm.
+                    </span>
+                  </Label>
+                </div>
+
+
+
 
                 <div className="grid md:grid-cols-3 gap-3 text-sm">
                   <div>
