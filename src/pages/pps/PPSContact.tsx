@@ -206,6 +206,9 @@ export default function PPSContact() {
     }
 
     setSubmitting(true);
+    const finalMessage = includeQuiz && quizBlockText
+      ? `${message.trim()}\n\n${quizBlockText}`
+      : message.trim();
     try {
       const { error } = await supabase.functions.invoke("submit-ghl-lead", {
         body: {
@@ -216,13 +219,13 @@ export default function PPSContact() {
           company: company.trim() || undefined,
           interests,
           inquiryFor,
-          message: message.trim(),
+          message: finalMessage,
           budgetAuthority: showBudgetAuthority ? budgetAuthority : undefined,
           budgetRange: showBudgetRange ? budgetRange : undefined,
           timeline: showBudgetRange ? timeline : undefined,
           specificDate: specificDate ? format(specificDate, "yyyy-MM-dd") : undefined,
           newsletter,
-          tags: ["contact-form"],
+          tags: includeQuiz && quizPrefill ? ["contact-form", "pathfinder-quiz"] : ["contact-form"],
           source: "Painted Porch Website - Contact Form",
         },
       });
