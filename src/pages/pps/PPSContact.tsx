@@ -327,19 +327,19 @@ export default function PPSContact() {
               </div>
             ) : (
               <div className="bg-muted p-8 rounded-xl">
-                {quizPrefillHeadline && (
+                {quizPrefill && (
                   <div className="mb-6 flex items-start gap-3 rounded-lg border border-teal/30 bg-teal/5 p-4">
                     <div className="flex-1 text-sm text-navy">
-                      <p className="font-semibold">Including your P.A.T.H.finder quiz results</p>
+                      <p className="font-semibold">We saved your P.A.T.H.finder quiz context</p>
                       <p className="text-foreground/80 mt-1">
-                        Result: <span className="font-medium">{quizPrefillHeadline}</span>. Your answers and recommended next steps are prefilled in the message below so the team has full context.
+                        Result: <span className="font-medium">{quizPrefill.resultHeadline}</span>. We won't include it unless you check the box below the message field.
                       </p>
                     </div>
                     <button
                       type="button"
                       onClick={removeQuizPrefill}
                       className="flex-shrink-0 rounded-md p-2 text-foreground/60 hover:bg-teal/10 hover:text-navy focus:outline-none focus:ring-2 focus:ring-teal"
-                      aria-label="Remove quiz prefill"
+                      aria-label="Discard quiz context"
                     >
                       <X className="w-5 h-5" />
                     </button>
