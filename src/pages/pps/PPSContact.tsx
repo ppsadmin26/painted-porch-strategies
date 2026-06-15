@@ -556,10 +556,21 @@ export default function PPSContact() {
                   {showMessageAndSubmit && (
                     <>
                       <div>
-                        <label className="block text-sm font-medium text-navy mb-2">
-                          Give Us the details <span className="text-destructive">*</span>
-                        </label>
-                      <textarea
+                        <div className="flex items-center justify-between mb-2">
+                          <label className="text-sm font-medium text-navy">
+                            Give Us the details <span className="text-destructive">*</span>
+                          </label>
+                          {quizPrefillHeadline && (
+                            <button
+                              type="button"
+                              onClick={removeQuizPrefill}
+                              className="text-xs text-teal hover:text-navy underline focus:outline-none focus:ring-2 focus:ring-teal rounded px-1"
+                            >
+                              Remove quiz results
+                            </button>
+                          )}
+                        </div>
+                        <textarea
                           rows={5}
                           className={cn("w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-primary", fieldErrors.message ? "border-destructive" : "border-border")}
                           placeholder="Tell us what's on your mind, the questions you have, or whatever else will help color in the conversation..."
