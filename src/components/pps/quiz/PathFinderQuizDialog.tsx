@@ -84,38 +84,53 @@ function loadPersisted(): PersistedState | null {
  * into the contact form `message` field so the submit-ghl-lead edge function
  * forwards it into the GHL opportunity's `contact_form_details` custom field.
  */
-function buildQuizPrefillPayload(result: QuizResult): { scope?: string; interest?: string; message: string; resultHeadline: string } {
+function formatAnswersText(questions: Question[], answers: Answers): string {
+  const lines: string[] = [];
+  questions.forEach((q, i) => {
+    const ans = answers[q.id];
+    if (ans === undefined) return;
+    const ids = Array.isArray(ans) ? ans : [ans];
+    const labels = ids.map((id) => q.options.find((o) => o.id === id)?.label ?? id);
+    lines.push(`${i + 1}. ${q.prompt}`);
+    labels.forEach((l) => lines.push(`   • ${l}`));
+  });
+  return lines.join("\n");
+}
+
+function buildQuizPrefillPayload(
+  result: QuizResult,
+  questions: Question[],
+  answers: Answers,
+): { scope?: string; interest?: string; message: string; answersText: string; resultHeadline: string } {
   const picks = (result.primaryGroup?.offerings ?? []).map((o) => `• ${o.name}`).join("\n");
   const strongest = result.strongestNextStep ? `\nStrongest Next Step: ${result.strongestNextStep.offering.name}` : "";
   const lines = [
-    `I took the P.A.T.H.finder quiz and would like to learn more.`,
-    ``,
     `Result: ${result.headline}${result.topicArea ? ` (${result.topicArea})` : ""}${strongest}`,
     ``,
     `Featured picks the quiz surfaced:`,
     picks || "• (none)",
-    ``,
-    `Please tell me which sessions in ${result.topicArea ?? "this area"} would be the best fit.`,
   ];
   return {
     scope: result.contactPrefill?.scope,
     interest: result.contactPrefill?.interests?.length ? result.contactPrefill.interests.join(",") : undefined,
     message: lines.join("\n"),
+    answersText: formatAnswersText(questions, answers),
     resultHeadline: result.headline,
   };
 }
 
 function buildContactHref(result: QuizResult, firstName: string, email: string): string {
-  const payload = buildQuizPrefillPayload(result);
+  const payload = buildQuizPrefillPayload(result, [], {});
   const params = new URLSearchParams();
   if (payload.scope) params.set("scope", payload.scope);
   if (payload.interest) params.set("interest", payload.interest);
-  params.set("message", payload.message);
-  // Note: firstName/email are passed through for future use but contact form
-  // doesn't currently auto-fill them — leaving the params here keeps the door open.
+  // Note: quiz responses/recommendations are NOT pushed into the message URL
+  // param. They live in sessionStorage and the contact form offers an opt-in
+  // checkbox to include them, so the message field defaults to empty.
   if (firstName) params.set("firstName", firstName);
   if (email) params.set("email", email);
-  return `/contact?${params.toString()}`;
+  const qs = params.toString();
+  return qs ? `/contact?${qs}` : "/contact";
 }
 
 
