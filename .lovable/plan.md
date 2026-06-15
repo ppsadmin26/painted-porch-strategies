@@ -1,105 +1,59 @@
 ## Goal
 
-Stop dumping the full workshop catalog in B2B P.A.T.H.finder results. Instead, surface up to 3 "featured" workshops/speaking topics per result, plus a soft note about additional sessions in the same topic area. A single "Contact Us to Learn More" CTA carries the quiz answers + recommendations into the contact form AND creates a GHL Opportunity (not just a tagged contact).
+Replace the hardcoded "viewable" allowlist with a single admin-driven rule that controls both B2B and B2C P.A.T.H.finder recommendations:
 
-Scope: B2B track only. B2C results unchanged.
+> An offering is recommendable **only if** `is_live = true` AND at least one of `current_url`, `dedicated_url`, or `anchor_id` is set in `/admin/path-finder-offerings`.
 
----
+Also add visible speaking topics to the B2B recommendation pool, deep-linked to topic cards on each speaker page.
 
-## 1. Define the "featured" set (DB)
+## Changes
 
-Add a new boolean to `path_finder_offerings`:
+### 1. Quiz engine (`src/data/pathFinderQuiz.ts`)
+- Remove the hardcoded `VIEWABLE_B2B_KEYS` constant.
+- Rename `BuildResultOptions.featuredKeys` → `viewableKeys` (semantic shift: "what the admin has marked clickable").
+- Apply the eligibility filter to **both** B2C and B2B primary picks. Same graceful fallback: if filtering empties a pick, fall back to the unfiltered list so a result never goes blank.
+- Add new `OFFERINGS` entries for speaking topics, tier `"Speaking"`, blurbs sourced from each speaker page. Examples:
+  - `speakingHeroesAssemble`, `speakingShIFtHappens`, `speakingAlicePrinciples`, `speakingDontPanic`, `speakingAiEiOh` (Amy)
+  - `speakingHighFidelity`, `speakingPowerOfStory`, `speakingGetClear`, `speakingBorderless`, `speaking88`, `speakingCommStyle` (Rob)
+  - `speakingRadicallyMindful`, `speakingReignitingResilience`, `speakingFindingJoy`, `speakingMoveShakeInnovate`, `speakingPassengerToPilot` (Sierra)
+- Add speaking keys to the appropriate RT candidate pools (RT-A team/people, RT-B change, RT-C capability, RT-E exploring). They naturally fall out of recommendations if the admin hasn't marked the row Live.
 
-- `is_featured_in_quiz boolean not null default false`
+### 2. Speaker detail page (`SpeakerDetailPage.tsx` + 3 speaker data files)
+- Add optional `slug` to `SpeakingTopic`.
+- Render each topic card with `id={`topic-${topic.slug}`}` and `scroll-mt-24`.
+- Backfill `slug` on every topic in `AmySpeaker.tsx`, `RobSpeaker.tsx`, `SierraSpeaker.tsx` (kebab-case from title).
 
-An offering is eligible for B2B quiz recommendations if **either**:
-- `anchor_id is not null` (already has a card on a tier/speaker page), OR
-- `is_featured_in_quiz = true` (manual override)
+### 3. Quiz dialog (`PathFinderQuizDialog.tsx`)
+- Replace the `featuredKeys` fetch with a `viewableKeys` fetch:
+  ```
+  is_live = true AND (current_url <> '' OR dedicated_url IS NOT NULL OR anchor_id IS NOT NULL)
+  ```
+- Pass `viewableKeys` to `buildResult` (used for both tracks now).
 
-Plus existing B2B filters already in `mem://features/quiz/b2b-recommendation-rules` (workshops + Blue Door + speaking only; no labs unless individual focus).
+### 4. Admin UI (`/admin/path-finder-offerings`)
+- Show a "Quiz eligible" indicator badge on each row, computed live as `is_live && (current_url || dedicated_url || anchor_id)`. Green check when eligible, gray dash when not, with hover text explaining why.
+- Update the helper text under the `is_featured_in_quiz` toggle: clarify it now only **prioritizes** an already-eligible offering (it no longer gates eligibility).
+- Add `Speaking` to the tier color map.
 
-Admin: add a checkbox in `/admin/offerings` row editor so editors can toggle `is_featured_in_quiz` per row.
+### 5. Database (migration via insert tool, since it's data)
+- Insert ~16 `path_finder_offerings` rows for the speaking topics:
+  - `tier = 'Speaking'`, `facilitator` set to speaker, `is_live = true`
+  - `current_url = '/speaking/amy' | '/speaking/rob' | '/speaking/sierra'`
+  - `anchor_id = 'topic-{slug}'`
+  - `is_featured_in_quiz = false` (admin can promote later)
+  - `include_in_workshops = false`
 
-## 2. Tag every offering with a quiz `topic_area`
+### 6. Tests
+- Update `pathFinderQuiz.b2b.test.ts` (and add b2c coverage) to use `viewableKeys` and verify:
+  - With an empty eligible set, results fall back rather than going blank.
+  - With only Blue Door + one workshop eligible, B2B narrows to those.
+  - Speaking topics appear only when their key is in the eligible set.
 
-Re-use the existing `topic` column on `path_finder_offerings` (already powers the workshop topic tabs — see `AllWorkshopTopics.tsx`). For each result type, map to 1–2 `topic` values (e.g., "Innovation"/"Change" → "Change & Innovation"). This lets us write the topic note ("We also offer additional sessions in **Change & Innovation** — let's discuss on a call") without hard-coding.
+### 7. Memory updates
+- Update `mem://features/quiz/viewable-recommendation-rule` to describe the new admin-driven rule.
+- Update `mem://features/quiz/b2b-recommendation-rules` to add "visible Speaking topics" as a third allowed category.
 
-No new column needed; just confirm every featured offering has a `topic`.
-
-## 3. Recommendation logic changes (B2B only)
-
-File: `src/data/pathFinderQuiz.ts` (B2B branch) + any helper in `src/components/pps/quiz/`.
-
-- Filter the candidate pool to the "featured" set defined in step 1.
-- Cap the returned `recommendations` items to **up to 3 picks** for the primary recommendation group.
-- Resolve the result's `topic_area` (string) and pass it through to the dialog as `topicNote`.
-- B2C path: unchanged.
-
-## 4. Results UI
-
-File: `src/components/pps/quiz/PathFinderQuizDialog.tsx` (results view).
-
-- Render up to 3 featured pick cards as today.
-- Below the cards, add a single muted note:
-  > "We also offer additional speaking and workshop sessions in **{topicArea}**. Let's discuss the right fit on a quick call."
-- Replace the multi-CTA stack with **one primary CTA**: "Contact Us to Learn More" → `/contact?...` (see step 5).
-- Keep the "Email me my results" path (existing `submit-path-finder-quiz`) unchanged.
-
-## 5. Contact handoff
-
-When the user clicks "Contact Us to Learn More":
-
-a. **Deep link to `/contact`** with structured query params:
-   - `scope=organization`
-   - `interest=quiz-followup`
-   - `topic={topicArea}`
-   - `resultType={resultType}`
-   - `message=` prefilled summary (result headline, top 3 picks by name, topic note)
-   - `pathQuizPayload=` base64-encoded JSON of `{ answers, recommendations, resultType, headline, strongestNextStep, topicArea }` (read-only; passed through the form to the submit handler)
-
-b. **Contact form** (`src/pages/pps/Contact.tsx` and its submit edge fn — likely `submit-ghl-lead`):
-   - Hydrate the existing fields from query params (already supported per `mem://features/contact-form-logic`).
-   - On submit, if `pathQuizPayload` is present, forward it to the edge function alongside the normal contact payload.
-
-c. **Edge function** `submit-ghl-lead` (or a small new wrapper, TBD during build):
-   - Existing behavior: create/update GHL contact + add a note + send internal admin email.
-   - New behavior when `pathQuizPayload` present:
-     1. Add tag `PathQuiz-Followup` and `path-finder-{resultType}`.
-     2. Create a GHL **Opportunity** in the configured pipeline (new secrets: `GHL_PIPELINE_ID`, `GHL_PIPELINE_STAGE_ID`) with:
-        - `name`: `"P.A.T.H. Followup — {firstName} {lastName} ({resultType})"`
-        - `contactId`: from upsert above
-        - `monetaryValue`: 0
-        - `status`: `open`
-        - Notes: full quiz answers + recommendations summary.
-     3. Internal admin email (re-use existing transactional template or extend it) includes: quiz answers, top 3 recs, topic area, contact message.
-
-## 6. Admin UX
-
-- `/admin/offerings`: add `is_featured_in_quiz` toggle column + bulk-edit support.
-- Optional: small "Featured in B2B quiz pool" filter chip at the top of the offerings list.
-
-## 7. Validation
-
-- Unit test in `src/data/__tests__/pathFinderQuiz.b2b.test.ts`: every B2B result type returns ≤3 picks and all picks have `anchor_id || is_featured_in_quiz`.
-- Manual: take quiz, confirm narrowed results, click CTA, confirm `/contact` prefilled, submit, confirm GHL contact + opportunity + admin email.
-
----
-
-## Technical notes
-
-- **Secrets to request before build:** `GHL_PIPELINE_ID`, `GHL_PIPELINE_STAGE_ID` (the user will need to grab these from GHL Settings → Pipelines).
-- **DB migration:** single `ALTER TABLE path_finder_offerings ADD COLUMN is_featured_in_quiz boolean NOT NULL DEFAULT false;` plus an index isn't required.
-- **Default backfill:** I'll flip `is_featured_in_quiz=true` for any offering that today already has both an `anchor_id` AND was previously recommended by the B2B quiz, so existing recs don't suddenly drop to zero in edge cases.
-- **No new public route**, so no sitemap/page_status entry needed.
-- **B2C untouched**, including the labs-for-individuals rule from existing memory.
-
-## Files likely touched
-
-- supabase migration (new column + admin grants already cover authenticated)
-- `src/data/pathFinderQuiz.ts`
-- `src/components/pps/quiz/PathFinderQuizDialog.tsx`
-- `src/components/pps/quiz/PathFinderQuizProvider.tsx` (if topic plumbing needed)
-- `src/pages/pps/Contact.tsx` (read + forward `pathQuizPayload`)
-- `supabase/functions/submit-ghl-lead/index.ts` (or sibling) — add Opportunity creation
-- `src/pages/pps/admin/Offerings*.tsx` — featured toggle
-- New memory entry: `mem://features/quiz/b2b-featured-pool` summarizing the rule
+## Out of scope
+- No new admin columns or schema changes (the existing `is_live`, `current_url`, `dedicated_url`, `anchor_id` already encode the rule).
+- No changes to result narrative copy, scoring math, or B2C result groupings beyond the filter.
+- No visible UI badge on speaker cards calling them "quiz-eligible".
