@@ -1,28 +1,33 @@
 ---
-name: Quiz Viewable Recommendation Rule
-description: P.A.T.H.finder may only recommend offerings that have a real, visible link/card/anchor on a public page. Anything broader is filtered out; the catch-all message tells the user more options exist via Contact Us.
+name: P.A.T.H.finder Viewable Recommendation Rule
+description: Admin-driven eligibility rule for quiz recommendations on both B2B and B2C tracks. Replaces the old hardcoded viewable allowlist.
 type: feature
 ---
 
-## Rule
-Every offering surfaced by the P.A.T.H.finder quiz (B2B or B2C) MUST resolve to something the user can actually see and click into on a public page — a card, accordion item, hub link, anchor, or dedicated route. If it isn't viewable, the quiz cannot recommend it.
+# Rule
 
-## B2B implementation (src/data/pathFinderQuiz.ts)
-`b2bResult` filters `primaryKeys` through `VIEWABLE_B2B_KEYS` (hard-coded Set in the function). The current allowlist is:
+A P.A.T.H.finder quiz recommendation (B2B **and** B2C) may only surface an offering that is **admin-marked clickable** in `/admin/path-finder-offerings`. Specifically:
 
-- `/partner/amplify/workshops` Phase Zero cards: `architectChange`, `architectureOfAdaptability`, `pathToLastingChange`, `cultivatingChangeResilience`, `leadershipOM`
-- `/partner/amplify/workshops` Leadership & Team Development cards: `masterYourMessageB2B`, `radicalMindfulnessB2B`, `stoicismB2B`
-- Dedicated pages: `stracticalLeader` (`/partner/amplify/stractical-leader`), `kickTheHabit` (`/resources/kick-the-habit`), `blueDoor` (`/blue-door`)
+> `is_live = true` AND at least one of `current_url`, `dedicated_url`, or `anchor_id` is set.
 
-Fallback if filter empties: `[architectureOfAdaptability, pathToLastingChange, architectChange]` so results never go blank.
+The dialog fetches this eligible-key set on open and passes it to `buildResult` as `viewableKeys`. `applyViewableFilter` (in `src/data/pathFinderQuiz.ts`) drops any offering not in the set. If filtering would empty a primary group, the build falls back to the original copy (or a `SAFE_*_FALLBACK`) so a result never displays blank.
 
-## Page-side requirement
-Each viewable workshop card on `/partner/amplify/workshops` carries an explicit `id={offering_key}` (not a slugified title) and `scroll-mt-24` so the anchor link scrolls to the exact card. DB `path_finder_offerings.anchor_id` must equal the `offering_key` for these so `usePathFinderOverrides` resolves `current_url#anchor_id` correctly.
+# Why
 
-## When adding/removing a workshop from a page
-1. Add (or remove) the offering key in `VIEWABLE_B2B_KEYS`.
-2. If adding: also add the card with `id={offering_key}` and ensure DB row has matching `anchor_id`.
-3. The catch-all message at the bottom of `/partner/amplify/workshops` tells the user other topics exist via Contact Us — never push the catalog back into the quiz output.
+- Recommendations always link to something a user can actually reach (card, anchor, or dedicated page).
+- Adding/removing a workshop or speaking topic from the live site is a single admin toggle, not a code change.
+- "Featured in quiz" (DB column `is_featured_in_quiz`) is now a **prioritization** signal only — eligibility is automatic.
 
-## Why
-Recommending an offering with no on-page destination breaks user trust and creates dead-end clicks. The quiz purposefully narrows to a curated set; broader exploration happens through the Contact Us conversation.
+# B2B-allowed categories
+1. **Workshops** (tier `Pathway B`) — Phase Zero + Leadership & Team Development cards on `/partner/amplify/workshops`, plus dedicated pages like `/partner/amplify/stractical-leader` and `/resources/kick-the-habit`.
+2. **Blue Door** (`blueDoor`).
+3. **Speaking topics** (tier `Speaking`) — deep-linked to topic cards on `/speaking/{amy|rob|sierra}` via `topic-{slug}` anchors. Surfaced in a dedicated "Speaking Topics — Bookable Keynotes" group when at least one matches the result type.
+
+Labs remain B2C-only (enforced by the existing `pathFinderQuiz.b2b.test.ts` guardrail).
+
+# Implementation
+
+- Eligibility filter: `applyViewableFilter` in `src/data/pathFinderQuiz.ts`
+- DB fetch: `src/components/pps/quiz/PathFinderQuizDialog.tsx` (`viewableKeys` useEffect)
+- Admin UI: `/admin/path-finder-offerings` — every row shows a green "Quiz eligible" badge when the rule is met, gray "Not eligible" otherwise.
+- Tests: `src/data/__tests__/pathFinderQuiz.viewable.test.ts`
