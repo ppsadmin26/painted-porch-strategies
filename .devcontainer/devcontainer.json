@@ -1,0 +1,27 @@
+{
+  "name": "PPS Playwright (Chromium + Firefox + WebKit)",
+  "build": {
+    "dockerfile": "../Dockerfile.playwright",
+    "context": ".."
+  },
+  "workspaceFolder": "/work",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/work,type=bind,consistency=cached",
+  "remoteUser": "root",
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": { "label": "Vite dev server", "onAutoForward": "notify" }
+  },
+  "containerEnv": {
+    "PLAYWRIGHT_BROWSERS_PATH": "/ms-playwright"
+  },
+  "postCreateCommand": "npm ci && npx playwright install --with-deps chromium firefox webkit",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-playwright.playwright",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}

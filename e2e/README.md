@@ -53,3 +53,26 @@ Recommended GitHub Actions step (Ubuntu, single project):
     name: playwright-report
     path: playwright-report/
 ```
+
+## Cross-browser keyboard / a11y suite (Firefox + WebKit)
+
+The Nix dev sandbox can't launch Firefox or WebKit (missing `libX11-xcb`,
+`libatk`, NSS, etc.). Use the bundled Playwright image instead — it ships all
+three browsers with system deps preinstalled.
+
+```bash
+# One-off, full keyboard suite in all three browsers
+docker run --rm -it -v "$PWD:/work" -w /work \
+  mcr.microsoft.com/playwright:v1.57.0-jammy \
+  bash -lc "npm ci && npm run test:e2e:keyboard:all"
+
+# Or build the project image (adds caching + sensible defaults)
+docker build -f Dockerfile.playwright -t pps-playwright .
+docker run --rm -it -v "$PWD:/work" -w /work pps-playwright \
+  npm run test:e2e:keyboard:all
+```
+
+VS Code / Cursor users: "Reopen in Container" picks up
+`.devcontainer/devcontainer.json`, which uses the same image and runs
+`npx playwright install --with-deps chromium firefox webkit` on create.
+

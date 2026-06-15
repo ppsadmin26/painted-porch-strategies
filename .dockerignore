@@ -1,0 +1,15 @@
+node_modules
+dist
+build
+.next
+.cache
+playwright-report
+test-results
+coverage
+.git
+.github
+.lovable
+.vscode
+.idea
+*.log
+.DS_Store
