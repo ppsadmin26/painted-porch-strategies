@@ -94,38 +94,40 @@ export function TierHeroSection({
     return "bg-gold border-2 border-gold text-navy hover:bg-white hover:text-gold";
   };
 
-        {background.type === "video" ? (
-          background.slotKey ? (
-            <LazyHeroVideo
-              slotKey={background.slotKey}
-              posterUrl={background.poster ?? background.src}
-              fallbackVideoUrl={background.src}
-              className="absolute inset-0 w-full h-full"
-              mediaClassName={mediaClassName}
-            />
-          ) : (
-            <video
-              src={background.src}
-              poster={background.poster}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
-            />
-          )
+  return (
+    <section className={`relative isolate ${minHeightClass} flex items-center overflow-hidden`}>
+      {/* Background */}
+      {background.type === "video" ? (
+        background.slotKey ? (
+          <LazyHeroVideo
+            slotKey={background.slotKey}
+            posterUrl={background.poster ?? background.src}
+            fallbackVideoUrl={background.src}
+            className="absolute inset-0 w-full h-full"
+            mediaClassName={mediaClassName}
+          />
         ) : (
-          <img
+          <video
             src={background.src}
-            alt=""
-            width={1920}
-            height={1080}
-            fetchPriority="high"
-            decoding="async"
+            poster={background.poster}
+            autoPlay
+            loop
+            muted
+            playsInline
             className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
           />
-        )}
-      </div>
+        )
+      ) : (
+        <img
+          src={background.src}
+          alt=""
+          width={1920}
+          height={1080}
+          fetchPriority="high"
+          decoding="async"
+          className={`absolute inset-0 w-full h-full object-cover ${mediaClassName}`}
+        />
+      )}
 
       {/* Overlay */}
       <div className={`absolute inset-0 ${overlayClass}`} />
@@ -221,14 +223,6 @@ export function TierHeroSection({
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div
-        className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
-        aria-hidden="true"
-      >
-        <ChevronDown className="w-7 h-7 text-white/80 animate-bounce" />
       </div>
     </section>
   );
