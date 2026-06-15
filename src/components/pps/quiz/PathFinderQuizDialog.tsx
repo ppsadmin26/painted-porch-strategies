@@ -87,6 +87,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const [subscribe, setSubscribe] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [featuredKeys, setFeaturedKeys] = useState<Set<string> | null>(null);
 
   const { questions, track } = useMemo(() => buildQuestionPath(answers), [answers]);
   const current = questions[index];
@@ -103,6 +104,25 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     }
   }, [answers, index, showResult]);
 
+  // Fetch the curated "featured in quiz" allowlist once the dialog opens.
+  // Only used for B2B narrowing; failures fall back to the unfiltered list.
+  useEffect(() => {
+    if (!open || featuredKeys) return;
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await supabase
+        .from("path_finder_offerings")
+        .select("offering_key, is_featured_in_quiz, anchor_id")
+        .or("is_featured_in_quiz.eq.true,anchor_id.not.is.null");
+      if (cancelled) return;
+      if (error || !data) {
+        setFeaturedKeys(new Set()); // empty set triggers fallback in b2bResult
+        return;
+      }
+      setFeaturedKeys(new Set(data.map((r: { offering_key: string }) => r.offering_key)));
+    })();
+    return () => { cancelled = true; };
+  }, [open, featuredKeys]);
 
   const overrides = usePathFinderOverrides();
 
@@ -111,7 +131,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
   const result: QuizResult | null = useMemo(() => {
     if (!showResult || !track) return null;
-    const r = buildResult(track, answers);
+    const r = buildResult(track, answers, featuredKeys ? { featuredKeys } : undefined);
     return {
       ...r,
       primaryGroup: r.primaryGroup
@@ -123,7 +143,8 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         : undefined,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showResult, track, answers, overrides]);
+  }, [showResult, track, answers, overrides, featuredKeys]);
+
 
   const setAnswer = (qid: string, value: string | string[]) => {
     setAnswers((prev) => ({ ...prev, [qid]: value }));
