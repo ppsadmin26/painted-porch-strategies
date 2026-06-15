@@ -1,23 +1,21 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Shared parallax background layer for final-CTA sections that need custom
- * inner markup (multiple button groups, grids, etc.) and therefore can't use
- * the higher-level `ParallaxCTA` component.
+ * Shared parallax background layer for final-CTA sections.
  *
- * Handles:
- *  - fixed-attachment parallax on md+ screens (skipped on touch/mobile and
- *    automatically disabled by browsers honoring `prefers-reduced-motion`
- *    via the `motion-reduce:bg-scroll` utility)
+ * Single source of truth for the site's parallax CTA visual:
+ *  - fixed-attachment parallax on md+ screens (touch devices ignore bg-fixed,
+ *    and browsers honoring `prefers-reduced-motion` get `motion-reduce:bg-scroll`)
  *  - decorative overlay tint marked aria-hidden
+ *  - `image` is OPTIONAL. When no image is provided, the parallax image layer
+ *    is skipped entirely and only the overlay renders (so a final CTA without
+ *    an image gracefully degrades to a flat colored panel).
  *
- * Use this whenever you'd otherwise hand-roll
- * `<div className="absolute inset-0 bg-cover bg-center md:bg-fixed" />`
- * plus a separate overlay div.
+ * Used directly by hand-rolled CTA sections, and internally by `ParallaxCTA`.
  */
 interface ParallaxBackgroundProps {
-  /** Background image URL (imported asset) */
-  image: string;
+  /** Background image URL (imported asset). Optional. */
+  image?: string;
   /** Tailwind class(es) for the dark overlay above the image. Defaults to navy/60. */
   overlayClassName?: string;
   /** Extra classes on the image layer itself */
@@ -31,14 +29,16 @@ export function ParallaxBackground({
 }: ParallaxBackgroundProps) {
   return (
     <>
-      <div
-        aria-hidden="true"
-        className={cn(
-          "absolute inset-0 bg-cover bg-center md:bg-fixed motion-reduce:bg-scroll",
-          className,
-        )}
-        style={{ backgroundImage: `url(${image})` }}
-      />
+      {image && (
+        <div
+          aria-hidden="true"
+          className={cn(
+            "absolute inset-0 bg-cover bg-center md:bg-fixed motion-reduce:bg-scroll",
+            className,
+          )}
+          style={{ backgroundImage: `url(${image})` }}
+        />
+      )}
       <div aria-hidden="true" className={cn("absolute inset-0", overlayClassName)} />
     </>
   );
