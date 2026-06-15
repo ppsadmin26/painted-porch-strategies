@@ -357,38 +357,46 @@ export default function AmplifyWorkshops() {
             </div>
           </div>
 
-          <AllWorkshopTopics
-            excludeKeys={[
-              // Only exclude workshops already shown as featured cards on this page
-              // Phase Zero featured cards (top section)
-              "architectChange", "architect-change",
-              "architectureOfAdaptability",
-              "pathToLastingChange",
-              "cultivatingChangeResilience",
-              "leadershipOM",
-              // Leadership & Team Development featured cards (bottom section)
-              "radicalMindfulnessB2B",
-              "masterYourMessageB2B",
-              "stoicismB2B", "stoicism",
-              "heroesAssemble", // "Create Extraordinary Teams" maps closest to this catalog entry
-              // NOTE: Speaking topics are intentionally INCLUDED — any topic can run as a
-              // keynote or workshop, and we want them surfaced here too.
-            ]}
-          />
-
           <div className="text-center mt-12 bg-muted/40 border border-border rounded-xl p-8">
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
-              Not sure which workshop is right for your team?
+              Don&rsquo;t see exactly what you&rsquo;re looking for?
             </h3>
-            <p className="text-foreground max-w-2xl mx-auto mb-6">
-              Every team is different. Take the P.A.T.H.finder quiz and talk through your goals, context, and challenges so we can recommend the workshop (or partnership combination) that best fits where you're headed.
+            <p className="text-foreground max-w-2xl mx-auto mb-3">
+              The workshops above are a sample of what we run most often. We also design custom sessions across our core topic areas, and most can be delivered as a <strong>keynote</strong> or expanded into a <strong>workshop</strong> tailored to your team:
             </p>
-            <Button
-              onClick={openQuiz}
-              className="bg-teal text-white hover:bg-teal/90 h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold whitespace-normal"
-            >
-              Take the P.A.T.H.finder Quiz <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <p className="text-foreground max-w-2xl mx-auto mb-6">
+              <span className="font-semibold text-navy">Change &amp; Innovation</span>
+              <span className="text-foreground/50"> &middot; </span>
+              <span className="font-semibold text-navy">Leadership &amp; Culture</span>
+              <span className="text-foreground/50"> &middot; </span>
+              <span className="font-semibold text-navy">Communication</span>
+              <span className="text-foreground/50"> &middot; </span>
+              <span className="font-semibold text-navy">Resilience &amp; Wellbeing</span>
+              <span className="text-foreground/50"> &middot; </span>
+              <span className="font-semibold text-navy">Mindfulness</span>
+              <span className="text-foreground/50"> &middot; </span>
+              <span className="font-semibold text-navy">Team Dynamics</span>
+            </p>
+            <p className="text-foreground max-w-2xl mx-auto mb-6">
+              Take the P.A.T.H.finder quiz so we can recommend the workshop or speaking session that best fits where you&rsquo;re headed, or contact us to talk through a custom topic.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button
+                onClick={openQuiz}
+                className="bg-teal text-white hover:bg-teal/90 h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold whitespace-normal"
+              >
+                Take the P.A.T.H.finder Quiz <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold whitespace-normal"
+              >
+                <Link to="/contact?scope=organization&interest=workshops&message=I'd like to discuss a custom workshop or speaking topic for our team.">
+                  Contact Us About a Custom Topic
+                </Link>
+              </Button>
+            </div>
           </div>
 
         </div>
