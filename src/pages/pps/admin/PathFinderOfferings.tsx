@@ -293,9 +293,9 @@ export default function PathFinderOfferings() {
                     onCheckedChange={(v) => patch(row.id, { is_featured_in_quiz: v })}
                   />
                   <Label htmlFor={`featured-${row.id}`} className="text-sm">
-                    <strong>Featured in B2B P.A.T.H.finder quiz</strong>
+                    <strong>Prioritize in P.A.T.H.finder quiz</strong>
                     <span className="block text-xs text-muted-foreground">
-                      B2B quiz results only surface offerings that are featured (this toggle) OR have an anchor set above. Keep this list tight so results don't overwhelm.
+                      Eligibility is automatic: any offering that is Live AND has a URL or anchor set below will appear in quiz results. Turn this on to promote it ahead of other eligible options when the result matches.
                     </span>
                   </Label>
                 </div>
