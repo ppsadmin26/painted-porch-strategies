@@ -758,8 +758,7 @@ export default function AmplifyPathAlt() {
 
       {/* SECTION 13: FINAL CTA */}
       <section className="py-16 md:py-24 text-white relative">
-        <div aria-hidden="true" className="absolute inset-0 bg-cover bg-center md:bg-fixed" style={{ backgroundImage: `url(${amplifyFinalCtaBg})` }} />
-        <div className="absolute inset-0 bg-navy/60" />
+        <ParallaxBackground image={amplifyFinalCtaBg} />
         <div className="container max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
