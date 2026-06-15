@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIsPageLive } from "@/hooks/useIsPageLive";
+import { ParallaxBackground } from "@/components/pps/ParallaxBackground";
+
 
 /**
  * Accessible Parallax CTA section.
@@ -55,8 +57,12 @@ const overlayToneClasses: Record<CTAOverlayTone, string> = {
 };
 
 interface ParallaxCTAProps {
-  /** Background image URL (imported asset) */
-  backgroundImage: string;
+  /**
+   * Background image URL (imported asset). OPTIONAL.
+   * When omitted, the parallax image layer is skipped and only the overlay
+   * renders, so the CTA still works (it just has no shifting backdrop).
+   */
+  backgroundImage?: string;
   eyebrow?: string;
   headline: ReactNode;
   description?: ReactNode;
@@ -157,14 +163,14 @@ export function ParallaxCTA({
     <section
       aria-labelledby={headingId}
       className={cn(
-        "relative text-white overflow-hidden bg-center bg-cover md:bg-fixed",
+        "relative text-white overflow-hidden",
         paddingClass,
         className,
       )}
-      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      {/* Decorative overlay, hidden from assistive tech */}
-      <div aria-hidden="true" className={cn("absolute inset-0", resolvedOverlay)} />
+      {/* Shared parallax image + overlay layer. Image is optional. */}
+      <ParallaxBackground image={backgroundImage} overlayClassName={resolvedOverlay} />
+
 
       <div
         className={cn(
