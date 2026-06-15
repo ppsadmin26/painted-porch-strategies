@@ -11,6 +11,8 @@ export interface SpeakingTopic {
   title: string;
   description: string;
   image?: string;
+  /** Optional kebab-case slug for deep-linking via #topic-{slug}. */
+  slug?: string;
 }
 
 export interface SpeakerData {
