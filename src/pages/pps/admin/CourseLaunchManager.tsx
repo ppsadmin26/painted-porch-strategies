@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -48,11 +48,30 @@ export default function CourseLaunchManager() {
   const [confirmGoLive, setConfirmGoLive] = useState<CourseRow | null>(null);
   const [highlightedSlug, setHighlightedSlug] = useState<string | null>(null);
   const rowRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const [linkedOffering, setLinkedOffering] = useState<{ id: string; name: string; offering_key: string } | null>(null);
 
   const slugNotFound = useMemo(
     () => !!focusSlug && !loading && rows.length > 0 && !rows.some((r) => r.slug === focusSlug),
     [focusSlug, loading, rows],
   );
+
+  // Find the offering that references this missing launch slug
+  useEffect(() => {
+    if (!focusSlug || !slugNotFound) {
+      setLinkedOffering(null);
+      return;
+    }
+    let cancelled = false;
+    supabase
+      .from("path_finder_offerings")
+      .select("id, name, offering_key")
+      .eq("launch_slug", focusSlug)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (!cancelled) setLinkedOffering(data ?? null);
+      });
+    return () => { cancelled = true; };
+  }, [focusSlug, slugNotFound]);
 
   // Scroll to + briefly highlight a row when ?slug=... is in the URL
   // (deep-link from /admin/offerings → "Manage").
@@ -232,6 +251,16 @@ export default function CourseLaunchManager() {
           <AlertDescription>
             No launch row matches <code className="font-mono text-sm">{focusSlug}</code>. It may have
             been renamed or deleted. Update the offering's launch link or create the launch entry first.
+            {linkedOffering && (
+              <span className="block mt-1">
+                <Link
+                  to={`/admin/path-finder-offerings?filter=${encodeURIComponent(linkedOffering.offering_key)}`}
+                  className="underline font-medium"
+                >
+                  Open "{linkedOffering.name}" in Offerings →
+                </Link>
+              </span>
+            )}
           </AlertDescription>
         </Alert>
       )}
