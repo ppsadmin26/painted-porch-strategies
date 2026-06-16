@@ -762,68 +762,97 @@ function setPoolForRt(
 }
 
 interface RtPoolEditorProps {
-  row: Row;
+  tier: string;
   b2cValue: Record<string, string[]>;
   b2bValue: Record<string, string[]>;
   onB2cChange: (v: Record<string, string[]>) => void;
   onB2bChange: (v: Record<string, string[]>) => void;
 }
 
-function RtPoolEditor({ b2cValue, b2bValue, onB2cChange, onB2bChange }: RtPoolEditorProps) {
-  const b2cOptions: PoolState[] = ["off", "free"];
-  const b2bOptions: PoolState[] = ["off", "free", "speaking"];
+// Which tiers the RT-pool editor actually controls.
+// Other tiers (Pathway B workshops, IGNITE courses, AMPLIFY labs, EMBODY, Blue Door,
+// Assessment, Free guides not in a curated pool) are placed by the quiz engine via
+// hardcoded result-type maps + the global Live + URL allowlist.
+function rtPoolMode(tier: string): "free" | "speaking" | "none" {
+  const t = (tier || "").trim().toLowerCase();
+  if (t === "free") return "free";
+  if (t === "speaking") return "speaking";
+  return "none";
+}
+
+function RtPoolEditor({ tier, b2cValue, b2bValue, onB2cChange, onB2bChange }: RtPoolEditorProps) {
+  const mode = rtPoolMode(tier);
+
+  if (mode === "none") {
+    return (
+      <div className="mt-3 rounded-md border border-dashed border-muted-foreground/30 bg-muted/30 px-3 py-2 space-y-1">
+        <div className="text-xs font-poppins font-semibold text-navy">Quiz result-type (RT) mapping</div>
+        <p className="text-xs text-muted-foreground">
+          This offering's tier (<strong>{tier || "—"}</strong>) is placed automatically by the quiz engine based
+          on each result type's recommended path. There's nothing to map here. To control whether it can appear at
+          all, use the <strong>Live</strong> toggle and make sure a URL or anchor is set above.
+        </p>
+        <p className="text-xs text-muted-foreground">
+          RT mapping is only used for <strong>Free</strong> tier (Free Resources group) and <strong>Speaking</strong> tier
+          (Speaking Topics group, B2B only).
+        </p>
+      </div>
+    );
+  }
+
+  const toggle = (current: Record<string, string[]>, rt: string, on: boolean, poolName: "free" | "speaking") => {
+    const copy = { ...current };
+    if (on) copy[rt] = [poolName];
+    else delete copy[rt];
+    return copy;
+  };
 
   return (
     <div className="mt-3 rounded-md border border-dashed border-primary/40 bg-primary/5 px-3 py-2 space-y-2">
       <Label className="text-xs">
         <strong>Quiz result-type (RT) mapping</strong>
         <span className="block text-xs text-muted-foreground font-normal">
-          Which result types should this offering appear in, and as what kind of recommendation? "Free" = appears in the Free Resources / Free Starting Points group. "Speaking" = appears in the Speaking Topics group (B2B only). Set to "Off" to exclude.
+          {mode === "free"
+            ? "Tick each result type where this free resource should appear in the Free Resources / Free Starting Points group."
+            : "Tick each B2B result type where this speaking topic should appear in the Speaking Topics group."}
         </span>
       </Label>
 
-      <div className="space-y-1">
-        <div className="text-xs font-poppins font-semibold text-navy">B2C results (individual leader)</div>
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-          {B2C_RTS.map((rt) => {
-            const state = poolStateFor(b2cValue[rt], b2cOptions);
-            return (
-              <label key={rt} className="flex flex-col gap-1">
-                <span className="text-[11px] text-muted-foreground">{rt}</span>
-                <select
-                  value={state}
-                  onChange={(e) => onB2cChange(setPoolForRt(b2cValue, rt, e.target.value as PoolState))}
-                  className="h-8 rounded-md border border-input bg-background px-2 text-xs"
-                >
-                  {b2cOptions.map((o) => (
-                    <option key={o} value={o}>{o === "off" ? "Off" : "Free"}</option>
-                  ))}
-                </select>
-              </label>
-            );
-          })}
+      {mode === "free" && (
+        <div className="space-y-1">
+          <div className="text-xs font-poppins font-semibold text-navy">B2C results (individual leader)</div>
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+            {B2C_RTS.map((rt) => {
+              const on = (b2cValue[rt] ?? []).includes("free");
+              return (
+                <label key={rt} className="flex items-center gap-2 rounded border border-input bg-background px-2 py-1 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={on}
+                    onChange={(e) => onB2cChange(toggle(b2cValue, rt, e.target.checked, "free"))}
+                  />
+                  <span className="text-[11px] text-muted-foreground">{rt}</span>
+                </label>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="space-y-1">
         <div className="text-xs font-poppins font-semibold text-navy">B2B results (organization)</div>
         <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
           {B2B_RTS.map((rt) => {
-            const state = poolStateFor(b2bValue[rt], b2bOptions);
+            const poolName: "free" | "speaking" = mode;
+            const on = (b2bValue[rt] ?? []).includes(poolName);
             return (
-              <label key={rt} className="flex flex-col gap-1">
+              <label key={rt} className="flex items-center gap-2 rounded border border-input bg-background px-2 py-1 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={on}
+                  onChange={(e) => onB2bChange(toggle(b2bValue, rt, e.target.checked, poolName))}
+                />
                 <span className="text-[11px] text-muted-foreground">{rt}</span>
-                <select
-                  value={state}
-                  onChange={(e) => onB2bChange(setPoolForRt(b2bValue, rt, e.target.value as PoolState))}
-                  className="h-8 rounded-md border border-input bg-background px-2 text-xs"
-                >
-                  {b2bOptions.map((o) => (
-                    <option key={o} value={o}>
-                      {o === "off" ? "Off" : o === "free" ? "Free" : "Speaking"}
-                    </option>
-                  ))}
-                </select>
               </label>
             );
           })}
@@ -832,3 +861,4 @@ function RtPoolEditor({ b2cValue, b2bValue, onB2cChange, onB2bChange }: RtPoolEd
     </div>
   );
 }
+
