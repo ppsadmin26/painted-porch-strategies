@@ -124,10 +124,15 @@ export default function IgniteAssessments() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {assessments.map((assessment, index) => (
+            {assessments.map((assessment, index) => {
+              const anchorSlug =
+                assessment.launchSlug ??
+                assessment.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+              return (
               <div
                 key={index}
-                className={`bg-white p-8 rounded-xl border-t-4 ${assessment.borderColor} transition-all hover:shadow-xl flex flex-col shadow-md`}
+                id={anchorSlug}
+                className={`bg-white p-8 rounded-xl border-t-4 ${assessment.borderColor} transition-all hover:shadow-xl flex flex-col shadow-md scroll-mt-24`}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>
