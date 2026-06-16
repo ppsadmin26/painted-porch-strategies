@@ -1,116 +1,18 @@
 {
-  "generated_at": "2026-06-16T06:16:41.169Z",
+  "generated_at": "2026-06-16T06:17:39.773Z",
   "roots": [
     "src/pages",
     "src/components"
   ],
   "total_anchored": 63,
-  "present": 9,
-  "missing": 54,
+  "present": 30,
+  "missing": 33,
   "missing_by_destination": {
-    "/speaking/amy": [
-      {
-        "offering_key": "speakingHeroesAssemble",
-        "anchor": "topic-heroes-assemble",
-        "name": "Heroes Assemble! (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingLeadAtSpeed",
-        "anchor": "topic-lead-at-the-speed-of-change",
-        "name": "Lead at the Speed of Change (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingShIFtHappens",
-        "anchor": "topic-shift-happens-be-ready",
-        "name": "ShIFt Happens. Be Ready. (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingGoldilocks",
-        "anchor": "topic-goldilocks-leadership",
-        "name": "Goldilocks Leadership (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingStoicism",
-        "anchor": "topic-stoicism-in-the-workplace",
-        "name": "Stoicism in the Workplace (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingFromDysfunction",
-        "anchor": "topic-from-dysfunction-to-dynamic-teams",
-        "name": "From Dysfunction to Dynamic Teams (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingAiEiOh",
-        "anchor": "topic-ai-ei-oh-guiding-change-and-ai-adoption",
-        "name": "AI, EI, Oh! (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingAlicePrinciples",
-        "anchor": "topic-the-alice-principles-down-the-rabbit-hole-of-transformation",
-        "name": "The Alice Principles (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingDontPanic",
-        "anchor": "topic-dont-panic-navigating-a-changing-world",
-        "name": "Don't Panic! Navigating a Changing World (Keynote)",
-        "tier": "Speaking"
-      }
-    ],
     "/speaking/rob": [
-      {
-        "offering_key": "speakingHighFidelity",
-        "anchor": "topic-high-fidelity-communication",
-        "name": "High-Fidelity Communication (Keynote)",
-        "tier": "Speaking"
-      },
       {
         "offering_key": "speaking88",
         "anchor": "topic-8-8",
         "name": "8:8 — Capturing & Keeping Attention (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingPowerOfStory",
-        "anchor": "topic-the-power-of-story",
-        "name": "The Power of Story (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingGetClear",
-        "anchor": "topic-get-clear-be-heard",
-        "name": "Get C.L.E.A.R. & Be Heard (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingBorderlessKeynote",
-        "anchor": "topic-borderless-communication",
-        "name": "Borderless Communication (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingOnAir",
-        "anchor": "topic-on-air-ready-confidence",
-        "name": "On-Air Ready Confidence (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingFiveMin",
-        "anchor": "topic-your-5-minute-keynote",
-        "name": "Your 5-Minute Keynote",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingCommStyle",
-        "anchor": "topic-speaking-with-style-the-6-communicator-styles-for-influence-impact",
-        "name": "Speaking with Style — 6 Communicator Styles (Keynote)",
         "tier": "Speaking"
       }
     ],
@@ -268,38 +170,6 @@
         "tier": "Pathway B"
       }
     ],
-    "/speaking/sierra": [
-      {
-        "offering_key": "speakingFromPassengerToPilot",
-        "anchor": "topic-from-passenger-to-pilot",
-        "name": "From Passenger to Pilot (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingMoveShakeInnovate",
-        "anchor": "topic-move-shake-innovate",
-        "name": "Move, Shake, Innovate (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingFindingJoy",
-        "anchor": "topic-finding-joy-at-work",
-        "name": "Finding Joy at Work (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingReignitingResilience",
-        "anchor": "topic-reigniting-resilience",
-        "name": "Reigniting Resilience (Keynote)",
-        "tier": "Speaking"
-      },
-      {
-        "offering_key": "speakingRadicallyMindful",
-        "anchor": "topic-radically-mindful-leadership",
-        "name": "Radically Mindful Leadership (Keynote)",
-        "tier": "Speaking"
-      }
-    ],
     "/master-your-message": [
       {
         "offering_key": "masterYourMessageMini",
@@ -355,136 +225,10 @@
   },
   "missing_detail": [
     {
-      "offering_key": "speakingHeroesAssemble",
-      "name": "Heroes Assemble! (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-heroes-assemble",
-      "destination": "/speaking/amy",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingLeadAtSpeed",
-      "name": "Lead at the Speed of Change (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-lead-at-the-speed-of-change",
-      "destination": "/speaking/amy",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingShIFtHappens",
-      "name": "ShIFt Happens. Be Ready. (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-shift-happens-be-ready",
-      "destination": "/speaking/amy",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingGoldilocks",
-      "name": "Goldilocks Leadership (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-goldilocks-leadership",
-      "destination": "/speaking/amy",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingStoicism",
-      "name": "Stoicism in the Workplace (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-stoicism-in-the-workplace",
-      "destination": "/speaking/amy",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingFromDysfunction",
-      "name": "From Dysfunction to Dynamic Teams (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-from-dysfunction-to-dynamic-teams",
-      "destination": "/speaking/amy",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingAiEiOh",
-      "name": "AI, EI, Oh! (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-ai-ei-oh-guiding-change-and-ai-adoption",
-      "destination": "/speaking/amy",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingAlicePrinciples",
-      "name": "The Alice Principles (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-the-alice-principles-down-the-rabbit-hole-of-transformation",
-      "destination": "/speaking/amy",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingDontPanic",
-      "name": "Don't Panic! Navigating a Changing World (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-dont-panic-navigating-a-changing-world",
-      "destination": "/speaking/amy",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingHighFidelity",
-      "name": "High-Fidelity Communication (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-high-fidelity-communication",
-      "destination": "/speaking/rob",
-      "is_live": true,
-      "present": false
-    },
-    {
       "offering_key": "speaking88",
       "name": "8:8 — Capturing & Keeping Attention (Keynote)",
       "tier": "Speaking",
       "anchor": "topic-8-8",
-      "destination": "/speaking/rob",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingPowerOfStory",
-      "name": "The Power of Story (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-the-power-of-story",
-      "destination": "/speaking/rob",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingGetClear",
-      "name": "Get C.L.E.A.R. & Be Heard (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-get-clear-be-heard",
-      "destination": "/speaking/rob",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingBorderlessKeynote",
-      "name": "Borderless Communication (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-borderless-communication",
-      "destination": "/speaking/rob",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingOnAir",
-      "name": "On-Air Ready Confidence (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-on-air-ready-confidence",
       "destination": "/speaking/rob",
       "is_live": true,
       "present": false
@@ -514,69 +258,6 @@
       "anchor": "geniusAtWork",
       "destination": "/partner/amplify/workshops",
       "is_live": false,
-      "present": false
-    },
-    {
-      "offering_key": "speakingFiveMin",
-      "name": "Your 5-Minute Keynote",
-      "tier": "Speaking",
-      "anchor": "topic-your-5-minute-keynote",
-      "destination": "/speaking/rob",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingCommStyle",
-      "name": "Speaking with Style — 6 Communicator Styles (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-speaking-with-style-the-6-communicator-styles-for-influence-impact",
-      "destination": "/speaking/rob",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingFromPassengerToPilot",
-      "name": "From Passenger to Pilot (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-from-passenger-to-pilot",
-      "destination": "/speaking/sierra",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingMoveShakeInnovate",
-      "name": "Move, Shake, Innovate (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-move-shake-innovate",
-      "destination": "/speaking/sierra",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingFindingJoy",
-      "name": "Finding Joy at Work (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-finding-joy-at-work",
-      "destination": "/speaking/sierra",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingReignitingResilience",
-      "name": "Reigniting Resilience (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-reigniting-resilience",
-      "destination": "/speaking/sierra",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "speakingRadicallyMindful",
-      "name": "Radically Mindful Leadership (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-radically-mindful-leadership",
-      "destination": "/speaking/sierra",
-      "is_live": true,
       "present": false
     },
     {
