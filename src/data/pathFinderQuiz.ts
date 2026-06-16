@@ -640,7 +640,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         narrative: "You're not looking for a starting point. You're looking for depth: real challenge, peer-level conversation, an environment where the work pushes you rather than walks you through basics. The AMPLIFY Leadership Labs are built for exactly that.",
         primaryGroup: grp("Your Starting Point — Pick the Lab that pulls you most", "stracticalLeaderLab", "leadingChangeLab", "conflictToConnectionLab", "goldilocksLab", "stoicismLab", "aiEiOhLab"),
         whyThisFits: "You don't have one gap — you have range, and you're hungry for depth. So instead of picking for you, we surfaced the full Lab slate and let you pick the one that pulls hardest right now: strategy-to-tactics (Stractical Leader), change leadership (Leading Change), conflict (Conflict to Connection), calibration (Goldilocks), Stoic operating system, or AI + EQ. Every Lab is peer cohort, live, and built to push.",
-        groups: [grp("Also Worth Exploring", "stracticalMini", "performanceDNA", "eq360")],
+        groups: [grp("Also Worth Exploring", "stracticalMini", "performanceDNA", "eq360"), grp("Free Starting Points", "stoicLeaderFieldGuide")],
         whatComesNext: "Some leaders reach a point where the work they're doing for themselves starts to feel like the work their whole organization needs. When you find yourself asking 'how do I build an organization that can hold what I'm trying to create' — we're here for that conversation.",
       };
     case "RT6":
