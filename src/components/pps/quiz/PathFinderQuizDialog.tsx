@@ -265,21 +265,50 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const applyOverrides = (o: Offering): Offering =>
     overrides[o.key] ? { ...o, url: overrides[o.key] } : o;
 
+  const annotate = (o: Offering): Offering & { isComingSoon: boolean } => ({
+    ...applyOverrides(o),
+    isComingSoon: comingSoonKeys.has(o.key),
+  });
+
+  // Prioritize offerings that are live & accessible now, push coming-soon last.
+  const prioritize = <T extends { isComingSoon: boolean }>(items: T[]): T[] => {
+    const live = items.filter((o) => !o.isComingSoon);
+    const soon = items.filter((o) => o.isComingSoon);
+    return [...live, ...soon];
+  };
+
   const result: QuizResult | null = useMemo(() => {
     if (!showResult || !track) return null;
     const r = buildResult(track, answers, viewableKeys ? { viewableKeys } : undefined);
+    // If the Strongest Next Step is coming-soon but a live primary pick exists,
+    // promote the first live primary pick into the strongest slot so users get
+    // something they can begin right now.
+    let strongest = r.strongestNextStep
+      ? { ...r.strongestNextStep, offering: annotate(r.strongestNextStep.offering) }
+      : undefined;
+    if (
+      strongest &&
+      strongest.kind !== "blueDoor" &&
+      strongest.offering.isComingSoon &&
+      r.primaryGroup
+    ) {
+      const livePrimary = r.primaryGroup.offerings
+        .map(annotate)
+        .find((o) => !o.isComingSoon);
+      if (livePrimary) {
+        strongest = { ...strongest, offering: livePrimary };
+      }
+    }
     return {
       ...r,
       primaryGroup: r.primaryGroup
-        ? { ...r.primaryGroup, offerings: r.primaryGroup.offerings.map(applyOverrides) }
+        ? { ...r.primaryGroup, offerings: prioritize(r.primaryGroup.offerings.map(annotate)) }
         : undefined,
-      groups: r.groups.map((g) => ({ ...g, offerings: g.offerings.map(applyOverrides) })),
-      strongestNextStep: r.strongestNextStep
-        ? { ...r.strongestNextStep, offering: applyOverrides(r.strongestNextStep.offering) }
-        : undefined,
+      groups: r.groups.map((g) => ({ ...g, offerings: prioritize(g.offerings.map(annotate)) })),
+      strongestNextStep: strongest,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showResult, track, answers, overrides, viewableKeys]);
+  }, [showResult, track, answers, overrides, viewableKeys, comingSoonKeys]);
 
   // Persist the prefill payload so /contact can hydrate from quiz context even
   // if the user navigates to a recommended workshop / Blue Door page first and
