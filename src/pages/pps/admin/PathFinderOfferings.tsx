@@ -652,9 +652,9 @@ export default function PathFinderOfferings() {
                     onCheckedChange={(v) => patch(row.id, { is_featured_in_quiz: v })}
                   />
                   <Label htmlFor={`featured-${row.id}`} className="text-sm">
-                    <strong>Prioritize in P.A.T.H.finder quiz</strong>
+                    <strong>Pin to top of primary list in P.A.T.H.finder quiz</strong>
                     <span className="block text-xs text-muted-foreground">
-                      Eligibility is automatic: any offering that is Live AND has a URL or anchor set below will appear in quiz results. Turn this on to promote it ahead of other eligible options when the result matches.
+                      When this offering already appears in a result's primary recommendation list, pin it to position 1. Eligibility (Live + has URL/anchor) still applies. Does not force it into lists it isn't already in.
                     </span>
                   </Label>
                 </div>
