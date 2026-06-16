@@ -144,7 +144,7 @@ async function main() {
         anchor: a,
         destination: dest ? dest.split("#")[0] : null,
         is_live: r.is_live,
-        present: ids.has(a),
+        present: isAnchorPresent(a, pools),
       });
     }
   }
