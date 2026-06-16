@@ -3,7 +3,22 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Loader2, ExternalLink, Search, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { Loader2, ExternalLink, Search, AlertTriangle, CheckCircle2, FileText } from "lucide-react";
+import auditReport from "../../../../docs/offerings-duplication-audit.json";
+
+type AuditReport = {
+  generated_at: string;
+  blue_door_connected: boolean;
+  counts: {
+    pps_rows: number;
+    bd_rows: number;
+    matched: number;
+    pps_only: number;
+    bd_only: number;
+    topic_candidates: number;
+  };
+};
+const audit = auditReport as AuditReport;
 
 interface Row {
   id: string;
