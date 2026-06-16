@@ -326,7 +326,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       strongestNextStep: strongest,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showResult, track, answers, overrides, viewableKeys, comingSoonKeys]);
+  }, [showResult, track, answers, overrides, viewableKeys, comingSoonKeys, rtPools]);
 
   // Persist the prefill payload so /contact can hydrate from quiz context even
   // if the user navigates to a recommended workshop / Blue Door page first and
