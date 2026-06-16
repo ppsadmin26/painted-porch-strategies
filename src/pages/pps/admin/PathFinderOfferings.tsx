@@ -47,7 +47,7 @@ interface LaunchOption {
   program_type: string;
 }
 
-const TIER_OPTIONS = ["Free", "IGNITE", "AMPLIFY", "Pathway B", "Blue Door", "Speaking", "Assessment"] as const;
+const TIER_OPTIONS = ["Free", "IGNITE", "AMPLIFY", "Workshop", "Blue Door", "Speaking", "Assessment"] as const;
 const B2C_RTS = ["RT1", "RT2", "RT3", "RT4", "RT5", "RT6"] as const;
 const B2B_RTS = ["RT-A", "RT-B", "RT-C", "RT-D", "RT-E"] as const;
 
@@ -55,7 +55,7 @@ const B2B_RTS = ["RT-A", "RT-B", "RT-C", "RT-D", "RT-E"] as const;
 const TIER_COLORS: Record<string, string> = {
   IGNITE: "bg-gold/15 text-gold-foreground border-gold/40",
   AMPLIFY: "bg-purple/15 text-purple border-purple/40",
-  "Pathway B": "bg-strategic/15 text-strategic border-strategic/40",
+  Workshop: "bg-strategic/15 text-strategic border-strategic/40",
   "Blue Door": "bg-bluedoor/15 text-bluedoor border-bluedoor/40",
   Free: "bg-lime/15 text-lime-foreground border-lime/40",
   Assessment: "bg-raspberry/10 text-raspberry border-raspberry/40",
