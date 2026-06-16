@@ -63,10 +63,10 @@ export const OFFERINGS = {
   cultivatingChangeResilience: { key: "cultivatingChangeResilience", name: "Cultivating Change Resilience", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Resilience as organizational infrastructure: distributed across systems and culture." },
   kickTheHabit: { key: "kickTheHabit", name: "Kick the Habit", facilitator: "Amy", tier: "Workshop", url: "/resources/kick-the-habit", blurb: "Addressing the behavioral patterns and mental models that make change fail to stick." },
   aiEiOh: { key: "aiEiOh", name: "AI, EI, Oh", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Leading AI integration with the emotional intelligence and organizational wisdom it requires." },
-  architectureOfAdaptability: { key: "architectureOfAdaptability", name: "The Architecture of Organizational ShIFt", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Building organizational systems designed to navigate uncertainty rather than react to it. Diagnoses and reinforces the three Pillars: Cultural Cornerstone, Operational Frame, and Living Ecosystem as one living system." },
+  architectureOfOrganizationalShift: { key: "architectureOfOrganizationalShift", name: "The Architecture of Organizational ShIFt", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Building organizational systems designed to navigate uncertainty rather than react to it. Diagnoses and reinforces the three Pillars: Cultural Cornerstone, Operational Frame, and Living Ecosystem as one living system." },
   goldilocks: { key: "goldilocks", name: "Goldilocks Leadership", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Calibrated, context-sensitive EQ in leadership." },
   stracticalLeader: { key: "stracticalLeader", name: "The Stractical Leader", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/stractical-leader", blurb: "Integrating strategic vision with tactical execution for leadership teams." },
-  leadershipOM: { key: "leadershipOM", name: "Leadership OM", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Redesigning the leadership operating model to distribute decisions and accountability." },
+  leadershipOM: { key: "leadershipOM", name: "Leadership Operating Model", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Redesigning the leadership operating model to distribute decisions and accountability." },
 
   // Rob Hunter
   communicateWithStyle: { key: "communicateWithStyle", name: "Communicate with Style", facilitator: "Rob", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Style awareness and adaptation across different team members and contexts." },
@@ -522,7 +522,7 @@ const grp = (heading: string, ...keys: OfferingKey[]): RecommendationGroup => ({
 
 // Safe fallback for B2B if filtering would otherwise empty a primary pick.
 const SAFE_B2B_FALLBACK: OfferingKey[] = [
-  "architectureOfAdaptability",
+  "architectureOfOrganizationalShift",
   "pathToLastingChange",
   "architectChange",
   "blueDoor",
@@ -709,27 +709,27 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     headline = "Change & Transformation";
     narrative = "Your organization is moving through something significant, or about to. The question isn't whether the change is necessary, but whether your leaders and your organization have the architecture to carry it. A workshop can get traction quickly. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and surfaces the structural readiness gaps a workshop alone won't address.";
     primaryHeading = "Change Leadership — Frameworks for Leading Transformation";
-    primaryKeys = ["pathToLastingChange", "architectureOfAdaptability", "cultivatingChangeResilience"];
-    whyThisFits = "Your signal is active or imminent change — so we picked the three workshops that give your leaders the frameworks change actually requires. The P.A.T.H.™ to Lasting Change is the end-to-end method (Prepare, Align, Take Off, Habit). Architecture of Adaptability builds the structural lens for what holds and what breaks. Cultivating Change Resilience addresses the human cost of sustained change. Blue Door surfaces the readiness gaps a workshop alone will paper over.";
+    primaryKeys = ["pathToLastingChange", "architectureOfOrganizationalShift", "cultivatingChangeResilience"];
+    whyThisFits = "Your signal is active or imminent change — so we picked the three workshops that give your leaders the frameworks change actually requires. The P.A.T.H.™ to Lasting Change is the end-to-end method (Prepare, Align, Take Off, Habit). Architecture of Organizational ShIFt builds the structural lens for what holds and what breaks. Cultivating Change Resilience addresses the human cost of sustained change. Blue Door surfaces the readiness gaps a workshop alone will paper over.";
   } else if (rt === "RT-C") {
     headline = "Leadership Capability";
     narrative = "The challenge you're describing is a capability gap. Your leaders need to develop, and you need a way to build that capacity that actually holds rather than fades after the training day ends. A workshop is a good first move. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and shows you which capabilities the architecture is quietly blocking.";
     primaryHeading = "Leadership Capability — How Leaders Show Up";
-    primaryKeys = ["leadershipOM", "stracticalLeader", "architectureOfAdaptability"];
-    whyThisFits = "Your signal is leadership capability — how your leaders actually show up. So we picked workshops that target the three biggest gaps we see: a clear operating model for leadership (Leadership OM), the strategy-to-tactics translation most leaders struggle with (Stractical Leader), and the structural lens that separates leaders who build durability from leaders who only manage activity (Architecture of Adaptability). Blue Door shows which of those gaps your architecture is quietly creating.";
+    primaryKeys = ["leadershipOM", "stracticalLeader", "architectureOfOrganizationalShift"];
+    whyThisFits = "Your signal is leadership capability — how your leaders actually show up. So we picked workshops that target the three biggest gaps we see: a clear operating model for leadership (Leadership Operating Model), the strategy-to-tactics translation most leaders struggle with (Stractical Leader), and the structural lens that separates leaders who build durability from leaders who only manage activity (Architecture of Organizational ShIFt). Blue Door shows which of those gaps your architecture is quietly creating.";
   } else if (rt === "RT-D") {
     headline = "Strategic / Architectural";
     narrative = "What you're describing isn't a program gap or training need. It's an architectural question: whether your organization's current identity is built to carry what you're trying to create. The Blue Door Organizational Appraisal is where organizations at strategic inflection points begin, and it's the prerequisite for any deeper engagement with us.";
     primaryHeading = "Workshops — Activate Your Team While the Appraisal Work Is Underway";
-    primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
-    whyThisFits = "Your signal is architectural — which is why Blue Door is the real next step, not a workshop. The workshops we picked are the ones that activate your team in parallel with that appraisal work, so momentum doesn't stall: Architect Change builds the design discipline, Architecture of Adaptability gives leaders the structural lens, and the P.A.T.H.™ to Lasting Change gives the org a shared method. None of them replace the appraisal — they make the most of the time it takes.";
+    primaryKeys = ["architectChange", "architectureOfOrganizationalShift", "pathToLastingChange"];
+    whyThisFits = "Your signal is architectural — which is why Blue Door is the real next step, not a workshop. The workshops we picked are the ones that activate your team in parallel with that appraisal work, so momentum doesn't stall: Architect Change builds the design discipline, Architecture of Organizational ShIFt gives leaders the structural lens, and the P.A.T.H.™ to Lasting Change gives the org a shared method. None of them replace the appraisal — they make the most of the time it takes.";
   } else {
     // RT-E
     headline = "Exploring Your Options";
     narrative = "You're in the right place even if you're not sure exactly what you need yet. Organizational development rarely announces itself with a clear brief. Start with a defined experience that gives your team traction and a shared framework. When you're ready to go deeper, the Blue Door Organizational Appraisal is the prerequisite for any larger engagement and the fastest way to see your architecture clearly.";
     primaryHeading = "Workshops to Start With";
-    primaryKeys = ["pathToLastingChange", "architectureOfAdaptability", "leadershipOM"];
-    whyThisFits = "You don't have a sharp signal yet — so committing to a deep engagement now would be guessing. The workshops we picked are the three highest-leverage starting points across most organizations: a shared change method (P.A.T.H.™ to Lasting Change), a structural lens (Architecture of Adaptability), and a leadership operating model (Leadership OM). Any of them gives your team traction and surfaces which signal is actually loudest. Blue Door is there when that signal sharpens.";
+    primaryKeys = ["pathToLastingChange", "architectureOfOrganizationalShift", "leadershipOM"];
+    whyThisFits = "You don't have a sharp signal yet — so committing to a deep engagement now would be guessing. The workshops we picked are the three highest-leverage starting points across most organizations: a shared change method (P.A.T.H.™ to Lasting Change), a structural lens (Architecture of Organizational ShIFt), and a leadership operating model (Leadership Operating Model). Any of them gives your team traction and surfaces which signal is actually loudest. Blue Door is there when that signal sharpens.";
   }
 
   // `extra` and secondary-signal flags are intentionally not surfaced —
