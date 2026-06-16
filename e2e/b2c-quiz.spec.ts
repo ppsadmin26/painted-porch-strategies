@@ -194,10 +194,11 @@ test.describe("B2C P.A.T.H.finder quiz (real browser)", () => {
       page.getByRole("heading", { name: /Your Starting Point/i }),
     ).toHaveCount(0);
 
-    // An exploration offering is linked.
+    // An exploration offering is linked (admin overrides can rewrite the
+    // href, so assert by accessible name, not the static URL).
     const fifty2 = OFFERINGS.fiftyTwoStoicism;
     await expect(
-      page.locator(`a[href="${fifty2.url}"]`).first(),
+      page.getByRole("link", { name: new RegExp(fifty2.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i") }).first(),
     ).toBeVisible();
 
     // Accessibility: RT6 result dialog must also be clean.
