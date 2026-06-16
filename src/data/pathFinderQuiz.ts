@@ -499,6 +499,13 @@ export interface BuildResultOptions {
    * would leave a result blank.
    */
   viewableKeys?: Set<string>;
+  /**
+   * Admin-managed RT-pool overrides loaded from path_finder_offerings.
+   * Shape: { "RT1": { free: [offeringKey, ...] }, "RT-A": { free: [...], speaking: [...] } }.
+   * When present, replaces the hard-coded FREE_RESOURCES_BY_RT / SPEAKING_BY_RT
+   * pools and the B2C inline "Free Starting Points" / "Free Tools" groups.
+   */
+  rtPools?: Partial<Record<ResultType, { free?: OfferingKey[]; speaking?: OfferingKey[] }>>;
 }
 
 const O = OFFERINGS;
