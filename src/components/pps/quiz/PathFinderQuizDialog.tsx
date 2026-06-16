@@ -146,6 +146,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [viewableKeys, setViewableKeys] = useState<Set<string> | null>(null);
+  const [comingSoonKeys, setComingSoonKeys] = useState<Set<string>>(new Set());
 
   const { questions, track } = useMemo(() => buildQuestionPath(answers), [answers]);
   const current = questions[index];
@@ -170,7 +171,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     if (!open || viewableKeys) return;
     let cancelled = false;
     (async () => {
-      const [offeringsRes, draftsRes] = await Promise.all([
+      const [offeringsRes, draftsRes, launchRes] = await Promise.all([
         supabase
           .from("path_finder_offerings")
           .select("offering_key, is_live, current_url, dedicated_url, anchor_id"),
@@ -178,29 +179,38 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
           .from("page_status")
           .select("path")
           .eq("status", "draft"),
+        supabase
+          .from("course_launch_status")
+          .select("slug, status"),
       ]);
       if (cancelled) return;
       if (offeringsRes.error || !offeringsRes.data) {
         setViewableKeys(new Set());
         return;
       }
-      // Build set of draft paths (e.g. "/wfh-sign-up") so we can drop any
-      // offering whose destination page isn't published yet. page_status
-      // failures fail-open: we keep the offering list as-is.
       const draftPaths = new Set<string>(
         (draftsRes.data ?? [])
           .map((r: { path: string | null }) => (r.path ?? "").trim())
           .filter(Boolean),
       );
+      const comingSoonSlugs = new Set<string>(
+        (launchRes.data ?? [])
+          .filter((r: { status: string | null }) => r.status === "coming_soon")
+          .map((r: { slug: string }) => r.slug),
+      );
       const pathOf = (url: string | null): string | null => {
         if (!url) return null;
         const trimmed = url.trim();
         if (!trimmed) return null;
-        // External links always allowed (only PPS pages live in page_status).
         if (/^https?:\/\//i.test(trimmed)) return null;
-        // Strip query + hash, keep leading slash.
         const noHash = trimmed.split("#")[0].split("?")[0];
         return noHash || null;
+      };
+      const lastSegment = (url: string | null): string | null => {
+        const p = pathOf(url);
+        if (!p) return null;
+        const parts = p.split("/").filter(Boolean);
+        return parts[parts.length - 1] ?? null;
       };
       const isDraftDest = (
         currentUrl: string | null,
@@ -212,16 +222,40 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         if (p2 && draftPaths.has(p2)) return true;
         return false;
       };
-      const eligible = offeringsRes.data
-        .filter((r: { is_live: boolean; current_url: string | null; dedicated_url: string | null; anchor_id: string | null }) =>
-          r.is_live && (
-            (r.current_url && r.current_url.trim().length > 0) ||
-            (r.dedicated_url && r.dedicated_url.trim().length > 0) ||
-            (r.anchor_id && r.anchor_id.trim().length > 0)
-          ) && !isDraftDest(r.current_url, r.dedicated_url),
-        )
-        .map((r: { offering_key: string }) => r.offering_key);
+      const matchesComingSoon = (
+        anchor: string | null,
+        currentUrl: string | null,
+        dedicatedUrl: string | null,
+      ): boolean => {
+        if (anchor && comingSoonSlugs.has(anchor.trim())) return true;
+        const seg1 = lastSegment(dedicatedUrl);
+        if (seg1 && comingSoonSlugs.has(seg1)) return true;
+        const seg2 = lastSegment(currentUrl);
+        if (seg2 && comingSoonSlugs.has(seg2)) return true;
+        return false;
+      };
+      const eligible: string[] = [];
+      const soon = new Set<string>();
+      for (const r of offeringsRes.data as Array<{
+        offering_key: string;
+        is_live: boolean;
+        current_url: string | null;
+        dedicated_url: string | null;
+        anchor_id: string | null;
+      }>) {
+        const hasDest =
+          (r.current_url && r.current_url.trim().length > 0) ||
+          (r.dedicated_url && r.dedicated_url.trim().length > 0) ||
+          (r.anchor_id && r.anchor_id.trim().length > 0);
+        if (!r.is_live || !hasDest) continue;
+        if (isDraftDest(r.current_url, r.dedicated_url)) continue;
+        eligible.push(r.offering_key);
+        if (matchesComingSoon(r.anchor_id, r.current_url, r.dedicated_url)) {
+          soon.add(r.offering_key);
+        }
+      }
       setViewableKeys(new Set(eligible));
+      setComingSoonKeys(soon);
     })();
     return () => { cancelled = true; };
   }, [open, viewableKeys]);
@@ -231,21 +265,50 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const applyOverrides = (o: Offering): Offering =>
     overrides[o.key] ? { ...o, url: overrides[o.key] } : o;
 
+  const annotate = (o: Offering): Offering & { isComingSoon: boolean } => ({
+    ...applyOverrides(o),
+    isComingSoon: comingSoonKeys.has(o.key),
+  });
+
+  // Prioritize offerings that are live & accessible now, push coming-soon last.
+  const prioritize = <T extends { isComingSoon: boolean }>(items: T[]): T[] => {
+    const live = items.filter((o) => !o.isComingSoon);
+    const soon = items.filter((o) => o.isComingSoon);
+    return [...live, ...soon];
+  };
+
   const result: QuizResult | null = useMemo(() => {
     if (!showResult || !track) return null;
     const r = buildResult(track, answers, viewableKeys ? { viewableKeys } : undefined);
+    // If the Strongest Next Step is coming-soon but a live primary pick exists,
+    // promote the first live primary pick into the strongest slot so users get
+    // something they can begin right now.
+    let strongest = r.strongestNextStep
+      ? { ...r.strongestNextStep, offering: annotate(r.strongestNextStep.offering) }
+      : undefined;
+    if (
+      strongest &&
+      strongest.kind !== "blueDoor" &&
+      strongest.offering.isComingSoon &&
+      r.primaryGroup
+    ) {
+      const livePrimary = r.primaryGroup.offerings
+        .map(annotate)
+        .find((o) => !o.isComingSoon);
+      if (livePrimary) {
+        strongest = { ...strongest, offering: livePrimary };
+      }
+    }
     return {
       ...r,
       primaryGroup: r.primaryGroup
-        ? { ...r.primaryGroup, offerings: r.primaryGroup.offerings.map(applyOverrides) }
+        ? { ...r.primaryGroup, offerings: prioritize(r.primaryGroup.offerings.map(annotate)) }
         : undefined,
-      groups: r.groups.map((g) => ({ ...g, offerings: g.offerings.map(applyOverrides) })),
-      strongestNextStep: r.strongestNextStep
-        ? { ...r.strongestNextStep, offering: applyOverrides(r.strongestNextStep.offering) }
-        : undefined,
+      groups: r.groups.map((g) => ({ ...g, offerings: prioritize(g.offerings.map(annotate)) })),
+      strongestNextStep: strongest,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showResult, track, answers, overrides, viewableKeys]);
+  }, [showResult, track, answers, overrides, viewableKeys, comingSoonKeys]);
 
   // Persist the prefill payload so /contact can hydrate from quiz context even
   // if the user navigates to a recommended workshop / Blue Door page first and
@@ -446,13 +509,20 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                 <p className="font-poppins text-lg text-navy font-semibold mb-2">
                   <BoldShiftName name={result.strongestNextStep.offering.name} />
                 </p>
+                {(result.strongestNextStep.offering as { isComingSoon?: boolean }).isComingSoon && (
+                  <p className="text-xs font-semibold text-gold mb-2">
+                    Launching soon — join the launch list on the card to be notified.
+                  </p>
+                )}
                 <Button asChild className={
                   result.strongestNextStep.kind === "blueDoor"
                     ? "bg-bluedoor text-white hover:bg-bluedoor/90"
                     : "bg-primary text-white hover:bg-primary/90"
                 }>
                   <Link to={result.strongestNextStep.offering.url} onClick={() => onOpenChange(false)}>
-                    Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                    {(result.strongestNextStep.offering as { isComingSoon?: boolean }).isComingSoon
+                      ? "See Details & Join List"
+                      : "Learn More"} <ArrowRight className="w-4 h-4 ml-1" />
                   </Link>
                 </Button>
               </div>
@@ -544,7 +614,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   );
 }
 
-function RecGroup({ heading, offerings, onClose, primary }: { heading: string; offerings: { key: string; name: string; blurb: string; url: string; tier: string }[]; onClose: () => void; primary?: boolean }) {
+function RecGroup({ heading, offerings, onClose, primary }: { heading: string; offerings: { key: string; name: string; blurb: string; url: string; tier: string; isComingSoon?: boolean }[]; onClose: () => void; primary?: boolean }) {
   return (
     <div className={`mt-4 ${primary ? "" : ""}`}>
       <h4 className="font-poppins text-base font-semibold text-navy mb-2">{heading}</h4>
@@ -555,10 +625,22 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
           const inner = (
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
-                <p className="font-semibold text-navy text-sm"><BoldShiftName name={o.name} /></p>
+                <p className="font-semibold text-navy text-sm">
+                  <BoldShiftName name={o.name} />
+                </p>
                 <p className="text-xs text-foreground/70 mt-0.5">{o.blurb}</p>
+                {o.isComingSoon && (
+                  <p className="text-[11px] font-semibold text-gold mt-1">
+                    Launching soon — join the launch list on the card.
+                  </p>
+                )}
               </div>
-              <span className="text-[10px] uppercase tracking-wider font-bold text-primary whitespace-nowrap mt-0.5">{o.tier === "Pathway B" ? "Workshop" : o.tier}</span>
+              <div className="flex flex-col items-end gap-1 whitespace-nowrap">
+                <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-0.5">{o.tier === "Pathway B" ? "Workshop" : o.tier}</span>
+                {o.isComingSoon && (
+                  <span className="text-[10px] uppercase tracking-wider font-bold text-gold">Coming soon</span>
+                )}
+              </div>
             </div>
           );
           if (isExternal) {
