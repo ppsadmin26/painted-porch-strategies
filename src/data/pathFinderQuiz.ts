@@ -750,7 +750,8 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
 
   // Speaking-topic candidates per RT. Only surfaced when admin has marked the
   // row Live + clickable; otherwise the group disappears entirely.
-  const speakingCandidates = SPEAKING_BY_RT[rt] ?? [];
+  // Admin RT-pool overrides (from path_finder_offerings.b2b_rt_pools) win over the constant.
+  const speakingCandidates = opts?.rtPools?.[rt]?.speaking ?? SPEAKING_BY_RT[rt] ?? [];
   const eligibleSpeaking = (filterable
     ? speakingCandidates.filter((k) => filterable.has(k))
     : speakingCandidates).slice(0, 3) as OfferingKey[];
@@ -772,7 +773,8 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
   }
 
   // Free Resources — up to 2, filtered to admin-eligible rows.
-  const freeCandidates = FREE_RESOURCES_BY_RT[rt] ?? [];
+  // Admin RT-pool overrides win over the constant.
+  const freeCandidates = opts?.rtPools?.[rt]?.free ?? FREE_RESOURCES_BY_RT[rt] ?? [];
   const eligibleFree = (filterable
     ? freeCandidates.filter((k) => filterable.has(k))
     : freeCandidates).slice(0, 2) as OfferingKey[];
