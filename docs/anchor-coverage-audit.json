@@ -1,21 +1,13 @@
 {
-  "generated_at": "2026-06-16T06:19:06.074Z",
+  "generated_at": "2026-06-16T06:19:20.547Z",
   "roots": [
     "src/pages",
     "src/components"
   ],
   "total_anchored": 63,
-  "present": 38,
-  "missing": 25,
+  "present": 39,
+  "missing": 24,
   "missing_by_destination": {
-    "/speaking/rob": [
-      {
-        "offering_key": "speaking88",
-        "anchor": "topic-8-8",
-        "name": "8:8 — Capturing & Keeping Attention (Keynote)",
-        "tier": "Speaking"
-      }
-    ],
     "/partner/amplify/workshops": [
       {
         "offering_key": "fromConflictToConnection",
@@ -170,15 +162,6 @@
     ]
   },
   "missing_detail": [
-    {
-      "offering_key": "speaking88",
-      "name": "8:8 — Capturing & Keeping Attention (Keynote)",
-      "tier": "Speaking",
-      "anchor": "topic-8-8",
-      "destination": "/speaking/rob",
-      "is_live": true,
-      "present": false
-    },
     {
       "offering_key": "fromConflictToConnection",
       "name": "From Conflict to Connection",
