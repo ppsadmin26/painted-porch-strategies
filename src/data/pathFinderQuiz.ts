@@ -607,7 +607,10 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         whyThisFits: cohort
           ? "You told us you want a live, cohort-based experience — so we picked the two Labs that target the team dynamics most leaders trip on: navigating conflict productively (Conflict to Connection) and calibrating expectations and accountability (Goldilocks). Both put you in a peer cohort where the work is the team, not the theory."
           : "You told us you want a self-paced path — so we picked the one course designed to give you the team-leadership playbook end to end. Create Extraordinary Teams covers the conditions, rhythms, and decisions that turn a group of capable people into a team that consistently performs.",
-        groups: [grp("Also Worth Exploring", "elementsOfATeam", "workingGenius", "kickTheHabit")],
+        groups: [
+          grp("Also Worth Exploring", "elementsOfATeam", "workingGenius", "kickTheHabit"),
+          grp("Free Starting Points", "stoicLeaderFieldGuide"),
+        ],
         whatComesNext: "As you build team-leadership capacity, two signals often emerge: toward change architecture, or toward organizational scale. When what you're building for your team is something your whole organization needs, that's a different conversation. We're ready for it.",
       };
     }
