@@ -634,6 +634,8 @@ export type Database = {
       path_finder_offerings: {
         Row: {
           anchor_id: string | null
+          b2b_rt_pools: Json
+          b2c_rt_pools: Json
           blurb: string
           created_at: string
           current_url: string
@@ -655,6 +657,8 @@ export type Database = {
         }
         Insert: {
           anchor_id?: string | null
+          b2b_rt_pools?: Json
+          b2c_rt_pools?: Json
           blurb: string
           created_at?: string
           current_url: string
@@ -676,6 +680,8 @@ export type Database = {
         }
         Update: {
           anchor_id?: string | null
+          b2b_rt_pools?: Json
+          b2c_rt_pools?: Json
           blurb?: string
           created_at?: string
           current_url?: string
