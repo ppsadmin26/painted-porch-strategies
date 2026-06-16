@@ -632,15 +632,12 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
       return {
         track: "b2c", resultType: rt, headline: "Explore Before Committing",
         subhead: "Start on Your Terms",
-        narrative: "You're paying attention, and that matters. Something is pulling you toward this work even if you're not yet sure what you need. That's a reasonable place to be. Start here. Take your time. There's no pressure to commit before you're ready, and there's a lot here that's free.",
+        narrative: "You're paying attention, and that's the move. Nothing in your answers pointed sharply at one gap, which means the right starting point isn't a program. It's one small, finishable thing that gives you a real win and helps the next answer get clearer. Start here. Finish it. Then come back to the quiz.",
+        primaryGroup: grp("Start Here", "kickTheHabitB2C"),
         groups: [
-          grp("If your inner game is the gap", "fiftyTwoStoicism", "burnoutResources", "meditationChallenge", "gratitudeChallenge"),
-          grp("If communication is the gap", "communicatingChangeWorkbook", "journalingChallenge"),
-          grp("If team or change leadership is on your mind", "strategicChangeCanvas", "stracticalMini", "kickTheHabitB2C"),
-          grp("Quick daily resets", "resolutionRemix", "workFromHomePro"),
-          grp("When you're ready to go deeper", "radicalMindfulnessMini", "masterYourMessageMini", "leadingChangeMini"),
+          grp("Free Starting Points", "fiftyTwoStoicism", "burnoutResources", "stracticalMini"),
         ],
-        whatComesNext: "Retake the P.A.T.H. Finder in 60–90 days. Or reach out directly. Sometimes the right starting point is a conversation, not a quiz.",
+        whatComesNext: "Retake the P.A.T.H. Finder in 60 to 90 days once you have more signal. Or reach out directly. Sometimes the right starting point is a conversation, not a quiz.",
       };
   }
 }
