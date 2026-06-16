@@ -375,7 +375,7 @@ export default function PPSHome() {
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
               Three dimensions that influence what your organization is built to
-              carry. When all three are structurally-sound and load-bearing, you&rsquo;re fortified and ready to design and built your next big now.
+              carry. When all three are structurally-sound and load-bearing, you&rsquo;re fortified and ready to design and build your next epic shIFt.
             </p>
           </div>
 
