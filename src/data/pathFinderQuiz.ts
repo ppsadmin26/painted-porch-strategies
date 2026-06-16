@@ -651,7 +651,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         primaryGroup: grp("Start Here", "kickTheHabitB2C"),
         whyThisFits: "Your answers didn't point sharply at one gap — so committing to a full program right now would be guessing. Kick the Habit is short, free, and finishable in a week. It gives you a real win and surfaces what actually trips you up, so the next time you take the quiz the signal is clearer. The free Starting Points are there if you want to sample other terrains.",
         groups: [
-          grp("Free Starting Points", "fiftyTwoStoicism", "burnoutResources", "stracticalMini"),
+          grp("Free Starting Points", "stoicLeaderFieldGuide", "fiftyTwoStoicism", "burnoutResources", "stracticalMini"),
         ],
         whatComesNext: "Retake the P.A.T.H. Finder in 60 to 90 days once you have more signal. Or reach out directly. Sometimes the right starting point is a conversation, not a quiz.",
       };
