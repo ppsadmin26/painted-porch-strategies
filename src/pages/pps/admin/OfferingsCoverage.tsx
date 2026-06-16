@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2, ExternalLink, Search, AlertTriangle, CheckCircle2, FileText, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import auditReport from "../../../../docs/offerings-duplication-audit.json";
+import anchorAudit from "../../../../docs/anchor-coverage-audit.json";
 
 type AuditReport = {
   generated_at: string;
