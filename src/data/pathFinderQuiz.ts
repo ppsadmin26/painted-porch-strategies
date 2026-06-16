@@ -801,10 +801,23 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
   };
 }
 
+// Replace any B2C group whose heading starts with "Free " using the admin RT-pool
+// override. Filtering against viewable keys happens later via applyViewableFilter.
+function applyB2cFreePoolOverride(r: QuizResult, rt: B2CResultType, opts?: BuildResultOptions): QuizResult {
+  const overrideKeys = opts?.rtPools?.[rt]?.free;
+  if (!overrideKeys || overrideKeys.length === 0) return r;
+  const newGroups = r.groups.map((g) =>
+    /^Free\b/i.test(g.heading)
+      ? { ...g, offerings: overrideKeys.map((k) => O[k]).filter(Boolean) }
+      : g
+  );
+  return { ...r, groups: newGroups };
+}
+
 export function buildResult(track: Track, answers: Answers, opts?: BuildResultOptions): QuizResult {
   if (track === "b2c") {
     const { resultType } = scoreB2C(answers);
-    const base = b2cResult(resultType, answers);
+    const base = applyB2cFreePoolOverride(b2cResult(resultType, answers), resultType, opts);
     // Post-process to drop offerings the admin hasn't marked clickable.
     // For B2C the primary group falls back to a safe default if filtered empty.
     const filtered = applyViewableFilter(base, opts?.viewableKeys);
