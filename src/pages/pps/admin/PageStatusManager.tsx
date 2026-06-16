@@ -257,9 +257,10 @@ export default function PageStatusManager() {
                     )}
                   </div>
                   <NoteEditor
-                    initial={entry.note ?? ""}
+                    initial={notesById[entry.id] ?? ""}
                     onSave={async (note) => {
                       await setStatus(entry.path, entry.status, note || null);
+                      setNotesById((m) => ({ ...m, [entry.id]: note || null }));
                       toast({ title: "Note saved" });
                     }}
                   />
@@ -277,7 +278,7 @@ export default function PageStatusManager() {
                     <Switch
                       checked={entry.status === "draft"}
                       onCheckedChange={async (checked) => {
-                        await setStatus(entry.path, checked ? "draft" : "live", entry.note);
+                        await setStatus(entry.path, checked ? "draft" : "live", notesById[entry.id] ?? null);
                         toast({
                           title: checked ? "Marked as draft" : "Marked as live",
                           description: entry.path,
