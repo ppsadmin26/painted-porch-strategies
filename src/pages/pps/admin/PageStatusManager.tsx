@@ -33,13 +33,26 @@ export default function PageStatusManager() {
   const [seoPaths, setSeoPaths] = useState<Set<string>>(new Set());
   const [seoEditPath, setSeoEditPath] = useState<string | null>(null);
   const [pageSearch, setPageSearch] = useState("");
+  /** Admin-only notes for page_status rows (column is revoked at the grant
+   *  level, so we hydrate via the dedicated SECURITY DEFINER RPC). */
+  const [notesById, setNotesById] = useState<Record<string, string | null>>({});
 
   const loadSeoPaths = async () => {
     const { data } = await supabase.from("page_seo").select("path");
     if (data) setSeoPaths(new Set(data.map((r) => r.path)));
   };
+  const loadAdminNotes = async () => {
+    const { data, error } = await supabase.rpc("admin_list_page_status_notes");
+    if (error || !data) return;
+    const next: Record<string, string | null> = {};
+    for (const row of data as Array<{ id: string; note: string | null }>) {
+      next[row.id] = row.note;
+    }
+    setNotesById(next);
+  };
   useEffect(() => {
     loadSeoPaths();
+    loadAdminNotes();
   }, []);
 
   const sitemapPaths = useMemo(
