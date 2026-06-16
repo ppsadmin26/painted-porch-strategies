@@ -147,6 +147,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const [submitted, setSubmitted] = useState(false);
   const [viewableKeys, setViewableKeys] = useState<Set<string> | null>(null);
   const [comingSoonKeys, setComingSoonKeys] = useState<Set<string>>(new Set());
+  const [featuredKeys, setFeaturedKeys] = useState<Set<string>>(new Set());
 
   const { questions, track } = useMemo(() => buildQuestionPath(answers), [answers]);
   const current = questions[index];
@@ -174,7 +175,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       const [offeringsRes, draftsRes, launchRes] = await Promise.all([
         supabase
           .from("path_finder_offerings")
-          .select("offering_key, is_live, current_url, dedicated_url, anchor_id, launch_slug"),
+          .select("offering_key, is_live, current_url, dedicated_url, anchor_id, launch_slug, is_featured_in_quiz"),
         supabase
           .from("page_status")
           .select("path")
@@ -239,6 +240,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       };
       const eligible: string[] = [];
       const soon = new Set<string>();
+      const featured = new Set<string>();
       for (const r of offeringsRes.data as Array<{
         offering_key: string;
         is_live: boolean;
@@ -246,6 +248,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         dedicated_url: string | null;
         anchor_id: string | null;
         launch_slug: string | null;
+        is_featured_in_quiz: boolean | null;
       }>) {
         const hasDest =
           (r.current_url && r.current_url.trim().length > 0) ||
@@ -270,9 +273,11 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         if (effectiveComingSoon && !effectiveLive) {
           soon.add(r.offering_key);
         }
+        if (r.is_featured_in_quiz) featured.add(r.offering_key);
       }
       setViewableKeys(new Set(eligible));
       setComingSoonKeys(soon);
+      setFeaturedKeys(featured);
     })();
     return () => { cancelled = true; };
   }, [open, viewableKeys]);
@@ -297,7 +302,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
   const result: QuizResult | null = useMemo(() => {
     if (!showResult || !track) return null;
-    const r = buildResult(track, answers, { viewableKeys: viewableKeys ?? undefined, rtPools });
+    const r = buildResult(track, answers, { viewableKeys: viewableKeys ?? undefined, rtPools, featuredKeys });
     // If the Strongest Next Step is coming-soon but a live primary pick exists,
     // promote the first live primary pick into the strongest slot so users get
     // something they can begin right now.
@@ -326,7 +331,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       strongestNextStep: strongest,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showResult, track, answers, overrides, viewableKeys, comingSoonKeys, rtPools]);
+  }, [showResult, track, answers, overrides, viewableKeys, comingSoonKeys, rtPools, featuredKeys]);
 
   // Persist the prefill payload so /contact can hydrate from quiz context even
   // if the user navigates to a recommended workshop / Blue Door page first and
@@ -654,7 +659,7 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
                 )}
               </div>
               <div className="flex flex-col items-end gap-1 whitespace-nowrap">
-                <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-0.5">{o.tier === "Pathway B" ? "Workshop" : o.tier}</span>
+                <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-0.5">{o.tier}</span>
                 {o.isComingSoon && (
                   <span className="text-[10px] uppercase tracking-wider font-bold text-gold">Coming soon</span>
                 )}

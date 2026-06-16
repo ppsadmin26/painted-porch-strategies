@@ -70,7 +70,7 @@ interface Row {
 const TIER_COLORS: Record<string, string> = {
   IGNITE: "bg-gold/15 text-gold-foreground border-gold/40",
   AMPLIFY: "bg-purple/15 text-purple border-purple/40",
-  "Pathway B": "bg-strategic/15 text-strategic border-strategic/40",
+  Workshop: "bg-strategic/15 text-strategic border-strategic/40",
   "Blue Door": "bg-bluedoor/15 text-bluedoor border-bluedoor/40",
   Free: "bg-lime/15 text-lime-foreground border-lime/40",
   Assessment: "bg-raspberry/10 text-raspberry border-raspberry/40",

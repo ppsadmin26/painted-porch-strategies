@@ -47,7 +47,7 @@ interface LaunchOption {
   program_type: string;
 }
 
-const TIER_OPTIONS = ["Free", "IGNITE", "AMPLIFY", "Pathway B", "Blue Door", "Speaking", "Assessment"] as const;
+const TIER_OPTIONS = ["Free", "IGNITE", "AMPLIFY", "Workshop", "Blue Door", "Speaking", "Assessment"] as const;
 const B2C_RTS = ["RT1", "RT2", "RT3", "RT4", "RT5", "RT6"] as const;
 const B2B_RTS = ["RT-A", "RT-B", "RT-C", "RT-D", "RT-E"] as const;
 
@@ -55,7 +55,7 @@ const B2B_RTS = ["RT-A", "RT-B", "RT-C", "RT-D", "RT-E"] as const;
 const TIER_COLORS: Record<string, string> = {
   IGNITE: "bg-gold/15 text-gold-foreground border-gold/40",
   AMPLIFY: "bg-purple/15 text-purple border-purple/40",
-  "Pathway B": "bg-strategic/15 text-strategic border-strategic/40",
+  Workshop: "bg-strategic/15 text-strategic border-strategic/40",
   "Blue Door": "bg-bluedoor/15 text-bluedoor border-bluedoor/40",
   Free: "bg-lime/15 text-lime-foreground border-lime/40",
   Assessment: "bg-raspberry/10 text-raspberry border-raspberry/40",
@@ -274,6 +274,15 @@ export default function PathFinderOfferings() {
           <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
             Every recommendation the quiz can surface. Flip <strong>Live</strong> on once a dedicated page exists — the quiz will start linking there instantly. Use <strong>Anchor</strong> to deep-link into a card on the hub page in the meantime.
           </p>
+          <details className="mt-2 max-w-3xl text-xs text-muted-foreground">
+            <summary className="cursor-pointer font-poppins font-semibold text-navy">How this page actually drives the quiz</summary>
+            <div className="mt-2 space-y-1.5 pl-2 border-l-2 border-primary/30">
+              <p><strong>Eligibility (all tiers):</strong> An offering can only appear in a quiz result if it is <em>Live</em> AND has at least one URL or anchor. This page controls that.</p>
+              <p><strong>RT mapping (Free + Speaking only):</strong> Tick which result types (RT1-6 for B2C, RT-A-E for B2B) the offering should appear in. Other tiers (IGNITE, AMPLIFY, Workshop, Blue Door, Assessment) are placed automatically by the quiz engine based on the result type — the RT box on those cards will say "placed automatically".</p>
+              <p><strong>Prioritize in quiz:</strong> Pins this offering to position 1 of the primary recommendation list whenever it is already in that list for the matched result.</p>
+              <p><strong>Topic tag:</strong> Used by the workshops hub accordion only. It does <em>not</em> drive quiz routing — RT mapping does.</p>
+            </div>
+          </details>
         </div>
         <div className="flex gap-2 items-center">
           <div className="relative">
@@ -595,7 +604,7 @@ export default function PathFinderOfferings() {
                     />
                   </div>
                   <div>
-                    <Label className="text-xs">Topic tag (shown on workshop hub)</Label>
+                    <Label className="text-xs">Topic tag (workshop hub only — does not drive quiz routing)</Label>
                     <select
                       value={valueOf(row, "topic") ?? ""}
                       onChange={(e) => patch(row.id, { topic: e.target.value || null })}
@@ -607,7 +616,7 @@ export default function PathFinderOfferings() {
                       <option value="Leadership & EQ">Leadership & EQ</option>
                       <option value="Philosophy">Philosophy</option>
                       <option value="Teams">Teams</option>
-                      <option value="Wellbeing & Resilience">Wellbeing & Resilience</option>
+                      <option value="Mindset & Resilience">Mindset & Resilience</option>
                     </select>
                   </div>
                 </div>
@@ -643,9 +652,9 @@ export default function PathFinderOfferings() {
                     onCheckedChange={(v) => patch(row.id, { is_featured_in_quiz: v })}
                   />
                   <Label htmlFor={`featured-${row.id}`} className="text-sm">
-                    <strong>Prioritize in P.A.T.H.finder quiz</strong>
+                    <strong>Pin to top of primary list in P.A.T.H.finder quiz</strong>
                     <span className="block text-xs text-muted-foreground">
-                      Eligibility is automatic: any offering that is Live AND has a URL or anchor set below will appear in quiz results. Turn this on to promote it ahead of other eligible options when the result matches.
+                      When this offering already appears in a result's primary recommendation list, pin it to position 1. Eligibility (Live + has URL/anchor) still applies. Does not force it into lists it isn't already in.
                     </span>
                   </Label>
                 </div>
@@ -749,7 +758,7 @@ interface RtPoolEditorProps {
 }
 
 // Which tiers the RT-pool editor actually controls.
-// Other tiers (Pathway B workshops, IGNITE courses, AMPLIFY labs, EMBODY, Blue Door,
+// Other tiers (Workshop, IGNITE courses, AMPLIFY labs, EMBODY, Blue Door,
 // Assessment, Free guides not in a curated pool) are placed by the quiz engine via
 // hardcoded result-type maps + the global Live + URL allowlist.
 function rtPoolMode(tier: string): "free" | "speaking" | "none" {
@@ -799,7 +808,7 @@ function RtPoolEditor({ tier, b2cValue, b2bValue, onB2cChange, onB2bChange }: Rt
 
       {mode === "free" && (
         <div className="space-y-1">
-          <div className="text-xs font-poppins font-semibold text-navy">B2C results (individual leader)</div>
+          <div className="text-xs font-poppins font-semibold text-navy">B2C results (individual leader) <span className="font-normal text-muted-foreground">— appears in the "Free Starting Points" sub-group, never the primary recommendation.</span></div>
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {B2C_RTS.map((rt) => {
               const on = (b2cValue[rt] ?? []).includes("free");
