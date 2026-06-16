@@ -251,6 +251,16 @@ export default function CourseLaunchManager() {
           <AlertDescription>
             No launch row matches <code className="font-mono text-sm">{focusSlug}</code>. It may have
             been renamed or deleted. Update the offering's launch link or create the launch entry first.
+            {linkedOffering && (
+              <span className="block mt-1">
+                <Link
+                  to={`/admin/path-finder-offerings?filter=${encodeURIComponent(linkedOffering.offering_key)}`}
+                  className="underline font-medium"
+                >
+                  Open "{linkedOffering.name}" in Offerings →
+                </Link>
+              </span>
+            )}
           </AlertDescription>
         </Alert>
       )}
