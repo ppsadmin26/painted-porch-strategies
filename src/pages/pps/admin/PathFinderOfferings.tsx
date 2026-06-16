@@ -27,6 +27,14 @@ interface Row {
   topic: string | null;
   include_in_workshops: boolean;
   is_featured_in_quiz: boolean;
+  launch_slug: string | null;
+}
+
+interface LaunchOption {
+  slug: string;
+  course_name: string;
+  status: "coming_soon" | "live";
+  program_type: string;
 }
 
 
