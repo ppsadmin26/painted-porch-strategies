@@ -678,7 +678,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     ? "Your situation also includes an individual-leader development thread. The Stractical Leader Lab (AMPLIFY, individual track) is built for exactly that strategic-tactical integration work. Have those individual leaders take the P.A.T.H. Finder on their own track."
     : undefined;
 
-  let headline = "", narrative = "", primaryHeading = "", primaryKeys: OfferingKey[] = [];
+  let headline = "", narrative = "", primaryHeading = "", primaryKeys: OfferingKey[] = [], whyThisFits = "";
   const extra: RecommendationGroup[] = [];
 
   if (rt === "RT-A") {
@@ -686,27 +686,32 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     narrative = "Your responses point clearly to the team. Not the strategy, not the systems — the people dynamics underneath the work. Whether it's conflict that keeps surfacing, collaboration that's harder than it should be, or team patterns that are costing more than you want to admit, this is addressable. A workshop is a strong starting point. The Blue Door Organizational Appraisal is the prerequisite for any deeper, multi-team engagement and gives you the architecture map before you commit.";
     primaryHeading = "Team Dynamics — Conflict, Friction, and Collaboration";
     primaryKeys = ["masterYourMessageB2B", "radicalMindfulnessB2B", "stoicismB2B"];
+    whyThisFits = "Your signal is people dynamics, not strategy or systems — so we picked workshops that work directly on the team-level behaviors driving the friction. Master Your Message addresses how people talk to each other (the most common source of repeat conflict). Radical Mindfulness installs the self-awareness teams need to stop reacting and start responding. Stoicism gives a shared operating system for handling disagreement well. Blue Door is the prerequisite when you're ready to address what's underneath those dynamics structurally.";
   } else if (rt === "RT-B") {
     headline = "Change & Transformation";
     narrative = "Your organization is moving through something significant, or about to. The question isn't whether the change is necessary, but whether your leaders and your organization have the architecture to carry it. A workshop can get traction quickly. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and surfaces the structural readiness gaps a workshop alone won't address.";
     primaryHeading = "Change Leadership — Frameworks for Leading Transformation";
     primaryKeys = ["pathToLastingChange", "architectureOfAdaptability", "cultivatingChangeResilience"];
+    whyThisFits = "Your signal is active or imminent change — so we picked the three workshops that give your leaders the frameworks change actually requires. The P.A.T.H.™ to Lasting Change is the end-to-end method (Prepare, Align, Take Off, Habit). Architecture of Adaptability builds the structural lens for what holds and what breaks. Cultivating Change Resilience addresses the human cost of sustained change. Blue Door surfaces the readiness gaps a workshop alone will paper over.";
   } else if (rt === "RT-C") {
     headline = "Leadership Capability";
     narrative = "The challenge you're describing is a capability gap. Your leaders need to develop, and you need a way to build that capacity that actually holds rather than fades after the training day ends. A workshop is a good first move. The Blue Door Organizational Appraisal is the prerequisite for any deeper engagement and shows you which capabilities the architecture is quietly blocking.";
     primaryHeading = "Leadership Capability — How Leaders Show Up";
     primaryKeys = ["leadershipOM", "stracticalLeader", "architectureOfAdaptability"];
+    whyThisFits = "Your signal is leadership capability — how your leaders actually show up. So we picked workshops that target the three biggest gaps we see: a clear operating model for leadership (Leadership OM), the strategy-to-tactics translation most leaders struggle with (Stractical Leader), and the structural lens that separates leaders who build durability from leaders who only manage activity (Architecture of Adaptability). Blue Door shows which of those gaps your architecture is quietly creating.";
   } else if (rt === "RT-D") {
     headline = "Strategic / Architectural";
     narrative = "What you're describing isn't a program gap or training need. It's an architectural question: whether your organization's current identity is built to carry what you're trying to create. The Blue Door Organizational Appraisal is where organizations at strategic inflection points begin, and it's the prerequisite for any deeper engagement with us.";
     primaryHeading = "Workshops — Activate Your Team While the Appraisal Work Is Underway";
     primaryKeys = ["architectChange", "architectureOfAdaptability", "pathToLastingChange"];
+    whyThisFits = "Your signal is architectural — which is why Blue Door is the real next step, not a workshop. The workshops we picked are the ones that activate your team in parallel with that appraisal work, so momentum doesn't stall: Architect Change builds the design discipline, Architecture of Adaptability gives leaders the structural lens, and the P.A.T.H.™ to Lasting Change gives the org a shared method. None of them replace the appraisal — they make the most of the time it takes.";
   } else {
     // RT-E
     headline = "Exploring Your Options";
     narrative = "You're in the right place even if you're not sure exactly what you need yet. Organizational development rarely announces itself with a clear brief. Start with a defined experience that gives your team traction and a shared framework. When you're ready to go deeper, the Blue Door Organizational Appraisal is the prerequisite for any larger engagement and the fastest way to see your architecture clearly.";
     primaryHeading = "Workshops to Start With";
     primaryKeys = ["pathToLastingChange", "architectureOfAdaptability", "leadershipOM"];
+    whyThisFits = "You don't have a sharp signal yet — so committing to a deep engagement now would be guessing. The workshops we picked are the three highest-leverage starting points across most organizations: a shared change method (P.A.T.H.™ to Lasting Change), a structural lens (Architecture of Adaptability), and a leadership operating model (Leadership OM). Any of them gives your team traction and surfaces which signal is actually loudest. Blue Door is there when that signal sharpens.";
   }
 
   // `extra` and secondary-signal flags are intentionally not surfaced —
