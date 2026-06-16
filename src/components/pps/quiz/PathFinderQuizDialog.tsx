@@ -425,6 +425,13 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
             <h2 className="font-poppins text-3xl text-navy mb-4">{result.headline}</h2>
             <p className="text-foreground leading-relaxed mb-6">{result.narrative}</p>
 
+            {result.whyThisFits && (
+              <div className="mb-6 p-4 rounded-lg border-l-4 border-primary bg-primary/5">
+                <p className="text-xs uppercase tracking-wider text-primary font-semibold mb-1">Why this fits your answers</p>
+                <p className="text-sm text-navy leading-relaxed">{result.whyThisFits}</p>
+              </div>
+            )}
+
             {result.strongestNextStep && (
               <div className={`p-4 rounded-lg border-2 mb-6 ${
                 result.strongestNextStep.kind === "blueDoor"
