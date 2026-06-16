@@ -49,6 +49,11 @@ export default function CourseLaunchManager() {
   const [highlightedSlug, setHighlightedSlug] = useState<string | null>(null);
   const rowRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
+  const slugNotFound = useMemo(
+    () => !!focusSlug && !loading && rows.length > 0 && !rows.some((r) => r.slug === focusSlug),
+    [focusSlug, loading, rows],
+  );
+
   // Scroll to + briefly highlight a row when ?slug=... is in the URL
   // (deep-link from /admin/offerings → "Manage").
   useEffect(() => {
