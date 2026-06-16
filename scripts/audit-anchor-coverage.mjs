@@ -121,8 +121,8 @@ async function main() {
     process.exit(1);
   }
 
-  const ids = collectIds();
-  console.log(`Collected ${ids.size} candidate ids across ${ROOTS.join(", ")}`);
+  const pools = buildPools();
+  console.log(`Pools: ${pools.staticIds.size} static ids, ${pools.slugPool.size} slugs, ${pools.templates.length} templates.`);
 
   const rows = data ?? [];
   const anchored = [];
