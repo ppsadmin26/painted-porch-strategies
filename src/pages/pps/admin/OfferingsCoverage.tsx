@@ -28,6 +28,12 @@ type AnchorAudit = {
   present: number;
   missing: number;
   missing_by_destination: Record<string, Array<{ offering_key: string; anchor: string; name: string; tier: string }>>;
+  launches?: {
+    total_linked: number;
+    known_slugs: number;
+    broken: number;
+    broken_detail: Array<{ offering_key: string; name: string; tier: string; launch_slug: string; is_live: boolean }>;
+  };
 };
 
 const ANCHOR_AUDIT = anchorAudit as AnchorAudit;
@@ -58,6 +64,7 @@ interface Row {
   topic: string | null;
   include_in_workshops: boolean;
   is_featured_in_quiz: boolean;
+  launch_slug: string | null;
 }
 
 const TIER_COLORS: Record<string, string> = {
@@ -84,6 +91,7 @@ function isQuizEligible(r: Row): boolean {
 
 export default function OfferingsCoverage() {
   const [rows, setRows] = useState<Row[]>([]);
+  const [launchSlugs, setLaunchSlugs] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
   const [audit, setAudit] = useState<AuditReport>(auditReport as AuditReport);
@@ -111,15 +119,26 @@ export default function OfferingsCoverage() {
 
   useEffect(() => {
     (async () => {
-      const { data } = await supabase
-        .from("path_finder_offerings")
-        .select("*")
-        .order("topic", { nullsFirst: false })
-        .order("sort_order");
-      setRows((data ?? []) as Row[]);
+      const [offRes, launchRes] = await Promise.all([
+        supabase
+          .from("path_finder_offerings")
+          .select("*")
+          .order("topic", { nullsFirst: false })
+          .order("sort_order"),
+        supabase.from("course_launch_status").select("slug"),
+      ]);
+      setRows((offRes.data ?? []) as Row[]);
+      setLaunchSlugs(new Set((launchRes.data ?? []).map((l: { slug: string }) => l.slug)));
       setLoading(false);
     })();
   }, []);
+
+  const brokenLaunches = useMemo(() => {
+    if (launchSlugs.size === 0) return [] as Array<{ row: Row; slug: string }>;
+    return rows
+      .filter((r) => r.launch_slug && !launchSlugs.has(r.launch_slug))
+      .map((r) => ({ row: r, slug: r.launch_slug as string }));
+  }, [rows, launchSlugs]);
 
   const filtered = useMemo(() => {
     if (!filter) return rows;
@@ -310,6 +329,69 @@ export default function OfferingsCoverage() {
           </div>
         </div>
       </div>
+
+      {/* Launch link integrity — live cross-check between path_finder_offerings.launch_slug
+          and course_launch_status.slug. Catches drift if a launch row is renamed or deleted. */}
+      <div className={`mb-6 rounded-lg border p-4 ${brokenLaunches.length > 0 ? "border-raspberry/40 bg-raspberry/5" : "border-lime/30 bg-lime/5"}`}>
+        <div className="flex items-start gap-3">
+          {brokenLaunches.length > 0 ? (
+            <AlertTriangle className="w-5 h-5 text-raspberry mt-0.5 shrink-0" />
+          ) : (
+            <CheckCircle2 className="w-5 h-5 text-lime-foreground mt-0.5 shrink-0" />
+          )}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h2 className="font-poppins font-semibold text-navy">Launch link integrity</h2>
+              <Badge
+                variant="outline"
+                className={
+                  brokenLaunches.length > 0
+                    ? "bg-raspberry/10 text-raspberry border-raspberry/40"
+                    : "bg-lime/10 text-lime-foreground border-lime/40"
+                }
+              >
+                {brokenLaunches.length === 0
+                  ? `all ${rows.filter((r) => !!r.launch_slug).length} resolved`
+                  : `${brokenLaunches.length} broken`}
+              </Badge>
+              <span className="text-xs text-muted-foreground">live check</span>
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              Each offering with a <code>launch_slug</code> is checked against{" "}
+              <code>course_launch_status</code>. Broken links cause the quiz to silently
+              fall back to the <strong>Live</strong> toggle. Fix on{" "}
+              <Link to="/admin/path-finder" className="text-primary underline">
+                P.A.T.H. Finder Offerings
+              </Link>{" "}
+              (filter to "Broken launch link") or repoint via the launch_slug dropdown.
+            </p>
+            {brokenLaunches.length > 0 && (
+              <ul className="mt-3 space-y-1 text-xs">
+                {brokenLaunches.map(({ row, slug }) => (
+                  <li key={row.id} className="rounded border bg-background px-3 py-2 flex items-center justify-between gap-2 flex-wrap">
+                    <span className="text-navy">
+                      <span className="font-medium">{row.name}</span>{" "}
+                      <code className="text-muted-foreground">({row.offering_key})</code>
+                    </span>
+                    <span className="inline-flex items-center gap-2">
+                      <span className="text-muted-foreground">missing slug</span>
+                      <code className="text-raspberry">{slug}</code>
+                      <Link
+                        to={`/admin/course-launches?slug=${encodeURIComponent(slug)}`}
+                        className="text-primary hover:underline"
+                      >
+                        Open in launches
+                      </Link>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      </div>
+
+
 
       {/* Summary cards */}
       <div className="grid grid-cols-2 md:grid-cols-7 gap-3 mb-8">

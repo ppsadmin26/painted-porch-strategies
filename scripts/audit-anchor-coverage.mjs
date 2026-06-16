@@ -134,18 +134,38 @@ async function main() {
   const supa = createClient(PPS_URL, PPS_SERVICE_KEY, { auth: { persistSession: false } });
   const { data, error } = await supa
     .from("path_finder_offerings")
-    .select("offering_key, name, tier, current_url, dedicated_url, anchor_id, is_live");
+    .select("offering_key, name, tier, current_url, dedicated_url, anchor_id, is_live, launch_slug");
   if (error) {
     console.error("Failed to read path_finder_offerings:", error.message);
     process.exit(1);
   }
+
+  // Pull known launch slugs so we can cross-check launch_slug FKs.
+  const { data: launchRows, error: launchErr } = await supa
+    .from("course_launch_status")
+    .select("slug, course_name, status");
+  if (launchErr) {
+    console.error("Failed to read course_launch_status:", launchErr.message);
+    process.exit(1);
+  }
+  const launchSlugs = new Set((launchRows ?? []).map((l) => l.slug));
 
   const pools = buildPools();
   console.log(`Pools: ${pools.staticIds.size} static ids, ${pools.slugPool.size} slugs, ${pools.templates.length} templates.`);
 
   const rows = data ?? [];
   const anchored = [];
+  const brokenLaunches = [];
   for (const r of rows) {
+    if (r.launch_slug && !launchSlugs.has(r.launch_slug)) {
+      brokenLaunches.push({
+        offering_key: r.offering_key,
+        name: r.name,
+        tier: r.tier,
+        launch_slug: r.launch_slug,
+        is_live: r.is_live,
+      });
+    }
     const anchors = new Set();
     if (r.anchor_id && r.anchor_id.trim()) anchors.add(r.anchor_id.trim());
     const h1 = hashOf(r.current_url);
@@ -186,6 +206,12 @@ async function main() {
     missing: missing.length,
     missing_by_destination: byPage,
     missing_detail: missing,
+    launches: {
+      total_linked: rows.filter((r) => !!r.launch_slug).length,
+      known_slugs: launchSlugs.size,
+      broken: brokenLaunches.length,
+      broken_detail: brokenLaunches,
+    },
   };
 
   const out = "docs/anchor-coverage-audit.json";
@@ -196,6 +222,12 @@ async function main() {
     console.log("Missing anchors:");
     for (const m of missing) {
       console.log(`  - ${m.tier.padEnd(10)} ${m.offering_key}  #${m.anchor}  → ${m.destination ?? "(no dest)"}`);
+    }
+  }
+  if (brokenLaunches.length) {
+    console.log(`Broken launch_slug links: ${brokenLaunches.length}`);
+    for (const b of brokenLaunches) {
+      console.log(`  - ${b.tier.padEnd(10)} ${b.offering_key}  launch_slug=${b.launch_slug} (not found)`);
     }
   }
 }
