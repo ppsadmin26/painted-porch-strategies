@@ -41,7 +41,7 @@ export const OFFERINGS = {
   talkingToStrangers: { key: "talkingToStrangers", name: "Talking to Strangers (Masterclass)", facilitator: "Rob", tier: "IGNITE", url: "/talking-to-strangers", blurb: "Authentic connection in unfamiliar contexts." },
   createExtraordinaryTeams: { key: "createExtraordinaryTeams", name: "Create Extraordinary Teams", facilitator: "Painted Porch Team", tier: "IGNITE", url: "/extraordinary-teams", blurb: "Deep, comprehensive program on team dynamics that work." },
   elementsOfATeam: { key: "elementsOfATeam", name: "Elements of a Team (Masterclass)", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Core components of team health. Strong as precursor or standalone." },
-  leadingChangeMini: { key: "leadingChangeMini", name: "Leading Change Mini Course", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/courses", blurb: "Change leadership fundamentals: how change works, where resistance comes from." },
+  leadingChangeMini: { key: "leadingChangeMini", name: "Leading Change Mini Course", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/masterclasses#mc-leading-change-mini", blurb: "Change leadership fundamentals: how change works, where resistance comes from." },
 
   // ===== B2C AMPLIFY Labs =====
   conflictToConnectionLab: { key: "conflictToConnectionLab", name: "From Conflict to Connection Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-conflict-to-connection", blurb: "Peer cohort tackling team friction at the relational and structural root." },
