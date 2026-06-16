@@ -614,7 +614,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   );
 }
 
-function RecGroup({ heading, offerings, onClose, primary }: { heading: string; offerings: { key: string; name: string; blurb: string; url: string; tier: string }[]; onClose: () => void; primary?: boolean }) {
+function RecGroup({ heading, offerings, onClose, primary }: { heading: string; offerings: { key: string; name: string; blurb: string; url: string; tier: string; isComingSoon?: boolean }[]; onClose: () => void; primary?: boolean }) {
   return (
     <div className={`mt-4 ${primary ? "" : ""}`}>
       <h4 className="font-poppins text-base font-semibold text-navy mb-2">{heading}</h4>
@@ -625,10 +625,22 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
           const inner = (
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
-                <p className="font-semibold text-navy text-sm"><BoldShiftName name={o.name} /></p>
+                <p className="font-semibold text-navy text-sm">
+                  <BoldShiftName name={o.name} />
+                </p>
                 <p className="text-xs text-foreground/70 mt-0.5">{o.blurb}</p>
+                {o.isComingSoon && (
+                  <p className="text-[11px] font-semibold text-gold mt-1">
+                    Launching soon — join the launch list on the card.
+                  </p>
+                )}
               </div>
-              <span className="text-[10px] uppercase tracking-wider font-bold text-primary whitespace-nowrap mt-0.5">{o.tier === "Pathway B" ? "Workshop" : o.tier}</span>
+              <div className="flex flex-col items-end gap-1 whitespace-nowrap">
+                <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-0.5">{o.tier === "Pathway B" ? "Workshop" : o.tier}</span>
+                {o.isComingSoon && (
+                  <span className="text-[10px] uppercase tracking-wider font-bold text-gold">Coming soon</span>
+                )}
+              </div>
             </div>
           );
           if (isExternal) {
