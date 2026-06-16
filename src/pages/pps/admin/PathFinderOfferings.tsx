@@ -8,8 +8,16 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Save, ExternalLink, Search, AlertTriangle } from "lucide-react";
+import { Loader2, Save, ExternalLink, Search, AlertTriangle, Plus } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface Row {
   id: string;
@@ -75,6 +83,94 @@ export default function PathFinderOfferings() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState(searchParams.get("filter") ?? "");
   const [showOnly, setShowOnly] = useState<"all" | "needs-page" | "live" | "broken-launch">("all");
+  const [newOpen, setNewOpen] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [newRow, setNewRow] = useState({
+    offering_key: "",
+    name: "",
+    tier: "Free" as (typeof TIER_OPTIONS)[number],
+    current_url: "",
+    dedicated_url: "",
+    anchor_id: "",
+    topic: "",
+    blurb: "",
+    is_live: true,
+  });
+  const [keyManuallyEdited, setKeyManuallyEdited] = useState(false);
+
+  const slugifyKey = (s: string) =>
+    s
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 60);
+
+  const resetNew = () => {
+    setNewRow({
+      offering_key: "",
+      name: "",
+      tier: "Free",
+      current_url: "",
+      dedicated_url: "",
+      anchor_id: "",
+      topic: "",
+      blurb: "",
+      is_live: true,
+    });
+    setKeyManuallyEdited(false);
+  };
+
+  const createOffering = async () => {
+    const key = newRow.offering_key.trim();
+    const name = newRow.name.trim();
+    if (!name) {
+      toast({ title: "Name required", variant: "destructive" });
+      return;
+    }
+    if (!/^[a-zA-Z0-9_-]+$/.test(key)) {
+      toast({ title: "Invalid key", description: "Use letters, numbers, dashes, underscores only.", variant: "destructive" });
+      return;
+    }
+    if (rows.some((r) => r.offering_key === key)) {
+      toast({ title: "Key already exists", description: "Pick a unique offering key.", variant: "destructive" });
+      return;
+    }
+    const maxSort = rows.reduce((m, r) => Math.max(m, r.sort_order ?? 0), 0);
+    setCreating(true);
+    const { data, error } = await supabase
+      .from("path_finder_offerings")
+      .insert({
+        offering_key: key,
+        name,
+        tier: newRow.tier,
+        blurb: newRow.blurb || "",
+        current_url: newRow.current_url || "",
+        dedicated_url: newRow.dedicated_url || null,
+        anchor_id: newRow.anchor_id || null,
+        topic: newRow.topic || null,
+        is_live: newRow.is_live,
+        sort_order: maxSort + 10,
+        b2c_rt_pools: {},
+        b2b_rt_pools: {},
+      } as any)
+      .select()
+      .single();
+    setCreating(false);
+    if (error) {
+      toast({ title: "Create failed", description: error.message, variant: "destructive" });
+      return;
+    }
+    toast({ title: "Offering created", description: "Map it to RT pools below." });
+    setNewOpen(false);
+    resetNew();
+    await load();
+    // Scroll the new card into view
+    setTimeout(() => {
+      const el = document.getElementById(`offering-${(data as any).id}`);
+      el?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 200);
+  };
 
   const load = async () => {
     setLoading(true);
@@ -199,8 +295,123 @@ export default function PathFinderOfferings() {
             <option value="live">Live ({rows.filter(r => r.is_live).length})</option>
             <option value="broken-launch">Broken launch link ({brokenRows.length})</option>
           </select>
+          <Button
+            size="sm"
+            onClick={() => setNewOpen(true)}
+            className="bg-primary text-white hover:bg-primary/90"
+          >
+            <Plus className="w-4 h-4 mr-1" /> New offering
+          </Button>
         </div>
       </div>
+
+      <Dialog open={newOpen} onOpenChange={(o) => { setNewOpen(o); if (!o) resetNew(); }}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>New offering</DialogTitle>
+            <DialogDescription>
+              Create a new offering. After saving, map it to B2C / B2B RT pools on its card to surface it in quiz results.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3">
+            <div>
+              <Label className="text-xs">Display name *</Label>
+              <Input
+                value={newRow.name}
+                onChange={(e) => {
+                  const name = e.target.value;
+                  setNewRow((r) => ({
+                    ...r,
+                    name,
+                    offering_key: keyManuallyEdited ? r.offering_key : slugifyKey(name),
+                  }));
+                }}
+                placeholder="The Stoic Leader Field Guide"
+              />
+            </div>
+            <div>
+              <Label className="text-xs">Offering key * (unique, letters/numbers/-/_)</Label>
+              <Input
+                value={newRow.offering_key}
+                onChange={(e) => {
+                  setKeyManuallyEdited(true);
+                  setNewRow((r) => ({ ...r, offering_key: e.target.value }));
+                }}
+                placeholder="stoic-leader-field-guide"
+                className="font-mono text-xs"
+              />
+            </div>
+            <div>
+              <Label className="text-xs">Tier *</Label>
+              <select
+                value={newRow.tier}
+                onChange={(e) => setNewRow((r) => ({ ...r, tier: e.target.value as any }))}
+                className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
+              >
+                {TIER_OPTIONS.map((t) => <option key={t} value={t}>{t}</option>)}
+              </select>
+            </div>
+            <div>
+              <Label className="text-xs">Blurb</Label>
+              <Textarea
+                rows={2}
+                value={newRow.blurb}
+                onChange={(e) => setNewRow((r) => ({ ...r, blurb: e.target.value }))}
+                placeholder="One short line shown under the name."
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <Label className="text-xs">Hub URL</Label>
+                <Input
+                  value={newRow.current_url}
+                  onChange={(e) => setNewRow((r) => ({ ...r, current_url: e.target.value }))}
+                  placeholder="/partner/ignite"
+                />
+              </div>
+              <div>
+                <Label className="text-xs">Dedicated URL</Label>
+                <Input
+                  value={newRow.dedicated_url}
+                  onChange={(e) => setNewRow((r) => ({ ...r, dedicated_url: e.target.value }))}
+                  placeholder="/stoic-field-guide"
+                />
+              </div>
+              <div>
+                <Label className="text-xs">Anchor ID</Label>
+                <Input
+                  value={newRow.anchor_id}
+                  onChange={(e) => setNewRow((r) => ({ ...r, anchor_id: e.target.value }))}
+                  placeholder="optional"
+                />
+              </div>
+              <div>
+                <Label className="text-xs">Topic tag</Label>
+                <Input
+                  value={newRow.topic}
+                  onChange={(e) => setNewRow((r) => ({ ...r, topic: e.target.value }))}
+                  placeholder="Leadership"
+                />
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <Switch
+                checked={newRow.is_live}
+                onCheckedChange={(v) => setNewRow((r) => ({ ...r, is_live: v }))}
+                id="new-live"
+              />
+              <Label htmlFor="new-live" className="text-sm">Live (quiz-eligible)</Label>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setNewOpen(false)} disabled={creating}>Cancel</Button>
+            <Button onClick={createOffering} disabled={creating} className="bg-primary text-white hover:bg-primary/90">
+              {creating ? <Loader2 className="w-4 h-4 animate-spin mr-1" /> : <Plus className="w-4 h-4 mr-1" />}
+              Create
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <div className="mb-6 rounded-lg border border-bluedoor/30 bg-bluedoor/5 px-4 py-3 text-sm text-navy">
         <p className="font-poppins font-semibold text-bluedoor mb-1">Heads up: this table is moving</p>
@@ -275,7 +486,7 @@ export default function PathFinderOfferings() {
             const live = valueOf(row, "is_live");
             const url = resolveUrl(row);
             return (
-              <div key={row.id} className="border rounded-lg p-4 bg-white">
+              <div key={row.id} id={`offering-${row.id}`} className="border rounded-lg p-4 bg-white">
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div className="flex items-center gap-2 flex-wrap">
                     <select
