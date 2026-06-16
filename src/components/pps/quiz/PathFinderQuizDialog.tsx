@@ -10,7 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, ArrowRight, CheckCircle2, Compass, Loader2, Mail, RotateCcw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { usePathFinderOverrides } from "@/hooks/usePathFinderOverrides";
+import { usePathFinderOverrides, usePathFinderRtPools } from "@/hooks/usePathFinderOverrides";
 import {
   PQ1, PQ2_B2C, B2C_QUESTIONS, ORG_PQ2, TEAM_BRANCH, CHANGE_BRANCH, CAP_BRANCH, STRATEGIC_BRANCH,
   buildResult, type Answers, type Question, type QuizResult, type Track, type Offering,
@@ -278,6 +278,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   }, [open, viewableKeys]);
 
   const overrides = usePathFinderOverrides();
+  const rtPools = usePathFinderRtPools();
 
   const applyOverrides = (o: Offering): Offering =>
     overrides[o.key] ? { ...o, url: overrides[o.key] } : o;
@@ -296,7 +297,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
   const result: QuizResult | null = useMemo(() => {
     if (!showResult || !track) return null;
-    const r = buildResult(track, answers, viewableKeys ? { viewableKeys } : undefined);
+    const r = buildResult(track, answers, { viewableKeys: viewableKeys ?? undefined, rtPools });
     // If the Strongest Next Step is coming-soon but a live primary pick exists,
     // promote the first live primary pick into the strongest slot so users get
     // something they can begin right now.
@@ -325,7 +326,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       strongestNextStep: strongest,
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showResult, track, answers, overrides, viewableKeys, comingSoonKeys]);
+  }, [showResult, track, answers, overrides, viewableKeys, comingSoonKeys, rtPools]);
 
   // Persist the prefill payload so /contact can hydrate from quiz context even
   // if the user navigates to a recommended workshop / Blue Door page first and

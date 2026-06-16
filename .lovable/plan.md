@@ -1,79 +1,48 @@
 ## Goal
+Let you edit, from `/admin/path-finder-offerings` with no code changes:
+1. **Pricing/tier** (Free, IGNITE, AMPLIFY, Blue Door, Speaking, Assessment, Pathway B)
+2. **Result-Type (RT) mapping** — which B2C results (RT1–RT6) and B2B results (RT-A–RT-E) this offering can surface in, and in which "bucket" (primary recommendation pool vs. free-resource pool vs. speaking pool)
+3. **Link fields** (already editable — keep as-is)
 
-Link `path_finder_offerings` to `course_launch_status` so admins manage launch status in one place, and the quiz recommendation engine automatically reflects "Live" vs "Coming Soon — join the list" without manual double-entry.
+Plus confirm: **Stoic Leader Field Guide is already in the register** (live, Free, `/stoic-field-guide`). No DB change needed for it.
 
-## Schema change
+## What changes
 
-Add a single nullable column on `path_finder_offerings`:
+### Database (one migration)
+Add two columns to `path_finder_offerings`:
+- `b2c_rt_pools jsonb` — e.g. `{"RT1":["free"], "RT3":["primary","free"], "RT5":["free"]}`
+- `b2b_rt_pools jsonb` — e.g. `{"RT-A":["free"], "RT-C":["speaking","free"]}`
 
-- `launch_slug text` — soft reference to `course_launch_status.slug` (no hard FK so renames don't break inserts).
-- Index on `launch_slug` for join lookups.
+Pool values: `"primary"` (main recommendation), `"free"` (free-resources strip), `"speaking"` (speaking topics strip).
 
-Backfill `launch_slug` from existing data using the `anchor_id` ↔ launch slug pattern already in use:
+Backfill from the current hard-coded maps in `pathFinderQuiz.ts` so behavior is unchanged on day 1.
 
-```text
-mc-leading-change-mini        → mc-leading-change-mini
-mc-radical-mindfulness-mini   → mc-radical-mindfulness-mini
-mc-master-your-message-mini   → mc-master-your-message-mini
-mc-elements-of-team           → mc-elements-of-team
-mc-meditation-challenge       → mc-meditation-challenge
-mc-gratitude-challenge        → mc-gratitude-challenge
-mc-talking-to-strangers       → mc-talking-to-strangers
-mc-team-superpowers           → mc-team-superpowers
-mc-mym-journal-challenge      → mc-mym-journal-challenge
-radical-mindfulness           → radical-mindfulness
-master-your-message           → master-your-message
-extraordinary-teams           → extraordinary-teams
-performance-dna               → performance-dna
-lab-leading-change            → lab-leading-change
-lab-goldilocks-leadership     → goldilocksLab (manual)
-lab-stractical-leadership     → stracticalLeaderLab (manual)
-```
+### Quiz engine (`src/data/pathFinderQuiz.ts`)
+Replace the hard-coded `FREE_RESOURCES_BY_RT` and `SPEAKING_BY_RT` constants with a lookup that prefers DB overrides (already loaded via `usePathFinderOverrides`) and falls back to the existing constants. Primary-pool selection inside each `case "RTx":` block already filters by offering key — extend it to also accept any offering whose `b2c_rt_pools[RTx]` includes `"primary"`.
 
-## Quiz recommendation logic
+This keeps the quiz fully data-driven going forward.
 
-Effective availability becomes a derived value:
+### Admin UI (`src/pages/pps/admin/PathFinderOfferings.tsx`)
+On each offering card, add:
+- **Tier** dropdown (replaces the read-only badge) — same options as the `TIER_COLORS` keys.
+- **RT mapping** grid: two compact rows of checkboxes
+  - B2C: RT1 RT2 RT3 RT4 RT5 RT6, each with a 3-state segmented control: Off / Free / Primary (Speaking is B2B-only).
+  - B2B: RT-A RT-B RT-C RT-D RT-E, each with: Off / Free / Primary / Speaking.
+- Saves into the new `b2c_rt_pools` / `b2b_rt_pools` columns via the existing dirty/Save flow.
 
-```text
-linked launch row exists?
-  yes, status = 'coming_soon' → "Coming Soon" (eligible, deprioritized, shows "Join the list" badge)
-  yes, status = 'live'        → Live
-  no                          → use is_live as before
-```
+Link fields (current_url / dedicated_url / anchor_id / launch_slug) stay exactly as today.
 
-The existing prioritization (Live first, then Coming Soon) and the "Launching soon — join the list" badge stay as-is; they just now read from the joined launch status instead of a hand-toggled column.
+### Tests
+Update `src/data/__tests__/pathFinderQuiz.b2c.test.ts` and `pathFinderQuiz.b2b.test.ts` only if the engine signature changes; behavior should be identical with no overrides loaded.
 
-## Admin UI changes
+## Out of scope (call out)
+- Renaming tiers / adding new tier types — still in code (TIER_COLORS map).
+- Per-RT *ordering* of offerings (sort_order is already a global field).
+- Changing the RT decision logic itself (Q1–Q7 scoring) — still in code.
 
-`/admin/offerings` (PathFinderOfferings.tsx):
-- Add a "Launch" column showing one of:
-  - green "Live" badge
-  - amber "Coming Soon" badge
-  - "—" when no launch is linked
-- Add a `launch_slug` selector on the row edit form (dropdown of existing `course_launch_status.slug` values + "(none)").
-- Add a "Manage launch" link next to the badge that opens `/admin/course-launches?slug=<launch_slug>` (deep link).
+## Technical notes
+- Columns are `jsonb` (not separate tables) for simplicity; the override hook already returns rows as-is so no new RPCs needed.
+- Backfill SQL will read the current TS constants verbatim (I'll inline them in the migration).
+- RLS: existing admin/editor policies on `path_finder_offerings` already cover the new columns.
 
-`/admin/course-launches` (CourseLaunchManager.tsx):
-- Read `?slug=` from query string. If set, scroll the matching row into view and apply a brief highlight ring.
-- No other behavior change — notify toggles, "Go Live & Notify", and notify-list editing stay on this page (per user choice).
-
-## Files touched
-
-- `supabase/migrations/<timestamp>_link_offerings_to_launches.sql` — add column, index, backfill.
-- `src/pages/pps/admin/PathFinderOfferings.tsx` — add Launch column, launch_slug selector, deep-link.
-- `src/pages/pps/admin/CourseLaunchManager.tsx` — `?slug=` deep-link scroll + highlight.
-- `src/components/pps/quiz/PathFinderQuizDialog.tsx` — read joined `course_launch_status.status`; derive effective availability.
-- `src/pages/pps/admin/OfferingsCoverage.tsx` (optional) — surface "linked launch missing" as an audit warning.
-
-## Out of scope
-
-- No retirement of `is_live` (kept as the source of truth for offerings without a launch row, e.g. always-available items, free downloads, assessments delivered by other vendors).
-- No changes to the `notify-launch-signup` edge function or notification emails.
-- No changes to existing route structure.
-
-## Rollout
-
-1. Migration (add column + backfill).
-2. Admin UI (PathFinderOfferings + CourseLaunchManager deep-link).
-3. Quiz logic update.
-4. Smoke test: take the quiz, confirm a Coming-Soon-linked offering still appears with the "Launching soon — join the list" badge and deep-links to its card.
+Confirm and I'll ship it. If you'd rather keep the engine code-driven for now and only add **tier editing** (smaller change), say so and I'll scope down.

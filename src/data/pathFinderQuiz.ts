@@ -499,6 +499,13 @@ export interface BuildResultOptions {
    * would leave a result blank.
    */
   viewableKeys?: Set<string>;
+  /**
+   * Admin-managed RT-pool overrides loaded from path_finder_offerings.
+   * Shape: { "RT1": { free: [offeringKey, ...] }, "RT-A": { free: [...], speaking: [...] } }.
+   * When present, replaces the hard-coded FREE_RESOURCES_BY_RT / SPEAKING_BY_RT
+   * pools and the B2C inline "Free Starting Points" / "Free Tools" groups.
+   */
+  rtPools?: Partial<Record<ResultType, { free?: OfferingKey[]; speaking?: OfferingKey[] }>>;
 }
 
 const O = OFFERINGS;
@@ -743,7 +750,8 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
 
   // Speaking-topic candidates per RT. Only surfaced when admin has marked the
   // row Live + clickable; otherwise the group disappears entirely.
-  const speakingCandidates = SPEAKING_BY_RT[rt] ?? [];
+  // Admin RT-pool overrides (from path_finder_offerings.b2b_rt_pools) win over the constant.
+  const speakingCandidates = opts?.rtPools?.[rt]?.speaking ?? SPEAKING_BY_RT[rt] ?? [];
   const eligibleSpeaking = (filterable
     ? speakingCandidates.filter((k) => filterable.has(k))
     : speakingCandidates).slice(0, 3) as OfferingKey[];
@@ -765,7 +773,8 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
   }
 
   // Free Resources — up to 2, filtered to admin-eligible rows.
-  const freeCandidates = FREE_RESOURCES_BY_RT[rt] ?? [];
+  // Admin RT-pool overrides win over the constant.
+  const freeCandidates = opts?.rtPools?.[rt]?.free ?? FREE_RESOURCES_BY_RT[rt] ?? [];
   const eligibleFree = (filterable
     ? freeCandidates.filter((k) => filterable.has(k))
     : freeCandidates).slice(0, 2) as OfferingKey[];
@@ -792,10 +801,23 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
   };
 }
 
+// Replace any B2C group whose heading starts with "Free " using the admin RT-pool
+// override. Filtering against viewable keys happens later via applyViewableFilter.
+function applyB2cFreePoolOverride(r: QuizResult, rt: B2CResultType, opts?: BuildResultOptions): QuizResult {
+  const overrideKeys = opts?.rtPools?.[rt]?.free;
+  if (!overrideKeys || overrideKeys.length === 0) return r;
+  const newGroups = r.groups.map((g) =>
+    /^Free\b/i.test(g.heading)
+      ? { ...g, offerings: overrideKeys.map((k) => O[k]).filter(Boolean) }
+      : g
+  );
+  return { ...r, groups: newGroups };
+}
+
 export function buildResult(track: Track, answers: Answers, opts?: BuildResultOptions): QuizResult {
   if (track === "b2c") {
     const { resultType } = scoreB2C(answers);
-    const base = b2cResult(resultType, answers);
+    const base = applyB2cFreePoolOverride(b2cResult(resultType, answers), resultType, opts);
     // Post-process to drop offerings the admin hasn't marked clickable.
     // For B2C the primary group falls back to a safe default if filtered empty.
     const filtered = applyViewableFilter(base, opts?.viewableKeys);
