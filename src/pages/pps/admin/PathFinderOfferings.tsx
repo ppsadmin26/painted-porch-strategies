@@ -486,7 +486,7 @@ export default function PathFinderOfferings() {
             const live = valueOf(row, "is_live");
             const url = resolveUrl(row);
             return (
-              <div key={row.id} className="border rounded-lg p-4 bg-white">
+              <div key={row.id} id={`offering-${row.id}`} className="border rounded-lg p-4 bg-white">
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div className="flex items-center gap-2 flex-wrap">
                     <select
