@@ -1,0 +1,1 @@
+UPDATE public.path_finder_offerings SET launch_slug = NULL WHERE offering_key IN ('pathToLastingChange','leadershipOM','fromDysfunctionToDynamic','heroesAssemble');
