@@ -17,7 +17,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Bell, CheckCircle2, Clock, Loader2, Rocket } from "lucide-react";
+import { AlertCircle, Bell, CheckCircle2, Clock, Loader2, Rocket } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { format } from "date-fns";
 
