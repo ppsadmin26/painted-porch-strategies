@@ -63,7 +63,7 @@ function buildPools() {
   const TEMPLATE_LITERAL = /\bid\s*=\s*\{\s*`([^`${}]+)`\s*\}/g;
   // Object/property form often consumed by dynamic id={item.id}: treat
   // any `id: "value"` or `anchorId: "value"` literal as a static id.
-  const OBJECT_ID = /\b(?:id|anchorId|anchor_id|slug)\s*:\s*["'`]([a-zA-Z][a-zA-Z0-9_\-]{2,80})["'`]/g;
+  const OBJECT_ID = /\b(?:id|anchorId|anchor_id|slug|launchSlug|hashId|anchor)\s*:\s*["'`]([a-zA-Z0-9][a-zA-Z0-9_\-]{1,80})["'`]/g;
   const ANY_INTERP_TEMPLATE = /`([^`]*\$\{[^`]*?\}[^`]*)`/g;
   const SLUG_CTX = /(?:slug|anchor(?:Id|Slug)?|key|id)\s*[:=]\s*["'`]([a-zA-Z][a-zA-Z0-9_\-]{2,80})["'`]/g;
 
