@@ -83,6 +83,95 @@ export default function PathFinderOfferings() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState(searchParams.get("filter") ?? "");
   const [showOnly, setShowOnly] = useState<"all" | "needs-page" | "live" | "broken-launch">("all");
+  const [newOpen, setNewOpen] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [newRow, setNewRow] = useState({
+    offering_key: "",
+    name: "",
+    tier: "Free" as (typeof TIER_OPTIONS)[number],
+    current_url: "",
+    dedicated_url: "",
+    anchor_id: "",
+    topic: "",
+    blurb: "",
+    is_live: true,
+  });
+  const keyEdited = useState(false);
+  const [keyManuallyEdited, setKeyManuallyEdited] = useState(false);
+
+  const slugifyKey = (s: string) =>
+    s
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 60);
+
+  const resetNew = () => {
+    setNewRow({
+      offering_key: "",
+      name: "",
+      tier: "Free",
+      current_url: "",
+      dedicated_url: "",
+      anchor_id: "",
+      topic: "",
+      blurb: "",
+      is_live: true,
+    });
+    setKeyManuallyEdited(false);
+  };
+
+  const createOffering = async () => {
+    const key = newRow.offering_key.trim();
+    const name = newRow.name.trim();
+    if (!name) {
+      toast({ title: "Name required", variant: "destructive" });
+      return;
+    }
+    if (!/^[a-zA-Z0-9_-]+$/.test(key)) {
+      toast({ title: "Invalid key", description: "Use letters, numbers, dashes, underscores only.", variant: "destructive" });
+      return;
+    }
+    if (rows.some((r) => r.offering_key === key)) {
+      toast({ title: "Key already exists", description: "Pick a unique offering key.", variant: "destructive" });
+      return;
+    }
+    const maxSort = rows.reduce((m, r) => Math.max(m, r.sort_order ?? 0), 0);
+    setCreating(true);
+    const { data, error } = await supabase
+      .from("path_finder_offerings")
+      .insert({
+        offering_key: key,
+        name,
+        tier: newRow.tier,
+        blurb: newRow.blurb || "",
+        current_url: newRow.current_url || "",
+        dedicated_url: newRow.dedicated_url || null,
+        anchor_id: newRow.anchor_id || null,
+        topic: newRow.topic || null,
+        is_live: newRow.is_live,
+        sort_order: maxSort + 10,
+        b2c_rt_pools: {},
+        b2b_rt_pools: {},
+      } as any)
+      .select()
+      .single();
+    setCreating(false);
+    if (error) {
+      toast({ title: "Create failed", description: error.message, variant: "destructive" });
+      return;
+    }
+    toast({ title: "Offering created", description: "Map it to RT pools below." });
+    setNewOpen(false);
+    resetNew();
+    await load();
+    // Scroll the new card into view
+    setTimeout(() => {
+      const el = document.getElementById(`offering-${(data as any).id}`);
+      el?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 200);
+  };
 
   const load = async () => {
     setLoading(true);
