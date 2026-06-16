@@ -295,8 +295,123 @@ export default function PathFinderOfferings() {
             <option value="live">Live ({rows.filter(r => r.is_live).length})</option>
             <option value="broken-launch">Broken launch link ({brokenRows.length})</option>
           </select>
+          <Button
+            size="sm"
+            onClick={() => setNewOpen(true)}
+            className="bg-primary text-white hover:bg-primary/90"
+          >
+            <Plus className="w-4 h-4 mr-1" /> New offering
+          </Button>
         </div>
       </div>
+
+      <Dialog open={newOpen} onOpenChange={(o) => { setNewOpen(o); if (!o) resetNew(); }}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>New offering</DialogTitle>
+            <DialogDescription>
+              Create a new offering. After saving, map it to B2C / B2B RT pools on its card to surface it in quiz results.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3">
+            <div>
+              <Label className="text-xs">Display name *</Label>
+              <Input
+                value={newRow.name}
+                onChange={(e) => {
+                  const name = e.target.value;
+                  setNewRow((r) => ({
+                    ...r,
+                    name,
+                    offering_key: keyManuallyEdited ? r.offering_key : slugifyKey(name),
+                  }));
+                }}
+                placeholder="The Stoic Leader Field Guide"
+              />
+            </div>
+            <div>
+              <Label className="text-xs">Offering key * (unique, letters/numbers/-/_)</Label>
+              <Input
+                value={newRow.offering_key}
+                onChange={(e) => {
+                  setKeyManuallyEdited(true);
+                  setNewRow((r) => ({ ...r, offering_key: e.target.value }));
+                }}
+                placeholder="stoic-leader-field-guide"
+                className="font-mono text-xs"
+              />
+            </div>
+            <div>
+              <Label className="text-xs">Tier *</Label>
+              <select
+                value={newRow.tier}
+                onChange={(e) => setNewRow((r) => ({ ...r, tier: e.target.value as any }))}
+                className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
+              >
+                {TIER_OPTIONS.map((t) => <option key={t} value={t}>{t}</option>)}
+              </select>
+            </div>
+            <div>
+              <Label className="text-xs">Blurb</Label>
+              <Textarea
+                rows={2}
+                value={newRow.blurb}
+                onChange={(e) => setNewRow((r) => ({ ...r, blurb: e.target.value }))}
+                placeholder="One short line shown under the name."
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <Label className="text-xs">Hub URL</Label>
+                <Input
+                  value={newRow.current_url}
+                  onChange={(e) => setNewRow((r) => ({ ...r, current_url: e.target.value }))}
+                  placeholder="/partner/ignite"
+                />
+              </div>
+              <div>
+                <Label className="text-xs">Dedicated URL</Label>
+                <Input
+                  value={newRow.dedicated_url}
+                  onChange={(e) => setNewRow((r) => ({ ...r, dedicated_url: e.target.value }))}
+                  placeholder="/stoic-field-guide"
+                />
+              </div>
+              <div>
+                <Label className="text-xs">Anchor ID</Label>
+                <Input
+                  value={newRow.anchor_id}
+                  onChange={(e) => setNewRow((r) => ({ ...r, anchor_id: e.target.value }))}
+                  placeholder="optional"
+                />
+              </div>
+              <div>
+                <Label className="text-xs">Topic tag</Label>
+                <Input
+                  value={newRow.topic}
+                  onChange={(e) => setNewRow((r) => ({ ...r, topic: e.target.value }))}
+                  placeholder="Leadership"
+                />
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <Switch
+                checked={newRow.is_live}
+                onCheckedChange={(v) => setNewRow((r) => ({ ...r, is_live: v }))}
+                id="new-live"
+              />
+              <Label htmlFor="new-live" className="text-sm">Live (quiz-eligible)</Label>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setNewOpen(false)} disabled={creating}>Cancel</Button>
+            <Button onClick={createOffering} disabled={creating} className="bg-primary text-white hover:bg-primary/90">
+              {creating ? <Loader2 className="w-4 h-4 animate-spin mr-1" /> : <Plus className="w-4 h-4 mr-1" />}
+              Create
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <div className="mb-6 rounded-lg border border-bluedoor/30 bg-bluedoor/5 px-4 py-3 text-sm text-navy">
         <p className="font-poppins font-semibold text-bluedoor mb-1">Heads up: this table is moving</p>
