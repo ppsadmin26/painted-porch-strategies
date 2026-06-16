@@ -758,7 +758,7 @@ interface RtPoolEditorProps {
 }
 
 // Which tiers the RT-pool editor actually controls.
-// Other tiers (Pathway B workshops, IGNITE courses, AMPLIFY labs, EMBODY, Blue Door,
+// Other tiers (Workshop, IGNITE courses, AMPLIFY labs, EMBODY, Blue Door,
 // Assessment, Free guides not in a curated pool) are placed by the quiz engine via
 // hardcoded result-type maps + the global Live + URL allowlist.
 function rtPoolMode(tier: string): "free" | "speaking" | "none" {
