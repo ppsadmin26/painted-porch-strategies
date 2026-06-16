@@ -476,6 +476,8 @@ export interface QuizResult {
   headline: string;
   subhead?: string;
   narrative: string;
+  /** Short, specific bridge that explains why the picked offerings address the gap the quiz surfaced. Rendered as a callout above the primary group. */
+  whyThisFits?: string;
   primaryGroup?: RecommendationGroup;
   groups: RecommendationGroup[];
   strongestNextStep?: { kind: "workshop" | "blueDoor"; offering: Offering; label: string };
