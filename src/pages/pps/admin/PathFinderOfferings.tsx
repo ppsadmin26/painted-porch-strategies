@@ -190,6 +190,7 @@ export default function PathFinderOfferings() {
             <option value="all">All ({rows.length})</option>
             <option value="needs-page">Needs page ({rows.filter(r => !r.is_live && !r.dedicated_url).length})</option>
             <option value="live">Live ({rows.filter(r => r.is_live).length})</option>
+            <option value="broken-launch">Broken launch link ({brokenRows.length})</option>
           </select>
         </div>
       </div>
