@@ -28,6 +28,12 @@ type AnchorAudit = {
   present: number;
   missing: number;
   missing_by_destination: Record<string, Array<{ offering_key: string; anchor: string; name: string; tier: string }>>;
+  launches?: {
+    total_linked: number;
+    known_slugs: number;
+    broken: number;
+    broken_detail: Array<{ offering_key: string; name: string; tier: string; launch_slug: string; is_live: boolean }>;
+  };
 };
 
 const ANCHOR_AUDIT = anchorAudit as AnchorAudit;
