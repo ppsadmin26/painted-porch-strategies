@@ -502,9 +502,37 @@ export default function Sitemap() {
 
   const { user, loading: authLoading } = useAuth();
   const { isAdmin } = useUserRole();
-  const { map: statusMap, loading: statusLoading, setStatus, clearStatus } = usePageStatuses();
+  const { map: rawStatusMap, loading: statusLoading, setStatus, clearStatus } = usePageStatuses();
+  const [notesById, setNotesById] = useState<Record<string, string | null>>({});
   const isStaff = !!user;
   const isEditorPreview = isLovableEditorPreview();
+
+  // The `note` column is admin-only at the DB grant level; admins hydrate it
+  // here so draft-note tooltips and inline editors still work in the sitemap.
+  useEffect(() => {
+    if (!isAdmin) return;
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await supabase.rpc("admin_list_page_status_notes");
+      if (cancelled || error || !data) return;
+      const next: Record<string, string | null> = {};
+      for (const row of data as Array<{ id: string; note: string | null }>) {
+        next[row.id] = row.note;
+      }
+      setNotesById(next);
+    })();
+    return () => { cancelled = true; };
+  }, [isAdmin]);
+
+  // Merge admin-only notes into the status map so downstream renders read .note as expected.
+  const statusMap = useMemo<PageStatusMap>(() => {
+    if (!isAdmin) return rawStatusMap;
+    const merged: PageStatusMap = {};
+    for (const [path, entry] of Object.entries(rawStatusMap)) {
+      merged[path] = { ...entry, note: notesById[entry.id] ?? null };
+    }
+    return merged;
+  }, [rawStatusMap, notesById, isAdmin]);
 
   // Sitemap is for internal admin/management use only. Allow access when:
   //   1. User is signed in as staff, OR
