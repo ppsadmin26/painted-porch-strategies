@@ -50,56 +50,57 @@ function walk(dir, out = []) {
 // id={`...`} template strings with no interpolation, and known patterns
 // from the codebase: id={cohort.slug}, id={anchorSlug}, etc. — for those
 // we instead match by sourcing the data arrays where slugs are defined.
-function collectIds() {
-  const ids = new Set();
+// Build three pools from the source tree, then expand templates against
+// slugs at query time so that we can determine whether a given anchor
+// would be rendered as an `id` somewhere.
+function buildPools() {
+  const staticIds = new Set();
+  const slugPool = new Set();
+  const templates = []; // [{ prefix, suffix }]
   const files = ROOTS.flatMap((r) => walk(r));
-  const STATIC = /\bid\s*=\s*"([^"\s{}]+)"/g;
-  const TEMPLATE = /\bid\s*=\s*\{\s*`([^`${}]+)`\s*\}/g;
-  const TEMPLATE_INTERP = /\bid\s*=\s*\{\s*`([^`]*\$\{[^`]*)`\s*\}/g;
-  const SLUG_CTX = /(?:slug|anchor(?:Id|Slug)?|key|id)\s*[:=]\s*["'`]([a-zA-Z][a-zA-Z0-9_\-]{2,80})["'`]/g;
-  const SLUGLIKE = /["'`]([a-zA-Z][a-zA-Z0-9_\-]{2,80})["'`]/g;
 
-  // Pass 1: harvest a global slug pool from every data-shaped file. Slugs
-  // are often defined in a parent page (AmySpeaker.tsx) while the dynamic
-  // id template lives in a shared component (SpeakerDetailPage.tsx).
-  const globalSlugs = new Set();
-  const fileTexts = new Map();
+  const STATIC = /\bid\s*=\s*"([^"\s{}]+)"/g;
+  const TEMPLATE_LITERAL = /\bid\s*=\s*\{\s*`([^`${}]+)`\s*\}/g;
+  // Any template literal that interpolates: id={`pre${x}suf`}, or even
+  // free-standing `pre${x}suf` strings — JSX often wraps them in expressions
+  // like `id={topic.slug ? \`topic-${topic.slug}\` : undefined}`.
+  const ANY_INTERP_TEMPLATE = /`([^`]*\$\{[^`]*?\}[^`]*)`/g;
+  const SLUG_CTX = /(?:slug|anchor(?:Id|Slug)?|key|id)\s*[:=]\s*["'`]([a-zA-Z][a-zA-Z0-9_\-]{2,80})["'`]/g;
+
   for (const f of files) {
     let text;
     try { text = readFileSync(f, "utf8"); } catch { continue; }
-    fileTexts.set(f, text);
-    for (const m of text.matchAll(SLUG_CTX)) globalSlugs.add(m[1]);
-    for (const m of text.matchAll(SLUGLIKE)) {
-      const v = m[1];
-      if (/^topic-/.test(v) || /^mc-/.test(v) || /^lab-/.test(v) ||
-          /^[a-z][a-zA-Z0-9_\-]{3,}$/.test(v)) {
-        globalSlugs.add(v);
+    for (const m of text.matchAll(STATIC)) staticIds.add(m[1]);
+    for (const m of text.matchAll(TEMPLATE_LITERAL)) staticIds.add(m[1]);
+    for (const m of text.matchAll(SLUG_CTX)) slugPool.add(m[1]);
+    for (const m of text.matchAll(ANY_INTERP_TEMPLATE)) {
+      const body = m[1];
+      // Only consider templates that look id-ish: contain `-` literal or
+      // start with a known prefix. Avoids noise from arbitrary template
+      // strings (URLs, classNames, etc.).
+      if (!/[-_]/.test(body) && !/^(topic|mc|lab)/.test(body)) continue;
+      const parts = body.split(/\$\{[^}]*\}/);
+      // Add every adjacent (prefix, suffix) pair so multi-interp templates
+      // like `${a}-${b}` are still expanded.
+      for (let i = 0; i < parts.length - 1; i++) {
+        templates.push({ prefix: parts[i], suffix: parts[i + 1] });
       }
     }
   }
+  return { staticIds, slugPool, templates };
+}
 
-  // Pass 2: collect ids, expanding interpolation templates against the slug pool.
-  for (const [, text] of fileTexts) {
-    for (const m of text.matchAll(STATIC)) ids.add(m[1]);
-    for (const m of text.matchAll(TEMPLATE)) ids.add(m[1]);
-
-    for (const m of text.matchAll(TEMPLATE_INTERP)) {
-      const body = m[1];
-      const parts = body.split(/\$\{[^}]*\}/);
-      const pre = parts[0] ?? "";
-      const suf = parts[parts.length - 1] ?? "";
-      for (const s of globalSlugs) ids.add(`${pre}${s}${suf}`);
-    }
-
-    // Bare dynamic id={var} — assume slugs in same file may render as ids.
-    if (/\bid\s*=\s*\{[^`]/.test(text)) {
-      // Local slugs only (avoid global pollution)
-      const local = new Set();
-      for (const m of text.matchAll(SLUG_CTX)) local.add(m[1]);
-      for (const s of local) ids.add(s);
-    }
+function isAnchorPresent(anchor, pools) {
+  if (pools.staticIds.has(anchor)) return true;
+  // Try every (prefix, suffix) — if anchor starts with prefix and ends with
+  // suffix and the middle slug is in the slug pool, it would render.
+  for (const { prefix, suffix } of pools.templates) {
+    if (!anchor.startsWith(prefix) || !anchor.endsWith(suffix)) continue;
+    const middle = anchor.slice(prefix.length, anchor.length - suffix.length);
+    if (!middle) continue;
+    if (pools.slugPool.has(middle)) return true;
   }
-  return ids;
+  return false;
 }
 
 function hashOf(url) {
