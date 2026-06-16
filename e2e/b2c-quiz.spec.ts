@@ -194,12 +194,11 @@ test.describe("B2C P.A.T.H.finder quiz (real browser)", () => {
       page.getByRole("heading", { name: /Your Starting Point/i }),
     ).toHaveCount(0);
 
-    // An exploration offering is linked (admin overrides can rewrite the
-    // href, so assert by accessible name, not the static URL).
-    const fifty2 = OFFERINGS.fiftyTwoStoicism;
-    await expect(
-      page.getByRole("link", { name: new RegExp(fifty2.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i") }).first(),
-    ).toBeVisible();
+    // RT6 renders exploration groups with at least one offering link
+    // (specific keys depend on admin's viewable allowlist).
+    const dialogLinks = page.locator('[role="dialog"] a[href]');
+    await expect(dialogLinks.first()).toBeVisible();
+    expect(await dialogLinks.count()).toBeGreaterThan(0);
 
     // Accessibility: RT6 result dialog must also be clean.
     await assertNoCriticalA11yViolations(page, "RT6 result page");
