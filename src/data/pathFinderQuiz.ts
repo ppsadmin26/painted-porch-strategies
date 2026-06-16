@@ -506,6 +506,13 @@ export interface BuildResultOptions {
    * pools and the B2C inline "Free Starting Points" / "Free Tools" groups.
    */
   rtPools?: Partial<Record<ResultType, { free?: OfferingKey[]; speaking?: OfferingKey[] }>>;
+  /**
+   * Offering keys flagged "Prioritize in quiz" by the admin. When an offering
+   * in this set is already in the primary recommendation group for the matched
+   * result, it gets pinned to position 1. Does not force offerings into lists
+   * they aren't already in (use RT pools / primary lists for that).
+   */
+  featuredKeys?: Set<string>;
 }
 
 const O = OFFERINGS;
