@@ -24,11 +24,11 @@ describe("viewableKeys filter (B2B)", () => {
 
   it("only blueDoor + architectChange eligible → primary picks narrow to those", () => {
     const r = buildResult("b2b", B2B_CHANGE, {
-      viewableKeys: new Set(["blueDoor", "architectChange", "architectureOfAdaptability"]),
+      viewableKeys: new Set(["blueDoor", "architectChange", "architectureOfOrganizationalShift"]),
     });
     const keys = r.primaryGroup?.offerings.map((o) => o.key) ?? [];
     for (const k of keys) {
-      expect(["blueDoor", "architectChange", "architectureOfAdaptability"]).toContain(k);
+      expect(["blueDoor", "architectChange", "architectureOfOrganizationalShift"]).toContain(k);
     }
   });
 

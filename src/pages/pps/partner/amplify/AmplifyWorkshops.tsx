@@ -68,7 +68,7 @@ const workshopTopics = [
     note: "Prerequisite: Blue Door",
   },
   {
-    id: "architectureOfAdaptability",
+    id: "architectureOfOrganizationalShift",
     title: "The Architecture of Organizational ShIFt",
     image: pillarsThumb,
     challenge: "You're not sure if your organization is built to carry the transformation you're considering. You need a clear-eyed assessment of capacity and an architecture designed to navigate uncertainty rather than react to it.",
