@@ -20,6 +20,17 @@ type AuditReport = {
 };
 const audit = auditReport as AuditReport;
 
+function Stat({ label, value, tone }: { label: string; value: number; tone?: "raspberry" }) {
+  return (
+    <div className="rounded border bg-background px-2 py-1.5">
+      <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div>
+      <div className={`font-poppins font-semibold ${tone === "raspberry" ? "text-raspberry" : "text-navy"}`}>
+        {value}
+      </div>
+    </div>
+  );
+}
+
 interface Row {
   id: string;
   offering_key: string;
