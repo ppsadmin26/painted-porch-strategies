@@ -198,12 +198,12 @@ export const B2C_QUESTIONS: Question[] = [
   },
   {
     id: "Q3",
-    prompt: "When it comes to the people side of leadership, where are you right now?",
+    prompt: "When you look at the people and relationships around your work, what's most true right now?",
     options: [
-      { id: "A", label: "I'm not yet leading others, but it's where I'm headed and I want to be ready." },
-      { id: "B", label: "I lead people, but team dynamics is harder than individual relationships." },
-      { id: "C", label: "I'm dealing with real friction. The team isn't functioning the way it should." },
-      { id: "D", label: "My team works well. I'm more focused on my own depth than on fixing dynamics." },
+      { id: "A", label: "I'm focused on the foundation — how I show up before I worry about shaping how others work together." },
+      { id: "B", label: "Building real collaboration is harder than individual relationships — the group dynamic is where I get stuck." },
+      { id: "C", label: "There's real friction in play. Things aren't functioning the way they should." },
+      { id: "D", label: "Relationships and dynamics are working well. I'm more focused on my own depth than on fixing them." },
     ],
   },
   {
