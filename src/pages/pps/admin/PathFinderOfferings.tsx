@@ -233,6 +233,37 @@ export default function PathFinderOfferings() {
                         Not eligible
                       </Badge>
                     )}
+                    {(() => {
+                      const slug = valueOf(row, "launch_slug");
+                      if (!slug) return null;
+                      const launch = launches.find((l) => l.slug === slug);
+                      if (!launch) {
+                        return (
+                          <Badge
+                            variant="outline"
+                            className="bg-raspberry/10 text-raspberry border-raspberry/40"
+                            title={`Linked launch "${slug}" no longer exists`}
+                          >
+                            Launch: missing
+                          </Badge>
+                        );
+                      }
+                      const cls =
+                        launch.status === "live"
+                          ? "bg-lime/15 text-lime-foreground border-lime/40"
+                          : "bg-gold/15 text-gold-foreground border-gold/40";
+                      return (
+                        <Link
+                          to={`/admin/course-launches?slug=${encodeURIComponent(slug)}`}
+                          className="inline-flex items-center"
+                          title="Open in Program Launches"
+                        >
+                          <Badge variant="outline" className={`${cls} hover:underline cursor-pointer`}>
+                            {launch.status === "live" ? "Launch: Live" : "Launch: Coming Soon"}
+                          </Badge>
+                        </Link>
+                      );
+                    })()}
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-2">
