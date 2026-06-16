@@ -86,8 +86,25 @@ export default function PathFinderOfferings() {
 
   useEffect(() => { load(); }, []);
 
+  const launchSlugs = useMemo(() => new Set(launches.map((l) => l.slug)), [launches]);
+
+  // Effective launch_slug per row (accounts for unsaved edits) and broken-link detection
+  const brokenRows = useMemo(() => {
+    if (launches.length === 0) return [] as Array<{ row: Row; slug: string }>;
+    return rows
+      .map((r) => {
+        const d = dirty[r.id];
+        const slug = (d && "launch_slug" in d ? (d as any).launch_slug : r.launch_slug) as string | null;
+        return slug && !launchSlugs.has(slug) ? { row: r, slug } : null;
+      })
+      .filter(Boolean) as Array<{ row: Row; slug: string }>;
+  }, [rows, dirty, launches, launchSlugs]);
+
+  const brokenIds = useMemo(() => new Set(brokenRows.map((b) => b.row.id)), [brokenRows]);
+
   const filtered = useMemo(() => {
     return rows.filter((r) => {
+      if (showOnly === "broken-launch" && !brokenIds.has(r.id)) return false;
       if (showOnly === "needs-page" && (r.is_live || (r.dedicated_url && r.dedicated_url !== r.current_url))) {
         // "needs-page" = not live AND no dedicated_url set yet
         if (r.is_live || r.dedicated_url) return false;
@@ -105,7 +122,7 @@ export default function PathFinderOfferings() {
       }
       return true;
     });
-  }, [rows, filter, showOnly]);
+  }, [rows, filter, showOnly, brokenIds]);
 
   const patch = (id: string, partial: Partial<Row>) => {
     setDirty((d) => ({ ...d, [id]: { ...d[id], ...partial } }));
