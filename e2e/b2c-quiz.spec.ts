@@ -160,11 +160,13 @@ test.describe("B2C P.A.T.H.finder quiz (real browser)", () => {
         page.getByRole("heading", { name: flow.expectedHeadline }),
       ).toBeVisible({ timeout: 5000 });
 
-      // Primary offering surfaced by name AND linked to its URL.
+      // Primary offering surfaced by name AND linked (admin overrides may
+      // rewrite the href, so assert the link by accessible name rather than
+      // the static URL declared in src/data/pathFinderQuiz.ts).
       const expected = OFFERINGS[flow.primaryOfferingKey];
       await expect(page.getByText(expected.name).first()).toBeVisible();
       await expect(
-        page.locator(`a[href="${expected.url}"]`).first(),
+        page.getByRole("link", { name: new RegExp(expected.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i") }).first(),
       ).toBeVisible();
 
       // "What Comes Next" panel renders on every non-RT6 result.
