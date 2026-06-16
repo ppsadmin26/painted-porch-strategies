@@ -28,6 +28,8 @@ interface Row {
   include_in_workshops: boolean;
   is_featured_in_quiz: boolean;
   launch_slug: string | null;
+  b2c_rt_pools: Record<string, string[]> | null;
+  b2b_rt_pools: Record<string, string[]> | null;
 }
 
 interface LaunchOption {
@@ -36,6 +38,10 @@ interface LaunchOption {
   status: "coming_soon" | "live";
   program_type: string;
 }
+
+const TIER_OPTIONS = ["Free", "IGNITE", "AMPLIFY", "Pathway B", "Blue Door", "Speaking", "Assessment"] as const;
+const B2C_RTS = ["RT1", "RT2", "RT3", "RT4", "RT5", "RT6"] as const;
+const B2B_RTS = ["RT-A", "RT-B", "RT-C", "RT-D", "RT-E"] as const;
 
 
 const TIER_COLORS: Record<string, string> = {
