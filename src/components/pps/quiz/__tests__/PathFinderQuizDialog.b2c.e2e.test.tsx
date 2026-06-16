@@ -28,16 +28,22 @@ beforeAll(() => {
 });
 
 // Mock Supabase before importing the dialog (it pulls in the client).
-vi.mock("@/integrations/supabase/client", () => ({
-  supabase: {
-    from: () => ({
-      select: () => ({
-        or: async () => ({ data: [], error: null }),
-      }),
-    }),
-    functions: { invoke: async () => ({ data: null, error: null }) },
-  },
-}));
+vi.mock("@/integrations/supabase/client", () => {
+  const result = Promise.resolve({ data: [], error: null });
+  const builder: any = {
+    select: () => builder,
+    or: () => result,
+    eq: () => builder,
+    in: () => builder,
+    then: (...args: any[]) => result.then(...args),
+  };
+  return {
+    supabase: {
+      from: () => builder,
+      functions: { invoke: async () => ({ data: null, error: null }) },
+    },
+  };
+});
 
 vi.mock("@/hooks/use-toast", () => ({
   useToast: () => ({ toast: () => {} }),
