@@ -225,7 +225,15 @@ export default function CourseLaunchManager() {
           const draftUrl = drafts[row.slug] ?? "";
           const isLive = row.status === "live";
           return (
-            <Card key={row.slug} className="p-5">
+            <Card
+              key={row.slug}
+              ref={(el) => { rowRefs.current[row.slug] = el; }}
+              className={`p-5 transition-shadow ${
+                highlightedSlug === row.slug
+                  ? "ring-2 ring-primary ring-offset-2 shadow-lg"
+                  : ""
+              }`}
+            >
               <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                 <div>
                   <div className="flex items-center gap-2">
