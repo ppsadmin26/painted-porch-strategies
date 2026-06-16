@@ -175,7 +175,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       const [offeringsRes, draftsRes, launchRes] = await Promise.all([
         supabase
           .from("path_finder_offerings")
-          .select("offering_key, is_live, current_url, dedicated_url, anchor_id, launch_slug"),
+          .select("offering_key, is_live, current_url, dedicated_url, anchor_id, launch_slug, is_featured_in_quiz"),
         supabase
           .from("page_status")
           .select("path")
