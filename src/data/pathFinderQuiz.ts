@@ -821,6 +821,18 @@ function applyB2cFreePoolOverride(r: QuizResult, rt: B2CResultType, opts?: Build
   return { ...r, groups: newGroups };
 }
 
+// Pin admin-featured offerings to position 1 of the primary group, when they
+// already appear there. Stable for everything else.
+function applyFeaturedPin(r: QuizResult, opts?: BuildResultOptions): QuizResult {
+  const featured = opts?.featuredKeys;
+  if (!featured || featured.size === 0 || !r.primaryGroup) return r;
+  const offerings = r.primaryGroup.offerings;
+  const pinIdx = offerings.findIndex((o) => featured.has(o.key));
+  if (pinIdx <= 0) return r;
+  const reordered = [offerings[pinIdx], ...offerings.slice(0, pinIdx), ...offerings.slice(pinIdx + 1)];
+  return { ...r, primaryGroup: { ...r.primaryGroup, offerings: reordered } };
+}
+
 export function buildResult(track: Track, answers: Answers, opts?: BuildResultOptions): QuizResult {
   if (track === "b2c") {
     const { resultType } = scoreB2C(answers);
@@ -834,9 +846,9 @@ export function buildResult(track: Track, answers: Answers, opts?: BuildResultOp
         filtered.primaryGroup = grp(filtered.primaryGroup.heading, ...safe);
       }
     }
-    return filtered;
+    return applyFeaturedPin(filtered, opts);
   }
   const { resultType, strongest } = scoreB2B(answers);
-  return b2bResult(resultType, answers, strongest, opts);
+  return applyFeaturedPin(b2bResult(resultType, answers, strongest, opts), opts);
 }
 
