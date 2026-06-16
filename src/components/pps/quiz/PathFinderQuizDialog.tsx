@@ -146,6 +146,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [viewableKeys, setViewableKeys] = useState<Set<string> | null>(null);
+  const [comingSoonKeys, setComingSoonKeys] = useState<Set<string>>(new Set());
 
   const { questions, track } = useMemo(() => buildQuestionPath(answers), [answers]);
   const current = questions[index];
