@@ -72,6 +72,7 @@ function buildPools() {
     try { text = readFileSync(f, "utf8"); } catch { continue; }
     for (const m of text.matchAll(STATIC)) staticIds.add(m[1]);
     for (const m of text.matchAll(TEMPLATE_LITERAL)) staticIds.add(m[1]);
+    for (const m of text.matchAll(OBJECT_ID)) staticIds.add(m[1]);
     for (const m of text.matchAll(SLUG_CTX)) slugPool.add(m[1]);
     for (const m of text.matchAll(ANY_INTERP_TEMPLATE)) {
       const body = m[1];
