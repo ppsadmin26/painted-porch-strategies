@@ -75,6 +75,28 @@ export default function OfferingsCoverage() {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
+  const [audit, setAudit] = useState<AuditReport>(auditReport as AuditReport);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const refreshAudit = async () => {
+    setRefreshing(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("audit-offerings-overlap");
+      if (error) throw error;
+      if (data?.error) throw new Error(data.error);
+      setAudit(data as AuditReport);
+      toast.success(
+        `Audit refreshed · ${data.counts.matched} matched · ${data.counts.topic_candidates} topic candidates${
+          data.blue_door_connected ? "" : " (PPS-only)"
+        }`,
+      );
+    } catch (e: any) {
+      toast.error(`Audit refresh failed: ${e.message ?? e}`);
+    } finally {
+      setRefreshing(false);
+    }
+  };
+
 
   useEffect(() => {
     (async () => {
