@@ -64,6 +64,7 @@ interface Row {
   topic: string | null;
   include_in_workshops: boolean;
   is_featured_in_quiz: boolean;
+  launch_slug: string | null;
 }
 
 const TIER_COLORS: Record<string, string> = {
