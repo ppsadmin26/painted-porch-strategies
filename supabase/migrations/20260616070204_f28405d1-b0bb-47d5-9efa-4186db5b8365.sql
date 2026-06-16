@@ -1,0 +1,1 @@
+ALTER VIEW public.public_authors SET (security_invoker = false);
