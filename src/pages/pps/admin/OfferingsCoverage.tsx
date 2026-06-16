@@ -198,6 +198,20 @@ export default function OfferingsCoverage() {
               <span className="text-xs text-muted-foreground">
                 generated {new Date(audit.generated_at).toLocaleString()}
               </span>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={refreshAudit}
+                disabled={refreshing}
+                className="ml-auto h-7 text-xs"
+              >
+                {refreshing ? (
+                  <Loader2 className="w-3 h-3 mr-1 animate-spin" />
+                ) : (
+                  <RefreshCw className="w-3 h-3 mr-1" />
+                )}
+                Refresh audit
+              </Button>
             </div>
             <div className="mt-2 grid grid-cols-2 md:grid-cols-6 gap-2 text-sm">
               <Stat label="PPS rows" value={audit.counts.pps_rows} />
@@ -208,17 +222,15 @@ export default function OfferingsCoverage() {
               <Stat label="Topic candidates" value={audit.counts.topic_candidates} tone="raspberry" />
             </div>
             <p className="text-xs text-muted-foreground mt-3">
-              Source-of-truth picture for the offerings register. Re-run with{" "}
-              <code className="bg-muted px-1 rounded">node scripts/audit-offerings-overlap.mjs</code>{" "}
-              after adding <code>BLUEDOOR_SUPABASE_URL</code> and{" "}
-              <code>BLUEDOOR_SUPABASE_SERVICE_ROLE_KEY</code> to refresh with Blue Door data.
-              Full report:{" "}
+              Click <strong>Refresh audit</strong> to re-run live against PPS
+              {audit.blue_door_connected ? " + Blue Door" : " (Blue Door creds not set)"}.
+              The static snapshot below comes from{" "}
+              <code className="bg-muted px-1 rounded">scripts/audit-offerings-overlap.mjs</code>.
+              Full markdown report:{" "}
               <a
-                href="https://github.com"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open("/docs/offerings-duplication-audit.md", "_blank");
-                }}
+                href="/docs/offerings-duplication-audit.md"
+                target="_blank"
+                rel="noreferrer"
                 className="text-bluedoor underline"
               >
                 docs/offerings-duplication-audit.md
