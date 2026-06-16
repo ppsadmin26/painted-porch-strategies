@@ -214,6 +214,51 @@ export default function PathFinderOfferings() {
         </p>
       </div>
 
+      {!loading && brokenRows.length > 0 && (
+        <div className="mb-6 rounded-lg border border-raspberry/40 bg-raspberry/5 px-4 py-3 text-sm text-navy">
+          <div className="flex items-start gap-2">
+            <AlertTriangle className="w-4 h-4 mt-0.5 text-raspberry shrink-0" />
+            <div className="flex-1">
+              <p className="font-poppins font-semibold text-raspberry mb-1">
+                {brokenRows.length} offering{brokenRows.length === 1 ? "" : "s"} link to a missing program launch
+              </p>
+              <p className="mb-2 text-xs">
+                The linked <code>launch_slug</code> no longer exists in <code>course_launch_status</code>. The quiz falls back to the <strong>Live</strong> toggle for these rows, but the link should be cleared or repointed.
+              </p>
+              <ul className="space-y-1 text-xs">
+                {brokenRows.slice(0, 8).map(({ row, slug }) => (
+                  <li key={row.id} className="flex items-center gap-2 flex-wrap">
+                    <strong className="text-navy">{row.name}</strong>
+                    <code className="text-muted-foreground">{row.offering_key}</code>
+                    <span className="text-muted-foreground">→ missing slug</span>
+                    <code className="text-raspberry">{slug}</code>
+                    <button
+                      type="button"
+                      onClick={() => patch(row.id, { launch_slug: null as any })}
+                      className="text-primary hover:underline"
+                    >
+                      Clear link
+                    </button>
+                  </li>
+                ))}
+                {brokenRows.length > 8 && (
+                  <li className="text-muted-foreground">…and {brokenRows.length - 8} more.</li>
+                )}
+              </ul>
+              <button
+                type="button"
+                onClick={() => setShowOnly("broken-launch")}
+                className="mt-2 text-xs text-primary hover:underline"
+              >
+                Filter to broken-launch rows →
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
+
 
       {loading ? (
         <div className="flex items-center justify-center py-20"><Loader2 className="animate-spin" /></div>
