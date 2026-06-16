@@ -62,6 +62,7 @@ function isQuizEligible(row: Pick<Row, "is_live" | "current_url" | "dedicated_ur
 export default function PathFinderOfferings() {
   const { toast } = useToast();
   const [rows, setRows] = useState<Row[]>([]);
+  const [launches, setLaunches] = useState<LaunchOption[]>([]);
   const [dirty, setDirty] = useState<Record<string, Partial<Row>>>({});
   const [savingId, setSavingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -70,12 +71,16 @@ export default function PathFinderOfferings() {
 
   const load = async () => {
     setLoading(true);
-    const { data, error } = await supabase
-      .from("path_finder_offerings")
-      .select("*")
-      .order("sort_order");
-    if (error) toast({ title: "Failed to load", description: error.message, variant: "destructive" });
-    setRows((data ?? []) as Row[]);
+    const [offRes, launchRes] = await Promise.all([
+      supabase.from("path_finder_offerings").select("*").order("sort_order"),
+      supabase
+        .from("course_launch_status")
+        .select("slug, course_name, status, program_type")
+        .order("course_name"),
+    ]);
+    if (offRes.error) toast({ title: "Failed to load", description: offRes.error.message, variant: "destructive" });
+    setRows((offRes.data ?? []) as Row[]);
+    setLaunches((launchRes.data ?? []) as LaunchOption[]);
     setLoading(false);
   };
 
