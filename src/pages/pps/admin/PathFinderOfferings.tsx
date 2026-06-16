@@ -96,7 +96,6 @@ export default function PathFinderOfferings() {
     blurb: "",
     is_live: true,
   });
-  const keyEdited = useState(false);
   const [keyManuallyEdited, setKeyManuallyEdited] = useState(false);
 
   const slugifyKey = (s: string) =>
