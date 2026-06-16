@@ -1,0 +1,382 @@
+{
+  "generated_at": "2026-06-16T06:19:20.547Z",
+  "roots": [
+    "src/pages",
+    "src/components"
+  ],
+  "total_anchored": 63,
+  "present": 39,
+  "missing": 24,
+  "missing_by_destination": {
+    "/partner/amplify/workshops": [
+      {
+        "offering_key": "fromConflictToConnection",
+        "anchor": "fromConflictToConnection",
+        "name": "From Conflict to Connection",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "geniusAtWork",
+        "anchor": "geniusAtWork",
+        "name": "Genius at Work",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "architectChange",
+        "anchor": "architect-change",
+        "name": "Architect Change (Strategic Design Intensive)",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "borderlessCommunication",
+        "anchor": "borderlessCommunication",
+        "name": "Borderless Communication",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "changeForGood",
+        "anchor": "changeForGood",
+        "name": "Change for Good: Immunity to Change",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "goldilocks",
+        "anchor": "goldilocks",
+        "name": "Goldilocks Leadership",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "aiEiOh",
+        "anchor": "aiEiOh",
+        "name": "AI, EI, Oh! Guiding Change and AI Adoption",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "eightByEight",
+        "anchor": "eightByEight",
+        "name": "8:8",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "drivingChange3Shifts",
+        "anchor": "drivingChange3Shifts",
+        "name": "Driving Change: The 3 Shifts",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "findingJoyAtWork",
+        "anchor": "findingJoyAtWork",
+        "name": "Finding Joy at Work",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "getClearBeHeard",
+        "anchor": "getClearBeHeard",
+        "name": "Get C.L.E.A.R., Be Heard",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "heroesAssemble",
+        "anchor": "heroesAssemble",
+        "name": "Heroes Assemble",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "highFidelityCommunication",
+        "anchor": "highFidelityCommunication",
+        "name": "High-Fidelity Communication",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "leadAtSpeed",
+        "anchor": "leadAtSpeed",
+        "name": "Lead at the Speed of Change",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "moveShakeInnovate",
+        "anchor": "moveShakeInnovate",
+        "name": "Move, Shake, Innovate",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "reignitingResilience",
+        "anchor": "reignitingResilience",
+        "name": "Reigniting Resilience",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "fiveMinuteKeynote",
+        "anchor": "fiveMinuteKeynote",
+        "name": "The 5-Minute Keynote",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "powerOfStory",
+        "anchor": "powerOfStory",
+        "name": "The Power of Story",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "fromDysfunctionToDynamic",
+        "anchor": "fromDysfunctionToDynamic",
+        "name": "From Dysfunction to Dynamic Teams",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "fromPassengerToPilot",
+        "anchor": "fromPassengerToPilot",
+        "name": "From Passenger to Pilot",
+        "tier": "Pathway B"
+      },
+      {
+        "offering_key": "communicateWithStyle",
+        "anchor": "communicateWithStyle",
+        "name": "Speaking with Style: The 6 Communicator Styles for Influence & Impact",
+        "tier": "Pathway B"
+      }
+    ],
+    "/radical-mindfulness": [
+      {
+        "offering_key": "radicalMindfulness",
+        "anchor": "radical-mindfulness",
+        "name": "Radical Mindfulness",
+        "tier": "IGNITE"
+      }
+    ],
+    "/master-your-message": [
+      {
+        "offering_key": "masterYourMessage",
+        "anchor": "master-your-message",
+        "name": "Master Your Message",
+        "tier": "IGNITE"
+      }
+    ],
+    "/extraordinary-teams": [
+      {
+        "offering_key": "createExtraordinaryTeams",
+        "anchor": "extraordinary-teams",
+        "name": "Create Extraordinary Teams",
+        "tier": "IGNITE"
+      }
+    ]
+  },
+  "missing_detail": [
+    {
+      "offering_key": "fromConflictToConnection",
+      "name": "From Conflict to Connection",
+      "tier": "Pathway B",
+      "anchor": "fromConflictToConnection",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "geniusAtWork",
+      "name": "Genius at Work",
+      "tier": "Pathway B",
+      "anchor": "geniusAtWork",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "architectChange",
+      "name": "Architect Change (Strategic Design Intensive)",
+      "tier": "Pathway B",
+      "anchor": "architect-change",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "borderlessCommunication",
+      "name": "Borderless Communication",
+      "tier": "Pathway B",
+      "anchor": "borderlessCommunication",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "changeForGood",
+      "name": "Change for Good: Immunity to Change",
+      "tier": "Pathway B",
+      "anchor": "changeForGood",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "goldilocks",
+      "name": "Goldilocks Leadership",
+      "tier": "Pathway B",
+      "anchor": "goldilocks",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "aiEiOh",
+      "name": "AI, EI, Oh! Guiding Change and AI Adoption",
+      "tier": "Pathway B",
+      "anchor": "aiEiOh",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "eightByEight",
+      "name": "8:8",
+      "tier": "Pathway B",
+      "anchor": "eightByEight",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "radicalMindfulness",
+      "name": "Radical Mindfulness",
+      "tier": "IGNITE",
+      "anchor": "radical-mindfulness",
+      "destination": "/radical-mindfulness",
+      "is_live": true,
+      "present": false
+    },
+    {
+      "offering_key": "masterYourMessage",
+      "name": "Master Your Message",
+      "tier": "IGNITE",
+      "anchor": "master-your-message",
+      "destination": "/master-your-message",
+      "is_live": true,
+      "present": false
+    },
+    {
+      "offering_key": "createExtraordinaryTeams",
+      "name": "Create Extraordinary Teams",
+      "tier": "IGNITE",
+      "anchor": "extraordinary-teams",
+      "destination": "/extraordinary-teams",
+      "is_live": true,
+      "present": false
+    },
+    {
+      "offering_key": "drivingChange3Shifts",
+      "name": "Driving Change: The 3 Shifts",
+      "tier": "Pathway B",
+      "anchor": "drivingChange3Shifts",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "findingJoyAtWork",
+      "name": "Finding Joy at Work",
+      "tier": "Pathway B",
+      "anchor": "findingJoyAtWork",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "getClearBeHeard",
+      "name": "Get C.L.E.A.R., Be Heard",
+      "tier": "Pathway B",
+      "anchor": "getClearBeHeard",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "heroesAssemble",
+      "name": "Heroes Assemble",
+      "tier": "Pathway B",
+      "anchor": "heroesAssemble",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "highFidelityCommunication",
+      "name": "High-Fidelity Communication",
+      "tier": "Pathway B",
+      "anchor": "highFidelityCommunication",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "leadAtSpeed",
+      "name": "Lead at the Speed of Change",
+      "tier": "Pathway B",
+      "anchor": "leadAtSpeed",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "moveShakeInnovate",
+      "name": "Move, Shake, Innovate",
+      "tier": "Pathway B",
+      "anchor": "moveShakeInnovate",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "reignitingResilience",
+      "name": "Reigniting Resilience",
+      "tier": "Pathway B",
+      "anchor": "reignitingResilience",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "fiveMinuteKeynote",
+      "name": "The 5-Minute Keynote",
+      "tier": "Pathway B",
+      "anchor": "fiveMinuteKeynote",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "powerOfStory",
+      "name": "The Power of Story",
+      "tier": "Pathway B",
+      "anchor": "powerOfStory",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "fromDysfunctionToDynamic",
+      "name": "From Dysfunction to Dynamic Teams",
+      "tier": "Pathway B",
+      "anchor": "fromDysfunctionToDynamic",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "fromPassengerToPilot",
+      "name": "From Passenger to Pilot",
+      "tier": "Pathway B",
+      "anchor": "fromPassengerToPilot",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    },
+    {
+      "offering_key": "communicateWithStyle",
+      "name": "Speaking with Style: The 6 Communicator Styles for Influence & Impact",
+      "tier": "Pathway B",
+      "anchor": "communicateWithStyle",
+      "destination": "/partner/amplify/workshops",
+      "is_live": false,
+      "present": false
+    }
+  ]
+}
