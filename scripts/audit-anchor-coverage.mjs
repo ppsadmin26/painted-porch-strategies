@@ -61,9 +61,9 @@ function buildPools() {
 
   const STATIC = /\bid\s*=\s*"([^"\s{}]+)"/g;
   const TEMPLATE_LITERAL = /\bid\s*=\s*\{\s*`([^`${}]+)`\s*\}/g;
-  // Any template literal that interpolates: id={`pre${x}suf`}, or even
-  // free-standing `pre${x}suf` strings — JSX often wraps them in expressions
-  // like `id={topic.slug ? \`topic-${topic.slug}\` : undefined}`.
+  // Object/property form often consumed by dynamic id={item.id}: treat
+  // any `id: "value"` or `anchorId: "value"` literal as a static id.
+  const OBJECT_ID = /\b(?:id|anchorId|anchor_id|slug)\s*:\s*["'`]([a-zA-Z][a-zA-Z0-9_\-]{2,80})["'`]/g;
   const ANY_INTERP_TEMPLATE = /`([^`]*\$\{[^`]*?\}[^`]*)`/g;
   const SLUG_CTX = /(?:slug|anchor(?:Id|Slug)?|key|id)\s*[:=]\s*["'`]([a-zA-Z][a-zA-Z0-9_\-]{2,80})["'`]/g;
 
