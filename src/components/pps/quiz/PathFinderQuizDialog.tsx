@@ -302,7 +302,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
   const result: QuizResult | null = useMemo(() => {
     if (!showResult || !track) return null;
-    const r = buildResult(track, answers, { viewableKeys: viewableKeys ?? undefined, rtPools });
+    const r = buildResult(track, answers, { viewableKeys: viewableKeys ?? undefined, rtPools, featuredKeys });
     // If the Strongest Next Step is coming-soon but a live primary pick exists,
     // promote the first live primary pick into the strongest slot so users get
     // something they can begin right now.
