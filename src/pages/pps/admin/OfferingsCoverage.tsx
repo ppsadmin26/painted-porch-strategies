@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Loader2, ExternalLink, Search, AlertTriangle, CheckCircle2, FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Loader2, ExternalLink, Search, AlertTriangle, CheckCircle2, FileText, RefreshCw } from "lucide-react";
+import { toast } from "sonner";
 import auditReport from "../../../../docs/offerings-duplication-audit.json";
 
 type AuditReport = {
@@ -18,7 +20,6 @@ type AuditReport = {
     topic_candidates: number;
   };
 };
-const audit = auditReport as AuditReport;
 
 function Stat({ label, value, tone }: { label: string; value: number; tone?: "raspberry" }) {
   return (
