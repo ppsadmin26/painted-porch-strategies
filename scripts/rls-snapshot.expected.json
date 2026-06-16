@@ -571,6 +571,18 @@
       "with_check": "is_admin(auth.uid())"
     },
     {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Admins can read all page status",
+      "qual": "is_admin(auth.uid())",
+      "roles": [
+        "authenticated"
+      ],
+      "schemaname": "public",
+      "tablename": "page_status",
+      "with_check": null
+    },
+    {
       "cmd": "UPDATE",
       "permissive": "PERMISSIVE",
       "policyname": "Admins can update page status",
@@ -581,18 +593,6 @@
       "schemaname": "public",
       "tablename": "page_status",
       "with_check": "is_admin(auth.uid())"
-    },
-    {
-      "cmd": "SELECT",
-      "permissive": "PERMISSIVE",
-      "policyname": "Authenticated can read all page status",
-      "qual": "true",
-      "roles": [
-        "authenticated"
-      ],
-      "schemaname": "public",
-      "tablename": "page_status",
-      "with_check": null
     },
     {
       "cmd": "SELECT",
