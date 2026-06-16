@@ -393,6 +393,37 @@ export default function PathFinderOfferings() {
                   </div>
                 </div>
 
+                <div className="mt-3 rounded-md border border-dashed border-gold/40 bg-gold/5 px-3 py-2">
+                  <Label className="text-xs">
+                    <strong>Linked launch</strong> (single source of truth for Live vs Coming Soon)
+                    <span className="block text-xs text-muted-foreground font-normal">
+                      When linked, the quiz reads availability from <code>course_launch_status</code>. Coming Soon programs still appear in results, deprioritized, with a "join the launch list" badge.
+                    </span>
+                  </Label>
+                  <div className="flex items-center gap-2 mt-1">
+                    <select
+                      value={valueOf(row, "launch_slug") ?? ""}
+                      onChange={(e) => patch(row.id, { launch_slug: e.target.value || (null as any) })}
+                      className="h-10 flex-1 rounded-md border border-input bg-background px-3 text-sm"
+                    >
+                      <option value="">— No linked launch (use Live toggle above) —</option>
+                      {launches.map((l) => (
+                        <option key={l.slug} value={l.slug}>
+                          {l.course_name} ({l.status === "live" ? "Live" : "Coming Soon"}) · {l.slug}
+                        </option>
+                      ))}
+                    </select>
+                    {valueOf(row, "launch_slug") ? (
+                      <Link
+                        to={`/admin/course-launches?slug=${encodeURIComponent(valueOf(row, "launch_slug") as string)}`}
+                        className="text-xs text-primary hover:underline inline-flex items-center gap-1"
+                      >
+                        Manage <ExternalLink className="w-3 h-3" />
+                      </Link>
+                    ) : null}
+                  </div>
+                </div>
+
                 <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
                   <span>Quiz will link to:</span>
                   {url ? (
