@@ -88,18 +88,36 @@ function buildPools() {
       }
     }
   }
-  return { staticIds, slugPool, templates };
+  const normIds = new Set();
+  for (const v of staticIds) normIds.add(String(v).toLowerCase().replace(/[^a-z0-9]+/g, ""));
+  const normSlugs = new Set();
+  for (const v of slugPool) normSlugs.add(String(v).toLowerCase().replace(/[^a-z0-9]+/g, ""));
+  return { staticIds, slugPool, templates, normIds, normSlugs };
+}
+
+// Canonical key: lowercase, strip all non-alphanumerics. Mirrors
+// src/lib/anchor-normalize.ts so audits match runtime fuzzy resolution.
+function normKey(s) {
+  return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
 }
 
 function isAnchorPresent(anchor, pools) {
   if (pools.staticIds.has(anchor)) return true;
-  // Try every (prefix, suffix) — if anchor starts with prefix and ends with
-  // suffix and the middle slug is in the slug pool, it would render.
+  if (pools.normIds && pools.normIds.has(normKey(anchor))) return true;
   for (const { prefix, suffix } of pools.templates) {
     if (!anchor.startsWith(prefix) || !anchor.endsWith(suffix)) continue;
     const middle = anchor.slice(prefix.length, anchor.length - suffix.length);
     if (!middle) continue;
     if (pools.slugPool.has(middle)) return true;
+  }
+  const nAnchor = normKey(anchor);
+  for (const { prefix, suffix } of pools.templates) {
+    const nPrefix = normKey(prefix);
+    const nSuffix = normKey(suffix);
+    if (!nAnchor.startsWith(nPrefix) || !nAnchor.endsWith(nSuffix)) continue;
+    const middle = nAnchor.slice(nPrefix.length, nAnchor.length - nSuffix.length);
+    if (!middle) continue;
+    if (pools.normSlugs && pools.normSlugs.has(middle)) return true;
   }
   return false;
 }

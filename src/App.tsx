@@ -179,24 +179,27 @@ function ScrollToHash() {
     // Retry: target card/section may mount after data loads. If it never
     // appears (e.g. anchor was renamed/removed), gracefully fall back so the
     // user still lands on the correct page rather than getting a broken jump.
+    // Uses findElementByFuzzyId so casing/slug differences (e.g.
+    // `architect-change` vs `architectChange`) still resolve.
     const attempts = [50, 150, 350, 700, 1200, 2000];
     let found = false;
-    attempts.forEach((delay) => {
+    import("@/lib/anchor-normalize").then(({ findElementByFuzzyId }) => {
+      if (cancelled) return;
+      attempts.forEach((delay) => {
+        setTimeout(() => {
+          if (cancelled || found) return;
+          const el = findElementByFuzzyId(id);
+          if (el) {
+            found = true;
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, delay);
+      });
       setTimeout(() => {
         if (cancelled || found) return;
-        const el = document.getElementById(id);
-        if (el) {
-          found = true;
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, delay);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, attempts[attempts.length - 1] + 100);
     });
-    // Final fallback: if no element matched after all retries, scroll to top
-    // of the page so the user sees a coherent landing instead of staying mid-page.
-    setTimeout(() => {
-      if (cancelled || found) return;
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, attempts[attempts.length - 1] + 100);
     return () => { cancelled = true; };
   }, [hash, pathname]);
   return null;
