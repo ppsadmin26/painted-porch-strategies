@@ -737,29 +737,8 @@ export default function PathFinderOfferings() {
   );
 }
 
-type PoolState = "off" | "free" | "primary" | "speaking";
 
-function poolStateFor(arr: string[] | undefined, allowed: PoolState[]): PoolState {
-  if (!arr || arr.length === 0) return "off";
-  for (const opt of allowed) {
-    if (opt !== "off" && arr.includes(opt)) return opt;
-  }
-  return "off";
-}
 
-function setPoolForRt(
-  current: Record<string, string[]>,
-  rt: string,
-  next: PoolState,
-): Record<string, string[]> {
-  const copy = { ...current };
-  if (next === "off") {
-    delete copy[rt];
-  } else {
-    copy[rt] = [next];
-  }
-  return copy;
-}
 
 interface RtPoolEditorProps {
   tier: string;
