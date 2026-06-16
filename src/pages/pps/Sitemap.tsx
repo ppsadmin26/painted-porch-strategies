@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { useAuth } from "@/hooks/useAuth";
 import { useUserRole } from "@/hooks/useUserRole";
-import { usePageStatuses, type PageStatusMap } from "@/hooks/usePageStatuses";
+import { usePageStatuses, type PageStatusMap, type PageStatusRecord } from "@/hooks/usePageStatuses";
 import { resolvePageStatus, resolvePageStatusEntry } from "@/config/pageStatus";
 import { isLovableEditorPreview } from "@/lib/lovablePreview";
+import { supabase } from "@/integrations/supabase/client";
 import ComingSoon from "@/pages/pps/ComingSoon";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
@@ -502,9 +503,37 @@ export default function Sitemap() {
 
   const { user, loading: authLoading } = useAuth();
   const { isAdmin } = useUserRole();
-  const { map: statusMap, loading: statusLoading, setStatus, clearStatus } = usePageStatuses();
+  const { map: rawStatusMap, loading: statusLoading, setStatus, clearStatus } = usePageStatuses();
+  const [notesById, setNotesById] = useState<Record<string, string | null>>({});
   const isStaff = !!user;
   const isEditorPreview = isLovableEditorPreview();
+
+  // The `note` column is admin-only at the DB grant level; admins hydrate it
+  // here so draft-note tooltips and inline editors still work in the sitemap.
+  useEffect(() => {
+    if (!isAdmin) return;
+    let cancelled = false;
+    (async () => {
+      const { data, error } = await supabase.rpc("admin_list_page_status_notes");
+      if (cancelled || error || !data) return;
+      const next: Record<string, string | null> = {};
+      for (const row of data as Array<{ id: string; note: string | null }>) {
+        next[row.id] = row.note;
+      }
+      setNotesById(next);
+    })();
+    return () => { cancelled = true; };
+  }, [isAdmin]);
+
+  // Merge admin-only notes into the status map so downstream renders read .note as expected.
+  const statusMap = useMemo<PageStatusMap>(() => {
+    if (!isAdmin) return rawStatusMap;
+    const merged: PageStatusMap = {};
+    for (const [path, entry] of Object.entries(rawStatusMap) as Array<[string, PageStatusRecord]>) {
+      merged[path] = { ...entry, note: notesById[entry.id] ?? null };
+    }
+    return merged;
+  }, [rawStatusMap, notesById, isAdmin]);
 
   // Sitemap is for internal admin/management use only. Allow access when:
   //   1. User is signed in as staff, OR
