@@ -274,6 +274,15 @@ export default function PathFinderOfferings() {
           <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
             Every recommendation the quiz can surface. Flip <strong>Live</strong> on once a dedicated page exists — the quiz will start linking there instantly. Use <strong>Anchor</strong> to deep-link into a card on the hub page in the meantime.
           </p>
+          <details className="mt-2 max-w-3xl text-xs text-muted-foreground">
+            <summary className="cursor-pointer font-poppins font-semibold text-navy">How this page actually drives the quiz</summary>
+            <div className="mt-2 space-y-1.5 pl-2 border-l-2 border-primary/30">
+              <p><strong>Eligibility (all tiers):</strong> An offering can only appear in a quiz result if it is <em>Live</em> AND has at least one URL or anchor. This page controls that.</p>
+              <p><strong>RT mapping (Free + Speaking only):</strong> Tick which result types (RT1-6 for B2C, RT-A-E for B2B) the offering should appear in. Other tiers (IGNITE, AMPLIFY, Workshop, Blue Door, Assessment) are placed automatically by the quiz engine based on the result type — the RT box on those cards will say "placed automatically".</p>
+              <p><strong>Prioritize in quiz:</strong> Pins this offering to position 1 of the primary recommendation list whenever it is already in that list for the matched result.</p>
+              <p><strong>Topic tag:</strong> Used by the workshops hub accordion only. It does <em>not</em> drive quiz routing — RT mapping does.</p>
+            </div>
+          </details>
         </div>
         <div className="flex gap-2 items-center">
           <div className="relative">
