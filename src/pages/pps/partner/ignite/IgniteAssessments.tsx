@@ -176,7 +176,8 @@ export default function IgniteAssessments() {
                   )}
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
