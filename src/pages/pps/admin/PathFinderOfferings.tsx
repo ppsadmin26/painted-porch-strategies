@@ -602,16 +602,12 @@ export default function PathFinderOfferings() {
                       className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
                     >
                       <option value="">— Untagged —</option>
-                      <option value="Change">Change</option>
+                      <option value="Change & Innovation">Change & Innovation</option>
                       <option value="Comms">Comms</option>
-                      <option value="EQ">EQ</option>
-                      <option value="Innovation">Innovation</option>
-                      <option value="Leadership">Leadership</option>
-                      <option value="Mindfulness">Mindfulness</option>
+                      <option value="Leadership & EQ">Leadership & EQ</option>
                       <option value="Philosophy">Philosophy</option>
-                      <option value="Resilience">Resilience</option>
                       <option value="Teams">Teams</option>
-                      <option value="Wellbeing">Wellbeing</option>
+                      <option value="Wellbeing & Resilience">Wellbeing & Resilience</option>
                     </select>
                   </div>
                 </div>
