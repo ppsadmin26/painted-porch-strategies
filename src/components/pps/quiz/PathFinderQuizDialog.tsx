@@ -509,13 +509,20 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                 <p className="font-poppins text-lg text-navy font-semibold mb-2">
                   <BoldShiftName name={result.strongestNextStep.offering.name} />
                 </p>
+                {(result.strongestNextStep.offering as { isComingSoon?: boolean }).isComingSoon && (
+                  <p className="text-xs font-semibold text-gold mb-2">
+                    Launching soon — join the launch list on the card to be notified.
+                  </p>
+                )}
                 <Button asChild className={
                   result.strongestNextStep.kind === "blueDoor"
                     ? "bg-bluedoor text-white hover:bg-bluedoor/90"
                     : "bg-primary text-white hover:bg-primary/90"
                 }>
                   <Link to={result.strongestNextStep.offering.url} onClick={() => onOpenChange(false)}>
-                    Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                    {(result.strongestNextStep.offering as { isComingSoon?: boolean }).isComingSoon
+                      ? "See Details & Join List"
+                      : "Learn More"} <ArrowRight className="w-4 h-4 ml-1" />
                   </Link>
                 </Button>
               </div>
