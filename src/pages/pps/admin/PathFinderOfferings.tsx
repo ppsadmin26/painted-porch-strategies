@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Save, ExternalLink, Search } from "lucide-react";
+import { Loader2, Save, ExternalLink, Search, AlertTriangle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface Row {
@@ -67,7 +67,7 @@ export default function PathFinderOfferings() {
   const [savingId, setSavingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
-  const [showOnly, setShowOnly] = useState<"all" | "needs-page" | "live">("all");
+  const [showOnly, setShowOnly] = useState<"all" | "needs-page" | "live" | "broken-launch">("all");
 
   const load = async () => {
     setLoading(true);
@@ -86,8 +86,25 @@ export default function PathFinderOfferings() {
 
   useEffect(() => { load(); }, []);
 
+  const launchSlugs = useMemo(() => new Set(launches.map((l) => l.slug)), [launches]);
+
+  // Effective launch_slug per row (accounts for unsaved edits) and broken-link detection
+  const brokenRows = useMemo(() => {
+    if (launches.length === 0) return [] as Array<{ row: Row; slug: string }>;
+    return rows
+      .map((r) => {
+        const d = dirty[r.id];
+        const slug = (d && "launch_slug" in d ? (d as any).launch_slug : r.launch_slug) as string | null;
+        return slug && !launchSlugs.has(slug) ? { row: r, slug } : null;
+      })
+      .filter(Boolean) as Array<{ row: Row; slug: string }>;
+  }, [rows, dirty, launches, launchSlugs]);
+
+  const brokenIds = useMemo(() => new Set(brokenRows.map((b) => b.row.id)), [brokenRows]);
+
   const filtered = useMemo(() => {
     return rows.filter((r) => {
+      if (showOnly === "broken-launch" && !brokenIds.has(r.id)) return false;
       if (showOnly === "needs-page" && (r.is_live || (r.dedicated_url && r.dedicated_url !== r.current_url))) {
         // "needs-page" = not live AND no dedicated_url set yet
         if (r.is_live || r.dedicated_url) return false;
@@ -105,7 +122,7 @@ export default function PathFinderOfferings() {
       }
       return true;
     });
-  }, [rows, filter, showOnly]);
+  }, [rows, filter, showOnly, brokenIds]);
 
   const patch = (id: string, partial: Partial<Row>) => {
     setDirty((d) => ({ ...d, [id]: { ...d[id], ...partial } }));
@@ -173,6 +190,7 @@ export default function PathFinderOfferings() {
             <option value="all">All ({rows.length})</option>
             <option value="needs-page">Needs page ({rows.filter(r => !r.is_live && !r.dedicated_url).length})</option>
             <option value="live">Live ({rows.filter(r => r.is_live).length})</option>
+            <option value="broken-launch">Broken launch link ({brokenRows.length})</option>
           </select>
         </div>
       </div>
@@ -195,6 +213,51 @@ export default function PathFinderOfferings() {
           </a>
         </p>
       </div>
+
+      {!loading && brokenRows.length > 0 && (
+        <div className="mb-6 rounded-lg border border-raspberry/40 bg-raspberry/5 px-4 py-3 text-sm text-navy">
+          <div className="flex items-start gap-2">
+            <AlertTriangle className="w-4 h-4 mt-0.5 text-raspberry shrink-0" />
+            <div className="flex-1">
+              <p className="font-poppins font-semibold text-raspberry mb-1">
+                {brokenRows.length} offering{brokenRows.length === 1 ? "" : "s"} link to a missing program launch
+              </p>
+              <p className="mb-2 text-xs">
+                The linked <code>launch_slug</code> no longer exists in <code>course_launch_status</code>. The quiz falls back to the <strong>Live</strong> toggle for these rows, but the link should be cleared or repointed.
+              </p>
+              <ul className="space-y-1 text-xs">
+                {brokenRows.slice(0, 8).map(({ row, slug }) => (
+                  <li key={row.id} className="flex items-center gap-2 flex-wrap">
+                    <strong className="text-navy">{row.name}</strong>
+                    <code className="text-muted-foreground">{row.offering_key}</code>
+                    <span className="text-muted-foreground">→ missing slug</span>
+                    <code className="text-raspberry">{slug}</code>
+                    <button
+                      type="button"
+                      onClick={() => patch(row.id, { launch_slug: null as any })}
+                      className="text-primary hover:underline"
+                    >
+                      Clear link
+                    </button>
+                  </li>
+                ))}
+                {brokenRows.length > 8 && (
+                  <li className="text-muted-foreground">…and {brokenRows.length - 8} more.</li>
+                )}
+              </ul>
+              <button
+                type="button"
+                onClick={() => setShowOnly("broken-launch")}
+                className="mt-2 text-xs text-primary hover:underline"
+              >
+                Filter to broken-launch rows →
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
 
 
       {loading ? (
