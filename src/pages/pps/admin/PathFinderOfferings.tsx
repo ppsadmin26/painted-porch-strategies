@@ -604,7 +604,7 @@ export default function PathFinderOfferings() {
                     />
                   </div>
                   <div>
-                    <Label className="text-xs">Topic tag (shown on workshop hub)</Label>
+                    <Label className="text-xs">Topic tag (workshop hub only — does not drive quiz routing)</Label>
                     <select
                       value={valueOf(row, "topic") ?? ""}
                       onChange={(e) => patch(row.id, { topic: e.target.value || null })}
@@ -616,7 +616,7 @@ export default function PathFinderOfferings() {
                       <option value="Leadership & EQ">Leadership & EQ</option>
                       <option value="Philosophy">Philosophy</option>
                       <option value="Teams">Teams</option>
-                      <option value="Wellbeing & Resilience">Wellbeing & Resilience</option>
+                      <option value="Mindset & Resilience">Mindset & Resilience</option>
                     </select>
                   </div>
                 </div>
