@@ -1092,6 +1092,22 @@ export type Database = {
           schedule: string
         }[]
       }
+      admin_list_offering_notes: {
+        Args: never
+        Returns: {
+          id: string
+          notes: string
+          offering_key: string
+        }[]
+      }
+      admin_list_page_status_notes: {
+        Args: never
+        Returns: {
+          id: string
+          note: string
+          path: string
+        }[]
+      }
       admin_schema_object_counts: { Args: never; Returns: Json }
       admin_set_backup_schedule_active: {
         Args: { _active: boolean; _jobname: string }
