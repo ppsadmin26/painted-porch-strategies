@@ -3,7 +3,33 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Loader2, ExternalLink, Search, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { Loader2, ExternalLink, Search, AlertTriangle, CheckCircle2, FileText } from "lucide-react";
+import auditReport from "../../../../docs/offerings-duplication-audit.json";
+
+type AuditReport = {
+  generated_at: string;
+  blue_door_connected: boolean;
+  counts: {
+    pps_rows: number;
+    bd_rows: number;
+    matched: number;
+    pps_only: number;
+    bd_only: number;
+    topic_candidates: number;
+  };
+};
+const audit = auditReport as AuditReport;
+
+function Stat({ label, value, tone }: { label: string; value: number; tone?: "raspberry" }) {
+  return (
+    <div className="rounded border bg-background px-2 py-1.5">
+      <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div>
+      <div className={`font-poppins font-semibold ${tone === "raspberry" ? "text-raspberry" : "text-navy"}`}>
+        {value}
+      </div>
+    </div>
+  );
+}
 
 interface Row {
   id: string;
@@ -136,8 +162,53 @@ export default function OfferingsCoverage() {
         </div>
       </div>
 
+      {/* Phase 1 audit banner */}
+      <div className="mb-6 rounded-lg border border-bluedoor/30 bg-bluedoor/5 p-4">
+        <div className="flex items-start gap-3">
+          <FileText className="w-5 h-5 text-bluedoor mt-0.5 shrink-0" />
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h2 className="font-poppins font-semibold text-navy">Phase 1 overlap audit</h2>
+              <Badge variant="outline" className="text-xs">
+                {audit.blue_door_connected ? "Blue Door connected" : "PPS-only"}
+              </Badge>
+              <span className="text-xs text-muted-foreground">
+                generated {new Date(audit.generated_at).toLocaleString()}
+              </span>
+            </div>
+            <div className="mt-2 grid grid-cols-2 md:grid-cols-6 gap-2 text-sm">
+              <Stat label="PPS rows" value={audit.counts.pps_rows} />
+              <Stat label="BD rows" value={audit.counts.bd_rows} />
+              <Stat label="Matched" value={audit.counts.matched} />
+              <Stat label="PPS only" value={audit.counts.pps_only} />
+              <Stat label="BD only" value={audit.counts.bd_only} />
+              <Stat label="Topic candidates" value={audit.counts.topic_candidates} tone="raspberry" />
+            </div>
+            <p className="text-xs text-muted-foreground mt-3">
+              Source-of-truth picture for the offerings register. Re-run with{" "}
+              <code className="bg-muted px-1 rounded">node scripts/audit-offerings-overlap.mjs</code>{" "}
+              after adding <code>BLUEDOOR_SUPABASE_URL</code> and{" "}
+              <code>BLUEDOOR_SUPABASE_SERVICE_ROLE_KEY</code> to refresh with Blue Door data.
+              Full report:{" "}
+              <a
+                href="https://github.com"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open("/docs/offerings-duplication-audit.md", "_blank");
+                }}
+                className="text-bluedoor underline"
+              >
+                docs/offerings-duplication-audit.md
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Summary cards */}
       <div className="grid grid-cols-2 md:grid-cols-7 gap-3 mb-8">
+
         {[
           { label: "Total", value: summary.total, tone: "text-navy" },
           { label: "Live", value: summary.live, tone: "text-lime-foreground" },

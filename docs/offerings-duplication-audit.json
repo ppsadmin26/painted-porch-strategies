@@ -1,0 +1,367 @@
+{
+  "generated_at": "2026-06-16T05:01:04.980Z",
+  "blue_door_connected": false,
+  "counts": {
+    "pps_rows": 90,
+    "bd_rows": 0,
+    "matched": 0,
+    "pps_only": 90,
+    "bd_only": 0,
+    "topic_candidates": 20
+  },
+  "matched": [],
+  "topic_candidates": [
+    {
+      "base": "from conflict to connection",
+      "deliveries": [
+        {
+          "offering_key": "conflictToConnectionLab",
+          "name": "From Conflict to Connection Lab",
+          "tier": "AMPLIFY",
+          "is_live": false
+        },
+        {
+          "offering_key": "fromConflictToConnection",
+          "name": "From Conflict to Connection",
+          "tier": "Pathway B",
+          "is_live": false
+        }
+      ]
+    },
+    {
+      "base": "goldilocks leadership",
+      "deliveries": [
+        {
+          "offering_key": "goldilocksLab",
+          "name": "Goldilocks Leadership Lab",
+          "tier": "AMPLIFY",
+          "is_live": false
+        },
+        {
+          "offering_key": "goldilocks",
+          "name": "Goldilocks Leadership",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingGoldilocks",
+          "name": "Goldilocks Leadership (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "stoicism in the workplace",
+      "deliveries": [
+        {
+          "offering_key": "stoicismLab",
+          "name": "Stoicism in the Workplace Lab",
+          "tier": "AMPLIFY",
+          "is_live": false
+        },
+        {
+          "offering_key": "stoicismB2B",
+          "name": "Stoicism in the Workplace (Workshop)",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingStoicism",
+          "name": "Stoicism in the Workplace (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "ai ei oh",
+      "deliveries": [
+        {
+          "offering_key": "aiEiOhLab",
+          "name": "AI, EI, Oh! Lab",
+          "tier": "AMPLIFY",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingAiEiOh",
+          "name": "AI, EI, Oh! (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "from dysfunction to dynamic teams",
+      "deliveries": [
+        {
+          "offering_key": "fromDysfunctionToDynamic",
+          "name": "From Dysfunction to Dynamic Teams",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingFromDysfunction",
+          "name": "From Dysfunction to Dynamic Teams (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "heroes assemble",
+      "deliveries": [
+        {
+          "offering_key": "heroesAssemble",
+          "name": "Heroes Assemble",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingHeroesAssemble",
+          "name": "Heroes Assemble! (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "lead at the speed of change",
+      "deliveries": [
+        {
+          "offering_key": "leadAtSpeed",
+          "name": "Lead at the Speed of Change",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingLeadAtSpeed",
+          "name": "Lead at the Speed of Change (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "kick the habit",
+      "deliveries": [
+        {
+          "offering_key": "kickTheHabit",
+          "name": "Kick the Habit",
+          "tier": "Pathway B",
+          "is_live": true
+        },
+        {
+          "offering_key": "kickTheHabitB2C",
+          "name": "Kick the Habit (Masterclass)",
+          "tier": "IGNITE",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "shift happens be ready",
+      "deliveries": [
+        {
+          "offering_key": "shiftHappensBeReady",
+          "name": "ShIFt Happens. Be Ready.",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingShIFtHappens",
+          "name": "ShIFt Happens. Be Ready. (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "don t panic navigating a changing world",
+      "deliveries": [
+        {
+          "offering_key": "dontPanic",
+          "name": "Don't Panic! Navigating a Changing World",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingDontPanic",
+          "name": "Don't Panic! Navigating a Changing World (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "the power of story",
+      "deliveries": [
+        {
+          "offering_key": "powerOfStory",
+          "name": "The Power of Story",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingPowerOfStory",
+          "name": "The Power of Story (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "high fidelity communication",
+      "deliveries": [
+        {
+          "offering_key": "highFidelityCommunication",
+          "name": "High-Fidelity Communication",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingHighFidelity",
+          "name": "High-Fidelity Communication (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "get c l e a r be heard",
+      "deliveries": [
+        {
+          "offering_key": "getClearBeHeard",
+          "name": "Get C.L.E.A.R., Be Heard",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingGetClear",
+          "name": "Get C.L.E.A.R. & Be Heard (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "on air ready confidence",
+      "deliveries": [
+        {
+          "offering_key": "onAirReadyConfidence",
+          "name": "On-Air Ready Confidence",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingOnAir",
+          "name": "On-Air Ready Confidence (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "reigniting resilience",
+      "deliveries": [
+        {
+          "offering_key": "reignitingResilience",
+          "name": "Reigniting Resilience",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingReignitingResilience",
+          "name": "Reigniting Resilience (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "finding joy at work",
+      "deliveries": [
+        {
+          "offering_key": "findingJoyAtWork",
+          "name": "Finding Joy at Work",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingFindingJoy",
+          "name": "Finding Joy at Work (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "from passenger to pilot",
+      "deliveries": [
+        {
+          "offering_key": "fromPassengerToPilot",
+          "name": "From Passenger to Pilot",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingFromPassengerToPilot",
+          "name": "From Passenger to Pilot (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "radically mindful leadership",
+      "deliveries": [
+        {
+          "offering_key": "radicallyMindfulLeadership",
+          "name": "Radically Mindful Leadership",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingRadicallyMindful",
+          "name": "Radically Mindful Leadership (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "borderless communication",
+      "deliveries": [
+        {
+          "offering_key": "borderlessCommunication",
+          "name": "Borderless Communication",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingBorderlessKeynote",
+          "name": "Borderless Communication (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    },
+    {
+      "base": "move shake innovate",
+      "deliveries": [
+        {
+          "offering_key": "moveShakeInnovate",
+          "name": "Move, Shake, Innovate",
+          "tier": "Pathway B",
+          "is_live": false
+        },
+        {
+          "offering_key": "speakingMoveShakeInnovate",
+          "name": "Move, Shake, Innovate (Keynote)",
+          "tier": "Speaking",
+          "is_live": true
+        }
+      ]
+    }
+  ]
+}
