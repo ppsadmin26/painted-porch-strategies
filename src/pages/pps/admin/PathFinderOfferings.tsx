@@ -67,7 +67,7 @@ export default function PathFinderOfferings() {
   const [savingId, setSavingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
-  const [showOnly, setShowOnly] = useState<"all" | "needs-page" | "live">("all");
+  const [showOnly, setShowOnly] = useState<"all" | "needs-page" | "live" | "broken-launch">("all");
 
   const load = async () => {
     setLoading(true);
