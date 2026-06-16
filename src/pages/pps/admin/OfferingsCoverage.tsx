@@ -22,6 +22,16 @@ type AuditReport = {
   };
 };
 
+type AnchorAudit = {
+  generated_at: string;
+  total_anchored: number;
+  present: number;
+  missing: number;
+  missing_by_destination: Record<string, Array<{ offering_key: string; anchor: string; name: string; tier: string }>>;
+};
+
+const ANCHOR_AUDIT = anchorAudit as AnchorAudit;
+
 function Stat({ label, value, tone }: { label: string; value: number; tone?: "raspberry" }) {
   return (
     <div className="rounded border bg-background px-2 py-1.5">
