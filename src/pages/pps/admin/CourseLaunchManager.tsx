@@ -38,11 +38,28 @@ interface CourseRow {
 
 export default function CourseLaunchManager() {
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
+  const focusSlug = searchParams.get("slug");
   const [rows, setRows] = useState<CourseRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const [working, setWorking] = useState<string | null>(null);
   const [confirmGoLive, setConfirmGoLive] = useState<CourseRow | null>(null);
+  const [highlightedSlug, setHighlightedSlug] = useState<string | null>(null);
+  const rowRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  // Scroll to + briefly highlight a row when ?slug=... is in the URL
+  // (deep-link from /admin/offerings → "Manage").
+  useEffect(() => {
+    if (!focusSlug || loading || rows.length === 0) return;
+    const el = rowRefs.current[focusSlug];
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    setHighlightedSlug(focusSlug);
+    const t = window.setTimeout(() => setHighlightedSlug(null), 2400);
+    return () => window.clearTimeout(t);
+  }, [focusSlug, loading, rows.length]);
+
 
   const load = async () => {
     setLoading(true);
