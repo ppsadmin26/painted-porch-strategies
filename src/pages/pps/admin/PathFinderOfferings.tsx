@@ -62,12 +62,13 @@ function isQuizEligible(row: Pick<Row, "is_live" | "current_url" | "dedicated_ur
 
 export default function PathFinderOfferings() {
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
   const [rows, setRows] = useState<Row[]>([]);
   const [launches, setLaunches] = useState<LaunchOption[]>([]);
   const [dirty, setDirty] = useState<Record<string, Partial<Row>>>({});
   const [savingId, setSavingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState(searchParams.get("filter") ?? "");
   const [showOnly, setShowOnly] = useState<"all" | "needs-page" | "live" | "broken-launch">("all");
 
   const load = async () => {
