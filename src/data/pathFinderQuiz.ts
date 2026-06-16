@@ -575,6 +575,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
           ? "You're building something real, and you're thinking about it the right way. The leaders who get this right build the foundation — self-awareness, reflective capacity, inner steadiness — before the complexity arrives. That's exactly where you are."
           : "The clearest thing your responses show is that the foundation needs to come first. Not because your capability is in question. Leaders who build self-awareness and reflective capacity before they try to go wider are the ones who stop exhausting themselves in the process.",
         primaryGroup: grp("Your Starting Point — IGNITE", "radicalMindfulness"),
+        whyThisFits: "Your gap is foundation, not tactics — so we're pointing at the one program built to install it. Radical Mindfulness is the self-paced course that develops the self-awareness and reflective capacity every later capability (communication, team leadership, change) is built on. The free Stoicism prompts and Burnout resources are there to keep the practice alive between sessions.",
         groups: [
           grp("Also Worth Exploring", "radicalMindfulnessMini", "passengerToPilot", "eqi"),
           grp("Free Starting Points", "fiftyTwoStoicism", "burnoutResources"),
@@ -587,6 +588,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         subhead: "IGNITE — Self-Paced",
         narrative: "You have the self-awareness. You can read a room. The gap is in the translation: getting what's in your head to consistently land the way you intend. Closing this gap is about mastering the instrument you already have.",
         primaryGroup: grp("Your Starting Point — IGNITE", "masterYourMessage"),
+        whyThisFits: "Your gap is the translation layer — the space between what you mean and how it lands. Master Your Message is built specifically for that gap: how you frame, deliver, and adapt your message so it consistently reaches the room you're actually in. The companion picks sharpen the same instrument (style awareness, hard conversations, your natural working genius).",
         groups: [grp("Also Worth Exploring", "masterYourMessageMini", "talkingToStrangers", "workingGenius")],
         whatComesNext: "Communication work is the direct prerequisite for leading teams through complexity. Create Extraordinary Teams and the AMPLIFY Leadership Labs are the natural next terrain.",
       };
@@ -601,6 +603,9 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         primaryGroup: cohort
           ? grp("Your Starting Point — AMPLIFY Lab", "conflictToConnectionLab", "goldilocksLab")
           : grp("Your Starting Point — IGNITE", "createExtraordinaryTeams"),
+        whyThisFits: cohort
+          ? "You told us you want a live, cohort-based experience — so we picked the two Labs that target the team dynamics most leaders trip on: navigating conflict productively (Conflict to Connection) and calibrating expectations and accountability (Goldilocks). Both put you in a peer cohort where the work is the team, not the theory."
+          : "You told us you want a self-paced path — so we picked the one course designed to give you the team-leadership playbook end to end. Create Extraordinary Teams covers the conditions, rhythms, and decisions that turn a group of capable people into a team that consistently performs.",
         groups: [grp("Also Worth Exploring", "elementsOfATeam", "workingGenius", "kickTheHabit")],
         whatComesNext: "As you build team-leadership capacity, two signals often emerge: toward change architecture, or toward organizational scale. When what you're building for your team is something your whole organization needs, that's a different conversation. We're ready for it.",
       };
@@ -614,6 +619,9 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         primaryGroup: cohort
           ? grp("Your Starting Point — AMPLIFY Lab", "leadingChangeLab")
           : grp("Your Starting Point — IGNITE", "leadingChangeMini"),
+        whyThisFits: cohort
+          ? "Your gap is having a repeatable framework for change — and you want it in a live cohort. The Leading Change Lab walks you through the P.A.T.H.™ method (Prepare, Align, Take Off, Habit) with peers running real initiatives, so the framework becomes muscle memory, not a slide deck."
+          : "Your gap is having a repeatable framework for change — and you want it self-paced. The Leading Change mini-course gives you the P.A.T.H.™ method (Prepare, Align, Take Off, Habit) in short, finishable lessons. The free Strategic Change Canvas and Communicating Change workbook are the working tools you'll use on your next initiative.",
         groups: [
           grp("Also Worth Exploring", "aiEiOhLab"),
           grp("Free Tools", "strategicChangeCanvas", "communicatingChangeWorkbook"),
@@ -627,6 +635,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         subhead: "AMPLIFY — Leadership Labs",
         narrative: "You're not looking for a starting point. You're looking for depth: real challenge, peer-level conversation, an environment where the work pushes you rather than walks you through basics. The AMPLIFY Leadership Labs are built for exactly that.",
         primaryGroup: grp("Your Starting Point — Pick the Lab that pulls you most", "stracticalLeaderLab", "leadingChangeLab", "conflictToConnectionLab", "goldilocksLab", "stoicismLab", "aiEiOhLab"),
+        whyThisFits: "You don't have one gap — you have range, and you're hungry for depth. So instead of picking for you, we surfaced the full Lab slate and let you pick the one that pulls hardest right now: strategy-to-tactics (Stractical Leader), change leadership (Leading Change), conflict (Conflict to Connection), calibration (Goldilocks), Stoic operating system, or AI + EQ. Every Lab is peer cohort, live, and built to push.",
         groups: [grp("Also Worth Exploring", "stracticalMini", "performanceDNA", "eq360")],
         whatComesNext: "Some leaders reach a point where the work they're doing for themselves starts to feel like the work their whole organization needs. When you find yourself asking 'how do I build an organization that can hold what I'm trying to create' — we're here for that conversation.",
       };
@@ -636,6 +645,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         subhead: "Start on Your Terms",
         narrative: "You're paying attention, and that's the move. Nothing in your answers pointed sharply at one gap, which means the right starting point isn't a program. It's one small, finishable thing that gives you a real win and helps the next answer get clearer. Start here. Finish it. Then come back to the quiz.",
         primaryGroup: grp("Start Here", "kickTheHabitB2C"),
+        whyThisFits: "Your answers didn't point sharply at one gap — so committing to a full program right now would be guessing. Kick the Habit is short, free, and finishable in a week. It gives you a real win and surfaces what actually trips you up, so the next time you take the quiz the signal is clearer. The free Starting Points are there if you want to sample other terrains.",
         groups: [
           grp("Free Starting Points", "fiftyTwoStoicism", "burnoutResources", "stracticalMini"),
         ],
