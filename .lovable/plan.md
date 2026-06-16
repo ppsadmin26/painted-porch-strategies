@@ -1,51 +1,33 @@
-## Goal
+## Two problems
 
-Get a real, row-by-row picture of how PPS `path_finder_offerings` and Blue Door `offerings` overlap, so the Phase 2 topic+delivery split is based on data, not guesses.
+**1. WFH recommendation points at a draft page.** `workFromHomePro` is marked `is_live=true` in `path_finder_offerings` and points at `/wfh-sign-up`, but `/wfh-sign-up` is `draft` in `page_status`. The quiz eligibility filter only checks the offerings table, so it has no idea the destination page is hidden.
 
-## What's already in place
+**2. RT6 ("Explore Before Committing") is a wall of "if X, try Y" with no clear pick.** Five conditional groups (8+ free/low-cost items) and no primary recommendation. Reads like a directory, not guidance.
 
-- `scripts/audit-offerings-overlap.mjs` exists and is wired to read both projects with service-role keys.
-- It writes `docs/offerings-duplication-audit.md` with naive name-matched rows and a `manual_review` column.
+## Fix 1: Cross-check page_status in the eligibility filter
 
-## What this step does
+In `PathFinderQuizDialog.tsx`, the eligibility fetch already pulls every offering's URLs. Add a second fetch for `page_status` rows where `status='draft'`, build a set of draft paths, then exclude any offering whose resolved URL path (URL or dedicated_url, ignoring hash and query) is in the draft set. External URLs (http/https) are always allowed; anchor-only offerings (no URL) are always allowed because they live on an already-public hub.
 
-1. **Add the Blue Door read credentials as secrets** (one-time setup; required for the script to reach the other project):
-   - `BLUEDOOR_SUPABASE_URL`
-   - `BLUEDOOR_SUPABASE_SERVICE_ROLE_KEY`
-   (PPS credentials are already on the project.)
+This means admins keep one toggle (the page Live/Draft) and the quiz follows automatically. No data migration needed; once `/wfh-sign-up` flips to Live, the WFH offering reappears.
 
-2. **Run the audit script** locally via the sandbox:
-   - Reads every row from PPS `path_finder_offerings` and Blue Door `offerings`.
-   - Normalizes names (lowercase, strip punctuation) and joins on that key.
-   - Emits `docs/offerings-duplication-audit.md` with four sections:
-     - **Matched** — same offering on both sides (name, key, URL on PPS / segment, status, pricing on Blue Door)
-     - **PPS only** — rows in PPS with no Blue Door equivalent
-     - **Blue Door only** — rows in Blue Door not yet routed on PPS
-     - **Topic candidates** — PPS rows that share a base name across multiple deliveries (e.g., AI EI Oh as Speaking + Workshop). This is the seed list for the Phase 2 topic+delivery split.
+## Fix 2: Tighten RT6 into one clear pick + small "also free" group
 
-3. **Surface the audit inside the admin**:
-   - Add an "Audit report" section at the top of `/admin/offerings-coverage` that links to `docs/offerings-duplication-audit.md` in the repo and shows the three count rollups (matched / PPS only / Blue Door only / topic candidates) read from a small JSON sidecar `docs/offerings-duplication-audit.json` the script also writes.
+RT6 fires when nothing in the user's answers points strongly to inner game / communication / team / change. New shape:
 
-4. **No schema changes, no sync code, no deletions.** Phase 1 stays read-only.
+- **Primary group (1 pick, decisive):** `kickTheHabitB2C` — short, free, finishable, gives a real win. Sets the tone that PPS work is concrete.
+- **One secondary group, "Free starting points" (3 items max):** `fiftyTwoStoicism`, `burnoutResources`, `stracticalMini`. Same canonical free tools used everywhere else, no conditional buckets.
+- **Narrative:** rewrite to acknowledge they're exploring AND give one decisive next move ("Start here, finish it, then come back to the quiz").
+- **whatComesNext:** unchanged — retake the quiz in 60–90 days or reach out.
 
-## What you'll have at the end
+`workFromHomePro`, `resolutionRemix`, `meditationChallenge`, `gratitudeChallenge`, `journalingChallenge`, and the rest get dropped from RT6 (they remain in the OFFERINGS catalog for other contexts). Result goes from ~10 items spread across 5 groups to 4 items across 2 groups.
 
-- A markdown file you can read and annotate to decide which PPS rows collapse into a single topic with multiple deliveries.
-- A count summary visible in the admin so you can re-run later and see drift.
-- Clear input for the Phase 2 plan (topics + deliveries split in Blue Door, then the PPS importer).
+## Files
 
-## Out of scope (next step after this one)
+- `src/components/pps/quiz/PathFinderQuizDialog.tsx` — add page_status fetch, filter eligibility by draft paths
+- `src/data/pathFinderQuiz.ts` — rewrite RT6 case in `b2cResult()`
 
-- Building `topics` + `deliveries` tables in Blue Door.
-- Building the `import-offerings-from-bluedoor` edge function in PPS.
-- Flipping PPS canonical fields to read-only.
+## Out of scope
 
-## Technical details
-
-- The script is a plain Node ESM module already in the repo; it expects the four env vars and runs as `node scripts/audit-offerings-overlap.mjs`.
-- The sidecar JSON is small (just counts + matched-name list) so the admin page can fetch it via `import("../../../docs/offerings-duplication-audit.json")` without a network call.
-- Re-running the script is idempotent; both output files are regenerated.
-
-## Open question for you to answer before I implement
-
-Do you want me to fetch the Blue Door service-role key from you (request via the secrets tool) so the script can actually run, or would you rather paste the audit output yourself after running the script locally with your own credentials?
+- Touching B2B results (already narrow per the b2b-recommendation-rules memory)
+- Flipping `/wfh-sign-up` to Live — that's a content decision, not a quiz fix
+- Adding a page_status UI hint inside `/admin/path-finder-offerings` (useful but separate)
