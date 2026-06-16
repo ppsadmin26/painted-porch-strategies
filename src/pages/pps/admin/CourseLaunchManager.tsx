@@ -225,6 +225,17 @@ export default function CourseLaunchManager() {
         </p>
       </div>
 
+      {slugNotFound && (
+        <Alert variant="destructive" className="mb-6">
+          <AlertCircle className="h-4 w-4" />
+          <AlertTitle>Slug not found in launches</AlertTitle>
+          <AlertDescription>
+            No launch row matches <code className="font-mono text-sm">{focusSlug}</code>. It may have
+            been renamed or deleted. Update the offering's launch link or create the launch entry first.
+          </AlertDescription>
+        </Alert>
+      )}
+
       <div className="space-y-4">
         {rows.map((row) => {
           const busy = working === row.slug;
