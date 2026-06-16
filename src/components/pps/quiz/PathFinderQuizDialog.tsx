@@ -170,21 +170,55 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     if (!open || viewableKeys) return;
     let cancelled = false;
     (async () => {
-      const { data, error } = await supabase
-        .from("path_finder_offerings")
-        .select("offering_key, is_live, current_url, dedicated_url, anchor_id");
+      const [offeringsRes, draftsRes] = await Promise.all([
+        supabase
+          .from("path_finder_offerings")
+          .select("offering_key, is_live, current_url, dedicated_url, anchor_id"),
+        supabase
+          .from("page_status")
+          .select("path")
+          .eq("status", "draft"),
+      ]);
       if (cancelled) return;
-      if (error || !data) {
+      if (offeringsRes.error || !offeringsRes.data) {
         setViewableKeys(new Set());
         return;
       }
-      const eligible = data
+      // Build set of draft paths (e.g. "/wfh-sign-up") so we can drop any
+      // offering whose destination page isn't published yet. page_status
+      // failures fail-open: we keep the offering list as-is.
+      const draftPaths = new Set<string>(
+        (draftsRes.data ?? [])
+          .map((r: { path: string | null }) => (r.path ?? "").trim())
+          .filter(Boolean),
+      );
+      const pathOf = (url: string | null): string | null => {
+        if (!url) return null;
+        const trimmed = url.trim();
+        if (!trimmed) return null;
+        // External links always allowed (only PPS pages live in page_status).
+        if (/^https?:\/\//i.test(trimmed)) return null;
+        // Strip query + hash, keep leading slash.
+        const noHash = trimmed.split("#")[0].split("?")[0];
+        return noHash || null;
+      };
+      const isDraftDest = (
+        currentUrl: string | null,
+        dedicatedUrl: string | null,
+      ): boolean => {
+        const p1 = pathOf(currentUrl);
+        const p2 = pathOf(dedicatedUrl);
+        if (p1 && draftPaths.has(p1)) return true;
+        if (p2 && draftPaths.has(p2)) return true;
+        return false;
+      };
+      const eligible = offeringsRes.data
         .filter((r: { is_live: boolean; current_url: string | null; dedicated_url: string | null; anchor_id: string | null }) =>
           r.is_live && (
             (r.current_url && r.current_url.trim().length > 0) ||
             (r.dedicated_url && r.dedicated_url.trim().length > 0) ||
             (r.anchor_id && r.anchor_id.trim().length > 0)
-          ),
+          ) && !isDraftDest(r.current_url, r.dedicated_url),
         )
         .map((r: { offering_key: string }) => r.offering_key);
       setViewableKeys(new Set(eligible));
