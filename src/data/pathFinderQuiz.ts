@@ -26,7 +26,7 @@ export interface Offering {
   key: string;
   name: string;
   facilitator?: "Amy" | "Rob" | "Sierra" | "Painted Porch Team";
-  tier: "IGNITE" | "AMPLIFY" | "Pathway B" | "Blue Door" | "Free" | "Assessment" | "Speaking";
+  tier: "IGNITE" | "AMPLIFY" | "Workshop" | "Blue Door" | "Free" | "Assessment" | "Speaking";
   blurb: string;
   url: string;
 }
@@ -51,47 +51,47 @@ export const OFFERINGS = {
   stoicismLab: { key: "stoicismLab", name: "Stoicism in the Workplace Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-stoicism-workplace", blurb: "Philosophical grounding made permanent." },
   aiEiOhLab: { key: "aiEiOhLab", name: "AI, EI, Oh! Lab", facilitator: "Amy", tier: "AMPLIFY", url: "/partner/amplify/labs#lab-ai-ei-oh", blurb: "Leading AI adoption with human wisdom." },
 
-  // ===== B2B Pathway B Workshops =====
-  fromConflictToConnection: { key: "fromConflictToConnection", name: "From Conflict to Connection", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Addresses team friction at the relational and structural root, not the symptom." },
-  fromDysfunctionToDynamic: { key: "fromDysfunctionToDynamic", name: "From Dysfunction to Dynamic", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Structural redesign of team patterns: decision rights, accountability, interaction design." },
-  geniusAtWork: { key: "geniusAtWork", name: "Genius at Work", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Working Genius assessment-based session surfacing how your team contributes." },
-  heroesAssemble: { key: "heroesAssemble", name: "Heroes Assemble", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Activating individual strengths in service of collective performance." },
-  pathToLastingChange: { key: "pathToLastingChange", name: "The P.A.T.H. to Lasting Change", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Full P.A.T.H. framework applied to sustained organizational transformation." },
-  leadAtSpeed: { key: "leadAtSpeed", name: "Lead at the Speed of Change", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Leadership capacity to drive change at organizational velocity without sacrificing trust." },
-  drivingChange3Shifts: { key: "drivingChange3Shifts", name: "Driving Change: The 3 Shifts", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Three leadership shifts that separate transformations that hold from those that evaporate." },
-  changeForGood: { key: "changeForGood", name: "Change for Good: Immunity to Change", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Surfacing the hidden competing commitments quietly defeating your change efforts." },
-  cultivatingChangeResilience: { key: "cultivatingChangeResilience", name: "Cultivating Change Resilience", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Resilience as organizational infrastructure: distributed across systems and culture." },
-  kickTheHabit: { key: "kickTheHabit", name: "Kick the Habit", facilitator: "Amy", tier: "Pathway B", url: "/resources/kick-the-habit", blurb: "Addressing the behavioral patterns and mental models that make change fail to stick." },
-  aiEiOh: { key: "aiEiOh", name: "AI, EI, Oh", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Leading AI integration with the emotional intelligence and organizational wisdom it requires." },
-  architectureOfAdaptability: { key: "architectureOfAdaptability", name: "The Architecture of Organizational ShIFt", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Building organizational systems designed to navigate uncertainty rather than react to it. Diagnoses and reinforces the three Pillars: Cultural Cornerstone, Operational Frame, and Living Ecosystem as one living system." },
-  goldilocks: { key: "goldilocks", name: "Goldilocks Leadership", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Calibrated, context-sensitive EQ in leadership." },
-  stracticalLeader: { key: "stracticalLeader", name: "The Stractical Leader", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/stractical-leader", blurb: "Integrating strategic vision with tactical execution for leadership teams." },
-  leadershipOM: { key: "leadershipOM", name: "Leadership OM", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Redesigning the leadership operating model to distribute decisions and accountability." },
+  // ===== B2B Workshop tier =====
+  fromConflictToConnection: { key: "fromConflictToConnection", name: "From Conflict to Connection", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Addresses team friction at the relational and structural root, not the symptom." },
+  fromDysfunctionToDynamic: { key: "fromDysfunctionToDynamic", name: "From Dysfunction to Dynamic", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Structural redesign of team patterns: decision rights, accountability, interaction design." },
+  geniusAtWork: { key: "geniusAtWork", name: "Genius at Work", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Working Genius assessment-based session surfacing how your team contributes." },
+  heroesAssemble: { key: "heroesAssemble", name: "Heroes Assemble", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Activating individual strengths in service of collective performance." },
+  pathToLastingChange: { key: "pathToLastingChange", name: "The P.A.T.H. to Lasting Change", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Full P.A.T.H. framework applied to sustained organizational transformation." },
+  leadAtSpeed: { key: "leadAtSpeed", name: "Lead at the Speed of Change", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Leadership capacity to drive change at organizational velocity without sacrificing trust." },
+  drivingChange3Shifts: { key: "drivingChange3Shifts", name: "Driving Change: The 3 Shifts", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Three leadership shifts that separate transformations that hold from those that evaporate." },
+  changeForGood: { key: "changeForGood", name: "Change for Good: Immunity to Change", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Surfacing the hidden competing commitments quietly defeating your change efforts." },
+  cultivatingChangeResilience: { key: "cultivatingChangeResilience", name: "Cultivating Change Resilience", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Resilience as organizational infrastructure: distributed across systems and culture." },
+  kickTheHabit: { key: "kickTheHabit", name: "Kick the Habit", facilitator: "Amy", tier: "Workshop", url: "/resources/kick-the-habit", blurb: "Addressing the behavioral patterns and mental models that make change fail to stick." },
+  aiEiOh: { key: "aiEiOh", name: "AI, EI, Oh", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Leading AI integration with the emotional intelligence and organizational wisdom it requires." },
+  architectureOfAdaptability: { key: "architectureOfAdaptability", name: "The Architecture of Organizational ShIFt", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Building organizational systems designed to navigate uncertainty rather than react to it. Diagnoses and reinforces the three Pillars: Cultural Cornerstone, Operational Frame, and Living Ecosystem as one living system." },
+  goldilocks: { key: "goldilocks", name: "Goldilocks Leadership", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Calibrated, context-sensitive EQ in leadership." },
+  stracticalLeader: { key: "stracticalLeader", name: "The Stractical Leader", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/stractical-leader", blurb: "Integrating strategic vision with tactical execution for leadership teams." },
+  leadershipOM: { key: "leadershipOM", name: "Leadership OM", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Redesigning the leadership operating model to distribute decisions and accountability." },
 
   // Rob Hunter
-  communicateWithStyle: { key: "communicateWithStyle", name: "Communicate with Style", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Style awareness and adaptation across different team members and contexts." },
-  powerOfStory: { key: "powerOfStory", name: "The Power of Story", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Using narrative to create shared understanding and team cohesion." },
-  eightByEight: { key: "eightByEight", name: "8:8", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "The eight things leaders need to know before they communicate and the eight ways to make it land." },
-  masterYourMessageB2B: { key: "masterYourMessageB2B", name: "Master Your Message (B2B)", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Communication architecture that makes leadership messaging land across the organization." },
-  highFidelityCommunication: { key: "highFidelityCommunication", name: "High-Fidelity Communication", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Ensuring message and meaning arrive intact." },
-  getClearBeHeard: { key: "getClearBeHeard", name: "Get C.L.E.A.R., Be Heard", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Practical communication frameworks for leaders navigating complex change." },
+  communicateWithStyle: { key: "communicateWithStyle", name: "Communicate with Style", facilitator: "Rob", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Style awareness and adaptation across different team members and contexts." },
+  powerOfStory: { key: "powerOfStory", name: "The Power of Story", facilitator: "Rob", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Using narrative to create shared understanding and team cohesion." },
+  eightByEight: { key: "eightByEight", name: "8:8", facilitator: "Rob", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "The eight things leaders need to know before they communicate and the eight ways to make it land." },
+  masterYourMessageB2B: { key: "masterYourMessageB2B", name: "Master Your Message (B2B)", facilitator: "Rob", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Communication architecture that makes leadership messaging land across the organization." },
+  highFidelityCommunication: { key: "highFidelityCommunication", name: "High-Fidelity Communication", facilitator: "Rob", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Ensuring message and meaning arrive intact." },
+  getClearBeHeard: { key: "getClearBeHeard", name: "Get C.L.E.A.R., Be Heard", facilitator: "Rob", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Practical communication frameworks for leaders navigating complex change." },
 
   // Sierra
-  reignitingResilience: { key: "reignitingResilience", name: "Reigniting Resilience", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Rebuilding genuine resilience capacity in depleted teams and leaders." },
-  findingJoyAtWork: { key: "findingJoyAtWork", name: "Finding Joy at Work", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Designing conditions that make sustainable engagement possible." },
-  fromPassengerToPilot: { key: "fromPassengerToPilot", name: "From Passenger to Pilot", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Reclaiming individual agency within team and organizational systems." },
-  radicalMindfulnessB2B: { key: "radicalMindfulnessB2B", name: "Radical Mindfulness (B2B)", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Mindfulness as a leadership practice for organizational wellbeing." },
+  reignitingResilience: { key: "reignitingResilience", name: "Reigniting Resilience", facilitator: "Sierra", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Rebuilding genuine resilience capacity in depleted teams and leaders." },
+  findingJoyAtWork: { key: "findingJoyAtWork", name: "Finding Joy at Work", facilitator: "Sierra", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Designing conditions that make sustainable engagement possible." },
+  fromPassengerToPilot: { key: "fromPassengerToPilot", name: "From Passenger to Pilot", facilitator: "Sierra", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Reclaiming individual agency within team and organizational systems." },
+  radicalMindfulnessB2B: { key: "radicalMindfulnessB2B", name: "Radical Mindfulness (B2B)", facilitator: "Sierra", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Mindfulness as a leadership practice for organizational wellbeing." },
 
-  // Rob — additional Pathway B
-  borderlessCommunication: { key: "borderlessCommunication", name: "Borderless Communication", facilitator: "Rob", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Communication across cultures, geographies, and modalities without losing signal." },
+  // Rob — additional Workshop
+  borderlessCommunication: { key: "borderlessCommunication", name: "Borderless Communication", facilitator: "Rob", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Communication across cultures, geographies, and modalities without losing signal." },
 
-  // Sierra — additional Pathway B
-  moveShakeInnovate: { key: "moveShakeInnovate", name: "Move, Shake, Innovate", facilitator: "Sierra", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Reawakening creative capacity and innovation culture in teams that have gone flat." },
+  // Sierra — additional Workshop
+  moveShakeInnovate: { key: "moveShakeInnovate", name: "Move, Shake, Innovate", facilitator: "Sierra", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Reawakening creative capacity and innovation culture in teams that have gone flat." },
 
-  // Amy — additional Pathway B
-  architectChange: { key: "architectChange", name: "Architect Change (Strategic Design Intensive)", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Phase Zero™ strategic design — author what you're about to build before you build it." },
+  // Amy — additional Workshop
+  architectChange: { key: "architectChange", name: "Architect Change (Strategic Design Intensive)", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Phase Zero™ strategic design — author what you're about to build before you build it." },
   
-  stoicismB2B: { key: "stoicismB2B", name: "Stoicism in the Workplace (Workshop)", facilitator: "Amy", tier: "Pathway B", url: "/partner/amplify/workshops", blurb: "Stoic philosophy translated into leadership and team practice at the organizational level." },
+  stoicismB2B: { key: "stoicismB2B", name: "Stoicism in the Workplace (Workshop)", facilitator: "Amy", tier: "Workshop", url: "/partner/amplify/workshops", blurb: "Stoic philosophy translated into leadership and team practice at the organizational level." },
 
   // Pre-Blue-Door scoping
   currentStateLight: { key: "currentStateLight", name: "Current State Analysis — Light", tier: "Assessment", url: "/blue-door", blurb: "Lightweight organizational snapshot. Quick read on where the architecture stands." },
