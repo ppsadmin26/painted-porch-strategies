@@ -91,6 +91,7 @@ function isQuizEligible(r: Row): boolean {
 
 export default function OfferingsCoverage() {
   const [rows, setRows] = useState<Row[]>([]);
+  const [launchSlugs, setLaunchSlugs] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
   const [audit, setAudit] = useState<AuditReport>(auditReport as AuditReport);
@@ -118,15 +119,26 @@ export default function OfferingsCoverage() {
 
   useEffect(() => {
     (async () => {
-      const { data } = await supabase
-        .from("path_finder_offerings")
-        .select("*")
-        .order("topic", { nullsFirst: false })
-        .order("sort_order");
-      setRows((data ?? []) as Row[]);
+      const [offRes, launchRes] = await Promise.all([
+        supabase
+          .from("path_finder_offerings")
+          .select("*")
+          .order("topic", { nullsFirst: false })
+          .order("sort_order"),
+        supabase.from("course_launch_status").select("slug"),
+      ]);
+      setRows((offRes.data ?? []) as Row[]);
+      setLaunchSlugs(new Set((launchRes.data ?? []).map((l: { slug: string }) => l.slug)));
       setLoading(false);
     })();
   }, []);
+
+  const brokenLaunches = useMemo(() => {
+    if (launchSlugs.size === 0) return [] as Array<{ row: Row; slug: string }>;
+    return rows
+      .filter((r) => r.launch_slug && !launchSlugs.has(r.launch_slug))
+      .map((r) => ({ row: r, slug: r.launch_slug as string }));
+  }, [rows, launchSlugs]);
 
   const filtered = useMemo(() => {
     if (!filter) return rows;
