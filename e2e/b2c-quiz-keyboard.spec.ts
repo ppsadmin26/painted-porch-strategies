@@ -1,5 +1,5 @@
 import { test, expect, type Page } from "../playwright-fixture";
-import { PQ1, PQ2_B2C, B2C_QUESTIONS, OFFERINGS } from "../src/data/pathFinderQuiz";
+import { PQ1, PQ2_B2C, B2C_QUESTIONS } from "../src/data/pathFinderQuiz";
 
 /**
  * Keyboard-only navigation guardrails for the B2C P.A.T.H.finder quiz.
@@ -161,10 +161,11 @@ test.describe("B2C quiz — keyboard-only navigation", () => {
     ).toBeVisible({ timeout: 5000 });
 
     // Tab through the result dialog: every focused element shows a visible
-    // focus indicator, and Tab eventually reaches the primary-offering link
-    // without getting stuck on any single element.
-    const expectedOffering = OFFERINGS[FLOW.primaryOfferingKey];
-    const offeringLink = page.locator(`a[href="${expectedOffering.url}"]`).first();
+    // focus indicator, and Tab eventually reaches the first recommendation
+    // link (admin overrides may substitute the configured primary offering
+    // when it's gated off, so use the first recommendation link in the
+    // dialog rather than a name lookup).
+    const offeringLink = page.locator('[role="dialog"] a[href]').first();
     await expect(offeringLink).toBeVisible();
 
     const seen = new Set<string>();
