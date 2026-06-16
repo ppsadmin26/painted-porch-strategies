@@ -659,7 +659,7 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
                 )}
               </div>
               <div className="flex flex-col items-end gap-1 whitespace-nowrap">
-                <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-0.5">{o.tier === "Pathway B" ? "Workshop" : o.tier}</span>
+                <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-0.5">{o.tier}</span>
                 {o.isComingSoon && (
                   <span className="text-[10px] uppercase tracking-wider font-bold text-gold">Coming soon</span>
                 )}
