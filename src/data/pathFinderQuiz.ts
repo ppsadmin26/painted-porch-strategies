@@ -117,6 +117,7 @@ export const OFFERINGS = {
   stracticalMini: { key: "stracticalMini", name: "Stractical Leader Mini Workbook", tier: "Free", url: "/resources/stractical-mini", blurb: "Taste of the strategic-tactical integration work. Free." },
   resolutionRemix: { key: "resolutionRemix", name: "Resolution Remix", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Reframe annual resolutions into sustainable leadership practices." },
   workFromHomePro: { key: "workFromHomePro", name: "Become a Work-From-Home Pro", tier: "Free", url: "/wfh-sign-up", blurb: "Practical guide to remote-work rhythm, focus, and energy. Free." },
+  stoicLeaderFieldGuide: { key: "stoicLeaderFieldGuide", name: "The Stoic Leader Field Guide", facilitator: "Amy", tier: "Free", url: "/stoic-field-guide", blurb: "Stoic principles translated into daily leadership practice. Free download." },
 
   // Blue Door
   blueDoor: { key: "blueDoor", name: "The Blue Door Organizational Appraisal", tier: "Blue Door", url: "/blue-door", blurb: "About 20 minutes. Produces the P.A.T.H. Compass: architecture, capacity signal, Move Now Map, Reinforce First priorities. No prerequisites." },
@@ -533,11 +534,11 @@ const SPEAKING_BY_RT: Record<B2BResultType, OfferingKey[]> = {
 // Free-resource candidates per B2B result type. Up to 2 surface in results,
 // filtered to admin-eligible (Live + URL/anchor) rows.
 const FREE_RESOURCES_BY_RT: Record<B2BResultType, OfferingKey[]> = {
-  "RT-A": ["communicatingChangeWorkbook", "fiftyTwoStoicism", "burnoutResources"],
+  "RT-A": ["communicatingChangeWorkbook", "stoicLeaderFieldGuide", "fiftyTwoStoicism", "burnoutResources"],
   "RT-B": ["strategicChangeCanvas", "communicatingChangeWorkbook", "fiftyTwoStoicism"],
-  "RT-C": ["stracticalMini", "fiftyTwoStoicism", "communicatingChangeWorkbook"],
-  "RT-D": ["strategicChangeCanvas", "communicatingChangeWorkbook", "stracticalMini"],
-  "RT-E": ["strategicChangeCanvas", "burnoutResources", "fiftyTwoStoicism"],
+  "RT-C": ["stoicLeaderFieldGuide", "stracticalMini", "fiftyTwoStoicism", "communicatingChangeWorkbook"],
+  "RT-D": ["strategicChangeCanvas", "stoicLeaderFieldGuide", "communicatingChangeWorkbook", "stracticalMini"],
+  "RT-E": ["strategicChangeCanvas", "stoicLeaderFieldGuide", "burnoutResources", "fiftyTwoStoicism"],
 };
 
 // Post-process a result to drop offerings not in the viewable set. Keeps
@@ -578,7 +579,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         whyThisFits: "Your gap is foundation, not tactics — so we're pointing at the one program built to install it. Radical Mindfulness is the self-paced course that develops the self-awareness and reflective capacity every later capability (communication, team leadership, change) is built on. The free Stoicism prompts and Burnout resources are there to keep the practice alive between sessions.",
         groups: [
           grp("Also Worth Exploring", "radicalMindfulnessMini", "passengerToPilot", "eqi"),
-          grp("Free Starting Points", "fiftyTwoStoicism", "burnoutResources"),
+          grp("Free Starting Points", "stoicLeaderFieldGuide", "fiftyTwoStoicism", "burnoutResources"),
         ],
         whatComesNext: "Once this foundation is in place, two directions open: strengthening how you communicate, or building toward leading others. The AMPLIFY Leadership Labs are available whenever you're ready.",
       };
@@ -606,7 +607,10 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         whyThisFits: cohort
           ? "You told us you want a live, cohort-based experience — so we picked the two Labs that target the team dynamics most leaders trip on: navigating conflict productively (Conflict to Connection) and calibrating expectations and accountability (Goldilocks). Both put you in a peer cohort where the work is the team, not the theory."
           : "You told us you want a self-paced path — so we picked the one course designed to give you the team-leadership playbook end to end. Create Extraordinary Teams covers the conditions, rhythms, and decisions that turn a group of capable people into a team that consistently performs.",
-        groups: [grp("Also Worth Exploring", "elementsOfATeam", "workingGenius", "kickTheHabit")],
+        groups: [
+          grp("Also Worth Exploring", "elementsOfATeam", "workingGenius", "kickTheHabit"),
+          grp("Free Starting Points", "stoicLeaderFieldGuide"),
+        ],
         whatComesNext: "As you build team-leadership capacity, two signals often emerge: toward change architecture, or toward organizational scale. When what you're building for your team is something your whole organization needs, that's a different conversation. We're ready for it.",
       };
     }
@@ -624,7 +628,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
           : "Your gap is having a repeatable framework for change — and you want it self-paced. The Leading Change mini-course gives you the P.A.T.H.™ method (Prepare, Align, Take Off, Habit) in short, finishable lessons. The free Strategic Change Canvas and Communicating Change workbook are the working tools you'll use on your next initiative.",
         groups: [
           grp("Also Worth Exploring", "aiEiOhLab"),
-          grp("Free Tools", "strategicChangeCanvas", "communicatingChangeWorkbook"),
+          grp("Free Tools", "strategicChangeCanvas", "communicatingChangeWorkbook", "stoicLeaderFieldGuide"),
         ],
         whatComesNext: "Leaders who do this work often reach a point where the change challenges they're navigating personally are also challenges their organization faces at scale. When it stops being about your development and starts being about the architecture your organization needs, there's a different conversation available.",
       };
@@ -636,7 +640,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         narrative: "You're not looking for a starting point. You're looking for depth: real challenge, peer-level conversation, an environment where the work pushes you rather than walks you through basics. The AMPLIFY Leadership Labs are built for exactly that.",
         primaryGroup: grp("Your Starting Point — Pick the Lab that pulls you most", "stracticalLeaderLab", "leadingChangeLab", "conflictToConnectionLab", "goldilocksLab", "stoicismLab", "aiEiOhLab"),
         whyThisFits: "You don't have one gap — you have range, and you're hungry for depth. So instead of picking for you, we surfaced the full Lab slate and let you pick the one that pulls hardest right now: strategy-to-tactics (Stractical Leader), change leadership (Leading Change), conflict (Conflict to Connection), calibration (Goldilocks), Stoic operating system, or AI + EQ. Every Lab is peer cohort, live, and built to push.",
-        groups: [grp("Also Worth Exploring", "stracticalMini", "performanceDNA", "eq360")],
+        groups: [grp("Also Worth Exploring", "stracticalMini", "performanceDNA", "eq360"), grp("Free Starting Points", "stoicLeaderFieldGuide")],
         whatComesNext: "Some leaders reach a point where the work they're doing for themselves starts to feel like the work their whole organization needs. When you find yourself asking 'how do I build an organization that can hold what I'm trying to create' — we're here for that conversation.",
       };
     case "RT6":
@@ -647,7 +651,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         primaryGroup: grp("Start Here", "kickTheHabitB2C"),
         whyThisFits: "Your answers didn't point sharply at one gap — so committing to a full program right now would be guessing. Kick the Habit is short, free, and finishable in a week. It gives you a real win and surfaces what actually trips you up, so the next time you take the quiz the signal is clearer. The free Starting Points are there if you want to sample other terrains.",
         groups: [
-          grp("Free Starting Points", "fiftyTwoStoicism", "burnoutResources", "stracticalMini"),
+          grp("Free Starting Points", "stoicLeaderFieldGuide", "fiftyTwoStoicism", "burnoutResources", "stracticalMini"),
         ],
         whatComesNext: "Retake the P.A.T.H. Finder in 60 to 90 days once you have more signal. Or reach out directly. Sometimes the right starting point is a conversation, not a quiz.",
       };
