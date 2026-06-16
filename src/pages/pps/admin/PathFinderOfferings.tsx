@@ -808,7 +808,7 @@ function RtPoolEditor({ tier, b2cValue, b2bValue, onB2cChange, onB2bChange }: Rt
 
       {mode === "free" && (
         <div className="space-y-1">
-          <div className="text-xs font-poppins font-semibold text-navy">B2C results (individual leader)</div>
+          <div className="text-xs font-poppins font-semibold text-navy">B2C results (individual leader) <span className="font-normal text-muted-foreground">— appears in the "Free Starting Points" sub-group, never the primary recommendation.</span></div>
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
             {B2C_RTS.map((rt) => {
               const on = (b2cValue[rt] ?? []).includes("free");
