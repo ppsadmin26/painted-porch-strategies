@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
@@ -17,7 +17,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Bell, CheckCircle2, Clock, Loader2, Rocket } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle, Bell, CheckCircle2, Clock, Loader2, Rocket } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { format } from "date-fns";
 
@@ -47,6 +48,11 @@ export default function CourseLaunchManager() {
   const [confirmGoLive, setConfirmGoLive] = useState<CourseRow | null>(null);
   const [highlightedSlug, setHighlightedSlug] = useState<string | null>(null);
   const rowRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  const slugNotFound = useMemo(
+    () => !!focusSlug && !loading && rows.length > 0 && !rows.some((r) => r.slug === focusSlug),
+    [focusSlug, loading, rows],
+  );
 
   // Scroll to + briefly highlight a row when ?slug=... is in the URL
   // (deep-link from /admin/offerings → "Manage").
@@ -218,6 +224,17 @@ export default function CourseLaunchManager() {
           team gets an alert on every signup.
         </p>
       </div>
+
+      {slugNotFound && (
+        <Alert variant="destructive" className="mb-6">
+          <AlertCircle className="h-4 w-4" />
+          <AlertTitle>Slug not found in launches</AlertTitle>
+          <AlertDescription>
+            No launch row matches <code className="font-mono text-sm">{focusSlug}</code>. It may have
+            been renamed or deleted. Update the offering's launch link or create the launch entry first.
+          </AlertDescription>
+        </Alert>
+      )}
 
       <div className="space-y-4">
         {rows.map((row) => {
