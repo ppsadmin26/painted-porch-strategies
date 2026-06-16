@@ -124,7 +124,7 @@ export default function IgniteMasterclasses() {
             {filtered.map((item) => {
               const colors = categoryColors[item.category];
               return (
-                <div key={item.title} className={`bg-muted rounded-xl border-t-4 border-${item.themeColor} transition-all hover:shadow-lg flex flex-col overflow-hidden`}>
+                <div key={item.title} id={item.launchSlug} className={`bg-muted rounded-xl border-t-4 border-${item.themeColor} transition-all hover:shadow-lg flex flex-col overflow-hidden scroll-mt-24`}>
                   <div className="relative">
                     {item.href ? (
                       <Link to={item.href}>
