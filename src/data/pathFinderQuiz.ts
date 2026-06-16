@@ -33,14 +33,14 @@ export interface Offering {
 
 export const OFFERINGS = {
   // ===== B2C IGNITE =====
-  radicalMindfulness: { key: "radicalMindfulness", name: "Radical Mindfulness", facilitator: "Sierra", tier: "IGNITE", url: "/radical-mindfulness", blurb: "8-week self-paced program building conscious awareness, emotional regulation, and reflective capacity." },
-  radicalMindfulnessMini: { key: "radicalMindfulnessMini", name: "Radical Mindfulness Mini Course", facilitator: "Sierra", tier: "IGNITE", url: "/radical-mindfulness", blurb: "Condensed entry point before the full 8-week commitment." },
+  radicalMindfulness: { key: "radicalMindfulness", name: "Radical Mindfulness", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/courses#radical-mindfulness", blurb: "8-week self-paced program building conscious awareness, emotional regulation, and reflective capacity." },
+  radicalMindfulnessMini: { key: "radicalMindfulnessMini", name: "Radical Mindfulness Mini Course", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/masterclasses#mc-radical-mindfulness-mini", blurb: "Condensed entry point before the full 8-week commitment." },
   passengerToPilot: { key: "passengerToPilot", name: "Passenger to Pilot (Masterclass)", facilitator: "Sierra", tier: "IGNITE", url: "/pilot-training", blurb: "Shift from reactive to proactive leadership." },
-  masterYourMessage: { key: "masterYourMessage", name: "Master Your Message", facilitator: "Rob", tier: "IGNITE", url: "/master-your-message", blurb: "6-week self-paced program: authentic communication and influence without authority." },
-  masterYourMessageMini: { key: "masterYourMessageMini", name: "Master Your Message Mini Course", facilitator: "Rob", tier: "IGNITE", url: "/master-your-message", blurb: "Core framework condensed." },
-  talkingToStrangers: { key: "talkingToStrangers", name: "Talking to Strangers (Masterclass)", facilitator: "Rob", tier: "IGNITE", url: "/talking-to-strangers", blurb: "Authentic connection in unfamiliar contexts." },
-  createExtraordinaryTeams: { key: "createExtraordinaryTeams", name: "Create Extraordinary Teams", facilitator: "Painted Porch Team", tier: "IGNITE", url: "/extraordinary-teams", blurb: "Deep, comprehensive program on team dynamics that work." },
-  elementsOfATeam: { key: "elementsOfATeam", name: "Elements of a Team (Masterclass)", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Core components of team health. Strong as precursor or standalone." },
+  masterYourMessage: { key: "masterYourMessage", name: "Master Your Message", facilitator: "Rob", tier: "IGNITE", url: "/partner/ignite/courses#master-your-message", blurb: "6-week self-paced program: authentic communication and influence without authority." },
+  masterYourMessageMini: { key: "masterYourMessageMini", name: "Master Your Message Mini Course", facilitator: "Rob", tier: "IGNITE", url: "/partner/ignite/masterclasses#mc-master-your-message-mini", blurb: "Core framework condensed." },
+  talkingToStrangers: { key: "talkingToStrangers", name: "Talking to Strangers (Masterclass)", facilitator: "Rob", tier: "IGNITE", url: "/partner/ignite/masterclasses#mc-talking-to-strangers", blurb: "Authentic connection in unfamiliar contexts." },
+  createExtraordinaryTeams: { key: "createExtraordinaryTeams", name: "Create Extraordinary Teams", facilitator: "Painted Porch Team", tier: "IGNITE", url: "/partner/ignite/courses#create-extraordinary-teams", blurb: "Deep, comprehensive program on team dynamics that work." },
+  elementsOfATeam: { key: "elementsOfATeam", name: "Elements of a Team (Masterclass)", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/masterclasses#mc-elements-of-team", blurb: "Core components of team health. Strong as precursor or standalone." },
   leadingChangeMini: { key: "leadingChangeMini", name: "Leading Change Mini Course", facilitator: "Amy", tier: "IGNITE", url: "/partner/ignite/masterclasses#mc-leading-change-mini", blurb: "Change leadership fundamentals: how change works, where resistance comes from." },
 
   // ===== B2C AMPLIFY Labs =====
@@ -101,12 +101,12 @@ export const OFFERINGS = {
   eqi: { key: "eqi", name: "EQ-i 2.0 Assessment", tier: "Assessment", url: "/eq", blurb: "Emotional intelligence baseline. Data on where reflective and relational capacity sits." },
   eq360: { key: "eq360", name: "EQ360 Assessment", tier: "Assessment", url: "/eq", blurb: "Multi-perspective EQ feedback." },
   workingGenius: { key: "workingGenius", name: "Working Genius Assessment", tier: "Assessment", url: "/partner/ignite/assessments/working-genius", blurb: "Natural contribution style surfaces gaps you may not have named yet." },
-  performanceDNA: { key: "performanceDNA", name: "Performance DNA Assessment", tier: "Assessment", url: "/partner/ignite/assessments", blurb: "Behavioral architecture at the elevation level." },
+  performanceDNA: { key: "performanceDNA", name: "Performance DNA Assessment", tier: "Assessment", url: "/partner/ignite/assessments#performance-dna", blurb: "Behavioral architecture at the elevation level." },
 
   // IGNITE Challenges (B2C)
-  meditationChallenge: { key: "meditationChallenge", name: "Meditation Challenge", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Short daily meditation practice to build the reflective muscle." },
-  gratitudeChallenge: { key: "gratitudeChallenge", name: "Gratitude Challenge", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/masterclasses", blurb: "Daily gratitude practice that resets perspective and steadies the inner game." },
-  journalingChallenge: { key: "journalingChallenge", name: "Journaling Challenge", facilitator: "Rob", tier: "IGNITE", url: "/mym-journal-challenge", blurb: "Daily journaling prompts that sharpen how you think, speak, and write as a leader." },
+  meditationChallenge: { key: "meditationChallenge", name: "Meditation Challenge", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/masterclasses#mc-meditation-challenge", blurb: "Short daily meditation practice to build the reflective muscle." },
+  gratitudeChallenge: { key: "gratitudeChallenge", name: "Gratitude Challenge", facilitator: "Sierra", tier: "IGNITE", url: "/partner/ignite/masterclasses#mc-gratitude-challenge", blurb: "Daily gratitude practice that resets perspective and steadies the inner game." },
+  journalingChallenge: { key: "journalingChallenge", name: "Journaling Challenge", facilitator: "Rob", tier: "IGNITE", url: "/partner/ignite/masterclasses#mc-mym-journal-challenge", blurb: "Daily journaling prompts that sharpen how you think, speak, and write as a leader." },
   kickTheHabitB2C: { key: "kickTheHabitB2C", name: "Kick the Habit (Masterclass)", facilitator: "Amy", tier: "IGNITE", url: "/kick-the-habit", blurb: "Short masterclass on the behavioral patterns that quietly keep change from sticking." },
 
   // Free Resources
