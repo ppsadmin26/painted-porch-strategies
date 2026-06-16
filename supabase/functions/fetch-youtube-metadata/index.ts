@@ -115,6 +115,10 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // YouTube API quota is shared; only admins/editors may consume it.
+  const authError = await requireAdminOrEditor(req);
+  if (authError) return authError;
+
   try {
     const body = await req.json();
     const { action } = body;
