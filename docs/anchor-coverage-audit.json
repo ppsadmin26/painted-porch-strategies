@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-06-16T06:18:03.545Z",
+  "generated_at": "2026-06-16T06:19:06.074Z",
   "roots": [
     "src/pages",
     "src/components"
   ],
   "total_anchored": 63,
-  "present": 30,
-  "missing": 33,
+  "present": 38,
+  "missing": 25,
   "missing_by_destination": {
     "/speaking/rob": [
       {
@@ -14,32 +14,6 @@
         "anchor": "topic-8-8",
         "name": "8:8 — Capturing & Keeping Attention (Keynote)",
         "tier": "Speaking"
-      }
-    ],
-    "/partner/ignite/masterclasses": [
-      {
-        "offering_key": "elementsOfATeam",
-        "anchor": "mc-elements-of-team",
-        "name": "Elements of a Team (Masterclass)",
-        "tier": "IGNITE"
-      },
-      {
-        "offering_key": "meditationChallenge",
-        "anchor": "mc-meditation-challenge",
-        "name": "Meditation Challenge",
-        "tier": "IGNITE"
-      },
-      {
-        "offering_key": "gratitudeChallenge",
-        "anchor": "mc-gratitude-challenge",
-        "name": "Gratitude Challenge",
-        "tier": "IGNITE"
-      },
-      {
-        "offering_key": "leadingChangeMini",
-        "anchor": "mc-leading-change-mini",
-        "name": "Leading Change Mini Course",
-        "tier": "IGNITE"
       }
     ],
     "/partner/amplify/workshops": [
@@ -170,27 +144,7 @@
         "tier": "Pathway B"
       }
     ],
-    "/master-your-message": [
-      {
-        "offering_key": "masterYourMessageMini",
-        "anchor": "mc-master-your-message-mini",
-        "name": "Master Your Message Mini Course",
-        "tier": "IGNITE"
-      },
-      {
-        "offering_key": "masterYourMessage",
-        "anchor": "master-your-message",
-        "name": "Master Your Message",
-        "tier": "IGNITE"
-      }
-    ],
     "/radical-mindfulness": [
-      {
-        "offering_key": "radicalMindfulnessMini",
-        "anchor": "mc-radical-mindfulness-mini",
-        "name": "Radical Mindfulness Mini Course",
-        "tier": "IGNITE"
-      },
       {
         "offering_key": "radicalMindfulness",
         "anchor": "radical-mindfulness",
@@ -198,11 +152,11 @@
         "tier": "IGNITE"
       }
     ],
-    "/talking-to-strangers": [
+    "/master-your-message": [
       {
-        "offering_key": "talkingToStrangers",
-        "anchor": "mc-talking-to-strangers",
-        "name": "Talking to Strangers (Masterclass)",
+        "offering_key": "masterYourMessage",
+        "anchor": "master-your-message",
+        "name": "Master Your Message",
         "tier": "IGNITE"
       }
     ],
@@ -212,14 +166,6 @@
         "anchor": "extraordinary-teams",
         "name": "Create Extraordinary Teams",
         "tier": "IGNITE"
-      }
-    ],
-    "/partner/ignite/assessments": [
-      {
-        "offering_key": "performanceDNA",
-        "anchor": "performance-dna",
-        "name": "Performance DNA Assessment",
-        "tier": "Assessment"
       }
     ]
   },
@@ -231,15 +177,6 @@
       "anchor": "topic-8-8",
       "destination": "/speaking/rob",
       "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "elementsOfATeam",
-      "name": "Elements of a Team (Masterclass)",
-      "tier": "IGNITE",
-      "anchor": "mc-elements-of-team",
-      "destination": "/partner/ignite/masterclasses",
-      "is_live": false,
       "present": false
     },
     {
@@ -261,39 +198,12 @@
       "present": false
     },
     {
-      "offering_key": "meditationChallenge",
-      "name": "Meditation Challenge",
-      "tier": "IGNITE",
-      "anchor": "mc-meditation-challenge",
-      "destination": "/partner/ignite/masterclasses",
-      "is_live": false,
-      "present": false
-    },
-    {
-      "offering_key": "gratitudeChallenge",
-      "name": "Gratitude Challenge",
-      "tier": "IGNITE",
-      "anchor": "mc-gratitude-challenge",
-      "destination": "/partner/ignite/masterclasses",
-      "is_live": false,
-      "present": false
-    },
-    {
       "offering_key": "architectChange",
       "name": "Architect Change (Strategic Design Intensive)",
       "tier": "Pathway B",
       "anchor": "architect-change",
       "destination": "/partner/amplify/workshops",
       "is_live": false,
-      "present": false
-    },
-    {
-      "offering_key": "leadingChangeMini",
-      "name": "Leading Change Mini Course",
-      "tier": "IGNITE",
-      "anchor": "mc-leading-change-mini",
-      "destination": "/partner/ignite/masterclasses",
-      "is_live": true,
       "present": false
     },
     {
@@ -342,33 +252,6 @@
       "present": false
     },
     {
-      "offering_key": "masterYourMessageMini",
-      "name": "Master Your Message Mini Course",
-      "tier": "IGNITE",
-      "anchor": "mc-master-your-message-mini",
-      "destination": "/master-your-message",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "radicalMindfulnessMini",
-      "name": "Radical Mindfulness Mini Course",
-      "tier": "IGNITE",
-      "anchor": "mc-radical-mindfulness-mini",
-      "destination": "/radical-mindfulness",
-      "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "talkingToStrangers",
-      "name": "Talking to Strangers (Masterclass)",
-      "tier": "IGNITE",
-      "anchor": "mc-talking-to-strangers",
-      "destination": "/talking-to-strangers",
-      "is_live": true,
-      "present": false
-    },
-    {
       "offering_key": "radicalMindfulness",
       "name": "Radical Mindfulness",
       "tier": "IGNITE",
@@ -393,15 +276,6 @@
       "anchor": "extraordinary-teams",
       "destination": "/extraordinary-teams",
       "is_live": true,
-      "present": false
-    },
-    {
-      "offering_key": "performanceDNA",
-      "name": "Performance DNA Assessment",
-      "tier": "Assessment",
-      "anchor": "performance-dna",
-      "destination": "/partner/ignite/assessments",
-      "is_live": false,
       "present": false
     },
     {
