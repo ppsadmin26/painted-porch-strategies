@@ -174,7 +174,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       const [offeringsRes, draftsRes, launchRes] = await Promise.all([
         supabase
           .from("path_finder_offerings")
-          .select("offering_key, is_live, current_url, dedicated_url, anchor_id"),
+          .select("offering_key, is_live, current_url, dedicated_url, anchor_id, launch_slug"),
         supabase
           .from("page_status")
           .select("path")
@@ -193,10 +193,13 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
           .map((r: { path: string | null }) => (r.path ?? "").trim())
           .filter(Boolean),
       );
+      const launchStatusBySlug = new Map<string, string>(
+        (launchRes.data ?? []).map((r: { slug: string; status: string | null }) => [r.slug, r.status ?? ""]),
+      );
       const comingSoonSlugs = new Set<string>(
-        (launchRes.data ?? [])
-          .filter((r: { status: string | null }) => r.status === "coming_soon")
-          .map((r: { slug: string }) => r.slug),
+        Array.from(launchStatusBySlug.entries())
+          .filter(([, s]) => s === "coming_soon")
+          .map(([slug]) => slug),
       );
       const pathOf = (url: string | null): string | null => {
         if (!url) return null;
@@ -242,15 +245,29 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         current_url: string | null;
         dedicated_url: string | null;
         anchor_id: string | null;
+        launch_slug: string | null;
       }>) {
         const hasDest =
           (r.current_url && r.current_url.trim().length > 0) ||
           (r.dedicated_url && r.dedicated_url.trim().length > 0) ||
           (r.anchor_id && r.anchor_id.trim().length > 0);
-        if (!r.is_live || !hasDest) continue;
+        if (!hasDest) continue;
+
+        // Linked launch is the single source of truth when present; otherwise
+        // fall back to the offering's own is_live flag.
+        const linkedStatus = r.launch_slug ? launchStatusBySlug.get(r.launch_slug) : undefined;
+        const effectiveLive =
+          linkedStatus === "live" ||
+          (!linkedStatus && r.is_live);
+        const effectiveComingSoon =
+          linkedStatus === "coming_soon" ||
+          (!linkedStatus && r.is_live && matchesComingSoon(r.anchor_id, r.current_url, r.dedicated_url));
+
+        if (!effectiveLive && !effectiveComingSoon) continue;
         if (isDraftDest(r.current_url, r.dedicated_url)) continue;
+
         eligible.push(r.offering_key);
-        if (matchesComingSoon(r.anchor_id, r.current_url, r.dedicated_url)) {
+        if (effectiveComingSoon && !effectiveLive) {
           soon.add(r.offering_key);
         }
       }
