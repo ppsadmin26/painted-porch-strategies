@@ -1,33 +1,79 @@
-## Two problems
+## Goal
 
-**1. WFH recommendation points at a draft page.** `workFromHomePro` is marked `is_live=true` in `path_finder_offerings` and points at `/wfh-sign-up`, but `/wfh-sign-up` is `draft` in `page_status`. The quiz eligibility filter only checks the offerings table, so it has no idea the destination page is hidden.
+Link `path_finder_offerings` to `course_launch_status` so admins manage launch status in one place, and the quiz recommendation engine automatically reflects "Live" vs "Coming Soon — join the list" without manual double-entry.
 
-**2. RT6 ("Explore Before Committing") is a wall of "if X, try Y" with no clear pick.** Five conditional groups (8+ free/low-cost items) and no primary recommendation. Reads like a directory, not guidance.
+## Schema change
 
-## Fix 1: Cross-check page_status in the eligibility filter
+Add a single nullable column on `path_finder_offerings`:
 
-In `PathFinderQuizDialog.tsx`, the eligibility fetch already pulls every offering's URLs. Add a second fetch for `page_status` rows where `status='draft'`, build a set of draft paths, then exclude any offering whose resolved URL path (URL or dedicated_url, ignoring hash and query) is in the draft set. External URLs (http/https) are always allowed; anchor-only offerings (no URL) are always allowed because they live on an already-public hub.
+- `launch_slug text` — soft reference to `course_launch_status.slug` (no hard FK so renames don't break inserts).
+- Index on `launch_slug` for join lookups.
 
-This means admins keep one toggle (the page Live/Draft) and the quiz follows automatically. No data migration needed; once `/wfh-sign-up` flips to Live, the WFH offering reappears.
+Backfill `launch_slug` from existing data using the `anchor_id` ↔ launch slug pattern already in use:
 
-## Fix 2: Tighten RT6 into one clear pick + small "also free" group
+```text
+mc-leading-change-mini        → mc-leading-change-mini
+mc-radical-mindfulness-mini   → mc-radical-mindfulness-mini
+mc-master-your-message-mini   → mc-master-your-message-mini
+mc-elements-of-team           → mc-elements-of-team
+mc-meditation-challenge       → mc-meditation-challenge
+mc-gratitude-challenge        → mc-gratitude-challenge
+mc-talking-to-strangers       → mc-talking-to-strangers
+mc-team-superpowers           → mc-team-superpowers
+mc-mym-journal-challenge      → mc-mym-journal-challenge
+radical-mindfulness           → radical-mindfulness
+master-your-message           → master-your-message
+extraordinary-teams           → extraordinary-teams
+performance-dna               → performance-dna
+lab-leading-change            → lab-leading-change
+lab-goldilocks-leadership     → goldilocksLab (manual)
+lab-stractical-leadership     → stracticalLeaderLab (manual)
+```
 
-RT6 fires when nothing in the user's answers points strongly to inner game / communication / team / change. New shape:
+## Quiz recommendation logic
 
-- **Primary group (1 pick, decisive):** `kickTheHabitB2C` — short, free, finishable, gives a real win. Sets the tone that PPS work is concrete.
-- **One secondary group, "Free starting points" (3 items max):** `fiftyTwoStoicism`, `burnoutResources`, `stracticalMini`. Same canonical free tools used everywhere else, no conditional buckets.
-- **Narrative:** rewrite to acknowledge they're exploring AND give one decisive next move ("Start here, finish it, then come back to the quiz").
-- **whatComesNext:** unchanged — retake the quiz in 60–90 days or reach out.
+Effective availability becomes a derived value:
 
-`workFromHomePro`, `resolutionRemix`, `meditationChallenge`, `gratitudeChallenge`, `journalingChallenge`, and the rest get dropped from RT6 (they remain in the OFFERINGS catalog for other contexts). Result goes from ~10 items spread across 5 groups to 4 items across 2 groups.
+```text
+linked launch row exists?
+  yes, status = 'coming_soon' → "Coming Soon" (eligible, deprioritized, shows "Join the list" badge)
+  yes, status = 'live'        → Live
+  no                          → use is_live as before
+```
 
-## Files
+The existing prioritization (Live first, then Coming Soon) and the "Launching soon — join the list" badge stay as-is; they just now read from the joined launch status instead of a hand-toggled column.
 
-- `src/components/pps/quiz/PathFinderQuizDialog.tsx` — add page_status fetch, filter eligibility by draft paths
-- `src/data/pathFinderQuiz.ts` — rewrite RT6 case in `b2cResult()`
+## Admin UI changes
+
+`/admin/offerings` (PathFinderOfferings.tsx):
+- Add a "Launch" column showing one of:
+  - green "Live" badge
+  - amber "Coming Soon" badge
+  - "—" when no launch is linked
+- Add a `launch_slug` selector on the row edit form (dropdown of existing `course_launch_status.slug` values + "(none)").
+- Add a "Manage launch" link next to the badge that opens `/admin/course-launches?slug=<launch_slug>` (deep link).
+
+`/admin/course-launches` (CourseLaunchManager.tsx):
+- Read `?slug=` from query string. If set, scroll the matching row into view and apply a brief highlight ring.
+- No other behavior change — notify toggles, "Go Live & Notify", and notify-list editing stay on this page (per user choice).
+
+## Files touched
+
+- `supabase/migrations/<timestamp>_link_offerings_to_launches.sql` — add column, index, backfill.
+- `src/pages/pps/admin/PathFinderOfferings.tsx` — add Launch column, launch_slug selector, deep-link.
+- `src/pages/pps/admin/CourseLaunchManager.tsx` — `?slug=` deep-link scroll + highlight.
+- `src/components/pps/quiz/PathFinderQuizDialog.tsx` — read joined `course_launch_status.status`; derive effective availability.
+- `src/pages/pps/admin/OfferingsCoverage.tsx` (optional) — surface "linked launch missing" as an audit warning.
 
 ## Out of scope
 
-- Touching B2B results (already narrow per the b2b-recommendation-rules memory)
-- Flipping `/wfh-sign-up` to Live — that's a content decision, not a quiz fix
-- Adding a page_status UI hint inside `/admin/path-finder-offerings` (useful but separate)
+- No retirement of `is_live` (kept as the source of truth for offerings without a launch row, e.g. always-available items, free downloads, assessments delivered by other vendors).
+- No changes to the `notify-launch-signup` edge function or notification emails.
+- No changes to existing route structure.
+
+## Rollout
+
+1. Migration (add column + backfill).
+2. Admin UI (PathFinderOfferings + CourseLaunchManager deep-link).
+3. Quiz logic update.
+4. Smoke test: take the quiz, confirm a Coming-Soon-linked offering still appears with the "Launching soon — join the list" badge and deep-links to its card.

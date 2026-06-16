@@ -27,6 +27,14 @@ interface Row {
   topic: string | null;
   include_in_workshops: boolean;
   is_featured_in_quiz: boolean;
+  launch_slug: string | null;
+}
+
+interface LaunchOption {
+  slug: string;
+  course_name: string;
+  status: "coming_soon" | "live";
+  program_type: string;
 }
 
 
@@ -54,6 +62,7 @@ function isQuizEligible(row: Pick<Row, "is_live" | "current_url" | "dedicated_ur
 export default function PathFinderOfferings() {
   const { toast } = useToast();
   const [rows, setRows] = useState<Row[]>([]);
+  const [launches, setLaunches] = useState<LaunchOption[]>([]);
   const [dirty, setDirty] = useState<Record<string, Partial<Row>>>({});
   const [savingId, setSavingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -62,12 +71,16 @@ export default function PathFinderOfferings() {
 
   const load = async () => {
     setLoading(true);
-    const { data, error } = await supabase
-      .from("path_finder_offerings")
-      .select("*")
-      .order("sort_order");
-    if (error) toast({ title: "Failed to load", description: error.message, variant: "destructive" });
-    setRows((data ?? []) as Row[]);
+    const [offRes, launchRes] = await Promise.all([
+      supabase.from("path_finder_offerings").select("*").order("sort_order"),
+      supabase
+        .from("course_launch_status")
+        .select("slug, course_name, status, program_type")
+        .order("course_name"),
+    ]);
+    if (offRes.error) toast({ title: "Failed to load", description: offRes.error.message, variant: "destructive" });
+    setRows((offRes.data ?? []) as Row[]);
+    setLaunches((launchRes.data ?? []) as LaunchOption[]);
     setLoading(false);
   };
 
@@ -220,6 +233,37 @@ export default function PathFinderOfferings() {
                         Not eligible
                       </Badge>
                     )}
+                    {(() => {
+                      const slug = valueOf(row, "launch_slug");
+                      if (!slug) return null;
+                      const launch = launches.find((l) => l.slug === slug);
+                      if (!launch) {
+                        return (
+                          <Badge
+                            variant="outline"
+                            className="bg-raspberry/10 text-raspberry border-raspberry/40"
+                            title={`Linked launch "${slug}" no longer exists`}
+                          >
+                            Launch: missing
+                          </Badge>
+                        );
+                      }
+                      const cls =
+                        launch.status === "live"
+                          ? "bg-lime/15 text-lime-foreground border-lime/40"
+                          : "bg-gold/15 text-gold-foreground border-gold/40";
+                      return (
+                        <Link
+                          to={`/admin/course-launches?slug=${encodeURIComponent(slug)}`}
+                          className="inline-flex items-center"
+                          title="Open in Program Launches"
+                        >
+                          <Badge variant="outline" className={`${cls} hover:underline cursor-pointer`}>
+                            {launch.status === "live" ? "Launch: Live" : "Launch: Coming Soon"}
+                          </Badge>
+                        </Link>
+                      );
+                    })()}
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-2">
@@ -346,6 +390,37 @@ export default function PathFinderOfferings() {
                       value={valueOf(row, "anchor_id") ?? ""}
                       onChange={(e) => patch(row.id, { anchor_id: e.target.value || null as any })}
                     />
+                  </div>
+                </div>
+
+                <div className="mt-3 rounded-md border border-dashed border-gold/40 bg-gold/5 px-3 py-2">
+                  <Label className="text-xs">
+                    <strong>Linked launch</strong> (single source of truth for Live vs Coming Soon)
+                    <span className="block text-xs text-muted-foreground font-normal">
+                      When linked, the quiz reads availability from <code>course_launch_status</code>. Coming Soon programs still appear in results, deprioritized, with a "join the launch list" badge.
+                    </span>
+                  </Label>
+                  <div className="flex items-center gap-2 mt-1">
+                    <select
+                      value={valueOf(row, "launch_slug") ?? ""}
+                      onChange={(e) => patch(row.id, { launch_slug: e.target.value || (null as any) })}
+                      className="h-10 flex-1 rounded-md border border-input bg-background px-3 text-sm"
+                    >
+                      <option value="">— No linked launch (use Live toggle above) —</option>
+                      {launches.map((l) => (
+                        <option key={l.slug} value={l.slug}>
+                          {l.course_name} ({l.status === "live" ? "Live" : "Coming Soon"}) · {l.slug}
+                        </option>
+                      ))}
+                    </select>
+                    {valueOf(row, "launch_slug") ? (
+                      <Link
+                        to={`/admin/course-launches?slug=${encodeURIComponent(valueOf(row, "launch_slug") as string)}`}
+                        className="text-xs text-primary hover:underline inline-flex items-center gap-1"
+                      >
+                        Manage <ExternalLink className="w-3 h-3" />
+                      </Link>
+                    ) : null}
                   </div>
                 </div>
 

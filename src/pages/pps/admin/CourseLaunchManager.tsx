@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -37,11 +38,28 @@ interface CourseRow {
 
 export default function CourseLaunchManager() {
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
+  const focusSlug = searchParams.get("slug");
   const [rows, setRows] = useState<CourseRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const [working, setWorking] = useState<string | null>(null);
   const [confirmGoLive, setConfirmGoLive] = useState<CourseRow | null>(null);
+  const [highlightedSlug, setHighlightedSlug] = useState<string | null>(null);
+  const rowRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  // Scroll to + briefly highlight a row when ?slug=... is in the URL
+  // (deep-link from /admin/offerings → "Manage").
+  useEffect(() => {
+    if (!focusSlug || loading || rows.length === 0) return;
+    const el = rowRefs.current[focusSlug];
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    setHighlightedSlug(focusSlug);
+    const t = window.setTimeout(() => setHighlightedSlug(null), 2400);
+    return () => window.clearTimeout(t);
+  }, [focusSlug, loading, rows.length]);
+
 
   const load = async () => {
     setLoading(true);
@@ -207,7 +225,15 @@ export default function CourseLaunchManager() {
           const draftUrl = drafts[row.slug] ?? "";
           const isLive = row.status === "live";
           return (
-            <Card key={row.slug} className="p-5">
+            <Card
+              key={row.slug}
+              ref={(el) => { rowRefs.current[row.slug] = el; }}
+              className={`p-5 transition-shadow ${
+                highlightedSlug === row.slug
+                  ? "ring-2 ring-primary ring-offset-2 shadow-lg"
+                  : ""
+              }`}
+            >
               <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                 <div>
                   <div className="flex items-center gap-2">

@@ -644,6 +644,7 @@ export type Database = {
           include_in_workshops: boolean
           is_featured_in_quiz: boolean
           is_live: boolean
+          launch_slug: string | null
           name: string
           notes: string | null
           offering_key: string
@@ -664,6 +665,7 @@ export type Database = {
           include_in_workshops?: boolean
           is_featured_in_quiz?: boolean
           is_live?: boolean
+          launch_slug?: string | null
           name: string
           notes?: string | null
           offering_key: string
@@ -684,6 +686,7 @@ export type Database = {
           include_in_workshops?: boolean
           is_featured_in_quiz?: boolean
           is_live?: boolean
+          launch_slug?: string | null
           name?: string
           notes?: string | null
           offering_key?: string
