@@ -52,39 +52,70 @@ function walk(dir, out = []) {
 // we instead match by sourcing the data arrays where slugs are defined.
 function collectIds() {
   const ids = new Set();
-  const dynamicSlugSources = []; // raw file text from data files
   const files = ROOTS.flatMap((r) => walk(r));
-  // Static "id" literals
+  // Static id="..." literals
   const STATIC = /\bid\s*=\s*"([^"\s{}]+)"/g;
-  // Template id={`literal`} with no ${} interpolation
+  // Template id={`literal`} with no interpolation
   const TEMPLATE = /\bid\s*=\s*\{\s*`([^`${}]+)`\s*\}/g;
+  // Templates with interpolation: id={`PREFIX${x}SUFFIX`} — capture
+  // surrounding literal text so we can expand against slug values found
+  // in the same file (e.g. id={`topic-${topic.slug}`} on speaker pages).
+  const TEMPLATE_INTERP = /\bid\s*=\s*\{\s*`([^`]*\$\{[^`]*)`\s*\}/g;
+  // Direct id={expr} — used to gate slug harvesting on data files.
+  const DIRECT_EXPR = /\bid\s*=\s*\{([^}{]+)\}/g;
+  // Slug-shaped quoted literal (used to harvest data-file values)
+  const SLUG_CTX = /(?:slug|anchor(?:Id|Slug)?|key|id)\s*[:=]\s*["'`]([a-zA-Z][a-zA-Z0-9_\-]{2,80})["'`]/g;
+  const SLUGLIKE = /["'`]([a-zA-Z][a-zA-Z0-9_\-]{2,80})["'`]/g;
+
   for (const f of files) {
     let text;
     try { text = readFileSync(f, "utf8"); } catch { continue; }
     for (const m of text.matchAll(STATIC)) ids.add(m[1]);
     for (const m of text.matchAll(TEMPLATE)) ids.add(m[1]);
-    // Heuristic: if file declares id={something.slug} or id={anchorSlug},
-    // collect every string literal that looks like a slug from that file
-    // so dynamically-rendered card ids are still considered "present".
-    if (/\bid\s*=\s*\{[^}]+\}/.test(text)) {
-      dynamicSlugSources.push(text);
+
+    // Harvest interpolation prefixes/suffixes: split the template body
+    // on ${...} and combine literal pieces with harvested slug values.
+    const prefixes = [];
+    const suffixes = [];
+    for (const m of text.matchAll(TEMPLATE_INTERP)) {
+      const body = m[1]; // e.g. "topic-${topic.slug}" or "${a}-${b}"
+      const parts = body.split(/\$\{[^}]*\}/);
+      // For a 2-part split [pre, post] → expand pre+slug+post
+      if (parts.length === 2) {
+        prefixes.push(parts[0]);
+        suffixes.push(parts[1]);
+      } else {
+        // Generic: track outer prefix/suffix only
+        prefixes.push(parts[0] ?? "");
+        suffixes.push(parts[parts.length - 1] ?? "");
+      }
     }
-  }
-  // Pull plausible anchor literals out of data-bearing files: any quoted
-  // string of slug-shape (kebab, snake, camel, dot) up to 80 chars assigned
-  // to a slug-ish key or sitting in an array of card definitions.
-  const SLUGLIKE = /["'`]([a-zA-Z][a-zA-Z0-9_\-]{2,80})["'`]/g;
-  // Only harvest from files that already render dynamic ids — keeps noise down.
-  for (const text of dynamicSlugSources) {
-    // bias toward slug / id / anchor / key contexts
-    const SLUG_CTX = /(?:slug|anchor(?:Id|Slug)?|key|id)\s*[:=]\s*["'`]([a-zA-Z][a-zA-Z0-9_\-]{2,80})["'`]/g;
-    for (const m of text.matchAll(SLUG_CTX)) ids.add(m[1]);
-    // Also general literals — wider net but bounded by slug shape
+
+    const hasDynamicId = /\bid\s*=\s*\{/.test(text);
+    if (!hasDynamicId && prefixes.length === 0) continue;
+
+    // Harvest slug-like values from this file
+    const slugs = new Set();
+    for (const m of text.matchAll(SLUG_CTX)) slugs.add(m[1]);
     for (const m of text.matchAll(SLUGLIKE)) {
       const v = m[1];
-      if (/^[a-z][a-zA-Z0-9_\-]{3,}$/.test(v) || /^topic-/.test(v) || /^mc-/.test(v) || /^lab-/.test(v)) {
-        ids.add(v);
+      if (
+        /^[a-z][a-zA-Z0-9_\-]{3,}$/.test(v) ||
+        /^topic-/.test(v) || /^mc-/.test(v) || /^lab-/.test(v)
+      ) {
+        slugs.add(v);
       }
+    }
+
+    // Bare dynamic id (no template prefix) — assume any slug here may be used as id.
+    if (hasDynamicId && prefixes.length === 0) {
+      for (const s of slugs) ids.add(s);
+    }
+    // Template-interpolated ids — expand against harvested slugs.
+    for (let i = 0; i < prefixes.length; i++) {
+      const pre = prefixes[i];
+      const suf = suffixes[i] ?? "";
+      for (const s of slugs) ids.add(`${pre}${s}${suf}`);
     }
   }
   return ids;
