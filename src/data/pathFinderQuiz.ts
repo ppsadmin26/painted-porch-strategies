@@ -579,7 +579,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         whyThisFits: "Your gap is foundation, not tactics — so we're pointing at the one program built to install it. Radical Mindfulness is the self-paced course that develops the self-awareness and reflective capacity every later capability (communication, team leadership, change) is built on. The free Stoicism prompts and Burnout resources are there to keep the practice alive between sessions.",
         groups: [
           grp("Also Worth Exploring", "radicalMindfulnessMini", "passengerToPilot", "eqi"),
-          grp("Free Starting Points", "fiftyTwoStoicism", "burnoutResources"),
+          grp("Free Starting Points", "stoicLeaderFieldGuide", "fiftyTwoStoicism", "burnoutResources"),
         ],
         whatComesNext: "Once this foundation is in place, two directions open: strengthening how you communicate, or building toward leading others. The AMPLIFY Leadership Labs are available whenever you're ready.",
       };
