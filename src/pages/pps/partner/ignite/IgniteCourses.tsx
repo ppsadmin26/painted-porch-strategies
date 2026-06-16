@@ -112,10 +112,15 @@ export default function IgniteCourses() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {courses.map((course, index) => (
+            {courses.map((course, index) => {
+              const anchorSlug =
+                course.launchSlug ??
+                course.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+              return (
               <div
                 key={index}
-                className={`${course.color} rounded-xl border-l-4 ${course.borderColor} transition-all hover:shadow-lg flex flex-col h-full overflow-hidden`}
+                id={anchorSlug}
+                className={`${course.color} rounded-xl border-l-4 ${course.borderColor} transition-all hover:shadow-lg flex flex-col h-full overflow-hidden scroll-mt-24`}
               >
                 <img src={course.image} alt={course.title} className="w-full h-48 object-cover" />
                 <div className="p-8 flex flex-col flex-1">
