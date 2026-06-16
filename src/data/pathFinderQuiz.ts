@@ -628,7 +628,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
           : "Your gap is having a repeatable framework for change — and you want it self-paced. The Leading Change mini-course gives you the P.A.T.H.™ method (Prepare, Align, Take Off, Habit) in short, finishable lessons. The free Strategic Change Canvas and Communicating Change workbook are the working tools you'll use on your next initiative.",
         groups: [
           grp("Also Worth Exploring", "aiEiOhLab"),
-          grp("Free Tools", "strategicChangeCanvas", "communicatingChangeWorkbook"),
+          grp("Free Tools", "strategicChangeCanvas", "communicatingChangeWorkbook", "stoicLeaderFieldGuide"),
         ],
         whatComesNext: "Leaders who do this work often reach a point where the change challenges they're navigating personally are also challenges their organization faces at scale. When it stops being about your development and starts being about the architecture your organization needs, there's a different conversation available.",
       };
