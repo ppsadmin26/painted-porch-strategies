@@ -164,7 +164,10 @@ test.describe("B2C quiz — keyboard-only navigation", () => {
     // focus indicator, and Tab eventually reaches the primary-offering link
     // without getting stuck on any single element.
     const expectedOffering = OFFERINGS[FLOW.primaryOfferingKey];
-    const offeringLink = page.locator(`a[href="${expectedOffering.url}"]`).first();
+    const escapedName = expectedOffering.name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const offeringLink = page
+      .getByRole("link", { name: new RegExp(escapedName, "i") })
+      .first();
     await expect(offeringLink).toBeVisible();
 
     const seen = new Set<string>();
