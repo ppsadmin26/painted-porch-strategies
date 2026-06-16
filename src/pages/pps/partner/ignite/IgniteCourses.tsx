@@ -165,7 +165,8 @@ export default function IgniteCourses() {
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
 
         </div>
