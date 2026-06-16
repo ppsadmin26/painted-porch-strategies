@@ -54,12 +54,15 @@ describe("B2C quiz recommendations (well-formedness guardrail)", () => {
 
     // Primary vs. groups shape
     if (result.resultType === "RT6") {
-      expect(result.primaryGroup).toBeUndefined();
+      // RT6 surfaces a "Start Here" primary nudge plus exploration groups.
+      expect(result.primaryGroup).toBeDefined();
+      expect(result.primaryGroup!.offerings.length).toBeGreaterThan(0);
       expect(result.groups.length).toBeGreaterThan(0);
     } else {
       expect(result.primaryGroup).toBeDefined();
       expect(result.primaryGroup!.offerings.length).toBeGreaterThan(0);
     }
+
 
     // All referenced offering keys must exist in the catalog
     const allKeys = [
