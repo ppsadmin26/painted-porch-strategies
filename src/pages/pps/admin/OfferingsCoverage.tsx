@@ -252,6 +252,65 @@ export default function OfferingsCoverage() {
         </div>
       </div>
 
+      {/* Anchor coverage audit — verifies every offering with a #fragment or anchor_id
+          actually points at an id rendered somewhere in the source tree (covers
+          masterclasses, courses, assessments, workshops, labs, speaking, resources). */}
+      <div className="mb-6 rounded-lg border border-purple/30 bg-purple/5 p-4">
+        <div className="flex items-start gap-3">
+          <AlertTriangle className={`w-5 h-5 mt-0.5 shrink-0 ${ANCHOR_AUDIT.missing > 0 ? "text-raspberry" : "text-lime-foreground"}`} />
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <h2 className="font-poppins font-semibold text-navy">Anchor coverage</h2>
+              <Badge
+                variant="outline"
+                className={
+                  ANCHOR_AUDIT.missing > 0
+                    ? "bg-raspberry/10 text-raspberry border-raspberry/40"
+                    : "bg-lime/10 text-lime-foreground border-lime/40"
+                }
+              >
+                {ANCHOR_AUDIT.present}/{ANCHOR_AUDIT.total_anchored} resolved
+              </Badge>
+              <span className="text-xs text-muted-foreground">
+                generated {new Date(ANCHOR_AUDIT.generated_at).toLocaleString()}
+              </span>
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              Each row in <code>path_finder_offerings</code> with an <code>anchor_id</code> or <code>#fragment</code> in its URL
+              is checked against every <code>id="…"</code> rendered in <code>src/pages</code> and <code>src/components</code>
+              (masterclasses, courses, assessments, workshops, labs, speaking topics, resources). Missing anchors mean a quiz
+              recommendation will route to the right page but fail to scroll to the intended card. Run{" "}
+              <code className="bg-muted px-1 rounded">npm run audit:anchors</code> to refresh.
+            </p>
+            {ANCHOR_AUDIT.missing > 0 && (
+              <div className="mt-3 space-y-2">
+                {Object.entries(ANCHOR_AUDIT.missing_by_destination).map(([dest, items]) => (
+                  <div key={dest} className="rounded border bg-background px-3 py-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <Link to={dest} target="_blank" className="font-mono text-xs text-navy hover:underline inline-flex items-center gap-1">
+                        {dest} <ExternalLink className="w-3 h-3" />
+                      </Link>
+                      <Badge variant="outline" className="text-[10px]">{items.length} missing</Badge>
+                    </div>
+                    <ul className="mt-1.5 text-xs space-y-0.5">
+                      {items.map((it) => (
+                        <li key={`${it.offering_key}-${it.anchor}`} className="flex items-center justify-between gap-2">
+                          <span className="text-navy">
+                            <span className="font-medium">{it.name}</span>{" "}
+                            <code className="text-muted-foreground">({it.offering_key})</code>
+                          </span>
+                          <code className="text-raspberry">#{it.anchor}</code>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
       {/* Summary cards */}
       <div className="grid grid-cols-2 md:grid-cols-7 gap-3 mb-8">
 
