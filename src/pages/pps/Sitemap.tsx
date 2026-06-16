@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { useAuth } from "@/hooks/useAuth";
 import { useUserRole } from "@/hooks/useUserRole";
-import { usePageStatuses, type PageStatusMap } from "@/hooks/usePageStatuses";
+import { usePageStatuses, type PageStatusMap, type PageStatusRecord } from "@/hooks/usePageStatuses";
 import { resolvePageStatus, resolvePageStatusEntry } from "@/config/pageStatus";
 import { isLovableEditorPreview } from "@/lib/lovablePreview";
+import { supabase } from "@/integrations/supabase/client";
 import ComingSoon from "@/pages/pps/ComingSoon";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
@@ -528,7 +529,7 @@ export default function Sitemap() {
   const statusMap = useMemo<PageStatusMap>(() => {
     if (!isAdmin) return rawStatusMap;
     const merged: PageStatusMap = {};
-    for (const [path, entry] of Object.entries(rawStatusMap)) {
+    for (const [path, entry] of Object.entries(rawStatusMap) as Array<[string, PageStatusRecord]>) {
       merged[path] = { ...entry, note: notesById[entry.id] ?? null };
     }
     return merged;
