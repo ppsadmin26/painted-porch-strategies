@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Save, ExternalLink, Search } from "lucide-react";
+import { Loader2, Save, ExternalLink, Search, AlertTriangle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface Row {
