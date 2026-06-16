@@ -107,7 +107,19 @@ serve(async (req) => {
       customerId = customer.id;
     }
 
-    const origin = req.headers.get("origin") || "https://pps-website.lovable.app";
+    // Only allow our own front-ends as redirect origins to prevent
+    // attackers from using this endpoint as an open redirect after payment.
+    const ALLOWED_ORIGINS = new Set([
+      "https://onthepaintedporch.com",
+      "https://www.onthepaintedporch.com",
+      "https://paintedporchstrategies.com",
+      "https://www.paintedporchstrategies.com",
+      "https://pps-website.lovable.app",
+    ]);
+    const rawOrigin = req.headers.get("origin") || "";
+    const origin = ALLOWED_ORIGINS.has(rawOrigin)
+      ? rawOrigin
+      : "https://onthepaintedporch.com";
 
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
