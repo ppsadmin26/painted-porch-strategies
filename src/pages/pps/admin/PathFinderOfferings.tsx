@@ -472,6 +472,15 @@ export default function PathFinderOfferings() {
                   </div>
                 </div>
 
+                <RtPoolEditor
+                  row={row}
+                  b2cValue={(valueOf(row, "b2c_rt_pools") ?? {}) as Record<string, string[]>}
+                  b2bValue={(valueOf(row, "b2b_rt_pools") ?? {}) as Record<string, string[]>}
+                  onB2cChange={(v) => patch(row.id, { b2c_rt_pools: v as any })}
+                  onB2bChange={(v) => patch(row.id, { b2b_rt_pools: v as any })}
+                />
+
+
                 <div className="mt-3 rounded-md border border-dashed border-gold/40 bg-gold/5 px-3 py-2">
                   <Label className="text-xs">
                     <strong>Linked launch</strong> (single source of truth for Live vs Coming Soon)
