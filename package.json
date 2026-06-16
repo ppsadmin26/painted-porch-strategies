@@ -31,7 +31,8 @@
     "repo:check-large-files": "node scripts/check-large-files.mjs",
     "rls:verify": "node scripts/verify-rls.mjs",
     "rls:update-snapshot": "node scripts/verify-rls.mjs --update",
-    "brand:shift-if": "node scripts/validate-shift-if.mjs"
+    "brand:shift-if": "node scripts/validate-shift-if.mjs",
+    "audit:anchors": "node scripts/audit-anchor-coverage.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",
