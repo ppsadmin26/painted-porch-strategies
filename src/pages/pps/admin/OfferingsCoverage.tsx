@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Loader2, ExternalLink, Search, AlertTriangle, CheckCircle2, FileText } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Loader2, ExternalLink, Search, AlertTriangle, CheckCircle2, FileText, RefreshCw } from "lucide-react";
+import { toast } from "sonner";
 import auditReport from "../../../../docs/offerings-duplication-audit.json";
 
 type AuditReport = {
@@ -18,7 +20,6 @@ type AuditReport = {
     topic_candidates: number;
   };
 };
-const audit = auditReport as AuditReport;
 
 function Stat({ label, value, tone }: { label: string; value: number; tone?: "raspberry" }) {
   return (
@@ -74,6 +75,28 @@ export default function OfferingsCoverage() {
   const [rows, setRows] = useState<Row[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
+  const [audit, setAudit] = useState<AuditReport>(auditReport as AuditReport);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const refreshAudit = async () => {
+    setRefreshing(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("audit-offerings-overlap");
+      if (error) throw error;
+      if (data?.error) throw new Error(data.error);
+      setAudit(data as AuditReport);
+      toast.success(
+        `Audit refreshed · ${data.counts.matched} matched · ${data.counts.topic_candidates} topic candidates${
+          data.blue_door_connected ? "" : " (PPS-only)"
+        }`,
+      );
+    } catch (e: any) {
+      toast.error(`Audit refresh failed: ${e.message ?? e}`);
+    } finally {
+      setRefreshing(false);
+    }
+  };
+
 
   useEffect(() => {
     (async () => {
@@ -175,6 +198,20 @@ export default function OfferingsCoverage() {
               <span className="text-xs text-muted-foreground">
                 generated {new Date(audit.generated_at).toLocaleString()}
               </span>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={refreshAudit}
+                disabled={refreshing}
+                className="ml-auto h-7 text-xs"
+              >
+                {refreshing ? (
+                  <Loader2 className="w-3 h-3 mr-1 animate-spin" />
+                ) : (
+                  <RefreshCw className="w-3 h-3 mr-1" />
+                )}
+                Refresh audit
+              </Button>
             </div>
             <div className="mt-2 grid grid-cols-2 md:grid-cols-6 gap-2 text-sm">
               <Stat label="PPS rows" value={audit.counts.pps_rows} />
@@ -185,17 +222,15 @@ export default function OfferingsCoverage() {
               <Stat label="Topic candidates" value={audit.counts.topic_candidates} tone="raspberry" />
             </div>
             <p className="text-xs text-muted-foreground mt-3">
-              Source-of-truth picture for the offerings register. Re-run with{" "}
-              <code className="bg-muted px-1 rounded">node scripts/audit-offerings-overlap.mjs</code>{" "}
-              after adding <code>BLUEDOOR_SUPABASE_URL</code> and{" "}
-              <code>BLUEDOOR_SUPABASE_SERVICE_ROLE_KEY</code> to refresh with Blue Door data.
-              Full report:{" "}
+              Click <strong>Refresh audit</strong> to re-run live against PPS
+              {audit.blue_door_connected ? " + Blue Door" : " (Blue Door creds not set)"}.
+              The static snapshot below comes from{" "}
+              <code className="bg-muted px-1 rounded">scripts/audit-offerings-overlap.mjs</code>.
+              Full markdown report:{" "}
               <a
-                href="https://github.com"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open("/docs/offerings-duplication-audit.md", "_blank");
-                }}
+                href="/docs/offerings-duplication-audit.md"
+                target="_blank"
+                rel="noreferrer"
                 className="text-bluedoor underline"
               >
                 docs/offerings-duplication-audit.md
