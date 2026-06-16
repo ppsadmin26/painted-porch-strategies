@@ -278,6 +278,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   }, [open, viewableKeys]);
 
   const overrides = usePathFinderOverrides();
+  const rtPools = usePathFinderRtPools();
 
   const applyOverrides = (o: Offering): Offering =>
     overrides[o.key] ? { ...o, url: overrides[o.key] } : o;
