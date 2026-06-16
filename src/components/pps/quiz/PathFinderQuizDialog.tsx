@@ -240,6 +240,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       };
       const eligible: string[] = [];
       const soon = new Set<string>();
+      const featured = new Set<string>();
       for (const r of offeringsRes.data as Array<{
         offering_key: string;
         is_live: boolean;
@@ -247,6 +248,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         dedicated_url: string | null;
         anchor_id: string | null;
         launch_slug: string | null;
+        is_featured_in_quiz: boolean | null;
       }>) {
         const hasDest =
           (r.current_url && r.current_url.trim().length > 0) ||
@@ -271,9 +273,11 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         if (effectiveComingSoon && !effectiveLive) {
           soon.add(r.offering_key);
         }
+        if (r.is_featured_in_quiz) featured.add(r.offering_key);
       }
       setViewableKeys(new Set(eligible));
       setComingSoonKeys(soon);
+      setFeaturedKeys(featured);
     })();
     return () => { cancelled = true; };
   }, [open, viewableKeys]);
