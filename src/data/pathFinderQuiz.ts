@@ -775,6 +775,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     headline,
     subhead: rt === "RT-D" ? "Blue Door™ Primary | Workshops Alongside" : "Workshops | Blue Door™",
     narrative,
+    whyThisFits,
     primaryGroup: grp(primaryHeading, ...trimmedPrimary),
     groups,
     strongestNextStep,
