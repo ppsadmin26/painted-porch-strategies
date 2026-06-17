@@ -305,6 +305,13 @@ export default function PageStatusManager() {
         </div>
       )}
 
+      {/* ============= Bulk SEO + AEO generator ============= */}
+      <BulkSeoGenerator
+        sitemapPaths={sitemapPaths}
+        seoPaths={seoPaths}
+        onChanged={loadSeoPaths}
+      />
+
       {/* ============= Bulk canonical audit ============= */}
       <CanonicalAuditCard sitemapPaths={sitemapPaths} onChanged={loadSeoPaths} />
 
