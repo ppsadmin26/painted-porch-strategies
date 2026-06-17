@@ -225,7 +225,7 @@ export default function PhaseZero() {
               See the cost in your own numbers
             </p>
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 leading-tight">
-              What is skipping Phase Zero actually costing you?
+              The hidden cost of misalignment and building before clarity
             </h3>
             <p className="text-base md:text-lg text-charcoal/85 leading-relaxed mb-5">
               Plug in your team size and initiative budget to see the industry-benchmarked
