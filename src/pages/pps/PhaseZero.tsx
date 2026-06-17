@@ -347,7 +347,7 @@ export default function PhaseZero() {
               The Foundations Phase Zero Fortifies
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
-              The Painted Porch Pillars.
+              What Every Future ShIFt is Built Upon
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
               Your organization stands on three load-bearing structures.
