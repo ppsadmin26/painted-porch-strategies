@@ -107,14 +107,14 @@ export function PathwayComparisonSection() {
                 className={`relative ${tier.bgColor} p-8 rounded-xl border-t-4 ${tier.borderColor} flex flex-col h-full`}
               >
                 {/* Upper content area */}
-                <div className="flex flex-col pb-8 md:min-h-[22rem]">
+                <div className="flex flex-col pb-8">
                   <div className="flex-shrink-0">
                     <TierBadge tier={tier} className="mb-4" />
                     <p className={`text-sm font-semibold ${tier.textColor} mb-3`}>
                       {content.tagline}
                     </p>
                   </div>
-                  <p className="text-foreground text-sm leading-relaxed mt-auto">
+                  <p className="text-foreground text-sm leading-relaxed">
                     {content.journey}
                   </p>
                 </div>
