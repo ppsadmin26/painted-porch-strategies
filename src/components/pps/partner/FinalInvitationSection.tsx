@@ -19,7 +19,7 @@ export function FinalInvitationSection() {
           <p>
             Whether that begins with a course, an assessment, a workshop, a strategic conversation, or a long-term partnership, the goal remains the same:
             <br /><br />
-            Creating meaningful progress with intention, clarity, and purpose.
+            <strong>Creating meaningful progress with intention, clarity, and purpose.</strong>
           </p>
         </div>
 
