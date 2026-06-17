@@ -40,23 +40,14 @@ export function HowPeopleEnterSection() {
             </h3>
           </div>
           <p className="text-primary font-medium mb-4">
-            There is no ladder to climb. Your pathway emerges from clarity.
+            Your journey through the Porch doesn't need to follow a predetermined sequence.
           </p>
           <p className="text-foreground leading-relaxed max-w-2xl mx-auto mb-4">
-            You might start with{" "}
-            <Link to="/partner/ignite" className="font-bold text-gold hover:underline">
-              IGNITE
-            </Link>{" "}
-            and stay there. Or progress to{" "}
-            <Link to="/partner/amplify" className="font-bold text-strategic hover:underline">
-              AMPLIFY
-            </Link>{" "}
-            when you're ready for more depth. Or jump straight to{" "}
-            <Link to="/partner/embody" className="font-bold text-navy hover:underline">
-              EMBODY
-            </Link>
-            . Your pathway emerges from exploration, not prescription.
+            You may begin with a course, an assessment, a workshop, a strategic conversation, or a long-term partnership.
+            <br /><br />
+            The right path is determined by your goals, your context, and what you're ready to explore next.
           </p>
+
           <p className="text-navy font-medium italic">
             Your starting point is yours to choose. Your momentum is yours to own.
           </p>
