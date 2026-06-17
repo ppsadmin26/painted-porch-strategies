@@ -5,7 +5,7 @@ import { Building2, Handshake, TrendingUp, Target, BookOpen } from "lucide-react
 const principles = [
   {
     icon: Building2,
-    title: "We Start in Phase Zero",
+    title: "Phaze Zero F",
     tagline: "Everyone else starts at launch.",
     description: "Most advisors execute change decisions already made. We partner with you BEFORE the decision, in that critical Phase Zero moment when you're determining what change you could credibly lead.",
     contrast: "We architect foundations. They implement initiatives.",
