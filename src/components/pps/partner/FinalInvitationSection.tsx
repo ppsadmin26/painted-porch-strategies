@@ -10,7 +10,7 @@ export function FinalInvitationSection() {
       <ParallaxBackground image={finalInvitationBg} />
       <div className="container max-w-4xl mx-auto px-6 text-center relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          You Don't Need the Entire Path Today
+          Start With the Next Step
         </h2>
         <div className="text-lg text-white/90 mb-8 max-w-2xl mx-auto space-y-4">
           <p className="font-semibold text-white">
