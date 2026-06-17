@@ -420,7 +420,7 @@ export default function PPSHome() {
               <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                 The Way Forward
               </p>
-              <h3 id="path-heading" className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
+              <h3 id="path-heading" className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1 mb-4">
                 Your P.A.T.H. to Sustainable Change
               </h3>
               <p className="text-lg text-foreground max-w-2xl mx-auto leading-relaxed">
