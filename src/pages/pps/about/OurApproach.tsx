@@ -607,50 +607,24 @@ export default function OurApproach() {
         </div>
       </section>
 
-      {/* The Painted Porch promise + Where we fit */}
+      {/* The Painted Porch Promise */}
       <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-10">
-            <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-10 border-b-4 border-gold shadow-xl">
-              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
-                The Painted Porch Promise
-              </p>
-              <h3 className="text-xl md:text-2xl font-poppins font-bold mb-5">
-                You will not need us forever.
-              </h3>
-              <p className="text-white/90 leading-relaxed mb-4">
-                The point of partnership is not a long contract. It is your
-                team becoming the people who can author the next change on
-                their own.
-              </p>
-              <p className="text-gold font-semibold">
-                Success is when your next major decision no longer requires us in the room.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm border border-navy/10">
-              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
-                Where We Fit
-              </p>
-              <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-5">
-                Upstream of the rollout.
-              </h3>
-              <p className="text-foreground leading-relaxed mb-4">
-                Most advisors arrive after the decision is made. We come in
-                earlier, while you are still deciding what change to lead
-                and whether your organization can carry it.
-              </p>
-              <p className="text-foreground leading-relaxed">
-                That is the work we call{" "}
-                <Link
-                  to="/phase-zero"
-                  className="font-semibold text-primary hover:underline"
-                >
-                  Phase Zero
-                </Link>
-                .
-              </p>
-            </div>
+        <div className="container max-w-3xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 border-b-4 border-gold shadow-xl text-center">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
+              The Painted Porch Promise
+            </p>
+            <h3 className="text-xl md:text-3xl font-poppins font-bold mb-5">
+              You will not need us forever.
+            </h3>
+            <p className="text-white/90 leading-relaxed mb-4 max-w-xl mx-auto">
+              The point of partnership is not a long contract. It is your
+              team becoming the people who can author the next change on
+              their own.
+            </p>
+            <p className="text-gold font-semibold max-w-xl mx-auto">
+              Success is when your next major decision no longer requires us in the room.
+            </p>
           </div>
         </div>
       </section>
