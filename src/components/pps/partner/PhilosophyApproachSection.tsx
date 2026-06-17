@@ -5,7 +5,7 @@ import { Building2, Handshake, TrendingUp, Target, BookOpen } from "lucide-react
 const principles = [
   {
     icon: Building2,
-    title: "Phaze Zero First",
+    title: "Phaze Zero First, Always",
     tagline: "Every meaningful shIFt starts with clarity.",
     description: "Before committing time, resources, and energy, we examine what's true, what's assumed, and what deserves deeper exploration.",
     contrast: "We architect foundations, not implement initiatives.",
