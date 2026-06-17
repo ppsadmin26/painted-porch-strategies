@@ -444,9 +444,7 @@ export default function PhaseZero() {
               </h3>
               <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
                 When the three Pillars stand strong and the Essential
-                Elements show up every day, your organization becomes able
-                to <strong className="text-gold">author change and keep growing</strong>,
-                instead of constantly cleaning up what the last shift broke.
+                Elements show up every day, organizations gain the <strong className="text-gold">capability, capacity, and confidence to author whatever comes next,</strong>&nbsp;instead of constantly cleaning up what the last shift broke.
               </p>
             </div>
           </FadeIn>
