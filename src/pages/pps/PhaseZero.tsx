@@ -417,8 +417,7 @@ export default function PhaseZero() {
                 Essential Elements
               </h3>
               <p className="text-foreground/80 text-base max-w-2xl mx-auto leading-relaxed">
-                Under all three Pillars sit the everyday behaviors that
-                decide whether change actually sticks.
+                Under all three Pillars sit the behaviors that determine whether organizations simply react to the future or are capable of authoring it.
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-2">
