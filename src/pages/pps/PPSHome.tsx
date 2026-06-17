@@ -227,15 +227,15 @@ export default function PPSHome() {
                 <br /><br />
                 We begin earlier.
                 <br /><br />
-                At the point where leaders are still determining what their organization is built to lead, what it is becoming, and what conditions need to exist before momentum accelerates.
+                At the point where you&rsquo;re still determining what your organization is built to lead, what it is becoming, and what conditions need to exist before momentum accelerates.
               </p>
               <p className="text-lg text-foreground leading-relaxed">
                 Most organizations find us at one of three moments:
-                <br /><br />
+                <br />
                 &bull; when something important feels possible
-                <br /><br />
+                <br />
                 &bull; when something important feels uncertain
-                <br /><br />
+                <br />
                 &bull; when something important feels inevitable
                 <br /><br />
                 Wherever you begin, clarity comes before commitment.
