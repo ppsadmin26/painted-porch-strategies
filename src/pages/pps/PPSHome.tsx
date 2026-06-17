@@ -416,7 +416,7 @@ export default function PPSHome() {
             aria-labelledby="path-heading"
             className="scroll-mt-24 scroll-smooth mt-16 max-w-5xl mx-auto"
           >
-            <div className="text-center mb-5">
+            <div className="text-center mb-10">
               <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                 The Way Forward
               </p>
