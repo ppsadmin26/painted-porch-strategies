@@ -58,7 +58,7 @@ const pathStages = [
     accent: "text-gold",
     bg: "bg-gold/5",
     iconBg: "bg-gold/10",
-    body: "The new change initiative begins with the right people, sequence, and support in place. Communication is clear. Course corrections are expected. Momentum is paced, not panicked.",
+    body: "Move intentionally. The new change initiative begins with the right people, sequence, and support in place. Launch with clarity, purpose, and awareness of what success requires. Communication is clear. Course corrections are expected. Momentum is paced, not panicked.",
     outcome: "Launch energy that holds past the first 90 days.",
   },
   {
@@ -70,7 +70,7 @@ const pathStages = [
     accent: "text-lime",
     bg: "bg-lime/5",
     iconBg: "bg-lime/10",
-    body: "New ways of working become the default through small, repeated behaviors. Leaders reinforce. Systems support. The team stops needing the scaffolding we built together.",
+    body: "Reinforce what works. Strengthen habits, behaviors, systems, and practices until they become part of how your organization operates.\u00a0Because sustainable change is rarely the result of a single initiative; it's the result of repeatedly strengthening the conditions that allow progress to continue.",
     outcome: "A team that can carry the next change without us.",
   },
 ];
