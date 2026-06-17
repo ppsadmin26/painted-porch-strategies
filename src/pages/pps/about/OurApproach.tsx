@@ -179,10 +179,10 @@ export default function OurApproach() {
               Sustainable change is designed, not declared.
             </p>
             <p className="mb-4">
-              Most organizations focus on execution.&nbsp;We examine the conditions that determine whether execution succeeds.
+              Execution is the visible part of change.&nbsp;The thinking, alignment, communication, leadership, and culture beneath it often determine whether it lasts.
             </p>
             <p className="mb-4">
-              Everything we do follows the same sequence:
+              Our approach examines and strengthens those foundations through a deliberate sequence:
             </p>
             <p className="mb-4">
               Understand reality.<br />
