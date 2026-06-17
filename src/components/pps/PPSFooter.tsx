@@ -9,8 +9,8 @@ export default function PPSFooter() {
     { label: "The Blue Door", href: "/blue-door" },
     { label: "Partner with Us", href: "/partner" },
     { label: "Insights & Resources", href: "/resources" },
-    { label: "FAQ", href: "/resources/faq" },
     { label: "Speaking", href: "/speaking" },
+    { label: "FAQ", href: "/resources/faq" },
   ];
 
   const pathways = [
