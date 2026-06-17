@@ -179,10 +179,8 @@ export default function OurApproach() {
               Sustainable change is designed, not declared.
             </p>
             <p>
-              Most organizations focus on execution.
-              <br /><br />
-              We examine the conditions that determine whether execution succeeds.
-              <br /><br /><br /><br />
+              Most organizations focus on execution.&nbsp;We examine the conditions that determine whether execution succeeds.
+              <br /><br /><br />
               Everything we do follows the same sequence:
               <br /><br />
               Understand reality.<br />
