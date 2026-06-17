@@ -74,9 +74,6 @@ export default function PartnerWithUsAlt() {
       {/* Section 2: Three P.A.T.H.ways Comparison */}
       <PathwayComparisonSection />
 
-      {/* Section 3: Our Philosophy & Approach (tabbed) */}
-      <PhilosophyApproachSection />
-
       {/* Section 3b: The Architecture Gap, research-backed reality + Pillars */}
       <ArchitectureGapSection />
 
