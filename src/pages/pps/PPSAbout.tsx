@@ -207,13 +207,18 @@ export default function PPSAbout() {
       <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <span className="inline-block bg-primary/10 text-primary font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
-            Your Transformation Partners
+            Meet the Team
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-            Meet the Painted Porch Team.
+            Different Disciplines. Shared Conviction.
           </h2>
-          <p className="text-lg text-foreground leading-relaxed italic">
-            Many think of the Stoics as a bunch of boring old men, with stiff upper lips and no sense of fun. <span className="not-italic font-semibold">Not us.</span> We created Painted Porch Strategies because we believe <span className="font-semibold text-navy">work done right</span>, and <span className="font-semibold text-navy">for the right reasons, can be fun</span>. We'll show you how leaning on <span className="font-semibold text-navy">the principles of Stoicism</span> can not only <span className="font-semibold text-navy">be very rewarding</span>, but you'll discover simple ways to <span className="font-semibold text-navy">shift your mindset</span> from business and life as usual to one that is <span className="font-semibold text-navy">incredible</span> and <span className="font-semibold text-navy">expansive</span>. We'll show you just how <span className="font-semibold text-navy">freeing the concept of control can truly be</span>.
+          <p className="text-lg text-foreground leading-relaxed">
+            Painted Porch brings together expertise in leadership, organizational strategy, communication, behavioral change, and human performance.<br /><br />
+            Different perspectives.<br /><br />
+            Different experiences.<br /><br />
+            One shared belief:<br /><br />
+            The best decisions are rarely made under pressure.<br /><br />
+            They're made when people have the clarity to see what matters most.
           </p>
         </div>
       </section>
