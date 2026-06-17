@@ -21,7 +21,7 @@ const principles = [
     icon: Target,
     title: "We Architect Capacity & Capability",
     tagline: "Not implementing projects.",
-    description: "Success is not measured by a completed project. It is reflected in stronger leaders, healthier systems, and greater confidence in navigating whatever comes next.",
+    description: "Success is not measured by a completed project. It's reflected in stronger leaders, healthier systems, and greater confidence in navigating whatever comes next.",
     contrast: "When we're done, you've become transformation architects yourselves.",
   },
   {
