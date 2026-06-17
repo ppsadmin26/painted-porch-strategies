@@ -215,7 +215,7 @@ export default function PPSAbout() {
           <p className="text-lg text-foreground leading-relaxed">
             Painted Porch brings together expertise in leadership, organizational strategy, communication, behavioral change, and human performance.<br /><br />
             Different perspectives.<br />
-            Different experiences.<br /><br /><br />
+            Different experiences.<br /><br />
             One shared belief:<br />
             The best decisions are rarely made under pressure.<br />
             They're made when people have the clarity to see what matters most.
