@@ -374,7 +374,7 @@ export default function OurApproach() {
                 Meaningful change rarely succeeds because of a framework. It succeeds because the conditions required for success already exist or are intentionally strengthened.
               </p>
               <p>
-                We do not deliver or manage change for you. We build the conditions where the right change becomes possible, in your people and across your organization.
+                We do not deliver or manage change for you. We fortify the conditions that allow the right change to become possible, in your people and across your organization.
               </p>
             </div>
           </div>
