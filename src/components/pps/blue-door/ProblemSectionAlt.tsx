@@ -41,7 +41,7 @@ export default function ProblemSectionAlt() {
             It's when the <span className="font-bold text-bluedoor">blue door</span> appears, the threshold between sensing that something must change and knowing what your organization can actually lead.
           </p>
           <p className="text-base md:text-lg text-foreground font-semibold">
-            Most organizations rush through it.
+            Most organizations don't stop long enough to examine it.
           </p>
         </div>
         
