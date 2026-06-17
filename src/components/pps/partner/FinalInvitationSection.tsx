@@ -10,22 +10,19 @@ export function FinalInvitationSection() {
       <ParallaxBackground image={finalInvitationBg} />
       <div className="container max-w-4xl mx-auto px-6 text-center relative z-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-          Ready to Move From Reactive to Architect?
+          You Don't Need the Entire Path Today
         </h2>
         <div className="text-lg text-white/90 mb-8 max-w-2xl mx-auto space-y-4">
-          <p>
-            Change is coming. It always is. The question isn't whether you'll face transformation pressure.
-          </p>
           <p className="font-semibold text-white">
-            The question is: Will you be ready when it arrives?
+            You only need the next step.
           </p>
           <p>
-            <strong>Most leaders wait until the next shift hits their plan.</strong> Then they scramble. They react. They implement tactical solutions to strategic problems.
-          </p>
-          <p>
-            <strong>Extraordinary leaders do something different:</strong> They architect their capacity before pressure demands it.
+            Whether that begins with a course, an assessment, a workshop, a strategic conversation, or a long-term partnership, the goal remains the same:
+            <br /><br />
+            Creating meaningful progress with intention, clarity, and purpose.
           </p>
         </div>
+
         
         <div className="mb-8 flex justify-center px-4">
           <Link to="/start-here" className="w-full max-w-[20rem] sm:w-auto sm:max-w-full">
