@@ -102,9 +102,9 @@ export default function PPSAbout() {
                 <br /><br />
                 We chose the name because organizations need spaces like that too.
                 <br /><br />
-                Not places to move faster. Places to think better.
+                Not places to move faster. Places <strong>to think better</strong>.
                 <br /><br />
-                Not places to react. Places to decide deliberately what comes next.
+                Not places to react. Places <strong>to decide deliberately</strong> what comes next.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-6">
                 We bring these timeless principles to modern business, so leaders and teams can build the mental and organizational architecture needed to navigate what they are becoming next successfully.
