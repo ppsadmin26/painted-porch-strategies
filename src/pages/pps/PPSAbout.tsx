@@ -316,19 +316,19 @@ export default function PPSAbout() {
           <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
             WHAT WE BELIEVE
           </p>
-          <div className="text-lg md:text-xl text-foreground leading-relaxed mb-6 space-y-6">
-            <p>
+          <div className="text-lg md:text-xl text-foreground leading-relaxed mb-6 space-y-8">
+            <p className="whitespace-pre-line">
               Organizations become what they repeatedly practice.{"\n\n"}
               That's why we pay attention to the conditions beneath change, not just the outcomes through it.
             </p>
-            <p className="font-semibold">
+            <p className="font-bold whitespace-pre-line">
               Clarity.{"\n"}
               Communication.{"\n"}
               Trust.{"\n"}
               Leadership.{"\n"}
               Capacity for reflection.
             </p>
-            <p>
+            <p className="whitespace-pre-line">
               These aren't soft skills.{"\n\n"}
               They're the foundations that determine whether change takes root or cracks and collapses under its own weight.
             </p>
