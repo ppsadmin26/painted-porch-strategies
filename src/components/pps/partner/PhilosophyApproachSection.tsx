@@ -8,7 +8,7 @@ const principles = [
     title: "Phaze Zero First",
     tagline: "Every meaningful shIFt starts with clarity.",
     description: "Before committing time, resources, and energy, we examine what's true, what's assumed, and what deserves deeper exploration.",
-    contrast: "We architect foundations. They implement initiatives.",
+    contrast: "We architect foundations, not implement initiatives.",
   },
   {
     icon: Handshake,
