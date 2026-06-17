@@ -424,8 +424,9 @@ export default function PPSHome() {
                 Your P.A.T.H. to Sustainable Change
               </h3>
               <p className="text-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto leading-relaxed">
-                A way of thinking about and navigating intentional, sustainable
-                progress.
+                A way of thinking about and navigating intentional progress.
+                <br /><br />
+                A practical framework for building the capability, capacity, and habits required to carry what comes next.
               </p>
             </div>
 
