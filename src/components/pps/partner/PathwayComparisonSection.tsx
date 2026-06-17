@@ -102,33 +102,35 @@ export function PathwayComparisonSection() {
                 key={tier.name}
                 className={`relative ${tier.bgColor} p-8 rounded-xl border-t-4 ${tier.borderColor} flex flex-col h-full`}
               >
-                <TierBadge tier={tier} className="mb-4" />
-                <p className={`text-sm font-semibold ${tier.textColor} mb-3`}>
-                  {content.tagline}
-                </p>
-                <p className="text-foreground mb-4 text-sm leading-relaxed">
-                  {content.journey}
-                </p>
+                <div className="flex-1">
+                  <TierBadge tier={tier} className="mb-4" />
+                  <p className={`text-sm font-semibold ${tier.textColor} mb-3`}>
+                    {content.tagline}
+                  </p>
+                  <p className="text-foreground mb-4 text-sm leading-relaxed">
+                    {content.journey}
+                  </p>
+                </div>
 
+                {/* Perfect For */}
+                {"perfectFor" in content && content.perfectFor && (
+                  <div className="mb-4">
+                    <h4 className="text-base md:text-lg font-poppins font-semibold uppercase tracking-wide text-navy/70 mb-2">
+                      Perfect For:
+                    </h4>
+                    <ul className="space-y-2">
+                      {content.perfectFor.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <Users className={`w-4 h-4 ${tier.textColor} flex-shrink-0 mt-0.5`} />
+                          <span className="text-xs text-foreground">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Timeline + CTA */}
                 <div className="mt-auto">
-                  {/* Perfect For */}
-                  {"perfectFor" in content && content.perfectFor && (
-                    <div className="mb-4">
-                      <h4 className="text-base md:text-lg font-poppins font-semibold uppercase tracking-wide text-navy/70 mb-2">
-                        Perfect For:
-                      </h4>
-                      <ul className="space-y-2">
-                        {content.perfectFor.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <Users className={`w-4 h-4 ${tier.textColor} flex-shrink-0 mt-0.5`} />
-                            <span className="text-xs text-foreground">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Timeline */}
                   <p className="text-xs text-foreground mb-4">
                     <span className="font-semibold">Timeline:</span> {content.timeline}
                   </p>
