@@ -70,7 +70,7 @@ export function PartnerHeroSection() {
                 Some are building the capacity to lead transformation across an entire organization.
               </p>
               <p className="mb-4">
-                P.A.T.H.ways help you identify the right starting point.
+                Our P.A.T.H.ways help you identify the right starting point.
               </p>
               <p className="text-white/80 italic text-base">
                 Your next step isn't determined by your title. It's determined by where you are and what you're ready to lead.
