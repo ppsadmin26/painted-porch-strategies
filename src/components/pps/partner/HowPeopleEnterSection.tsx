@@ -24,7 +24,7 @@ export function HowPeopleEnterSection() {
           <p className="text-lg text-foreground leading-relaxed">
             No two journeys look exactly alike.
           </p>
-          <p className="text-lg text-foreground leading-relaxed font-medium">
+          <p className="text-lg text-foreground leading-relaxed font-bold">
             What matters is finding the right place to begin.
           </p>
         </div>
