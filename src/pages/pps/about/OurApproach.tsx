@@ -180,7 +180,7 @@ export default function OurApproach() {
             </p>
             <p>
               Most organizations focus on execution.&nbsp;We examine the conditions that determine whether execution succeeds.
-              <br /><br />
+              <br /><br /><br />
               Everything we do follows the same sequence:
               <br /><br />
               Understand reality.<br />
@@ -188,7 +188,7 @@ export default function OurApproach() {
               Launch intentionally.<br />
               Reinforce what works.
               <br /><br />
-              It's how organizations move from reacting to change to authoring it.
+              It's how you move from reacting to change to authoring it.
               <br /><br />
               <strong>That's the P.A.T.H.</strong>
             </p>
