@@ -359,8 +359,8 @@ export default function PPSHome() {
           </p>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
             Phase Zero exists to create clarity before your next major decision
-            hardens into execution. it&rsquo;s the threshold work that helps your
-            organization see itself clearly before deciding what comes next.
+            hardens into execution. It&rsquo;s the threshold work that helps your
+            organization see itself clearly before determining what comes next.
           </p>
           <Link to="/phase-zero">
             <Button className="bg-gold border-2 border-gold text-navy hover:bg-white hover:border-white text-lg py-5 px-8 transition-colors">
