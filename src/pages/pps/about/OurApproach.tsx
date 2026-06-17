@@ -176,15 +176,19 @@ export default function OurApproach() {
         description={
           <>
             <p className="mb-4">
-              The strongest people and organizations build three things on
-              purpose:{" "}
-              <span className="font-semibold text-gold">emotional resilience</span>,{" "}
-              <span className="font-semibold text-gold">quality connection</span>,
-              and{" "}
-              <span className="font-semibold text-gold">clear communication</span>.
+              Sustainable change is designed, not declared.
             </p>
             <p>
-              That mix is what lets change actually take hold and last.
+              We combine organizational architecture, behavioral science, and practical implementation experience to help leaders create the conditions where meaningful change can take hold and last.
+              <br /><br />
+              Everything we do follows the same sequence:
+              <br /><br />
+              Understand reality.<br />
+              Align people.<br />
+              Launch intentionally.<br />
+              Reinforce what works.
+              <br /><br />
+              That's the P.A.T.H.
             </p>
           </>
         }
