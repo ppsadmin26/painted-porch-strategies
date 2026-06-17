@@ -202,7 +202,7 @@ export default function PhaseZero() {
             <p>
               Your organization isn't getting worn down from a lack of effort, but from the
               weight that builds up underneath the continual drive to innovate, accelerate,
-              adapt, and grow. Unfinished work. Competing priorities. Fragmented initiatives.
+              adapt, and grow. Unfinished work. Competing priorities. Disconnected initiatives.
               Directions that never fully aligned in the first place.
             </p>
             <p>
