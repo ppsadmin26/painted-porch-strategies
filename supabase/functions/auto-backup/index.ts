@@ -317,10 +317,15 @@ async function listBucketObjects(
 
 async function saveState(sb: ReturnType<typeof admin>, state: BackupState) {
   const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
-  const { error } = await sb.storage
-    .from("backups")
-    .upload(statePath(state.folder), blob, { contentType: "application/json", upsert: true });
-  if (error) throw new Error(`Save state: ${error.message}`);
+  try {
+    const { error } = await sb.storage
+      .from("backups")
+      .upload(statePath(state.folder), blob, { contentType: "application/json", upsert: true });
+    if (error) throw new Error(`Save state: ${error.message}`);
+  } catch (err) {
+    const msg = (err as any)?.message ?? String(err);
+    throw new Error(`Save state for ${state.folder}: ${msg}`);
+  }
 }
 
 class StateMissingError extends Error {
