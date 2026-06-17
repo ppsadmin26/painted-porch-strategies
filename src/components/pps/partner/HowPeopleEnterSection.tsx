@@ -54,27 +54,29 @@ export function HowPeopleEnterSection() {
           {entries.map((entry) => (
             <div
               key={entry.tier}
-              className={`relative bg-white p-8 rounded-xl border-t-4 ${entry.borderColor} shadow-sm`}
+              className={`relative bg-white p-8 rounded-xl border-t-4 ${entry.borderColor} shadow-sm flex flex-col h-full`}
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className={`w-10 h-10 rounded-full ${entry.iconBg} flex items-center justify-center flex-shrink-0`}>
                   <entry.icon className={`w-5 h-5 ${entry.iconColor}`} />
                 </div>
-                <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">
+                <h3 className={`text-xl md:text-2xl font-poppins font-bold ${entry.textColor}`}>
                   {entry.tier}
                 </h3>
               </div>
-              <p className="text-foreground leading-relaxed mb-3">
-                {entry.intro}
-              </p>
-              <ul className="space-y-1 mb-3">
-                {entry.items.map((item, i) => (
-                  <li key={i} className="text-foreground text-sm">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <p className={`font-bold ${entry.textColor}`}>
+              <div className="flex-1">
+                <p className="text-foreground leading-relaxed mb-3">
+                  {entry.intro}
+                </p>
+                <ul className="space-y-1">
+                  {entry.items.map((item, i) => (
+                    <li key={i} className="text-foreground text-sm">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <p className={`font-bold ${entry.textColor} mt-4`}>
                 {entry.closing}
               </p>
             </div>
