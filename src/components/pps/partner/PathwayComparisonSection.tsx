@@ -65,26 +65,26 @@ export function PathwayComparisonSection() {
       <div className="container max-w-7xl mx-auto px-6">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Three Ways to Partner, One Philosophy.
+            Three Ways to Partner. One Philosophy.
           </h2>
           <div className="text-foreground space-y-4">
             <p>
-              Most transformation programs offer you two options: buy a certification course or hire a consultant. But real transformation doesn't work that way.
+              Whether you're exploring on your own, bringing a team into the conversation, or shaping organization-wide change, every P.A.T.H.way is grounded in the same principles:
+            </p>
+            <div className="py-2 space-y-1 font-bold text-lg text-navy">
+              <p>Reason.</p>
+              <p>Logic.</p>
+              <p>Purpose.</p>
+              <p>Virtue.</p>
+            </div>
+            <p>
+              What changes is the depth of engagement, the scope of application, and the level of support.
             </p>
             <p>
-              Each P.A.T.H.way is designed for a different level of commitment and transformation ambition.
-            </p>
-            <p>
-              Some leaders need a spark, proof that change can work here. Some need momentum, compounded results from aligned teams. Some need permanence, unshakeable foundations that outlast any single initiative.
-            </p>
-            <p>
-              <strong>Different depths. Different timelines. Different investments.</strong>
-            </p>
-            <p className="text-primary font-medium">
-              But the same underlying philosophy: You can't architect transformation by skipping Phase Zero.
+              There is no required sequence.
             </p>
             <p className="font-bold">
-              Where are you right now? And where do you want to go and start some new sh<strong className="text-raspberry">IF</strong>t next?
+              Only the right next step.
             </p>
           </div>
         </div>
