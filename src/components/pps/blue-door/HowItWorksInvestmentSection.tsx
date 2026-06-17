@@ -117,19 +117,6 @@ export default function HowItWorksInvestmentSection() {
           ))}
         </div>
 
-        {/* Investment */}
-        <Link to="/blue-door/purchase">
-          <div
-            ref={investRef}
-            className={`bg-white border-4 border-bluedoor p-8 rounded-lg text-center max-w-md mx-auto mb-12 shadow-lg transition-all duration-700 ease-out hover:shadow-xl hover:scale-105 cursor-pointer ${investVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-          >
-            <span className="inline-block bg-bluedoor/10 text-bluedoor font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-3">
-              The Blue Door Organizational Appraisal
-            </span>
-            <p className="font-poppins font-bold text-5xl text-navy">{BLUE_DOOR_PRICE_DISPLAY}</p>
-          </div>
-        </Link>
-
         {/* What to Expect / What's Included */}
         <div ref={detailsRef} className="grid md:grid-cols-2 gap-12 mb-12">
           <div className={`bg-white p-6 rounded-lg shadow-sm border-l-4 border-strategic transition-all duration-700 ease-out ${detailsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
@@ -164,13 +151,24 @@ export default function HowItWorksInvestmentSection() {
           </div>
         </div>
 
-        <div className="text-center">
-          <Link to="/blue-door/purchase">
-            <Button className="bg-bluedoor text-white border-2 border-bluedoor text-base sm:text-lg md:text-xl py-4 sm:py-5 px-6 sm:px-12 shadow-lg hover:shadow-xl hover:bg-white hover:text-bluedoor transition-all max-w-full whitespace-normal h-auto">
-              Open your Blue Door →
-            </Button>
-          </Link>
+        {/* Investment */}
+        <div
+          ref={investRef}
+          className={`bg-white border-4 border-bluedoor p-8 rounded-lg text-center max-w-md mx-auto mb-12 shadow-lg transition-all duration-700 ease-out hover:shadow-xl hover:scale-105 ${investVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+        >
+          <span className="inline-block bg-bluedoor/10 text-bluedoor font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-3">
+            The Blue Door Organizational Appraisal
+          </span>
+          <p className="font-poppins font-bold text-5xl text-navy">{BLUE_DOOR_PRICE_DISPLAY}</p>
+          <div className="mt-6">
+            <Link to="/blue-door/purchase">
+              <Button className="bg-bluedoor text-white border-2 border-bluedoor text-base sm:text-lg md:text-xl py-4 sm:py-5 px-6 sm:px-12 shadow-lg hover:shadow-xl hover:bg-white hover:text-bluedoor transition-all max-w-full whitespace-normal h-auto">
+                Open your Blue Door →
+              </Button>
+            </Link>
+          </div>
         </div>
+
       </div>
     </section>
   );
