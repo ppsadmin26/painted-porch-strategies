@@ -223,14 +223,22 @@ export default function PPSHome() {
                 We begin where most firms don&rsquo;t.
               </h2>
               <p className="text-lg text-foreground leading-relaxed mb-4">
-                We don&rsquo;t arrive with a slide deck of answers or a packaged
-                program waiting for your name and logo on it. We meet you at the 
-                threshold of transformation, with the questions that haven&rsquo;t 
-                been asked yet, before the next big decision begins.
+                We don&rsquo;t arrive with predetermined answers, packaged solutions, or implementation plans waiting for your approval.
+                <br /><br />
+                We begin earlier.
+                <br /><br />
+                At the point where leaders are still determining what their organization is built to lead, what it is becoming, and what conditions need to exist before momentum accelerates.
               </p>
               <p className="text-lg text-foreground leading-relaxed">
-                Most leaders find us in one of three places. Wherever you start,
-                you begin with clarity, not a contract.
+                Most organizations find us at one of three moments:
+                <br /><br />
+                &bull; when something important feels possible
+                <br /><br />
+                &bull; when something important feels uncertain
+                <br /><br />
+                &bull; when something important feels inevitable
+                <br /><br />
+                Wherever you begin, clarity comes before commitment.
               </p>
             </div>
 
