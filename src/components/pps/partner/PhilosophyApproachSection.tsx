@@ -14,7 +14,7 @@ const principles = [
     icon: Handshake,
     title: "We Partner, Not Consult",
     tagline: "You're the expert of you.",
-    description: "We don't deliver solutions to you, we co-design them with you. You're the expert of your organizational context, culture, and constraints. We're experts in transformation architecture.",
+    description: "The strongest solutions emerge when perspective meets context. You bring the realities of your organization. We bring structure, challenge, and disciplined inquiry.",
     contrast: "Together, we build what actually works in YOUR reality.",
   },
   {
