@@ -13,6 +13,7 @@ import { collectSitemapPaths } from "@/pages/pps/Sitemap";
 import { supabase } from "@/integrations/supabase/client";
 import PageSeoEditorDialog from "@/components/pps/admin/PageSeoEditorDialog";
 import CanonicalAuditCard from "@/components/pps/admin/CanonicalAuditCard";
+import BulkSeoGenerator from "@/components/pps/admin/BulkSeoGenerator";
 
 /**
  * Admin-only manager for page publish status + per-page SEO overrides.
@@ -303,6 +304,13 @@ export default function PageStatusManager() {
           ))}
         </div>
       )}
+
+      {/* ============= Bulk SEO + AEO generator ============= */}
+      <BulkSeoGenerator
+        sitemapPaths={sitemapPaths}
+        seoPaths={seoPaths}
+        onChanged={loadSeoPaths}
+      />
 
       {/* ============= Bulk canonical audit ============= */}
       <CanonicalAuditCard sitemapPaths={sitemapPaths} onChanged={loadSeoPaths} />
