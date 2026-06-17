@@ -317,14 +317,15 @@ export default function PPSAbout() {
             WHAT WE BELIEVE
           </p>
           <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 whitespace-pre-line">
-            Organizations become what they repeatedly practice.{"\n\n\n\n\n"}
-            That's why we pay attention to the conditions beneath change, not just the outcomes above it.{"\n\n\n\n\n"}
+            Organizations become what they repeatedly practice.{"\n\n"}
+            That's why we pay attention to the conditions beneath change, not just the outcomes through it.{"\n\n"}
             Clarity.{"\n"}
             Communication.{"\n"}
             Trust.{"\n"}
             Leadership.{"\n"}
-            Capacity for reflection.{"\n\n\n\n\n"}
-            These are not soft skills.&nbsp;They are the foundations that determine whether change takes root or collapses under its own weight.
+            Capacity for reflection.{"\n\n"}
+            These aren't soft skills.&nbsp;{"\n"}
+            They're the foundations that determine whether change takes root or cracks and collapses under its own weight.
           </p>
           <p className="text-base text-foreground/80">
             See the framework that holds it together in{" "}
