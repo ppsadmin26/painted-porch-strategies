@@ -179,14 +179,18 @@ export default function OurApproach() {
               Sustainable change is designed, not declared.
             </p>
             <p>
-              We combine organizational architecture, behavioral science, and practical implementation experience to examine the conditions that determine whether change takes off or falls flat.
+              Most organizations focus on execution.
               <br /><br />
+              We examine the conditions that determine whether execution succeeds.
+              <br /><br /><br /><br />
               Everything we do follows the same sequence:
               <br /><br />
               Understand reality.<br />
               Align people.<br />
               Launch intentionally.<br />
               Reinforce what works.
+              <br /><br />
+              It's how organizations move from reacting to change to authoring it.
               <br /><br />
               <strong>That's the P.A.T.H.</strong>
             </p>
