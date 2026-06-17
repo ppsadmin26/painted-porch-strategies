@@ -325,7 +325,7 @@ export default function PPSAbout() {
           <div className="text-lg md:text-xl text-foreground leading-relaxed mb-6 space-y-8">
             <p className="whitespace-pre-line">
               Organizations become what they repeatedly practice.{"\n\n"}
-              That's why we pay attention to the conditions beneath change, not just the outcomes through it.
+              That's why we pay attention to the conditions beneath the change, not just the outcomes from it.
             </p>
             <p className="font-bold whitespace-pre-line">
               Clarity.{"\n"}
