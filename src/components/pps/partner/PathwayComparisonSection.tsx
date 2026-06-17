@@ -109,34 +109,32 @@ export function PathwayComparisonSection() {
                 <p className="text-foreground mb-4 text-sm leading-relaxed">
                   {content.journey}
                 </p>
-                
-                {/* Perfect For (above The Experience) */}
-                {"perfectFor" in content && content.perfectFor && (
-                  <div className="mb-4">
-                    <h4 className="text-base md:text-lg font-poppins font-semibold uppercase tracking-wide text-navy/70 mb-2">
-                      Perfect For:
-                    </h4>
-                    <ul className="space-y-2">
-                      {content.perfectFor.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <Users className={`w-4 h-4 ${tier.textColor} flex-shrink-0 mt-0.5`} />
-                          <span className="text-xs text-foreground">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-
 
                 <div className="mt-auto">
+                  {/* Perfect For */}
+                  {"perfectFor" in content && content.perfectFor && (
+                    <div className="mb-4">
+                      <h4 className="text-base md:text-lg font-poppins font-semibold uppercase tracking-wide text-navy/70 mb-2">
+                        Perfect For:
+                      </h4>
+                      <ul className="space-y-2">
+                        {content.perfectFor.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <Users className={`w-4 h-4 ${tier.textColor} flex-shrink-0 mt-0.5`} />
+                            <span className="text-xs text-foreground">{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   {/* Timeline */}
                   <p className="text-xs text-foreground mb-4">
                     <span className="font-semibold">Timeline:</span> {content.timeline}
                   </p>
                   <Button asChild className={`w-full ${tier.solidButtonClasses} transition-colors`}>
-                  <Link to={tier.href}>Explore <strong>{tier.name}</strong> <ArrowRight className="ml-2 w-4 h-4" /></Link>
-                </Button>
+                    <Link to={tier.href}>Explore <strong>{tier.name}</strong> <ArrowRight className="ml-2 w-4 h-4" /></Link>
+                  </Button>
                 </div>
               </div>
             );
