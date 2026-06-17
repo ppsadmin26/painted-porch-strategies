@@ -70,7 +70,7 @@ export default function PPSAbout() {
               The most important decisions are rarely made in the middle of execution.
             </p>
             <p>
-              Painted Porch Strategies exists for the moments before a major decision hardens into action.
+              Painted Porch Strategies exists for the moments before a major decision hardens into action.&nbsp;The moments when leaders need space to think, question assumptions, examine direction, and decide what is truly worth pursuing.&nbsp;
             </p>
           </>
         }
