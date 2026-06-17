@@ -19,7 +19,7 @@ const team = [
     name: "Amy Yackowski",
     title: "Founder | Chief Evolution Officer | Organizational Shift Strategist",
     experience: "Over 20 Years Experience",
-    description: "Amy has spent nearly two decades designing programs that connect people and processes to purpose. Her expertise spans organizational development, change management, and strategic transformation.",
+    description: "Amy believes most organizations don't struggle because they lack ambition. They struggle because important decisions are often made before leaders have enough clarity about what they're building, why it matters, and what it will require.\n\nAfter two decades leading strategic initiatives, organizational transformation efforts, and complex change across industries, she founded Painted Porch Strategies around a simple idea: better questions often create better outcomes than faster answers.\n\nShe brings strategic clarity, organizational insight, and a talent for helping leaders see what others overlook",
     specialties: ["Organizational Design", "Change Management", "Strategic Planning", "Team Development"],
     color: "bg-primary/10",
     accent: "text-primary",
