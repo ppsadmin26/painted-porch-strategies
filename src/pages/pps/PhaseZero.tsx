@@ -173,8 +173,8 @@ export default function PhaseZero() {
               Before the kickoff. Before the rollout. Before the next big sh<span className="text-raspberry font-bold">IF</span>t.
             </p>
             <p className="text-lg text-white/85">
-              Phase Zero is the clear-eyed look at people, systems, and culture
-              that decides whether your next move builds you up or burns you out.
+              Phase Zero is the clarity work that reveals what your organization 
+              is becoming, what it's built to carry, and what comes next.
             </p>
           </>
         }
