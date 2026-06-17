@@ -14,7 +14,7 @@ export function FinalInvitationSection() {
         </h2>
         <div className="text-lg text-white/90 mb-8 max-w-2xl mx-auto space-y-4">
           <p className="font-semibold text-white">
-            You only need the next step.
+            You don't need the entire path today. You only need the next step.
           </p>
           <p>
             Whether that begins with a course, an assessment, a workshop, a strategic conversation, or a long-term partnership, the goal remains the same:
