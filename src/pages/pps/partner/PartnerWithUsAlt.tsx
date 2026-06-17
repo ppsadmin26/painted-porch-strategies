@@ -24,7 +24,6 @@ import {
   FinalInvitationSection,
   ArchitectureGapSection,
 } from "@/components/pps/partner";
-import { PhilosophyApproachSection } from "@/components/pps/partner/PhilosophyApproachSection";
 import { FAQSection } from "@/components/pps/FAQSection";
 
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
