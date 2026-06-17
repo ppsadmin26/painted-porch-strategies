@@ -333,8 +333,10 @@ export default function OurApproach() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               The Decision Filter Behind Every Recommendation
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
-              The Stoic operating system behind every recommendation we make.
+            <p className="text-lg text-foreground max-w-2xl mx-auto whitespace-pre-line">
+              Our Stoic operating system. Every recommendation, challenge, observation, and strategic conversation passes through the same four principles.
+
+              Not because frameworks matter, but because disciplined thinking does.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
