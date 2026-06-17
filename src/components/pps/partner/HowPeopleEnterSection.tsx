@@ -25,7 +25,7 @@ export function HowPeopleEnterSection() {
             No two journeys look exactly alike.
           </p>
           <p className="text-lg text-foreground leading-relaxed font-bold">
-            What matters is finding the right place to begin.
+            What matters is finding the right place to begin asking "What <span className="text-bluedoor">IF</span>".
           </p>
         </div>
 
