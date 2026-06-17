@@ -121,7 +121,7 @@ export function PathwayComparisonSection() {
 
                 {/* Perfect For */}
                 {"perfectFor" in content && content.perfectFor && (
-                  <div className={`flex-1 flex flex-col ${tier.name === "IGNITE" ? "mt-4" : ""}`}>
+                  <div className="flex-1 flex flex-col">
                     <h4 className="text-base md:text-lg font-poppins font-semibold uppercase tracking-wide text-navy/70 mb-2">
                       Perfect For:
                     </h4>
