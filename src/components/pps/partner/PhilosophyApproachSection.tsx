@@ -21,7 +21,7 @@ const principles = [
     icon: Target,
     title: "We Architect Capacity & Capability",
     tagline: "Not implement projects.",
-    description: "Most advisors focus on making THIS change successful. We focus on building the capacity and capability to lead ANY change, now and in the future. We don't make you dependent on us.",
+    description: "Success is not measured by a completed project. It is reflected in stronger leaders, healthier systems, and greater confidence in navigating whatever comes next.",
     contrast: "When we're done, you've become transformation architects yourselves.",
   },
   {
