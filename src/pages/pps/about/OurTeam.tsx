@@ -132,7 +132,7 @@ export default function OurTeam() {
               return (
                 <div
                   key={index}
-                  className={isAmy ? "bg-purple/10 p-8 rounded-xl" : `${member.color} p-8 rounded-xl`}
+                  className={`flex flex-col ${isAmy ? "bg-purple/10 p-8 rounded-xl" : `${member.color} p-8 rounded-xl`}`}
                 >
                   <div className="w-24 h-24 rounded-full mb-4 overflow-hidden">
                     <img
@@ -153,37 +153,39 @@ export default function OurTeam() {
                   <p className="text-foreground text-sm leading-relaxed mb-4">
                     {member.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {member.specialties.map((specialty, i) => (
-                      <span key={i} className="text-xs bg-white/60 px-2 py-1 rounded">
-                        {specialty}
-                      </span>
-                    ))}
+                  <div className="mt-auto">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {member.specialties.map((specialty, i) => (
+                        <span key={i} className="text-xs bg-white/60 px-2 py-1 rounded">
+                          {specialty}
+                        </span>
+                      ))}
+                    </div>
+                    {member.name === "Amy Yackowski" && (
+                      <Link
+                        to="/amy"
+                        className="text-sm font-semibold text-purple hover:underline flex items-center gap-1"
+                      >
+                        About Amy <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
+                    {member.name === "Rob Hunter" && (
+                      <Link
+                        to="/rob"
+                        className="text-sm font-semibold text-muted-foreground hover:underline flex items-center gap-1"
+                      >
+                        About Rob <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
+                    {member.name === "Sierra Ramm Cantrell" && (
+                      <Link
+                        to="/sierra"
+                        className="text-sm font-semibold text-gold hover:underline flex items-center gap-1"
+                      >
+                        About Sierra <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
                   </div>
-                  {member.name === "Amy Yackowski" && (
-                    <Link
-                      to="/amy"
-                      className="text-sm font-semibold text-purple hover:underline flex items-center gap-1"
-                    >
-                      About Amy <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  )}
-                  {member.name === "Rob Hunter" && (
-                    <Link
-                      to="/rob"
-                      className="text-sm font-semibold text-muted-foreground hover:underline flex items-center gap-1"
-                    >
-                      About Rob <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  )}
-                  {member.name === "Sierra Ramm Cantrell" && (
-                    <Link
-                      to="/sierra"
-                      className="text-sm font-semibold text-gold hover:underline flex items-center gap-1"
-                    >
-                      About Sierra <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  )}
                 </div>
               );
             })}
