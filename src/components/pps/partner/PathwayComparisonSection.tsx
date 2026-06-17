@@ -86,6 +86,13 @@ export function PathwayComparisonSection() {
           </div>
         </div>
 
+        {/* Pathway Cards Header */}
+        <div className="text-center mb-10">
+          <p className="text-xl md:text-2xl font-semibold text-navy">
+            Start with the path that matches your reality today.
+          </p>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-8">
           {TIER_LIST.map((tier) => {
             const content = tierContent[tier.name as keyof typeof tierContent];
