@@ -138,17 +138,17 @@ export default function PPSAbout() {
           <div className="space-y-4 text-lg text-foreground leading-relaxed text-left md:text-center">
             <p>
               Most of the leaders we work with are already capable, already
-              experienced, and already carrying a lot. What they are looking
-              for is not another framework. It is a place to think clearly
+              experienced, and already carrying a lot. What they're looking
+              for is not another framework. It's a place to think clearly
               about who their organization is trying to become.
             </p>
             <p>
-              Becoming is slower than fixing. It asks for clarity about
+              Fixing seeks relief. Reflection creates direction.&nbsp;It asks for clarity about
               culture, leadership, and capacity. It asks for room to choose
-              what to lead, instead of just reacting to what is happening.
+              what to lead, instead of just reacting to what's happening.
             </p>
             <p>
-              That is the work we partner on. If you want to see how we
+              That's the work we partner on. If you want to see how we
               think about that work in practice,{" "}
               <Link
                 to="/about/approach"
