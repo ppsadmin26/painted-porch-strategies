@@ -10,7 +10,7 @@ const entries = [
     borderColor: "border-gold",
     textColor: "text-gold",
     intro: "Some begin with curiosity.",
-    items: ["A course.", "A podcast.", "A workshop.", "A conversation."],
+    items: ["A masterclass.", "A course.", "An assessment.", "A conversation."],
     closing: "That's IGNITE.",
     href: "/partner/ignite",
   },
@@ -83,10 +83,7 @@ export function HowPeopleEnterSection() {
 
         <div className="text-center mb-10 max-w-2xl mx-auto space-y-2">
           <p className="text-lg text-foreground">
-            No path is inherently better.
-          </p>
-          <p className="text-lg text-foreground">
-            Each serves a different stage.
+            No path is inherently better. Each serves a different need and moment.
           </p>
         </div>
 
