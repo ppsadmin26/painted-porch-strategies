@@ -215,8 +215,24 @@ export default function OurApproach() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             Upstream of the rollout.
           </h2>
-          <p className="text-lg text-foreground leading-relaxed mb-6">
-            Most advisors arrive after the decision is made. We come in earlier, while you are still deciding what change to lead and whether your organization can carry it.
+          <p className="text-lg text-foreground leading-relaxed mb-6 whitespace-pre-line">
+            Every initiative is built on a series of assumptions.
+
+            About leadership.
+
+            About communication.
+
+            About priorities.
+
+            About culture.
+
+            About what people understand, believe, and are prepared to do.
+
+            Our work examines those assumptions before they become expensive realities.
+
+            Because what appears during implementation often begins much earlier.
+
+            This is the work beneath the rollout.&nbsp;The thinking beneath the plan.&nbsp;The examination that influences everything that follows.
           </p>
           <p className="text-lg text-foreground leading-relaxed">
             That is the work we call <Link to="/phase-zero" className="text-primary font-semibold hover:underline">Phase Zero</Link>.
