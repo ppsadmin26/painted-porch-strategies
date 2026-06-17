@@ -26,6 +26,8 @@ export const allClientLogos: LogoItem[] = [
   { name: "PrimeTime Healthcare", src: "/logos/primetime-healthcare.jpg", href: "https://www.primetimehealthcare.com/" },
   { name: "Regents Consulting", src: "/logos/regents-consulting.png", href: "https://www.regentsconsulting.com/" },
   { name: "Solar Sandy", src: "/logos/solar-sandy.png", href: "https://asksolarsandy.com/" },
+  { name: "Fortis Healthcare Solutions", src: "/logos/fortis-healthcare.svg", href: "https://www.fortishealthcaresolutions.com/" },
+  { name: "Adaptive Workforce Solutions", src: "/logos/adaptive-wfs.png", href: "https://www.adaptivewfs.com/" },
 ];
 
 function LogoTrack({ logos, duration }: { logos: LogoItem[]; duration: number }) {
