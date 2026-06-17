@@ -201,7 +201,7 @@ export default function OurApproach() {
         ctas={[
           { label: "Partner With Us", href: "/partner", isPrimary: true },
         ]}
-        background={{ type: "image", src: approachHero }}
+        background={{ type: "video", src: "", poster: approachHero, slotKey: "approach-hero" }}
         overlayClass="bg-navy/50"
         minHeightClass="min-h-[60vh]"
       />
