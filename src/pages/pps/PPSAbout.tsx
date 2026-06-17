@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
-import teamCtaPuzzles from "@/assets/team/team-cta-puzzles.jpg";
+import paintedPorchChairs from "@/assets/about/painted-porch-chairs.jpg";
 import letsChangeImg from "@/assets/about/lets-change.png";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import aboutHero from "@/assets/heroes/about-hero.jpg";
@@ -349,7 +349,7 @@ export default function PPSAbout() {
 
       {/* Final CTA */}
       <ParallaxCTA
-        backgroundImage={teamCtaPuzzles}
+        backgroundImage={paintedPorchChairs}
         overlayTone="teal"
         eyebrow="PULL UP A CHAIR ON OUR PORCH"
         headline="What conversation needs a bit of porch perspective right now?"
@@ -357,9 +357,9 @@ export default function PPSAbout() {
         actions={[
           { label: "Discover Your P.A.T.H.way", to: "/start-here", variant: "primary" },
           {
-            label: "Contact Us",
-            to: "/contact?interest=general&message=I'd like to learn more about partnering with Painted Porch Strategies.",
-            variant: "secondary",
+            label: "Open the Blue Door",
+            to: "/blue-door",
+            variant: "bluedoor",
           },
         ]}
       />
