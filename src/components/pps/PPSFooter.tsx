@@ -126,7 +126,7 @@ export default function PPSFooter() {
             {/* Newsletter Signup */}
             <form onSubmit={handleSubscribe} className="mt-5">
               <label htmlFor="footer-newsletter-email" className="block text-sm font-poppins font-semibold text-white mb-2">
-                Porch Notes Newsletter
+                Porch Perspectives Newsletter
               </label>
               {status === "success" ? (
                 <p className="text-sm text-lime" role="status">{message}</p>
