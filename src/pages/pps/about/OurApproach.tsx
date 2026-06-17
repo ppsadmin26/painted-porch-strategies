@@ -215,27 +215,23 @@ export default function OurApproach() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             Upstream of the rollout.
           </h2>
-          <p className="text-lg text-foreground leading-relaxed mb-6 whitespace-pre-line">
-            Every initiative is built on a series of assumptions.&nbsp;&nbsp;
-
-
-            About leadership.&nbsp;&nbsp;
-            About communication.&nbsp;&nbsp;
-            About priorities.&nbsp;&nbsp;
-            About culture.&nbsp;&nbsp;
-            About what people understand, believe, and are prepared to do.&nbsp;&nbsp;
-
-
-            Our work examines those assumptions before they become expensive realities.&nbsp;&nbsp;
-
-
-            Because what appears during implementation often begins much earlier.&nbsp;&nbsp;
-
-
-            This is the work beneath the rollout.&nbsp;
-            The thinking beneath the plan.&nbsp;&nbsp;
-            The examination that influences everything that follows.
-          </p>
+          <div className="text-lg text-foreground leading-relaxed mb-6">
+            <p className="mb-9">Every initiative is built on a series of assumptions.</p>
+            <div className="mb-8 space-y-0">
+              <p>About leadership.</p>
+              <p>About communication.</p>
+              <p>About priorities.</p>
+              <p>About culture.</p>
+              <p>About what people understand, believe, and are prepared to do.</p>
+            </div>
+            <p className="mb-8">Our work examines those assumptions before they become expensive realities.</p>
+            <p className="mb-8">Because what appears during implementation often begins much earlier.</p>
+            <div>
+              <p>This is the work beneath the rollout.</p>
+              <p>The thinking beneath the plan.</p>
+              <p>The examination that influences everything that follows.</p>
+            </div>
+          </div>
           <p className="text-lg text-foreground leading-relaxed">
             That is the work we call <Link to="/phase-zero" className="text-primary font-semibold hover:underline">Phase Zero</Link>.
           </p>
