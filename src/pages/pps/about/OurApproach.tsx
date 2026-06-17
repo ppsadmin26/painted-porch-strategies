@@ -209,20 +209,18 @@ export default function OurApproach() {
       {/* Where We Fit */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-3xl mx-auto px-6">
-          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-sm border border-navy/5">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-4">
-              Where We Fit
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-              Upstream of the rollout.
-            </h2>
-            <p className="text-lg text-foreground leading-relaxed mb-6">
-              Most advisors arrive after the decision is made. We come in earlier, while you are still deciding what change to lead and whether your organization can carry it.
-            </p>
-            <p className="text-lg text-foreground leading-relaxed">
-              That is the work we call <Link to="/phase-zero" className="text-primary font-semibold hover:underline">Phase Zero</Link>.
-            </p>
-          </div>
+          <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-4">
+            Where We Fit
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
+            Upstream of the rollout.
+          </h2>
+          <p className="text-lg text-foreground leading-relaxed mb-6">
+            Most advisors arrive after the decision is made. We come in earlier, while you are still deciding what change to lead and whether your organization can carry it.
+          </p>
+          <p className="text-lg text-foreground leading-relaxed">
+            That is the work we call <Link to="/phase-zero" className="text-primary font-semibold hover:underline">Phase Zero</Link>.
+          </p>
         </div>
       </section>
 
