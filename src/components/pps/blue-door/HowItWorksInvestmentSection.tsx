@@ -154,7 +154,7 @@ export default function HowItWorksInvestmentSection() {
         {/* Investment */}
         <div
           ref={investRef}
-          className={`bg-white border-4 border-bluedoor p-8 rounded-lg text-center max-w-md mx-auto mb-12 shadow-lg transition-all duration-700 ease-out hover:shadow-xl hover:scale-105 ${investVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+          className={`bg-white border-4 border-bluedoor p-8 rounded-lg text-center max-w-lg mx-auto mb-12 shadow-lg transition-all duration-700 ease-out hover:shadow-xl hover:scale-105 ${investVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
         >
           <span className="inline-block bg-bluedoor/10 text-bluedoor font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-3">
             The Blue Door Organizational Appraisal
