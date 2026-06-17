@@ -184,12 +184,12 @@ export default function PPSAbout() {
                   Across transformation efforts, growth initiatives, leadership transitions, and organizational change, one pattern kept emerging.
                 </p>
                 <p>
-                  The challenge was rarely a lack of effort. It was a lack of space.
+                  The challenge was rarely a lack of effort. It was a <strong>lack of space</strong>.
                 </p>
                 <p>
-                  Space to think.<br />
-                  Space to question assumptions.<br />
-                  Space to examine what was driving the decision before resources, time, and energy were committed.
+                  Space <strong>to think</strong>.<br />
+                  Space <strong>to question assumptions</strong>.<br />
+                  Space <strong>to examine what was driving the decision</strong> before resources, time, and energy were committed.
                 </p>
                 <p>
                   Everyone was focused on execution. Very few were examining the thinking underneath it.
