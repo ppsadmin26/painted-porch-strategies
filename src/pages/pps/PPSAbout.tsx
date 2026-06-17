@@ -302,10 +302,17 @@ export default function PPSAbout() {
       <section className="py-16 md:py-20 bg-muted/30">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
-            How We Think + How We Work
+            WHAT WE BELIEVE
           </p>
-          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
-            By leaning on over <span className="font-semibold text-navy">50 years of our team's combined experience</span> and real-world solutions, we developed (and continually evolve) training, coaching, and advisory programs to partner with you in taking <span className="font-semibold text-primary">definitive, purposeful action</span> to prepare yourself and others to lean in, embrace, adopt, and make change stick.
+          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 whitespace-pre-line">
+            Organizations become what they repeatedly practice.{"\n\n\n\n\n"}
+            That's why we pay attention to the conditions beneath change, not just the outcomes above it.{"\n\n\n\n\n"}
+            Clarity.{"\n"}
+            Communication.{"\n"}
+            Trust.{"\n"}
+            Leadership.{"\n"}
+            Capacity for reflection.{"\n\n\n\n\n"}
+            These are not soft skills.&nbsp;They are the foundations that determine whether change takes root or collapses under its own weight.
           </p>
           <p className="text-base text-foreground/80">
             See the framework that holds it together in{" "}
@@ -326,10 +333,10 @@ export default function PPSAbout() {
         backgroundImage={teamCtaPuzzles}
         overlayTone="teal"
         eyebrow="Begin"
-        headline="Ready to start your transformation journey?"
-        description="Reach out to learn more about how we can partner with you to get started."
+        headline="What conversation needs a porch right now?"
+        description="Whether you're exploring what's next, weighing a major decision, or simply trying to make sense of increasing complexity, every meaningful shIFt begins with a better question."
         actions={[
-          { label: "Find Your P.A.T.H.way", to: "/start-here", variant: "primary" },
+          { label: "Discover Your P.A.T.H.way", to: "/start-here", variant: "primary" },
           {
             label: "Contact Us",
             to: "/contact?interest=general&message=I'd like to learn more about partnering with Painted Porch Strategies.",
