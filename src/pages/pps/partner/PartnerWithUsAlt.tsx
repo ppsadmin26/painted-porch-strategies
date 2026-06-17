@@ -24,7 +24,6 @@ import {
   FinalInvitationSection,
   ArchitectureGapSection,
 } from "@/components/pps/partner";
-import { PhilosophyApproachSection } from "@/components/pps/partner/PhilosophyApproachSection";
 import { FAQSection } from "@/components/pps/FAQSection";
 
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
@@ -74,9 +73,6 @@ export default function PartnerWithUsAlt() {
 
       {/* Section 2: Three P.A.T.H.ways Comparison */}
       <PathwayComparisonSection />
-
-      {/* Section 3: Our Philosophy & Approach (tabbed) */}
-      <PhilosophyApproachSection />
 
       {/* Section 3b: The Architecture Gap, research-backed reality + Pillars */}
       <ArchitectureGapSection />
