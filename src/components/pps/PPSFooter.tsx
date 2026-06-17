@@ -1,9 +1,42 @@
 import { Link } from "react-router-dom";
-import { Youtube, Facebook, Instagram, Linkedin } from "lucide-react";
+import { useState } from "react";
+import { Youtube, Facebook, Instagram, Linkedin, Loader2 } from "lucide-react";
 import ppsLogoWhite from "@/assets/pps-logo-white.png";
 import { useArePagesLive } from "@/hooks/useIsPageLive";
+import { supabase } from "@/integrations/supabase/client";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function PPSFooter() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = email.trim();
+    if (!EMAIL_RE.test(trimmed)) {
+      setStatus("error");
+      setMessage("Please enter a valid email.");
+      return;
+    }
+    setStatus("loading");
+    setMessage("");
+    try {
+      const { error } = await supabase.functions.invoke("submit-newsletter-optin", {
+        body: { email: trimmed, source: "Footer Newsletter" },
+      });
+      if (error) throw error;
+      setStatus("success");
+      setMessage("You're on the list! Check your inbox.");
+      setEmail("");
+    } catch (err) {
+      console.error("Newsletter signup error:", err);
+      setStatus("error");
+      setMessage("Something went wrong. Please try again.");
+    }
+  };
+
   const quickLinks = [
     { label: "About Us", href: "/about" },
     { label: "The Blue Door", href: "/blue-door" },
@@ -89,6 +122,45 @@ export default function PPSFooter() {
             <Link to="/contact?interest=general" className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy font-semibold py-2 px-6 rounded-lg transition-all">
               Contact Us
             </Link>
+
+            {/* Newsletter Signup */}
+            <form onSubmit={handleSubscribe} className="mt-5">
+              <label htmlFor="footer-newsletter-email" className="block text-sm font-poppins font-semibold text-white mb-2">
+                Porch Notes Newsletter
+              </label>
+              {status === "success" ? (
+                <p className="text-sm text-lime" role="status">{message}</p>
+              ) : (
+                <>
+                  <div className="flex flex-col sm:flex-row gap-2">
+                    <input
+                      id="footer-newsletter-email"
+                      type="email"
+                      required
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        if (status === "error") setStatus("idle");
+                      }}
+                      placeholder="you@example.com"
+                      disabled={status === "loading"}
+                      className="flex-1 min-w-0 bg-white/10 border border-white/30 text-white placeholder:text-white/50 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent disabled:opacity-60"
+                    />
+                    <button
+                      type="submit"
+                      disabled={status === "loading"}
+                      className="inline-flex items-center justify-center bg-lime text-white hover:bg-white hover:text-navy font-semibold text-sm py-2 px-4 rounded-lg transition-all disabled:opacity-60"
+                    >
+                      {status === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : "Subscribe"}
+                    </button>
+                  </div>
+                  {status === "error" && (
+                    <p className="mt-2 text-xs text-raspberry" role="alert">{message}</p>
+                  )}
+                </>
+              )}
+            </form>
+
             <div className="flex items-center gap-4 mt-5">
               {socials.map((social) => (
                 <a

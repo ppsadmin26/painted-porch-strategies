@@ -1,35 +1,36 @@
-## Goal
-Let you create a brand-new offering from `/admin/path-finder-offerings` — name, tier, link fields, and RT-pool mapping — with no code changes and no migration per offering.
+## Newsletter Signup in Footer
 
-## What changes (admin UI only)
+### Goal
+Add an email newsletter signup form to the site footer, styled to match the existing navy footer theme.
 
-`src/pages/pps/admin/PathFinderOfferings.tsx`
+### Where
+`src/components/pps/PPSFooter.tsx` — add the form inside the existing 4-column grid layout (likely within or beside the "Get In Touch" column).
 
-1. **"New offering" button** in the page header (next to existing controls).
-2. Clicking it opens a **dialog** with these fields:
-   - **Offering key** (required) — auto-slugged from name (lowercase camel/kebab), editable, must be unique. Validated against existing keys before save.
-   - **Display name** (required)
-   - **Tier** (dropdown — same options as the inline tier editor: Free, IGNITE, AMPLIFY, Blue Door, Speaking, Assessment, Pathway B)
-   - **Current URL** and **Dedicated URL** (optional)
-   - **Anchor ID** (optional)
-   - **Is live** (toggle, default true)
-   - **Sort order** (number, defaults to max+10)
-   - **Topic** (optional text — matches existing column)
-   - **Notes** (optional textarea)
-3. On Save:
-   - Insert one row into `path_finder_offerings` with the fields above and empty `b2c_rt_pools` / `b2b_rt_pools` (`{}`).
-   - Close dialog, refresh the list, scroll the new card into view.
-4. After creation, the existing inline editor on the new card is used to set the **RT pool mapping** (B2C RT1–6 and B2B RT-A–E). No separate step needed — this reuses the editor shipped last turn.
+### What to Build
+1. **UI:** Email `<input>` + submit `<button>` inside the footer.
+   - Input: white text on dark/navy styling, rounded corners, placeholder text.
+   - Button: label like "Subscribe" or "Join the List", styled with the brand teal or gold accent.
+   - Layout: stacked (input above button) or inline depending on column width.
 
-## Out of scope
-- No quiz-engine change. New offerings only appear in quiz results once you map them to RT pools via the existing inline editor (which already writes to `b2c_rt_pools` / `b2b_rt_pools`).
-- No delete/archive flow (can add later if you want).
-- No new DB columns or migration — the table already has every field we need.
-- No change to `OFFERINGS` constant in `pathFinderQuiz.ts`. New offerings are DB-only; they surface via the RT-pool override path already in place. Hard-coded offerings keep working unchanged.
+2. **Client Logic:**
+   - React state for `email`, `loading`, `success`, and `error`.
+   - Basic email validation before submit.
+   - Call the existing `submit-newsletter-optin` Supabase Edge Function via `supabase.functions.invoke()`.
+   - Show a brief success message (e.g., "You're on the list!") or inline error on failure.
 
-## Technical notes
-- Uniqueness check: client-side against the already-loaded list, plus rely on the table's `offering_key` unique constraint to catch races.
-- RLS: existing admin/editor insert policy on `path_finder_offerings` covers this.
-- Validation: key must match `/^[a-zA-Z0-9_-]+$/`, name non-empty, tier required.
+3. **Styling Constraints:**
+   - Light-mode only project; footer background is navy (`bg-navy`).
+   - Use existing semantic tokens and Tailwind utilities (`text-white`, `border-white/30`, `bg-teal` or `bg-gold`, `hover:bg-white`, etc.).
+   - Keep it compact so the footer grid doesn't break on mobile.
 
-Confirm and I'll ship it.
+### Technical Details
+- Backend: reuse `supabase/functions/submit-newsletter-optin/index.ts` (already creates/updates GHL contacts with newsletter tags).
+- No new database tables or edge functions needed.
+- No marketing-email infrastructure changes needed.
+
+### Acceptance Criteria
+- [ ] Footer renders an email input and submit button.
+- [ ] Valid email submits successfully via the existing Edge Function.
+- [ ] Invalid email shows an inline error without page reload.
+- [ ] Success state replaces the form with a confirmation message.
+- [ ] Mobile and desktop layouts remain intact.
