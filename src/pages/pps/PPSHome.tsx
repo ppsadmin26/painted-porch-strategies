@@ -784,7 +784,20 @@ export default function PPSHome() {
             Step onto the porch. Begin with What <span className="text-raspberry font-bold">IF</span>.
           </>
         }
-        description="The future will keep asking your organization to evolve. The question is whether you'll do it in ways you can actually sustain together."
+        description={
+          <>
+            The future isn't something organizations enter.
+            <br />
+            <br />
+            It's something they author.
+            <br />
+            <br />
+            <br />
+            <br />
+            The question is whether your organization is building the clarity,
+            capability, and capacity required to carry what comes next.
+          </>
+        }
         actions={[
           { label: "Open the Blue Door", to: "/blue-door", variant: "bluedoor" },
           { label: "Discover Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
