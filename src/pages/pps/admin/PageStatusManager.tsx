@@ -208,6 +208,15 @@ export default function PageStatusManager() {
         </p>
       </Card>
 
+      {/* ============= Bulk SEO + AEO generator ============= */}
+      <BulkSeoGenerator
+        sitemapPaths={sitemapPaths}
+        seoPaths={seoPaths}
+        onChanged={loadSeoPaths}
+      />
+
+
+
       <div className="mb-3 flex items-center justify-between">
         <h2 className="text-3xl md:text-4xl font-poppins font-semibold text-pps-navy">
           Status overrides {overrides.length > 0 && (
@@ -305,12 +314,6 @@ export default function PageStatusManager() {
         </div>
       )}
 
-      {/* ============= Bulk SEO + AEO generator ============= */}
-      <BulkSeoGenerator
-        sitemapPaths={sitemapPaths}
-        seoPaths={seoPaths}
-        onChanged={loadSeoPaths}
-      />
 
       {/* ============= Bulk canonical audit ============= */}
       <CanonicalAuditCard sitemapPaths={sitemapPaths} onChanged={loadSeoPaths} />
