@@ -781,7 +781,9 @@ export default function PPSHome() {
         eyebrow="GET CLARITY STARTING AT PHASE ZERO™"
         headline={
           <>
-            Step onto the porch. Begin with What <span className="text-raspberry font-bold">IF</span>.
+            Step onto the porch.&nbsp;Begin with&nbsp;
+            <br />
+            What <span className="text-raspberry font-bold">IF</span>.
           </>
         }
         description={
