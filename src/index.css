@@ -415,3 +415,20 @@
 .aidaform-scroll-container::-webkit-scrollbar-thumb:hover {
   background-color: hsl(var(--primary) / 0.85);
 }
+
+/* ============================================================
+ * Global paragraph typography reset
+ * Standardizes margin + line-height for all <p> tags so spacing
+ * is predictable across visual edits and re-renders. Tailwind
+ * utilities (mt-*, mb-*, leading-*) still override these.
+ * ============================================================ */
+@layer base {
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
