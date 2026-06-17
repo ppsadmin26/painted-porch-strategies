@@ -344,7 +344,7 @@ export default function PhaseZero() {
         <div className="container max-w-7xl mx-auto px-6">
           <FadeIn className="text-center max-w-3xl mx-auto mb-12">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
-              The Foundations Phase Zero Fortifies
+              PAINTED PORCH PILLARS: THE FOUNDATIONS PHASE ZERO FORTIFIES
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
               What Every Future ShIFt is Built Upon
