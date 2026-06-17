@@ -21,7 +21,7 @@ const team = [
     title: "Founder | Chief Evolution Officer | Organizational Shift Strategist",
     experience: "",
     description: "\n\nAmy believes most organizations don't struggle because they lack ambition, but because important decisions are often made before leaders have enough clarity about what they're building, why it matters, and what it will require.\n\nAfter two decades leading strategic initiatives, organizational transformation efforts, and complex change across industries, she founded Painted Porch Strategies around a simple idea: better questions often create better outcomes than faster answers.\n\nShe brings strategic clarity, organizational insight, and a talent for helping leaders see what others overlook.",
-    specialties: ["Organizational Design", "Change Management", "Strategic Planning", "Team Development"],
+    specialties: ["Organizational Design", "Change Origination", "Strategic Authorship", "Team Development"],
     color: "bg-primary/10",
     accent: "text-primary",
     photo: amyPhoto,
