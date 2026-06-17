@@ -691,7 +691,18 @@ async function startBackupRun(
   await saveState(sb, state);
   await updateRunProgress(sb, state);
 
-  await scheduleProcess(runRow.id);
+  // Kick off the first processing step. Failures here should NOT bubble up as a
+  // 500 to the user — the run row is already created in "running" status and
+  // the cron poller (action=process-queue) will retry it shortly.
+  let scheduleError: string | null = null;
+  try {
+    await scheduleProcess(runRow.id);
+  } catch (err) {
+    scheduleError = errorText(err);
+    console.warn(`scheduleProcess failed for run ${runRow.id}: ${scheduleError}`);
+    logState(state, "warn", `Initial process kickoff failed (${scheduleError}); will retry via cron`);
+    try { await updateRunProgress(sb, state); } catch { /* best-effort */ }
+  }
 
   return {
     ok: true,
@@ -699,6 +710,7 @@ async function startBackupRun(
     run_id: runRow.id,
     kind,
     storage_path: folder,
+    schedule_error: scheduleError,
   };
 }
 
