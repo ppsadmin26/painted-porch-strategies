@@ -318,11 +318,7 @@ export default function PhaseZero() {
             </div>
           </div>
         </FadeIn>
-      </section>
-
-      {/* Cost of Skipping Phase Zero calculator */}
-      <section className="py-16 md:py-20 bg-white border-y border-muted/60">
-        <FadeIn className="container max-w-3xl mx-auto px-6">
+        <FadeIn className="container max-w-3xl mx-auto px-6 mt-16">
           <div className="rounded-2xl border border-raspberry/20 bg-white p-6 md:p-8 shadow-sm">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.18em] text-raspberry mb-2">
               See the cost in your own numbers
