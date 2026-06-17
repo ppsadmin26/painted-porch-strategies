@@ -1,6 +1,7 @@
 export { PartnerHeroSection } from './PartnerHeroSection';
 export { PathwayPhilosophySection } from './PathwayPhilosophySection';
 export { PathwayComparisonSection } from './PathwayComparisonSection';
+export { HowPeopleEnterSection } from './HowPeopleEnterSection';
 export { HowToChooseSection, BlueDoorCalloutSection } from './HowToChooseSection';
 export { DifferentiatorsSection } from './DifferentiatorsSection';
 export { PartnerIncludedSection } from './PartnerIncludedSection';

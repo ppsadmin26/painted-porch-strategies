@@ -17,6 +17,7 @@
 import {
   PartnerHeroSection,
   PathwayComparisonSection,
+  HowPeopleEnterSection,
   HowToChooseSection,
   BlueDoorCalloutSection,
   PartnerIncludedSection,
@@ -73,6 +74,9 @@ export default function PartnerWithUsAlt() {
 
       {/* Section 2: Three P.A.T.H.ways Comparison */}
       <PathwayComparisonSection />
+
+      {/* Section 2b: How People Typically Enter the Porch */}
+      <HowPeopleEnterSection />
 
       {/* Section 3b: The Architecture Gap, research-backed reality + Pillars */}
       <ArchitectureGapSection />
