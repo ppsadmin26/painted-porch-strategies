@@ -87,10 +87,15 @@ export function PathwayComparisonSection() {
         </div>
 
         {/* Pathway Cards Header */}
-        <div className="text-center mb-10">
-          <p className="text-xl md:text-2xl font-semibold text-navy">
-            Start with the path that matches your reality today.
-          </p>
+        <div className="text-center mb-10 max-w-3xl mx-auto">
+          <h3 className="text-2xl md:text-3xl font-extrabold text-navy mb-6">
+            Start Where You Are
+          </h3>
+          <div className="text-foreground space-y-3">
+            <p>Some people arrive looking for greater clarity, confidence, and capability in their own work.</p>
+            <p>Others are responsible for teams, departments, or entire organizations.</p>
+            <p>P.A.T.H.ways are designed to meet you where you are and provide a clear direction for what comes next.</p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
