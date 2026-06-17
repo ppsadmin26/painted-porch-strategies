@@ -254,8 +254,8 @@ export default function PhaseZero() {
             Phase Zero is where the real choices get made.
           </h2>
           <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-5">
-            It's the phase where you decide what <ShIFt lowercase /> your organization
-            can credibly lead. Not what to copy or catch up to, but what to{" "}
+            It's the phase where you determine what future your organization is
+            positioned to lead.&nbsp;Not what to copy or catch up to, but what to{" "}
             <strong className="font-bold">author</strong>.
           </p>
           <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed">
