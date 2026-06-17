@@ -71,12 +71,12 @@ export function PathwayComparisonSection() {
             <p>
               Whether you're looking for personal growth, stronger team performance, or organization-wide transformation, every P.A.T.H.way is grounded in the same principles:
             </p>
-            <div className="py-4 space-y-3 font-bold text-lg text-navy">
-              <p>Reason.</p>
-              <p>Logic.</p>
-              <p>Purpose.</p>
-              <p>Virtue.</p>
-            </div>
+            <p className="py-4 font-bold text-lg text-navy">
+              Reason.<br />
+              Logic.<br />
+              Purpose.<br />
+              Virtue.
+            </p>
             <p>
               What changes is the scale of application, the depth of engagement, and what you're trying to accomplish.
             </p>
