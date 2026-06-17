@@ -216,23 +216,25 @@ export default function OurApproach() {
             Upstream of the rollout.
           </h2>
           <p className="text-lg text-foreground leading-relaxed mb-6 whitespace-pre-line">
-            Every initiative is built on a series of assumptions.
+            Every initiative is built on a series of assumptions.&nbsp;
 
-            About leadership.
 
-            About communication.
+            About leadership.&nbsp;
+            About communication.&nbsp;
+            About priorities.&nbsp;
+            About culture.&nbsp;
+            About what people understand, believe, and are prepared to do.&nbsp;
 
-            About priorities.
 
-            About culture.
+            Our work examines those assumptions before they become expensive realities.&nbsp;
 
-            About what people understand, believe, and are prepared to do.
 
-            Our work examines those assumptions before they become expensive realities.
+            Because what appears during implementation often begins much earlier.&nbsp;
 
-            Because what appears during implementation often begins much earlier.
 
-            This is the work beneath the rollout.&nbsp;The thinking beneath the plan.&nbsp;The examination that influences everything that follows.
+            This is the work beneath the rollout.&nbsp;
+            The thinking beneath the plan.&nbsp;
+            The examination that influences everything that follows.
           </p>
           <p className="text-lg text-foreground leading-relaxed">
             That is the work we call <Link to="/phase-zero" className="text-primary font-semibold hover:underline">Phase Zero</Link>.
