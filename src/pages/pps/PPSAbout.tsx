@@ -205,8 +205,8 @@ export default function PPSAbout() {
         </div>
       </section>
 
-
-
+      {/* Why Partner With Painted Porch Strategies */}
+      <PhilosophyApproachSection />
 
       {/* Transformation Partners Intro */}
       <section className="pt-16 md:pt-20 pb-8 md:pb-10 bg-white">
