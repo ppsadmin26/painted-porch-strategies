@@ -62,12 +62,10 @@ export function PartnerHeroSection() {
               }`}
             >
               <p className="mb-4">
-                Every leader, team, and organization stands at a different point on their journey to what's next.
+                Whether you're exploring change for yourself, leading a team through uncertainty, or shaping the future of an entire organization, where you begin matters.
               </p>
               <p className="mb-4">
-                Some are exploring change for themselves.<br />
-                Some are aligning a team around what matters most.<br />
-                Some are building the capacity to lead transformation across an entire organization.
+                The challenge isn't finding another framework, course, workshop, or advisor.&nbsp;It's identifying the next step that makes the most sense for where you are today.
               </p>
               <p className="mb-4">
                 Our P.A.T.H.ways help you identify the right starting point.
