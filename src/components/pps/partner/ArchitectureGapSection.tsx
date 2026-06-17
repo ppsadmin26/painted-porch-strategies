@@ -122,9 +122,6 @@ export default function ArchitectureGapSection() {
           ))}
         </div>
 
-        <p className="text-xs text-muted-foreground text-center mt-8 italic">
-          Hover the info icon on any stat to view the source.
-        </p>
       </div>
     </section>
   );
