@@ -73,7 +73,7 @@ export default function PPSAbout() {
               Painted Porch Strategies exists for the moments before a major decision hardens into action - when leaders need space to think, question assumptions, examine direction, and decide what is truly worth pursuing.&nbsp;
             </p>
             <p>
-              The&nbsp; porch is a place to pause long enough to see clearly what comes next, before momentum makes the decision feel inevitable.&nbsp;&nbsp;Because whatever shIFt happens next is often determined long before execution begins.
+              The porch is a place to pause long enough to see clearly what comes next, before momentum makes the decision feel inevitable.&nbsp;&nbsp;Because whatever shIFt happens next is often determined long before execution begins.
             </p>
           </>
         }
