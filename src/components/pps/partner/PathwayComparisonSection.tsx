@@ -23,7 +23,7 @@ const tierContent = {
     cta: "Explore IGNITE",
   },
   AMPLIFY: {
-    tagline: "TEAM: Boost momentum and alignment for your next shIFt.",
+    tagline: "TEAM: Boost momentum for your next shIFt.",
     journey: "Team workshops, strategic sprints, and cohort-based learning designed for leadership teams ready to align around transformation, together.",
     features: [
       "Executive Strategy & Team Workshops",
