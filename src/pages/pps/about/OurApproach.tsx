@@ -180,7 +180,7 @@ export default function OurApproach() {
             </p>
             <p>
               Most organizations focus on execution.&nbsp;We examine the conditions that determine whether execution succeeds.
-              <br /><br /><br />
+              <br /><br />
               Everything we do follows the same sequence:
               <br /><br />
               Understand reality.<br />
