@@ -100,7 +100,7 @@ export default function PPSAbout() {
                 <br /><br />
                 It wasn't a place for quick answers. It was a place for thoughtful conversation, reflection, and wisdom.
                 <br /><br />
-                We chose the name because organizations need spaces like that too.
+                We chose the name because organizations need spaces like that, too.
                 <br /><br />
                 Not places to move faster. Places <strong>to think better</strong>.
                 <br /><br />
