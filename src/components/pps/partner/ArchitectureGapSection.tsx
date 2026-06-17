@@ -75,6 +75,10 @@ export default function ArchitectureGapSection() {
           </p>
         </div>
 
+        <p className="text-xs text-muted-foreground text-center mb-4 italic">
+          Hover the info icon on any stat to view the source.
+        </p>
+
         <div className="space-y-5">
           {rows.map((row, i) => (
             <div
