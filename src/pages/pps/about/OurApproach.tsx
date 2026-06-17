@@ -34,7 +34,7 @@ const pathStages = [
     bg: "bg-primary/5",
     iconBg: "bg-primary/10",
     body: "Understand reality before commitment. Get honest about people, systems, and culture before the next shIFt starts. Clarify what's being pursued, why it matters, what conditions already exist, and what may need strengthening before momentum begins.",
-    outcome: "A shared, clear-eyed picture of where you stand.",
+    outcome: "A shared, clear-eyed picture of where you stand and what's needed next.",
     isPhaseZero: true,
   },
   {
