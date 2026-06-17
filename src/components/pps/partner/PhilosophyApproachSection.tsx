@@ -82,7 +82,7 @@ export function PhilosophyApproachSection({ showEncapsulationCard = true }: { sh
         </div>
 
         {/* Encapsulation card - full width at bottom */}
-        {principles.filter(p => p.isEncapsulation).map((principle, index) => (
+        {showEncapsulationCard && principles.filter(p => p.isEncapsulation).map((principle, index) => (
           <div 
             key={index} 
             className="mt-6 bg-gradient-to-r from-primary/5 to-gold/10 border border-primary/20 p-8 md:p-10 rounded-xl text-center"
