@@ -112,12 +112,17 @@ export function BlueDoorCalloutSection() {
           <div className="flex items-start gap-2 mb-3">
             <Info className="w-5 h-5 text-bluedoor flex-shrink-0 mt-1" />
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">
-              Exploring for Your Organization? Start by opening the <span className="text-bluedoor font-bold">Blue Door</span>.
+              Exploring on Behalf of Your Team or Organization?
             </h3>
           </div>
           <p className="text-foreground mb-3">
-            The <span className="text-bluedoor font-bold">Blue Door</span> is our strategic organizational appraisal (less than 30 minutes) that reveals where your organization stands on the path to transformation, and what's blocking progress. It's a recommended first step and provides strategic clarity on where to focus investment first and which P.A.T.H.way format will yield the greatest impact for your next sh<span className="font-bold text-bluedoor">IF</span>t.
+            If you're responsible for leading change, setting direction, or navigating a major decision, the <span className="text-bluedoor font-bold">Blue Door</span> often provides the clearest place to begin.
+            <br /><br />
+            It offers a structured appraisal of where your organization stands today and reveals which opportunities, challenges, and priorities deserve your attention first.
+            <br /><br />
+            For many leaders, it becomes the bridge between possibility and action.
           </p>
+
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-4 text-sm">
               <span className="font-bold text-bluedoor">{BLUE_DOOR_PRICE_DISPLAY}</span>
