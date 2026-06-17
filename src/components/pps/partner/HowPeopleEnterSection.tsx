@@ -1,45 +1,6 @@
 import { Link } from "react-router-dom";
 import { TrendingUp } from "lucide-react";
 
-const entries = [
-  {
-    tier: "IGNITE",
-    icon: Flame,
-    iconColor: "text-gold",
-    iconBg: "bg-gold/10",
-    borderColor: "border-gold",
-    textColor: "text-gold",
-    intro: "Some begin with curiosity.",
-    items: ["A masterclass.", "A course.", "An assessment.", "A conversation."],
-    closing: "That's IGNITE.",
-    href: "/partner/ignite",
-  },
-  {
-    tier: "AMPLIFY",
-    icon: Sparkles,
-    iconColor: "text-strategic",
-    iconBg: "bg-strategic/10",
-    borderColor: "border-strategic",
-    textColor: "text-strategic",
-    intro: "Some arrive with a team.",
-    items: ["A leadership challenge.", "A strategic priority.", "A need for alignment."],
-    closing: "That's AMPLIFY.",
-    href: "/partner/amplify",
-  },
-  {
-    tier: "EMBODY",
-    icon: Landmark,
-    iconColor: "text-navy",
-    iconBg: "bg-navy/10",
-    borderColor: "border-navy",
-    textColor: "text-navy",
-    intro: "Some arrive carrying organizational responsibility.",
-    items: ["Major transformation.", "Long-term capacity building.", "Enterprise change."],
-    closing: "That's EMBODY.",
-    href: "/partner/embody",
-  },
-];
-
 export function HowPeopleEnterSection() {
   return (
     <section className="py-16 md:py-24 bg-white">
