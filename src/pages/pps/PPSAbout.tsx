@@ -81,7 +81,7 @@ export default function PPSAbout() {
         ctas={[
           { label: "Start Your Journey", href: "/start-here", isPrimary: true },
         ]}
-        background={{ type: "image", src: aboutHero }}
+        background={{ type: "video", src: aboutHeroVideo.url, poster: aboutHero, slotKey: "about-hero" }}
         overlayClass="bg-navy/50"
         minHeightClass="min-h-[60vh]"
       />
