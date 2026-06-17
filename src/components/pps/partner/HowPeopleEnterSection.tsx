@@ -98,7 +98,7 @@ export function HowPeopleEnterSection() {
             </h3>
           </div>
           <p className="text-primary font-medium mb-4">
-            Your pathway emerges from clarity.
+            There is no ladder to climb. Your pathway emerges from clarity.
           </p>
           <p className="text-foreground leading-relaxed max-w-2xl mx-auto mb-4">
             You might start with{" "}
