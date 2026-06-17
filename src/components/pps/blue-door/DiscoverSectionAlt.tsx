@@ -65,7 +65,7 @@ export default function DiscoverSectionAlt() {
             What's possible for your organization <em>right now</em>? Not in theory, not at full potential, but given how your leadership, systems, and people are structured today.
           </p>
           <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto mt-4">
-            The Blue Door surfaces that reality in less than 30 minutes. No more strategic paralysis, no FOBO (fear of better options), no nagging worry that this will go sideways. Just a clear path and compass forward.
+            The Blue Door surfaces that reality in less than 30 minutes. replacing uncertainty with a clearer understanding of where to move now and what must be strengthened next.&nbsp;No more strategic paralysis, no FOBO (fear of better options), no nagging worry that this will go sideways. Just a clear path and compass forward.&nbsp;
           </p>
         </div>
 
