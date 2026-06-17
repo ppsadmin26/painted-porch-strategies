@@ -326,9 +326,8 @@ export default function OurApproach() {
               What our work makes possible.
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
-              We do not deliver or manage change for you. We build the conditions where the
-              right change becomes possible, in your people and across your
-              organization.
+              We combine organizational architecture, behavioral science, and practical implementation experience to examine the conditions that determine whether change takes off or falls flat.
+              <br /><br />
             </p>
           </div>
 
