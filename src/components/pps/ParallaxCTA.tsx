@@ -102,7 +102,7 @@ function ActionEl({ action }: { action: CTAAction }) {
   const { isLive } = useIsPageLive(action.to ?? null);
   const inner = (
     <>
-      <span className="min-w-0 whitespace-normal">{action.label === "Find Your P.A.T.H.way" ? "Discover Your P.A.T.H.way" : action.label}</span>
+      <span className="min-w-0 whitespace-normal">{action.label}</span>
       <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
     </>
   );

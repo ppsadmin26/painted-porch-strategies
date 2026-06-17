@@ -336,7 +336,7 @@ export default function PPSAbout() {
         headline="What conversation needs a porch right now?"
         description="Whether you're exploring what's next, weighing a major decision, or simply trying to make sense of increasing complexity, every meaningful shIFt begins with a better question."
         actions={[
-          { label: "Find Your P.A.T.H.way", to: "/start-here", variant: "primary" },
+          { label: "Discover Your P.A.T.H.way", to: "/start-here", variant: "primary" },
           {
             label: "Contact Us",
             to: "/contact?interest=general&message=I'd like to learn more about partnering with Painted Porch Strategies.",
