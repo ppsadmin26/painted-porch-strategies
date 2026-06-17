@@ -39,7 +39,7 @@ const team = [
     name: "Rob Hunter",
     title: "Chief Storytelling Officer | M.C. - Master of Communication",
     experience: "",
-    description: "As a 27-year award-winning radio broadcaster and #1 rated talk show host, Rob is a specialist in effective messaging and influence. He helps leaders craft compelling narratives that inspire action and drive change.",
+    description: "Rob believes people rarely move because they receive more information. They move when information becomes meaningful.\n\n\n\n\nHis background in communication, storytelling, and audience engagement has shown him that clarity isn't simply about what is said—it's about what is understood, remembered, and acted upon.\n\n\n\n\nHe brings narrative insight, strategic communication expertise, and a gift for turning complex ideas into conversations people can connect with.",
     specialties: ["Strategic Messaging", "Public Speaking", "Influence & Persuasion", "Brand Voice"],
     color: "bg-muted",
     accent: "text-muted-foreground",
