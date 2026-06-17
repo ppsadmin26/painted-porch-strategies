@@ -206,7 +206,7 @@ export default function PPSAbout() {
       </section>
 
       {/* Why Partner With Painted Porch Strategies */}
-      <PhilosophyApproachSection />
+      <PhilosophyApproachSection showEncapsulationCard={false} />
 
       {/* Transformation Partners Intro */}
       <section className="pt-16 md:pt-20 pb-8 md:pb-10 bg-white">
