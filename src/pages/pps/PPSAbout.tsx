@@ -328,9 +328,8 @@ export default function PPSAbout() {
               Leadership.{"\n"}
               Capacity for reflection.
             </p>
-            <p className="whitespace-pre-line">
-              These aren't soft skills.{"\n"}
-              They're the foundations that determine whether change takes root or cracks and collapses under its own weight.
+            <p>
+              These aren't soft skills. They're the foundations that determine whether change takes root or cracks and collapses under its own weight.
             </p>
           </div>
           <p className="text-base text-foreground/80">
