@@ -249,7 +249,11 @@ export default function PPSAbout() {
                     {member.experience}
                   </p>
                   <p className="text-foreground text-sm leading-relaxed mb-4">
-                    {member.description}
+                    {member.description.split('\n\n').map((text, i) => (
+                      <p key={i} className={i > 0 ? "mt-4" : ""}>
+                        {text}
+                      </p>
+                    ))}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {member.specialties.map((specialty, i) => (
