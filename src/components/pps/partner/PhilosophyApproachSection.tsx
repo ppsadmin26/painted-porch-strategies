@@ -6,8 +6,8 @@ const principles = [
   {
     icon: Building2,
     title: "Phaze Zero F",
-    tagline: "Everyone else starts at launch.",
-    description: "Every meaningful shift begins with clarity. Before committing time, resources, and energy, we examine what is true, what is assumed, and what deserves deeper exploration.",
+    tagline: "Every meaningful shIFt starts with clarity.",
+    description: "Before committing time, resources, and energy, we examine what's true, what's assumed, and what deserves deeper exploration.",
     contrast: "We architect foundations. They implement initiatives.",
   },
   {
