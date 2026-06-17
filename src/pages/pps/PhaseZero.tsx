@@ -218,25 +218,6 @@ export default function PhaseZero() {
           <p className="mt-10 text-2xl md:text-3xl font-poppins font-semibold text-navy leading-relaxed">
             The frustration that surfaces in moments like this is rarely random. <span className="text-raspberry">It's a signal.</span>
           </p>
-
-          {/* Cost of Skipping Phase Zero calculator */}
-          <div className="mt-10 rounded-2xl border border-raspberry/20 bg-white p-6 md:p-8 shadow-sm">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.18em] text-raspberry mb-2">
-              See the cost in your own numbers
-            </p>
-            <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 leading-tight">
-              The hidden cost of misalignment and building before clarity
-            </h3>
-            <p className="text-base md:text-lg text-charcoal/85 leading-relaxed mb-5">
-              Plug in your team size and initiative budget to see the industry-benchmarked
-              cost of misaligned change, and what's recoverable when you start with Phase Zero.
-            </p>
-            <CostCalculatorDialog
-              triggerLabel="Calculate the cost of skipping Phase Zero"
-              triggerVariant="default"
-              triggerClassName="bg-raspberry text-white hover:bg-raspberry/90"
-            />
-          </div>
         </FadeIn>
       </section>
 
@@ -334,6 +315,29 @@ export default function PhaseZero() {
                 ))}
               </ul>
             </div>
+          </div>
+        </FadeIn>
+      </section>
+
+      {/* Cost of Skipping Phase Zero calculator */}
+      <section className="py-16 md:py-20 bg-white border-y border-muted/60">
+        <FadeIn className="container max-w-3xl mx-auto px-6">
+          <div className="rounded-2xl border border-raspberry/20 bg-white p-6 md:p-8 shadow-sm">
+            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.18em] text-raspberry mb-2">
+              See the cost in your own numbers
+            </p>
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 leading-tight">
+              The hidden cost of misalignment and building before clarity
+            </h3>
+            <p className="text-base md:text-lg text-charcoal/85 leading-relaxed mb-5">
+              Plug in your team size and initiative budget to see the industry-benchmarked
+              cost of misaligned change, and what's recoverable when you start with Phase Zero.
+            </p>
+            <CostCalculatorDialog
+              triggerLabel="Calculate the cost of skipping Phase Zero"
+              triggerVariant="default"
+              triggerClassName="bg-raspberry text-white hover:bg-raspberry/90"
+            />
           </div>
         </FadeIn>
       </section>
