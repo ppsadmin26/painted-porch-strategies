@@ -624,7 +624,7 @@ export default function OurApproach() {
                 their own.
               </p>
               <p className="text-gold font-semibold">
-                Success is when we design ourselves out of the equation.
+                Success is when your next major decision no longer requires us in the room.
               </p>
             </div>
 
