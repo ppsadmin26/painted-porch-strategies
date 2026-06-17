@@ -20,7 +20,7 @@ export default function ProblemSectionAlt() {
   const problemPoints = [
     "Sound strategic but exceed your real capacity",
     "Need operational reinforcement you haven't built yet",
-    "Crack under the weight of execution, no matter how good the intent"
+    "Exceed what the organization is currently able to hold, no matter how good the intent"
   ];
 
   return (
