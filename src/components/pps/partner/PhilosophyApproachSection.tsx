@@ -6,8 +6,8 @@ const principles = [
   {
     icon: Building2,
     title: "Phaze Zero F",
-    tagline: "Everyone else starts at launch.",
-    description: "Every meaningful shift begins with clarity. Before committing time, resources, and energy, we examine what is true, what is assumed, and what deserves deeper exploration.",
+    tagline: "Every meaningful shIFt starts with clarity.",
+    description: "Before committing time, resources, and energy, we examine what's true, what's assumed, and what deserves deeper exploration.",
     contrast: "We architect foundations. They implement initiatives.",
   },
   {
@@ -20,7 +20,7 @@ const principles = [
   {
     icon: Target,
     title: "We Architect Capacity & Capability",
-    tagline: "Not implement projects.",
+    tagline: "Not implementing projects.",
     description: "Success is not measured by a completed project. It is reflected in stronger leaders, healthier systems, and greater confidence in navigating whatever comes next.",
     contrast: "When we're done, you've become transformation architects yourselves.",
   },
