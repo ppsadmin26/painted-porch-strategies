@@ -317,10 +317,15 @@ async function listBucketObjects(
 
 async function saveState(sb: ReturnType<typeof admin>, state: BackupState) {
   const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
-  const { error } = await sb.storage
-    .from("backups")
-    .upload(statePath(state.folder), blob, { contentType: "application/json", upsert: true });
-  if (error) throw new Error(`Save state: ${error.message}`);
+  try {
+    const { error } = await sb.storage
+      .from("backups")
+      .upload(statePath(state.folder), blob, { contentType: "application/json", upsert: true });
+    if (error) throw new Error(`Save state: ${error.message}`);
+  } catch (err) {
+    const msg = (err as any)?.message ?? String(err);
+    throw new Error(`Save state for ${state.folder}: ${msg}`);
+  }
 }
 
 class StateMissingError extends Error {
@@ -333,16 +338,29 @@ class StateMissingError extends Error {
 async function loadState(sb: ReturnType<typeof admin>, folder: string): Promise<BackupState> {
   let lastError: unknown = null;
   for (let attempt = 0; attempt < 4; attempt++) {
-    const { data, error } = await sb.storage.from("backups").download(statePath(folder));
-    if (!error && data) {
-      const text = await data.text();
-      try {
-        return JSON.parse(text) as BackupState;
-      } catch {
-        lastError = new Error(`Invalid backup state JSON for ${folder}`);
+    try {
+      const { data, error } = await sb.storage.from("backups").download(statePath(folder));
+      if (!error && data) {
+        const text = await data.text();
+        try {
+          return JSON.parse(text) as BackupState;
+        } catch {
+          lastError = new Error(`Invalid backup state JSON for ${folder}`);
+        }
+      } else {
+        lastError = error ?? new Error(`Missing backup state for ${folder}`);
       }
-    } else {
-      lastError = error ?? new Error(`Missing backup state for ${folder}`);
+    } catch (err) {
+      // supabase-js can throw raw StorageApiError ("Object not found") instead of
+      // returning {error} when the storage CDN replies with a non-parseable body.
+      // Treat that as a missing-state signal so the caller's StateMissingError
+      // branch can handle it gracefully (mark orphaned run as failed) instead of
+      // bubbling up as an unhandled 500.
+      lastError = err;
+      const msg = (err as any)?.message ?? String(err);
+      if (!/not found|does not exist/i.test(msg)) {
+        console.warn(`loadState download threw for ${folder}: ${msg}`);
+      }
     }
 
     if (attempt < 3) {
@@ -673,7 +691,18 @@ async function startBackupRun(
   await saveState(sb, state);
   await updateRunProgress(sb, state);
 
-  await scheduleProcess(runRow.id);
+  // Kick off the first processing step. Failures here should NOT bubble up as a
+  // 500 to the user — the run row is already created in "running" status and
+  // the cron poller (action=process-queue) will retry it shortly.
+  let scheduleError: string | null = null;
+  try {
+    await scheduleProcess(runRow.id);
+  } catch (err) {
+    scheduleError = errorText(err);
+    console.warn(`scheduleProcess failed for run ${runRow.id}: ${scheduleError}`);
+    logState(state, "warn", `Initial process kickoff failed (${scheduleError}); will retry via cron`);
+    try { await updateRunProgress(sb, state); } catch { /* best-effort */ }
+  }
 
   return {
     ok: true,
@@ -681,6 +710,7 @@ async function startBackupRun(
     run_id: runRow.id,
     kind,
     storage_path: folder,
+    schedule_error: scheduleError,
   };
 }
 
