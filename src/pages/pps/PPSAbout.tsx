@@ -97,19 +97,13 @@ export default function PPSAbout() {
               <p className="text-lg text-foreground leading-relaxed mb-6">
                 The original Painted Porch was a gathering place where people wrestled with questions about how to live, lead, and act with intention.
                 <br /><br />
-                It wasn't a place for quick answers.
-                <br /><br />
-                It was a place for thoughtful conversation, reflection, and wisdom.
+                It wasn't a place for quick answers. It was a place for thoughtful conversation, reflection, and wisdom.
                 <br /><br />
                 We chose the name because organizations need spaces like that too.
                 <br /><br />
-                Not places to move faster.
+                Not places to move faster. Places to think better.
                 <br /><br />
-                Places to think better.
-                <br /><br />
-                Not places to react.
-                <br /><br />
-                Places to decide deliberately what comes next.
+                Not places to react. Places to decide deliberately what comes next.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-6">
                 We bring these timeless principles to modern business, so leaders and teams can build the mental and organizational architecture needed to navigate what they are becoming next successfully.
