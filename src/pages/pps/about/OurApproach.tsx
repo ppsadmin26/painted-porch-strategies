@@ -369,11 +369,14 @@ export default function OurApproach() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               The Conditions That Shape Every Outcome
             </h2>
-            <p className="text-lg text-foreground leading-relaxed whitespace-pre-line">
-              Meaningful change rarely succeeds because of a framework. It succeeds because the conditions required for success already exist or are intentionally strengthened. 
-
-              We do not deliver or manage change for you. We build the conditions where the right change becomes possible, in your people and across your organization.
-            </p>
+            <div className="text-lg text-foreground leading-relaxed space-y-8">
+              <p>
+                Meaningful change rarely succeeds because of a framework. It succeeds because the conditions required for success already exist or are intentionally strengthened.
+              </p>
+              <p>
+                We do not deliver or manage change for you. We build the conditions where the right change becomes possible, in your people and across your organization.
+              </p>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
