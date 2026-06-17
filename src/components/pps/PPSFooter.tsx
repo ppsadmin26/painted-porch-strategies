@@ -1,9 +1,42 @@
 import { Link } from "react-router-dom";
-import { Youtube, Facebook, Instagram, Linkedin } from "lucide-react";
+import { useState } from "react";
+import { Youtube, Facebook, Instagram, Linkedin, Loader2 } from "lucide-react";
 import ppsLogoWhite from "@/assets/pps-logo-white.png";
 import { useArePagesLive } from "@/hooks/useIsPageLive";
+import { supabase } from "@/integrations/supabase/client";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function PPSFooter() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = email.trim();
+    if (!EMAIL_RE.test(trimmed)) {
+      setStatus("error");
+      setMessage("Please enter a valid email.");
+      return;
+    }
+    setStatus("loading");
+    setMessage("");
+    try {
+      const { error } = await supabase.functions.invoke("submit-newsletter-optin", {
+        body: { email: trimmed, source: "Footer Newsletter" },
+      });
+      if (error) throw error;
+      setStatus("success");
+      setMessage("You're on the list! Check your inbox.");
+      setEmail("");
+    } catch (err) {
+      console.error("Newsletter signup error:", err);
+      setStatus("error");
+      setMessage("Something went wrong. Please try again.");
+    }
+  };
+
   const quickLinks = [
     { label: "About Us", href: "/about" },
     { label: "The Blue Door", href: "/blue-door" },
