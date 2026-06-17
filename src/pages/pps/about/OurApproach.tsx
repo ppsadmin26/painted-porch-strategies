@@ -175,11 +175,11 @@ export default function OurApproach() {
         headline="Our Approach"
         description={
           <>
-            <p className="mb-4">
+            <p className="mb-4 font-semibold">
               Sustainable change is designed, not declared.
             </p>
             <p>
-              We combine organizational architecture, behavioral science, and practical implementation experience to help leaders create the conditions where meaningful change can take hold and last.
+              We combine organizational architecture, behavioral science, and practical implementation experience to examine the conditions that determine whether change takes off or falls flat.
               <br /><br />
               Everything we do follows the same sequence:
               <br /><br />
@@ -188,7 +188,7 @@ export default function OurApproach() {
               Launch intentionally.<br />
               Reinforce what works.
               <br /><br />
-              That's the P.A.T.H.
+              <strong>That's the P.A.T.H.</strong>
             </p>
           </>
         }
