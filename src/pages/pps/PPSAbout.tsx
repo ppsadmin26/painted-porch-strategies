@@ -6,6 +6,7 @@ import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import paintedPorchChairs from "@/assets/about/painted-porch-chairs.jpg";
 import letsChangeImg from "@/assets/about/lets-change.png";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
+import { PhilosophyApproachSection } from "@/components/pps/partner/PhilosophyApproachSection";
 import aboutHero from "@/assets/heroes/about-hero.jpg";
 
 import paintedPorchImg from "@/assets/about/painted-porch-temple.jpg";
