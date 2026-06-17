@@ -115,7 +115,7 @@ export function BlueDoorCalloutSection() {
               Exploring on Behalf of Your Team or Organization?
             </h3>
           </div>
-          <p className="text-foreground mb-3">
+          <p className="text-foreground mb-6">
             If you're responsible for leading change, setting direction, or navigating a major decision, the <span className="text-bluedoor font-bold">Blue Door</span> often provides the clearest place to begin. It offers a structured appraisal of where your organization stands today and reveals which opportunities, challenges, and priorities deserve your attention first.
             <br /><br />
             For many leaders, it becomes the bridge between possibility and action.
