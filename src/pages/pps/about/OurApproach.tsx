@@ -331,7 +331,7 @@ export default function OurApproach() {
               How We Think
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              R.L.P.V.
+              The Decision Filter Behind Every Recommendation
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
               The Stoic operating system behind every recommendation we make.
@@ -339,10 +339,10 @@ export default function OurApproach() {
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {[
-              { letter: "R", word: "Reason", desc: "Clear, logical thinking drives every recommendation.", bg: "bg-strategic" },
-              { letter: "L", word: "Logic", desc: "Structured frameworks that produce consistent results.", bg: "bg-primary" },
-              { letter: "P", word: "Purpose", desc: "Every engagement tied to meaningful outcomes.", bg: "bg-lime" },
-              { letter: "V", word: "Virtue", desc: "Integrity and ethics at the center of our work.", bg: "bg-gold" },
+              { letter: "R", word: "Reason", desc: "Reality before assumptions. Clear, logical thinking drives every recommendation.", bg: "bg-strategic" },
+              { letter: "L", word: "Logic", desc: "Structure before activity. Structured frameworks that produce consistent results.", bg: "bg-primary" },
+              { letter: "P", word: "Purpose", desc: "Meaning before momentum. Every engagement tied to meaningful outcomes.", bg: "bg-lime" },
+              { letter: "V", word: "Virtue", desc: "Integrity over convenience. Integrity and ethics at the center of our work.", bg: "bg-gold" },
             ].map((v) => (
               <div key={v.letter} className="bg-white rounded-xl p-6 shadow-sm">
                 <div className={`w-12 h-12 rounded-full ${v.bg} flex items-center justify-center mb-4`}>
