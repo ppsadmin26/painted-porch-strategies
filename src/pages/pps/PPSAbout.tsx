@@ -316,17 +316,23 @@ export default function PPSAbout() {
           <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
             WHAT WE BELIEVE
           </p>
-          <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 whitespace-pre-line">
-            Organizations become what they repeatedly practice.{"\n\n"}
-            That's why we pay attention to the conditions beneath change, not just the outcomes through it.{"\n\n"}
-            Clarity.{"\n"}
-            Communication.{"\n"}
-            Trust.{"\n"}
-            Leadership.{"\n"}
-            Capacity for reflection.{"\n\n"}
-            These aren't soft skills.&nbsp;{"\n"}
-            They're the foundations that determine whether change takes root or cracks and collapses under its own weight.
-          </p>
+          <div className="text-lg md:text-xl text-foreground leading-relaxed mb-6 space-y-6">
+            <p>
+              Organizations become what they repeatedly practice.{"\n\n"}
+              That's why we pay attention to the conditions beneath change, not just the outcomes through it.
+            </p>
+            <p className="font-semibold">
+              Clarity.{"\n"}
+              Communication.{"\n"}
+              Trust.{"\n"}
+              Leadership.{"\n"}
+              Capacity for reflection.
+            </p>
+            <p>
+              These aren't soft skills.{"\n\n"}
+              They're the foundations that determine whether change takes root or cracks and collapses under its own weight.
+            </p>
+          </div>
           <p className="text-base text-foreground/80">
             See the framework that holds it together in{" "}
             <Link to="/about/approach#path" className="font-semibold text-primary hover:underline">
