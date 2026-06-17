@@ -71,7 +71,7 @@ export function PathwayComparisonSection() {
             <p>
               Whether you're looking for personal growth, stronger team performance, or organization-wide transformation, every P.A.T.H.way is grounded in the same principles:
             </p>
-            <div className="py-2 space-y-1 font-bold text-lg text-navy">
+            <div className="py-4 space-y-3 font-bold text-lg text-navy">
               <p>Reason.</p>
               <p>Logic.</p>
               <p>Purpose.</p>
@@ -80,8 +80,8 @@ export function PathwayComparisonSection() {
             <p>
               What changes is the scale of application, the depth of engagement, and what you're trying to accomplish.
             </p>
-            <p className="font-bold">
-              There is no required sequence, only the right next step for you on your path.
+            <p>
+              There is no required sequence, <span className="font-bold">only the right next step for you on your path.</span>
             </p>
           </div>
         </div>
