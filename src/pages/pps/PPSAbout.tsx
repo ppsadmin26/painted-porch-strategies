@@ -31,7 +31,7 @@ const team = [
     title: "Chief Joy Officer | M.B.A. - Mind-Body Architect | Mindfulness Sherpa",
     experience: "",
     description: "\n\nSierra believes sustainable progress begins with the people experiencing it. The quality of our attention, resilience, and self-awareness shapes how we navigate uncertainty, growth, and change.\n\n\n\n\nDrawing from her years of work in mindfulness, resilience, and human development, she explores the conditions that allow individuals and teams to remain grounded, adaptable, and engaged when complexity increases.\n\n\n\n\nShe brings perspective, presence, and a deep appreciation for the human experience behind organizational success.",
-    specialties: ["Mindfulness Training", "Yoga & Meditation", "Authentic Leadership", "Energy Management"],
+    specialties: ["Growth Mindset", "Yoga & Meditation", "Mindful Leadership", "Energy Management"],
     color: "bg-gold/10",
     accent: "text-gold",
     photo: sierraPhoto,
