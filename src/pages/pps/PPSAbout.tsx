@@ -7,6 +7,7 @@ import paintedPorchChairs from "@/assets/about/painted-porch-chairs.jpg";
 import letsChangeImg from "@/assets/about/lets-change.png";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import aboutHero from "@/assets/heroes/about-hero.jpg";
+import aboutHeroVideo from "@/assets/heroes/about-hero.mp4.asset.json";
 import paintedPorchImg from "@/assets/about/painted-porch-temple.jpg";
 
 // Team photos
@@ -80,7 +81,7 @@ export default function PPSAbout() {
         ctas={[
           { label: "Start Your Journey", href: "/start-here", isPrimary: true },
         ]}
-        background={{ type: "image", src: aboutHero }}
+        background={{ type: "video", src: aboutHeroVideo.url, poster: aboutHero, slotKey: "about-hero" }}
         overlayClass="bg-navy/50"
         minHeightClass="min-h-[60vh]"
       />
