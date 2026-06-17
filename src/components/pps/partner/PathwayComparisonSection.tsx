@@ -80,11 +80,8 @@ export function PathwayComparisonSection() {
             <p>
               What changes is the depth of engagement, the scope of application, and the level of support.
             </p>
-            <p>
-              There is no required sequence.
-            </p>
             <p className="font-bold">
-              Only the right next step.
+              There is no required sequence, only the right next step on your path.
             </p>
           </div>
         </div>
