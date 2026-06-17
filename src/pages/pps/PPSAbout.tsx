@@ -176,13 +176,24 @@ export default function PPSAbout() {
             <div className="md:order-2">
               <span className="badge-strategic mb-4 inline-block bg-gold">Our Story</span>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-                We Saw What Was Missing.
+                We Saw the Same Pattern Everywhere.
               </h2>
               <p className="text-lg text-foreground leading-relaxed mb-6">
-                After spending 20 years working alongside healthcare staffing firms to implement digital transformation, we recognized a missing, critical piece to long-term success: the <span className="font-semibold text-primary">confidence, capability, and change-readiness</span> of the people who can make or break any change initiative.
-              </p>
-              <p className="text-lg text-foreground leading-relaxed">
-                The patterns of change struggle and failure (in work <em>and</em> in life) repeatedly boiled down to a few missing or underdeveloped foundational principles.
+                Across transformation efforts, growth initiatives, leadership transitions, and organizational change, one pattern kept emerging.
+                <br /><br />
+                The challenge was rarely a lack of effort. It was a lack of space.
+                <br /><br />
+                Space to think.
+                <br />
+                Space to question assumptions.
+                <br />
+                Space to examine what was driving the decision before resources, time, and energy were committed.
+                <br /><br />
+                Everyone was focused on execution. Very few were examining the thinking underneath it.
+                <br /><br />
+                That observation became Painted Porch Strategies.
+                <br /><br />
+                A place dedicated to the work before the work.
               </p>
             </div>
           </div>
