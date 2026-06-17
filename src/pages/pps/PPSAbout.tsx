@@ -7,7 +7,7 @@ import paintedPorchChairs from "@/assets/about/painted-porch-chairs.jpg";
 import letsChangeImg from "@/assets/about/lets-change.png";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import aboutHero from "@/assets/heroes/about-hero.jpg";
-import aboutHeroVideo from "@/assets/heroes/about-hero.mp4.asset.json";
+
 import paintedPorchImg from "@/assets/about/painted-porch-temple.jpg";
 
 // Team photos
@@ -81,7 +81,7 @@ export default function PPSAbout() {
         ctas={[
           { label: "Start Your Journey", href: "/start-here", isPrimary: true },
         ]}
-        background={{ type: "video", src: aboutHeroVideo.url, poster: aboutHero, slotKey: "about-hero" }}
+        background={{ type: "video", src: "", poster: aboutHero, slotKey: "about-hero" }}
         overlayClass="bg-navy/50"
         minHeightClass="min-h-[60vh]"
       />
@@ -102,9 +102,9 @@ export default function PPSAbout() {
                 <br /><br />
                 We chose the name because organizations need spaces like that too.
                 <br /><br />
-                Not places to move faster. Places to think better.
+                Not places to move faster. Places <strong>to think better</strong>.
                 <br /><br />
-                Not places to react. Places to decide deliberately what comes next.
+                Not places to react. Places <strong>to decide deliberately</strong> what comes next.
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-6">
                 We bring these timeless principles to modern business, so leaders and teams can build the mental and organizational architecture needed to navigate what they are becoming next successfully.
@@ -184,12 +184,12 @@ export default function PPSAbout() {
                   Across transformation efforts, growth initiatives, leadership transitions, and organizational change, one pattern kept emerging.
                 </p>
                 <p>
-                  The challenge was rarely a lack of effort. It was a lack of space.
+                  The challenge was rarely a lack of effort. It was a <strong>lack of space</strong>.
                 </p>
                 <p>
-                  Space to think.<br />
-                  Space to question assumptions.<br />
-                  Space to examine what was driving the decision before resources, time, and energy were committed.
+                  Space <strong>to think</strong>.<br />
+                  Space <strong>to question assumptions</strong>.<br />
+                  Space <strong>to examine what was driving the decision</strong> before resources, time, and energy were committed.
                 </p>
                 <p>
                   Everyone was focused on execution. Very few were examining the thinking underneath it.
