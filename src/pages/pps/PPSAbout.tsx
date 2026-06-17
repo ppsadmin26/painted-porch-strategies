@@ -18,7 +18,7 @@ const team = [
   {
     name: "Amy Yackowski",
     title: "Founder | Chief Evolution Officer | Organizational Shift Strategist",
-    experience: "Over 20 Years Experience",
+    experience: "",
     description: "Amy believes most organizations don't struggle because they lack ambition. They struggle because important decisions are often made before leaders have enough clarity about what they're building, why it matters, and what it will require.\n\nAfter two decades leading strategic initiatives, organizational transformation efforts, and complex change across industries, she founded Painted Porch Strategies around a simple idea: better questions often create better outcomes than faster answers.\n\nShe brings strategic clarity, organizational insight, and a talent for helping leaders see what others overlook",
     specialties: ["Organizational Design", "Change Management", "Strategic Planning", "Team Development"],
     color: "bg-primary/10",
@@ -28,8 +28,8 @@ const team = [
   {
     name: "Sierra Ramm Cantrell",
     title: "Chief Joy Officer | M.B.A. - Mind-Body Architect | Mindfulness Sherpa",
-    experience: "Over 15 Years Experience",
-    description: "Sierra brings over a decade of experience teaching yoga and meditation, focused on authentic living and energy balance. She helps leaders develop the mindfulness practices essential for resilient leadership.",
+    experience: "",
+    description: "Sierra believes sustainable progress begins with the people experiencing it. The quality of our attention, resilience, and self-awareness shapes how we navigate uncertainty, growth, and change.\n\n\n\n\nDrawing from her work in mindfulness, resilience, and human development, she explores the conditions that allow individuals and teams to remain grounded, adaptable, and engaged when complexity increases.\n\n\n\n\nShe brings perspective, presence, and a deep appreciation for the human experience behind organizational success.",
     specialties: ["Mindfulness Training", "Yoga & Meditation", "Authentic Leadership", "Energy Management"],
     color: "bg-gold/10",
     accent: "text-gold",
@@ -38,7 +38,7 @@ const team = [
   {
     name: "Rob Hunter",
     title: "Chief Storytelling Officer | M.C. - Master of Communication",
-    experience: "Over 25 Years Experience",
+    experience: "",
     description: "As a 27-year award-winning radio broadcaster and #1 rated talk show host, Rob is a specialist in effective messaging and influence. He helps leaders craft compelling narratives that inspire action and drive change.",
     specialties: ["Strategic Messaging", "Public Speaking", "Influence & Persuasion", "Brand Voice"],
     color: "bg-muted",
@@ -245,9 +245,11 @@ export default function PPSAbout() {
                   <p className={`text-sm font-medium mb-1 ${isAmy ? "text-strategic" : member.accent}`}>
                     {member.title}
                   </p>
-                  <p className="text-xs text-muted-foreground mb-4">
-                    {member.experience}
-                  </p>
+                  {member.experience && (
+                    <p className="text-xs text-muted-foreground mb-4">
+                      {member.experience}
+                    </p>
+                  )}
                   <p className="text-foreground text-sm leading-relaxed mb-4">
                     {member.description.split('\n\n').map((text, i) => (
                       <p key={i} className={i > 0 ? "mt-4" : ""}>
