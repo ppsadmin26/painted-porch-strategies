@@ -67,13 +67,10 @@ export default function PPSAbout() {
         description={
           <>
             <p className="mb-4">
-              Change doesn't fail because people stop caring. It fails when organizations lose clarity about who they're becoming.
-            </p>
-            <p className="mb-4">
               The most important decisions are rarely made in the middle of execution.
             </p>
             <p>
-              We create the space for organizations to examine identity, direction, leadership, and culture before the next major shift begins.
+              Painted Porch Strategies exists for the moments before a major decision hardens into action.
             </p>
           </>
         }
