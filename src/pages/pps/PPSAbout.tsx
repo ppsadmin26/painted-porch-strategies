@@ -214,6 +214,8 @@ export default function PPSAbout() {
           </h2>
           <p className="text-lg text-foreground leading-relaxed whitespace-pre-line">
             Painted Porch brings together expertise in leadership, organizational strategy, communication, behavioral change, and human performance.&nbsp;
+
+
             Different perspectives.&nbsp;
             Different experiences.&nbsp;
 
