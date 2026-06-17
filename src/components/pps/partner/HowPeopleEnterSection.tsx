@@ -1,44 +1,5 @@
 import { Link } from "react-router-dom";
-import { Flame, Sparkles, Landmark, TrendingUp } from "lucide-react";
-
-const entries = [
-  {
-    tier: "IGNITE",
-    icon: Flame,
-    iconColor: "text-gold",
-    iconBg: "bg-gold/10",
-    borderColor: "border-gold",
-    textColor: "text-gold",
-    intro: "Some begin with curiosity.",
-    items: ["A masterclass.", "A course.", "An assessment.", "A conversation."],
-    closing: "That's IGNITE.",
-    href: "/partner/ignite",
-  },
-  {
-    tier: "AMPLIFY",
-    icon: Sparkles,
-    iconColor: "text-strategic",
-    iconBg: "bg-strategic/10",
-    borderColor: "border-strategic",
-    textColor: "text-strategic",
-    intro: "Some arrive with a team.",
-    items: ["A leadership challenge.", "A strategic priority.", "A need for alignment."],
-    closing: "That's AMPLIFY.",
-    href: "/partner/amplify",
-  },
-  {
-    tier: "EMBODY",
-    icon: Landmark,
-    iconColor: "text-navy",
-    iconBg: "bg-navy/10",
-    borderColor: "border-navy",
-    textColor: "text-navy",
-    intro: "Some arrive carrying organizational responsibility.",
-    items: ["Major transformation.", "Long-term capacity building.", "Enterprise change."],
-    closing: "That's EMBODY.",
-    href: "/partner/embody",
-  },
-];
+import { TrendingUp } from "lucide-react";
 
 export function HowPeopleEnterSection() {
   return (
@@ -50,42 +11,21 @@ export function HowPeopleEnterSection() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {entries.map((entry) => (
-            <div
-              key={entry.tier}
-              className={`relative bg-white p-8 rounded-xl border-t-4 ${entry.borderColor} shadow-sm flex flex-col h-full`}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className={`w-10 h-10 rounded-full ${entry.iconBg} flex items-center justify-center flex-shrink-0`}>
-                  <entry.icon className={`w-5 h-5 ${entry.iconColor}`} />
-                </div>
-                <h3 className={`text-xl md:text-2xl font-poppins font-bold ${entry.textColor}`}>
-                  {entry.tier}
-                </h3>
-              </div>
-              <div className="flex-1">
-                <p className="text-foreground leading-relaxed mb-3">
-                  {entry.intro}
-                </p>
-                <ul className="space-y-1">
-                  {entry.items.map((item, i) => (
-                    <li key={i} className="text-foreground text-sm">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <p className={`font-bold ${entry.textColor} mt-4`}>
-                {entry.closing}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mb-10 max-w-2xl mx-auto space-y-2">
-          <p className="text-lg text-foreground">
-            No path is inherently better. Each serves a different need and moment.
+        <div className="max-w-3xl mx-auto text-center mb-12 space-y-6">
+          <p className="text-lg text-foreground leading-relaxed">
+            Sometimes it begins with a keynote, podcast, article, assessment, or course.
+          </p>
+          <p className="text-lg text-foreground leading-relaxed">
+            Sometimes it begins with a leadership challenge that's difficult to solve alone.
+          </p>
+          <p className="text-lg text-foreground leading-relaxed">
+            Sometimes it begins with a realization that the future you're trying to create will require something different from the people, systems, and structures you have today.
+          </p>
+          <p className="text-lg text-foreground leading-relaxed">
+            No two journeys look exactly alike.
+          </p>
+          <p className="text-lg text-foreground leading-relaxed font-medium">
+            What matters is finding the right place to begin.
           </p>
         </div>
 
