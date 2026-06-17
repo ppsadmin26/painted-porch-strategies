@@ -28,7 +28,7 @@ const principles = [
     icon: BookOpen,
     title: "Grounded in 2,300 Years of Wisdom",
     tagline: "Not trendy frameworks.",
-    description: "Most leadership development is built on trendy frameworks. We're built on Stoic philosophy and the principles of strategic preparation, resilience, and conscious design.",
+    description: "Our work is grounded in the enduring principles of the Stoic philosophy - strategic preparation, resilience, and conscious design - applied to the realities leaders, teams,\u00a0",
     contrast: "Premeditatio Malorum: Prepare for adversity before pressure demands it. That's the original Phase Zero.",
   },
   {
