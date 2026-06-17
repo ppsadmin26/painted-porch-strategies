@@ -75,7 +75,7 @@ const pillars = [
 
 const discover = [
   "Which shifts your organization is realistically positioned to carry",
-  "Where tension, strain, or fragmentation may already be surfacing",
+  "Where tension, strain, or misalignment may already be surfacing",
   "What conditions need strengthening before momentum compounds complexity",
   "Where sustainability matters more than speed",
 ];
