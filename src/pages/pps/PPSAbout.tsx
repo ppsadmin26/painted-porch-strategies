@@ -329,7 +329,7 @@ export default function PPSAbout() {
               Capacity for reflection.
             </p>
             <p className="whitespace-pre-line">
-              These aren't soft skills.{"\n\n"}
+              These aren't soft skills.{"\n"}
               They're the foundations that determine whether change takes root or cracks and collapses under its own weight.
             </p>
           </div>
