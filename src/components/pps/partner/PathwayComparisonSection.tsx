@@ -6,7 +6,7 @@ import { TierBadge } from "@/components/pps/TierBadge";
 
 const tierContent = {
   IGNITE: {
-    tagline: "Self: Light the spark. Prove this works.",
+    tagline: "SELF: Light the spark. Prove this works.",
     journey: "Self-led courses, strategic assessments, and frameworks you can apply immediately, at your own pace, on your own terms.",
     features: [
       "Self-Led Courses (to spark new ideas and capabilities around Mindset, Communication, Team Dynamics, and more)",
@@ -23,7 +23,7 @@ const tierContent = {
     cta: "Explore IGNITE",
   },
   AMPLIFY: {
-    tagline: "Team: Boost momentum and alignment for your next shIFt.",
+    tagline: "TEAM: Boost momentum and alignment for your next shIFt.",
     journey: "Team workshops, strategic sprints, and cohort-based learning designed for leadership teams ready to align around transformation, together.",
     features: [
       "Executive Strategy & Team Workshops",
@@ -40,7 +40,7 @@ const tierContent = {
     cta: "Explore AMPLIFY",
   },
   EMBODY: {
-    tagline: "Organization: Architect transformation that lasts.",
+    tagline: "ORGANIZATION: Architect transformation that lasts.",
     journey: "Embedded strategic partnership (6+ months) to co-architect permanent organizational capacity, comprehensive, deep, transformative.",
     features: [
       "Architect Change Sessions (Phase Zero strategic co-design)",
