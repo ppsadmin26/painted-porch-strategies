@@ -62,10 +62,18 @@ export function PartnerHeroSection() {
               }`}
             >
               <p className="mb-4">
-                We partner with you to co-architect transformation, whether you're exploring Phase Zero concepts on your own, aligning your team, or building permanent organizational capacity.
+                Every leader, team, and organization stands at a different point on their journey to what's next.
+              </p>
+              <p className="mb-4">
+                Some are exploring change for themselves.<br />
+                Some are aligning a team around what matters most.<br />
+                Some are building the capacity to lead transformation across an entire organization.
+              </p>
+              <p className="mb-4">
+                P.A.T.H.ways help you identify the right starting point.
               </p>
               <p className="text-white/80 italic text-base">
-                Your commitment level and current capacity determine your P.A.T.H.way, not your title or organization size.
+                Your next step isn't determined by your title. It's determined by where you are and what you're ready to lead.
               </p>
             </div>
 
