@@ -238,7 +238,7 @@ export default function PPSHome() {
                 <br />
                 &bull; when something important feels inevitable
                 <br /><br />
-                Wherever you begin, clarity comes before commitment.
+                <strong>Wherever you begin, clarity comes before commitment.</strong>
               </p>
             </div>
 
