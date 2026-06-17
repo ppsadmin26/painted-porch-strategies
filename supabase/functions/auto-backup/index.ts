@@ -333,16 +333,29 @@ class StateMissingError extends Error {
 async function loadState(sb: ReturnType<typeof admin>, folder: string): Promise<BackupState> {
   let lastError: unknown = null;
   for (let attempt = 0; attempt < 4; attempt++) {
-    const { data, error } = await sb.storage.from("backups").download(statePath(folder));
-    if (!error && data) {
-      const text = await data.text();
-      try {
-        return JSON.parse(text) as BackupState;
-      } catch {
-        lastError = new Error(`Invalid backup state JSON for ${folder}`);
+    try {
+      const { data, error } = await sb.storage.from("backups").download(statePath(folder));
+      if (!error && data) {
+        const text = await data.text();
+        try {
+          return JSON.parse(text) as BackupState;
+        } catch {
+          lastError = new Error(`Invalid backup state JSON for ${folder}`);
+        }
+      } else {
+        lastError = error ?? new Error(`Missing backup state for ${folder}`);
       }
-    } else {
-      lastError = error ?? new Error(`Missing backup state for ${folder}`);
+    } catch (err) {
+      // supabase-js can throw raw StorageApiError ("Object not found") instead of
+      // returning {error} when the storage CDN replies with a non-parseable body.
+      // Treat that as a missing-state signal so the caller's StateMissingError
+      // branch can handle it gracefully (mark orphaned run as failed) instead of
+      // bubbling up as an unhandled 500.
+      lastError = err;
+      const msg = (err as any)?.message ?? String(err);
+      if (!/not found|does not exist/i.test(msg)) {
+        console.warn(`loadState download threw for ${folder}: ${msg}`);
+      }
     }
 
     if (attempt < 3) {
