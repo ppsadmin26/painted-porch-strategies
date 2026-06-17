@@ -7,7 +7,7 @@ const principles = [
     icon: Building2,
     title: "Phaze Zero F",
     tagline: "Everyone else starts at launch.",
-    description: "Most advisors execute change decisions already made. We partner with you BEFORE the decision, in that critical Phase Zero moment when you're determining what change you could credibly lead.",
+    description: "Every meaningful shift begins with clarity. Before committing time, resources, and energy, we examine what is true, what is assumed, and what deserves deeper exploration.",
     contrast: "We architect foundations. They implement initiatives.",
   },
   {
