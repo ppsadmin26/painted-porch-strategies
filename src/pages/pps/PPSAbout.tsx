@@ -358,7 +358,7 @@ export default function PPSAbout() {
         overlayTone="teal"
         eyebrow="PULL UP A CHAIR ON OUR PORCH"
         headline="What conversation needs a bit of porch perspective right now?"
-        description="Whether you're exploring what's next, weighing a major decision, or simply trying to make sense of increasing complexity, every meaningful shIFt begins with a better question."
+        description={<>Whether you're exploring what's next, weighing a major decision, or simply trying to make sense of increasing complexity, every meaningful sh<b>IF</b>t begins with a better question.</>}
         actions={[
           { label: "Discover Your P.A.T.H.way", to: "/start-here", variant: "primary" },
           {
