@@ -110,7 +110,7 @@ export function PathwayComparisonSection() {
                 <div className="flex flex-col pb-8">
                   <div className="flex-shrink-0">
                     <TierBadge tier={tier} className="mb-4" />
-                    <p className={`text-sm font-semibold ${tier.textColor} mb-3`}>
+                    <p className={`text-sm font-semibold ${tier.textColor} mb-6`}>
                       {content.tagline}
                     </p>
                   </div>
@@ -121,7 +121,7 @@ export function PathwayComparisonSection() {
 
                 {/* Perfect For */}
                 {"perfectFor" in content && content.perfectFor && (
-                  <div className="flex-1 flex flex-col">
+                  <div className={`flex-1 flex flex-col ${tier.name === "IGNITE" ? "mt-4" : ""}`}>
                     <h4 className="text-base md:text-lg font-poppins font-semibold uppercase tracking-wide text-navy/70 mb-2">
                       Perfect For:
                     </h4>
