@@ -7,7 +7,7 @@ export function HowPeopleEnterSection() {
       <div className="container max-w-7xl mx-auto px-6">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Every Journey&nbsp;
+            Every Journey Begins with "What <span className="text-bluedoor">IF</span>?"
           </h2>
         </div>
 
@@ -25,7 +25,7 @@ export function HowPeopleEnterSection() {
             No two journeys look exactly alike.
           </p>
           <p className="text-lg text-foreground leading-relaxed font-bold">
-            What matters is finding the right place to begin.
+            What matters is finding the right place to begin asking "What <span className="text-bluedoor">IF</span>".
           </p>
         </div>
 
