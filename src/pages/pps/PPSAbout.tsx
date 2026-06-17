@@ -213,13 +213,13 @@ export default function PPSAbout() {
             Different Disciplines. Shared Conviction.
           </h2>
           <p className="text-lg text-foreground leading-relaxed whitespace-pre-line">
-            Painted Porch brings together expertise in leadership, organizational strategy, communication, behavioral change, and human performance.
+            Painted Porch brings together expertise in leadership, organizational strategy, communication, behavioral change, and human performance.&nbsp;
+            Different perspectives.&nbsp;
+            Different experiences.&nbsp;
 
-            Different perspectives.
-            Different experiences.
 
-            One shared belief:
-            The best decisions are rarely made under pressure.
+            One shared belief:&nbsp;
+            The best decisions are rarely made under pressure.&nbsp;
             They're made when people have the clarity to see what matters most.
           </p>
         </div>
