@@ -366,14 +366,15 @@ export default function OurApproach() {
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
             <p className="text-xs font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
-              The Conditions We Build Together
+              WHAT OUR WORK MAKES POSSIBLE
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              What our work makes possible.
+              The Conditions That Shape Every Outcome
             </h2>
-            <p className="text-lg text-foreground leading-relaxed">
-              We combine organizational architecture, behavioral science, and practical implementation experience to examine the conditions that determine whether change takes off or falls flat.
-              <br /><br />
+            <p className="text-lg text-foreground leading-relaxed whitespace-pre-line">
+              Meaningful change rarely succeeds because of a framework. It succeeds because the conditions required for success already exist or are intentionally strengthened. 
+
+              We do not deliver or manage change for you. We build the conditions where the right change becomes possible, in your people and across your organization.
             </p>
           </div>
 
@@ -428,16 +429,9 @@ export default function OurApproach() {
               The P.A.T.H.<sup className="text-[0.4em] align-super">™</sup> to Sustainable Change
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
-              Everything we do follows the same sequence:
-              <br /><br />
-              Understand reality.
               <br />
-              Align people.
               <br />
-              Launch intentionally.
               <br />
-              Reinforce what works.
-              <br /><br />
             </p>
           </div>
 
