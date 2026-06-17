@@ -788,12 +788,7 @@ export default function PPSHome() {
         }
         description={
           <>
-            The future isn't something organizations enter.
-            <br />
-            <br />
-            It's something they author.
-            <br />
-            <br />
+            The future isn't something organizations enter. It's something they author.
             <br />
             <br />
             The question is whether your organization is building the clarity,
