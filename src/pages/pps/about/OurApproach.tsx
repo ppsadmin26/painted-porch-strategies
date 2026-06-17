@@ -46,7 +46,7 @@ const pathStages = [
     accent: "text-raspberry",
     bg: "bg-raspberry/5",
     iconBg: "bg-raspberry/10",
-    body: "Leaders, teams, and plans get on the same page about what change to lead, why it matters, and who carries which part. Healthy disagreement gets surfaced here, not after launch.",
+    body: "Create shared understanding. Align leadership, teams, stakeholders, expectations, priorities, and communication around a common direction. Healthy disagreement gets surfaced here, not after launch.",
     outcome: "A coalition that owns the work, not just approves it.",
   },
   {
