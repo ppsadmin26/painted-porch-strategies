@@ -178,18 +178,22 @@ export default function OurApproach() {
             <p className="mb-4 font-semibold">
               Sustainable change is designed, not declared.
             </p>
-            <p>
+            <p className="mb-4">
               Most organizations focus on execution.&nbsp;We examine the conditions that determine whether execution succeeds.
-              <br /><br /><br />
+            </p>
+            <p className="mb-4">
               Everything we do follows the same sequence:
-              <br /><br />
+            </p>
+            <p className="mb-4">
               Understand reality.<br />
               Align people.<br />
               Launch intentionally.<br />
               Reinforce what works.
-              <br /><br />
+            </p>
+            <p className="mb-4">
               It's how you move from reacting to change to authoring it.
-              <br /><br />
+            </p>
+            <p>
               <strong>That's the P.A.T.H.</strong>
             </p>
           </>
