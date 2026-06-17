@@ -635,7 +635,7 @@ export default function OurApproach() {
         overlayClass="bg-gradient-to-b from-navy/75 via-navy/60 to-navy/45"
         eyebrow="Start Here"
         headline="The Blue Door is the simplest place to begin."
-        description="A structured conversation about where your organization actually stands, before the next big decision gets locked in."
+        description="A structured appraisal about where your organization actually stands, before the next big decision gets locked in."
         actions={[
           { label: "Open the Blue Door", to: "/blue-door", variant: "bluedoor" },
           { label: "Find Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
