@@ -41,7 +41,7 @@ const principles = [
   },
 ];
 
-export function PhilosophyApproachSection() {
+export function PhilosophyApproachSection({ showEncapsulationCard = true }: { showEncapsulationCard?: boolean }) {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container max-w-7xl mx-auto px-6">
