@@ -100,7 +100,7 @@ export function PathwayComparisonSection() {
             return (
               <div
                 key={tier.name}
-                className={`relative ${tier.bgColor} p-8 rounded-xl border-t-4 ${tier.borderColor} flex flex-col`}
+                className={`relative ${tier.bgColor} p-8 rounded-xl border-t-4 ${tier.borderColor} flex flex-col h-full`}
               >
                 <TierBadge tier={tier} className="mb-4" />
                 <p className={`text-sm font-semibold ${tier.textColor} mb-3`}>
