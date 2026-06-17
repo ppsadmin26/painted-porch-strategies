@@ -616,9 +616,8 @@ export default function OurApproach() {
               You will not need us forever.
             </h3>
             <p className="text-white/90 leading-relaxed mb-4 max-w-xl mx-auto">
-              The point of partnership is not a long contract. It is your
-              team becoming the people who can author the next change on
-              their own.
+              The point of partnership is not a long contract. It's your team
+              becoming the people who can author your next change on their own.
             </p>
             <p className="text-gold font-semibold max-w-xl mx-auto">
               Success is when your next major decision no longer requires us in the room.
