@@ -216,24 +216,24 @@ export default function OurApproach() {
             Upstream of the rollout.
           </h2>
           <p className="text-lg text-foreground leading-relaxed mb-6 whitespace-pre-line">
-            Every initiative is built on a series of assumptions.&nbsp;
+            Every initiative is built on a series of assumptions.&nbsp;&nbsp;
 
 
-            About leadership.&nbsp;
-            About communication.&nbsp;
-            About priorities.&nbsp;
-            About culture.&nbsp;
-            About what people understand, believe, and are prepared to do.&nbsp;
+            About leadership.&nbsp;&nbsp;
+            About communication.&nbsp;&nbsp;
+            About priorities.&nbsp;&nbsp;
+            About culture.&nbsp;&nbsp;
+            About what people understand, believe, and are prepared to do.&nbsp;&nbsp;
 
 
-            Our work examines those assumptions before they become expensive realities.&nbsp;
+            Our work examines those assumptions before they become expensive realities.&nbsp;&nbsp;
 
 
-            Because what appears during implementation often begins much earlier.&nbsp;
+            Because what appears during implementation often begins much earlier.&nbsp;&nbsp;
 
 
             This is the work beneath the rollout.&nbsp;
-            The thinking beneath the plan.&nbsp;
+            The thinking beneath the plan.&nbsp;&nbsp;
             The examination that influences everything that follows.
           </p>
           <p className="text-lg text-foreground leading-relaxed">
