@@ -179,23 +179,28 @@ export default function PPSAbout() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 We Saw the Same Pattern Everywhere.
               </h2>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
-                Across transformation efforts, growth initiatives, leadership transitions, and organizational change, one pattern kept emerging.
-                <br /><br />
-                The challenge was rarely a lack of effort. It was a lack of space.
-                <br /><br />
-                Space to think.
-                <br />
-                Space to question assumptions.
-                <br />
-                Space to examine what was driving the decision before resources, time, and energy were committed.
-                <br /><br />
-                Everyone was focused on execution. Very few were examining the thinking underneath it.
-                <br /><br />
-                That observation became Painted Porch Strategies.
-                <br /><br />
-                A place dedicated to the work before the work.
-              </p>
+              <div className="text-lg text-foreground leading-relaxed mb-6 space-y-4">
+                <p>
+                  Across transformation efforts, growth initiatives, leadership transitions, and organizational change, one pattern kept emerging.
+                </p>
+                <p>
+                  The challenge was rarely a lack of effort. It was a lack of space.
+                </p>
+                <p>
+                  Space to think.<br />
+                  Space to question assumptions.<br />
+                  Space to examine what was driving the decision before resources, time, and energy were committed.
+                </p>
+                <p>
+                  Everyone was focused on execution. Very few were examining the thinking underneath it.
+                </p>
+                <p>
+                  That observation became Painted Porch Strategies.
+                </p>
+                <p>
+                  A place dedicated to the work before the work.
+                </p>
+              </div>
             </div>
           </div>
         </div>
