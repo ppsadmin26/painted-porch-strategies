@@ -6,7 +6,7 @@ import { TierBadge } from "@/components/pps/TierBadge";
 
 const tierContent = {
   IGNITE: {
-    tagline: "Self: Light the spark. Prove this works.",
+    tagline: "SELF: Light the spark. Prove this works.",
     journey: "Self-led courses, strategic assessments, and frameworks you can apply immediately, at your own pace, on your own terms.",
     features: [
       "Self-Led Courses (to spark new ideas and capabilities around Mindset, Communication, Team Dynamics, and more)",
