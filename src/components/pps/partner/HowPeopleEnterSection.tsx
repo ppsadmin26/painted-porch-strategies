@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Flame, Sparkles, Landmark, TrendingUp } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 
 const entries = [
   {
