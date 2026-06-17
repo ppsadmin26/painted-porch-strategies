@@ -429,16 +429,9 @@ export default function OurApproach() {
               The P.A.T.H.<sup className="text-[0.4em] align-super">™</sup> to Sustainable Change
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
-              Everything we do follows the same sequence:
-              <br /><br />
-              Understand reality.
               <br />
-              Align people.
               <br />
-              Launch intentionally.
               <br />
-              Reinforce what works.
-              <br /><br />
             </p>
           </div>
 
