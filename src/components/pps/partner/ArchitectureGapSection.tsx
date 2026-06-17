@@ -68,7 +68,7 @@ export default function ArchitectureGapSection() {
             The reality every leader is navigating right now.
           </h2>
           <p className="text-lg text-foreground leading-relaxed">
-            The data tells the same story we hear from leaders every week: the
+            The data tell the same story we hear from leaders every week: the
             problem isn&rsquo;t the strategy, it&rsquo;s the architecture
             underneath it. Here&rsquo;s what we&rsquo;re working with, and where
             the Painted Porch Pillars come in.
