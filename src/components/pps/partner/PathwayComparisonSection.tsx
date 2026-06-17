@@ -106,19 +106,22 @@ export function PathwayComparisonSection() {
                 key={tier.name}
                 className={`relative ${tier.bgColor} p-8 rounded-xl border-t-4 ${tier.borderColor} flex flex-col h-full`}
               >
-                <div className="flex-1">
-                  <TierBadge tier={tier} className="mb-4" />
-                  <p className={`text-sm font-semibold ${tier.textColor} mb-3`}>
-                    {content.tagline}
-                  </p>
-                  <p className="text-foreground mb-4 text-sm leading-relaxed">
+                {/* Upper content area */}
+                <div className="flex-1 flex flex-col pb-8">
+                  <div className="flex-shrink-0">
+                    <TierBadge tier={tier} className="mb-4" />
+                    <p className={`text-sm font-semibold ${tier.textColor} mb-3`}>
+                      {content.tagline}
+                    </p>
+                  </div>
+                  <p className="text-foreground text-sm leading-relaxed mt-auto">
                     {content.journey}
                   </p>
                 </div>
 
                 {/* Perfect For */}
                 {"perfectFor" in content && content.perfectFor && (
-                  <div className="mb-4">
+                  <div className="flex-1 flex flex-col">
                     <h4 className="text-base md:text-lg font-poppins font-semibold uppercase tracking-wide text-navy/70 mb-2">
                       Perfect For:
                     </h4>
@@ -134,7 +137,7 @@ export function PathwayComparisonSection() {
                 )}
 
                 {/* Timeline + CTA */}
-                <div className="mt-auto">
+                <div className="mt-4">
                   <p className="text-xs text-foreground mb-4">
                     <span className="font-semibold">Timeline:</span> {content.timeline}
                   </p>
