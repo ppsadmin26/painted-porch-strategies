@@ -289,7 +289,7 @@
     @apply text-lg md:text-xl leading-relaxed;
   }
   .text-body {
-    @apply text-base leading-relaxed;
+    @apply text-base lg:text-[18px] leading-relaxed;
   }
   .text-body-sm {
     @apply text-sm leading-relaxed;
