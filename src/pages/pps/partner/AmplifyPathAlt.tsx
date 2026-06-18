@@ -528,7 +528,8 @@ export default function AmplifyPathAlt() {
 
 
           <p className="text-center text-lead text-navy mt-12 italic">
-            Strategic architecture isn't optional for transformation that lasts; it's foundational. AMPLIFY provides the partnership to build it properly.
+            Strategic authorship and architecture aren't optional for transformation that lasts; it's foundational.&nbsp;<br />
+            AMPLIFY provides the partnership to build it properly.
           </p>
 
           {/* CTA to next step */}
