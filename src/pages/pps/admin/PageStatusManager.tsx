@@ -287,7 +287,17 @@ export default function PageStatusManager() {
                     }}
                   />
                 </div>
-                <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+                <div className="flex items-center gap-2 sm:gap-3 shrink-0 flex-wrap">
+                  <CategoryPicker
+                    value={entry.category}
+                    onChange={async (next) => {
+                      await setCategory(entry.path, next);
+                      toast({
+                        title: `Category set to ${CATEGORY_META[next].label}`,
+                        description: entry.path,
+                      });
+                    }}
+                  />
                   <Button
                     variant="outline"
                     size="sm"
