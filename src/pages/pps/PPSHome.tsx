@@ -682,7 +682,7 @@ export default function PPSHome() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-lime/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-lime">
               <p className="font-poppins font-bold text-lime mb-2">If yes</p>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <p className="text-body-sm text-white/90">
                 We get to work with you on what it takes to author and shape
                 your next shift.
               </p>
