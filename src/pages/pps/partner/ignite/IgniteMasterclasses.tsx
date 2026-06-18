@@ -153,11 +153,11 @@ export default function IgniteMasterclasses() {
                           {item.title}
                         </h3>
                       )}
-                      {item.leader && <p className="text-sm font-medium text-navy mt-1">Led by {item.leader}</p>}
-                      {item.description && <p className="text-xs text-foreground mt-2">{item.description}</p>}
+                      {item.leader && <p className="text-body-sm font-medium text-navy mt-1">Led by {item.leader}</p>}
+                      {item.description && <p className="text-caption text-foreground mt-2">{item.description}</p>}
                     </div>
                     <div className="mt-auto pt-4">
-                      <p className="text-sm font-bold text-navy mb-2">${item.price ?? 36}</p>
+                      <p className="text-body-sm font-bold text-navy mb-2">${item.price ?? 36}</p>
                       {item.launchSlug ? (
                         <LaunchListCTA
                           slug={item.launchSlug}
