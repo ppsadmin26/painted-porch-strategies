@@ -38,7 +38,7 @@ const choiceCards = [
       "Your organization is facing significant strategic change",
       "You want embedded partnership, not project-based work",
       "You're ready for 6-12+ month commitment",
-      "You're building capacity that lasts beyond any single initiative",
+      "You're building organizational capability that lasts beyond any single initiative",
     ],
     cta: {
       primary: { label: "Explore EMBODY", href: "/partner/embody" },
