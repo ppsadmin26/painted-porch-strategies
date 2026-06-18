@@ -183,16 +183,7 @@ export default function OurApproach() {
               Execution is the visible part of change.&nbsp;The thinking, alignment, communication, leadership, and culture beneath it often determine whether it lasts.
             </p>
             <p className="mb-4">
-              Our approach strengthens those foundations through a deliberate sequence:
-            </p>
-            <p className="mb-4">
-              Understand reality.<br />
-              Align people.<br />
-              Launch intentionally.<br />
-              Reinforce what works.
-            </p>
-            <p className="mb-4">
-              It's how you move from reacting to external demands to authoring direction.
+              Our approach strengthens those foundations through a deliberate sequence. It's how you move from reacting to external demands to authoring direction.
             </p>
             <p>
               <strong>That's the P.A.T.H.</strong>
