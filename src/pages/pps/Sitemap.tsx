@@ -507,7 +507,7 @@ export default function Sitemap() {
                 <span>hidden from public</span>
               </span>
             </div>
-            <p className="mt-2 text-[11px] font-montserrat text-pps-charcoal/70">
+            <p className="text-body mt-2 text-[11px] font-montserrat text-pps-charcoal/70">
               Internal, archived, and draft routes are excluded from{" "}
               <code className="text-pps-navy">sitemap.xml</code>, blocked in{" "}
               <code className="text-pps-navy">robots.txt</code>, and hidden from public visitors on this page.

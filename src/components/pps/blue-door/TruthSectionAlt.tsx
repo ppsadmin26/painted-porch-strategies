@@ -26,7 +26,7 @@ export default function TruthSectionAlt() {
             In less than 30 minutes, you'll learn what might otherwise take months to figure out: whether your organization can actually lead the shift you're considering, or where some groundwork would set you up for real success.
           </p>
           <div className="bg-raspberry/10 border-l-4 border-raspberry p-6 md:p-8 rounded-xl shadow-sm mb-6">
-            <p className="font-bold text-raspberry text-center">
+            <p className="text-body font-bold text-raspberry text-center">
               Less than 30 minutes now could save months of effort and hundreds of thousands pursuing a shift you're not yet structured to lead.
             </p>
             <div className="flex justify-center mt-4">

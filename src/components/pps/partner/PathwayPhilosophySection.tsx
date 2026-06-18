@@ -26,7 +26,7 @@ export function PathwayPhilosophySection() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Why Three P.A.T.H.ways? Because No Two Sh<span className="text-raspberry font-bold">IF</span>ts are the Same.
           </h2>
-          <p className="text-foreground max-w-2xl mx-auto">
+          <p className="text-body text-foreground max-w-2xl mx-auto">
             Each P.A.T.H.way is designed for a different level of commitment and transformation ambition. Where are you right now?
           </p>
         </div>

@@ -155,7 +155,7 @@ export default function PPSOverview() {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
             What Is Painted Porch Strategies?
           </h2>
-          <p className="mt-2 text-white/70">Porch Perspectives</p>
+          <p className="text-body mt-2 text-white/70">Porch Perspectives</p>
           <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-xl shadow-2xl">
             <div className="relative aspect-video">
               <iframe
@@ -178,7 +178,7 @@ export default function PPSOverview() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy">
               Our Signature Programs
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-foreground/70">
+            <p className="text-body mx-auto mt-4 max-w-2xl text-foreground/70">
               Foundational programs designed to build capacity, clarity, and connection across your life and work.
             </p>
           </div>
@@ -219,7 +219,7 @@ export default function PPSOverview() {
           <h2 className="text-3xl md:text-4xl text-center font-poppins font-bold text-navy">
             Explore & Connect
           </h2>
-          <p className="mt-3 text-center text-foreground/60">
+          <p className="text-body mt-3 text-center text-foreground/60">
             Resources, programs, and ways to get started
           </p>
 
@@ -257,7 +257,7 @@ export default function PPSOverview() {
           <h2 className="text-3xl md:text-4xl text-center font-poppins font-bold text-navy">
             Meet the Team
           </h2>
-          <p className="mt-3 text-center text-foreground/60">
+          <p className="text-body mt-3 text-center text-foreground/60">
             Get to know the people behind the Porch
           </p>
 
@@ -269,7 +269,7 @@ export default function PPSOverview() {
                 className={`group flex items-center gap-4 rounded-lg border-2 bg-background px-5 py-4 shadow-sm transition-all hover:shadow-md ${member.accent}`}
               >
                 <div className="flex-1">
-                  <p className="font-poppins font-semibold text-navy">{member.name}</p>
+                  <p className="text-body font-poppins font-semibold text-navy">{member.name}</p>
                   <p className="text-body-sm text-foreground/60">{member.title}</p>
                 </div>
                 <ArrowRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
@@ -285,7 +285,7 @@ export default function PPSOverview() {
           <h2 className="text-3xl md:text-4xl text-center font-poppins font-bold text-white">
             Listen In
           </h2>
-          <p className="mt-3 text-center text-white/60">
+          <p className="text-body mt-3 text-center text-white/60">
             Podcasts from the Painted Porch
           </p>
 
@@ -355,7 +355,7 @@ export default function PPSOverview() {
             <h2 className="text-3xl md:text-4xl mt-4 font-poppins font-bold text-navy">
               Ready to ShIFt?
             </h2>
-            <p className="mx-auto mt-4 max-w-md text-foreground/70">
+            <p className="text-body mx-auto mt-4 max-w-md text-foreground/70">
               Whether you're exploring change for yourself, your team, or your entire organization, we'd love to hear from you.
             </p>
             <Link

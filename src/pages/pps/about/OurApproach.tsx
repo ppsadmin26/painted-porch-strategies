@@ -176,16 +176,16 @@ export default function OurApproach() {
         headline="Our Approach"
         description={
           <>
-            <p className="mb-4 font-semibold">
+            <p className="text-body mb-4 font-semibold">
               Sustainable change is designed, not declared.
             </p>
-            <p className="mb-4">
+            <p className="text-body mb-4">
               Execution is the visible part of change.&nbsp;The thinking, alignment, communication, leadership, and culture beneath it often determine whether it lasts.
             </p>
-            <p className="mb-4">
+            <p className="text-body mb-4">
               Our approach strengthens those foundations through a deliberate sequence. It's how you move from reacting to external demands to authoring direction.
             </p>
-            <p>
+            <p className="text-body">
               <strong>That's the P.A.T.H.</strong>
             </p>
           </>
@@ -206,19 +206,19 @@ export default function OurApproach() {
             Upstream of the rollout.
           </h2>
           <div className="text-lead text-foreground mb-6">
-            <p className="mb-9">Every initiative is built on a series of assumptions.</p>
+            <p className="text-body mb-9">Every initiative is built on a series of assumptions.</p>
             <div className="mb-8 space-y-0">
-              <p className="mb-0">About leadership.</p>
-              <p className="mb-0">About communication.</p>
-              <p className="mb-0">About priorities.</p>
-              <p className="mb-0">About culture.</p>
-              <p className="mb-0">About what people understand, believe, and are capable of doing.</p>
+              <p className="text-body mb-0">About leadership.</p>
+              <p className="text-body mb-0">About communication.</p>
+              <p className="text-body mb-0">About priorities.</p>
+              <p className="text-body mb-0">About culture.</p>
+              <p className="text-body mb-0">About what people understand, believe, and are capable of doing.</p>
             </div>
-            <p className="mb-8">Our work surfaces those assumptions before they become expensive realities. Because&nbsp;</p>
+            <p className="text-body mb-8">Our work surfaces those assumptions before they become expensive realities. Because&nbsp;</p>
             <div className="space-y-0">
-              <p className="mb-0">This is the work that preceeds the rollout.</p>
-              <p className="mb-0">The thinking beneath the plan.</p>
-              <p className="mb-0">The examination that influences everything that follows.</p>
+              <p className="text-body mb-0">This is the work that preceeds the rollout.</p>
+              <p className="text-body mb-0">The thinking beneath the plan.</p>
+              <p className="text-body mb-0">The examination that influences everything that follows.</p>
             </div>
           </div>
           <p className="text-lead text-foreground">
@@ -353,10 +353,10 @@ export default function OurApproach() {
               The Conditions That Shape Every Outcome
             </h2>
             <div className="text-lead text-foreground space-y-8">
-              <p>
+              <p className="text-body">
                 Meaningful change rarely succeeds because of a framework alone. It succeeds because the conditions required for success already exist or are intentionally reinforced.
               </p>
-              <p>
+              <p className="text-body">
                 We do not own change on your behalf. We fortify the conditions that allow the right change to take off, in your people and across your organization.
               </p>
             </div>
@@ -499,8 +499,8 @@ export default function OurApproach() {
                     <s.icon className={`w-6 h-6 ${s.accent}`} />
                   </div>
                   <div>
-                    <p className={`font-poppins font-bold text-3xl leading-none ${s.accent}`}>{s.letter}</p>
-                    <p className={`font-poppins font-semibold text-sm uppercase tracking-wider ${s.accent}`}>
+                    <p className={`font-poppins font-bold text-pullquote leading-none ${s.accent}`}>{s.letter}</p>
+                    <p className={`font-poppins font-semibold text-body-sm uppercase tracking-wider ${s.accent}`}>
                       {s.word}
                     </p>
                   </div>
@@ -515,7 +515,7 @@ export default function OurApproach() {
                   <p className="text-caption font-poppins font-semibold uppercase tracking-wider text-navy/70 mb-1">
                     You walk away with
                   </p>
-                  <p className={`text-sm font-semibold ${s.accent}`}>{s.outcome}</p>
+                  <p className={`text-body-sm font-semibold ${s.accent}`}>{s.outcome}</p>
                 </div>
               </div>
             ))}

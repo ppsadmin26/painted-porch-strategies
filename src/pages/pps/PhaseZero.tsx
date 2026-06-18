@@ -202,23 +202,23 @@ export default function PhaseZero() {
             Not every opportunity strengthens the organization chasing it.
           </h2>
           <div className="space-y-5 text-lg md:text-xl text-charcoal/85 leading-relaxed">
-            <p>And not every change fortifies the future it's intended to create.</p>
-            <p>
+            <p className="text-body">And not every change fortifies the future it's intended to create.</p>
+            <p className="text-body">
               Your organization isn't getting worn down from a lack of effort, but from the
               weight that builds up underneath the continual drive to innovate, accelerate,
               adapt, and grow.&nbsp;
             </p>
-            <p>
+            <p className="text-body">
               Unfinished work.&nbsp;<br />
               Competing priorities.&nbsp;<br />
               Disconnected initiatives.&nbsp;<br />
               Directions that never fully aligned in the first place.
             </p>
-            <p>
+            <p className="text-body">
               Pushing harder in the wrong direction does not change the direction. It just{" "}
               <strong className="text-raspberry font-bold">compounds the cost of getting there</strong>.
             </p>
-            <p>
+            <p className="text-body">
               Phase Zero is the pause that prevents that cost. A deliberate stop, before
               the next big <ShIFt lowercase />&nbsp;hardens into execution, to examine what deserves pursuit, where strain already exists, and what direction makes the most sense from where you are today...and who and what you want to become tomorrow.
             </p>
@@ -298,7 +298,7 @@ export default function PhaseZero() {
               </h3>
               <ul className="space-y-3">
                 {isIsNot.is.map((s) => (
-                  <li key={s} className="flex items-start gap-3 text-foreground leading-relaxed">
+                  <li key={s} className="text-body flex items-start gap-3 text-foreground leading-relaxed">
                     <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-1" />
                     <span>{s}</span>
                   </li>
@@ -311,7 +311,7 @@ export default function PhaseZero() {
               </h3>
               <ul className="space-y-3">
                 {isIsNot.isNot.map((s) => (
-                  <li key={s} className="flex items-start gap-3 text-foreground leading-relaxed">
+                  <li key={s} className="text-body flex items-start gap-3 text-foreground leading-relaxed">
                     <XCircle className="w-5 h-5 text-raspberry flex-shrink-0 mt-1" />
                     <span>{s}</span>
                   </li>
@@ -468,7 +468,7 @@ export default function PhaseZero() {
                 <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                   {w.title}
                 </h3>
-                <p className="text-foreground leading-relaxed mb-5 flex-grow">
+                <p className="text-body text-foreground leading-relaxed mb-5 flex-grow">
                   {w.body}
                 </p>
                 <Link

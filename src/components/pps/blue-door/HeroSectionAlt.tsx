@@ -41,7 +41,7 @@ export default function HeroSectionAlt() {
               Is Your Organization Built to Make Your Next Sh<span className="text-raspberry font-bold">IF</span>t Happen?
             </h1>
             
-            <p className={`font-poppins font-normal text-lg md:text-xl text-gold mb-8 transition-all duration-700 ease-out delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <p className={`font-poppins font-normal text-lead md:text-lead text-gold mb-8 transition-all duration-700 ease-out delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
               Before you commit direction, resources, and credibility, the Blue Door surfaces what your organization can carry so you can lead with clarity and build with confidence.
             </p>
             

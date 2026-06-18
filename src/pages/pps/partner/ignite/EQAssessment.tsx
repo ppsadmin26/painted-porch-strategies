@@ -307,7 +307,7 @@ export default function EQAssessment() {
             <h1 className={`text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 leading-tight drop-shadow-lg transition-all duration-700 ease-out delay-150 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
               What Can <span className="text-gold">E.Q.</span> Do For You?
             </h1>
-            <p className={`text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/95 drop-shadow-md transition-all duration-700 ease-out delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+            <p className={`text-lead md:text-lead max-w-3xl mx-auto mb-8 text-white/95 drop-shadow-md transition-all duration-700 ease-out delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
               Uncover your own strengths and opportunities to show up, be heard,
               connect, drive change, and have resilience to the challenges
               presented in life, work, and anywhere in between.
@@ -370,7 +370,7 @@ export default function EQAssessment() {
           </div>
 
           <div className="max-w-2xl mx-auto mb-10">
-            <p className="text-foreground mb-4 font-medium">
+            <p className="text-body text-foreground mb-4 font-medium">
               By understanding your own Emotional Intelligence, you can bring greater awareness to how you:
             </p>
             <ul className="space-y-3">
@@ -381,7 +381,7 @@ export default function EQAssessment() {
                 "Cope with challenges and change",
                 "Use emotional information in effective and meaningful ways, to lead in all areas of your life",
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
+                <li key={i} className="text-body flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-raspberry flex-shrink-0 mt-0.5" />
                   <span className="text-foreground">{item}</span>
                 </li>
@@ -391,7 +391,7 @@ export default function EQAssessment() {
 
           <div className="text-center">
             <Eyebrow variant="plain" tone="gold" as="p">Awareness leads to Action</Eyebrow>
-            <p className="text-foreground mb-4">
+            <p className="text-body text-foreground mb-4">
               Take the first steps in discovering how to effectively lead, influence, and have a positive impact by knowing your own Emotional Intelligence.
             </p>
           </div>
@@ -411,7 +411,7 @@ export default function EQAssessment() {
             <h2 className="text-3xl md:text-5xl font-poppins font-bold text-navy mt-2">
               So, why do <span className="text-raspberry">E.Q.</span>?
             </h2>
-            <p className="text-foreground mt-4 max-w-2xl mx-auto">
+            <p className="text-body text-foreground mt-4 max-w-2xl mx-auto">
               Three numbers leaders can't ignore.
             </p>
           </div>
@@ -439,7 +439,7 @@ export default function EQAssessment() {
               The EQ-i 2.0 Model of Emotional Intelligence
             </h2>
             <p className="text-lead text-foreground font-medium">Skills for both Work and Life</p>
-            <p className="text-foreground max-w-3xl mx-auto mt-4 leading-relaxed">
+            <p className="text-body text-foreground max-w-3xl mx-auto mt-4 leading-relaxed">
               While there are several models of emotional intelligence in use today, the EQ-i 2.0 model is one of the most popular and one of the only validated and reliable measures of self-perceived EQ that ties directly to the skills and competencies needed to lead in all areas of your life, whether you're in an official leadership role or not.
             </p>
           </div>
@@ -488,10 +488,10 @@ export default function EQAssessment() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                     {section.title}
                   </h3>
-                  <p className="text-foreground mb-4">{section.description}</p>
+                  <p className="text-body text-foreground mb-4">{section.description}</p>
                   <ul className="space-y-2 mb-3">
                     {section.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-2">
+                      <li key={j} className="text-body flex items-start gap-2">
                         <CheckCircle className="w-4 h-4 text-raspberry flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-foreground">{item}</span>
                       </li>
@@ -541,7 +541,7 @@ export default function EQAssessment() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2">
               Discover Your E.Q.
             </h2>
-            <p className="text-foreground mt-3">
+            <p className="text-body text-foreground mt-3">
               There are six report options we offer, depending on your individual or organizational needs.
             </p>
           </div>
@@ -552,7 +552,7 @@ export default function EQAssessment() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                 EQ-i Workplace Report
               </h3>
-              <p className="text-4xl font-bold text-raspberry mb-4">$997</p>
+              <p className="text-body text-4xl font-bold text-raspberry mb-4">$997</p>
               <p className="text-body-sm font-medium text-foreground mb-4">
                 Gain clarity into your own E.Q.
               </p>
@@ -588,7 +588,7 @@ export default function EQAssessment() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                 EQ-i Leadership Report
               </h3>
-              <p className="text-4xl font-bold text-raspberry mb-4">$1,197</p>
+              <p className="text-body text-4xl font-bold text-raspberry mb-4">$1,197</p>
               <p className="text-body-sm font-medium text-foreground mb-4">
                 Know Your Leadership Impact & Potential
               </p>

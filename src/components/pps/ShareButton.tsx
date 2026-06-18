@@ -142,7 +142,7 @@ export default function ShareButton({ title, url }: ShareButtonProps) {
           </button>
 
 
-          <p className="font-poppins font-semibold text-foreground mb-4">Share this post</p>
+          <p className="text-body font-poppins font-semibold text-foreground mb-4">Share this post</p>
 
           {/* Quick actions row */}
           <div className="flex gap-3 mb-4">

@@ -74,7 +74,7 @@ export default function HowItWorksSectionAlt() {
                   Step {step.number}: {step.title}
                 </h3>
                 
-                <p className={`text-sm font-semibold ${stepColors[index].text} mb-3`}>
+                <p className={`text-body-sm font-semibold ${stepColors[index].text} mb-3`}>
                   {step.time}
                 </p>
                 
@@ -87,7 +87,7 @@ export default function HowItWorksSectionAlt() {
                 {step.bullets && (
                   <ul className="space-y-2 flex-1">
                     {step.bullets.map((bullet, i) => (
-                      <li key={i} className="flex items-start gap-2">
+                      <li key={i} className="text-body flex items-start gap-2">
                         <Check className={`w-4 h-4 ${stepColors[index].text} flex-shrink-0 mt-0.5`} />
                         <span className="text-foreground text-sm">{bullet}</span>
                       </li>

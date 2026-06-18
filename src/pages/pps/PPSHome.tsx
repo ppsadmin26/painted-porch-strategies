@@ -200,7 +200,7 @@ export default function PPSHome() {
                   <p className="mt-2 text-body-sm text-white/90 font-montserrat !leading-snug">
                     {s.label.replace(/\.$/, "")}
                   </p>
-                  <p className="mt-2 text-[0.6rem] md:text-[0.65rem] uppercase tracking-wider text-white/80">
+                  <p className="text-body mt-2 text-[0.6rem] md:text-[0.65rem] uppercase tracking-wider text-white/80">
                     {s.source}{s.year && !s.source.includes(s.year) ? ` · ${s.year}` : ""}
                   </p>
                 </div>
@@ -260,7 +260,7 @@ export default function PPSHome() {
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary transition-colors">
                       Explore where you are
                     </h3>
-                    <p className="text-foreground leading-relaxed mb-3">
+                    <p className="text-body text-foreground leading-relaxed mb-3">
                       From free resources, masterclasses, courses, assessments,
                       and more. For leaders sensing something needs to sh<strong>IF</strong>t,
                       but not sure where to get started.
@@ -288,7 +288,7 @@ export default function PPSHome() {
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-bluedoor transition-colors">
                       Get clarity before you commit
                     </h3>
-                    <p className="text-foreground leading-relaxed mb-3">
+                    <p className="text-body text-foreground leading-relaxed mb-3">
                       A structured organizational appraisal that reveals what
                       your organization is realistically positioned to pursue before your next initiative begins.
                     </p>
@@ -315,7 +315,7 @@ export default function PPSHome() {
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-pps-purple transition-colors">
                       Partner through your next sh<span className="text-raspberry font-bold">IF</span>t
                     </h3>
-                    <p className="text-foreground leading-relaxed mb-3">
+                    <p className="text-body text-foreground leading-relaxed mb-3">
                       Once the Blue Door reveals what&rsquo;s real, we partner
                       with you to architect, align, and sustain the change.
                       Three engagement styles, shaped to how you want to engage, what you need, and when.
@@ -401,7 +401,7 @@ export default function PPSHome() {
                 <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                   {pillar.title}
                 </h3>
-                <p className={`text-sm font-medium ${pillar.color} mb-3`}>
+                <p className={`text-body-sm font-medium ${pillar.color} mb-3`}>
                   {pillar.subtitle}
                 </p>
                 <p className="text-body-sm text-foreground">
@@ -569,11 +569,11 @@ export default function PPSHome() {
               </p>
               <ul className="space-y-4">
                 {discover.map((d, i) => (
-                  <li key={i} className="flex gap-3">
+                  <li key={i} className="text-body flex gap-3">
                     <span className="flex-shrink-0 w-6 h-6 rounded-full bg-bluedoor/10 text-bluedoor font-poppins font-bold text-xs flex items-center justify-center mt-0.5">
                       {i + 1}
                     </span>
-                    <p className="text-foreground leading-relaxed">{d}</p>
+                    <p className="text-body text-foreground leading-relaxed">{d}</p>
                   </li>
                 ))}
               </ul>
@@ -615,7 +615,7 @@ export default function PPSHome() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                 Exploring for Yourself?
               </h3>
-              <p className="text-foreground mb-4 leading-relaxed flex-1">
+              <p className="text-body text-foreground mb-4 leading-relaxed flex-1">
                 Courses, assessments, masterclasses, and self-guided tools to
                 help you communicate, lead, and navigate change more
                 intentionally in the work you&rsquo;re already doing.
@@ -639,7 +639,7 @@ export default function PPSHome() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                 Exploring for Your Team or Organization?
               </h3>
-              <p className="text-foreground mb-4 leading-relaxed flex-1">
+              <p className="text-body text-foreground mb-4 leading-relaxed flex-1">
                 Organizational clarity, strategic alignment, and the Blue Door
                 experience for leaders navigating questions of growth,
                 capability, and strategic direction.
@@ -680,20 +680,20 @@ export default function PPSHome() {
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-lime/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-lime">
-              <p className="font-poppins font-bold text-lime mb-2">If yes</p>
+              <p className="text-body font-poppins font-bold text-lime mb-2">If yes</p>
               <p className="text-body-sm text-white/90">
                 We get to work with you on what it takes to author and shape
                 your next shift.
               </p>
             </div>
             <div className="bg-gold/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-gold">
-              <p className="font-poppins font-bold text-gold mb-2">If not yet</p>
+              <p className="text-body font-poppins font-bold text-gold mb-2">If not yet</p>
               <p className="text-body-sm text-white/90">
                 We tell you, and we provide a pathway to action.
               </p>
             </div>
             <div className="bg-raspberry/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-raspberry">
-              <p className="font-poppins font-bold text-raspberry mb-2">If not us</p>
+              <p className="text-body font-poppins font-bold text-raspberry mb-2">If not us</p>
               <p className="text-body-sm text-white/90">
                 We tell you that, too, and connect you with the right partner
                 for your stage and needs.

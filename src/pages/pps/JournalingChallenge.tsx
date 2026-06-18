@@ -109,7 +109,7 @@ export default function JournalingChallenge() {
           </div>
           <ul className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {learnings.map((item) => (
-              <li key={item} className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm">
+              <li key={item} className="text-body flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm">
                 <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                 <span className="text-foreground">{item}</span>
               </li>
@@ -157,7 +157,7 @@ export default function JournalingChallenge() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Who this is for
             </h2>
-            <p className="text-foreground max-w-2xl mx-auto">
+            <p className="text-body text-foreground max-w-2xl mx-auto">
               Anyone who's been meaning to "start journaling" for a while now, and could use a small, doable nudge to actually begin.
             </p>
           </div>

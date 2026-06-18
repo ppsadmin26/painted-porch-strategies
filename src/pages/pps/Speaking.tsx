@@ -145,7 +145,7 @@ export default function Speaking() {
                     <p className="text-lead font-medium text-foreground mb-3 italic">
                       {speaker.tagline}
                     </p>
-                    <p className="text-foreground leading-relaxed mb-6">
+                    <p className="text-body text-foreground leading-relaxed mb-6">
                       {speaker.description}
                     </p>
 

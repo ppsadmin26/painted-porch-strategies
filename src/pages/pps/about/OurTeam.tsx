@@ -144,7 +144,7 @@ export default function OurTeam() {
                   <h3 className={`text-xl md:text-2xl font-poppins font-semibold mb-1 ${isAmy ? "text-purple" : "text-navy"}`}>
                     {member.name}
                   </h3>
-                  <p className={`text-sm font-medium mb-1 ${isAmy ? "text-purple" : member.accent}`}>
+                  <p className={`text-body-sm font-medium mb-1 ${isAmy ? "text-purple" : member.accent}`}>
                     {member.title}
                   </p>
                   <p className="text-caption text-muted-foreground mb-4">

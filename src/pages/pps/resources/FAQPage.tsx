@@ -244,7 +244,7 @@ export default function FAQPage() {
               <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight transition-all duration-700 ease-out delay-150 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
                 Frequently Asked Questions
               </h1>
-              <p className={`text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl transition-all duration-700 ease-out delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+              <p className={`text-lead md:text-lead text-white/90 leading-relaxed max-w-3xl transition-all duration-700 ease-out delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
                 Everything you need to know about Painted Porch Strategies, our P.A.T.H.ways, and how we partner with leaders to architect extraordinary outcomes.
               </p>
             </div>

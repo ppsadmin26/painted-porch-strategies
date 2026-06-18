@@ -109,7 +109,7 @@ export default function ExtraordinaryTeams() {
           <h1 className={`text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6 transition-all duration-700 ease-out delay-150 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             Create Extraordinary Teams
           </h1>
-          <p className={`text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed mb-8 transition-all duration-700 ease-out delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+          <p className={`text-lead md:text-lead text-white/90 max-w-2xl leading-relaxed mb-8 transition-all duration-700 ease-out delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             Better <strong>connect</strong>, <strong>collaborate</strong>, and <strong>handle conflict</strong> with your fellow humans, with the teams and people you interact with both at work and in life.
           </p>
           <div className={`transition-all duration-700 ease-out delay-500 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
@@ -195,7 +195,7 @@ export default function ExtraordinaryTeams() {
           <AnimatedSection>
             <div className="bg-white/5 rounded-2xl border border-white/10 p-8 mb-12">
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-gold mb-4">Watch. Reflect. Discuss.</h3>
-              <p className="text-white/80 leading-relaxed">
+              <p className="text-body text-white/80 leading-relaxed">
                 We believe that <strong>real learning and transformation is not a spectator sport</strong>. Through per-lesson discussion boards and a <strong>Private Community</strong>, <strong>PLUS Monthly, Live Group Video Coaching Calls</strong> <em>(optional, add-on)</em>, you can connect with us and your fellow "Extraordinary Team" members to share your takeaways, insights, ah-has, and more to shift from knowing to <strong>doing</strong> and <strong>becoming</strong>.
               </p>
             </div>
@@ -243,7 +243,7 @@ export default function ExtraordinaryTeams() {
                       <Icon className="h-10 w-10 text-pps-teal" />
                     </div>
                     <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-4">{d.title}</h3>
-                    <p className="text-charcoal leading-relaxed">{d.description}</p>
+                    <p className="text-body text-charcoal leading-relaxed">{d.description}</p>
                   </div>
                 );
               })}
@@ -270,7 +270,7 @@ export default function ExtraordinaryTeams() {
                   <p className="text-pps-gold font-poppins font-semibold text-body-sm mb-6">
                     Amy Yackowski · Founder & Organizational Shift Strategist
                   </p>
-                  <p className="text-charcoal leading-relaxed mb-6">
+                  <p className="text-body text-charcoal leading-relaxed mb-6">
                     Welcome to the Porch! You can call me Amy Yack, my friends do. I've spent the last 20+ years seeking out and partnering with organizations to design programs that <strong>connect</strong> people and <strong>process</strong> to a <strong>clear purpose</strong>, strategic vision, and noble <strong>mission</strong>. Through <strong>challenging business as usual</strong>, we can navigate the sea of change and build amazing teams, focused on <strong>contribution</strong>, <strong>service</strong>, and <strong>connection</strong>.
                   </p>
                   <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal hover:text-white font-poppins font-semibold rounded-lg">
@@ -310,7 +310,7 @@ export default function ExtraordinaryTeams() {
                   )}
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-1">{tier.name}</h3>
                   <div className="flex items-baseline gap-2 mb-2">
-                    <p className="text-4xl font-poppins font-bold text-pps-navy">{tier.price}</p>
+                    <p className="text-body text-4xl font-poppins font-bold text-pps-navy">{tier.price}</p>
                   </div>
                   <p className="text-body-sm text-charcoal mb-6">{tier.subtitle}</p>
                   <ul className="space-y-3 mb-8">
@@ -341,7 +341,7 @@ export default function ExtraordinaryTeams() {
           {!isLive && (
             <AnimatedSection>
               <div className="mt-10 max-w-3xl mx-auto text-center bg-pps-teal/5 border border-pps-teal/20 rounded-2xl p-6 md:p-8">
-                <p className="text-charcoal leading-relaxed mb-5">
+                <p className="text-body text-charcoal leading-relaxed mb-5">
                   Our courses will be re-launching soon as we move our learning and community to a new course platform. If you'd like to be the first to know when the <strong>Create Extraordinary Teams</strong> bundle is ready, join our launch list.
                 </p>
                 <Button
@@ -371,7 +371,7 @@ export default function ExtraordinaryTeams() {
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-4">A Virtuous Cycle</h3>
-            <p className="text-charcoal leading-relaxed mb-4">
+            <p className="text-body text-charcoal leading-relaxed mb-4">
               Painted Porch Strategies was created to model the Stoic principles of <em>Reason, Logic, Purpose, and Virtue</em>.
               Since we intend to live by the Stoic philosopher Seneca's advice of "<em>works not words</em>", we believe that in order{" "}
               <strong>to do <em>well</em></strong>, we must also <strong>do <em>good</em></strong>.

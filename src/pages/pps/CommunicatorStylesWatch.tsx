@@ -75,10 +75,10 @@ export default function CommunicatorStylesWatch() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-4">
             <span className="text-raspberry italic">The 6 Communicator Styles</span> Training Replay
           </h1>
-          <p className="text-foreground max-w-2xl mx-auto mb-3">
+          <p className="text-body text-foreground max-w-2xl mx-auto mb-3">
             Here's the replay of our training on mastering your message.
           </p>
-          <p className="text-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-body text-foreground max-w-2xl mx-auto mb-8">
             Make sure to download the one-page reference sheet to use as you watch and chart your own (and others') communicator styles.
           </p>
           <a href={REFERENCE_SHEET_URL} target="_blank" rel="noopener noreferrer">
@@ -120,7 +120,7 @@ export default function CommunicatorStylesWatch() {
                   "Simple ways you can start to know your \"audience\" and craft communication that is heard and understood",
                   "And more!",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
+                  <li key={item} className="text-body flex items-start gap-3">
                     <span className="w-2 h-2 rounded-full bg-raspberry mt-2 shrink-0" />
                     <span>{item}</span>
                   </li>
@@ -133,7 +133,7 @@ export default function CommunicatorStylesWatch() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Don't Forget Your One-Page Reference Sheet
               </h2>
-              <p className="text-foreground mb-6">
+              <p className="text-body text-foreground mb-6">
                 Download the 6 Communicator Styles summary to use as a quick reference as you begin to chart your own, as well as others', styles to master your message and communicate with clarity, influence, and impact.
               </p>
               <a href={REFERENCE_SHEET_URL} target="_blank" rel="noopener noreferrer">
@@ -152,7 +152,7 @@ export default function CommunicatorStylesWatch() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Ready to keep the momentum going?
           </h2>
-          <p className="text-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-foreground mb-8 max-w-2xl mx-auto">
             Explore more free tools, frameworks, and downloads to put what you learned into action.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

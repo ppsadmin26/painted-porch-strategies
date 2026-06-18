@@ -48,7 +48,7 @@ export default function KickTheHabit() {
             <br />
             Training Replay
           </h1>
-          <p className="text-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-body text-foreground max-w-2xl mx-auto mb-8">
             Access a replay of our free training session led by Painted Porch Strategies Founder &amp; Organizational Shift Strategist, Amy Yackowski.
           </p>
           <a href="#get-access">
@@ -86,27 +86,27 @@ export default function KickTheHabit() {
                 During this training session, you will learn to...
               </h2>
               <ul className="space-y-3 text-foreground">
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <span className="text-raspberry mt-1">•</span>
                   <span>Understand what's impacting well-intended change efforts</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <span className="text-raspberry mt-1">•</span>
                   <span>Spot negative thinking patterns</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <span className="text-raspberry mt-1">•</span>
                   <span>Challenge habitual ways of doing</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <span className="text-raspberry mt-1">•</span>
                   <span>Use curiosity and play to spot innovative ideas</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <span className="text-raspberry mt-1">•</span>
                   <span>Develop a Change-ready mindset</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <span className="text-raspberry mt-1">•</span>
                   <span>and more!</span>
                 </li>

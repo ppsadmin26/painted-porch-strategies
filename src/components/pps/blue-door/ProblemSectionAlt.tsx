@@ -62,7 +62,7 @@ export default function ProblemSectionAlt() {
         <div className="max-w-3xl mx-auto mb-12 flex justify-center">
           <ul className="space-y-4">
             {problemPoints.map((point, index) => (
-              <li key={index} className="flex items-start gap-3">
+              <li key={index} className="text-body flex items-start gap-3">
                 <Circle className="w-3 h-3 mt-2 fill-raspberry text-raspberry flex-shrink-0" />
                 <span className="text-base md:text-lg text-foreground leading-relaxed">{point}</span>
               </li>

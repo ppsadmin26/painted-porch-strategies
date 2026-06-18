@@ -171,7 +171,7 @@ export default function AmplifyWorkshops() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
               Phase Zero&trade; Strategic Workshops
             </h2>
-            <p className="text-foreground max-w-2xl mx-auto">
+            <p className="text-body text-foreground max-w-2xl mx-auto">
               Design the architecture of your next transformation before you build it. These workshops align your leadership team around what you're authoring and why.
             </p>
           </div>
@@ -206,7 +206,7 @@ export default function AmplifyWorkshops() {
                       <p className="text-body-sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
                       <ul className="space-y-1">
                         {workshop.highlights.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2">
+                          <li key={i} className="text-body flex items-start gap-2">
                             <CheckCircle className="w-3 h-3 text-lime flex-shrink-0 mt-1" />
                             <span className="text-xs text-foreground">{item}</span>
                           </li>
@@ -257,7 +257,7 @@ export default function AmplifyWorkshops() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
                 Leadership & Team Development Workshops
               </h2>
-              <p className="text-foreground max-w-2xl mx-auto">
+              <p className="text-body text-foreground max-w-2xl mx-auto">
                 Build the capacity your organization needs to lead and adapt to change. These workshops strengthen the foundational skills that make transformation possible and the extraordinary achievable.
               </p>
             </div>
@@ -352,7 +352,7 @@ export default function AmplifyWorkshops() {
                       <p className="text-body-sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
                       <ul className="space-y-1">
                         {workshop.outcomes.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2">
+                          <li key={i} className="text-body flex items-start gap-2">
                             <CheckCircle className="w-3 h-3 text-lime flex-shrink-0 mt-1" />
                             <span className="text-xs text-foreground">{item}</span>
                           </li>
@@ -370,10 +370,10 @@ export default function AmplifyWorkshops() {
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
               Don&rsquo;t see exactly what you&rsquo;re looking for?
             </h3>
-            <p className="text-foreground max-w-2xl mx-auto mb-3">
+            <p className="text-body text-foreground max-w-2xl mx-auto mb-3">
               The workshops above are a sample of what we run most often. We also offer other sessions across our core topic areas, and most can be delivered as a <Link to="/speaking" className="font-semibold text-teal hover:text-teal/80 underline underline-offset-2">keynote or speaking session</Link> or expanded into a <strong>workshop</strong>:
             </p>
-            <p className="text-foreground max-w-2xl mx-auto mb-6">
+            <p className="text-body text-foreground max-w-2xl mx-auto mb-6">
               <span className="font-semibold text-navy">Change &amp; Innovation</span>
               <span className="text-foreground/50"> &middot; </span>
               <span className="font-semibold text-navy">Leadership &amp; Culture</span>
@@ -386,7 +386,7 @@ export default function AmplifyWorkshops() {
               <span className="text-foreground/50"> &middot; </span>
               <span className="font-semibold text-navy">Team Dynamics</span>
             </p>
-            <p className="text-foreground max-w-2xl mx-auto mb-6">
+            <p className="text-body text-foreground max-w-2xl mx-auto mb-6">
               Take the P.A.T.H.finder quiz so we can recommend the workshop or speaking session that best fits where you&rsquo;re headed, or contact us to talk through your topic.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">

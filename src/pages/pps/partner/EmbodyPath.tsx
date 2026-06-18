@@ -123,7 +123,7 @@ export default function EmbodyPath() {
                 Partnership Structure
               </h3>
               <ul className="space-y-4">
-                <li className="flex items-start gap-3">
+                <li className="text-body flex items-start gap-3">
                   <div className="w-8 h-8 rounded-lg bg-navy/10 flex items-center justify-center flex-shrink-0">
                     <span className="text-navy font-bold text-sm">1</span>
                   </div>
@@ -132,7 +132,7 @@ export default function EmbodyPath() {
                     <p className="text-body-sm text-foreground">Regular strategy and progress discussions</p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="text-body flex items-start gap-3">
                   <div className="w-8 h-8 rounded-lg bg-navy/10 flex items-center justify-center flex-shrink-0">
                     <span className="text-navy font-bold text-sm">2</span>
                   </div>
@@ -141,7 +141,7 @@ export default function EmbodyPath() {
                     <p className="text-body-sm text-foreground">Regular in-person facilitation and coaching</p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="text-body flex items-start gap-3">
                   <div className="w-8 h-8 rounded-lg bg-navy/10 flex items-center justify-center flex-shrink-0">
                     <span className="text-navy font-bold text-sm">3</span>
                   </div>
@@ -150,7 +150,7 @@ export default function EmbodyPath() {
                     <p className="text-body-sm text-foreground">Direct access when you need guidance</p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="text-body flex items-start gap-3">
                   <div className="w-8 h-8 rounded-lg bg-navy/10 flex items-center justify-center flex-shrink-0">
                     <span className="text-navy font-bold text-sm">4</span>
                   </div>

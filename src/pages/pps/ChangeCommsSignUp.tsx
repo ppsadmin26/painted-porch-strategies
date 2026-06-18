@@ -125,25 +125,25 @@ export default function ChangeCommsSignUp() {
 
             <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-4">What's inside:</h3>
             <ul className="space-y-4">
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Megaphone className="w-6 h-6 text-teal flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   <strong className="text-navy">4 critical steps</strong> for crafting clear, effective change messaging
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <MessageCircle className="w-6 h-6 text-lime-green flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   <strong className="text-navy">Audience planning prompts</strong> for both internal and external stakeholders
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <CheckCircle2 className="w-6 h-6 text-purple flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   <strong className="text-navy">An action checklist</strong> to keep messaging concise, consistent, and on point
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Sparkles className="w-6 h-6 text-raspberry flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   Built to drive <strong className="text-navy">awareness, understanding, and adoption</strong> before kickoff

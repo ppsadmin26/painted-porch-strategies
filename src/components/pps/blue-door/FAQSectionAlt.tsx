@@ -51,7 +51,7 @@ export default function FAQSectionAlt() {
         <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-4">
           Frequently Asked Questions
         </h2>
-        <p className="text-foreground text-center mb-10">
+        <p className="text-body text-foreground text-center mb-10">
           Everything you need to know about the Blue Door
         </p>
         
@@ -72,12 +72,12 @@ export default function FAQSectionAlt() {
                 <AccordionContent className="text-foreground leading-relaxed pb-4">
                   {faq.richContent ? (
                     <div>
-                      <p className="mb-3">
+                      <p className="text-body mb-3">
                         Your P.A.T.H. Compass is a strategic reading of your organization. You receive both a PDF and interactive portal access that includes:
                       </p>
                       <ul className="space-y-2">
                         {compassSections.map((section, i) => (
-                          <li key={i} className="flex items-start gap-2">
+                          <li key={i} className="text-body flex items-start gap-2">
                             <span className="text-lime font-bold">•</span>
                             <span><strong>{section.name}:</strong>&nbsp;{section.desc}</span>
                           </li>
@@ -88,7 +88,7 @@ export default function FAQSectionAlt() {
                     faq.answer?.split('\n\n').map((paragraph, i) => (
                       <p
                         key={i}
-                        className={i > 0 ? 'mt-3' : ''}
+                        className={i  className="text-body"> 0 ? 'mt-3' : ''}
                         dangerouslySetInnerHTML={{ __html: paragraph }}
                       />
                     ))

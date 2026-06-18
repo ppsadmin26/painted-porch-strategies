@@ -509,7 +509,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               </p>
             )}
             <h2 className="font-poppins text-3xl text-navy mb-4">{result.headline}</h2>
-            <p className="text-foreground leading-relaxed mb-6">{result.narrative}</p>
+            <p className="text-body text-foreground leading-relaxed mb-6">{result.narrative}</p>
 
             {result.whyThisFits && (
               <div className="mb-6 p-4 rounded-lg border-l-4 border-primary bg-primary/5">
@@ -524,7 +524,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                   ? "border-bluedoor bg-bluedoor/5"
                   : "border-primary bg-primary/5"
               }`}>
-                <p className={`text-xs uppercase tracking-wider font-bold mb-1 ${
+                <p className={`text-caption uppercase tracking-wider font-bold mb-1 ${
                   result.strongestNextStep.kind === "blueDoor" ? "text-bluedoor" : "text-primary"
                 }`}>
                   {result.strongestNextStep.label}
@@ -595,7 +595,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               {submitted ? (
                 <div className="flex items-center gap-3 text-navy">
                   <CheckCircle2 className="w-5 h-5 text-lime" />
-                  <p className="font-poppins font-semibold">Sent! Check your inbox for your results.</p>
+                  <p className="text-body font-poppins font-semibold">Sent! Check your inbox for your results.</p>
                 </div>
               ) : (
                 <form onSubmit={onEmailSubmit} className="space-y-3">
@@ -653,7 +653,7 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
                 </p>
                 <p className="text-caption text-foreground/70 mt-0.5">{o.blurb}</p>
                 {o.isComingSoon && (
-                  <p className="text-[11px] font-semibold text-gold mt-1">
+                  <p className="text-body text-[11px] font-semibold text-gold mt-1">
                     Launching soon — join the launch list on the card.
                   </p>
                 )}

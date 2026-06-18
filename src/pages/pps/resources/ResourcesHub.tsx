@@ -74,7 +74,7 @@ export default function ResourcesHub() {
                   <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3">
                     {category.title}
                   </h3>
-                  <p className="text-foreground mb-6 leading-relaxed">
+                  <p className="text-body text-foreground mb-6 leading-relaxed">
                     {category.description}
                   </p>
                   <span className="inline-flex items-center text-primary font-semibold group-hover:underline">

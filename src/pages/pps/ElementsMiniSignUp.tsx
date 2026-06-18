@@ -145,32 +145,32 @@ export default function ElementsMiniSignUp() {
             In this mini course, you'll discover how to:
           </h2>
           <ul className="space-y-5 mt-8 max-w-3xl mx-auto">
-            <li className="flex gap-3">
+            <li className="text-body flex gap-3">
               <Users className="w-6 h-6 text-teal flex-shrink-0 mt-1" />
               <span className="text-charcoal">
                 <strong className="text-navy">Understand what drives each team member</strong>, how the Five Elemental Styles shape motivation, communication, and reactions under pressure.
               </span>
             </li>
-            <li className="flex gap-3">
+            <li className="text-body flex gap-3">
               <Compass className="w-6 h-6 text-lime-green flex-shrink-0 mt-1" />
               <span className="text-charcoal">
                 <strong className="text-navy">Define the Elements of a Team</strong>, spot the subtle signs of stress and strength so you can respond with empathy and insight.
               </span>
             </li>
-            <li className="flex gap-3">
+            <li className="text-body flex gap-3">
               <Sparkles className="w-6 h-6 text-purple flex-shrink-0 mt-1" />
               <span className="text-charcoal">
                 <strong className="text-navy">Create more flow, less friction</strong>, use a simple, powerful framework to build team harmony, improve collaboration, and support well-being.
               </span>
             </li>
-            <li className="flex gap-3">
+            <li className="text-body flex gap-3">
               <BookOpen className="w-6 h-6 text-raspberry flex-shrink-0 mt-1" />
               <span className="text-charcoal">
                 <strong className="text-navy">Apply it immediately</strong>, walk away with guided worksheets and reflection prompts you can use in 1:1s, team meetings, and conflict moments.
               </span>
             </li>
           </ul>
-          <p className="mt-8 text-charcoal italic text-center">
+          <p className="text-body mt-8 text-charcoal italic text-center">
             Perfect for leaders, coaches, and collaborators who want more alignment and less guessing.
           </p>
         </div>
@@ -196,7 +196,7 @@ export default function ElementsMiniSignUp() {
                 INDIVIDUAL
               </div>
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">For You</h3>
-              <p className="text-charcoal mb-6">
+              <p className="text-body text-charcoal mb-6">
                 Self-paced access for one learner. Perfect for leaders, coaches, and curious humans.
               </p>
               <div className="mb-6">
@@ -205,7 +205,7 @@ export default function ElementsMiniSignUp() {
               </div>
               <ul className="space-y-3 mb-8 flex-grow">
                 {individualIncludes.map((item) => (
-                  <li key={item} className="flex gap-2 items-start text-charcoal">
+                  <li key={item} className="text-body flex gap-2 items-start text-charcoal">
                     <Check className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -225,7 +225,7 @@ export default function ElementsMiniSignUp() {
                 TEAM
               </div>
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">For Your Team</h3>
-              <p className="text-charcoal mb-6">
+              <p className="text-body text-charcoal mb-6">
                 Bring the Five Elements to your whole team with custom pricing and optional facilitation.
               </p>
               <div className="mb-6">
@@ -234,7 +234,7 @@ export default function ElementsMiniSignUp() {
               </div>
               <ul className="space-y-3 mb-8 flex-grow">
                 {teamIncludes.map((item) => (
-                  <li key={item} className="flex gap-2 items-start text-charcoal">
+                  <li key={item} className="text-body flex gap-2 items-start text-charcoal">
                     <Check className="w-5 h-5 text-purple flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -271,7 +271,7 @@ export default function ElementsMiniSignUp() {
                 </div>
                 <div>
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-1">{lesson.title}</h3>
-                  <p className="text-charcoal">{lesson.desc}</p>
+                  <p className="text-body text-charcoal">{lesson.desc}</p>
                 </div>
               </div>
             ))}

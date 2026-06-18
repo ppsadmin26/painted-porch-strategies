@@ -71,7 +71,7 @@ export default function ValueEscalationSectionAlt() {
               <p className="font-poppins font-semibold text-bluedoor text-caption mb-2">Deliverables:</p>
               <ul className="space-y-1.5 text-sm text-foreground">
                 {["Strategic appraisal in less than 30 minutes", "Executive P.A.T.H.way within 72 business hours", "3-4 viable shifts identified", "Structural capability appraisal", "Prerequisites for each potential path"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2">
+                  <li key={i} className="text-body flex items-start gap-2">
                     <Check className="w-4 h-4 text-bluedoor flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -103,7 +103,7 @@ export default function ValueEscalationSectionAlt() {
             <p className="font-poppins font-semibold text-strategic text-caption mb-2">Investment Options:</p>
             <ul className="space-y-1.5 text-sm text-foreground">
               {["Full-day session: $36,000*", "2+ day intensive: $69,000*"].map((item, i) => (
-                <li key={i} className="flex items-start gap-2">
+                <li key={i} className="text-body flex items-start gap-2">
                   <Check className="w-4 h-4 text-strategic flex-shrink-0 mt-0.5" />
                   <span>{item}</span>
                 </li>
@@ -167,7 +167,7 @@ export default function ValueEscalationSectionAlt() {
             <ArrowDown className="w-6 h-6 text-bluedoor" />
             <span>Only after this Phase Zero does the work to <strong>build</strong> and implement begin.</span>
           </div>
-          <p className="italic text-navy mt-6">
+          <p className="text-body italic text-navy mt-6">
             Each stage creates the conditions for the next. Diagnosis creates <span className="underline">clarity</span>. Clarity creates <span className="underline">commitment</span>. Commitment makes <span className="underline">execution</span> inevitable, not managed.
           </p>
         </div>

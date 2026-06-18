@@ -214,16 +214,16 @@ function renderNode(node: TiptapNode, index: number): React.ReactNode {
       return <Tag key={index} className={classes[level] || classes[2]}>{children}</Tag>;
     }
     case "paragraph":
-      return <p key={index} className="text-foreground leading-relaxed mb-4">{children}</p>;
+      return <p key={index} className="text-body text-foreground leading-relaxed mb-4">{children}</p>;
     case "bulletList":
       return <ul key={index} className="list-disc ml-6 mb-4 space-y-1">{children}</ul>;
     case "orderedList":
       return <ol key={index} className="list-decimal ml-6 mb-4 space-y-1">{children}</ol>;
     case "listItem":
-      return <li key={index} className="text-foreground leading-relaxed">{children}</li>;
+      return <li key={index} className="text-body text-foreground leading-relaxed">{children}</li>;
     case "blockquote":
       return (
-        <blockquote key={index} className="border-l-4 border-primary pl-4 italic my-6 text-muted-foreground">
+        <blockquote key={index} className="text-pullquote border-l-4 border-primary pl-4 italic my-6 text-muted-foreground">
           {children}
         </blockquote>
       );
@@ -486,7 +486,7 @@ export default function PPSBlogPost() {
               )}
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <p className="font-poppins font-semibold text-navy">
+                  <p className="text-body font-poppins font-semibold text-navy">
                     {post.author.full_name}
                   </p>
                   {isGuest && (

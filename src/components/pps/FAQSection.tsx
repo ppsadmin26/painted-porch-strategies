@@ -108,7 +108,7 @@ export function FAQSection({
           <h2 className="text-3xl md:text-4xl font-bold font-poppins text-navy mb-3">
             Frequently Asked Questions
           </h2>
-          <p className="text-foreground">
+          <p className="text-body text-foreground">
             {subheadline || defaultSubheadline}
           </p>
         </div>

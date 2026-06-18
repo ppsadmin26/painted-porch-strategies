@@ -59,7 +59,7 @@ export default function PositioningSectionAlt() {
             <h3 className="text-xl md:text-2xl font-poppins font-semibold text-bluedoor mb-3">
               At the Blue Door
             </h3>
-            <p className="text-foreground">
+            <p className="text-body text-foreground">
               "We haven't yet decided what shift to explore and make happen next"
             </p>
           </div>
@@ -68,7 +68,7 @@ export default function PositioningSectionAlt() {
             <h3 className="text-xl md:text-2xl font-poppins font-semibold text-foreground mb-3">
               Past the Blue Door
             </h3>
-            <p className="text-foreground">
+            <p className="text-body text-foreground">
               "We know what we're building, we need help implementing it"
             </p>
           </div>

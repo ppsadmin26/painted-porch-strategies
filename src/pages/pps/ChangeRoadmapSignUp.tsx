@@ -125,25 +125,25 @@ export default function ChangeRoadmapSignUp() {
 
             <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-4">What's inside:</h3>
             <ul className="space-y-4">
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Compass className="w-6 h-6 text-teal flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   <strong className="text-navy">Name your change initiative</strong> and the gain on the other side
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Map className="w-6 h-6 text-lime-green flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   <strong className="text-navy">Map key milestones</strong> and checkpoints across the journey
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <CheckCircle2 className="w-6 h-6 text-purple flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   <strong className="text-navy">A change journey checklist</strong> covering teams, navigators, roadblocks, and the future state
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Sparkles className="w-6 h-6 text-raspberry flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   Built on the <strong className="text-navy">P.A.T.H.™ methodology</strong>, Prepare, Align, Take Off, Habit

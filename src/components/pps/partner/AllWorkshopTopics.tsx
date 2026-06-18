@@ -132,7 +132,7 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
         <h3 className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-2">
           Browse All Workshop Topics
         </h3>
-        <p className="text-foreground/80 max-w-2xl mx-auto">
+        <p className="text-body text-foreground/80 max-w-2xl mx-auto">
           The topics here cover our full workshop catalog, including speaking topics that can be delivered as a <strong>60-minute keynote</strong> or expanded into a <strong>2+ hour interactive session</strong>.
         </p>
       </div>

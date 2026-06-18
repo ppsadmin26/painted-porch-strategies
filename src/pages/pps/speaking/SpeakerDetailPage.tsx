@@ -86,11 +86,11 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
             {speaker.outcomes.map((outcome, i) => (
               <div key={i} className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <p className="text-foreground">{outcome}</p>
+                <p className="text-body text-foreground">{outcome}</p>
               </div>
             ))}
           </div>
-          <p className="text-center font-semibold text-navy italic">
+          <p className="text-body text-center font-semibold text-navy italic">
             {speaker.outcomesClosing}
           </p>
         </div>
@@ -123,11 +123,11 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
                 Meet {speaker.firstName}
               </h2>
               {speaker.bio.map((paragraph, i) => (
-                <p key={i} className="text-foreground leading-relaxed mb-4">
+                <p key={i} className="text-body text-foreground leading-relaxed mb-4">
                   {paragraph}
                 </p>
               ))}
-              <p className="font-semibold text-navy italic">{speaker.closingLine}</p>
+              <p className="text-body font-semibold text-navy italic">{speaker.closingLine}</p>
             </div>
           </div>
         </div>
@@ -190,7 +190,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
             {speaker.workshopIntro}
           </p>
           <div className="bg-white rounded-xl p-8 shadow-sm mb-8">
-            <p className="font-semibold text-navy mb-4">Each session includes:</p>
+            <p className="text-body font-semibold text-navy mb-4">Each session includes:</p>
             <div className="space-y-3">
               {speaker.workshopDetails.map((detail, i) => (
                 <div key={i} className="flex items-start gap-3">
@@ -200,7 +200,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
               ))}
             </div>
           </div>
-          <p className="text-center font-semibold text-navy italic">
+          <p className="text-body text-center font-semibold text-navy italic">
             {speaker.workshopClosing}
           </p>
         </div>

@@ -69,13 +69,13 @@ export default function PPSAbout() {
         headline="About Us"
         description={
           <>
-            <p className="mb-4">
+            <p className="text-body mb-4">
               <strong>The most important decisions are rarely made in the middle of execution.</strong>
             </p>
-            <p className="mb-4">
+            <p className="text-body mb-4">
               Painted Porch Strategies exists for the moments before a major decision hardens into action - when leaders need space to think, question assumptions, examine direction, and decide what is truly worth pursuing.&nbsp;
             </p>
-            <p>
+            <p className="text-body">
               The porch is a place to pause long enough to see clearly, before momentum makes the decision feel inevitable. Because whatever shIFt happens next is often determined long before execution begins.
             </p>
           </>
@@ -135,18 +135,18 @@ export default function PPSAbout() {
             We are not in the business of fixing you.
           </h2>
           <div className="space-y-4 text-lg text-foreground leading-relaxed text-left md:text-center">
-            <p>
+            <p className="text-body">
               Most of the leaders we work with are already capable, already
               experienced, and already carrying a lot. What they're looking
               for is not another framework. It's a place to think clearly
               about what their organization is being called to become.
             </p>
-            <p>
+            <p className="text-body">
               Fixing seeks relief. Reflection creates direction.&nbsp;It asks for clarity about
               culture, leadership, and capacity. It asks for room to choose
               what to lead, instead of just reacting to what's happening.
             </p>
-            <p>
+            <p className="text-body">
               That's the work we partner on. If you want to see how we
               think about that work in practice,{" "}
               <Link
@@ -178,24 +178,24 @@ export default function PPSAbout() {
                 We Saw the Same Pattern Everywhere.
               </h2>
               <div className="text-lg text-foreground leading-relaxed mb-6 space-y-4">
-                <p>
+                <p className="text-body">
                   Across transformation efforts, growth initiatives, leadership transitions, and organizational change, one pattern kept emerging.
                 </p>
-                <p>
+                <p className="text-body">
                   The challenge was rarely a lack of effort. It was a <strong>lack of space</strong>.
                 </p>
-                <p>
+                <p className="text-body">
                   Space <strong>to think</strong>.<br />
                   Space <strong>to question assumptions</strong>.<br />
                   Space <strong>to examine what was driving the decision</strong> before resources, time, and energy were committed.
                 </p>
-                <p>
+                <p className="text-body">
                   Everyone was focused on execution. Very few were examining the thinking underneath it.
                 </p>
-                <p>
+                <p className="text-body">
                   That observation became Painted Porch Strategies.
                 </p>
-                <p>
+                <p className="text-body">
                   A place dedicated to the work before the work.
                 </p>
               </div>
@@ -217,18 +217,18 @@ export default function PPSAbout() {
             Different Disciplines. Shared Conviction.
           </h2>
           <div className="text-lg text-foreground leading-relaxed space-y-8">
-            <p>
+            <p className="text-body">
               Painted Porch brings together expertise in leadership, organizational strategy,
               <br className="hidden md:block" /> communication, behavioral change, and human performance.
             </p>
 
-            <p>
+            <p className="text-body">
               Different perspectives.
               <br />
               Different experiences.
             </p>
 
-            <p>
+            <p className="text-body">
               One shared belief:
               <br />
               <strong>The best decisions are rarely made under pressure.</strong>
@@ -258,7 +258,7 @@ export default function PPSAbout() {
                   <h3 className="text-xl md:text-2xl font-poppins font-semibold mb-1 text-navy">
                     {member.name}
                   </h3>
-                  <p className={`text-sm font-medium mb-1 ${isAmy ? "text-strategic" : member.accent}`}>
+                  <p className={`text-body-sm font-medium mb-1 ${isAmy ? "text-strategic" : member.accent}`}>
                     {member.title}
                   </p>
                   {member.experience && (
@@ -268,7 +268,7 @@ export default function PPSAbout() {
                   )}
                   <div className="text-foreground text-sm leading-relaxed mb-4">
                     {member.description.split('\n\n').map((text, i) => (
-                      <p key={i} className={i > 0 ? "mt-4" : ""}>
+                      <p key={i} className={i  className="text-body"> 0 ? "mt-4" : ""}>
                         {text}
                       </p>
                     ))}
@@ -321,18 +321,18 @@ export default function PPSAbout() {
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <Eyebrow variant="plain" tone="primary" as="p">WHAT WE BELIEVE</Eyebrow>
           <div className="text-lg md:text-xl text-foreground leading-relaxed mb-6 space-y-8">
-            <p className="whitespace-pre-line">
+            <p className="text-body whitespace-pre-line">
               Organizations become what they repeatedly practice.{"\n\n"}
               That's why we pay attention to the conditions beneath the change, not just the outcomes from it.
             </p>
-            <p className="font-bold whitespace-pre-line">
+            <p className="text-body font-bold whitespace-pre-line">
               Clarity.{"\n"}
               Communication.{"\n"}
               Trust.{"\n"}
               Leadership.{"\n"}
               Capacity for reflection.
             </p>
-            <p>
+            <p className="text-body">
               These aren't soft skills. They're the foundations that determine whether change takes root or cracks and collapses under pressure.
             </p>
           </div>

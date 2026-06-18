@@ -49,21 +49,21 @@ export default function StracticalLeaderGuide() {
               <span className="text-gold">"Just a Manager"</span>
             </h1>
             <div className="space-y-4 text-lg md:text-xl text-white/90 leading-relaxed mb-8">
-              <p>
+              <p className="text-body">
                 You sit in strategic meetings thinking{" "}
                 <em>"I'm just a manager."</em>
               </p>
-              <p>
+              <p className="text-body">
                 Your team has the deepest operational knowledge.
                 <br />
                 You see which strategies will work and which will crash.
                 <br />
                 You spot the gaps everyone else misses.
               </p>
-              <p className="text-white/70">
+              <p className="text-body text-white/70">
                 Yet your insights rarely shape the decisions.
               </p>
-              <p>
+              <p className="text-body">
                 Download this guide to learn how to operate in the{" "}
                 <span className="font-semibold text-gold">
                   integration zone between strategy and execution
@@ -101,7 +101,7 @@ export default function StracticalLeaderGuide() {
                 <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2">
                   {item.title}
                 </h3>
-                <p className="text-foreground leading-relaxed">
+                <p className="text-body text-foreground leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -126,7 +126,7 @@ export default function StracticalLeaderGuide() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-2">
                 Get Your Free Guide
               </h2>
-              <p className="text-foreground/70">
+              <p className="text-body text-foreground/70">
                 The Stractical Leader Guide, delivered straight to your inbox.
               </p>
             </div>

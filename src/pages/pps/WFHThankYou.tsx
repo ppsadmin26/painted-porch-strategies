@@ -40,7 +40,7 @@ export default function WFHThankYou() {
             </p>
 
             <div className="border-t border-border pt-6">
-              <p className="text-charcoal mb-4">
+              <p className="text-body text-charcoal mb-4">
                 Already have a login? Jump straight in:
               </p>
               <a href={COURSE_ACCESS_URL} target="_blank" rel="noopener noreferrer">
@@ -52,7 +52,7 @@ export default function WFHThankYou() {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-charcoal mb-4">
+            <p className="text-body text-charcoal mb-4">
               While you wait, explore more free resources:
             </p>
             <div className="flex flex-wrap gap-3 justify-center">

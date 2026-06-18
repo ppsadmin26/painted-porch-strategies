@@ -68,7 +68,7 @@ export function PathwayComparisonSection() {
             Three Ways to Partner. One Philosophy.
           </h2>
           <div className="text-foreground space-y-4">
-            <p>
+            <p className="text-body">
               Whether you're looking for personal growth, stronger team performance, or organization-wide transformation, every P.A.T.H.way is grounded in the same principles:
             </p>
             <p className="py-4 font-bold text-lead text-navy">
@@ -77,10 +77,10 @@ export function PathwayComparisonSection() {
               Take-Off.<br />
               Make it a Habit.
             </p>
-            <p>
+            <p className="text-body">
               What changes is the scale of application, the depth of engagement, and what you're trying to accomplish.
             </p>
-            <p>
+            <p className="text-body">
               There is no required sequence, <span className="font-bold">only the starting point that makes the most sense for where you are today.</span>
             </p>
           </div>
@@ -92,8 +92,8 @@ export function PathwayComparisonSection() {
             Start Where You Are
           </h3>
           <div className="text-foreground space-y-3">
-            <p>Some people arrive looking for greater clarity, confidence, and capability in their own work.&nbsp;Others are responsible for teams, departments, or entire organizations.</p>
-            <p>P.A.T.H.ways are designed to meet you where you are and provide a clear direction forward.</p>
+            <p className="text-body">Some people arrive looking for greater clarity, confidence, and capability in their own work.&nbsp;Others are responsible for teams, departments, or entire organizations.</p>
+            <p className="text-body">P.A.T.H.ways are designed to meet you where you are and provide a clear direction forward.</p>
           </div>
         </div>
 
@@ -110,7 +110,7 @@ export function PathwayComparisonSection() {
                 <div className="flex flex-col pb-8">
                   <div className="flex-shrink-0">
                     <TierBadge tier={tier} className="mb-4" />
-                    <p className={`text-sm font-semibold ${tier.textColor} mb-6`}>
+                    <p className={`text-body-sm font-semibold ${tier.textColor} mb-6`}>
                       {content.tagline}
                     </p>
                   </div>
@@ -127,7 +127,7 @@ export function PathwayComparisonSection() {
                     </h4>
                     <ul className="space-y-2">
                       {content.perfectFor.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2">
+                        <li key={i} className="text-body flex items-start gap-2">
                           <Users className={`w-4 h-4 ${tier.textColor} flex-shrink-0 mt-0.5`} />
                           <span className="text-xs text-foreground">{item}</span>
                         </li>
@@ -152,7 +152,7 @@ export function PathwayComparisonSection() {
 
         {/* P.A.T.H.finder Quiz CTA */}
         <div className="flex flex-col items-center mt-12 px-4">
-          <p className="text-foreground mb-4 text-center">
+          <p className="text-body text-foreground mb-4 text-center">
             Unsure which P.A.T.H.way to explore first? Take our free P.A.T.H.finder quiz
           </p>
           <Link to="/start-here" className="w-full max-w-[20rem] sm:w-auto sm:max-w-full">

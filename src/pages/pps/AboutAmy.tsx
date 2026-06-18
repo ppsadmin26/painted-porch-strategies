@@ -182,7 +182,7 @@ export default function AboutAmy() {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
             See Amy in Action
           </h2>
-          <p className="mt-2 text-white/70">Expert Speaker Reel</p>
+          <p className="text-body mt-2 text-white/70">Expert Speaker Reel</p>
           <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-xl shadow-2xl">
             <div className="relative aspect-video">
               <iframe
@@ -205,7 +205,7 @@ export default function AboutAmy() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy">
               What I Do
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-foreground/70">
+            <p className="text-body mx-auto mt-4 max-w-2xl text-foreground/70">
               From strategic diagnostics to embedded partnerships, here's how we
               can work together to architect extraordinary outcomes.
             </p>
@@ -247,7 +247,7 @@ export default function AboutAmy() {
           <h2 className="text-3xl md:text-4xl text-center font-poppins font-bold text-navy">
             Explore & Connect
           </h2>
-          <p className="mt-3 text-center text-foreground/60">
+          <p className="text-body mt-3 text-center text-foreground/60">
             Quick links to resources, insights, and community
           </p>
 
@@ -285,7 +285,7 @@ export default function AboutAmy() {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy">
             From the Porch
           </h2>
-          <p className="mt-3 text-foreground/60">
+          <p className="text-body mt-3 text-foreground/60">
             How to take a Stoic perspective to conflict
           </p>
           <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-xl shadow-lg">
@@ -309,7 +309,7 @@ export default function AboutAmy() {
           <h2 className="text-3xl md:text-4xl text-center font-poppins font-bold text-white">
             Listen In
           </h2>
-          <p className="mt-3 text-center text-white/60">
+          <p className="text-body mt-3 text-center text-white/60">
             Our dance party playlist
           </p>
 
@@ -337,7 +337,7 @@ export default function AboutAmy() {
             <h2 className="text-3xl md:text-4xl mt-4 font-poppins font-bold text-navy">
               Meet for a Virtual Coffee or Cocktail
             </h2>
-            <p className="mx-auto mt-4 max-w-md text-foreground/70">
+            <p className="text-body mx-auto mt-4 max-w-md text-foreground/70">
               Ready to explore how we might work together? Let's chat, no
               pressure, just a genuine conversation about where you are and where
               you want to be.

@@ -204,7 +204,7 @@ export default function MasterYourMessage() {
           <AnimatedSection>
             <div className="bg-white/5 rounded-2xl border border-white/10 p-8 mb-12">
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-gold mb-4">Watch. Reflect. Discuss.</h3>
-              <p className="text-white/80 leading-relaxed">
+              <p className="text-body text-white/80 leading-relaxed">
                 We believe that <strong>real learning and transformation is not a spectator sport</strong>. Through per-lesson discussion boards and a <strong>Private Community</strong>, <strong>PLUS Monthly, Live Group Video Coaching Calls</strong> <em>(optional, add-on)</em>, you can connect with Rob and your fellow M.C.s (<em>Masters of Communication</em>) in the making to share your takeaways, insights, ah-has, and more to shift from knowing to <strong>doing</strong> and <strong>becoming</strong>.
               </p>
             </div>
@@ -252,7 +252,7 @@ export default function MasterYourMessage() {
                       <Icon className="h-10 w-10 text-pps-teal" />
                     </div>
                     <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-4">{d.title}</h3>
-                    <p className="text-charcoal leading-relaxed">{d.description}</p>
+                    <p className="text-body text-charcoal leading-relaxed">{d.description}</p>
                   </div>
                 );
               })}
@@ -279,7 +279,7 @@ export default function MasterYourMessage() {
                   <p className="text-pps-gold font-poppins font-semibold text-body-sm mb-6">
                     Rob Hunter · M.C. (Master of Communication)
                   </p>
-                  <p className="text-charcoal leading-relaxed mb-6">
+                  <p className="text-body text-charcoal leading-relaxed mb-6">
                     Hi, I'm Rob. And I love words. Not just any words, though…ones that create connection and meaningful, lasting impact. Over my 25+ yr. career as a radio broadcaster, I've learned that communication is the most important, yet underrated, skill. When you communicate effectively, you will master your influence and inspire others.
                   </p>
                   <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal hover:text-white font-poppins font-semibold rounded-lg">
@@ -318,7 +318,7 @@ export default function MasterYourMessage() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-1">{tier.name}</h3>
                   {tier.price && (
                     <div className="flex items-baseline gap-2 mb-2">
-                      <p className="text-4xl font-poppins font-bold text-pps-navy">{tier.price}</p>
+                      <p className="text-body text-4xl font-poppins font-bold text-pps-navy">{tier.price}</p>
                     </div>
                   )}
                   <p className="text-body-sm text-charcoal mb-6">{tier.subtitle}</p>
@@ -350,7 +350,7 @@ export default function MasterYourMessage() {
           {!isLive && (
             <AnimatedSection>
               <div className="mt-10 max-w-3xl mx-auto text-center bg-pps-teal/5 border border-pps-teal/20 rounded-2xl p-6 md:p-8">
-                <p className="text-charcoal leading-relaxed mb-5">
+                <p className="text-body text-charcoal leading-relaxed mb-5">
                   Our courses will be re-launching soon as we move our learning and community to a new course platform. If you'd like to be the first to know when <strong>Master Your Message</strong> is ready, join our launch list.
                 </p>
                 <Button
@@ -380,7 +380,7 @@ export default function MasterYourMessage() {
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-4">A Virtuous Cycle</h3>
-            <p className="text-charcoal leading-relaxed mb-4">
+            <p className="text-body text-charcoal leading-relaxed mb-4">
               Painted Porch Strategies was created to model the Stoic principles of <em>Reason, Logic, Purpose, and Virtue</em>.
               Since we intend to live by the Stoic philosopher Seneca's advice of "<em>works not words</em>", we believe that in order{" "}
               <strong>to do <em>well</em></strong>, we must also <strong>do <em>good</em></strong>.

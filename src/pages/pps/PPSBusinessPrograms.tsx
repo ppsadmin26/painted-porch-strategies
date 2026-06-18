@@ -197,7 +197,7 @@ export default function PPSBusinessPrograms() {
           <blockquote className="text-pullquote italic text-gold leading-relaxed font-poppins">
             "You don't build a business. You build people, and people build the business."
           </blockquote>
-          <p className="text-muted-foreground mt-3 font-semibold">Zig Ziglar</p>
+          <p className="text-body text-muted-foreground mt-3 font-semibold">Zig Ziglar</p>
         </div>
       </section>
 
@@ -269,7 +269,7 @@ export default function PPSBusinessPrograms() {
           <blockquote className="text-pullquote italic text-strategic leading-relaxed font-poppins">
             "The relevant question is not simply what shall we do tomorrow, but rather what shall we do today in order to get ready for tomorrow."
           </blockquote>
-          <p className="text-muted-foreground mt-3 font-semibold">Peter Drucker</p>
+          <p className="text-body text-muted-foreground mt-3 font-semibold">Peter Drucker</p>
         </div>
       </section>
 
@@ -357,7 +357,7 @@ export default function PPSBusinessPrograms() {
                 you have your choice of <strong>three methods of program delivery</strong> to align
                 with your needs.
               </p>
-              <p className="text-foreground leading-relaxed">
+              <p className="text-body text-foreground leading-relaxed">
                 Our programs are designed to benefit <strong>EVERYONE</strong> in your company, not
                 just those in official leadership roles. We want you to be able to{" "}
                 <strong>invest in your Company's success</strong>, not just certain individuals.

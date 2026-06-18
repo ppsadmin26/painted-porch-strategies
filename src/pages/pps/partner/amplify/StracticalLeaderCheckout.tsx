@@ -123,7 +123,7 @@ function WaitlistDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (
           <div className="text-center py-6">
             <CheckCircle2 className="w-16 h-16 text-lime mx-auto mb-4" />
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">You're on the List!</h3>
-            <p className="text-foreground/80">We'll let you know as soon as the next Stractical Leader Lab is scheduled.</p>
+            <p className="text-body text-foreground/80">We'll let you know as soon as the next Stractical Leader Lab is scheduled.</p>
           </div>
         )}
       </DialogContent>
@@ -245,7 +245,7 @@ export default function StracticalLeaderCheckout() {
                 <p className="text-caption text-gold font-poppins font-semibold uppercase tracking-wider mb-1">
                   {isExpired ? "Workshop Investment" : "Your Investment"}
                 </p>
-                <p className="text-5xl font-poppins font-bold text-white">$1,997</p>
+                <p className="text-body text-5xl font-poppins font-bold text-white">$1,997</p>
               </div>
               <div className="p-6 text-center">
                 <p className="text-body-sm text-foreground/70 mb-6">
@@ -335,7 +335,7 @@ export default function StracticalLeaderCheckout() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
               100% Confidence Guarantee
             </h2>
-            <p className="text-foreground/80 leading-relaxed max-w-xl mx-auto mb-4">
+            <p className="text-body text-foreground/80 leading-relaxed max-w-xl mx-auto mb-4">
               If after Session 1 you don't feel this workshop will transform your strategic impact, simply let us know and we'll refund your full investment.
             </p>
             <p className="text-body-sm text-foreground/60 italic">
@@ -360,7 +360,7 @@ export default function StracticalLeaderCheckout() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white mb-4">
                 Don't Miss the Next Cohort
               </h2>
-              <p className="text-white/70 mb-8">
+              <p className="text-body text-white/70 mb-8">
                 Our latest Stractical Leader Lab has kicked off. Join the waitlist to get early access when new dates are announced.
               </p>
               <Button
@@ -376,11 +376,11 @@ export default function StracticalLeaderCheckout() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white mb-4">
                 Secure Your Spot Now
               </h2>
-              <p className="text-white/70 mb-2">
+              <p className="text-body text-white/70 mb-2">
                 Capped at 25 participants for maximum interaction and personalized feedback.
               </p>
               <p className="text-caption text-white/50 mb-1 font-poppins uppercase tracking-wider">Total Investment</p>
-              <p className="text-5xl font-poppins font-bold text-gold mb-8">$1,997</p>
+              <p className="text-body text-5xl font-poppins font-bold text-gold mb-8">$1,997</p>
               <Button
                 onClick={() => window.open("https://via.growseamlessly.com/payment-link/695fe0393e9f2f42403166dc", "_blank")}
                 className="bg-gold border-2 border-gold text-navy font-poppins font-bold text-lg py-6 px-12 rounded-lg hover:bg-white hover:text-gold transition-colors"

@@ -108,7 +108,7 @@ export default function PPSForLeaders() {
               </p>
               <ul className="space-y-4">
                 {blueprintOutcomes.map((outcome, index) => (
-                  <li key={index} className="flex items-start gap-3">
+                  <li key={index} className="text-body flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-strategic flex-shrink-0 mt-0.5" />
                     <span className="text-foreground">{outcome}</span>
                   </li>
@@ -126,7 +126,7 @@ export default function PPSForLeaders() {
               <blockquote className="text-pullquote italic text-navy mb-4">
                 "How long are you going to wait before you demand the best for yourself?"
               </blockquote>
-              <p className="text-strategic font-semibold">Epictetus</p>
+              <p className="text-body text-strategic font-semibold">Epictetus</p>
               <p className="text-body-sm text-muted-foreground mt-1">Stoic teacher & Former slave</p>
               <div className="mt-6 pt-6 border-t border-border">
                 <p className="text-body-sm text-muted-foreground">
@@ -183,7 +183,7 @@ export default function PPSForLeaders() {
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">{program.subtitle}</h3>
                   </div>
                 </div>
-                <p className="text-foreground mb-4">{program.description}</p>
+                <p className="text-body text-foreground mb-4">{program.description}</p>
                 <p className="text-muted-foreground text-body-sm">{program.details}</p>
               </div>
             ))}
@@ -212,11 +212,11 @@ export default function PPSForLeaders() {
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-muted p-8 rounded-xl">
-                <blockquote className="text-foreground mb-6 italic">
+                <blockquote className="text-pullquote text-foreground mb-6 italic">
                   "{testimonial.quote}"
                 </blockquote>
                 <div>
-                  <p className="font-semibold text-navy">{testimonial.author}</p>
+                  <p className="text-body font-semibold text-navy">{testimonial.author}</p>
                   <p className="text-body-sm text-muted-foreground">{testimonial.role}</p>
                 </div>
               </div>
@@ -247,19 +247,19 @@ export default function PPSForLeaders() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6">
                 Start with Discovery
               </h3>
-              <p className="text-foreground mb-6">
+              <p className="text-body text-foreground mb-6">
                 A complimentary conversation to understand your situation, explore fit, and discuss potential approaches.
               </p>
               <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-2">
+                <li className="text-body flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-lime" />
                   <span>30-minute initial conversation</span>
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="text-body flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-lime" />
                   <span>No obligation assessment</span>
                 </li>
-                <li className="flex items-center gap-2">
+                <li className="text-body flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-lime" />
                   <span>Clear next steps and pricing</span>
                 </li>

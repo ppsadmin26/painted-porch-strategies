@@ -74,7 +74,7 @@ export default function PilotTraining() {
             <br />
             Training Replay
           </h1>
-          <p className="text-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-body text-foreground max-w-2xl mx-auto mb-8">
             Access a replay of our recent training session led by Painted Porch Strategies Chief Joy Officer &amp; Mindfulness Coach, Sierra Ramm Cantrell, where she shares simple tools you can use to shift from being on auto-pilot to seizing the controls and steering the direction of your life and work.
           </p>
           <a href="#get-access">
@@ -108,10 +108,10 @@ export default function PilotTraining() {
             For many of us, it can often feel as though we're on auto-pilot, simply going through the motions.
           </h2>
           <div className="space-y-4 text-foreground max-w-2xl mx-auto">
-            <p>You may feel dissatisfied, disconnected, or as though you're a passenger in your own life and work.</p>
-            <p>Being fully present, active, and in control of what's happening in your life may feel difficult.</p>
+            <p className="text-body">You may feel dissatisfied, disconnected, or as though you're a passenger in your own life and work.</p>
+            <p className="text-body">Being fully present, active, and in control of what's happening in your life may feel difficult.</p>
           </div>
-          <p className="italic text-foreground max-w-2xl mx-auto mt-8">
+          <p className="text-body italic text-foreground max-w-2xl mx-auto mt-8">
             Get instant access to a replay of Chief Joy Officer Sierra Ramm Cantrell's interactive, insightful, and empowering training session focused on guiding you on a path toward presence and purpose, where you are at the controls.
           </p>
         </div>
@@ -142,7 +142,7 @@ export default function PilotTraining() {
               </h2>
               <ul className="space-y-3 text-foreground">
                 {learnings.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
+                  <li key={item} className="text-body flex items-start gap-3">
                     <span className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
                     <span>{item}</span>
                   </li>

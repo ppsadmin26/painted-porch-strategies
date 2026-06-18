@@ -75,10 +75,10 @@ export default function KickTheHabitWatch() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-4">
             <span className="text-raspberry italic">Kick the Habit</span> Training Replay
           </h1>
-          <p className="text-foreground max-w-2xl mx-auto mb-3">
+          <p className="text-body text-foreground max-w-2xl mx-auto mb-3">
             Here's the replay of our webinar from June 28th, 2022.
           </p>
-          <p className="text-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-body text-foreground max-w-2xl mx-auto mb-8">
             Make sure to download the Action Guide to use as you watch and then begin to implement the strategies shared during the training.
           </p>
           <a href={ACTION_GUIDE_URL} target="_blank" rel="noopener noreferrer">
@@ -122,7 +122,7 @@ export default function KickTheHabitWatch() {
                   "Develop a Change-ready mindset",
                   "And more!",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
+                  <li key={item} className="text-body flex items-start gap-3">
                     <span className="w-2 h-2 rounded-full bg-raspberry mt-2 shrink-0" />
                     <span>{item}</span>
                   </li>
@@ -135,7 +135,7 @@ export default function KickTheHabitWatch() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Don't Forget Your Action Guide
               </h2>
-              <p className="text-foreground mb-6">
+              <p className="text-body text-foreground mb-6">
                 Download the Kick the Habit Action Guide to help you plot a path toward developing a change-ready mindset and innovative solutions that will propel your growth and create lasting change.
               </p>
               <a href={ACTION_GUIDE_URL} target="_blank" rel="noopener noreferrer">
@@ -154,7 +154,7 @@ export default function KickTheHabitWatch() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Ready to keep the momentum going?
           </h2>
-          <p className="text-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-foreground mb-8 max-w-2xl mx-auto">
             Explore more free tools, frameworks, and downloads to put what you learned into action.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
