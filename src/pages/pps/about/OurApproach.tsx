@@ -368,7 +368,7 @@ export default function OurApproach() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               The Conditions That Shape Every Outcome
             </h2>
-            <div className="text-lg text-foreground leading-relaxed space-y-8">
+            <div className="text-lead text-foreground space-y-8">
               <p>
                 Meaningful change rarely succeeds because of a framework alone. It succeeds because the conditions required for success already exist or are intentionally reinforced.
               </p>
