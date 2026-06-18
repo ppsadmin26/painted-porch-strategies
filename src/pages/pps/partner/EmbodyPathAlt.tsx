@@ -292,7 +292,7 @@ export default function EmbodyPathAlt() {
           {/* Pull-quote */}
           <div className="max-w-3xl mx-auto bg-muted/40 border-l-4 border-raspberry p-6 rounded-r-xl">
             <p className="text-pullquote font-poppins text-navy">
-              The cost of staying the same is rarely on the balance sheet. It shows up in the people who leave, the decisions that stall, and the sh<span className="text-raspberry font-semibold italic">IF</span>ts you watched competitors lead.
+              The cost of staying the same is rarely on the balance sheet. It shows up in the people who leave, the decisions that stall, and the sh<span className="text-raspberry font-semibold italic">IF</span>ts you watched competitors lead or that didn't quite land.
             </p>
           </div>
         </div>
