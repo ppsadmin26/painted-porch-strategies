@@ -422,7 +422,7 @@ export default function PPSHome() {
               <h3 id="path-heading" className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1 mb-4">
                 Your P.A.T.H. to Sustainable Change
               </h3>
-              <p className="text-lg text-foreground max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lead text-foreground max-w-2xl mx-auto">
                 A way of thinking about and navigating intentional progress.
                 <br /><br />
                 A practical framework for building the capability, capacity, and habits required to sustain meaningful progress.
