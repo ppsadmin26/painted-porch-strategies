@@ -521,7 +521,7 @@ export default function PPSHome() {
                 <div className="text-3xl md:text-4xl font-poppins font-bold text-gold/30 mb-4">
                   0{i + 1}
                 </div>
-                <p className="text-white/90 italic leading-relaxed text-base md:text-lg">
+                <p className="text-lead text-white/90 italic">
                   &ldquo;{q}&rdquo;
                 </p>
               </div>
