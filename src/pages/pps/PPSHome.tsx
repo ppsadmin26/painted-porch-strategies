@@ -357,7 +357,7 @@ export default function PPSHome() {
             Before another initiative is announced. Before another restructuring
             kicks off. Before you begin scaling something that already feels stretched.
           </p>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
             Phase Zero exists to create clarity before your next major decision
             hardens into execution. It&rsquo;s the threshold work that helps your
             organization see itself clearly before deciding what deserves commitment.
