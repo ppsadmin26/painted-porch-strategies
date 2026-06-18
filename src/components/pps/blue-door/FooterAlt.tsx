@@ -15,7 +15,7 @@ export default function FooterAlt() {
             <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4 text-gold">
               Painted Porch Strategies
             </h3>
-            <p className="text-sm leading-relaxed opacity-90">
+            <p className="text-body-sm opacity-90">
               Painted Porch Strategies partners with leaders to architect strategic sh<span className="text-raspberry font-bold">IF</span>t. This is Phase Zero, the work before the work.
             </p>
           </div>
