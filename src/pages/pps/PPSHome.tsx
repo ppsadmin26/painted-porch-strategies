@@ -222,7 +222,7 @@ export default function PPSHome() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
                 We begin at &ldquo;What <span className="text-raspberry font-bold">IF</span>&rdquo;.
               </h2>
-              <p className="text-lg text-foreground leading-relaxed mb-4">
+              <p className="text-lead text-foreground mb-4">
                 We don&rsquo;t arrive with predetermined answers, packaged solutions, or implementation plans waiting for your approval.
                 <br /><br />
                 <strong>We begin earlier.</strong>
