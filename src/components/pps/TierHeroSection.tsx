@@ -170,7 +170,7 @@ export function TierHeroSection({
               {typeof headline === "string" && headlineHighlight ? (
                 <>
                   {headline.split(headlineHighlight)[0]}
-                  <span className="text-gold">{headlineHighlight}</span>
+                  <span className="text-gold font-bold">{headlineHighlight}</span>
                   {headline.split(headlineHighlight)[1]}
                 </>
               ) : (
