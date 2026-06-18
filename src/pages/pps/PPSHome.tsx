@@ -672,7 +672,7 @@ export default function PPSHome() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               We aren&rsquo;t here to tell you yes.
             </h2>
-            <p className="text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lead text-white/85 max-w-2xl mx-auto">
               We&rsquo;re here to tell you what will actually work, and what it
               will take to make it happen. The question we begin with is whether
               what&rsquo;s being considered is the right thing to do right now.
