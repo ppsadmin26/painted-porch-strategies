@@ -393,7 +393,7 @@ export default function PhaseZero() {
                   <h4 className="text-base md:text-lg font-semibold text-navy mb-2">The Questions:</h4>
                   <ul className="space-y-1.5">
                     {p.questions.map((q, i) => (
-                      <li key={i} className="text-sm text-foreground flex items-start gap-2 italic">
+                      <li key={i} className="text-body-sm text-foreground flex items-start gap-2 italic">
                         <span className={`${p.accent} mt-1 not-italic`}>•</span>
                         <span>&ldquo;{q}&rdquo;</span>
                       </li>
