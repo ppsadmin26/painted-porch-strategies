@@ -64,19 +64,6 @@ const PLAIN_TONE: Record<EyebrowTone, string> = {
   foreground: "text-foreground",
 };
 
-const PLAIN_TONE: Record<EyebrowTone, string> = {
-  gold: "text-gold",
-  teal: "text-teal",
-  cobalt: "text-bluedoor",
-  raspberry: "text-raspberry",
-  purple: "text-purple",
-  navy: "text-navy",
-  lime: "text-lime",
-  white: "text-white",
-  muted: "text-muted-foreground",
-};
-
-const PILL_BASE =
   "inline-block font-poppins font-semibold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider mb-6";
 const PLAIN_BASE =
   "inline-block font-poppins font-semibold text-caption uppercase tracking-[0.2em] mb-3";
