@@ -403,7 +403,7 @@ export default function PPSHome() {
                 <p className={`text-sm font-medium ${pillar.color} mb-3`}>
                   {pillar.subtitle}
                 </p>
-                <p className="text-foreground text-sm leading-relaxed">
+                <p className="text-body-sm text-foreground">
                   {pillar.description}
                 </p>
               </div>
