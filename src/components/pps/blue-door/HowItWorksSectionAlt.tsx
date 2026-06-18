@@ -79,7 +79,7 @@ export default function HowItWorksSectionAlt() {
                 </p>
                 
                 {step.description && (
-                  <p className="text-foreground text-sm leading-relaxed flex-1">
+                  <p className="text-body-sm text-foreground flex-1">
                     {step.description}
                   </p>
                 )}
