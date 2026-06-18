@@ -384,7 +384,7 @@ export default function PPSHome() {
             <p className="text-lg text-foreground max-w-2xl mx-auto">
               Three dimensions that shape what your organization can realistically pursue and sustain. When all three are structurally sound and aligned, you&rsquo;re better positioned to design and build your next epic shIFt.
               <br /><br />
-              Together, these dimensions influence not only what your organization can pursue, but what it can realistically carry.
+              Together, these dimensions influence not only what your organization can pursue, but what it can realistically sustain.
             </p>
           </div>
 
