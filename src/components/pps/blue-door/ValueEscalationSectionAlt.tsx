@@ -36,11 +36,11 @@ export default function ValueEscalationSectionAlt() {
           The Architecture of Strategic Clarity
         </h2>
         
-        <p className="font-poppins font-semibold text-lg md:text-xl text-strategic text-center mb-6">
+        <p className="font-poppins font-semibold text-lead text-strategic text-center mb-6">
           How Value Escalates Through Your Transformation Journey
         </p>
         
-        <p className="text-base md:text-lg text-foreground text-center max-w-3xl mx-auto mb-12">
+        <p className="text-lead text-foreground text-center max-w-3xl mx-auto mb-12">
           Strategic sh<span className="font-bold text-bluedoor">IF</span>t doesn't happen in a single conversation. It unfolds through increasing clarity:
         </p>
         
