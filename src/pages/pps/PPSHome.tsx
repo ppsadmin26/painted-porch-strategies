@@ -145,7 +145,7 @@ export default function PPSHome() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             There&rsquo;s a lot of sh<span className="text-raspberry font-bold">IF</span>t happening right now.
           </h2>
-          <p className="text-lg text-foreground leading-relaxed mb-4">
+          <p className="text-lead text-foreground mb-4">
             Sometimes it feels like every important conversation is happening at
             the same time &mdash; strategy, technology, AI, operations,
             leadership, culture &mdash; while your organization is still trying
