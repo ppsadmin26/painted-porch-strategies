@@ -54,11 +54,63 @@ const files = includeAll
   ? rawFiles
   : rawFiles.filter((f) => !shouldSkipFileForAudit(path.relative(ROOT, f)));
 
-// Match opening tag of <p>/<li>/<blockquote>, capturing the full attribute
-// blob (may be empty, may span no className). Excludes self-closing.
-const tagOpen = new RegExp(`<(${TAGS.join("|")})\\b([^>]*?)(/?)>`, "g");
-// Extract className value from an attribute blob. Handles "..." and \`...\`.
-const classNameAttr = /className=(?:"([^"]*)"|\`([^\`]*)\`|\{([^}]*)\})/;
+// Locate opening tags of <p>/<li>/<blockquote>, then read their attribute
+// blob with brace/quote/backtick awareness so `>` inside `${i > 0}` doesn't
+// prematurely close the tag.
+const tagStart = new RegExp(`<(${TAGS.join("|")})(?=[\\s/>])`, "g");
+const classNameAttr = /className=(?:"([^"]*)"|`([^`]*)`|\{([\s\S]*)\})/;
+
+function readAttrs(src, start) {
+  // start points at the char after the tag name. Walk until the matching '>'
+  // that closes the tag, tracking JSX-expression braces, quoted strings, and
+  // template literals (which may themselves contain ${...} expressions).
+  let i = start;
+  let braceDepth = 0;
+  const len = src.length;
+  while (i < len) {
+    const c = src[i];
+    if (braceDepth === 0) {
+      if (c === ">") return { end: i, selfClose: src[i - 1] === "/" };
+      if (c === "{") { braceDepth++; i++; continue; }
+      if (c === '"' || c === "'") {
+        i++;
+        while (i < len && src[i] !== c) i += src[i] === "\\" ? 2 : 1;
+        i++; continue;
+      }
+      if (c === "`") {
+        i++;
+        while (i < len) {
+          if (src[i] === "\\") { i += 2; continue; }
+          if (src[i] === "`") { i++; break; }
+          if (src[i] === "$" && src[i + 1] === "{") { braceDepth++; i += 2; break; }
+          i++;
+        }
+        continue;
+      }
+      i++; continue;
+    }
+    // inside an expression — track nested braces, strings, templates
+    if (c === "{") { braceDepth++; i++; continue; }
+    if (c === "}") { braceDepth--; i++; continue; }
+    if (c === '"' || c === "'") {
+      i++;
+      while (i < len && src[i] !== c) i += src[i] === "\\" ? 2 : 1;
+      i++; continue;
+    }
+    if (c === "`") {
+      i++;
+      while (i < len) {
+        if (src[i] === "\\") { i += 2; continue; }
+        if (src[i] === "`") { i++; break; }
+        if (src[i] === "$" && src[i + 1] === "{") { braceDepth++; i += 2; break; }
+        i++;
+      }
+      continue;
+    }
+    i++;
+  }
+  return null;
+}
 
 const violations = [];
 let scanned = 0;
@@ -68,13 +120,19 @@ for (const file of files) {
   const src = fs.readFileSync(file, "utf8");
   scanned++;
   let m;
-  while ((m = tagOpen.exec(src)) !== null) {
-    const [full, tag, attrs, selfClose] = m;
-    if (selfClose === "/") continue; // <li ... /> — no body content
+  tagStart.lastIndex = 0;
+  while ((m = tagStart.exec(src)) !== null) {
+    const tag = m[1];
+    const attrStart = m.index + 1 + tag.length;
+    const closed = readAttrs(src, attrStart);
+    if (!closed) continue;
+    const attrs = src.slice(attrStart, closed.end - (closed.selfClose ? 1 : 0));
+    if (closed.selfClose) continue;
     elementsChecked++;
     const line = src.slice(0, m.index).split("\n").length;
     const cnMatch = attrs.match(classNameAttr);
     const cls = cnMatch ? cnMatch[1] ?? cnMatch[2] ?? cnMatch[3] ?? "" : "";
+
 
     // Rule 1: raw size utility
     const raw = cls.match(RAW_SIZE);
