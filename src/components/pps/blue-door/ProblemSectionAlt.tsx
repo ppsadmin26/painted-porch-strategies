@@ -38,7 +38,7 @@ export default function ProblemSectionAlt() {
             But a question that starts with "What <span className="font-bold text-bluedoor">IF</span>?"
           </p>
           <p className="text-base md:text-lg text-foreground leading-relaxed">
-            It's when the <span className="font-bold text-bluedoor">blue door</span> appears, the threshold between sensing that something must change and knowing what your organization can actually lead.&nbsp;Before you determine what comes next, you must first understand who your organization is becoming.
+            It's when the <span className="font-bold text-bluedoor">blue door</span> appears, the threshold between sensing that something must change and knowing what your organization can realistically take on. Before a direction becomes a commitment, you must first understand who your organization is becoming.
           </p>
           <p className="text-base md:text-lg text-foreground font-semibold">
             Most organizations don't stop long enough to author this.
