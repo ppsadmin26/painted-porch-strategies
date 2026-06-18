@@ -34,7 +34,7 @@ const ShIFt = () => (
 const threeAmQuestions = [
   "Are we solving the right problem, or just reacting to the loudest pressure?",
   "Are we aligned enough for this to actually work?",
-  "Can our organization realistically sustain what comes next?",
+  "Can our organization realistically sustain the future we’re trying to create?",
 ];
 
 const pillars = [
