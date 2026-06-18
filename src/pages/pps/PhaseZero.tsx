@@ -464,7 +464,7 @@ export default function PhaseZero() {
       <section className="py-20 md:py-24 bg-muted">
         <div className="container max-w-7xl mx-auto px-6">
           <FadeIn className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
               Where Phase Zero Leads
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight">
