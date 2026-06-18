@@ -39,7 +39,16 @@ function walk(dir, files = []) {
     const full = join(dir, entry);
     const stat = statSync(full);
     if (stat.isDirectory()) walk(full, files);
-    else if (/\.(tsx?|jsx?|mdx?)$/.test(entry)) files.push(full);
+    else if (/\.(tsx?|jsx?|mdx?)$/.test(entry)) {
+      // Skip internal (admin) and archived files — they're out of scope.
+      const rel = relative(ROOT, full);
+      if (
+        rel.includes("/admin/") ||
+        /Archive[a-zA-Z0-9]*\.tsx$/.test(rel) ||
+        /Verbatim\.tsx$/.test(rel)
+      ) continue;
+      files.push(full);
+    }
   }
   return files;
 }
