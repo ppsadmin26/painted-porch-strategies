@@ -50,7 +50,7 @@ export function PhilosophyApproachSection({ showEncapsulationCard = true }: { sh
             Why Partner With Painted Porch Strategies?
           </h2>
           <p className="text-lg text-foreground max-w-2xl mx-auto">
-            Because we do transformation differently than anyone else in the space.
+            Because the work begins long before transformation becomes visible.
           </p>
         </div>
 
