@@ -565,7 +565,7 @@ export default function PPSHome() {
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm">
-              <p className="text-sm font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-5">
+              <p className="text-caption font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-5">
                 What You&rsquo;ll Discover
               </p>
               <ul className="space-y-4">
