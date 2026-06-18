@@ -26,7 +26,7 @@ const principles = [
   {
     icon: Target,
     title: "Lasting Capability & Confidence",
-    tagline: "We strengthen foundations before initiatives demand more from them.",
+    tagline: "Strengthen foundations before initiatives demand more from you.",
     description: (
       <>
         Success is not measured by a completed project. It's reflected in stronger leaders, healthier systems, and greater confidence in navigating uncertainty or whatever <ShIFt lowercase /> happens next.
