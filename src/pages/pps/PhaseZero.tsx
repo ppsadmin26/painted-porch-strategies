@@ -103,7 +103,7 @@ const pillars = [
     outcomes: [
       "People who can move through ambiguity with confidence.",
       "Judgment shared at the right levels across the organization.",
-      "Real adaptive capacity for whatever comes next.",
+      "Real adaptive capacity in moments of uncertainty or when circumstances change.",
     ],
   },
 ];
