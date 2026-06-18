@@ -30,7 +30,7 @@ const ShIFt = ({ lowercase = false }: { lowercase?: boolean }) => (
 
 const isIsNot = {
   is: [
-    "A clear look at what your organization can actually carry right now.",
+    "A clear look at what your organization is realistically equipped to undertake right now.",
     "Deep questions about leadership, systems, and people before money or momentum gets locked in.",
     "The design phase that decides whether your next big move strengthens you or stretches you thin.",
     "The point where organizational identity becomes strategic direction.",
