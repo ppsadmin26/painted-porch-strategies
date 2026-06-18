@@ -352,13 +352,13 @@ export default function PhaseZero() {
       <section id="pillars" className="py-20 md:py-28 bg-white scroll-mt-24">
         <div className="container max-w-7xl mx-auto px-6">
           <FadeIn className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
+            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
               PAINTED PORCH PILLARS: WHAT PHASE ZERO FORTIFIES
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
               The Foundations Beneath Every ShIFt
             </h2>
-            <p className="text-lg text-foreground leading-relaxed">
+            <p className="text-lead text-foreground">
               Every organization relies on three foundational structures. When
               one is weak, progress becomes harder to maintain. When all three are
               strong, change has something solid to build upon. Phase Zero
