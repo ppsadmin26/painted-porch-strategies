@@ -199,7 +199,7 @@ export default function PhaseZero() {
             Not every opportunity strengthens the organization chasing it.
           </h2>
           <div className="space-y-5 text-lg md:text-xl text-charcoal/85 leading-relaxed">
-            <p>And not every change creates the conditions needed to sustain what comes after it.</p>
+            <p>And not every change fortifies the future it's intended to create.</p>
             <p>
               Your organization isn't getting worn down from a lack of effort, but from the
               weight that builds up underneath the continual drive to innovate, accelerate,
