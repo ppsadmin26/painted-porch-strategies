@@ -253,7 +253,7 @@ export default function PPSHome() {
                     <MessageCircle className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-primary mb-1">
+                    <p className="text-caption font-poppins font-semibold uppercase tracking-wider text-primary mb-1">
                       01 &middot; Find Your P.A.T.H.
                     </p>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary transition-colors">
