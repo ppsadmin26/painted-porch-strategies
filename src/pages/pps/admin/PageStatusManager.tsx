@@ -29,7 +29,7 @@ import {
 export default function PageStatusManager() {
   const { user, loading: authLoading } = useAuth();
   const { isAdmin, loading: roleLoading } = useUserRole();
-  const { map, loading, setStatus, clearStatus } = usePageStatuses();
+  const { map, loading, setStatus, setCategory, clearStatus } = usePageStatuses();
   const { toast } = useToast();
 
   const [newPath, setNewPath] = useState("");
