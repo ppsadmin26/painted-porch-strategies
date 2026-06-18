@@ -116,16 +116,36 @@ function generateSitemap(entries) {
   return xml;
 }
 
+async function fetchNonPublicPaths() {
+  if (!SUPABASE_URL || !ANON_KEY) return new Set();
+  const url = new URL("/rest/v1/page_status", SUPABASE_URL);
+  url.searchParams.set("select", "path,category,status");
+  const res = await fetch(url.toString(), {
+    headers: { apikey: ANON_KEY, Authorization: `Bearer ${ANON_KEY}` },
+  });
+  if (!res.ok) return new Set();
+  const rows = await res.json();
+  const skip = new Set();
+  for (const r of rows || []) {
+    if (!r.path) continue;
+    if (r.status === "draft") skip.add(r.path);
+    if (r.category === "internal" || r.category === "archived") skip.add(r.path);
+  }
+  return skip;
+}
+
 async function main() {
-  const posts = await fetchBlogPosts();
+  const [posts, skipPaths] = await Promise.all([fetchBlogPosts(), fetchNonPublicPaths()]);
   const today = new Date().toISOString().split("T")[0];
 
-  const entries = staticPages.map((page) => ({
-    path: page.path,
-    lastmod: today,
-    changefreq: page.changefreq,
-    priority: page.priority,
-  }));
+  const entries = staticPages
+    .filter((page) => !skipPaths.has(page.path))
+    .map((page) => ({
+      path: page.path,
+      lastmod: today,
+      changefreq: page.changefreq,
+      priority: page.priority,
+    }));
 
   if (posts.length > 0) {
     for (const post of posts) {
@@ -144,7 +164,7 @@ async function main() {
   const outPath = resolve("public/sitemap.xml");
   writeFileSync(outPath, xml);
   console.log(
-    `[generate-sitemap] Wrote ${outPath} (${entries.length} URLs, ${posts.length} blog posts)`
+    `[generate-sitemap] Wrote ${outPath} (${entries.length} URLs, ${posts.length} blog posts, ${skipPaths.size} skipped as draft/internal/archived)`
   );
 }
 
