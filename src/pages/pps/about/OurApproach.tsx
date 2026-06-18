@@ -348,7 +348,7 @@ export default function OurApproach() {
                   <span className="text-white font-poppins font-bold text-xl">{v.letter}</span>
                 </div>
                 <h3 className="font-poppins font-bold text-navy text-lg mb-2">{v.word}</h3>
-                <p className="text-sm text-foreground leading-relaxed">
+                <p className="text-body-sm text-foreground">
                   <span className="font-bold">{v.bold}</span>
                   {v.desc}
                 </p>
