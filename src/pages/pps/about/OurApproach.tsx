@@ -389,7 +389,7 @@ export default function OurApproach() {
               </h3>
               <ul className="space-y-3">
                 {foundationalAbilities.map((a) => (
-                  <li key={a} className="flex items-start gap-3 text-foreground leading-relaxed">
+                  <li key={a} className="text-body text-foreground flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
                     <span>{a}</span>
                   </li>
