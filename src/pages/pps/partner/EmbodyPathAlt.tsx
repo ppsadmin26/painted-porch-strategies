@@ -408,7 +408,7 @@ export default function EmbodyPathAlt() {
                 Starting at $96,000
               </div>
               <p className="text-body-sm text-muted-foreground">
-                Typically less than 1% of annual revenue. A strategic investment in permanent capacity, not a project support line item.
+                Typically less than 1% of annual revenue. This is a strategic investment in permanent capacity, not a project support line item.
               </p>
             </div>
 
