@@ -602,7 +602,7 @@ export default function PPSHome() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Your compass for where to begin.
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               Not everyone arrives at the Painted Porch asking the same kinds of
               questions. Choose where your journey starts.
             </p>
