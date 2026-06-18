@@ -13,11 +13,7 @@ import {
 import { isLovableEditorPreview } from "@/lib/lovablePreview";
 import { supabase } from "@/integrations/supabase/client";
 import ComingSoon from "@/pages/pps/ComingSoon";
-import { Switch } from "@/components/ui/switch";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Settings2, X } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { Settings2 } from "lucide-react";
 
 /** Resolve effective category for a path: DB row wins, else URL heuristic. */
 function resolveCategory(path: string, map: PageStatusMap): PageCategory {
@@ -273,7 +269,7 @@ export const sitemapData: SitemapNode[] = [
       { label: "Media Appearances", path: "/admin/media" },
       { label: "YouTube Videos", path: "/admin/youtube" },
       { label: "Site Videos", path: "/admin/videos" },
-      { label: "Page Status", path: "/admin/pages", note: "Mark pages as Live or Draft" },
+      { label: "Pages & SEO", path: "/admin/pages", note: "Status, category, SEO/AEO, and notes for every route" },
       { label: "Policy Notifications", path: "/admin/policy-notifications", note: "Email subscribers when Terms/Privacy/Cookies change" },
       { label: "Account Settings", path: "/admin/account" },
     ],
@@ -288,26 +284,23 @@ export const sitemapData: SitemapNode[] = [
 ];
 
 /**
- * When `isStaff` is false, draft branches are filtered out entirely so the
- * public never sees in-progress URLs. When true, the DRAFT pill renders.
- * When `canManage` is true, an inline switch + note editor appears.
+ * Read-only sitemap tree.
+ *
+ * - Public visitors: drafts AND non-public categories are filtered out entirely.
+ * - Staff: drafts render with a DRAFT pill; non-public categories render with
+ *   their category pill. All writes (status, category, SEO/AEO) live on
+ *   `/admin/pages`.
  */
 function SitemapBranch({
   node,
   depth = 0,
   isStaff,
-  canManage,
   statusMap,
-  onSetStatus,
-  onClearStatus,
 }: {
   node: SitemapNode;
   depth?: number;
   isStaff: boolean;
-  canManage: boolean;
   statusMap: PageStatusMap;
-  onSetStatus: (path: string, status: "live" | "draft", note?: string | null) => Promise<void>;
-  onClearStatus: (path: string) => Promise<void>;
 }) {
   const indent = depth * 20;
   const draftEntry = node.path ? resolvePageStatusEntry(node.path, statusMap) : undefined;
@@ -360,14 +353,6 @@ function SitemapBranch({
             {CATEGORY_META[category].label}
           </span>
         )}
-        {canManage && node.path && !node.path.startsWith("/admin") && (
-          <InlineStatusControl
-            path={node.path}
-            entry={draftEntry}
-            onSetStatus={onSetStatus}
-            onClearStatus={onClearStatus}
-          />
-        )}
       </div>
       {node.note && (
         <div className="ml-6 text-xs text-pps-charcoal/60 italic font-montserrat">
@@ -387,10 +372,7 @@ function SitemapBranch({
               node={child}
               depth={depth + 1}
               isStaff={isStaff}
-              canManage={canManage}
               statusMap={statusMap}
-              onSetStatus={onSetStatus}
-              onClearStatus={onClearStatus}
             />
           ))}
         </ul>
@@ -399,124 +381,6 @@ function SitemapBranch({
   );
 }
 
-/**
- * Compact admin-only control: a Live/Draft switch + optional inline note.
- * Hidden from non-admins entirely (UI mirrors the DB RLS rule).
- */
-function InlineStatusControl({
-  path,
-  entry,
-  onSetStatus,
-  onClearStatus,
-}: {
-  path: string;
-  entry?: ReturnType<typeof resolvePageStatusEntry>;
-  onSetStatus: (path: string, status: "live" | "draft", note?: string | null) => Promise<void>;
-  onClearStatus: (path: string) => Promise<void>;
-}) {
-  const { toast } = useToast();
-  const [editingNote, setEditingNote] = useState(false);
-  const [noteDraft, setNoteDraft] = useState(entry?.note ?? "");
-  const [busy, setBusy] = useState(false);
-
-  const isDraft = entry?.status === "draft";
-
-  const flip = async (next: boolean) => {
-    setBusy(true);
-    try {
-      await onSetStatus(path, next ? "draft" : "live", entry?.note ?? null);
-      toast({
-        title: next ? "Marked as draft" : "Marked as live",
-        description: path,
-      });
-    } catch (err) {
-      toast({ title: "Update failed", description: String(err), variant: "destructive" });
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const saveNote = async () => {
-    setBusy(true);
-    try {
-      await onSetStatus(path, isDraft ? "draft" : "live", noteDraft.trim() || null);
-      setEditingNote(false);
-      toast({ title: "Note saved" });
-    } catch (err) {
-      toast({ title: "Save failed", description: String(err), variant: "destructive" });
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  return (
-    <span className="inline-flex items-center gap-2 ml-2 px-2 py-0.5 rounded bg-pps-navy/[0.03] border border-pps-navy/10">
-      <span className="text-[10px] font-poppins uppercase tracking-wide text-pps-charcoal/70">
-        Draft
-      </span>
-      <Switch
-        checked={!!isDraft}
-        onCheckedChange={flip}
-        disabled={busy}
-        aria-label={`Toggle draft status for ${path}`}
-      />
-      {!editingNote ? (
-        <button
-          type="button"
-          onClick={() => {
-            setNoteDraft(entry?.note ?? "");
-            setEditingNote(true);
-          }}
-          className="text-pps-charcoal/60 hover:text-pps-teal"
-          title="Edit note"
-        >
-          <Settings2 className="w-3.5 h-3.5" />
-        </button>
-      ) : (
-        <span className="inline-flex items-center gap-1">
-          <Input
-            value={noteDraft}
-            onChange={(e) => setNoteDraft(e.target.value)}
-            placeholder="Optional note"
-            className="h-6 text-xs w-44 px-2"
-            autoFocus
-          />
-          <Button size="sm" className="h-6 px-2 text-xs" onClick={saveNote} disabled={busy}>
-            Save
-          </Button>
-          <button
-            type="button"
-            onClick={() => setEditingNote(false)}
-            className="text-pps-charcoal/60 hover:text-pps-charcoal"
-            aria-label="Cancel"
-          >
-            <X className="w-3.5 h-3.5" />
-          </button>
-        </span>
-      )}
-      {entry && (
-        <button
-          type="button"
-          onClick={async () => {
-            setBusy(true);
-            try {
-              await onClearStatus(path);
-              toast({ title: "Override cleared", description: path });
-            } catch (err) {
-              toast({ title: "Clear failed", description: String(err), variant: "destructive" });
-            } finally {
-              setBusy(false);
-            }
-          }}
-          className="text-[10px] text-pps-charcoal/60 hover:text-pps-raspberry underline"
-          disabled={busy}
-        >
-          reset
-        </button>
-      )}
-    </span>
-  );
-}
 
 export default function Sitemap() {
   useDocumentSeo({
@@ -526,7 +390,7 @@ export default function Sitemap() {
 
   const { user, loading: authLoading } = useAuth();
   const { isAdmin } = useUserRole();
-  const { map: rawStatusMap, loading: statusLoading, setStatus, clearStatus } = usePageStatuses();
+  const { map: rawStatusMap, loading: statusLoading } = usePageStatuses();
   const [notesById, setNotesById] = useState<Record<string, string | null>>({});
   const isStaff = !!user;
   const isEditorPreview = isLovableEditorPreview();
@@ -602,12 +466,11 @@ export default function Sitemap() {
               pill. The public never sees these.{" "}
               {isAdmin ? (
                 <>
-                  As an admin, you can flip any page between Live and Draft using the inline switch
-                  next to each link, or open the dedicated{" "}
-                  <Link to="/admin/pages" className="text-pps-teal underline hover:text-pps-navy">
-                    Page Status manager
+                  To change a page's status, category, SEO/AEO, or note, open the{" "}
+                  <Link to="/admin/pages" className="text-pps-teal underline hover:text-pps-navy inline-flex items-center gap-1">
+                    <Settings2 className="w-3.5 h-3.5" /> Pages manager
                   </Link>
-                  .
+                  . This sitemap is read-only.
                 </>
               ) : (
                 <>Only admins can change page status.</>
@@ -623,10 +486,7 @@ export default function Sitemap() {
                 <SitemapBranch
                   node={section}
                   isStaff={isStaff}
-                  canManage={isAdmin}
                   statusMap={statusMap}
-                  onSetStatus={setStatus}
-                  onClearStatus={clearStatus}
                 />
               </ul>
             </section>
