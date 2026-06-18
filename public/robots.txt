@@ -4,7 +4,7 @@ Disallow: /admin
 Disallow: /admin/
 Disallow: /reset-password
 
-# Draft pages — hidden from search engines
+# Draft / internal / archived pages — hidden from search engines
 Disallow: /amy
 Disallow: /change-ready-leader-assessment
 Disallow: /change-ready-team-assessment
