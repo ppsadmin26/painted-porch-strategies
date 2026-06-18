@@ -253,7 +253,7 @@ export default function AmplifyLabs() {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
             Want to bring one of these labs into your team, organization, or event?
           </h2>
-          <p className="text-lg text-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-lead text-foreground mb-8 max-w-2xl mx-auto">
             We offer several of these (and more!) as team and leadership workshops and keynotes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
