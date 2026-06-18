@@ -51,25 +51,25 @@ export default function ValueEscalationSectionAlt() {
           <span className="inline-block bg-bluedoor text-white font-poppins font-bold text-sm px-4 py-1 rounded-full uppercase tracking-wider mb-3">
             IMAGINE
           </span>
-          <p className="font-poppins font-bold text-2xl md:text-3xl text-bluedoor mb-2">
+          <div className="font-poppins font-bold text-2xl md:text-3xl text-bluedoor mb-2">
             The Blue Door
-          </p>
-          <p className="font-poppins font-bold text-2xl text-bluedoor mb-4">{BLUE_DOOR_PRICE_DISPLAY}</p>
-          <p className="font-poppins font-semibold italic text-lg text-navy mb-4">
+          </div>
+          <div className="font-poppins font-bold text-2xl text-bluedoor mb-4">{BLUE_DOOR_PRICE_DISPLAY}</div>
+          <p className="font-poppins font-semibold text-pullquote text-navy mb-4">
             "What sh<span className="font-bold text-bluedoor">IF</span>ts could we imagine and make happen next?"
           </p>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <p className="text-foreground text-base leading-relaxed mb-4">
+              <p className="text-body text-foreground mb-4">
                 Strategic reality through evidence-based assessment. The diagnostic reveals 3-4 shifts you're positioned to imagine and lead, assessing your organizational capability across The Painted Porch Pillars.
               </p>
-              <p className="font-bold text-bluedoor text-base">
+              <p className="font-bold text-bluedoor text-body">
                 This is awareness, you now know what's possible.
               </p>
             </div>
             <div>
-              <p className="font-poppins font-semibold text-bluedoor text-sm mb-2">Deliverables:</p>
+              <p className="font-poppins font-semibold text-bluedoor text-caption mb-2">Deliverables:</p>
               <ul className="space-y-1.5 text-sm text-foreground">
                 {["Strategic appraisal in less than 30 minutes", "Executive P.A.T.H.way within 72 business hours", "3-4 viable shifts identified", "Structural capability appraisal", "Prerequisites for each potential path"].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
