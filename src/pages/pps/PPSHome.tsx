@@ -553,7 +553,7 @@ export default function PPSHome() {
               </p>
               <p className="text-lg text-foreground leading-relaxed mb-4">
                 The Blue Door is a structured reflection process, not a health
-                assessment, and not a readiness score.&nbsp;It answers what future
+                assessment, and not a readiness score. It reveals what future
                 your organization is realistically positioned to pursue, so you
                 stop wondering whether you're solving the right problem and start
                 knowing you are.
