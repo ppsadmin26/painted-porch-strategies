@@ -174,10 +174,10 @@ export default function PhaseZero() {
         }
         description={
           <>
-            <p className="text-xl md:text-2xl mb-4">
+            <p className="text-lead mb-4">
               Before the kickoff. Before the rollout. Before the next big sh<span className="text-raspberry font-bold">IF</span>t.
             </p>
-            <p className="text-lg text-white/85">
+            <p className="text-lead text-white/85">
               Phase Zero is the clarity work that reveals what your organization 
               is becoming, what deserves your commitment, and what direction is worth designing toward.
             </p>
@@ -196,7 +196,7 @@ export default function PhaseZero() {
       <section className="py-16 md:py-24 bg-muted/40">
 
         <FadeIn className="container max-w-3xl mx-auto px-6">
-          <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-4">
+          <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-caption mb-4">
             Why Phase Zero Exists
           </p>
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
@@ -224,7 +224,7 @@ export default function PhaseZero() {
               the next big <ShIFt lowercase />&nbsp;hardens into execution, to examine what deserves pursuit, where strain already exists, and what direction makes the most sense from where you are today...and who and what you want to become tomorrow.
             </p>
           </div>
-          <p className="mt-10 text-2xl md:text-3xl font-poppins font-semibold text-navy leading-relaxed">
+          <p className="mt-10 text-pullquote not-italic font-poppins font-semibold text-navy leading-relaxed">
             The frustration that surfaces in moments like this is rarely random. <span className="text-raspberry">It's a signal.</span>
           </p>
         </FadeIn>
@@ -235,10 +235,10 @@ export default function PhaseZero() {
         <div className="container max-w-4xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 text-center md:text-left">
             <div className="flex-1">
-              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-1">
+              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-1">
                 Where Phase Zero Fits
               </p>
-              <p className="text-base md:text-lg text-foreground leading-relaxed">
+              <p className="text-lead text-foreground">
                 Phase Zero is the <span className="font-semibold text-primary">Prepare</span> stage of our P.A.T.H. methodology, the clarity work that comes before Align, Take Off, and Habits.
               </p>
             </div>
@@ -256,24 +256,24 @@ export default function PhaseZero() {
       {/* The work before the work */}
       <section className="py-16 md:py-24 bg-white">
         <FadeIn className="container max-w-3xl mx-auto px-6">
-          <p className="text-gold font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-4">
+          <p className="text-gold font-poppins font-semibold uppercase tracking-[0.2em] text-caption mb-4">
             The Work Before the Work
           </p>
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
             Phase Zero is where the real choices get made.
           </h2>
-          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-5">
+          <p className="text-lead text-charcoal/85 mb-5">
             It's the phase where you determine what's worth committing your
             time, energy, resources, and credibility toward.&nbsp;Not what to
             copy or catch up to, but what to{" "}
             <strong className="font-bold">author</strong>.
           </p>
-          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed">
+          <p className="text-lead text-charcoal/85">
             That sounds simple; it's not. Teams often skip it because the
             pressure to move feels heavier than the cost of moving in the
             wrong direction.
           </p>
-          <p className="text-2xl md:text-3xl font-poppins italic text-navy mt-10 border-l-4 border-gold pl-6">
+          <p className="text-pullquote font-poppins text-navy mt-10 border-l-4 border-gold pl-6">
             <em>"Are we designing our next move, or reacting to someone else's?"</em>
           </p>
         </FadeIn>
@@ -283,7 +283,7 @@ export default function PhaseZero() {
       <section className="py-16 md:py-24 bg-muted/60">
         <FadeIn className="container max-w-5xl mx-auto px-6">
           <div className="text-center mb-10">
-            <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-3">
+            <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-caption mb-3">
               Clear About the Work
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight">
@@ -329,13 +329,13 @@ export default function PhaseZero() {
         </FadeIn>
         <FadeIn className="container max-w-3xl mx-auto px-6 mt-16">
           <div className="rounded-2xl border border-raspberry/20 bg-white p-6 md:p-8 shadow-sm">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.18em] text-raspberry mb-2">
+            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.18em] text-raspberry mb-2">
               See the cost in your own numbers
             </p>
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 leading-tight">
               The hidden cost of misalignment and building before clarity
             </h3>
-            <p className="text-base md:text-lg text-charcoal/85 leading-relaxed mb-5">
+            <p className="text-lead text-charcoal/85 mb-5">
               Plug in your team size and initiative budget to see the industry-benchmarked
               cost of misaligned change, and what's recoverable when you start with Phase Zero.
             </p>
@@ -352,13 +352,13 @@ export default function PhaseZero() {
       <section id="pillars" className="py-20 md:py-28 bg-white scroll-mt-24">
         <div className="container max-w-7xl mx-auto px-6">
           <FadeIn className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
+            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
               PAINTED PORCH PILLARS: WHAT PHASE ZERO FORTIFIES
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
               The Foundations Beneath Every ShIFt
             </h2>
-            <p className="text-lg text-foreground leading-relaxed">
+            <p className="text-lead text-foreground">
               Every organization relies on three foundational structures. When
               one is weak, progress becomes harder to maintain. When all three are
               strong, change has something solid to build upon. Phase Zero
@@ -381,11 +381,11 @@ export default function PhaseZero() {
                     <h3 className={`text-xl md:text-2xl font-poppins font-semibold ${p.accent} leading-tight`}>
                       {p.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground">{p.subtitle}</p>
+                    <p className="text-body-sm text-muted-foreground">{p.subtitle}</p>
                   </div>
                 </div>
 
-                <p className="text-sm text-foreground leading-relaxed">
+                <p className="text-body-sm text-foreground">
                   {p.definition}
                 </p>
 
@@ -393,7 +393,7 @@ export default function PhaseZero() {
                   <h4 className="text-base md:text-lg font-semibold text-navy mb-2">The Questions:</h4>
                   <ul className="space-y-1.5">
                     {p.questions.map((q, i) => (
-                      <li key={i} className="text-sm text-foreground flex items-start gap-2 italic">
+                      <li key={i} className="text-body-sm text-foreground flex items-start gap-2 italic">
                         <span className={`${p.accent} mt-1 not-italic`}>•</span>
                         <span>&ldquo;{q}&rdquo;</span>
                       </li>
@@ -405,7 +405,7 @@ export default function PhaseZero() {
                   <h4 className="text-base md:text-lg font-semibold text-navy mb-2">Strong Foundation Looks Like:</h4>
                   <ul className="space-y-1.5">
                     {p.outcomes.map((o, i) => (
-                      <li key={i} className="text-sm text-foreground flex items-start gap-2">
+                      <li key={i} className="text-body-sm text-foreground flex items-start gap-2">
                         <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
                         <span>{o}</span>
                       </li>
@@ -419,13 +419,13 @@ export default function PhaseZero() {
           {/* Essential Elements */}
           <FadeIn className="bg-muted/50 border border-navy/5 rounded-2xl p-6 md:p-10 mb-10">
             <div className="text-center mb-6">
-              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-2">
+              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-2">
                 The Behavioral Bedrock
               </p>
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                 Essential Elements
               </h3>
-              <p className="text-foreground/80 text-base max-w-2xl mx-auto leading-relaxed">
+              <p className="text-foreground/80 text-body max-w-2xl mx-auto">
                 Under all three Pillars sit the behaviors that determine whether organizations simply react to the future or are capable of authoring it.
               </p>
             </div>
@@ -445,13 +445,13 @@ export default function PhaseZero() {
           {/* The Fortified Porch */}
           <FadeIn>
             <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 text-center shadow-xl border-b-4 border-gold">
-              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
+              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
                 The Result
               </p>
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-white mb-4">
                 The Fortified Porch
               </h3>
-              <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-lead text-white/90 max-w-2xl mx-auto">
                 When the three Pillars stand strong and the Essential
                 Elements show up every day, organizations gain the <strong className="text-gold">capability, capacity, and confidence to author whatever comes next.</strong>
               </p>
@@ -464,7 +464,7 @@ export default function PhaseZero() {
       <section className="py-20 md:py-24 bg-muted">
         <div className="container max-w-7xl mx-auto px-6">
           <FadeIn className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
               Where Phase Zero Leads
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight">
