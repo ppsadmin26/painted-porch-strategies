@@ -202,7 +202,7 @@ export default function EmbodyPathAlt() {
         tier={TIERS.EMBODY}
         badgeLabel="EMBODY P.A.T.H.way"
         headline={<>Architect Epic Sh<span className="text-raspberry font-bold">IF</span>t That Lasts.</>}
-        description="EMBODY is for founders and leaders ready to build permanent organizational capacity through deep, sustained partnership. This isn't consulting or change management. This is co-architecting an unshakeable foundation for sustainable transformation."
+        description="EMBODY is for founders and leaders ready to build permanent organizational capacity through deep, sustained partnership. This isn't project consulting or change management. This is co-architecting an unshakeable foundation for sustainable transformation."
         ctas={[
           {
             label: "Explore EMBODY",
