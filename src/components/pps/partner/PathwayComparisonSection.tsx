@@ -41,7 +41,7 @@ const tierContent = {
   },
   EMBODY: {
     tagline: "ORGANIZATION: Architect transformation that lasts.",
-    journey: "Embedded strategic partnership (6+ months) to co-architect permanent organizational capacity, capability, and resilience.",
+    journey: "Embedded strategic partnership (6+ months) to co-architect permanent organizational capacity, capability, and adaptability.",
     features: [
       "Architect Change Sessions (Phase Zero strategic co-design)",
       "Executive Advisory Partnership (ongoing strategic guidance)",
