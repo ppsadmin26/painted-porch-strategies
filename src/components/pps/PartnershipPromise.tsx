@@ -5,7 +5,7 @@ export default function PartnershipPromise() {
         <div className="p-6 bg-lime/10 border border-lime/30 rounded-lg">
           <p className="text-lime font-semibold text-lg mb-2">Our Partnership Promise</p>
           <p className="text-sm text-foreground">
-            We only work with organizations where we believe we can make a meaningful impact. If we're not the right fit, we'll tell you and try to point you in the right direction.
+            We only enter partnerships where we believe meaningful progress is possible - together. If we're not the right fit, we'll tell you and try to point you in the right direction.
           </p>
         </div>
       </div>
