@@ -35,7 +35,7 @@ const pillars = [
 ];
 
 const compassItems = [
-  "Which shifts match your organization's real capacity. Not what sounds good on paper, but what you're actually positioned to lead.",
+  "Which shifts align with your organization's current reality. Not what sounds good on paper, but what you can responsibly commit to and lead today.",
   "Where you can move now from existing strength, and where reinforcement has to come first.",
   "Why some shifts are premature, and what needs to be in place before you can pursue them without constraint.",
   "Your recommended path forward, with personalized next steps based on your organization's architecture."
