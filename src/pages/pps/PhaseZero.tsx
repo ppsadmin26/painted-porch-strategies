@@ -259,7 +259,7 @@ export default function PhaseZero() {
             <strong className="font-bold">author</strong>.
           </p>
           <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed">
-            That sounds simple; it's not. Most teams skip it because the
+            That sounds simple; it's not. Teams often skip it because the
             pressure to move feels heavier than the cost of moving in the
             wrong direction.
           </p>
