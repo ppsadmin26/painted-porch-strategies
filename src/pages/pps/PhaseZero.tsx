@@ -461,13 +461,6 @@ export default function PhaseZero() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight">
               Three clear ways to begin.
             </h2>
-            <p className="mt-4 text-sm text-foreground/70">
-              Phase Zero is the Prepare stage of our broader{" "}
-              <Link to="/about/approach#path" className="font-semibold text-primary hover:underline">
-                P.A.T.H. methodology
-              </Link>
-              .
-            </p>
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-6">
             {wherePhaseZeroLeads.map((w) => (
