@@ -345,9 +345,9 @@ export default function PhaseZero() {
       <section id="pillars" className="py-20 md:py-28 bg-white scroll-mt-24">
         <div className="container max-w-7xl mx-auto px-6">
           <FadeIn className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
+            <Eyebrow variant="plain" tone="gold" as="p">
               PAINTED PORCH PILLARS: WHAT PHASE ZERO FORTIFIES
-            </p>
+            </Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
               The Foundations Beneath Every ShIFt
             </h2>
