@@ -111,7 +111,7 @@ export default function IgnitePathAlt() {
         badgeLabel="IGNITE P.A.T.H.way"
         headline="Spark New ShIFt. Build Phase Zero™ Foundations at Your Own Pace."
         headlineHighlight="IF"
-        description="IGNITE is the self-led P.A.T.H.way into the Painted Porch. Explore courses, assessments, and Phase Zero frameworks at your own pace while sparking the clarity, confidence, and capability for what comes next."
+        description="IGNITE is the self-led P.A.T.H.way onto the Painted Porch. Explore courses, assessments, and Phase Zero frameworks at your own pace while sparking the clarity, confidence, and capability for what comes next."
         ctas={[
           {
             label: "Browse IGNITE",
