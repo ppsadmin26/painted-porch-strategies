@@ -329,13 +329,13 @@ export default function PhaseZero() {
         </FadeIn>
         <FadeIn className="container max-w-3xl mx-auto px-6 mt-16">
           <div className="rounded-2xl border border-raspberry/20 bg-white p-6 md:p-8 shadow-sm">
-            <p className="text-xs font-poppins font-semibold uppercase tracking-[0.18em] text-raspberry mb-2">
+            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.18em] text-raspberry mb-2">
               See the cost in your own numbers
             </p>
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 leading-tight">
               The hidden cost of misalignment and building before clarity
             </h3>
-            <p className="text-base md:text-lg text-charcoal/85 leading-relaxed mb-5">
+            <p className="text-lead text-charcoal/85 mb-5">
               Plug in your team size and initiative budget to see the industry-benchmarked
               cost of misaligned change, and what's recoverable when you start with Phase Zero.
             </p>
