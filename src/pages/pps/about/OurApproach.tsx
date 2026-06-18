@@ -215,7 +215,7 @@ export default function OurApproach() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             Upstream of the rollout.
           </h2>
-          <div className="text-lg text-foreground leading-relaxed mb-6">
+          <div className="text-lead text-foreground mb-6">
             <p className="mb-9">Every initiative is built on a series of assumptions.</p>
             <div className="mb-8 space-y-0">
               <p className="mb-0">About leadership.</p>
