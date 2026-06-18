@@ -547,7 +547,7 @@ export default function OurApproach() {
               </div>
               <div className="flex-1">
                 <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-1">
-                  Where Most Of Our Work Begins
+                  Where Our Work Begins
                 </p>
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">
                   Prepare is Phase Zero.
