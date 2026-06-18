@@ -227,7 +227,7 @@ export default function PPSHome() {
                 <br /><br />
                 <strong>We begin earlier.</strong>
                 <br /><br />
-                At the point where you&rsquo;re still determining what your organization is built to lead, what it is becoming, and what conditions need to exist before momentum accelerates.
+                At the point where you&rsquo;re still determining what direction is worth pursuing, what your organization is becoming, and what foundations need to exist before momentum accelerates.
               </p>
               <p className="text-lg text-foreground leading-relaxed">
                 Most organizations find us at one of three moments:
