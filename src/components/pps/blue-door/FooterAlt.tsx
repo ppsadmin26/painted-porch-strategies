@@ -77,7 +77,7 @@ export default function FooterAlt() {
       
       <div className="border-t border-white/10 py-4">
         <div className="container max-w-7xl mx-auto px-6">
-          <p className="text-xs text-center opacity-70">
+          <p className="text-caption text-center opacity-70">
             © 2026 Painted Porch Strategies. All rights reserved.
           </p>
         </div>
