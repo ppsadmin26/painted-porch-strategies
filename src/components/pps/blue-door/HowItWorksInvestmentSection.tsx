@@ -17,7 +17,7 @@ const steps: Step[] = [
     number: 1,
     title: "Complete the Appraisal",
     time: "Less than 30 minutes",
-    description: "Questions designed to surface both what shIFts are open to your organization and what you're built to lead."
+    description: "Questions designed to surface what opportunities are available to your organization and what realities must be considered before moving forward."
   },
   {
     number: 2,
