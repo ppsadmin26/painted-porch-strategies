@@ -328,9 +328,9 @@ export default function StracticalLeaderWorkshop() {
             The Stractical Leader Lab teaches you to operate in the <span className="font-semibold text-gold">integration zone</span> between strategic vision and tactical execution, the space where high-impact leadership happens.
           </p>
           <div className="bg-muted rounded-2xl p-8 md:p-12 max-w-2xl mx-auto border border-border/40">
-            <p className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-3">
+            <div className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-3">
               Stractical = <span className="text-primary">Strategic</span> + <span className="text-gold">Tactical</span>
-            </p>
+            </div>
             <p className="text-lead text-foreground/80 italic">
               "The ability to see and speak to the trees while envisioning and guiding the forest."
             </p>
