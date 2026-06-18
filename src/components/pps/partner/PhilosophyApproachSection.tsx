@@ -2,6 +2,12 @@ import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Building2, Handshake, TrendingUp, Target, BookOpen } from "lucide-react";
 
+const ShIFt = ({ lowercase = false }: { lowercase?: boolean }) => (
+  <>
+    {lowercase ? "sh" : "Sh"}<span className="text-raspberry font-bold">IF</span>t
+  </>
+);
+
 const principles = [
   {
     icon: Building2,
