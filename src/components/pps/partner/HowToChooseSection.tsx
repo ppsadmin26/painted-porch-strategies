@@ -12,7 +12,7 @@ const choiceCards = [
       "You're exploring Phase Zero for the first time",
       "You want to prove transformation works before bigger investment",
       "You're focused on your own leadership development",
-      "You're not sure if your organization is ready",
+      "You're still evaluating what direction makes the most sense or if your organization is ready",
       "You want flexibility and self-paced learning",
     ],
     cta: {
