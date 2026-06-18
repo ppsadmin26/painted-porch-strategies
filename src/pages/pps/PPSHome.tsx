@@ -642,8 +642,8 @@ export default function PPSHome() {
               </h3>
               <p className="text-foreground mb-4 leading-relaxed flex-1">
                 Organizational clarity, strategic alignment, and the Blue Door
-                experience for leaders answering bigger questions about growth,
-                capacity, and what&rsquo;s realistically next.
+                experience for leaders navigating questions of growth,
+                capability, and strategic direction.
               </p>
               <div className="mt-auto pt-2 min-h-[2.5rem] flex items-center">
                 <Link
