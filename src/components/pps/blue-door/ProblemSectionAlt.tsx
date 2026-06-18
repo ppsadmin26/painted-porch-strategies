@@ -55,7 +55,7 @@ export default function ProblemSectionAlt() {
           The real question isn't <span className="font-bold italic text-raspberry">"how do we implement this?"</span> It's <span className="font-bold italic text-bluedoor">"who do we need to become for this to happen?"</span>
         </p>
         <p className="text-base md:text-lg text-foreground leading-relaxed text-center max-w-4xl mx-auto mb-8">
-          That's the question most organizations skip, and it's the one that decides whether a transformation takes root or collapses under its own weight. Without a clear picture of what your organization is built to carry, you risk pouring time, money, and energy into changes that:
+          That's the question most organizations skip, and it's the one that decides whether a transformation takes root or collapses under its own weight. Without a clear picture of what your organization is genuinely built for, you risk pouring time, money, and energy into changes that:
         </p>
         
         <div className="max-w-3xl mx-auto mb-12 flex justify-center">
