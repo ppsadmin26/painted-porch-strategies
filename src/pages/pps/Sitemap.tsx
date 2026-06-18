@@ -352,6 +352,14 @@ function SitemapBranch({
             Draft
           </span>
         )}
+        {isStaff && node.path && category !== "public" && (
+          <span
+            className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-poppins font-bold uppercase tracking-wide ${CATEGORY_META[category].pillClass}`}
+            title={CATEGORY_META[category].description}
+          >
+            {CATEGORY_META[category].label}
+          </span>
+        )}
         {canManage && node.path && !node.path.startsWith("/admin") && (
           <InlineStatusControl
             path={node.path}
