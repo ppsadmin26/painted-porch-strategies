@@ -302,9 +302,9 @@ export default function AmplifySprints() {
                 <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
                   Investment
                 </h2>
-                <p className="text-3xl font-poppins font-bold text-lime mb-4">
+                <div className="text-3xl font-poppins font-bold text-lime mb-4">
                   Starting at $36,000
-                </p>
+                </div>
                 <p className="text-body-sm text-foreground mb-6">
                   Based on scope and timeline. Includes:
                 </p>
