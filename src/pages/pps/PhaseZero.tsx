@@ -445,13 +445,13 @@ export default function PhaseZero() {
           {/* The Fortified Porch */}
           <FadeIn>
             <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 text-center shadow-xl border-b-4 border-gold">
-              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
+              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
                 The Result
               </p>
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-white mb-4">
                 The Fortified Porch
               </h3>
-              <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-lead text-white/90 max-w-2xl mx-auto">
                 When the three Pillars stand strong and the Essential
                 Elements show up every day, organizations gain the <strong className="text-gold">capability, capacity, and confidence to author whatever comes next.</strong>
               </p>
