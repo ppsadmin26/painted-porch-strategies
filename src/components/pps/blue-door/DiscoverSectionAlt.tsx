@@ -26,7 +26,7 @@ const pillars = [
   {
     icon: Brain,
     title: "Living Ecosystem",
-    description: "How individuals and teams adapt, decide, and carry complexity without burning out.",
+    description: "How individuals and teams adapt, decide, and navigate complexity without burning out.",
     bgClass: "bg-gold/10",
     iconBgClass: "bg-gold/15",
     borderClass: "border-gold",
