@@ -68,7 +68,7 @@ export function PathwayComparisonSection() {
             Three Ways to Partner. One Philosophy.
           </h2>
           <div className="text-foreground space-y-4">
-            <p className="text-body">
+            <p className="text-lead">
               Whether you're looking for personal growth, stronger team performance, or organization-wide transformation, every P.A.T.H.way is grounded in the same principles:
             </p>
             <p className="py-4 font-bold text-lead text-navy">
@@ -77,10 +77,10 @@ export function PathwayComparisonSection() {
               Take-Off.<br />
               Make it a Habit.
             </p>
-            <p className="text-body">
+            <p className="text-lead">
               What changes is the scale of application, the depth of engagement, and what you're trying to accomplish.
             </p>
-            <p className="text-body">
+            <p className="text-lead">
               There is no required sequence, <span className="font-bold">only the starting point that makes the most sense for where you are today.</span>
             </p>
           </div>
@@ -92,10 +92,11 @@ export function PathwayComparisonSection() {
             Start Where You Are
           </h3>
           <div className="text-foreground space-y-3">
-            <p className="text-body">Some people arrive looking for greater clarity, confidence, and capability in their own work.&nbsp;Others are responsible for teams, departments, or entire organizations.</p>
-            <p className="text-body">P.A.T.H.ways are designed to meet you where you are and provide a clear direction forward.</p>
+            <p className="text-lead">Some people arrive looking for greater clarity, confidence, and capability in their own work.&nbsp;Others are responsible for teams, departments, or entire organizations.</p>
+            <p className="text-lead">P.A.T.H.ways are designed to meet you where you are and provide a clear direction forward.</p>
           </div>
         </div>
+
 
         <div className="grid md:grid-cols-3 gap-8">
           {TIER_LIST.map((tier) => {
