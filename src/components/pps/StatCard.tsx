@@ -52,7 +52,7 @@ export default function StatCard({
   if (variant === "editorial") {
     return (
       <div className={cn("border-l-4 border-gold pl-5 py-2", className)}>
-        <p data-body-allow className={cn("text-pullquote md:text-pullquote font-poppins font-bold leading-tight", accentClass)}>
+        <p data-body-allow className={cn("text-pullquote md:text-pullquote font-poppins font-bold leading-tight not-italic", accentClass)}>
           {s.figure}
           <span className="text-navy"> {s.label.replace(/\.$/, "")}.</span>
           {tooltip}
