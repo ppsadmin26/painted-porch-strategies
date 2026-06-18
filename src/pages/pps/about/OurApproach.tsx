@@ -370,7 +370,7 @@ export default function OurApproach() {
             </h2>
             <div className="text-lg text-foreground leading-relaxed space-y-8">
               <p>
-                Meaningful change rarely succeeds because of a framework. It succeeds because the conditions required for success already exist or are intentionally strengthened.
+                Meaningful change rarely succeeds because of a framework alone. It succeeds because the conditions required for success already exist or are intentionally strengthened.
               </p>
               <p>
                 We do not deliver or manage change for you. We fortify the conditions that allow the right change to take off, in your people and across your organization.
