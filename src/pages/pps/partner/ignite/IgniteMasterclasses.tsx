@@ -89,10 +89,10 @@ export default function IgniteMasterclasses() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Masterclasses & Mini-Workshops
             </h1>
-            <p className="text-lg text-foreground max-w-3xl mx-auto">
+            <p className="text-lead text-foreground max-w-3xl mx-auto">
               Focused, expert-led sessions designed to deepen your transformation capacity. Each masterclass is a 30–90 minute experience you can attend live or watch on replay.
             </p>
-            <p className="text-sm text-primary max-w-3xl mx-auto mt-3">
+            <p className="text-body-sm text-primary max-w-3xl mx-auto mt-3">
               New sessions drop throughout the year. Click "Join the Launch List" on any course below to be the first to know when it goes live.
             </p>
           </div>
