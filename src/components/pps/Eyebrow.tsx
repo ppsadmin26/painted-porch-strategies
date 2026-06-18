@@ -64,6 +64,7 @@ const PLAIN_TONE: Record<EyebrowTone, string> = {
   foreground: "text-foreground",
 };
 
+const PILL_BASE =
   "inline-block font-poppins font-semibold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider mb-6";
 const PLAIN_BASE =
   "inline-block font-poppins font-semibold text-caption uppercase tracking-[0.2em] mb-3";
