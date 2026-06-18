@@ -106,7 +106,7 @@ export default function IgniteCourses() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Ignite New Capabilities...<span className="text-gold">at Your Own Pace</span>
             </h1>
-            <p className="text-lg text-foreground max-w-3xl mx-auto">
+            <p className="text-lead text-foreground max-w-3xl mx-auto">
               Transform how you lead with Phase Zero capacity on your schedule through our on-demand, self-paced courses. Learn frameworks and practices that teach you to architect change, communicate with clarity, cultivate resilience, and develop teams where everyone shines.
             </p>
           </div>
