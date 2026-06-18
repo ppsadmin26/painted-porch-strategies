@@ -407,7 +407,7 @@ export default function OurApproach() {
               </h3>
               <ul className="space-y-3">
                 {createConditions.map((c) => (
-                  <li key={c} className="flex items-start gap-3 text-foreground leading-relaxed">
+                  <li key={c} className="text-body text-foreground flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                     <span>{c}</span>
                   </li>
