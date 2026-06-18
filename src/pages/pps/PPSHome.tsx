@@ -281,7 +281,7 @@ export default function PPSHome() {
                     <KeyRound className="w-6 h-6 text-bluedoor" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-1">
+                    <p className="text-caption font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-1">
                       02 &middot; Open the Blue Door
                     </p>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-bluedoor transition-colors">
