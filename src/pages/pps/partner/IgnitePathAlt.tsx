@@ -315,15 +315,6 @@ export default function IgnitePathAlt() {
         </div>
       </section>
 
-      {/* BREATHING SECTION: Quote Strip */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="container max-w-4xl mx-auto px-6 text-center">
-          <blockquote className="text-2xl md:text-3xl font-poppins font-semibold text-navy italic leading-relaxed">
-            "The secret of change is to focus all of your energy not on fighting the old, but on building the new."
-          </blockquote>
-          <p className="mt-4 text-muted-foreground text-sm">Socrates</p>
-        </div>
-      </section>
 
       {/* SECTION 6: WHAT HAPPENS AFTER IGNITE? */}
       <section className="py-16 md:py-24 bg-muted">
