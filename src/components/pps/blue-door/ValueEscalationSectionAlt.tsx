@@ -90,20 +90,20 @@ export default function ValueEscalationSectionAlt() {
             <span className="inline-block bg-strategic text-white font-poppins font-bold text-sm px-4 py-1 rounded-full uppercase tracking-wider mb-2">
               DECIDE
             </span>
-            <p className="font-poppins font-bold text-2xl md:text-3xl text-strategic mb-2">
+            <div className="font-poppins font-bold text-2xl md:text-3xl text-strategic mb-2">
               Architect Change Design Session
-            </p>
-            <p className="font-poppins font-bold text-2xl text-strategic mb-4">Starting at $36,000</p>
-            <p className="font-poppins font-semibold italic text-lg text-navy mb-4">
+            </div>
+            <div className="font-poppins font-bold text-2xl text-strategic mb-4">Starting at $36,000</div>
+            <p className="font-poppins font-semibold text-pullquote text-navy mb-4">
               "Which sh<span className="font-bold text-bluedoor">IF</span>t will we design, and are we aligned enough to support it?"
             </p>
-            <p className="text-foreground text-sm leading-relaxed mb-4">
+            <p className="text-body-sm text-foreground mb-4">
               The workshop converts imagination into architectural design for your next organizational shift. One path is chosen, leadership aligns, and structural prerequisites are surfaced before building begins.
             </p>
-            <p className="font-bold text-strategic text-base mb-4">
+            <p className="font-bold text-strategic text-body mb-4">
               This is commitment, you've decided what to build.
             </p>
-            <p className="font-poppins font-semibold text-strategic text-sm mb-2">Investment Options:</p>
+            <p className="font-poppins font-semibold text-strategic text-caption mb-2">Investment Options:</p>
             <ul className="space-y-1.5 text-sm text-foreground">
               {["Full-day session: $36,000*", "2+ day intensive: $69,000*"].map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
@@ -112,7 +112,7 @@ export default function ValueEscalationSectionAlt() {
                 </li>
               ))}
             </ul>
-            <p className="italic text-xs text-foreground/70 mt-2">*Includes all travel-related expenses</p>
+            <p className="italic text-caption text-foreground/70 mt-2">*Includes all travel-related expenses</p>
           </div>
           
           <div 
