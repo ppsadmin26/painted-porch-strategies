@@ -223,7 +223,8 @@ export default function AmplifyPathAlt() {
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              You Know What Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t You Want to Make Happen,  Now You Need to Build the Capacity for It.
+              You Know What Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t You Want to Make Happen,&nbsp;
+              &nbsp;Now You Need to Build the Capacity for It.
             </h2>
             <p className="text-lead text-foreground max-w-2xl mx-auto">
               Our AMPLIFY P.A.T.H.way is designed for two audiences, organizations/teams seeking alignment AND individual leaders wanting peer learning.
