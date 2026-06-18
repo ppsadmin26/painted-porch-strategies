@@ -103,7 +103,7 @@ export default function Speaking() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Grounded in Stoicism. Built for Change.
           </h2>
-          <p className="text-white/90 text-lead leading-relaxed">
+          <p className="text-body text-white/90 leading-relaxed">
             At Painted Porch Strategies, we partner with leaders to become change-ready, not just on paper, but in practice. Grounded in Stoic wisdom and driven by emotional intelligence, our speakers bring clarity, energy, and actionable strategies to every audience. Whether you're addressing burnout, navigating organizational transformation, or aligning your team, we design speaking experiences that create lasting impact.
           </p>
         </div>
@@ -142,7 +142,7 @@ export default function Speaking() {
                     <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
                       {speaker.name}
                     </h2>
-                    <p className="text-lead font-medium text-foreground mb-3 italic">
+                    <p className="text-body font-medium text-foreground mb-3 italic">
                       {speaker.tagline}
                     </p>
                     <p className="text-body text-foreground leading-relaxed mb-6">
@@ -188,7 +188,7 @@ export default function Speaking() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Bring Our Porch to Your Next Event
           </h2>
-          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
             Let's discuss how we can bring transformative content to your audience. Every keynote can be expanded into a hands-on workshop for lasting team impact.
           </p>
           <Link to="/contact?interest=speaking&message=I'm interested in booking a speaker for our event.">

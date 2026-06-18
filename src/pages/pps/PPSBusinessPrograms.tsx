@@ -169,7 +169,7 @@ export default function PPSBusinessPrograms() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins leading-tight">
               Training Programs
             </h1>
-            <p className="text-lead text-white/90 leading-relaxed mb-8">
+            <p className="text-body text-white/90 leading-relaxed mb-8">
               Our training programs are designed to activate your employees' inner power,{" "}
               <strong>tackle burnout</strong>{" "}
               <em>(or occasional overwhelm)</em>,{" "}
@@ -209,17 +209,17 @@ export default function PPSBusinessPrograms() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
                 People Success
               </h2>
-              <p className="text-lead text-foreground leading-relaxed">
+              <p className="text-body text-foreground leading-relaxed">
                 Most business programs focus on just one area of struggle or improvement{" "}
                 <em>(e.g., Teamwork or Leadership)</em>. We believe that in order for you to have a
                 truly great business{" "}
                 <em>(where people are dedicated, growth-minded, and sticking around)</em> requires a{" "}
                 <strong>holistic approach to people success:</strong>
               </p>
-              <p className="text-lead font-poppins font-semibold text-navy mt-6">
+              <p className="text-body font-poppins font-semibold text-navy mt-6">
                 Individual Mindset, Effective Communication, and Collaborative Teams.
               </p>
-              <p className="text-lead text-foreground leading-relaxed mt-6">
+              <p className="text-body text-foreground leading-relaxed mt-6">
                 There is <strong>untapped potential</strong> and power in your employees to{" "}
                 <strong>stand strong and resilient</strong> among the obstacles in life and work,{" "}
                 <strong>develop productive, trusting collaborations</strong>, and{" "}
@@ -249,7 +249,7 @@ export default function PPSBusinessPrograms() {
                     <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 group-hover:text-primary transition-colors">
                       {program.title}
                     </h3>
-                    <p className="text-foreground text-body-sm leading-relaxed mb-4">
+                    <p className="text-body text-foreground -sm leading-relaxed mb-4">
                       {program.description}
                     </p>
                     <span className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -281,7 +281,7 @@ export default function PPSBusinessPrograms() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
                 Operational Success
               </h2>
-              <p className="text-lead text-foreground leading-relaxed">
+              <p className="text-body text-foreground leading-relaxed">
                 Eliminate the <strong>operational weight</strong> that is{" "}
                 <strong>slowing down your growth</strong> and <strong>change</strong> initiatives.
                 Learn to shift from outdated or wasteful processes to focus on{" "}
@@ -315,7 +315,7 @@ export default function PPSBusinessPrograms() {
                     <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 group-hover:text-primary transition-colors">
                       {program.title}
                     </h3>
-                    <p className="text-foreground text-body-sm leading-relaxed mb-4">
+                    <p className="text-body text-foreground -sm leading-relaxed mb-4">
                       {program.description}
                     </p>
                     <span className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -346,11 +346,11 @@ export default function PPSBusinessPrograms() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
                 Flexible &amp; Transparent Pricing
               </h2>
-              <p className="text-lead text-foreground leading-relaxed mb-4">
+              <p className="text-body text-foreground leading-relaxed mb-4">
                 We like to do things differently here, in our diversity of experts across multiple
                 industries, our people-first programs, and our pricing.
               </p>
-              <p className="text-lead text-foreground leading-relaxed mb-4">
+              <p className="text-body text-foreground leading-relaxed mb-4">
                 <strong>Having flexibility</strong> in what programs and services are available to
                 you, based on your <strong>budget</strong>, <strong>resources</strong>, desired{" "}
                 <strong>outcomes</strong>, and <strong>schedule</strong>, is important. That's why
@@ -362,7 +362,7 @@ export default function PPSBusinessPrograms() {
                 just those in official leadership roles. We want you to be able to{" "}
                 <strong>invest in your Company's success</strong>, not just certain individuals.
               </p>
-              <p className="text-body-sm text-muted-foreground mt-4 italic">
+              <p className="text-body -sm text-muted-foreground mt-4 italic">
                 Prices below are per program. Multi-program discounts are available.
               </p>
             </div>
@@ -388,7 +388,7 @@ export default function PPSBusinessPrograms() {
                   </div>
                   <ul className="space-y-3 flex-1 mb-8">
                     {tier.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3 text-body-sm text-foreground">
+                      <li key={i} className="text-body flex items-start gap-3 -sm text-foreground">
                         <CheckCircle className={`w-5 h-5 ${tier.accent} flex-shrink-0 mt-0.5`} />
                         <span>{feature}</span>
                       </li>
@@ -418,7 +418,7 @@ export default function PPSBusinessPrograms() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
                 One-on-One Guidance, Coaching, and Advisory
               </h2>
-              <p className="text-lead text-foreground leading-relaxed">
+              <p className="text-body text-foreground leading-relaxed">
                 The Painted Porch team is made up of experts across multiple industries including{" "}
                 <strong>Movement &amp; Mindfulness</strong>,{" "}
                 <strong>Media &amp; Broadcasting</strong>, and{" "}
@@ -445,10 +445,10 @@ export default function PPSBusinessPrograms() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-1">
                     {expert.name}
                   </h3>
-                  <p className="text-caption text-muted-foreground mb-4">
+                  <p className="text-body text-muted-foreground mb-4">
                     {expert.experience} Experience
                   </p>
-                  <p className="text-foreground text-body-sm leading-relaxed mb-4 flex-1">
+                  <p className="text-body text-foreground -sm leading-relaxed mb-4 flex-1">
                     {expert.description}
                   </p>
                   <Link
@@ -473,13 +473,13 @@ export default function PPSBusinessPrograms() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
               A Virtuous Cycle
             </h2>
-            <p className="text-lead text-foreground leading-relaxed mb-4">
+            <p className="text-body text-foreground leading-relaxed mb-4">
               Painted Porch Strategies was created to model the Stoic principles of{" "}
               <em>Reason, Logic, Purpose, and Virtue</em>. We believe that when your company has a{" "}
               <strong>resilient, mindful workforce</strong> and <strong>noble mission</strong>, your{" "}
               <strong>people, processes, and strategies can align to do amazing work</strong>.
             </p>
-            <p className="text-lead text-foreground leading-relaxed mb-6">
+            <p className="text-body text-foreground leading-relaxed mb-6">
               Since we intend to always live by the Stoic philosopher, Seneca's, advice of{" "}
               <em>"works not words"</em>, we believe that in order{" "}
               <strong>
@@ -492,7 +492,7 @@ export default function PPSBusinessPrograms() {
               .
             </p>
             <div className="bg-white rounded-xl p-8 shadow-sm inline-block">
-              <p className="text-lead font-poppins font-bold text-strategic">
+              <p className="text-body font-poppins font-bold text-strategic">
                 5% of your fee will be donated to a charity of your choice, in your company's name.
               </p>
             </div>
@@ -507,7 +507,7 @@ export default function PPSBusinessPrograms() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
               Interested in our programs for yourself?
             </h2>
-            <p className="text-lead text-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-body text-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
               <strong>Eliminating burnout</strong>, building up emotional{" "}
               <strong>resiliency</strong>, developing <strong>strong teams</strong> &amp;
               connections, and <strong>finding your true voice</strong> when communicating are not
@@ -533,7 +533,7 @@ export default function PPSBusinessPrograms() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-poppins">
               Ready to Build Change-Ready Teams?
             </h2>
-            <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
               Reach out to learn more about how we can partner with your organization to build a
               foundation for lasting change.
             </p>

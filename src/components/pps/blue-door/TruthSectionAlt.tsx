@@ -16,13 +16,13 @@ export default function TruthSectionAlt() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             The Truth of Why Most Sh<span className="text-raspberry font-bold">IF</span>t Fails
           </h2>
-          <p className="text-lead text-foreground mb-6">
+          <p className="text-body text-foreground mb-6">
             Most organizational changes don't fail because the pursuit was wrong. They fail because leaders discovered too late, often after 6+ months and $500K+ invested, that their organization wasn't structurally ready for the shift they were pursuing.
           </p>
-          <p className="text-lead text-foreground mb-6">
+          <p className="text-body text-foreground mb-6">
             The <span className="font-bold text-bluedoor">Blue Door</span> surfaces that reality early, while you're still exploring and before direction gets locked in.
           </p>
-          <p className="text-lead text-foreground mb-6">
+          <p className="text-body text-foreground mb-6">
             In less than 30 minutes, you'll learn what might otherwise take months to figure out: whether your organization can actually lead the shift you're considering, or where some groundwork would set you up for real success.
           </p>
           <div className="bg-raspberry/10 border-l-4 border-raspberry p-6 md:p-8 rounded-xl shadow-sm mb-6">
@@ -33,10 +33,10 @@ export default function TruthSectionAlt() {
               <CostCalculatorDialog />
             </div>
           </div>
-          <p className="text-lead text-foreground mb-4">
+          <p className="text-body text-foreground mb-4">
             If you're standing at the edge of something new and want to understand what shift your organization can truly lead next, before you try to make it happen:
           </p>
-          <p className="font-poppins font-bold text-pullquote text-bluedoor mb-6">
+          <p className="text-body font-poppins font-bold text-bluedoor mb-6">
             This is where your next P.A.T.H. to Do Epic Sh<span className="text-raspberry font-bold">IF</span>t begins.
           </p>
           <Link to="/blue-door/purchase">

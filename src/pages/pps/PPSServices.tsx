@@ -87,7 +87,7 @@ export default function PPSServices() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
             Our Services
           </h1>
-          <p className="text-lead text-white/90 max-w-2xl leading-relaxed mb-8">
+          <p className="text-body text-white/90 max-w-2xl leading-relaxed mb-8">
             Our services are centered around providing your business with everything it needs to{" "}
             <strong>fortify the strength and value</strong> of your people, processes, and systems for{" "}
             <strong>resilience</strong>, <strong>change</strong> adaptability, and <strong>growth</strong>.
@@ -109,11 +109,11 @@ export default function PPSServices() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-6">
               Our Focus
             </h2>
-            <p className="text-lead text-charcoal leading-relaxed mb-8">
+            <p className="text-body text-charcoal leading-relaxed mb-8">
               In order to create a <strong>strong, resilient company</strong>, we take a holistic approach to{" "}
               <strong>business transformation and lasting change</strong>.
             </p>
-            <p className="text-lead text-charcoal leading-relaxed mb-8">
+            <p className="text-body text-charcoal leading-relaxed mb-8">
               A <strong>healthy organization</strong> is focused on fortifying four elements to ensure{" "}
               <strong>balance</strong> and a <strong>centered strength:</strong>
             </p>
@@ -140,7 +140,7 @@ export default function PPSServices() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-6">
                 Our Services
               </h2>
-              <p className="text-lead text-charcoal max-w-3xl mx-auto leading-relaxed">
+              <p className="text-body text-charcoal max-w-3xl mx-auto leading-relaxed">
                 Change presents itself in many ways, sizes, and purposes. Having the mindset, messaging, teams, and mission dialed in are critical to adoption and execution of any new idea. Whether your change initiative is small or company-wide, our training and advisory services are centered around{" "}
                 <strong>preparing your leaders and teams for ANY change</strong>…and making it stick.
               </p>
@@ -184,7 +184,7 @@ export default function PPSServices() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-6">
                 One-on-One Guidance, Coaching, and Advisory
               </h2>
-              <p className="text-lead text-charcoal max-w-3xl mx-auto leading-relaxed">
+              <p className="text-body text-charcoal max-w-3xl mx-auto leading-relaxed">
                 The Painted Porch team is made up of experts across multiple industries including{" "}
                 <strong>Movement & Mindfulness</strong>, <strong>Media & Broadcasting</strong>, and{" "}
                 <strong>Staffing Operations & System Development</strong>.
@@ -201,8 +201,8 @@ export default function PPSServices() {
                     <Sparkles className="h-8 w-8 text-pps-teal" />
                   </div>
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-1">{expert.role}</h3>
-                  <p className="text-body-sm text-pps-gold font-semibold mb-4">{expert.name}</p>
-                  <p className="text-charcoal text-body-sm leading-relaxed mb-6">{expert.description}</p>
+                  <p className="text-body -sm text-pps-gold font-semibold mb-4">{expert.name}</p>
+                  <p className="text-body text-charcoal -sm leading-relaxed mb-6">{expert.description}</p>
                   <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal/10 font-poppins font-semibold rounded-lg">
                     <Link to={expert.link}>{expert.linkLabel} <ArrowRight className="ml-2 h-4 w-4" /></Link>
                   </Button>
@@ -220,7 +220,7 @@ export default function PPSServices() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-6">
               Interested in our programs for yourself?
             </h2>
-            <p className="text-lead text-white/80 leading-relaxed mb-8">
+            <p className="text-body text-white/80 leading-relaxed mb-8">
               <strong>Eliminating burnout</strong>, building up emotional <strong>resiliency</strong>, developing{" "}
               <strong>strong teams</strong> & connections, and <strong>finding your true voice</strong> are not just
               for the workplace. Discover how to tap into your inner power and{" "}

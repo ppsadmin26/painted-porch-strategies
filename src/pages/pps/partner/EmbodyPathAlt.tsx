@@ -239,7 +239,7 @@ export default function EmbodyPathAlt() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               It's Time to Sh<span className="text-raspberry font-bold">IF</span>t From Change Moments to an Innovation Movement.
             </h2>
-            <p className="text-lead text-foreground">
+            <p className="text-body text-foreground">
               You've made the decision: you're ready for your organization to move from managing change initiatives to leading sustainable transformation. Not consultants to fix or implement change for you. Strategic partners to co-architect permanent capability in your people, your processes, and your systems.
             </p>
           </div>
@@ -249,10 +249,10 @@ export default function EmbodyPathAlt() {
             <h3 className="text-lg md:text-xl font-poppins font-semibold text-navy mb-2">
               The <span className="text-lime">EMBODY</span> outcome you're seeking:
             </h3>
-            <p className="text-lead text-foreground italic mb-2">
+            <p className="text-body text-foreground italic mb-2">
               We've built the internal structures and culture to architect and execute sustainable change. Continual transformation is now ours to lead.
             </p>
-            <p className="text-body-sm text-foreground">
+            <p className="text-body -sm text-foreground">
               Transformation becomes self-sustaining and repeatable. Your organization develops permanent capacity and practices that outlast any single initiative.
             </p>
           </div>
@@ -262,7 +262,7 @@ export default function EmbodyPathAlt() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               For leaders who want to build something that lasts, not something to get through.
             </h2>
-            <p className="text-lead text-foreground">
+            <p className="text-body text-foreground">
               EMBODY is our highest style of partnership over a committed 6+ month period. It isn't longer because we like longer engagements. It's longer because the structural change you're after doesn't move with a workshop, a deck, or a two-quarter sprint.
             </p>
           </div>
@@ -282,7 +282,7 @@ export default function EmbodyPathAlt() {
                     <Icon className={`w-6 h-6 ${accent.text}`} aria-hidden="true" />
                   </div>
                   <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{card.title}</h3>
-                  <p className="text-body-sm text-foreground">{card.body}</p>
+                  <p className="text-body -sm text-foreground">{card.body}</p>
                 </div>
               );
             })}
@@ -290,7 +290,7 @@ export default function EmbodyPathAlt() {
 
           {/* Pull-quote */}
           <div className="max-w-3xl mx-auto bg-muted/40 border-l-4 border-raspberry p-6 rounded-r-xl">
-            <p className="text-pullquote font-poppins text-navy">
+            <p className="text-body font-poppins text-navy">
               The cost of staying the same is rarely on the balance sheet. It shows up in the people who leave, the decisions that stall, and the sh<span className="text-raspberry font-semibold italic">IF</span>ts you watched competitors lead or that didn't quite land.
             </p>
           </div>
@@ -324,7 +324,7 @@ export default function EmbodyPathAlt() {
                   </div>
                   <ul className="space-y-2">
                     {industry.items.map((item) => (
-                      <li key={item} className="text-body-sm text-foreground flex items-start gap-2">
+                      <li key={item} className="text-body -sm text-foreground flex items-start gap-2">
                         <span className={`${accent} mt-1`}>•</span>
                         {item}
                       </li>
@@ -362,13 +362,13 @@ export default function EmbodyPathAlt() {
                     {String(i + 1).padStart(2, "0")}
                   </p>
                   <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{item.title}</h3>
-                  <p className="text-body-sm text-foreground">{item.body}</p>
+                  <p className="text-body -sm text-foreground">{item.body}</p>
                 </div>
               );
             })}
           </div>
           <div className="max-w-3xl mx-auto text-center bg-muted/40 rounded-xl p-6">
-            <p className="text-body-sm text-foreground mb-4">
+            <p className="text-body -sm text-foreground mb-4">
               Built on the{" "}
               <Link to="/phase-zero#pillars" className="font-semibold text-primary hover:underline">
                 Painted Porch Pillars
@@ -404,7 +404,7 @@ export default function EmbodyPathAlt() {
               <div className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-2">
                 Starting at $96,000
               </div>
-              <p className="text-body-sm text-muted-foreground">
+              <p className="text-body -sm text-muted-foreground">
                 Typically less than 1% of annual revenue. This is a strategic investment in permanent capacity, not a project support line item.
               </p>
             </div>
@@ -420,7 +420,7 @@ export default function EmbodyPathAlt() {
                     "One strategic plan and direction instead of fragmented vendor projects to manage",
                     "Permanent internal capacity to architect change without us",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-body-sm text-foreground">
+                    <li key={item} className="text-body flex items-start gap-2 -sm text-foreground">
                       <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
@@ -434,7 +434,7 @@ export default function EmbodyPathAlt() {
                     Prerequisite: The <span className="text-bluedoor">Blue Door</span>
                   </h3>
                 </div>
-                <p className="text-body-sm text-foreground mb-3">
+                <p className="text-body -sm text-foreground mb-3">
                   Required before any EMBODY engagement. Your investment is fully credited toward the partnership.
                 </p>
                 <div className="flex items-center gap-3 text-sm mb-4">
@@ -473,7 +473,7 @@ export default function EmbodyPathAlt() {
               <Eyebrow variant="plain" tone="white" as="p">Traditional implementation consultancy</Eyebrow>
               <ul className="space-y-3">
                 {traditionalVsEmbody.map((row) => (
-                  <li key={row.traditional} className="text-body-sm text-white/85">
+                  <li key={row.traditional} className="text-body -sm text-white/85">
                     {row.traditional}
                   </li>
                 ))}
@@ -483,7 +483,7 @@ export default function EmbodyPathAlt() {
               <Eyebrow variant="plain" tone="white" as="p">EMBODY embedded partnership</Eyebrow>
               <ul className="space-y-3">
                 {traditionalVsEmbody.map((row) => (
-                  <li key={row.embody} className="text-body-sm text-white font-medium">
+                  <li key={row.embody} className="text-body -sm text-white font-medium">
                     {row.embody}
                   </li>
                 ))}
@@ -546,10 +546,10 @@ export default function EmbodyPathAlt() {
                 </div>
                 <div className="grid grid-cols-2 gap-px bg-border/60 rounded-lg overflow-hidden border border-border/60 shadow-sm">
                   <div className="bg-background p-3">
-                    <p className="text-body-sm text-foreground !leading-snug">{row.amplify}</p>
+                    <p className="text-body -sm text-foreground !leading-snug">{row.amplify}</p>
                   </div>
                   <div className="bg-background p-3">
-                    <p className="text-body-sm text-foreground !leading-snug">{row.embody}</p>
+                    <p className="text-body -sm text-foreground !leading-snug">{row.embody}</p>
                   </div>
                 </div>
               </div>

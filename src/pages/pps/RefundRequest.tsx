@@ -153,7 +153,7 @@ export default function RefundRequest() {
                     maxLength={255}
                     className="h-11"
                   />
-                  <p className="text-caption text-charcoal/70">
+                  <p className="text-body text-charcoal/70">
                     Use the email tied to your purchase or course access.
                   </p>
                 </div>
@@ -212,7 +212,7 @@ export default function RefundRequest() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between pt-2">
-                <p className="text-caption text-charcoal/70">
+                <p className="text-body text-charcoal/70">
                   By submitting, you'll get a confirmation email and our team
                   will be notified to process your refund.
                 </p>

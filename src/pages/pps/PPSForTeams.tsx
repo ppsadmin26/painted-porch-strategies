@@ -144,7 +144,7 @@ export default function PPSForTeams() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               The Four Pillars of Change-Readiness™
             </h2>
-            <p className="text-lead text-foreground max-w-2xl mx-auto">
+            <p className="text-body text-foreground max-w-2xl mx-auto">
               Every successful transformation is built on these four foundational pillars. We help your organization master each one.
             </p>
           </div>
@@ -162,7 +162,7 @@ export default function PPSForTeams() {
                   </div>
                   <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">{pillar.title}</h3>
                   <p className={`text-body-sm font-medium text-${pillar.color} mb-3`}>{pillar.subtitle}</p>
-                  <p className="text-foreground text-body-sm leading-relaxed">{pillar.description}</p>
+                  <p className="text-body text-foreground -sm leading-relaxed">{pillar.description}</p>
                 </div>
               );
             })}
@@ -180,7 +180,7 @@ export default function PPSForTeams() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Team Development Programs
             </h2>
-            <p className="text-lead text-foreground max-w-2xl mx-auto">
+            <p className="text-body text-foreground max-w-2xl mx-auto">
               Comprehensive training and advisory to prepare your organization for lasting change.
             </p>
           </div>
@@ -196,11 +196,11 @@ export default function PPSForTeams() {
                     </div>
                     <div>
                       <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">{program.title}</h3>
-                      <p className="text-body-sm font-medium text-primary">{program.subtitle}</p>
+                      <p className="text-body -sm font-medium text-primary">{program.subtitle}</p>
                     </div>
                   </div>
                   <p className="text-body text-foreground mb-4 leading-relaxed">{program.description}</p>
-                  <p className="text-body-sm text-muted-foreground leading-relaxed">{program.details}</p>
+                  <p className="text-body -sm text-muted-foreground leading-relaxed">{program.details}</p>
                 </div>
               );
             })}
@@ -227,10 +227,10 @@ export default function PPSForTeams() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 Outcomes Over Hours
               </h2>
-              <p className="text-lead text-foreground leading-relaxed mb-6">
+              <p className="text-body text-foreground leading-relaxed mb-6">
                 We believe in transparent, flat-fee pricing. You'll know exactly what you're investing before we begin, no surprise bills, no scope creep charges. Our focus is on delivering results, not billing hours.
               </p>
-              <p className="text-lead text-foreground leading-relaxed mb-6">
+              <p className="text-body text-foreground leading-relaxed mb-6">
                 Every engagement begins with a discovery conversation to understand your unique needs and determine the right approach for your organization.
               </p>
               <div className="flex items-center gap-3 p-4 bg-lime/10 rounded-lg">
@@ -280,10 +280,10 @@ export default function PPSForTeams() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <div key={index} className="bg-white p-8 rounded-xl shadow-sm">
-                <p className="text-lead text-foreground italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
+                <p className="text-body text-foreground italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
                 <div>
                   <p className="text-body font-semibold text-navy">{testimonial.author}</p>
-                  <p className="text-body-sm text-muted-foreground">{testimonial.company}</p>
+                  <p className="text-body -sm text-muted-foreground">{testimonial.company}</p>
                 </div>
               </div>
             ))}
@@ -300,7 +300,7 @@ export default function PPSForTeams() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Not Sure Where to Start?
           </h2>
-          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
             The Blue Door is our Phase Zero assessment tool. In less than 30 minutes, discover which strategic shifts align with your organizational capability and readiness.
           </p>
           <Link to="/blue-door">

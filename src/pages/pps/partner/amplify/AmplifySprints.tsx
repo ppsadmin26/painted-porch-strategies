@@ -149,7 +149,7 @@ export default function AmplifySprints() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy mb-6">
             A 90-day Phase Zero<span className="align-super text-xs ml-0.5">™</span> partnership for your next sh<span className="text-strategic font-bold">IF</span>t.
           </h1>
-          <p className="text-lead text-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-body text-foreground max-w-3xl mx-auto mb-8">
             Focused. Time-boxed. Built to architect the foundation <em>before</em> implementation begins, so what you build next actually lasts.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
@@ -192,7 +192,7 @@ export default function AmplifySprints() {
                       <Icon className="w-5 h-5 text-lime" aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="text-caption font-poppins font-semibold tracking-wider text-primary uppercase">
+                      <p className="text-body font-poppins font-semibold tracking-wider text-primary uppercase">
                         {phase.weeks}
                       </p>
                       <h3 className="text-2xl font-poppins font-bold text-navy">{phase.title}</h3>
@@ -207,17 +207,17 @@ export default function AmplifySprints() {
                     ))}
                   </ul>
                   <div className="border-t pt-4">
-                    <p className="text-caption font-poppins font-semibold text-navy uppercase tracking-wider mb-1">
+                    <p className="text-body font-poppins font-semibold text-navy uppercase tracking-wider mb-1">
                       What you walk out with
                     </p>
-                    <p className="text-body-sm text-foreground">{phase.deliverable}</p>
+                    <p className="text-body -sm text-foreground">{phase.deliverable}</p>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          <p className="text-center text-body-sm text-foreground/80 italic max-w-2xl mx-auto">
+          <p className="text-body text-center -sm text-foreground/80 italic max-w-2xl mx-auto">
             You will have implemented a new approach to how you prepare for and design strategic initiatives. You'll also have a clear, owned plan for what you'll build next, in what order, and why.
           </p>
         </div>
@@ -266,7 +266,7 @@ export default function AmplifySprints() {
               <Eyebrow variant="plain" tone="white" as="p">Traditional implementation consulting</Eyebrow>
               <ul className="space-y-3">
                 {differenceRows.map((row) => (
-                  <li key={row.traditional} className="text-body-sm text-white/85">
+                  <li key={row.traditional} className="text-body -sm text-white/85">
                     {row.traditional}
                   </li>
                 ))}
@@ -276,7 +276,7 @@ export default function AmplifySprints() {
               <Eyebrow variant="plain" tone="white" as="p">A Strategic Sprint with Painted Porch</Eyebrow>
               <ul className="space-y-3">
                 {differenceRows.map((row) => (
-                  <li key={row.sprint} className="text-body-sm text-white font-medium">
+                  <li key={row.sprint} className="text-body -sm text-white font-medium">
                     {row.sprint}
                   </li>
                 ))}
@@ -298,14 +298,14 @@ export default function AmplifySprints() {
                 <div className="text-3xl font-poppins font-bold text-lime mb-4">
                   Starting at $36,000
                 </div>
-                <p className="text-body-sm text-foreground mb-6">
+                <p className="text-body -sm text-foreground mb-6">
                   Based on scope and timeline. Includes:
                 </p>
                 <ul className="space-y-2">
-                  <li className="text-body-sm text-foreground">• Initial organizational appraisal and strategic brief</li>
-                  <li className="text-body-sm text-foreground">• 3–6 strategic design sessions</li>
-                  <li className="text-body-sm text-foreground">• Framework tools and templates</li>
-                  <li className="text-body-sm text-foreground">• Clear direction</li>
+                  <li className="text-body -sm text-foreground">• Initial organizational appraisal and strategic brief</li>
+                  <li className="text-body -sm text-foreground">• 3–6 strategic design sessions</li>
+                  <li className="text-body -sm text-foreground">• Framework tools and templates</li>
+                  <li className="text-body -sm text-foreground">• Clear direction</li>
                 </ul>
               </div>
               <div className="bg-bluedoor/5 border border-bluedoor/20 rounded-lg p-5 sm:p-6 min-w-0">
@@ -315,7 +315,7 @@ export default function AmplifySprints() {
                     Prerequisite: The <span className="text-bluedoor">Blue Door</span>
                   </h3>
                 </div>
-                <p className="text-body-sm text-foreground mb-4">
+                <p className="text-body -sm text-foreground mb-4">
                   Our short organizational appraisal (under 30 minutes) that reveals where you really stand on the path to transformation, and what's blocking progress. Required before any Strategic Sprint.
                 </p>
                 <div className="flex items-center gap-3 text-sm mb-4">

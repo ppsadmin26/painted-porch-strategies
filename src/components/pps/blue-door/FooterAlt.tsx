@@ -15,7 +15,7 @@ export default function FooterAlt() {
             <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4 text-gold">
               Painted Porch Strategies
             </h3>
-            <p className="text-body-sm opacity-90">
+            <p className="text-body -sm opacity-90">
               Painted Porch Strategies partners with leaders to architect strategic sh<span className="text-raspberry font-bold">IF</span>t. This is Phase Zero, the work before the work.
             </p>
           </div>
@@ -42,7 +42,7 @@ export default function FooterAlt() {
             <h4 className="text-base md:text-lg font-poppins font-semibold mb-4 text-gold">
               Get In Touch
             </h4>
-            <p className="text-body-sm opacity-90">
+            <p className="text-body -sm opacity-90">
               Email:{" "}
               <a 
                 href="mailto:explore@onthepaintedporch.com"
@@ -51,7 +51,7 @@ export default function FooterAlt() {
                 explore@onthepaintedporch.com
               </a>
             </p>
-            <p className="text-body-sm opacity-90 mt-2">
+            <p className="text-body -sm opacity-90 mt-2">
               Website:{" "}
               <a 
                 href="https://paintedporchstrategies.com"
@@ -69,7 +69,7 @@ export default function FooterAlt() {
           <h4 className="text-base md:text-lg font-poppins font-bold text-lime mb-2">
             Let's Do Good Sh<span className="text-raspberry font-bold">IF</span>t
           </h4>
-          <p className="text-body-sm opacity-90 max-w-2xl mx-auto">
+          <p className="text-body -sm opacity-90 max-w-2xl mx-auto">
             To do <em>well</em>, we must also do <em>good</em>. <span className="font-semibold text-lime">5% of every purchase is donated to charity.</span>
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function FooterAlt() {
       
       <div className="border-t border-white/10 py-4">
         <div className="container max-w-7xl mx-auto px-6">
-          <p className="text-caption text-center opacity-70">
+          <p className="text-body text-center opacity-70">
             © 2026 Painted Porch Strategies. All rights reserved.
           </p>
         </div>

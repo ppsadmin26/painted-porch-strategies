@@ -99,7 +99,7 @@ export default function OurTeam() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Our Team
               </h1>
-              <p className="text-lead text-white/90 leading-relaxed max-w-3xl">
+              <p className="text-body text-white/90 leading-relaxed max-w-3xl">
                 Our experts bring decades of combined experience in leadership development, organizational change, and strategic communication.
               </p>
             </div>
@@ -116,7 +116,7 @@ export default function OurTeam() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             Meet the Painted Porch Team.
           </h2>
-          <p className="text-lead text-foreground leading-relaxed italic">
+          <p className="text-body text-foreground leading-relaxed italic">
             Many think of the Stoics as a bunch of boring old men, with stiff upper lips and no sense of fun. <span className="not-italic font-semibold">Not us.</span> We created Painted Porch Strategies because we believe <span className="font-semibold text-navy">work done right</span>, and <span className="font-semibold text-navy">for the right reasons, can be fun</span>. We'll show you how leaning on <span className="font-semibold text-navy">the principles of Stoicism</span> can not only <span className="font-semibold text-navy">be very rewarding</span>, but you'll discover simple ways to <span className="font-semibold text-navy">shift your mindset</span> from business and life as usual to one that is <span className="font-semibold text-navy">incredible</span> and <span className="font-semibold text-navy">expansive</span>. We'll show you just how <span className="font-semibold text-navy">freeing the concept of control can truly be</span>.
           </p>
         </div>
@@ -147,10 +147,10 @@ export default function OurTeam() {
                   <p className={`text-body-sm font-medium mb-1 ${isAmy ? "text-purple" : member.accent}`}>
                     {member.title}
                   </p>
-                  <p className="text-caption text-muted-foreground mb-4">
+                  <p className="text-body text-muted-foreground mb-4">
                     {member.experience}
                   </p>
-                  <p className="text-foreground text-body-sm leading-relaxed mb-4">
+                  <p className="text-body text-foreground -sm leading-relaxed mb-4">
                     {member.description}
                   </p>
                   <div className="mt-auto">
@@ -235,7 +235,7 @@ export default function OurTeam() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Work With Our Team
           </h2>
-          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
             Ready to start your transformation journey with experienced guides?
           </p>
           <Link to="/contact?interest=general&message=I'm interested in working with your team.">

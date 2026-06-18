@@ -140,7 +140,7 @@ export default function RadicalMindfulness() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-orange mb-6">
               Stress. Emotional Ups & Downs. Lack of Control.
             </h2>
-            <p className="text-lead text-charcoal leading-relaxed">
+            <p className="text-body text-charcoal leading-relaxed">
               Each of these (and more) can empty your emotional and energetic energy tanks, sapping you from showing up fully, authentically, and in control.
             </p>
           </div>
@@ -163,7 +163,7 @@ export default function RadicalMindfulness() {
                       <Icon className="h-8 w-8 text-pps-lime" />
                     </div>
                     <h4 className="text-base md:text-lg font-poppins font-bold text-pps-navy mb-3">{h.title}</h4>
-                    <p className="text-charcoal text-body-sm leading-relaxed">{h.description}</p>
+                    <p className="text-body text-charcoal -sm leading-relaxed">{h.description}</p>
                   </div>
                 );
               })}
@@ -184,7 +184,7 @@ export default function RadicalMindfulness() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-6">
               What is Radical Mindfulness?
             </h2>
-            <p className="text-lead text-charcoal leading-relaxed">
+            <p className="text-body text-charcoal leading-relaxed">
               At the Painted Porch, <strong>we like to do things a little differently</strong>. You'll be up and moving, participating fully in mind, body, heart, and spirit, <strong>intentionally</strong>; and <strong>actively making decisions</strong> about how to show up as your authentic self, who you want and <em>choose</em> to be, and <strong>how to make that happen</strong>.
             </p>
           </div>
@@ -199,7 +199,7 @@ export default function RadicalMindfulness() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
                 Program Outline & Approach
               </h2>
-              <p className="text-lead text-white/80 max-w-3xl mx-auto">
+              <p className="text-body text-white/80 max-w-3xl mx-auto">
                 This program is grouped into <strong>8 Modules</strong> delivered over <strong>6 Weeks</strong>{" "}
                 (<em>8 hours of on-demand content!</em>), and includes lessons and exercises for you to watch and reflect on.
               </p>
@@ -225,7 +225,7 @@ export default function RadicalMindfulness() {
                     </span>
                     <div>
                       <h4 className="text-base md:text-lg font-poppins font-semibold text-white mb-2">{mod.title}</h4>
-                      <p className="text-white/70 text-body-sm leading-relaxed">{mod.description}</p>
+                      <p className="text-body text-white/70 -sm leading-relaxed">{mod.description}</p>
                     </div>
                   </div>
                 </div>
@@ -281,7 +281,7 @@ export default function RadicalMindfulness() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-2">
                     Hi! I'm Sierra, your Painted Porch Guide!
                   </h3>
-                  <p className="text-pps-gold font-poppins font-semibold text-body-sm mb-6">
+                  <p className="text-body text-pps-gold font-poppins font-semibold -sm mb-6">
                     Sierra Ramm Cantrell · Chief Joy Officer
                   </p>
                   <p className="text-body text-charcoal leading-relaxed mb-6">
@@ -305,7 +305,7 @@ export default function RadicalMindfulness() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-4">
                 Pricing
               </h2>
-              <p className="text-lead text-charcoal max-w-2xl mx-auto leading-relaxed">
+              <p className="text-body text-charcoal max-w-2xl mx-auto leading-relaxed">
                 Choose the option that fits your journey.
               </p>
             </div>
@@ -322,10 +322,10 @@ export default function RadicalMindfulness() {
                   )}
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-1">{tier.name}</h3>
                   <p className="text-body text-4xl font-poppins font-bold text-pps-navy mb-2">{tier.price}</p>
-                  <p className="text-body-sm text-charcoal mb-6">{tier.subtitle}</p>
+                  <p className="text-body -sm text-charcoal mb-6">{tier.subtitle}</p>
                   <ul className="space-y-3 mb-8">
                     {tier.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-body-sm text-charcoal">
+                      <li key={f} className="text-body flex items-start gap-2 -sm text-charcoal">
                         <Check className="h-4 w-4 text-pps-lime flex-shrink-0 mt-0.5" />
                         <span>{f}</span>
                       </li>
@@ -386,7 +386,7 @@ export default function RadicalMindfulness() {
               Since we intend to live by the Stoic philosopher Seneca's advice of "<em>works not words</em>", we believe that in order{" "}
               <strong>to do <em>well</em></strong>, we must also <strong>do <em>good</em></strong>.
             </p>
-            <p className="text-pps-teal font-poppins font-bold text-lead">
+            <p className="text-body text-pps-teal font-poppins font-bold">
               5% of your purchase will be donated to charity.
             </p>
           </div>

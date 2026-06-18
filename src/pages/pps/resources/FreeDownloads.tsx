@@ -228,7 +228,7 @@ export default function FreeDownloads() {
                       </h3>
                     </div>
                   </div>
-                  <p className="text-foreground mb-6 text-body-sm leading-relaxed sm:pl-[4.5rem]">
+                  <p className="text-body text-foreground mb-6 -sm leading-relaxed sm:pl-[4.5rem]">
                     {download.description}
                   </p>
                   <div className="sm:pl-[4.5rem]">

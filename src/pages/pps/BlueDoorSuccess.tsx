@@ -46,17 +46,17 @@ export default function BlueDoorSuccess() {
           You've Opened The Blue Door
         </h1>
 
-        <p className="text-lead text-muted-foreground max-w-xl mx-auto mb-8">
+        <p className="text-body text-muted-foreground max-w-xl mx-auto mb-8">
           Your purchase is confirmed. Strategic clarity is on its way. Here's what happens next.
         </p>
 
         {/* Pre-launch notice */}
         {isPreLaunch && (
           <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-5 mb-12 text-left">
-            <p className="font-poppins font-bold text-navy text-body mb-1">
+            <p className="text-body font-poppins font-bold text-navy mb-1">
               🚪 Launching June 29th, 2026
             </p>
-            <p className="text-foreground text-body-sm leading-relaxed">
+            <p className="text-body text-foreground -sm leading-relaxed">
               Your spot is reserved. On launch day, we'll email you a secure access link to begin your Blue Door appraisal.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function BlueDoorSuccess() {
                 <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                   {step.title}
                 </h3>
-                <p className="text-body-sm text-muted-foreground leading-relaxed">
+                <p className="text-body -sm text-muted-foreground leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -89,7 +89,7 @@ export default function BlueDoorSuccess() {
           <h4 className="text-base md:text-lg font-poppins font-bold text-navy mb-2">
             Let's Do Good Sh<span className="text-lime font-bold">IF</span>t
           </h4>
-          <p className="text-body-sm text-foreground leading-relaxed">
+          <p className="text-body -sm text-foreground leading-relaxed">
             Thanks to your purchase, <span className="font-bold text-lime">5% has been donated to charity</span>. You've just made a strategic investment in your organization <em>and</em> in the world.
           </p>
         </div>
@@ -108,7 +108,7 @@ export default function BlueDoorSuccess() {
           </Link>
         </div>
 
-        <p className="text-body-sm text-muted-foreground mt-8">
+        <p className="text-body -sm text-muted-foreground mt-8">
           Questions? Contact{" "}
           <a
             href="mailto:explore@onthepaintedporch.com"

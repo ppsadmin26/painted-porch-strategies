@@ -122,11 +122,11 @@ export default function PPSOverview() {
             Welcome to the Painted Porch!
           </h1>
 
-          <p className="mx-auto mt-4 max-w-2xl text-lead leading-relaxed text-foreground/80">
+          <p className="text-body mx-auto mt-4 max-w-2xl leading-relaxed text-foreground/80">
             Master the foundational skills for modern-day leadership and successful change in this ever-evolving and demanding world.
           </p>
 
-          <p className="mx-auto mt-4 max-w-2xl text-body text-foreground/60">
+          <p className="text-body mx-auto mt-4 max-w-2xl text-foreground/60">
             Our stoically-inspired training and advisory programs partner with leaders, learners, and organizations to achieve excellence through developing emotional resilience, quality connections, strong communication skills, and a mission-centered purpose and strategy.
           </p>
 
@@ -196,7 +196,7 @@ export default function PPSOverview() {
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy group-hover:text-primary transition-colors">
                       {card.title}
                     </h3>
-                    <p className="mt-2 text-body-sm leading-relaxed text-foreground/70">
+                    <p className="text-body mt-2 -sm leading-relaxed text-foreground/70">
                       {card.description}
                     </p>
                   </div>
@@ -270,7 +270,7 @@ export default function PPSOverview() {
               >
                 <div className="flex-1">
                   <p className="text-body font-poppins font-semibold text-navy">{member.name}</p>
-                  <p className="text-body-sm text-foreground/60">{member.title}</p>
+                  <p className="text-body -sm text-foreground/60">{member.title}</p>
                 </div>
                 <ArrowRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
               </Link>
@@ -303,7 +303,7 @@ export default function PPSOverview() {
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-white">
                 Equal Matters
               </h3>
-              <p className="mt-2 text-body-sm text-white/60">
+              <p className="text-body mt-2 -sm text-white/60">
                 Rob Hunter
               </p>
               <a
@@ -330,7 +330,7 @@ export default function PPSOverview() {
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-white">
                 Life & Logos on The Painted Porch
               </h3>
-              <p className="mt-2 text-body-sm text-white/60">
+              <p className="text-body mt-2 -sm text-white/60">
                 The Team at Painted Porch Strategies
               </p>
               <a

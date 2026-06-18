@@ -221,7 +221,7 @@ export default function OurApproach() {
               <p className="text-body mb-0">The examination that influences everything that follows.</p>
             </div>
           </div>
-          <p className="text-lead text-foreground">
+          <p className="text-body text-foreground">
             That is the work we call <Link to="/phase-zero" className="text-primary font-semibold hover:underline">Phase Zero</Link>.
           </p>
         </div>
@@ -277,7 +277,7 @@ export default function OurApproach() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Our Core Values
             </h2>
-            <p className="text-lead text-foreground max-w-2xl mx-auto">
+            <p className="text-body text-foreground max-w-2xl mx-auto">
               Three values that decide how we show up in every partnership.
             </p>
           </div>
@@ -297,7 +297,7 @@ export default function OurApproach() {
                 <p className="text-body text-foreground mb-4">
                   {value.description}
                 </p>
-                <p className="text-body-sm text-foreground/80">
+                <p className="text-body -sm text-foreground/80">
                   {value.detail}
                 </p>
               </div>
@@ -314,7 +314,7 @@ export default function OurApproach() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               The Decision Filter Behind Every Recommendation
             </h2>
-            <p className="text-lead text-foreground max-w-2xl mx-auto whitespace-pre-line">
+            <p className="text-body text-foreground max-w-2xl mx-auto whitespace-pre-line">
               Our Stoic operating system. Every recommendation, challenge, observation, and strategic conversation passes through the same four principles.
 
               Not because frameworks matter, but because disciplined thinking does.
@@ -332,7 +332,7 @@ export default function OurApproach() {
                   <span className="text-white font-poppins font-bold text-xl">{v.letter}</span>
                 </div>
                 <h3 className="font-poppins font-bold text-navy text-lg mb-2">{v.word}</h3>
-                <p className="text-body-sm text-foreground">
+                <p className="text-body -sm text-foreground">
                   <span className="font-bold">{v.bold}</span>
                   {v.desc}
                 </p>
@@ -346,7 +346,7 @@ export default function OurApproach() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
-            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
+            <p className="text-body font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
               WHAT OUR WORK MAKES POSSIBLE
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
@@ -365,7 +365,7 @@ export default function OurApproach() {
           <div className="grid md:grid-cols-2 gap-6">
             {/* What we build in people */}
             <div className="bg-muted/40 rounded-xl p-7 border-t-4 border-gold">
-              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.15em] text-gold mb-2">
+              <p className="text-body font-poppins font-semibold uppercase tracking-[0.15em] text-gold mb-2">
                 In your people
               </p>
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-5">
@@ -383,7 +383,7 @@ export default function OurApproach() {
 
             {/* What we build in the org */}
             <div className="bg-muted/40 rounded-xl p-7 border-t-4 border-primary">
-              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.15em] text-primary mb-2">
+              <p className="text-body font-poppins font-semibold uppercase tracking-[0.15em] text-primary mb-2">
                 In your organization
               </p>
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-5">
@@ -410,7 +410,7 @@ export default function OurApproach() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5">
               The P.A.T.H.<sup className="text-[0.4em] align-super">™</sup> to Sustainable Change
             </h2>
-            <p className="text-lead text-foreground">
+            <p className="text-body text-foreground">
               Stoicism is the GPS for how we think. P.A.T.H. is the roadmap for how we work. Four stages that move a change from clarity to commitment to launch to lasting habits.
             </p>
           </div>
@@ -505,14 +505,14 @@ export default function OurApproach() {
                     </p>
                   </div>
                 </div>
-                <p className="text-caption font-poppins font-semibold uppercase tracking-[0.15em] text-navy/60 mb-3">
+                <p className="text-body font-poppins font-semibold uppercase tracking-[0.15em] text-navy/60 mb-3">
                   Stage {i + 1} &middot; {s.subtitle}
                 </p>
-                <p className="text-body-sm text-foreground mb-4 flex-grow">
+                <p className="text-body -sm text-foreground mb-4 flex-grow">
                   {s.body}
                 </p>
                 <div className="pt-4 border-t border-navy/10">
-                  <p className="text-caption font-poppins font-semibold uppercase tracking-wider text-navy/70 mb-1">
+                  <p className="text-body font-poppins font-semibold uppercase tracking-wider text-navy/70 mb-1">
                     You walk away with
                   </p>
                   <p className={`text-body-sm font-semibold ${s.accent}`}>{s.outcome}</p>
@@ -555,7 +555,7 @@ export default function OurApproach() {
             <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
               Trained, certified, and accountable.
             </h2>
-            <p className="text-lead text-foreground">
+            <p className="text-body text-foreground">
               Our team brings recognized certifications across change
               management, team dynamics, communication, and emotional
               intelligence, so the P.A.T.H. you walk is grounded in proven

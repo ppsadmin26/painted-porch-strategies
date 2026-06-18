@@ -376,7 +376,7 @@ export default function AsSeenOn() {
             </div>
           ) : paginatedAppearances.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-lead text-muted-foreground mb-4">
+              <p className="text-body text-muted-foreground mb-4">
                 No appearances found matching your criteria.
               </p>
               <Button variant="outline" onClick={handleClearAll}>
@@ -432,7 +432,7 @@ export default function AsSeenOn() {
                         <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                           {appearance.title}
                         </h3>
-                        <p className="text-foreground text-body-sm leading-relaxed mb-4 line-clamp-3 group-hover:line-clamp-none transition-all flex-1" title={appearance.description || ""}>
+                        <p className="text-body text-foreground -sm leading-relaxed mb-4 line-clamp-3 group-hover:line-clamp-none transition-all flex-1" title={appearance.description || ""}>
                           {appearance.description}
                         </p>
 
@@ -514,7 +514,7 @@ export default function AsSeenOn() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             Book Us for Your Podcast or Event
           </h2>
-          <p className="text-lead text-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-foreground mb-8 max-w-2xl mx-auto">
             Our team is available for podcasts, interviews, keynotes, and panel discussions on change management, leadership, and organizational transformation.
           </p>
           <Link to="/speaking">
@@ -531,7 +531,7 @@ export default function AsSeenOn() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Transform Your Organization?
           </h2>
-          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
             Hearing about transformation is inspiring. Making it happen requires partnership.
           </p>
           <Link to="/contact?scope=organization&interest=organizational-advisory&message=I'm interested in learning more after watching your media appearances.">

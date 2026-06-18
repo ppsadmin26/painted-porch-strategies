@@ -158,7 +158,7 @@ export default function AmplifyWorkshops() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Workshops That Architect Your Next Sh<span className="text-strategic font-bold">IF</span>t
             </h1>
-            <p className="text-lead text-foreground max-w-2xl mx-auto">
+            <p className="text-body text-foreground max-w-2xl mx-auto">
               From Phase Zero strategy sessions to leadership and team development, our workshops align teams and build the capacity to lead change well.
             </p>
           </div>
@@ -199,11 +199,11 @@ export default function AmplifyWorkshops() {
                       </div>
                     </div>
                     <div className="mb-4 bg-raspberry/5 border border-raspberry/20 rounded-lg p-4">
-                      <p className="text-body-sm font-semibold text-raspberry mb-1">The Challenge:</p>
-                      <p className="text-body-sm text-foreground">{workshop.challenge}</p>
+                      <p className="text-body -sm font-semibold text-raspberry mb-1">The Challenge:</p>
+                      <p className="text-body -sm text-foreground">{workshop.challenge}</p>
                     </div>
                     <div className="flex-grow">
-                      <p className="text-body-sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
+                      <p className="text-body -sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
                       <ul className="space-y-1">
                         {workshop.highlights.map((item, i) => (
                           <li key={i} className="text-body flex items-start gap-2">
@@ -226,13 +226,13 @@ export default function AmplifyWorkshops() {
                 <Info className="w-5 h-5 text-bluedoor" />
                 <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">Authoring Your Next Sh<span className="text-strategic font-bold">IF</span>t Begins At the <span className="text-bluedoor">Blue Door</span></h3>
               </div>
-              <p className="text-body-sm text-foreground mb-2 mt-4">
+              <p className="text-body -sm text-foreground mb-2 mt-4">
                 The <span className="font-bold text-bluedoor">Blue Door</span> is our organizational appraisal (less than 30 minutes) that reveals where your business and leadership stands on the path to transformation so that you can lead with clarity and build with confidence.
               </p>
-              <p className="text-body-sm text-foreground/70 italic mb-3">
+              <p className="text-body -sm text-foreground/70 italic mb-3">
                 Required for Phase Zero Strategic Workshops and all Strategic Sprints. Not required for Leadership &amp; Team Development Workshops.
               </p>
-              <p className="text-body-sm text-foreground/70 italic mb-3">
+              <p className="text-body -sm text-foreground/70 italic mb-3">
                 The Blue Door investment will be credited toward any booked engagement.
               </p>
               <div className="flex items-center gap-4 text-sm">
@@ -347,9 +347,9 @@ export default function AmplifyWorkshops() {
                         </div>
                       </div>
                     </div>
-                    <p className="text-body-sm text-foreground mb-4">{workshop.description}</p>
+                    <p className="text-body -sm text-foreground mb-4">{workshop.description}</p>
                     <div className="flex-grow">
-                      <p className="text-body-sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
+                      <p className="text-body -sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
                       <ul className="space-y-1">
                         {workshop.outcomes.map((item, i) => (
                           <li key={i} className="text-body flex items-start gap-2">
@@ -359,7 +359,7 @@ export default function AmplifyWorkshops() {
                         ))}
                       </ul>
                     </div>
-                    <p className="text-caption text-foreground/70 italic mt-4">No <span className="font-bold text-bluedoor">Blue Door</span> required</p>
+                    <p className="text-body text-foreground/70 italic mt-4">No <span className="font-bold text-bluedoor">Blue Door</span> required</p>
                   </div>
                 );
               })}

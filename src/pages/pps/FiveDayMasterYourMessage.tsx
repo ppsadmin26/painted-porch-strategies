@@ -67,7 +67,7 @@ export default function FiveDayMasterYourMessage() {
                 <span className="text-primary italic">Talking to Strangers</span>{" "}
                 Challenge
               </h1>
-              <p className="text-lead text-foreground mb-8">
+              <p className="text-body text-foreground mb-8">
                 Five days. Five short lessons. One braver, more confident communicator, you. Led by Rob Hunter, Painted Porch's Master of Communication.
               </p>
               <Button
@@ -76,12 +76,12 @@ export default function FiveDayMasterYourMessage() {
               >
                 Coming Soon
               </Button>
-              <p className="text-body-sm mt-3">
+              <p className="text-body -sm mt-3">
                 <Link to="/partner/ignite/masterclasses" className="text-primary hover:underline font-medium">
                   Join the launch list →
                 </Link>
               </p>
-              <p className="text-caption text-muted-foreground mt-3">
+              <p className="text-body text-muted-foreground mt-3">
                 Delivered as 5 short daily lessons. Go at the pace of the challenge.
               </p>
             </div>
@@ -144,7 +144,7 @@ export default function FiveDayMasterYourMessage() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2 leading-tight">
                   {lesson.title}
                 </h3>
-                <p className="text-body-sm text-foreground">{lesson.description}</p>
+                <p className="text-body -sm text-foreground">{lesson.description}</p>
               </div>
             ))}
           </div>
@@ -166,21 +166,21 @@ export default function FiveDayMasterYourMessage() {
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <MessageCircle className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Leaders</h3>
-              <p className="text-body-sm text-foreground">
+              <p className="text-body -sm text-foreground">
                 Who walk into rooms full of new faces and want to actually build relationships, not just collect business cards.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Sparkles className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Networkers</h3>
-              <p className="text-body-sm text-foreground">
+              <p className="text-body -sm text-foreground">
                 Tired of awkward openers and small talk that goes nowhere fast.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <CheckCircle2 className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Anyone</h3>
-              <p className="text-body-sm text-foreground">
+              <p className="text-body -sm text-foreground">
                 Who wants to feel a little less awkward and a lot more confident with strangers, colleagues, and everyone in between.
               </p>
             </div>
@@ -204,7 +204,7 @@ export default function FiveDayMasterYourMessage() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to start better conversations?
           </h2>
-          <p className="text-white/90 mb-8 text-lead">
+          <p className="text-body text-white/90 mb-8">
             Five days from now you could be walking into any room with more ease, more curiosity, and a whole lot more confidence. Let's go.
           </p>
           <Button
@@ -213,12 +213,12 @@ export default function FiveDayMasterYourMessage() {
           >
             Coming Soon
           </Button>
-          <p className="text-body-sm text-white/90 mt-4">
+          <p className="text-body -sm text-white/90 mt-4">
             <Link to="/partner/ignite/masterclasses" className="underline hover:text-white font-medium">
               Join the launch list →
             </Link>
           </p>
-          <p className="text-caption text-white/70 mt-4">
+          <p className="text-body text-white/70 mt-4">
             Questions? <Link to="/contact" className="underline hover:text-white">Contact us</Link>.
           </p>
         </div>

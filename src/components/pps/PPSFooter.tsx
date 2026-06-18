@@ -83,7 +83,7 @@ export default function PPSFooter() {
             <div className="mb-4">
               <img src={ppsLogoWhite} alt="Painted Porch Strategies" className="h-16 w-auto" />
             </div>
-            <p className="text-body-sm text-white/80 leading-relaxed">
+            <p className="text-body -sm text-white/80 leading-relaxed">
               Painted Porch Strategies partners with leaders to architect strategic shIFt that shapes not just what's next, but what lasts. This is Phase Zero, the work before the work.
             </p>
           </div>
@@ -129,7 +129,7 @@ export default function PPSFooter() {
                 Porch Perspectives Newsletter
               </label>
               {status === "success" ? (
-                <p className="text-body-sm text-lime" role="status">{message}</p>
+                <p className="text-body -sm text-lime" role="status">{message}</p>
               ) : (
                 <>
                   <div className="flex flex-col sm:flex-row gap-2">
@@ -155,7 +155,7 @@ export default function PPSFooter() {
                     </button>
                   </div>
                   {status === "error" && (
-                    <p className="mt-2 text-caption text-raspberry" role="alert">{message}</p>
+                    <p className="text-body mt-2 text-raspberry" role="alert">{message}</p>
                   )}
                 </>
               )}
@@ -183,7 +183,7 @@ export default function PPSFooter() {
           <h4 className="text-base md:text-lg font-poppins font-bold text-lime mb-2">
             Let's Do Good Sh<span className="text-red-500 font-bold">IF</span>t
           </h4>
-          <p className="text-body-sm text-white/80">
+          <p className="text-body -sm text-white/80">
             To do <em>well</em>, we must also do <em>good</em>.{" "}
             <Link to="/about/impact#do-good-shift" className="text-lime font-semibold underline hover:text-white transition-colors">5% of your investment is donated to charity.</Link>
           </p>
@@ -202,7 +202,7 @@ export default function PPSFooter() {
 
         {/* Copyright */}
         <div className="mt-4 pt-4 text-center">
-          <p className="text-caption text-white/60">
+          <p className="text-body text-white/60">
             © {new Date().getFullYear()} Painted Porch Strategies. All rights reserved. Phase Zero, P.A.T.H., and The Painted Porch Pillars are trademarks.
           </p>
         </div>

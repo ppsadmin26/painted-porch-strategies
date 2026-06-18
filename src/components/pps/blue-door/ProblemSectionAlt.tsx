@@ -28,19 +28,19 @@ export default function ProblemSectionAlt() {
       <div className="container max-w-5xl mx-auto px-6">
         {/* Opening rhythm, centered, generous spacing */}
         <div className="text-center max-w-4xl mx-auto mb-12 space-y-4" style={{ lineHeight: '1.9' }}>
-          <p className="text-pullquote text-navy font-bold !not-italic">
+          <p className="text-body text-navy font-bold !not-italic">
             There's a moment, often subtle, when a new idea begins to emerge in your organization.
           </p>
-          <p className="text-lead text-foreground">
+          <p className="text-body text-foreground">
             Not a decision.<br />
             Not a plan.<br />
             Not a mandate.<br />
             But a question that starts with "What <span className="font-bold text-bluedoor">IF</span>?"
           </p>
-          <p className="text-lead text-foreground">
+          <p className="text-body text-foreground">
             It's when the <span className="font-bold text-bluedoor">blue door</span> appears, the threshold between sensing that something must change and knowing what your organization can realistically take on. Before a direction becomes a commitment, you must first understand who your organization is becoming.
           </p>
-          <p className="text-lead text-foreground font-semibold">
+          <p className="text-body text-foreground font-semibold">
             Few leaders create enough space to author this intentionally.
           </p>
         </div>
@@ -51,11 +51,11 @@ export default function ProblemSectionAlt() {
           The Gap Between Ambition and Architecture
         </h2>
         
-        <p className="text-lead text-foreground text-center max-w-4xl mx-auto mb-4">
+        <p className="text-body text-foreground text-center max-w-4xl mx-auto mb-4">
           The real question isn't <span className="font-bold italic text-raspberry">"how do we implement this?"</span>&nbsp;<br />
           It's <span className="font-bold italic text-bluedoor">"who do we need to become for this to happen?"</span>
         </p>
-        <p className="text-lead text-foreground text-center max-w-4xl mx-auto mb-8">
+        <p className="text-body text-foreground text-center max-w-4xl mx-auto mb-8">
           That's the question most often skipped, and it's the one that decides whether a transformation takes root or collapses under its own weight. Without a clear picture of what your organization is genuinely built for, you risk pouring time, money, and energy into changes that:
         </p>
         
@@ -71,7 +71,7 @@ export default function ProblemSectionAlt() {
         </div>
         
         <div ref={calloutRef} className={`max-w-3xl mx-auto bg-raspberry/10 border-l-4 border-raspberry p-6 md:p-8 rounded-xl shadow-sm transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <p className="font-bold text-lead text-center text-destructive">
+          <p className="text-body font-bold text-center text-destructive">
             The hidden cost of building beyond your architecture:&nbsp;burned budget, exhausted teams, lost leadership trust, and missed opportunities, because you were chasing a sh<span className="text-raspberry font-bold">IF</span>t your organization wasn't structured to lead.
           </p>
           <div className="flex justify-center">

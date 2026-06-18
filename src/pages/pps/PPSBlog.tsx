@@ -455,7 +455,7 @@ export default function PPSBlog() {
             </div>
           ) : paginatedPosts.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-lead text-muted-foreground mb-4">
+              <p className="text-body text-muted-foreground mb-4">
                 No articles found matching your criteria.
               </p>
               <Button
@@ -517,7 +517,7 @@ export default function PPSBlog() {
                           {post.title}
                         </h3>
 
-                        <p className="text-foreground text-body-sm leading-relaxed mb-4 line-clamp-3 flex-1">
+                        <p className="text-body text-foreground -sm leading-relaxed mb-4 line-clamp-3 flex-1">
                           {post.excerpt}
                         </p>
 
@@ -654,7 +654,7 @@ export default function PPSBlog() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             Get Insights Delivered
           </h2>
-          <p className="text-lead text-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-foreground mb-8 max-w-2xl mx-auto">
             Subscribe to receive our latest thinking on change-readiness,
             leadership development, and organizational transformation.
           </p>
@@ -668,7 +668,7 @@ export default function PPSBlog() {
               Subscribe
             </Button>
           </div>
-          <p className="text-caption text-muted-foreground mt-4">We will NOT SPAM you. Unsubscribe at any time.</p>
+          <p className="text-body text-muted-foreground mt-4">We will NOT SPAM you. Unsubscribe at any time.</p>
         </div>
       </section>
 
@@ -678,7 +678,7 @@ export default function PPSBlog() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Apply These Ideas?
           </h2>
-          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
             Reading is one thing, implementation is another. Let's discuss how
             to put these principles to work in your organization.
           </p>

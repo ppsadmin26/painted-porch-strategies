@@ -70,7 +70,7 @@ export default function CommunicatorStyles() {
               className="w-full h-full object-cover"
             />
           </div>
-          <p className="text-center text-white/70 text-body-sm mt-4">
+          <p className="text-body text-center text-white/70 -sm mt-4">
             Sign up below for full access to the training replay and one-page reference sheet.
           </p>
         </div>
@@ -125,10 +125,10 @@ export default function CommunicatorStyles() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Get Instant Access
               </h2>
-              <p className="text-foreground text-body-sm mb-2">
+              <p className="text-body text-foreground -sm mb-2">
                 Please provide your information below to receive immediate access to the training replay.
               </p>
-              <p className="text-foreground text-body-sm mb-6">
+              <p className="text-body text-foreground -sm mb-6">
                 You will also receive an email with a link to the training video and downloadable one-page reference sheet.
               </p>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -156,7 +156,7 @@ export default function CommunicatorStyles() {
                   {submitting ? "Submitting..." : "Access Training"}
                 </Button>
               </form>
-              <p className="text-caption text-muted-foreground mt-4">
+              <p className="text-body text-muted-foreground mt-4">
                 Providing your email will subscribe you to receive relevant Porch materials, newsletters, and insights. We hate SPAM too. You may unsubscribe at any time.
               </p>
             </div>
