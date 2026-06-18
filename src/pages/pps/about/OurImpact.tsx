@@ -126,7 +126,7 @@ export default function OurImpact() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Our Impact
               </h1>
-              <p className="text-body text-white/90 leading-relaxed mb-8 max-w-3xl">
+              <p className="text-lead text-white/90 mb-8 max-w-3xl" data-body-allow>
                 See how we've helped organizations transform their approach to change, build resilient leaders, and create lasting impact.
               </p>
               <Link to="/start-here">

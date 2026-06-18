@@ -191,11 +191,15 @@ export function TierHeroSection({
 
             {/* Description */}
             <div
-              className={`text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl transition-all duration-700 ease-out delay-300 ${
+              className={`text-white/90 mb-8 max-w-3xl transition-all duration-700 ease-out delay-300 ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              {typeof description === "string" ? <p className="text-body">{description}</p> : description}
+              {typeof description === "string" ? (
+                <p className="text-lead" data-body-allow>{description}</p>
+              ) : (
+                description
+              )}
             </div>
 
             {/* CTAs */}
