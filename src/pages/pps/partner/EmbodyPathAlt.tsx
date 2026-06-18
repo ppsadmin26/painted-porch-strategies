@@ -130,7 +130,7 @@ const embodyVsAmplify = [
   {
     dimension: "Depth",
     amplify: "Focused 90-day Phase Zero engagement",
-    embody: "Embedded 6–12+ month advisory partnership",
+    embody: "Embedded 6+ month advisory partnership",
   },
   {
     dimension: "Scope",
