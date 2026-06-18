@@ -52,7 +52,8 @@ export default function ProblemSectionAlt() {
         </h2>
         
         <p className="text-lead text-foreground text-center max-w-4xl mx-auto mb-4">
-          The real question isn't <span className="font-bold italic text-raspberry">"how do we implement this?"</span> It's <span className="font-bold italic text-bluedoor">"who do we need to become for this to happen?"</span>
+          The real question isn't <span className="font-bold italic text-raspberry">"how do we implement this?"</span>&nbsp;<br />
+          It's <span className="font-bold italic text-bluedoor">"who do we need to become for this to happen?"</span>
         </p>
         <p className="text-lead text-foreground text-center max-w-4xl mx-auto mb-8">
           That's the question most often skipped, and it's the one that decides whether a transformation takes root or collapses under its own weight. Without a clear picture of what your organization is genuinely built for, you risk pouring time, money, and energy into changes that:
