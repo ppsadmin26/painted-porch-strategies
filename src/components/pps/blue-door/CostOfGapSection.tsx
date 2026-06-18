@@ -12,7 +12,7 @@ export default function CostOfGapSection() {
         }`}
       >
         <p className="font-poppins font-medium text-lg md:text-xl text-white leading-relaxed">
-          Most organizational shift doesn't fail because leaders chased the wrong thing. It fails because they learned too late that their organization wasn't built to carry it.
+          Most organizational sh<span className="text-raspberry font-bold">IF</span>t doesn't fail because leaders chose the wrong direction. It fails because they discover too late that their organization wasn't built for what the direction required.
         </p>
       </div>
     </section>
