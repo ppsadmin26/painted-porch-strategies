@@ -191,7 +191,7 @@ export default function OurApproach() {
               Reinforce what works.
             </p>
             <p className="mb-4">
-              It's how you move from reacting to change to authoring it.
+              It's how you move from reacting to external demands to authoring direction.
             </p>
             <p>
               <strong>That's the P.A.T.H.</strong>
