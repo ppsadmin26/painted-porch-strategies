@@ -242,7 +242,7 @@ export default function CostCalculatorDialog({
             The Cost of Skipping Phase Zero
           </DialogTitle>
           <DialogDescription>
-            Pick three things. We'll estimate what's at risk and how a Blue Door
+            Answer these few questions. We'll estimate what's at risk and how a Blue Door
             operational appraisal can provide the clarity needed to reduce that exposure.
           </DialogDescription>
         </DialogHeader>
