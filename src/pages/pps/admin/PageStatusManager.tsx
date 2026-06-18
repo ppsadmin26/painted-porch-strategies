@@ -14,6 +14,12 @@ import { supabase } from "@/integrations/supabase/client";
 import PageSeoEditorDialog from "@/components/pps/admin/PageSeoEditorDialog";
 import CanonicalAuditCard from "@/components/pps/admin/CanonicalAuditCard";
 import BulkSeoGenerator from "@/components/pps/admin/BulkSeoGenerator";
+import {
+  CATEGORY_META,
+  PAGE_CATEGORIES,
+  getDefaultCategoryForPath,
+  type PageCategory,
+} from "@/config/pageCategories";
 
 /**
  * Admin-only manager for page publish status + per-page SEO overrides.
