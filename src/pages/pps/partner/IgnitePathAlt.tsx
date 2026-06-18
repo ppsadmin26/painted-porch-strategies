@@ -157,7 +157,7 @@ export default function IgnitePathAlt() {
                 </div>
                 <ul className="space-y-2">
                   {archetype.traits.map((trait, i) => (
-                    <li key={i} className="flex items-start gap-2 text-body-sm text-foreground">
+                    <li key={i} className="text-body flex items-start gap-2 -sm text-foreground">
                       <CheckCircle className={`w-4 h-4 ${archetype.iconColor} flex-shrink-0 mt-0.5`} />
                       <span>{trait}</span>
                     </li>
@@ -168,7 +168,7 @@ export default function IgnitePathAlt() {
           </div>
           
           <div className="text-center">
-            <p className="text-lead text-foreground mb-6">
+            <p className="text-body text-foreground mb-6">
               <strong>If any of these spark a "Sh<span className="text-gold font-bold">IF</span>t Yeah!", then stepping onto the IGNITE P.A.T.H.way is just right for you.</strong>
             </p>
             <p className="text-body text-foreground mb-8 max-w-2xl mx-auto">
@@ -203,21 +203,21 @@ export default function IgnitePathAlt() {
               <p className="text-body text-foreground mb-6 leading-relaxed">
                 Transform how you lead, on your schedule. These courses teach you to architect change, communicate with clarity, build resilience, and develop teams where everyone shines.
               </p>
-              <p className="text-body-sm font-semibold text-navy mb-2">What's Inside:</p>
+              <p className="text-body -sm font-semibold text-navy mb-2">What's Inside:</p>
               <ul className="space-y-1 flex-grow">
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
                   Video lessons & frameworks
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
                   Workbooks & exercises
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
                   Lifetime access
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
                   Practical application tools
                 </li>
@@ -242,26 +242,26 @@ export default function IgnitePathAlt() {
               <p className="text-body text-foreground mb-6 leading-relaxed">
                 Decode what drives your success. These assessments reveal your emotional intelligence, unique strengths, and the talents that make you extraordinary.
               </p>
-              <p className="text-body-sm font-semibold text-navy mb-2">What's Inside:</p>
+              <p className="text-body -sm font-semibold text-navy mb-2">What's Inside:</p>
               <ul className="space-y-1 flex-grow">
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
                   Comprehensive report
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
                   Personal debrief session*
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
                   Action recommendations
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <CheckCircle className="w-4 h-4 text-lime flex-shrink-0" />
                   Development roadmap
                 </li>
               </ul>
-              <p className="text-caption text-muted-foreground mt-3 italic">*Optional, based on assessment</p>
+              <p className="text-body text-muted-foreground mt-3 italic">*Optional, based on assessment</p>
               <div className="mt-6">
                 <Button asChild variant="outline" className="w-full border-gold text-gold hover:bg-gold hover:text-white transition-colors text-sm px-2">
                   <Link to="/partner/ignite/assessments">Explore Assessments →</Link>
@@ -281,21 +281,21 @@ export default function IgnitePathAlt() {
               <p className="text-body text-foreground mb-6 leading-relaxed">
                 Strategic insights in under 90 minutes. These mini-workshops illuminate Phase Zero strategic architecture, transformation design, and conscious leadership, one small shift at a time.
               </p>
-              <p className="text-body-sm font-semibold text-navy mb-3">What's Inside:</p>
+              <p className="text-body -sm font-semibold text-navy mb-3">What's Inside:</p>
               <ul className="space-y-2 mb-6 flex-grow">
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <Clock className="w-4 h-4 text-strategic flex-shrink-0" />
                   30-90 minute focused sessions
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <Video className="w-4 h-4 text-strategic flex-shrink-0" />
                   Live + recorded access
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <FileText className="w-4 h-4 text-strategic flex-shrink-0" />
                   Specific Phase Zero concepts
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <Lightbulb className="w-4 h-4 text-strategic flex-shrink-0" />
                   Immediately actionable insights
                 </li>
@@ -320,7 +320,7 @@ export default function IgnitePathAlt() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               From Spark to Momentum
             </h2>
-            <p className="text-lead text-foreground max-w-2xl mx-auto">
+            <p className="text-body text-foreground max-w-2xl mx-auto">
               IGNITE sparks your capacity to sh<span className="text-gold font-bold">IF</span>t. When you're ready for more depth or team engagement, here's where to go next.
             </p>
           </div>
@@ -334,28 +334,28 @@ export default function IgnitePathAlt() {
                 </div>
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-gold">Nurture the Spark</h3>
               </div>
-              <p className="text-body-sm font-medium text-foreground/80 mb-4">
+              <p className="text-body -sm font-medium text-foreground/80 mb-4">
                 Stay in IGNITE, go deeper
               </p>
               <ul className="space-y-2 mb-6">
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-gold" />
                   Complete additional courses
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-gold" />
                   Take strategic assessments
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-gold" />
                   Join upcoming masterclasses
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-gold" />
                   Build comprehensive strategic capacity
                 </li>
               </ul>
-              <p className="text-caption text-muted-foreground italic">
+              <p className="text-body text-muted-foreground italic">
                 Best for: Leaders who want continued self-paced development
               </p>
             </div>
@@ -368,28 +368,28 @@ export default function IgnitePathAlt() {
                 </div>
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-strategic">Amplify What You've Started</h3>
               </div>
-              <p className="text-body-sm font-medium text-foreground/80 mb-4">
+              <p className="text-body -sm font-medium text-foreground/80 mb-4">
                 Join cohorts or bring your team
               </p>
               <ul className="space-y-2 mb-6">
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-strategic" />
                   Leadership cohorts for peer learning
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-strategic" />
                   Custom workshops for your team
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-strategic" />
                   Strategic sprints for focused challenges
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-strategic" />
                   Deeper Phase Zero exploration
                 </li>
               </ul>
-              <p className="text-caption text-muted-foreground italic mb-4">
+              <p className="text-body text-muted-foreground italic mb-4">
                 Best for: Leaders ready for community engagement or team development
               </p>
               <Button asChild className="bg-transparent border-2 border-strategic text-strategic hover:bg-strategic hover:text-white w-full transition-colors text-sm px-2">
@@ -406,28 +406,28 @@ export default function IgnitePathAlt() {
                 </div>
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-bluedoor">Open the Door to Strategic Shift</h3>
               </div>
-              <p className="text-body-sm font-medium text-foreground/80 mb-4">
+              <p className="text-body -sm font-medium text-foreground/80 mb-4">
                 Organizational Clarity Before Implementation Commitment
               </p>
               <ul className="space-y-2 mb-6">
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-bluedoor" />
                   Comprehensive organizational assessment
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-bluedoor" />
                   Identify shifts you're built to lead
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-bluedoor" />
                   Painted Porch Pillars analysis
                 </li>
-                <li className="flex items-center gap-2 text-body-sm text-foreground">
+                <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-bluedoor" />
                   Determines AMPLIFY or EMBODY fit
                 </li>
               </ul>
-              <p className="text-caption text-muted-foreground italic mb-4">
+              <p className="text-body text-muted-foreground italic mb-4">
                 Best for: Executives exploring what shift to lead next
               </p>
               <Button asChild className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor w-full transition-colors">

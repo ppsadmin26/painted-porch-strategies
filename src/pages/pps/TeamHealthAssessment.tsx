@@ -56,7 +56,7 @@ export default function TeamHealthAssessment() {
               Team Health{" "}
               <span className="text-primary">Assessment</span>
             </h1>
-            <p className="text-lead text-foreground mb-4">
+            <p className="text-body text-foreground mb-4">
               Take a quick, candid pulse-check on the health of your team. In just a few minutes, you'll see where your team is strong, where it's strained, and where small shIFts could unlock big improvements.
             </p>
             <p className="text-body text-muted-foreground">
@@ -76,21 +76,21 @@ export default function TeamHealthAssessment() {
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <HeartPulse className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">A Clear Health Snapshot</h3>
-              <p className="text-body-sm text-foreground">
+              <p className="text-body -sm text-foreground">
                 See how your team is doing across the areas that matter most for performance and well-being.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Users className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Strengths & Strains</h3>
-              <p className="text-body-sm text-foreground">
+              <p className="text-body -sm text-foreground">
                 Spot what's working well and where pressure or friction is starting to show up.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Lightbulb className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Practical Next Steps</h3>
-              <p className="text-body-sm text-foreground">
+              <p className="text-body -sm text-foreground">
                 Get simple ideas for small shIFts that can make a big difference for your team.
               </p>
             </div>
@@ -135,7 +135,7 @@ export default function TeamHealthAssessment() {
             />
           </div>
 
-          <p className="text-center text-body-sm text-muted-foreground mt-4">
+          <p className="text-body text-center -sm text-muted-foreground mt-4">
             Trouble loading the form?{" "}
             <a
               href={ASSESSMENT_URL}

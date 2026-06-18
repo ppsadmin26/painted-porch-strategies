@@ -95,7 +95,7 @@ export default function PilotTraining() {
             ariaLabel="Play From Passenger to Pilot preview"
             className="border border-border"
           />
-          <p className="text-center text-body-sm text-muted-foreground mt-3 italic">
+          <p className="text-body text-center -sm text-muted-foreground mt-3 italic">
             A quick preview of what's inside the training.
           </p>
         </div>
@@ -124,7 +124,7 @@ export default function PilotTraining() {
             {features.map((f) => (
               <div key={f.title} className="text-center bg-muted/20 rounded-xl p-8 border-t-4 border-gold">
                 <h3 className="text-xl md:text-2xl font-bold text-navy mb-3">{f.title}</h3>
-                <p className="text-foreground text-body-sm">{f.description}</p>
+                <p className="text-body text-foreground -sm">{f.description}</p>
               </div>
             ))}
           </div>
@@ -155,10 +155,10 @@ export default function PilotTraining() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Get Immediate Access
               </h2>
-              <p className="text-foreground text-body-sm mb-2">
+              <p className="text-body text-foreground -sm mb-2">
                 Please provide your information below to receive immediate access to this 'Grow on the Porch' training session.
               </p>
-              <p className="text-foreground text-body-sm mb-6">
+              <p className="text-body text-foreground -sm mb-6">
                 You will also receive an email notification with a link to access the training video.
               </p>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -186,7 +186,7 @@ export default function PilotTraining() {
                   {submitting ? "Submitting..." : "Access Training"}
                 </Button>
               </form>
-              <p className="text-caption text-muted-foreground mt-4">
+              <p className="text-body text-muted-foreground mt-4">
                 Providing your email will subscribe you to receive relevant Porch materials, newsletters, and insights. We hate SPAM too. You may unsubscribe at any time.
               </p>
             </div>

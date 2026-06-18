@@ -176,7 +176,7 @@ export default function AmplifyLabs() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Leadership Labs: Peer-Driven Acceleration
             </h1>
-            <p className="text-lead text-foreground max-w-3xl mx-auto">
+            <p className="text-body text-foreground max-w-3xl mx-auto">
               Explore Phase Zero concepts with other leaders navigating similar challenges. Each Leadership Lab is a 6–12 week cohort-style program with peer accountability, monthly group sessions, and individual coaching touchpoints.
             </p>
           </div>
@@ -192,8 +192,8 @@ export default function AmplifyLabs() {
                   </div>
                   <div className="p-5 flex flex-col flex-1">
                     <h2 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-1 leading-tight">{cohort.title}</h2>
-                    <p className="text-body-sm font-semibold text-strategic mb-2">{cohort.tagline}</p>
-                    <p className="text-body-sm text-foreground mb-4 flex-1">{cohort.description}</p>
+                    <p className="text-body -sm font-semibold text-strategic mb-2">{cohort.tagline}</p>
+                    <p className="text-body -sm text-foreground mb-4 flex-1">{cohort.description}</p>
                     {showCohortBanner && (
                       <div className="mb-4 flex items-start gap-2 bg-strategic/10 border border-strategic/30 text-navy px-3 py-2 rounded-md">
                         <Calendar className="w-4 h-4 text-strategic mt-0.5 shrink-0" />
@@ -234,8 +234,8 @@ export default function AmplifyLabs() {
           <div className="bg-strategic/10 p-8 rounded-xl border-t-4 border-strategic text-center">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-2">Leadership Lab Investment</h2>
             <div className="text-2xl font-bold text-strategic mb-2">$2,000 - $5,000 per participant</div>
-            <p className="text-body-sm text-foreground mb-6">6-12 week cohort | Capped at 25 leaders per cohort</p>
-            <p className="text-body-sm text-foreground/80 max-w-2xl mx-auto mb-6 italic">
+            <p className="text-body -sm text-foreground mb-6">6-12 week cohort | Capped at 25 leaders per cohort</p>
+            <p className="text-body -sm text-foreground/80 max-w-2xl mx-auto mb-6 italic">
               A full application process is coming soon. In the meantime, reach out with any questions and we'll point you toward the right cohort.
             </p>
             <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I have questions about your Leadership Labs.">
@@ -253,7 +253,7 @@ export default function AmplifyLabs() {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
             Want to bring one of these labs into your team, organization, or event?
           </h2>
-          <p className="text-lead text-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-foreground mb-8 max-w-2xl mx-auto">
             We offer several of these (and more!) as team and leadership workshops and keynotes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

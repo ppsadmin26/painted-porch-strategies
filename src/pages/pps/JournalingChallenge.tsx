@@ -67,7 +67,7 @@ export default function JournalingChallenge() {
                 <span className="text-primary italic">Write</span>{" "}
                 Thing: Journaling Challenge
               </h1>
-              <p className="text-lead text-foreground mb-8">
+              <p className="text-body text-foreground mb-8">
                 Five days. Five short prompts. Reconnect, rediscover, and reignite your true voice, one quiet page at a time. Led by Rob Hunter, Painted Porch's Master of Communication.
               </p>
               <Button
@@ -76,12 +76,12 @@ export default function JournalingChallenge() {
               >
                 Coming Soon
               </Button>
-              <p className="text-body-sm mt-3">
+              <p className="text-body -sm mt-3">
                 <Link to="/partner/ignite/masterclasses" className="text-primary hover:underline font-medium">
                   Join the launch list →
                 </Link>
               </p>
-              <p className="text-caption text-muted-foreground mt-3">
+              <p className="text-body text-muted-foreground mt-3">
                 On-demand. 5 short daily prompts. Go at your own pace, anytime.
               </p>
             </div>
@@ -143,7 +143,7 @@ export default function JournalingChallenge() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2 leading-tight">
                   {lesson.title}
                 </h3>
-                <p className="text-body-sm text-foreground">{lesson.description}</p>
+                <p className="text-body -sm text-foreground">{lesson.description}</p>
               </div>
             ))}
           </div>
@@ -165,21 +165,21 @@ export default function JournalingChallenge() {
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <BookOpen className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Busy Leaders</h3>
-              <p className="text-body-sm text-foreground">
+              <p className="text-body -sm text-foreground">
                 Who run from meeting to meeting and rarely get five quiet minutes to think their own thoughts.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Sparkles className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Reflective Doers</h3>
-              <p className="text-body-sm text-foreground">
+              <p className="text-body -sm text-foreground">
                 Who know self-reflection matters but haven't found a rhythm that actually sticks.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <PenLine className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Anyone Curious</h3>
-              <p className="text-body-sm text-foreground">
+              <p className="text-body -sm text-foreground">
                 Who wants a simple, low-pressure way to slow down and hear their own voice again.
               </p>
             </div>
@@ -203,7 +203,7 @@ export default function JournalingChallenge() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
             Ready to do the Write thing?
           </h2>
-          <p className="text-white/90 mb-8 text-lead drop-shadow">
+          <p className="text-body text-white/90 mb-8 drop-shadow">
             Five days from now you could have a simple daily rhythm, a quieter mind, and a much clearer sense of your own voice. Let's go.
           </p>
           <Button
@@ -212,12 +212,12 @@ export default function JournalingChallenge() {
           >
             Coming Soon
           </Button>
-          <p className="text-body-sm text-white/90 mt-4">
+          <p className="text-body -sm text-white/90 mt-4">
             <Link to="/partner/ignite/masterclasses" className="underline hover:text-white font-medium">
               Join the launch list →
             </Link>
           </p>
-          <p className="text-caption text-white/80 mt-4">
+          <p className="text-body text-white/80 mt-4">
             Questions? <Link to="/contact" className="underline hover:text-white">Contact us</Link>.
           </p>
         </div>

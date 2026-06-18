@@ -264,9 +264,9 @@ function AnimatedStatCard({ stat: s, index: i }: { stat: Stat; index: number }) 
             iconClassName={`${c.text} opacity-60 hover:opacity-100`}
           />
         </h3>
-        <p className="text-body-sm text-foreground">{s.text}</p>
+        <p className="text-body -sm text-foreground">{s.text}</p>
         {s.footnote && (
-          <p className="text-caption text-foreground/60 italic mt-2">{s.footnote}</p>
+          <p className="text-body text-foreground/60 italic mt-2">{s.footnote}</p>
         )}
       </div>
     </div>
@@ -345,7 +345,7 @@ export default function EQAssessment() {
             Did you know that Emotional Intelligence has been shown to account
             for 27–45% of job success?
           </h2>
-          <p className="text-lead text-white/80 mb-6">
+          <p className="text-body text-white/80 mb-6">
             Learn how you can better listen, understand, be heard, and lead through E.Q.
           </p>
           <a href="#get-started">
@@ -364,7 +364,7 @@ export default function EQAssessment() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-6">
               The Impacts of Understanding E.Q.
             </h2>
-            <p className="text-lead text-foreground max-w-3xl mx-auto">
+            <p className="text-body text-foreground max-w-3xl mx-auto">
               You've probably been told at some point, at work, in your life, to "put your emotions aside" when dealing with a difficult situation. But the truth is we are NOT thinking beings who <em>feel</em> but rather feeling beings who <em>think</em>. Whether consciously or not, your emotions impact every interaction (including the ones with yourself).
             </p>
           </div>
@@ -423,7 +423,7 @@ export default function EQAssessment() {
           </div>
 
 
-          <p className="text-center text-lead text-foreground mt-12 max-w-2xl mx-auto">
+          <p className="text-body text-center text-foreground mt-12 max-w-2xl mx-auto">
             People higher in EI communicate effectively, form strong relationships, and create powerful coping strategies.
           </p>
         </div>
@@ -438,7 +438,7 @@ export default function EQAssessment() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-4">
               The EQ-i 2.0 Model of Emotional Intelligence
             </h2>
-            <p className="text-lead text-foreground font-medium">Skills for both Work and Life</p>
+            <p className="text-body text-foreground font-medium">Skills for both Work and Life</p>
             <p className="text-body text-foreground max-w-3xl mx-auto mt-4 leading-relaxed">
               While there are several models of emotional intelligence in use today, the EQ-i 2.0 model is one of the most popular and one of the only validated and reliable measures of self-perceived EQ that ties directly to the skills and competencies needed to lead in all areas of your life, whether you're in an official leadership role or not.
             </p>
@@ -498,7 +498,7 @@ export default function EQAssessment() {
                     ))}
                   </ul>
                   {section.note && (
-                    <p className="text-body-sm text-muted-foreground italic">{section.note}</p>
+                    <p className="text-body -sm text-muted-foreground italic">{section.note}</p>
                   )}
                 </div>
               </div>
@@ -521,7 +521,7 @@ export default function EQAssessment() {
             ].map((item, i) => (
               <div key={i} className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                 <CheckCircle className="w-8 h-8 mx-auto mb-3 text-white/90" />
-                <p className="text-body-sm text-white/90">{item}</p>
+                <p className="text-body -sm text-white/90">{item}</p>
               </div>
             ))}
           </div>
@@ -553,7 +553,7 @@ export default function EQAssessment() {
                 EQ-i Workplace Report
               </h3>
               <p className="text-body text-4xl font-bold text-raspberry mb-4">$997</p>
-              <p className="text-body-sm font-medium text-foreground mb-4">
+              <p className="text-body -sm font-medium text-foreground mb-4">
                 Gain clarity into your own E.Q.
               </p>
               <ul className="space-y-2 mb-8 flex-grow">
@@ -563,7 +563,7 @@ export default function EQAssessment() {
                   "A 45-minute one-on-one debrief call to review your results and design your E.Q. development blueprint",
                   "A 30-minute progress check-in & coaching call",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-body-sm text-foreground">
+                  <li key={i} className="text-body flex items-start gap-2 -sm text-foreground">
                     <CheckCircle className="w-4 h-4 text-raspberry flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -589,7 +589,7 @@ export default function EQAssessment() {
                 EQ-i Leadership Report
               </h3>
               <p className="text-body text-4xl font-bold text-raspberry mb-4">$1,197</p>
-              <p className="text-body-sm font-medium text-foreground mb-4">
+              <p className="text-body -sm font-medium text-foreground mb-4">
                 Know Your Leadership Impact & Potential
               </p>
               <ul className="space-y-2 mb-8 flex-grow">
@@ -599,7 +599,7 @@ export default function EQAssessment() {
                   "A 45-minute one-on-one debrief call to review your results and design your E.Q. leadership blueprint",
                   "A 30-minute progress check-in & coaching call",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-body-sm text-foreground">
+                  <li key={i} className="text-body flex items-start gap-2 -sm text-foreground">
                     <CheckCircle className="w-4 h-4 text-raspberry flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -622,7 +622,7 @@ export default function EQAssessment() {
                 Unsure or want to learn more?
               </h3>
               <div className="text-2xl font-bold text-navy mb-4">Let's Talk</div>
-              <p className="text-body-sm text-foreground mb-4">
+              <p className="text-body -sm text-foreground mb-4">
                 Interested in one of our other EQ-i reports:
               </p>
               <ul className="space-y-2 mb-8 flex-grow">
@@ -632,7 +632,7 @@ export default function EQAssessment() {
                   "EQ-i Higher Education",
                   "Simply have a few questions?",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-body-sm text-foreground">
+                  <li key={i} className="text-body flex items-start gap-2 -sm text-foreground">
                     <Calendar className="w-4 h-4 text-navy flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>

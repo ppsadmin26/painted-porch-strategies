@@ -61,7 +61,7 @@ export default function WFHSignUp() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             Become a <span className="text-gold">Work From Home Hero!</span>
           </h1>
-          <p className="text-lead text-white/90 max-w-3xl mx-auto">
+          <p className="text-body text-white/90 max-w-3xl mx-auto">
             Get ready to don your cape and defeat Work From Home fatigue, overwhelm, and disconnect.
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function WFHSignUp() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               MISSION #WFH: Accomplished
             </h2>
-            <p className="text-lead text-charcoal mb-8">
+            <p className="text-body text-charcoal mb-8">
               Sign up for access to our <strong>FREE Mini-Course</strong> focused on tackling your Work From Home day , 
               with your family, your colleagues, and yourself.
             </p>
@@ -112,7 +112,7 @@ export default function WFHSignUp() {
           {/* Right: Form */}
           <div className="bg-white border-2 border-border rounded-2xl shadow-lg p-8 md:sticky md:top-8">
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">Get My Cape Ready!</h3>
-            <p className="text-body-sm text-muted-foreground mb-6">
+            <p className="text-body -sm text-muted-foreground mb-6">
               Drop your info below and we'll email you access details.
             </p>
 
@@ -171,7 +171,7 @@ export default function WFHSignUp() {
                 {submitting ? "Sending..." : "Get My Cape Ready!"}
               </Button>
 
-              <p className="text-caption text-muted-foreground text-center">
+              <p className="text-body text-muted-foreground text-center">
                 We won't send spam. Unsubscribe at any time.
               </p>
             </form>

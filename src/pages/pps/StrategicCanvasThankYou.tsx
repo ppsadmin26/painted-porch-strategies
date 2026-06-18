@@ -17,7 +17,7 @@ export default function StrategicCanvasThankYou() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-4">
             Your Canvas is Ready! 🎉
           </h1>
-          <p className="text-lead text-white/90">
+          <p className="text-body text-white/90">
             Your <strong className="text-gold">Strategic Change Canvas</strong> is ready to download.
           </p>
         </div>
@@ -30,7 +30,7 @@ export default function StrategicCanvasThankYou() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               Grab Your Canvas
             </h2>
-            <p className="text-lead text-charcoal mb-6 max-w-xl mx-auto">
+            <p className="text-body text-charcoal mb-6 max-w-xl mx-auto">
               Click below to download. We've also sent a copy to your inbox so you can find it later.
             </p>
             <a
@@ -52,7 +52,7 @@ export default function StrategicCanvasThankYou() {
                 Download the Strategic Change Canvas
               </Button>
             </a>
-            <p className="text-caption text-muted-foreground mt-4">
+            <p className="text-body text-muted-foreground mt-4">
               PDF · Painted Porch Strategies
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function StrategicCanvasThankYou() {
                   <h4 className="text-base md:text-lg font-poppins font-semibold text-navy mb-2">
                     Explore More Free Resources
                   </h4>
-                  <p className="text-body-sm text-charcoal">
+                  <p className="text-body -sm text-charcoal">
                     Guides, templates, and tools to help you architect your next shIFt.
                   </p>
                 </div>
@@ -80,7 +80,7 @@ export default function StrategicCanvasThankYou() {
                   <h4 className="text-base md:text-lg font-poppins font-semibold text-navy mb-2">
                     Open <span className="text-bluedoor font-bold">The Blue Door</span>
                   </h4>
-                  <p className="text-body-sm text-charcoal">
+                  <p className="text-body -sm text-charcoal">
                     Ready to go deeper? Our organizational appraisal is the next step.
                   </p>
                 </div>

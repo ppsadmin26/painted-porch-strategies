@@ -148,7 +148,7 @@ export default function AboutSierra() {
             Hi! I'm Sierra
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lead leading-relaxed text-foreground/80">
+          <p className="text-body mx-auto mt-6 max-w-2xl leading-relaxed text-foreground/80">
             I am that zany, madcap person in your life who makes animal noises, breaks out into song, and will guide you to balance your energy. I've taught yoga and meditation for over 12 years, traveled all 50 states, and only recently learned how to ride a bike. While I'm a quadruple threat (dancer/actor/singer/director), childhood development guide, homeschool teacher, mindfulness sherpa, and mom (of a very active child!), my true life purpose is to guide everyone I cross paths with to lead a more <strong className="text-navy">joyful, authentic life</strong>.
           </p>
 
@@ -225,7 +225,7 @@ export default function AboutSierra() {
                       <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy group-hover:text-primary transition-colors">
                         {card.title}
                       </h3>
-                      <p className="mt-2 text-body-sm leading-relaxed text-foreground/70">
+                      <p className="text-body mt-2 -sm leading-relaxed text-foreground/70">
                         {card.description}
                       </p>
                     </div>

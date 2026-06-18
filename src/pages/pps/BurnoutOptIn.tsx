@@ -68,7 +68,7 @@ export default function BurnoutOptIn() {
               <Flame className="inline-block w-10 h-10 md:w-12 md:h-12 text-raspberry mb-2 mr-2" />
               Bust Burnout
             </h1>
-            <p className="text-lead text-foreground leading-relaxed">
+            <p className="text-body text-foreground leading-relaxed">
               You've started to spot the signs of burnout. We've put together resources to help you
               bust burnout in yourself, plus tools to support and empower your team to take the
               reins of resilience.
@@ -125,7 +125,7 @@ export default function BurnoutOptIn() {
               >
                 {submitting ? "Submitting..." : "ACCESS RESOURCES"}
               </Button>
-              <p className="text-caption text-muted-foreground leading-relaxed text-center pt-2">
+              <p className="text-body text-muted-foreground leading-relaxed text-center pt-2">
                 By signing up, you'll get immediate access to our Burnout-Busting resource page,
                 plus our newsletter with the latest insights, free resources, and upcoming learning
                 opportunities. <strong>We will NOT spam you. Unsubscribe at any time.</strong>

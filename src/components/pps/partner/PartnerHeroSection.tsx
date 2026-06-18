@@ -70,7 +70,7 @@ export function PartnerHeroSection() {
               <p className="text-body mb-4">
                 Our P.A.T.H.ways help you identify the right starting point.
               </p>
-              <p className="text-white/80 italic text-body">
+              <p className="text-body text-white/80 italic">
                 Your next step isn't determined by your title. It's determined by where you are and what matters most right now.
               </p>
             </div>

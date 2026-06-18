@@ -648,10 +648,10 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
           const inner = (
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
-                <p className="font-semibold text-navy text-body-sm">
+                <p className="text-body font-semibold text-navy -sm">
                   <BoldShiftName name={o.name} />
                 </p>
-                <p className="text-caption text-foreground/70 mt-0.5">{o.blurb}</p>
+                <p className="text-body text-foreground/70 mt-0.5">{o.blurb}</p>
                 {o.isComingSoon && (
                   <p className="text-body text-[11px] font-semibold text-gold mt-1">
                     Launching soon — join the launch list on the card.

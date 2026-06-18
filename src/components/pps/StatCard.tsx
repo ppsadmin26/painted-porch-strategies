@@ -52,7 +52,7 @@ export default function StatCard({
   if (variant === "editorial") {
     return (
       <div className={cn("border-l-4 border-gold pl-5 py-2", className)}>
-        <p className={cn("text-pullquote md:text-pullquote font-poppins font-bold leading-tight", accentClass)}>
+        <p data-body-allow className={cn("text-pullquote md:text-pullquote font-poppins font-bold leading-tight", accentClass)}>
           {s.figure}
           <span className="text-navy"> {s.label.replace(/\.$/, "")}.</span>
           {tooltip}
@@ -70,15 +70,15 @@ export default function StatCard({
         className
       )}
     >
-      <p className={cn("text-pullquote text-5xl md:text-6xl font-poppins font-bold tabular-nums leading-none", accentClass)}>
+      <p data-body-allow className={cn("text-pullquote text-5xl md:text-6xl font-poppins font-bold tabular-nums leading-none", accentClass)}>
         {s.figure}
       </p>
-      <p className="mt-4 text-body text-navy font-montserrat leading-snug">
+      <p className="text-body mt-4 text-navy font-montserrat leading-snug">
         {s.label.replace(/\.$/, "")}.
         {tooltip}
       </p>
       {framing && (
-        <p className="mt-4 text-body-sm text-foreground/80 italic leading-relaxed">{framing}</p>
+        <p className="text-body mt-4 -sm text-foreground/80 italic leading-relaxed">{framing}</p>
       )}
       <p className="text-body mt-auto pt-4 text-[0.7rem] uppercase tracking-wider text-muted-foreground">
         {s.source}{s.year ? ` · ${s.year}` : ""}

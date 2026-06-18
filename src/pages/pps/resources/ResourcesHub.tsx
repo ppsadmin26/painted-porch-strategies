@@ -101,7 +101,7 @@ export default function ResourcesHub() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-2 mb-3">
                 Implementation Comes Last
               </h3>
-              <p className="text-body-sm text-foreground mb-4">
+              <p className="text-body -sm text-foreground mb-4">
                 The biggest mistake in organizational change? Jumping to implementation before building readiness.
               </p>
               <Link to="/resources/insights/implementation-comes-last" className="text-primary font-semibold text-sm hover:underline">
@@ -113,7 +113,7 @@ export default function ResourcesHub() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-2 mb-3">
                 Shift Readiness Playbook
               </h3>
-              <p className="text-body-sm text-foreground mb-4">
+              <p className="text-body -sm text-foreground mb-4">
                 Our comprehensive guide to assessing and building organizational change-readiness.
               </p>
               <Link to="/resources/free" className="text-primary font-semibold text-sm hover:underline">
@@ -125,7 +125,7 @@ export default function ResourcesHub() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-2 mb-3">
                 Stoic Leadership Principles
               </h3>
-              <p className="text-body-sm text-foreground mb-4">
+              <p className="text-body -sm text-foreground mb-4">
                 Introduction to applying Stoic philosophy in modern business leadership.
               </p>
               <Link to="/resources/youtube" className="text-primary font-semibold text-sm hover:underline">
@@ -142,7 +142,7 @@ export default function ResourcesHub() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Get Insights Delivered
           </h2>
-          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
             Subscribe to receive our latest thinking on change-readiness, leadership development, and organizational transformation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">

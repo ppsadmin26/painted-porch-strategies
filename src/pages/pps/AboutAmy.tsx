@@ -147,7 +147,7 @@ export default function AboutAmy() {
             Hi! I'm Amy
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lead leading-relaxed text-foreground/80">
+          <p className="text-body mx-auto mt-6 max-w-2xl leading-relaxed text-foreground/80">
             <strong className="text-navy">Welcome to the Painted Porch!</strong>{" "}
             You can call me Amy Yack; my friends do. I've spent over 20 years
             seeking out and partnering with leaders and learners to design
@@ -224,7 +224,7 @@ export default function AboutAmy() {
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy group-hover:text-primary transition-colors">
                       {card.title}
                     </h3>
-                    <p className="mt-2 text-body-sm leading-relaxed text-foreground/70">
+                    <p className="text-body mt-2 -sm leading-relaxed text-foreground/70">
                       {card.description}
                     </p>
                   </div>

@@ -103,7 +103,7 @@ export default function PPSForLeaders() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 Design Your Blueprint for Change Success
               </h2>
-              <p className="text-lead text-foreground mb-8">
+              <p className="text-body text-foreground mb-8">
                 Through our Online Training & Coaching Programs you'll discover how to:
               </p>
               <ul className="space-y-4">
@@ -127,9 +127,9 @@ export default function PPSForLeaders() {
                 "How long are you going to wait before you demand the best for yourself?"
               </blockquote>
               <p className="text-body text-strategic font-semibold">Epictetus</p>
-              <p className="text-body-sm text-muted-foreground mt-1">Stoic teacher & Former slave</p>
+              <p className="text-body -sm text-muted-foreground mt-1">Stoic teacher & Former slave</p>
               <div className="mt-6 pt-6 border-t border-border">
-                <p className="text-body-sm text-muted-foreground">
+                <p className="text-body -sm text-muted-foreground">
                   The Painted Porch draws its name and philosophy from the Stoa Poikile, the painted porch where Stoicism was born over 2,300 years ago.
                 </p>
               </div>
@@ -151,7 +151,7 @@ export default function PPSForLeaders() {
             {stats.map((stat, index) => (
               <div key={index} className="text-center bg-white/5 rounded-xl p-6">
                 <div className="text-3xl md:text-4xl font-bold text-strategic mb-2">{stat.value}</div>
-                <p className="text-white/80 text-body-sm">{stat.label}</p>
+                <p className="text-body text-white/80 -sm">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -166,7 +166,7 @@ export default function PPSForLeaders() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mt-2 mb-4">
               Build a Foundation for Transformation & Success
             </h2>
-            <p className="text-lead text-foreground max-w-3xl mx-auto">
+            <p className="text-body text-foreground max-w-3xl mx-auto">
               We help you develop the mindset, communication practices, and collaboration strategies that empower you to not only survive, but thrive in this ever-changing world of life and work.
             </p>
           </div>
@@ -184,7 +184,7 @@ export default function PPSForLeaders() {
                   </div>
                 </div>
                 <p className="text-body text-foreground mb-4">{program.description}</p>
-                <p className="text-muted-foreground text-body-sm">{program.details}</p>
+                <p className="text-body text-muted-foreground -sm">{program.details}</p>
               </div>
             ))}
           </div>
@@ -217,7 +217,7 @@ export default function PPSForLeaders() {
                 </blockquote>
                 <div>
                   <p className="text-body font-semibold text-navy">{testimonial.author}</p>
-                  <p className="text-body-sm text-muted-foreground">{testimonial.role}</p>
+                  <p className="text-body -sm text-muted-foreground">{testimonial.role}</p>
                 </div>
               </div>
             ))}
@@ -233,13 +233,13 @@ export default function PPSForLeaders() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 Transparent, Flat-Fee Pricing
               </h2>
-              <p className="text-lead text-foreground leading-relaxed mb-6">
+              <p className="text-body text-foreground leading-relaxed mb-6">
                 We believe in transparency. Our engagements are priced as flat fees so you know exactly what you're investing before we begin. No surprise bills, no scope creep charges.
               </p>
-              <p className="text-lead text-foreground leading-relaxed mb-6">
+              <p className="text-body text-foreground leading-relaxed mb-6">
                 Every engagement begins with a discovery conversation to understand your needs and determine the right approach.
               </p>
-              <p className="text-lead font-semibold text-lime">
+              <p className="text-body font-semibold text-lime">
                 5% of every fee is donated to a charity of your choice.
               </p>
             </div>
@@ -281,7 +281,7 @@ export default function PPSForLeaders() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Not Sure Where to Start?
           </h2>
-          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
             The Blue Door is our Phase Zero assessment tool. In less than 30 minutes, discover which strategic shifts align with your organizational capability.
           </p>
           <Link to="/blue-door">

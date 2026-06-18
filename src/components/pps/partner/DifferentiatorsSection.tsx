@@ -35,7 +35,7 @@ export function DifferentiatorsSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Why Partner With Painted Porch Strategies?
           </h2>
-          <p className="text-lead text-foreground">
+          <p className="text-body text-foreground">
             Because we do transformation architecture differently than anyone else in the space.
           </p>
         </div>
@@ -49,10 +49,10 @@ export function DifferentiatorsSection() {
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                 {item.title}
               </h3>
-              <p className="text-foreground text-body-sm leading-relaxed mb-4">
+              <p className="text-body text-foreground -sm leading-relaxed mb-4">
                 {item.description}
               </p>
-              <p className="text-primary font-medium text-body-sm italic">
+              <p className="text-body text-primary font-medium -sm italic">
                 {item.contrast}
               </p>
             </div>

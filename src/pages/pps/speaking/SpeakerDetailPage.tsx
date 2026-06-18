@@ -79,7 +79,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 text-center">
             {speaker.outcomesHeading}
           </h2>
-          <p className="text-foreground text-lead leading-relaxed text-center mb-8 max-w-3xl mx-auto">
+          <p className="text-body text-foreground leading-relaxed text-center mb-8 max-w-3xl mx-auto">
             {speaker.outcomesIntro}
           </p>
           <div className="space-y-4 max-w-2xl mx-auto mb-8">
@@ -160,7 +160,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
                   <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3 uppercase">
                     {topic.title}
                   </h3>
-                  <p className="text-body-sm text-foreground leading-relaxed">
+                  <p className="text-body -sm text-foreground leading-relaxed">
                     {topic.description}
                   </p>
                 </div>
@@ -186,7 +186,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4 text-center">
             {speaker.workshopHeading}
           </h2>
-          <p className="text-foreground text-lead leading-relaxed text-center mb-8 max-w-3xl mx-auto">
+          <p className="text-body text-foreground leading-relaxed text-center mb-8 max-w-3xl mx-auto">
             {speaker.workshopIntro}
           </p>
           <div className="bg-white rounded-xl p-8 shadow-sm mb-8">
@@ -195,7 +195,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
               {speaker.workshopDetails.map((detail, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-lime mt-0.5 flex-shrink-0" />
-                  <p className="text-foreground text-body-sm">{detail}</p>
+                  <p className="text-body text-foreground -sm">{detail}</p>
                 </div>
               ))}
             </div>
@@ -212,7 +212,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Book {speaker.firstName} for Your Event
           </h2>
-          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
             Every keynote can be expanded into a half-day or full-day workshop for deeper, lasting team impact.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

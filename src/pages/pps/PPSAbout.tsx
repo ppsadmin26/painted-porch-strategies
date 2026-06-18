@@ -95,7 +95,7 @@ export default function PPSAbout() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 What's a "Painted Porch"?
               </h2>
-              <p className="text-lead text-foreground leading-relaxed mb-6">
+              <p className="text-body text-foreground leading-relaxed mb-6">
                 The original Painted Porch was a gathering place where people wrestled with questions about how to live, lead, and act with intention.
                 <br /><br />
                 It wasn't a place for quick answers. It was a place for thoughtful conversation, reflection, and wisdom.
@@ -106,10 +106,10 @@ export default function PPSAbout() {
                 <br /><br />
                 Not places to react. Places <strong>to decide deliberately</strong> what comes next.
               </p>
-              <p className="text-lead text-foreground leading-relaxed mb-6">
+              <p className="text-body text-foreground leading-relaxed mb-6">
                 We bring these timeless principles to modern business, so leaders and teams can build the perspective, judgment, and organizational strength needed to navigate complexity with intention.
               </p>
-              <p className="text-lead font-semibold text-primary">
+              <p className="text-body font-semibold text-primary">
                 Eudaimonia: prosperity and well-being through purposeful action.
               </p>
             </div>
@@ -262,7 +262,7 @@ export default function PPSAbout() {
                     {member.title}
                   </p>
                   {member.experience && (
-                    <p className="text-caption text-muted-foreground mb-4">
+                    <p className="text-body text-muted-foreground mb-4">
                       {member.experience}
                     </p>
                   )}

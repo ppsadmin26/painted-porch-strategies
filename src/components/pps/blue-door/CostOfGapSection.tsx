@@ -11,7 +11,7 @@ export default function CostOfGapSection() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}
       >
-        <p className="font-poppins font-medium text-lead text-white">
+        <p className="text-body font-poppins font-medium text-white">
           Most organizational sh<span className="text-raspberry font-bold">IF</span>t doesn't fail because leaders chose the wrong direction. It fails because they discover too late that their organization wasn't built for what the direction required.
         </p>
       </div>

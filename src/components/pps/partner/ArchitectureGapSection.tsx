@@ -68,7 +68,7 @@ export default function ArchitectureGapSection() {
           <h2 id="architecture-gap-heading" className="text-3xl md:text-4xl font-bold text-navy mb-4">
             The reality every leader is navigating right now.
           </h2>
-          <p className="text-lead text-foreground leading-relaxed">
+          <p className="text-body text-foreground leading-relaxed">
             The data tell the same story we hear from leaders every week: the
             problem isn&rsquo;t the strategy, it&rsquo;s the architecture
             underneath it. Here&rsquo;s what we&rsquo;re working with, and where
@@ -76,7 +76,7 @@ export default function ArchitectureGapSection() {
           </p>
         </div>
 
-        <p className="text-caption text-muted-foreground text-center mb-4 italic">
+        <p className="text-body text-muted-foreground text-center mb-4 italic">
           Hover the info icon on any stat to view the source.
         </p>
 
