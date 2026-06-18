@@ -753,7 +753,7 @@ export default function PPSHome() {
                     </div>
                   )}
                   {post.categories?.[0] && (
-                    <p className="text-xs text-primary font-semibold uppercase tracking-wide mb-2">
+                    <p className="text-caption text-primary font-semibold uppercase tracking-wide mb-2">
                       {post.categories[0].title}
                     </p>
                   )}
