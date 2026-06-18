@@ -151,7 +151,7 @@ export default function PPSHome() {
             leadership, culture &mdash; while your organization is still trying
             to deliver results, support people, and adapt in real time.
           </p>
-          <p className="text-lg text-foreground leading-relaxed mb-8">
+          <p className="text-lead text-foreground mb-8">
             Often the issue isn&rsquo;t effort. It&rsquo;s that your organization
             has outgrown the structures that worked well enough to get you here. And
             pushing harder in the wrong direction simply compounds the cost of
