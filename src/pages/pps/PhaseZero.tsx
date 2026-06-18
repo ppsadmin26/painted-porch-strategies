@@ -256,24 +256,24 @@ export default function PhaseZero() {
       {/* The work before the work */}
       <section className="py-16 md:py-24 bg-white">
         <FadeIn className="container max-w-3xl mx-auto px-6">
-          <p className="text-gold font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-4">
+          <p className="text-gold font-poppins font-semibold uppercase tracking-[0.2em] text-caption mb-4">
             The Work Before the Work
           </p>
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
             Phase Zero is where the real choices get made.
           </h2>
-          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-5">
+          <p className="text-lead text-charcoal/85 mb-5">
             It's the phase where you determine what's worth committing your
             time, energy, resources, and credibility toward.&nbsp;Not what to
             copy or catch up to, but what to{" "}
             <strong className="font-bold">author</strong>.
           </p>
-          <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed">
+          <p className="text-lead text-charcoal/85">
             That sounds simple; it's not. Teams often skip it because the
             pressure to move feels heavier than the cost of moving in the
             wrong direction.
           </p>
-          <p className="text-2xl md:text-3xl font-poppins italic text-navy mt-10 border-l-4 border-gold pl-6">
+          <p className="text-pullquote font-poppins text-navy mt-10 border-l-4 border-gold pl-6">
             <em>"Are we designing our next move, or reacting to someone else's?"</em>
           </p>
         </FadeIn>
