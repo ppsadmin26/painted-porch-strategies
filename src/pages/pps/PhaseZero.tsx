@@ -196,7 +196,7 @@ export default function PhaseZero() {
       <section className="py-16 md:py-24 bg-muted/40">
 
         <FadeIn className="container max-w-3xl mx-auto px-6">
-          <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-xs mb-4">
+          <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-caption mb-4">
             Why Phase Zero Exists
           </p>
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
