@@ -301,7 +301,7 @@ export default function CostCalculatorDialog({
           {/* Impact scope */}
           <div className="space-y-2">
             <Label className="text-navy font-semibold">Impact scope</Label>
-            <p className="text-xs text-muted-foreground -mt-1">
+            <p className="text-caption text-muted-foreground -mt-1">
               How wide is the blast radius? Broader scope means more coordination and higher failure exposure.
             </p>
             <div className="grid grid-cols-2 gap-2">
