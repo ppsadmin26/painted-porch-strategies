@@ -218,11 +218,11 @@ export default function OurApproach() {
           <div className="text-lg text-foreground leading-relaxed mb-6">
             <p className="mb-9">Every initiative is built on a series of assumptions.</p>
             <div className="mb-8 space-y-0">
-              <p>About leadership.</p>
-              <p>About communication.</p>
-              <p>About priorities.</p>
-              <p>About culture.</p>
-              <p>About what people understand, believe, and are capable of doing.</p>
+              <p className="mb-0">About leadership.</p>
+              <p className="mb-0">About communication.</p>
+              <p className="mb-0">About priorities.</p>
+              <p className="mb-0">About culture.</p>
+              <p className="mb-0">About what people understand, believe, and are capable of doing.</p>
             </div>
             <p className="mb-8">Our work surfaces those assumptions before they become expensive realities.</p>
             <p className="mb-8">Because what appears during implementation often begins much earlier.</p>
