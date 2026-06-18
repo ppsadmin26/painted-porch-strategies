@@ -468,9 +468,9 @@ export default function CostCalculatorDialog({
               <p className="text-[0.65rem] uppercase tracking-wider text-navy/70 font-poppins font-semibold">
                 Planned investment
               </p>
-              <p className="text-xl font-bold text-navy mt-1 tabular-nums">
+              <div className="text-xl font-bold text-navy mt-1 tabular-nums">
                 {fmt(calc.plannedTotal)}
-              </p>
+              </div>
             </div>
             <div className="p-3 rounded-lg bg-gold/10 border border-gold/30">
               <p className="text-[0.65rem] uppercase tracking-wider text-gold font-poppins font-semibold">
