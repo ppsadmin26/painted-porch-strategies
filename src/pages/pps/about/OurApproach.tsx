@@ -552,7 +552,7 @@ export default function OurApproach() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">
                   Prepare is Phase Zero.
                 </h3>
-                <p className="text-foreground leading-relaxed">
+                <p className="text-body text-foreground">
                   Prepare is where we begin. It's the work before the work - the point where you decide whether a direction is worth committing to and what it will require to do it well.
                 </p>
               </div>
