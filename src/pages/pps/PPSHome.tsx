@@ -353,7 +353,7 @@ export default function PPSHome() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Get the clarity that accelerates vs. exhausts your next big sh<span className="text-raspberry font-bold">IF</span>t.
           </h2>
-          <p className="text-lg text-white/90 mb-4 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lead text-white/90 mb-4 max-w-2xl mx-auto">
             Before another initiative is announced. Before another restructuring
             kicks off. Before you begin scaling something that already feels stretched.
           </p>
