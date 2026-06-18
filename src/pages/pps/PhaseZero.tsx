@@ -405,7 +405,7 @@ export default function PhaseZero() {
                   <h4 className="text-base md:text-lg font-semibold text-navy mb-2">Strong Foundation Looks Like:</h4>
                   <ul className="space-y-1.5">
                     {p.outcomes.map((o, i) => (
-                      <li key={i} className="text-sm text-foreground flex items-start gap-2">
+                      <li key={i} className="text-body-sm text-foreground flex items-start gap-2">
                         <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
                         <span>{o}</span>
                       </li>
