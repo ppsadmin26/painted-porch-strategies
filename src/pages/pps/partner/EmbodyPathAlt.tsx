@@ -140,7 +140,7 @@ const embodyVsAmplify = [
   {
     dimension: "Cadence",
     amplify: "Sprint sessions, fixed timeline",
-    embody: "Recurring strategic sessions + on-demand access",
+    embody: "Recurring strategic sessions + dedicated access",
   },
   {
     dimension: "Outcome",
