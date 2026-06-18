@@ -492,10 +492,10 @@ export default function CostCalculatorDialog({
 
           {/* Phase Zero impact hero strip */}
           <div className="p-4 rounded-lg bg-[hsl(216,100%,30%)]/5 border-2 border-[hsl(216,100%,30%)]/30">
-            <p className="text-xs uppercase tracking-wider text-[hsl(216,100%,30%)] font-poppins font-semibold">
+            <p className="text-caption uppercase tracking-wider text-[hsl(216,100%,30%)] font-poppins font-semibold">
               The Blue Door impact
             </p>
-            <p className="text-base text-navy mt-1 leading-snug">
+            <p className="text-body text-navy mt-1 !leading-snug">
               A <span className="font-bold text-[hsl(216,100%,30%)]">{BLUE_DOOR_PRICE_DISPLAY} Blue Door</span>{" "}
               operational appraisal can provide the clarity needed to reduce the risked{" "}
               <span className="font-bold text-[hsl(216,100%,30%)] tabular-nums">
