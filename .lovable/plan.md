@@ -1,76 +1,79 @@
-## Phase 2: Typography migration — Batch 1
+## Goal
 
-Migrate `<p>` / `<li>` / `<blockquote>` tags from raw Tailwind text-size utilities to the 5-token scale (`text-lead` / `text-body` / `text-body-sm` / `text-caption` / `text-pullquote`) defined in `src/index.css` during Phase 1.
+Clarify the split between the two pages so each has one job:
 
-### Scope (this plan only)
+- **`/sitemap`** — the **visible site map**. A clean, hierarchical tree of the public site (with the existing admin-only badges/toggles removed or moved). Visitors get the tree; staff see category/status badges read-only.
+- **`/admin/pages`** — the **unified page manager**. One table where every route's URL, Status, Category, Location (Main Nav / Subpage / Standalone), and SEO/AEO state are visible and editable side by side.
 
-Five sub-batches, in order. After each sub-batch I'll re-run `npm run brand:typography` to confirm the count drops and the page still renders cleanly in preview.
+## Source of "Location"
 
-| # | Sub-batch | Files | Violations |
-|---|---|---|---|
-| 1 | **PPSHome** | `src/pages/pps/PPSHome.tsx` | 29 |
-| 2 | **Blue Door landing** (live components only, skip `_archive-v1.0/`) | 12 files in `src/components/pps/blue-door/` | 72 |
-| 3 | **IGNITE tier** | `partner/IgnitePathAlt.tsx` + 5 files in `partner/ignite/` | 79 |
-| 4 | **AMPLIFY tier** | `partner/AmplifyPathAlt.tsx` + 6 files in `partner/amplify/` | 125 |
-| 5 | **EMBODY tier** | `partner/EmbodyPathAlt.tsx` + (any `partner/embody/` subpages) | 26 |
+We don't need a new DB column. `Location` is derived from `sitemapData` in `src/pages/pps/Sitemap.tsx`:
 
-**Total: ~331 violations across ~31 files.** Other tiers, blog, admin, resources, about, programs, _archive folders, etc. are out of scope for this plan — they'll come in later phases.
+- `Main Nav` — top-level node in `sitemapData` (depth 0)
+- `Subpage` — nested under a Main Nav parent (depth ≥ 1), label shows parent (e.g. `Subpage of /partner/ignite`)
+- `Standalone` — route exists in `App.tsx` but not in `sitemapData` (orphan / utility / thank-you / etc.)
+- `Unlisted` — DB row exists but route isn't in `sitemapData` or `App.tsx` (cleanup candidate)
 
-### Migration rules (the judgment calls)
+A small helper `resolveLocation(path)` in `src/config/pageLocation.ts` returns `{ kind, parentPath?, parentLabel? }`.
 
-The validator flags raw classes but cannot decide the right replacement. I'll apply this decision tree per tag:
+## /admin/pages — unified table
+
+Rebuild `PageStatusManager.tsx` around a single sortable/filterable table. One row per route, columns:
 
 ```text
-Is the <p> inside a card / grid cell / sidebar / dense list?
-  yes → text-body-sm        (keeps 14px feel where density matters)
-  no  → continue
-
-Is it a hero subhead, section intro under an H2, or a "lead" paragraph?
-  yes → text-lead            (18→20px, was usually text-lg / text-xl)
-  no  → continue
-
-Is it a block quote, pull quote, or italic emphasis line?
-  yes → text-pullquote       (was usually text-xl / text-2xl italic)
-  no  → continue
-
-Is it a footnote, caption, label, source, timestamp, badge, or legal line?
-  yes → text-caption         (was text-xs)
-  no  → text-body            (default, 16px)
+| Path | Title (from page_seo) | Status | Category | Location | SEO/AEO | Note | Actions |
 ```
 
-Concrete raw → token mapping I'll start from:
+- **Path** — link opens the live route in a new tab
+- **Title** — `page_seo.title` if present, else `—`
+- **Status** — inline Live/Draft switch (existing `setStatus`)
+- **Category** — inline segmented picker public / internal / archived (existing `setCategory`)
+- **Location** — read-only chip (Main Nav / Subpage of … / Standalone / Unlisted)
+- **SEO/AEO** — chip showing `Custom` / `Default` / `Missing canonical` etc.; click → existing `PageSeoEditorDialog`
+- **Note** — admin-only inline edit (existing `notesById` flow)
+- **Actions** — Remove override, Open page
 
-- `text-xs` → `text-caption`
-- `text-base` → `text-body`
-- `text-sm` in a multi-column / card grid → `text-body-sm`; `text-sm` in full-width prose → `text-body`
-- `text-lg` / `text-xl` on intro/subhead paragraphs → `text-lead`
-- `text-xl` / `text-2xl` on quotes → `text-pullquote`
-- `text-3xl` on a `<p>` (rare, 1 case in PPSHome) → treat as a styled lead and likely keep raw (it's heading-like); flag for review
+Top bar keeps existing controls (search, "Sync from sitemap", "Add path", `BulkSeoGenerator`, `CanonicalAuditCard`) but consolidated into a single header strip. Filters: category (multi), status, location, "has SEO override", "in sitemap only / in App only / both".
 
-### What I will NOT change
+Source list = union of:
+1. Every path from `collectSitemapPaths()`
+2. Every `page_status` row
+3. Every `page_seo.path`
 
-- **Headings** (h1–h6) — already standardized in `index.css`, validator skips them.
-- **Non-text utilities** on the same element (color, weight, margin, italic, font-poppins overrides) — preserved verbatim.
-- **`leading-*` overrides** — if a tag has a custom `leading-tight` etc., I keep it and drop the token's default leading via `!leading-*` only if it would override. (Tokens already include sensible defaults.)
-- **Archive folders** (`_archive-v1.0/`, `BlueDoorLandingArchive.tsx`, `PPSHomeArchive.tsx`, `EmbodyPathAltArchiveV2.tsx`, etc.).
-- **Tier-page font-family overrides** if any component sets Poppins on a paragraph deliberately — preserved.
+Excludes `/admin/*` by default (toggle to show).
 
-### Validation after each sub-batch
+## /sitemap — visible site tree only
 
-1. `npm run brand:typography` — confirm file's violation count drops to 0 (or note any flagged-for-review tags).
-2. Spot-check the page in preview (`/`, `/blue-door`, `/partner/ignite`, `/partner/amplify`, `/partner/embody`).
-3. If anything looks visually off (size jump on a card title, lost emphasis on a hero subhead), tune the token choice for that tag.
+Trim `Sitemap.tsx` down to:
 
-### Out of scope (next plan)
+- Public tree rendering from `sitemapData` (already there)
+- Category filtering for public viewers (existing behavior — internal/archived hidden)
+- Staff-only read-only badges next to each node: Status (Live/Draft) and Category
+- **Remove** from this page: inline status switch, inline category picker, "Page Status" admin shortcut row, the bottom admin management block. Replace with a single banner for staff: "Manage these pages in /admin/pages" linking through.
 
-After you approve and I ship Batch 1, the remaining backlog is roughly:
+The page becomes presentational; all writes happen in `/admin/pages`.
 
-- PhaseZero, PPSHomeVerbatim, PPSBusinessPrograms, About, Speaking, Resources, Programs, Contact (~340 violations)
-- Admin / legal / thank-you / opt-in pages (~280 violations)
-- Shared layout components outside `pps/` (small)
+## Files
 
-I'll plan those once Batch 1 is approved and shipped.
+**New**
+- `src/config/pageLocation.ts` — `resolveLocation(path, sitemapData)` + `LocationKind` type
 
-### Deliverable
+**Edited**
+- `src/pages/pps/admin/PageStatusManager.tsx` — replace card list with unified table + Location column + SEO/AEO column
+- `src/pages/pps/Sitemap.tsx` — strip write controls, keep tree + read-only staff badges + link to `/admin/pages`
+- `src/pages/pps/Sitemap.tsx` nav label change in admin shortcuts list (already references `/admin/pages`)
 
-A single round of edits to ~31 files plus a short before/after violation report. No new components, no design-system changes, no copy changes.
+**Untouched**
+- DB schema (`page_status`, `page_seo`) — no migration needed
+- `usePageStatuses`, `pageCategories.ts`, validators, sitemap.xml/robots.txt generators
+
+## Out of scope
+
+- Renaming routes
+- Moving `/admin/pages` to a new URL
+- Adding `location` to the DB (kept derived so the sitemap tree stays the single source of structural truth)
+- Touching `App.tsx` routing
+
+## Open question before I build
+
+Should `/sitemap` keep showing **staff-only badges** (Status + Category chips next to each node) so admins can scan the tree at a glance — or do you want it stripped to a pure public tree with zero admin chrome, and all status visibility lives only in `/admin/pages`?
