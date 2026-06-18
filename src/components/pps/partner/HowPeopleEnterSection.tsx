@@ -49,7 +49,7 @@ export function HowPeopleEnterSection() {
           </p>
 
           <p className="text-navy font-medium italic">
-            Your starting point is yours to choose.&nbsp;What you do with it is yours to own.
+            Your starting point is yours to choose.&nbsp;What you do next is yours to own.
           </p>
         </div>
       </div>
