@@ -114,7 +114,7 @@ export function PathwayComparisonSection() {
                       {content.tagline}
                     </p>
                   </div>
-                  <p className="text-foreground text-sm leading-relaxed">
+                  <p className="text-foreground text-sm leading-relaxed mt-6">
                     {content.journey}
                   </p>
                 </div>
