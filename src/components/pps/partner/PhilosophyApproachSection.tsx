@@ -25,8 +25,8 @@ const principles = [
   },
   {
     icon: Target,
-    title: "Lasting Capability & Confidence",
-    tagline: "Strengthen foundations before initiatives demand more from you.",
+    title: "A Culture of Continuous Innovation",
+    tagline: "Foundations for a continually evolving future.",
     description: (
       <>
         Success is not measured by a completed project. It's reflected in stronger leaders, healthier systems, and greater confidence in navigating uncertainty or whatever <ShIFt lowercase /> happens next.
