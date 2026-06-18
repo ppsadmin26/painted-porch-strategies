@@ -93,7 +93,7 @@ export function PathwayComparisonSection() {
           </h3>
           <div className="text-foreground space-y-3">
             <p>Some people arrive looking for greater clarity, confidence, and capability in their own work.&nbsp;Others are responsible for teams, departments, or entire organizations.</p>
-            <p>P.A.T.H.ways are designed to meet you where you are and provide a clear direction for what comes next.</p>
+            <p>P.A.T.H.ways are designed to meet you where you are and provide a clear direction forward.</p>
           </div>
         </div>
 
