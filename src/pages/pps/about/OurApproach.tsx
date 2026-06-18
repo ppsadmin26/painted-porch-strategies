@@ -270,7 +270,7 @@ export default function OurApproach() {
               </h3>
               <ul className="space-y-3">
                 {rejects.map((r) => (
-                  <li key={r} className="flex items-start gap-3 text-foreground leading-relaxed">
+                  <li key={r} className="text-body text-foreground flex items-start gap-3">
                     <X className="w-5 h-5 text-raspberry flex-shrink-0 mt-1" />
                     <span>{r}</span>
                   </li>
