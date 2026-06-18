@@ -484,9 +484,9 @@ export default function CostCalculatorDialog({
               <p className="text-[0.65rem] uppercase tracking-wider text-raspberry font-poppins font-semibold">
                 Failure write-off
               </p>
-              <p className="text-xl font-bold text-raspberry mt-1 tabular-nums">
+              <div className="text-xl font-bold text-raspberry mt-1 tabular-nums">
                 {fmt(calc.failureWriteOff)}
-              </p>
+              </div>
             </div>
           </div>
 
