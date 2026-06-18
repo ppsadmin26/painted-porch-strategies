@@ -41,7 +41,7 @@ export default function ProblemSectionAlt() {
             It's when the <span className="font-bold text-bluedoor">blue door</span> appears, the threshold between sensing that something must change and knowing what your organization can realistically take on. Before a direction becomes a commitment, you must first understand who your organization is becoming.
           </p>
           <p className="text-base md:text-lg text-foreground font-semibold">
-            Most organizations don't stop long enough to author this.
+            Few leaders create enough space to author this intentionally
           </p>
         </div>
         
