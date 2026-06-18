@@ -254,7 +254,7 @@ export default function PhaseZero() {
             Phase Zero is where the real choices get made.
           </h2>
           <p className="text-lg md:text-xl text-charcoal/85 leading-relaxed mb-5">
-            It's the phase where you determine what is worth committing your
+            It's the phase where you determine what's worth committing your
             time, energy, resources, and credibility toward.&nbsp;Not what to
             copy or catch up to, but what to{" "}
             <strong className="font-bold">author</strong>.
