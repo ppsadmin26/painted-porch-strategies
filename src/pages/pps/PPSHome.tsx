@@ -689,7 +689,7 @@ export default function PPSHome() {
             </div>
             <div className="bg-gold/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-gold">
               <p className="font-poppins font-bold text-gold mb-2">If not yet</p>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <p className="text-body-sm text-white/90">
                 We tell you, and we provide a pathway to action.
               </p>
             </div>
