@@ -227,7 +227,7 @@ export default function AmplifyPathAlt() {
               &nbsp;Now You Need to Build the Capacity for It.
             </h2>
             <p className="text-lead text-foreground max-w-2xl mx-auto">
-              Our AMPLIFY P.A.T.H.way is designed for two audiences, organizations/teams seeking alignment AND individual leaders wanting peer learning.
+              Our AMPLIFY P.A.T.H.way is designed for two audiences: organizations/teams seeking alignment, and individual leaders wanting peer learning.
             </p>
           </div>
 
