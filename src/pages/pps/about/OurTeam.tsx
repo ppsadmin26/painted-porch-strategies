@@ -99,7 +99,7 @@ export default function OurTeam() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Our Team
               </h1>
-              <p className="text-body text-white/90 leading-relaxed max-w-3xl">
+              <p className="text-lead text-white/90 max-w-3xl" data-body-allow>
                 Our experts bring decades of combined experience in leadership development, organizational change, and strategic communication.
               </p>
             </div>
