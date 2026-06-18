@@ -175,7 +175,7 @@ export default function PhaseZero() {
             </p>
             <p className="text-lg text-white/85">
               Phase Zero is the clarity work that reveals what your organization 
-              is becoming, what deserves commitment, and where intentional progress begins.
+              is becoming, what deserves your commitment, and what direction is worth designing toward.
             </p>
           </>
         }
