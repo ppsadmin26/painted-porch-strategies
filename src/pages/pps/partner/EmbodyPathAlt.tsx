@@ -419,7 +419,7 @@ export default function EmbodyPathAlt() {
                 </h3>
                 <ul className="space-y-2">
                   {[
-                    "A team that prepares and leads change faster than the market shifts",
+                    "A team that identifies, prepares, and leads change faster than the market shifts",
                     "One strategic plan and direction instead of fragmented vendor projects to manage",
                     "Permanent internal capacity to architect change without us",
                   ].map((item) => (
