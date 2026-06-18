@@ -328,7 +328,7 @@ function SitemapBranch({
     : "";
 
   return (
-    <li className={`my-1.5 ${rowStateClass}`} style={{ marginLeft: depth === 0 ? 0 : indent }}>
+    <li className={`text-body my-1.5 ${rowStateClass}`} style={{ marginLeft: depth === 0 ? 0 : indent }}>
       <div className="flex items-baseline gap-2 flex-wrap">
         {depth > 0 && <span className="text-pps-teal/60">↳</span>}
         {node.path ? (
