@@ -144,13 +144,13 @@ export default function AmplifySprints() {
       {/* HERO */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-5xl mx-auto px-6 text-center">
-          <p className="text-sm font-poppins font-semibold tracking-widest text-primary uppercase mb-4">
+          <p className="text-caption font-poppins font-semibold tracking-widest text-primary uppercase mb-4">
             AMPLIFY · Strategic Sprints
           </p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy mb-6">
             A 90-day Phase Zero<span className="align-super text-xs ml-0.5">™</span> partnership for your next sh<span className="text-strategic font-bold">IF</span>t.
           </h1>
-          <p className="text-lg md:text-xl text-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-lead text-foreground max-w-3xl mx-auto mb-8">
             Focused. Time-boxed. Built to architect the foundation <em>before</em> implementation begins, so what you build next actually lasts.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
@@ -175,7 +175,7 @@ export default function AmplifySprints() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               What to expect, week by week
             </h2>
-            <p className="text-base text-foreground">
+            <p className="text-body text-foreground">
               A Strategic Sprint follows our <Link to="/approach" className="font-semibold text-primary hover:underline">P.A.T.H.</Link> framework, but compresses the architectural work into a focused 90-day window. Here's what your team can expect at each stage.
             </p>
           </div>
@@ -193,7 +193,7 @@ export default function AmplifySprints() {
                       <Icon className="w-5 h-5 text-lime" aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="text-xs font-poppins font-semibold tracking-wider text-primary uppercase">
+                      <p className="text-caption font-poppins font-semibold tracking-wider text-primary uppercase">
                         {phase.weeks}
                       </p>
                       <h3 className="text-2xl font-poppins font-bold text-navy">{phase.title}</h3>
@@ -203,22 +203,22 @@ export default function AmplifySprints() {
                     {phase.activities.map((a) => (
                       <li key={a} className="flex items-start gap-2">
                         <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-foreground">{a}</span>
+                        <span className="text-body-sm text-foreground">{a}</span>
                       </li>
                     ))}
                   </ul>
                   <div className="border-t pt-4">
-                    <p className="text-xs font-poppins font-semibold text-navy uppercase tracking-wider mb-1">
+                    <p className="text-caption font-poppins font-semibold text-navy uppercase tracking-wider mb-1">
                       What you walk out with
                     </p>
-                    <p className="text-sm text-foreground">{phase.deliverable}</p>
+                    <p className="text-body-sm text-foreground">{phase.deliverable}</p>
                   </div>
                 </div>
               );
             })}
           </div>
 
-          <p className="text-center text-sm text-foreground/80 italic max-w-2xl mx-auto">
+          <p className="text-center text-body-sm text-foreground/80 italic max-w-2xl mx-auto">
             You will have implemented a new approach to how you prepare for and design strategic initiatives. You'll also have a clear, owned plan for what you'll build next, in what order, and why.
           </p>
         </div>
@@ -231,7 +231,7 @@ export default function AmplifySprints() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               Where Strategic Sprints typically fit
             </h2>
-            <p className="text-base text-foreground max-w-2xl mx-auto">
+            <p className="text-body text-foreground max-w-2xl mx-auto">
               Sprints usually architect the front-end of one of these shifts. If yours isn't listed, the <strong className="font-bold text-bluedoor">Blue Door</strong> Organizational Appraisal will tell us whether a Sprint is the right fit.
             </p>
           </div>
@@ -254,36 +254,36 @@ export default function AmplifySprints() {
       <section className="py-16 md:py-24 bg-navy text-white">
         <div className="container max-w-5xl mx-auto px-6">
           <div className="text-center mb-10">
-            <p className="text-sm font-poppins font-semibold tracking-widest text-gold uppercase mb-3">
+            <p className="text-caption font-poppins font-semibold tracking-widest text-gold uppercase mb-3">
               Different by design
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
               A new way to prepare and design strategic shifts, installed in your team.
             </h2>
-            <p className="text-base text-white/85 max-w-2xl mx-auto">
+            <p className="text-body text-white/85 max-w-2xl mx-auto">
               Most consultancies sell you their playbook and optimize for go-live. A Strategic Sprint is an advisory partnership that builds <em>your</em> architecture and implements a new approach to how your team prepares for and designs every shift that follows.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-white/15 rounded-xl overflow-hidden border border-white/15">
             <div className="bg-navy p-6">
-              <p className="text-xs font-poppins font-semibold tracking-widest text-white/70 uppercase mb-4">
+              <p className="text-caption font-poppins font-semibold tracking-widest text-white/70 uppercase mb-4">
                 Traditional implementation consulting
               </p>
               <ul className="space-y-3">
                 {differenceRows.map((row) => (
-                  <li key={row.traditional} className="text-sm text-white/85">
+                  <li key={row.traditional} className="text-body-sm text-white/85">
                     {row.traditional}
                   </li>
                 ))}
               </ul>
             </div>
             <div className="bg-primary/95 p-6">
-              <p className="text-xs font-poppins font-semibold tracking-widest text-white uppercase mb-4">
+              <p className="text-caption font-poppins font-semibold tracking-widest text-white uppercase mb-4">
                 A Strategic Sprint with Painted Porch
               </p>
               <ul className="space-y-3">
                 {differenceRows.map((row) => (
-                  <li key={row.sprint} className="text-sm text-white font-medium">
+                  <li key={row.sprint} className="text-body-sm text-white font-medium">
                     {row.sprint}
                   </li>
                 ))}
@@ -302,17 +302,17 @@ export default function AmplifySprints() {
                 <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
                   Investment
                 </h2>
-                <p className="text-3xl font-poppins font-bold text-lime mb-4">
+                <div className="text-3xl font-poppins font-bold text-lime mb-4">
                   Starting at $36,000
-                </p>
-                <p className="text-sm text-foreground mb-6">
+                </div>
+                <p className="text-body-sm text-foreground mb-6">
                   Based on scope and timeline. Includes:
                 </p>
                 <ul className="space-y-2">
-                  <li className="text-sm text-foreground">• Initial organizational appraisal and strategic brief</li>
-                  <li className="text-sm text-foreground">• 3–6 strategic design sessions</li>
-                  <li className="text-sm text-foreground">• Framework tools and templates</li>
-                  <li className="text-sm text-foreground">• Clear direction</li>
+                  <li className="text-body-sm text-foreground">• Initial organizational appraisal and strategic brief</li>
+                  <li className="text-body-sm text-foreground">• 3–6 strategic design sessions</li>
+                  <li className="text-body-sm text-foreground">• Framework tools and templates</li>
+                  <li className="text-body-sm text-foreground">• Clear direction</li>
                 </ul>
               </div>
               <div className="bg-bluedoor/5 border border-bluedoor/20 rounded-lg p-5 sm:p-6 min-w-0">
@@ -322,7 +322,7 @@ export default function AmplifySprints() {
                     Prerequisite: The <span className="text-bluedoor">Blue Door</span>
                   </h3>
                 </div>
-                <p className="text-sm text-foreground mb-4">
+                <p className="text-body-sm text-foreground mb-4">
                   Our short organizational appraisal (under 30 minutes) that reveals where you really stand on the path to transformation, and what's blocking progress. Required before any Strategic Sprint.
                 </p>
                 <div className="flex items-center gap-3 text-sm mb-4">

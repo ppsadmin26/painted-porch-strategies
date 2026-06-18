@@ -193,7 +193,7 @@ export default function WorkingGeniusAssessment() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
               Discover your gifts. Transform your work.
             </h1>
-            <p className="text-lg md:text-xl mb-8 text-white/90">
+            <p className="text-lead mb-8 text-white/90">
               Some work gives you energy. Some drains it. Working Genius names the kinds of work that fit your natural gifts so you can spend more time doing what brings you joy and impact.
             </p>
             <a href="#get-started">
@@ -216,7 +216,7 @@ export default function WorkingGeniusAssessment() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-6">
               20% Personality. 80% Productivity.
             </h2>
-            <p className="text-foreground max-w-3xl mx-auto text-lg leading-relaxed">
+            <p className="text-lead text-foreground max-w-3xl mx-auto">
               Created by Patrick Lencioni and The Table Group, Working Genius is a model and assessment that names the six kinds of work every project needs. Most of us have two we're great at, two we can do, and two that wear us out. When you know yours, work gets lighter and teams get stronger.
             </p>
           </div>
@@ -249,7 +249,7 @@ export default function WorkingGeniusAssessment() {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
             What do you crave? What are you crushed by?
           </h2>
-          <p className="text-lg text-white/80 mb-6">
+          <p className="text-lead text-white/80 mb-6">
             Working Genius answers both. In about 10 minutes you'll know which work to lean into and which to stop blaming yourself for.
           </p>
           <a href="#get-started">
@@ -270,7 +270,7 @@ export default function WorkingGeniusAssessment() {
             {stats.map((s, i) => (
               <div key={i} className="bg-white rounded-xl p-8 shadow-md text-center border-t-4 border-primary">
                 <p className="text-4xl font-bold text-primary mb-3">{s.stat}</p>
-                <p className="text-foreground text-sm leading-relaxed">{s.text}</p>
+                <p className="text-body-sm text-foreground">{s.text}</p>
               </div>
             ))}
           </div>
@@ -316,7 +316,7 @@ export default function WorkingGeniusAssessment() {
                   </div>
                   <h3 className="text-xl font-poppins font-bold text-navy">{t.name}</h3>
                 </div>
-                <p className="text-foreground text-sm leading-relaxed">{t.description}</p>
+                <p className="text-body-sm text-foreground">{t.description}</p>
               </div>
             ))}
           </div>
@@ -353,7 +353,7 @@ export default function WorkingGeniusAssessment() {
                   ))}
                 </ul>
                 {section.note && (
-                  <p className="text-sm text-muted-foreground italic">{section.note}</p>
+                  <p className="text-body-sm text-muted-foreground italic">{section.note}</p>
                 )}
               </div>
             ))}
@@ -375,7 +375,7 @@ export default function WorkingGeniusAssessment() {
             ].map((item, i) => (
               <div key={i} className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                 <CheckCircle className="w-8 h-8 mx-auto mb-3 text-white/90" />
-                <p className="text-white/90 text-sm leading-relaxed">{item}</p>
+                <p className="text-body-sm text-white/90">{item}</p>
               </div>
             ))}
           </div>
@@ -409,7 +409,7 @@ export default function WorkingGeniusAssessment() {
                 Working Genius Assessment
               </h3>
               <p className="text-4xl font-bold text-primary mb-4">$25</p>
-              <p className="text-sm font-medium text-foreground mb-4">
+              <p className="text-body-sm font-medium text-foreground mb-4">
                 Take the assessment on your own.
               </p>
               <ul className="space-y-2 mb-8 flex-grow">
@@ -419,7 +419,7 @@ export default function WorkingGeniusAssessment() {
                   "Names your 2 areas of genius, 2 of competency, and 2 of frustration",
                   "Purchased directly through The Table Group",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                  <li key={i} className="flex items-start gap-2 text-body-sm text-foreground">
                     <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -434,7 +434,7 @@ export default function WorkingGeniusAssessment() {
                   Buy on WorkingGenius.com <ExternalLink className="ml-2 w-4 h-4 flex-shrink-0" />
                 </Button>
               </a>
-              <p className="text-xs text-muted-foreground mt-3 text-center">
+              <p className="text-caption text-muted-foreground mt-3 text-center">
                 Cheaper than what we'd charge (due to additional administrative set-up). No reason to mark it up.
               </p>
             </div>
@@ -448,7 +448,7 @@ export default function WorkingGeniusAssessment() {
                 Assessment + 1:1 Debrief
               </h3>
               <p className="text-4xl font-bold text-primary mb-4">$297</p>
-              <p className="text-sm font-medium text-foreground mb-4">
+              <p className="text-body-sm font-medium text-foreground mb-4">
                 Make the report real with a guide.
               </p>
               <ul className="space-y-2 mb-8 flex-grow">
@@ -459,7 +459,7 @@ export default function WorkingGeniusAssessment() {
                   "An action plan to lean into your genius this month",
                   "Tips for spotting genius gaps on your team",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                  <li key={i} className="flex items-start gap-2 text-body-sm text-foreground">
                     <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -481,8 +481,8 @@ export default function WorkingGeniusAssessment() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                 Team or Organization
               </h3>
-              <p className="text-2xl font-bold text-navy mb-4">Let's Talk</p>
-              <p className="text-sm text-foreground mb-4">
+              <div className="text-2xl font-bold text-navy mb-4">Let's Talk</div>
+              <p className="text-body-sm text-foreground mb-4">
                 Bring Working Genius to your whole team with an optional 2 to 4 hour workshop:
               </p>
               <ul className="space-y-2 mb-8 flex-grow">
@@ -492,7 +492,7 @@ export default function WorkingGeniusAssessment() {
                   "Team genius map and gap analysis",
                   "Practical shifts to how work flows",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                  <li key={i} className="flex items-start gap-2 text-body-sm text-foreground">
                     <Users className="w-4 h-4 text-navy flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -518,7 +518,7 @@ export default function WorkingGeniusAssessment() {
               <h2 className="font-poppins font-bold text-2xl md:text-3xl text-navy mb-3">
                 A Certified Working Genius Facilitator
               </h2>
-              <p className="font-montserrat text-charcoal-gray text-lg leading-relaxed">
+              <p className="font-montserrat text-charcoal-gray text-lead">
                 Painted Porch Strategies is a certified Working Genius Facilitator through The Table Group. That means when you work with us, you're getting more than an assessment - you're getting trained guidance to turn your results into real shIFt in how you and your team show up, collaborate, and get work done.
               </p>
             </div>

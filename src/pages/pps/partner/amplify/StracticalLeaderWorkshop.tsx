@@ -267,11 +267,11 @@ export default function StracticalLeaderWorkshop() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-4 leading-tight">
               Become a <span className="text-gold">Stractical Leader</span>
             </h1>
-            <p className="text-xl md:text-2xl font-poppins font-medium text-white/90 mb-8">
+            <p className="text-pullquote font-poppins font-medium text-white/90 mb-8 !not-italic">
               Stop Executing Directives. Start Shaping Strategy.
             </p>
             <div className="space-y-4 text-lg text-white/80 leading-relaxed mb-10">
-              <p className="font-semibold text-white text-xl">
+              <p className="font-semibold text-white text-lead">
                 Are you stuck in the "Just a Manager" trap?
               </p>
               <p>
@@ -286,7 +286,7 @@ export default function StracticalLeaderWorkshop() {
               <p className="text-white/60">
                 You possess vital insights. But your influence feels limited.
               </p>
-              <p className="text-white font-semibold text-xl pt-2">
+              <p className="text-white font-semibold text-lead pt-2">
                 This 6-week intensive leader lab changes that dynamic forever.
               </p>
             </div>
@@ -303,7 +303,7 @@ export default function StracticalLeaderWorkshop() {
                   >
                     JOIN THE WAITLIST <Bell className="ml-2 w-5 h-5" />
                   </Button>
-                  <p className="text-white/50 text-sm mt-3">Be the first to know when the next lab is scheduled.</p>
+                  <p className="text-body-sm text-white/50 mt-3">Be the first to know when the next lab is scheduled.</p>
                 </div>
               </div>
             ) : (
@@ -324,14 +324,14 @@ export default function StracticalLeaderWorkshop() {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
             From Directive Taker to Strategic Influencer
           </h2>
-          <p className="text-lg text-foreground/80 leading-relaxed mb-8 max-w-3xl mx-auto">
+          <p className="text-lead text-foreground/80 mb-8 max-w-3xl mx-auto">
             The Stractical Leader Lab teaches you to operate in the <span className="font-semibold text-gold">integration zone</span> between strategic vision and tactical execution, the space where high-impact leadership happens.
           </p>
           <div className="bg-muted rounded-2xl p-8 md:p-12 max-w-2xl mx-auto border border-border/40">
-            <p className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-3">
+            <div className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-3">
               Stractical = <span className="text-primary">Strategic</span> + <span className="text-gold">Tactical</span>
-            </p>
-            <p className="text-foreground/80 italic text-lg leading-relaxed">
+            </div>
+            <p className="text-lead text-foreground/80 italic">
               "The ability to see and speak to the trees while envisioning and guiding the forest."
             </p>
           </div>
@@ -342,7 +342,7 @@ export default function StracticalLeaderWorkshop() {
             <p className="font-semibold text-navy">
               When you're stractical, you become the critical link everyone needs but few can provide.
             </p>
-            <p className="font-bold text-navy text-xl">
+            <p className="font-bold text-navy text-lead">
               When you're stractical, you become indispensable.
             </p>
           </div>
@@ -371,10 +371,10 @@ export default function StracticalLeaderWorkshop() {
                   </div>
                 </div>
                 <p className="font-poppins font-semibold text-navy mb-3">{pillar.subtitle}</p>
-                <p className="text-foreground/80 text-sm mb-3">{pillar.intro}</p>
+                <p className="text-body-sm text-foreground/80 mb-3">{pillar.intro}</p>
                 <ul className="space-y-2 mb-4 flex-1">
                   {pillar.bullets.map((b, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-foreground/80">
+                    <li key={i} className="flex items-start gap-2 text-body-sm text-foreground/80">
                       <Check className={`w-4 h-4 mt-0.5 shrink-0 ${pillar.color}`} />
                       <span>{b}</span>
                     </li>
@@ -404,7 +404,7 @@ export default function StracticalLeaderWorkshop() {
                   </div>
                   <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">{item.title}</h3>
                 </div>
-                <p className="text-sm text-foreground/80 leading-relaxed">{item.description}</p>
+                <p className="text-body-sm text-foreground/80">{item.description}</p>
               </div>
             ))}
           </div>
@@ -421,7 +421,7 @@ export default function StracticalLeaderWorkshop() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white mb-2">
               6 Live Sessions
             </h2>
-            <p className="text-white/70 text-lg">
+            <p className="text-lead text-white/70">
               Wednesdays from 11:00 AM - 12:00 PM MST/PT (2:00pm - 3:00pm ET)
             </p>
             {isExpired ? (
@@ -458,7 +458,7 @@ export default function StracticalLeaderWorkshop() {
                   </div>
                   <div>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-white">{w.title}</h3>
-                    <p className="text-white/70 text-sm mt-1 leading-relaxed">{w.description}</p>
+                    <p className="text-body-sm text-white/70 mt-1">{w.description}</p>
                   </div>
                 </div>
               </div>
@@ -517,7 +517,7 @@ export default function StracticalLeaderWorkshop() {
                   >
                     JOIN THE WAITLIST <Bell className="ml-2 w-5 h-5" />
                   </Button>
-                  <p className="text-xs text-foreground/50 mt-4">We'll notify you as soon as new dates are scheduled.</p>
+                  <p className="text-caption text-foreground/50 mt-4">We'll notify you as soon as new dates are scheduled.</p>
                 </div>
               </>
             ) : (
@@ -536,7 +536,7 @@ export default function StracticalLeaderWorkshop() {
                   </p>
                 </div>
                 <div className="p-8 md:p-12 text-center">
-                  <p className="text-sm text-foreground/60 font-poppins uppercase tracking-wider mb-1">Investment</p>
+                  <p className="text-caption text-foreground/60 font-poppins uppercase tracking-wider mb-1">Investment</p>
                   <p className="text-5xl font-poppins font-bold text-navy mb-6">$1,997</p>
                   <div className="space-y-3 text-left max-w-md mx-auto mb-8 text-sm text-foreground/80">
                     <p className="flex items-start gap-2"><Check className="w-4 h-4 text-lime mt-0.5 shrink-0" /> Your organization gains a leader who shapes strategy.</p>
@@ -553,9 +553,9 @@ export default function StracticalLeaderWorkshop() {
                   >
                     CLAIM YOUR SPOT <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
-                  <p className="text-xs text-foreground/50 mt-4">Capped at 25 participants per cohort</p>
+                  <p className="text-caption text-foreground/50 mt-4">Capped at 25 participants per cohort</p>
                   <div className="border-t border-border/40 mt-8 pt-6">
-                    <p className="text-sm text-foreground/60 mb-2">Not ready to begin?</p>
+                    <p className="text-body-sm text-foreground/60 mb-2">Not ready to begin?</p>
                     <button
                       onClick={() => setWaitlistOpen(true)}
                       className="text-primary font-poppins font-semibold text-sm underline underline-offset-4 hover:text-primary/80 transition-colors"
@@ -618,10 +618,10 @@ export default function StracticalLeaderWorkshop() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white mb-4">
                 The Next Lab Is Coming Soon
               </h2>
-              <p className="text-white/80 text-lg leading-relaxed mb-3">
+              <p className="text-lead text-white/80 mb-3">
                 Our latest Stractical Leader Lab has started, but new dates are on the way.
               </p>
-              <p className="text-white/80 text-lg leading-relaxed mb-8">
+              <p className="text-lead text-white/80 mb-8">
                 Join the waitlist and be the first to know when enrollment opens for the next cohort.
               </p>
               <Button
@@ -630,20 +630,20 @@ export default function StracticalLeaderWorkshop() {
               >
                 JOIN THE WAITLIST <Bell className="ml-2 w-5 h-5" />
               </Button>
-              <p className="text-white/50 text-sm mt-4">Waitlist members get early access before public enrollment.</p>
+              <p className="text-body-sm text-white/50 mt-4">Waitlist members get early access before public enrollment.</p>
             </>
           ) : (
             <>
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white mb-4">
                 Your Next Step
               </h2>
-              <p className="text-white/80 text-lg leading-relaxed mb-3">
+              <p className="text-lead text-white/80 mb-3">
                 Transformation happens through consistent small actions that compound over time.
               </p>
-              <p className="text-white/80 text-lg leading-relaxed mb-8">
+              <p className="text-lead text-white/80 mb-8">
                 This workshop gives you the framework, the practice, and the accountability to make that transformation real.
               </p>
-              <p className="text-gold font-poppins font-semibold text-xl mb-8">
+              <p className="text-lead text-gold font-poppins font-semibold mb-8">
                 Stop feeling like "just a manager."<br />Start shaping the next big sh<span className="text-strategic font-bold">IF</span>t for your organization.
               </p>
               <Button
@@ -652,7 +652,7 @@ export default function StracticalLeaderWorkshop() {
               >
                 CLAIM YOUR SPOT <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <p className="text-white/50 text-sm mt-4">Capped at 25 participants</p>
+              <p className="text-body-sm text-white/50 mt-4">Capped at 25 participants</p>
             </>
           )}
           <div className="mt-10 pt-8 border-t border-white/10 space-y-2 text-white/50 text-sm">

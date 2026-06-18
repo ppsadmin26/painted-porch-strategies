@@ -198,15 +198,15 @@ export default function StracticalLeaderCheckout() {
               <>Transforming Your <span className="text-gold">Leadership Impact</span></>
             )}
           </h1>
-          <p className="text-xl font-poppins font-medium text-white/90 mb-2">
+          <p className="text-lead font-poppins font-medium text-white/90 mb-2">
             The Stractical Leader Workshop
           </p>
           {isExpired ? (
-            <p className="text-gold/70 text-lg">
+            <p className="text-lead text-gold/70">
               Our latest cohort kicked off {WORKSHOP_DATE_SHORT}. New dates are on the way!
             </p>
           ) : (
-            <p className="text-white/60 text-lg">
+            <p className="text-lead text-white/60">
               6 Live Sessions &nbsp;|&nbsp; Wednesdays 11:00 AM - 12:00 PM MST/PT (2:00 PM - 3:00 PM ET) &nbsp;|&nbsp; Starting {WORKSHOP_DATE_SHORT}
             </p>
           )}
@@ -227,7 +227,7 @@ export default function StracticalLeaderCheckout() {
                 </div>
                 <div>
                   <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy leading-snug">{item.title}</h3>
-                  <p className="text-foreground/70 text-sm mt-1">{item.desc}</p>
+                  <p className="text-body-sm text-foreground/70 mt-1">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -242,13 +242,13 @@ export default function StracticalLeaderCheckout() {
             {/* Investment Card */}
             <div className="bg-white rounded-2xl shadow-lg border border-border/40 overflow-hidden">
               <div className="bg-navy p-6 text-center">
-                <p className="text-sm text-gold font-poppins font-semibold uppercase tracking-wider mb-1">
+                <p className="text-caption text-gold font-poppins font-semibold uppercase tracking-wider mb-1">
                   {isExpired ? "Workshop Investment" : "Your Investment"}
                 </p>
                 <p className="text-5xl font-poppins font-bold text-white">$1,997</p>
               </div>
               <div className="p-6 text-center">
-                <p className="text-foreground/70 text-sm leading-relaxed mb-6">
+                <p className="text-body-sm text-foreground/70 mb-6">
                   {isExpired
                     ? "This is more than a workshop. It's a fundamental shift in how you show up, how you're perceived, and how you influence decisions. Join the waitlist to secure early access to the next cohort."
                     : "This is more than a workshop. It's a fundamental shift in how you show up, how you're perceived, and how you influence decisions."
@@ -285,7 +285,7 @@ export default function StracticalLeaderCheckout() {
                 {outcomes.map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <ArrowRight className="w-4 h-4 text-gold mt-1 shrink-0" />
-                    <p className="text-foreground/80 text-sm">{item}</p>
+                    <p className="text-body-sm text-foreground/80">{item}</p>
                   </div>
                 ))}
               </div>
@@ -311,7 +311,7 @@ export default function StracticalLeaderCheckout() {
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy">{step.phase}</h3>
                     <ul className="mt-2 space-y-1.5">
                       {step.items.map((item, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm text-foreground/80">
+                        <li key={j} className="flex items-start gap-2 text-body-sm text-foreground/80">
                           <Check className="w-4 h-4 text-lime mt-0.5 shrink-0" />
                           <span>{item}</span>
                         </li>
@@ -338,7 +338,7 @@ export default function StracticalLeaderCheckout() {
             <p className="text-foreground/80 leading-relaxed max-w-xl mx-auto mb-4">
               If after Session 1 you don't feel this workshop will transform your strategic impact, simply let us know and we'll refund your full investment.
             </p>
-            <p className="text-foreground/60 text-sm italic">
+            <p className="text-body-sm text-foreground/60 italic">
               We're confident because we've seen this framework work. When managers embrace the Stractical Blueprint, they stop executing directives and start shaping strategy.
             </p>
           </div>
@@ -369,7 +369,7 @@ export default function StracticalLeaderCheckout() {
               >
                 JOIN THE WAITLIST <Bell className="ml-2 w-5 h-5" />
               </Button>
-              <p className="text-white/50 text-sm mt-4">Waitlist members get early access before public enrollment.</p>
+              <p className="text-body-sm text-white/50 mt-4">Waitlist members get early access before public enrollment.</p>
             </>
           ) : (
             <>
@@ -379,7 +379,7 @@ export default function StracticalLeaderCheckout() {
               <p className="text-white/70 mb-2">
                 Capped at 25 participants for maximum interaction and personalized feedback.
               </p>
-              <p className="text-sm text-white/50 mb-1 font-poppins uppercase tracking-wider">Total Investment</p>
+              <p className="text-caption text-white/50 mb-1 font-poppins uppercase tracking-wider">Total Investment</p>
               <p className="text-5xl font-poppins font-bold text-gold mb-8">$1,997</p>
               <Button
                 onClick={() => window.open("https://via.growseamlessly.com/payment-link/695fe0393e9f2f42403166dc", "_blank")}
@@ -389,11 +389,11 @@ export default function StracticalLeaderCheckout() {
               </Button>
             </>
           )}
-          <p className="text-white/50 text-sm mt-6">
+          <p className="text-body-sm text-white/50 mt-6">
             Questions before enrolling? <a href="/contact?scope=Yourself&interest=leadership-lab&message=I%20have%20questions%20about%20your%20Stractical%20Leader%20Lab" className="text-gold hover:text-gold/80 underline">Contact Us</a>
           </p>
           {!isExpired && (
-            <p className="text-gold font-poppins font-semibold text-lg mt-8">
+            <p className="text-lead text-gold font-poppins font-semibold mt-8">
               You're ready. Your team is ready. Let's make this transformation real.
             </p>
           )}

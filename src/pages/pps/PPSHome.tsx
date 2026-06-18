@@ -145,13 +145,13 @@ export default function PPSHome() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             There&rsquo;s a lot of sh<span className="text-raspberry font-bold">IF</span>t happening right now.
           </h2>
-          <p className="text-lg text-foreground leading-relaxed mb-4">
+          <p className="text-lead text-foreground mb-4">
             Sometimes it feels like every important conversation is happening at
             the same time &mdash; strategy, technology, AI, operations,
             leadership, culture &mdash; while your organization is still trying
             to deliver results, support people, and adapt in real time.
           </p>
-          <p className="text-lg text-foreground leading-relaxed mb-8">
+          <p className="text-lead text-foreground mb-8">
             Often the issue isn&rsquo;t effort. It&rsquo;s that your organization
             has outgrown the structures that worked well enough to get you here. And
             pushing harder in the wrong direction simply compounds the cost of
@@ -180,7 +180,7 @@ export default function PPSHome() {
       {/* ============================================================ */}
       <section className="py-8 md:py-10 bg-navy" aria-label="Research stats">
         <div className="container max-w-7xl mx-auto px-6">
-          <p className="text-center text-[0.7rem] md:text-xs font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-6 md:mb-7">
+          <p className="text-center text-caption font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-6 md:mb-7">
             The reality leaders are facing
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 md:gap-6">
@@ -193,10 +193,10 @@ export default function PPSHome() {
               const s = RESEARCH_STATS[id as keyof typeof RESEARCH_STATS];
               return (
                 <div key={id} className="text-center px-2">
-                  <p className="text-3xl md:text-4xl font-poppins font-bold tabular-nums leading-none text-gold">
+                  <div className="text-3xl md:text-4xl font-poppins font-bold tabular-nums leading-none text-gold">
                     {s.figure}
-                  </p>
-                  <p className="mt-2 text-xs md:text-sm text-white/90 font-montserrat leading-snug">
+                  </div>
+                  <p className="mt-2 text-body-sm text-white/90 font-montserrat !leading-snug">
                     {s.label.replace(/\.$/, "")}
                   </p>
                   <p className="mt-2 text-[0.6rem] md:text-[0.65rem] uppercase tracking-wider text-white/80">
@@ -222,14 +222,14 @@ export default function PPSHome() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
                 We begin at &ldquo;What <span className="text-raspberry font-bold">IF</span>&rdquo;.
               </h2>
-              <p className="text-lg text-foreground leading-relaxed mb-4">
+              <p className="text-lead text-foreground mb-4">
                 We don&rsquo;t arrive with predetermined answers, packaged solutions, or implementation plans waiting for your approval.
                 <br /><br />
                 <strong>We begin earlier.</strong>
                 <br /><br />
                 At the point where you&rsquo;re still determining what direction is worth pursuing, what your organization is becoming, and what foundations need to exist before momentum accelerates.
               </p>
-              <p className="text-lg text-foreground leading-relaxed">
+              <p className="text-lead text-foreground">
                 Most organizations find us at one of three moments:
                 <br />
                 &bull; when something important feels possible
@@ -253,7 +253,7 @@ export default function PPSHome() {
                     <MessageCircle className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-primary mb-1">
+                    <p className="text-caption font-poppins font-semibold uppercase tracking-wider text-primary mb-1">
                       01 &middot; Find Your P.A.T.H.
                     </p>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary transition-colors">
@@ -281,7 +281,7 @@ export default function PPSHome() {
                     <KeyRound className="w-6 h-6 text-bluedoor" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-1">
+                    <p className="text-caption font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-1">
                       02 &middot; Open the Blue Door
                     </p>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-bluedoor transition-colors">
@@ -308,7 +308,7 @@ export default function PPSHome() {
                     <Handshake className="w-6 h-6 text-pps-purple" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-pps-purple mb-1">
+                    <p className="text-caption font-poppins font-semibold uppercase tracking-wider text-pps-purple mb-1">
                       03 &middot; Build what&rsquo;s next, together
                     </p>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-pps-purple transition-colors">
@@ -353,11 +353,11 @@ export default function PPSHome() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Get the clarity that accelerates vs. exhausts your next big sh<span className="text-raspberry font-bold">IF</span>t.
           </h2>
-          <p className="text-lg text-white/90 mb-4 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lead text-white/90 mb-4 max-w-2xl mx-auto">
             Before another initiative is announced. Before another restructuring
             kicks off. Before you begin scaling something that already feels stretched.
           </p>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
             Phase Zero exists to create clarity before your next major decision
             hardens into execution. It&rsquo;s the threshold work that helps your
             organization see itself clearly before deciding what deserves commitment.
@@ -381,7 +381,7 @@ export default function PPSHome() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               The foundation beneath the movement.
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               Three dimensions that shape what your organization can realistically pursue and sustain. When all three are structurally sound and aligned, you&rsquo;re better positioned to design and build your next epic shIFt.
               <br /><br />
               Together, these dimensions influence not only what your organization can pursue, but what it can realistically sustain.
@@ -403,7 +403,7 @@ export default function PPSHome() {
                 <p className={`text-sm font-medium ${pillar.color} mb-3`}>
                   {pillar.subtitle}
                 </p>
-                <p className="text-foreground text-sm leading-relaxed">
+                <p className="text-body-sm text-foreground">
                   {pillar.description}
                 </p>
               </div>
@@ -416,13 +416,13 @@ export default function PPSHome() {
             className="scroll-mt-24 scroll-smooth mt-16 max-w-5xl mx-auto"
           >
             <div className="text-center mb-10">
-              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
+              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                 The Way Forward
               </p>
               <h3 id="path-heading" className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1 mb-4">
                 Your P.A.T.H. to Sustainable Change
               </h3>
-              <p className="text-lg text-foreground max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lead text-foreground max-w-2xl mx-auto">
                 A way of thinking about and navigating intentional progress.
                 <br /><br />
                 A practical framework for building the capability, capacity, and habits required to sustain meaningful progress.
@@ -512,7 +512,7 @@ export default function PPSHome() {
       {/* ============================================================ */}
       <section className="py-16 md:py-20 bg-navy">
         <div className="container max-w-7xl mx-auto px-6">
-          <p className="text-center text-xs md:text-sm font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-10">
+          <p className="text-center text-caption font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-10">
             THE QUESTIONS LEADERS ARE WEIGHING AT 3AM
           </p>
           <div className="grid md:grid-cols-3 gap-10 md:gap-8">
@@ -521,7 +521,7 @@ export default function PPSHome() {
                 <div className="text-3xl md:text-4xl font-poppins font-bold text-gold/30 mb-4">
                   0{i + 1}
                 </div>
-                <p className="text-white/90 italic leading-relaxed text-base md:text-lg">
+                <p className="text-lead text-white/90 italic">
                   &ldquo;{q}&rdquo;
                 </p>
               </div>
@@ -545,27 +545,27 @@ export default function PPSHome() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 The Blue Door Organizational Appraisal.
               </h2>
-              <p className="text-lg text-foreground leading-relaxed mb-4">
+              <p className="text-lead text-foreground mb-4">
                 The questions that keep you up at 3AM deserve more than a pep
                 talk or another planning deck. They deserve clarity - the
                 kind that comes from seeing your organization clearly before
                 deciding what comes next.
               </p>
-              <p className="text-lg text-foreground leading-relaxed mb-4">
+              <p className="text-lead text-foreground mb-4">
                 The Blue Door is a structured reflection process, not a health
                 assessment, and not a readiness score. It reveals what future
                 your organization is realistically positioned to pursue, so you
                 stop wondering whether you're solving the right problem and start
                 knowing you are.
               </p>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
+              <p className="text-lead text-foreground mb-6">
                 Before major pivots become active pursuit. Before momentum
                 outruns alignment. Before another initiative is announced.
               </p>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm">
-              <p className="text-sm font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-5">
+              <p className="text-caption font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-5">
                 What You&rsquo;ll Discover
               </p>
               <ul className="space-y-4">
@@ -602,7 +602,7 @@ export default function PPSHome() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Your compass for where to begin.
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               Not everyone arrives at the Painted Porch asking the same kinds of
               questions. Choose where your journey starts.
             </p>
@@ -672,7 +672,7 @@ export default function PPSHome() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               We aren&rsquo;t here to tell you yes.
             </h2>
-            <p className="text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lead text-white/85 max-w-2xl mx-auto">
               We&rsquo;re here to tell you what will actually work, and what it
               will take to make it happen. The question we begin with is whether
               what&rsquo;s being considered is the right thing to do right now.
@@ -682,20 +682,20 @@ export default function PPSHome() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-lime/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-lime">
               <p className="font-poppins font-bold text-lime mb-2">If yes</p>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <p className="text-body-sm text-white/90">
                 We get to work with you on what it takes to author and shape
                 your next shift.
               </p>
             </div>
             <div className="bg-gold/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-gold">
               <p className="font-poppins font-bold text-gold mb-2">If not yet</p>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <p className="text-body-sm text-white/90">
                 We tell you, and we provide a pathway to action.
               </p>
             </div>
             <div className="bg-raspberry/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-raspberry">
               <p className="font-poppins font-bold text-raspberry mb-2">If not us</p>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <p className="text-body-sm text-white/90">
                 We tell you that, too, and connect you with the right partner
                 for your stage and needs.
               </p>
@@ -753,7 +753,7 @@ export default function PPSHome() {
                     </div>
                   )}
                   {post.categories?.[0] && (
-                    <p className="text-xs text-primary font-semibold uppercase tracking-wide mb-2">
+                    <p className="text-caption text-primary font-semibold uppercase tracking-wide mb-2">
                       {post.categories[0].title}
                     </p>
                   )}
@@ -761,7 +761,7 @@ export default function PPSHome() {
                     {post.title}
                   </h3>
                   {post.excerpt && (
-                    <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3">
+                    <p className="text-body-sm text-foreground/80 line-clamp-3">
                       {post.excerpt}
                     </p>
                   )}

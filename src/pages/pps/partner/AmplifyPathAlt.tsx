@@ -225,7 +225,7 @@ export default function AmplifyPathAlt() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               You Know What Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t You Want to Make Happen,  Now You Need to Build the Capacity for It.
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               Our AMPLIFY P.A.T.H.way is designed for two audiences, organizations/teams seeking alignment AND individual leaders wanting peer learning.
             </p>
           </div>
@@ -237,7 +237,7 @@ export default function AmplifyPathAlt() {
                 <Users className="w-8 h-8 text-gold" />
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-gold">Organizations & Teams</h3>
               </div>
-              <p className="text-sm font-semibold text-strategic mb-4">4 Signals Your Team is Ready for AMPLIFY Workshop or Strategic Sprint:</p>
+              <p className="text-body-sm font-semibold text-strategic mb-4">4 Signals Your Team is Ready for AMPLIFY Workshop or Strategic Sprint:</p>
               <div className="space-y-4">
                 {teamSignals.map((signal, index) => (
                   <div key={index} className="flex items-start gap-3">
@@ -250,7 +250,7 @@ export default function AmplifyPathAlt() {
                 ))}
               </div>
               <div className="mt-auto pt-6">
-                <p className="text-sm text-foreground mb-6 italic min-h-[3rem]">
+                <p className="text-body-sm text-foreground mb-6 italic min-h-[3rem]">
                   If any of these resonate, AMPLIFY team workshops or strategic sprints are designed for you.
                 </p>
                 <Button asChild className="bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors w-full">
@@ -266,7 +266,7 @@ export default function AmplifyPathAlt() {
                 <User className="w-8 h-8 text-teal" />
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-teal">Individual Leaders</h3>
               </div>
-              <p className="text-sm font-semibold text-teal mb-4">4 Signals You're Ready for AMPLIFY Leadership Labs:</p>
+              <p className="text-body-sm font-semibold text-teal mb-4">4 Signals You're Ready for AMPLIFY Leadership Labs:</p>
               <div className="space-y-4">
                 {leaderSignals.map((signal, index) => (
                   <div key={index} className="flex items-start gap-3">
@@ -279,7 +279,7 @@ export default function AmplifyPathAlt() {
                 ))}
               </div>
               <div className="mt-auto pt-6">
-                <p className="text-sm text-foreground mb-6 italic min-h-[3rem]">
+                <p className="text-body-sm text-foreground mb-6 italic min-h-[3rem]">
                   If this resonates, AMPLIFY Leadership Labs are designed for you.
                 </p>
                 <Button asChild variant="outline" className="border-teal text-teal hover:bg-teal hover:text-white hover:border-teal transition-colors w-full">
@@ -299,7 +299,7 @@ export default function AmplifyPathAlt() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Three Ways to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               Choose a P.A.T.H.way based on whether you're developing or expanding capabilities to sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t for your team/organization or yourself as an individual leader.
             </p>
           </div>
@@ -311,15 +311,15 @@ export default function AmplifyPathAlt() {
                 <h3 className={`text-xl md:text-2xl font-poppins font-bold mb-1 whitespace-pre-line ${format.color.replace('border-', 'text-')}`}>
                   {format.title}
                 </h3>
-                <p className="text-sm font-semibold text-foreground mb-2">For: {format.audience}</p>
-                <p className="text-sm text-foreground mb-4">{format.format}</p>
+                <p className="text-body-sm font-semibold text-foreground mb-2">For: {format.audience}</p>
+                <p className="text-body-sm text-foreground mb-4">{format.format}</p>
 
-                <p className="text-xs font-semibold text-navy uppercase tracking-wide mb-2">Perfect If You're:</p>
+                <p className="text-caption font-semibold text-navy uppercase tracking-wide mb-2">Perfect If You're:</p>
                 <ul className="space-y-2 mb-4">
                   {format.perfectFor.map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
-                      <span className="text-xs text-foreground">{item}</span>
+                      <span className="text-caption text-foreground">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -328,8 +328,8 @@ export default function AmplifyPathAlt() {
 
                 <div className="mt-auto">
                   <div className="border-t border-foreground/10 pt-4">
-                    <p className="text-xs text-foreground"><span className="font-semibold">Timeline:</span> {format.timeline}</p>
-                    <p className="text-xs text-foreground"><span className="font-semibold">Investment:</span> {format.investment}</p>
+                    <p className="text-caption text-foreground"><span className="font-semibold">Timeline:</span> {format.timeline}</p>
+                    <p className="text-caption text-foreground"><span className="font-semibold">Investment:</span> {format.investment}</p>
                   </div>
 
                   <Button asChild className={`w-full mt-4 h-auto min-h-11 whitespace-normal text-center px-3 ${format.color.replace('border-', 'bg-')} text-white border-2 ${format.color} hover:bg-white ${format.color.replace('border-', 'hover:text-')} transition-colors`}>
@@ -350,7 +350,7 @@ export default function AmplifyPathAlt() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-navy">
               The ROI of Phase Zero Architecture
             </h2>
-            <p className="text-lg text-foreground max-w-3xl mx-auto">
+            <p className="text-lead text-foreground max-w-3xl mx-auto">
               When strategic authorship & architecture is intentionally designed, innovation amplifies and sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t happens. AMPLIFY partnerships represent a strategic investment in transformation, because the cost of skipping Phase Zero far exceeds the investment in building it.
             </p>
           </div>
@@ -511,7 +511,7 @@ export default function AmplifyPathAlt() {
               </div>
             </TooltipProvider>
 
-            <p className="text-xs text-navy/60 text-center mt-3 italic">
+            <p className="text-caption text-navy/60 text-center mt-3 italic">
               Estimates above are industry benchmarks (2022-2025) from McKinsey, Gartner, BCG, IDC, and LSA Global. Tap the <Info className="w-3 h-3 inline -mt-0.5" /> icon for each source.
             </p>
 
@@ -526,7 +526,7 @@ export default function AmplifyPathAlt() {
           </div>
 
 
-          <p className="text-center text-navy mt-12 text-lg italic">
+          <p className="text-center text-lead text-navy mt-12 italic">
             Strategic architecture isn't optional for transformation that lasts; it's foundational. AMPLIFY provides the partnership to build it properly.
           </p>
 
@@ -566,19 +566,19 @@ export default function AmplifyPathAlt() {
               <ul className="space-y-3 flex-grow">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">You need rapid team alignment (1-3 days)</span>
+                  <span className="text-body-sm text-foreground">You need rapid team alignment (1-3 days)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">You have specific topic to explore intensively</span>
+                  <span className="text-body-sm text-foreground">You have specific topic to explore intensively</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">Your team needs shared language/framework</span>
+                  <span className="text-body-sm text-foreground">Your team needs shared language/framework</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">You want to test Phase Zero concepts before deeper commitment</span>
+                  <span className="text-body-sm text-foreground">You want to test Phase Zero concepts before deeper commitment</span>
                 </li>
               </ul>
               <Button asChild className="w-full mt-6 h-auto min-h-11 whitespace-normal text-center px-3 bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors">
@@ -594,19 +594,19 @@ export default function AmplifyPathAlt() {
               <ul className="space-y-3 flex-grow">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">You have major transformation ahead (next 6-12 months)</span>
+                  <span className="text-body-sm text-foreground">You have major transformation ahead (next 6-12 months)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">You need Phase Zero architecture before implementation</span>
+                  <span className="text-body-sm text-foreground">You need Phase Zero architecture before implementation</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">You want ongoing partnership over 90 days</span>
+                  <span className="text-body-sm text-foreground">You want ongoing partnership over 90 days</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">Your team needs more than single workshop</span>
+                  <span className="text-body-sm text-foreground">Your team needs more than single workshop</span>
                 </li>
               </ul>
               <Button asChild className="w-full mt-6 h-auto min-h-11 whitespace-normal text-center px-3 bg-lime text-white border-2 border-lime hover:bg-white hover:text-lime transition-colors">
@@ -622,19 +622,19 @@ export default function AmplifyPathAlt() {
               <ul className="space-y-3 flex-grow">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">You're an individual leader (not bringing your team)</span>
+                  <span className="text-body-sm text-foreground">You're an individual leader (not bringing your team)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">You want peer learning and accountability</span>
+                  <span className="text-body-sm text-foreground">You want peer learning and accountability</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">You're exploring Phase Zero for yourself first</span>
+                  <span className="text-body-sm text-foreground">You're exploring Phase Zero for yourself first</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">You want structured development over 6-12 weeks</span>
+                  <span className="text-body-sm text-foreground">You want structured development over 6-12 weeks</span>
                 </li>
               </ul>
               <Button asChild className="w-full mt-6 h-auto min-h-11 whitespace-normal text-center px-3 bg-teal text-white border-2 border-teal hover:bg-white hover:text-teal transition-colors">
@@ -644,7 +644,7 @@ export default function AmplifyPathAlt() {
           </div>
 
           <div className="text-center mt-12 bg-white p-6 rounded-xl">
-            <p className="text-lg text-navy font-semibold mb-4">Not Sure?</p>
+            <p className="text-lead text-navy font-semibold mb-4">Not Sure?</p>
             <p className="text-foreground mb-6">
               Contact us to discuss which format aligns with your needs, timeline, and transformation ambition.
             </p>
@@ -660,10 +660,10 @@ export default function AmplifyPathAlt() {
       {/* BREATHING SECTION: Quote Strip (relocated) */}
       <section className="py-14 md:py-20 bg-gradient-to-br from-strategic via-strategic to-strategic/80">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <blockquote className="text-2xl md:text-3xl font-poppins font-semibold text-white italic leading-relaxed">
+          <blockquote className="text-pullquote font-poppins font-semibold text-white">
             "We cannot solve our problems with the same thinking we used when we created them."
           </blockquote>
-          <p className="mt-4 text-white/70 text-sm">Albert Einstein</p>
+          <p className="mt-4 text-body-sm text-white/70">Albert Einstein</p>
         </div>
       </section>
 
@@ -674,7 +674,7 @@ export default function AmplifyPathAlt() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Taking Your Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t to the Next Level
             </h2>
-            <p className="text-lg text-foreground max-w-3xl mx-auto">
+            <p className="text-lead text-foreground max-w-3xl mx-auto">
               Most AMPLIFY partnerships reveal one of two things: your team got what you needed and you're ready to execute, or you realize you need deeper, ongoing partnership. That's exactly what EMBODY is designed for.
             </p>
           </div>
@@ -688,12 +688,12 @@ export default function AmplifyPathAlt() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Continue in <span className="text-strategic">AMPLIFY</span></h3>
               </div>
               <ul className="space-y-2 mb-6">
-                <li className="text-sm text-foreground">• Additional workshops on different topics</li>
-                <li className="text-sm text-foreground">• Follow-up sprint after initial implementation</li>
-                <li className="text-sm text-foreground">• Join a Leadership Lab for ongoing individual development</li>
-                <li className="text-sm text-foreground">• Quarterly or semi-annual strategic leadership/team alignment sessions</li>
+                <li className="text-body-sm text-foreground">• Additional workshops on different topics</li>
+                <li className="text-body-sm text-foreground">• Follow-up sprint after initial implementation</li>
+                <li className="text-body-sm text-foreground">• Join a Leadership Lab for ongoing individual development</li>
+                <li className="text-body-sm text-foreground">• Quarterly or semi-annual strategic leadership/team alignment sessions</li>
               </ul>
-              <p className="text-xs text-muted-foreground italic">
+              <p className="text-caption text-muted-foreground italic">
                 Best for: Teams who want periodic strategic partnership without full EMBODY engagement
               </p>
             </div>
@@ -706,12 +706,12 @@ export default function AmplifyPathAlt() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Progress to EMBODY</h3>
               </div>
               <ul className="space-y-2 mb-6">
-                <li className="text-sm text-foreground">• 6-12+ month embedded partnership</li>
-                <li className="text-sm text-foreground">• Executive advisory relationship</li>
-                <li className="text-sm text-foreground">• Ongoing Leadership Summits</li>
-                <li className="text-sm text-foreground">• Full transformation architecture</li>
+                <li className="text-body-sm text-foreground">• 6-12+ month embedded partnership</li>
+                <li className="text-body-sm text-foreground">• Executive advisory relationship</li>
+                <li className="text-body-sm text-foreground">• Ongoing Leadership Summits</li>
+                <li className="text-body-sm text-foreground">• Full transformation architecture</li>
               </ul>
-              <p className="text-xs text-muted-foreground italic mb-4">
+              <p className="text-caption text-muted-foreground italic mb-4">
                 Best for: Organizations ready for permanent capacity-building with sustained partnership
               </p>
               <Button asChild className="w-full h-auto min-h-11 whitespace-normal text-center px-3 py-2 bg-transparent border-2 border-navy text-navy hover:bg-navy hover:text-white transition-colors">
@@ -727,12 +727,12 @@ export default function AmplifyPathAlt() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Maintain Connection</h3>
               </div>
               <ul className="space-y-2 mb-6">
-                <li className="text-sm text-foreground">• Join our semi-annual Leadership Summits (open to AMPLIFY alumni)</li>
-                <li className="text-sm text-foreground">• Access to tools, frameworks, and resources</li>
-                <li className="text-sm text-foreground">• Ongoing community of transformation architects</li>
-                <li className="text-sm text-foreground">• Future AMPLIFY engagements as needs emerge</li>
+                <li className="text-body-sm text-foreground">• Join our semi-annual Leadership Summits (open to AMPLIFY alumni)</li>
+                <li className="text-body-sm text-foreground">• Access to tools, frameworks, and resources</li>
+                <li className="text-body-sm text-foreground">• Ongoing community of transformation architects</li>
+                <li className="text-body-sm text-foreground">• Future AMPLIFY engagements as needs emerge</li>
               </ul>
-              <p className="text-xs text-muted-foreground italic">
+              <p className="text-caption text-muted-foreground italic">
                 Best for: Leaders who want ongoing connection without active partnership
               </p>
             </div>
@@ -764,7 +764,7 @@ export default function AmplifyPathAlt() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t?
             </h2>
-            <p className="text-lg text-white/90 max-w-2xl mx-auto">
+            <p className="text-lead text-white/90 max-w-2xl mx-auto">
               Strategic architecture creates transformation that lasts. Choose your pathway below.
             </p>
           </div>
@@ -776,7 +776,7 @@ export default function AmplifyPathAlt() {
               <Button asChild className="bg-bluedoor hover:bg-bluedoor/90 text-white w-full mb-4">
                   <Link to="/blue-door">Start Your Organizational Appraisal</Link>
                 </Button>
-              <p className="text-sm text-white/70">
+              <p className="text-body-sm text-white/70">
                 Our Blue Door Organizational Appraisal provides the diagnostic foundation for workshop focus and sprint partnerships.
               </p>
             </div>
@@ -787,7 +787,7 @@ export default function AmplifyPathAlt() {
               <Button asChild className="bg-teal hover:bg-teal/90 text-white w-full mb-4">
                   <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I have questions about Leadership Labs and would like to learn more.">Inquire About Leadership Labs</Link>
                 </Button>
-              <p className="text-sm text-white/70">
+              <p className="text-body-sm text-white/70">
                 Submit your inquiry and we will reach out with details about upcoming leadership lab opportunities.
               </p>
             </div>

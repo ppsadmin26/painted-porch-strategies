@@ -271,7 +271,7 @@ export default function CostCalculatorDialog({
           {/* Size */}
           <div className="space-y-2">
             <Label className="text-navy font-semibold">Core project team size</Label>
-            <p className="text-xs text-muted-foreground -mt-1">
+            <p className="text-caption text-muted-foreground -mt-1">
               People actively working on the initiative (not total impacted stakeholders).
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -301,7 +301,7 @@ export default function CostCalculatorDialog({
           {/* Impact scope */}
           <div className="space-y-2">
             <Label className="text-navy font-semibold">Impact scope</Label>
-            <p className="text-xs text-muted-foreground -mt-1">
+            <p className="text-caption text-muted-foreground -mt-1">
               How wide is the blast radius? Broader scope means more coordination and higher failure exposure.
             </p>
             <div className="grid grid-cols-2 gap-2">
@@ -336,7 +336,7 @@ export default function CostCalculatorDialog({
           {/* Change type — multi-select with auto-inclusion rules */}
           <div className="space-y-2">
             <Label className="text-navy font-semibold">Change type</Label>
-            <p className="text-xs text-muted-foreground -mt-1">
+            <p className="text-caption text-muted-foreground -mt-1">
               Pick what applies. Tech auto-adds Operational. M&amp;A auto-adds Operational and Cultural. Regulatory auto-adds Operational and Tech.
             </p>
             <div className="grid grid-cols-2 gap-2">
@@ -468,34 +468,34 @@ export default function CostCalculatorDialog({
               <p className="text-[0.65rem] uppercase tracking-wider text-navy/70 font-poppins font-semibold">
                 Planned investment
               </p>
-              <p className="text-xl font-bold text-navy mt-1 tabular-nums">
+              <div className="text-xl font-bold text-navy mt-1 tabular-nums">
                 {fmt(calc.plannedTotal)}
-              </p>
+              </div>
             </div>
             <div className="p-3 rounded-lg bg-gold/10 border border-gold/30">
               <p className="text-[0.65rem] uppercase tracking-wider text-gold font-poppins font-semibold">
                 Likely overrun
               </p>
-              <p className="text-xl font-bold text-gold mt-1 tabular-nums">
+              <div className="text-xl font-bold text-gold mt-1 tabular-nums">
                 {fmt(calc.overrunLow)}–{fmt(calc.overrunHigh)}
-              </p>
+              </div>
             </div>
             <div className="p-3 rounded-lg bg-raspberry/10 border border-raspberry/30">
               <p className="text-[0.65rem] uppercase tracking-wider text-raspberry font-poppins font-semibold">
                 Failure write-off
               </p>
-              <p className="text-xl font-bold text-raspberry mt-1 tabular-nums">
+              <div className="text-xl font-bold text-raspberry mt-1 tabular-nums">
                 {fmt(calc.failureWriteOff)}
-              </p>
+              </div>
             </div>
           </div>
 
           {/* Phase Zero impact hero strip */}
           <div className="p-4 rounded-lg bg-[hsl(216,100%,30%)]/5 border-2 border-[hsl(216,100%,30%)]/30">
-            <p className="text-xs uppercase tracking-wider text-[hsl(216,100%,30%)] font-poppins font-semibold">
+            <p className="text-caption uppercase tracking-wider text-[hsl(216,100%,30%)] font-poppins font-semibold">
               The Blue Door impact
             </p>
-            <p className="text-base text-navy mt-1 leading-snug">
+            <p className="text-body text-navy mt-1 !leading-snug">
               A <span className="font-bold text-[hsl(216,100%,30%)]">{BLUE_DOOR_PRICE_DISPLAY} Blue Door</span>{" "}
               operational appraisal can provide the clarity needed to reduce the risked{" "}
               <span className="font-bold text-[hsl(216,100%,30%)] tabular-nums">
@@ -586,10 +586,10 @@ export default function CostCalculatorDialog({
 
           {showLeadForm && !submitted && (
             <form onSubmit={handleSubmit} className="space-y-3">
-              <p className="text-sm text-navy font-semibold">
+              <p className="text-body-sm text-navy font-semibold">
                 Get these results in your inbox
               </p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-caption text-muted-foreground">
                 Great for sharing with your team or championing the case
                 internally.
               </p>

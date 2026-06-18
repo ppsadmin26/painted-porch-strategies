@@ -28,29 +28,29 @@ export default function PositioningSectionAlt() {
           </span>
         </h2>
 
-        <p className="text-base md:text-lg text-foreground leading-relaxed mb-4">
+        <p className="text-lead text-foreground mb-4">
           <span className="font-bold text-bluedoor">The Blue Door</span> opens at the moment of "What <span className="font-bold text-bluedoor">IF</span>…?", when you're determining what shift to imagine and pursue, not how to implement what's already been decided.
         </p>
 
-        <p className="text-base md:text-lg text-foreground leading-relaxed mb-8">
+        <p className="text-lead text-foreground mb-8">
           It's not about choosing a direction or committing to a shift. It's about pausing early - before imagination hardens into strategy, timelines, or execution - to answer one important question:
         </p>
 
         <div className="text-center max-w-3xl mx-auto mb-8">
-          <p className="text-lg md:text-xl text-bluedoor leading-relaxed mb-6 font-bold italic">What's possible for your organization <span className="underline">right now</span>?</p>
-          <p className="text-base md:text-lg text-foreground leading-relaxed mb-6">
+          <p className="text-pullquote text-bluedoor mb-6 font-bold">What's possible for your organization <span className="underline">right now</span>?</p>
+          <p className="text-lead text-foreground mb-6">
             Not hypothetically. Not at full potential. But given how your leadership, systems, and people are structured right now - to decide, design, and deliver what's next.
           </p>
-          <p className="text-base md:text-lg text-foreground leading-relaxed mb-6">
+          <p className="text-lead text-foreground mb-6">
             Your technology instinct may be right. Your operational focus is probably spot on. What tends to be missing in making these a success isn't a lack of clear strategy or execution, it's your organizational identity capable of holding both. That's the 20% that determines whether the other 80% sticks.
           </p>
         </div>
 
-        <p className="text-base md:text-lg text-foreground leading-relaxed mb-4">
+        <p className="text-lead text-foreground mb-4">
           <span className="font-bold text-bluedoor">The Blue Door</span> is for leaders at the threshold of their next sh<span className="text-raspberry font-bold">IF</span>t: imagining what to pursue before committing resources, time, and money to make it happen. This isn't about limiting what's possible. It's about grounding it in reality.
         </p>
 
-        <p className="text-base md:text-lg text-foreground leading-relaxed mb-12 font-bold">
+        <p className="text-lead text-foreground mb-12 font-bold">
           This is what we call Phase Zero: the strategic work before the execution work begins.
         </p>
 

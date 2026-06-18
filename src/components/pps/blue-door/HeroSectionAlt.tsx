@@ -52,7 +52,7 @@ export default function HeroSectionAlt() {
                 </Button>
               </Link>
               {isBlueDoorPreLaunch() && (
-                <p className="mt-4 text-sm md:text-base text-white/90 font-poppins">
+                <p className="mt-4 text-body-sm text-white/90 font-poppins">
                   <span className="inline-block bg-gold/90 text-navy font-semibold px-2 py-0.5 rounded mr-2">Launching June 29th</span>
                   Purchase now and we'll email your assessment access link on launch day.
                 </p>

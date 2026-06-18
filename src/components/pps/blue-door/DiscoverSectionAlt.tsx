@@ -61,10 +61,10 @@ export default function DiscoverSectionAlt() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Go from "What <span className="text-raspberry font-bold">IF</span>" to "Where Next"
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto">
+          <p className="text-lead text-muted-foreground max-w-4xl mx-auto">
             What's possible and realistically available for your organization <em>right now</em>? Not in theory, not at full potential, but given how your leadership, systems, and people are structured today.
           </p>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto mt-4">
+          <p className="text-lead text-muted-foreground max-w-4xl mx-auto mt-4">
             The Blue Door surfaces that reality in less than 30 minutes. replacing uncertainty with a clearer understanding of where opportunity exists, where to move now, and what deserves attention first. No more strategic paralysis, no FOBO (fear of better options), no nagging worry that this will go sideways. Just a clear path and compass forward.&nbsp;
           </p>
         </div>
@@ -89,7 +89,7 @@ export default function DiscoverSectionAlt() {
                   <h4 className={`text-base md:text-lg font-poppins font-semibold ${pillar.textClass} mb-2`}>
                     {pillar.title}
                   </h4>
-                  <p className="text-sm text-foreground leading-relaxed">
+                  <p className="text-body-sm text-foreground">
                     {pillar.description}
                   </p>
                 </div>
@@ -117,7 +117,7 @@ export default function DiscoverSectionAlt() {
           </div>
 
           <div className="bg-bluedoor/10 border-l-4 border-bluedoor p-4 md:p-6 rounded-xl shadow-sm max-w-4xl mx-auto">
-            <p className="text-base md:text-lg text-bluedoor font-medium text-center">
+            <p className="text-lead text-bluedoor font-medium text-center">
               Every Blue Door appraisal pairs AI-powered pattern recognition with 20+ years of change architecture experience. This isn't a template. It's a strategic reading built from your organization's specific reality.
             </p>
           </div>
