@@ -105,7 +105,7 @@ export default function PPSHome() {
             It&rsquo;s Time to Do Epic <ShIFt />.
           </>
         }
-        subheadline="Before momentum outruns alignment."
+        subheadline="And know if what's pushing you is what's possible, before momentum outruns alignment."
         description={
           <>
             You aren&rsquo;t short on vision, resolve, or experience. What&rsquo;s
