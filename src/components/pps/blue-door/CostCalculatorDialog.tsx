@@ -271,7 +271,7 @@ export default function CostCalculatorDialog({
           {/* Size */}
           <div className="space-y-2">
             <Label className="text-navy font-semibold">Core project team size</Label>
-            <p className="text-xs text-muted-foreground -mt-1">
+            <p className="text-caption text-muted-foreground -mt-1">
               People actively working on the initiative (not total impacted stakeholders).
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
