@@ -111,7 +111,7 @@ export default function PPSHome() {
             You aren&rsquo;t short on vision, resolve, or experience. What&rsquo;s
             harder to find is clarity - the kind that comes before strategy
             hardens, before announcements activate, and before resources commit
-            to what comes next. Painted Porch exists in the space before
+            to execute. Painted Porch exists in the space before
             acceleration compounds complexity, so you create extraordinary
             outcomes and can navigate whatever sh<strong>IF</strong>t happens next.
           </>
