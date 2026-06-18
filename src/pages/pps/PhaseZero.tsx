@@ -381,7 +381,7 @@ export default function PhaseZero() {
                     <h3 className={`text-xl md:text-2xl font-poppins font-semibold ${p.accent} leading-tight`}>
                       {p.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground">{p.subtitle}</p>
+                    <p className="text-body-sm text-muted-foreground">{p.subtitle}</p>
                   </div>
                 </div>
 
