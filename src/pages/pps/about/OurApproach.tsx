@@ -612,11 +612,11 @@ export default function OurApproach() {
             <h3 className="text-xl md:text-3xl font-poppins font-bold mb-5">
               You will not need us forever.
             </h3>
-            <p className="text-white/90 leading-relaxed mb-4 max-w-xl mx-auto">
+            <p className="text-body text-white/90 mb-4 max-w-xl mx-auto">
               The point of partnership is not a long contract. It's your team
               becoming the people who can author your next change on their own.
             </p>
-            <p className="text-gold font-semibold max-w-xl mx-auto">
+            <p className="text-body text-gold font-semibold max-w-xl mx-auto">
               Success is when your next major decision no longer requires us in the room.
             </p>
           </div>
