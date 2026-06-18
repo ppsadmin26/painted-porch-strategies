@@ -89,7 +89,7 @@ export default function DiscoverSectionAlt() {
                   <h4 className={`text-base md:text-lg font-poppins font-semibold ${pillar.textClass} mb-2`}>
                     {pillar.title}
                   </h4>
-                  <p className="text-sm text-foreground leading-relaxed">
+                  <p className="text-body-sm text-foreground">
                     {pillar.description}
                   </p>
                 </div>
