@@ -176,7 +176,7 @@ export default function AmplifyLabs() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Leadership Labs: Peer-Driven Acceleration
             </h1>
-            <p className="text-lg text-foreground max-w-3xl mx-auto">
+            <p className="text-lead text-foreground max-w-3xl mx-auto">
               Explore Phase Zero concepts with other leaders navigating similar challenges. Each Leadership Lab is a 6–12 week cohort-style program with peer accountability, monthly group sessions, and individual coaching touchpoints.
             </p>
           </div>
@@ -192,8 +192,8 @@ export default function AmplifyLabs() {
                   </div>
                   <div className="p-5 flex flex-col flex-1">
                     <h2 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-1 leading-tight">{cohort.title}</h2>
-                    <p className="text-sm font-semibold text-strategic mb-2">{cohort.tagline}</p>
-                    <p className="text-sm text-foreground mb-4 flex-1">{cohort.description}</p>
+                    <p className="text-body-sm font-semibold text-strategic mb-2">{cohort.tagline}</p>
+                    <p className="text-body-sm text-foreground mb-4 flex-1">{cohort.description}</p>
                     {showCohortBanner && (
                       <div className="mb-4 flex items-start gap-2 bg-strategic/10 border border-strategic/30 text-navy px-3 py-2 rounded-md">
                         <Calendar className="w-4 h-4 text-strategic mt-0.5 shrink-0" />
