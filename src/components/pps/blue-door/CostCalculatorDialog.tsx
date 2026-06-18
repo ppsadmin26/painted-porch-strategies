@@ -476,9 +476,9 @@ export default function CostCalculatorDialog({
               <p className="text-[0.65rem] uppercase tracking-wider text-gold font-poppins font-semibold">
                 Likely overrun
               </p>
-              <p className="text-xl font-bold text-gold mt-1 tabular-nums">
+              <div className="text-xl font-bold text-gold mt-1 tabular-nums">
                 {fmt(calc.overrunLow)}–{fmt(calc.overrunHigh)}
-              </p>
+              </div>
             </div>
             <div className="p-3 rounded-lg bg-raspberry/10 border border-raspberry/30">
               <p className="text-[0.65rem] uppercase tracking-wider text-raspberry font-poppins font-semibold">
