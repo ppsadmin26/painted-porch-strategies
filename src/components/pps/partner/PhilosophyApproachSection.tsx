@@ -2,6 +2,12 @@ import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Building2, Handshake, TrendingUp, Target, BookOpen } from "lucide-react";
 
+const ShIFt = ({ lowercase = false }: { lowercase?: boolean }) => (
+  <>
+    {lowercase ? "sh" : "Sh"}<span className="text-raspberry font-bold">IF</span>t
+  </>
+);
+
 const principles = [
   {
     icon: Building2,
@@ -21,7 +27,11 @@ const principles = [
     icon: Target,
     title: "Lasting Capability & Confidence",
     tagline: "We strengthen foundations before initiatives demand more from them.",
-    description: "Success is not measured by a completed project. It's reflected in stronger leaders, healthier systems, and greater confidence in navigating whatever comes next.",
+    description: (
+      <>
+        Success is not measured by a completed project. It's reflected in stronger leaders, healthier systems, and greater confidence in navigating uncertainty or whatever <ShIFt lowercase /> happens next.
+      </>
+    ),
     contrast: "When we're done, you've become transformation architects yourselves.",
   },
   {
