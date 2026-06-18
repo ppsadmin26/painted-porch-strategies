@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Download } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 const SLOT_KEY = "pilot-training";
 const STORAGE_KEY = "pilot_training_access";
@@ -72,9 +73,7 @@ export default function PilotTrainingWatch() {
       {/* Hero */}
       <section className="bg-white py-12 md:py-16 text-center">
         <div className="container max-w-4xl mx-auto px-6">
-          <span className="inline-block bg-lime/90 text-navy font-poppins font-semibold text-xs px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
-            Instant Access
-          </span>
+          <Eyebrow variant="pill" tone="lime">Instant Access</Eyebrow>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-4">
             <span className="text-primary italic">From Passenger to Pilot</span> Training Replay
           </h1>

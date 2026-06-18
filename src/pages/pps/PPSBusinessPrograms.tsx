@@ -9,6 +9,7 @@ import masterYourMessage from "@/assets/programs/master-your-message.jpg";
 import extraordinaryTeams from "@/assets/programs/extraordinary-teams.jpg";
 import missionUnstoppable from "@/assets/programs/mission-unstoppable.jpg";
 import operationsOnPurpose from "@/assets/programs/operations-on-purpose.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 // Team photos
 import amyPhoto from "@/assets/team/amy-yackowski.png";
@@ -164,9 +165,7 @@ export default function PPSBusinessPrograms() {
         </div>
         <div className="container max-w-7xl mx-auto px-6 relative z-10 py-20">
           <div className="max-w-2xl">
-            <span className="inline-block bg-gold text-navy font-poppins font-bold text-xs uppercase tracking-wider px-4 py-2 rounded-full mb-6">
-              A System for Lasting Change &amp; Growth
-            </span>
+            <Eyebrow variant="pill" tone="gold">A System for Lasting Change &amp; Growth</Eyebrow>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins leading-tight">
               Training Programs
             </h1>

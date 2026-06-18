@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Flame } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 export default function BurnoutOptIn() {
   const [firstName, setFirstName] = useState("");
@@ -62,9 +63,7 @@ export default function BurnoutOptIn() {
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: Headline & description */}
           <div>
-            <span className="inline-block bg-raspberry/15 text-raspberry font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider">
-              Access Resources To
-            </span>
+            <Eyebrow variant="pill" tone="raspberry">Access Resources To</Eyebrow>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy mb-6 leading-tight">
               <Flame className="inline-block w-10 h-10 md:w-12 md:h-12 text-raspberry mb-2 mr-2" />
               Bust Burnout

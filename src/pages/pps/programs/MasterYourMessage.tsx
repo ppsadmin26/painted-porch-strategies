@@ -12,6 +12,7 @@ import heroImg from "@/assets/programs/master-your-message-hero.jpg";
 import { SoundMeter } from "@/components/pps/SoundMeter";
 import mymCtaImg from "@/assets/programs/master-your-message.jpg";
 import robHeadshot from "@/assets/team/rob-hunter.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -110,9 +111,7 @@ export default function MasterYourMessage() {
           <SoundMeter className="absolute inset-x-0 bottom-0 z-[2]" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-44 sm:pb-56">
-          <span className="inline-block text-pps-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
-            Ignite Your True Voice
-          </span>
+          <Eyebrow variant="plain" tone="gold">Ignite Your True Voice</Eyebrow>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
             Master Your Message
           </h1>

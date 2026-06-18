@@ -9,6 +9,7 @@ import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import HandwrittenUnderline from "@/components/pps/HandwrittenUnderline";
 import blueDoorHero from "@/assets/blue-door-hero.jpg";
 import phaseZeroHero from "@/assets/heroes/phase-zero-hero.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 function FadeIn({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible, reducedMotion } = useScrollAnimation<HTMLDivElement>({ threshold: 0.15 });
@@ -196,9 +197,7 @@ export default function PhaseZero() {
       <section className="py-16 md:py-24 bg-muted/40">
 
         <FadeIn className="container max-w-3xl mx-auto px-6">
-          <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-caption mb-4">
-            Why Phase Zero Exists
-          </p>
+          <Eyebrow variant="plain" tone="raspberry" as="p">Why Phase Zero Exists</Eyebrow>
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
             Not every opportunity strengthens the organization chasing it.
           </h2>
@@ -256,9 +255,7 @@ export default function PhaseZero() {
       {/* The work before the work */}
       <section className="py-16 md:py-24 bg-white">
         <FadeIn className="container max-w-3xl mx-auto px-6">
-          <p className="text-gold font-poppins font-semibold uppercase tracking-[0.2em] text-caption mb-4">
-            The Work Before the Work
-          </p>
+          <Eyebrow variant="plain" tone="gold" as="p">The Work Before the Work</Eyebrow>
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight mb-6">
             Phase Zero is where the real choices get made.
           </h2>
@@ -283,9 +280,7 @@ export default function PhaseZero() {
       <section className="py-16 md:py-24 bg-muted/60">
         <FadeIn className="container max-w-5xl mx-auto px-6">
           <div className="text-center mb-10">
-            <p className="text-raspberry font-poppins font-semibold uppercase tracking-[0.2em] text-caption mb-3">
-              Clear About the Work
-            </p>
+            <Eyebrow variant="plain" tone="raspberry" as="p">Clear About the Work</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight">
               What Phase Zero{" "}
               <HandwrittenUnderline color="hsl(var(--lime))" delay={300} duration={800}>

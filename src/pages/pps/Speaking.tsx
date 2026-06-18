@@ -8,6 +8,7 @@ import speakingHero from "@/assets/heroes/speaking-hero.jpg";
 import amyPhoto from "@/assets/team/amy-speaking-portrait.jpg";
 import robPhoto from "@/assets/team/rob-hunter.jpg";
 import sierraPhoto from "@/assets/team/sierra-ramm-cantrell.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 const speakingLogos: LogoItem[] = [
   { name: "ProjectWorld", src: "/logos/projectworld.png", href: "https://www.pmbaconferences.com/" },
@@ -83,9 +84,7 @@ export default function Speaking() {
       {/* Hero */}
       <TierHeroSection
         customBadge={
-          <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6 uppercase tracking-wider">
-            Three Dynamic Speakers. One Stoic Mission.
-          </span>
+          <Eyebrow variant="pill" tone="gold">Three Dynamic Speakers. One Stoic Mission.</Eyebrow>
         }
         headline="Meet the Voices of Change"
         description="Empowering leaders and teams to navigate change, communicate with clarity, and stay resilient through it all."

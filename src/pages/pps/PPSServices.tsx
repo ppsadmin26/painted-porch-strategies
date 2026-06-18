@@ -4,6 +4,7 @@ import { ArrowRight, Search, ClipboardCheck, Users, Brain, Sparkles } from "luci
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
 import servicesHero from "@/assets/heroes/services-hero.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 function AnimatedSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -82,9 +83,7 @@ export default function PPSServices() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <span className="inline-block text-pps-gold font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
-            What We Do
-          </span>
+          <Eyebrow variant="plain" tone="gold">What We Do</Eyebrow>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
             Our Services
           </h1>
@@ -106,9 +105,7 @@ export default function PPSServices() {
       <AnimatedSection>
         <section className="py-20 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="inline-block text-pps-teal font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
-              The Painted Porch Way
-            </span>
+            <Eyebrow variant="plain" tone="teal">The Painted Porch Way</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-6">
               Our Focus
             </h2>
@@ -139,9 +136,7 @@ export default function PPSServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-16">
-              <span className="inline-block text-pps-teal font-poppins font-semibold text-sm tracking-widest uppercase mb-4">
-                The Painted Porch System
-              </span>
+              <Eyebrow variant="plain" tone="teal">The Painted Porch System</Eyebrow>
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-6">
                 Our Services
               </h2>
