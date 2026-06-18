@@ -225,10 +225,10 @@ export default function OurApproach() {
               <p className="mb-0">About what people understand, believe, and are capable of doing.</p>
             </div>
             <p className="mb-8">Our work surfaces those assumptions before they become expensive realities. Because&nbsp;</p>
-            <div>
-              <p>This is the work that preceeds the rollout.</p>
-              <p>The thinking beneath the plan.</p>
-              <p>The examination that influences everything that follows.</p>
+            <div className="space-y-0">
+              <p className="mb-0">This is the work that preceeds the rollout.</p>
+              <p className="mb-0">The thinking beneath the plan.</p>
+              <p className="mb-0">The examination that influences everything that follows.</p>
             </div>
           </div>
           <p className="text-lg text-foreground leading-relaxed">
