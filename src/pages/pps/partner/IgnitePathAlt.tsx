@@ -111,7 +111,7 @@ export default function IgnitePathAlt() {
         badgeLabel="IGNITE P.A.T.H.way"
         headline="Spark New ShIFt. Build Phase Zero™ Foundations at Your Own Pace."
         headlineHighlight="IF"
-        description="IGNITE is the self-led P.A.T.H.way into the Painted Porch. Explore courses, assessments, and Phase Zero frameworks at your own pace while building the clarity, confidence, and capability for what comes next."
+        description="IGNITE is the self-led P.A.T.H.way into the Painted Porch. Explore courses, assessments, and Phase Zero frameworks at your own pace while sparking the clarity, confidence, and capability for what comes next."
         ctas={[
           {
             label: "Browse IGNITE",
@@ -137,13 +137,11 @@ export default function IgnitePathAlt() {
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              Ready to IGNITE Your Next Sh<span className="text-gold font-bold">IF</span>t?
+              The IGNITE P.A.T.H.way Is Designed for...
             </h2>
             <p className="text-lg text-foreground max-w-3xl mx-auto mb-2">
-              IGNITE is the self-led entry point onto the Painted Porch, designed to spark clarity, build confidence, and prove transformative sh<span className="text-gold font-bold">IF</span>t is possible.
             </p>
             <p className="text-lg text-foreground max-w-3xl mx-auto">
-              IGNITE was built for&nbsp;
             </p>
           </div>
           
