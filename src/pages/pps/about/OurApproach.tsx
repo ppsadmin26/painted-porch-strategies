@@ -71,7 +71,7 @@ const pathStages = [
     bg: "bg-lime/5",
     iconBg: "bg-lime/10",
     body: "Reinforce what works. Strengthen habits, behaviors, systems, and practices until they become part of how your organization operates.\u00a0Because sustainable change is rarely the result of a single initiative; it's the result of repeatedly strengthening the conditions that allow progress to continue.",
-    outcome: "A team that can carry the next change without us.",
+    outcome: "A team that can navigate future challenges with confidence and clarity.",
   },
 ];
 
