@@ -586,10 +586,10 @@ export default function CostCalculatorDialog({
 
           {showLeadForm && !submitted && (
             <form onSubmit={handleSubmit} className="space-y-3">
-              <p className="text-sm text-navy font-semibold">
+              <p className="text-body-sm text-navy font-semibold">
                 Get these results in your inbox
               </p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-caption text-muted-foreground">
                 Great for sharing with your team or championing the case
                 internally.
               </p>
