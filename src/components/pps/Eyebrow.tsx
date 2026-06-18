@@ -23,7 +23,9 @@ export type EyebrowTone =
   | "navy"
   | "lime"
   | "white"
-  | "muted";
+  | "muted"
+  | "primary"
+  | "foreground";
 
 export type EyebrowVariant = "pill" | "plain";
 
@@ -44,6 +46,22 @@ const PILL_TONE: Record<EyebrowTone, string> = {
   lime: "bg-lime/90 text-navy",
   white: "bg-white/15 text-white",
   muted: "bg-muted text-muted-foreground",
+  primary: "bg-primary/15 text-primary",
+  foreground: "bg-foreground/10 text-foreground",
+};
+
+const PLAIN_TONE: Record<EyebrowTone, string> = {
+  gold: "text-gold",
+  teal: "text-teal",
+  cobalt: "text-bluedoor",
+  raspberry: "text-raspberry",
+  purple: "text-purple",
+  navy: "text-navy",
+  lime: "text-lime",
+  white: "text-white",
+  muted: "text-muted-foreground",
+  primary: "text-primary",
+  foreground: "text-foreground",
 };
 
 const PLAIN_TONE: Record<EyebrowTone, string> = {
