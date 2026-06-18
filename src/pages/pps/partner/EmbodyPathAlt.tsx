@@ -238,7 +238,7 @@ export default function EmbodyPathAlt() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               It's time to sh<span className="text-raspberry font-bold">IF</span>t from change moments to an innovation movement.
             </h2>
-            <p className="text-lg text-foreground leading-relaxed">
+            <p className="text-lead text-foreground">
               You've made the decision: you're ready for your organization to move from managing change initiatives to leading sustainable transformation. Not consultants to fix or implement change for you. Strategic partners to co-architect permanent capability in your people, your processes, and your systems.
             </p>
           </div>
@@ -248,22 +248,22 @@ export default function EmbodyPathAlt() {
             <h3 className="text-lg md:text-xl font-poppins font-semibold text-navy mb-2">
               The <span className="text-lime">EMBODY</span> outcome you're seeking:
             </h3>
-            <p className="text-lg text-foreground italic mb-2">
+            <p className="text-lead text-foreground italic mb-2">
               We've built the internal structures and culture to architect and execute sustainable change. Continual transformation is now ours to lead.
             </p>
-            <p className="text-sm text-foreground">
+            <p className="text-body-sm text-foreground">
               Transformation becomes self-sustaining and repeatable. Your organization develops permanent capacity and practices that outlast any single initiative.
             </p>
           </div>
 
           <div className="text-center mb-12 max-w-3xl mx-auto">
-            <p className="text-sm font-poppins font-semibold tracking-widest text-bluedoor uppercase mb-3">
+            <p className="text-caption font-poppins font-semibold tracking-widest text-bluedoor uppercase mb-3">
               Who EMBODY is for
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               For leaders who want to build something that lasts, not something to get through.
             </h2>
-            <p className="text-base text-foreground">
+            <p className="text-body text-foreground">
               EMBODY is our highest style of partnership over a committed 6+ month period. It isn't longer because we like longer engagements. It's longer because the structural change you're after doesn't move with a workshop, a deck, or a two-quarter sprint.
             </p>
           </div>
@@ -283,7 +283,7 @@ export default function EmbodyPathAlt() {
                     <Icon className={`w-6 h-6 ${accent.text}`} aria-hidden="true" />
                   </div>
                   <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{card.title}</h3>
-                  <p className="text-sm text-foreground">{card.body}</p>
+                  <p className="text-body-sm text-foreground">{card.body}</p>
                 </div>
               );
             })}
@@ -291,7 +291,7 @@ export default function EmbodyPathAlt() {
 
           {/* Pull-quote */}
           <div className="max-w-3xl mx-auto bg-muted/40 border-l-4 border-raspberry p-6 rounded-r-xl">
-            <p className="text-lg md:text-xl font-poppins italic text-navy leading-relaxed">
+            <p className="text-pullquote font-poppins text-navy">
               The cost of staying the same is rarely on the balance sheet. It shows up in the people who leave, the decisions that stall, and the sh<span className="text-raspberry font-semibold italic">IF</span>ts you watched competitors lead.
             </p>
           </div>
@@ -303,13 +303,13 @@ export default function EmbodyPathAlt() {
       <section className="py-16 md:py-24 bg-muted">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-10 max-w-3xl mx-auto">
-            <p className="text-sm font-poppins font-semibold tracking-widest text-navy uppercase mb-3">
+            <p className="text-caption font-poppins font-semibold tracking-widest text-navy uppercase mb-3">
               Painted Porch Partners
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               Industries we love to work with
             </h2>
-            <p className="text-base text-foreground">
+            <p className="text-body text-foreground">
               Not limited by industry. Defined by Executive commitment and a partnership mindset.
             </p>
           </div>
@@ -327,7 +327,7 @@ export default function EmbodyPathAlt() {
                   </div>
                   <ul className="space-y-2">
                     {industry.items.map((item) => (
-                      <li key={item} className="text-sm text-foreground flex items-start gap-2">
+                      <li key={item} className="text-body-sm text-foreground flex items-start gap-2">
                         <span className={`${accent} mt-1`}>•</span>
                         {item}
                       </li>
@@ -347,7 +347,7 @@ export default function EmbodyPathAlt() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               What EMBODY looks like
             </h2>
-            <p className="text-base text-foreground">
+            <p className="text-body text-foreground">
               Custom-designed to your context. Always anchored by these three agreements.
             </p>
           </div>
@@ -365,13 +365,13 @@ export default function EmbodyPathAlt() {
                     {String(i + 1).padStart(2, "0")}
                   </p>
                   <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{item.title}</h3>
-                  <p className="text-sm text-foreground">{item.body}</p>
+                  <p className="text-body-sm text-foreground">{item.body}</p>
                 </div>
               );
             })}
           </div>
           <div className="max-w-3xl mx-auto text-center bg-muted/40 rounded-xl p-6">
-            <p className="text-sm text-foreground mb-4">
+            <p className="text-body-sm text-foreground mb-4">
               Built on the{" "}
               <Link to="/phase-zero#pillars" className="font-semibold text-primary hover:underline">
                 Painted Porch Pillars
@@ -407,7 +407,7 @@ export default function EmbodyPathAlt() {
               <p className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-2">
                 Starting at $96,000
               </p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-body-sm text-muted-foreground">
                 Typically less than 1% of annual revenue. A strategic investment in permanent capacity, not a project support line item.
               </p>
             </div>
@@ -423,7 +423,7 @@ export default function EmbodyPathAlt() {
                     "One strategic plan and direction instead of fragmented vendor projects to manage",
                     "Permanent internal capacity to architect change without us",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-foreground">
+                    <li key={item} className="flex items-start gap-2 text-body-sm text-foreground">
                       <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
@@ -437,7 +437,7 @@ export default function EmbodyPathAlt() {
                     Prerequisite: The <span className="text-bluedoor">Blue Door</span>
                   </h3>
                 </div>
-                <p className="text-sm text-foreground mb-3">
+                <p className="text-body-sm text-foreground mb-3">
                   Required before any EMBODY engagement. Your investment is fully credited toward the partnership.
                 </p>
                 <div className="flex items-center gap-3 text-sm mb-4">
@@ -463,36 +463,36 @@ export default function EmbodyPathAlt() {
       <section className="py-16 md:py-24 bg-navy text-white">
         <div className="container max-w-5xl mx-auto px-6">
           <div className="text-center mb-10">
-            <p className="text-sm font-poppins font-semibold tracking-widest text-gold uppercase mb-3">
+            <p className="text-caption font-poppins font-semibold tracking-widest text-gold uppercase mb-3">
               Different by design
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
               This isn't a traditional implementation engagement.
             </h2>
-            <p className="text-base text-white/85 max-w-2xl mx-auto">
+            <p className="text-body text-white/85 max-w-2xl mx-auto">
               Typical consultancies execute for the deliverable of the moment. EMBODY is an embedded advisory partnership that optimizes for what your organization is continuing to move and mold years after we're gone.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-white/15 rounded-xl overflow-hidden border border-white/15">
             <div className="bg-navy p-6">
-              <p className="text-xs font-poppins font-semibold tracking-widest text-white/70 uppercase mb-4">
+              <p className="text-caption font-poppins font-semibold tracking-widest text-white/70 uppercase mb-4">
                 Traditional implementation consultancy
               </p>
               <ul className="space-y-3">
                 {traditionalVsEmbody.map((row) => (
-                  <li key={row.traditional} className="text-sm text-white/85">
+                  <li key={row.traditional} className="text-body-sm text-white/85">
                     {row.traditional}
                   </li>
                 ))}
               </ul>
             </div>
             <div className="bg-teal p-6">
-              <p className="text-xs font-poppins font-semibold tracking-widest text-white uppercase mb-4">
+              <p className="text-caption font-poppins font-semibold tracking-widest text-white uppercase mb-4">
                 EMBODY embedded partnership
               </p>
               <ul className="space-y-3">
                 {traditionalVsEmbody.map((row) => (
-                  <li key={row.embody} className="text-sm text-white font-medium">
+                  <li key={row.embody} className="text-body-sm text-white font-medium">
                     {row.embody}
                   </li>
                 ))}
@@ -510,7 +510,7 @@ export default function EmbodyPathAlt() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               EMBODY or AMPLIFY?
             </h2>
-            <p className="text-base text-foreground max-w-2xl mx-auto">
+            <p className="text-body text-foreground max-w-2xl mx-auto">
               Not every leader needs an embedded partnership. Many start with a 90-day Strategic Sprint and grow from there.
             </p>
           </div>
@@ -555,10 +555,10 @@ export default function EmbodyPathAlt() {
                 </div>
                 <div className="grid grid-cols-2 gap-px bg-border/60 rounded-lg overflow-hidden border border-border/60 shadow-sm">
                   <div className="bg-background p-3">
-                    <p className="text-sm text-foreground leading-snug">{row.amplify}</p>
+                    <p className="text-body-sm text-foreground !leading-snug">{row.amplify}</p>
                   </div>
                   <div className="bg-background p-3">
-                    <p className="text-sm text-foreground leading-snug">{row.embody}</p>
+                    <p className="text-body-sm text-foreground !leading-snug">{row.embody}</p>
                   </div>
                 </div>
               </div>
