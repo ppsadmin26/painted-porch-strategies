@@ -95,7 +95,7 @@ const industries = [
 const embodyIncludes = [
   {
     title: "Embedded executive advisory",
-    body: "Monthly strategic sessions with your senior team, plus on-demand access between sessions. We sit at your table, not across from it.",
+    body: "Monthly strategic sessions with your senior team, plus regularly scheduled dedicated sessions to turn decisions into action. We sit at your table, not across from it.",
   },
   {
     title: "Architecture co-design across the Pillars",
