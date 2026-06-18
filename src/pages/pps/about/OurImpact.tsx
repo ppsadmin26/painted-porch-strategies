@@ -125,7 +125,7 @@ export default function OurImpact() {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Our Impact
               </h1>
-              <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl">
+              <p className="text-lead md:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl">
                 See how we've helped organizations transform their approach to change, build resilient leaders, and create lasting impact.
               </p>
               <Link to="/start-here">
@@ -160,7 +160,7 @@ export default function OurImpact() {
                 </blockquote>
                 <div>
                   <p className="font-semibold text-navy">{testimonial.author}</p>
-                  <p className="text-sm text-muted-foreground">{testimonial.company}</p>
+                  <p className="text-body-sm text-muted-foreground">{testimonial.company}</p>
                 </div>
               </div>
             ))}
@@ -175,20 +175,20 @@ export default function OurImpact() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             A Virtuous Cycle of Giving
           </h2>
-          <p className="text-lg text-foreground leading-relaxed mb-6">
+          <p className="text-lead text-foreground leading-relaxed mb-6">
             Painted Porch Strategies was created to model the Stoic principles of Reason, Logic, Purpose, and Virtue.
           </p>
-          <p className="text-lg text-foreground leading-relaxed mb-6">
+          <p className="text-lead text-foreground leading-relaxed mb-6">
             We continually strive to follow the Stoic philosopher, Seneca's, advice of "works not words", and believe that in order to do <em>well</em>, we must also do <em>good</em>.
           </p>
-          <p className="text-lg text-foreground leading-relaxed mb-6">
+          <p className="text-lead text-foreground leading-relaxed mb-6">
             That's why <span className="font-semibold text-lime">5% of your investment is donated to charity</span>. Because business success and social impact go hand in hand.
           </p>
-          <p className="text-lg text-foreground leading-relaxed">
+          <p className="text-lead text-foreground leading-relaxed">
             When you partner with the Painted Porch, you're not just investing in yourself, your team, or your organization. You're contributing to causes that can create epic sh<span className="text-raspberry font-semibold">IF</span>t in the world.
           </p>
           <div ref={counterRef} className="mt-12 py-10 px-6 rounded-2xl bg-lime/10 border border-lime/20">
-            <p className="text-sm font-poppins font-semibold uppercase tracking-widest text-lime mb-2">Total Given to Date</p>
+            <p className="text-body-sm font-poppins font-semibold uppercase tracking-widest text-lime mb-2">Total Given to Date</p>
             <p className="text-5xl md:text-6xl font-bold text-lime tabular-nums">
               ${totalGiven.toLocaleString()}
             </p>
@@ -202,7 +202,7 @@ export default function OurImpact() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Who You've Helped Support
           </h2>
-          <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+          <p className="text-lead text-muted-foreground mb-10 max-w-2xl mx-auto">
             Every partnership makes a difference. Here are the organizations benefiting from your investment.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 items-stretch">

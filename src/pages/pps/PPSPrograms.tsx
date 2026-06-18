@@ -130,7 +130,7 @@ export default function PPSPrograms() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins leading-tight">
               Programs &amp; More
             </h1>
-            <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-8">
+            <p className="text-lead md:text-xl text-white/90 leading-relaxed mb-8">
               Our complete list of all programs, assessments, and coaching services to
               help you <strong>tap into your inner power</strong>,{" "}
               <strong>tackle burnout</strong>{" "}
@@ -163,14 +163,14 @@ export default function PPSPrograms() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
                 Signature Programs
               </h2>
-              <p className="text-lg text-foreground leading-relaxed">
+              <p className="text-lead text-foreground leading-relaxed">
                 <strong>There is untapped potential and power in you</strong>, to stand{" "}
                 <strong>strong</strong> and resilient among the obstacles in life, to find authentic
                 and <strong>virtuous connections</strong> with others, and to{" "}
                 <strong>share your message</strong> by eliminating the static interfering with your
                 true, confident voice.
               </p>
-              <p className="text-lg text-foreground leading-relaxed mt-4">
+              <p className="text-lead text-foreground leading-relaxed mt-4">
                 Our 3 Signature Programs represent a{" "}
                 <strong>holistic approach to transformation</strong> and leadership excellence.
               </p>
@@ -198,7 +198,7 @@ export default function PPSPrograms() {
                     <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 group-hover:text-primary transition-colors">
                       {program.title}
                     </h3>
-                    <p className="text-foreground text-sm leading-relaxed mb-4">
+                    <p className="text-foreground text-body-sm leading-relaxed mb-4">
                       {program.description}
                     </p>
                     <span className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -234,7 +234,7 @@ export default function PPSPrograms() {
                 <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
                   Become an Emotionally-Intelligent Leader
                 </h2>
-                <p className="text-lg text-foreground leading-relaxed mb-8">
+                <p className="text-lead text-foreground leading-relaxed mb-8">
                   Develop the awareness and capabilities to lead in the 21st century through
                   Emotional Intelligence (EQ). Uncover your own strengths and opportunities to show
                   up, be heard, connect, drive change, and have resilience to the challenges
@@ -260,7 +260,7 @@ export default function PPSPrograms() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
                 Additional Programs
               </h2>
-              <p className="text-lg text-foreground leading-relaxed">
+              <p className="text-lead text-foreground leading-relaxed">
                 We've assembled some of our favorite lessons and insights into a few low-price or{" "}
                 <strong>absolutely free</strong> programs! It's a great way to take your first step
                 in joining us <em>on the Porch</em> and see what we're all about.
@@ -294,7 +294,7 @@ export default function PPSPrograms() {
                     <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3 group-hover:text-primary transition-colors">
                       {program.title}
                     </h3>
-                    <p className="text-foreground text-sm leading-relaxed mb-4">
+                    <p className="text-foreground text-body-sm leading-relaxed mb-4">
                       {program.description}
                     </p>
                     <span className="text-primary font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -316,14 +316,14 @@ export default function PPSPrograms() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
                 One-on-One Advisory &amp; Guidance
               </h2>
-              <p className="text-lg text-foreground leading-relaxed">
+              <p className="text-lead text-foreground leading-relaxed">
                 The Painted Porch team is made up of experts across multiple industries including{" "}
                 <strong>Movement &amp; Mindfulness</strong>,{" "}
                 <strong>Media &amp; Broadcasting</strong>,{" "}
                 <strong>Staffing Operations</strong>, and{" "}
                 <strong>Software Development</strong>.
               </p>
-              <p className="text-lg text-foreground leading-relaxed mt-4">
+              <p className="text-lead text-foreground leading-relaxed mt-4">
                 Through additional one-on-one guidance, we're committed to partnering with you to
                 achieve your next level of leadership in your life, with others, and at work.
               </p>
@@ -340,7 +340,7 @@ export default function PPSPrograms() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-4">
                     {coach.name}
                   </h3>
-                  <p className="text-foreground text-sm leading-relaxed mb-6 flex-1">
+                  <p className="text-foreground text-body-sm leading-relaxed mb-6 flex-1">
                     {coach.description}
                   </p>
                   <Link
@@ -363,11 +363,11 @@ export default function PPSPrograms() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-poppins">
               Interested in Our Programs for Your Company?
             </h2>
-            <blockquote className="text-xl md:text-2xl italic text-white/80 mb-8 leading-relaxed">
+            <blockquote className="text-pullquote md:text-2xl italic text-white/80 mb-8 leading-relaxed">
               "You don't build a business. You build people, and people build the business."
               <span className="block text-base mt-2 not-italic text-white/60">Zig Ziglar</span>
             </blockquote>
-            <p className="text-lg text-white/90 leading-relaxed mb-10 max-w-2xl mx-auto">
+            <p className="text-lead text-white/90 leading-relaxed mb-10 max-w-2xl mx-auto">
               Success starts at the foundation: <strong>Your People</strong>. When you invest in
               your people and the way work is executed, your organization can achieve amazing
               things. We've taken our signature programs and put a business twist on them to{" "}

@@ -116,10 +116,10 @@ export default function BlueDoorPurchase() {
             
             {isBlueDoorPreLaunch() && (
               <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-4 mb-6">
-                <p className="font-poppins font-bold text-navy text-base mb-1">
+                <p className="font-poppins font-bold text-navy text-body mb-1">
                   🚪 Launching June 29th, 2026
                 </p>
-                <p className="text-foreground text-sm">
+                <p className="text-foreground text-body-sm">
                   Reserve your Blue Door now. On launch day, we'll email you a secure link to access and complete your assessment.
                 </p>
               </div>
@@ -152,10 +152,10 @@ export default function BlueDoorPurchase() {
             </div>
 
             <div className="mt-8 p-6 bg-raspberry/10 border-l-4 border-raspberry rounded-r-lg">
-              <p className="font-bold text-raspberry text-sm">
+              <p className="font-bold text-raspberry text-body-sm">
                 100% Clarity Guarantee
               </p>
-              <p className="text-foreground text-sm mt-2">
+              <p className="text-foreground text-body-sm mt-2">
                 If the diagnostic doesn't provide a clear strategic path for you to pursue, contact us for a full refund.
               </p>
             </div>
@@ -165,10 +165,10 @@ export default function BlueDoorPurchase() {
               <h4 className="text-base md:text-lg font-poppins font-bold text-navy mb-2">
                 Let's Do Good Sh<span className="text-lime font-bold">IF</span>t
               </h4>
-              <p className="text-foreground text-sm leading-relaxed">
+              <p className="text-foreground text-body-sm leading-relaxed">
                 Painted Porch Strategies was created to model the Stoic principles of <em>Reason, Logic, Purpose, and Virtue</em>. Since we intend to live by the Stoic philosopher Seneca's advice of "<em>works not words</em>", we believe that in order <strong>to do <em>well</em></strong>, we must also <strong>do <em>good</em></strong>. That's why <span className="font-bold text-lime">5% of your purchase will be donated to charity</span>.
               </p>
-              <p className="text-foreground text-sm mt-3">
+              <p className="text-foreground text-body-sm mt-3">
                 Visit our Doing Good ShIFt page to see all the charities we've supported over the years.
               </p>
               <a 
@@ -205,7 +205,7 @@ export default function BlueDoorPurchase() {
                     required
                   />
                   {errors.name && (
-                    <p className="text-raspberry text-sm mt-1">{errors.name}</p>
+                    <p className="text-raspberry text-body-sm mt-1">{errors.name}</p>
                   )}
                 </div>
 
@@ -224,7 +224,7 @@ export default function BlueDoorPurchase() {
                     required
                   />
                   {errors.email && (
-                    <p className="text-raspberry text-sm mt-1">{errors.email}</p>
+                    <p className="text-raspberry text-body-sm mt-1">{errors.email}</p>
                   )}
                 </div>
 
@@ -242,7 +242,7 @@ export default function BlueDoorPurchase() {
                     className={`mt-1.5 ${errors.company ? "border-raspberry" : ""}`}
                   />
                   {errors.company && (
-                    <p className="text-raspberry text-sm mt-1">{errors.company}</p>
+                    <p className="text-raspberry text-body-sm mt-1">{errors.company}</p>
                   )}
                 </div>
 
@@ -261,13 +261,13 @@ export default function BlueDoorPurchase() {
                   )}
                 </Button>
 
-                <p className="text-center text-muted-foreground text-sm">
+                <p className="text-center text-muted-foreground text-body-sm">
                   You'll be redirected to Stripe for secure payment
                 </p>
               </form>
             </div>
 
-            <p className="text-center text-muted-foreground text-sm mt-6">
+            <p className="text-center text-muted-foreground text-body-sm mt-6">
               Questions?{" "}
               <Link
                 to={`/contact?scope=${encodeURIComponent("Company")}&interest=blue-door&message=${encodeURIComponent("I have questions about the Blue Door Organizational Appraisal")}`}

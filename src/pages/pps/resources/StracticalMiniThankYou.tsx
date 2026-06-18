@@ -14,7 +14,7 @@ export default function StracticalMiniThankYou() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-4">
             You're In, Stractical Leader!
           </h1>
-          <p className="text-xl text-white/90">
+          <p className="text-lead text-white/90">
             Your <strong className="text-gold">Stractical Leader Mini Guide</strong> is on its way to your inbox.
           </p>
         </div>
@@ -28,10 +28,10 @@ export default function StracticalMiniThankYou() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               Check Your Email
             </h2>
-            <p className="text-lg text-charcoal mb-2">
+            <p className="text-lead text-charcoal mb-2">
               We just sent your <strong className="text-raspberry">FREE</strong> Stractical Leader Mini Guide straight to your inbox.
             </p>
-            <p className="text-sm text-muted-foreground mb-2">
+            <p className="text-body-sm text-muted-foreground mb-2">
               (If you don't see it within a few minutes, check your spam or promotions folder.)
             </p>
           </div>
@@ -47,7 +47,7 @@ export default function StracticalMiniThankYou() {
                   <h4 className="text-base md:text-lg font-poppins font-semibold text-navy mb-2">
                     Explore More Free Resources
                   </h4>
-                  <p className="text-sm text-charcoal">
+                  <p className="text-body-sm text-charcoal">
                     Guides, templates, and tools to help you architect your next shIFt.
                   </p>
                 </div>
@@ -58,7 +58,7 @@ export default function StracticalMiniThankYou() {
                   <h4 className="text-base md:text-lg font-poppins font-semibold text-navy mb-2">
                     Go Deeper: <span className="text-cobalt font-bold">The Stractical Leader Workshop</span>
                   </h4>
-                  <p className="text-sm text-charcoal">
+                  <p className="text-body-sm text-charcoal">
                     Ready to put the guide into practice? Explore the 6-Week Intensive.
                   </p>
                 </div>

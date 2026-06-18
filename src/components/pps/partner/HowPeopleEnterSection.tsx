@@ -12,19 +12,19 @@ export function HowPeopleEnterSection() {
         </div>
 
         <div className="max-w-3xl mx-auto text-center mb-12 space-y-6">
-          <p className="text-lg text-foreground leading-relaxed">
+          <p className="text-lead text-foreground leading-relaxed">
             Sometimes it begins with a keynote, podcast, article, assessment, or course.
           </p>
-          <p className="text-lg text-foreground leading-relaxed">
+          <p className="text-lead text-foreground leading-relaxed">
             Sometimes it begins with a leadership challenge that's difficult to solve alone.
           </p>
-          <p className="text-lg text-foreground leading-relaxed">
+          <p className="text-lead text-foreground leading-relaxed">
             Sometimes it begins with a realization that the future you're trying to create will require something different from the people, systems, and structures you have today.
           </p>
-          <p className="text-lg text-foreground leading-relaxed">
+          <p className="text-lead text-foreground leading-relaxed">
             No two journeys look exactly alike.
           </p>
-          <p className="text-lg text-foreground leading-relaxed font-bold">
+          <p className="text-lead text-foreground leading-relaxed font-bold">
             What matters is finding the right place to begin asking "What <span className="text-raspberry">IF</span>".
           </p>
         </div>

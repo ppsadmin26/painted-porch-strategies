@@ -56,7 +56,7 @@ export default function PPSPricing() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Three Engagement P.A.T.H.ways
             </h1>
-            <p className="text-lg text-white/90 leading-relaxed">
+            <p className="text-lead text-white/90 leading-relaxed">
               Choose the level of partnership that fits your organization's needs and readiness. Every engagement begins with understanding where you are and where you want to go.
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function PPSPricing() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Transparent, Flat-Fee Pricing
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               We believe in clarity. All engagements are priced as flat fees, no surprise bills, no scope creep charges. You know exactly what you're investing before we begin.
             </p>
           </div>
@@ -98,7 +98,7 @@ export default function PPSPricing() {
                   <p className={`text-sm font-medium ${tier.textColor} mb-4`}>
                     {tier.tagline}
                   </p>
-                  <p className="text-foreground mb-6 text-sm leading-relaxed">
+                  <p className="text-foreground mb-6 text-body-sm leading-relaxed">
                     {description}
                   </p>
                   <ul className="space-y-3 mb-8">
@@ -131,21 +131,21 @@ export default function PPSPricing() {
                 <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
                 <div>
                   <span className="font-semibold text-navy">Clear Scope & Timeline</span>
-                  <p className="text-sm text-foreground">Detailed proposal with deliverables and milestones</p>
+                  <p className="text-body-sm text-foreground">Detailed proposal with deliverables and milestones</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
                 <div>
                   <span className="font-semibold text-navy">Stoic Principles Foundation</span>
-                  <p className="text-sm text-foreground">All work grounded in reason, logic, purpose, and virtue</p>
+                  <p className="text-body-sm text-foreground">All work grounded in reason, logic, purpose, and virtue</p>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
                 <div>
                   <span className="font-semibold text-navy">5% Charitable Donation</span>
-                  <p className="text-sm text-foreground">Every fee includes a donation to the charity of your choice</p>
+                  <p className="text-body-sm text-foreground">Every fee includes a donation to the charity of your choice</p>
                 </div>
               </li>
             </ul>
@@ -159,7 +159,7 @@ export default function PPSPricing() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Begin Your Transformation?
           </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
             Reach out to learn more about finding the right pathway for your organization.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

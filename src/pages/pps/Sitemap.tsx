@@ -561,17 +561,17 @@ export default function Sitemap() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-pps-navy mb-3">
             Sitemap
           </h1>
-          <p className="font-montserrat text-pps-charcoal text-lg">
+          <p className="font-montserrat text-pps-charcoal text-lead">
             All {totalLinks} pages on the Painted Porch Strategies website, organized by section.
           </p>
         </header>
 
         {isStaff && (
           <div className="mb-8 p-4 rounded-lg bg-pps-gold/10 border border-pps-gold/30">
-            <p className="font-poppins font-semibold text-sm text-pps-navy mb-1">
+            <p className="font-poppins font-semibold text-body-sm text-pps-navy mb-1">
               Staff view active
             </p>
-            <p className="font-montserrat text-xs text-pps-charcoal">
+            <p className="font-montserrat text-caption text-pps-charcoal">
               You're seeing {draftCount} draft page{draftCount === 1 ? "" : "s"} marked with a{" "}
               <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-poppins font-bold uppercase bg-pps-gold/20 text-pps-navy border border-pps-gold/40">
                 Draft
@@ -610,7 +610,7 @@ export default function Sitemap() {
           ))}
         </div>
         <footer className="mt-16 pt-8 border-t border-pps-charcoal/10">
-          <p className="font-montserrat text-sm text-pps-charcoal/70">
+          <p className="font-montserrat text-body-sm text-pps-charcoal/70">
             Looking for the XML sitemap for search engines?{" "}
             <a href="/sitemap.xml" className="text-pps-teal hover:underline">
               View sitemap.xml

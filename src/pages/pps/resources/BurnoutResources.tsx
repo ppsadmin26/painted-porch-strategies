@@ -100,7 +100,7 @@ const BurnoutResources = () => {
             <Flame className="h-10 w-10 text-orange-400 shrink-0" />
             Burnout-Busting Resources
           </h1>
-          <p className="mt-5 text-white/90 text-lg leading-relaxed max-w-2xl mx-auto font-montserrat">
+          <p className="mt-5 text-white/90 text-lead leading-relaxed max-w-2xl mx-auto font-montserrat">
             Scroll down to access materials & resources to help you bust burnout in yourself, as well as how to empower your team to take the reins of resilience.
           </p>
           <a href="#resources-start">
@@ -115,7 +115,7 @@ const BurnoutResources = () => {
       <section id="resources-start" className="py-20 bg-background scroll-mt-24">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
+            <p className="font-poppins font-semibold text-body-sm uppercase tracking-wider text-primary mb-2">
               Get Prepared
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground flex items-center justify-center gap-2">
@@ -134,7 +134,7 @@ const BurnoutResources = () => {
       {/* The Painted Porch Story */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
+          <p className="font-poppins font-semibold text-body-sm uppercase tracking-wider text-primary mb-2">
             The Painted Porch Story
           </p>
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground mb-6">
@@ -153,7 +153,7 @@ const BurnoutResources = () => {
       <section className="py-20 bg-background">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
+            <p className="font-poppins font-semibold text-body-sm uppercase tracking-wider text-primary mb-2">
               Put Your Mask on First
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground flex items-center justify-center gap-2">
@@ -172,7 +172,7 @@ const BurnoutResources = () => {
       {/* Our Team */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
+          <p className="font-poppins font-semibold text-body-sm uppercase tracking-wider text-primary mb-2">
             Who We Are
           </p>
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground mb-6">
@@ -191,7 +191,7 @@ const BurnoutResources = () => {
       <section className="py-20 bg-background">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
+            <p className="font-poppins font-semibold text-body-sm uppercase tracking-wider text-primary mb-2">
               Support Others
             </p>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground flex items-center justify-center gap-2">
@@ -210,7 +210,7 @@ const BurnoutResources = () => {
       {/* Radical Mindfulness CTA */}
       <section className="py-20 bg-primary/5">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="font-poppins font-semibold text-sm uppercase tracking-wider text-primary mb-2">
+          <p className="font-poppins font-semibold text-body-sm uppercase tracking-wider text-primary mb-2">
             Tackle Burnout
           </p>
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground mb-6">
@@ -242,7 +242,7 @@ interface ResourceCardProps {
 
 const ResourceCard = ({ tag, title, description, cta, url, icon: Icon }: ResourceCardProps) => (
   <div className="bg-white rounded-xl border border-border/50 shadow-sm p-8 flex flex-col">
-    <p className="font-poppins font-semibold text-xs uppercase tracking-wider text-primary mb-2">
+    <p className="font-poppins font-semibold text-caption uppercase tracking-wider text-primary mb-2">
       {tag}
     </p>
     <h3 className="text-xl md:text-2xl font-poppins font-bold text-foreground mb-3">

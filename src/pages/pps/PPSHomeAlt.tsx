@@ -62,7 +62,7 @@ export default function PPSHomeAlt() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Building Change-Ready Leaders and Teams Through Stoic Principles
             </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
+            <p className="text-lead md:text-xl text-white/90 mb-8 leading-relaxed">
               Most transformation fails before it starts. We help you build the foundation for lasting change through Phase Zero, the strategic preparation that makes implementation possible.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -106,7 +106,7 @@ export default function PPSHomeAlt() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Four Pillars of Change-Readiness
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               Every successful transformation rests on these four foundational elements.
             </p>
           </div>
@@ -124,7 +124,7 @@ export default function PPSHomeAlt() {
                 <p className={`text-sm font-medium ${pillar.color} mb-3`}>
                   {pillar.subtitle}
                 </p>
-                <p className="text-foreground text-sm leading-relaxed">
+                <p className="text-foreground text-body-sm leading-relaxed">
                   {pillar.description}
                 </p>
               </div>
@@ -142,7 +142,7 @@ export default function PPSHomeAlt() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             The Strategic Work Before the Work
           </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
             Implementation comes last. Before you can transform your organization, you need to assess readiness, build alignment, and architect the path forward. That's Phase Zero.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -167,7 +167,7 @@ export default function PPSHomeAlt() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               How We Help
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               From individual leadership coaching to enterprise-wide team development.
             </p>
           </div>

@@ -255,7 +255,7 @@ export default function YouTubePage() {
             </div>
           ) : (
             <>
-              <p className="text-sm text-muted-foreground mb-6">
+              <p className="text-body-sm text-muted-foreground mb-6">
                 {filtered.length} video{filtered.length !== 1 ? "s" : ""}
                 {totalPages > 1 && ` · Page ${safeCurrentPage} of ${totalPages}`}
               </p>
@@ -314,7 +314,7 @@ export default function YouTubePage() {
                         {video.title}
                       </h3>
                       {video.description && (
-                        <p className="text-sm text-foreground line-clamp-2 group-hover:line-clamp-none transition-all" title={video.description}>
+                        <p className="text-body-sm text-foreground line-clamp-2 group-hover:line-clamp-none transition-all" title={video.description}>
                           {video.description}
                         </p>
                       )}
@@ -389,7 +389,7 @@ export default function YouTubePage() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Want to Go Deeper?
           </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
             Our videos are a great introduction, but real transformation requires guided partnership. Let's explore how we can work together.
           </p>
           <Link to="/contact?interest=general&message=I've been watching your videos and would like to explore working together.">

@@ -138,11 +138,11 @@ export default function AboutRob() {
             It's Time to Get C.L.E.A.R.
           </h1>
 
-          <p className="mx-auto mt-4 max-w-xl text-base text-foreground/70">
+          <p className="mx-auto mt-4 max-w-xl text-body text-foreground/70">
             You have 8 seconds to Capture &amp; Keep someone's attention. Get your point across <strong className="text-navy">Quicker</strong> &amp; <strong className="text-navy">Clearer</strong>.
           </p>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/80">
+          <p className="mx-auto mt-6 max-w-2xl text-lead leading-relaxed text-foreground/80">
             Hi, I'm <strong className="text-navy">Rob Hunter</strong>. For 27 years, I honed my communication as a talk radio broadcaster, finding ways to connect with listeners… and keep them tuning in every day, retiring with #1 ratings. Now, I partner with emerging leaders and executives to master their message and broadcast with clarity, to stand out, be heard, inspire action, and make an impact.
           </p>
 
@@ -219,7 +219,7 @@ export default function AboutRob() {
                       <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy group-hover:text-primary transition-colors">
                         {card.title}
                       </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-foreground/70">
+                      <p className="mt-2 text-body-sm leading-relaxed text-foreground/70">
                         {card.description}
                       </p>
                     </div>
@@ -298,7 +298,7 @@ export default function AboutRob() {
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-white">
                 Equal Matters
               </h3>
-              <p className="mt-2 text-sm text-white/60">
+              <p className="mt-2 text-body-sm text-white/60">
                 Rob Hunter
               </p>
               <a

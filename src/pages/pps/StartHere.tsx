@@ -77,7 +77,7 @@ export default function StartHere() {
           >
             Take the P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5 shrink-0" />
           </Button>
-          <p className="text-sm text-foreground/70 mt-3">About 3 minutes. Email yourself the results when you're done.</p>
+          <p className="text-body-sm text-foreground/70 mt-3">About 3 minutes. Email yourself the results when you're done.</p>
         </div>
       </section>
 
@@ -89,7 +89,7 @@ export default function StartHere() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Which P.A.T.H.way is Right for You?
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               Each partnership style is designed for different stages, budgets, and depth of engagement.
             </p>
           </div>
@@ -103,7 +103,7 @@ export default function StartHere() {
                   className={`${tier.bgColor} p-8 rounded-xl border-t-4 ${tier.borderColor}`}
                 >
                   <TierBadge tier={tier} className="mb-4" />
-                  <p className="text-sm font-medium text-primary mb-6">
+                  <p className="text-body-sm font-medium text-primary mb-6">
                     {tier.tagline}
                   </p>
                   <h4 className="text-base md:text-lg font-semibold text-navy mb-3">Ideal for:</h4>
@@ -131,7 +131,7 @@ export default function StartHere() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             Still Not Sure?
           </h2>
-          <p className="text-lg text-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-lead text-foreground mb-8 max-w-2xl mx-auto">
             The best way to determine the right pathway is a conversation. Contact us and we'll help you find the perfect fit.
           </p>
           <Link to="/contact?interest=general&message=I took the P.A.T.H. quiz and would like to discuss my results.">

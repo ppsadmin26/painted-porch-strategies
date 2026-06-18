@@ -18,7 +18,7 @@ export default function WFHThankYou() {
             <br />
             <span className="text-gold">Work From Home Pro-in-Training!</span>
           </h1>
-          <p className="text-xl text-white/90 mt-6">
+          <p className="text-lead text-white/90 mt-6">
             You're officially on the list. Time to don your cape.
           </p>
         </div>
@@ -31,11 +31,11 @@ export default function WFHThankYou() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               Check Your Email
             </h2>
-            <p className="text-lg text-charcoal mb-2">
+            <p className="text-lead text-charcoal mb-2">
               We just sent information on how to access your{" "}
               <strong className="text-raspberry">FREE</strong> Work From Home Mini-Course.
             </p>
-            <p className="text-sm text-muted-foreground mb-8">
+            <p className="text-body-sm text-muted-foreground mb-8">
               (If you don't see it within a few minutes, check your spam or promotions folder.)
             </p>
 

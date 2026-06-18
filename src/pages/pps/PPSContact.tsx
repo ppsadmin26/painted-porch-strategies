@@ -323,7 +323,7 @@ export default function PPSContact() {
                 <p className="text-foreground mb-2">
                   Your message has been received. We'll review it and get back to you soon.
                 </p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-body-sm text-muted-foreground">
                   In the meantime, feel free to explore our{" "}
                   <a href="/partner" className="text-primary underline">partnership options</a>.
                 </p>
@@ -424,7 +424,7 @@ export default function PPSContact() {
                         </label>
                       ))}
                     </div>
-                    {fieldErrors.inquiryFor && <p className="text-xs text-destructive mt-1">Please select at least one option</p>}
+                    {fieldErrors.inquiryFor && <p className="text-caption text-destructive mt-1">Please select at least one option</p>}
                   </div>
 
                   {/* Organization (hidden for Yourself-only) */}
@@ -463,7 +463,7 @@ export default function PPSContact() {
                         </label>
                       ))}
                     </div>
-                    {fieldErrors.interests && <p className="text-xs text-destructive mt-1">Please select at least one interest</p>}
+                    {fieldErrors.interests && <p className="text-caption text-destructive mt-1">Please select at least one interest</p>}
                   </div>
                   )}
 
@@ -493,7 +493,7 @@ export default function PPSContact() {
                         <label className="block text-sm font-medium text-navy mb-2">
                           What's your budget? <span className="text-destructive">*</span>
                         </label>
-                        <p className="text-xs text-muted-foreground mb-2">
+                        <p className="text-caption text-muted-foreground mb-2">
                           If unknown, select a reasonable estimated amount. Our Workshops, Speaking, and Advisory/Coaching start at $5,000.
                         </p>
                         <select
@@ -636,8 +636,8 @@ export default function PPSContact() {
 
           <div className="max-w-3xl mx-auto mt-6">
             <div className="p-6 bg-lime/10 border border-lime/30 rounded-lg">
-              <p className="text-lime font-semibold text-lg mb-2">Our Partnership Promise</p>
-              <p className="text-sm text-foreground">
+              <p className="text-lime font-semibold text-lead mb-2">Our Partnership Promise</p>
+              <p className="text-body-sm text-foreground">
                 We only enter partnerships where we believe meaningful progress is possible - together. If we're not the right fit, we'll tell you and try to point you in the right direction.
               </p>
             </div>

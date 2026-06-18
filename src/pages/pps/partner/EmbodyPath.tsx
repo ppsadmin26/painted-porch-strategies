@@ -49,7 +49,7 @@ export default function EmbodyPath() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Embedded Advisory Partnership
             </h1>
-            <p className="text-lg text-white/90 leading-relaxed">
+            <p className="text-lead text-white/90 leading-relaxed">
               Deep partnership for organizations committed to comprehensive transformation with ongoing advisory support.
             </p>
           </div>
@@ -80,7 +80,7 @@ export default function EmbodyPath() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Engagement Options
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               Tailored partnerships designed around your specific transformation needs.
             </p>
           </div>
@@ -91,10 +91,10 @@ export default function EmbodyPath() {
                 <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-2 mb-3">
                   {type.title}
                 </h3>
-                <p className="text-foreground text-sm leading-relaxed mb-4">
+                <p className="text-foreground text-body-sm leading-relaxed mb-4">
                   {type.description}
                 </p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-caption text-muted-foreground">
                   <span className="font-semibold">Ideal for:</span> {type.ideal}
                 </p>
               </div>
@@ -111,10 +111,10 @@ export default function EmbodyPath() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 How EMBODY Works
               </h2>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
+              <p className="text-lead text-foreground leading-relaxed mb-6">
                 EMBODY partnerships are built on deep integration with your organization. We become an extension of your leadership team, providing strategic guidance, hands-on facilitation, and continuous support.
               </p>
-              <p className="text-lg text-foreground leading-relaxed">
+              <p className="text-lead text-foreground leading-relaxed">
                 This isn't consulting from the outside, it's transformation from within.
               </p>
             </div>
@@ -129,7 +129,7 @@ export default function EmbodyPath() {
                   </div>
                   <div>
                     <span className="font-semibold text-navy">Weekly Sessions</span>
-                    <p className="text-sm text-foreground">Regular strategy and progress discussions</p>
+                    <p className="text-body-sm text-foreground">Regular strategy and progress discussions</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -138,7 +138,7 @@ export default function EmbodyPath() {
                   </div>
                   <div>
                     <span className="font-semibold text-navy">On-Site Days</span>
-                    <p className="text-sm text-foreground">Regular in-person facilitation and coaching</p>
+                    <p className="text-body-sm text-foreground">Regular in-person facilitation and coaching</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -147,7 +147,7 @@ export default function EmbodyPath() {
                   </div>
                   <div>
                     <span className="font-semibold text-navy">Priority Support</span>
-                    <p className="text-sm text-foreground">Direct access when you need guidance</p>
+                    <p className="text-body-sm text-foreground">Direct access when you need guidance</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -156,7 +156,7 @@ export default function EmbodyPath() {
                   </div>
                   <div>
                     <span className="font-semibold text-navy">Custom Programs</span>
-                    <p className="text-sm text-foreground">Bespoke training and development content</p>
+                    <p className="text-body-sm text-foreground">Bespoke training and development content</p>
                   </div>
                 </li>
               </ul>
@@ -171,7 +171,7 @@ export default function EmbodyPath() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready for Deep Partnership?
           </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
             EMBODY partnerships are selective. Let's discuss whether this level of engagement is right for your organization.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

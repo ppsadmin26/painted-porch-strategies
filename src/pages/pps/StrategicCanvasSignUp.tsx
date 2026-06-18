@@ -85,7 +85,7 @@ export default function StrategicCanvasSignUp() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             The <span className="text-gold">Strategic Change Canvas</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lead md:text-2xl text-white/90 max-w-3xl mx-auto">
             A one-page planning tool to architect change before you build it, so your next shIFt actually sticks.
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function StrategicCanvasSignUp() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               Plan smarter. ShIFt with intention.
             </h2>
-            <p className="text-lg text-charcoal mb-6">
+            <p className="text-lead text-charcoal mb-6">
               Most change plans skip the most important step: the thinking <em>before</em> the doing. The
               <strong className="text-navy"> Strategic Change Canvas</strong> walks you through the questions
               that turn good ideas into grounded action.
@@ -153,7 +153,7 @@ export default function StrategicCanvasSignUp() {
           {/* Right: Form */}
           <div className="bg-white border-2 border-border rounded-2xl shadow-lg p-8 md:sticky md:top-8">
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">Send Me the Canvas</h3>
-            <p className="text-sm text-muted-foreground mb-6">
+            <p className="text-body-sm text-muted-foreground mb-6">
               Drop your info below and we'll email it over right away.
             </p>
 
@@ -212,7 +212,7 @@ export default function StrategicCanvasSignUp() {
                 {submitting ? "Sending..." : "Send Me the Canvas"}
               </Button>
 
-              <p className="text-xs text-muted-foreground text-center">
+              <p className="text-caption text-muted-foreground text-center">
                 We won't send spam. Unsubscribe at any time.
               </p>
             </form>

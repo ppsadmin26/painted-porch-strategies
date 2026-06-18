@@ -205,7 +205,7 @@ export default function PPSHomeVerbatim() {
       {/* ============================================================ */}
       <section className="py-12 bg-muted">
         <div className="container max-w-7xl mx-auto px-6">
-          <p className="text-center text-sm font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-primary mb-8">
+          <p className="text-center text-body-sm font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-primary mb-8">
             The 3AM questions leaders are asking
           </p>
           <div className="grid md:grid-cols-3 gap-8">
@@ -312,11 +312,11 @@ export default function PPSHomeVerbatim() {
             ))}
           </div>
 
-          <p className="text-lg text-foreground mb-3 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lead text-foreground mb-3 max-w-2xl mx-auto leading-relaxed">
             Phase Zero exists to create clarity before your next major
             decision hardens into execution.
           </p>
-          <p className="text-lg text-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lead text-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
             It&rsquo;s the threshold work that helps your organization see
             itself clearly before determining what comes next.
           </p>
@@ -327,10 +327,10 @@ export default function PPSHomeVerbatim() {
                 key={p.label}
                 className="bg-white rounded-xl p-5 border-l-4 border-gold shadow-sm"
               >
-                <p className="font-poppins font-semibold text-gold text-sm mb-2">
+                <p className="font-poppins font-semibold text-gold text-body-sm mb-2">
                   {p.label}
                 </p>
-                <p className="font-poppins italic text-lg text-navy leading-snug">
+                <p className="font-poppins italic text-lead text-navy leading-snug">
                   &ldquo;{p.q}&rdquo;
                 </p>
               </div>
@@ -408,7 +408,7 @@ export default function PPSHomeVerbatim() {
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-sm">
-              <p className="text-sm font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-5">
+              <p className="text-body-sm font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-5">
                 What You&rsquo;ll Discover
               </p>
               <ul className="space-y-5">
@@ -421,7 +421,7 @@ export default function PPSHomeVerbatim() {
                       <p className="font-poppins font-semibold text-navy leading-snug mb-1">
                         {d.title}
                       </p>
-                      <p className="text-sm text-foreground/80 leading-relaxed">
+                      <p className="text-body-sm text-foreground/80 leading-relaxed">
                         {d.copy}
                       </p>
                     </div>
@@ -443,7 +443,7 @@ export default function PPSHomeVerbatim() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Your compass for where to begin.
             </h2>
-            <p className="text-lg text-foreground leading-relaxed">
+            <p className="text-lead text-foreground leading-relaxed">
               Not everyone arrives at the Painted Porch navigating the same
               kind of challenge or asking the same kinds of questions.
             </p>
@@ -526,11 +526,11 @@ export default function PPSHomeVerbatim() {
             </div>
 
             <div className="mt-10 pt-8 border-t border-navy/10">
-              <p className="text-base text-foreground/70 mb-3">
+              <p className="text-body text-foreground/70 mb-3">
                 Everything at Painted Porch Strategies is designed around one
                 central idea:
               </p>
-              <p className="font-poppins text-2xl font-semibold italic text-navy leading-snug">
+              <p className="font-poppins text-lead font-semibold italic text-navy leading-snug">
                 Sustainable movement requires more than momentum. Clarity is the catalyst for what gets decided, what moves forward, and what happens next.
               </p>
             </div>
@@ -551,13 +551,13 @@ export default function PPSHomeVerbatim() {
                 className="scroll-mt-24 scroll-smooth"
               >
                 <div className="text-center mb-5">
-                  <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
+                  <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Way Forward
                   </p>
                   <h3 id="path-heading" className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Your P.A.T.H. to Sustainable Change
                   </h3>
-                  <p className="text-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-body-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto leading-relaxed">
                     A way of thinking about and navigating intentional, sustainable
                     progress.
                   </p>
@@ -781,13 +781,13 @@ export default function PPSHomeVerbatim() {
               {/* LAYER 2: The Three Pillars */}
               <div>
                 <div className="text-center mb-6">
-                  <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
+                  <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Load-Bearing Structures
                   </p>
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Painted Porch Pillars
                   </h3>
-                  <p className="text-foreground/80 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-foreground/80 text-body-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
                     Three dimensions that influence and impact what your
                     organization is built to carry.
                   </p>
@@ -812,7 +812,7 @@ export default function PPSHomeVerbatim() {
                       <p className={`text-sm font-medium ${pillar.color} mb-3`}>
                         {pillar.subtitle}
                       </p>
-                      <p className="text-foreground text-sm leading-relaxed">
+                      <p className="text-foreground text-body-sm leading-relaxed">
                         {pillar.description}
                       </p>
                     </div>
@@ -849,13 +849,13 @@ export default function PPSHomeVerbatim() {
               {/* LAYER 3: Essential Elements */}
               <div className="bg-muted/50 border border-navy/5 rounded-2xl p-6 md:p-8">
                 <div className="text-center mb-5">
-                  <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
+                  <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                     The Behavioral Bedrock
                   </p>
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Essential Elements
                   </h3>
-                  <p className="text-foreground/80 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-foreground/80 text-body-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
                     The everyday human behaviors and conditions that influence
                     whether change actually sticks.
                   </p>
@@ -884,13 +884,13 @@ export default function PPSHomeVerbatim() {
             {/* LAYER 4: The Fortified Porch (the resulting structure) */}
             <div>
               <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 text-center shadow-xl border-b-4 border-gold">
-                <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
+                <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
                   The Result
                 </p>
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-white mb-4">
                   The Fortified Porch
                 </h3>
-                <p className="text-base md:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
+                <p className="text-body md:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
                   When P.A.T.H. guides the journey, the Pillars stand
                   load-bearing, and the Elements show up every day, your
                   organization becomes capable of{" "}
@@ -985,27 +985,27 @@ export default function PPSHomeVerbatim() {
             <div className="grid md:grid-cols-3 gap-6">
               <div className="bg-white rounded-xl p-6 border-l-4" style={{ borderLeftColor: "#8FB94A" }}>
                 <p className="font-poppins font-bold mb-2" style={{ color: "#8FB94A" }}>If yes</p>
-                <p className="text-navy/80 text-sm leading-relaxed">
+                <p className="text-navy/80 text-body-sm leading-relaxed">
                   We get to work with you on what it takes to author and shape
                   your next shift.
                 </p>
               </div>
               <div className="bg-white rounded-xl p-6 border-l-4 border-gold">
                 <p className="font-poppins font-bold text-gold mb-2">If not yet</p>
-                <p className="text-navy/80 text-sm leading-relaxed">
+                <p className="text-navy/80 text-body-sm leading-relaxed">
                   We tell you, and we provide a pathway to action.
                 </p>
               </div>
               <div className="bg-white rounded-xl p-6 border-l-4 border-raspberry">
                 <p className="font-poppins font-bold text-raspberry mb-2">If not us</p>
-                <p className="text-navy/80 text-sm leading-relaxed">
+                <p className="text-navy/80 text-body-sm leading-relaxed">
                   We tell you that, too, and connect you with the right
                   partner for your stage and needs.
                 </p>
               </div>
             </div>
 
-            <p className="text-center text-navy/80 text-base mt-10 max-w-2xl mx-auto">
+            <p className="text-center text-navy/80 text-body mt-10 max-w-2xl mx-auto">
               <strong className="text-navy">That&rsquo;s the Painted Porch promise:</strong>{" "}
               full transparency about what will work, and the truth about what
               it takes to make it happen.
@@ -1097,7 +1097,7 @@ export default function PPSHomeVerbatim() {
                 <h3 className={`text-xl md:text-2xl font-poppins font-bold mb-1 ${tw}`}>
                   {title}
                 </h3>
-                <p className="text-navy/80 text-sm leading-relaxed mb-3">
+                <p className="text-navy/80 text-body-sm leading-relaxed mb-3">
                   {desc}
                 </p>
                 <span className={`inline-flex items-center text-sm font-semibold ${tw}`}>

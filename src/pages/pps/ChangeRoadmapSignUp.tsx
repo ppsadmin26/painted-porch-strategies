@@ -89,7 +89,7 @@ export default function ChangeRoadmapSignUp() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6 break-words">
             Your <span className="text-gold">Change Readiness Roadmap</span> Planner
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lead sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
             A simple worksheet to map out your P.A.T.H. before your next big change initiative kicks off.
           </p>
         </div>
@@ -103,7 +103,7 @@ export default function ChangeRoadmapSignUp() {
             <h2 className="text-xl sm:text-3xl md:text-4xl font-poppins font-bold text-navy mb-4" style={{ overflowWrap: "anywhere", wordBreak: "break-word" }}>
               A must-use tool before your next change initiative.
             </h2>
-            <p className="text-lg text-charcoal mb-6">
+            <p className="text-lead text-charcoal mb-6">
               This is a <strong className="text-navy">must-use tool</strong> before you kick off any new change initiative to ensure your sponsors, leaders, team members, and clients have the information, tools, training, and communication they need to not just understand, but embrace, adopt, and successfully implement change that sticks.
             </p>
 
@@ -155,7 +155,7 @@ export default function ChangeRoadmapSignUp() {
           {/* Right: Form */}
           <div className="bg-white border-2 border-border rounded-2xl shadow-lg p-8 md:sticky md:top-8">
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">Send Me My Free Worksheet</h3>
-            <p className="text-sm text-muted-foreground mb-6">
+            <p className="text-body-sm text-muted-foreground mb-6">
               Drop your info below and we'll email it over right away.
             </p>
 
@@ -214,7 +214,7 @@ export default function ChangeRoadmapSignUp() {
                 {submitting ? "Sending..." : "Send Me My Free Worksheet"}
               </Button>
 
-              <p className="text-xs text-muted-foreground text-center">
+              <p className="text-caption text-muted-foreground text-center">
                 We won't send spam. Unsubscribe at any time.
               </p>
             </form>
