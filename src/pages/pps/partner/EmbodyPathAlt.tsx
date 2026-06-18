@@ -404,9 +404,9 @@ export default function EmbodyPathAlt() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
                 Investment
               </h2>
-              <p className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-2">
+              <div className="text-2xl md:text-3xl font-poppins font-bold text-navy mb-2">
                 Starting at $96,000
-              </p>
+              </div>
               <p className="text-body-sm text-muted-foreground">
                 Typically less than 1% of annual revenue. A strategic investment in permanent capacity, not a project support line item.
               </p>
