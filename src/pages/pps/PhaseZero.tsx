@@ -385,7 +385,7 @@ export default function PhaseZero() {
                   </div>
                 </div>
 
-                <p className="text-sm text-foreground leading-relaxed">
+                <p className="text-body-sm text-foreground">
                   {p.definition}
                 </p>
 
