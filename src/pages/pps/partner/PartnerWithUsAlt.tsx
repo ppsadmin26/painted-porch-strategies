@@ -17,6 +17,7 @@
 import {
   PartnerHeroSection,
   PathwayComparisonSection,
+  StartWhereYouAreSection,
   HowPeopleEnterSection,
   HowToChooseSection,
   BlueDoorCalloutSection,
