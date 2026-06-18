@@ -118,12 +118,37 @@ for (const file of walk(SRC)) {
   if (fileChanges === 0) continue;
   let final = out;
   if (needsImport && !/from\s+["']@\/components\/pps\/Eyebrow["']/.test(final)) {
-    // Insert after the first import line.
+    // Insert after the last top-level import — never inside a multi-line import.
+    // We walk imports as whole statements: an `import ... from "..."` line, or
+    // an `import {` block that spans until the matching `} from "..."` line.
     const lines = final.split("\n");
     let insertAt = 0;
-    for (let i = 0; i < lines.length; i++) {
-      if (/^import\s/.test(lines[i])) insertAt = i + 1;
-      else if (insertAt > 0) break;
+    let i = 0;
+    while (i < lines.length) {
+      const line = lines[i];
+      if (/^\s*import\b/.test(line)) {
+        // Single-line import ending in `from "..."` (with optional `;`)
+        if (/from\s+["'][^"']+["']\s*;?\s*$/.test(line)) {
+          insertAt = i + 1;
+          i++;
+          continue;
+        }
+        // Multi-line import — advance until we find the closing `} from "..."`
+        let j = i + 1;
+        while (j < lines.length && !/^\s*\}\s*from\s+["'][^"']+["']\s*;?\s*$/.test(lines[j])) {
+          j++;
+        }
+        insertAt = j + 1;
+        i = j + 1;
+        continue;
+      }
+      // Allow comments / blank lines between imports
+      if (insertAt > 0 && /^\s*(\/\/|\/\*|\*|$)/.test(line)) {
+        i++;
+        continue;
+      }
+      if (insertAt > 0) break;
+      i++;
     }
     lines.splice(insertAt, 0, `import { Eyebrow } from "@/components/pps/Eyebrow";`);
     final = lines.join("\n");
