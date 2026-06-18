@@ -28,19 +28,19 @@ export default function ProblemSectionAlt() {
       <div className="container max-w-5xl mx-auto px-6">
         {/* Opening rhythm, centered, generous spacing */}
         <div className="text-center max-w-4xl mx-auto mb-12 space-y-4" style={{ lineHeight: '1.9' }}>
-          <p className="text-xl md:text-2xl text-navy font-bold leading-relaxed">
+          <p className="text-pullquote text-navy font-bold !not-italic">
             There's a moment, often subtle, when a new idea begins to emerge in your organization.
           </p>
-          <p className="text-base md:text-lg text-foreground leading-relaxed">
+          <p className="text-lead text-foreground">
             Not a decision.<br />
             Not a plan.<br />
             Not a mandate.<br />
             But a question that starts with "What <span className="font-bold text-bluedoor">IF</span>?"
           </p>
-          <p className="text-base md:text-lg text-foreground leading-relaxed">
+          <p className="text-lead text-foreground">
             It's when the <span className="font-bold text-bluedoor">blue door</span> appears, the threshold between sensing that something must change and knowing what your organization can realistically take on. Before a direction becomes a commitment, you must first understand who your organization is becoming.
           </p>
-          <p className="text-base md:text-lg text-foreground font-semibold">
+          <p className="text-lead text-foreground font-semibold">
             Few leaders create enough space to author this intentionally
           </p>
         </div>
