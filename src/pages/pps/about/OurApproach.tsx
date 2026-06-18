@@ -257,7 +257,7 @@ export default function OurApproach() {
               </h3>
               <ul className="space-y-3">
                 {beliefs.map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-foreground leading-relaxed">
+                  <li key={b} className="text-body text-foreground flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-1" />
                     <span>{b}</span>
                   </li>
