@@ -456,7 +456,7 @@ export default function IgnitePathAlt() {
         backgroundImage={igniteCtaBg}
         overlayTone="teal"
         headline={<>What Sh<span className="text-gold font-bold">IF</span>t Will You Ignite First?</>}
-        description={<><strong>Your Phase Zero journey starts with one program, one assessment, or one decision to invest in your transformation capacity.</strong></>}
+        description={<>Your Phase Zero journey starts with one program, one assessment, or one decision to invest in your transformation capacity.</>}
         footnote="Not sure where to start? Take our P.A.T.H.finder quiz to get personalized recommendations based on your development priorities."
         actions={[
           { label: "Take Free P.A.T.H.finder Quiz", to: "/start-here", variant: "primary" },
