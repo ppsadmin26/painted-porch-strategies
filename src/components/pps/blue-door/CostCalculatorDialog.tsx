@@ -336,7 +336,7 @@ export default function CostCalculatorDialog({
           {/* Change type — multi-select with auto-inclusion rules */}
           <div className="space-y-2">
             <Label className="text-navy font-semibold">Change type</Label>
-            <p className="text-xs text-muted-foreground -mt-1">
+            <p className="text-caption text-muted-foreground -mt-1">
               Pick what applies. Tech auto-adds Operational. M&amp;A auto-adds Operational and Cultural. Regulatory auto-adds Operational and Tech.
             </p>
             <div className="grid grid-cols-2 gap-2">
