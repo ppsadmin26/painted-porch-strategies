@@ -32,6 +32,7 @@
     "rls:verify": "node scripts/verify-rls.mjs",
     "rls:update-snapshot": "node scripts/verify-rls.mjs --update",
     "brand:shift-if": "node scripts/validate-shift-if.mjs",
+    "brand:typography": "node scripts/validate-body-typography.mjs",
     "audit:anchors": "node scripts/audit-anchor-coverage.mjs"
   },
   "dependencies": {
