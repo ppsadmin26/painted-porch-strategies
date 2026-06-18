@@ -312,7 +312,7 @@ export default function PPSContact() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
                 Drop Us a Line
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-body text-muted-foreground">
                 You've got questions. We've got answers. Send us a message with the form below and we'll start a conversation on the porch.
               </p>
             </div>
@@ -320,7 +320,7 @@ export default function PPSContact() {
             {submitted ? (
               <div className="bg-lime/10 border border-lime/30 rounded-xl p-12 text-center">
                 <h3 className="text-xl md:text-2xl font-bold text-navy mb-3">Thank You!</h3>
-                <p className="text-foreground mb-2">
+                <p className="text-body text-foreground mb-2">
                   Your message has been received. We'll review it and get back to you soon.
                 </p>
                 <p className="text-body-sm text-muted-foreground">
@@ -333,8 +333,8 @@ export default function PPSContact() {
                 {quizPrefill && (
                   <div className="mb-6 flex items-start gap-3 rounded-lg border border-teal/30 bg-teal/5 p-4">
                     <div className="flex-1 text-sm text-navy">
-                      <p className="font-semibold">We saved your P.A.T.H.finder quiz context</p>
-                      <p className="text-foreground/80 mt-1">
+                      <p className="text-body font-semibold">We saved your P.A.T.H.finder quiz context</p>
+                      <p className="text-body text-foreground/80 mt-1">
                         Result: <span className="font-medium">{quizPrefill.resultHeadline}</span>. We won't include it unless you check the box below the message field.
                       </p>
                     </div>

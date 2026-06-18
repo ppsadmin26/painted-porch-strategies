@@ -217,7 +217,7 @@ export default function EQChangeLeaderMini() {
           </div>
 
           <div className="max-w-2xl mx-auto mb-10">
-            <p className="text-foreground mb-4 font-medium">
+            <p className="text-body text-foreground mb-4 font-medium">
               By understanding your own Emotional Intelligence, you can bring greater awareness to how you:
             </p>
             <ul className="space-y-3">
@@ -228,7 +228,7 @@ export default function EQChangeLeaderMini() {
                 "Cope with challenges and change",
                 "Use emotional information in effective and meaningful ways, to lead in all areas of your life",
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
+                <li key={i} className="text-body flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-raspberry flex-shrink-0 mt-0.5" />
                   <span className="text-foreground">{item}</span>
                 </li>
@@ -238,7 +238,7 @@ export default function EQChangeLeaderMini() {
 
           <div className="text-center">
             <Eyebrow variant="plain" tone="gold" as="p">Awareness leads to Action</Eyebrow>
-            <p className="text-foreground mb-4">
+            <p className="text-body text-foreground mb-4">
               Take the first steps in discovering how to effectively lead, influence, and have a positive impact by knowing your own Emotional Intelligence.
             </p>
           </div>
@@ -254,12 +254,12 @@ export default function EQChangeLeaderMini() {
           <div className="grid md:grid-cols-3 gap-8">
             {stats.map((s, i) => (
               <div key={i} className="bg-white rounded-xl p-8 shadow-md text-center border-t-4 border-raspberry">
-                <p className="text-4xl font-bold text-raspberry mb-3">{s.stat}</p>
+                <p className="text-body text-4xl font-bold text-raspberry mb-3">{s.stat}</p>
                 <p className="text-foreground text-body-sm leading-relaxed">{s.text}</p>
               </div>
             ))}
           </div>
-          <p className="text-center text-foreground mt-8 max-w-2xl mx-auto">
+          <p className="text-body text-center text-foreground mt-8 max-w-2xl mx-auto">
             People higher in EI communicate effectively, form strong relationships, and create powerful coping strategies.
           </p>
         </div>
@@ -274,7 +274,7 @@ export default function EQChangeLeaderMini() {
               The EQ-i 2.0 Model of Emotional Intelligence
             </h2>
             <p className="text-lead text-foreground font-medium">Skills for both Work and Life</p>
-            <p className="text-foreground max-w-3xl mx-auto mt-4 leading-relaxed">
+            <p className="text-body text-foreground max-w-3xl mx-auto mt-4 leading-relaxed">
               While there are several models of emotional intelligence in use today, the EQ-i 2.0 model is one of the most popular and one of the only validated and reliable measures of self-perceived EQ that ties directly to the skills and competencies needed to lead in all areas of your life, whether you're in an official leadership role or not.
             </p>
           </div>
@@ -323,10 +323,10 @@ export default function EQChangeLeaderMini() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                     {section.title}
                   </h3>
-                  <p className="text-foreground mb-4">{section.description}</p>
+                  <p className="text-body text-foreground mb-4">{section.description}</p>
                   <ul className="space-y-2 mb-3">
                     {section.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-2">
+                      <li key={j} className="text-body flex items-start gap-2">
                         <CheckCircle className="w-4 h-4 text-raspberry flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-foreground">{item}</span>
                       </li>
@@ -376,7 +376,7 @@ export default function EQChangeLeaderMini() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2">
               Discover Your E.Q.
             </h2>
-            <p className="text-foreground mt-3">
+            <p className="text-body text-foreground mt-3">
               There are six report options we offer, depending on your individual or organizational needs.
             </p>
             <div className="max-w-3xl mx-auto mt-8">

@@ -42,11 +42,11 @@ export function SocialProofSection() {
               className={`${testimonial.tier.bgColor} p-8 rounded-xl border-t-4 ${testimonial.tier.borderColor}`}
             >
               <Quote className={`w-8 h-8 ${testimonial.tier.textColor} mb-4 opacity-50`} />
-              <blockquote className="text-foreground italic mb-6 leading-relaxed">
+              <blockquote className="text-pullquote text-foreground italic mb-6 leading-relaxed">
                 "{testimonial.quote}"
               </blockquote>
               <div className="border-t border-border/30 pt-4">
-                <p className={`font-semibold ${testimonial.tier.textColor}`}>
+                <p className={`text-body font-semibold ${testimonial.tier.textColor}`}>
                  , {testimonial.attribution}
                 </p>
                 <p className="text-body-sm text-foreground/70 mt-1">

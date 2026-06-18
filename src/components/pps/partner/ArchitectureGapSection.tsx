@@ -105,7 +105,7 @@ export default function ArchitectureGapSection() {
                   </div>
                   <div>
                     <Eyebrow variant="plain" tone="muted" as="p">The Shift</Eyebrow>
-                    <p className={`text-base font-poppins font-semibold ${row.accentText}`}>
+                    <p className={`text-body font-poppins font-semibold ${row.accentText}`}>
                       {row.pillar}{" "}
                       <span className="text-muted-foreground font-normal">
                         · {row.pillarSub}
@@ -113,7 +113,7 @@ export default function ArchitectureGapSection() {
                     </p>
                   </div>
                 </div>
-                <p className="text-foreground leading-relaxed">{row.shift}</p>
+                <p className="text-body text-foreground leading-relaxed">{row.shift}</p>
               </div>
             </div>
           ))}

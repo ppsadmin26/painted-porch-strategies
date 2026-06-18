@@ -358,7 +358,7 @@ export default function EmbodyPathAlt() {
               const accent = accents[i % accents.length];
               return (
                 <div key={item.title} className={`bg-muted/40 p-6 rounded-xl border-t-4 ${accent.border}`}>
-                  <p className={`text-xs font-poppins font-semibold tracking-widest ${accent.text} uppercase mb-2`}>
+                  <p className={`text-caption font-poppins font-semibold tracking-widest ${accent.text} uppercase mb-2`}>
                     {String(i + 1).padStart(2, "0")}
                   </p>
                   <h3 className="text-xl font-poppins font-semibold text-navy mb-2">{item.title}</h3>

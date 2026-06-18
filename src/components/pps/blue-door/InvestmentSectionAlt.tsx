@@ -35,7 +35,7 @@ export default function InvestmentSectionAlt() {
             <span className="inline-block bg-bluedoor/10 text-bluedoor font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-3">
               The Blue Door
             </span>
-            <p className="font-poppins font-bold text-5xl text-bluedoor">{BLUE_DOOR_PRICE_DISPLAY}</p>
+            <p className="text-body font-poppins font-bold text-5xl text-bluedoor">{BLUE_DOOR_PRICE_DISPLAY}</p>
           </div>
         </Link>
         
@@ -45,15 +45,15 @@ export default function InvestmentSectionAlt() {
               What to Expect:
             </h3>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3">
+              <li className="text-body flex items-start gap-3">
                 <Clock className="w-5 h-5 text-strategic flex-shrink-0 mt-0.5" />
                 <span className="text-foreground">Less than 30 minutes to complete the diagnostic</span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="text-body flex items-start gap-3">
                 <Brain className="w-5 h-5 text-strategic flex-shrink-0 mt-0.5" />
                 <span className="text-foreground">72 business hours for strategic analysis</span>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="text-body flex items-start gap-3">
                 <Mail className="w-5 h-5 text-strategic flex-shrink-0 mt-0.5" />
                 <span className="text-foreground">Executive <span className="font-bold text-bluedoor">Blue Door</span> Brief delivered via email</span>
               </li>
@@ -66,7 +66,7 @@ export default function InvestmentSectionAlt() {
             </h3>
             <ul className="space-y-2">
               {includedItems.map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
+                <li key={index} className="text-body flex items-start gap-3">
                   <Check className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
                   <span className="text-foreground">{item}</span>
                 </li>

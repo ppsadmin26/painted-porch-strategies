@@ -73,12 +73,12 @@ export default function Unsubscribe() {
         </h1>
 
         {status === "loading" && (
-          <p className="text-muted-foreground">Validating your request...</p>
+          <p className="text-body text-muted-foreground">Validating your request...</p>
         )}
 
         {status === "valid" && (
           <>
-            <p className="text-muted-foreground">
+            <p className="text-body text-muted-foreground">
               Would you like to unsubscribe from emails from Painted Porch Strategies?
             </p>
             <button
@@ -92,25 +92,25 @@ export default function Unsubscribe() {
         )}
 
         {status === "already_unsubscribed" && (
-          <p className="text-muted-foreground">
+          <p className="text-body text-muted-foreground">
             You have already been unsubscribed from our emails.
           </p>
         )}
 
         {status === "success" && (
-          <p className="text-muted-foreground">
+          <p className="text-body text-muted-foreground">
             You have been successfully unsubscribed. You will no longer receive emails from us.
           </p>
         )}
 
         {status === "invalid" && (
-          <p className="text-destructive">
+          <p className="text-body text-destructive">
             This unsubscribe link is invalid or has expired.
           </p>
         )}
 
         {status === "error" && (
-          <p className="text-destructive">
+          <p className="text-body text-destructive">
             Something went wrong. Please try again later.
           </p>
         )}

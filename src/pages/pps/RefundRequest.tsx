@@ -113,7 +113,7 @@ export default function RefundRequest() {
               <h2 className="text-2xl md:text-3xl font-poppins font-bold text-pps-navy mb-3">
                 Request Received
               </h2>
-              <p className="text-charcoal leading-relaxed mb-6">
+              <p className="text-body text-charcoal leading-relaxed mb-6">
                 Thanks, {name.split(" ")[0] || "friend"}. We've received your
                 refund request and our team will begin processing it promptly.
                 Check your email for a confirmation, and we'll send another

@@ -171,7 +171,7 @@ export default function IgnitePathAlt() {
             <p className="text-lead text-foreground mb-6">
               <strong>If any of these spark a "Sh<span className="text-gold font-bold">IF</span>t Yeah!", then stepping onto the IGNITE P.A.T.H.way is just right for you.</strong>
             </p>
-            <p className="text-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-body text-foreground mb-8 max-w-2xl mx-auto">
               Take our free P.A.T.H.finder quiz to discover which programs fit your specific development priorities.
             </p>
             <Button asChild className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary transition-colors">
@@ -200,7 +200,7 @@ export default function IgnitePathAlt() {
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-4">
                 Self-Led Courses
               </h3>
-              <p className="text-foreground mb-6 leading-relaxed">
+              <p className="text-body text-foreground mb-6 leading-relaxed">
                 Transform how you lead, on your schedule. These courses teach you to architect change, communicate with clarity, build resilience, and develop teams where everyone shines.
               </p>
               <p className="text-body-sm font-semibold text-navy mb-2">What's Inside:</p>
@@ -239,7 +239,7 @@ export default function IgnitePathAlt() {
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-4">
                 Strategic Assessments
               </h3>
-              <p className="text-foreground mb-6 leading-relaxed">
+              <p className="text-body text-foreground mb-6 leading-relaxed">
                 Decode what drives your success. These assessments reveal your emotional intelligence, unique strengths, and the talents that make you extraordinary.
               </p>
               <p className="text-body-sm font-semibold text-navy mb-2">What's Inside:</p>
@@ -278,7 +278,7 @@ export default function IgnitePathAlt() {
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-4">
                 Masterclasses
               </h3>
-              <p className="text-foreground mb-6 leading-relaxed">
+              <p className="text-body text-foreground mb-6 leading-relaxed">
                 Strategic insights in under 90 minutes. These mini-workshops illuminate Phase Zero strategic architecture, transformation design, and conscious leadership, one small shift at a time.
               </p>
               <p className="text-body-sm font-semibold text-navy mb-3">What's Inside:</p>

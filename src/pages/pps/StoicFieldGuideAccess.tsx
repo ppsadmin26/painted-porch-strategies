@@ -88,10 +88,10 @@ export default function StoicFieldGuideAccess() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
             The <span className="text-gold italic">Stoic Leader's</span> Field Guide
           </h1>
-          <p className="text-white/90 max-w-2xl mx-auto mb-3">
+          <p className="text-body text-white/90 max-w-2xl mx-auto mb-3">
             Your free field guide is ready. Download it below and keep it close as you put these practices to work.
           </p>
-          <p className="text-white/80 max-w-2xl mx-auto mb-8">
+          <p className="text-body text-white/80 max-w-2xl mx-auto mb-8">
             We've also sent a copy to your inbox so you can come back to it any time.
           </p>
           <a href={FIELD_GUIDE_URL} target="_blank" rel="noopener noreferrer">
@@ -120,7 +120,7 @@ export default function StoicFieldGuideAccess() {
                   "A repeatable rhythm for thoughtful, grounded leadership",
                   "And more!",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
+                  <li key={item} className="text-body flex items-start gap-3">
                     <span className="w-2 h-2 rounded-full bg-gold mt-2 shrink-0" />
                     <span>{item}</span>
                   </li>
@@ -136,7 +136,7 @@ export default function StoicFieldGuideAccess() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Download Your Field Guide
               </h2>
-              <p className="text-foreground mb-6">
+              <p className="text-body text-foreground mb-6">
                 Save it, print it, mark it up. Use this field guide as your daily companion for leading with steadiness through change.
               </p>
               <a href={FIELD_GUIDE_URL} target="_blank" rel="noopener noreferrer">
@@ -155,7 +155,7 @@ export default function StoicFieldGuideAccess() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Ready to keep the momentum going?
           </h2>
-          <p className="text-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-foreground mb-8 max-w-2xl mx-auto">
             Explore more free tools, frameworks, and downloads to put what you've learned into action.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

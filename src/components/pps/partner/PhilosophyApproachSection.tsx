@@ -105,13 +105,13 @@ export function PhilosophyApproachSection({ showEncapsulationCard = true }: { sh
                 {principle.title}
               </h3>
             </div>
-            <p className="text-primary font-medium mb-4">
+            <p className="text-body text-primary font-medium mb-4">
               {principle.tagline}
             </p>
-            <p className="text-foreground leading-relaxed max-w-2xl mx-auto mb-4">
+            <p className="text-body text-foreground leading-relaxed max-w-2xl mx-auto mb-4">
               {principle.description}
             </p>
-            <p className="text-navy font-medium italic">
+            <p className="text-body text-navy font-medium italic">
               {principle.contrast}
             </p>
           </div>

@@ -77,7 +77,7 @@ export default function PilotTrainingWatch() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-4">
             <span className="text-primary italic">From Passenger to Pilot</span> Training Replay
           </h1>
-          <p className="text-foreground max-w-2xl mx-auto mb-3">
+          <p className="text-body text-foreground max-w-2xl mx-auto mb-3">
             Here's the replay of Sierra Ramm Cantrell's 'Grow on the Porch' training session.
           </p>
         </div>
@@ -104,7 +104,7 @@ export default function PilotTrainingWatch() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
             📄 Download Your Action Guide
           </h2>
-          <p className="text-foreground mb-6 max-w-xl mx-auto">
+          <p className="text-body text-foreground mb-6 max-w-xl mx-auto">
             Use this companion guide to design your new "flight plan" and put what you learned into action.
           </p>
           <a
@@ -125,7 +125,7 @@ export default function PilotTrainingWatch() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Ready to keep the momentum going?
           </h2>
-          <p className="text-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-body text-foreground mb-8 max-w-2xl mx-auto">
             Explore more free tools, frameworks, and downloads to put what you learned into action.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

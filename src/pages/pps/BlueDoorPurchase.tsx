@@ -129,7 +129,7 @@ export default function BlueDoorPurchase() {
               <span className="inline-block bg-bluedoor text-white font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-3">
                 Blue Door Strategic Organizational Appraisal
               </span>
-              <p className="font-poppins font-bold text-4xl text-bluedoor mb-4">{BLUE_DOOR_PRICE_DISPLAY}</p>
+              <p className="text-body font-poppins font-bold text-4xl text-bluedoor mb-4">{BLUE_DOOR_PRICE_DISPLAY}</p>
               
               <div className="flex items-center gap-2 text-foreground mb-4">
                 <Clock className="w-5 h-5 text-bluedoor" />
@@ -143,7 +143,7 @@ export default function BlueDoorPurchase() {
               </h3>
               <ul className="space-y-3">
                 {includedItems.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
+                  <li key={index} className="text-body flex items-start gap-3">
                     <Check className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
                     <span className="text-foreground text-sm">{item}</span>
                   </li>

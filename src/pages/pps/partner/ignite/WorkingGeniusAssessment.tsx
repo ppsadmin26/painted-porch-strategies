@@ -221,7 +221,7 @@ export default function WorkingGeniusAssessment() {
           </div>
 
           <div className="max-w-2xl mx-auto mb-10">
-            <p className="text-foreground mb-4 font-medium">
+            <p className="text-body text-foreground mb-4 font-medium">
               People who understand their genius:
             </p>
             <ul className="space-y-3">
@@ -232,7 +232,7 @@ export default function WorkingGeniusAssessment() {
                 "Get more done in less time, with less burnout",
                 "Build teams that fit together instead of fighting each other",
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-3">
+                <li key={i} className="text-body flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <span className="text-foreground">{item}</span>
                 </li>
@@ -268,12 +268,12 @@ export default function WorkingGeniusAssessment() {
           <div className="grid md:grid-cols-3 gap-8">
             {stats.map((s, i) => (
               <div key={i} className="bg-white rounded-xl p-8 shadow-md text-center border-t-4 border-primary">
-                <p className="text-4xl font-bold text-primary mb-3">{s.stat}</p>
+                <p className="text-body text-4xl font-bold text-primary mb-3">{s.stat}</p>
                 <p className="text-body-sm text-foreground">{s.text}</p>
               </div>
             ))}
           </div>
-          <p className="text-center text-foreground mt-8 max-w-2xl mx-auto">
+          <p className="text-body text-center text-foreground mt-8 max-w-2xl mx-auto">
             When people work in their genius, they don't just do more. They feel more alive doing it.
           </p>
         </div>
@@ -287,7 +287,7 @@ export default function WorkingGeniusAssessment() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-4">
               The 6 Types of Working Genius
             </h2>
-            <p className="text-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-body text-foreground max-w-3xl mx-auto leading-relaxed">
               Every project, big or small, moves through these six stages. You (and the people on your team) have natural gifts in two of them. Knowing which two changes everything - in how you show up, speak, and get shIFt done.
             </p>
           </div>
@@ -340,10 +340,10 @@ export default function WorkingGeniusAssessment() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                   {section.title}
                 </h3>
-                <p className="text-foreground mb-4">{section.description}</p>
+                <p className="text-body text-foreground mb-4">{section.description}</p>
                 <ul className="space-y-2 mb-3">
                   {section.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-2">
+                    <li key={j} className="text-body flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
                       <span className="text-sm text-foreground">{item}</span>
                     </li>
@@ -392,7 +392,7 @@ export default function WorkingGeniusAssessment() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2">
               Discover Your Working Genius
             </h2>
-            <p className="text-foreground mt-3 max-w-2xl mx-auto">
+            <p className="text-body text-foreground mt-3 max-w-2xl mx-auto">
               Two ways to take the assessment. One is just the report. The other adds a guide.
             </p>
           </div>
@@ -403,7 +403,7 @@ export default function WorkingGeniusAssessment() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                 Working Genius Assessment
               </h3>
-              <p className="text-4xl font-bold text-primary mb-4">$25</p>
+              <p className="text-body text-4xl font-bold text-primary mb-4">$25</p>
               <p className="text-body-sm font-medium text-foreground mb-4">
                 Take the assessment on your own.
               </p>
@@ -442,7 +442,7 @@ export default function WorkingGeniusAssessment() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                 Assessment + 1:1 Debrief
               </h3>
-              <p className="text-4xl font-bold text-primary mb-4">$297</p>
+              <p className="text-body text-4xl font-bold text-primary mb-4">$297</p>
               <p className="text-body-sm font-medium text-foreground mb-4">
                 Make the report real with a guide.
               </p>

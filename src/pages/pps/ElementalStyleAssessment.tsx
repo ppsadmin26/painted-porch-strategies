@@ -102,7 +102,7 @@ export default function ElementalStyleAssessment() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3">
               Take the Assessment
             </h2>
-            <p className="text-foreground">
+            <p className="text-body text-foreground">
               Takes less than 5 minutes. Your answers are private.
             </p>
           </div>

@@ -33,7 +33,7 @@ export function PartnerIncludedSection() {
           </h3>
           <ul className="space-y-4">
             {includedItems.map((item, index) => (
-              <li key={index} className="flex items-start gap-3">
+              <li key={index} className="text-body flex items-start gap-3">
                 <item.icon className="w-6 h-6 text-lime flex-shrink-0" />
                 <div>
                   <span className="font-semibold text-navy">{item.title}</span>

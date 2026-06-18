@@ -174,7 +174,7 @@ export function CourseLaunchListDialog({
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-2">
               You're on the List!
             </h3>
-            <p className="text-foreground/80">
+            <p className="text-body text-foreground/80">
               We'll email you as soon as <strong>{courseName}</strong> is
               available on our new course platform.
             </p>

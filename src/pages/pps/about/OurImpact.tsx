@@ -156,11 +156,11 @@ export default function OurImpact() {
                 key={index}
                 className={`bg-white p-8 rounded-xl border-l-4 ${testimonial.color}`}
               >
-                <blockquote className="text-foreground leading-relaxed mb-6 italic">
+                <blockquote className="text-pullquote text-foreground leading-relaxed mb-6 italic">
                   "{testimonial.quote}"
                 </blockquote>
                 <div>
-                  <p className="font-semibold text-navy">{testimonial.author}</p>
+                  <p className="text-body font-semibold text-navy">{testimonial.author}</p>
                   <p className="text-body-sm text-muted-foreground">{testimonial.company}</p>
                 </div>
               </div>
@@ -190,7 +190,7 @@ export default function OurImpact() {
           </p>
           <div ref={counterRef} className="mt-12 py-10 px-6 rounded-2xl bg-lime/10 border border-lime/20">
             <Eyebrow variant="plain" tone="lime" as="p">Total Given to Date</Eyebrow>
-            <p className="text-5xl md:text-6xl font-bold text-lime tabular-nums">
+            <p className="text-body text-5xl md:text-6xl font-bold text-lime tabular-nums">
               ${totalGiven.toLocaleString()}
             </p>
           </div>

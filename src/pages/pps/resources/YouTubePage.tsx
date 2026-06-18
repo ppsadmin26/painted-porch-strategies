@@ -235,7 +235,7 @@ export default function YouTubePage() {
             <div className="text-center py-12 text-muted-foreground">Loading videos...</div>
           ) : filtered.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-muted-foreground mb-2">
+              <p className="text-body text-muted-foreground mb-2">
                 {videos.length === 0 ? "No videos yet, check back soon!" : "No videos match your filters."}
               </p>
               {hasActiveFilters && (

@@ -39,16 +39,16 @@ export function HowPeopleEnterSection() {
               Progression, Not Prescription
             </h3>
           </div>
-          <p className="text-primary font-medium mb-4">
+          <p className="text-body text-primary font-medium mb-4">
             Your journey through the Porch doesn't need to follow a predetermined sequence.
           </p>
-          <p className="text-foreground leading-relaxed max-w-2xl mx-auto mb-4">
+          <p className="text-body text-foreground leading-relaxed max-w-2xl mx-auto mb-4">
             You may begin with a course, an assessment, a workshop, a strategic conversation, or a long-term partnership.
             <br /><br />
             The right path is determined by your goals, your context, and what you're ready to explore next.
           </p>
 
-          <p className="text-navy font-medium italic">
+          <p className="text-body text-navy font-medium italic">
             Your starting point is yours to choose.&nbsp;What you do next is yours to own.
           </p>
         </div>

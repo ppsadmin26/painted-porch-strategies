@@ -465,7 +465,7 @@ export default function CostCalculatorDialog({
         <div className="space-y-3 border-t pt-4">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <div className="p-3 rounded-lg bg-navy/5 border border-navy/15">
-              <p className="text-[0.65rem] uppercase tracking-wider text-navy/70 font-poppins font-semibold">
+              <p className="text-body text-[0.65rem] uppercase tracking-wider text-navy/70 font-poppins font-semibold">
                 Planned investment
               </p>
               <div className="text-xl font-bold text-navy mt-1 tabular-nums">
@@ -473,7 +473,7 @@ export default function CostCalculatorDialog({
               </div>
             </div>
             <div className="p-3 rounded-lg bg-gold/10 border border-gold/30">
-              <p className="text-[0.65rem] uppercase tracking-wider text-gold font-poppins font-semibold">
+              <p className="text-body text-[0.65rem] uppercase tracking-wider text-gold font-poppins font-semibold">
                 Likely overrun
               </p>
               <div className="text-xl font-bold text-gold mt-1 tabular-nums">
@@ -481,7 +481,7 @@ export default function CostCalculatorDialog({
               </div>
             </div>
             <div className="p-3 rounded-lg bg-raspberry/10 border border-raspberry/30">
-              <p className="text-[0.65rem] uppercase tracking-wider text-raspberry font-poppins font-semibold">
+              <p className="text-body text-[0.65rem] uppercase tracking-wider text-raspberry font-poppins font-semibold">
                 Failure write-off
               </p>
               <div className="text-xl font-bold text-raspberry mt-1 tabular-nums">
@@ -519,35 +519,35 @@ export default function CostCalculatorDialog({
               How we calculated this
             </summary>
             <div className="mt-2 space-y-2 leading-relaxed">
-              <p>
+              <p className="text-body">
                 <span className="font-semibold">Planned investment</span> = team size
                 × (loaded salary ÷ 12) × {Math.round(PROJECT_TIME_ALLOCATION * 100)}%
                 allocation + tech/license + (optional) outside consultants, over the
                 selected duration.
               </p>
-              <p>
+              <p className="text-body">
                 <span className="font-semibold">Likely overrun</span> = planned ×
                 effective overrun rate ({Math.round((calc.effOverrun - 0.1) * 100)}–
                 {Math.round((calc.effOverrun + 0.1) * 100)}%), the worst-case across{" "}
                 {calc.ind.label} and the selected change types (
                 {activeTypes.map((k) => CHANGE_TYPES[k].shortLabel).join(", ")}).
               </p>
-              <p>
+              <p className="text-body">
                 <span className="font-semibold">Failure write-off</span> = planned ×
                 effective failure rate ({Math.round(calc.effFailure * 100)}%), same
                 worst-case logic.
               </p>
-              <p>
+              <p className="text-body">
                 <span className="font-semibold">Blue Door impact</span> = (overrun +
                 failure) × {Math.round(PHASE_ZERO_IMPACT.min * 100)}–
                 {Math.round(PHASE_ZERO_IMPACT.max * 100)}% (McKinsey + BCG research
                 on Phase Zero exposure reduction).
               </p>
               <div className="pt-2">
-                <p className="font-semibold mb-1">Industry sources:</p>
+                <p className="text-body font-semibold mb-1">Industry sources:</p>
                 <ul className="space-y-1 pl-3">
                   {calc.ind.sources.map((s, i) => (
-                    <li key={i} className="flex items-start gap-1.5">
+                    <li key={i} className="text-body flex items-start gap-1.5">
                       <span>•</span>
                       <span>
                         {s.label}{" "}
@@ -643,7 +643,7 @@ export default function CostCalculatorDialog({
                   <>Send me my results</>
                 )}
               </Button>
-              <p className="text-[0.65rem] text-muted-foreground">
+              <p className="text-body text-[0.65rem] text-muted-foreground">
                 We'll send your results plus occasional Phase Zero insights. Unsubscribe anytime.
               </p>
             </form>

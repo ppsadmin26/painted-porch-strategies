@@ -333,7 +333,7 @@ export default function PPSBlog() {
                 Insights on Change, Leadership & Transformation
               </h1>
               <div className="text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl">
-                <p>Practical wisdom on building change-ready organizations. Stoic principles applied to modern business challenges.</p>
+                <p className="text-body">Practical wisdom on building change-ready organizations. Stoic principles applied to modern business challenges.</p>
               </div>
             </div>
           </div>

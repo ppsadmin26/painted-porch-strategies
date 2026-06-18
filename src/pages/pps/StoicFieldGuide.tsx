@@ -56,7 +56,7 @@ export default function StoicFieldGuide() {
               <p className="text-lead text-white/80 italic font-poppins mb-6">
                 Ancient Grit for the Modern Grind
               </p>
-              <p className="text-white/85 max-w-xl mx-auto md:mx-0 mb-8">
+              <p className="text-body text-white/85 max-w-xl mx-auto md:mx-0 mb-8">
                 An introduction to applying timeless Stoic principles in modern leadership. Daily practices, reflection prompts, and practical tools to lead with clarity, courage, and calm.
               </p>
               <a href="#get-access">
@@ -103,7 +103,7 @@ export default function StoicFieldGuide() {
                   "Build a simple, repeatable rhythm for thoughtful, grounded leadership",
                   "And more!",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
+                  <li key={item} className="text-body flex items-start gap-3">
                     <span className="w-2 h-2 rounded-full bg-gold mt-2 shrink-0" />
                     <span>{item}</span>
                   </li>

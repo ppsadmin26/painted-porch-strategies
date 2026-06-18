@@ -111,7 +111,7 @@ export default function DiscoverSectionAlt() {
             {compassItems.map((item, index) => (
               <div key={index} className="flex gap-3 items-start">
                 <Check className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
-                <p className="text-foreground">{item}</p>
+                <p className="text-body text-foreground">{item}</p>
               </div>
             ))}
           </div>

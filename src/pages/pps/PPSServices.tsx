@@ -161,7 +161,7 @@ export default function PPSServices() {
                       <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-4">
                         {service.title}
                       </h3>
-                      <p className="text-charcoal leading-relaxed mb-6">{service.description}</p>
+                      <p className="text-body text-charcoal leading-relaxed mb-6">{service.description}</p>
                       <Button asChild className="bg-pps-teal hover:bg-pps-teal/90 text-white font-poppins font-semibold rounded-lg">
                         <Link to={service.cta.href}>
                           {service.cta.label} <ArrowRight className="ml-2 h-4 w-4" />

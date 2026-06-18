@@ -61,13 +61,13 @@ export function PartnerHeroSection() {
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              <p className="mb-4">
+              <p className="text-body mb-4">
                 Whether you're exploring change for yourself, leading a team through uncertainty, or shaping the future of an entire organization, where you begin matters.
               </p>
-              <p className="mb-4">
+              <p className="text-body mb-4">
                 The challenge isn't finding another framework, course, workshop, or advisor.&nbsp;It's identifying the next step that makes the most sense for where you are today.
               </p>
-              <p className="mb-4">
+              <p className="text-body mb-4">
                 Our P.A.T.H.ways help you identify the right starting point.
               </p>
               <p className="text-white/80 italic text-body">

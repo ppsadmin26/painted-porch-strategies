@@ -71,7 +71,7 @@ export function HowToChooseSection() {
               </h3>
               <ul className="space-y-3 mb-6 flex-1">
                 {card.conditions.map((condition, i) => (
-                  <li key={i} className="flex items-start gap-2">
+                  <li key={i} className="text-body flex items-start gap-2">
                     <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
                     <span className="text-sm text-foreground">{condition}</span>
                   </li>
@@ -89,7 +89,7 @@ export function HowToChooseSection() {
 
         {/* P.A.T.H.finder Quiz CTA */}
         <div className="flex flex-col items-center mt-12 px-4">
-          <p className="text-foreground mb-4 text-center">
+          <p className="text-body text-foreground mb-4 text-center">
             At a fork in your P.A.T.H.way decision? Take our P.A.T.H.finder quiz to determine which direction is best based on your needs.
           </p>
           <Button
@@ -115,7 +115,7 @@ export function BlueDoorCalloutSection() {
               Exploring on Behalf of Your Team or Organization?
             </h3>
           </div>
-          <p className="text-foreground mb-6">
+          <p className="text-body text-foreground mb-6">
             If you're responsible for leading change, setting direction, or navigating a major decision, the <span className="text-bluedoor font-bold">Blue Door</span> often provides the clearest place to begin.&nbsp;It offers a structured appraisal of your organization's current reality and reveals which opportunities, challenges, and priorities deserve attention first.
             <br /><br />
             For many leaders, it becomes the bridge between possibility and action.

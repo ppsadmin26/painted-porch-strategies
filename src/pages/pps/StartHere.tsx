@@ -109,7 +109,7 @@ export default function StartHere() {
                   <h4 className="text-base md:text-lg font-semibold text-navy mb-3">Ideal for:</h4>
                   <ul className="space-y-2 mb-6">
                     {details.idealFor.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2">
+                      <li key={i} className="text-body flex items-start gap-2">
                         <CheckCircle className={`w-4 h-4 ${tier.textColor} flex-shrink-0 mt-0.5`} />
                         <span className="text-sm text-foreground">{item}</span>
                       </li>

@@ -120,7 +120,7 @@ export default function RadicalMindfulness() {
           <h1 className={`text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6 transition-all duration-700 ease-out delay-150 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             Radical Mindfulness
           </h1>
-          <p className={`text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed mb-8 transition-all duration-700 ease-out delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+          <p className={`text-lead md:text-lead text-white/90 max-w-2xl leading-relaxed mb-8 transition-all duration-700 ease-out delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
             Tap into your <strong>inner power</strong> to <strong>take control of your emotions</strong>, find{" "}
             <strong>peace among the obstacles</strong> in life and work, and <strong>build up emotional resilience</strong>{" "}
             to what's outside of your control.
@@ -209,7 +209,7 @@ export default function RadicalMindfulness() {
           <AnimatedSection>
             <div className="bg-white/5 rounded-2xl border border-white/10 p-8 mb-12">
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-gold mb-4">Watch. Reflect. Discuss.</h3>
-              <p className="text-white/80 leading-relaxed">
+              <p className="text-body text-white/80 leading-relaxed">
                 We believe that <strong>real learning and transformation is not a spectator sport</strong>. Through per-lesson discussion boards and a <strong>Private Community</strong>, <strong>PLUS Monthly, Live Group Video Calls</strong> <em>(optional, add-on)</em>, you can connect with Sierra and your fellow "Mindful Radicals" to share your takeaways, insights, ah-has, and more to shift from knowing to <strong>doing</strong> and <strong>becoming</strong>.
               </p>
             </div>
@@ -257,7 +257,7 @@ export default function RadicalMindfulness() {
                       <Icon className="h-10 w-10 text-pps-teal" />
                     </div>
                     <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-4">{d.title}</h3>
-                    <p className="text-charcoal leading-relaxed">{d.description}</p>
+                    <p className="text-body text-charcoal leading-relaxed">{d.description}</p>
                   </div>
                 );
               })}
@@ -284,7 +284,7 @@ export default function RadicalMindfulness() {
                   <p className="text-pps-gold font-poppins font-semibold text-body-sm mb-6">
                     Sierra Ramm Cantrell · Chief Joy Officer
                   </p>
-                  <p className="text-charcoal leading-relaxed mb-6">
+                  <p className="text-body text-charcoal leading-relaxed mb-6">
                     Middle of the road is for painted lines…I'm that zany, madcap person in your life who makes animal noises, breaks out into song, and will help you balance your energy. I've taught yoga for 10+ years, traveled all 50 states, and as an early childhood development guide and mom, my true life purpose is to help everyone I cross paths with lead a more joyful, authentic life.
                   </p>
                   <Button asChild variant="outline" className="border-pps-teal text-pps-teal hover:bg-pps-teal hover:text-white font-poppins font-semibold rounded-lg">
@@ -321,7 +321,7 @@ export default function RadicalMindfulness() {
                     </span>
                   )}
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-1">{tier.name}</h3>
-                  <p className="text-4xl font-poppins font-bold text-pps-navy mb-2">{tier.price}</p>
+                  <p className="text-body text-4xl font-poppins font-bold text-pps-navy mb-2">{tier.price}</p>
                   <p className="text-body-sm text-charcoal mb-6">{tier.subtitle}</p>
                   <ul className="space-y-3 mb-8">
                     {tier.features.map((f) => (
@@ -351,7 +351,7 @@ export default function RadicalMindfulness() {
           {!isLive && (
             <AnimatedSection>
               <div className="mt-10 max-w-3xl mx-auto text-center bg-pps-teal/5 border border-pps-teal/20 rounded-2xl p-6 md:p-8">
-                <p className="text-charcoal leading-relaxed mb-5">
+                <p className="text-body text-charcoal leading-relaxed mb-5">
                   Our courses will be re-launching soon as we move our learning and community to a new course platform. If you'd like to be the first to know when <strong>Radical Mindfulness</strong> is ready, join our launch list.
                 </p>
                 <Button
@@ -381,7 +381,7 @@ export default function RadicalMindfulness() {
         <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-4">A Virtuous Cycle</h3>
-            <p className="text-charcoal leading-relaxed mb-4">
+            <p className="text-body text-charcoal leading-relaxed mb-4">
               Painted Porch Strategies was created to model the Stoic principles of <em>Reason, Logic, Purpose, and Virtue</em>.
               Since we intend to live by the Stoic philosopher Seneca's advice of "<em>works not words</em>", we believe that in order{" "}
               <strong>to do <em>well</em></strong>, we must also <strong>do <em>good</em></strong>.

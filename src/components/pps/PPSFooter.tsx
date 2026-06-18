@@ -93,7 +93,7 @@ export default function PPSFooter() {
             <h4 className="text-base md:text-lg font-poppins font-semibold text-gold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {visibleQuick.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="text-body">
                   <Link to={link.href} className="text-sm text-white/80 hover:text-lime transition-colors">
                     {link.label}
                   </Link>
@@ -107,7 +107,7 @@ export default function PPSFooter() {
             <h4 className="text-base md:text-lg font-poppins font-semibold text-gold mb-4">P.A.T.H.ways</h4>
             <ul className="space-y-2">
               {visiblePathways.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="text-body">
                   <Link to={link.href} className="text-sm text-white/80 hover:text-lime transition-colors">
                     {link.label}
                   </Link>
@@ -192,11 +192,11 @@ export default function PPSFooter() {
         {/* Legal Links */}
         <div className="mt-6 pt-6 text-center">
           <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/70">
-            <li><Link to="/terms?tab=terms" className="hover:text-lime transition-colors">Terms</Link></li>
-            <li aria-hidden className="text-white/30">·</li>
-            <li><Link to="/terms?tab=privacy" className="hover:text-lime transition-colors">Privacy</Link></li>
-            <li aria-hidden className="text-white/30">·</li>
-            <li><Link to="/terms?tab=cookies" className="hover:text-lime transition-colors">Cookies</Link></li>
+            <li className="text-body"><Link to="/terms?tab=terms" className="hover:text-lime transition-colors">Terms</Link></li>
+            <li aria-hidden className="text-body text-white/30">·</li>
+            <li className="text-body"><Link to="/terms?tab=privacy" className="hover:text-lime transition-colors">Privacy</Link></li>
+            <li aria-hidden className="text-body text-white/30">·</li>
+            <li className="text-body"><Link to="/terms?tab=cookies" className="hover:text-lime transition-colors">Cookies</Link></li>
           </ul>
         </div>
 

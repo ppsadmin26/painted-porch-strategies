@@ -82,25 +82,25 @@ export default function WFHSignUp() {
 
             <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-4">You'll learn how to:</h3>
             <ul className="space-y-4">
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Home className="w-6 h-6 text-teal flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   <strong className="text-navy">Navigate</strong> your new <strong className="text-navy">Remote Work Dynamic</strong>
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Sparkles className="w-6 h-6 text-lime-green flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   Successfully <strong className="text-navy">manage your workday</strong> with best practices from a 15-year remote work expert
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Users className="w-6 h-6 text-purple flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   Discover <strong className="text-navy">creative ways to stay connected</strong> and aligned with your colleagues
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Video className="w-6 h-6 text-raspberry flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   <strong className="text-navy">Overcome "Zoom Fatigue"</strong>

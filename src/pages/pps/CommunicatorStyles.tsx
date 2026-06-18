@@ -49,7 +49,7 @@ export default function CommunicatorStyles() {
             <br />
             Training Replay
           </h1>
-          <p className="text-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-body text-foreground max-w-2xl mx-auto mb-8">
             A training session led by Painted Porch Strategies' "M.C." (Master of Communication), Rob Hunter, on how to create stronger connections and communicate with impact by understanding the 6 styles of Communicators in your life and work.
           </p>
           <a href="#get-access">
@@ -82,10 +82,10 @@ export default function CommunicatorStyles() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             We all struggle at times to be seen, heard, and connect with others.
           </h2>
-          <p className="text-foreground mb-4">
+          <p className="text-body text-foreground mb-4">
             Even if you're an introvert, your ideas, your perspectives, and your voice matter. While not all of us want to be on a stage sharing our ideas or giving a presentation, we should each have the tools to be heard, to have a seat at the table, even if it's simply in conversation or collaboration with a friend, family member, or colleague.
           </p>
-          <p className="text-foreground">
+          <p className="text-body text-foreground">
             Join Painted Porch's Master of Communication ("M.C."), Rob Hunter, for an insightful and empowering training session focused on showing you ways to understand your "audience" and create better connections and clarity in your communication.
           </p>
         </div>
@@ -101,19 +101,19 @@ export default function CommunicatorStyles() {
                 During this training session, you will learn how...
               </h2>
               <ul className="space-y-4 text-foreground">
-                <li className="flex items-start gap-3">
+                <li className="text-body flex items-start gap-3">
                   <span className="text-xl leading-none mt-0.5">💡</span>
                   <span>Each of us communicates (speaks, listens, asks) differently</span>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="text-body flex items-start gap-3">
                   <span className="text-xl leading-none mt-0.5">☝</span>
                   <span>To spot each person's dominant Communicator Style (including your own!)</span>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="text-body flex items-start gap-3">
                   <span className="text-xl leading-none mt-0.5">🏁</span>
                   <span>Simple ways you can start to know your "audience" and craft communication that is heard and understood</span>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="text-body flex items-start gap-3">
                   <span className="text-xl leading-none mt-0.5">✨</span>
                   <span>...and more!</span>
                 </li>

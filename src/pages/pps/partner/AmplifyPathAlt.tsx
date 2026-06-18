@@ -318,7 +318,7 @@ export default function AmplifyPathAlt() {
                 <p className="text-caption font-semibold text-navy uppercase tracking-wide mb-2">Perfect If You're:</p>
                 <ul className="space-y-2 mb-4">
                   {format.perfectFor.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
+                    <li key={i} className="text-body flex items-start gap-2">
                       <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
                       <span className="text-caption text-foreground">{item}</span>
                     </li>
@@ -371,7 +371,7 @@ export default function AmplifyPathAlt() {
                     <div key={i} className="bg-white rounded-xl shadow-sm border border-navy/10 overflow-hidden">
                       {skip ? (
                         <div className="p-4 bg-gold/5 border-l-4 border-gold">
-                          <p className="text-[11px] font-poppins font-semibold uppercase tracking-wider text-gold mb-2">Cost of Skipping Phase Zero</p>
+                          <p className="text-body text-[11px] font-poppins font-semibold uppercase tracking-wider text-gold mb-2">Cost of Skipping Phase Zero</p>
                           <div className="flex items-start gap-2 text-sm text-foreground">
                             <AlertTriangle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
                             <div className="flex-1">
@@ -390,8 +390,8 @@ export default function AmplifyPathAlt() {
                                     </button>
                                   </TooltipTrigger>
                                   <TooltipContent side="bottom" sideOffset={6} collisionPadding={12} className="max-w-[90vw] sm:max-w-xs text-xs">
-                                    <p className="font-semibold mb-1">Source</p>
-                                    <p className="mb-1">{skip.source}</p>
+                                    <p className="text-body font-semibold mb-1">Source</p>
+                                    <p className="text-body mb-1">{skip.source}</p>
                                     <a
                                       href={skip.sourceUrl}
                                       target="_blank"
@@ -409,7 +409,7 @@ export default function AmplifyPathAlt() {
                       ) : null}
                       {whatAmplifyEliminates[i] ? (
                         <div className="p-4 bg-raspberry/5 border-l-4 border-raspberry">
-                          <p className="text-[11px] font-poppins font-semibold uppercase tracking-wider text-raspberry mb-2">What AMPLIFY Eliminates</p>
+                          <p className="text-body text-[11px] font-poppins font-semibold uppercase tracking-wider text-raspberry mb-2">What AMPLIFY Eliminates</p>
                           <div className="flex items-start gap-2 text-sm text-foreground">
                             <span className="text-raspberry font-bold">✗</span>
                             <span>{whatAmplifyEliminates[i]}</span>
@@ -418,7 +418,7 @@ export default function AmplifyPathAlt() {
                       ) : null}
                       {whatAmplifyEnables[i] ? (
                         <div className="p-4 bg-lime/5 border-l-4 border-lime">
-                          <p className="text-[11px] font-poppins font-semibold uppercase tracking-wider text-lime mb-2">What AMPLIFY Enables</p>
+                          <p className="text-body text-[11px] font-poppins font-semibold uppercase tracking-wider text-lime mb-2">What AMPLIFY Enables</p>
                           <div className="flex items-start gap-2 text-sm text-foreground">
                             <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
                             <span>{whatAmplifyEnables[i]}</span>
@@ -471,8 +471,8 @@ export default function AmplifyPathAlt() {
                                         </button>
                                       </TooltipTrigger>
                                       <TooltipContent side="top" className="max-w-xs text-xs">
-                                        <p className="font-semibold mb-1">Source</p>
-                                        <p className="mb-1">{skip.source}</p>
+                                        <p className="text-body font-semibold mb-1">Source</p>
+                                        <p className="text-body mb-1">{skip.source}</p>
                                         <a
                                           href={skip.sourceUrl}
                                           target="_blank"
@@ -566,19 +566,19 @@ export default function AmplifyPathAlt() {
                 <h4 className="text-base md:text-lg font-poppins font-bold text-gold">Choose TEAM WORKSHOP if:</h4>
               </div>
               <ul className="space-y-3 flex-grow">
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">You need rapid team alignment (1-3 days)</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">You have specific topic to explore intensively</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">Your team needs shared language/framework</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">You want to test Phase Zero concepts before deeper commitment</span>
                 </li>
@@ -594,19 +594,19 @@ export default function AmplifyPathAlt() {
                 <h4 className="text-base md:text-lg font-poppins font-bold text-lime">Choose STRATEGIC SPRINT if:</h4>
               </div>
               <ul className="space-y-3 flex-grow">
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">You have major transformation ahead (next 6-12 months)</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">You need Phase Zero architecture before implementation</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">You want ongoing partnership over 90 days</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">Your team needs more than single workshop</span>
                 </li>
@@ -622,19 +622,19 @@ export default function AmplifyPathAlt() {
                 <h4 className="text-base md:text-lg font-poppins font-bold text-teal">Choose LEADERSHIP LAB if:</h4>
               </div>
               <ul className="space-y-3 flex-grow">
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">You're an individual leader (not bringing your team)</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">You want peer learning and accountability</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">You're exploring Phase Zero for yourself first</span>
                 </li>
-                <li className="flex items-start gap-2">
+                <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-teal flex-shrink-0 mt-0.5" />
                   <span className="text-body-sm text-foreground">You want structured development over 6-12 weeks</span>
                 </li>
@@ -647,7 +647,7 @@ export default function AmplifyPathAlt() {
 
           <div className="text-center mt-12 bg-white p-6 rounded-xl">
             <p className="text-lead text-navy font-semibold mb-4">Not Sure?</p>
-            <p className="text-foreground mb-6">
+            <p className="text-body text-foreground mb-6">
               Contact us to discuss which format aligns with your needs, timeline, and transformation ambition.
             </p>
             <Link to="/contact?scope=organization&interest=workshops&message=I'm interested in AMPLIFY workshops for our team.">
@@ -774,7 +774,7 @@ export default function AmplifyPathAlt() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl text-center">
               <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4">For Organizations & Teams</h3>
-              <p className="text-white/90 mb-6">Start with strategic clarity.</p>
+              <p className="text-body text-white/90 mb-6">Start with strategic clarity.</p>
               <Button asChild className="bg-bluedoor hover:bg-bluedoor/90 text-white w-full mb-4">
                   <Link to="/blue-door">Start Your Organizational Appraisal</Link>
                 </Button>
@@ -785,7 +785,7 @@ export default function AmplifyPathAlt() {
 
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl text-center">
               <h3 className="text-xl md:text-2xl font-poppins font-bold mb-4">For Individual Leaders</h3>
-              <p className="text-white/90 mb-6">Have questions about a Leadership Lab?</p>
+              <p className="text-body text-white/90 mb-6">Have questions about a Leadership Lab?</p>
               <Button asChild className="bg-teal hover:bg-teal/90 text-white w-full mb-4">
                   <Link to="/contact?scope=Yourself&interest=leadership-lab&message=I have questions about Leadership Labs and would like to learn more.">Inquire About Leadership Labs</Link>
                 </Button>
@@ -796,7 +796,7 @@ export default function AmplifyPathAlt() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-white/90 mb-4">Have Questions First?</p>
+            <p className="text-body text-white/90 mb-4">Have Questions First?</p>
             <Link to="/contact?scope=organization&interest=organizational-advisory&message=I'm interested in AMPLIFY partnership options.">
               <Button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#00006B] transition-colors">
                 Contact Us

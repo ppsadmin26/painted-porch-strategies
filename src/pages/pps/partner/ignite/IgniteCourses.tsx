@@ -131,7 +131,7 @@ export default function IgniteCourses() {
                     {course.title}
                   </h2>
                   <p className="text-body-sm font-semibold text-foreground/80 mb-4">{course.tagline}</p>
-                  <p className="text-foreground mb-6 leading-relaxed flex-grow">{course.description}</p>
+                  <p className="text-body text-foreground mb-6 leading-relaxed flex-grow">{course.description}</p>
                   <div className="mt-auto">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
                       <Clock className="w-4 h-4" />

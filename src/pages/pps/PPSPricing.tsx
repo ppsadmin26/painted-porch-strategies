@@ -95,7 +95,7 @@ export default function PPSPricing() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-1">
                     {tier.name}
                   </h3>
-                  <p className={`text-sm font-medium ${tier.textColor} mb-4`}>
+                  <p className={`text-body-sm font-medium ${tier.textColor} mb-4`}>
                     {tier.tagline}
                   </p>
                   <p className="text-foreground mb-6 text-body-sm leading-relaxed">
@@ -103,7 +103,7 @@ export default function PPSPricing() {
                   </p>
                   <ul className="space-y-3 mb-8">
                     {features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2">
+                      <li key={i} className="text-body flex items-start gap-2">
                         <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-foreground">{feature}</span>
                       </li>
@@ -127,21 +127,21 @@ export default function PPSPricing() {
               What's Included in Every Engagement
             </h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
+              <li className="text-body flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
                 <div>
                   <span className="font-semibold text-navy">Clear Scope & Timeline</span>
                   <p className="text-body-sm text-foreground">Detailed proposal with deliverables and milestones</p>
                 </div>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="text-body flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
                 <div>
                   <span className="font-semibold text-navy">Stoic Principles Foundation</span>
                   <p className="text-body-sm text-foreground">All work grounded in reason, logic, purpose, and virtue</p>
                 </div>
               </li>
-              <li className="flex items-start gap-3">
+              <li className="text-body flex items-start gap-3">
                 <CheckCircle className="w-6 h-6 text-lime flex-shrink-0" />
                 <div>
                   <span className="font-semibold text-navy">5% Charitable Donation</span>

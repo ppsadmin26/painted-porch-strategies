@@ -69,8 +69,8 @@ export default function SourcedTooltip({
         className="max-w-[90vw] sm:max-w-xs w-auto text-xs p-3 z-[60]"
         onOpenAutoFocus={(e) => e.preventDefault()}
       >
-        <p className="font-semibold mb-1">Source</p>
-        <p className="mb-1">{label}</p>
+        <p className="text-body font-semibold mb-1">Source</p>
+        <p className="text-body mb-1">{label}</p>
         {sourceUrl && (
           <a
             href={sourceUrl}

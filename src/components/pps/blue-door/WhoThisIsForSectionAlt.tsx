@@ -37,7 +37,7 @@ export default function WhoThisIsForSectionAlt() {
             </h3>
             <ul className="space-y-4">
               {forItems.map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
+                <li key={index} className="text-body flex items-start gap-3">
                   <Check className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
                   <span className="text-foreground">{item}</span>
                 </li>
@@ -51,7 +51,7 @@ export default function WhoThisIsForSectionAlt() {
             </h3>
             <ul className="space-y-4">
               {notForItems.map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
+                <li key={index} className="text-body flex items-start gap-3">
                   <X className="w-5 h-5 text-raspberry flex-shrink-0 mt-0.5" />
                   <span className="text-foreground">{item}</span>
                 </li>

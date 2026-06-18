@@ -126,8 +126,8 @@ export default function PPSForTeams() {
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {painPoints.map((point, index) => (
               <div key={index} className="p-6">
-                <p className="text-4xl md:text-5xl font-bold text-raspberry mb-2">{point.stat}</p>
-                <p className="text-foreground font-medium">{point.label}</p>
+                <p className="text-body text-4xl md:text-5xl font-bold text-raspberry mb-2">{point.stat}</p>
+                <p className="text-body text-foreground font-medium">{point.label}</p>
               </div>
             ))}
           </div>
@@ -161,7 +161,7 @@ export default function PPSForTeams() {
                     <Icon className={`w-6 h-6 text-${pillar.color}`} />
                   </div>
                   <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">{pillar.title}</h3>
-                  <p className={`text-sm font-medium text-${pillar.color} mb-3`}>{pillar.subtitle}</p>
+                  <p className={`text-body-sm font-medium text-${pillar.color} mb-3`}>{pillar.subtitle}</p>
                   <p className="text-foreground text-body-sm leading-relaxed">{pillar.description}</p>
                 </div>
               );
@@ -199,7 +199,7 @@ export default function PPSForTeams() {
                       <p className="text-body-sm font-medium text-primary">{program.subtitle}</p>
                     </div>
                   </div>
-                  <p className="text-foreground mb-4 leading-relaxed">{program.description}</p>
+                  <p className="text-body text-foreground mb-4 leading-relaxed">{program.description}</p>
                   <p className="text-body-sm text-muted-foreground leading-relaxed">{program.details}</p>
                 </div>
               );
@@ -235,7 +235,7 @@ export default function PPSForTeams() {
               </p>
               <div className="flex items-center gap-3 p-4 bg-lime/10 rounded-lg">
                 <Heart className="w-6 h-6 text-lime flex-shrink-0" />
-                <p className="text-foreground font-medium">
+                <p className="text-body text-foreground font-medium">
                   <span className="text-lime font-semibold">A Virtuous Cycle:</span> 5% of every fee is donated to a charity of your choice.
                 </p>
               </div>
@@ -244,19 +244,19 @@ export default function PPSForTeams() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-6">
                 Start with Discovery
               </h3>
-              <p className="text-foreground mb-6">
+              <p className="text-body text-foreground mb-6">
                 A complimentary conversation to understand your situation, explore fit, and discuss potential approaches.
               </p>
               <ul className="space-y-3 mb-8">
-                <li className="flex items-center gap-3">
+                <li className="text-body flex items-center gap-3">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0" />
                   <span className="text-foreground">30-minute initial conversation</span>
                 </li>
-                <li className="flex items-center gap-3">
+                <li className="text-body flex items-center gap-3">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0" />
                   <span className="text-foreground">No obligation assessment</span>
                 </li>
-                <li className="flex items-center gap-3">
+                <li className="text-body flex items-center gap-3">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0" />
                   <span className="text-foreground">Clear next steps and transparent pricing</span>
                 </li>
@@ -282,7 +282,7 @@ export default function PPSForTeams() {
               <div key={index} className="bg-white p-8 rounded-xl shadow-sm">
                 <p className="text-lead text-foreground italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
                 <div>
-                  <p className="font-semibold text-navy">{testimonial.author}</p>
+                  <p className="text-body font-semibold text-navy">{testimonial.author}</p>
                   <p className="text-body-sm text-muted-foreground">{testimonial.company}</p>
                 </div>
               </div>

@@ -140,7 +140,7 @@ const BurnoutResources = () => {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground mb-6">
             What's a Painted Porch?
           </h2>
-          <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto font-montserrat">
+          <p className="text-body text-muted-foreground leading-relaxed max-w-3xl mx-auto font-montserrat">
             Painted Porch Strategies was founded in 2020 to address one of the most impactful but often overlooked drivers of successful innovation, transformation, and change, YOUR PEOPLE. Our training, coaching, and advisory programs prepare your people to step in, stand strong, speak up, and share and challenge ideas that can lead to lasting change that sticks.
           </p>
           <Link to="/about" className="inline-flex items-center gap-2 mt-6 text-primary font-poppins font-semibold hover:underline">
@@ -178,7 +178,7 @@ const BurnoutResources = () => {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground mb-6">
             Our Team of Experts
           </h2>
-          <p className="text-muted-foreground leading-relaxed max-w-3xl mx-auto font-montserrat">
+          <p className="text-body text-muted-foreground leading-relaxed max-w-3xl mx-auto font-montserrat">
             While partnering with organizations embarking on change is our focus, our team comes from a diverse background of industries and experience. They bring with them the expertise of what is truly needed to empower your people to navigate this ever-evolving world and its demands.
           </p>
           <Link to="/about" className="inline-flex items-center gap-2 mt-6 text-primary font-poppins font-semibold hover:underline">
@@ -216,7 +216,7 @@ const BurnoutResources = () => {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-foreground mb-6">
             Learn Radical Mindfulness
           </h2>
-          <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto font-montserrat mb-8">
+          <p className="text-body text-muted-foreground leading-relaxed max-w-2xl mx-auto font-montserrat mb-8">
             Want to learn more ways to help you and your team tackle burnout and overwhelm, show up strong, and have resilience to obstacles and challenges? Let Sierra show you how through her Radical Mindfulness training program.
           </p>
           <Link to="/radical-mindfulness">
@@ -248,7 +248,7 @@ const ResourceCard = ({ tag, title, description, cta, url, icon: Icon }: Resourc
     <h3 className="text-xl md:text-2xl font-poppins font-bold text-foreground mb-3">
       {title}
     </h3>
-    <p className="text-muted-foreground font-montserrat mb-6 flex-1">
+    <p className="text-body text-muted-foreground font-montserrat mb-6 flex-1">
       {description}
     </p>
     <a

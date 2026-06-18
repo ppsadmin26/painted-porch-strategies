@@ -200,7 +200,7 @@ export default function AmplifySprints() {
                   </div>
                   <ul className="space-y-2 mb-4 flex-1">
                     {phase.activities.map((a) => (
-                      <li key={a} className="flex items-start gap-2">
+                      <li key={a} className="text-body flex items-start gap-2">
                         <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
                         <span className="text-body-sm text-foreground">{a}</span>
                       </li>

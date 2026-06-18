@@ -131,7 +131,7 @@ function WaitlistDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (
           <div className="text-center py-6">
             <CheckCircle2 className="w-16 h-16 text-lime mx-auto mb-4" />
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">You're on the List!</h3>
-            <p className="text-foreground/80">We'll let you know as soon as the next Stractical Leader Lab is scheduled.</p>
+            <p className="text-body text-foreground/80">We'll let you know as soon as the next Stractical Leader Lab is scheduled.</p>
           </div>
         )}
       </DialogContent>
@@ -274,16 +274,16 @@ export default function StracticalLeaderWorkshop() {
               <p className="font-semibold text-white text-lead">
                 Are you stuck in the "Just a Manager" trap?
               </p>
-              <p>
+              <p className="text-body">
                 You sit in meetings thinking <em>"I'm just a manager."</em>
               </p>
-              <p>
+              <p className="text-body">
                 Your team has the deepest knowledge of how things actually work on the ground, yet somehow you have the least influence on strategic direction.
               </p>
-              <p>
+              <p className="text-body">
                 You're waving your arms about critical risks and opportunities you see clearly from the front lines, but everyone's looking elsewhere.
               </p>
-              <p className="text-white/60">
+              <p className="text-body text-white/60">
                 You possess vital insights. But your influence feels limited.
               </p>
               <p className="text-white font-semibold text-lead pt-2">
@@ -336,10 +336,10 @@ export default function StracticalLeaderWorkshop() {
             </p>
           </div>
           <div className="mt-8 space-y-4 text-lg text-foreground/80 leading-relaxed max-w-3xl mx-auto text-left">
-            <p>
+            <p className="text-body">
               This isn't about choosing between strategy and tactics. It's about mastering both simultaneously, translating fluidly between operational detail and organizational vision.
             </p>
-            <p className="font-semibold text-navy">
+            <p className="text-body font-semibold text-navy">
               When you're stractical, you become the critical link everyone needs but few can provide.
             </p>
             <p className="font-bold text-navy text-lead">
@@ -366,11 +366,11 @@ export default function StracticalLeaderWorkshop() {
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-3xl">{pillar.emoji}</span>
                   <div>
-                    <p className={`text-xs font-poppins font-semibold uppercase tracking-wider ${pillar.color}`}>Pillar</p>
+                    <p className={`text-caption font-poppins font-semibold uppercase tracking-wider ${pillar.color}`}>Pillar</p>
                     <h3 className={`text-xl md:text-2xl font-poppins font-bold ${pillar.color}`}>{pillar.title}</h3>
                   </div>
                 </div>
-                <p className="font-poppins font-semibold text-navy mb-3">{pillar.subtitle}</p>
+                <p className="text-body font-poppins font-semibold text-navy mb-3">{pillar.subtitle}</p>
                 <p className="text-body-sm text-foreground/80 mb-3">{pillar.intro}</p>
                 <ul className="space-y-2 mb-4 flex-1">
                   {pillar.bullets.map((b, i) => (
@@ -380,7 +380,7 @@ export default function StracticalLeaderWorkshop() {
                     </li>
                   ))}
                 </ul>
-                <p className={`text-sm italic border-t border-border/30 pt-4 font-semibold ${pillar.color}`}>{pillar.closing}</p>
+                <p className={`text-body-sm italic border-t border-border/30 pt-4 font-semibold ${pillar.color}`}>{pillar.closing}</p>
               </div>
             ))}
           </div>
@@ -425,12 +425,12 @@ export default function StracticalLeaderWorkshop() {
               Wednesdays from 11:00 AM - 12:00 PM MST/PT (2:00pm - 3:00pm ET)
             </p>
             {isExpired ? (
-              <p className="text-gold/70 font-poppins font-medium mt-2">
+              <p className="text-body text-gold/70 font-poppins font-medium mt-2">
                 Our latest cohort kicked off {WORKSHOP_DATE_SHORT}. New dates coming soon!
               </p>
             ) : (
               <>
-                <p className="text-gold font-poppins font-semibold mt-2">
+                <p className="text-body text-gold font-poppins font-semibold mt-2">
                   Next series kicks off {WORKSHOP_DATE_SHORT}
                 </p>
                 <div className="flex items-center justify-center gap-4 mt-4">
@@ -481,7 +481,7 @@ export default function StracticalLeaderWorkshop() {
             {forYouItems.map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <Check className="w-5 h-5 text-lime mt-0.5 shrink-0" />
-                <p className="text-foreground/80">{item}</p>
+                <p className="text-body text-foreground/80">{item}</p>
               </div>
             ))}
           </div>
@@ -503,12 +503,12 @@ export default function StracticalLeaderWorkshop() {
                   <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
                     Our Latest Lab Has Kicked Off
                   </h2>
-                  <p className="text-white/70 mt-2">
+                  <p className="text-body text-white/70 mt-2">
                     Registration for this round is closed, but the next one is around the corner. Join the waitlist to be the first to know when new dates are announced.
                   </p>
                 </div>
                 <div className="p-8 md:p-12 text-center">
-                  <p className="text-foreground/80 mb-6 max-w-md mx-auto">
+                  <p className="text-body text-foreground/80 mb-6 max-w-md mx-auto">
                     The Stractical Leader Lab is an intimate, highly interactive experience capped at 25 participants. Spots fill quickly, and waitlist members get early access before public enrollment opens.
                   </p>
                   <Button
@@ -531,17 +531,17 @@ export default function StracticalLeaderWorkshop() {
                   <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
                     Claim Your Spot
                   </h2>
-                  <p className="text-white/70 mt-2">
+                  <p className="text-body text-white/70 mt-2">
                     This is an intimate, highly interactive workshop. You won't be lectured at. You'll work through real scenarios, practice new language patterns, and receive direct feedback on your strategic positioning.
                   </p>
                 </div>
                 <div className="p-8 md:p-12 text-center">
                   <p className="text-caption text-foreground/60 font-poppins uppercase tracking-wider mb-1">Investment</p>
-                  <p className="text-5xl font-poppins font-bold text-navy mb-6">$1,997</p>
+                  <p className="text-body text-5xl font-poppins font-bold text-navy mb-6">$1,997</p>
                   <div className="space-y-3 text-left max-w-md mx-auto mb-8 text-sm text-foreground/80">
-                    <p className="flex items-start gap-2"><Check className="w-4 h-4 text-lime mt-0.5 shrink-0" /> Your organization gains a leader who shapes strategy.</p>
-                    <p className="flex items-start gap-2"><Check className="w-4 h-4 text-lime mt-0.5 shrink-0" /> Your team gains a voice in decisions that affect them.</p>
-                    <p className="flex items-start gap-2"><Check className="w-4 h-4 text-lime mt-0.5 shrink-0" /> You gain the influence you've been building toward.</p>
+                    <p className="text-body flex items-start gap-2"><Check className="w-4 h-4 text-lime mt-0.5 shrink-0" /> Your organization gains a leader who shapes strategy.</p>
+                    <p className="text-body flex items-start gap-2"><Check className="w-4 h-4 text-lime mt-0.5 shrink-0" /> Your team gains a voice in decisions that affect them.</p>
+                    <p className="text-body flex items-start gap-2"><Check className="w-4 h-4 text-lime mt-0.5 shrink-0" /> You gain the influence you've been building toward.</p>
                   </div>
                   <div className="flex items-center justify-center gap-2 text-sm text-foreground/60 mb-6">
                     <Calendar className="w-4 h-4" />
@@ -584,18 +584,18 @@ export default function StracticalLeaderWorkshop() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-1">
                 Amy Yackowski
               </h2>
-              <p className="text-primary font-poppins font-medium mb-4">
+              <p className="text-body text-primary font-poppins font-medium mb-4">
                 Chief Evolution Officer, Painted Porch Strategies
               </p>
               <div className="space-y-3 text-foreground/80 leading-relaxed">
-                <p>
+                <p className="text-body">
                   Amy specializes in Phase Zero, the critical preparation before change activation and implementation that most organizations skip. She partners with leaders and teams to develop the change-readiness, emotional intelligence, and strategic communication needed to make transformation stick.
                 </p>
-                <p>
+                <p className="text-body">
                   Her approach blends ancient Stoic wisdom with modern organizational development, creating frameworks that are both philosophically grounded and immediately actionable.
                 </p>
               </div>
-              <blockquote className="mt-6 pl-4 border-l-4 border-gold italic text-foreground/70">
+              <blockquote className="text-pullquote mt-6 pl-4 border-l-4 border-gold italic text-foreground/70">
                 "You are the expert of you. My role is to uncover and activate that expertise and position it stratically."
               </blockquote>
             </div>
@@ -656,10 +656,10 @@ export default function StracticalLeaderWorkshop() {
             </>
           )}
           <div className="mt-10 pt-8 border-t border-white/10 space-y-2 text-white/50 text-sm">
-            <p>
+            <p className="text-body">
               Questions? <a href="/contact?scope=Yourself&interest=leadership-lab&message=I%20have%20questions%20about%20your%20Stractical%20Leader%20Lab" className="text-gold hover:text-gold/80 underline">Contact Us</a>
             </p>
-            <p className="text-white/40 italic mt-4">
+            <p className="text-body text-white/40 italic mt-4">
               Sh<span className="text-strategic font-bold">IF</span>t happens. The question is: are you ready?
             </p>
           </div>

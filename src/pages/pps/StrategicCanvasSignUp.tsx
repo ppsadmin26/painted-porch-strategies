@@ -123,25 +123,25 @@ export default function StrategicCanvasSignUp() {
 
             <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-4">What's inside:</h3>
             <ul className="space-y-4">
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Compass className="w-6 h-6 text-teal flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   <strong className="text-navy">A clear north star</strong>, name the shift you're trying to lead
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Map className="w-6 h-6 text-lime-green flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   <strong className="text-navy">Phase Zero prompts</strong> to surface what's missing before kickoff
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Target className="w-6 h-6 text-purple flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   <strong className="text-navy">A one-page worksheet</strong> you can take into your next leadership meeting
                 </span>
               </li>
-              <li className="flex gap-3">
+              <li className="text-body flex gap-3">
                 <Sparkles className="w-6 h-6 text-raspberry flex-shrink-0 mt-1" />
                 <span className="text-charcoal">
                   Built on 20+ years of <strong className="text-navy">organizational change</strong> work

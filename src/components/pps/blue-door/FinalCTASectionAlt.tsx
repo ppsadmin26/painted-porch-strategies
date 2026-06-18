@@ -48,7 +48,7 @@ export default function FinalCTASectionAlt() {
         </div>
         
         <p 
-          className={`text-white/80 mt-8 transition-all duration-700 ease-out delay-500 ${
+          className={`text-body text-white/80 mt-8 transition-all duration-700 ease-out delay-500 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
           }`}
         >

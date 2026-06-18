@@ -328,7 +328,7 @@ function SitemapBranch({
     : "";
 
   return (
-    <li className={`my-1.5 ${rowStateClass}`} style={{ marginLeft: depth === 0 ? 0 : indent }}>
+    <li className={`text-body my-1.5 ${rowStateClass}`} style={{ marginLeft: depth === 0 ? 0 : indent }}>
       <div className="flex items-baseline gap-2 flex-wrap">
         {depth > 0 && <span className="text-pps-teal/60">↳</span>}
         {node.path ? (
@@ -507,7 +507,7 @@ export default function Sitemap() {
                 <span>hidden from public</span>
               </span>
             </div>
-            <p className="mt-2 text-[11px] font-montserrat text-pps-charcoal/70">
+            <p className="text-body mt-2 text-[11px] font-montserrat text-pps-charcoal/70">
               Internal, archived, and draft routes are excluded from{" "}
               <code className="text-pps-navy">sitemap.xml</code>, blocked in{" "}
               <code className="text-pps-navy">robots.txt</code>, and hidden from public visitors on this page.

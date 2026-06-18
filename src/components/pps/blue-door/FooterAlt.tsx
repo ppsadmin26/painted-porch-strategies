@@ -26,7 +26,7 @@ export default function FooterAlt() {
             </h4>
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
-                <li key={index}>
+                <li key={index} className="text-body">
                   <a 
                     href={link.href}
                     className="text-sm opacity-90 hover:text-lime hover:opacity-100 transition-colors"

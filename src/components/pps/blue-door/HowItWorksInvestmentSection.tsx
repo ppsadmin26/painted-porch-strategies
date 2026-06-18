@@ -127,7 +127,7 @@ export default function HowItWorksInvestmentSection() {
               {expectItems.map((item, index) => {
                 const Icon = item.icon;
                 return (
-                  <li key={index} className="flex items-start gap-3">
+                  <li key={index} className="text-body flex items-start gap-3">
                     <Icon className="w-5 h-5 text-strategic flex-shrink-0 mt-0.5" />
                     <span className="text-foreground">{item.text}</span>
                   </li>
@@ -142,7 +142,7 @@ export default function HowItWorksInvestmentSection() {
             </h3>
             <ul className="space-y-3">
               {includedItems.map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
+                <li key={index} className="text-body flex items-start gap-3">
                   <Check className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
                   <span className={`text-foreground ${index === includedItems.length - 1 ? 'font-semibold' : ''}`}>{item}</span>
                 </li>
@@ -159,7 +159,7 @@ export default function HowItWorksInvestmentSection() {
           <span className="inline-block bg-bluedoor/10 text-bluedoor font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-3">
             The Blue Door Organizational Appraisal
           </span>
-          <p className="font-poppins font-bold text-5xl text-navy">{BLUE_DOOR_PRICE_DISPLAY}</p>
+          <p className="text-body font-poppins font-bold text-5xl text-navy">{BLUE_DOOR_PRICE_DISPLAY}</p>
           <div className="mt-6">
             <Link to="/blue-door/purchase">
               <Button className="bg-bluedoor text-white border-2 border-bluedoor text-base sm:text-lg md:text-xl py-4 sm:py-5 px-6 sm:px-12 shadow-lg hover:shadow-xl hover:bg-white hover:text-bluedoor transition-all max-w-full whitespace-normal h-auto">
