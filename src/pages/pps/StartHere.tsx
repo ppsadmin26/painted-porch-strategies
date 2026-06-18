@@ -7,6 +7,7 @@ import { TIER_LIST } from "@/config/tiers";
 import { TierBadge } from "@/components/pps/TierBadge";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { usePathFinderQuiz } from "@/components/pps/quiz/PathFinderQuizProvider";
+import { ExploreBeforeDecideSection } from "@/components/pps/ExploreBeforeDecideSection";
 import startHereHero from "@/assets/heroes/start-here-hero.jpg";
 
 const pathwayDetails = {
