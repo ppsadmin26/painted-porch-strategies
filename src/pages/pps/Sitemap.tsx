@@ -312,14 +312,19 @@ function SitemapBranch({
   const indent = depth * 20;
   const draftEntry = node.path ? resolvePageStatusEntry(node.path, statusMap) : undefined;
   const isDraft = draftEntry?.status === "draft";
+  const category: PageCategory = node.path ? resolveCategory(node.path, statusMap) : "public";
+  const isNonPublic = category !== "public";
 
-  // Hide drafts from the public.
-  if (isDraft && !isStaff) return null;
+  // Hide drafts AND non-public categories from the public.
+  if ((isDraft || isNonPublic) && !isStaff) return null;
 
   // Filter children too.
   const visibleChildren = node.children?.filter((child) => {
     if (!child.path) return true;
-    return isStaff || resolvePageStatus(child.path, statusMap) !== "draft";
+    if (isStaff) return true;
+    if (resolvePageStatus(child.path, statusMap) === "draft") return false;
+    if (resolveCategory(child.path, statusMap) !== "public") return false;
+    return true;
   });
 
   return (
