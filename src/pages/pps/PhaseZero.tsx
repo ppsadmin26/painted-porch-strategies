@@ -419,13 +419,13 @@ export default function PhaseZero() {
           {/* Essential Elements */}
           <FadeIn className="bg-muted/50 border border-navy/5 rounded-2xl p-6 md:p-10 mb-10">
             <div className="text-center mb-6">
-              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-2">
+              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-2">
                 The Behavioral Bedrock
               </p>
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                 Essential Elements
               </h3>
-              <p className="text-foreground/80 text-base max-w-2xl mx-auto leading-relaxed">
+              <p className="text-foreground/80 text-body max-w-2xl mx-auto">
                 Under all three Pillars sit the behaviors that determine whether organizations simply react to the future or are capable of authoring it.
               </p>
             </div>
