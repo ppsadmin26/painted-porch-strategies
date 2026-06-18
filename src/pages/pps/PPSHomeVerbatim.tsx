@@ -557,7 +557,7 @@ export default function PPSHomeVerbatim() {
                   <h3 id="path-heading" className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Your P.A.T.H. to Sustainable Change
                   </h3>
-                  <p className="text-body-sm md:text-base text-foreground/80 mt-3 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-body-sm text-foreground/80 mt-3 max-w-2xl mx-auto leading-relaxed">
                     A way of thinking about and navigating intentional, sustainable
                     progress.
                   </p>
@@ -787,7 +787,7 @@ export default function PPSHomeVerbatim() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Painted Porch Pillars
                   </h3>
-                  <p className="text-foreground/80 text-body-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-foreground/80 text-body-sm mt-3 max-w-2xl mx-auto leading-relaxed">
                     Three dimensions that influence and impact what your
                     organization is built to carry.
                   </p>
@@ -855,7 +855,7 @@ export default function PPSHomeVerbatim() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Essential Elements
                   </h3>
-                  <p className="text-foreground/80 text-body-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+                  <p className="text-foreground/80 text-body-sm mt-3 max-w-2xl mx-auto leading-relaxed">
                     The everyday human behaviors and conditions that influence
                     whether change actually sticks.
                   </p>
@@ -890,7 +890,7 @@ export default function PPSHomeVerbatim() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-white mb-4">
                   The Fortified Porch
                 </h3>
-                <p className="text-body md:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
+                <p className="text-body text-white/90 leading-relaxed max-w-2xl mx-auto">
                   When P.A.T.H. guides the journey, the Pillars stand
                   load-bearing, and the Elements show up every day, your
                   organization becomes capable of{" "}

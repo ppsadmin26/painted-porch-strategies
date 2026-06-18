@@ -95,7 +95,7 @@ export default function RefundRequest() {
           <h1 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-3">
             Request a Refund
           </h1>
-          <p className="text-body md:text-lg text-charcoal leading-relaxed max-w-2xl mx-auto">
+          <p className="text-body text-charcoal leading-relaxed max-w-2xl mx-auto">
             We stand behind our courses with a money-back guarantee. Submit the
             short form below and our team will process your refund promptly.
             You'll receive a confirmation email right away, and another email as

@@ -54,7 +54,7 @@ export default function StoicFieldGuide() {
                 <br />
                 Field Guide
               </h1>
-              <p className="text-lead md:text-xl text-white/80 italic font-poppins mb-6">
+              <p className="text-lead text-white/80 italic font-poppins mb-6">
                 Ancient Grit for the Modern Grind
               </p>
               <p className="text-white/85 max-w-xl mx-auto md:mx-0 mb-8">

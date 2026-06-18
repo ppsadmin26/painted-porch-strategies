@@ -116,7 +116,7 @@ export default function MasterYourMessage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
             Master Your Message
           </h1>
-          <p className="text-lead md:text-xl text-white/90 max-w-2xl leading-relaxed">
+          <p className="text-lead text-white/90 max-w-2xl leading-relaxed">
             <strong>Eliminate the static</strong> from your internal and external messaging in order to{" "}
             <strong>communicate with clarity</strong>, <strong>confidence</strong>, and <strong>influence</strong>.
           </p>

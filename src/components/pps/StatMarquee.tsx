@@ -26,7 +26,7 @@ export default function StatMarquee({
   return (
     <section className={`${bgClass} py-6 md:py-7 overflow-hidden`} aria-label="Research stats">
       <div className="container max-w-7xl mx-auto px-6 mb-3">
-        <p className="text-center text-[0.7rem] md:text-xs font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90">
+        <p className="text-center text-[0.7rem] font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90">
           {eyebrow}
         </p>
       </div>

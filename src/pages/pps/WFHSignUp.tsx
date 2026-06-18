@@ -61,7 +61,7 @@ export default function WFHSignUp() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             Become a <span className="text-gold">Work From Home Hero!</span>
           </h1>
-          <p className="text-lead md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lead text-white/90 max-w-3xl mx-auto">
             Get ready to don your cape and defeat Work From Home fatigue, overwhelm, and disconnect.
           </p>
         </div>

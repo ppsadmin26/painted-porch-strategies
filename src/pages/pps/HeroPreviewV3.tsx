@@ -35,7 +35,7 @@ export default function HeroPreviewV3() {
               Epic Sh<span className="text-raspberry font-bold">IF</span>t.
             </h1>
 
-            <p className="font-montserrat text-lead font-medium italic tracking-wide text-[#523387] md:text-2xl">
+            <p className="font-montserrat text-lead font-medium italic tracking-wide text-[#523387]">
               Before momentum outruns alignment.
             </p>
 

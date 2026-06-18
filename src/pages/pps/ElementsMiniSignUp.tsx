@@ -80,7 +80,7 @@ export default function ElementsMiniSignUp() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             The Elements of <span className="text-gold">Your Team</span>
           </h1>
-          <p className="text-lead md:text-2xl text-white/90 max-w-3xl mx-auto mb-6">
+          <p className="text-lead text-white/90 max-w-3xl mx-auto mb-6">
             Discover the ancient wisdom and modern insights behind what truly drives your team, through the lens of the Five Elements.
           </p>
           <p className="text-lead font-poppins font-semibold text-gold mb-8">

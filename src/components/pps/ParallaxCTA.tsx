@@ -190,7 +190,7 @@ export function ParallaxCTA({
           {headline}
         </h2>
         {description && (
-          <p className="text-white/95 mb-8 text-lead md:text-xl drop-shadow max-w-2xl mx-auto">
+          <p className="text-white/95 mb-8 text-lead drop-shadow max-w-2xl mx-auto">
             {description}
           </p>
         )}

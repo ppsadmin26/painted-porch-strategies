@@ -87,7 +87,7 @@ export default function ChangeCommsSignUp() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             4 Critical Steps for <span className="text-gold">Effective Change Communication</span>
           </h1>
-          <p className="text-lead md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lead text-white/90 max-w-3xl mx-auto">
             A must-use tool to plan messaging that drives change awareness, understanding, and adoption.
           </p>
         </div>

@@ -130,7 +130,7 @@ export default function PPSPrograms() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins leading-tight">
               Programs &amp; More
             </h1>
-            <p className="text-lead md:text-xl text-white/90 leading-relaxed mb-8">
+            <p className="text-lead text-white/90 leading-relaxed mb-8">
               Our complete list of all programs, assessments, and coaching services to
               help you <strong>tap into your inner power</strong>,{" "}
               <strong>tackle burnout</strong>{" "}
@@ -363,7 +363,7 @@ export default function PPSPrograms() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-poppins">
               Interested in Our Programs for Your Company?
             </h2>
-            <blockquote className="text-pullquote md:text-2xl italic text-white/80 mb-8 leading-relaxed">
+            <blockquote className="text-pullquote italic text-white/80 mb-8 leading-relaxed">
               "You don't build a business. You build people, and people build the business."
               <span className="block text-base mt-2 not-italic text-white/60">Zig Ziglar</span>
             </blockquote>

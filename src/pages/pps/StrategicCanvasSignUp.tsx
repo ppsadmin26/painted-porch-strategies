@@ -85,7 +85,7 @@ export default function StrategicCanvasSignUp() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             The <span className="text-gold">Strategic Change Canvas</span>
           </h1>
-          <p className="text-lead md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lead text-white/90 max-w-3xl mx-auto">
             A one-page planning tool to architect change before you build it, so your next shIFt actually sticks.
           </p>
         </div>

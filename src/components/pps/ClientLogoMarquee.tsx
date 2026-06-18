@@ -152,7 +152,7 @@ export default function ClientLogoMarquee({
               </button>
 
               <div className="flex-1 min-h-[120px] flex flex-col justify-center">
-                <blockquote className="text-lead md:text-xl font-poppins italic text-navy leading-relaxed mb-4">
+                <blockquote className="text-lead font-poppins italic text-navy leading-relaxed mb-4">
                   "{testimonials[activeIndex].quote}"
                 </blockquote>
                 <p className="text-body-sm text-muted-foreground">

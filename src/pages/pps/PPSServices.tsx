@@ -88,7 +88,7 @@ export default function PPSServices() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
             Our Services
           </h1>
-          <p className="text-lead md:text-xl text-white/90 max-w-2xl leading-relaxed mb-8">
+          <p className="text-lead text-white/90 max-w-2xl leading-relaxed mb-8">
             Our services are centered around providing your business with everything it needs to{" "}
             <strong>fortify the strength and value</strong> of your people, processes, and systems for{" "}
             <strong>resilience</strong>, <strong>change</strong> adaptability, and <strong>growth</strong>.

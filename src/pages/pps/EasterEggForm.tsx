@@ -135,7 +135,7 @@ const EasterEggForm = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-[28px] md:text-[40px] text-navy mb-3">
                 🎉🐣 You Found Something.
               </h1>
-              <p className="font-poppins text-body md:text-xl text-foreground mb-3">
+              <p className="font-poppins text-body text-foreground mb-3">
                 Most people don't make it this far. Tell us what you found and where, we'll donate $25 to a charity of your choice.
               </p>
               <p className="text-body-sm text-muted-foreground">
@@ -296,10 +296,10 @@ const EasterEggForm = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-[26px] md:text-[36px] text-navy mb-6">
               You're in good company.
             </h1>
-            <p className="text-foreground text-body md:text-lg leading-relaxed max-w-md mb-4">
+            <p className="text-foreground text-body leading-relaxed max-w-md mb-4">
               We got it. Someone from the Porch will confirm your donation within 3–5 business days and send you a note when it's done.
             </p>
-            <p className="text-foreground text-body md:text-lg leading-relaxed max-w-md mb-8">
+            <p className="text-foreground text-body leading-relaxed max-w-md mb-8">
               Thanks for actually reading the fine print. That's a more radical act than it sounds.
             </p>
             <p className="text-muted-foreground text-body-sm italic">

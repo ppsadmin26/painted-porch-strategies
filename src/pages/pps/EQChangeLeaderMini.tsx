@@ -156,7 +156,7 @@ export default function EQChangeLeaderMini() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             What Can E.Q. Do For You?
           </h1>
-          <p className="text-lead md:text-xl max-w-3xl mx-auto mb-8 text-white/90">
+          <p className="text-lead max-w-3xl mx-auto mb-8 text-white/90">
             Uncover your own strengths and opportunities to show up, be heard,
             connect, drive change, and have resilience to the challenges
             presented in life, work, and anywhere in between.

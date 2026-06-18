@@ -170,7 +170,7 @@ export default function PPSBusinessPrograms() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins leading-tight">
               Training Programs
             </h1>
-            <p className="text-lead md:text-xl text-white/90 leading-relaxed mb-8">
+            <p className="text-lead text-white/90 leading-relaxed mb-8">
               Our training programs are designed to activate your employees' inner power,{" "}
               <strong>tackle burnout</strong>{" "}
               <em>(or occasional overwhelm)</em>,{" "}
@@ -195,7 +195,7 @@ export default function PPSBusinessPrograms() {
       {/* Zig Ziglar Quote */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <blockquote className="text-pullquote md:text-2xl italic text-gold leading-relaxed font-poppins">
+          <blockquote className="text-pullquote italic text-gold leading-relaxed font-poppins">
             "You don't build a business. You build people, and people build the business."
           </blockquote>
           <p className="text-muted-foreground mt-3 font-semibold">Zig Ziglar</p>
@@ -267,7 +267,7 @@ export default function PPSBusinessPrograms() {
       {/* Peter Drucker Quote */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <blockquote className="text-pullquote md:text-2xl italic text-strategic leading-relaxed font-poppins">
+          <blockquote className="text-pullquote italic text-strategic leading-relaxed font-poppins">
             "The relevant question is not simply what shall we do tomorrow, but rather what shall we do today in order to get ready for tomorrow."
           </blockquote>
           <p className="text-muted-foreground mt-3 font-semibold">Peter Drucker</p>
