@@ -236,7 +236,7 @@ export default function EmbodyPathAlt() {
           {/* Stage-setter */}
           <div className="text-center mb-10 max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
-              It's time to sh<span className="text-raspberry font-bold">IF</span>t from change moments to an innovation movement.
+              It's Time to Sh<span className="text-raspberry font-bold">IF</span>t From Change Moments to an Innovation Movement.
             </h2>
             <p className="text-lead text-foreground">
               You've made the decision: you're ready for your organization to move from managing change initiatives to leading sustainable transformation. Not consultants to fix or implement change for you. Strategic partners to co-architect permanent capability in your people, your processes, and your systems.
