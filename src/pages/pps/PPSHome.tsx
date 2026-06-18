@@ -196,7 +196,7 @@ export default function PPSHome() {
                   <div className="text-3xl md:text-4xl font-poppins font-bold tabular-nums leading-none text-gold">
                     {s.figure}
                   </div>
-                  <p className="mt-2 text-xs md:text-sm text-white/90 font-montserrat leading-snug">
+                  <p className="mt-2 text-body-sm text-white/90 font-montserrat !leading-snug">
                     {s.label.replace(/\.$/, "")}
                   </p>
                   <p className="mt-2 text-[0.6rem] md:text-[0.65rem] uppercase tracking-wider text-white/80">
