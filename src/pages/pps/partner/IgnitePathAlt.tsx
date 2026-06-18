@@ -136,13 +136,9 @@ export default function IgnitePathAlt() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy">
               The IGNITE P.A.T.H.way Is Designed for...
             </h2>
-            <p className="text-lg text-foreground max-w-3xl mx-auto mb-2">
-            </p>
-            <p className="text-lg text-foreground max-w-3xl mx-auto">
-            </p>
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
