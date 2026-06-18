@@ -226,7 +226,7 @@ export default function OurApproach() {
             </div>
             <p className="mb-8">Our work surfaces those assumptions before they become expensive realities. Because&nbsp;</p>
             <div>
-              <p>This is the work beneath the rollout.</p>
+              <p>This is the work that preceeds the rollout.</p>
               <p>The thinking beneath the plan.</p>
               <p>The examination that influences everything that follows.</p>
             </div>
