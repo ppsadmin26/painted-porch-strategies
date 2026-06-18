@@ -193,9 +193,9 @@ export default function PPSHome() {
               const s = RESEARCH_STATS[id as keyof typeof RESEARCH_STATS];
               return (
                 <div key={id} className="text-center px-2">
-                  <p className="text-3xl md:text-4xl font-poppins font-bold tabular-nums leading-none text-gold">
+                  <div className="text-3xl md:text-4xl font-poppins font-bold tabular-nums leading-none text-gold">
                     {s.figure}
-                  </p>
+                  </div>
                   <p className="mt-2 text-xs md:text-sm text-white/90 font-montserrat leading-snug">
                     {s.label.replace(/\.$/, "")}
                   </p>
