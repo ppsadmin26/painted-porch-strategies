@@ -235,10 +235,10 @@ export default function PhaseZero() {
         <div className="container max-w-4xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 text-center md:text-left">
             <div className="flex-1">
-              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-1">
+              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-1">
                 Where Phase Zero Fits
               </p>
-              <p className="text-base md:text-lg text-foreground leading-relaxed">
+              <p className="text-lead text-foreground">
                 Phase Zero is the <span className="font-semibold text-primary">Prepare</span> stage of our P.A.T.H. methodology, the clarity work that comes before Align, Take Off, and Habits.
               </p>
             </div>
