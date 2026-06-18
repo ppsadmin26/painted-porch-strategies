@@ -117,7 +117,7 @@ export default function DiscoverSectionAlt() {
           </div>
 
           <div className="bg-bluedoor/10 border-l-4 border-bluedoor p-4 md:p-6 rounded-xl shadow-sm max-w-4xl mx-auto">
-            <p className="text-base md:text-lg text-bluedoor font-medium text-center">
+            <p className="text-lead text-bluedoor font-medium text-center">
               Every Blue Door appraisal pairs AI-powered pattern recognition with 20+ years of change architecture experience. This isn't a template. It's a strategic reading built from your organization's specific reality.
             </p>
           </div>
