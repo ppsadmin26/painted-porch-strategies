@@ -13,11 +13,7 @@ import {
 import { isLovableEditorPreview } from "@/lib/lovablePreview";
 import { supabase } from "@/integrations/supabase/client";
 import ComingSoon from "@/pages/pps/ComingSoon";
-import { Switch } from "@/components/ui/switch";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Settings2, X } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { Settings2 } from "lucide-react";
 
 /** Resolve effective category for a path: DB row wins, else URL heuristic. */
 function resolveCategory(path: string, map: PageStatusMap): PageCategory {
