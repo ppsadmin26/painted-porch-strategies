@@ -262,7 +262,7 @@ export default function EmbodyPathAlt() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               For leaders who want to build something that lasts, not something to get through.
             </h2>
-            <p className="text-body text-foreground">
+            <p className="text-lead text-foreground">
               EMBODY is our highest style of partnership over a committed 6+ month period. It isn't longer because we like longer engagements. It's longer because the structural change you're after doesn't move with a workshop, a deck, or a two-quarter sprint.
             </p>
           </div>
