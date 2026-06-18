@@ -231,7 +231,7 @@ export default function OurApproach() {
               <p className="mb-0">The examination that influences everything that follows.</p>
             </div>
           </div>
-          <p className="text-lg text-foreground leading-relaxed">
+          <p className="text-lead text-foreground">
             That is the work we call <Link to="/phase-zero" className="text-primary font-semibold hover:underline">Phase Zero</Link>.
           </p>
         </div>
