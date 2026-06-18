@@ -6,6 +6,7 @@ import ParallaxCTA from "@/components/pps/ParallaxCTA";
 import PartnershipPromise from "@/components/pps/PartnershipPromise";
 import approachHero from "@/assets/heroes/approach-hero.jpg";
 import blueDoorHero from "@/assets/blue-door-hero.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 // Certification badges
 import workingGeniusBadge from "@/assets/certifications/working-genius.png";
@@ -209,9 +210,7 @@ export default function OurApproach() {
       {/* Where We Fit */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-3xl mx-auto px-6">
-          <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-4">
-            Where We Fit
-          </p>
+          <Eyebrow variant="plain" tone="primary" as="p">Where We Fit</Eyebrow>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             Upstream of the rollout.
           </h2>
@@ -242,9 +241,7 @@ export default function OurApproach() {
       <section className="py-16 md:py-24 bg-muted/60">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
-              Our Manifesto
-            </p>
+            <Eyebrow variant="plain" tone="primary" as="p">Our Manifesto</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               What we stand for, and what we will not do.
             </h2>
@@ -285,9 +282,7 @@ export default function OurApproach() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
-              How We Show Up
-            </p>
+            <Eyebrow variant="plain" tone="gold" as="p">How We Show Up</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Our Core Values
             </h2>
@@ -324,9 +319,7 @@ export default function OurApproach() {
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
-              How We Think
-            </p>
+            <Eyebrow variant="plain" tone="primary" as="p">How We Think</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               The Decision Filter Behind Every Recommendation
             </h2>
@@ -422,9 +415,7 @@ export default function OurApproach() {
       <section id="path" className="py-20 md:py-28 bg-white scroll-mt-24">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
-              Our Methodology
-            </p>
+            <Eyebrow variant="plain" tone="gold" as="p">Our Methodology</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5">
               The P.A.T.H.<sup className="text-[0.4em] align-super">™</sup> to Sustainable Change
             </h2>
@@ -546,9 +537,7 @@ export default function OurApproach() {
                 <Compass className="w-7 h-7 text-primary" />
               </div>
               <div className="flex-1">
-                <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-1">
-                  Where Our Work Begins
-                </p>
+                <Eyebrow variant="plain" tone="primary" as="p">Where Our Work Begins</Eyebrow>
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">
                   Prepare is Phase Zero.
                 </h3>
@@ -571,9 +560,7 @@ export default function OurApproach() {
       <section id="certifications" className="py-16 md:py-20 bg-muted scroll-mt-24">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
-              The Credentials Behind The Method
-            </p>
+            <Eyebrow variant="plain" tone="primary" as="p">The Credentials Behind The Method</Eyebrow>
             <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4">
               Trained, certified, and accountable.
             </h2>
@@ -606,9 +593,7 @@ export default function OurApproach() {
       <section className="py-16 md:py-24 bg-muted">
         <div className="container max-w-3xl mx-auto px-6">
           <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 border-b-4 border-gold shadow-xl text-center">
-            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
-              The Painted Porch Promise
-            </p>
+            <Eyebrow variant="plain" tone="gold" as="p">The Painted Porch Promise</Eyebrow>
             <h3 className="text-xl md:text-3xl font-poppins font-bold mb-5">
               You will not need us forever.
             </h3>

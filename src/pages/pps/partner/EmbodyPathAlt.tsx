@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import {
+import { Eyebrow } from "@/components/pps/Eyebrow";
   CheckCircle,
   Building2,
   Cpu,
@@ -257,9 +258,7 @@ export default function EmbodyPathAlt() {
           </div>
 
           <div className="text-center mb-12 max-w-3xl mx-auto">
-            <p className="text-caption font-poppins font-semibold tracking-widest text-bluedoor uppercase mb-3">
-              Who EMBODY is for
-            </p>
+            <Eyebrow variant="plain" tone="cobalt" as="p">Who EMBODY is for</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               For leaders who want to build something that lasts, not something to get through.
             </h2>
@@ -303,9 +302,7 @@ export default function EmbodyPathAlt() {
       <section className="py-16 md:py-24 bg-muted">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-10 max-w-3xl mx-auto">
-            <p className="text-caption font-poppins font-semibold tracking-widest text-navy uppercase mb-3">
-              Painted Porch Partners
-            </p>
+            <Eyebrow variant="plain" tone="navy" as="p">Painted Porch Partners</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               Industries we love to work with
             </h2>
@@ -463,9 +460,7 @@ export default function EmbodyPathAlt() {
       <section className="py-16 md:py-24 bg-navy text-white">
         <div className="container max-w-5xl mx-auto px-6">
           <div className="text-center mb-10">
-            <p className="text-caption font-poppins font-semibold tracking-widest text-gold uppercase mb-3">
-              Different by design
-            </p>
+            <Eyebrow variant="plain" tone="gold" as="p">Different by design</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
               This isn't a traditional implementation engagement.
             </h2>
@@ -475,9 +470,7 @@ export default function EmbodyPathAlt() {
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-white/15 rounded-xl overflow-hidden border border-white/15">
             <div className="bg-navy p-6">
-              <p className="text-caption font-poppins font-semibold tracking-widest text-white/70 uppercase mb-4">
-                Traditional implementation consultancy
-              </p>
+              <Eyebrow variant="plain" tone="white" as="p">Traditional implementation consultancy</Eyebrow>
               <ul className="space-y-3">
                 {traditionalVsEmbody.map((row) => (
                   <li key={row.traditional} className="text-body-sm text-white/85">
@@ -487,9 +480,7 @@ export default function EmbodyPathAlt() {
               </ul>
             </div>
             <div className="bg-teal p-6">
-              <p className="text-caption font-poppins font-semibold tracking-widest text-white uppercase mb-4">
-                EMBODY embedded partnership
-              </p>
+              <Eyebrow variant="plain" tone="white" as="p">EMBODY embedded partnership</Eyebrow>
               <ul className="space-y-3">
                 {traditionalVsEmbody.map((row) => (
                   <li key={row.embody} className="text-body-sm text-white font-medium">

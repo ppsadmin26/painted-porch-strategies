@@ -6,6 +6,7 @@
  */
 import StatCard from "@/components/pps/StatCard";
 import { Building2, Compass, Brain, PenTool } from "lucide-react";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 const rows = [
   {
@@ -87,9 +88,7 @@ export default function ArchitectureGapSection() {
             >
               {/* Reality */}
               <div className="md:col-span-5 p-6 md:p-7 bg-muted/40">
-                <p className="text-[0.7rem] uppercase tracking-[0.2em] font-poppins font-semibold text-muted-foreground mb-3">
-                  The Reality
-                </p>
+                <Eyebrow variant="plain" tone="muted" as="p">The Reality</Eyebrow>
                 <StatCard
                   statId={row.statId}
                   variant="editorial"
@@ -105,9 +104,7 @@ export default function ArchitectureGapSection() {
                     <row.icon className={`w-5 h-5 ${row.accentText}`} />
                   </div>
                   <div>
-                    <p className="text-[0.7rem] uppercase tracking-[0.2em] font-poppins font-semibold text-muted-foreground">
-                      The Shift
-                    </p>
+                    <Eyebrow variant="plain" tone="muted" as="p">The Shift</Eyebrow>
                     <p className={`text-base font-poppins font-semibold ${row.accentText}`}>
                       {row.pillar}{" "}
                       <span className="text-muted-foreground font-normal">

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import mcMasterMessage from "@/assets/masterclass/6-communicator-styles-cover.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 export default function CommunicatorStyles() {
   const [name, setName] = useState("");
@@ -41,9 +42,7 @@ export default function CommunicatorStyles() {
       {/* Hero */}
       <section className="bg-white py-16 md:py-20 text-center">
         <div className="container max-w-4xl mx-auto px-6">
-          <p className="text-body-sm font-semibold tracking-widest text-teal uppercase mb-4">
-            Grow on the Porch Training Series
-          </p>
+          <Eyebrow variant="plain" tone="teal" as="p">Grow on the Porch Training Series</Eyebrow>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
             The{" "}
             <span className="text-raspberry italic">6 Communicator Styles</span>

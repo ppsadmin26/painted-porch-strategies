@@ -234,9 +234,7 @@ export default function PhaseZero() {
         <div className="container max-w-4xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6 text-center md:text-left">
             <div className="flex-1">
-              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-1">
-                Where Phase Zero Fits
-              </p>
+              <Eyebrow variant="plain" tone="primary" as="p">Where Phase Zero Fits</Eyebrow>
               <p className="text-lead text-foreground">
                 Phase Zero is the <span className="font-semibold text-primary">Prepare</span> stage of our P.A.T.H. methodology, the clarity work that comes before Align, Take Off, and Habits.
               </p>
@@ -414,9 +412,7 @@ export default function PhaseZero() {
           {/* Essential Elements */}
           <FadeIn className="bg-muted/50 border border-navy/5 rounded-2xl p-6 md:p-10 mb-10">
             <div className="text-center mb-6">
-              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-2">
-                The Behavioral Bedrock
-              </p>
+              <Eyebrow variant="plain" tone="gold" as="p">The Behavioral Bedrock</Eyebrow>
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                 Essential Elements
               </h3>
@@ -440,9 +436,7 @@ export default function PhaseZero() {
           {/* The Fortified Porch */}
           <FadeIn>
             <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 text-center shadow-xl border-b-4 border-gold">
-              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
-                The Result
-              </p>
+              <Eyebrow variant="plain" tone="gold" as="p">The Result</Eyebrow>
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-white mb-4">
                 The Fortified Porch
               </h3>
@@ -459,9 +453,7 @@ export default function PhaseZero() {
       <section className="py-20 md:py-24 bg-muted">
         <div className="container max-w-7xl mx-auto px-6">
           <FadeIn className="text-center max-w-2xl mx-auto mb-12">
-            <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
-              Where Phase Zero Leads
-            </p>
+            <Eyebrow variant="plain" tone="primary" as="p">Where Phase Zero Leads</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight">
               Three clear ways to begin.
             </h2>
