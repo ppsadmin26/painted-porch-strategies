@@ -12,8 +12,8 @@
  *
  * What we ALLOW (skipped):
  *   - src/components/pps/Eyebrow.tsx
- *   - src/components/ui/**       (shadcn)
- *   - **/_archive*                (archived components)
+ *   - src/components/ui (shadcn)
+ *   - any path containing _archive (archived components)
  *   - src/pages/pps/Sitemap.tsx, src/pages/pps/admin/**  (status/category chips)
  *   - lines containing "absolute"  (positioned ribbons like "Most Popular")
  *   - lines containing "badgeColor" (data-driven speaker/category chips)
