@@ -121,7 +121,7 @@ const wherePhaseZeroLeads = [
   {
     icon: DoorOpen,
     title: "The Blue Door",
-    body: "A structured organizational appraisal that shows where you stand across the three Pillars before you spend another dollar on change you're not built for.",
+    body: "A structured organizational appraisal that reveals how your organization is performing across the three Pillars before additional resources are committed in the wrong direction.",
     to: "/blue-door",
     cta: "Open the Blue Door",
     accent: "text-bluedoor",
