@@ -466,12 +466,11 @@ export default function Sitemap() {
               pill. The public never sees these.{" "}
               {isAdmin ? (
                 <>
-                  As an admin, you can flip any page between Live and Draft using the inline switch
-                  next to each link, or open the dedicated{" "}
-                  <Link to="/admin/pages" className="text-pps-teal underline hover:text-pps-navy">
-                    Page Status manager
+                  To change a page's status, category, SEO/AEO, or note, open the{" "}
+                  <Link to="/admin/pages" className="text-pps-teal underline hover:text-pps-navy inline-flex items-center gap-1">
+                    <Settings2 className="w-3.5 h-3.5" /> Pages manager
                   </Link>
-                  .
+                  . This sitemap is read-only.
                 </>
               ) : (
                 <>Only admins can change page status.</>
@@ -487,10 +486,7 @@ export default function Sitemap() {
                 <SitemapBranch
                   node={section}
                   isStaff={isStaff}
-                  canManage={isAdmin}
                   statusMap={statusMap}
-                  onSetStatus={setStatus}
-                  onClearStatus={clearStatus}
                 />
               </ul>
             </section>
