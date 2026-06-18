@@ -320,14 +320,23 @@ function SitemapBranch({
     return true;
   });
 
+  // Visual treatment for staff: dim + strike archived, soften internal slightly.
+  const rowStateClass = isStaff && node.path
+    ? category === "archived"
+      ? "opacity-60"
+      : ""
+    : "";
+
   return (
-    <li className="my-1.5" style={{ marginLeft: depth === 0 ? 0 : indent }}>
+    <li className={`my-1.5 ${rowStateClass}`} style={{ marginLeft: depth === 0 ? 0 : indent }}>
       <div className="flex items-baseline gap-2 flex-wrap">
         {depth > 0 && <span className="text-pps-teal/60">↳</span>}
         {node.path ? (
           <Link
             to={node.path}
-            className="text-pps-navy hover:text-pps-teal hover:underline font-montserrat"
+            className={`text-pps-navy hover:text-pps-teal hover:underline font-montserrat ${
+              isStaff && category === "archived" ? "line-through decoration-pps-raspberry/40" : ""
+            }`}
           >
             <span className={depth === 0 ? "font-poppins font-semibold text-base" : "text-sm"}>
               {node.label}
