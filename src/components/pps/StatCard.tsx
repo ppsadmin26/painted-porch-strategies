@@ -70,7 +70,7 @@ export default function StatCard({
         className
       )}
     >
-      <p className={cn("text-5xl md:text-6xl font-poppins font-bold tabular-nums leading-none", accentClass)}>
+      <p className={cn("text-pullquote text-5xl md:text-6xl font-poppins font-bold tabular-nums leading-none", accentClass)}>
         {s.figure}
       </p>
       <p className="mt-4 text-body text-navy font-montserrat leading-snug">
