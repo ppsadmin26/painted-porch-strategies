@@ -65,10 +65,10 @@ function walk(dir, out = []) {
   return out;
 }
 
-// Matches a single-line, single-element eyebrow with literal classes.
+// Matches a single eyebrow element (possibly spanning lines) with literal classes.
 // Captures: tag, className contents, inner text.
 const ELEM_RE =
-  /<(span|p)\s+className="([^"`{}]+)"\s*>([^<>{}\n]+)<\/(span|p)>/g;
+  /<(span|p)\s+className="([^"`{}]+)"\s*>\s*([^<>{}]+?)\s*<\/(span|p)>/g;
 
 function isPillClasses(cls) {
   return /inline-(block|flex)/.test(cls) && /rounded-full/.test(cls) && /uppercase/.test(cls);
