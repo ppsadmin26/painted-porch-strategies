@@ -350,9 +350,9 @@ export default function PhaseZero() {
               The Foundations Beneath Every ShIFt
             </h2>
             <p className="text-lg text-foreground leading-relaxed">
-              Your organization stands on three load-bearing structures.
-              When one is weak, change cracks and resilience weakens. When all
-              three are strong and healthy, change holds and builds. Phase Zero
+              Every organization relies on three foundational structures. When
+              one is weak, progress becomes harder to maintain. When all three are
+              strong, change has something solid to build upon. Phase Zero
               examines and fortifies each one.
             </p>
           </FadeIn>
