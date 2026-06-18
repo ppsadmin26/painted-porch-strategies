@@ -57,20 +57,20 @@ export function PartnerHeroSection() {
 
             {/* Description */}
             <div
-              className={`text-lg md:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl transition-all duration-700 ease-out delay-300 ${
+              className={`text-white/90 leading-relaxed mb-8 max-w-3xl transition-all duration-700 ease-out delay-300 ${
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
-              <p className="text-body mb-4">
+              <p data-body-allow className="text-lead mb-4">
                 Whether you're exploring change for yourself, leading a team through uncertainty, or shaping the future of an entire organization, where you begin matters.
               </p>
-              <p className="text-body mb-4">
+              <p data-body-allow className="text-lead mb-4">
                 The challenge isn't finding another framework, course, workshop, or advisor.&nbsp;It's identifying the next step that makes the most sense for where you are today.
               </p>
-              <p className="text-body mb-4">
+              <p data-body-allow className="text-lead mb-4">
                 Our P.A.T.H.ways help you identify the right starting point.
               </p>
-              <p className="text-body text-white/80 italic">
+              <p data-body-allow className="text-lead text-white/80 italic">
                 Your next step isn't determined by your title. It's determined by where you are and what matters most right now.
               </p>
             </div>
