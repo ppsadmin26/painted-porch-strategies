@@ -140,7 +140,7 @@ export default function PPSAbout() {
               Most of the leaders we work with are already capable, already
               experienced, and already carrying a lot. What they're looking
               for is not another framework. It's a place to think clearly
-              about who their organization is trying to become.
+              about what their organization is being called to become.
             </p>
             <p>
               Fixing seeks relief. Reflection creates direction.&nbsp;It asks for clarity about
