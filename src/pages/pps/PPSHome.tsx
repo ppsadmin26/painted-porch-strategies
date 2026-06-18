@@ -288,8 +288,8 @@ export default function PPSHome() {
                       Get clarity before you commit
                     </h3>
                     <p className="text-foreground leading-relaxed mb-3">
-                      A structured organizational appraisal that surfaces what
-                      your organization is actually positioned to carry before your next kick-off is annnounced.
+                      A structured organizational appraisal that reveals what
+                      your organization is realistically positioned to pursue before your next initiative begins.
                     </p>
                     <span className="text-sm font-semibold text-bluedoor inline-flex items-center">
                       Open the Blue Door
