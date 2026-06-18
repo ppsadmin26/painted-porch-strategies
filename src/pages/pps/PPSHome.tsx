@@ -308,7 +308,7 @@ export default function PPSHome() {
                     <Handshake className="w-6 h-6 text-pps-purple" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-xs font-poppins font-semibold uppercase tracking-wider text-pps-purple mb-1">
+                    <p className="text-caption font-poppins font-semibold uppercase tracking-wider text-pps-purple mb-1">
                       03 &middot; Build what&rsquo;s next, together
                     </p>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-pps-purple transition-colors">
