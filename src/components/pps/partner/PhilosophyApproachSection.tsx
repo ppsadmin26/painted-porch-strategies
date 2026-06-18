@@ -36,7 +36,7 @@ const principles = [
   },
   {
     icon: BookOpen,
-    title: "Grounded in 2,300 Years of Wisdom",
+    title: "Ancient Wisdom, Modern Realities",
     tagline: "Not trendy frameworks.",
     description: "Our work is grounded in the enduring principles of the Stoic philosophy - strategic preparation, resilience, and conscious design - applied to the realities leaders, teams, and organizations face today.",
     contrast: "Premeditatio Malorum: Prepare for adversity before pressure demands it. That's the original Phase Zero.",
