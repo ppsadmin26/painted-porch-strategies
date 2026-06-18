@@ -308,10 +308,10 @@ export default function OurApproach() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-2 mb-4">
                   {value.title}
                 </h3>
-                <p className="text-foreground leading-relaxed mb-4">
+                <p className="text-body text-foreground mb-4">
                   {value.description}
                 </p>
-                <p className="text-foreground/80 text-sm leading-relaxed">
+                <p className="text-body-sm text-foreground/80">
                   {value.detail}
                 </p>
               </div>
