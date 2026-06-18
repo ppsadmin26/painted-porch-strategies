@@ -42,7 +42,7 @@ export default function FooterAlt() {
             <h4 className="text-base md:text-lg font-poppins font-semibold mb-4 text-gold">
               Get In Touch
             </h4>
-            <p className="text-sm leading-relaxed opacity-90">
+            <p className="text-body-sm opacity-90">
               Email:{" "}
               <a 
                 href="mailto:explore@onthepaintedporch.com"
@@ -51,7 +51,7 @@ export default function FooterAlt() {
                 explore@onthepaintedporch.com
               </a>
             </p>
-            <p className="text-sm opacity-90 mt-2">
+            <p className="text-body-sm opacity-90 mt-2">
               Website:{" "}
               <a 
                 href="https://paintedporchstrategies.com"
