@@ -215,7 +215,7 @@ export default function OurApproach() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             Upstream of the rollout.
           </h2>
-          <div className="text-lg text-foreground leading-relaxed mb-6">
+          <div className="text-lead text-foreground mb-6">
             <p className="mb-9">Every initiative is built on a series of assumptions.</p>
             <div className="mb-8 space-y-0">
               <p className="mb-0">About leadership.</p>
@@ -231,7 +231,7 @@ export default function OurApproach() {
               <p className="mb-0">The examination that influences everything that follows.</p>
             </div>
           </div>
-          <p className="text-lg text-foreground leading-relaxed">
+          <p className="text-lead text-foreground">
             That is the work we call <Link to="/phase-zero" className="text-primary font-semibold hover:underline">Phase Zero</Link>.
           </p>
         </div>
@@ -257,7 +257,7 @@ export default function OurApproach() {
               </h3>
               <ul className="space-y-3">
                 {beliefs.map((b) => (
-                  <li key={b} className="flex items-start gap-3 text-foreground leading-relaxed">
+                  <li key={b} className="text-body text-foreground flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-1" />
                     <span>{b}</span>
                   </li>
@@ -270,7 +270,7 @@ export default function OurApproach() {
               </h3>
               <ul className="space-y-3">
                 {rejects.map((r) => (
-                  <li key={r} className="flex items-start gap-3 text-foreground leading-relaxed">
+                  <li key={r} className="text-body text-foreground flex items-start gap-3">
                     <X className="w-5 h-5 text-raspberry flex-shrink-0 mt-1" />
                     <span>{r}</span>
                   </li>
@@ -291,7 +291,7 @@ export default function OurApproach() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Our Core Values
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               Three values that decide how we show up in every partnership.
             </p>
           </div>
@@ -308,10 +308,10 @@ export default function OurApproach() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-2 mb-4">
                   {value.title}
                 </h3>
-                <p className="text-foreground leading-relaxed mb-4">
+                <p className="text-body text-foreground mb-4">
                   {value.description}
                 </p>
-                <p className="text-foreground/80 text-sm leading-relaxed">
+                <p className="text-body-sm text-foreground/80">
                   {value.detail}
                 </p>
               </div>
@@ -330,7 +330,7 @@ export default function OurApproach() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               The Decision Filter Behind Every Recommendation
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto whitespace-pre-line">
+            <p className="text-lead text-foreground max-w-2xl mx-auto whitespace-pre-line">
               Our Stoic operating system. Every recommendation, challenge, observation, and strategic conversation passes through the same four principles.
 
               Not because frameworks matter, but because disciplined thinking does.
@@ -348,7 +348,7 @@ export default function OurApproach() {
                   <span className="text-white font-poppins font-bold text-xl">{v.letter}</span>
                 </div>
                 <h3 className="font-poppins font-bold text-navy text-lg mb-2">{v.word}</h3>
-                <p className="text-sm text-foreground leading-relaxed">
+                <p className="text-body-sm text-foreground">
                   <span className="font-bold">{v.bold}</span>
                   {v.desc}
                 </p>
@@ -389,7 +389,7 @@ export default function OurApproach() {
               </h3>
               <ul className="space-y-3">
                 {foundationalAbilities.map((a) => (
-                  <li key={a} className="flex items-start gap-3 text-foreground leading-relaxed">
+                  <li key={a} className="text-body text-foreground flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-gold flex-shrink-0 mt-1" />
                     <span>{a}</span>
                   </li>
@@ -407,7 +407,7 @@ export default function OurApproach() {
               </h3>
               <ul className="space-y-3">
                 {createConditions.map((c) => (
-                  <li key={c} className="flex items-start gap-3 text-foreground leading-relaxed">
+                  <li key={c} className="text-body text-foreground flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                     <span>{c}</span>
                   </li>
@@ -428,7 +428,7 @@ export default function OurApproach() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5">
               The P.A.T.H.<sup className="text-[0.4em] align-super">™</sup> to Sustainable Change
             </h2>
-            <p className="text-lg text-foreground leading-relaxed">
+            <p className="text-lead text-foreground">
               Stoicism is the GPS for how we think. P.A.T.H. is the roadmap for how we work. Four stages that move a change from clarity to commitment to launch to lasting habits.
             </p>
           </div>
@@ -526,7 +526,7 @@ export default function OurApproach() {
                 <p className="text-xs font-poppins font-semibold uppercase tracking-[0.15em] text-navy/60 mb-3">
                   Stage {i + 1} &middot; {s.subtitle}
                 </p>
-                <p className="text-sm text-foreground leading-relaxed mb-4 flex-grow">
+                <p className="text-body-sm text-foreground mb-4 flex-grow">
                   {s.body}
                 </p>
                 <div className="pt-4 border-t border-navy/10">
@@ -552,7 +552,7 @@ export default function OurApproach() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">
                   Prepare is Phase Zero.
                 </h3>
-                <p className="text-foreground leading-relaxed">
+                <p className="text-body text-foreground">
                   Prepare is where we begin. It's the work before the work - the point where you decide whether a direction is worth committing to and what it will require to do it well.
                 </p>
               </div>
@@ -612,11 +612,11 @@ export default function OurApproach() {
             <h3 className="text-xl md:text-3xl font-poppins font-bold mb-5">
               You will not need us forever.
             </h3>
-            <p className="text-white/90 leading-relaxed mb-4 max-w-xl mx-auto">
+            <p className="text-body text-white/90 mb-4 max-w-xl mx-auto">
               The point of partnership is not a long contract. It's your team
               becoming the people who can author your next change on their own.
             </p>
-            <p className="text-gold font-semibold max-w-xl mx-auto">
+            <p className="text-body text-gold font-semibold max-w-xl mx-auto">
               Success is when your next major decision no longer requires us in the room.
             </p>
           </div>
