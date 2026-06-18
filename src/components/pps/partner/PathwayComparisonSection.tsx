@@ -15,7 +15,7 @@ const tierContent = {
     ],
     perfectFor: [
       "Leaders exploring Phase Zero concepts",
-      "Organizations testing before full commitment",
+      "Organizations exploring before making a larger investment",
       "Individual development investment",
       "Anyone asking \"Could this work for me?\"",
     ],
