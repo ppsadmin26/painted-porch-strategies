@@ -512,7 +512,7 @@ export default function PPSHome() {
       {/* ============================================================ */}
       <section className="py-16 md:py-20 bg-navy">
         <div className="container max-w-7xl mx-auto px-6">
-          <p className="text-center text-xs md:text-sm font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-10">
+          <p className="text-center text-caption font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-10">
             THE QUESTIONS LEADERS ARE WEIGHING AT 3AM
           </p>
           <div className="grid md:grid-cols-3 gap-10 md:gap-8">
