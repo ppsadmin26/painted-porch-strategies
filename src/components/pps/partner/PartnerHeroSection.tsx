@@ -71,7 +71,7 @@ export function PartnerHeroSection() {
                 Our P.A.T.H.ways help you identify the right starting point.
               </p>
               <p className="text-white/80 italic text-base">
-                Your next step isn't determined by your title. It's determined by where you are and what you're ready to lead.
+                Your next step isn't determined by your title. It's determined by where you are and what matters most right now.
               </p>
             </div>
 
