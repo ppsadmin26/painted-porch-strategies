@@ -428,7 +428,7 @@ export default function OurApproach() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-5">
               The P.A.T.H.<sup className="text-[0.4em] align-super">™</sup> to Sustainable Change
             </h2>
-            <p className="text-lg text-foreground leading-relaxed">
+            <p className="text-lead text-foreground">
               Stoicism is the GPS for how we think. P.A.T.H. is the roadmap for how we work. Four stages that move a change from clarity to commitment to launch to lasting habits.
             </p>
           </div>
