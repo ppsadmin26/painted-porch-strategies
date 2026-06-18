@@ -425,7 +425,7 @@ export default function PPSHome() {
               <p className="text-lg text-foreground max-w-2xl mx-auto leading-relaxed">
                 A way of thinking about and navigating intentional progress.
                 <br /><br />
-                A practical framework for building the capability, capacity, and habits required to carry what comes next.
+                A practical framework for building the capability, capacity, and habits required to sustain meaningful progress.
               </p>
             </div>
 
