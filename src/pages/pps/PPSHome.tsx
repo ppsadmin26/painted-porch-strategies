@@ -229,7 +229,7 @@ export default function PPSHome() {
                 <br /><br />
                 At the point where you&rsquo;re still determining what direction is worth pursuing, what your organization is becoming, and what foundations need to exist before momentum accelerates.
               </p>
-              <p className="text-lg text-foreground leading-relaxed">
+              <p className="text-lead text-foreground">
                 Most organizations find us at one of three moments:
                 <br />
                 &bull; when something important feels possible
