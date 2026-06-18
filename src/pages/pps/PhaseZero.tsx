@@ -82,7 +82,7 @@ const pillars = [
     outcomes: [
       "Operations that move strategy forward instead of slowing it down.",
       "Workflows designed for value, not just activity.",
-      "Systems that can hold real transformation.",
+      "Systems that can support real transformation.",
     ],
   },
   {
