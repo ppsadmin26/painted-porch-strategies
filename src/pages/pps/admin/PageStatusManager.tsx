@@ -271,6 +271,12 @@ export default function PageStatusManager() {
                         SEO
                       </span>
                     )}
+                    <span
+                      className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-poppins font-bold uppercase tracking-wide ${CATEGORY_META[entry.category].pillClass}`}
+                      title={CATEGORY_META[entry.category].description}
+                    >
+                      {CATEGORY_META[entry.category].label}
+                    </span>
                   </div>
                   <NoteEditor
                     initial={notesById[entry.id] ?? ""}
