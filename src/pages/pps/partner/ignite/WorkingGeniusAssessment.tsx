@@ -481,7 +481,7 @@ export default function WorkingGeniusAssessment() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                 Team or Organization
               </h3>
-              <p className="text-2xl font-bold text-navy mb-4">Let's Talk</p>
+              <div className="text-2xl font-bold text-navy mb-4">Let's Talk</div>
               <p className="text-body-sm text-foreground mb-4">
                 Bring Working Genius to your whole team with an optional 2 to 4 hour workshop:
               </p>
