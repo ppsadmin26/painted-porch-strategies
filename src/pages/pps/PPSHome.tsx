@@ -695,7 +695,7 @@ export default function PPSHome() {
             </div>
             <div className="bg-raspberry/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-raspberry">
               <p className="font-poppins font-bold text-raspberry mb-2">If not us</p>
-              <p className="text-white/90 text-sm leading-relaxed">
+              <p className="text-body-sm text-white/90">
                 We tell you that, too, and connect you with the right partner
                 for your stage and needs.
               </p>
