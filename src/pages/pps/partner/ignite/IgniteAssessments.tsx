@@ -147,8 +147,8 @@ export default function IgniteAssessments() {
                     <AssessmentIcon icon={assessment.icon} />
                   </div>
                 </div>
-                <p className="text-sm font-semibold text-foreground/80 mb-3">{assessment.tagline}</p>
-                <p className="text-foreground mb-6 leading-relaxed text-sm flex-grow">{assessment.description}</p>
+                <p className="text-body-sm font-semibold text-foreground/80 mb-3">{assessment.tagline}</p>
+                <p className="text-body-sm text-foreground mb-6 flex-grow">{assessment.description}</p>
                 <div className="flex items-center justify-between mt-auto">
                   <span className="font-bold text-navy">{assessment.investment}</span>
                   {assessment.link !== "#" ? (
