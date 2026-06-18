@@ -660,7 +660,7 @@ export default function AmplifyPathAlt() {
       {/* BREATHING SECTION: Quote Strip (relocated) */}
       <section className="py-14 md:py-20 bg-gradient-to-br from-strategic via-strategic to-strategic/80">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <blockquote className="text-pullquote md:text-3xl font-poppins font-semibold text-white">
+          <blockquote className="text-pullquote font-poppins font-semibold text-white">
             "We cannot solve our problems with the same thinking we used when we created them."
           </blockquote>
           <p className="mt-4 text-body-sm text-white/70">Albert Einstein</p>
