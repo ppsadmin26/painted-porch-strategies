@@ -76,6 +76,9 @@ export default function PartnerWithUsAlt() {
       {/* Section 2: Three P.A.T.H.ways Comparison */}
       <PathwayComparisonSection />
 
+      {/* Section 2c: Start Where You Are — pathway cards */}
+      <StartWhereYouAreSection />
+
       {/* Section 2b: How People Typically Enter the Porch */}
       <HowPeopleEnterSection />
 
