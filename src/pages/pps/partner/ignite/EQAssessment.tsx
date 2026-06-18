@@ -628,7 +628,7 @@ export default function EQAssessment() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                 Unsure or want to learn more?
               </h3>
-              <p className="text-2xl font-bold text-navy mb-4">Let's Talk</p>
+              <div className="text-2xl font-bold text-navy mb-4">Let's Talk</div>
               <p className="text-body-sm text-foreground mb-4">
                 Interested in one of our other EQ-i reports:
               </p>
