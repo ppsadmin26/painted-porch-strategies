@@ -274,6 +274,34 @@
     font-family: 'Montserrat', sans-serif;
   }
 
+  /* ============================================================
+   * BODY TYPOGRAPHY SCALE (Montserrat)
+   * Use these tokens on every <p>, list, and narrative text block
+   * instead of raw text-xs/sm/base/lg/xl utilities.
+   *
+   *   .text-lead       Hero sub-heads, section intros under an H2
+   *   .text-body       DEFAULT body copy (16px). Use unless you have a reason not to.
+   *   .text-body-sm    Compact: card body, multi-column grids, dense lists, table cells
+   *   .text-caption    Footnotes, legal, labels, timestamps, badges
+   *   .text-pullquote  Block quotes & callout quotes only
+   * ============================================================ */
+  .text-lead {
+    @apply text-lg md:text-xl leading-relaxed;
+  }
+  .text-body {
+    @apply text-base leading-relaxed;
+  }
+  .text-body-sm {
+    @apply text-sm leading-relaxed;
+  }
+  .text-caption {
+    @apply text-xs leading-normal;
+  }
+  .text-pullquote {
+    @apply text-xl md:text-2xl italic leading-snug;
+  }
+
+
   /* Gradient backgrounds for visual variety */
   .bg-gradient-strategic {
     background: linear-gradient(135deg, hsl(263 44% 36%) 0%, hsl(240 100% 21%) 100%);
