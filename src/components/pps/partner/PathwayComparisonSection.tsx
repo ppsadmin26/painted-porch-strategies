@@ -40,7 +40,7 @@ const tierContent = {
     cta: "Explore AMPLIFY",
   },
   EMBODY: {
-    tagline: "ORGANIZATION: Architect transformation that lasts.",
+    tagline: "ORG: Architect transformation that lasts.",
     journey: "Embedded strategic partnership (6+ months) to co-architect permanent organizational capacity, capability, and adaptability.",
     features: [
       "Architect Change Sessions (Phase Zero strategic co-design)",
