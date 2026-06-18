@@ -390,7 +390,7 @@ export default function Sitemap() {
 
   const { user, loading: authLoading } = useAuth();
   const { isAdmin } = useUserRole();
-  const { map: rawStatusMap, loading: statusLoading, setStatus, clearStatus } = usePageStatuses();
+  const { map: rawStatusMap, loading: statusLoading } = usePageStatuses();
   const [notesById, setNotesById] = useState<Record<string, string | null>>({});
   const isStaff = !!user;
   const isEditorPreview = isLovableEditorPreview();
