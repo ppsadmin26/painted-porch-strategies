@@ -34,17 +34,17 @@ export const CATEGORY_META: Record<
   public: {
     label: "Public",
     description: "Live, indexable, included in sitemap.xml and brand audits.",
-    pillClass: "bg-pps-lime/20 text-pps-navy border border-pps-lime/40",
+    pillClass: "bg-pps-lime/30 text-pps-navy border border-pps-lime",
   },
   internal: {
     label: "Internal",
     description: "Staff / admin only. Hidden from search engines and audits.",
-    pillClass: "bg-pps-teal/15 text-pps-navy border border-pps-teal/40",
+    pillClass: "bg-pps-teal/25 text-pps-navy border border-pps-teal",
   },
   archived: {
     label: "Archived",
     description: "Legacy / superseded. Kept for reference but excluded everywhere.",
-    pillClass: "bg-pps-charcoal/15 text-pps-charcoal border border-pps-charcoal/30",
+    pillClass: "bg-pps-raspberry/15 text-pps-raspberry border border-pps-raspberry/50",
   },
 };
 
