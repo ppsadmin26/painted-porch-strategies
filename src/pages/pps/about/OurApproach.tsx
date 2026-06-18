@@ -222,7 +222,7 @@ export default function OurApproach() {
               <p>About communication.</p>
               <p>About priorities.</p>
               <p>About culture.</p>
-              <p>About what people understand, believe, and are prepared to do.</p>
+              <p>About what people understand, believe, and are capable of doing.</p>
             </div>
             <p className="mb-8">Our work surfaces those assumptions before they become expensive realities.</p>
             <p className="mb-8">Because what appears during implementation often begins much earlier.</p>
