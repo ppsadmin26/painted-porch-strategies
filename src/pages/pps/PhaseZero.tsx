@@ -212,7 +212,7 @@ export default function PhaseZero() {
             </p>
             <p>
               Phase Zero is the pause that prevents that cost. A deliberate stop, before
-              the next big <ShIFt lowercase /> hardens into execution, to examine what deserves pursuit, where strain already exists, and what direction makes the most sense from where you are today.
+              the next big <ShIFt lowercase />&nbsp;hardens into execution, to examine what deserves pursuit, where strain already exists, and what direction makes the most sense from where you are today, and who and what you want to become tomorrow.
             </p>
           </div>
           <p className="mt-10 text-2xl md:text-3xl font-poppins font-semibold text-navy leading-relaxed">
