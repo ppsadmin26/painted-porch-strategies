@@ -526,7 +526,7 @@ export default function OurApproach() {
                 <p className="text-xs font-poppins font-semibold uppercase tracking-[0.15em] text-navy/60 mb-3">
                   Stage {i + 1} &middot; {s.subtitle}
                 </p>
-                <p className="text-sm text-foreground leading-relaxed mb-4 flex-grow">
+                <p className="text-body-sm text-foreground mb-4 flex-grow">
                   {s.body}
                 </p>
                 <div className="pt-4 border-t border-navy/10">
