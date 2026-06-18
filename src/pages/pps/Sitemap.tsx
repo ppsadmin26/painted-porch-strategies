@@ -5,6 +5,11 @@ import { useAuth } from "@/hooks/useAuth";
 import { useUserRole } from "@/hooks/useUserRole";
 import { usePageStatuses, type PageStatusMap, type PageStatusRecord } from "@/hooks/usePageStatuses";
 import { resolvePageStatus, resolvePageStatusEntry } from "@/config/pageStatus";
+import {
+  CATEGORY_META,
+  getDefaultCategoryForPath,
+  type PageCategory,
+} from "@/config/pageCategories";
 import { isLovableEditorPreview } from "@/lib/lovablePreview";
 import { supabase } from "@/integrations/supabase/client";
 import ComingSoon from "@/pages/pps/ComingSoon";
@@ -13,6 +18,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Settings2, X } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+
+/** Resolve effective category for a path: DB row wins, else URL heuristic. */
+function resolveCategory(path: string, map: PageStatusMap): PageCategory {
+  return (map[path]?.category as PageCategory | undefined) ?? getDefaultCategoryForPath(path);
+}
 
 export interface SitemapNode {
   label: string;
