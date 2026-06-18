@@ -6,14 +6,14 @@ const draftMap: PageStatusMap = {
   "/courses": {
     id: "1",
     path: "/courses",
-    status: "draft",
+    status: "draft", category: "public",
     note: null,
     updated_at: new Date().toISOString(),
   },
   "/partner/ignite/courses": {
     id: "2",
     path: "/partner/ignite/courses",
-    status: "draft",
+    status: "draft", category: "public",
     note: null,
     updated_at: new Date().toISOString(),
   },
@@ -34,7 +34,7 @@ describe("Draft page visibility — nav/footer/CTA filtering", () => {
       "/contact": {
         id: "x",
         path: "/contact",
-        status: "draft",
+        status: "draft", category: "public",
         note: null,
         updated_at: new Date().toISOString(),
       },
@@ -47,8 +47,8 @@ describe("Draft page visibility — nav/footer/CTA filtering", () => {
     // /about and /resources have explicit Live overrides; /courses is Draft.
     const map: PageStatusMap = {
       ...draftMap,
-      "/about": { id: "a", path: "/about", status: "live", note: null, updated_at: "" },
-      "/resources": { id: "r", path: "/resources", status: "live", note: null, updated_at: "" },
+      "/about": { id: "a", path: "/about", status: "live", category: "public", note: null, updated_at: "" },
+      "/resources": { id: "r", path: "/resources", status: "live", category: "public", note: null, updated_at: "" },
     };
     const links = [
       { href: "/about" },

@@ -14,6 +14,12 @@ import { supabase } from "@/integrations/supabase/client";
 import PageSeoEditorDialog from "@/components/pps/admin/PageSeoEditorDialog";
 import CanonicalAuditCard from "@/components/pps/admin/CanonicalAuditCard";
 import BulkSeoGenerator from "@/components/pps/admin/BulkSeoGenerator";
+import {
+  CATEGORY_META,
+  PAGE_CATEGORIES,
+  getDefaultCategoryForPath,
+  type PageCategory,
+} from "@/config/pageCategories";
 
 /**
  * Admin-only manager for page publish status + per-page SEO overrides.
@@ -23,7 +29,7 @@ import BulkSeoGenerator from "@/components/pps/admin/BulkSeoGenerator";
 export default function PageStatusManager() {
   const { user, loading: authLoading } = useAuth();
   const { isAdmin, loading: roleLoading } = useUserRole();
-  const { map, loading, setStatus, clearStatus } = usePageStatuses();
+  const { map, loading, setStatus, setCategory, clearStatus } = usePageStatuses();
   const { toast } = useToast();
 
   const [newPath, setNewPath] = useState("");
@@ -265,6 +271,12 @@ export default function PageStatusManager() {
                         SEO
                       </span>
                     )}
+                    <span
+                      className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-poppins font-bold uppercase tracking-wide ${CATEGORY_META[entry.category].pillClass}`}
+                      title={CATEGORY_META[entry.category].description}
+                    >
+                      {CATEGORY_META[entry.category].label}
+                    </span>
                   </div>
                   <NoteEditor
                     initial={notesById[entry.id] ?? ""}
@@ -275,7 +287,17 @@ export default function PageStatusManager() {
                     }}
                   />
                 </div>
-                <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+                <div className="flex items-center gap-2 sm:gap-3 shrink-0 flex-wrap">
+                  <CategoryPicker
+                    value={entry.category}
+                    onChange={async (next) => {
+                      await setCategory(entry.path, next);
+                      toast({
+                        title: `Category set to ${CATEGORY_META[next].label}`,
+                        description: entry.path,
+                      });
+                    }}
+                  />
                   <Button
                     variant="outline"
                     size="sm"
@@ -450,3 +472,44 @@ function NoteEditor({ initial, onSave }: { initial: string; onSave: (note: strin
     </div>
   );
 }
+
+/** Compact 3-way segmented control for Public / Internal / Archived. */
+function CategoryPicker({
+  value,
+  onChange,
+}: {
+  value: PageCategory;
+  onChange: (next: PageCategory) => Promise<void> | void;
+}) {
+  return (
+    <div
+      role="radiogroup"
+      aria-label="Page category"
+      className="inline-flex rounded-md border border-pps-navy/15 overflow-hidden text-[10px] font-poppins font-semibold"
+    >
+      {PAGE_CATEGORIES.map((cat) => {
+        const active = cat === value;
+        return (
+          <button
+            key={cat}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            onClick={() => {
+              if (!active) void onChange(cat);
+            }}
+            title={CATEGORY_META[cat].description}
+            className={`px-2 py-1 uppercase tracking-wide transition-colors ${
+              active
+                ? `${CATEGORY_META[cat].pillClass} z-[1]`
+                : "bg-white text-pps-charcoal/70 hover:bg-pps-navy/[0.04]"
+            }`}
+          >
+            {CATEGORY_META[cat].label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+

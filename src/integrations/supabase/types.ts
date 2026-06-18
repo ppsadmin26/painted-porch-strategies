@@ -603,6 +603,7 @@ export type Database = {
       }
       page_status: {
         Row: {
+          category: string
           created_at: string
           id: string
           note: string | null
@@ -612,6 +613,7 @@ export type Database = {
           updated_by: string | null
         }
         Insert: {
+          category?: string
           created_at?: string
           id?: string
           note?: string | null
@@ -621,6 +623,7 @@ export type Database = {
           updated_by?: string | null
         }
         Update: {
+          category?: string
           created_at?: string
           id?: string
           note?: string | null

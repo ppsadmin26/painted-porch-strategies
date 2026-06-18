@@ -17,6 +17,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { shouldSkipFileForAudit } from "./_page-categories.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -25,6 +26,7 @@ const TAGS = ["p", "li", "blockquote"];
 const RAW_SIZE = /\btext-(?:xs|sm|base|lg|xl|2xl|3xl)\b/;
 const args = process.argv.slice(2);
 const asJson = args.includes("--json");
+const includeAll = args.includes("--all"); // bypass internal/archived skip
 const pathsArg = args.indexOf("--paths");
 const explicitPaths =
   pathsArg !== -1 ? args.slice(pathsArg + 1).filter((a) => !a.startsWith("--")) : null;
@@ -39,9 +41,14 @@ function walk(dir, out = []) {
   return out;
 }
 
-const files = explicitPaths
+const rawFiles = explicitPaths
   ? explicitPaths.map((p) => path.resolve(ROOT, p))
   : SCAN_DIRS.flatMap((d) => walk(path.resolve(ROOT, d)));
+// Skip internal/archived files by default — they're out of scope for brand
+// audits. Pass --all to include them anyway.
+const files = includeAll
+  ? rawFiles
+  : rawFiles.filter((f) => !shouldSkipFileForAudit(path.relative(ROOT, f)));
 
 const tagOpen = new RegExp(`<(${TAGS.join("|")})\\b[^>]*className=["\`]([^"\`]+)["\`]`, "g");
 const violations = [];

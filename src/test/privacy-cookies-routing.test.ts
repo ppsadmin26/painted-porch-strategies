@@ -35,8 +35,8 @@ describe("/privacy and /cookies — redirects + sitemap inclusion", () => {
     it("treats /privacy and /cookies as Live when an explicit live override exists", () => {
       // Defaults are now Draft; legal pages should be backfilled to Live in page_status.
       const map = {
-        "/privacy": { id: "1", path: "/privacy", status: "live" as const, note: null, updated_at: "" },
-        "/cookies": { id: "2", path: "/cookies", status: "live" as const, note: null, updated_at: "" },
+        "/privacy": { id: "1", path: "/privacy", status: "live" as const, category: "public" as const, note: null, updated_at: "" },
+        "/cookies": { id: "2", path: "/cookies", status: "live" as const, category: "public" as const, note: null, updated_at: "" },
       };
       expect(resolvePageStatus("/privacy", map)).toBe("live");
       expect(resolvePageStatus("/cookies", map)).toBe("live");

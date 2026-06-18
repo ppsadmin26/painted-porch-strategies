@@ -17,17 +17,16 @@ const SUPABASE_URL =
   process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-async function fetchDraftPaths() {
+async function fetchPageStatusRows() {
   if (!SUPABASE_URL || !SERVICE_KEY) {
     console.warn(
-      "[generate-robots-txt] Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY — skipping draft Disallow rules."
+      "[generate-robots-txt] Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY — skipping draft/category Disallow rules."
     );
     return [];
   }
 
   const url = new URL("/rest/v1/page_status", SUPABASE_URL);
-  url.searchParams.set("status", "eq.draft");
-  url.searchParams.set("select", "path");
+  url.searchParams.set("select", "path,status,category");
   url.searchParams.set("order", "path.asc");
 
   const res = await fetch(url.toString(), {
@@ -44,11 +43,20 @@ async function fetchDraftPaths() {
   }
 
   const rows = await res.json();
-  return (rows || []).map((r) => r.path).filter(Boolean);
+  return rows || [];
 }
 
 async function main() {
-  const draftPaths = await fetchDraftPaths();
+  const rows = await fetchPageStatusRows();
+
+  // Categorize: drafts hidden, internal/archived also hidden from search.
+  const disallow = new Set();
+  for (const row of rows) {
+    if (!row.path) continue;
+    if (row.status === "draft") disallow.add(row.path);
+    if (row.category === "internal" || row.category === "archived") disallow.add(row.path);
+  }
+  const disallowPaths = Array.from(disallow).sort();
 
   let content = `User-agent: *
 Allow: /
@@ -57,9 +65,11 @@ Disallow: /admin/
 Disallow: /reset-password
 `;
 
-  if (draftPaths.length > 0) {
-    content += "\n# Draft pages — hidden from search engines\n";
-    for (const path of draftPaths) {
+  if (disallowPaths.length > 0) {
+    content += "\n# Draft / internal / archived pages — hidden from search engines\n";
+    for (const path of disallowPaths) {
+      // Skip the always-Disallow prefixes already covered above.
+      if (path === "/admin" || path.startsWith("/admin/") || path === "/reset-password") continue;
       content += `Disallow: ${path}\n`;
     }
   }
@@ -69,7 +79,7 @@ Disallow: /reset-password
   const outPath = resolve("public/robots.txt");
   writeFileSync(outPath, content);
   console.log(
-    `[generate-robots-txt] Wrote ${outPath} (${draftPaths.length} draft Disallow rules)`
+    `[generate-robots-txt] Wrote ${outPath} (${disallowPaths.length} Disallow rules across draft + non-public categories)`
   );
 }
 

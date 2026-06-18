@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import type { PageCategory } from "@/config/pageCategories";
 
 export type PageStatus = "live" | "draft";
 
@@ -7,6 +8,7 @@ export interface PageStatusRecord {
   id: string;
   path: string;
   status: PageStatus;
+  category: PageCategory;
   /** Admin-only field. Always null when fetched via this hook (column is
    *  revoked for anon + authenticated). Admin screens hydrate it separately
    *  via the `admin_list_page_status_notes` RPC. */
@@ -32,11 +34,24 @@ export function usePageStatuses() {
   const load = useCallback(async () => {
     const { data } = await supabase
       .from("page_status")
-      .select("id, path, status, updated_at");
+      .select("id, path, status, category, updated_at");
     if (data) {
       const next: PageStatusMap = {};
-      for (const row of data as Array<Omit<PageStatusRecord, "note">>) {
-        next[row.path] = { ...row, note: null };
+      for (const row of data as Array<{
+        id: string;
+        path: string;
+        status: string;
+        category: string | null;
+        updated_at: string;
+      }>) {
+        next[row.path] = {
+          id: row.id,
+          path: row.path,
+          status: row.status as PageStatus,
+          category: (row.category ?? "public") as PageCategory,
+          updated_at: row.updated_at,
+          note: null,
+        };
       }
       setMap(next);
     }
@@ -65,18 +80,46 @@ export function usePageStatuses() {
 
   /** Set or upsert a page's status. Admins only (enforced by RLS). */
   const setStatus = useCallback(
-    async (path: string, status: PageStatus, note?: string | null) => {
+    async (
+      path: string,
+      status: PageStatus,
+      note?: string | null,
+      category?: PageCategory,
+    ) => {
       const existing = map[path];
       if (existing) {
+        const patch: Record<string, unknown> = { status, note: note ?? null };
+        if (category) patch.category = category;
         const { error } = await supabase
           .from("page_status")
-          .update({ status, note: note ?? null })
+          .update(patch)
           .eq("id", existing.id);
         if (error) throw error;
       } else {
         const { error } = await supabase
           .from("page_status")
-          .insert({ path, status, note: note ?? null });
+          .insert({ path, status, note: note ?? null, category: category ?? "public" });
+        if (error) throw error;
+      }
+      await load();
+    },
+    [map, load],
+  );
+
+  /** Update only the category of an existing row (creates one if missing). */
+  const setCategory = useCallback(
+    async (path: string, category: PageCategory) => {
+      const existing = map[path];
+      if (existing) {
+        const { error } = await supabase
+          .from("page_status")
+          .update({ category })
+          .eq("id", existing.id);
+        if (error) throw error;
+      } else {
+        const { error } = await supabase
+          .from("page_status")
+          .insert({ path, status: "live", category });
         if (error) throw error;
       }
       await load();
@@ -96,5 +139,5 @@ export function usePageStatuses() {
     [map, load],
   );
 
-  return { map, loading, setStatus, clearStatus, refresh: load };
+  return { map, loading, setStatus, setCategory, clearStatus, refresh: load };
 }
