@@ -167,7 +167,7 @@ export default function PPSHome() {
               framing={
                 <>
                   And it&rsquo;s the cost of asking people to adapt to change
-                  their organization wasn&rsquo;t built to hold.
+                  without strengthening the foundations required to sustain it.
                 </>
               }
             />
