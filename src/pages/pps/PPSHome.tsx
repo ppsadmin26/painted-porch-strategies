@@ -416,7 +416,7 @@ export default function PPSHome() {
             className="scroll-mt-24 scroll-smooth mt-16 max-w-5xl mx-auto"
           >
             <div className="text-center mb-10">
-              <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
+              <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
                 The Way Forward
               </p>
               <h3 id="path-heading" className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1 mb-4">
