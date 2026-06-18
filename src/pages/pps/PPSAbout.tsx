@@ -268,7 +268,7 @@ export default function PPSAbout() {
                   )}
                   <div className="text-foreground text-sm leading-relaxed mb-4">
                     {member.description.split('\n\n').map((text, i) => (
-                      <p key={i} className={i  className="text-body"> 0 ? "mt-4" : ""}>
+                      <p key={i} className={`text-body ${i > 0 ? "mt-4" : ""}`}>
                         {text}
                       </p>
                     ))}
