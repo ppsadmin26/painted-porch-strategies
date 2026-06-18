@@ -156,12 +156,12 @@ export default function OurImpact() {
                 key={index}
                 className={`bg-white p-8 rounded-xl border-l-4 ${testimonial.color}`}
               >
-                <blockquote className="text-pullquote text-foreground leading-relaxed mb-6 italic">
+                <blockquote className="text-body text-foreground italic mb-4">
                   "{testimonial.quote}"
                 </blockquote>
                 <div>
-                  <p className="text-body font-semibold text-navy">{testimonial.author}</p>
-                  <p className="text-body -sm text-muted-foreground">{testimonial.company}</p>
+                  <p className="text-body-sm font-semibold text-navy mb-0">{testimonial.author}</p>
+                  <p className="text-body-sm text-muted-foreground">{testimonial.company}</p>
                 </div>
               </div>
             ))}
