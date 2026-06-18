@@ -61,10 +61,10 @@ export default function DiscoverSectionAlt() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Go from "What <span className="text-raspberry font-bold">IF</span>" to "Where Next"
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto">
+          <p className="text-lead text-muted-foreground max-w-4xl mx-auto">
             What's possible and realistically available for your organization <em>right now</em>? Not in theory, not at full potential, but given how your leadership, systems, and people are structured today.
           </p>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto mt-4">
+          <p className="text-lead text-muted-foreground max-w-4xl mx-auto mt-4">
             The Blue Door surfaces that reality in less than 30 minutes. replacing uncertainty with a clearer understanding of where opportunity exists, where to move now, and what deserves attention first. No more strategic paralysis, no FOBO (fear of better options), no nagging worry that this will go sideways. Just a clear path and compass forward.&nbsp;
           </p>
         </div>
