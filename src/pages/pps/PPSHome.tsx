@@ -791,7 +791,7 @@ export default function PPSHome() {
             <br />
             <br />
             The question is whether your organization is building the clarity,
-            capability, and capacity required to carry what comes next.
+            capability, and capacity required to pursue the future shIFt you want to create next.
           </>
         }
         actions={[
