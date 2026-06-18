@@ -545,7 +545,7 @@ export default function PPSHome() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 The Blue Door Organizational Appraisal.
               </h2>
-              <p className="text-lg text-foreground leading-relaxed mb-4">
+              <p className="text-lead text-foreground mb-4">
                 The questions that keep you up at 3AM deserve more than a pep
                 talk or another planning deck. They deserve clarity - the
                 kind that comes from seeing your organization clearly before
