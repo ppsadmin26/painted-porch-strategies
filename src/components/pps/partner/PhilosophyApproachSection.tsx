@@ -20,7 +20,7 @@ const principles = [
   {
     icon: Target,
     title: "Lasting Capability & Confidence",
-    tagline: "Not implementing projects.",
+    tagline: "We strengthen foundations before initiatives demand more from them.",
     description: "Success is not measured by a completed project. It's reflected in stronger leaders, healthier systems, and greater confidence in navigating whatever comes next.",
     contrast: "When we're done, you've become transformation architects yourselves.",
   },
