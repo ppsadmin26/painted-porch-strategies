@@ -223,7 +223,7 @@ export default function PhaseZero() {
               the next big <ShIFt lowercase />&nbsp;hardens into execution, to examine what deserves pursuit, where strain already exists, and what direction makes the most sense from where you are today...and who and what you want to become tomorrow.
             </p>
           </div>
-          <p className="text-body mt-10 not-italic font-poppins font-semibold text-navy leading-relaxed">
+          <p className="text-pullquote mt-10 not-italic font-poppins font-semibold text-navy leading-relaxed">
             The frustration that surfaces in moments like this is rarely random. <span className="text-raspberry">It's a signal.</span>
           </p>
         </FadeIn>
