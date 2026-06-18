@@ -489,7 +489,7 @@ export default function PPSHome() {
                   <li
                     key={step.letter}
                     id={`path-${step.slug}`}
-                    className={`relative flex flex-col items-center justify-center py-4 rounded-xl border-2 bg-white shadow-sm scroll-mt-24 ${step.border}`}
+                    className={`text-body relative flex flex-col items-center justify-center py-4 rounded-xl border-2 bg-white shadow-sm scroll-mt-24 ${step.border}`}
                     aria-label={`Step ${idx + 1} of ${arr.length}: ${step.letter}, ${step.word}`}
                   >
                     <span aria-hidden="true" className={`absolute -top-3 left-1/2 -translate-x-1/2 w-0.5 h-3 ${step.bg} opacity-60`} />
