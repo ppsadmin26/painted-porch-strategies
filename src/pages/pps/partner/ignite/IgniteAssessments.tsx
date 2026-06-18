@@ -118,7 +118,7 @@ export default function IgniteAssessments() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Uncover Your Talents. Architect Your Future.
             </h1>
-            <p className="text-lg text-foreground max-w-3xl mx-auto">
+            <p className="text-lead text-foreground max-w-3xl mx-auto">
               Decode what makes you shine, assessments that reveal your transformation architect capacity, emotional intelligence, unique talents, and success patterns. Discover the blueprint for your extraordinary performance.
             </p>
           </div>
