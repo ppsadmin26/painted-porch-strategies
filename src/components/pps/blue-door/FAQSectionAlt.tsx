@@ -88,7 +88,7 @@ export default function FAQSectionAlt() {
                     faq.answer?.split('\n\n').map((paragraph, i) => (
                       <p
                         key={i}
-                        className={i  className="text-body"> 0 ? 'mt-3' : ''}
+                        className={`text-body ${i > 0 ? 'mt-3' : ''}`}
                         dangerouslySetInnerHTML={{ __html: paragraph }}
                       />
                     ))
