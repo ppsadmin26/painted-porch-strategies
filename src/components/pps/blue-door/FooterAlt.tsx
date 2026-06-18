@@ -69,7 +69,7 @@ export default function FooterAlt() {
           <h4 className="text-base md:text-lg font-poppins font-bold text-lime mb-2">
             Let's Do Good Sh<span className="text-raspberry font-bold">IF</span>t
           </h4>
-          <p className="text-sm opacity-90 max-w-2xl mx-auto">
+          <p className="text-body-sm opacity-90 max-w-2xl mx-auto">
             To do <em>well</em>, we must also do <em>good</em>. <span className="font-semibold text-lime">5% of every purchase is donated to charity.</span>
           </p>
         </div>
