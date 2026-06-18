@@ -224,7 +224,7 @@ export default function OurApproach() {
               <p>About culture.</p>
               <p>About what people understand, believe, and are prepared to do.</p>
             </div>
-            <p className="mb-8">Our work examines those assumptions before they become expensive realities.</p>
+            <p className="mb-8">Our work surfaces those assumptions before they become expensive realities.</p>
             <p className="mb-8">Because what appears during implementation often begins much earlier.</p>
             <div>
               <p>This is the work beneath the rollout.</p>
