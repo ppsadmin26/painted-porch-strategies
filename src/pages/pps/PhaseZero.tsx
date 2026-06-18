@@ -139,7 +139,7 @@ const wherePhaseZeroLeads = [
   {
     icon: Users,
     title: "Strategic Partnership",
-    body: "Ongoing partnership across all three Pillars to build organizational capability and capacity that remain useful long after a single initiative ends",
+    body: "Ongoing partnership across all three Pillars to strengthen the organizational capability and capacity required to achieve what matters most.",
     to: "/partner",
     cta: "Explore Partnership",
     accent: "text-gold",
