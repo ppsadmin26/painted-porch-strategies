@@ -553,9 +553,7 @@ export default function OurApproach() {
                   Prepare is Phase Zero.
                 </h3>
                 <p className="text-foreground leading-relaxed">
-                  Most advisors start at Take Off. We start at Prepare, the
-                  work before the work, where you decide if the change is
-                  worth leading and whether your organization can carry it.
+                  Prepare is where we begin. It's the work before the work - the point where you decide whether a direction is worth committing to and what it will require to do it well.
                 </p>
               </div>
               <Link
