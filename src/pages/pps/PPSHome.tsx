@@ -558,7 +558,7 @@ export default function PPSHome() {
                 stop wondering whether you're solving the right problem and start
                 knowing you are.
               </p>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
+              <p className="text-lead text-foreground mb-6">
                 Before major pivots become active pursuit. Before momentum
                 outruns alignment. Before another initiative is announced.
               </p>
