@@ -73,12 +73,12 @@ export default function StatCard({
       <p className={cn("text-5xl md:text-6xl font-poppins font-bold tabular-nums leading-none", accentClass)}>
         {s.figure}
       </p>
-      <p className="mt-4 text-base md:text-lg text-navy font-montserrat leading-snug">
+      <p className="mt-4 text-body text-navy font-montserrat leading-snug">
         {s.label.replace(/\.$/, "")}.
         {tooltip}
       </p>
       {framing && (
-        <p className="mt-4 text-sm text-foreground/80 italic leading-relaxed">{framing}</p>
+        <p className="mt-4 text-body-sm text-foreground/80 italic leading-relaxed">{framing}</p>
       )}
       <p className="mt-auto pt-4 text-[0.7rem] uppercase tracking-wider text-muted-foreground">
         {s.source}{s.year ? ` · ${s.year}` : ""}

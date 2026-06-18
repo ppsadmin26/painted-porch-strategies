@@ -53,10 +53,10 @@ export default function ElementalStyleAssessment() {
               What's Your{" "}
               <span className="text-primary">Elemental Style?</span>
             </h1>
-            <p className="text-lg text-foreground mb-4">
+            <p className="text-lead text-foreground mb-4">
               Take this quick, free assessment to discover your natural communication and collaboration style. In less than 5 minutes, you'll learn how you show up, where you shine, and how you connect best with others on your team.
             </p>
-            <p className="text-base text-muted-foreground">
+            <p className="text-body text-muted-foreground">
               No cost. No strings. Just clear insight into how you work, lead, and relate.
             </p>
           </div>
@@ -73,21 +73,21 @@ export default function ElementalStyleAssessment() {
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Target className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Your Style Snapshot</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 See which element best matches how you naturally show up at work and in life.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Compass className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Strengths & Stretch Zones</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 Spot what you bring to a team, and where your style might rub others the wrong way.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Lightbulb className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Better Collaboration</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 Get simple ideas for working better with people whose style is different from yours.
               </p>
             </div>
@@ -132,7 +132,7 @@ export default function ElementalStyleAssessment() {
             />
           </div>
 
-          <p className="text-center text-sm text-muted-foreground mt-4">
+          <p className="text-center text-body-sm text-muted-foreground mt-4">
             Trouble loading the form?{" "}
             <a
               href={ASSESSMENT_URL}

@@ -495,7 +495,7 @@ export default function PPSBlogPost() {
                     </Badge>
                   )}
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-body-sm text-muted-foreground leading-relaxed">
                   {post.author.author_bio}
                 </p>
               </div>
@@ -547,7 +547,7 @@ export default function PPSBlogPost() {
                       {rp.title}
                     </h3>
                     {rp.excerpt && (
-                      <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3">
+                      <p className="text-body-sm text-foreground/80 leading-relaxed line-clamp-3">
                         {rp.excerpt}
                       </p>
                     )}
@@ -565,7 +565,7 @@ export default function PPSBlogPost() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-3 sm:mb-4 leading-tight text-balance">
             Want to put these ideas into action?
           </h2>
-          <p className="text-sm sm:text-base text-foreground mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto text-pretty">
+          <p className="text-body-sm text-foreground mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto text-pretty">
             Step on the P.A.T.H.way and explore how to apply these principles in your life, work, and anywhere in between.
           </p>
           <Link to="/partner" className="inline-block w-full sm:w-auto">

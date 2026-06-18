@@ -40,7 +40,7 @@ export function PathwayPhilosophySection() {
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
                 {principle.title}
               </h3>
-              <p className="text-foreground text-sm leading-relaxed">
+              <p className="text-foreground text-body-sm leading-relaxed">
                 {principle.description}
               </p>
             </div>

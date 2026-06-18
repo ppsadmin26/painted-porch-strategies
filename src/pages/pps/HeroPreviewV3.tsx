@@ -35,11 +35,11 @@ export default function HeroPreviewV3() {
               Epic Sh<span className="text-raspberry font-bold">IF</span>t.
             </h1>
 
-            <p className="font-montserrat text-xl font-medium italic tracking-wide text-[#523387] md:text-2xl">
+            <p className="font-montserrat text-lead font-medium italic tracking-wide text-[#523387]">
               Before momentum outruns alignment.
             </p>
 
-            <p className="font-montserrat text-lg font-normal leading-relaxed text-charcoal">
+            <p className="font-montserrat text-lead font-normal leading-relaxed text-charcoal">
               You aren't short on vision, resolve, or experience. What's harder to find is{" "}
               <span className="font-semibold text-primary">clarity</span>, the kind that comes before strategy hardens, before announcements activate, and before resources commit to what comes next. Painted Porch exists in the space before acceleration compounds complexity.
             </p>

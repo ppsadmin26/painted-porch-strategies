@@ -60,7 +60,7 @@ export function ExploreBeforeDecideSection({
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary">
                 {card.title}
               </h3>
-              <p className="text-sm text-foreground mb-4">{card.description}</p>
+              <p className="text-body-sm text-foreground mb-4">{card.description}</p>
               <span className="text-primary font-semibold text-sm mt-auto">
                 {card.cta}
               </span>

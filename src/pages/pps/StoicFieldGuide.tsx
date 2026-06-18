@@ -54,7 +54,7 @@ export default function StoicFieldGuide() {
                 <br />
                 Field Guide
               </h1>
-              <p className="text-lg md:text-xl text-white/80 italic font-poppins mb-6">
+              <p className="text-lead text-white/80 italic font-poppins mb-6">
                 Ancient Grit for the Modern Grind
               </p>
               <p className="text-white/85 max-w-xl mx-auto md:mx-0 mb-8">
@@ -117,10 +117,10 @@ export default function StoicFieldGuide() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Get Immediate Access
               </h2>
-              <p className="text-foreground text-sm mb-2">
+              <p className="text-foreground text-body-sm mb-2">
                 Please provide your information below to get instant access to download The Stoic Leader Field Guide.
               </p>
-              <p className="text-foreground text-sm mb-6">
+              <p className="text-foreground text-body-sm mb-6">
                 You will also receive an email with a link to download the field guide so you can come back to it any time.
               </p>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -154,7 +154,7 @@ export default function StoicFieldGuide() {
                   )}
                 </Button>
               </form>
-              <p className="text-xs text-muted-foreground mt-4">
+              <p className="text-caption text-muted-foreground mt-4">
                 Providing your email will subscribe you to receive relevant Porch materials, newsletters, and insights. We hate SPAM too. You may unsubscribe at any time.
               </p>
             </div>

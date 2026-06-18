@@ -116,7 +116,7 @@ export default function ComingSoon() {
           </svg>
         </div>
 
-        <p className="font-montserrat text-pps-teal font-semibold tracking-wide uppercase text-sm mb-3">
+        <p className="font-montserrat text-pps-teal font-semibold tracking-wide uppercase text-body-sm mb-3">
           Building something here
         </p>
 
@@ -124,7 +124,7 @@ export default function ComingSoon() {
           Painting this porch as we speak
         </h1>
 
-        <p className="font-montserrat text-pps-charcoal text-lg mb-8 max-w-lg mx-auto">
+        <p className="font-montserrat text-pps-charcoal text-lead mb-8 max-w-lg mx-auto">
           We're still adding the finishing brushstrokes. Pull up a chair and check back
           soon, or reach out and we'll let you know when it's ready.
         </p>

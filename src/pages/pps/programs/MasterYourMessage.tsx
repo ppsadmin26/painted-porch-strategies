@@ -116,7 +116,7 @@ export default function MasterYourMessage() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-white mb-6">
             Master Your Message
           </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed">
+          <p className="text-lead text-white/90 max-w-2xl leading-relaxed">
             <strong>Eliminate the static</strong> from your internal and external messaging in order to{" "}
             <strong>communicate with clarity</strong>, <strong>confidence</strong>, and <strong>influence</strong>.
           </p>
@@ -136,7 +136,7 @@ export default function MasterYourMessage() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-orange mb-6">
               Communication is one of your most impactful, yet least practiced, skills.
             </h2>
-            <p className="text-lg text-charcoal leading-relaxed">
+            <p className="text-lead text-charcoal leading-relaxed">
               Words have tremendous power, what we say, how, when. They can <strong>Inspire</strong>. They can <strong>Incite</strong>. They can <strong>Be Ignored</strong>. Understanding how to <strong>best deliver a message</strong>, <strong>tone</strong>, <strong>language</strong>, <strong>presentation</strong> and <strong>state</strong>, can have a transformative effect on the ability to <strong>lead</strong> and best <strong>share ideas</strong> and insights.
             </p>
           </div>
@@ -159,7 +159,7 @@ export default function MasterYourMessage() {
                       <Icon className="h-8 w-8 text-pps-purple" />
                     </div>
                     <h4 className="text-base md:text-lg font-poppins font-bold text-pps-navy mb-3">{h.title}</h4>
-                    <p className="text-charcoal text-sm leading-relaxed">{h.description}</p>
+                    <p className="text-charcoal text-body-sm leading-relaxed">{h.description}</p>
                   </div>
                 );
               })}
@@ -180,7 +180,7 @@ export default function MasterYourMessage() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-6">
               What is Master Your Message?
             </h2>
-            <p className="text-lg text-charcoal leading-relaxed">
+            <p className="text-lead text-charcoal leading-relaxed">
               At the Painted Porch, <strong>we like to do things a little differently</strong>. You will be <strong>up and moving</strong>, participating fully in mind, body, heart, and spirit, <strong>intentionally</strong>. You'll be <strong>actively evaluating</strong> and <strong>practicing</strong> how to communicate in your true voice, the voice that is <strong>confident</strong>, <strong>clear</strong>, <strong>rational</strong>, and <strong>effective</strong>.
             </p>
           </div>
@@ -195,7 +195,7 @@ export default function MasterYourMessage() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
                 Program Outline & Approach
               </h2>
-              <p className="text-lg text-white/80 max-w-3xl mx-auto">
+              <p className="text-lead text-white/80 max-w-3xl mx-auto">
                 <strong>Set Your Path for Communication Mastery!</strong> This program is grouped into{" "}
                 <strong>8 Modules</strong> delivered over <strong>6 Weeks</strong> (<em>8 hours of on-demand content!</em>).
               </p>
@@ -221,7 +221,7 @@ export default function MasterYourMessage() {
                     </span>
                     <div>
                       <h4 className="text-base md:text-lg font-poppins font-semibold text-white mb-2">{mod.title}</h4>
-                      <p className="text-white/70 text-sm leading-relaxed">{mod.description}</p>
+                      <p className="text-white/70 text-body-sm leading-relaxed">{mod.description}</p>
                     </div>
                   </div>
                 </div>
@@ -277,7 +277,7 @@ export default function MasterYourMessage() {
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-pps-navy mb-2">
                     Hi! I'm Rob, your Painted Porch Guide!
                   </h3>
-                  <p className="text-pps-gold font-poppins font-semibold text-sm mb-6">
+                  <p className="text-pps-gold font-poppins font-semibold text-body-sm mb-6">
                     Rob Hunter · M.C. (Master of Communication)
                   </p>
                   <p className="text-charcoal leading-relaxed mb-6">
@@ -301,7 +301,7 @@ export default function MasterYourMessage() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-4">
                 Pricing
               </h2>
-              <p className="text-lg text-charcoal max-w-2xl mx-auto leading-relaxed">
+              <p className="text-lead text-charcoal max-w-2xl mx-auto leading-relaxed">
                 Choose the option that fits your journey.
               </p>
             </div>
@@ -322,10 +322,10 @@ export default function MasterYourMessage() {
                       <p className="text-4xl font-poppins font-bold text-pps-navy">{tier.price}</p>
                     </div>
                   )}
-                  <p className="text-sm text-charcoal mb-6">{tier.subtitle}</p>
+                  <p className="text-body-sm text-charcoal mb-6">{tier.subtitle}</p>
                   <ul className="space-y-3 mb-8">
                     {tier.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-sm text-charcoal">
+                      <li key={f} className="flex items-start gap-2 text-body-sm text-charcoal">
                         <Check className="h-4 w-4 text-pps-lime flex-shrink-0 mt-0.5" />
                         <span>{f}</span>
                       </li>
@@ -386,7 +386,7 @@ export default function MasterYourMessage() {
               Since we intend to live by the Stoic philosopher Seneca's advice of "<em>works not words</em>", we believe that in order{" "}
               <strong>to do <em>well</em></strong>, we must also <strong>do <em>good</em></strong>.
             </p>
-            <p className="text-pps-teal font-poppins font-bold text-lg">
+            <p className="text-pps-teal font-poppins font-bold text-lead">
               5% of your purchase will be donated to charity.
             </p>
           </div>

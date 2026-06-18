@@ -156,7 +156,7 @@ export default function EQChangeLeaderMini() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             What Can E.Q. Do For You?
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-white/90">
+          <p className="text-lead max-w-3xl mx-auto mb-8 text-white/90">
             Uncover your own strengths and opportunities to show up, be heard,
             connect, drive change, and have resilience to the challenges
             presented in life, work, and anywhere in between.
@@ -191,7 +191,7 @@ export default function EQChangeLeaderMini() {
             Did you know that Emotional Intelligence has been shown to account
             for 27–45% of job success?
           </h2>
-          <p className="text-lg text-white/80 mb-6">
+          <p className="text-lead text-white/80 mb-6">
             Learn how you can better listen, understand, be heard, and lead through E.Q.
           </p>
           <a href="#get-started">
@@ -212,7 +212,7 @@ export default function EQChangeLeaderMini() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-6">
               The Impacts of Understanding E.Q.
             </h2>
-            <p className="text-foreground max-w-3xl mx-auto text-lg leading-relaxed">
+            <p className="text-foreground max-w-3xl mx-auto text-lead leading-relaxed">
               You've probably been told at some point, at work, in your life, to "put your emotions aside" when dealing with a difficult situation. But the truth is we are NOT thinking beings who <em>feel</em> but rather feeling beings who <em>think</em>. Whether consciously or not, your emotions impact every interaction (including the ones with yourself).
             </p>
           </div>
@@ -238,7 +238,7 @@ export default function EQChangeLeaderMini() {
           </div>
 
           <div className="text-center">
-            <p className="text-sm font-semibold tracking-widest text-gold uppercase mb-2">
+            <p className="text-body-sm font-semibold tracking-widest text-gold uppercase mb-2">
               Awareness leads to Action
             </p>
             <p className="text-foreground mb-4">
@@ -258,7 +258,7 @@ export default function EQChangeLeaderMini() {
             {stats.map((s, i) => (
               <div key={i} className="bg-white rounded-xl p-8 shadow-md text-center border-t-4 border-raspberry">
                 <p className="text-4xl font-bold text-raspberry mb-3">{s.stat}</p>
-                <p className="text-foreground text-sm leading-relaxed">{s.text}</p>
+                <p className="text-foreground text-body-sm leading-relaxed">{s.text}</p>
               </div>
             ))}
           </div>
@@ -278,7 +278,7 @@ export default function EQChangeLeaderMini() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-4">
               The EQ-i 2.0 Model of Emotional Intelligence
             </h2>
-            <p className="text-lg text-foreground font-medium">Skills for both Work and Life</p>
+            <p className="text-lead text-foreground font-medium">Skills for both Work and Life</p>
             <p className="text-foreground max-w-3xl mx-auto mt-4 leading-relaxed">
               While there are several models of emotional intelligence in use today, the EQ-i 2.0 model is one of the most popular and one of the only validated and reliable measures of self-perceived EQ that ties directly to the skills and competencies needed to lead in all areas of your life, whether you're in an official leadership role or not.
             </p>
@@ -338,7 +338,7 @@ export default function EQChangeLeaderMini() {
                     ))}
                   </ul>
                   {section.note && (
-                    <p className="text-sm text-muted-foreground italic">{section.note}</p>
+                    <p className="text-body-sm text-muted-foreground italic">{section.note}</p>
                   )}
                 </div>
               </div>
@@ -361,7 +361,7 @@ export default function EQChangeLeaderMini() {
             ].map((item, i) => (
               <div key={i} className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
                 <CheckCircle className="w-8 h-8 mx-auto mb-3 text-white/90" />
-                <p className="text-white/90 text-sm leading-relaxed">{item}</p>
+                <p className="text-white/90 text-body-sm leading-relaxed">{item}</p>
               </div>
             ))}
           </div>
@@ -406,8 +406,8 @@ export default function EQChangeLeaderMini() {
                 <span className="text-xl font-semibold text-muted-foreground line-through">$997</span>
                 <span className="text-4xl font-bold text-raspberry">$697</span>
               </div>
-              <p className="text-xs font-bold text-gold uppercase tracking-wide mb-4">Masterclass Attendee Special Price</p>
-              <p className="text-sm font-medium text-foreground mb-4">
+              <p className="text-caption font-bold text-gold uppercase tracking-wide mb-4">Masterclass Attendee Special Price</p>
+              <p className="text-body-sm font-medium text-foreground mb-4">
                 Gain clarity into your own E.Q.
               </p>
               <ul className="space-y-2 mb-8 flex-grow">
@@ -417,7 +417,7 @@ export default function EQChangeLeaderMini() {
                   "A 45-minute one-on-one debrief call to review your results and design your E.Q. development blueprint",
                   "A 30-minute progress check-in & coaching call",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                  <li key={i} className="flex items-start gap-2 text-body-sm text-foreground">
                     <CheckCircle className="w-4 h-4 text-raspberry flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -446,8 +446,8 @@ export default function EQChangeLeaderMini() {
                 <span className="text-xl font-semibold text-muted-foreground line-through">$1,197</span>
                 <span className="text-4xl font-bold text-raspberry">$897</span>
               </div>
-              <p className="text-xs font-bold text-gold uppercase tracking-wide mb-4">Masterclass Attendee Special Price</p>
-              <p className="text-sm font-medium text-foreground mb-4">
+              <p className="text-caption font-bold text-gold uppercase tracking-wide mb-4">Masterclass Attendee Special Price</p>
+              <p className="text-body-sm font-medium text-foreground mb-4">
                 Know Your Leadership Impact & Potential
               </p>
               <ul className="space-y-2 mb-8 flex-grow">
@@ -457,7 +457,7 @@ export default function EQChangeLeaderMini() {
                   "A 45-minute one-on-one debrief call to review your results and design your E.Q. leadership blueprint",
                   "A 30-minute progress check-in & coaching call",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                  <li key={i} className="flex items-start gap-2 text-body-sm text-foreground">
                     <CheckCircle className="w-4 h-4 text-raspberry flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
@@ -479,8 +479,8 @@ export default function EQChangeLeaderMini() {
               <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-1">
                 Unsure or want to learn more?
               </h3>
-              <p className="text-2xl font-bold text-navy mb-4">Let's Talk</p>
-              <p className="text-sm text-foreground mb-4">
+              <p className="text-lead font-bold text-navy mb-4">Let's Talk</p>
+              <p className="text-body-sm text-foreground mb-4">
                 Interested in one of our other EQ-i reports:
               </p>
               <ul className="space-y-2 mb-8 flex-grow">
@@ -490,7 +490,7 @@ export default function EQChangeLeaderMini() {
                   "EQ-i Higher Education",
                   "Simply have a few questions?",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                  <li key={i} className="flex items-start gap-2 text-body-sm text-foreground">
                     <Calendar className="w-4 h-4 text-navy flex-shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>

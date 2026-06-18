@@ -179,7 +179,7 @@ export function ParallaxCTA({
         )}
       >
         {eyebrow && (
-          <p className="text-gold font-semibold uppercase tracking-wide text-sm mb-3 drop-shadow">
+          <p className="text-gold font-semibold uppercase tracking-wide text-body-sm mb-3 drop-shadow">
             {eyebrow}
           </p>
         )}
@@ -190,7 +190,7 @@ export function ParallaxCTA({
           {headline}
         </h2>
         {description && (
-          <p className="text-white/95 mb-8 text-lg md:text-xl drop-shadow max-w-2xl mx-auto">
+          <p className="text-white/95 mb-8 text-lead drop-shadow max-w-2xl mx-auto">
             {description}
           </p>
         )}

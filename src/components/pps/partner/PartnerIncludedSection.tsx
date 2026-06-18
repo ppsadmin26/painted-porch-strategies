@@ -37,15 +37,15 @@ export function PartnerIncludedSection() {
                 <item.icon className="w-6 h-6 text-lime flex-shrink-0" />
                 <div>
                   <span className="font-semibold text-navy">{item.title}</span>
-                  <p className="text-sm text-foreground">{item.description}</p>
+                  <p className="text-body-sm text-foreground">{item.description}</p>
                 </div>
               </li>
             ))}
           </ul>
 
           <div className="mt-8 p-6 bg-lime/10 border border-lime/30 rounded-lg">
-            <p className="text-lime font-semibold text-lg mb-2">Our Partnership Promise</p>
-            <p className="text-sm text-foreground">
+            <p className="text-lime font-semibold text-lead mb-2">Our Partnership Promise</p>
+            <p className="text-body-sm text-foreground">
               We only enter partnerships where we believe meaningful progress is possible - together. If we're not the right fit, we'll tell you and try to point you in the right direction.
             </p>
           </div>

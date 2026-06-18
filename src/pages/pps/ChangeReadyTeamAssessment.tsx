@@ -58,10 +58,10 @@ export default function ChangeReadyTeamAssessment() {
               Is Your Team{" "}
               <span className="text-primary">Change-Ready?</span>
             </h1>
-            <p className="text-lg text-foreground mb-4">
+            <p className="text-lead text-foreground mb-4">
               Take this quick, free assessment to find out. In less than 10 minutes, you'll spot where your team is steady, where it's stretched, and where a small shIFt could make a big difference before your next change kicks off.
             </p>
-            <p className="text-base text-muted-foreground">
+            <p className="text-body text-muted-foreground">
               No cost. No strings. Just clear answers about your team's readiness.
             </p>
           </div>
@@ -78,21 +78,21 @@ export default function ChangeReadyTeamAssessment() {
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Target className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">A Clear Snapshot</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 See where your team stands across the key dimensions of change-readiness.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Users className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Team Blind Spots</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 Spot the gaps and tension points that could trip up your next initiative.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Lightbulb className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Practical Next Steps</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 Get simple, doable ideas for building readiness before change hits.
               </p>
             </div>
@@ -125,7 +125,7 @@ export default function ChangeReadyTeamAssessment() {
             />
           </div>
 
-          <p className="text-center text-sm text-muted-foreground mt-4">
+          <p className="text-center text-body-sm text-muted-foreground mt-4">
             Trouble loading the form?{" "}
             <a
               href={ASSESSMENT_URL}

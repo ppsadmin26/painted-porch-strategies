@@ -115,7 +115,7 @@ export default function TeamChallenge() {
                 <span className="text-primary italic">Superpowers</span>{" "}
                 of a Team Challenge
               </h1>
-              <p className="text-lg text-foreground mb-8">
+              <p className="text-lead text-foreground mb-8">
                 Five days. Five short lessons. One stronger, more aligned team, yours. Led by Amy Yackowski, Founder &amp; Organizational Shift Strategist.
               </p>
               <Button
@@ -124,12 +124,12 @@ export default function TeamChallenge() {
               >
                 Coming Soon
               </Button>
-              <p className="text-sm mt-3">
+              <p className="text-body-sm mt-3">
                 <Link to="/partner/ignite/masterclasses" className="text-primary hover:underline font-medium">
                   Join the launch list →
                 </Link>
               </p>
-              <p className="text-xs text-muted-foreground mt-3">
+              <p className="text-caption text-muted-foreground mt-3">
                 Delivered as 5 short daily lessons. Go at the pace of the challenge.
               </p>
             </div>
@@ -224,7 +224,7 @@ export default function TeamChallenge() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2 leading-tight">
                   {lesson.title}
                 </h3>
-                <p className="text-sm text-foreground">{lesson.description}</p>
+                <p className="text-body-sm text-foreground">{lesson.description}</p>
               </div>
             ))}
           </div>
@@ -246,21 +246,21 @@ export default function TeamChallenge() {
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Users className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Team Leaders</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 Who want to stop guessing what motivates each person and start leading with their actual strengths.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Sparkles className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Cross-Functional Teams</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 Tired of personality clashes and ready to turn their differences into a real edge.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Zap className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Anyone on a Team</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 Who wants to know their own superpower and bring out the best in everyone around them.
               </p>
             </div>
@@ -284,7 +284,7 @@ export default function TeamChallenge() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">
             Ready to suit up your team?
           </h2>
-          <p className="text-white/90 mb-8 text-lg drop-shadow">
+          <p className="text-white/90 mb-8 text-lead drop-shadow">
             Five days from now your team could know their superpowers, cover their kryptonite, and finally feel like they're playing on the same side. Let's go.
           </p>
           <Button
@@ -293,12 +293,12 @@ export default function TeamChallenge() {
           >
             Coming Soon
           </Button>
-          <p className="text-sm text-white/90 mt-4">
+          <p className="text-body-sm text-white/90 mt-4">
             <Link to="/partner/ignite/masterclasses" className="underline hover:text-white font-medium">
               Join the launch list →
             </Link>
           </p>
-          <p className="text-xs text-white/80 mt-4">
+          <p className="text-caption text-white/80 mt-4">
             Questions? <Link to="/contact" className="underline hover:text-white">Contact us</Link>.
           </p>
         </div>

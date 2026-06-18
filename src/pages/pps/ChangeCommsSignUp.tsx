@@ -87,7 +87,7 @@ export default function ChangeCommsSignUp() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             4 Critical Steps for <span className="text-gold">Effective Change Communication</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lead text-white/90 max-w-3xl mx-auto">
             A must-use tool to plan messaging that drives change awareness, understanding, and adoption.
           </p>
         </div>
@@ -101,10 +101,10 @@ export default function ChangeCommsSignUp() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-4">
               Get a free copy of our guide.
             </h2>
-            <p className="text-lg text-charcoal mb-6">
+            <p className="text-lead text-charcoal mb-6">
               This is a <strong className="text-navy">must-use tool</strong> before you craft and send ANY communication to change-impacted audiences, both internal and external, to ensure change <strong className="text-navy">understanding, clarity, confidence, and adoption</strong>.
             </p>
-            <p className="text-lg text-charcoal mb-6">
+            <p className="text-lead text-charcoal mb-6">
               This practical guide will help you get change-ready and prepared by intentionally and concisely planning your messaging for your organization's upcoming change project.
             </p>
 
@@ -155,7 +155,7 @@ export default function ChangeCommsSignUp() {
           {/* Form */}
           <div className="bg-white border-2 border-border rounded-2xl shadow-lg p-8 md:sticky md:top-8">
             <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-2">Send My Free Guide Now</h3>
-            <p className="text-sm text-muted-foreground mb-6">
+            <p className="text-body-sm text-muted-foreground mb-6">
               Drop your info below and we'll email it over right away.
             </p>
 
@@ -191,7 +191,7 @@ export default function ChangeCommsSignUp() {
                 {submitting ? "Sending..." : "Send My Free Guide Now"}
               </Button>
 
-              <p className="text-xs text-muted-foreground text-center">
+              <p className="text-caption text-muted-foreground text-center">
                 We won't send spam. Unsubscribe at any time.
               </p>
             </form>

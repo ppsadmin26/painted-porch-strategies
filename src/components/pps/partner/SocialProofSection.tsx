@@ -30,7 +30,7 @@ export function SocialProofSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Leaders Making Sh<span className="text-raspberry font-bold">IF</span>t Happen
           </h2>
-          <p className="text-lg text-foreground">
+          <p className="text-lead text-foreground">
             From individual exploration to full organizational transformation, here's what's possible at each P.A.T.H.way.
           </p>
         </div>
@@ -49,7 +49,7 @@ export function SocialProofSection() {
                 <p className={`font-semibold ${testimonial.tier.textColor}`}>
                  , {testimonial.attribution}
                 </p>
-                <p className="text-sm text-foreground/70 mt-1">
+                <p className="text-body-sm text-foreground/70 mt-1">
                   {testimonial.context}
                 </p>
               </div>

@@ -193,7 +193,7 @@ export function AllWorkshopTopics({ excludeKeys = [] }: { excludeKeys?: string[]
                   </AccordionTrigger>
                   <AccordionContent className="pb-5">
                     {(r.description || r.blurb) && (
-                      <p className="text-sm sm:text-base text-foreground mb-4">{r.description || r.blurb}</p>
+                      <p className="text-body-sm text-foreground mb-4">{r.description || r.blurb}</p>
                     )}
                     <div className="flex flex-col sm:flex-row gap-2">
                       <Link

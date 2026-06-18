@@ -80,10 +80,10 @@ export default function ElementsMiniSignUp() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold mb-6">
             The Elements of <span className="text-gold">Your Team</span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-6">
+          <p className="text-lead text-white/90 max-w-3xl mx-auto mb-6">
             Discover the ancient wisdom and modern insights behind what truly drives your team, through the lens of the Five Elements.
           </p>
-          <p className="text-lg font-poppins font-semibold text-gold mb-8">
+          <p className="text-lead font-poppins font-semibold text-gold mb-8">
             Water · Wood · Fire · Earth · Metal
           </p>
           <a href="#pricing">
@@ -100,13 +100,13 @@ export default function ElementsMiniSignUp() {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-6">
             People + Diverse Styles = Tension... or Teamwork.
           </h2>
-          <p className="text-lg text-charcoal mb-4">
+          <p className="text-lead text-charcoal mb-4">
             Unclear communication and unchecked stress responses can derail even the most talented teams.
           </p>
-          <p className="text-lg text-charcoal mb-4">
+          <p className="text-lead text-charcoal mb-4">
             But when you understand what drives each person, tension turns into trust.
           </p>
-          <p className="text-lg text-charcoal">
+          <p className="text-lead text-charcoal">
             <strong className="text-navy">The Elements of Your Team Mini Course</strong> partners with you to decode behavior and build connection fast.
           </p>
         </div>
@@ -130,7 +130,7 @@ export default function ElementsMiniSignUp() {
                     <Icon className={`w-7 h-7 ${el.color}`} />
                   </div>
                   <h3 className={`text-xl md:text-2xl font-poppins font-bold mb-2 ${el.color}`}>{el.name}</h3>
-                  <p className="text-sm text-charcoal">{el.desc}</p>
+                  <p className="text-body-sm text-charcoal">{el.desc}</p>
                 </div>
               );
             })}
@@ -183,7 +183,7 @@ export default function ElementsMiniSignUp() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
               Choose Your <span className="text-teal">P.A.T.H.way</span>
             </h2>
-            <p className="text-lg text-charcoal">
+            <p className="text-lead text-charcoal">
               Built for individuals who want to grow, and teams ready to shift together.
             </p>
           </div>
@@ -255,7 +255,7 @@ export default function ElementsMiniSignUp() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-3">
               Discover. Decode. Align.
             </h2>
-            <p className="text-lg text-charcoal">
+            <p className="text-lead text-charcoal">
               7 fast-paced lessons. All in under an hour.
             </p>
           </div>
@@ -293,7 +293,7 @@ export default function ElementsMiniSignUp() {
           <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
             Ready to unlock the hidden dynamics of your team?
           </h2>
-          <p className="text-lg text-white/90 mb-8">
+          <p className="text-lead text-white/90 mb-8">
             At Painted Porch, we don't just teach leadership, we embody it. This isn't passive training.
             You'll engage your mind, body, heart, and instincts to uncover what really drives your team.
           </p>

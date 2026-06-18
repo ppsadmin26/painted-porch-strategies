@@ -58,10 +58,10 @@ export default function ChangeReadyLeaderAssessment() {
               Are You a{" "}
               <span className="text-primary">Change-Ready Leader?</span>
             </h1>
-            <p className="text-lg text-foreground mb-4">
+            <p className="text-lead text-foreground mb-4">
               Take this quick, free assessment to find out. In less than 10 minutes, you'll see where you're steady, where you're stretched, and where a small shIFt in your leadership could make a big difference before your next change kicks off.
             </p>
-            <p className="text-base text-muted-foreground">
+            <p className="text-body text-muted-foreground">
               No cost. No strings. Just clear answers about your own readiness to lead change.
             </p>
           </div>
@@ -78,21 +78,21 @@ export default function ChangeReadyLeaderAssessment() {
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Target className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">A Clear Snapshot</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 See where you stand across the key dimensions of change-ready leadership.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Compass className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Personal Blind Spots</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 Spot the habits and tendencies that could trip you up when leading your next change.
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 text-center shadow-sm">
               <Lightbulb className="w-8 h-8 text-primary mx-auto mb-3" />
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-2">Practical Next Steps</h3>
-              <p className="text-sm text-foreground">
+              <p className="text-body-sm text-foreground">
                 Get simple, doable ideas for building your own readiness before change hits.
               </p>
             </div>
@@ -125,7 +125,7 @@ export default function ChangeReadyLeaderAssessment() {
             />
           </div>
 
-          <p className="text-center text-sm text-muted-foreground mt-4">
+          <p className="text-center text-body-sm text-muted-foreground mt-4">
             Trouble loading the form?{" "}
             <a
               href={ASSESSMENT_URL}

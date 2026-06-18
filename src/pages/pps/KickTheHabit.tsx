@@ -70,7 +70,7 @@ export default function KickTheHabit() {
             ariaLabel="Watch Kick the Habit preview"
             className="shadow-xl"
           />
-          <p className="text-center text-white/70 text-sm mt-4">
+          <p className="text-center text-white/70 text-body-sm mt-4">
             A short preview of the full masterclass replay. Sign up below for full access.
           </p>
         </div>
@@ -118,10 +118,10 @@ export default function KickTheHabit() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Get Immediate Access
               </h2>
-              <p className="text-foreground text-sm mb-2">
+              <p className="text-foreground text-body-sm mb-2">
                 Please provide your information below to receive immediate access to this masterclass training session.
               </p>
-              <p className="text-foreground text-sm mb-6">
+              <p className="text-foreground text-body-sm mb-6">
                 You will also receive an email notification with a link to access the training video and downloadable Action Guide.
               </p>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -149,7 +149,7 @@ export default function KickTheHabit() {
                   {submitting ? "Submitting..." : "Access Training"}
                 </Button>
               </form>
-              <p className="text-xs text-muted-foreground mt-4">
+              <p className="text-caption text-muted-foreground mt-4">
                 Providing your email will subscribe you to receive relevant Porch materials, newsletters, and insights. We hate SPAM too. You may unsubscribe at any time.
               </p>
             </div>

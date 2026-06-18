@@ -59,7 +59,7 @@ export function PhilosophyApproachSection({ showEncapsulationCard = true }: { sh
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Why Partner With Painted Porch Strategies?
           </h2>
-          <p className="text-lg text-foreground max-w-2xl mx-auto">
+          <p className="text-lead text-foreground max-w-2xl mx-auto">
             Because the work begins long before transformation becomes visible.
           </p>
         </div>
@@ -78,13 +78,13 @@ export function PhilosophyApproachSection({ showEncapsulationCard = true }: { sh
                   {principle.title}
                 </h3>
               </div>
-              <p className="text-primary font-medium text-sm mb-3">
+              <p className="text-primary font-medium text-body-sm mb-3">
                 {principle.tagline}
               </p>
-              <p className="text-foreground text-sm leading-relaxed mb-4">
+              <p className="text-foreground text-body-sm leading-relaxed mb-4">
                 {principle.description}
               </p>
-              <p className="text-navy font-bold text-sm italic border-t border-navy/10 pt-4">
+              <p className="text-navy font-bold text-body-sm italic border-t border-navy/10 pt-4">
                 {principle.contrast}
               </p>
             </div>

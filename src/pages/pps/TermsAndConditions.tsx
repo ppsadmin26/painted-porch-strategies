@@ -45,7 +45,7 @@ const TermsAndConditions = () => {
         headline={headlines[tab].headline}
         subheadline={headlines[tab].sub}
         description={
-          <p className="text-white/60 italic text-base">Last Updated: June 3, 2026</p>
+          <p className="text-white/60 italic text-body">Last Updated: June 3, 2026</p>
         }
         ctas={[]}
         background={{ type: "image", src: termsHero }}
@@ -296,7 +296,7 @@ function TermsTabBody() {
           </div>
 
           <div className="pt-6 border-t border-border">
-            <p className="text-muted-foreground text-sm leading-relaxed italic">
+            <p className="text-muted-foreground text-body-sm leading-relaxed italic">
               You made it to the end. That puts you in rare company. There are five things hidden across these three policies for the truly curious, references, callbacks, a Stoic phrase or two, and at least one moment where the legal language gets a little… galactic. If you found one and know what it means, there's a form waiting at{" "}
               <Link to="/found-it" className="text-primary font-semibold underline underline-offset-2 hover:text-primary/80 transition-colors">
                 paintedporchstrategies.com/found-it

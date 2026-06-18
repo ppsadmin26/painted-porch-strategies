@@ -451,11 +451,11 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         {/* Body */}
         {!showResult && current && (
           <div className="px-6 pb-6">
-            <p className="text-xs uppercase tracking-wider text-primary font-semibold mb-2">
+            <p className="text-caption uppercase tracking-wider text-primary font-semibold mb-2">
               Question {index + 1} of {questions.length}
             </p>
             <h3 className="font-poppins text-xl text-navy mb-1">{current.prompt}</h3>
-            {current.helper && <p className="text-sm text-foreground/70 mb-4">{current.helper}</p>}
+            {current.helper && <p className="text-body-sm text-foreground/70 mb-4">{current.helper}</p>}
 
             <div className="space-y-2 mt-4">
               {current.options.map((opt) => {
@@ -504,7 +504,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         {showResult && result && (
           <div className="px-6 pb-6">
             {result.subhead && (
-              <p className="text-xs uppercase tracking-wider text-primary font-semibold mb-1">
+              <p className="text-caption uppercase tracking-wider text-primary font-semibold mb-1">
                 {result.subhead}
               </p>
             )}
@@ -513,8 +513,8 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
             {result.whyThisFits && (
               <div className="mb-6 p-4 rounded-lg border-l-4 border-primary bg-primary/5">
-                <p className="text-xs uppercase tracking-wider text-primary font-semibold mb-1">Why this fits your answers</p>
-                <p className="text-sm text-navy leading-relaxed">{result.whyThisFits}</p>
+                <p className="text-caption uppercase tracking-wider text-primary font-semibold mb-1">Why this fits your answers</p>
+                <p className="text-body-sm text-navy leading-relaxed">{result.whyThisFits}</p>
               </div>
             )}
 
@@ -529,11 +529,11 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                 }`}>
                   {result.strongestNextStep.label}
                 </p>
-                <p className="font-poppins text-lg text-navy font-semibold mb-2">
+                <p className="font-poppins text-lead text-navy font-semibold mb-2">
                   <BoldShiftName name={result.strongestNextStep.offering.name} />
                 </p>
                 {(result.strongestNextStep.offering as { isComingSoon?: boolean }).isComingSoon && (
-                  <p className="text-xs font-semibold text-gold mb-2">
+                  <p className="text-caption font-semibold text-gold mb-2">
                     Launching soon — join the launch list on the card to be notified.
                   </p>
                 )}
@@ -562,7 +562,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
             {/* Topic note + Contact CTA — B2B only */}
             {result.track === "b2b" && result.topicArea && (
               <div className="mt-6 p-4 rounded-lg border border-primary/20 bg-primary/5">
-                <p className="text-sm text-foreground mb-3">
+                <p className="text-body-sm text-foreground mb-3">
                   We also offer additional <strong>speaking</strong> and <strong>workshop</strong> sessions
                   in <strong className="text-primary">{result.topicArea}</strong>. The right fit depends on your team,
                   timing, and goals — let's discuss on a quick call.
@@ -580,13 +580,13 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
             {result.crossoverNote && (
               <div className="mt-4 p-4 rounded-lg bg-purple/5 border border-purple/20">
-                <p className="text-sm text-navy"><strong>Individual + Team crossover:</strong> {result.crossoverNote}</p>
+                <p className="text-body-sm text-navy"><strong>Individual + Team crossover:</strong> {result.crossoverNote}</p>
               </div>
             )}
 
             <div className="mt-6 p-4 rounded-lg bg-muted">
-              <p className="text-xs uppercase tracking-wider text-foreground/70 font-semibold mb-1">What Comes Next</p>
-              <p className="text-sm text-foreground">{result.whatComesNext}</p>
+              <p className="text-caption uppercase tracking-wider text-foreground/70 font-semibold mb-1">What Comes Next</p>
+              <p className="text-body-sm text-foreground">{result.whatComesNext}</p>
             </div>
 
 
@@ -648,10 +648,10 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
           const inner = (
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
-                <p className="font-semibold text-navy text-sm">
+                <p className="font-semibold text-navy text-body-sm">
                   <BoldShiftName name={o.name} />
                 </p>
-                <p className="text-xs text-foreground/70 mt-0.5">{o.blurb}</p>
+                <p className="text-caption text-foreground/70 mt-0.5">{o.blurb}</p>
                 {o.isComingSoon && (
                   <p className="text-[11px] font-semibold text-gold mt-1">
                     Launching soon — join the launch list on the card.

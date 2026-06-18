@@ -36,12 +36,12 @@ export default function HeroPreviewV1() {
           </h1>
 
           {/* Subline */}
-          <p className="mb-8 font-montserrat text-xl font-medium italic text-[#523387] md:text-2xl">
+          <p className="mb-8 font-montserrat text-lead font-medium italic text-[#523387]">
             Before momentum outruns alignment.
           </p>
 
           {/* Body */}
-          <p className="mb-12 max-w-2xl font-montserrat text-lg leading-relaxed text-charcoal md:text-xl">
+          <p className="mb-12 max-w-2xl font-montserrat text-lead leading-relaxed text-charcoal">
             You aren't short on vision, resolve, or experience. What's harder to find is{" "}
             <span className="font-semibold text-primary">clarity</span>, the kind that comes before strategy hardens, before announcements activate, and before resources commit to what comes next. Painted Porch exists in the space before acceleration compounds complexity.
           </p>

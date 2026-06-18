@@ -71,7 +71,7 @@ export function PathwayComparisonSection() {
             <p>
               Whether you're looking for personal growth, stronger team performance, or organization-wide transformation, every P.A.T.H.way is grounded in the same principles:
             </p>
-            <p className="py-4 font-bold text-lg text-navy">
+            <p className="py-4 font-bold text-lead text-navy">
               Prepare.<br />
               Align.<br />
               Take-Off.<br />
@@ -114,7 +114,7 @@ export function PathwayComparisonSection() {
                       {content.tagline}
                     </p>
                   </div>
-                  <p className="text-foreground text-sm leading-relaxed mt-6">
+                  <p className="text-foreground text-body-sm leading-relaxed mt-6">
                     {content.journey}
                   </p>
                 </div>
@@ -138,7 +138,7 @@ export function PathwayComparisonSection() {
 
                 {/* Timeline + CTA */}
                 <div className="mt-4">
-                  <p className="text-xs text-foreground mb-4">
+                  <p className="text-caption text-foreground mb-4">
                     <span className="font-semibold">Timeline:</span> {content.timeline}
                   </p>
                   <Button asChild className={`w-full ${tier.solidButtonClasses} transition-colors`}>

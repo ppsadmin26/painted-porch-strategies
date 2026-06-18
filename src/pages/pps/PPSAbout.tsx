@@ -94,7 +94,7 @@ export default function PPSAbout() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
                 What's a "Painted Porch"?
               </h2>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
+              <p className="text-lead text-foreground leading-relaxed mb-6">
                 The original Painted Porch was a gathering place where people wrestled with questions about how to live, lead, and act with intention.
                 <br /><br />
                 It wasn't a place for quick answers. It was a place for thoughtful conversation, reflection, and wisdom.
@@ -105,10 +105,10 @@ export default function PPSAbout() {
                 <br /><br />
                 Not places to react. Places <strong>to decide deliberately</strong> what comes next.
               </p>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
+              <p className="text-lead text-foreground leading-relaxed mb-6">
                 We bring these timeless principles to modern business, so leaders and teams can build the perspective, judgment, and organizational strength needed to navigate complexity with intention.
               </p>
-              <p className="text-lg font-semibold text-primary">
+              <p className="text-lead font-semibold text-primary">
                 Eudaimonia: prosperity and well-being through purposeful action.
               </p>
             </div>
@@ -129,7 +129,7 @@ export default function PPSAbout() {
       {/* On Becoming */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-3xl mx-auto px-6 text-center">
-          <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+          <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
             On Becoming
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
@@ -263,7 +263,7 @@ export default function PPSAbout() {
                     {member.title}
                   </p>
                   {member.experience && (
-                    <p className="text-xs text-muted-foreground mb-4">
+                    <p className="text-caption text-muted-foreground mb-4">
                       {member.experience}
                     </p>
                   )}
@@ -320,7 +320,7 @@ export default function PPSAbout() {
       {/* Bridge to How we think / How we work */}
       <section className="py-16 md:py-20 bg-muted/30">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <p className="text-xs font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
+          <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
             WHAT WE BELIEVE
           </p>
           <div className="text-lg md:text-xl text-foreground leading-relaxed mb-6 space-y-8">
@@ -339,7 +339,7 @@ export default function PPSAbout() {
               These aren't soft skills. They're the foundations that determine whether change takes root or cracks and collapses under pressure.
             </p>
           </div>
-          <p className="text-base text-foreground/80">
+          <p className="text-body text-foreground/80">
             See the framework that holds it together in{" "}
             <Link to="/about/approach#path" className="font-semibold italic text-primary hover:underline">
               our P.A.T.H. methodology

@@ -41,7 +41,7 @@ export default function CommunicatorStyles() {
       {/* Hero */}
       <section className="bg-white py-16 md:py-20 text-center">
         <div className="container max-w-4xl mx-auto px-6">
-          <p className="text-sm font-semibold tracking-widest text-teal uppercase mb-4">
+          <p className="text-body-sm font-semibold tracking-widest text-teal uppercase mb-4">
             Grow on the Porch Training Series
           </p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-6">
@@ -71,7 +71,7 @@ export default function CommunicatorStyles() {
               className="w-full h-full object-cover"
             />
           </div>
-          <p className="text-center text-white/70 text-sm mt-4">
+          <p className="text-center text-white/70 text-body-sm mt-4">
             Sign up below for full access to the training replay and one-page reference sheet.
           </p>
         </div>
@@ -126,10 +126,10 @@ export default function CommunicatorStyles() {
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
                 Get Instant Access
               </h2>
-              <p className="text-foreground text-sm mb-2">
+              <p className="text-foreground text-body-sm mb-2">
                 Please provide your information below to receive immediate access to the training replay.
               </p>
-              <p className="text-foreground text-sm mb-6">
+              <p className="text-foreground text-body-sm mb-6">
                 You will also receive an email with a link to the training video and downloadable one-page reference sheet.
               </p>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -157,7 +157,7 @@ export default function CommunicatorStyles() {
                   {submitting ? "Submitting..." : "Access Training"}
                 </Button>
               </form>
-              <p className="text-xs text-muted-foreground mt-4">
+              <p className="text-caption text-muted-foreground mt-4">
                 Providing your email will subscribe you to receive relevant Porch materials, newsletters, and insights. We hate SPAM too. You may unsubscribe at any time.
               </p>
             </div>

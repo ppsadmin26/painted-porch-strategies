@@ -95,7 +95,7 @@ export default function RefundRequest() {
           <h1 className="text-3xl md:text-4xl font-poppins font-bold text-pps-navy mb-3">
             Request a Refund
           </h1>
-          <p className="text-base md:text-lg text-charcoal leading-relaxed max-w-2xl mx-auto">
+          <p className="text-body text-charcoal leading-relaxed max-w-2xl mx-auto">
             We stand behind our courses with a money-back guarantee. Submit the
             short form below and our team will process your refund promptly.
             You'll receive a confirmation email right away, and another email as
@@ -153,7 +153,7 @@ export default function RefundRequest() {
                     maxLength={255}
                     className="h-11"
                   />
-                  <p className="text-xs text-charcoal/70">
+                  <p className="text-caption text-charcoal/70">
                     Use the email tied to your purchase or course access.
                   </p>
                 </div>
@@ -212,7 +212,7 @@ export default function RefundRequest() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between pt-2">
-                <p className="text-xs text-charcoal/70">
+                <p className="text-caption text-charcoal/70">
                   By submitting, you'll get a confirmation email and our team
                   will be notified to process your refund.
                 </p>

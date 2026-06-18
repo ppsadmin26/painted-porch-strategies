@@ -80,7 +80,7 @@ export default function IgnitePath() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Self-Led Learning for Change-Ready Leaders
             </h1>
-            <p className="text-lg text-white/90 leading-relaxed">
+            <p className="text-lead text-white/90 leading-relaxed">
               Build your change-readiness skills at your own pace with our signature programs. Each program combines timeless Stoic principles with practical modern application.
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function IgnitePath() {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               Available Programs
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lead text-foreground max-w-2xl mx-auto">
               Choose the programs that match your development goals.
             </p>
           </div>
@@ -125,12 +125,12 @@ export default function IgnitePath() {
                 <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mt-2 mb-3">
                   {program.title}
                 </h3>
-                <p className="text-foreground mb-6 text-sm leading-relaxed">
+                <p className="text-foreground mb-6 text-body-sm leading-relaxed">
                   {program.description}
                 </p>
                 <ul className="space-y-2">
                   {program.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-foreground">
+                    <li key={i} className="flex items-center gap-2 text-body-sm text-foreground">
                       <div className="w-1.5 h-1.5 rounded-full bg-foreground/50" />
                       {feature}
                     </li>
@@ -148,7 +148,7 @@ export default function IgnitePath() {
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             Ready for More?
           </h2>
-          <p className="text-lg text-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-lead text-foreground mb-8 max-w-2xl mx-auto">
             Upgrade to AMPLIFY for live workshops and expert facilitation, or EMBODY for embedded advisory support.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -172,7 +172,7 @@ export default function IgnitePath() {
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Start Your IGNITE Journey
           </h2>
-          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lead text-white/90 mb-8 max-w-2xl mx-auto">
             Get started with self-paced learning today.
           </p>
           <Link to="/contact?scope=Yourself&interest=self-paced&message=I'm interested in IGNITE self-paced learning.">
