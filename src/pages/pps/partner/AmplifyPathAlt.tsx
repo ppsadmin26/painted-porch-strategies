@@ -301,7 +301,7 @@ export default function AmplifyPathAlt() {
               Three Ways to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t
             </h2>
             <p className="text-lead text-foreground max-w-2xl mx-auto">
-              Choose a P.A.T.H.way based on whether you're developing or expanding capabilities to sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t for your team/organization or yourself as an individual leader.
+              Choose your direction based on whether you're developing or expanding capabilities to sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t for your team/organization or yourself as an individual leader.
             </p>
           </div>
 
