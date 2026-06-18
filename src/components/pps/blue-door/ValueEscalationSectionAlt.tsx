@@ -122,32 +122,32 @@ export default function ValueEscalationSectionAlt() {
             <span className="inline-block bg-gold text-white font-poppins font-bold text-sm px-4 py-1 rounded-full uppercase tracking-wider mb-2">
               BUILD
             </span>
-            <p className="font-poppins font-bold text-2xl md:text-3xl text-gold mb-2">
+            <div className="font-poppins font-bold text-2xl md:text-3xl text-gold mb-2">
               P.A.T.H.ways Partnership
-            </p>
-            <p className="font-poppins font-bold text-2xl text-gold mb-4">Investment varies by tier</p>
-            <p className="font-poppins font-semibold italic text-lg text-navy mb-4">
+            </div>
+            <div className="font-poppins font-bold text-2xl text-gold mb-4">Investment varies by tier</div>
+            <p className="font-poppins font-semibold text-pullquote text-navy mb-4">
               "How will we build this, what must change internally for this to succeed?"
             </p>
-            <p className="text-foreground text-sm leading-relaxed mb-4">
+            <p className="text-body-sm text-foreground mb-4">
               Partnership ensures what you've architected is executed. Capability development, strategic advisory, strategies for sustained, continuous success.
             </p>
-            <p className="font-bold text-gold text-base mb-4">
+            <p className="font-bold text-gold text-body mb-4">
               This is making shIFt happen, what was decided is delivered.
             </p>
-            <p className="font-poppins font-semibold text-gold text-base mb-3">Three Engagement P.A.T.H.ways:</p>
+            <p className="font-poppins font-semibold text-gold text-body mb-3">Three Engagement P.A.T.H.ways:</p>
             <div className="space-y-3 text-base">
               <div>
-                <p className="font-bold text-foreground text-sm">🔥 <span className="text-gold">IGNITE</span> - Light the spark. Prove it works.</p>
-                <p className="text-foreground text-xs mt-0.5">Self-led tools, frameworks, masterclasses.</p>
+                <p className="font-bold text-foreground text-body-sm">🔥 <span className="text-gold">IGNITE</span> - Light the spark. Prove it works.</p>
+                <p className="text-foreground text-caption mt-0.5">Self-led tools, frameworks, masterclasses.</p>
               </div>
               <div>
-                <p className="font-bold text-foreground text-sm">🚀 <span className="text-strategic">AMPLIFY</span> - Boost momentum that compounds.</p>
-                <p className="text-foreground text-xs mt-0.5">Workshops, team sprints, strategic cohorts.</p>
+                <p className="font-bold text-foreground text-body-sm">🚀 <span className="text-strategic">AMPLIFY</span> - Boost momentum that compounds.</p>
+                <p className="text-foreground text-caption mt-0.5">Workshops, team sprints, strategic cohorts.</p>
               </div>
               <div>
-                <p className="font-bold text-foreground text-sm">🏛️ <span className="text-navy">EMBODY</span> - Build transformation that lasts.</p>
-                <p className="text-foreground text-xs mt-0.5">6-12+ month embedded partnership.</p>
+                <p className="font-bold text-foreground text-body-sm">🏛️ <span className="text-navy">EMBODY</span> - Build transformation that lasts.</p>
+                <p className="text-foreground text-caption mt-0.5">6-12+ month embedded partnership.</p>
               </div>
             </div>
           </div>
