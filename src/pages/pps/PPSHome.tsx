@@ -761,7 +761,7 @@ export default function PPSHome() {
                     {post.title}
                   </h3>
                   {post.excerpt && (
-                    <p className="text-sm text-foreground/80 leading-relaxed line-clamp-3">
+                    <p className="text-body-sm text-foreground/80 line-clamp-3">
                       {post.excerpt}
                     </p>
                   )}
