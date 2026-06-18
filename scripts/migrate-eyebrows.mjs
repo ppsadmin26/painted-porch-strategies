@@ -34,18 +34,26 @@ function inferTone(cls) {
     ["navy", "navy"],
     ["white", "white"],
     ["muted", "muted"],
+    ["primary", "primary"],
+    ["foreground", "foreground"],
     ["pps-gold", "gold"],
     ["pps-teal", "teal"],
     ["pps-navy", "navy"],
+    ["muted-foreground", "muted"],
   ];
-  // Prefer bg-X over text-X for pill tone; fall back to text-X.
   const bgMatch = cls.match(/bg-([a-z-]+)(?:\/\d+)?/);
-  const textMatch = cls.match(/text-([a-z-]+)(?:\/\d+)?/);
+  const textMatch = cls.match(/text-([a-z-]+)(?:\/\d+)?/g);
+  // For plain variant the dominant tone is in the text-X token; prefer a
+  // recognised color token over generic size tokens like text-caption/text-sm.
   for (const [key, tone] of order) {
     if (bgMatch && bgMatch[1] === key) return tone;
   }
-  for (const [key, tone] of order) {
-    if (textMatch && textMatch[1] === key) return tone;
+  if (textMatch) {
+    for (const raw of textMatch) {
+      const k = raw.replace(/^text-/, "").replace(/\/\d+$/, "");
+      const hit = order.find(([key]) => key === k);
+      if (hit) return hit[1];
+    }
   }
   return null;
 }
