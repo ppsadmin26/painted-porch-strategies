@@ -485,6 +485,33 @@ export default function Sitemap() {
                 <>Only admins can change page status.</>
               )}
             </p>
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-montserrat text-pps-charcoal/80">
+              <span className="font-poppins font-semibold text-pps-navy mr-1">Legend:</span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-poppins font-bold uppercase ${CATEGORY_META.public.pillClass}`}>Public</span>
+                <span>indexed</span>
+              </span>
+              <span className="text-pps-charcoal/30">·</span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-poppins font-bold uppercase ${CATEGORY_META.internal.pillClass}`}>Internal</span>
+                <span>staff-only</span>
+              </span>
+              <span className="text-pps-charcoal/30">·</span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-poppins font-bold uppercase ${CATEGORY_META.archived.pillClass}`}>Archived</span>
+                <span className="line-through decoration-pps-raspberry/40">dimmed + struck</span>
+              </span>
+              <span className="text-pps-charcoal/30">·</span>
+              <span className="inline-flex items-center gap-1.5">
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[9px] font-poppins font-bold uppercase bg-pps-gold/20 text-pps-navy border border-pps-gold/40">Draft</span>
+                <span>hidden from public</span>
+              </span>
+            </div>
+            <p className="mt-2 text-[11px] font-montserrat text-pps-charcoal/70">
+              Internal, archived, and draft routes are excluded from{" "}
+              <code className="text-pps-navy">sitemap.xml</code>, blocked in{" "}
+              <code className="text-pps-navy">robots.txt</code>, and hidden from public visitors on this page.
+            </p>
           </div>
         )}
 
