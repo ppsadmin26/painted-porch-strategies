@@ -336,7 +336,7 @@ export default function PPSAbout() {
               Capacity for reflection.
             </p>
             <p>
-              These aren't soft skills. They're the foundations that determine whether change takes root or cracks and collapses under its own weight.
+              These aren't soft skills. They're the foundations that determine whether change takes root or cracks and collapses under pressure.
             </p>
           </div>
           <p className="text-base text-foreground/80">
