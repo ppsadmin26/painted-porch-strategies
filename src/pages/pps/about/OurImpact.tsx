@@ -10,6 +10,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { verifySiteVideoUrl } from "@/lib/verifySiteVideo";
 import VideoFallback from "@/components/pps/VideoFallback";
 import impactCta from "@/assets/images/impact-cta-begin.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 // Hero video URL is loaded from the site_videos registry (slot: "impact-hero").
 // Manage at /admin/videos. No fallback file is bundled, videos must live in Cloud Storage.
 const testimonials = [
@@ -188,7 +189,7 @@ export default function OurImpact() {
             When you partner with the Painted Porch, you're not just investing in yourself, your team, or your organization. You're contributing to causes that can create epic sh<span className="text-raspberry font-semibold">IF</span>t in the world.
           </p>
           <div ref={counterRef} className="mt-12 py-10 px-6 rounded-2xl bg-lime/10 border border-lime/20">
-            <p className="text-body-sm font-poppins font-semibold uppercase tracking-widest text-lime mb-2">Total Given to Date</p>
+            <Eyebrow variant="plain" tone="lime" as="p">Total Given to Date</Eyebrow>
             <p className="text-5xl md:text-6xl font-bold text-lime tabular-nums">
               ${totalGiven.toLocaleString()}
             </p>

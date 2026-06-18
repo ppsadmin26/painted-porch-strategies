@@ -7,6 +7,7 @@ import dualGearsIcon from "@/assets/icons/dual-gears.svg";
 import widgetImage from "@/assets/working-genius-widget.png.asset.json";
 import heroBg from "@/assets/working-genius-hero-bg.jpg";
 import certifiedBadge from "@/assets/working-genius-certified-badge.png.asset.json";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 
 const wgFaqCategories: FAQCategory[] = [
@@ -210,9 +211,7 @@ export default function WorkingGeniusAssessment() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="text-sm font-semibold tracking-widest text-primary uppercase">
-              What Is Working Genius
-            </span>
+            <Eyebrow variant="plain" tone="primary">What Is Working Genius</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-6">
               20% Personality. 80% Productivity.
             </h2>
@@ -284,9 +283,7 @@ export default function WorkingGeniusAssessment() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">
-              W.I.D.G.E.T.
-            </span>
+            <Eyebrow variant="plain" tone="muted">W.I.D.G.E.T.</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-4">
               The 6 Types of Working Genius
             </h2>
@@ -391,9 +388,7 @@ export default function WorkingGeniusAssessment() {
       <section id="get-started" className="py-16 md:py-24 bg-white scroll-mt-24">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="text-sm font-semibold tracking-widest text-primary uppercase">
-              Get Started Today
-            </span>
+            <Eyebrow variant="plain" tone="primary">Get Started Today</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2">
               Discover Your Working Genius
             </h2>

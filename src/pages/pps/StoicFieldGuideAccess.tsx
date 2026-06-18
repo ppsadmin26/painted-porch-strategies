@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Download, ArrowLeft, BookOpen } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import porchHero from "@/assets/stoic-field-guide-porch.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 const FIELD_GUIDE_URL = "/downloads/Stoic_Leader_Field_Guide_Painted_Porch_Strategies.pdf";
 const SLOT_KEY = "stoic-field-guide";
@@ -83,9 +84,7 @@ export default function StoicFieldGuideAccess() {
           className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/85"
         />
         <div className="container max-w-4xl mx-auto px-6 relative">
-          <span className="inline-block bg-lime/90 text-navy font-poppins font-semibold text-xs px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
-            Instant Access
-          </span>
+          <Eyebrow variant="pill" tone="lime">Instant Access</Eyebrow>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
             The <span className="text-gold italic">Stoic Leader's</span> Field Guide
           </h1>

@@ -8,6 +8,7 @@ import letsChangeImg from "@/assets/about/lets-change.png";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { PhilosophyApproachSection } from "@/components/pps/partner/PhilosophyApproachSection";
 import aboutHero from "@/assets/heroes/about-hero.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 import paintedPorchImg from "@/assets/about/painted-porch-temple.jpg";
 
@@ -129,9 +130,7 @@ export default function PPSAbout() {
       {/* On Becoming */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-3xl mx-auto px-6 text-center">
-          <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
-            On Becoming
-          </p>
+          <Eyebrow variant="plain" tone="primary" as="p">On Becoming</Eyebrow>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             We are not in the business of fixing you.
           </h2>
@@ -320,9 +319,7 @@ export default function PPSAbout() {
       {/* Bridge to How we think / How we work */}
       <section className="py-16 md:py-20 bg-muted/30">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-primary mb-3">
-            WHAT WE BELIEVE
-          </p>
+          <Eyebrow variant="plain" tone="primary" as="p">WHAT WE BELIEVE</Eyebrow>
           <div className="text-lg md:text-xl text-foreground leading-relaxed mb-6 space-y-8">
             <p className="whitespace-pre-line">
               Organizations become what they repeatedly practice.{"\n\n"}

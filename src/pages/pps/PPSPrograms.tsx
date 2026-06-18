@@ -11,6 +11,7 @@ import eqLeadership from "@/assets/programs/eq-leadership.jpg";
 import changeReadyMini from "@/assets/programs/change-ready-mini.jpg";
 import workFromHome from "@/assets/programs/work-from-home.jpg";
 import stoicismGuide from "@/assets/programs/stoicism-guide.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 const signaturePrograms = [
   {
@@ -124,9 +125,7 @@ export default function PPSPrograms() {
         </div>
         <div className="container max-w-7xl mx-auto px-6 relative z-10 py-20">
           <div className="max-w-2xl">
-            <span className="inline-block bg-gold text-navy font-poppins font-bold text-xs uppercase tracking-wider px-4 py-2 rounded-full mb-6">
-              Join Us on the Porch
-            </span>
+            <Eyebrow variant="pill" tone="gold">Join Us on the Porch</Eyebrow>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins leading-tight">
               Programs &amp; More
             </h1>
@@ -228,9 +227,7 @@ export default function PPSPrograms() {
                 />
               </div>
               <div className="order-1 md:order-2">
-                <span className="inline-block bg-raspberry/10 text-raspberry font-poppins font-semibold text-xs uppercase tracking-wider px-4 py-2 rounded-full mb-4">
-                  Emotional Intelligence
-                </span>
+                <Eyebrow variant="pill" tone="raspberry">Emotional Intelligence</Eyebrow>
                 <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
                   Become an Emotionally-Intelligent Leader
                 </h2>

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 export default function ValueEscalationSectionAlt() {
   const imagineRef = useRef<HTMLDivElement>(null);
@@ -48,9 +49,7 @@ export default function ValueEscalationSectionAlt() {
           ref={imagineRef} 
           className={`bg-bluedoor/5 border-l-4 border-bluedoor p-6 md:p-8 rounded-r-lg mb-8 transition-all duration-700 ease-out ${imagineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          <span className="inline-block bg-bluedoor text-white font-poppins font-bold text-sm px-4 py-1 rounded-full uppercase tracking-wider mb-3">
-            IMAGINE
-          </span>
+          <Eyebrow variant="pill" tone="cobalt">IMAGINE</Eyebrow>
           <div className="font-poppins font-bold text-2xl md:text-3xl text-bluedoor mb-2">
             The Blue Door
           </div>
@@ -87,9 +86,7 @@ export default function ValueEscalationSectionAlt() {
             ref={decideRef} 
             className={`bg-strategic/5 border-l-4 border-strategic p-6 rounded-r-lg transition-all duration-700 ease-out delay-150 ${decideVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           >
-            <span className="inline-block bg-strategic text-white font-poppins font-bold text-sm px-4 py-1 rounded-full uppercase tracking-wider mb-2">
-              DECIDE
-            </span>
+            <Eyebrow variant="pill" tone="white">DECIDE</Eyebrow>
             <div className="font-poppins font-bold text-2xl md:text-3xl text-strategic mb-2">
               Architect Change Design Session
             </div>
@@ -119,9 +116,7 @@ export default function ValueEscalationSectionAlt() {
             ref={buildRef} 
             className={`bg-gold/5 border-l-4 border-gold p-6 rounded-r-lg transition-all duration-700 ease-out delay-300 ${buildVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           >
-            <span className="inline-block bg-gold text-white font-poppins font-bold text-sm px-4 py-1 rounded-full uppercase tracking-wider mb-2">
-              BUILD
-            </span>
+            <Eyebrow variant="pill" tone="gold">BUILD</Eyebrow>
             <div className="font-poppins font-bold text-2xl md:text-3xl text-gold mb-2">
               P.A.T.H.ways Partnership
             </div>

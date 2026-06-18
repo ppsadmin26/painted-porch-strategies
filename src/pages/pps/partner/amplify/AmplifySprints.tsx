@@ -6,6 +6,7 @@ import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 import amplifyFinalCtaBg from "@/assets/amplify-final-cta-bg.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 /**
  * Strategic Sprints: focused 90-day Phase Zero partnership.
@@ -144,9 +145,7 @@ export default function AmplifySprints() {
       {/* HERO */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-5xl mx-auto px-6 text-center">
-          <p className="text-caption font-poppins font-semibold tracking-widest text-primary uppercase mb-4">
-            AMPLIFY · Strategic Sprints
-          </p>
+          <Eyebrow variant="plain" tone="primary" as="p">AMPLIFY · Strategic Sprints</Eyebrow>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-navy mb-6">
             A 90-day Phase Zero<span className="align-super text-xs ml-0.5">™</span> partnership for your next sh<span className="text-strategic font-bold">IF</span>t.
           </h1>
@@ -254,9 +253,7 @@ export default function AmplifySprints() {
       <section className="py-16 md:py-24 bg-navy text-white">
         <div className="container max-w-5xl mx-auto px-6">
           <div className="text-center mb-10">
-            <p className="text-caption font-poppins font-semibold tracking-widest text-gold uppercase mb-3">
-              Different by design
-            </p>
+            <Eyebrow variant="plain" tone="gold" as="p">Different by design</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold mb-4">
               A new way to prepare and design strategic shifts, installed in your team.
             </h2>
@@ -266,9 +263,7 @@ export default function AmplifySprints() {
           </div>
           <div className="grid md:grid-cols-2 gap-px bg-white/15 rounded-xl overflow-hidden border border-white/15">
             <div className="bg-navy p-6">
-              <p className="text-caption font-poppins font-semibold tracking-widest text-white/70 uppercase mb-4">
-                Traditional implementation consulting
-              </p>
+              <Eyebrow variant="plain" tone="white" as="p">Traditional implementation consulting</Eyebrow>
               <ul className="space-y-3">
                 {differenceRows.map((row) => (
                   <li key={row.traditional} className="text-body-sm text-white/85">
@@ -278,9 +273,7 @@ export default function AmplifySprints() {
               </ul>
             </div>
             <div className="bg-primary/95 p-6">
-              <p className="text-caption font-poppins font-semibold tracking-widest text-white uppercase mb-4">
-                A Strategic Sprint with Painted Porch
-              </p>
+              <Eyebrow variant="plain" tone="white" as="p">A Strategic Sprint with Painted Porch</Eyebrow>
               <ul className="space-y-3">
                 {differenceRows.map((row) => (
                   <li key={row.sprint} className="text-body-sm text-white font-medium">

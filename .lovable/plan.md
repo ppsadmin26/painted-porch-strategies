@@ -1,79 +1,58 @@
-## Goal
+# Standardize Eyebrow Labels
 
-Clarify the split between the two pages so each has one job:
+Codify the informal two-tier system already emerging in the codebase: **pill eyebrows for major section headers, plain all-caps for sub-labels** — and enforce it through a shared component so future pages can't drift.
 
-- **`/sitemap`** — the **visible site map**. A clean, hierarchical tree of the public site (with the existing admin-only badges/toggles removed or moved). Visitors get the tree; staff see category/status badges read-only.
-- **`/admin/pages`** — the **unified page manager**. One table where every route's URL, Status, Category, Location (Main Nav / Subpage / Standalone), and SEO/AEO state are visible and editable side by side.
+## Approach
 
-## Source of "Location"
+### 1. Create `<Eyebrow>` component (`src/components/pps/Eyebrow.tsx`)
 
-We don't need a new DB column. `Location` is derived from `sitemapData` in `src/pages/pps/Sitemap.tsx`:
+Single component, two variants:
 
-- `Main Nav` — top-level node in `sitemapData` (depth 0)
-- `Subpage` — nested under a Main Nav parent (depth ≥ 1), label shows parent (e.g. `Subpage of /partner/ignite`)
-- `Standalone` — route exists in `App.tsx` but not in `sitemapData` (orphan / utility / thank-you / etc.)
-- `Unlisted` — DB row exists but route isn't in `sitemapData` or `App.tsx` (cleanup candidate)
-
-A small helper `resolveLocation(path)` in `src/config/pageLocation.ts` returns `{ kind, parentPath?, parentLabel? }`.
-
-## /admin/pages — unified table
-
-Rebuild `PageStatusManager.tsx` around a single sortable/filterable table. One row per route, columns:
-
-```text
-| Path | Title (from page_seo) | Status | Category | Location | SEO/AEO | Note | Actions |
+```tsx
+<Eyebrow variant="pill" tone="gold|teal|cobalt|raspberry|purple|navy|lime">LABEL</Eyebrow>
+<Eyebrow variant="plain" tone="gold|teal|...">LABEL</Eyebrow>
 ```
 
-- **Path** — link opens the live route in a new tab
-- **Title** — `page_seo.title` if present, else `—`
-- **Status** — inline Live/Draft switch (existing `setStatus`)
-- **Category** — inline segmented picker public / internal / archived (existing `setCategory`)
-- **Location** — read-only chip (Main Nav / Subpage of … / Standalone / Unlisted)
-- **SEO/AEO** — chip showing `Custom` / `Default` / `Missing canonical` etc.; click → existing `PageSeoEditorDialog`
-- **Note** — admin-only inline edit (existing `notesById` flow)
-- **Actions** — Remove override, Open page
+- **pill**: `inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase mb-6` + tone bg/text classes
+- **plain**: `inline-block text-xs font-semibold uppercase tracking-[0.2em] mb-4` + tone text class
+- Tone tokens pull from existing brand palette (`bg-gold/90 text-navy`, `text-teal`, etc.) — no new colors.
+- Accepts `className` for one-off overrides.
 
-Top bar keeps existing controls (search, "Sync from sitemap", "Add path", `BulkSeoGenerator`, `CanonicalAuditCard`) but consolidated into a single header strip. Filters: category (multi), status, location, "has SEO override", "in sitemap only / in App only / both".
+### 2. Define the rule (codify in `mem://style/eyebrow-usage`)
 
-Source list = union of:
-1. Every path from `collectSitemapPaths()`
-2. Every `page_status` row
-3. Every `page_seo.path`
+- **Pill** = first eyebrow inside a top-level `<section>` that introduces a major page region (hero, tier intro, "Our Approach", "Pricing", etc.). One pill per section max.
+- **Plain** = sub-labels *inside* a section: card category tags, sub-headers within a region, labels above secondary headings, eyebrows inside reusable components (`ParallaxCTA`, `FAQSection`, `StatMarquee`).
+- New pages must use `<Eyebrow>` — no hand-rolled `rounded-full` eyebrow markup.
 
-Excludes `/admin/*` by default (toggle to show).
+### 3. Migrate existing usage
 
-## /sitemap — visible site tree only
+Sweep the ~20 files with inline `rounded-full` eyebrows and the plain `uppercase tracking-*` eyebrows. For each occurrence:
 
-Trim `Sitemap.tsx` down to:
+- Replace with `<Eyebrow variant="pill" tone="...">...</Eyebrow>` or `<Eyebrow variant="plain" tone="...">...</Eyebrow>` based on the rule above.
+- Preserve the existing tone (gold stays gold, teal stays teal, etc.).
+- Where a page currently has *two* pill eyebrows in the same section, demote the second one to plain.
+- Leave `ParallaxCTA`, `FAQSection`, `StatMarquee` internal eyebrows on `plain` (already correct semantically).
 
-- Public tree rendering from `sitemapData` (already there)
-- Category filtering for public viewers (existing behavior — internal/archived hidden)
-- Staff-only read-only badges next to each node: Status (Live/Draft) and Category
-- **Remove** from this page: inline status switch, inline category picker, "Page Status" admin shortcut row, the bottom admin management block. Replace with a single banner for staff: "Manage these pages in /admin/pages" linking through.
+### 4. Add a lint/audit script
 
-The page becomes presentational; all writes happen in `/admin/pages`.
+Extend `scripts/` with `brand:eyebrows` (modeled on the existing `brand:typography` validator) that fails when it finds:
+- `rounded-full` + `uppercase` + `tracking-` combos outside `Eyebrow.tsx`
+- Raw `<span className="...uppercase tracking-...">` eyebrow patterns in page files
 
-## Files
+Wire it into the existing brand validation flow so drift is caught at review time.
 
-**New**
-- `src/config/pageLocation.ts` — `resolveLocation(path, sitemapData)` + `LocationKind` type
+## Technical Details
 
-**Edited**
-- `src/pages/pps/admin/PageStatusManager.tsx` — replace card list with unified table + Location column + SEO/AEO column
-- `src/pages/pps/Sitemap.tsx` — strip write controls, keep tree + read-only staff badges + link to `/admin/pages`
-- `src/pages/pps/Sitemap.tsx` nav label change in admin shortcuts list (already references `/admin/pages`)
+- **Files touched (estimate):** 1 new component, 1 new memory file, 1 new lint script, ~25 page/section files updated.
+- **No design token changes** — pulls from existing brand colors in `index.css` / `tailwind.config.ts`.
+- **No behavior change** for `ParallaxCTA`, `FAQSection`, `StatMarquee` — their internal eyebrows already match the "plain = sub-label" rule.
+- **Risk:** visual regression on pages where I demote a duplicate pill to plain. I'll spot-check the most-trafficked pages (Home, Blue Door, EMBODY, AMPLIFY, IGNITE, About) after migration.
 
-**Untouched**
-- DB schema (`page_status`, `page_seo`) — no migration needed
-- `usePageStatuses`, `pageCategories.ts`, validators, sitemap.xml/robots.txt generators
+## Open Question Before I Start
 
-## Out of scope
+A few pages currently use **two pills in the same section** (e.g., a section eyebrow plus a card-level eyebrow inside it). Two options:
 
-- Renaming routes
-- Moving `/admin/pages` to a new URL
-- Adding `location` to the DB (kept derived so the sitemap tree stays the single source of structural truth)
-- Touching `App.tsx` routing
+- **A. Strict:** Demote inner pills to plain everywhere (cleaner hierarchy, some visual change).
+- **B. Lenient:** Allow a pill inside a card *only if* the card is itself a major sub-region (rare). Default everything else to plain.
 
-## Open question before I build
-
-Should `/sitemap` keep showing **staff-only badges** (Status + Category chips next to each node) so admins can scan the tree at a glance — or do you want it stripped to a pure public tree with zero admin chrome, and all status visibility lives only in `/admin/pages`?
+I'll go with **A (strict)** unless you say otherwise — it's the only version that makes the rule enforceable by the linter.

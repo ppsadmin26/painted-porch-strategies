@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
+import { Eyebrow } from "@/components/pps/Eyebrow";
   ArrowRight,
   Compass,
   Building2,
@@ -551,9 +552,7 @@ export default function PPSHomeVerbatim() {
                 className="scroll-mt-24 scroll-smooth"
               >
                 <div className="text-center mb-5">
-                  <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
-                    The Way Forward
-                  </p>
+                  <Eyebrow variant="plain" tone="gold" as="p">The Way Forward</Eyebrow>
                   <h3 id="path-heading" className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Your P.A.T.H. to Sustainable Change
                   </h3>
@@ -781,9 +780,7 @@ export default function PPSHomeVerbatim() {
               {/* LAYER 2: The Three Pillars */}
               <div>
                 <div className="text-center mb-6">
-                  <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
-                    The Load-Bearing Structures
-                  </p>
+                  <Eyebrow variant="plain" tone="gold" as="p">The Load-Bearing Structures</Eyebrow>
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Painted Porch Pillars
                   </h3>
@@ -849,9 +846,7 @@ export default function PPSHomeVerbatim() {
               {/* LAYER 3: Essential Elements */}
               <div className="bg-muted/50 border border-navy/5 rounded-2xl p-6 md:p-8">
                 <div className="text-center mb-5">
-                  <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold">
-                    The Behavioral Bedrock
-                  </p>
+                  <Eyebrow variant="plain" tone="gold" as="p">The Behavioral Bedrock</Eyebrow>
                   <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1">
                     Essential Elements
                   </h3>
@@ -884,9 +879,7 @@ export default function PPSHomeVerbatim() {
             {/* LAYER 4: The Fortified Porch (the resulting structure) */}
             <div>
               <div className="bg-gradient-to-br from-navy to-navy/90 text-white rounded-2xl p-8 md:p-12 text-center shadow-xl border-b-4 border-gold">
-                <p className="text-caption font-poppins font-semibold uppercase tracking-[0.2em] text-gold mb-3">
-                  The Result
-                </p>
+                <Eyebrow variant="plain" tone="gold" as="p">The Result</Eyebrow>
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-white mb-4">
                   The Fortified Porch
                 </h3>

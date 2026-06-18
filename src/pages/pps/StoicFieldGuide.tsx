@@ -6,6 +6,7 @@ import { Download, BookOpen } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import stoicFieldGuideCover from "@/assets/stoic-field-guide-cover.jpg";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 export default function StoicFieldGuide() {
   const [name, setName] = useState("");
@@ -45,9 +46,7 @@ export default function StoicFieldGuide() {
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             {/* Left: Copy */}
             <div className="text-center md:text-left">
-              <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-xs px-4 py-1.5 rounded-full mb-5 uppercase tracking-wider">
-                Free Download
-              </span>
+              <Eyebrow variant="pill" tone="gold">Free Download</Eyebrow>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
                 The{" "}
                 <span className="text-gold italic">Stoic Leader's</span>

@@ -3,6 +3,7 @@ import { Link, Navigate, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Download, ArrowLeft } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 const ACTION_GUIDE_URL = "/downloads/kick-the-habit-action-guide.pdf";
 const SLOT_KEY = "kick-the-habit";
@@ -70,9 +71,7 @@ export default function KickTheHabitWatch() {
       {/* Hero */}
       <section className="bg-white py-12 md:py-16 text-center">
         <div className="container max-w-4xl mx-auto px-6">
-          <span className="inline-block bg-lime/90 text-navy font-poppins font-semibold text-xs px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">
-            Instant Access
-          </span>
+          <Eyebrow variant="pill" tone="lime">Instant Access</Eyebrow>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-4">
             <span className="text-raspberry italic">Kick the Habit</span> Training Replay
           </h1>

@@ -15,6 +15,7 @@ import reportActionPlanImg from "@/assets/eq/report-action-plan.png";
 import reportAdditionalLeaderImg from "@/assets/eq/report-additional-leader.png";
 import { useCountUp } from "@/hooks/useCountUp";
 import SourcedTooltip from "@/components/pps/SourcedTooltip";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 
 const eqFaqCategories = [
@@ -359,9 +360,7 @@ export default function EQAssessment() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="text-sm font-semibold tracking-widest text-raspberry uppercase">
-              Know Thyself
-            </span>
+            <Eyebrow variant="plain" tone="raspberry">Know Thyself</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-6">
               The Impacts of Understanding E.Q.
             </h2>
@@ -391,9 +390,7 @@ export default function EQAssessment() {
           </div>
 
           <div className="text-center">
-            <p className="text-caption font-semibold tracking-widest text-gold uppercase mb-2">
-              Awareness leads to Action
-            </p>
+            <Eyebrow variant="plain" tone="gold" as="p">Awareness leads to Action</Eyebrow>
             <p className="text-foreground mb-4">
               Take the first steps in discovering how to effectively lead, influence, and have a positive impact by knowing your own Emotional Intelligence.
             </p>
@@ -410,7 +407,7 @@ export default function EQAssessment() {
 
         <div className="container max-w-7xl mx-auto px-6 relative">
           <div className="text-center mb-14">
-            <span className="text-sm font-semibold tracking-widest text-raspberry uppercase">By the numbers</span>
+            <Eyebrow variant="plain" tone="raspberry">By the numbers</Eyebrow>
             <h2 className="text-3xl md:text-5xl font-poppins font-bold text-navy mt-2">
               So, why do <span className="text-raspberry">E.Q.</span>?
             </h2>
@@ -437,9 +434,7 @@ export default function EQAssessment() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="text-sm font-semibold tracking-widest text-muted-foreground uppercase">
-              The Modern Day Leader
-            </span>
+            <Eyebrow variant="plain" tone="muted">The Modern Day Leader</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2 mb-4">
               The EQ-i 2.0 Model of Emotional Intelligence
             </h2>
@@ -542,9 +537,7 @@ export default function EQAssessment() {
       <section id="get-started" className="py-16 md:py-24 bg-white scroll-mt-24">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="text-sm font-semibold tracking-widest text-raspberry uppercase">
-              Get Started Today
-            </span>
+            <Eyebrow variant="plain" tone="raspberry">Get Started Today</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-2">
               Discover Your E.Q.
             </h2>
