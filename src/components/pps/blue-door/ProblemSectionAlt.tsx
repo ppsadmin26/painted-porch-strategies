@@ -70,7 +70,7 @@ export default function ProblemSectionAlt() {
         </div>
         
         <div ref={calloutRef} className={`max-w-3xl mx-auto bg-raspberry/10 border-l-4 border-raspberry p-6 md:p-8 rounded-xl shadow-sm transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          <p className="font-bold text-base md:text-lg text-center text-destructive">
+          <p className="font-bold text-lead text-center text-destructive">
             The hidden cost of building beyond your architecture:&nbsp;burned budget, exhausted teams, lost leadership trust, and missed opportunities, because you were chasing a sh<span className="text-raspberry font-bold">IF</span>t your organization wasn't structured to lead.
           </p>
           <div className="flex justify-center">
