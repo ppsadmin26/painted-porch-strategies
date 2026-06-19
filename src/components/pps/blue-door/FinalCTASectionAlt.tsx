@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useParallax } from "@/hooks/useParallax";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import Eyebrow from "@/components/pps/Eyebrow";
 import compassDirection from "@/assets/compass-direction-cta.jpg";
 
 export default function FinalCTASectionAlt() {
@@ -21,20 +22,37 @@ export default function FinalCTASectionAlt() {
       </div>
       
       <div ref={contentRef} className="container max-w-5xl mx-auto px-6 text-center relative z-10">
-        <span 
-          className={`inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6 transition-all duration-700 ease-out ${
+        <Eyebrow
+          variant="pill"
+          tone="gold"
+          className={`transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
           }`}
         >
           Your Strategic Clarity Moment Awaits
-        </span>
+        </Eyebrow>
         
         <h2 
           className={`text-3xl md:text-4xl font-bold text-white mb-8 max-w-[700px] mx-auto transition-all duration-700 ease-out delay-150 ${ isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6' }`}
         >
           The direction you're considering might be exactly right. Now discover what it will require to make it successful.
         </h2>
-        
+
+        <p
+          className={`text-lead text-white/90 max-w-[700px] mx-auto mb-8 transition-all duration-700 ease-out delay-200 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          The Blue Door™ doesn't tell you whether to move. It tells you where your momentum will build and where it will need reinforcement first.
+        </p>
+        <p
+          className={`text-lead text-white/90 max-w-[700px] mx-auto mb-8 transition-all duration-700 ease-out delay-300 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          That's not a delay. That's the difference between 18 months of expensive rework and a transformation that actually lands.
+        </p>
+
         <div
           className={`transition-all duration-700 ease-out delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
