@@ -375,9 +375,9 @@ export default function PPSHome() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12 md:mb-16">
-            <span className="inline-block bg-gold text-navy font-poppins font-bold text-xs uppercase tracking-[0.3em] px-5 py-2 rounded-full mb-6">
+            <Eyebrow variant="plain" tone="gold" as="p">
               The Questions
-            </span>
+            </Eyebrow>
             <h2 className="text-3xl md:text-4xl font-bold text-navy tracking-tight leading-tight">
               What leaders are weighing at <span className="text-raspberry">3AM</span>
             </h2>
