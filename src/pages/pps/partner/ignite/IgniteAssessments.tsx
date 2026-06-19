@@ -117,6 +117,7 @@ export default function IgniteAssessments() {
           </Link>
 
           <div className="text-center mb-12">
+            <TierBadge tier={TIERS.IGNITE} className="mb-4" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Uncover Your Talents. Architect Your Future.
             </h1>
