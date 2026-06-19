@@ -90,7 +90,13 @@ export default function DiscoverSectionAlt() {
                     <Icon className={`w-6 h-6 ${pillar.textClass}`} />
                   </div>
                   <h4 className={`text-base md:text-lg font-poppins font-semibold ${pillar.textClass} mb-2`}>
-                    {pillar.title}
+                    {pillar.title.includes('(') ? (
+                      <>
+                        {pillar.title.split(' (')[0]}
+                        <br />
+                        <span className="text-sm opacity-80">({pillar.title.split(' (')[1]}</span>
+                      </>
+                    ) : pillar.title}
                   </h4>
                   <p className="text-body -sm text-foreground">
                     {pillar.description}
