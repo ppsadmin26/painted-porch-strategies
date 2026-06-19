@@ -377,7 +377,7 @@ export default function PPSHome() {
               The Questions
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-navy tracking-tight leading-tight">
-              What leaders are weighing at 3<span className="text-raspberry">AM</span>
+              What leaders are weighing at <span className="text-raspberry">3AM</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
