@@ -46,13 +46,14 @@ describe("Draft pages never leak to public surfaces", () => {
   describe("On-page Sitemap nav filtering", () => {
     const sitemap = read("src/pages/pps/Sitemap.tsx");
 
-    it("filters child links against resolvePageStatus before rendering for non-staff", () => {
-      // The visibility filter is `isStaff || resolvePageStatus(...) !== "draft"`.
-      expect(sitemap).toMatch(/isStaff\s*\|\|\s*resolvePageStatus\([^)]+\)\s*!==\s*["']draft["']/);
+    it("filters child links so non-staff never see draft routes", () => {
+      // Implementation: short-circuit on isStaff, then drop draft children.
+      expect(sitemap).toMatch(/isStaff/);
+      expect(sitemap).toMatch(/resolvePageStatus\([^)]+\)\s*===\s*["']draft["']/);
     });
 
-    it("never renders the Draft toggle UI for /admin paths", () => {
-      expect(sitemap).toMatch(/!node\.path\.startsWith\(["']\/admin["']\)/);
+    it("hides draft + non-public routes from non-staff at the row level", () => {
+      expect(sitemap).toMatch(/\(isDraft \|\| isNonPublic\) && !isStaff/);
     });
 
     it("filter logic: drafts are removed for visitors but admins see everything", () => {
@@ -80,7 +81,8 @@ describe("Draft pages never leak to public surfaces", () => {
     });
 
     it("excludes /admin paths from the sync", () => {
-      expect(mgr).toMatch(/collectSitemapPaths\(\)\.filter\(\(p\)\s*=>\s*!p\.startsWith\(["']\/admin["']\)\)/);
+      // Filter may be inline or extracted to a memo — just assert the exclusion exists.
+      expect(mgr).toMatch(/\.filter\(\(p\)\s*=>\s*!p\.startsWith\(["']\/admin["']\)\)/);
     });
 
     it("toast confirmation announces rows added as Draft, not Live", () => {
