@@ -412,20 +412,14 @@ export default function PPSHome() {
               </h2>
               <p className="text-body text-foreground mb-4">
                 The questions that keep you up at 3AM deserve more than a pep
-                talk or another planning deck. They deserve clarity - the
-                kind that comes from seeing your organization clearly before
-                deciding what comes next.
+                talk or another planning deck. They deserve reality.
               </p>
               <p className="text-body text-foreground mb-4">
-                The Blue Door is a structured reflection process, not a health
-                assessment, and not a readiness score. It reveals what future
-                your organization is realistically positioned to pursue, so you
-                stop wondering whether you're solving the right problem and start
-                knowing you are.
-              </p>
-              <p className="text-body text-foreground mb-6">
-                Before major pivots become active pursuit. Before momentum
-                outruns alignment. Before another initiative is announced.
+                The Blue Door™ is a structured organizational appraisal. It isn't
+                a readiness score — it's a clear-eyed look at what future your
+                organization is realistically positioned to pursue right now. It
+                reveals where your momentum will build, and where it will
+                collapse.
               </p>
             </div>
 
