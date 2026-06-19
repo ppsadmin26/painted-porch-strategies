@@ -18,7 +18,7 @@ export default function FinalCTASectionAlt() {
           transform: `translateY(${parallaxOffset}px) scale(1.15)`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/65 via-navy/55 to-navy/65" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/80" />
       </div>
       
       <div ref={contentRef} className="container max-w-5xl mx-auto px-6 text-center relative z-10">
