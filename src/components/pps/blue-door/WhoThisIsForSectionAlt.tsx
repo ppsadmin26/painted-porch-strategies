@@ -3,14 +3,14 @@ import { useStaggeredAnimation, getStaggeredItemClasses } from "@/hooks/useStagg
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const forItems = [
-  "Executive teams weighing important decisions — sensing pressure to act but wanting to understand what their organization's architecture can genuinely support before committing",
+  "Executive teams weighing important decisions, sensing pressure to act but wanting to understand what their organization's architecture can genuinely support before committing",
   "Leaders who've identified a direction and want to understand what it will require before they press go",
   "Organizations prepared to look at their actual capability clearly, even if it means adjusting course"
 ];
 
 const notForItems = [
-  "Organizations already in execution looking for a partner to push it across the finish line. You need implementation support, not architectural examination",
-  "Leaders who want validation rather than reality — this surfaces what's true, not what's comfortable",
+  "Organizations already in execution looking for a partner to push it across the finish line - you need implementation support, not architectural examination",
+  "Leaders who want validation rather than reality - this surfaces what's true, not what's comfortable",
   "Teams looking for a faster route to execution. This is the work before execution, not a shortcut around it"
 ];
 
