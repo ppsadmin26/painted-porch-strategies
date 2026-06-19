@@ -221,7 +221,7 @@ export default function PPSHome() {
                 <br /><br />
                 <strong>We enter earlier.</strong>
                 <br /><br />
-                At the point where you&rsquo;re still determining what direction is worth pursuing, what your organization is becoming, and what foundations need to exist before momentum accelerates.
+                We partner with you at the strategic authorship moment, when you are still determining what direction is worth pursuing, who your organization is becoming, and what architecture needs to exist before momentum accelerates.
               </p>
               <p className="text-body text-foreground">
                 Most organizations find us at one of three moments:
