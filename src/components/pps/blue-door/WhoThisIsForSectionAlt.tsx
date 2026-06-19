@@ -11,7 +11,7 @@ const forItems = [
 const notForItems = [
   "Organizations already in execution looking for a partner to push it across the finish line - you need implementation support, not architectural examination",
   "Leaders who want validation rather than reality - this surfaces what's true, not what's comfortable",
-  "Teams looking for a faster route to execution. This is the work before execution, not a shortcut around it"
+  "Teams looking for a faster route to execution - this is the work before execution, not a shortcut around it"
 ];
 
 export default function WhoThisIsForSectionAlt() {
