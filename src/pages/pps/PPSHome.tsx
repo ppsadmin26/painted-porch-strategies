@@ -106,15 +106,14 @@ export default function PPSHome() {
             It&rsquo;s Time to Do Epic <ShIFt />.
           </>
         }
-        subheadline="And know if what's pulling you is what's possible, before momentum outruns alignment."
+        subheadline="\n"
         description={
           <>
-            You aren&rsquo;t short on vision, resolve, or experience. What&rsquo;s
-            harder to find is clarity - the kind that comes before strategy
-            hardens, before announcements activate, and before resources commit
-            to execute. Painted Porch exists in the space before
-            acceleration compounds complexity, so you create extraordinary
-            outcomes and can navigate whatever sh<strong>IF</strong>t happens next.
+            You have the vision. You have the resolve. What's harder to find is the clarity - the kind that comes before strategy hardens, before the announcement activates, before momentum outruns what your organization is actually built to carry.
+            <br /><br />
+            That's the work we do.
+            <br /><br />
+            And it starts with one question: What is your organization actually built to lead next?
           </>
         }
 
