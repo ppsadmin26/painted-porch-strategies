@@ -38,7 +38,7 @@ const pillars = [
 const compassItems = [
   "Your Organizational Architecture:\u00a0A strength and vulnerability reading across all three Pillars - what your organization is actually built from, not what it aspires to be.",
   "Your Capacity Signal:\u00a0What your organization is built to carry right now, stated plainly and specifically. Not a score - a strategic reading.",
-  "Why some shifts are premature, and what needs reinforcement before they become viable.",
+  "Your Catalyzer - What Can Move Now:\u00a0Where your existing strengths create immediate opportunity, and where momentum will build naturally.",
   "Your recommended path forward, with personalized next steps based on your organization's architecture."
 ];
 
