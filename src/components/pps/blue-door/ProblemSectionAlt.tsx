@@ -42,7 +42,7 @@ export default function ProblemSectionAlt() {
             The reality of what your leadership culture can carry. The reality of what your systems are built to move. The reality of what your people have the capacity to navigate without burning out or breaking down.
           </p>
           <p className="text-body text-foreground font-semibold">
-            Few leaders create enough space to author this intentionally.
+            Few leaders create enough space to examine this reality clearly before committing to a direction.
           </p>
         </div>
         
