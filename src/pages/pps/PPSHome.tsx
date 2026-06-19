@@ -473,21 +473,22 @@ export default function PPSHome() {
             <div className="bg-lime/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-lime">
               <p className="text-body font-poppins font-bold text-lime mb-2">If yes</p>
               <p className="text-body -sm text-white/90">
-                We get to work with you on what it takes to author and shape
-                your next shift.
+                We co-architect what it takes to author and shape your next
+                shIFt.
               </p>
             </div>
             <div className="bg-gold/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-gold">
               <p className="text-body font-poppins font-bold text-gold mb-2">If not yet</p>
               <p className="text-body -sm text-white/90">
-                We tell you, and we provide a pathway to action.
+                We tell you the truth, and we provide a P.A.T.H.way to build the
+                capacity you need first.
               </p>
             </div>
             <div className="bg-raspberry/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-raspberry">
               <p className="text-body font-poppins font-bold text-raspberry mb-2">If not us</p>
               <p className="text-body -sm text-white/90">
                 We tell you that, too, and connect you with the right partner
-                for your stage and needs.
+                for your stage.
               </p>
             </div>
           </div>
