@@ -74,7 +74,7 @@ export default function ProblemSectionAlt() {
         
         <div ref={calloutRef} className={`max-w-3xl mx-auto bg-raspberry/10 border-l-4 border-raspberry p-6 md:p-8 rounded-xl shadow-sm transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <p className="text-body font-bold text-center text-destructive">
-            The hidden cost of building beyond your architecture:&nbsp;burned budget, exhausted teams, lost leadership trust, and missed opportunities, because you were chasing a sh<span className="text-raspberry font-bold">IF</span>t your organization wasn't structured to lead.
+            The hidden cost of building beyond your architecture:&nbsp;burned budget, exhausted teams, lost leadership trust, and missed opportunities -&nbsp; because the sh<span className="text-raspberry font-bold">IF</span>t wasn't designed from your organization's actual foundation.
           </p>
           <div className="flex justify-center">
             <CostCalculatorDialog />
