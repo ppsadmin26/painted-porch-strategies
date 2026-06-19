@@ -224,13 +224,13 @@ export default function PPSHome() {
                 We partner with you at the strategic authorship moment, when you are still determining what direction is worth pursuing, who your organization is becoming, and what architecture needs to exist before momentum accelerates.
               </p>
               <p className="text-body text-foreground">
-                Most organizations find us at one of three moments:
-                <br />
-                &bull; when something important feels possible
-                <br />
-                &bull; when something important feels uncertain
-                <br />
-                &bull; when something important feels inevitable
+                Most leaders find us at one of three moments:
+                <br /><br />
+                &bull; <strong>The Breaking Point:</strong> When you know there&rsquo;s extraordinary potential in your team, but your current structures keep holding it back.
+                <br /><br />
+                &bull; <strong>The Catalyst Event:</strong> When a market shift, AI mandate, or leadership transition forces evolution, and you refuse to sacrifice your people in the process.
+                <br /><br />
+                &bull; <strong>The Vision Validation:</strong> When you&rsquo;re ready to build a legacy that outlives your tenure, and you need the architecture to make it real.
                 <br /><br />
                 <strong>Wherever you begin, clarity comes before commitment.</strong>
               </p>
