@@ -210,9 +210,9 @@ export default function PPSAbout() {
       {/* Transformation Partners Intro */}
       <section className="pt-16 md:pt-20 pb-8 md:pb-10 bg-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <span className="inline-block bg-primary/10 text-primary font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
+          <Eyebrow variant="plain" tone="teal" as="p">
             Meet the Team
-          </span>
+          </Eyebrow>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             Different Disciplines. Shared Conviction.
           </h2>
