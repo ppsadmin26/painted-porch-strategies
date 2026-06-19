@@ -40,6 +40,7 @@ const isIsNot = {
     "A readiness score, a health check, or a survey",
     "A template, a slide deck, or a one-size-fits-all playbook",
     "Standard training, coaching, or a workshop",
+    "Change management (we design change; we don't simply manage it)",
   ],
 };
 
