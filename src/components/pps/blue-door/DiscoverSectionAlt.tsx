@@ -9,7 +9,7 @@ const pillars = [
   {
     icon: Building2,
     title: "Cultural Cornerstone (Leadership & Culture)",
-    description: "How leaders author direction, own decisions, and shape culture under pressure.",
+    description: "How leaders author direction, own decisions, and shape culture under pressure.\n\n\nThe question: Who authors change?",
     bgClass: "bg-[hsl(220,60%,95%)]",
     iconBgClass: "bg-[hsl(220,50%,90%)]",
     borderClass: "border-navy",
@@ -18,7 +18,7 @@ const pillars = [
   {
     icon: Compass,
     title: "Operational Frame (Workflows & Systems)",
-    description: "How work and decisions move, where things flow well, and where friction builds up.",
+    description: "How work and decisions move, where things flow well, and where friction builds up.\n\n\nThe question: How and where does work flow?",
     bgClass: "bg-strategic/10",
     iconBgClass: "bg-strategic/15",
     borderClass: "border-strategic",
@@ -27,7 +27,7 @@ const pillars = [
   {
     icon: Brain,
     title: "Living Ecosystem (Human Capacity)",
-    description: "How individuals and teams adapt, decide, and navigate complexity without burning out.",
+    description: "How individuals and teams adapt, decide, and navigate complexity without burning out.\n\n\nThe question: Who decides and navigates?",
     bgClass: "bg-gold/10",
     iconBgClass: "bg-gold/15",
     borderClass: "border-gold",
@@ -98,7 +98,7 @@ export default function DiscoverSectionAlt() {
                       </>
                     ) : pillar.title}
                   </h4>
-                  <p className="text-body -sm text-foreground">
+                  <p className="text-body-sm text-foreground whitespace-pre-line">
                     {pillar.description}
                   </p>
                 </div>
