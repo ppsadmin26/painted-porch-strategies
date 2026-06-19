@@ -49,6 +49,7 @@ export default function FAQSectionAlt() {
   return (
     <section className="py-12 md:py-20 bg-muted/50">
       <div className="container max-w-4xl mx-auto px-6">
+        <Eyebrow variant="plain" tone="gold" as="p" className="text-center w-full mb-3">Got Questions?</Eyebrow>
         <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-4">
           Frequently Asked Questions
         </h2>
