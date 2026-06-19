@@ -49,7 +49,7 @@ const includedItems = [
   "Organizational appraisal across the three Painted Porch Pillars",
   "AI-powered analysis paired with strategic review from the Painted Porch team",
   "Clear answers on: your capacity signal, your architecture, where you can move now, what needs reinforcement, and your recommended path forward",
-  "Investment fully credited toward any future engagement"
+  "Investment fully credited toward any future strategic partnership"
 ];
 
 export default function HowItWorksInvestmentSection() {
