@@ -34,8 +34,8 @@ export default function ProblemSectionAlt() {
           <p className="text-body text-foreground">
             Not a decision.<br />
             Not a plan.<br />
-            Not a mandate.<br />
-            But a question that starts to take shape: What could this organization actually lead next?
+            Not a mandate.<br /><br />
+            But a question that starts to take shape: "What could our organization actually lead next?"
           </p>
           <p className="text-body text-foreground whitespace-pre-line">
             That question is the threshold. And what's on the other side of it isn't strategy, it's reality.{"\n\n\n"}
