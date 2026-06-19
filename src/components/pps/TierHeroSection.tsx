@@ -179,7 +179,7 @@ export function TierHeroSection({
             </h1>
 
             {/* Subheadline */}
-            {subheadline && subheadline !== "\n" && (
+            {subheadline && subheadline.trim() !== "" && (
               <p
                 className={`text-lead text-gold font-bold italic mb-4 transition-all duration-700 ease-out delay-300 ${
                   isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -195,8 +195,9 @@ export function TierHeroSection({
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
+              {/* Render multi-line string with line breaks if it contains \n */}
               {typeof description === "string" ? (
-                <p data-body-allow>{description}</p>
+                <p data-body-allow className="whitespace-pre-line">{description}</p>
               ) : (
                 description
               )}
