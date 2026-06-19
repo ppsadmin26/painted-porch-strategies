@@ -8,7 +8,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const pillars = [
   {
     icon: Building2,
-    title: "Cultural Cornerstone",
+    title: "Cultural Cornerstone (Leadership & Culture)",
     description: "How leaders author direction, own decisions, and shape culture under pressure.",
     bgClass: "bg-[hsl(220,60%,95%)]",
     iconBgClass: "bg-[hsl(220,50%,90%)]",
@@ -17,7 +17,7 @@ const pillars = [
   },
   {
     icon: Compass,
-    title: "Operational Frame",
+    title: "Operational Frame (Workflows & Systems)",
     description: "How work and decisions move, where things flow well, and where friction builds up.",
     bgClass: "bg-strategic/10",
     iconBgClass: "bg-strategic/15",
@@ -26,7 +26,7 @@ const pillars = [
   },
   {
     icon: Brain,
-    title: "Living Ecosystem",
+    title: "Living Ecosystem (Human Capacity)",
     description: "How individuals and teams adapt, decide, and navigate complexity without burning out.",
     bgClass: "bg-gold/10",
     iconBgClass: "bg-gold/15",
