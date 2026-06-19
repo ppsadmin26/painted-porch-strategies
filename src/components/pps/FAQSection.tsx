@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 /**
  * FAQ Section Component
