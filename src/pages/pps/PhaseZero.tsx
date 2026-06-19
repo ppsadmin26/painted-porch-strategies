@@ -215,8 +215,7 @@ export default function PhaseZero() {
               Directions that never fully aligned in the first place.
             </p>
             <p className="text-body">
-              Phase Zero is the pause that prevents that cost. A deliberate stop, before
-              the next big <ShIFt lowercase />&nbsp;hardens into execution, to examine what deserves pursuit, where strain already exists, and what direction makes the most sense from where you are today...and who and what you want to become tomorrow.
+              Pushing harder in the wrong direction doesn't change the direction. It just compounds the cost of getting there.
             </p>
           </div>
           <p className="text-pullquote mt-10 not-italic font-poppins font-semibold text-navy leading-relaxed" data-body-allow>
