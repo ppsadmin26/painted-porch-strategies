@@ -57,7 +57,7 @@ export default function ProblemSectionAlt() {
           It's <span className="font-bold italic text-bluedoor">"Does our organization have the architecture to lead it?"</span>
         </p>
         <p className="text-body text-foreground text-center max-w-4xl mx-auto mb-8">
-          That's the question most often skipped, and it's the one that decides whether a transformation takes root or collapses under its own weight.&nbsp;<br /><br /><br />
+          That's the question most often skipped, and it's the one that decides whether a transformation takes root or collapses under its own weight.&nbsp;<br /><br />
           Without a clear picture of your organization's actual capability, you risk committing time, resources, and credibility to changes that:
         </p>
         
