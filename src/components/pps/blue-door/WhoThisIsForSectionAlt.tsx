@@ -10,7 +10,7 @@ const forItems = [
 
 const notForItems = [
   "Organizations already in execution looking for a partner to push it across the finish line. You need implementation support, not architectural examination",
-  "Leaders unwilling to test whether the structure stands up before moving forward. This surfaces reality, not validation",
+  "Leaders who want validation rather than reality — this surfaces what's true, not what's comfortable",
   "Teams looking for a faster route to execution. This is the work before execution, not a shortcut around it"
 ];
 
