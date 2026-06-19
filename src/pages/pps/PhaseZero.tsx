@@ -215,6 +215,9 @@ export default function PhaseZero() {
               Directions that never fully aligned in the first place.
             </p>
             <p className="text-body">
+              Pushing harder in the wrong direction doesn't change the direction. It just <strong className="text-raspberry">compounds the cost of getting there</strong>.
+            </p>
+            <p className="text-body">
               Phase Zero is the deliberate pause before the next big <ShIFt lowercase /> hardens into execution. It's where we examine what deserves pursuit, where strain already exists, and what direction makes the most sense given the organization you are today — and who you need to become tomorrow.
             </p>
           </div>
