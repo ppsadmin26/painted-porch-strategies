@@ -93,14 +93,12 @@ export default function HowItWorksInvestmentSection() {
                 </p>
               </div>
               
-              {index < steps.length - 1 && (
-                <div className="hidden md:flex items-center justify-center px-2">
-                  <div className="flex items-center">
-                    <div className="w-8 h-0.5 bg-muted-foreground/30" />
-                    <ArrowRight className="w-5 h-5 text-muted-foreground/60 -ml-1" />
-                  </div>
+              <div className={`hidden md:flex items-center justify-center px-2 ${index === steps.length - 1 ? 'invisible' : ''}`}>
+                <div className="flex items-center">
+                  <div className={`w-8 h-0.5 ${index === steps.length - 1 ? 'bg-transparent' : 'bg-muted-foreground/30'}`} />
+                  <ArrowRight className={`w-5 h-5 -ml-1 ${index === steps.length - 1 ? 'text-transparent' : 'text-muted-foreground/60'}`} />
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
