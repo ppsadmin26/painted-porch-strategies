@@ -143,7 +143,7 @@ const wherePhaseZeroLeads = [
     title: "Strategic Partnership",
     body: (
       <>
-        Ongoing partnership to strengthen the organizational capability and capacity required to design and deliver epic <ShIFt lowercase />.
+        Ongoing partnership to co-architect the organizational capability and capacity required to design and deliver epic <ShIFt lowercase />.
       </>
     ),
     to: "/partner",
