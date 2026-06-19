@@ -4,6 +4,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL } from "./stracticalConfig";
 import stracticalImg from "@/assets/labs/stractical-leadership.jpg";
 import leadingChangeImg from "@/assets/labs/leading-change.jpg";
