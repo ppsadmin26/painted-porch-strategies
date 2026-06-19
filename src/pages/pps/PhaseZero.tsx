@@ -61,7 +61,7 @@ const pillars = [
       "Do we have a clear way leaders make decisions together?",
     ],
     outcomes: [
-      "Leaders who design change on purpose, not by accident.",
+      "Leaders who author change on purpose, not by accident.",
       "A culture that helps change stick instead of pulling it apart.",
       "Strategic muscle at the top of the organization.",
     ],
