@@ -141,7 +141,7 @@ export default function PPSHome() {
       {/* ============================================================ */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-4xl mx-auto px-6 text-center">
-          <span className="badge-gold mb-4 inline-block">It&rsquo;s Not Just You...</span>
+          <span className="badge-gold mb-4 inline-block">It&rsquo;s Not Just You</span>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
             There&rsquo;s a lot of sh<span className="text-raspberry font-bold">IF</span>t happening right now.
           </h2>
