@@ -176,7 +176,7 @@ export default function AmplifyLabs() {
           <div className="text-center mb-12">
             <Eyebrow variant="plain" tone="primary" as="p">AMPLIFY · Leadership Labs</Eyebrow>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
-              Leadership Labs: Peer-Driven Acceleration
+              Peer-Driven Acceleration & Action
             </h1>
             <p className="text-body text-foreground max-w-3xl mx-auto">
               Explore Phase Zero concepts with other leaders navigating similar challenges. Each Leadership Lab is a 6–12 week cohort-style program with peer accountability, monthly group sessions, and individual coaching touchpoints.
