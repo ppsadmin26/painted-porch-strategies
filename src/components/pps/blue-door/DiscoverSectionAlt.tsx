@@ -36,10 +36,10 @@ const pillars = [
 ];
 
 const compassItems = [
-  "Your Organizational Architecture:\u00a0A strength and vulnerability reading across all three Pillars - what your organization is actually built from, not what it aspires to be.",
-  "Your Capacity Signal:\u00a0What your organization is built to carry right now, stated plainly and specifically. Not a score - a strategic reading.",
-  "Your Catalyzer - What Can Move Now:\u00a0Where your existing strengths create immediate opportunity, and where momentum will build naturally.",
-  "Your Calibrator - What Needs Reinforcement:\u00a0Where constraints require attention before deeper transformation can hold, and what that reinforcement looks like."
+  <><strong>Your Organizational Architecture:</strong>{"\u00a0"}A strength and vulnerability reading across all three Pillars - what your organization is actually built from, not what it aspires to be.</>,
+  <><strong>Your Capacity Signal:</strong>{"\u00a0"}What your organization is built to carry right now, stated plainly and specifically. Not a score - a strategic reading.</>,
+  <><strong>Your Catalyzer - What Can Move Now:</strong>{"\u00a0"}Where your existing strengths create immediate opportunity, and where momentum will build naturally.</>,
+  <><strong>Your Calibrator - What Needs Reinforcement:</strong>{"\u00a0"}Where constraints require attention before deeper transformation can hold, and what that reinforcement looks like.</>
 ];
 
 export default function DiscoverSectionAlt() {
