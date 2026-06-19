@@ -372,16 +372,16 @@ export default function PPSHome() {
       {/* ============================================================ */}
       <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-7xl mx-auto px-6">
-          <p className="text-body text-center font-poppins font-semibold uppercase tracking-[0.25em] text-gold mb-10">
+          <p className="text-body text-center font-poppins font-semibold uppercase tracking-[0.25em] text-navy mb-10">
             THE QUESTIONS LEADERS ARE WEIGHING AT 3AM
           </p>
-          <div className="grid md:grid-cols-3 gap-10 md:gap-8">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {threeAmQuestions.map((q, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl md:text-4xl font-poppins font-bold text-gold/40 mb-4">
+              <div key={i} className="text-center bg-muted/50 rounded-xl p-6 md:p-8">
+                <div className="text-3xl md:text-4xl font-poppins font-bold text-raspberry mb-4">
                   0{i + 1}
                 </div>
-                <p className="text-body text-foreground italic">
+                <p className="text-body text-foreground italic font-medium">
                   &ldquo;{q}&rdquo;
                 </p>
               </div>
