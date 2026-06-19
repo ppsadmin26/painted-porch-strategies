@@ -258,7 +258,7 @@ export default function PhaseZero() {
           <p className="text-body text-charcoal/85 mb-5">
             It's the phase where you determine what's worth committing your
             time, energy, resources, and credibility toward.&nbsp;Not what to
-            copy or catch up to, but what to{" "}
+            copy or catch up to, or react to — but what to{" "}
             <strong className="font-bold">author</strong>.
           </p>
           <p className="text-body text-charcoal/85">
@@ -266,8 +266,8 @@ export default function PhaseZero() {
             pressure to move feels heavier than the cost of moving in the
             wrong direction.
           </p>
-          <p className="text-body font-poppins text-navy mt-10 border-l-4 border-gold pl-6">
-            <em>"Are we designing our next move, or reacting to someone else's?"</em>
+          <p className="text-body text-charcoal/85 mt-6">
+            But when you skip Phase Zero, you stop designing your next move and start reacting to someone else's.
           </p>
         </FadeIn>
       </section>
