@@ -490,12 +490,20 @@ export default function PPSHome() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
+      {/* ============================================================ */}
+      {/* The Way Forward — P.A.T.H.                                    */}
+      {/* ============================================================ */}
+      <section className="py-16 md:py-24 bg-muted">
+        <div className="container max-w-7xl mx-auto px-6">
           <section
             id="the-way-forward"
             aria-labelledby="path-heading"
-            className="scroll-mt-24 scroll-smooth mt-16 max-w-5xl mx-auto"
+            className="scroll-mt-24 scroll-smooth max-w-5xl mx-auto"
           >
+
             <div className="text-center mb-10">
               <Eyebrow variant="plain" tone="gold" as="p">The Way Forward</Eyebrow>
               <h3 id="path-heading" className="text-xl md:text-2xl font-poppins font-bold text-navy mt-1 mb-4">
