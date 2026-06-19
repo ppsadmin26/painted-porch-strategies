@@ -34,7 +34,7 @@ const isIsNot = {
     "A clear look at what your organization is realistically built to carry right now",
     "Deep questions about leadership, systems, and people before money or momentum gets locked in",
     "The strategic authorship phase that decides whether your next big move strengthens you or stretches you thin",
-    "The point where organizational identity becomes strategic direction.",
+    "The point where organizational identity becomes strategic direction",
   ],
   isNot: [
     "A readiness score, a health check, or a survey",
