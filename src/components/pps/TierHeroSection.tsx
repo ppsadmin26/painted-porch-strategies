@@ -195,8 +195,9 @@ export function TierHeroSection({
                 isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
             >
+              {/* Render multi-line string with line breaks if it contains \n */}
               {typeof description === "string" ? (
-                <p data-body-allow>{description}</p>
+                <p data-body-allow className="whitespace-pre-line">{description}</p>
               ) : (
                 description
               )}
