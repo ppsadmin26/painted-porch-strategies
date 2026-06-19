@@ -5,7 +5,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const forItems = [
   "Executive teams weighing important decisions — sensing pressure to act but wanting to understand what their organization's architecture can genuinely support before committing",
   "Leaders who've identified a direction and want to understand what it will require before they press go",
-  "Organizations willing to look at their architecture clearly, even if it means adjusting course"
+  "Organizations prepared to look at their actual capability clearly, even if it means adjusting course"
 ];
 
 const notForItems = [
