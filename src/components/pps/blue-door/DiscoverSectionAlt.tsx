@@ -1,4 +1,5 @@
 import { Building2, Compass, Brain, Check } from "lucide-react";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useStaggeredAnimation, getStaggeredItemClasses } from "@/hooks/useStaggeredAnimation";
@@ -58,6 +59,7 @@ export default function DiscoverSectionAlt() {
       <div className="container max-w-5xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
+          <Eyebrow variant="pill" className="mb-4">From Uncertainty to Clarity</Eyebrow>
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
             Go from "What <span className="text-raspberry font-bold">IF</span>?" to "Where Next?"
           </h2>
