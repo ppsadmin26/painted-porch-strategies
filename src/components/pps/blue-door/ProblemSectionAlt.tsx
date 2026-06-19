@@ -37,8 +37,9 @@ export default function ProblemSectionAlt() {
             Not a mandate.<br />
             But a question that starts to take shape: What could this organization actually lead next?
           </p>
-          <p className="text-body text-foreground">
-            It's when the <span className="font-bold text-bluedoor">blue door</span> appears, the threshold between sensing that something must change and knowing what your organization can realistically take on. Before a direction becomes a commitment, you must first understand who your organization is becoming.
+          <p className="text-body text-foreground whitespace-pre-line">
+            That question is the threshold. And what's on the other side of it isn't strategy, it's reality.{"\n\n\n"}
+            The reality of what your leadership culture can carry. The reality of what your systems a
           </p>
           <p className="text-body text-foreground font-semibold">
             Few leaders create enough space to author this intentionally.
