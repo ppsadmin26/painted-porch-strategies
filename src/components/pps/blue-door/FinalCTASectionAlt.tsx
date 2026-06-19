@@ -22,13 +22,15 @@ export default function FinalCTASectionAlt() {
       </div>
       
       <div ref={contentRef} className="container max-w-5xl mx-auto px-6 text-center relative z-10">
-        <span 
-          className={`inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6 transition-all duration-700 ease-out ${
+        <Eyebrow
+          variant="pill"
+          tone="gold"
+          className={`transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
           }`}
         >
           Your Strategic Clarity Moment Awaits
-        </span>
+        </Eyebrow>
         
         <h2 
           className={`text-3xl md:text-4xl font-bold text-white mb-8 max-w-[700px] mx-auto transition-all duration-700 ease-out delay-150 ${ isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6' }`}
