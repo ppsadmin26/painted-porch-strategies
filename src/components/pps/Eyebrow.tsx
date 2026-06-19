@@ -71,7 +71,7 @@ const PLAIN_BASE =
 
 export function Eyebrow({
   children,
-  variant = "pill",
+  variant = "plain",
   tone = "gold",
   as: Tag = "span",
   className,
