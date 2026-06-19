@@ -332,17 +332,18 @@
     @apply border-l-4 border-raspberry;
   }
 
-  /* Decorative pill badges */
+  /* Section eyebrow badges — plain caps text (pills reserved for heroes).
+     Kept as class names for backward compat with existing markup. */
   .badge-strategic {
-    @apply bg-strategic/10 text-strategic font-poppins font-semibold text-sm px-4 py-1.5 rounded-full;
+    @apply inline-block text-strategic font-poppins font-semibold text-caption uppercase tracking-[0.2em];
   }
 
   .badge-gold {
-    @apply bg-gold/15 text-gold font-poppins font-semibold text-sm px-4 py-1.5 rounded-full;
+    @apply inline-block text-gold font-poppins font-semibold text-caption uppercase tracking-[0.2em];
   }
 
   .badge-lime {
-    @apply bg-lime/15 text-lime font-poppins font-semibold text-sm px-4 py-1.5 rounded-full;
+    @apply inline-block text-lime font-poppins font-semibold text-caption uppercase tracking-[0.2em];
   }
 
   /* Slow forward zoom with subtle fade-reset loop */
