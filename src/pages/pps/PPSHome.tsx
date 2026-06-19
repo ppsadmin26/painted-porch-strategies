@@ -146,9 +146,6 @@ export default function PPSHome() {
             There&rsquo;s a lot of sh<span className="text-raspberry font-bold">IF</span>t happening right now.
           </h2>
           <p className="text-body text-foreground mb-4 whitespace-pre-line">
-            You're navigating strategy, AI, operations, and culture - all while trying to deliver results and support your people in real time.&nbsp;&nbsp;
-
-
             The friction you're feeling isn't a lack of effort. It’s what happens when you ask an organization to carry a new future on an old foundation. Pushing harder in the wrong direction doesn't accelerate transformation; it just <span className="text-raspberry font-bold">compounds the cost of getting there</span>.
           </p>
           <p className="text-body text-foreground mb-8">
