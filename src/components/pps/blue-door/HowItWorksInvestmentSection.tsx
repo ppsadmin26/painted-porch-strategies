@@ -48,7 +48,15 @@ const expectItems = [
 const includedItems = [
   "Organizational appraisal across the three Painted Porch Pillars",
   "AI-powered analysis paired with strategic review from the Painted Porch team",
-  "Clear answers on: your capacity signal, your architecture, where you can move now, what needs reinforcement, and your recommended path forward",
+  <>
+    The P.A.T.H. Compass, featuring:
+    <ul className="list-disc pl-5 mt-2 space-y-1 text-foreground">
+      <li>Your Organizational Architecture reading (strengths and vulnerabilities across all three Pillars)</li>
+      <li>Your Capacity Signal (what your organization is built to carry right now)</li>
+      <li>Your Move Now Map — the Catalyzer (where momentum will build)</li>
+      <li>Your Reinforce First plan — the Calibrator (what needs attention before transformation can hold)</li>
+    </ul>
+  </>,
   "Investment fully credited toward any future strategic partnership"
 ];
 
@@ -142,7 +150,7 @@ export default function HowItWorksInvestmentSection() {
               {includedItems.map((item, index) => (
                 <li key={index} className="text-body flex items-start gap-3">
                   <Check className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
-                  <span className={`text-foreground ${index === includedItems.length - 1 ? 'font-semibold' : ''}`}>{item}</span>
+                  <div className={`text-foreground ${index === includedItems.length - 1 ? 'font-semibold' : ''}`}>{item}</div>
                 </li>
               ))}
             </ul>
