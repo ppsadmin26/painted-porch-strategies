@@ -368,6 +368,91 @@ export default function PPSHome() {
       </section>
 
       {/* ============================================================ */}
+      {/* 3AM Questions strip, lead-in to The Blue Door                */}
+      {/* ============================================================ */}
+      <section className="py-16 md:py-20 bg-navy">
+        <div className="container max-w-7xl mx-auto px-6">
+          <p className="text-body text-center font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-10">
+            THE QUESTIONS LEADERS ARE WEIGHING AT 3AM
+          </p>
+          <div className="grid md:grid-cols-3 gap-10 md:gap-8">
+            {threeAmQuestions.map((q, i) => (
+              <div key={i} className="text-center">
+                <div className="text-3xl md:text-4xl font-poppins font-bold text-gold/30 mb-4">
+                  0{i + 1}
+                </div>
+                <p className="text-body text-white/90 italic">
+                  &ldquo;{q}&rdquo;
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+
+      {/* The Blue Door                                                 */}
+      {/* ============================================================ */}
+      <section className="py-16 md:py-24 bg-muted">
+        <div className="container max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 bg-bluedoor/10 text-bluedoor font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
+                <DoorOpen className="w-4 h-4" />
+                A Different Kind of Strategic Conversation
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
+                The Blue Door Organizational Appraisal.
+              </h2>
+              <p className="text-body text-foreground mb-4">
+                The questions that keep you up at 3AM deserve more than a pep
+                talk or another planning deck. They deserve clarity - the
+                kind that comes from seeing your organization clearly before
+                deciding what comes next.
+              </p>
+              <p className="text-body text-foreground mb-4">
+                The Blue Door is a structured reflection process, not a health
+                assessment, and not a readiness score. It reveals what future
+                your organization is realistically positioned to pursue, so you
+                stop wondering whether you're solving the right problem and start
+                knowing you are.
+              </p>
+              <p className="text-body text-foreground mb-6">
+                Before major pivots become active pursuit. Before momentum
+                outruns alignment. Before another initiative is announced.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-xl p-8 shadow-sm">
+              <p className="text-body font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-5">
+                What You&rsquo;ll Discover
+              </p>
+              <ul className="space-y-4">
+                {discover.map((d, i) => (
+                  <li key={i} className="text-body flex gap-3">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-bluedoor/10 text-bluedoor font-poppins font-bold text-xs flex items-center justify-center mt-0.5">
+                      {i + 1}
+                    </span>
+                    <p className="text-body text-foreground leading-relaxed">{d}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link to="/blue-door">
+              <Button className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor text-lg py-5 px-8 transition-colors">
+                Open the Blue Door
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
       {/* The Painted Porch Pillars                                     */}
       {/* ============================================================ */}
       <section className="py-16 md:py-24 bg-white">
@@ -498,91 +583,6 @@ export default function PPSHome() {
               </ol>
             </div>
           </section>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* 3AM Questions strip, lead-in to The Blue Door                */}
-      {/* ============================================================ */}
-      <section className="py-16 md:py-20 bg-navy">
-        <div className="container max-w-7xl mx-auto px-6">
-          <p className="text-body text-center font-poppins font-semibold uppercase tracking-[0.25em] text-gold/90 mb-10">
-            THE QUESTIONS LEADERS ARE WEIGHING AT 3AM
-          </p>
-          <div className="grid md:grid-cols-3 gap-10 md:gap-8">
-            {threeAmQuestions.map((q, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl md:text-4xl font-poppins font-bold text-gold/30 mb-4">
-                  0{i + 1}
-                </div>
-                <p className="text-body text-white/90 italic">
-                  &ldquo;{q}&rdquo;
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-
-      {/* The Blue Door                                                 */}
-      {/* ============================================================ */}
-      <section className="py-16 md:py-24 bg-muted">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-flex items-center gap-2 bg-bluedoor/10 text-bluedoor font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
-                <DoorOpen className="w-4 h-4" />
-                A Different Kind of Strategic Conversation
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-                The Blue Door Organizational Appraisal.
-              </h2>
-              <p className="text-body text-foreground mb-4">
-                The questions that keep you up at 3AM deserve more than a pep
-                talk or another planning deck. They deserve clarity - the
-                kind that comes from seeing your organization clearly before
-                deciding what comes next.
-              </p>
-              <p className="text-body text-foreground mb-4">
-                The Blue Door is a structured reflection process, not a health
-                assessment, and not a readiness score. It reveals what future
-                your organization is realistically positioned to pursue, so you
-                stop wondering whether you're solving the right problem and start
-                knowing you are.
-              </p>
-              <p className="text-body text-foreground mb-6">
-                Before major pivots become active pursuit. Before momentum
-                outruns alignment. Before another initiative is announced.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl p-8 shadow-sm">
-              <p className="text-body font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-5">
-                What You&rsquo;ll Discover
-              </p>
-              <ul className="space-y-4">
-                {discover.map((d, i) => (
-                  <li key={i} className="text-body flex gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-bluedoor/10 text-bluedoor font-poppins font-bold text-xs flex items-center justify-center mt-0.5">
-                      {i + 1}
-                    </span>
-                    <p className="text-body text-foreground leading-relaxed">{d}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-12 text-center">
-            <Link to="/blue-door">
-              <Button className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor text-lg py-5 px-8 transition-colors">
-                Open the Blue Door
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
 
