@@ -234,7 +234,7 @@ export default function PhaseZero() {
             <div className="flex-1">
               <Eyebrow variant="plain" tone="primary" as="p">Where Phase Zero Fits</Eyebrow>
               <p className="text-body text-foreground">
-                Phase Zero is the <span className="font-semibold text-primary">Prepare</span> stage of our P.A.T.H. methodology, the clarity work that comes before Align, Take Off, and Habits.
+                Phase Zero is the <span className="font-semibold text-primary">Prepare</span> stage of our P.A.T.H. methodology. It's the essential groundwork that must happen before you Align, Take Off, and build sustainable Habits.
               </p>
             </div>
             <Link
