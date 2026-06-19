@@ -74,7 +74,7 @@ export default function WhoThisIsForSectionAlt() {
           <div className="bg-muted/40 border-2 border-muted-foreground/15 p-6 rounded-lg text-center">
             <h4 className="text-base md:text-lg font-poppins font-bold text-muted-foreground mb-2">Past the Blue Door</h4>
             <p className="text-body -sm text-foreground italic">
-              "We've launched our latest change initiative. We need a partner to execute what's already in motion and get it across the finish line"
+              "We've launched our latest initiative. We need a partner to execute what's already in motion."
             </p>
           </div>
         </div>
