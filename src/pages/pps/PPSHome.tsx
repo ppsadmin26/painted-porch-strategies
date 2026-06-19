@@ -147,10 +147,10 @@ export default function PPSHome() {
           </h2>
           <p className="text-body text-foreground mb-4 whitespace-pre-line">
             You're navigating strategy, AI, operations, and culture - all while trying to deliver results and support your people in real time.&nbsp;
-            The friction you're feeling isn't a lack of effort. It’s what happens when you ask an organization to carry a new future on an old foundation. Pushing harder in the wrong direction doesn't accelerate transformation — it just <span className="text-raspberry font-bold">compounds the cost of getting there</span>.
+            The friction you're feeling isn't a lack of effort. It’s what happens when you ask an organization to carry a new future on an old foundation. Pushing harder in the wrong direction doesn't accelerate transformation it just <span className="text-raspberry font-bold">compounds the cost of getting there</span>.
           </p>
           <p className="text-body text-foreground mb-8">
-            Your organization is becoming something. The only question is whether you're the author of it — or the audience.
+            Your organization is becoming something. The only question is whether you're the author of it or the audience.
           </p>
 
           {/* Editorial pull stat, the human cost */}
