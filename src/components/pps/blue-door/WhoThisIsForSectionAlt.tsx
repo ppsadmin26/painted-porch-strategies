@@ -68,7 +68,7 @@ export default function WhoThisIsForSectionAlt() {
           <div className="bg-bluedoor/10 border-2 border-bluedoor/30 p-6 rounded-lg text-center">
             <h4 className="text-base md:text-lg font-poppins font-bold text-bluedoor mb-2">At the Blue Door</h4>
             <p className="text-body -sm text-foreground italic">
-              "We're imagining what's next, or we've picked a direction, and we want to know our organization is built to lead it before we press go"
+              "We're considering what's next, or we've picked a direction, and we want to know our organization's architecture can carry it before we commit."
             </p>
           </div>
           <div className="bg-muted/40 border-2 border-muted-foreground/15 p-6 rounded-lg text-center">
