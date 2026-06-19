@@ -31,15 +31,15 @@ const ShIFt = ({ lowercase = false }: { lowercase?: boolean }) => (
 
 const isIsNot = {
   is: [
-    "A clear look at what your organization is realistically equipped to undertake right now.",
-    "Deep questions about leadership, systems, and people before money or momentum gets locked in.",
-    "The design phase that decides whether your next big move strengthens you or stretches you thin.",
+    "A clear look at what your organization is realistically built to carry right now",
+    "Deep questions about leadership, systems, and people before money or momentum gets locked in",
+    "The strategic authorship phase that decides whether your next big move strengthens you or stretches you thin",
     "The point where organizational identity becomes strategic direction.",
   ],
   isNot: [
-    "A readiness score or a health check.",
-    "A template, a deck, or a one-size playbook.",
-    "Training, coaching, or a workshop.",
+    "A readiness score, a health check, or a survey",
+    "A template, a slide deck, or a one-size-fits-all playbook",
+    "Standard training, coaching, or a workshop",
   ],
 };
 
