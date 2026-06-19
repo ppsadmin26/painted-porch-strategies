@@ -386,7 +386,7 @@ export default function PhaseZero() {
                   <ul className="space-y-1.5">
                     {p.questions.map((q, i) => (
                       <li key={i} className="text-body -sm text-foreground flex items-start gap-2 italic">
-                        <span className={`${p.accent} mt-1 not-italic`}>•</span>
+                        <span className={`${p.accent} mt-1 not-italic`} style={{ fontSize: 'calc(1em + 2px)' }}>•</span>
                         <span>&ldquo;{q}&rdquo;</span>
                       </li>
                     ))}
