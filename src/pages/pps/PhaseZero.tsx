@@ -209,6 +209,12 @@ export default function PhaseZero() {
               Your organization isn't getting worn down from a lack of effort. It's carrying the accumulated weight of the continual drive to innovate, accelerate, adapt, and grow.
             </p>
             <p className="text-body">
+              Unfinished work.<br />
+              Competing priorities.<br />
+              Disconnected initiatives.<br />
+              Directions that never fully aligned in the first place.
+            </p>
+            <p className="text-body">
               Phase Zero is the pause that prevents that cost. A deliberate stop, before
               the next big <ShIFt lowercase />&nbsp;hardens into execution, to examine what deserves pursuit, where strain already exists, and what direction makes the most sense from where you are today...and who and what you want to become tomorrow.
             </p>
