@@ -355,11 +355,8 @@ export default function PPSHome() {
             Before another initiative is announced. Before another restructuring
             kicks off. Before you begin scaling something that already feels stretched.
           </p>
-          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto whitespace-pre-wrap">
-            Phase Zero is the first act of becoming. It’s the threshold work that helps your organization see itself clearly — its strengths, its constraints, its true capacity — before deciding what deserves your commitment.
-
-
-            Phase Zero exists to create clarity before your next major decision hardens into execution. It’s the threshold work that helps your organization see itself clearly before deciding what deserves commitment.
+          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
+            Phase Zero is the first act of becoming. It’s the threshold work before your next major decision hardens into execution that helps your organization see itself clearly - its strengths, its constraints, its true capacity - before deciding what deserves your commitment.
           </p>
           <Link to="/phase-zero">
             <Button className="bg-gold border-2 border-gold text-navy hover:bg-white hover:border-white text-lg py-5 px-8 transition-colors">
