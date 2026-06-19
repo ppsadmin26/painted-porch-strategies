@@ -174,6 +174,7 @@ export default function AmplifyLabs() {
           </Link>
 
           <div className="text-center mb-12">
+            <Eyebrow variant="plain" tone="primary" as="p">AMPLIFY · Leadership Labs</Eyebrow>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Leadership Labs: Peer-Driven Acceleration
             </h1>
