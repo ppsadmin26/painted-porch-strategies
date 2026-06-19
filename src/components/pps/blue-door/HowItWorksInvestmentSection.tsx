@@ -41,7 +41,7 @@ const stepColors = [
 
 const expectItems = [
   { icon: Clock, text: "Less than 30 minutes to complete" },
-  { icon: Clock, text: "Your P.A.T.H. Compass executive results delivered within 72 business hours" },
+  { icon: Clock, text: "Your P.A.T.H. Compass results delivered within 72 business hours" },
   { icon: Mail, text: "PDF + interactive portal with your full strategic reading" }
 ];
 
