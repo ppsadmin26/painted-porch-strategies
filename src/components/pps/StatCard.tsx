@@ -78,7 +78,7 @@ export default function StatCard({
         {tooltip}
       </p>
       {framing && (
-        <p className="text-body mt-4 -sm text-foreground/80 italic leading-relaxed">{framing}</p>
+        <p className="text-body mt-4 -sm text-foreground/80 leading-relaxed">{framing}</p>
       )}
       <p className="text-body mt-auto pt-4 text-[0.7rem] uppercase tracking-wider text-muted-foreground">
         {s.source}{s.year ? ` · ${s.year}` : ""}
