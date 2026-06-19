@@ -150,7 +150,7 @@ export default function HowItWorksInvestmentSection() {
               {includedItems.map((item, index) => (
                 <li key={index} className="text-body flex items-start gap-3">
                   <Check className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
-                  <span className={`text-foreground ${index === includedItems.length - 1 ? 'font-semibold' : ''}`}>{item}</span>
+                  <div className={`text-foreground ${index === includedItems.length - 1 ? 'font-semibold' : ''}`}>{item}</div>
                 </li>
               ))}
             </ul>
