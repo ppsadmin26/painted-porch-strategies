@@ -84,11 +84,11 @@ export default function HowItWorksInvestmentSection() {
                   Step {step.number}: {step.title}
                 </h3>
                 
-                <p className="text-body -sm font-semibold text-white/70 mb-3">
+                <p className="text-caption font-semibold text-white/70 mb-3">
                   {step.time}
                 </p>
                 
-                <p className="text-body -sm text-white/90 flex-1">
+                <p className="text-body text-white/90 flex-1">
                   {step.description}
                 </p>
               </div>
