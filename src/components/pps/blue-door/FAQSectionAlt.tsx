@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 const faqs = [
   {
