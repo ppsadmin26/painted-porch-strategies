@@ -66,8 +66,9 @@ export default function DiscoverSectionAlt() {
           <p className="text-body text-muted-foreground max-w-4xl mx-auto">
             What's genuinely available to your organization <em>right now</em>? Not in theory or at full potential, but given how your leadership, systems, processes, and people are structured today.
           </p>
-          <p className="text-body text-muted-foreground max-w-4xl mx-auto mt-4">
-            The Blue Door surfaces that reality in less than 30 minutes. replacing uncertainty with a clearer understanding of where opportunity exists, where to move now, and what deserves attention first. No more strategic paralysis, no FOBO (fear of better options), no nagging worry that this will go sideways. Just a clear path and compass forward.&nbsp;
+          <p className="text-body text-muted-foreground max-w-4xl mx-auto mt-4 whitespace-pre-line">
+            The Blue Door surfaces that reality in less than 30 minutes. It replaces strategic uncertainty with a clear picture of where your strengths create opportunity, where your constraints require attention first, and what direction makes the most sense given your actual architecture.&nbsp;{"\n\n"}
+            No more strategic paralysis. No FOBO (fear of better options). No nagging doubt that this will go sideways. Just a clear path and compass forward.&nbsp;
           </p>
         </div>
 
