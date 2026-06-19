@@ -235,7 +235,8 @@ export default function PPSHome() {
                 <li><strong>The Vision Validation:</strong> When you&rsquo;re ready to build a legacy that outlives your tenure, and you need the architecture to make it real.</li>
               </ul>
               <p className="text-body text-foreground">
-                <strong>Wherever you begin, clarity comes before commitment.</strong>
+                <br />
+                <strong>Wherever you enter, clarity comes before commitment.</strong>
               </p>
             </div>
 
