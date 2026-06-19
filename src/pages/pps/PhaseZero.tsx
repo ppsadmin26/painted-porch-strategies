@@ -215,7 +215,7 @@ export default function PhaseZero() {
               Directions that never fully aligned in the first place.
             </p>
             <p className="text-body">
-              Pushing harder in the wrong direction doesn't change the direction. It just compounds the cost of getting there.
+              Pushing harder in the wrong direction doesn't change the direction. It just <strong className="text-raspberry">compounds the cost of getting there</strong>.
             </p>
           </div>
           <p className="text-pullquote mt-10 not-italic font-poppins font-semibold text-navy leading-relaxed" data-body-allow>
