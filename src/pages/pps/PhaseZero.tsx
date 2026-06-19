@@ -328,7 +328,7 @@ export default function PhaseZero() {
               The hidden cost of misalignment and building before clarity
             </h3>
             <p className="text-body text-charcoal/85 mb-5">
-              Plug in your team size and initiative budget to see the industry-benchmarked
+              Plug in your team size, focus, and timeline to see the industry-benchmarked
               cost of misaligned change, and what's recoverable when you start with Phase Zero.
             </p>
             <CostCalculatorDialog
