@@ -219,7 +219,7 @@ export default function PPSHome() {
               <p className="text-body text-foreground mb-4">
                 We don&rsquo;t arrive with predetermined answers, packaged solutions, or implementation plans waiting for your approval.
                 <br /><br />
-                <strong>We begin earlier.</strong>
+                <strong>We enter earlier.</strong>
                 <br /><br />
                 At the point where you&rsquo;re still determining what direction is worth pursuing, what your organization is becoming, and what foundations need to exist before momentum accelerates.
               </p>
