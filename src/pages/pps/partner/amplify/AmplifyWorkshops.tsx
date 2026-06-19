@@ -13,6 +13,7 @@ import stoicThumb from "@/assets/workshops/stoic-leadership-thumb.jpg";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 import { usePathFinderQuiz } from "@/components/pps/quiz/PathFinderQuizProvider";
 import { BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
 
@@ -155,6 +156,7 @@ export default function AmplifyWorkshops() {
           </Link>
 
           <div className="text-center mb-12">
+            <Eyebrow variant="plain" tone="primary" as="p">AMPLIFY · Team Workshops</Eyebrow>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Workshops That Architect Your Next Sh<span className="text-strategic font-bold">IF</span>t
             </h1>

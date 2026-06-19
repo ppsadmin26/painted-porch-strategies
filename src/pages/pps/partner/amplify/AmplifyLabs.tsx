@@ -4,6 +4,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL } from "./stracticalConfig";
 import stracticalImg from "@/assets/labs/stractical-leadership.jpg";
 import leadingChangeImg from "@/assets/labs/leading-change.jpg";
@@ -173,6 +174,7 @@ export default function AmplifyLabs() {
           </Link>
 
           <div className="text-center mb-12">
+            <Eyebrow variant="plain" tone="primary" as="p">AMPLIFY · Leadership Labs</Eyebrow>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Leadership Labs: Peer-Driven Acceleration
             </h1>
