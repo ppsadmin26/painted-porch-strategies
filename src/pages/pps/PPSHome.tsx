@@ -75,10 +75,10 @@ const pillars = [
 ];
 
 const discover = [
-  "Which shifts your organization is realistically positioned to carry",
-  "Where tension, strain, or misalignment may already be surfacing",
-  "What conditions need strengthening before momentum compounds complexity",
-  "Where sustainability matters more than speed",
+  "Which shifts your organization actually has the architecture to carry",
+  "Where tension or misalignment is already surfacing",
+  "What conditions need strengthening before you accelerate",
+  "The concrete pathways available to move forward",
 ];
 
 export default function PPSHome() {
