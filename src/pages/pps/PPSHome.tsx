@@ -230,11 +230,11 @@ export default function PPSHome() {
                 Most leaders find us at one of three moments:
                 <br />
                 <span style={{ fontSize: '1.125em' }}>&bull;</span> <strong>The Breaking Point:</strong> When you know there&rsquo;s extraordinary potential in your team, but your current structures keep holding it back.
-                <br /><br />
+                <br />
                 <span style={{ fontSize: '1.125em' }}>&bull;</span> <strong>The Catalyst Event:</strong> When a market shift, AI mandate, or leadership transition forces evolution, and you refuse to sacrifice your people in the process.
-                <br /><br />
+                <br />
                 <span style={{ fontSize: '1.125em' }}>&bull;</span> <strong>The Vision Validation:</strong> When you&rsquo;re ready to build a legacy that outlives your tenure, and you need the architecture to make it real.
-                <br /><br />
+                <br />
                 <strong>Wherever you begin, clarity comes before commitment.</strong>
               </p>
             </div>
