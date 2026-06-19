@@ -370,27 +370,20 @@ export default function PPSHome() {
       {/* ============================================================ */}
       {/* 3AM Questions strip, lead-in to The Blue Door                */}
       {/* ============================================================ */}
-      <section className="py-20 md:py-28 bg-navy">
+      <section className="py-16 md:py-20 bg-white">
         <div className="container max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 md:mb-20">
-            <span className="inline-block bg-gold text-navy font-poppins font-bold text-xs uppercase tracking-[0.3em] px-5 py-2 rounded-full mb-8">
-              The Questions
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-              What leaders are weighing at 3<span className="text-raspberry">AM</span>
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 md:gap-10">
+          <p className="text-body text-center font-poppins font-semibold uppercase tracking-[0.25em] text-navy mb-10">
+            THE QUESTIONS LEADERS ARE WEIGHING AT 3AM
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {threeAmQuestions.map((q, i) => (
-              <div key={i} className="relative text-center">
-                <div className="text-5xl md:text-7xl font-poppins font-bold text-white/10 absolute -top-4 md:-top-6 left-1/2 -translate-x-1/2 select-none">
+              <div key={i} className="text-center bg-muted/50 rounded-xl p-6 md:p-8">
+                <div className="text-3xl md:text-4xl font-poppins font-bold text-raspberry mb-4">
                   0{i + 1}
                 </div>
-                <div className="relative z-10 pt-8 md:pt-10 border-t-2 border-raspberry/40">
-                  <p className="text-lg md:text-xl text-white/90 italic font-medium leading-relaxed">
-                    &ldquo;{q}&rdquo;
-                  </p>
-                </div>
+                <p className="text-body text-foreground italic font-medium">
+                  &ldquo;{q}&rdquo;
+                </p>
               </div>
             ))}
           </div>
