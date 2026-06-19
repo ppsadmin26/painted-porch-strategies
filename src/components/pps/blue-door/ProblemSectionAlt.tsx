@@ -35,7 +35,7 @@ export default function ProblemSectionAlt() {
             Not a decision.<br />
             Not a plan.<br />
             Not a mandate.<br />
-            But a question that starts with "What <span className="font-bold text-bluedoor">IF</span>?"
+            But a question that starts to take shape: What could this organization actually lead next?
           </p>
           <p className="text-body text-foreground">
             It's when the <span className="font-bold text-bluedoor">blue door</span> appears, the threshold between sensing that something must change and knowing what your organization can realistically take on. Before a direction becomes a commitment, you must first understand who your organization is becoming.
