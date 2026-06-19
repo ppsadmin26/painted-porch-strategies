@@ -75,7 +75,7 @@ export default function DiscoverSectionAlt() {
         {/* Pillars */}
         <div className="mb-12">
           <h3 className="text-xl md:text-2xl font-semibold text-navy text-center mb-6">
-            We appraise three core areas:&nbsp;The <span className="text-raspberry">Painted Porch Pillars</span>
+            We appraise three core areas:&nbsp;<span className="text-raspberry">The Painted Porch Pillars</span>
           </h3>
           
           <div ref={pillarsRef} className="grid md:grid-cols-3 gap-6">
@@ -98,9 +98,20 @@ export default function DiscoverSectionAlt() {
                       </>
                     ) : pillar.title}
                   </h4>
-                  <p className="text-body-sm text-foreground whitespace-pre-line">
-                    {pillar.description}
-                  </p>
+                  {(() => {
+                    const [desc, question] = pillar.description.split('\n\n\n');
+                    return (
+                      <p className="text-body text-foreground whitespace-pre-line">
+                        {desc}
+                        {question && (
+                          <>
+                            {'\n\n\n'}
+                            <em className="italic">{question}</em>
+                          </>
+                        )}
+                      </p>
+                    );
+                  })()}
                 </div>
               );
             })}
