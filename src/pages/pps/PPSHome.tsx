@@ -345,9 +345,9 @@ export default function PPSHome() {
         <div className="absolute inset-0 bg-gradient-strategic opacity-75" aria-hidden="true" />
         <div className="absolute inset-0 bg-navy/20" aria-hidden="true" />
         <div className="relative z-10 container max-w-4xl mx-auto px-6 text-center">
-          <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
+          <Eyebrow variant="plain" tone="gold" as="p">
             Phase Zero is where we begin
-          </span>
+          </Eyebrow>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Get the clarity that accelerates vs. exhausts your next big sh<span className="text-raspberry font-bold">IF</span>t.
           </h2>
