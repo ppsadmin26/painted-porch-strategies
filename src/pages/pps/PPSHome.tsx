@@ -109,7 +109,7 @@ export default function PPSHome() {
         subheadline=""
         description={
           <>
-            You have the vision. You have the resolve. What's harder to find is the clarity - the kind that comes <em>before</em> strategy hardens, <em>before</em> the announcement activates, <em>before</em> momentum outruns what your organization is able to realistically carry.
+            You have the vision. You have the resolve. What's harder to find is the clarity - the kind that comes <em>before</em> strategy hardens, <em>before</em> the announcement activates, <em>before</em> momentum exceeds what your organization is able to realistically execute.
             <br /><br />
             That's the work we do.
             <br /><br />
