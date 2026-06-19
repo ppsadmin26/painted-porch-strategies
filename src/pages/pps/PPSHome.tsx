@@ -113,7 +113,7 @@ export default function PPSHome() {
             <br /><br />
             That's the work we do.
             <br /><br />
-            And it starts with one question: What is your organization actually built to lead next?
+            And it starts with one question: <strong>What is your organization actually built to lead next?</strong>
           </>
         }
 
