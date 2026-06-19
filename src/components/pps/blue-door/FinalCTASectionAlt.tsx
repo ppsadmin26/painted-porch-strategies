@@ -37,7 +37,22 @@ export default function FinalCTASectionAlt() {
         >
           The direction you're considering might be exactly right. Now discover what it will require to make it successful.
         </h2>
-        
+
+        <p
+          className={`text-lead text-white/90 max-w-[700px] mx-auto mb-8 transition-all duration-700 ease-out delay-200 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          The Blue Door™ doesn't tell you whether to move. It tells you where your momentum will build and where it will need reinforcement first.
+        </p>
+        <p
+          className={`text-lead text-white/90 max-w-[700px] mx-auto mb-8 transition-all duration-700 ease-out delay-300 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+          }`}
+        >
+          That's not a delay. That's the difference between 18 months of expensive rework and a transformation that actually lands.
+        </p>
+
         <div
           className={`transition-all duration-700 ease-out delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
