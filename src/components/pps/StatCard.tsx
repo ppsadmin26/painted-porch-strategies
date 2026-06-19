@@ -57,7 +57,7 @@ export default function StatCard({
           <span className="text-navy not-italic"> {s.label.replace(/\.$/, "")}.</span>
           {tooltip}
         </p>
-        {framing && <p className="text-body mt-2 text-foreground/80 italic">{framing}</p>}
+        {framing && <p className="text-body mt-2 text-foreground/80">{framing}</p>}
       </div>
     );
   }
