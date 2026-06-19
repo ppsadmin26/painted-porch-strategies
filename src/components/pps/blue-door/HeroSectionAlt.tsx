@@ -44,8 +44,8 @@ export default function HeroSectionAlt() {
             <p className={`font-poppins font-normal text-lead md:text-lead text-white mb-2 transition-all duration-700 ease-out delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
               The Blue Door™ surfaces your organization's actual architecture — your strengths, your constraints, and where your next move should begin.
             </p>
-            <p className={`font-poppins font-bold text-lead md:text-lead text-white mb-8 transition-all duration-700 ease-out delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-              Lead with clarity. Build with confidence.
+            <p className={`font-poppins font-bold text-lead md:text-lead text-white mb-8 transition-all duration-700 ease-out delay-300 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'} whitespace-pre-line`}>
+              {"\n\n"}Lead with clarity. Build with confidence.
             </p>
             
             <div className={`transition-all duration-700 ease-out delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
