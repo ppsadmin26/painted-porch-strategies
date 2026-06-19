@@ -206,7 +206,7 @@ export default function PhaseZero() {
           <div className="space-y-5 text-lg md:text-xl text-charcoal/85 leading-relaxed">
             <p className="text-body">And not every change fortifies the future it's intended to create.</p>
             <p className="text-body">
-              The friction you're feeling isn't a lack of effort. It’s what happens when you ask an organization to carry a new future on an old foundation. Pushing harder in the wrong direction doesn't accelerate transformation; it just compounds the cost of getting there.
+              Your organization isn't getting worn down from a lack of effort. It's carrying the accumulated weight of the continual drive to innovate, accelerate, adapt, and grow.
             </p>
             <p className="text-body">
               Phase Zero is the pause that prevents that cost. A deliberate stop, before
