@@ -214,7 +214,7 @@ export default function PPSHome() {
             <div className="lg:col-span-5 lg:sticky lg:top-24">
               <span className="badge-gold mb-4 inline-block">How We Meet You On The Porch</span>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 leading-tight">
-                We begin at &ldquo;What <span className="text-raspberry font-bold">IF</span>&rdquo;.
+                We enter at &ldquo;What <span className="text-raspberry font-bold">IF</span>&rdquo;.
               </h2>
               <p className="text-body text-foreground mb-4">
                 We don&rsquo;t arrive with predetermined answers, packaged solutions, or implementation plans waiting for your approval.
