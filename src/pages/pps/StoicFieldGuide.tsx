@@ -46,7 +46,7 @@ export default function StoicFieldGuide() {
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             {/* Left: Copy */}
             <div className="text-center md:text-left">
-              <Eyebrow variant="pill" tone="gold">Free Download</Eyebrow>
+              <Eyebrow tone="gold">Free Download</Eyebrow>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
                 The{" "}
                 <span className="text-gold italic">Stoic Leader's</span>
