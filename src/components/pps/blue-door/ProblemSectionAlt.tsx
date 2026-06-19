@@ -29,7 +29,7 @@ export default function ProblemSectionAlt() {
         {/* Opening rhythm, centered, generous spacing */}
         <div className="text-center max-w-4xl mx-auto mb-12 space-y-4" style={{ lineHeight: '1.9' }}>
           <p className="text-body text-navy font-bold !not-italic">
-            There's a moment, often subtle, when a new idea begins to emerge in your organization.
+            There's a moment that arrives in most organizations, often without announcement.
           </p>
           <p className="text-body text-foreground">
             Not a decision.<br />
