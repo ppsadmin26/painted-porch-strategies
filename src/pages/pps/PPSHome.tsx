@@ -458,9 +458,9 @@ export default function PPSHome() {
       <section className="py-16 md:py-24 bg-gradient-to-br from-navy to-navy/90 text-white">
         <div className="container max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
+            <Eyebrow variant="plain" tone="gold" as="p">
               The Painted Porch Promise
-            </span>
+            </Eyebrow>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               We aren&rsquo;t here to tell you yes.
             </h2>
