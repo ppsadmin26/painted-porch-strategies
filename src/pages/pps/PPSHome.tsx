@@ -354,8 +354,11 @@ export default function PPSHome() {
           <p className="text-body text-white/90 mb-4 max-w-2xl mx-auto">
             The moment right before the next initiative gets announced or another restructuring kicks off. When the pressure to move is real, but the direction hasn't fully taken shape. That's the moment Phase Zero is designed for.
           </p>
-          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
-            Phase Zero is the first act of becoming. It’s the threshold work before your next major decision hardens into execution. &nbsp; helps your organization see itself clearly - its strengths, its constraints, its true capacity - to decide what deserves your commitment and investment.
+          <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto whitespace-pre-line">
+            Phase Zero is the first act of becoming - the threshold work before your next major decision hardens into execution, and you begin scaling something that already may feel stretched.&nbsp;&nbsp;
+
+
+            It's the space for your organization to see itself clearly - its strengths, its constraints, its true capacity - to decide what deserves your commitment and investment. To build based not just on ambition, but on a solid architectural foundation.
           </p>
           <Link to="/phase-zero">
             <Button className="bg-gold border-2 border-gold text-navy hover:bg-white hover:border-white text-lg py-5 px-8 transition-colors">
