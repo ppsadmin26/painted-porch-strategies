@@ -5,6 +5,8 @@ import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
 import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
 import { igniteFaqCategories } from "./igniteFaqs";
+import { TierBadge } from "@/components/pps/TierBadge";
+import { TIERS } from "@/config/tiers";
 
 import brainEqIcon from "@/assets/icons/brain-eq.svg";
 import dualGearsIcon from "@/assets/icons/dual-gears.svg";
@@ -115,6 +117,7 @@ export default function IgniteAssessments() {
           </Link>
 
           <div className="text-center mb-12">
+            <TierBadge tier={TIERS.IGNITE} className="mb-4" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Uncover Your Talents. Architect Your Future.
             </h1>

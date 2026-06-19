@@ -6,6 +6,8 @@ import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { FAQSection } from "@/components/pps/FAQSection";
 import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
 import { igniteFaqCategories } from "./igniteFaqs";
+import { TierBadge } from "@/components/pps/TierBadge";
+import { TIERS } from "@/config/tiers";
 
 import mcElementsOfTeam from "@/assets/masterclass/elements-of-team.jpg";
 import mcSuperpowersOfTeam from "@/assets/masterclass/superpowers-of-a-team.jpg";
@@ -86,6 +88,7 @@ export default function IgniteMasterclasses() {
           </Link>
 
           <div className="text-center mb-12">
+            <TierBadge tier={TIERS.IGNITE} className="mb-4" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy mb-4">
               Masterclasses & Mini-Workshops
             </h1>
