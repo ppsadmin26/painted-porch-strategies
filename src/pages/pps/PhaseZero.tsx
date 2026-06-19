@@ -181,8 +181,8 @@ export default function PhaseZero() {
             <p className="text-lead text-white/85">
               Phase Zero is the first act of becoming. It’s the threshold work that
               reveals what your organization actually has the architecture to lead
-              — before you commit the resources, time, and credibility to design
-              toward it.
+              - before you commit the resources, time, and credibility to design
+              toward making it happen.
             </p>
           </>
         }
