@@ -179,8 +179,10 @@ export default function PhaseZero() {
               Before the kickoff. Before the rollout. Before the next big sh<span className="text-raspberry font-bold">IF</span>t.
             </p>
             <p className="text-lead text-white/85">
-              Phase Zero is the clarity work that reveals what your organization 
-              is becoming, what deserves your commitment, and what direction is worth designing toward.
+              Phase Zero is the first act of becoming. It’s the threshold work that
+              reveals what your organization actually has the architecture to lead
+              — before you commit the resources, time, and credibility to design
+              toward it.
             </p>
           </>
         }
