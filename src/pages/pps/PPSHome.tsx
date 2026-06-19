@@ -450,6 +450,49 @@ export default function PPSHome() {
           </div>
         </div>
       </section>
+      {/* ============================================================ */}
+      {/* Partnership Promise                                           */}
+      {/* ============================================================ */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-navy to-navy/90 text-white">
+        <div className="container max-w-4xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
+              The Painted Porch Promise
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              We aren&rsquo;t here to tell you yes.
+            </h2>
+            <p className="text-body text-white/85 max-w-2xl mx-auto">
+              We&rsquo;re here to tell you what will actually work, and what it
+              will take to make it happen. The question we begin with is whether
+              what&rsquo;s being considered is the right thing to do right now.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-lime/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-lime">
+              <p className="text-body font-poppins font-bold text-lime mb-2">If yes</p>
+              <p className="text-body -sm text-white/90">
+                We get to work with you on what it takes to author and shape
+                your next shift.
+              </p>
+            </div>
+            <div className="bg-gold/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-gold">
+              <p className="text-body font-poppins font-bold text-gold mb-2">If not yet</p>
+              <p className="text-body -sm text-white/90">
+                We tell you, and we provide a pathway to action.
+              </p>
+            </div>
+            <div className="bg-raspberry/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-raspberry">
+              <p className="text-body font-poppins font-bold text-raspberry mb-2">If not us</p>
+              <p className="text-body -sm text-white/90">
+                We tell you that, too, and connect you with the right partner
+                for your stage and needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ============================================================ */}
       {/* The Painted Porch Pillars                                     */}
@@ -656,50 +699,6 @@ export default function PPSHome() {
                   <ArrowRight className="ml-1 w-4 h-4" />
                 </Link>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* Partnership Promise                                           */}
-      {/* ============================================================ */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-navy to-navy/90 text-white">
-        <div className="container max-w-4xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
-              The Painted Porch Promise
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              We aren&rsquo;t here to tell you yes.
-            </h2>
-            <p className="text-body text-white/85 max-w-2xl mx-auto">
-              We&rsquo;re here to tell you what will actually work, and what it
-              will take to make it happen. The question we begin with is whether
-              what&rsquo;s being considered is the right thing to do right now.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-lime/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-lime">
-              <p className="text-body font-poppins font-bold text-lime mb-2">If yes</p>
-              <p className="text-body -sm text-white/90">
-                We get to work with you on what it takes to author and shape
-                your next shift.
-              </p>
-            </div>
-            <div className="bg-gold/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-gold">
-              <p className="text-body font-poppins font-bold text-gold mb-2">If not yet</p>
-              <p className="text-body -sm text-white/90">
-                We tell you, and we provide a pathway to action.
-              </p>
-            </div>
-            <div className="bg-raspberry/25 backdrop-blur-sm rounded-xl p-6 border-l-4 border-raspberry">
-              <p className="text-body font-poppins font-bold text-raspberry mb-2">If not us</p>
-              <p className="text-body -sm text-white/90">
-                We tell you that, too, and connect you with the right partner
-                for your stage and needs.
-              </p>
             </div>
           </div>
         </div>
