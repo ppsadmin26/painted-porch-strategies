@@ -416,7 +416,7 @@ export default function PPSHome() {
               </p>
               <p className="text-body text-foreground mb-4">
                 The Blue Door™ is a structured organizational appraisal. It isn't
-                a readiness score — it's a clear-eyed look at what future your
+                a readiness score; it's a clear-eyed look at what future your
                 organization is realistically positioned to pursue right now. It
                 reveals where your momentum will build, and where it will
                 collapse.
