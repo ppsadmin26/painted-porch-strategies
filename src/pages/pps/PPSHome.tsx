@@ -107,15 +107,7 @@ export default function PPSHome() {
           </>
         }
         subheadline="\n"
-        description={
-          <>
-            You have the vision. You have the resolve. What's harder to find is the clarity - the kind that comes before strategy hardens, before the announcement activates, before momentum outruns what your organization is actually built to carry.
-            <br /><br />
-            That's the work we do.
-            <br /><br />
-            And it starts with one question: What is your organization actually built to lead next?
-          </>
-        }
+        description="You have the vision. You have the resolve. What's harder to find is the clarity - the kind that comes before strategy hardens, before the announcement activates, before momentum outruns what your organization is actually built to carry.\n\nThat's the work we do.\n\nAnd it starts with one question: What is your organization actually built to lead next?"
 
         ctas={[
           {
