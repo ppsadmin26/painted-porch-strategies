@@ -179,7 +179,7 @@ export function TierHeroSection({
             </h1>
 
             {/* Subheadline */}
-            {subheadline && (
+            {subheadline && subheadline !== "\n" && (
               <p
                 className={`text-lead text-gold font-bold italic mb-4 transition-all duration-700 ease-out delay-300 ${
                   isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
