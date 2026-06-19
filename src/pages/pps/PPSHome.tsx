@@ -465,7 +465,8 @@ export default function PPSHome() {
             <p className="text-body text-white/85 max-w-2xl mx-auto">
               We&rsquo;re here to tell you what will actually work, and what it
               will take to make it happen. The question we begin with is whether
-              what&rsquo;s being considered is the right thing to do right now.
+              what&rsquo;s being considered is the right thing to do{" "}
+              <strong>right now</strong>.
             </p>
           </div>
 
@@ -492,6 +493,11 @@ export default function PPSHome() {
               </p>
             </div>
           </div>
+
+          <p className="text-body text-white/85 max-w-2xl mx-auto text-center mt-8">
+            We don&rsquo;t slow you down. We make sure you&rsquo;re moving on
+            ground that holds.
+          </p>
         </div>
       </section>
 
