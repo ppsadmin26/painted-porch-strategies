@@ -14,7 +14,11 @@ export function useScrollAnimation<T extends HTMLElement = HTMLElement>(
 ) {
   const { threshold = 0.1, triggerOnce = true, rootMargin = "0px" } = options;
   const ref = useRef<T>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  // Default to visible so any non-scrolling consumer (crawlers, screenshot
+  // bots, JS-disabled snapshots, search engines) sees fully-rendered content.
+  // We only flip to hidden if we can confirm the element is below the fold,
+  // and only then will the IntersectionObserver animate it back in.
+  const [isVisible, setIsVisible] = useState(true);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   // Listen for reduced motion preference
@@ -27,22 +31,27 @@ export function useScrollAnimation<T extends HTMLElement = HTMLElement>(
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
-  // Check immediately (before paint) if element is already in viewport
+  // Before paint, if the element is below the fold, hide it so the observer
+  // can animate it in on scroll. Elements already in view stay visible.
   useLayoutEffect(() => {
     if (reducedMotion) {
       setIsVisible(true);
       return;
     }
+    if (typeof window === "undefined") return;
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        setIsVisible(true);
+      const isBelowFold = rect.top >= window.innerHeight;
+      const isAboveFold = rect.bottom <= 0;
+      if (isBelowFold || isAboveFold) {
+        setIsVisible(false);
       }
     }
   }, [reducedMotion]);
 
   useEffect(() => {
-    if (reducedMotion || isVisible && triggerOnce) {
+    if (reducedMotion) {
+      setIsVisible(true);
       return;
     }
 
@@ -65,7 +74,7 @@ export function useScrollAnimation<T extends HTMLElement = HTMLElement>(
     }
 
     return () => observer.disconnect();
-  }, [threshold, triggerOnce, rootMargin, reducedMotion, isVisible]);
+  }, [threshold, triggerOnce, rootMargin, reducedMotion]);
 
   return { ref, isVisible, reducedMotion };
 }
