@@ -71,7 +71,7 @@ export default function KickTheHabitWatch() {
       {/* Hero */}
       <section className="bg-white py-12 md:py-16 text-center">
         <div className="container max-w-4xl mx-auto px-6">
-          <Eyebrow variant="pill" tone="lime">Instant Access</Eyebrow>
+          <Eyebrow tone="lime">Instant Access</Eyebrow>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy leading-tight mb-4">
             <span className="text-raspberry italic">Kick the Habit</span> Training Replay
           </h1>

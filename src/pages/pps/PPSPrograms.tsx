@@ -125,7 +125,7 @@ export default function PPSPrograms() {
         </div>
         <div className="container max-w-7xl mx-auto px-6 relative z-10 py-20">
           <div className="max-w-2xl">
-            <Eyebrow variant="pill" tone="gold">Join Us on the Porch</Eyebrow>
+            <Eyebrow tone="gold">Join Us on the Porch</Eyebrow>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins leading-tight">
               Programs &amp; More
             </h1>
@@ -227,7 +227,7 @@ export default function PPSPrograms() {
                 />
               </div>
               <div className="order-1 md:order-2">
-                <Eyebrow variant="pill" tone="raspberry">Emotional Intelligence</Eyebrow>
+                <Eyebrow tone="raspberry">Emotional Intelligence</Eyebrow>
                 <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6 font-poppins">
                   Become an Emotionally-Intelligent Leader
                 </h2>

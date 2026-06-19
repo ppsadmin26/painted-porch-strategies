@@ -49,7 +49,7 @@ export default function ValueEscalationSectionAlt() {
           ref={imagineRef} 
           className={`bg-bluedoor/5 border-l-4 border-bluedoor p-6 md:p-8 rounded-r-lg mb-8 transition-all duration-700 ease-out ${imagineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
         >
-          <Eyebrow variant="pill" tone="cobalt">IMAGINE</Eyebrow>
+          <Eyebrow tone="cobalt">IMAGINE</Eyebrow>
           <div className="font-poppins font-bold text-2xl md:text-3xl text-bluedoor mb-2">
             The Blue Door
           </div>
@@ -86,7 +86,7 @@ export default function ValueEscalationSectionAlt() {
             ref={decideRef} 
             className={`bg-strategic/5 border-l-4 border-strategic p-6 rounded-r-lg transition-all duration-700 ease-out delay-150 ${decideVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           >
-            <Eyebrow variant="pill" tone="white">DECIDE</Eyebrow>
+            <Eyebrow tone="white">DECIDE</Eyebrow>
             <div className="font-poppins font-bold text-2xl md:text-3xl text-strategic mb-2">
               Architect Change Design Session
             </div>
@@ -116,7 +116,7 @@ export default function ValueEscalationSectionAlt() {
             ref={buildRef} 
             className={`bg-gold/5 border-l-4 border-gold p-6 rounded-r-lg transition-all duration-700 ease-out delay-300 ${buildVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           >
-            <Eyebrow variant="pill" tone="gold">BUILD</Eyebrow>
+            <Eyebrow tone="gold">BUILD</Eyebrow>
             <div className="font-poppins font-bold text-2xl md:text-3xl text-gold mb-2">
               P.A.T.H.ways Partnership
             </div>

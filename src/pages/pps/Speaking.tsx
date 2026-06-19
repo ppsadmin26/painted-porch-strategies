@@ -84,7 +84,7 @@ export default function Speaking() {
       {/* Hero */}
       <TierHeroSection
         customBadge={
-          <Eyebrow variant="pill" tone="gold">Three Dynamic Speakers. One Stoic Mission.</Eyebrow>
+          <Eyebrow tone="gold">Three Dynamic Speakers. One Stoic Mission.</Eyebrow>
         }
         headline="Meet the Voices of Change"
         description="Empowering leaders and teams to navigate change, communicate with clarity, and stay resilient through it all."

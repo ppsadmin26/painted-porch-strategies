@@ -165,7 +165,7 @@ export default function PPSBusinessPrograms() {
         </div>
         <div className="container max-w-7xl mx-auto px-6 relative z-10 py-20">
           <div className="max-w-2xl">
-            <Eyebrow variant="pill" tone="gold">A System for Lasting Change &amp; Growth</Eyebrow>
+            <Eyebrow tone="gold">A System for Lasting Change &amp; Growth</Eyebrow>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-poppins leading-tight">
               Training Programs
             </h1>

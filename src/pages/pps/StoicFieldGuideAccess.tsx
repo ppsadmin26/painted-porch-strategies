@@ -84,7 +84,7 @@ export default function StoicFieldGuideAccess() {
           className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/70 to-navy/85"
         />
         <div className="container max-w-4xl mx-auto px-6 relative">
-          <Eyebrow variant="pill" tone="lime">Instant Access</Eyebrow>
+          <Eyebrow tone="lime">Instant Access</Eyebrow>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
             The <span className="text-gold italic">Stoic Leader's</span> Field Guide
           </h1>
