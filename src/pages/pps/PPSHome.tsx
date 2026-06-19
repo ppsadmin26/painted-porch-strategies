@@ -106,7 +106,7 @@ export default function PPSHome() {
             It&rsquo;s Time to Do Epic <ShIFt />.
           </>
         }
-        subheadline="\n"
+        subheadline=""
         description={
           <>
             You have the vision. You have the resolve. What's harder to find is the clarity - the kind that comes <em>before</em> strategy hardens, <em>before</em> the announcement activates, <em>before</em> momentum outruns what your organization is able to realistically carry.
