@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useParallax } from "@/hooks/useParallax";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import Eyebrow from "@/components/pps/Eyebrow";
 import compassDirection from "@/assets/compass-direction-cta.jpg";
 
 export default function FinalCTASectionAlt() {
