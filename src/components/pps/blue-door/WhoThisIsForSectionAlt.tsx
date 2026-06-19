@@ -3,7 +3,7 @@ import { useStaggeredAnimation, getStaggeredItemClasses } from "@/hooks/useStagg
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const forItems = [
-  "Executive teams weighing important decisions, sensing pressure to act but unsure which direction deserves commitment and investment",
+  "Executive teams weighing important decisions — sensing pressure to act but wanting to understand what their organization's architecture can genuinely support before committing",
   "Leaders who've picked a direction and want to understand what it will require before they commit",
   "Organizations willing to look at their architecture clearly, even if it means adjusting course"
 ];
