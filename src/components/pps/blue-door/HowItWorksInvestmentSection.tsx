@@ -27,9 +27,9 @@ const steps: Step[] = [
   },
   {
     number: 3,
-    title: "Receive Your Executive Brief",
+    title: "Receive Your P.A.T.H. Compass",
     time: "PDF + interactive portal access",
-    description: "A strategic reading of your organization: where you can move now, what needs reinforcement, and your recommended next steps."
+    description: "A strategic reading of your organization's architecture: where you can move now, what needs reinforcement, and your recommended next steps."
   }
 ];
 
