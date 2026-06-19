@@ -75,7 +75,7 @@ export default function DiscoverSectionAlt() {
         {/* Pillars */}
         <div className="mb-12">
           <h3 className="text-xl md:text-2xl font-semibold text-navy text-center mb-6">
-            We look at three core areas, the <span className="text-raspberry">Painted Porch Pillars</span>
+            We appraise three core areas: The <span className="text-raspberry">Painted Porch Pillars</span>
           </h3>
           
           <div ref={pillarsRef} className="grid md:grid-cols-3 gap-6">
