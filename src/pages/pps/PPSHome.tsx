@@ -358,7 +358,7 @@ export default function PPSHome() {
             Phase Zero is the first act of becoming - the threshold work before your next major decision hardens into execution, and you begin scaling something that already may feel stretched.&nbsp;&nbsp;
 
 
-            It's the space for your organization to see itself clearly - its strengths, its constraints, its true capacity - to decide what deserves your commitment and investment. To build based not just on ambition, but on a solid architectural foundation.
+            It's for your organization to see itself clearly - its strengths, its constraints, its true capacity - to decide what deserves your commitment and investment. To build based not just on ambition, but on a solid architectural foundation.
           </p>
           <Link to="/phase-zero">
             <Button className="bg-gold border-2 border-gold text-navy hover:bg-white hover:border-white text-lg py-5 px-8 transition-colors">
