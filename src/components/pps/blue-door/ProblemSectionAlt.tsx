@@ -38,7 +38,7 @@ export default function ProblemSectionAlt() {
             But a question that starts to take shape: <em>"What could our organization actually lead next?"</em>
           </p>
           <p className="text-body text-foreground whitespace-pre-line">
-            That question is the threshold. And what's on the other side of it isn't strategy, it's reality.{"\n\n\n"}
+            That question is the threshold. And what's on the other side of it isn't strategy, but reality.{"\n\n\n"}
             The reality of what your leadership culture can carry. The reality of what your systems a
           </p>
           <p className="text-body text-foreground font-semibold">
