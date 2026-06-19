@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 const faqs = [
   {
@@ -48,6 +49,7 @@ export default function FAQSectionAlt() {
   return (
     <section className="py-12 md:py-20 bg-muted/50">
       <div className="container max-w-4xl mx-auto px-6">
+        <div className="text-center"><Eyebrow variant="plain" tone="gold" as="p">Got Questions?</Eyebrow></div>
         <h2 className="text-3xl md:text-4xl font-bold text-navy text-center mb-4">
           Frequently Asked Questions
         </h2>

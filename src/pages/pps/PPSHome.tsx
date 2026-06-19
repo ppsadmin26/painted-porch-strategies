@@ -345,9 +345,9 @@ export default function PPSHome() {
         <div className="absolute inset-0 bg-gradient-strategic opacity-75" aria-hidden="true" />
         <div className="absolute inset-0 bg-navy/20" aria-hidden="true" />
         <div className="relative z-10 container max-w-4xl mx-auto px-6 text-center">
-          <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
+          <Eyebrow variant="plain" tone="gold" as="p">
             Phase Zero is where we begin
-          </span>
+          </Eyebrow>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Get the clarity that accelerates vs. exhausts your next big sh<span className="text-raspberry font-bold">IF</span>t.
           </h2>
@@ -375,9 +375,9 @@ export default function PPSHome() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12 md:mb-16">
-            <span className="inline-block bg-gold text-navy font-poppins font-bold text-xs uppercase tracking-[0.3em] px-5 py-2 rounded-full mb-6">
+            <Eyebrow variant="plain" tone="gold" as="p">
               The Questions
-            </span>
+            </Eyebrow>
             <h2 className="text-3xl md:text-4xl font-bold text-navy tracking-tight leading-tight">
               What leaders are weighing at <span className="text-raspberry">3AM</span>
             </h2>
@@ -458,9 +458,9 @@ export default function PPSHome() {
       <section className="py-16 md:py-24 bg-gradient-to-br from-navy to-navy/90 text-white">
         <div className="container max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
-            <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-4">
+            <Eyebrow variant="plain" tone="gold" as="p">
               The Painted Porch Promise
-            </span>
+            </Eyebrow>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               We aren&rsquo;t here to tell you yes.
             </h2>
