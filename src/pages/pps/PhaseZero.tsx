@@ -488,7 +488,7 @@ export default function PhaseZero() {
         overlayClass="bg-gradient-to-b from-navy/75 via-navy/60 to-navy/45"
         eyebrow="GET CLARITY STARTING AT PHASE ZERO™"
         headline="Every future begins with a clearer understanding of who you're becoming."
-        description="A structured organizational appraisal that shows where you stand across the three Pillars before you spend another dollar on shIFt you're not (yet) built to make happen."
+        description="Start with a structured organizational appraisal that shows where you stand across the three Pillars — before you spend another dollar on a shIFt you're not (yet) built to carry."
         actions={[
           { label: "Open the Blue Door", to: "/blue-door", variant: "bluedoor" },
           { label: "Find Your P.A.T.H.way", to: "/start-here", variant: "secondary" },
