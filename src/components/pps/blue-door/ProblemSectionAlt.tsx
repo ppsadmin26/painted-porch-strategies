@@ -28,7 +28,7 @@ export default function ProblemSectionAlt() {
       <div className="container max-w-5xl mx-auto px-6">
         {/* Opening rhythm, centered, generous spacing */}
         <div className="text-center max-w-4xl mx-auto mb-12 space-y-4" style={{ lineHeight: '1.9' }}>
-          <p className="text-body text-navy font-bold !not-italic">
+          <p className="text-lead text-navy font-bold !not-italic">
             There's a moment that arrives in most organizations, often without announcement.
           </p>
           <p className="text-body text-foreground">
