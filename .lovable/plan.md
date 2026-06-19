@@ -1,58 +1,64 @@
-# Standardize Eyebrow Labels
+## Goal
 
-Codify the informal two-tier system already emerging in the codebase: **pill eyebrows for major section headers, plain all-caps for sub-labels** — and enforce it through a shared component so future pages can't drift.
+Continue the color-contrast audit on `src/pages/pps/PPSHome.tsx`. After the recent reorder, the lower half of the page has three white sections sitting back-to-back-to-back, so the Pillars, the nested P.A.T.H. Way Forward block, and the Discover P.A.T.H.way cards all blend into one undifferentiated white expanse.
 
-## Approach
+## Current background rhythm (top → bottom)
 
-### 1. Create `<Eyebrow>` component (`src/components/pps/Eyebrow.tsx`)
-
-Single component, two variants:
-
-```tsx
-<Eyebrow variant="pill" tone="gold|teal|cobalt|raspberry|purple|navy|lime">LABEL</Eyebrow>
-<Eyebrow variant="plain" tone="gold|teal|...">LABEL</Eyebrow>
+```text
+Hero                        dark video
+"Lot of shIFt happening"    white
+Research stats              navy
+How We Meet You             muted
+Phase Zero CTA              dark gradient
+3AM Questions               navy            ← updated last turn
+Blue Door                   muted
+Pillars                     white  ┐
+  └ P.A.T.H. Way Forward    white  │  three whites in a row
+Discover Your P.A.T.H.way   white  ┘
+Partnership Promise         navy
+Insights                    white
+Final CTA                   parallax dark
 ```
 
-- **pill**: `inline-block rounded-full px-4 py-1.5 text-xs font-semibold tracking-wider uppercase mb-6` + tone bg/text classes
-- **plain**: `inline-block text-xs font-semibold uppercase tracking-[0.2em] mb-4` + tone text class
-- Tone tokens pull from existing brand palette (`bg-gold/90 text-navy`, `text-teal`, etc.) — no new colors.
-- Accepts `className` for one-off overrides.
+The two collisions:
+1. The P.A.T.H. "Way Forward" subsection is nested inside the Pillars `<section className="bg-white">`, so the pillar cards and the road/steps read as one long white block with no breathing point.
+2. "Discover Your P.A.T.H.way" is also `bg-white`, butting straight up against the white Pillars section above it.
 
-### 2. Define the rule (codify in `mem://style/eyebrow-usage`)
+## Proposed changes
 
-- **Pill** = first eyebrow inside a top-level `<section>` that introduces a major page region (hero, tier intro, "Our Approach", "Pricing", etc.). One pill per section max.
-- **Plain** = sub-labels *inside* a section: card category tags, sub-headers within a region, labels above secondary headings, eyebrows inside reusable components (`ParallaxCTA`, `FAQSection`, `StatMarquee`).
-- New pages must use `<Eyebrow>` — no hand-rolled `rounded-full` eyebrow markup.
+Restore alternation so every adjacent pair of sections contrasts. New rhythm:
 
-### 3. Migrate existing usage
+```text
+Blue Door                   muted
+Pillars                     white
+P.A.T.H. Way Forward        muted   ← new standalone section
+Discover Your P.A.T.H.way   muted-tinted OR keep white if Way Forward is muted
+Partnership Promise         navy
+```
 
-Sweep the ~20 files with inline `rounded-full` eyebrows and the plain `uppercase tracking-*` eyebrows. For each occurrence:
+### Change 1 — Lift "The Way Forward" out of the Pillars section
 
-- Replace with `<Eyebrow variant="pill" tone="...">...</Eyebrow>` or `<Eyebrow variant="plain" tone="...">...</Eyebrow>` based on the rule above.
-- Preserve the existing tone (gold stays gold, teal stays teal, etc.).
-- Where a page currently has *two* pill eyebrows in the same section, demote the second one to plain.
-- Leave `ParallaxCTA`, `FAQSection`, `StatMarquee` internal eyebrows on `plain` (already correct semantically).
+In `PPSHome.tsx` (~lines 458–587):
+- Close the Pillars `<section className="bg-white">` right after the three pillar cards grid ends (~line 492).
+- Promote the nested `<section id="the-way-forward">` to a top-level sibling section with `className="py-16 md:py-24 bg-muted"` so it sits in its own light-gray band between the white Pillars and the next section.
+- Keep all internal markup of the Way Forward block (eyebrow, heading, intro copy, SVG roads, P.A.T.H. step `<ol>`) unchanged. The white P.A.T.H. step cards (`bg-white shadow-sm`) will now read clearly against the muted backdrop, which actually strengthens the road metaphor.
 
-### 4. Add a lint/audit script
+### Change 2 — Differentiate "Discover Your P.A.T.H.way"
 
-Extend `scripts/` with `brand:eyebrows` (modeled on the existing `brand:typography` validator) that fails when it finds:
-- `rounded-full` + `uppercase` + `tracking-` combos outside `Eyebrow.tsx`
-- Raw `<span className="...uppercase tracking-...">` eyebrow patterns in page files
+With the Way Forward block now muted, the Discover section (~line 592) can stay `bg-white` and the rhythm becomes muted → white → muted → white → navy. This is the cleanest fix and requires no change to the Discover section itself.
 
-Wire it into the existing brand validation flow so drift is caught at review time.
+If we'd rather keep Discover muted (matching its inner `bg-muted` cards looks heavy), we'd instead recolor its inner cards. Default recommendation: leave Discover as `bg-white`.
 
-## Technical Details
+### Change 3 — No other sections need recoloring
 
-- **Files touched (estimate):** 1 new component, 1 new memory file, 1 new lint script, ~25 page/section files updated.
-- **No design token changes** — pulls from existing brand colors in `index.css` / `tailwind.config.ts`.
-- **No behavior change** for `ParallaxCTA`, `FAQSection`, `StatMarquee` — their internal eyebrows already match the "plain = sub-label" rule.
-- **Risk:** visual regression on pages where I demote a duplicate pill to plain. I'll spot-check the most-trafficked pages (Home, Blue Door, EMBODY, AMPLIFY, IGNITE, About) after migration.
+The rest of the page (Hero, ShIFt-happening white, navy stats, muted How-We-Meet-You, dark Phase Zero CTA, navy 3AM, muted Blue Door, navy Partnership, white Insights, dark Final CTA) already alternates correctly. No edits needed there.
 
-## Open Question Before I Start
+## Files touched
 
-A few pages currently use **two pills in the same section** (e.g., a section eyebrow plus a card-level eyebrow inside it). Two options:
+- `src/pages/pps/PPSHome.tsx` — restructure lines ~458–587 to split the Pillars `<section>` and the Way Forward `<section>` into two sibling sections with `bg-white` and `bg-muted` respectively.
 
-- **A. Strict:** Demote inner pills to plain everywhere (cleaner hierarchy, some visual change).
-- **B. Lenient:** Allow a pill inside a card *only if* the card is itself a major sub-region (rare). Default everything else to plain.
+## Out of scope
 
-I'll go with **A (strict)** unless you say otherwise — it's the only version that makes the rule enforceable by the linter.
+- No copy changes.
+- No token, typography, or component changes.
+- No edits to ParallaxCTA, Partnership Promise, or any section above the Blue Door.
