@@ -23,7 +23,7 @@ export default function FinalCTASectionAlt() {
       
       <div ref={contentRef} className="container max-w-5xl mx-auto px-6 text-center relative z-10">
         <Eyebrow
-          variant="pill"
+          variant="plain"
           tone="gold"
           className={`transition-all duration-700 ease-out ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
