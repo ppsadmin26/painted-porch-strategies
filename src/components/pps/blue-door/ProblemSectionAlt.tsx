@@ -33,8 +33,8 @@ export default function ProblemSectionAlt() {
           </p>
           <p className="text-body text-foreground">
             Not a decision.<br />
-            Not a plan.<br />
-            Not a mandate.<br /><br />
+            Or a plan.<br />
+            And not a mandate.<br /><br />
             But a question that starts to take shape: "What could our organization actually lead next?"
           </p>
           <p className="text-body text-foreground whitespace-pre-line">
