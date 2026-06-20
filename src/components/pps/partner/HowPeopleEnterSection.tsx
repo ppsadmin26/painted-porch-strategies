@@ -45,7 +45,7 @@ export function HowPeopleEnterSection() {
           <p className="text-body text-foreground leading-relaxed max-w-2xl mx-auto mb-4">
             You may begin with a course, an assessment, a workshop, a strategic conversation, or a long-term partnership.
             <br /><br />
-            The right path is determined by your goals, your context, and what you're ready to explore next.
+            The right path is determined by your goals, your context, and the capability you need to build next.
           </p>
 
           <p className="text-body text-navy font-medium italic">
