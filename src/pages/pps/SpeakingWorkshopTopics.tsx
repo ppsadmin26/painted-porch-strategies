@@ -190,6 +190,17 @@ const IMAGE_MAP: Record<string, string> = {
   "from passenger to pilot": passengerToPilot.url,
   "move, shake, innovate": moveShakeInnovate.url,
   "reigniting resilience": reignitingResilience.url,
+  "5-minute keynote": fiveMinKeynote.url,
+  "your 5-minute keynote": fiveMinKeynote.url,
+  "the 5-minute keynote": fiveMinKeynote.url,
+};
+
+/** Manual blurb overrides keyed by canonical key. Wins over DB merge. */
+const BLURB_OVERRIDES: Record<string, string> = {
+  "the alice principles":
+    "What can Alice's adventures teach us about navigating organizational change? Explore how curiosity, adaptability, and questioning the status quo, inspired by Lewis Carroll's timeless tale, can transform the way your team approaches uncertainty and growth.",
+  "5-minute keynote":
+    "Every leader needs a signature message they can deliver at a moment's notice. Learn how to craft and deliver a powerful 5-minute keynote that leaves a lasting impression.",
 };
 
 // Color accent per topic for the image placeholder when no image exists
