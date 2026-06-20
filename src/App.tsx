@@ -95,6 +95,7 @@ import BlueDoorSuccess from "./pages/pps/BlueDoorSuccess";
 
 // Other Pages
 import Speaking from "./pages/pps/Speaking";
+import SpeakingWorkshopTopics from "./pages/pps/SpeakingWorkshopTopics";
 import AmySpeaker from "./pages/pps/speaking/AmySpeaker";
 import RobSpeaker from "./pages/pps/speaking/RobSpeaker";
 import SierraSpeaker from "./pages/pps/speaking/SierraSpeaker";
