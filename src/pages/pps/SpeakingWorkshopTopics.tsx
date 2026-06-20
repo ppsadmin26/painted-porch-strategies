@@ -98,6 +98,39 @@ function cleanName(name: string): string {
     .trim();
 }
 
+/** Aliases that collapse keynote/workshop variants with different wording into one card. */
+const KEY_ALIASES: Record<string, string> = {
+  "8:8 — capturing & keeping attention": "8:8",
+  "ai, ei, oh!": "ai, ei, oh! guiding change and ai adoption",
+  "get c.l.e.a.r. & be heard": "get c.l.e.a.r., be heard",
+  "heroes assemble!": "heroes assemble",
+  "speaking with style — 6 communicator styles":
+    "speaking with style: the 6 communicator styles for influence & impact",
+  "radical mindfulness": "radically mindful leadership",
+};
+
+/** Preferred display name for canonical keys (overrides whichever row was seen first). */
+const CANONICAL_NAME: Record<string, string> = {
+  "8:8": "8:8 — Capturing & Keeping Attention",
+  "ai, ei, oh! guiding change and ai adoption": "AI, EI, Oh! Guiding Change & AI Adoption",
+  "get c.l.e.a.r., be heard": "Get C.L.E.A.R., Be Heard",
+  "heroes assemble": "Heroes Assemble",
+  "speaking with style: the 6 communicator styles for influence & impact":
+    "Speaking with Style: The 6 Communicator Styles",
+  "radically mindful leadership": "Radically Mindful Leadership",
+};
+
+function canonicalKey(name: string): string {
+  const k = normalizeKey(name);
+  return KEY_ALIASES[k] ?? k;
+}
+
+/** Topics we never want to show on this page. */
+const EXCLUDE_KEYS = new Set<string>([
+  "architect change (strategic design intensive)",
+  "architect change",
+]);
+
 // Image map keyed by normalized base name
 const IMAGE_MAP: Record<string, string> = {
   "ai, ei, oh! guiding change and ai adoption": aiEiOh.url,
@@ -183,12 +216,14 @@ export default function SpeakingWorkshopTopics() {
     };
   }, []);
 
-  // Merge keynote + workshop rows that share a base name.
+  // Merge keynote + workshop rows that share a base name (after alias resolution).
   const merged: MergedTopic[] = useMemo(() => {
     const map = new Map<string, MergedTopic>();
     for (const r of rows) {
-      const key = normalizeKey(r.name);
-      const baseName = cleanName(r.name);
+      const rawKey = normalizeKey(r.name);
+      if (EXCLUDE_KEYS.has(rawKey)) continue;
+      const key = canonicalKey(r.name);
+      const baseName = CANONICAL_NAME[key] ?? cleanName(r.name);
       const isKeynote = r.current_url.startsWith("/speaking/") || /\(Keynote\)/i.test(r.name);
       const isWorkshop = r.current_url === "/partner/amplify/workshops";
       const existing = map.get(key);
@@ -199,6 +234,8 @@ export default function SpeakingWorkshopTopics() {
         if (isWorkshop && r.topic) existing.topic = displayTopic(r.topic);
         if (!existing.blurb && (r.description || r.blurb)) existing.blurb = (r.description || r.blurb) as string;
         if (!existing.facilitator && r.facilitator) existing.facilitator = r.facilitator;
+        // Lock in canonical name if defined
+        if (CANONICAL_NAME[key]) existing.baseName = CANONICAL_NAME[key];
         continue;
       }
       map.set(key, {
@@ -208,7 +245,7 @@ export default function SpeakingWorkshopTopics() {
         topic: displayTopic(r.topic),
         facilitator: r.facilitator || "",
         formats: [isKeynote ? "Speaking" : isWorkshop ? "Workshop" : "Speaking"],
-        image: IMAGE_MAP[key],
+        image: IMAGE_MAP[key] ?? IMAGE_MAP[rawKey],
       });
     }
     return Array.from(map.values()).sort((a, b) => a.baseName.localeCompare(b.baseName));
