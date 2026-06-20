@@ -5,6 +5,8 @@ import {
   ExternalLink,
   ArrowRight,
   Podcast,
+  Play,
+  Youtube,
 } from "lucide-react";
 import robPhoto from "@/assets/team/rob-hunter.jpg";
 
