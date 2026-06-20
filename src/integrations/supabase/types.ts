@@ -648,6 +648,7 @@ export type Database = {
           id: string
           image_url: string | null
           include_in_workshops: boolean
+          include_on_speaker_page: boolean
           is_featured_in_quiz: boolean
           is_keynote: boolean
           is_live: boolean
@@ -673,6 +674,7 @@ export type Database = {
           id?: string
           image_url?: string | null
           include_in_workshops?: boolean
+          include_on_speaker_page?: boolean
           is_featured_in_quiz?: boolean
           is_keynote?: boolean
           is_live?: boolean
@@ -698,6 +700,7 @@ export type Database = {
           id?: string
           image_url?: string | null
           include_in_workshops?: boolean
+          include_on_speaker_page?: boolean
           is_featured_in_quiz?: boolean
           is_keynote?: boolean
           is_live?: boolean
