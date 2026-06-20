@@ -7,7 +7,7 @@ export function HowPeopleEnterSection() {
       <div className="container max-w-7xl mx-auto px-6">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Every Journey Begins with "What <span className="text-raspberry">IF</span>?"
+            Every Journey Begins with a Decision.
           </h2>
         </div>
 
@@ -19,13 +19,13 @@ export function HowPeopleEnterSection() {
             Sometimes it begins with a leadership challenge that's difficult to solve alone.
           </p>
           <p className="text-body text-foreground leading-relaxed">
-            Sometimes it begins with a realization that the future you're trying to create will require something different from the people, systems, and structures you have today.
+            Sometimes it begins with a realization that the future you're trying to author will require something different from the people, systems, and structures you have today.
           </p>
           <p className="text-body text-foreground leading-relaxed">
             No two journeys look exactly alike.
           </p>
           <p className="text-body text-foreground leading-relaxed font-bold">
-            What matters is finding the right place to begin asking "What <span className="text-raspberry">IF</span>".
+            What matters is finding the right place to begin the work.
           </p>
         </div>
 
