@@ -19,9 +19,9 @@ const principles = [
   {
     icon: Handshake,
     title: "We Partner, Not Consult",
-    tagline: "You're the expert of you.",
+    tagline: "You're the expert of your reality.",
     description: "The strongest solutions emerge when perspective meets context. You bring the realities of your organization. We bring structure, challenge, and disciplined inquiry.",
-    contrast: "Together, we build what actually works in YOUR reality.",
+    contrast: "Together, we co-architect what actually works for your specific capability.",
   },
   {
     icon: Target,
