@@ -84,7 +84,7 @@ function displayTopic(raw: string | null): string {
   if (t === "Innovation" || t === "Change" || t === "Change & Innovation") return "Change & Innovation";
   if (t === "Comms" || t === "Communication") return "Communication";
   if (t === "Leadership & EQ") return "Leadership & EQ";
-  if (t === "Teams") return "Teams";
+  if (t === "Teams" || t === "Team Dynamics") return "Team Dynamics";
   if (t === "Philosophy") return "Philosophy";
   return t;
 }
