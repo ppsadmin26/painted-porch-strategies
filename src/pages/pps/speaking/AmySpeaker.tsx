@@ -5,7 +5,7 @@ import alicePrinciples from "@/assets/speaking/alice-principles.png.asset.json";
 import dontPanic from "@/assets/speaking/dont-panic-hitchhiker.png.asset.json";
 import dysfunctionToDynamic from "@/assets/speaking/dysfunction-to-dynamic.png.asset.json";
 import stoicismWorkplace from "@/assets/speaking/stoicism-workplace.png.asset.json";
-import aiEiOh from "@/assets/speaking/ai-ei-oh.png.asset.json";
+import keynoteAiEiOh from "@/assets/speaking/keynote-ai-ei-oh.png.asset.json";
 import leadSpeedOfChange from "@/assets/speaking/lead-speed-of-change.png.asset.json";
 import colorfulPath from "@/assets/colorful-path.jpg";
 import goldilocksLeadership from "@/assets/speaking/amy-goldilocks-leadership.png";
