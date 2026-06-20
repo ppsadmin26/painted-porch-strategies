@@ -356,8 +356,10 @@ export default function SpeakingWorkshopTopics() {
         headline="Pick a topic. We'll shape it to your moment."
         description="Every topic above adapts to your audience, your industry, and your current shIFt. Tell us where you are and we'll recommend the right format — keynote, workshop, or a combination that creates lasting change."
         overlayTone="teal"
-        primaryCta={{ label: "Contact Us", href: "/contact?interest=speaking&message=I'd like to talk about a speaking or workshop topic for our team." }}
-        secondaryCta={{ label: "Meet Our Speakers", href: "/speaking" }}
+        actions={[
+          { label: "Contact Us", to: "/contact?interest=speaking&message=I'd like to talk about a speaking or workshop topic for our team.", variant: "primary" },
+          { label: "Meet Our Speakers", to: "/speaking", variant: "secondary" },
+        ]}
       />
     </div>
   );
