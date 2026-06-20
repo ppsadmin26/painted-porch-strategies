@@ -84,7 +84,7 @@ const quickLinks: QuickLink[] = [
   { emoji: "🔼", label: "Are You Ready for the Next Big Shift?", href: "/blue-door" },
   { emoji: "📈", label: "Develop a Shift-Ready Organization", href: "/partner" },
   { emoji: "🤼‍♀️", label: "Create Extraordinary Teams", href: "/extraordinary-teams" },
-  { emoji: "🧭", label: "Explore Stoic Wisdom & Resources", href: "/radical-mindfulness" },
+  { emoji: "🧭", label: "Explore Stoic Wisdom & Resources", href: "/resources/insights?category=Stoicism%20%26%20Philosophy" },
   { emoji: "📝", label: "Read the Latest from the Porch", href: "/resources/insights" },
   {
     emoji: "👋",
