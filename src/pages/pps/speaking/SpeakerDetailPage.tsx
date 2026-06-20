@@ -17,6 +17,11 @@ export interface SpeakingTopic {
 }
 
 export interface SpeakerData {
+  /** Optional. When set, topics are read from path_finder_offerings for this
+   *  facilitator (Amy / Rob / Sierra) so admin edits in /admin/offerings
+   *  propagate here automatically. The hardcoded `topics` array is used as a
+   *  fallback while the query loads or if the DB returns nothing. */
+  facilitatorKey?: string;
   name: string;
   firstName: string;
   title: string;
