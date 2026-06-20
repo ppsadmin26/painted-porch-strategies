@@ -30,14 +30,14 @@ const tierContent = {
     timeline: "3-6 months (focused engagement)",
   },
   EMBODY: {
-    tagline: "ORG: Architect transformation that lasts.",
+    tagline: "ORGANIZATION: Architect organizational capability that lasts.",
     journey:
-      "Embedded strategic partnership (6+ months) to co-architect permanent organizational capacity, capability, and adaptability.",
+      "Embedded strategic partnership (6+ months) to co-architect permanent organizational capacity, integration, and adaptability.",
     perfectFor: [
       "C-suite executives & organizational leaders",
       "Organizations pursuing permanent transformation",
       "Leaders ready for long-term embedded partnership",
-      'Anyone committed to "This is who we\'re becoming"',
+      'Anyone committed to "This is the architecture we\'re building"',
     ],
     timeline: "6+ months (with option to continue)",
   },
