@@ -73,7 +73,7 @@ const amy: SpeakerData = {
     {
       slug: "ai-ei-oh-guiding-change-and-ai-adoption",
       title: "AI, EI, Oh! Guiding Change and AI Adoption",
-      image: aiEiOh.url,
+      image: keynoteAiEiOh.url,
       description:
         "AI is here, but your people aren't ready. Discover how emotional intelligence is the missing link to successful AI adoption, and learn to lead your team through tech-driven change without leaving anyone behind.",
     },
