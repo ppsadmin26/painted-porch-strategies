@@ -729,10 +729,10 @@ export default function AmplifyPathAlt() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Maintain Connection</h3>
               </div>
               <ul className="list-disc pl-5 space-y-2 mb-6">
-                <li className="text-body-sm text-foreground">Join our semi-annual Leadership Summits (open to AMPLIFY alumni)</li>
-                <li className="text-body-sm text-foreground">Access to tools, frameworks, and resources</li>
-                <li className="text-body-sm text-foreground">Ongoing community of transformation architects</li>
-                <li className="text-body-sm text-foreground">Future AMPLIFY engagements as needs emerge</li>
+                <li className="text-body text-foreground">Join our semi-annual Leadership Summits (open to AMPLIFY alumni)</li>
+                <li className="text-body text-foreground">Access to tools, frameworks, and resources</li>
+                <li className="text-body text-foreground">Ongoing community of transformation architects</li>
+                <li className="text-body text-foreground">Future AMPLIFY engagements as needs emerge</li>
               </ul>
               <p className="text-body text-muted-foreground italic">
                 Best for: Leaders who want ongoing connection without active partnership
