@@ -93,7 +93,7 @@ interface QuickLink {
 }
 
 const quickLinks: QuickLink[] = [
-  { emoji: "📢", label: "Master Your Message Online Program", href: "/master-your-message" },
+  { emoji: "📢", label: "Master Your Message Online Program", href: "/communication" },
   { emoji: "🎤", label: "Book Rob to Speak", href: "/speaking/rob" },
   { emoji: "📝", label: "Read the Latest from the Porch", href: "/resources/insights" },
   {
@@ -105,7 +105,7 @@ const quickLinks: QuickLink[] = [
   {
     emoji: "🎧",
     label: "Listen to Equal Matters Podcast",
-    href: "https://podcasts.apple.com/us/podcast/equal-matters/id1693631305",
+    href: "https://open.spotify.com/show/5lYP2GwhZU71rVNEufvm3U",
     external: true,
   },
 ];
@@ -293,7 +293,7 @@ export default function AboutRob() {
                 Rob Hunter
               </p>
               <a
-                href="https://podcasts.apple.com/us/podcast/equal-matters/id1693631305"
+                href="https://open.spotify.com/show/5lYP2GwhZU71rVNEufvm3U"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 font-semibold text-white transition hover:opacity-90"
