@@ -3,6 +3,7 @@ import amyPhoto from "@/assets/team/amy-speaking-portrait.jpg";
 import heroesAssemble from "@/assets/speaking/amy-heroes-assemble.png";
 import alicePrinciples from "@/assets/speaking/alice-principles.png.asset.json";
 import dontPanic from "@/assets/speaking/dont-panic-hitchhiker.png.asset.json";
+import dysfunctionToDynamic from "@/assets/speaking/dysfunction-to-dynamic.png.asset.json";
 import goldilocksLeadership from "@/assets/speaking/amy-goldilocks-leadership.png";
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
 
