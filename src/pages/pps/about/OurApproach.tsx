@@ -506,13 +506,13 @@ export default function OurApproach() {
                     <s.icon className={`w-6 h-6 ${s.accent}`} />
                   </div>
                   <div>
-                    <p className={`font-poppins font-bold text-pullquote leading-none ${s.accent}`}>{s.letter}</p>
+                    <p className={`font-poppins font-bold text-pullquote not-italic leading-none ${s.accent}`}>{s.letter}</p>
                     <p className={`font-poppins font-semibold text-body-sm uppercase tracking-wider ${s.accent}`}>
                       {s.word}
                     </p>
                   </div>
                 </div>
-                <p className="text-body font-poppins font-semibold uppercase tracking-[0.15em] text-navy/60 mb-3">
+                <p className="text-caption font-poppins font-semibold uppercase tracking-[0.15em] text-navy/60 mb-3">
                   Stage {i + 1} &middot; {s.subtitle}
                 </p>
                 <p className="text-body -sm text-foreground mb-4 flex-grow">
