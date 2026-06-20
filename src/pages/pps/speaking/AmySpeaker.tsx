@@ -1,6 +1,7 @@
 import { Flame } from "lucide-react";
 import amyPhoto from "@/assets/team/amy-speaking-portrait.jpg";
 import heroesAssemble from "@/assets/speaking/amy-heroes-assemble.png";
+import alicePrinciples from "@/assets/speaking/alice-principles.png.asset.json";
 import goldilocksLeadership from "@/assets/speaking/amy-goldilocks-leadership.png";
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
 
@@ -68,6 +69,7 @@ const amy: SpeakerData = {
     {
       slug: "the-alice-principles-down-the-rabbit-hole-of-transformation",
       title: "The Alice Principles: Down the Rabbit Hole of Transformation",
+      image: alicePrinciples.url,
       description:
         "What can Alice's adventures teach us about navigating organizational change? Explore how curiosity, adaptability, and questioning the status quo, inspired by Lewis Carroll's timeless tale, can transform the way your team approaches uncertainty and growth.",
     },
