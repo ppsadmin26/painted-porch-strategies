@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
+import { MoreTopicsCallout } from "@/components/pps/MoreTopicsCallout";
 import { useSpeakerTopics } from "@/hooks/useSpeakerTopics";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
@@ -180,6 +181,14 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
           </div>
         </div>
       </section>
+
+      {/* More Topics Callout */}
+      <MoreTopicsCallout
+        speakerName={speaker.firstName}
+        speakers={speaker.facilitatorKey ? [speaker.facilitatorKey, "Painted Porch Team"] : undefined}
+      />
+
+
 
       {/* Trust Signals / Where They've Spoken */}
       {speaker.trustSignals && (
