@@ -240,7 +240,7 @@ export default function EmbodyPathAlt() {
               It's Time to Sh<span className="text-raspberry font-bold">IF</span>t From Change Moments to an Innovation Movement.
             </h2>
             <p className="text-body text-foreground">
-              You've made the decision: you're moving your organization from managing change initiatives to leading sustainable transformation. You don't need Not consultants to fix or implement change for you. Strategic partners to co-architect permanent capability in your people, your processes, and your systems.
+              You've made the decision: you're moving your organization from managing change initiatives to leading sustainable transformation. You don't need consultants to fix or implement change for you. You want strategic partners to co-architect a permanent organizational capability across your people, processes, and systems.
             </p>
           </div>
 
