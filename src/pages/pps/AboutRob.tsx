@@ -165,27 +165,6 @@ export default function AboutRob() {
         </div>
       </section>
 
-      {/* ── YOUTUBE EMBED ────────────────────────────────────────────── */}
-      <section className="bg-navy py-12 md:py-16">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
-            Communication: The Key to Your Success
-          </h2>
-          <p className="text-body mt-2 text-white/70">Porch Perspectives</p>
-          <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-xl shadow-2xl">
-            <div className="relative aspect-video">
-              <iframe
-                src="https://www.youtube.com/embed/xmja3NjSL8A"
-                className="absolute inset-0 h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title="Communication: The Key to Your Success | Porch Perspectives"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ── WHAT I DO ────────────────────────────────────────────────── */}
       <section className="py-16 md:py-24">
