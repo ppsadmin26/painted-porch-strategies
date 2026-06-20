@@ -93,12 +93,6 @@ const quickLinks: QuickLink[] = [
     href: "https://youtube.com/playlist?list=PLhdPibIQvwhH4j94ohc0BsOJqUud4xzoL",
     external: true,
   },
-  {
-    emoji: "🕰",
-    label: "Mindful Moments on Facebook",
-    href: "https://www.facebook.com/watch/110840023956370/372261090552283",
-    external: true,
-  },
 ];
 
 /* ── Color helpers ───────────────────────────────────────────────────── */
