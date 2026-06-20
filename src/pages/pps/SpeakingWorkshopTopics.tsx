@@ -7,7 +7,7 @@ import { Mic, Users, ArrowRight, Flame } from "lucide-react";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { Eyebrow } from "@/components/pps/Eyebrow";
-import ParallaxCTA from "@/components/pps/ParallaxCTA";
+import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import speakingHero from "@/assets/heroes/speaking-hero.jpg";
 
 // Topic images (existing assets). Keyed by normalized base name.
