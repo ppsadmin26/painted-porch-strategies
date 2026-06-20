@@ -253,7 +253,7 @@ export default function EmbodyPathAlt() {
               We've built the internal structures and culture to architect and execute sustainable change. Continual transformation is now ours to lead.
             </p>
             <p className="text-body -sm text-foreground">
-              Transformation becomes self-sustaining and repeatable. Your organization develops permanent capacity and practices that outlast any single initiative.
+              Transformation becomes integrated and repeatable. Your organization develops permanent capability and practices that outlast any single initiative.
             </p>
           </div>
 
@@ -263,7 +263,7 @@ export default function EmbodyPathAlt() {
               For leaders who want to build something that lasts, not something to get through.
             </h2>
             <p className="text-body text-foreground">
-              EMBODY is our highest style of partnership over a committed 6+ month period. It isn't longer because we like longer engagements. It's longer because the structural change you're after doesn't move with a workshop, a deck, or a two-quarter sprint.
+              EMBODY is our deepest style of partnership over a committed 6+ month period. It isn't longer because we like longer engagements. It's longer because the structural integration you're after doesn't move with a workshop, a slide deck, or a two-quarter sprint.
             </p>
           </div>
 
@@ -307,7 +307,7 @@ export default function EmbodyPathAlt() {
               Industries we love to work with
             </h2>
             <p className="text-body text-foreground">
-              Not limited by industry. Defined by Executive commitment and a partnership mindset.
+              Our partnerships aren't limited by industry. They're defined by Executive commitment and a partnership mindset.
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
