@@ -1,0 +1,1 @@
+UPDATE page_status SET status = 'live', updated_at = now() WHERE path IN ('/sierra', '/rob');
