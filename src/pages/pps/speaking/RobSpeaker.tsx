@@ -51,7 +51,7 @@ const rob: SpeakerData = {
       title: "Get C.L.E.A.R. & Be Heard",
       image: getClear.url,
       description:
-        "Clarity. Language. Energy. Attention. Relevance. Master this framework to simplify your message and boost team engagement and retention.",
+        "Master the framework to simplify your message and boost team engagement, attention, and action.",
     },
     {
       slug: "borderless-communication",

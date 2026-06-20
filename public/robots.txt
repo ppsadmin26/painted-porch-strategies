@@ -22,6 +22,7 @@ Disallow: /sierra
 Disallow: /speaking/amy
 Disallow: /speaking/rob
 Disallow: /speaking/sierra
+Disallow: /speaking/topics
 Disallow: /talking-to-strangers
 Disallow: /team-health-assessment
 Disallow: /team-superpowers

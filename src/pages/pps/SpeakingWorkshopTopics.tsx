@@ -237,7 +237,7 @@ const BLURB_OVERRIDES: Record<string, string> = {
   "the power of story":
     "Our brains are wired for stories. Learn how and when to use narrative to persuade, connect, and be unforgettable.",
   "get c.l.e.a.r., be heard":
-    "Clarity. Language. Energy. Attention. Relevance. Master this framework to simplify your message and boost team engagement and retention.",
+    "Master the framework to simplify your message and boost team engagement, attention, and action.",
   "borderless communication":
     "Great leaders don't just talk, they communicate with intention. Learn how to break down the barriers of miscommunication and walk a mile in another person's shoes.",
   "on-air ready confidence":
