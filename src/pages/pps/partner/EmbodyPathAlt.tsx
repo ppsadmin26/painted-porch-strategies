@@ -318,14 +318,13 @@ export default function EmbodyPathAlt() {
                 <div key={industry.title} className="bg-white p-6 rounded-xl border-t-2 border-navy/80 flex-1 min-w-[240px] max-w-[300px]">
                   <div className="flex items-center gap-3 mb-3">
                     <industry.icon className={`w-8 h-8 ${accent} shrink-0`} />
-                    <h3 className="text-base font-poppins font-semibold text-navy leading-tight">
+                    <h3 className="text-lg font-poppins font-semibold text-navy leading-tight">
                       {industry.title}
                     </h3>
                   </div>
-                  <ul className="space-y-2">
+                  <ul className="list-disc pl-5 space-y-1">
                     {industry.items.map((item) => (
-                      <li key={item} className="text-body -sm text-foreground flex items-start gap-2">
-                        <span className={`${accent} mt-1`}>•</span>
+                      <li key={item} className="text-body-sm text-foreground">
                         {item}
                       </li>
                     ))}
