@@ -305,6 +305,8 @@ export default function SpeakingWorkshopTopics() {
         if (!m.formats.includes("Speaking")) m.formats.push("Speaking");
         if (!m.formats.includes("Workshop")) m.formats.push("Workshop");
       }
+      // Apply manual blurb overrides
+      if (BLURB_OVERRIDES[m.key]) m.blurb = BLURB_OVERRIDES[m.key];
     }
     return Array.from(map.values()).sort((a, b) => a.baseName.localeCompare(b.baseName));
   }, [rows]);
