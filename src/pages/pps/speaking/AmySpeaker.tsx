@@ -22,8 +22,8 @@ const amy: SpeakerData = {
   bio: [
     "Most people know me as a shift strategist, operational advisor, and founder of Painted Porch Strategies. But really? I'm just someone who believes that change doesn't have to suck.",
     "For over 20 years, I've partnered with teams and leaders in fast-paced industries like staffing, energy, and healthcare, turning burnout into boldness and uncertainty into aligned action.",
-    "I blend Stoic philosophy with practical tools to navigate chaos with clarity, lead with emotional intelligence, and build change-ready cultures that don't fall apart when things get hard.",
-    "If you're ready to stop fighting change and start leading it, I'm your person.",
+    "I blend Stoic philosophy with practical tools to navigate chaos with clarity, lead with emotional intelligence, and build identity-shifting, innovative cultures that don't fall apart when things get hard.",
+    "If you're ready to stop managing change and start authoring and leading it, I'm your person.",
   ],
   closingLine: "Let's do this together!",
   photo: amyPhoto,
