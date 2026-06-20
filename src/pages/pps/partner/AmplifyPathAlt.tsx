@@ -690,10 +690,10 @@ export default function AmplifyPathAlt() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Continue in <span className="text-strategic">AMPLIFY</span></h3>
               </div>
               <ul className="list-disc pl-5 space-y-2 mb-6">
-                <li className="text-body-sm text-foreground">Additional workshops on different topics</li>
-                <li className="text-body-sm text-foreground">Follow-up sprint after initial implementation</li>
-                <li className="text-body-sm text-foreground">Join a Leadership Lab for ongoing individual development</li>
-                <li className="text-body-sm text-foreground">Quarterly or semi-annual strategic leadership/team alignment sessions</li>
+                <li className="text-body text-foreground">Additional workshops on different topics</li>
+                <li className="text-body text-foreground">Follow-up sprint after initial implementation</li>
+                <li className="text-body text-foreground">Join a Leadership Lab for ongoing individual development</li>
+                <li className="text-body text-foreground">Quarterly or semi-annual strategic leadership/team alignment sessions</li>
               </ul>
               <p className="text-body text-muted-foreground italic">
                 Best for: Teams who want periodic strategic partnership without full EMBODY engagement
