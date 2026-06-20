@@ -107,7 +107,7 @@ export default function PPSAbout() {
                 Not places to react. Places <strong>to decide deliberately</strong> what comes next.
               </p>
               <p className="text-body text-foreground leading-relaxed mb-6">
-                We bring these timeless principles to modern business, so leaders and teams can build the perspective, judgment, and organizational strength needed to navigate complexity with intention.
+                We bring these timeless principles to modern business, so leaders and teams can build the perspective, judgment, and organizational architecture needed to navigate complexity with intention.
               </p>
               <p className="text-body font-semibold text-primary">
                 Eudaimonia: prosperity and well-being through purposeful action.
