@@ -1,6 +1,11 @@
 import { Heart } from "lucide-react";
 import sierraPhoto from "@/assets/team/sierra-ramm-cantrell.jpg";
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
+import passengerToPilot from "@/assets/speaking/topics/passenger-to-pilot.jpg.asset.json";
+import moveShakeInnovate from "@/assets/speaking/topics/move-shake-innovate.jpg.asset.json";
+import findingJoy from "@/assets/speaking/topics/finding-joy-at-work.jpg.asset.json";
+import reignitingResilience from "@/assets/speaking/topics/reigniting-resilience.jpg.asset.json";
+import mindfulnessThumb from "@/assets/workshops/mindfulness-leadership-thumb.jpg";
 
 const sierra: SpeakerData = {
   name: "Sierra Cantrell",
