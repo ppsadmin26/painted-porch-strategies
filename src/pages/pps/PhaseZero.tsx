@@ -90,7 +90,7 @@ const pillars = [
   {
     icon: Brain,
     title: "Living Ecosystem",
-    subtitle: "Human Capacity",
+    subtitle: "Capacity & Judgment",
     border: "border-l-gold",
     bg: "bg-gold/10",
     iconBg: "bg-gold/15",

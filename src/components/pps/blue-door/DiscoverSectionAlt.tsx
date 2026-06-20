@@ -26,7 +26,7 @@ const pillars = [
   },
   {
     icon: Brain,
-    title: "Living Ecosystem (Human Capacity)",
+    title: "Living Ecosystem (Capacity & Judgment)",
     description: "How individuals and teams adapt, decide, and navigate complexity without burning out.\n\nThe question: Who decides and navigates?",
     bgClass: "bg-gold/10",
     iconBgClass: "bg-gold/15",

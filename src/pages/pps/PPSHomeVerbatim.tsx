@@ -97,7 +97,7 @@ const pillars = [
   {
     icon: Brain,
     title: "Living Ecosystem",
-    subtitle: "Human Capacity",
+    subtitle: "Capacity & Judgment",
     description:
       "Your individual and collective capacity, judgment, communication, resilience, and mindset needed to sustain meaningful shIFt.",
     color: "text-gold",
