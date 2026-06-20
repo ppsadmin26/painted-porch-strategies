@@ -325,7 +325,7 @@ export default function OurApproach() {
               { letter: "R", word: "Reason", bold: "Reality before assumptions.", desc: " Clear, logical thinking drives every recommendation.", bg: "bg-strategic" },
               { letter: "L", word: "Logic", bold: "Structure before activity.", desc: " Structured frameworks that produce consistent results.", bg: "bg-primary" },
               { letter: "P", word: "Purpose", bold: "Meaning before movement.", desc: " Every engagement tied to meaningful outcomes.", bg: "bg-lime" },
-              { letter: "V", word: "Virtue", bold: "Integrity over convenience.", desc: " Integrity and ethics at the center of our work.", bg: "bg-gold" },
+              { letter: "V", word: "Virtue", bold: "Integrity over convenience.", desc: " Integrity and ethics sit at the center of our work.", bg: "bg-gold" },
             ].map((v) => (
               <div key={v.letter} className="bg-white rounded-xl p-6 shadow-sm">
                 <div className={`w-12 h-12 rounded-full ${v.bg} flex items-center justify-center mb-4`}>
