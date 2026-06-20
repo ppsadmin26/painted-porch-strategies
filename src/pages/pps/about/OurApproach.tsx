@@ -215,7 +215,7 @@ export default function OurApproach() {
               <p className="text-body mb-0">About what people understand, believe, and are capable of doing.</p>
             </div>
             <p className="text-body mb-6">
-              Our work surfaces those assumptions before they become expensive realities. Because the quality of the execution is determined long before the execution begins.
+              Our work surfaces those assumptions before they become expensive realities. Because the quality of the outcome is determined long before the execution begins.
             </p>
             <p className="text-body mb-2">The most important question is rarely:</p>
             <p className="text-body italic mb-6">"How do we make this work?"</p>
