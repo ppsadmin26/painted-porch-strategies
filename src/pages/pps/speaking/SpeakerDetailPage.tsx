@@ -160,12 +160,19 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
                 id={topic.slug ? `topic-${topic.slug}` : undefined}
                 className={`bg-white rounded-xl border-l-4 ${speaker.themeColor} hover:shadow-lg transition-shadow overflow-hidden flex flex-col scroll-mt-24`}
               >
-                {/* Image placeholder */}
-                <div className="w-full aspect-[16/9] bg-muted flex items-center justify-center">
+                {/* Thumbnail — standardized 16:9 to match /topics */}
+                <div className="relative w-full aspect-[16/9] overflow-hidden bg-navy/5">
                   {topic.image ? (
-                    <img src={topic.image} alt={topic.title} className="w-full h-full object-cover" loading="lazy" />
+                    <img
+                      src={topic.image}
+                      alt={topic.title}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
                   ) : (
-                    <div className="text-muted-foreground/40 text-sm font-medium">Image Placeholder</div>
+                    <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/40 text-sm font-medium">
+                      Image coming soon
+                    </div>
                   )}
                 </div>
                 <div className="p-6">
