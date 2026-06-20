@@ -120,7 +120,11 @@ const KEY_ALIASES: Record<string, string> = {
   "get c.l.e.a.r. & be heard": "get c.l.e.a.r., be heard",
   "heroes assemble!": "heroes assemble",
   "speaking with style — 6 communicator styles":
-    "speaking with style: the 6 communicator styles for influence & impact",
+    "speak with style: the 6 communicator styles for influence & impact",
+  "speaking with style: the 6 communicator styles for influence & impact":
+    "speak with style: the 6 communicator styles for influence & impact",
+  "speak with style — 6 communicator styles":
+    "speak with style: the 6 communicator styles for influence & impact",
   "radical mindfulness": "radically mindful leadership",
   "the alice principles: down the rabbit hole of transformation": "the alice principles",
   "your 5-minute keynote": "5-minute keynote",
@@ -133,8 +137,8 @@ const CANONICAL_NAME: Record<string, string> = {
   "ai, ei, oh! guiding change and ai adoption": "AI, EI, Oh! Guiding Change & AI Adoption",
   "get c.l.e.a.r., be heard": "Get C.L.E.A.R., Be Heard",
   "heroes assemble": "Heroes Assemble",
-  "speaking with style: the 6 communicator styles for influence & impact":
-    "Speaking with Style: The 6 Communicator Styles",
+  "speak with style: the 6 communicator styles for influence & impact":
+    "Speak with Style: The 6 Communicator Styles",
   "radically mindful leadership": "Radically Mindful Leadership",
   "the alice principles": "The Alice Principles",
   "5-minute keynote": "The 5-Minute Keynote",
