@@ -140,7 +140,7 @@ const CANONICAL_NAME: Record<string, string> = {
   "speak with style: the 6 communicator styles for influence & impact":
     "Speak with Style: The 6 Communicator Styles",
   "radically mindful leadership": "Radically Mindful Leadership",
-  "the alice principles": "The Alice Principles",
+  "the alice principles: down the rabbit hole of transformation": "The Alice Principles: Down the Rabbit Hole of Transformation",
   "5-minute keynote": "The 5-Minute Keynote",
 };
 
