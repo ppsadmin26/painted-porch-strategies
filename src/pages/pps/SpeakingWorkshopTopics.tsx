@@ -475,9 +475,9 @@ export default function SpeakingWorkshopTopics() {
                           <Pencil className="w-3 h-3" /> Edit
                         </Link>
                       )}
-                      <div className="relative aspect-video overflow-hidden bg-navy/5">
+                      <div className="relative aspect-[16/9] overflow-hidden bg-navy/5">
                         {m.image ? (
-                          <img src={m.image} alt={m.baseName} loading="lazy" className="w-full h-full object-contain" />
+                          <img src={m.image} alt={m.baseName} loading="lazy" className="w-full h-full object-cover" />
                         ) : (
                           <div className={`w-full h-full bg-gradient-to-br ${TOPIC_ACCENT[m.topic] ?? TOPIC_ACCENT[UNTAGGED]} flex items-center justify-center p-4`}>
                             <span className="text-white/90 font-poppins font-semibold text-center text-lg leading-tight">{m.baseName}</span>
