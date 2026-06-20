@@ -238,7 +238,7 @@ export default function SpeakingWorkshopTopics() {
           </div>
           <div className="mt-10 rounded-2xl bg-navy text-white p-6 md:p-8 text-center">
             <p className="text-body text-white/90">
-              <strong className="text-gold">Speaking ignites. Workshops activate.</strong> Every topic below can be delivered as a keynote, expanded into a 2+ hour workshop, or sequenced as both. a keynote to spark the room, then a workshop to turn insight into shared practice.
+              <strong className="text-gold">Speaking ignites. Workshops activate.</strong> Every topic below can be delivered as a keynote, expanded into a 2+ hour workshop, or sequenced as both: a keynote to spark the room, then a workshop to turn insight into shared practice.
             </p>
           </div>
         </div>
