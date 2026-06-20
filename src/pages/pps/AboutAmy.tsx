@@ -4,6 +4,8 @@ import {
   Coffee,
   ExternalLink,
   ArrowRight,
+  Play,
+  Youtube,
 } from "lucide-react";
 
 const amyPhoto =
@@ -104,6 +106,12 @@ const quickLinks: QuickLink[] = [
     href: "https://open.spotify.com/playlist/1F6mkBYTllBzwawCXDEmry",
     external: true,
   },
+  {
+    emoji: "📺",
+    label: "Join me on our Painted Porch on YouTube",
+    href: "https://www.youtube.com/@onthepaintedporch",
+    external: true,
+  },
 ];
 
 /* ── Color helpers ───────────────────────────────────────────────────── */
@@ -123,6 +131,24 @@ const dotColorMap: Record<OfferingCard["color"], string> = {
   lime: "bg-accent",
   raspberry: "bg-destructive",
 };
+
+/* ── Do Epic ShIFt on YouTube ─────────────────────────────────────────── */
+
+interface YouTubeVideoItem {
+  id: string;
+  title: string;
+}
+
+const doEpicShiftVideos: YouTubeVideoItem[] = [
+  { id: "VENNusJo1PI", title: "Tech Change with Courage: When Shift Happens with Amy Yackowski" },
+  { id: "LFGbm__t5M4", title: "If your change plan is just comms & training, you're not ready." },
+  { id: "PKAJaUl7ui8", title: "From Hype to Habit: Turning AI Talk into Action" },
+  { id: "hwDE_vPLprQ", title: "Phase Zero: The Hidden Advantage In Change - Podcast With Amy Yackowski" },
+  { id: "_VwR3vrqFdE", title: "Fix Your Workplace Culture with Amy Yackowski | Your Inside Track to Success" },
+  { id: "zGcJ58ddTuo", title: "GROW Your Staffing Agency in 2025 with These Proven Strategies!" },
+  { id: "OiTJJna-YR0", title: "WEBINAR | Change Readiness Essentials | Part IV: Empowering People for Change" },
+  { id: "La5_9N0lHvU", title: "WEBINAR | Change Readiness Essentials | Part III: Streamlining Processes for Success" },
+];
 
 /* ── Component ───────────────────────────────────────────────────────── */
 
