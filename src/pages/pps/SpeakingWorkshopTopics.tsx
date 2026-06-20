@@ -468,7 +468,7 @@ export default function SpeakingWorkshopTopics() {
             </div>
             <div>
               <div className="text-xs font-poppins font-semibold text-navy uppercase tracking-wide mb-2">Filter by Speaker</div>
-              <Tabs value={speakerFilter} onValueChange={setSpeakerFilter}>
+              <Tabs value={speakerFilter} onValueChange={(v) => { setSpeakerFilter(v); setExtraSpeakers([]); }}>
                 <TabsList className="flex flex-wrap h-auto justify-start gap-1 bg-muted/50 p-1">
                   <TabsTrigger value="all" className="data-[state=active]:bg-navy data-[state=active]:text-white text-xs sm:text-sm">
                     All Speakers
@@ -480,6 +480,23 @@ export default function SpeakingWorkshopTopics() {
                   ))}
                 </TabsList>
               </Tabs>
+              {extraSpeakers.length > 0 && (
+                <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+                  <span className="text-muted-foreground">Showing topics from:</span>
+                  {activeSpeakers.map((s) => (
+                    <span key={s} className="inline-flex items-center bg-navy/10 text-navy font-medium px-2 py-1 rounded">
+                      {FACILITATOR_FULL[s] ?? s}
+                    </span>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={clearSpeakerFilter}
+                    className="ml-1 text-teal hover:underline font-medium"
+                  >
+                    Clear
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
