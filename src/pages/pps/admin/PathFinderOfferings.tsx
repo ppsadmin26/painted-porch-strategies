@@ -619,10 +619,11 @@ export default function PathFinderOfferings() {
                       <option value="">— Untagged —</option>
                       <option value="Change & Innovation">Change & Innovation</option>
                       <option value="Comms">Comms</option>
-                      <option value="Leadership & EQ">Leadership & EQ</option>
+                      <option value="Leadership & Culture">Leadership & Culture</option>
                       <option value="Philosophy">Philosophy</option>
-                      <option value="Teams">Teams</option>
-                      <option value="Mindset & Resilience">Mindset & Resilience</option>
+                      <option value="Team Dynamics">Team Dynamics</option>
+                      <option value="Resilience & Wellbeing">Resilience & Wellbeing</option>
+
                     </select>
                   </div>
                 </div>

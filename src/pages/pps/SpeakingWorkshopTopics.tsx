@@ -73,21 +73,22 @@ const UNTAGGED = "More";
 
 /** Manual topic overrides for rows whose DB topic should be remapped. */
 const TOPIC_OVERRIDES: Record<string, string> = {
-  "from passenger to pilot": "Mindset & Wellbeing",
+  "from passenger to pilot": "Resilience & Wellbeing",
   "cultivating change resilience": "Change & Innovation",
-  "stoicism in the workplace": "Leadership & EQ",
+  "stoicism in the workplace": "Leadership & Culture",
 };
 
 function displayTopic(raw: string | null): string {
   const t = raw?.trim() || UNTAGGED;
-  if (t === "Resilience" || t === "Wellbeing" || t === "Mindset & Resilience" || t === "Resilience & Wellbeing" || t === "Mindset & Growth" || t === "Mindset & Wellbeing") return "Mindset & Wellbeing";
+  if (t === "Resilience" || t === "Wellbeing" || t === "Mindset & Resilience" || t === "Resilience & Wellbeing" || t === "Mindset & Growth" || t === "Mindset & Wellbeing") return "Resilience & Wellbeing";
   if (t === "Innovation" || t === "Change" || t === "Change & Innovation" || t === "Change & Transformation") return "Change & Innovation";
   if (t === "Comms" || t === "Communication") return "Communication";
-  if (t === "Leadership" || t === "Leadership & EQ") return "Leadership & EQ";
-  if (t === "Teams" || t === "Team Dynamics" || t === "Teams & Culture" || t === "Team Dynamics & Culture") return "Team Dynamics & Culture";
+  if (t === "Leadership" || t === "Leadership & EQ" || t === "Leadership & Culture") return "Leadership & Culture";
+  if (t === "Teams" || t === "Team Dynamics" || t === "Teams & Culture" || t === "Team Dynamics & Culture") return "Team Dynamics";
   if (t === "Philosophy" || t === "Stoicism & Philosophy") return "Stoicism & Philosophy";
   return t;
 }
+
 
 function topicFor(key: string, rawTopic: string | null): string {
   return TOPIC_OVERRIDES[key] ?? displayTopic(rawTopic);
@@ -213,10 +214,10 @@ const IMAGE_MAP: Record<string, string> = {
 
 // Color accent per topic for the image placeholder when no image exists
 const TOPIC_ACCENT: Record<string, string> = {
-  "Leadership & EQ": "from-primary/80 to-navy",
+  "Leadership & Culture": "from-primary/80 to-navy",
   "Change & Innovation": "from-purple/80 to-navy",
   "Communication": "from-gold/80 to-navy",
-  "Mindset & Resilience": "from-bluedoor/80 to-navy",
+  "Resilience & Wellbeing": "from-bluedoor/80 to-navy",
   "Team Dynamics": "from-primary/80 to-purple",
   "Philosophy": "from-navy to-bluedoor",
   [UNTAGGED]: "from-navy to-charcoal",
@@ -224,14 +225,15 @@ const TOPIC_ACCENT: Record<string, string> = {
 
 // Match blog/insights category color scheme so topics stay visually consistent.
 const TOPIC_BADGE: Record<string, string> = {
-  "Leadership & EQ": "bg-primary/10 text-primary",
+  "Leadership & Culture": "bg-primary/10 text-primary",
   "Change & Innovation": "bg-strategic/10 text-strategic",
   "Communication": "bg-lime/10 text-lime",
-  "Mindset & Resilience": "bg-raspberry/10 text-raspberry",
+  "Resilience & Wellbeing": "bg-raspberry/10 text-raspberry",
   "Team Dynamics": "bg-navy/10 text-navy",
   "Philosophy": "bg-purple/10 text-purple",
   [UNTAGGED]: "bg-navy/10 text-navy",
 };
+
 
 // Topics that should always appear as BOTH a keynote and a workshop, even if
 // the database only has one row for them.

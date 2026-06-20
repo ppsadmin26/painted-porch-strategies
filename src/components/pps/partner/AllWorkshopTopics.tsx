@@ -33,12 +33,13 @@ const UNTAGGED = "More";
 /** Map raw DB topics into merged display tabs. */
 function displayTopic(raw: string | null): string {
   const t = raw?.trim() || UNTAGGED;
-  if (t === "Resilience" || t === "Wellbeing" || t === "Mindset & Resilience" || t === "Resilience & Wellbeing" || t === "Mindset & Growth") return "Mindset & Wellbeing";
+  if (t === "Resilience" || t === "Wellbeing" || t === "Mindset & Resilience" || t === "Resilience & Wellbeing" || t === "Mindset & Growth" || t === "Mindset & Wellbeing") return "Resilience & Wellbeing";
   if (t === "Innovation" || t === "Change" || t === "Change & Transformation") return "Change & Innovation";
-  if (t === "Leadership") return "Leadership & EQ";
-  if (t === "Teams" || t === "Team Dynamics" || t === "Teams & Culture") return "Team Dynamics & Culture";
+  if (t === "Leadership" || t === "Leadership & EQ") return "Leadership & Culture";
+  if (t === "Teams" || t === "Team Dynamics & Culture" || t === "Teams & Culture") return "Team Dynamics";
   if (t === "Philosophy") return "Stoicism & Philosophy";
   return t;
+
 }
 
 /**
