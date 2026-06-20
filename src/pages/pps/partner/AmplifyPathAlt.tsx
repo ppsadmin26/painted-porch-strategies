@@ -689,11 +689,11 @@ export default function AmplifyPathAlt() {
                 </div>
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Continue in <span className="text-strategic">AMPLIFY</span></h3>
               </div>
-              <ul className="space-y-2 mb-6">
-                <li className="text-body -sm text-foreground">• Additional workshops on different topics</li>
-                <li className="text-body -sm text-foreground">• Follow-up sprint after initial implementation</li>
-                <li className="text-body -sm text-foreground">• Join a Leadership Lab for ongoing individual development</li>
-                <li className="text-body -sm text-foreground">• Quarterly or semi-annual strategic leadership/team alignment sessions</li>
+              <ul className="list-disc pl-5 space-y-2 mb-6">
+                <li className="text-body-sm text-foreground">Additional workshops on different topics</li>
+                <li className="text-body-sm text-foreground">Follow-up sprint after initial implementation</li>
+                <li className="text-body-sm text-foreground">Join a Leadership Lab for ongoing individual development</li>
+                <li className="text-body-sm text-foreground">Quarterly or semi-annual strategic leadership/team alignment sessions</li>
               </ul>
               <p className="text-body text-muted-foreground italic">
                 Best for: Teams who want periodic strategic partnership without full EMBODY engagement
@@ -707,11 +707,11 @@ export default function AmplifyPathAlt() {
                 </div>
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Progress to EMBODY</h3>
               </div>
-              <ul className="space-y-2 mb-6">
-                <li className="text-body -sm text-foreground">• 6+ month embedded partnership</li>
-                <li className="text-body -sm text-foreground">• Executive advisory relationship</li>
-                <li className="text-body -sm text-foreground">• Ongoing Leadership Summits</li>
-                <li className="text-body -sm text-foreground">• Full transformation architecture</li>
+              <ul className="list-disc pl-5 space-y-2 mb-6">
+                <li className="text-body-sm text-foreground">6+ month embedded partnership</li>
+                <li className="text-body-sm text-foreground">Executive advisory relationship</li>
+                <li className="text-body-sm text-foreground">Ongoing Leadership Summits</li>
+                <li className="text-body-sm text-foreground">Full transformation architecture</li>
               </ul>
               <p className="text-body text-muted-foreground italic mb-4">
                 Best for: Organizations pursuing permanent capability with sustained partnership
@@ -728,11 +728,11 @@ export default function AmplifyPathAlt() {
                 </div>
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Maintain Connection</h3>
               </div>
-              <ul className="space-y-2 mb-6">
-                <li className="text-body -sm text-foreground">• Join our semi-annual Leadership Summits (open to AMPLIFY alumni)</li>
-                <li className="text-body -sm text-foreground">• Access to tools, frameworks, and resources</li>
-                <li className="text-body -sm text-foreground">• Ongoing community of transformation architects</li>
-                <li className="text-body -sm text-foreground">• Future AMPLIFY engagements as needs emerge</li>
+              <ul className="list-disc pl-5 space-y-2 mb-6">
+                <li className="text-body-sm text-foreground">Join our semi-annual Leadership Summits (open to AMPLIFY alumni)</li>
+                <li className="text-body-sm text-foreground">Access to tools, frameworks, and resources</li>
+                <li className="text-body-sm text-foreground">Ongoing community of transformation architects</li>
+                <li className="text-body-sm text-foreground">Future AMPLIFY engagements as needs emerge</li>
               </ul>
               <p className="text-body text-muted-foreground italic">
                 Best for: Leaders who want ongoing connection without active partnership
