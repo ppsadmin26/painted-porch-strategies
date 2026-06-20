@@ -41,6 +41,7 @@ import findingJoy from "@/assets/speaking/topics/finding-joy-at-work.jpg.asset.j
 import passengerToPilot from "@/assets/speaking/topics/passenger-to-pilot.jpg.asset.json";
 import moveShakeInnovate from "@/assets/speaking/topics/move-shake-innovate.jpg.asset.json";
 import reignitingResilience from "@/assets/speaking/topics/reigniting-resilience.jpg.asset.json";
+import fiveMinKeynote from "@/assets/speaking/topics/five-minute-keynote.jpg.asset.json";
 
 type Row = {
   offering_key: string;
@@ -189,6 +190,17 @@ const IMAGE_MAP: Record<string, string> = {
   "from passenger to pilot": passengerToPilot.url,
   "move, shake, innovate": moveShakeInnovate.url,
   "reigniting resilience": reignitingResilience.url,
+  "5-minute keynote": fiveMinKeynote.url,
+  "your 5-minute keynote": fiveMinKeynote.url,
+  "the 5-minute keynote": fiveMinKeynote.url,
+};
+
+/** Manual blurb overrides keyed by canonical key. Wins over DB merge. */
+const BLURB_OVERRIDES: Record<string, string> = {
+  "the alice principles":
+    "What can Alice's adventures teach us about navigating organizational change? Explore how curiosity, adaptability, and questioning the status quo, inspired by Lewis Carroll's timeless tale, can transform the way your team approaches uncertainty and growth.",
+  "5-minute keynote":
+    "Every leader needs a signature message they can deliver at a moment's notice. Learn how to craft and deliver a powerful 5-minute keynote that leaves a lasting impression.",
 };
 
 // Color accent per topic for the image placeholder when no image exists
@@ -293,6 +305,8 @@ export default function SpeakingWorkshopTopics() {
         if (!m.formats.includes("Speaking")) m.formats.push("Speaking");
         if (!m.formats.includes("Workshop")) m.formats.push("Workshop");
       }
+      // Apply manual blurb overrides
+      if (BLURB_OVERRIDES[m.key]) m.blurb = BLURB_OVERRIDES[m.key];
     }
     return Array.from(map.values()).sort((a, b) => a.baseName.localeCompare(b.baseName));
   }, [rows]);

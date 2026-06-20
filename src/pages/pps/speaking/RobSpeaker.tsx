@@ -1,6 +1,7 @@
 import { Mic } from "lucide-react";
 import robPhoto from "@/assets/team/rob-hunter.jpg";
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
+import fiveMinKeynote from "@/assets/speaking/topics/five-minute-keynote.jpg.asset.json";
 
 const rob: SpeakerData = {
   name: "Rob Hunter",
@@ -57,6 +58,7 @@ const rob: SpeakerData = {
     {
       slug: "your-5-minute-keynote",
       title: "Your 5-Minute Keynote",
+      image: fiveMinKeynote.url,
       description:
         "Every leader needs a signature message they can deliver at a moment's notice. Learn how to craft and deliver a powerful 5-minute keynote that leaves a lasting impression.",
     },
