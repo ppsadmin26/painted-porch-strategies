@@ -540,7 +540,7 @@ export default function OurApproach() {
                   Prepare is Phase Zero.
                 </h3>
                 <p className="text-body text-foreground">
-                  Prepare is where we begin. It's the work before the work - the point where you decide whether a direction is worth committing to and what it will require to do it well.
+                  Prepare is where we begin. It's the work before the work - the point where you decide whether a direction deserves your commitment and investment, and what it will require to do it well.
                 </p>
               </div>
               <Link
