@@ -214,7 +214,7 @@ export default function OurApproach() {
               <p className="text-body mb-0">About culture.</p>
               <p className="text-body mb-0">About what people understand, believe, and are capable of doing.</p>
             </div>
-            <p className="text-body mb-8">Our work surfaces those assumptions before they become expensive realities. Because&nbsp;</p>
+            <p className="text-body mb-8">Our work surfaces those assumptions before they become expensive realities. Because what appears during implementation often begins much earlier.</p>
             <div className="space-y-0">
               <p className="text-body mb-0">This is the work that preceeds the rollout.</p>
               <p className="text-body mb-0">The thinking beneath the plan.</p>
