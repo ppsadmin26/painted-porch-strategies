@@ -380,14 +380,13 @@ export default function AmplifyWorkshops() {
               <span className="text-foreground/50"> &middot; </span>
               <span className="font-semibold text-navy">Leadership &amp; Culture</span>
               <span className="text-foreground/50"> &middot; </span>
-              <span className="font-semibold text-navy">Communication</span>
+              <span className="font-semibold text-navy">Team Dynamics</span>
               <span className="text-foreground/50"> &middot; </span>
               <span className="font-semibold text-navy">Resilience &amp; Wellbeing</span>
               <span className="text-foreground/50"> &middot; </span>
-              <span className="font-semibold text-navy">Mindfulness</span>
-              <span className="text-foreground/50"> &middot; </span>
-              <span className="font-semibold text-navy">Team Dynamics</span>
+              <span className="font-semibold text-navy">Stoicism &amp; Philosophy</span>
             </p>
+
             <p className="text-body text-foreground max-w-2xl mx-auto mb-6">
               Take the P.A.T.H.finder quiz so we can recommend the workshop or speaking session that best fits where you&rsquo;re headed, or contact us to talk through your topic.
             </p>
