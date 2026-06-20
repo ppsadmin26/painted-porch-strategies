@@ -331,6 +331,7 @@ const App = () => (
             {/* Other Pages */}
             
             <Route path="speaking" element={<Speaking />} />
+            <Route path="speaking/topics" element={<SpeakingWorkshopTopics />} />
             <Route path="speaking/amy" element={<AmySpeaker />} />
             <Route path="speaking/rob" element={<RobSpeaker />} />
             <Route path="speaking/sierra" element={<SierraSpeaker />} />
