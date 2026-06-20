@@ -8,6 +8,7 @@ import getClear from "@/assets/speaking/topics/get-clear-be-heard.jpg.asset.json
 import borderlessComm from "@/assets/speaking/topics/borderless-communication.jpg.asset.json";
 import onAir from "@/assets/speaking/topics/on-air-confidence.jpg.asset.json";
 import sixStyles from "@/assets/speaking/topics/six-communicator-styles.jpg.asset.json";
+import powerOfStory from "@/assets/speaking/topics/power-of-story.jpg.asset.json";
 
 const rob: SpeakerData = {
   facilitatorKey: "Rob",
@@ -43,6 +44,7 @@ const rob: SpeakerData = {
     {
       slug: "the-power-of-story",
       title: "The Power of Story",
+      image: powerOfStory.url,
       description:
         "Our brains are wired for stories. Learn how and when to use narrative to persuade, connect, and be unforgettable.",
     },

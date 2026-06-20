@@ -196,7 +196,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
           heading={speaker.trustSignals.heading || <>Where {speaker.firstName} Has Spoken</>}
           logos={speaker.trustSignals.logos}
           testimonials={speaker.trustSignals.testimonials}
-          showTestimonials={!!speaker.trustSignals.testimonials?.length}
+          showTestimonials={false}
         />
       )}
 
