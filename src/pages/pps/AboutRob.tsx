@@ -63,10 +63,10 @@ const offerings: OfferingCard[] = [
   },
   {
     emoji: "🎯",
-    title: "5-Day Master Your Message Challenge",
+    title: "Communication & Connection Masterclasses and Mini-Workshops",
     description:
-      "A quick-start challenge to transform how you communicate, in just five days.",
-    href: "https://www.paintedporchstrategies.com/talking-to-strangers",
+      "On-demand and live sessions to sharpen how you speak, listen, and lead through every conversation.",
+    href: "https://onthepaintedporch.com/partner/ignite/masterclasses?category=Communication%20%26%20Connection",
     external: true,
     color: "teal",
   },
