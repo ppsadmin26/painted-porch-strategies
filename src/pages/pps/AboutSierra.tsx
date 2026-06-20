@@ -60,14 +60,6 @@ const offerings: OfferingCard[] = [
     external: true,
     color: "raspberry",
   },
-  {
-    emoji: "🧘",
-    title: "Mindfulness for Teams",
-    description:
-      "Guided workshops that bring calm, clarity, and connection into the workplace, even in high-pressure environments.",
-    href: "/partner/amplify",
-    color: "gold",
-  },
 ];
 
 /* ── Quick links ─────────────────────────────────────────────────────── */
