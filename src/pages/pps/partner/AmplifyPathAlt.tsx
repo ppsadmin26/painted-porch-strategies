@@ -371,12 +371,12 @@ export default function AmplifyPathAlt() {
                     <div key={i} className="bg-white rounded-xl shadow-sm border border-navy/10 overflow-hidden">
                       {skip ? (
                         <div className="p-4 bg-gold/5 border-l-4 border-gold">
-                          <p className="text-body text-[11px] font-poppins font-semibold uppercase tracking-wider text-gold mb-2">Cost of Skipping Phase Zero</p>
-                          <div className="flex items-start gap-2 text-sm text-foreground">
+                          <p className="text-body text-xs font-poppins font-semibold uppercase tracking-wider text-gold mb-2">Cost of Skipping Phase Zero</p>
+                          <div className="flex items-start gap-2 text-base text-foreground">
                             <AlertTriangle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
                             <div className="flex-1">
                               <span>{skip.text}</span>
-                              <div className="mt-1 flex items-start gap-1.5 text-xs italic text-navy/80">
+                              <div className="mt-1 flex items-start gap-1.5 text-sm italic text-navy/80">
                                 <span className="font-semibold not-italic text-gold">Est.</span>
                                 <span>{skip.stat}</span>
                                 <Tooltip>
@@ -409,8 +409,8 @@ export default function AmplifyPathAlt() {
                       ) : null}
                       {whatAmplifyEliminates[i] ? (
                         <div className="p-4 bg-raspberry/5 border-l-4 border-raspberry">
-                          <p className="text-body text-[11px] font-poppins font-semibold uppercase tracking-wider text-raspberry mb-2">What AMPLIFY Eliminates</p>
-                          <div className="flex items-start gap-2 text-sm text-foreground">
+                          <p className="text-body text-xs font-poppins font-semibold uppercase tracking-wider text-raspberry mb-2">What AMPLIFY Eliminates</p>
+                          <div className="flex items-start gap-2 text-base text-foreground">
                             <span className="text-raspberry font-bold">✗</span>
                             <span>{whatAmplifyEliminates[i]}</span>
                           </div>
@@ -418,8 +418,8 @@ export default function AmplifyPathAlt() {
                       ) : null}
                       {whatAmplifyEnables[i] ? (
                         <div className="p-4 bg-lime/5 border-l-4 border-lime">
-                          <p className="text-body text-[11px] font-poppins font-semibold uppercase tracking-wider text-lime mb-2">What AMPLIFY Enables</p>
-                          <div className="flex items-start gap-2 text-sm text-foreground">
+                          <p className="text-body text-xs font-poppins font-semibold uppercase tracking-wider text-lime mb-2">What AMPLIFY Enables</p>
+                          <div className="flex items-start gap-2 text-base text-foreground">
                             <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
                             <span>{whatAmplifyEnables[i]}</span>
                           </div>
@@ -455,13 +455,13 @@ export default function AmplifyPathAlt() {
                       const skip = costOfSkippingStats[i];
                       return (
                         <tr key={i} className="align-top">
-                          <td className="p-4 text-sm text-foreground bg-gold/5 border-b border-gold/15">
+                          <td className="p-4 text-base text-foreground bg-gold/5 border-b border-gold/15">
                             {skip ? (
                               <div className="flex items-start gap-2">
                                 <AlertTriangle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
                                 <div className="flex-1">
                                   <span>{skip.text}</span>
-                                  <div className="mt-1 flex items-start gap-1.5 text-xs italic text-navy/80">
+                                  <div className="mt-1 flex items-start gap-1.5 text-sm italic text-navy/80">
                                     <span className="font-semibold not-italic text-gold">Est.</span>
                                     <span>{skip.stat}</span>
                                     <Tooltip>
@@ -492,7 +492,7 @@ export default function AmplifyPathAlt() {
                               </div>
                             ) : null}
                           </td>
-                          <td className="p-4 text-sm text-foreground bg-raspberry/5 border-b border-raspberry/15">
+                          <td className="p-4 text-base text-foreground bg-raspberry/5 border-b border-raspberry/15">
                             {whatAmplifyEliminates[i] ? (
                               <div className="flex items-start gap-2">
                                 <span className="text-raspberry font-bold">✗</span>
@@ -500,7 +500,7 @@ export default function AmplifyPathAlt() {
                               </div>
                             ) : null}
                           </td>
-                          <td className="p-4 text-sm text-foreground bg-lime/5 border-b border-lime/15">
+                          <td className="p-4 text-base text-foreground bg-lime/5 border-b border-lime/15">
                             {whatAmplifyEnables[i] ? (
                               <div className="flex items-start gap-2">
                                 <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
@@ -690,10 +690,10 @@ export default function AmplifyPathAlt() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Continue in <span className="text-strategic">AMPLIFY</span></h3>
               </div>
               <ul className="list-disc pl-5 space-y-2 mb-6">
-                <li className="text-body-sm text-foreground">Additional workshops on different topics</li>
-                <li className="text-body-sm text-foreground">Follow-up sprint after initial implementation</li>
-                <li className="text-body-sm text-foreground">Join a Leadership Lab for ongoing individual development</li>
-                <li className="text-body-sm text-foreground">Quarterly or semi-annual strategic leadership/team alignment sessions</li>
+                <li className="text-body text-foreground">Additional workshops on different topics</li>
+                <li className="text-body text-foreground">Follow-up sprint after initial implementation</li>
+                <li className="text-body text-foreground">Join a Leadership Lab for ongoing individual development</li>
+                <li className="text-body text-foreground">Quarterly or semi-annual strategic leadership/team alignment sessions</li>
               </ul>
               <p className="text-body text-muted-foreground italic">
                 Best for: Teams who want periodic strategic partnership without full EMBODY engagement
@@ -708,10 +708,10 @@ export default function AmplifyPathAlt() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Progress to EMBODY</h3>
               </div>
               <ul className="list-disc pl-5 space-y-2 mb-6">
-                <li className="text-body-sm text-foreground">6+ month embedded partnership</li>
-                <li className="text-body-sm text-foreground">Executive advisory relationship</li>
-                <li className="text-body-sm text-foreground">Ongoing Leadership Summits</li>
-                <li className="text-body-sm text-foreground">Full transformation architecture</li>
+                <li className="text-body text-foreground">6+ month embedded partnership</li>
+                <li className="text-body text-foreground">Executive advisory relationship</li>
+                <li className="text-body text-foreground">Ongoing Leadership Summits</li>
+                <li className="text-body text-foreground">Full transformation architecture</li>
               </ul>
               <p className="text-body text-muted-foreground italic mb-4">
                 Best for: Organizations pursuing permanent capability with sustained partnership
@@ -729,10 +729,10 @@ export default function AmplifyPathAlt() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Maintain Connection</h3>
               </div>
               <ul className="list-disc pl-5 space-y-2 mb-6">
-                <li className="text-body-sm text-foreground">Join our semi-annual Leadership Summits (open to AMPLIFY alumni)</li>
-                <li className="text-body-sm text-foreground">Access to tools, frameworks, and resources</li>
-                <li className="text-body-sm text-foreground">Ongoing community of transformation architects</li>
-                <li className="text-body-sm text-foreground">Future AMPLIFY engagements as needs emerge</li>
+                <li className="text-body text-foreground">Join our semi-annual Leadership Summits (open to AMPLIFY alumni)</li>
+                <li className="text-body text-foreground">Access to tools, frameworks, and resources</li>
+                <li className="text-body text-foreground">Ongoing community of transformation architects</li>
+                <li className="text-body text-foreground">Future AMPLIFY engagements as needs emerge</li>
               </ul>
               <p className="text-body text-muted-foreground italic">
                 Best for: Leaders who want ongoing connection without active partnership
