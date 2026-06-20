@@ -109,7 +109,7 @@ export default function PPSAbout() {
               <p className="text-body text-foreground leading-relaxed mb-6">
                 We bring these timeless principles to modern business, so leaders and teams can build the perspective, judgment, and organizational architecture needed to navigate complexity with intention.
               </p>
-              <p className="text-body font-semibold text-primary">
+              <p className="text-body font-semibold italic text-primary">
                 Eudaimonia: prosperity and well-being through purposeful action.
               </p>
             </div>
