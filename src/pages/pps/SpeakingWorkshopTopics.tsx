@@ -126,7 +126,7 @@ const KEY_ALIASES: Record<string, string> = {
   "speak with style — 6 communicator styles":
     "speak with style: the 6 communicator styles for influence & impact",
   "radical mindfulness": "radically mindful leadership",
-  "the alice principles: down the rabbit hole of transformation": "the alice principles",
+  "the alice principles": "the alice principles: down the rabbit hole of transformation",
   "your 5-minute keynote": "5-minute keynote",
   "the 5-minute keynote": "5-minute keynote",
 };
@@ -140,7 +140,7 @@ const CANONICAL_NAME: Record<string, string> = {
   "speak with style: the 6 communicator styles for influence & impact":
     "Speak with Style: The 6 Communicator Styles",
   "radically mindful leadership": "Radically Mindful Leadership",
-  "the alice principles": "The Alice Principles",
+  "the alice principles: down the rabbit hole of transformation": "The Alice Principles: Down the Rabbit Hole of Transformation",
   "5-minute keynote": "The 5-Minute Keynote",
 };
 
@@ -161,7 +161,7 @@ const IMAGE_MAP: Record<string, string> = {
   "ai, ei, oh!": aiEiOh.url,
   "stoicism in the workplace": stoicism.url,
   "lead at the speed of change": speedOfChange.url,
-  "the alice principles": alice.url,
+  "the alice principles: down the rabbit hole of transformation": alice.url,
   "don't panic! navigating a changing world": dontPanic.url,
   "from dysfunction to dynamic teams": dysfunctionToDynamic.url,
   "shift happens. be ready.": shiftHappens.url,
@@ -224,7 +224,7 @@ const BLURB_OVERRIDES: Record<string, string> = {
     "Turn struggling teams into high-performing powerhouses. Learn how to break through silos, rebuild trust, and create the kind of collaboration that drives extraordinary results.",
   "ai, ei, oh! guiding change and ai adoption":
     "AI is here, but your people aren't ready. Discover how emotional intelligence is the missing link to successful AI adoption, and learn to lead your team through tech-driven change without leaving anyone behind.",
-  "the alice principles":
+  "the alice principles: down the rabbit hole of transformation":
     "What can Alice's adventures teach us about navigating organizational change? Explore how curiosity, adaptability, and questioning the status quo, inspired by Lewis Carroll's timeless tale, can transform the way your team approaches uncertainty and growth.",
   "don't panic! navigating a changing world":
     "Grab your towel and don't panic, because change, much like the galaxy, is vast, unpredictable, and mostly harmless. Using Douglas Adams' Hitchhiker's Guide as a lens, discover how humor, perspective, and a good guide can turn overwhelming transformation into an adventure worth taking.",
