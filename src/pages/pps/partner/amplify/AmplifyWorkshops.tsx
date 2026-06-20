@@ -368,39 +368,39 @@ export default function AmplifyWorkshops() {
             </div>
           </div>
 
-          <div className="text-center mt-12 bg-muted/40 border border-border rounded-xl p-8">
-            <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy mb-3">
+          <div className="text-center mt-12 bg-navy text-white rounded-2xl p-6 md:p-8">
+            <h3 className="text-xl md:text-2xl font-poppins font-bold text-white mb-3">
               Don&rsquo;t see exactly what you&rsquo;re looking for?
             </h3>
-            <p className="text-body text-foreground max-w-2xl mx-auto mb-3">
-              The workshops above are a sample of what we run most often. We also offer other sessions across our core topic areas, and most can be delivered as a <Link to="/speaking" className="font-semibold text-teal hover:text-teal/80 underline underline-offset-2">keynote or speaking session</Link> or expanded into a <strong>workshop</strong>:
+            <p className="text-body text-white/90 max-w-2xl mx-auto mb-3">
+              The workshops above are a sample of what we run most often. We also offer other sessions across our core topic areas, and most can be delivered as a <Link to="/speaking" className="font-semibold text-gold hover:text-gold/80 underline underline-offset-2">keynote or speaking session</Link> or expanded into a <strong className="text-gold">workshop</strong>:
             </p>
-            <p className="text-body text-foreground max-w-2xl mx-auto mb-6">
-              <span className="font-semibold text-navy">Change &amp; Innovation</span>
-              <span className="text-foreground/50"> &middot; </span>
-              <span className="font-semibold text-navy">Leadership &amp; Culture</span>
-              <span className="text-foreground/50"> &middot; </span>
-              <span className="font-semibold text-navy">Team Dynamics</span>
-              <span className="text-foreground/50"> &middot; </span>
-              <span className="font-semibold text-navy">Resilience &amp; Wellbeing</span>
-              <span className="text-foreground/50"> &middot; </span>
-              <span className="font-semibold text-navy">Stoicism &amp; Philosophy</span>
+            <p className="text-body text-white/90 max-w-2xl mx-auto mb-6">
+              <span className="font-semibold text-gold">Change &amp; Innovation</span>
+              <span className="text-white/50"> &middot; </span>
+              <span className="font-semibold text-gold">Leadership &amp; Culture</span>
+              <span className="text-white/50"> &middot; </span>
+              <span className="font-semibold text-gold">Team Dynamics</span>
+              <span className="text-white/50"> &middot; </span>
+              <span className="font-semibold text-gold">Resilience &amp; Wellbeing</span>
+              <span className="text-white/50"> &middot; </span>
+              <span className="font-semibold text-gold">Stoicism &amp; Philosophy</span>
             </p>
 
-            <p className="text-body text-foreground max-w-2xl mx-auto mb-6">
+            <p className="text-body text-white/90 max-w-2xl mx-auto mb-6">
               Take the P.A.T.H.finder quiz so we can recommend the workshop or speaking session that best fits where you&rsquo;re headed, or contact us to talk through your topic.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button
                 onClick={openQuiz}
-                className="bg-teal text-white hover:bg-teal/90 h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold whitespace-normal"
+                className="bg-gold text-navy hover:bg-gold/90 h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold whitespace-normal"
               >
                 Take the P.A.T.H.finder Quiz <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button
                 asChild
                 variant="outline"
-                className="h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold whitespace-normal"
+                className="border-white text-white hover:bg-white hover:text-navy h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold whitespace-normal"
               >
                 <Link to="/contact?scope=organization&interest=workshops&message=I'd like to discuss a workshop or speaking topic for our team.">
                   Contact Us to Talk It Through
