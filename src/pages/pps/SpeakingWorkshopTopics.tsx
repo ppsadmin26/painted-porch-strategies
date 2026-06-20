@@ -41,6 +41,7 @@ import findingJoy from "@/assets/speaking/topics/finding-joy-at-work.jpg.asset.j
 import passengerToPilot from "@/assets/speaking/topics/passenger-to-pilot.jpg.asset.json";
 import moveShakeInnovate from "@/assets/speaking/topics/move-shake-innovate.jpg.asset.json";
 import reignitingResilience from "@/assets/speaking/topics/reigniting-resilience.jpg.asset.json";
+import fiveMinKeynote from "@/assets/speaking/topics/five-minute-keynote.jpg.asset.json";
 
 type Row = {
   offering_key: string;
