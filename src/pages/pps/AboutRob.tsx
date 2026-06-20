@@ -277,13 +277,17 @@ export default function AboutRob() {
           </p>
 
           <div className="mt-10 flex justify-center">
-            <div className="flex flex-col items-center justify-center rounded-xl bg-white/10 p-8 text-center max-w-sm">
-              <div className="mb-4 overflow-hidden rounded-xl shadow-lg">
-                <img
-                  src="https://images.pod.co/BDojqLokk-XUwSn0QlNHrCPZfjqFkeyZ3jUw3RlidmM/resize:fill:300:300/plain/artwork/0a538a7b-cc6a-4bb9-b9d5-4a0b290dadc1/equalmatters.jpg"
-                  alt="Equal Matters podcast artwork"
-                  className="h-40 w-40 rounded-xl object-cover"
+            <div className="flex flex-col items-center justify-center rounded-xl bg-white/10 p-8 text-center w-full max-w-md">
+              <div className="mb-4 w-full overflow-hidden rounded-xl shadow-lg">
+                <iframe
+                  src="https://open.spotify.com/embed/show/5lYP2GwhZU71rVNEufvm3U"
+                  width="100%"
+                  height="232"
+                  frameBorder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
+                  title="Equal Matters Spotify Podcast"
+                  className="rounded-xl"
                 />
               </div>
               <h3 className="text-xl md:text-2xl font-poppins font-bold text-white">
