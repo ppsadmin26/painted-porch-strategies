@@ -371,12 +371,12 @@ export default function AmplifyPathAlt() {
                     <div key={i} className="bg-white rounded-xl shadow-sm border border-navy/10 overflow-hidden">
                       {skip ? (
                         <div className="p-4 bg-gold/5 border-l-4 border-gold">
-                          <p className="text-body text-[11px] font-poppins font-semibold uppercase tracking-wider text-gold mb-2">Cost of Skipping Phase Zero</p>
-                          <div className="flex items-start gap-2 text-sm text-foreground">
+                          <p className="text-body text-xs font-poppins font-semibold uppercase tracking-wider text-gold mb-2">Cost of Skipping Phase Zero</p>
+                          <div className="flex items-start gap-2 text-base text-foreground">
                             <AlertTriangle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
                             <div className="flex-1">
                               <span>{skip.text}</span>
-                              <div className="mt-1 flex items-start gap-1.5 text-xs italic text-navy/80">
+                              <div className="mt-1 flex items-start gap-1.5 text-sm italic text-navy/80">
                                 <span className="font-semibold not-italic text-gold">Est.</span>
                                 <span>{skip.stat}</span>
                                 <Tooltip>
@@ -409,8 +409,8 @@ export default function AmplifyPathAlt() {
                       ) : null}
                       {whatAmplifyEliminates[i] ? (
                         <div className="p-4 bg-raspberry/5 border-l-4 border-raspberry">
-                          <p className="text-body text-[11px] font-poppins font-semibold uppercase tracking-wider text-raspberry mb-2">What AMPLIFY Eliminates</p>
-                          <div className="flex items-start gap-2 text-sm text-foreground">
+                          <p className="text-body text-xs font-poppins font-semibold uppercase tracking-wider text-raspberry mb-2">What AMPLIFY Eliminates</p>
+                          <div className="flex items-start gap-2 text-base text-foreground">
                             <span className="text-raspberry font-bold">✗</span>
                             <span>{whatAmplifyEliminates[i]}</span>
                           </div>
@@ -418,8 +418,8 @@ export default function AmplifyPathAlt() {
                       ) : null}
                       {whatAmplifyEnables[i] ? (
                         <div className="p-4 bg-lime/5 border-l-4 border-lime">
-                          <p className="text-body text-[11px] font-poppins font-semibold uppercase tracking-wider text-lime mb-2">What AMPLIFY Enables</p>
-                          <div className="flex items-start gap-2 text-sm text-foreground">
+                          <p className="text-body text-xs font-poppins font-semibold uppercase tracking-wider text-lime mb-2">What AMPLIFY Enables</p>
+                          <div className="flex items-start gap-2 text-base text-foreground">
                             <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
                             <span>{whatAmplifyEnables[i]}</span>
                           </div>
