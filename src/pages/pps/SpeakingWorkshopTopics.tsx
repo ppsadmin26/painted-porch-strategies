@@ -58,7 +58,7 @@ type MergedTopic = {
   baseName: string;
   blurb: string;
   topic: string;
-  facilitator: string;
+  facilitators: string[];
   formats: ("Speaking" | "Workshop")[];
   image?: string;
 };
