@@ -84,7 +84,7 @@ function displayTopic(raw: string | null): string {
   if (t === "Innovation" || t === "Change" || t === "Change & Innovation") return "Change & Innovation";
   if (t === "Comms" || t === "Communication") return "Communication";
   if (t === "Leadership & EQ") return "Leadership & EQ";
-  if (t === "Teams") return "Teams";
+  if (t === "Teams" || t === "Team Dynamics") return "Team Dynamics";
   if (t === "Philosophy") return "Philosophy";
   return t;
 }
@@ -217,7 +217,7 @@ const TOPIC_ACCENT: Record<string, string> = {
   "Change & Innovation": "from-purple/80 to-navy",
   "Communication": "from-gold/80 to-navy",
   "Mindset & Resilience": "from-bluedoor/80 to-navy",
-  "Teams": "from-primary/80 to-purple",
+  "Team Dynamics": "from-primary/80 to-purple",
   "Philosophy": "from-navy to-bluedoor",
   [UNTAGGED]: "from-navy to-charcoal",
 };
@@ -228,7 +228,7 @@ const TOPIC_BADGE: Record<string, string> = {
   "Change & Innovation": "bg-strategic/10 text-strategic",
   "Communication": "bg-lime/10 text-lime",
   "Mindset & Resilience": "bg-raspberry/10 text-raspberry",
-  "Teams": "bg-navy/10 text-navy",
+  "Team Dynamics": "bg-navy/10 text-navy",
   "Philosophy": "bg-purple/10 text-purple",
   [UNTAGGED]: "bg-navy/10 text-navy",
 };
