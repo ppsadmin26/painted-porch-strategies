@@ -349,14 +349,14 @@ export default function AmplifyWorkshops() {
                         </div>
                       </div>
                     </div>
-                    <p className="text-body -sm text-foreground mb-4">{workshop.description}</p>
+                    <p className="text-base text-foreground mb-4">{workshop.description}</p>
                     <div className="flex-grow">
-                      <p className="text-body -sm font-semibold text-navy mb-2">What You'll Walk Away With:</p>
+                      <p className="text-base font-semibold text-navy mb-2">What You'll Walk Away With:</p>
                       <ul className="space-y-1">
                         {workshop.outcomes.map((item, i) => (
-                          <li key={i} className="text-body flex items-start gap-2">
+                          <li key={i} className="flex items-start gap-2">
                             <CheckCircle className="w-3 h-3 text-lime flex-shrink-0 mt-1" />
-                            <span className="text-xs text-foreground">{item}</span>
+                            <span className="text-base text-foreground">{item}</span>
                           </li>
                         ))}
                       </ul>
