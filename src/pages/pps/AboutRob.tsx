@@ -68,7 +68,7 @@ const offerings: OfferingCard[] = [
   },
   {
     emoji: "🎯",
-    title: "Communication & Connection Masterclasses and Mini-Workshops",
+    title: "Communication Masterclasses & Mini-Workshops",
     description:
       "On-demand and live sessions to sharpen how you speak, listen, and lead through every conversation.",
     href: "https://onthepaintedporch.com/partner/ignite/masterclasses?category=Communication%20%26%20Connection",
