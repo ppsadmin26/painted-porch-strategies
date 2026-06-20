@@ -444,12 +444,12 @@ export default function SpeakingWorkshopTopics() {
                         </div>
                         <div className="flex flex-wrap items-center gap-2 mb-2">
                           {m.formats.includes("Speaking") && (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-gold/15 text-gold px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
+                            <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-lime-green">
                               <Mic className="w-3 h-3" /> Keynote
                             </span>
                           )}
                           {m.formats.includes("Workshop") && (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-gold/15 text-gold px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
+                            <span className="inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wide text-navy">
                               <Users className="w-3 h-3" /> Workshop
                             </span>
                           )}
