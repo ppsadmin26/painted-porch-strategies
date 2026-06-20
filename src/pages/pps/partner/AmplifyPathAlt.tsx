@@ -708,7 +708,7 @@ export default function AmplifyPathAlt() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Progress to EMBODY</h3>
               </div>
               <ul className="space-y-2 mb-6">
-                <li className="text-body -sm text-foreground">• 6-12+ month embedded partnership</li>
+                <li className="text-body -sm text-foreground">• 6+ month embedded partnership</li>
                 <li className="text-body -sm text-foreground">• Executive advisory relationship</li>
                 <li className="text-body -sm text-foreground">• Ongoing Leadership Summits</li>
                 <li className="text-body -sm text-foreground">• Full transformation architecture</li>
