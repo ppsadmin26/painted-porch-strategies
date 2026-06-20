@@ -65,7 +65,7 @@ export default function KickTheHabit() {
           <LazyPreviewVideo
             slotKey="kick-the-habit-preview"
             fallbackVideoUrl=""
-            fallbackPosterUrl={mcKickTheHabit}
+            fallbackPosterUrl={mcKickTheHabitAsset.url}
             playButtonClassName="bg-raspberry"
             ariaLabel="Watch Kick the Habit preview"
             className="shadow-xl"
