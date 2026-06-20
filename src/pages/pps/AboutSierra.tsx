@@ -44,6 +44,15 @@ const offerings: OfferingCard[] = [
     color: "teal",
   },
   {
+    emoji: "✈️",
+    title: "From Passenger to Pilot",
+    description:
+      "Free training replay with Sierra. Simple tools to shift from auto-pilot to seizing the controls of your life and work.",
+    href: "https://onthepaintedporch.com/pilot-training",
+    external: true,
+    color: "gold",
+  },
+  {
     emoji: "🙂",
     title: "1:1 Mindset & Mindfulness Coaching",
     description:
