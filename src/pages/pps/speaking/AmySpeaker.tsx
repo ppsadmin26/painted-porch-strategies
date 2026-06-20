@@ -2,6 +2,7 @@ import { Flame } from "lucide-react";
 import amyPhoto from "@/assets/team/amy-speaking-portrait.jpg";
 import heroesAssemble from "@/assets/speaking/amy-heroes-assemble.png";
 import alicePrinciples from "@/assets/speaking/alice-principles.png.asset.json";
+import dontPanic from "@/assets/speaking/dont-panic-hitchhiker.png.asset.json";
 import goldilocksLeadership from "@/assets/speaking/amy-goldilocks-leadership.png";
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
 
@@ -76,6 +77,7 @@ const amy: SpeakerData = {
     {
       slug: "dont-panic-navigating-a-changing-world",
       title: "Don't Panic! Navigating a Changing World",
+      image: dontPanic.url,
       description:
         "Grab your towel and don't panic, because change, much like the galaxy, is vast, unpredictable, and mostly harmless. Using Douglas Adams' Hitchhiker's Guide as a lens, discover how humor, perspective, and a good guide can turn overwhelming transformation into an adventure worth taking.",
     },
