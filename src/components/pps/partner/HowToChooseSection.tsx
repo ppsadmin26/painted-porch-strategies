@@ -23,9 +23,9 @@ const choiceCards = [
     tier: TIERS.AMPLIFY,
     conditions: [
       "Your leadership team is misaligned on strategic direction",
-      "You're exploring focused transformation (not total overhaul)",
+      "You're exploring focused capability building (not total overhaul)",
       "You've completed IGNITE and want more depth",
-      "You want cohort learning with peer leaders",
+      "You want cohort learning with peer leaders to build momentum",
     ],
     cta: {
       primary: { label: "Explore AMPLIFY", href: "/partner/amplify" },
