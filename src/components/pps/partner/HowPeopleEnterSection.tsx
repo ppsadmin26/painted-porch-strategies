@@ -7,7 +7,7 @@ export function HowPeopleEnterSection() {
       <div className="container max-w-7xl mx-auto px-6">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-            Every Journey Begins with "What <span className="text-raspberry">IF</span>?"
+            Every Journey Begins with a Decision.
           </h2>
         </div>
 
