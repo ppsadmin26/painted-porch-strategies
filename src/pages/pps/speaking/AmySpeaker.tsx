@@ -59,6 +59,7 @@ const amy: SpeakerData = {
     {
       slug: "from-dysfunction-to-dynamic-teams",
       title: "From Dysfunction to Dynamic Teams",
+      image: dysfunctionToDynamic.url,
       description:
         "Turn struggling teams into high-performing powerhouses. Learn how to break through silos, rebuild trust, and create the kind of collaboration that drives extraordinary results.",
     },
