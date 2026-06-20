@@ -2,6 +2,12 @@ import { Mic } from "lucide-react";
 import robPhoto from "@/assets/team/rob-hunter.jpg";
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
 import fiveMinKeynote from "@/assets/speaking/topics/five-minute-keynote.jpg.asset.json";
+import highFidelity from "@/assets/speaking/topics/high-fidelity-communication.jpg.asset.json";
+import eightByEight from "@/assets/speaking/topics/eight-by-eight.jpg.asset.json";
+import getClear from "@/assets/speaking/topics/get-clear-be-heard.jpg.asset.json";
+import borderlessComm from "@/assets/speaking/topics/borderless-communication.jpg.asset.json";
+import onAir from "@/assets/speaking/topics/on-air-confidence.jpg.asset.json";
+import sixStyles from "@/assets/speaking/topics/six-communicator-styles.jpg.asset.json";
 
 const rob: SpeakerData = {
   name: "Rob Hunter",
