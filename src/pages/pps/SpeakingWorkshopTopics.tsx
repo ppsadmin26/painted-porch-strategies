@@ -81,6 +81,10 @@ function displayTopic(raw: string | null): string {
   return t;
 }
 
+function topicFor(key: string, rawTopic: string | null): string {
+  return TOPIC_OVERRIDES[key] ?? displayTopic(rawTopic);
+}
+
 const FACILITATOR_FULL: Record<string, string> = {
   Amy: "Amy Yackowski",
   Rob: "Rob Hunter",
