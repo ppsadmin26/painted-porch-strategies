@@ -65,6 +65,11 @@ type MergedTopic = {
 
 const UNTAGGED = "More";
 
+/** Manual topic overrides for rows whose DB topic should be remapped. */
+const TOPIC_OVERRIDES: Record<string, string> = {
+  "from passenger to pilot": "Mindset & Resilience",
+};
+
 function displayTopic(raw: string | null): string {
   const t = raw?.trim() || UNTAGGED;
   if (t === "Resilience" || t === "Wellbeing" || t === "Mindset & Resilience") return "Mindset & Resilience";
@@ -74,6 +79,10 @@ function displayTopic(raw: string | null): string {
   if (t === "Teams") return "Teams";
   if (t === "Philosophy") return "Philosophy";
   return t;
+}
+
+function topicFor(key: string, rawTopic: string | null): string {
+  return TOPIC_OVERRIDES[key] ?? displayTopic(rawTopic);
 }
 
 const FACILITATOR_FULL: Record<string, string> = {
@@ -255,7 +264,7 @@ export default function SpeakingWorkshopTopics() {
         if (isKeynote && !existing.formats.includes("Speaking")) existing.formats.push("Speaking");
         if (isWorkshop && !existing.formats.includes("Workshop")) existing.formats.push("Workshop");
         // Prefer workshop's topic tag (more detailed)
-        if (isWorkshop && r.topic) existing.topic = displayTopic(r.topic);
+        if (isWorkshop && r.topic) existing.topic = topicFor(key, r.topic);
         if (!existing.blurb && (r.description || r.blurb)) existing.blurb = (r.description || r.blurb) as string;
         if (!existing.facilitator && r.facilitator) existing.facilitator = r.facilitator;
         // Lock in canonical name if defined
@@ -266,7 +275,7 @@ export default function SpeakingWorkshopTopics() {
         key,
         baseName,
         blurb: (r.description || r.blurb || "") as string,
-        topic: displayTopic(r.topic),
+        topic: topicFor(key, r.topic),
         facilitator: r.facilitator || "",
         formats: [isKeynote ? "Speaking" : isWorkshop ? "Workshop" : "Speaking"],
         image: IMAGE_MAP[key] ?? IMAGE_MAP[rawKey],
