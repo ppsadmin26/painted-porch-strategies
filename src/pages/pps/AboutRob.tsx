@@ -248,6 +248,75 @@ export default function AboutRob() {
         </div>
       </section>
 
+      {/* ── EQUAL MATTERS ON YOUTUBE ─────────────────────────────────── */}
+      <section className="py-16 md:py-24 overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy">
+              Equal Matters on YouTube
+            </h2>
+            <p className="text-body mx-auto mt-3 max-w-xl text-foreground/60">
+              Raw takes on communication, culture, and the stories that shape how we connect.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div
+              className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory"
+              style={{ scrollbarWidth: "thin", scrollbarColor: "hsl(var(--primary) / 0.5) transparent" }}
+            >
+              {equalMattersVideos.map((video) => (
+                <a
+                  key={video.id}
+                  href={`https://www.youtube.com/watch?v=${video.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group snap-start flex-shrink-0 w-[300px] block"
+                >
+                  <div className="relative aspect-video rounded-xl overflow-hidden bg-navy/10 shadow-md">
+                    <img
+                      src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
+                      alt={video.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-raspberry/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                        <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
+                      </div>
+                    </div>
+                  </div>
+                  <h3 className="text-sm font-semibold text-navy mt-3 line-clamp-2 group-hover:text-primary transition-colors">
+                    {video.title}
+                  </h3>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="https://www.youtube.com/@EqualMatters"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-destructive px-6 py-3 font-poppins font-semibold text-white transition hover:opacity-90"
+            >
+              <Youtube className="h-5 w-5" />
+              Subscribe on YouTube
+            </a>
+            <a
+              href="https://www.youtube.com/@EqualMatters"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border-2 border-navy px-6 py-3 font-poppins font-semibold text-navy transition hover:bg-navy hover:text-white"
+            >
+              View Channel
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── QUICK LINKS ──────────────────────────────────────────────── */}
       <section className="bg-muted/50 py-16 md:py-20">
         <div className="mx-auto max-w-2xl px-6">
