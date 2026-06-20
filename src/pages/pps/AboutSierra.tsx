@@ -52,11 +52,12 @@ const offerings: OfferingCard[] = [
     color: "lime",
   },
   {
-    emoji: "⚡",
-    title: "IGNITE: Self-Led Growth",
+    emoji: "🔥",
+    title: "Burnout Recovery Resources",
     description:
-      "Masterclasses and self-paced courses designed to reignite resilience and build mindfulness habits that stick.",
-    href: "/partner/ignite",
+      "A curated collection of tools, guides, and strategies to recognize, prevent, and recover from burnout. Built for real humans juggling real life.",
+    href: "https://onthepaintedporch.com/burnout",
+    external: true,
     color: "raspberry",
   },
   {
