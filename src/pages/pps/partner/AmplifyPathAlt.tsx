@@ -677,7 +677,7 @@ export default function AmplifyPathAlt() {
               Taking Your Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t to the Next Level
             </h2>
             <p className="text-body text-foreground max-w-3xl mx-auto">
-              Most AMPLIFY partnerships reveal one of two things: your team got what you needed and you're ready to execute, or you realize you need deeper, ongoing partnership. That's exactly what EMBODY is designed for.
+              Most AMPLIFY partnerships reveal one of two things: your team got what you needed and you're moving forward, or you realize you need a deeper, ongoing partnership. That's exactly what EMBODY is designed for.
             </p>
           </div>
 
