@@ -331,7 +331,11 @@ export default function SpeakingWorkshopTopics() {
         blurb: (r.description || r.blurb || "") as string,
         topic: topicFor(key, r.topic),
         facilitators: r.facilitator ? r.facilitator.split(",").map((s) => s.trim()).filter(Boolean) : [],
-        formats: [isKeynote ? "Speaking" : isWorkshop ? "Workshop" : "Speaking"],
+        formats: [
+          ...(isKeynote ? ["Speaking" as const] : []),
+          ...(isWorkshop ? ["Workshop" as const] : []),
+          ...(!isKeynote && !isWorkshop ? ["Speaking" as const] : []),
+        ],
         // DB image_url wins; static IMAGE_MAP is the fallback for rows that
         // haven't been backfilled yet.
         image: r.image_url ?? IMAGE_MAP[key] ?? IMAGE_MAP[rawKey],
