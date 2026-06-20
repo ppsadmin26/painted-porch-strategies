@@ -640,19 +640,32 @@ export default function PathFinderOfferings() {
                   </div>
                   <div className="grid md:grid-cols-3 gap-3 items-start">
                     <div>
-                      <Label className="text-xs">Speaker</Label>
-                      <select
-                        value={valueOf(row, "facilitator") ?? ""}
-                        onChange={(e) => patch(row.id, { facilitator: e.target.value || (null as any) })}
-                        className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
-                      >
-                        <option value="">— None —</option>
-                        <option value="Amy">Amy</option>
-                        <option value="Rob">Rob</option>
-                        <option value="Sierra">Sierra</option>
-                        <option value="Painted Porch Team">Painted Porch Team</option>
-                      </select>
-                      <p className="text-[11px] text-muted-foreground mt-1">Controls which /speaking/* page this topic shows on.</p>
+                      <Label className="text-xs">Speaker(s)</Label>
+                      {(() => {
+                        const current = (valueOf(row, "facilitator") ?? "") as string;
+                        const selected = current.split(",").map((s) => s.trim()).filter(Boolean);
+                        const toggle = (name: string) => {
+                          const next = selected.includes(name)
+                            ? selected.filter((s) => s !== name)
+                            : [...selected, name];
+                          patch(row.id, { facilitator: (next.join(", ") || (null as any)) });
+                        };
+                        return (
+                          <div className="flex flex-wrap gap-2">
+                            {["Amy", "Rob", "Sierra", "Painted Porch Team"].map((name) => (
+                              <label key={name} className="flex items-center gap-1.5 rounded-md border border-input bg-background px-2 py-1.5 text-xs cursor-pointer">
+                                <input
+                                  type="checkbox"
+                                  checked={selected.includes(name)}
+                                  onChange={() => toggle(name)}
+                                />
+                                {name}
+                              </label>
+                            ))}
+                          </div>
+                        );
+                      })()}
+                      <p className="text-[11px] text-muted-foreground mt-1">Select one or more. Controls which /speaking/* pages this topic shows on.</p>
                     </div>
                     <div className="md:col-span-2">
                       <Label className="text-xs">Image URL (topic card image)</Label>

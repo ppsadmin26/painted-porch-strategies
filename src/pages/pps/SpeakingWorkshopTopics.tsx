@@ -349,7 +349,11 @@ export default function SpeakingWorkshopTopics() {
         }
         // Prefer DB image_url; fall back to whatever's already set.
         if (!existing.image && r.image_url) existing.image = r.image_url;
-        if (r.facilitator && !existing.facilitators.includes(r.facilitator)) existing.facilitators.push(r.facilitator);
+        if (r.facilitator) {
+          for (const f of r.facilitator.split(",").map((s) => s.trim()).filter(Boolean)) {
+            if (!existing.facilitators.includes(f)) existing.facilitators.push(f);
+          }
+        }
         // Lock in canonical name if defined
         if (CANONICAL_NAME[key]) existing.baseName = CANONICAL_NAME[key];
         continue;
@@ -359,7 +363,7 @@ export default function SpeakingWorkshopTopics() {
         baseName,
         blurb: (r.description || r.blurb || "") as string,
         topic: topicFor(key, r.topic),
-        facilitators: r.facilitator ? [r.facilitator] : [],
+        facilitators: r.facilitator ? r.facilitator.split(",").map((s) => s.trim()).filter(Boolean) : [],
         formats: [isKeynote ? "Speaking" : isWorkshop ? "Workshop" : "Speaking"],
         // DB image_url wins; static IMAGE_MAP is the fallback for rows that
         // haven't been backfilled yet.
