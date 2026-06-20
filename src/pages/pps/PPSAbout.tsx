@@ -342,7 +342,7 @@ export default function PPSAbout() {
               our P.A.T.H. methodology
             </Link>
             , backed by{" "}
-            <Link to="/about/approach#certifications" className="font-semibold italic text-primary hover:underline">
+            <Link to="/about/approach#certifications" className="font-semibold text-primary hover:underline">
               our certifications
             </Link>
             .
