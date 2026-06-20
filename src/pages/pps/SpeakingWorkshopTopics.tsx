@@ -58,7 +58,7 @@ type MergedTopic = {
   baseName: string;
   blurb: string;
   topic: string;
-  facilitator: string;
+  facilitators: string[];
   formats: ("Speaking" | "Workshop")[];
   image?: string;
 };
@@ -68,6 +68,7 @@ const UNTAGGED = "More";
 /** Manual topic overrides for rows whose DB topic should be remapped. */
 const TOPIC_OVERRIDES: Record<string, string> = {
   "from passenger to pilot": "Mindset & Resilience",
+  "cultivating change resilience": "Change & Innovation",
 };
 
 function displayTopic(raw: string | null): string {
@@ -266,7 +267,7 @@ export default function SpeakingWorkshopTopics() {
         // Prefer workshop's topic tag (more detailed)
         if (isWorkshop && r.topic) existing.topic = topicFor(key, r.topic);
         if (!existing.blurb && (r.description || r.blurb)) existing.blurb = (r.description || r.blurb) as string;
-        if (!existing.facilitator && r.facilitator) existing.facilitator = r.facilitator;
+        if (r.facilitator && !existing.facilitators.includes(r.facilitator)) existing.facilitators.push(r.facilitator);
         // Lock in canonical name if defined
         if (CANONICAL_NAME[key]) existing.baseName = CANONICAL_NAME[key];
         continue;
@@ -276,7 +277,7 @@ export default function SpeakingWorkshopTopics() {
         baseName,
         blurb: (r.description || r.blurb || "") as string,
         topic: topicFor(key, r.topic),
-        facilitator: r.facilitator || "",
+        facilitators: r.facilitator ? [r.facilitator] : [],
         formats: [isKeynote ? "Speaking" : isWorkshop ? "Workshop" : "Speaking"],
         image: IMAGE_MAP[key] ?? IMAGE_MAP[rawKey],
       });
@@ -299,14 +300,14 @@ export default function SpeakingWorkshopTopics() {
 
   const speakers = useMemo(() => {
     const set = new Set<string>();
-    merged.forEach((m) => m.facilitator && set.add(m.facilitator));
+    merged.forEach((m) => m.facilitators.forEach((f) => f && set.add(f)));
     return Array.from(set).sort();
   }, [merged]);
 
   const visible = useMemo(() => {
     return merged.filter((m) => {
       if (topicFilter !== "all" && m.topic !== topicFilter) return false;
-      if (speakerFilter !== "all" && m.facilitator !== speakerFilter) return false;
+      if (speakerFilter !== "all" && !m.facilitators.includes(speakerFilter)) return false;
       return true;
     });
   }, [merged, topicFilter, speakerFilter]);
@@ -454,10 +455,10 @@ export default function SpeakingWorkshopTopics() {
                           )}
                         </div>
                         <h4 className="font-poppins font-bold text-navy text-lg mb-1.5 leading-snug">{m.baseName}</h4>
-                        {m.facilitator && (
+                        {m.facilitators.length > 0 && (
                           <div className="text-caption text-foreground/60 mb-2 flex items-center gap-1.5">
-                            <Flame className="w-3.5 h-3.5 text-primary" />
-                            {FACILITATOR_FULL[m.facilitator] ?? m.facilitator}
+                            <Flame className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                            {m.facilitators.map((f) => FACILITATOR_FULL[f] ?? f).join(" & ")}
                           </div>
                         )}
                         {m.blurb && <p className="text-body-sm text-foreground/85 mb-4 flex-1">{m.blurb}</p>}
