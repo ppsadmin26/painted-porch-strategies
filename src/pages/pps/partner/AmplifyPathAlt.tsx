@@ -47,11 +47,11 @@ const leaderSignals = [
   },
   {
     title: "Need for Structure",
-    description: "You're ready for structured, guided development that goes beyond self-study or isolated learning.",
+    description: "You're seeking structured, guided development that goes beyond self-study or isolated learning.",
   },
   {
     title: "Transformation Mindset",
-    description: "You want to become a transformation architect, someone who can design and lead change with confidence, not just react to it.",
+    description: "You want to become a transformation architect - someone who can design and lead change with confidence, not just react to it.",
   },
 ];
 
@@ -267,7 +267,7 @@ export default function AmplifyPathAlt() {
                 <User className="w-8 h-8 text-teal" />
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-teal">Individual Leaders</h3>
               </div>
-              <p className="text-body -sm font-semibold text-teal mb-4">4 Signals You're Ready for AMPLIFY Leadership Labs:</p>
+              <p className="text-body -sm font-semibold text-teal mb-4">4 Signals You Need AMPLIFY Leadership Labs:</p>
               <div className="space-y-4">
                 {leaderSignals.map((signal, index) => (
                   <div key={index} className="flex items-start gap-3">
