@@ -108,6 +108,8 @@ const KEY_ALIASES: Record<string, string> = {
     "speaking with style: the 6 communicator styles for influence & impact",
   "radical mindfulness": "radically mindful leadership",
   "the alice principles: down the rabbit hole of transformation": "the alice principles",
+  "your 5-minute keynote": "5-minute keynote",
+  "the 5-minute keynote": "5-minute keynote",
 };
 
 /** Preferred display name for canonical keys (overrides whichever row was seen first). */
@@ -120,6 +122,7 @@ const CANONICAL_NAME: Record<string, string> = {
     "Speaking with Style: The 6 Communicator Styles",
   "radically mindful leadership": "Radically Mindful Leadership",
   "the alice principles": "The Alice Principles",
+  "5-minute keynote": "The 5-Minute Keynote",
 };
 
 function canonicalKey(name: string): string {
