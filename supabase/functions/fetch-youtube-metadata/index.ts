@@ -189,6 +189,31 @@ serve(async (req) => {
       });
     }
 
+    // Action: list recent video URLs from a channel handle or URL
+    if (action === "channel_videos") {
+      const { channel_url, handle, max } = body;
+      let resolvedHandle: string | null = handle || null;
+      if (!resolvedHandle && channel_url) resolvedHandle = extractChannelHandle(channel_url);
+      if (!resolvedHandle) {
+        return new Response(JSON.stringify({ error: "Provide a channel URL like https://www.youtube.com/@handle" }), {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      const channelId = await getChannelIdFromHandle(apiKey, resolvedHandle);
+      if (!channelId) {
+        return new Response(JSON.stringify({ error: `Could not resolve channel @${resolvedHandle}` }), {
+          status: 404,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      const ids = await getRecentVideoIdsFromChannel(apiKey, channelId, Math.min(Math.max(max || 25, 1), 100));
+      const urls = ids.map((id) => `https://www.youtube.com/watch?v=${id}`);
+      return new Response(JSON.stringify({ channel_id: channelId, handle: resolvedHandle, video_urls: urls }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     // Default action: fetch video metadata
     const { url } = body;
     if (!url || typeof url !== "string") {
