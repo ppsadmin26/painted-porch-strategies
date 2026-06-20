@@ -214,11 +214,20 @@ export default function OurApproach() {
               <p className="text-body mb-0">About culture.</p>
               <p className="text-body mb-0">About what people understand, believe, and are capable of doing.</p>
             </div>
-            <p className="text-body mb-8">Our work surfaces those assumptions before they become expensive realities. Because what appears during implementation often begins much earlier.</p>
+            <p className="text-body mb-6">
+              Our work surfaces those assumptions before they become expensive realities. Because the quality of the execution is determined long before the execution begins.
+            </p>
+            <p className="text-body mb-2">The most important question is rarely:</p>
+            <p className="text-body italic mb-6">"How do we make this work?"</p>
+            <p className="text-body mb-2">They're more often:</p>
+            <div className="space-y-1 mb-8 italic">
+              <p className="text-body mb-0">"Is this the right direction?"</p>
+              <p className="text-body mb-0">"What assumptions are we making?"</p>
+              <p className="text-body mb-0">"What are we overlooking or underweighting?"</p>
+              <p className="text-body mb-0">"What will this require of our people, leaders, systems, and culture?"</p>
+            </div>
             <div className="space-y-0">
-              <p className="text-body mb-0">This is the work that preceeds the rollout.</p>
-              <p className="text-body mb-0">The thinking beneath the plan.</p>
-              <p className="text-body mb-0">The examination that influences everything that follows.</p>
+              <p className="text-body mb-0">This is the work that precedes the rollout.&nbsp;The thinking beneath the plan.&nbsp;The examination that influences everything that follows.</p>
             </div>
           </div>
           <p className="text-body text-foreground">
