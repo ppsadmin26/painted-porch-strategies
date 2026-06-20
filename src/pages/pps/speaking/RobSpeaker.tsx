@@ -36,7 +36,7 @@ const rob: SpeakerData = {
     },
     {
       slug: "8-8",
-      title: "8:8",
+      title: "8:8 — Capturing & Keeping Attention",
       image: eightByEight.url,
       description:
         "In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
