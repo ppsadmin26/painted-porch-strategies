@@ -191,6 +191,24 @@ const TOPIC_ACCENT: Record<string, string> = {
   [UNTAGGED]: "from-navy to-charcoal",
 };
 
+// Match blog/insights category color scheme so topics stay visually consistent.
+const TOPIC_BADGE: Record<string, string> = {
+  "Leadership & EQ": "bg-primary/10 text-primary",
+  "Change & Innovation": "bg-strategic/10 text-strategic",
+  "Communication": "bg-lime/10 text-lime",
+  "Mindset & Resilience": "bg-raspberry/10 text-raspberry",
+  "Teams": "bg-navy/10 text-navy",
+  "Philosophy": "bg-purple/10 text-purple",
+  [UNTAGGED]: "bg-navy/10 text-navy",
+};
+
+// Topics that should always appear as BOTH a keynote and a workshop, even if
+// the database only has one row for them.
+const ALWAYS_BOTH = new Set<string>([
+  "driving change: the 3 shifts",
+]);
+
+
 export default function SpeakingWorkshopTopics() {
   useDocumentSeo({
     title: "Speaking & Workshop Topics | Painted Porch Strategies",
@@ -251,6 +269,13 @@ export default function SpeakingWorkshopTopics() {
         formats: [isKeynote ? "Speaking" : isWorkshop ? "Workshop" : "Speaking"],
         image: IMAGE_MAP[key] ?? IMAGE_MAP[rawKey],
       });
+    }
+    // Force "both formats" for designated topics
+    for (const m of map.values()) {
+      if (ALWAYS_BOTH.has(m.key)) {
+        if (!m.formats.includes("Speaking")) m.formats.push("Speaking");
+        if (!m.formats.includes("Workshop")) m.formats.push("Workshop");
+      }
     }
     return Array.from(map.values()).sort((a, b) => a.baseName.localeCompare(b.baseName));
   }, [rows]);
@@ -400,17 +425,19 @@ export default function SpeakingWorkshopTopics() {
                         )}
                       </div>
                       <div className="p-5 flex-1 flex flex-col">
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <span className="inline-flex items-center rounded-full bg-teal/10 text-teal px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
+                        <div className="mb-2">
+                          <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${TOPIC_BADGE[m.topic] ?? TOPIC_BADGE[UNTAGGED]}`}>
                             {m.topic}
                           </span>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
                           {m.formats.includes("Speaking") && (
                             <span className="inline-flex items-center gap-1 rounded-full bg-gold/15 text-gold px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
-                              <Mic className="w-3 h-3" /> Speaking
+                              <Mic className="w-3 h-3" /> Keynote
                             </span>
                           )}
                           {m.formats.includes("Workshop") && (
-                            <span className="inline-flex items-center gap-1 rounded-full bg-purple/15 text-purple px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
+                            <span className="inline-flex items-center gap-1 rounded-full bg-gold/15 text-gold px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide">
                               <Users className="w-3 h-3" /> Workshop
                             </span>
                           )}
@@ -424,7 +451,7 @@ export default function SpeakingWorkshopTopics() {
                         )}
                         {m.blurb && <p className="text-body-sm text-foreground/85 mb-4 flex-1">{m.blurb}</p>}
                         <Link
-                          to={`/contact?interest=speaking&message=${encodeURIComponent(`I'm interested in "${m.baseName}" as a ${m.formats.length === 2 ? "keynote or workshop" : m.formats[0].toLowerCase()}.`)}`}
+                          to={`/contact?interest=speaking&message=${encodeURIComponent(`I'm interested in "${m.baseName}" as a ${m.formats.length === 2 ? "keynote or workshop" : m.formats[0] === "Speaking" ? "keynote" : "workshop"}.`)}`}
                           className="mt-auto"
                         >
                           <Button className="bg-teal text-white hover:bg-teal/90 w-full h-10 text-sm">
