@@ -169,16 +169,14 @@ export default function BlueDoorPurchase() {
                 Painted Porch Strategies was created to model the Stoic principles of <em>Reason, Logic, Purpose, and Virtue</em>. Since we intend to live by the Stoic philosopher Seneca's advice of "<em>works not words</em>", we believe that in order <strong>to do <em>well</em></strong>, we must also <strong>do <em>good</em></strong>. That's why <span className="font-bold text-lime">5% of your purchase will be donated to charity</span>.
               </p>
               <p className="text-body text-foreground -sm mt-3">
-                Visit our Doing Good ShIFt page to see all the charities we've supported over the years.
+                Visit our Impact page to see all of the good sh<span className="text-lime font-bold">IF</span>t we've been doing (because of you!) through the charities that have been supported over the years.
               </p>
-              <a 
-                href="https://onthepaintedporch.com/doing-good-shift" 
-                target="_blank" 
-                rel="noopener noreferrer"
+              <Link
+                to="/about/impact#do-good-shift"
                 className="inline-block mt-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors"
               >
-                See our Doing Good ShIFt page →
-              </a>
+                See our Impact page →
+              </Link>
             </div>
           </div>
 
