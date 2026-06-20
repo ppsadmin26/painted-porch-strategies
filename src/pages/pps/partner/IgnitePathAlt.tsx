@@ -34,7 +34,7 @@ const archetypes = [
     icon: Compass,
     traits: [
       "You're curious about Phase Zero concepts",
-      "You want to test before full commitment",
+      "You want to test the frameworks before a larger commitment",
       "You're asking \"Could this work for me?\"",
       "You prefer self-paced learning",
     ],
@@ -48,10 +48,10 @@ const archetypes = [
     title: "The Individual Innovator",
     icon: Lightbulb,
     traits: [
-      "You're investing in your own development",
+      "You're investing in your own leadership development",
       "Your organization doesn't sponsor training",
       "You want to build capacity independently",
-      "You're ready to architect your own transformation",
+      "You're stepping into strategic authorship",
     ],
     color: "bg-primary/10",
     iconColor: "text-primary",
@@ -63,9 +63,9 @@ const archetypes = [
     title: "The Strategic Seeker",
     icon: Target,
     traits: [
-      "You want to test with small group first",
+      "You want to test the concepts with a small group first",
       "Your organization is exploring options",
-      "You need proof-of-concept before larger investment",
+      "You need proof-of-concept before a larger investment",
       "You're building the case for broader adoption",
     ],
     color: "bg-lime/10",
@@ -81,7 +81,7 @@ const archetypes = [
       "You've tried tactical solutions that didn't stick",
       "You recognize you need strategic capacity first",
       "You want frameworks, not just tips",
-      "You're ready for Phase Zero architecture",
+      "You're ready to build Phase Zero architecture",
     ],
     color: "bg-strategic/10",
     iconColor: "text-strategic",
@@ -169,7 +169,7 @@ export default function IgnitePathAlt() {
           
           <div className="text-center">
             <p className="text-body text-foreground mb-6">
-              <strong>If any of these spark a "Sh<span className="text-gold font-bold">IF</span>t Yeah!", then stepping onto the IGNITE P.A.T.H.way is just right for you.</strong>
+              <strong>If any of these spark a "Sh<span className="text-gold font-bold">IF</span>t Yeah!", then stepping onto the IGNITE P.A.T.H.way makes the most sense for you right now.</strong>
             </p>
             <p className="text-body text-foreground mb-8 max-w-2xl mx-auto">
               Take our free P.A.T.H.finder quiz to discover which programs fit your specific development priorities.
