@@ -46,7 +46,7 @@ const amy: SpeakerData = {
     {
       slug: "shift-happens-be-ready",
       title: "ShIFt Happens. Be Ready.",
-      image: colorfulPath,
+      image: shiftHappens.url,
       description:
         "Using our P.A.T.H.™ method, discover a proven roadmap to navigate change that's on time, on budget, and on purpose.",
     },
