@@ -98,6 +98,39 @@ function cleanName(name: string): string {
     .trim();
 }
 
+/** Aliases that collapse keynote/workshop variants with different wording into one card. */
+const KEY_ALIASES: Record<string, string> = {
+  "8:8 — capturing & keeping attention": "8:8",
+  "ai, ei, oh!": "ai, ei, oh! guiding change and ai adoption",
+  "get c.l.e.a.r. & be heard": "get c.l.e.a.r., be heard",
+  "heroes assemble!": "heroes assemble",
+  "speaking with style — 6 communicator styles":
+    "speaking with style: the 6 communicator styles for influence & impact",
+  "radical mindfulness": "radically mindful leadership",
+};
+
+/** Preferred display name for canonical keys (overrides whichever row was seen first). */
+const CANONICAL_NAME: Record<string, string> = {
+  "8:8": "8:8 — Capturing & Keeping Attention",
+  "ai, ei, oh! guiding change and ai adoption": "AI, EI, Oh! Guiding Change & AI Adoption",
+  "get c.l.e.a.r., be heard": "Get C.L.E.A.R., Be Heard",
+  "heroes assemble": "Heroes Assemble",
+  "speaking with style: the 6 communicator styles for influence & impact":
+    "Speaking with Style: The 6 Communicator Styles",
+  "radically mindful leadership": "Radically Mindful Leadership",
+};
+
+function canonicalKey(name: string): string {
+  const k = normalizeKey(name);
+  return KEY_ALIASES[k] ?? k;
+}
+
+/** Topics we never want to show on this page. */
+const EXCLUDE_KEYS = new Set<string>([
+  "architect change (strategic design intensive)",
+  "architect change",
+]);
+
 // Image map keyed by normalized base name
 const IMAGE_MAP: Record<string, string> = {
   "ai, ei, oh! guiding change and ai adoption": aiEiOh.url,
