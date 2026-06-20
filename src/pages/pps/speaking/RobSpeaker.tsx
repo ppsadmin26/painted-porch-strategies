@@ -44,6 +44,7 @@ const rob: SpeakerData = {
     {
       slug: "the-power-of-story",
       title: "The Power of Story",
+      image: powerOfStory.url,
       description:
         "Our brains are wired for stories. Learn how and when to use narrative to persuade, connect, and be unforgettable.",
     },
