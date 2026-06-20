@@ -50,10 +50,29 @@ export function BulkYouTubeImportDialog({ onImported }: BulkYouTubeImportDialogP
       return;
     }
 
+    // Expand any channel URLs (e.g. https://www.youtube.com/@handle) into individual video URLs
+    const expanded: string[] = [];
+    for (const line of lines) {
+      const isChannel = /youtube\.com\/@[a-zA-Z0-9_.-]+/.test(line) && !extractVideoId(line);
+      if (isChannel) {
+        try {
+          const { data, error } = await supabase.functions.invoke("fetch-youtube-metadata", {
+            body: { action: "channel_videos", channel_url: line, max: 25 },
+          });
+          if (error || data?.error) throw new Error(data?.error || error?.message || "Channel fetch failed");
+          expanded.push(...(data.video_urls || []));
+        } catch (e: any) {
+          toast({ title: `Channel expand failed: ${line}`, description: e.message, variant: "destructive" });
+        }
+      } else {
+        expanded.push(line);
+      }
+    }
+
     // Deduplicate by video ID
     const seen = new Set<string>();
     const uniqueLines: string[] = [];
-    for (const line of lines) {
+    for (const line of expanded) {
       const vid = extractVideoId(line);
       if (!vid) {
         uniqueLines.push(line); // will fail gracefully
