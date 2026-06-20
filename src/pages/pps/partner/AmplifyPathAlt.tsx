@@ -608,7 +608,7 @@ export default function AmplifyPathAlt() {
                 </li>
                 <li className="text-body flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-lime flex-shrink-0 mt-0.5" />
-                  <span className="text-body-sm text-foreground">Your team needs more than single workshop</span>
+                  <span className="text-body-sm text-foreground">Your team needs more than a single workshop</span>
                 </li>
               </ul>
               <Button asChild className="w-full mt-6 h-auto min-h-11 whitespace-normal text-center px-3 bg-lime text-white border-2 border-lime hover:bg-white hover:text-lime transition-colors">
