@@ -321,7 +321,7 @@ export default function IgnitePathAlt() {
               From Spark to Momentum
             </h2>
             <p className="text-body text-foreground max-w-2xl mx-auto">
-              IGNITE sparks your capacity to sh<span className="text-gold font-bold">IF</span>t. When you're ready for more depth or team engagement, here's where to go next.
+              IGNITE sparks your capacity to sh<span className="text-gold font-bold">IF</span>t. When you need more depth or team engagement, here's where to go next.
             </p>
           </div>
           
@@ -378,7 +378,7 @@ export default function IgnitePathAlt() {
                 </li>
                 <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-strategic" />
-                  Custom workshops for your team
+                  Workshops for your team
                 </li>
                 <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-strategic" />
@@ -386,7 +386,7 @@ export default function IgnitePathAlt() {
                 </li>
                 <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-strategic" />
-                  Deeper Phase Zero exploration
+                  Build collective capability and momentum
                 </li>
               </ul>
               <p className="text-body text-muted-foreground italic mb-4">
@@ -407,7 +407,7 @@ export default function IgnitePathAlt() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-bluedoor">Open the Door to Strategic Shift</h3>
               </div>
               <p className="text-body -sm font-medium text-foreground/80 mb-4">
-                Organizational Clarity Before Implementation Commitment
+                Organizational Clarity Before Commitment
               </p>
               <ul className="space-y-2 mb-6">
                 <li className="text-body flex items-center gap-2 -sm text-foreground">
@@ -416,7 +416,7 @@ export default function IgnitePathAlt() {
                 </li>
                 <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-bluedoor" />
-                  Identify shifts you're built to lead
+                  Identify shifts your architecture can carry
                 </li>
                 <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-bluedoor" />
@@ -424,7 +424,7 @@ export default function IgnitePathAlt() {
                 </li>
                 <li className="text-body flex items-center gap-2 -sm text-foreground">
                   <div className="w-1.5 h-1.5 rounded-full bg-bluedoor" />
-                  Determines AMPLIFY or EMBODY fit
+                  Reveals your current organizational reality
                 </li>
               </ul>
               <p className="text-body text-muted-foreground italic mb-4">
