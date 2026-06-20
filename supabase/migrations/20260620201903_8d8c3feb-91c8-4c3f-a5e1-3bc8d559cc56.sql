@@ -1,0 +1,1 @@
+UPDATE path_finder_offerings SET image_url = '/__l5e/assets-v1/18308225-871e-48eb-8410-c8223a77ed62/kick-the-habit.jpg' WHERE offering_key = 'kickTheHabit';
