@@ -31,7 +31,7 @@ const rob: SpeakerData = {
       title: "High-Fidelity Communication",
       image: highFidelity.url,
       description:
-        "The way you speak your thoughts is your brand. Learn the three pillars of clear communication: preparation, conciseness, and attentiveness.",
+        "Learn how to dial in your message frequency, eliminate static, and broadcast a clear signal that resonates.",
     },
     {
       slug: "8-8",
