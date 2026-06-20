@@ -51,8 +51,18 @@ const offerings: OfferingCard[] = [
     title: "1:1 Get C.L.E.A.R. Coaching",
     description:
       "Personal coaching sessions to master your messaging, presence, and delivery, from boardrooms to breakouts.",
-    href: "/contact?scope=Yourself&interest=1on1-advisory&message=I'm interested in 1:1 coaching with Rob.",
+    href: "https://robhunter.me/whiteboard",
+    external: true,
     color: "lime",
+  },
+  {
+    emoji: "📼",
+    title: "Cassette Tape Stories",
+    description:
+      "A curated collection of stories, lessons, and moments captured on tape — raw, real, and ready to replay.",
+    href: "https://robhunter.me/cassette-tape-stories",
+    external: true,
+    color: "purple",
   },
   {
     emoji: "🚀",
