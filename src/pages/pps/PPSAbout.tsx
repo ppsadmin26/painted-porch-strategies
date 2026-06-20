@@ -208,7 +208,7 @@ export default function PPSAbout() {
       <PhilosophyApproachSection showEncapsulationCard={false} />
 
       {/* Transformation Partners Intro */}
-      <section className="pt-16 md:pt-20 pb-8 md:pb-10 bg-white">
+      <section className="pt-16 md:pt-20 pb-8 md:pb-10 bg-muted/30">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <Eyebrow variant="plain" tone="teal" as="p">
             Meet the Team
