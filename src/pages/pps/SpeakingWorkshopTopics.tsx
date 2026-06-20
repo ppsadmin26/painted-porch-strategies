@@ -228,7 +228,7 @@ const TOPIC_BADGE: Record<string, string> = {
   "Change & Innovation": "bg-strategic/10 text-strategic",
   "Communication": "bg-lime/10 text-lime",
   "Mindset & Resilience": "bg-raspberry/10 text-raspberry",
-  "Teams": "bg-navy/10 text-navy",
+  "Team Dynamics": "bg-navy/10 text-navy",
   "Philosophy": "bg-purple/10 text-purple",
   [UNTAGGED]: "bg-navy/10 text-navy",
 };
