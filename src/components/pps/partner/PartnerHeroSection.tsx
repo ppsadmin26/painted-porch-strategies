@@ -65,13 +65,13 @@ export function PartnerHeroSection() {
                 Whether you're exploring change for yourself, leading a team through uncertainty, or shaping the future of an entire organization, where you begin matters.
               </p>
               <p data-body-allow className="text-lead mb-4">
-                The challenge isn't finding another framework, course, workshop, or advisor.&nbsp;It's identifying the next step that makes the most sense for where you are today.
+                The challenge isn't finding another framework, course, workshop, or advisor.&nbsp;It's identifying the next step that aligns with your current reality.
               </p>
               <p data-body-allow className="text-lead mb-4">
-                Our P.A.T.H.ways help you identify the right starting point.
+                Our P.A.T.H.ways provide that direction.
               </p>
               <p data-body-allow className="text-lead text-white/80 italic">
-                Your next step isn't determined by your title. It's determined by where you are and what matters most right now.
+                Your next step isn't determined by your title. It's determined by where you are and what requires your focus right now.
               </p>
             </div>
 
