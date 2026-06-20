@@ -249,10 +249,27 @@ export default function SpeakingWorkshopTopics() {
     ogImage: speakingHero,
   });
 
+  const [searchParams, setSearchParams] = useSearchParams();
   const [rows, setRows] = useState<Row[]>([]);
   const [topicFilter, setTopicFilter] = useState<string>("all");
   const [speakerFilter, setSpeakerFilter] = useState<string>("all");
+  const [extraSpeakers, setExtraSpeakers] = useState<string[]>([]);
   const { isAdmin } = useUserRole();
+
+  // Hydrate filters from URL (?speakers=Amy,Painted Porch Team or ?speaker=Amy)
+  useEffect(() => {
+    const raw = searchParams.get("speakers") ?? searchParams.get("speaker");
+    if (!raw) return;
+    const list = raw.split(",").map((s) => s.trim()).filter(Boolean);
+    if (list.length === 1) {
+      setSpeakerFilter(list[0]);
+      setExtraSpeakers([]);
+    } else if (list.length > 1) {
+      setSpeakerFilter(list[0]);
+      setExtraSpeakers(list.slice(1));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
   useEffect(() => {
