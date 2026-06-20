@@ -2,6 +2,12 @@ import { Mic } from "lucide-react";
 import robPhoto from "@/assets/team/rob-hunter.jpg";
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
 import fiveMinKeynote from "@/assets/speaking/topics/five-minute-keynote.jpg.asset.json";
+import highFidelity from "@/assets/speaking/topics/high-fidelity-communication.jpg.asset.json";
+import eightByEight from "@/assets/speaking/topics/eight-by-eight.jpg.asset.json";
+import getClear from "@/assets/speaking/topics/get-clear-be-heard.jpg.asset.json";
+import borderlessComm from "@/assets/speaking/topics/borderless-communication.jpg.asset.json";
+import onAir from "@/assets/speaking/topics/on-air-confidence.jpg.asset.json";
+import sixStyles from "@/assets/speaking/topics/six-communicator-styles.jpg.asset.json";
 
 const rob: SpeakerData = {
   name: "Rob Hunter",
@@ -22,12 +28,14 @@ const rob: SpeakerData = {
     {
       slug: "high-fidelity-communication",
       title: "High-Fidelity Communication",
+      image: highFidelity.url,
       description:
         "The way you speak your thoughts is your brand. Learn the three pillars of clear communication: preparation, conciseness, and attentiveness.",
     },
     {
       slug: "8-8",
       title: "8:8",
+      image: eightByEight.url,
       description:
         "Capturing & Keeping Attention in a Distracted World. In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
     },
@@ -40,18 +48,21 @@ const rob: SpeakerData = {
     {
       slug: "get-clear-be-heard",
       title: "Get C.L.E.A.R. & Be Heard",
+      image: getClear.url,
       description:
         "Clarity. Language. Energy. Attention. Relevance. Master this framework to simplify your message and boost team engagement and retention.",
     },
     {
       slug: "borderless-communication",
       title: "Borderless Communication",
+      image: borderlessComm.url,
       description:
         "Great leaders don't just talk, they communicate with intention. Learn how to create a culture of ownership and follow-through.",
     },
     {
       slug: "on-air-ready-confidence",
       title: "On-Air Ready Confidence",
+      image: onAir.url,
       description:
         "Tame the nerves and take the mic. From boardrooms to breakouts, learn how to show up prepared, polished, and powerful, every time you speak.",
     },
@@ -65,6 +76,7 @@ const rob: SpeakerData = {
     {
       slug: "speaking-with-style-the-6-communicator-styles-for-influence-impact",
       title: "Speaking with Style: The 6 Communicator Styles for Influence & Impact",
+      image: sixStyles.url,
       description:
         "There are six distinct communicator styles, and knowing yours changes everything. Discover your natural style and learn to flex across all six to connect with any audience.",
     },

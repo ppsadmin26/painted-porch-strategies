@@ -195,12 +195,70 @@ const IMAGE_MAP: Record<string, string> = {
   "the 5-minute keynote": fiveMinKeynote.url,
 };
 
-/** Manual blurb overrides keyed by canonical key. Wins over DB merge. */
+/**
+ * Manual blurb overrides keyed by canonical key. Wins over DB merge.
+ * Source of truth = the description used on the speaker / workshop page itself.
+ * Keep in sync with src/pages/pps/speaking/{Amy,Rob,Sierra}Speaker.tsx and
+ * src/pages/pps/partner/amplify/AmplifyWorkshops.tsx.
+ */
 const BLURB_OVERRIDES: Record<string, string> = {
+  // ── Amy (Speaker page) ──
+  "heroes assemble":
+    "Unite your team through shared purpose, candor, and trust. Learn how to build stronger dynamics by fostering healthy conflict and innovative thinking.",
+  "lead at the speed of change":
+    "Change is inevitable, chaos isn't. Learn how to lead adaptively, align around what matters most, and keep moving forward when the ground shifts beneath you.",
+  "shift happens. be ready.":
+    "Using our P.A.T.H.™ method, discover a proven roadmap to navigate change that's on time, on budget, and on purpose.",
+  "goldilocks leadership":
+    "Is your leadership style \"too hot\" or \"too cold\"? Find the emotional intelligence sweet spot that turns you into a \"just-right\" transformational leader.",
+  "stoicism in the workplace":
+    "Discover how ancient Stoic principles can transform modern leadership. Learn to focus on what you can control, build resilience, and lead with clarity and purpose, even when everything around you is shifting.",
+  "from dysfunction to dynamic teams":
+    "Turn struggling teams into high-performing powerhouses. Learn how to break through silos, rebuild trust, and create the kind of collaboration that drives extraordinary results.",
+  "ai, ei, oh! guiding change and ai adoption":
+    "AI is here, but your people aren't ready. Discover how emotional intelligence is the missing link to successful AI adoption, and learn to lead your team through tech-driven change without leaving anyone behind.",
   "the alice principles":
     "What can Alice's adventures teach us about navigating organizational change? Explore how curiosity, adaptability, and questioning the status quo, inspired by Lewis Carroll's timeless tale, can transform the way your team approaches uncertainty and growth.",
+  "don't panic! navigating a changing world":
+    "Grab your towel and don't panic, because change, much like the galaxy, is vast, unpredictable, and mostly harmless. Using Douglas Adams' Hitchhiker's Guide as a lens, discover how humor, perspective, and a good guide can turn overwhelming transformation into an adventure worth taking.",
+
+  // ── Rob (Speaker page) ──
+  "high-fidelity communication":
+    "The way you speak your thoughts is your brand. Learn the three pillars of clear communication: preparation, conciseness, and attentiveness.",
+  "8:8":
+    "Capturing & Keeping Attention in a Distracted World. In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
+  "the power of story":
+    "Our brains are wired for stories. Learn how and when to use narrative to persuade, connect, and be unforgettable.",
+  "get c.l.e.a.r., be heard":
+    "Clarity. Language. Energy. Attention. Relevance. Master this framework to simplify your message and boost team engagement and retention.",
+  "borderless communication":
+    "Great leaders don't just talk, they communicate with intention. Learn how to create a culture of ownership and follow-through.",
+  "on-air ready confidence":
+    "Tame the nerves and take the mic. From boardrooms to breakouts, learn how to show up prepared, polished, and powerful, every time you speak.",
   "5-minute keynote":
     "Every leader needs a signature message they can deliver at a moment's notice. Learn how to craft and deliver a powerful 5-minute keynote that leaves a lasting impression.",
+  "speaking with style: the 6 communicator styles for influence & impact":
+    "There are six distinct communicator styles, and knowing yours changes everything. Discover your natural style and learn to flex across all six to connect with any audience.",
+
+  // ── Sierra (Speaker page) ──
+  "from passenger to pilot":
+    "Tough times call for inner strength. Discover how to bounce back from challenges and prevent burnout using simple, science-backed resilience tools.",
+  "move, shake, innovate":
+    "Movement sparks creativity and connection. Explore how physical motion supports innovation, problem-solving, and present-moment awareness.",
+  "finding joy at work":
+    "Work doesn't have to feel like a grind. Learn how to infuse your day with purpose, presence, and a little play, even in high-pressure environments.",
+  "reigniting resilience":
+    "When the tank is empty, resilience is the fuel. Learn a framework to simplify your energy management and boost team engagement and retention.",
+  "radically mindful leadership":
+    "Practical mindfulness techniques for executives who don't have time for mindfulness. Lead with calm, clarity, and intentional presence.",
+
+  // ── AMPLIFY Workshops (Leadership & Team Development) ──
+  "create extraordinary teams":
+    "Why most team-building fails, and what high-performing teams actually do differently. Move beyond trust falls to build teams that collaborate, challenge, and create together.",
+  "master your message":
+    "Beyond the announcement email: How to design communication that actually drives behavior change. Build the messaging infrastructure that makes change stick.",
+  "master your message (b2b)":
+    "Beyond the announcement email: How to design communication that actually drives behavior change. Build the messaging infrastructure that makes change stick.",
 };
 
 // Color accent per topic for the image placeholder when no image exists
