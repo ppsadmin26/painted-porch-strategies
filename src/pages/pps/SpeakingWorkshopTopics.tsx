@@ -451,7 +451,7 @@ export default function SpeakingWorkshopTopics() {
                         )}
                         {m.blurb && <p className="text-body-sm text-foreground/85 mb-4 flex-1">{m.blurb}</p>}
                         <Link
-                          to={`/contact?interest=speaking&message=${encodeURIComponent(`I'm interested in "${m.baseName}" as a ${m.formats.length === 2 ? "keynote or workshop" : m.formats[0].toLowerCase()}.`)}`}
+                          to={`/contact?interest=speaking&message=${encodeURIComponent(`I'm interested in "${m.baseName}" as a ${m.formats.length === 2 ? "keynote or workshop" : m.formats[0] === "Speaking" ? "keynote" : "workshop"}.`)}`}
                           className="mt-auto"
                         >
                           <Button className="bg-teal text-white hover:bg-teal/90 w-full h-10 text-sm">
