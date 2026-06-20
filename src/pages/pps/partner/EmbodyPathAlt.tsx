@@ -136,7 +136,7 @@ const embodyVsAmplify = [
   {
     dimension: "Scope",
     amplify: "Architects the front-end of one shIFt",
-    embody: "Stewards the architecture across many shIFts",
+    embody: "Stewards the integration across many shIFts",
   },
   {
     dimension: "Cadence",
@@ -146,7 +146,7 @@ const embodyVsAmplify = [
   {
     dimension: "Outcome",
     amplify: "Blueprint + launch-ready roadmap",
-    embody: "Permanent capacity your team owns",
+    embody: "Permanent organizational capability your team owns",
   },
 ];
 
