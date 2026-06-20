@@ -455,13 +455,13 @@ export default function AmplifyPathAlt() {
                       const skip = costOfSkippingStats[i];
                       return (
                         <tr key={i} className="align-top">
-                          <td className="p-4 text-sm text-foreground bg-gold/5 border-b border-gold/15">
+                          <td className="p-4 text-base text-foreground bg-gold/5 border-b border-gold/15">
                             {skip ? (
                               <div className="flex items-start gap-2">
                                 <AlertTriangle className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
                                 <div className="flex-1">
                                   <span>{skip.text}</span>
-                                  <div className="mt-1 flex items-start gap-1.5 text-xs italic text-navy/80">
+                                  <div className="mt-1 flex items-start gap-1.5 text-sm italic text-navy/80">
                                     <span className="font-semibold not-italic text-gold">Est.</span>
                                     <span>{skip.stat}</span>
                                     <Tooltip>
