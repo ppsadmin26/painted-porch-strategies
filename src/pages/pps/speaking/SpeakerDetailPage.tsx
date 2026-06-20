@@ -139,11 +139,21 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
                   {paragraph}
                 </p>
               ))}
-              <p className="text-body font-semibold text-navy italic">{speaker.closingLine}</p>
+      <p className="text-body font-semibold text-navy italic">{speaker.closingLine}</p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Trust Signals / Where They've Spoken */}
+      {speaker.trustSignals && (
+        <ClientLogoMarquee
+          heading={speaker.trustSignals.heading || <>Where {speaker.firstName} Has Spoken</>}
+          logos={speaker.trustSignals.logos}
+          testimonials={speaker.trustSignals.testimonials}
+          showTestimonials={false}
+        />
+      )}
 
       {/* Speaking Topics Grid */}
       <section className="py-16 md:py-24 bg-muted">
@@ -194,18 +204,6 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
         speakerName={speaker.firstName}
         speakers={speaker.facilitatorKey ? [speaker.facilitatorKey, "Painted Porch Team"] : undefined}
       />
-
-
-
-      {/* Trust Signals / Where They've Spoken */}
-      {speaker.trustSignals && (
-        <ClientLogoMarquee
-          heading={speaker.trustSignals.heading || <>Where {speaker.firstName} Has Spoken</>}
-          logos={speaker.trustSignals.logos}
-          testimonials={speaker.trustSignals.testimonials}
-          showTestimonials={false}
-        />
-      )}
 
       {/* Workshop Follow-Up */}
       <section className="py-16 md:py-24 bg-muted">
