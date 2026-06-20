@@ -136,10 +136,6 @@ const amy: SpeakerData = {
       { name: "Co+Hoots", src: "/logos/co-hoots.png", href: "https://cohoots.com/" },
       { name: "APC Canada", src: "/logos/apc-canada.jpg", href: "https://www.apccanada.com/" },
     ],
-    testimonials: [
-      { quote: "[Amy testimonial placeholder #1]", name: "[Name]", title: "[Title]", organization: "[Organization]" },
-      { quote: "[Amy testimonial placeholder #2]", name: "[Name]", title: "[Title]", organization: "[Organization]" },
-    ],
   },
 };
 
