@@ -250,6 +250,8 @@ export default function SpeakingWorkshopTopics() {
   const [rows, setRows] = useState<Row[]>([]);
   const [topicFilter, setTopicFilter] = useState<string>("all");
   const [speakerFilter, setSpeakerFilter] = useState<string>("all");
+  const { isAdmin } = useUserRole();
+
 
   useEffect(() => {
     let cancelled = false;
