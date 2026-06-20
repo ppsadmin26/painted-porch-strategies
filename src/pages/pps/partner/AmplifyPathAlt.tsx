@@ -677,7 +677,7 @@ export default function AmplifyPathAlt() {
               Taking Your Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t to the Next Level
             </h2>
             <p className="text-body text-foreground max-w-3xl mx-auto">
-              Most AMPLIFY partnerships reveal one of two things: your team got what you needed and you're ready to execute, or you realize you need deeper, ongoing partnership. That's exactly what EMBODY is designed for.
+              Most AMPLIFY partnerships reveal one of two things: your team got what you needed and you're moving forward, or you realize you need a deeper, ongoing partnership. That's exactly what EMBODY is designed for.
             </p>
           </div>
 
@@ -708,13 +708,13 @@ export default function AmplifyPathAlt() {
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-navy">Progress to EMBODY</h3>
               </div>
               <ul className="space-y-2 mb-6">
-                <li className="text-body -sm text-foreground">• 6-12+ month embedded partnership</li>
+                <li className="text-body -sm text-foreground">• 6+ month embedded partnership</li>
                 <li className="text-body -sm text-foreground">• Executive advisory relationship</li>
                 <li className="text-body -sm text-foreground">• Ongoing Leadership Summits</li>
                 <li className="text-body -sm text-foreground">• Full transformation architecture</li>
               </ul>
               <p className="text-body text-muted-foreground italic mb-4">
-                Best for: Organizations ready for permanent capacity-building with sustained partnership
+                Best for: Organizations pursuing permanent capability with sustained partnership
               </p>
               <Button asChild className="w-full h-auto min-h-11 whitespace-normal text-center px-3 py-2 bg-transparent border-2 border-navy text-navy hover:bg-navy hover:text-white transition-colors">
                   <Link to="/partner/embody"><span className="inline-flex items-center gap-2">Explore EMBODY <ArrowRight className="w-4 h-4 flex-shrink-0" /></span></Link>
