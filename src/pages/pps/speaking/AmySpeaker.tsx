@@ -37,6 +37,7 @@ const amy: SpeakerData = {
     {
       slug: "lead-at-the-speed-of-change",
       title: "Lead at the Speed of Change",
+      image: leadSpeedOfChange.url,
       description:
         "Change is inevitable, chaos isn't. Learn how to lead adaptively, align around what matters most, and keep moving forward when the ground shifts beneath you.",
     },
@@ -56,6 +57,7 @@ const amy: SpeakerData = {
     {
       slug: "stoicism-in-the-workplace",
       title: "Stoicism in the Workplace",
+      image: stoicismWorkplace.url,
       description:
         "Discover how ancient Stoic principles can transform modern leadership. Learn to focus on what you can control, build resilience, and lead with clarity and purpose, even when everything around you is shifting.",
     },
@@ -69,6 +71,7 @@ const amy: SpeakerData = {
     {
       slug: "ai-ei-oh-guiding-change-and-ai-adoption",
       title: "AI, EI, Oh! Guiding Change and AI Adoption",
+      image: aiEiOh.url,
       description:
         "AI is here, but your people aren't ready. Discover how emotional intelligence is the missing link to successful AI adoption, and learn to lead your team through tech-driven change without leaving anyone behind.",
     },
