@@ -200,7 +200,7 @@ export default function SpeakingWorkshopTopics() {
       <TierHeroSection
         customBadge={<Eyebrow tone="gold">Speaking & Workshop Topics</Eyebrow>}
         headline="What We Speak About. What We Build Together."
-        description="Every topic below can show up as a 60-minute keynote, an interactive workshop, or both — speaking ignites the spark, the workshop turns it into action and lasting change."
+        description="Every topic below can show up as a 60-minute keynote, an interactive workshop, or both. speaking ignites the spark, the workshop turns it into action and lasting change."
         ctas={[
           { label: "Meet Our Speakers", href: "/speaking", isPrimary: true },
           { label: "Inquire About a Topic", href: "/contact?interest=speaking&message=I'm interested in one of your speaking or workshop topics.", isPrimary: false },
@@ -219,7 +219,7 @@ export default function SpeakingWorkshopTopics() {
               We don't talk about change. We help you author it.
             </h2>
             <p className="text-lead text-foreground">
-              Our topics live where strategy, Stoic philosophy, and human capacity meet. They come from 20+ years of partnering with leaders at the moment of strategic authorship — when teams stop reacting to change competitors have already launched and start designing the shIFt they want to lead.
+              Our topics live where strategy, Stoic philosophy, and human capacity meet. They come from 20+ years of partnering with leaders at the moment of strategic authorship. when teams stop reacting to change competitors have already launched and start designing the shIFt they want to lead.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -238,7 +238,7 @@ export default function SpeakingWorkshopTopics() {
           </div>
           <div className="mt-10 rounded-2xl bg-navy text-white p-6 md:p-8 text-center">
             <p className="text-body text-white/90">
-              <strong className="text-gold">Speaking ignites. Workshops activate.</strong> Every topic below can be delivered as a keynote, expanded into a 2+ hour workshop, or sequenced as both — a keynote to spark the room, then a workshop to turn insight into shared practice.
+              <strong className="text-gold">Speaking ignites. Workshops activate.</strong> Every topic below can be delivered as a keynote, expanded into a 2+ hour workshop, or sequenced as both. a keynote to spark the room, then a workshop to turn insight into shared practice.
             </p>
           </div>
         </div>
@@ -354,7 +354,7 @@ export default function SpeakingWorkshopTopics() {
       <ParallaxCTA
         eyebrow="Bring a Topic to Your Team"
         headline="Pick a topic. We'll shape it to your moment."
-        description="Every topic above adapts to your audience, your industry, and your current shIFt. Tell us where you are and we'll recommend the right format — keynote, workshop, or a combination that creates lasting change."
+        description="Every topic above adapts to your audience, your industry, and your current shIFt. Tell us where you are and we'll recommend the right format. keynote, workshop, or a combination that creates lasting change."
         overlayTone="teal"
         actions={[
           { label: "Contact Us", to: "/contact?interest=speaking&message=I'd like to talk about a speaking or workshop topic for our team.", variant: "primary" },
