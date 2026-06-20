@@ -1,0 +1,1 @@
+UPDATE public.path_finder_offerings SET name = 'The P.A.T.H. to Change' WHERE id = 'cf21876b-230d-4d37-8c92-7c892e94fb25';
