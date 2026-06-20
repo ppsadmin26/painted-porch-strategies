@@ -352,7 +352,7 @@ export default function AmplifyPathAlt() {
               The ROI of Phase Zero Architecture
             </h2>
             <p className="text-body text-foreground max-w-3xl mx-auto">
-              When strategic authorship & architecture is intentionally designed, innovation amplifies and sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t happens. AMPLIFY partnerships represent a strategic investment in transformation, because the cost of skipping Phase Zero far exceeds the investment in building it.
+              When strategic authorship & architecture is intentionally designed, innovation amplifies and sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t happens. AMPLIFY partnerships represent a strategic investment in capability, because the cost of skipping Phase Zero far exceeds the investment in building it.
             </p>
           </div>
 
