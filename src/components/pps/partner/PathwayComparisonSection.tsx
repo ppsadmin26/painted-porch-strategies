@@ -8,7 +8,7 @@ export function PathwayComparisonSection() {
           </h2>
           <div className="text-foreground space-y-4">
             <p className="text-body">
-              Whether you're looking for personal growth, stronger team performance, or organization-wide transformation, every P.A.T.H.way is grounded in the same principles:
+              Whether you're pursuing personal capability, stronger team alignment, or organization-wide transformation, every P.A.T.H.way is grounded in the same principles:
             </p>
             <p className="text-body py-4 font-bold text-navy">
               Prepare.<br />
@@ -17,10 +17,10 @@ export function PathwayComparisonSection() {
               Make it a Habit.
             </p>
             <p className="text-body">
-              What changes is the scale of application, the depth of engagement, and what you're trying to accomplish.
+              What changes is the scale of application, the depth of engagement, and&nbsp;the specific outcomes you need to create.
             </p>
             <p className="text-body">
-              There is no required sequence, <span className="font-bold">only the starting point that makes the most sense for where you are today.</span>
+              There's no required sequence, <span className="font-bold">only the starting point that matches your reality today.</span>
             </p>
           </div>
         </div>
