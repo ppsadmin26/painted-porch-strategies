@@ -1,0 +1,1 @@
+UPDATE path_finder_offerings SET blurb = 'Building organizational systems designed to navigate uncertainty rather than react to it. Diagnoses and reinforces the three Painted Porch Pillars™: Cultural Cornerstone, Operational Frame, and Living Ecosystem as one fortified foundation.' WHERE offering_key = 'architectureOfOrganizationalShift';
