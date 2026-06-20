@@ -275,7 +275,7 @@ export default function SpeakingWorkshopTopics() {
         key,
         baseName,
         blurb: (r.description || r.blurb || "") as string,
-        topic: displayTopic(r.topic),
+        topic: topicFor(key, r.topic),
         facilitator: r.facilitator || "",
         formats: [isKeynote ? "Speaking" : isWorkshop ? "Workshop" : "Speaking"],
         image: IMAGE_MAP[key] ?? IMAGE_MAP[rawKey],
