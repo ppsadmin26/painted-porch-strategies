@@ -118,8 +118,8 @@ const traditionalVsEmbody = [
     embody: "Co-designs the architecture of sustained change.",
   },
   {
-    traditional: "Executes for the near-term need.",
-    embody: "Builds capacity that outlasts the engagement.",
+    traditional: "Executes for the near-term need or go live.",
+    embody: "Builds organizational capability that outlasts the engagement.",
   },
   {
     traditional: "\"Gets you through\" the change.",
@@ -136,7 +136,7 @@ const embodyVsAmplify = [
   {
     dimension: "Scope",
     amplify: "Architects the front-end of one shIFt",
-    embody: "Stewards the architecture across many shIFts",
+    embody: "Stewards the integration across many shIFts",
   },
   {
     dimension: "Cadence",
@@ -146,7 +146,7 @@ const embodyVsAmplify = [
   {
     dimension: "Outcome",
     amplify: "Blueprint + launch-ready roadmap",
-    embody: "Permanent capacity your team owns",
+    embody: "Permanent organizational capability your team owns",
   },
 ];
 
@@ -417,7 +417,7 @@ export default function EmbodyPathAlt() {
                   {[
                     "A team that identifies, prepares, and leads change faster than the market shifts",
                     "One strategic plan and direction instead of fragmented vendor projects to manage",
-                    "Permanent internal capacity to architect change without us",
+                    "Permanent internal capacity to architect transformation without us",
                   ].map((item) => (
                     <li key={item} className="text-body flex items-start gap-2 -sm text-foreground">
                       <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
