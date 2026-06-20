@@ -696,7 +696,7 @@ export default function PathFinderOfferings() {
                       )}
                     </div>
                   </div>
-                  <div className="grid sm:grid-cols-2 gap-2">
+                  <div className="grid sm:grid-cols-3 gap-2">
                     <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
                       <Switch
                         checked={!!valueOf(row, "include_in_workshops")}
@@ -714,7 +714,17 @@ export default function PathFinderOfferings() {
                       />
                       <span className="text-sm">
                         <strong>Keynote</strong>
-                        <span className="block text-[11px] text-muted-foreground">Show on the speaker's /speaking page &amp; Keynote chip on /topics</span>
+                        <span className="block text-[11px] text-muted-foreground">Keynote chip on /topics</span>
+                      </span>
+                    </label>
+                    <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
+                      <Switch
+                        checked={!!valueOf(row, "include_on_speaker_page")}
+                        onCheckedChange={(v) => patch(row.id, { include_on_speaker_page: v })}
+                      />
+                      <span className="text-sm">
+                        <strong>Speaker Page</strong>
+                        <span className="block text-[11px] text-muted-foreground">Show on the facilitator's /speaking/[name] page</span>
                       </span>
                     </label>
                   </div>
