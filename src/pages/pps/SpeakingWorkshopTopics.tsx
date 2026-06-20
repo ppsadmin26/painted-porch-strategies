@@ -131,6 +131,7 @@ const KEY_ALIASES: Record<string, string> = {
   "the alice principles": "the alice principles: down the rabbit hole of transformation",
   "your 5-minute keynote": "5-minute keynote",
   "the 5-minute keynote": "5-minute keynote",
+  "leadership om: a 21st-century operating model for organizational evolution": "leadership om",
 };
 
 /** Preferred display name for canonical keys (overrides whichever row was seen first). */
@@ -144,6 +145,7 @@ const CANONICAL_NAME: Record<string, string> = {
   "radically mindful leadership": "Radically Mindful Leadership",
   "the alice principles: down the rabbit hole of transformation": "The Alice Principles: Down the Rabbit Hole of Transformation",
   "5-minute keynote": "The 5-Minute Keynote",
+  "leadership om": "Leadership OM: A 21st-Century Operating Model for Organizational Evolution",
 };
 
 function canonicalKey(name: string): string {
@@ -174,7 +176,7 @@ const IMAGE_MAP: Record<string, string> = {
   "architect change (strategic design intensive)": architectChangeThumb,
   "architect change": architectChangeThumb,
   "cultivating change resilience": resilienceThumb,
-  "leadership operating model": leadershipOpThumb,
+  "leadership om": leadershipOpThumb,
   "master your message": communicationThumb,
   "master your message (b2b)": communicationThumb,
   "radically mindful leadership": mindfulnessThumb,

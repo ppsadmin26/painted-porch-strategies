@@ -85,7 +85,7 @@ const phases = [
         items: [
           "Executive coaching touchpoints",
           "Team capacity building",
-          "Leadership operating model refinement",
+          "Leadership OM refinement",
           "Change Ambassador Network design",
         ],
       },

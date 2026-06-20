@@ -75,7 +75,7 @@ const amplifyFormats = [
       "P.A.T.H. Framework Application",
       "Painted Porch Pillars Assessment",
       "Change Resilience Navigation",
-      "Leadership Operating Model Design",
+      "Leadership OM Design",
     ],
     timeline: "Half-day to multi-day workshops",
     investment: "Starting at $7,500",
