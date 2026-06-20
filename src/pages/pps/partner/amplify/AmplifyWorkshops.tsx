@@ -118,7 +118,7 @@ const workshopTopics = [
   },
   {
     id: "leadershipOM",
-    title: "Your Leadership Operating Model",
+    title: "Leadership OM: A 21st-Century Operating Model for Organizational Evolution",
     image: leadershipOpThumb,
     challenge: "Your leadership team doesn't have clear decision-making protocols, communication rhythms, or accountability structures for transformation.",
     highlights: [
@@ -126,7 +126,7 @@ const workshopTopics = [
       "Communication cadences, channels, and escalation protocols",
       "Accountability structures that create follow-through",
       "Exploring each leader's Working Genius and its impact on team dynamics",
-      "A documented leadership operating model your team commits to",
+      "A documented Leadership OM your team commits to",
     ],
     format: "Full-day workshop",
     investment: "$25,000",

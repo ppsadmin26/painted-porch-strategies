@@ -131,6 +131,7 @@ const KEY_ALIASES: Record<string, string> = {
   "the alice principles": "the alice principles: down the rabbit hole of transformation",
   "your 5-minute keynote": "5-minute keynote",
   "the 5-minute keynote": "5-minute keynote",
+  "leadership om: a 21st-century operating model for organizational evolution": "leadership om",
 };
 
 /** Preferred display name for canonical keys (overrides whichever row was seen first). */
