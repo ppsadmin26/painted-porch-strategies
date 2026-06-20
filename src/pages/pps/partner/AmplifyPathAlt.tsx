@@ -312,15 +312,15 @@ export default function AmplifyPathAlt() {
                 <h3 className={`text-xl md:text-2xl font-poppins font-bold mb-1 whitespace-pre-line ${format.color.replace('border-', 'text-')}`}>
                   {format.title}
                 </h3>
-                <p className="text-body -sm font-semibold text-foreground mb-2">For: {format.audience}</p>
-                <p className="text-body -sm text-foreground mb-4">{format.format}</p>
+                <p className="text-body-sm font-semibold text-foreground mb-2">For: {format.audience}</p>
+                <p className="text-body-sm text-foreground mb-4">{format.format}</p>
 
                 <p className="text-body font-semibold text-navy uppercase tracking-wide mb-2">Perfect If You're:</p>
                 <ul className="space-y-2 mb-4">
                   {format.perfectFor.map((item, i) => (
-                    <li key={i} className="text-body flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
-                      <span className="text-caption text-foreground">{item}</span>
+                    <li key={i} className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-1" />
+                      <span className="text-body-sm text-foreground">{item}</span>
                     </li>
                   ))}
                 </ul>
