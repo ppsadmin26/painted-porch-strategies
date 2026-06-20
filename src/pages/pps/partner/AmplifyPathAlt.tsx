@@ -110,7 +110,7 @@ const amplifyFormats = [
     perfectFor: [
       "Wanting peer wisdom",
       "Exploring Phase Zero with accountability",
-      "Building network of transformation architects",
+      "Building a network of transformation architects",
       "Deepening strategic capacity over time",
     ],
     timeline: "6-12 weeks (cohort-based)",
@@ -301,7 +301,7 @@ export default function AmplifyPathAlt() {
               Three Ways to AMPLIFY Your Next Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t
             </h2>
             <p className="text-body text-foreground max-w-2xl mx-auto">
-              Choose your direction based on whether you're developing or expanding capabilities to sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t for your team/organization or yourself as an individual leader.
+              Choose your direction based on whether you're expanding capabilities for your team/organization or for yourself as an individual leader.
             </p>
           </div>
 
