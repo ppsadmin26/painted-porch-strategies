@@ -209,6 +209,30 @@ export default function AboutSierra() {
         </div>
       </section>
 
+      {/* ── RADICAL MINDFULNESS ON YOUTUBE ───────────────────────────── */}
+      <section className="py-16 md:py-20">
+        <div className="mx-auto max-w-5xl px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy">
+            Radical Mindfulness on YouTube
+          </h2>
+          <p className="text-body mt-3 text-foreground/60">
+            Bite-sized practices to help you stay present, build resilience, and lead with joy.
+          </p>
+          <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-xl shadow-lg">
+            <div className="relative aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/videoseries?list=PLhdPibIQvwhH4j94ohc0BsOJqUud4xzoL"
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Radical Mindfulness on YouTube"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── QUICK LINKS ──────────────────────────────────────────────── */}
       <section className="bg-muted/50 py-16 md:py-20">
         <div className="mx-auto max-w-2xl px-6">
