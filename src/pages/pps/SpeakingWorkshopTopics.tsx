@@ -69,6 +69,7 @@ const UNTAGGED = "More";
 const TOPIC_OVERRIDES: Record<string, string> = {
   "from passenger to pilot": "Mindset & Resilience",
   "cultivating change resilience": "Change & Innovation",
+  "stoicism in the workplace": "Leadership & EQ",
 };
 
 function displayTopic(raw: string | null): string {
