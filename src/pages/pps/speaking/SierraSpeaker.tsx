@@ -8,6 +8,7 @@ import reignitingResilience from "@/assets/speaking/topics/reigniting-resilience
 import mindfulnessThumb from "@/assets/workshops/mindfulness-leadership-thumb.jpg";
 
 const sierra: SpeakerData = {
+  facilitatorKey: "Sierra",
   name: "Sierra Cantrell",
   firstName: "Sierra",
   title: "Chief Joy Officer | M.B.A., Mind-Body Architect | Mindfulness Sherpa",

@@ -1,64 +1,62 @@
 ## Goal
 
-Continue the color-contrast audit on `src/pages/pps/PPSHome.tsx`. After the recent reorder, the lower half of the page has three white sections sitting back-to-back-to-back, so the Pillars, the nested P.A.T.H. Way Forward block, and the Discover P.A.T.H.way cards all blend into one undifferentiated white expanse.
+Make `/admin/offerings` (the existing P.A.T.H. Finder Offerings page) the **single source of truth** for every speaking/workshop topic. One save there updates `/topics`, `/partner/amplify/workshops`, `/speaking/amy`, `/speaking/rob`, and `/speaking/sierra` simultaneously — including description, topic tag, speaker, workshop/keynote flag, and image.
 
-## Current background rhythm (top → bottom)
+## What changes
 
-```text
-Hero                        dark video
-"Lot of shIFt happening"    white
-Research stats              navy
-How We Meet You             muted
-Phase Zero CTA              dark gradient
-3AM Questions               navy            ← updated last turn
-Blue Door                   muted
-Pillars                     white  ┐
-  └ P.A.T.H. Way Forward    white  │  three whites in a row
-Discover Your P.A.T.H.way   white  ┘
-Partnership Promise         navy
-Insights                    white
-Final CTA                   parallax dark
+### 1. Database (one migration)
+
+Add two columns to `path_finder_offerings`:
+
+- `image_url text` — public URL or `/src/assets/...` path for the topic card image.
+- `is_keynote boolean default false` — paired with the existing `include_in_workshops` flag, this gives you the Workshop / Keynote chips.
+
+Backfill `image_url` from current `IMAGE_MAP` entries in `SpeakingWorkshopTopics.tsx`, and backfill `is_keynote = true` for the rows currently marked Speaking-only.
+
+### 2. Admin (extend the existing offerings card)
+
+On every row in `/admin/offerings`, add four controls already grouped under a new "Topic card" section:
+
+- **Speaker** dropdown (Amy / Rob / Sierra / none) — writes to `facilitator`.
+- **Workshop** switch (writes `include_in_workshops`).
+- **Keynote** switch (writes new `is_keynote`).
+- **Topic tag** (already exists — stays).
+- **Description** textarea (already exists as `description` — surfaced more clearly).
+- **Image** — URL input + small preview, with an "Upload" button that pushes to the existing `site-images` bucket and pastes the resulting public URL.
+
+Saving the row uses the existing save handler — no new save logic.
+
+### 3. Pages become readers, not authors
+
+`SpeakingWorkshopTopics.tsx`, `RobSpeaker.tsx`, `AmySpeaker.tsx`, `SierraSpeaker.tsx` each replace their hardcoded `topics` arrays / `BLURB_OVERRIDES` / `IMAGE_MAP` with a single query:
+
+```ts
+supabase.from("path_finder_offerings")
+  .select("name, topic, description, facilitator, image_url, include_in_workshops, is_keynote")
+  .or("include_in_workshops.eq.true,is_keynote.eq.true")
 ```
 
-The two collisions:
-1. The P.A.T.H. "Way Forward" subsection is nested inside the Pillars `<section className="bg-white">`, so the pillar cards and the road/steps read as one long white block with no breathing point.
-2. "Discover Your P.A.T.H.way" is also `bg-white`, butting straight up against the white Pillars section above it.
+Each page then filters:
+- `/topics` → everything returned.
+- `/speaking/<name>` → rows where `facilitator = '<Name>'`.
+- `/partner/amplify/workshops` → rows where `include_in_workshops = true`.
 
-## Proposed changes
+The existing chip logic (Workshop = navy icon, Keynote = green icon) reads `include_in_workshops` / `is_keynote` directly. A topic that is both shows both chips.
 
-Restore alternation so every adjacent pair of sections contrasts. New rhythm:
+The local `*.jpg.asset.json` imports stay on disk so any URL already pointing at them keeps rendering — the DB simply stores that same URL string.
 
-```text
-Blue Door                   muted
-Pillars                     white
-P.A.T.H. Way Forward        muted   ← new standalone section
-Discover Your P.A.T.H.way   muted-tinted OR keep white if Way Forward is muted
-Partnership Promise         navy
-```
+### 4. Cleanup
 
-### Change 1 — Lift "The Way Forward" out of the Pillars section
-
-In `PPSHome.tsx` (~lines 458–587):
-- Close the Pillars `<section className="bg-white">` right after the three pillar cards grid ends (~line 492).
-- Promote the nested `<section id="the-way-forward">` to a top-level sibling section with `className="py-16 md:py-24 bg-muted"` so it sits in its own light-gray band between the white Pillars and the next section.
-- Keep all internal markup of the Way Forward block (eyebrow, heading, intro copy, SVG roads, P.A.T.H. step `<ol>`) unchanged. The white P.A.T.H. step cards (`bg-white shadow-sm`) will now read clearly against the muted backdrop, which actually strengthens the road metaphor.
-
-### Change 2 — Differentiate "Discover Your P.A.T.H.way"
-
-With the Way Forward block now muted, the Discover section (~line 592) can stay `bg-white` and the rhythm becomes muted → white → muted → white → navy. This is the cleanest fix and requires no change to the Discover section itself.
-
-If we'd rather keep Discover muted (matching its inner `bg-muted` cards looks heavy), we'd instead recolor its inner cards. Default recommendation: leave Discover as `bg-white`.
-
-### Change 3 — No other sections need recoloring
-
-The rest of the page (Hero, ShIFt-happening white, navy stats, muted How-We-Meet-You, dark Phase Zero CTA, navy 3AM, muted Blue Door, navy Partnership, white Insights, dark Final CTA) already alternates correctly. No edits needed there.
-
-## Files touched
-
-- `src/pages/pps/PPSHome.tsx` — restructure lines ~458–587 to split the Pillars `<section>` and the Way Forward `<section>` into two sibling sections with `bg-white` and `bg-muted` respectively.
+Remove `BLURB_OVERRIDES` and `IMAGE_MAP` from `SpeakingWorkshopTopics.tsx` once the backfill is verified.
 
 ## Out of scope
 
-- No copy changes.
-- No token, typography, or component changes.
-- No edits to ParallaxCTA, Partnership Promise, or any section above the Blue Door.
+- No changes to quiz routing, RT pools, or the broader offerings schema.
+- No new admin page — everything lives on the offerings admin you already use.
+- Topic-card design on the public pages stays exactly as-is.
+
+## Technical notes
+
+- Migration adds columns + a `set updated_at` is already handled by existing trigger.
+- `image_url` is plain text (no FK). Free-form so it can hold a Supabase storage URL, a CDN URL, or a `/src/assets/...` path resolved at build time.
+- Speaker pages currently sort topics manually; after the switch they'll sort by `sort_order` from the table (already used by the admin).

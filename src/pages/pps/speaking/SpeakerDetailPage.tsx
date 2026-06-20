@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ClientLogoMarquee from "@/components/pps/ClientLogoMarquee";
+import { useSpeakerTopics } from "@/hooks/useSpeakerTopics";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -16,6 +17,11 @@ export interface SpeakingTopic {
 }
 
 export interface SpeakerData {
+  /** Optional. When set, topics are read from path_finder_offerings for this
+   *  facilitator (Amy / Rob / Sierra) so admin edits in /admin/offerings
+   *  propagate here automatically. The hardcoded `topics` array is used as a
+   *  fallback while the query loads or if the DB returns nothing. */
+  facilitatorKey?: string;
   name: string;
   firstName: string;
   title: string;
@@ -45,6 +51,11 @@ export interface SpeakerData {
 }
 
 export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData }) {
+  const dbTopics = useSpeakerTopics(speaker.facilitatorKey ?? "");
+  const topics =
+    speaker.facilitatorKey && dbTopics && dbTopics.length > 0
+      ? dbTopics
+      : speaker.topics;
   return (
     <div>
       {/* Breadcrumb */}
@@ -142,7 +153,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {speaker.topics.map((topic, i) => (
+            {topics.map((topic, i) => (
               <div
                 key={i}
                 id={topic.slug ? `topic-${topic.slug}` : undefined}

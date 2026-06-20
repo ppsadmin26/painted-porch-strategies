@@ -10,6 +10,7 @@ import onAir from "@/assets/speaking/topics/on-air-confidence.jpg.asset.json";
 import sixStyles from "@/assets/speaking/topics/six-communicator-styles.jpg.asset.json";
 
 const rob: SpeakerData = {
+  facilitatorKey: "Rob",
   name: "Rob Hunter",
   firstName: "Rob",
   title: "Chief Storytelling Officer | M.C., Master of Communication",

@@ -35,6 +35,8 @@ interface Row {
   topic: string | null;
   include_in_workshops: boolean;
   is_featured_in_quiz: boolean;
+  is_keynote: boolean;
+  image_url: string | null;
   launch_slug: string | null;
   b2c_rt_pools: Record<string, string[]> | null;
   b2b_rt_pools: Record<string, string[]> | null;
@@ -175,7 +177,7 @@ export default function PathFinderOfferings() {
   const load = async () => {
     setLoading(true);
     const [offRes, launchRes] = await Promise.all([
-      supabase.from("path_finder_offerings").select("id, offering_key, name, facilitator, tier, blurb, description, current_url, dedicated_url, anchor_id, is_live, sort_order, topic, include_in_workshops, is_featured_in_quiz, launch_slug, b2c_rt_pools, b2b_rt_pools").order("sort_order"),
+      supabase.from("path_finder_offerings").select("id, offering_key, name, facilitator, tier, blurb, description, current_url, dedicated_url, anchor_id, is_live, sort_order, topic, include_in_workshops, is_featured_in_quiz, is_keynote, image_url, launch_slug, b2c_rt_pools, b2b_rt_pools").order("sort_order"),
       supabase
         .from("course_launch_status")
         .select("slug, course_name, status, program_type")
@@ -631,18 +633,69 @@ export default function PathFinderOfferings() {
                   />
                 </div>
 
-                <div className="mb-3 flex items-center gap-2 rounded-md border border-dashed border-teal/40 bg-teal/5 px-3 py-2">
-                  <Switch
-                    id={`workshop-${row.id}`}
-                    checked={!!valueOf(row, "include_in_workshops")}
-                    onCheckedChange={(v) => patch(row.id, { include_in_workshops: v })}
-                  />
-                  <Label htmlFor={`workshop-${row.id}`} className="text-sm">
-                    Show in the <strong>Browse All Workshop Topics</strong> accordion
-                    <span className="block text-xs text-muted-foreground">
-                      Use this to flag a speaking topic (or any offering) as also bookable as a workshop.
-                    </span>
-                  </Label>
+                {/* Topic card (drives /topics, /speaking/amy|rob|sierra, and /partner/amplify/workshops) */}
+                <div className="mb-3 rounded-md border border-dashed border-navy/30 bg-navy/5 px-3 py-3 space-y-3">
+                  <div className="text-xs font-poppins font-semibold text-navy uppercase tracking-wide">
+                    Topic card (Speaking / Workshops pages)
+                  </div>
+                  <div className="grid md:grid-cols-3 gap-3 items-start">
+                    <div>
+                      <Label className="text-xs">Speaker</Label>
+                      <select
+                        value={valueOf(row, "facilitator") ?? ""}
+                        onChange={(e) => patch(row.id, { facilitator: e.target.value || (null as any) })}
+                        className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
+                      >
+                        <option value="">— None —</option>
+                        <option value="Amy">Amy</option>
+                        <option value="Rob">Rob</option>
+                        <option value="Sierra">Sierra</option>
+                        <option value="Painted Porch Team">Painted Porch Team</option>
+                      </select>
+                      <p className="text-[11px] text-muted-foreground mt-1">Controls which /speaking/* page this topic shows on.</p>
+                    </div>
+                    <div className="md:col-span-2">
+                      <Label className="text-xs">Image URL (topic card image)</Label>
+                      <Input
+                        value={valueOf(row, "image_url") ?? ""}
+                        onChange={(e) => patch(row.id, { image_url: e.target.value || (null as any) })}
+                        placeholder="https://… or /__l5e/assets-v1/…"
+                      />
+                      {valueOf(row, "image_url") ? (
+                        <div className="mt-2 w-32 aspect-[16/10] rounded border border-border overflow-hidden bg-muted">
+                          <img
+                            src={valueOf(row, "image_url") as string}
+                            alt=""
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <p className="text-[11px] text-muted-foreground mt-1">Leave blank to use the legacy built-in image (if one exists for this topic).</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="grid sm:grid-cols-2 gap-2">
+                    <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
+                      <Switch
+                        checked={!!valueOf(row, "include_in_workshops")}
+                        onCheckedChange={(v) => patch(row.id, { include_in_workshops: v })}
+                      />
+                      <span className="text-sm">
+                        <strong>Workshop</strong>
+                        <span className="block text-[11px] text-muted-foreground">Show on /partner/amplify/workshops &amp; Workshop chip on /topics</span>
+                      </span>
+                    </label>
+                    <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
+                      <Switch
+                        checked={!!valueOf(row, "is_keynote")}
+                        onCheckedChange={(v) => patch(row.id, { is_keynote: v })}
+                      />
+                      <span className="text-sm">
+                        <strong>Keynote</strong>
+                        <span className="block text-[11px] text-muted-foreground">Show on the speaker's /speaking page &amp; Keynote chip on /topics</span>
+                      </span>
+                    </label>
+                  </div>
                 </div>
 
                 <div className="mb-3 flex items-center gap-2 rounded-md border border-dashed border-primary/40 bg-primary/5 px-3 py-2">

@@ -12,6 +12,7 @@ import goldilocksLeadership from "@/assets/speaking/amy-goldilocks-leadership.pn
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
 
 const amy: SpeakerData = {
+  facilitatorKey: "Amy",
   name: "Amy Yackowski",
   firstName: "Amy",
   title: "Founder | Chief Evolution Officer | Organizational Shift Strategist",
