@@ -13,15 +13,15 @@ const principles = [
     icon: Building2,
     title: "Phaze Zero First, Always",
     tagline: "Every meaningful shIFt starts with clarity.",
-    description: "Before committing time, resources, and energy, we examine what's true, what's assumed, and what deserves deeper exploration.",
-    contrast: "We architect foundations, not implement initiatives.",
+    description: "Before committing time, resources, and energy, we examine what's true, what's assumed, and what requires deeper exploration.",
+    contrast: "We architect foundations; we don't just implement initiatives.",
   },
   {
     icon: Handshake,
     title: "We Partner, Not Consult",
-    tagline: "You're the expert of you.",
+    tagline: "You're the expert of your reality.",
     description: "The strongest solutions emerge when perspective meets context. You bring the realities of your organization. We bring structure, challenge, and disciplined inquiry.",
-    contrast: "Together, we build what actually works in YOUR reality.",
+    contrast: "Together, we co-architect what actually works for your specific capability.",
   },
   {
     icon: Target,
@@ -32,7 +32,7 @@ const principles = [
         Success is not measured by a completed project. It's reflected in stronger leaders, healthier systems, and greater confidence in navigating uncertainty or whatever <ShIFt lowercase /> happens next.
       </>
     ),
-    contrast: "When we're done, you've become transformation architects yourselves.",
+    contrast: "When our partnership completes, you've become transformation architects yourselves.",
   },
   {
     icon: BookOpen,
