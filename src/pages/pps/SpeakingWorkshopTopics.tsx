@@ -191,6 +191,24 @@ const TOPIC_ACCENT: Record<string, string> = {
   [UNTAGGED]: "from-navy to-charcoal",
 };
 
+// Match blog/insights category color scheme so topics stay visually consistent.
+const TOPIC_BADGE: Record<string, string> = {
+  "Leadership & EQ": "bg-primary/10 text-primary",
+  "Change & Innovation": "bg-strategic/10 text-strategic",
+  "Communication": "bg-lime/10 text-lime",
+  "Mindset & Resilience": "bg-raspberry/10 text-raspberry",
+  "Teams": "bg-navy/10 text-navy",
+  "Philosophy": "bg-purple/10 text-purple",
+  [UNTAGGED]: "bg-navy/10 text-navy",
+};
+
+// Topics that should always appear as BOTH a keynote and a workshop, even if
+// the database only has one row for them.
+const ALWAYS_BOTH = new Set<string>([
+  "driving change: the 3 shifts",
+]);
+
+
 export default function SpeakingWorkshopTopics() {
   useDocumentSeo({
     title: "Speaking & Workshop Topics | Painted Porch Strategies",
