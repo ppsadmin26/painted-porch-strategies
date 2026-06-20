@@ -18,14 +18,14 @@ const tierContent = {
     timeline: "Self-paced",
   },
   AMPLIFY: {
-    tagline: "TEAM: Boost momentum for your next shIFt.",
+    tagline: "TEAM: Build momentum and collective capability",
     journey:
-      "Team workshops, strategic sprints, and cohort-based learning designed for leadership teams ready to align around transformation, together.",
+      "Team workshops, strategic sprints, and cohort-based learning designed for leadership teams ready to build alignment around transformation, together.",
     perfectFor: [
       "Leadership teams needing strategic alignment",
-      "Organizations exploring focused transformation",
+      "Organizations exploring focused capability building",
       "Teams investing in collective capacity",
-      'Anyone saying "My team needs this together"',
+      'Anyone saying "My team needs to navigate this together"',
     ],
     timeline: "3-6 months (focused engagement)",
   },
