@@ -200,7 +200,7 @@ export default function SpeakingWorkshopTopics() {
       <TierHeroSection
         customBadge={<Eyebrow tone="gold">Speaking & Workshop Topics</Eyebrow>}
         headline="What We Speak About. What We Build Together."
-        description="Every topic below can show up as a 60-minute keynote, an interactive workshop, or both. speaking ignites the spark, the workshop turns it into action and lasting change."
+        description="Every topic below can show up as a 60-minute keynote, an interactive workshop, or both. Speaking ignites the spark. The workshop turns it into action and lasting change."
         ctas={[
           { label: "Meet Our Speakers", href: "/speaking", isPrimary: true },
           { label: "Inquire About a Topic", href: "/contact?interest=speaking&message=I'm interested in one of your speaking or workshop topics.", isPrimary: false },
