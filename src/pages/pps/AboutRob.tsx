@@ -38,10 +38,11 @@ const offerings: OfferingCard[] = [
   },
   {
     emoji: "💡",
-    title: "Get C.L.E.A.R. Framework",
+    title: "6 Communicator Styles",
     description:
-      "Clarity. Language. Energy. Attention. Relevance. Download the free framework to simplify your message and boost engagement.",
-    href: "/resources/downloads",
+      "Discover your natural communication style and learn how to connect more effectively with every audience.",
+    href: "https://onthepaintedporch.com/6-communicator-styles",
+    external: true,
     color: "gold",
   },
   {
