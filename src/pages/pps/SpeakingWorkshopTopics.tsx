@@ -312,7 +312,7 @@ export default function SpeakingWorkshopTopics() {
     (async () => {
       const { data, error } = await supabase
         .from("path_finder_offerings")
-        .select("offering_key,name,blurb,description,topic,facilitator,current_url,anchor_id")
+        .select("offering_key,name,blurb,description,topic,facilitator,current_url,anchor_id,image_url,is_keynote,include_in_workshops")
         .or(
           "current_url.eq./partner/amplify/workshops,current_url.eq./speaking/amy,current_url.eq./speaking/rob,current_url.eq./speaking/sierra",
         )
