@@ -462,7 +462,17 @@ export default function SpeakingWorkshopTopics() {
                 </div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                   {items.map((m) => (
-                    <article key={m.key} className="bg-white border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow flex flex-col">
+                    <article key={m.key} className="relative bg-white border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow flex flex-col">
+                      {isAdmin && (
+                        <Link
+                          to={`/admin/offerings?filter=${encodeURIComponent(m.baseName)}`}
+                          className="absolute top-2 right-2 z-10 inline-flex items-center gap-1 rounded-md bg-navy/90 text-white px-2 py-1 text-[11px] font-semibold shadow hover:bg-navy"
+                          aria-label={`Edit "${m.baseName}" in admin`}
+                          title="Edit in admin"
+                        >
+                          <Pencil className="w-3 h-3" /> Edit
+                        </Link>
+                      )}
                       <div className="relative aspect-video overflow-hidden bg-navy/5">
                         {m.image ? (
                           <img src={m.image} alt={m.baseName} loading="lazy" className="w-full h-full object-contain" />
@@ -477,6 +487,7 @@ export default function SpeakingWorkshopTopics() {
                           <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide ${TOPIC_BADGE[m.topic] ?? TOPIC_BADGE[UNTAGGED]}`}>
                             {m.topic}
                           </span>
+
                         </div>
                         <div className="flex flex-wrap items-center gap-2 mb-2">
                           {m.formats.includes("Speaking") && (
