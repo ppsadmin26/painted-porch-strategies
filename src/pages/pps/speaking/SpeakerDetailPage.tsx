@@ -120,7 +120,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
                 {speaker.title}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mt-2 mb-6">
-                Meet {speaker.firstName}
+                Meet {speaker.name}
               </h2>
               {speaker.bio.map((paragraph, i) => (
                 <p key={i} className="text-body text-foreground leading-relaxed mb-4">
