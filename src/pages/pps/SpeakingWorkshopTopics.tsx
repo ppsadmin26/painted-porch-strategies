@@ -206,6 +206,8 @@ const TOPIC_BADGE: Record<string, string> = {
 // the database only has one row for them.
 const ALWAYS_BOTH = new Set<string>([
   "driving change: the 3 shifts",
+  "the architecture of organization",
+  "the p.a.t.h. to lasting change",
 ]);
 
 
