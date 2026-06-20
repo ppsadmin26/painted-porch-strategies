@@ -153,7 +153,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {speaker.topics.map((topic, i) => (
+            {topics.map((topic, i) => (
               <div
                 key={i}
                 id={topic.slug ? `topic-${topic.slug}` : undefined}
