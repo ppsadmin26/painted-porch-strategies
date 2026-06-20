@@ -527,7 +527,7 @@ export default function AmplifyPathAlt() {
           </div>
 
 
-          <p className="text-body text-center text-navy mt-12 italic">
+          <p className="text-body text-center text-navy mt-12 font-bold">
             Strategic authorship and architecture aren't optional for transformation that lasts; they're foundational.&nbsp;<br />
             AMPLIFY provides the partnership to build them properly.
           </p>
