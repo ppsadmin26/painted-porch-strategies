@@ -156,8 +156,8 @@ const IMAGE_MAP: Record<string, string> = {
   "radical mindfulness (b2b)": mindfulnessThumb,
   "radical mindfulness": mindfulnessThumb,
   // Newly generated topic covers
-  "change for good: immunity to change": changeForGood.url,
-  "change for good": changeForGood.url,
+  "change for good: immunity to change": changeForGoodBranded.url,
+  "change for good": changeForGoodBranded.url,
   "driving change: the 3 shifts": drivingChange3Shifts.url,
   "from conflict to connection": conflictToConnection.url,
   "genius at work": geniusAtWork.url,
