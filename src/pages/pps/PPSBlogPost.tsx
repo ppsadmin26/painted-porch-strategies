@@ -43,11 +43,10 @@ interface BlogPostDetail {
 
 const categoryHeroBg: Record<string, string> = {
   "Stoicism & Philosophy": "bg-[hsl(0,0%,30%)]",
-  "Leadership": "bg-primary",
-  "Change & Transformation": "bg-strategic",
-  "Teams & Culture": "bg-navy",
-  "Mindset & Growth": "bg-gold",
-  "Resilience & Wellbeing": "bg-raspberry",
+  "Leadership & EQ": "bg-primary",
+  "Change & Innovation": "bg-strategic",
+  "Team Dynamics & Culture": "bg-navy",
+  "Mindset & Wellbeing": "bg-raspberry",
   "Communication": "bg-lime",
   "Workplace & Operations": "bg-primary",
   "Productivity & Focus": "bg-gold",
@@ -446,11 +445,10 @@ export default function PPSBlogPost() {
             {post.categories.map((cat) => {
               const colorMap: Record<string, string> = {
                 "Stoicism & Philosophy": "border-purple text-purple",
-                "Leadership": "border-primary text-primary",
-                "Change & Transformation": "border-strategic text-strategic",
-                "Teams & Culture": "border-navy text-navy",
-                "Mindset & Growth": "border-gold text-gold",
-                "Resilience & Wellbeing": "border-raspberry text-raspberry",
+                "Leadership & EQ": "border-primary text-primary",
+                "Change & Innovation": "border-strategic text-strategic",
+                "Team Dynamics & Culture": "border-navy text-navy",
+                "Mindset & Wellbeing": "border-raspberry text-raspberry",
                 "Communication": "border-lime text-lime",
                 "Workplace & Operations": "border-primary text-primary",
                 "Productivity & Focus": "border-gold text-gold",

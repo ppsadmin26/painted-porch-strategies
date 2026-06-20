@@ -73,19 +73,19 @@ const UNTAGGED = "More";
 
 /** Manual topic overrides for rows whose DB topic should be remapped. */
 const TOPIC_OVERRIDES: Record<string, string> = {
-  "from passenger to pilot": "Mindset & Resilience",
+  "from passenger to pilot": "Mindset & Wellbeing",
   "cultivating change resilience": "Change & Innovation",
   "stoicism in the workplace": "Leadership & EQ",
 };
 
 function displayTopic(raw: string | null): string {
   const t = raw?.trim() || UNTAGGED;
-  if (t === "Resilience" || t === "Wellbeing" || t === "Mindset & Resilience") return "Mindset & Resilience";
-  if (t === "Innovation" || t === "Change" || t === "Change & Innovation") return "Change & Innovation";
+  if (t === "Resilience" || t === "Wellbeing" || t === "Mindset & Resilience" || t === "Resilience & Wellbeing" || t === "Mindset & Growth" || t === "Mindset & Wellbeing") return "Mindset & Wellbeing";
+  if (t === "Innovation" || t === "Change" || t === "Change & Innovation" || t === "Change & Transformation") return "Change & Innovation";
   if (t === "Comms" || t === "Communication") return "Communication";
-  if (t === "Leadership & EQ") return "Leadership & EQ";
-  if (t === "Teams" || t === "Team Dynamics") return "Team Dynamics";
-  if (t === "Philosophy") return "Philosophy";
+  if (t === "Leadership" || t === "Leadership & EQ") return "Leadership & EQ";
+  if (t === "Teams" || t === "Team Dynamics" || t === "Teams & Culture" || t === "Team Dynamics & Culture") return "Team Dynamics & Culture";
+  if (t === "Philosophy" || t === "Stoicism & Philosophy") return "Stoicism & Philosophy";
   return t;
 }
 
