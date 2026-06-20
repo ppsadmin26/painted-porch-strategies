@@ -61,7 +61,7 @@ const offerings: OfferingCard[] = [
     emoji: "📼",
     title: "Cassette Tape Stories",
     description:
-      "A curated collection of stories, lessons, and moments captured on tape — raw, real, and ready to replay.",
+      "An online storytelling course built from 27 years behind the mic. Learn how to turn your experiences into unforgettable narratives that capture attention and drive results.",
     href: "https://robhunter.me/cassette-tape-stories",
     external: true,
     color: "purple",
