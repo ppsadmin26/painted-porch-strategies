@@ -25,7 +25,8 @@ const offerings: OfferingCard[] = [
     title: "Master Your Message",
     description:
       "An online program designed to sharpen your communication skills and broadcast your ideas with clarity and confidence.",
-    href: "/master-your-message",
+    href: "https://onthepaintedporch.com/communication",
+    external: true,
     color: "teal",
   },
   {
