@@ -492,7 +492,7 @@ export default function AmplifyPathAlt() {
                               </div>
                             ) : null}
                           </td>
-                          <td className="p-4 text-sm text-foreground bg-raspberry/5 border-b border-raspberry/15">
+                          <td className="p-4 text-base text-foreground bg-raspberry/5 border-b border-raspberry/15">
                             {whatAmplifyEliminates[i] ? (
                               <div className="flex items-start gap-2">
                                 <span className="text-raspberry font-bold">✗</span>
@@ -500,7 +500,7 @@ export default function AmplifyPathAlt() {
                               </div>
                             ) : null}
                           </td>
-                          <td className="p-4 text-sm text-foreground bg-lime/5 border-b border-lime/15">
+                          <td className="p-4 text-base text-foreground bg-lime/5 border-b border-lime/15">
                             {whatAmplifyEnables[i] ? (
                               <div className="flex items-start gap-2">
                                 <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
