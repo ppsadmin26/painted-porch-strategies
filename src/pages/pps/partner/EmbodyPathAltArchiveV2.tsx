@@ -166,7 +166,7 @@ const pillars = [
   {
     number: 3,
     title: "Living Ecosystem",
-    subtitle: "Human Capacity",
+    subtitle: "Capacity & Judgment",
     icon: Brain,
     // Gold: Warm, human value, potential - the only warm color among the three
     borderColor: "border-l-gold",
