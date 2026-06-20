@@ -136,7 +136,7 @@ export default function PPSAbout() {
           </h2>
           <div className="space-y-4 text-lg text-foreground leading-relaxed text-left md:text-center">
             <p className="text-body">
-              The leaders we work with are already capable, already
+              The leaders we partner with are already capable, already
               experienced, and already carrying a lot. What they're looking
               for is not another framework. It's a place to think clearly
               about what their organization is being called to become.
