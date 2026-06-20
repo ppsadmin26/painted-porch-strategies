@@ -138,7 +138,7 @@ const beliefs = [
 const rejects = [
   "Change theater that looks busy but moves nothing.",
   "One-size playbooks dropped on a unique organization.",
-  "Treating people like obstacles to manage.",
+  'Treating people like obstacles to manage or "convince".',
   "Tech rollouts that skip the human work.",
   "Speed for its own sake.",
 ];
