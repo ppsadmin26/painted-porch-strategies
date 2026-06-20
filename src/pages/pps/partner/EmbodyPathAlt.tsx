@@ -60,7 +60,7 @@ const industries = [
     title: "Healthcare Organizations",
     items: [
       "Navigating industry disruption",
-      "Building strategic capacity for continuous change",
+      "Building organizational capability for continuous change",
       "Architecting cultural transformation",
     ],
   },
@@ -69,7 +69,7 @@ const industries = [
     title: "Technology Companies",
     items: [
       "Scaling through hypergrowth",
-      "Leadership development during rapid expansion",
+      "Leadership integration during rapid expansion",
       "Operational architecture for scale",
     ],
   },
@@ -88,7 +88,7 @@ const industries = [
     items: [
       "Mission realignment and strategic clarity",
       "Building capacity for sustainable impact",
-      "Leadership team development",
+      "Leadership team integration",
     ],
   },
 ];
