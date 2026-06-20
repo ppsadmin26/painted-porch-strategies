@@ -38,7 +38,7 @@ const rob: SpeakerData = {
       title: "8:8",
       image: eightByEight.url,
       description:
-        "Capturing & Keeping Attention in a Distracted World. In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
+        "In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
     },
     {
       slug: "the-power-of-story",
@@ -58,7 +58,7 @@ const rob: SpeakerData = {
       title: "Borderless Communication",
       image: borderlessComm.url,
       description:
-        "Great leaders don't just talk, they communicate with intention. Learn how to create a culture of ownership and follow-through.",
+        "Great leaders don't just talk, they communicate with intention. Learn how to break down the barriers of miscommunication and walk a mile in another person's shoes.",
     },
     {
       slug: "on-air-ready-confidence",

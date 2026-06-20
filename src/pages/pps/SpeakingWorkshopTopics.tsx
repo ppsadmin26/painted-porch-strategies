@@ -211,7 +211,7 @@ const IMAGE_MAP: Record<string, string> = {
 const BLURB_OVERRIDES: Record<string, string> = {
   // ── Amy (Speaker page) ──
   "heroes assemble":
-    "Unite your team through shared purpose, candor, and trust. Learn how to build stronger dynamics by fostering healthy conflict and innovative thinking.",
+    "Unite your team through shared purpose, candor, and trust. Learn how to build stronger dynamics by understanding one another's superpowers (and stressors), fostering healthy conflict and innovative thinking.",
   "lead at the speed of change":
     "Change is inevitable, chaos isn't. Learn how to lead adaptively, align around what matters most, and keep moving forward when the ground shifts beneath you.",
   "shift happens. be ready.":
@@ -233,13 +233,13 @@ const BLURB_OVERRIDES: Record<string, string> = {
   "high-fidelity communication":
     "The way you speak your thoughts is your brand. Learn the three pillars of clear communication: preparation, conciseness, and attentiveness.",
   "8:8":
-    "Capturing & Keeping Attention in a Distracted World. In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
+    "In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
   "the power of story":
     "Our brains are wired for stories. Learn how and when to use narrative to persuade, connect, and be unforgettable.",
   "get c.l.e.a.r., be heard":
     "Clarity. Language. Energy. Attention. Relevance. Master this framework to simplify your message and boost team engagement and retention.",
   "borderless communication":
-    "Great leaders don't just talk, they communicate with intention. Learn how to create a culture of ownership and follow-through.",
+    "Great leaders don't just talk, they communicate with intention. Learn how to break down the barriers of miscommunication and walk a mile in another person's shoes.",
   "on-air ready confidence":
     "Tame the nerves and take the mic. From boardrooms to breakouts, learn how to show up prepared, polished, and powerful, every time you speak.",
   "5-minute keynote":
