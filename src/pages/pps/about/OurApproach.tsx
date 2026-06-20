@@ -180,7 +180,7 @@ export default function OurApproach() {
               Sustainable change is designed, not declared.
             </p>
             <p className="text-body mb-4">
-              Execution is the visible part of change.&nbsp;The thinking, alignment, communication, leadership, and culture beneath it often determine whether it lasts.
+              Execution is the visible part of change.&nbsp;The thinking, alignment, communication, leadership, and culture beneath it determine whether it lasts.
             </p>
             <p className="text-body mb-4">
               Our approach strengthens those foundations through a deliberate sequence. It's how you move from reacting to external demands to authoring direction.
