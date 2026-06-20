@@ -63,9 +63,9 @@ const offerings: OfferingCard[] = [
   },
   {
     emoji: "🧠",
-    title: "EQ & Assessments",
+    title: "EQ Assessment",
     description:
-      "Curious about how to 'Do E.Q.' and lead in life & work? Explore our emotional intelligence tools and assessments.",
+      "Curious about how to 'Do E.Q.' and lead in life & work? Explore our emotional intelligence assessment.",
     href: "/eq",
     color: "teal",
   },
@@ -185,7 +185,7 @@ export default function AboutAmy() {
               What I Do
             </h2>
             <p className="text-body mx-auto mt-4 max-w-2xl text-foreground/70">
-              From strategic diagnostics to embedded partnerships, here's how we
+              From strategic assessments to embedded partnerships, here's how we
               can work together to architect extraordinary outcomes.
             </p>
           </div>
