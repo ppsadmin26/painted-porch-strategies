@@ -1,6 +1,7 @@
 import { Mic } from "lucide-react";
 import robPhoto from "@/assets/team/rob-hunter.jpg";
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
+import fiveMinKeynote from "@/assets/speaking/topics/five-minute-keynote.jpg.asset.json";
 
 const rob: SpeakerData = {
   name: "Rob Hunter",
