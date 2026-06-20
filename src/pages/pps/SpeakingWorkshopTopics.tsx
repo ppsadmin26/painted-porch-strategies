@@ -314,7 +314,7 @@ export default function SpeakingWorkshopTopics() {
         .from("path_finder_offerings")
         .select("offering_key,name,blurb,description,topic,facilitator,current_url,anchor_id,image_url,is_keynote,include_in_workshops")
         .or(
-          "current_url.eq./partner/amplify/workshops,current_url.eq./speaking/amy,current_url.eq./speaking/rob,current_url.eq./speaking/sierra",
+          "current_url.eq./partner/amplify/workshops,current_url.eq./speaking/amy,current_url.eq./speaking/rob,current_url.eq./speaking/sierra,is_keynote.eq.true,include_in_workshops.eq.true",
         )
         .order("name", { ascending: true });
       if (!cancelled && !error && data) setRows(data as Row[]);
@@ -332,8 +332,10 @@ export default function SpeakingWorkshopTopics() {
       if (EXCLUDE_KEYS.has(rawKey)) continue;
       const key = canonicalKey(r.name);
       const baseName = CANONICAL_NAME[key] ?? cleanName(r.name);
-      const isKeynote = r.current_url.startsWith("/speaking/") || /\(Keynote\)/i.test(r.name);
-      const isWorkshop = r.current_url === "/partner/amplify/workshops";
+      // Source of truth for the chips: the boolean flags on the row.
+      // Fall back to legacy URL/name heuristics so older rows keep rendering.
+      const isKeynote = r.is_keynote || r.current_url.startsWith("/speaking/") || /\(Keynote\)/i.test(r.name);
+      const isWorkshop = r.include_in_workshops || r.current_url === "/partner/amplify/workshops";
       const existing = map.get(key);
       if (existing) {
         if (isKeynote && !existing.formats.includes("Speaking")) existing.formats.push("Speaking");
@@ -345,6 +347,8 @@ export default function SpeakingWorkshopTopics() {
         if (incomingBlurb && incomingBlurb.length > (existing.blurb || "").length) {
           existing.blurb = incomingBlurb;
         }
+        // Prefer DB image_url; fall back to whatever's already set.
+        if (!existing.image && r.image_url) existing.image = r.image_url;
         if (r.facilitator && !existing.facilitators.includes(r.facilitator)) existing.facilitators.push(r.facilitator);
         // Lock in canonical name if defined
         if (CANONICAL_NAME[key]) existing.baseName = CANONICAL_NAME[key];
@@ -357,7 +361,9 @@ export default function SpeakingWorkshopTopics() {
         topic: topicFor(key, r.topic),
         facilitators: r.facilitator ? [r.facilitator] : [],
         formats: [isKeynote ? "Speaking" : isWorkshop ? "Workshop" : "Speaking"],
-        image: IMAGE_MAP[key] ?? IMAGE_MAP[rawKey],
+        // DB image_url wins; static IMAGE_MAP is the fallback for rows that
+        // haven't been backfilled yet.
+        image: r.image_url ?? IMAGE_MAP[key] ?? IMAGE_MAP[rawKey],
       });
     }
     // Force "both formats" for designated topics
@@ -366,8 +372,8 @@ export default function SpeakingWorkshopTopics() {
         if (!m.formats.includes("Speaking")) m.formats.push("Speaking");
         if (!m.formats.includes("Workshop")) m.formats.push("Workshop");
       }
-      // Apply manual blurb overrides
-      if (BLURB_OVERRIDES[m.key]) m.blurb = BLURB_OVERRIDES[m.key];
+      // Final fallback: legacy hardcoded blurb overrides ONLY if no DB content.
+      if (!m.blurb && BLURB_OVERRIDES[m.key]) m.blurb = BLURB_OVERRIDES[m.key];
     }
     return Array.from(map.values()).sort((a, b) => a.baseName.localeCompare(b.baseName));
   }, [rows]);
