@@ -65,6 +65,11 @@ type MergedTopic = {
 
 const UNTAGGED = "More";
 
+/** Manual topic overrides for rows whose DB topic should be remapped. */
+const TOPIC_OVERRIDES: Record<string, string> = {
+  "from passenger to pilot": "Mindset & Resilience",
+};
+
 function displayTopic(raw: string | null): string {
   const t = raw?.trim() || UNTAGGED;
   if (t === "Resilience" || t === "Wellbeing" || t === "Mindset & Resilience") return "Mindset & Resilience";
