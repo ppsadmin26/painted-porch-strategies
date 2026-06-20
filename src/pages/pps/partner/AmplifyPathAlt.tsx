@@ -430,6 +430,10 @@ export default function AmplifyPathAlt() {
                 })}
               </div>
 
+              <p className="text-body text-navy/60 text-center mb-3 italic">
+                Estimates below are industry benchmarks (2022-2025) from McKinsey, Gartner, BCG, IDC, and LSA Global. Tap the <Info className="w-3 h-3 inline -mt-0.5" /> icon for each source.
+              </p>
+
               {/* Tablet/Desktop: original table */}
               <div className="hidden md:block">
                 <table className="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
@@ -511,10 +515,6 @@ export default function AmplifyPathAlt() {
                 </table>
               </div>
             </TooltipProvider>
-
-            <p className="text-body text-navy/60 text-center mt-3 italic">
-              Estimates above are industry benchmarks (2022-2025) from McKinsey, Gartner, BCG, IDC, and LSA Global. Tap the <Info className="w-3 h-3 inline -mt-0.5" /> icon for each source.
-            </p>
 
             {/* Calculate your ROI */}
             <div className="flex justify-center mt-6">
