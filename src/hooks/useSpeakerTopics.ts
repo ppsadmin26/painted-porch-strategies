@@ -42,7 +42,7 @@ export function useSpeakerTopics(facilitator: string): SpeakingTopic[] | null {
       const { data, error } = await supabase
         .from("path_finder_offerings")
         .select("name, description, blurb, image_url, is_keynote, include_in_workshops, sort_order")
-        .eq("facilitator", facilitator)
+        .ilike("facilitator", `%${facilitator}%`)
         .or("is_keynote.eq.true,include_in_workshops.eq.true")
         .order("sort_order", { ascending: true });
 
