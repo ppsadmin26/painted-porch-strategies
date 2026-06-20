@@ -118,8 +118,8 @@ const traditionalVsEmbody = [
     embody: "Co-designs the architecture of sustained change.",
   },
   {
-    traditional: "Executes for the near-term need.",
-    embody: "Builds capacity that outlasts the engagement.",
+    traditional: "Executes for the near-term need or go live.",
+    embody: "Builds organizational capability that outlasts the engagement.",
   },
   {
     traditional: "\"Gets you through\" the change.",
