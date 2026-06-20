@@ -51,6 +51,11 @@ export interface SpeakerData {
 }
 
 export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData }) {
+  const dbTopics = useSpeakerTopics(speaker.facilitatorKey ?? "");
+  const topics =
+    speaker.facilitatorKey && dbTopics && dbTopics.length > 0
+      ? dbTopics
+      : speaker.topics;
   return (
     <div>
       {/* Breadcrumb */}
