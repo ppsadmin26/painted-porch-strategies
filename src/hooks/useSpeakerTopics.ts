@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import type { SpeakingTopic } from "@/pages/pps/speaking/SpeakerDetailPage";
 
-/** Strip "(Keynote)", "(Workshop)" etc. suffixes and normalize whitespace/case. */
+/** Strip "(Keynote)", "(Workshop)" etc. suffixes, subtitle separators, and normalize whitespace/case. */
 export function canonicalTopicKey(name: string): string {
   return name
     .replace(/\s*\((Keynote|Workshop|B2B|Lab|Masterclass|Mini Course)\)\s*$/i, "")
+    .replace(/[:!]\s+.*/s, "")
+    .replace(/[:!]+$/, "")
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase();
