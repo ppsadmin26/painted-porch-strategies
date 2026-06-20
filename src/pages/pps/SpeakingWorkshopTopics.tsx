@@ -231,7 +231,7 @@ const BLURB_OVERRIDES: Record<string, string> = {
 
   // ── Rob (Speaker page) ──
   "high-fidelity communication":
-    "The way you speak your thoughts is your brand. Learn the three pillars of clear communication: preparation, conciseness, and attentiveness.",
+    "Learn how to dial in your message frequency, eliminate static, and broadcast a clear signal that resonates.",
   "8:8":
     "In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
   "the power of story":

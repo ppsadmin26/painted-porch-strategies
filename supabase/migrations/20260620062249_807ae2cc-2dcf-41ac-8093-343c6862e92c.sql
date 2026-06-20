@@ -1,0 +1,1 @@
+UPDATE path_finder_offerings SET blurb = 'Learn how to dial in your message frequency, eliminate static, and broadcast a clear signal that resonates.' WHERE offering_key = 'speakingHighFidelity';
