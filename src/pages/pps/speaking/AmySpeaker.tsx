@@ -4,6 +4,9 @@ import heroesAssemble from "@/assets/speaking/amy-heroes-assemble.png";
 import alicePrinciples from "@/assets/speaking/alice-principles.png.asset.json";
 import dontPanic from "@/assets/speaking/dont-panic-hitchhiker.png.asset.json";
 import dysfunctionToDynamic from "@/assets/speaking/dysfunction-to-dynamic.png.asset.json";
+import stoicismWorkplace from "@/assets/speaking/stoicism-workplace.png.asset.json";
+import aiEiOh from "@/assets/speaking/ai-ei-oh.png.asset.json";
+import leadSpeedOfChange from "@/assets/speaking/lead-speed-of-change.png.asset.json";
 import goldilocksLeadership from "@/assets/speaking/amy-goldilocks-leadership.png";
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
 
@@ -34,6 +37,7 @@ const amy: SpeakerData = {
     {
       slug: "lead-at-the-speed-of-change",
       title: "Lead at the Speed of Change",
+      image: leadSpeedOfChange.url,
       description:
         "Change is inevitable, chaos isn't. Learn how to lead adaptively, align around what matters most, and keep moving forward when the ground shifts beneath you.",
     },
@@ -53,6 +57,7 @@ const amy: SpeakerData = {
     {
       slug: "stoicism-in-the-workplace",
       title: "Stoicism in the Workplace",
+      image: stoicismWorkplace.url,
       description:
         "Discover how ancient Stoic principles can transform modern leadership. Learn to focus on what you can control, build resilience, and lead with clarity and purpose, even when everything around you is shifting.",
     },
@@ -66,6 +71,7 @@ const amy: SpeakerData = {
     {
       slug: "ai-ei-oh-guiding-change-and-ai-adoption",
       title: "AI, EI, Oh! Guiding Change and AI Adoption",
+      image: aiEiOh.url,
       description:
         "AI is here, but your people aren't ready. Discover how emotional intelligence is the missing link to successful AI adoption, and learn to lead your team through tech-driven change without leaving anyone behind.",
     },
