@@ -52,6 +52,9 @@ type Row = {
   facilitator: string | null;
   current_url: string;
   anchor_id: string | null;
+  image_url: string | null;
+  is_keynote: boolean;
+  include_in_workshops: boolean;
 };
 
 type MergedTopic = {
