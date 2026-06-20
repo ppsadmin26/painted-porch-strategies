@@ -246,8 +246,8 @@ export default function EmbodyPathAlt() {
 
           {/* The EMBODY outcome */}
           <div className="max-w-4xl mx-auto bg-lime/10 border-l-4 border-lime p-6 rounded-r-xl mb-14">
-            <h3 className="text-lg md:text-xl font-poppins font-semibold text-navy mb-2">
-              The <span className="text-lime">EMBODY</span> outcome you're seeking:
+            <h3 className="text-lg md:text-xl font-poppins font-semibold text-lime mb-2">
+              The <span className="text-navy">EMBODY</span> outcome you're seeking:
             </h3>
             <p className="text-body text-foreground italic mb-2">
               We've built the internal structures and culture to architect and execute sustainable change. Continual transformation is now ours to lead.
