@@ -20,8 +20,8 @@ const amy: SpeakerData = {
   seriesIntro:
     "Change doesn't have to suck. In this empowering speaker series, Amy Yackowski equips modern leaders with Stoic tools, real-world frameworks, and emotional intelligence practices that keep teams grounded and united through transformation.",
   bio: [
-    "Most people know me as a change strategist, coach, and founder of Painted Porch Strategies. But really? I'm just someone who believes that change doesn't have to suck.",
-    "For over 20 years, I've partnered with teams and leaders in fast-paced industries like staffing, wellness, and healthcare, turning burnout into boldness and uncertainty into aligned action.",
+    "Most people know me as a shift strategist, operational advisor, and founder of Painted Porch Strategies. But really? I'm just someone who believes that change doesn't have to suck.",
+    "For over 20 years, I've partnered with teams and leaders in fast-paced industries like staffing, energy, and healthcare, turning burnout into boldness and uncertainty into aligned action.",
     "I blend Stoic philosophy with practical tools to navigate chaos with clarity, lead with emotional intelligence, and build change-ready cultures that don't fall apart when things get hard.",
     "If you're ready to stop fighting change and start leading it, I'm your person.",
   ],
