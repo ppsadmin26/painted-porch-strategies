@@ -42,7 +42,7 @@ const team = [
     name: "Rob Hunter",
     title: "Chief Storytelling Officer | M.C. - Master of Communication",
     experience: "",
-    description: "\n\nRob believes people rarely move because they receive more information. They move when information becomes meaningful.\n\n\n\n\nAs a 27 year, award winning, #1 rated radio talk show host (iHeartPhoenix), his background in communication, storytelling, breaking news, and audience engagement has shown him that clarity isn't simply about what's said—it's about what's understood, remembered, and acted upon.\n\n\n\n\nHe brings narrative insight, strategic communication expertise, and a gift for turning complex ideas into conversations people can connect with.",
+    description: "\n\nRob believes people rarely move because they receive more information. They move when information becomes meaningful.\n\n\n\n\nAs a 27 year, award-winning, #1-rated radio talk show host (iHeartPhoenix), his background in communication, storytelling, breaking news, and audience engagement has shown him that clarity isn't simply about what's said - it's about what's understood, remembered, and acted upon.\n\n\n\n\nHe brings narrative insight, strategic communication expertise, and a gift for turning complex ideas into conversations people can connect with.",
     specialties: ["Strategic Messaging", "Public Speaking", "Influence & Persuasion", "Brand Voice"],
     color: "bg-muted",
     accent: "text-muted-foreground",
