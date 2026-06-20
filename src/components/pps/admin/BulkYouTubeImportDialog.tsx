@@ -34,7 +34,7 @@ export function BulkYouTubeImportDialog({ onImported }: BulkYouTubeImportDialogP
 
   const extractVideoId = (url: string): string | null => {
     const m = url.match(
-      /(?:youtube\.com\/watch\?.*v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/
+      /(?:youtube\.com\/watch\?.*v=|youtu\.be\/|youtube\.com\/embed\/|youtube\.com\/shorts\/|youtube\.com\/live\/)([a-zA-Z0-9_-]{11})/
     );
     return m ? m[1] : null;
   };
@@ -215,12 +215,12 @@ export function BulkYouTubeImportDialog({ onImported }: BulkYouTubeImportDialogP
               <Textarea
                 value={urls}
                 onChange={(e) => setUrls(e.target.value)}
-                placeholder={`https://www.youtube.com/watch?v=abc123\nhttps://youtu.be/def456\nhttps://www.youtube.com/watch?v=ghi789`}
+                placeholder={`https://www.youtube.com/watch?v=abc123\nhttps://youtu.be/def456\nhttps://www.youtube.com/live/ghi789`}
                 rows={8}
                 className="font-mono text-sm"
               />
-              <p className="text-xs text-muted-foreground mt-1.5">
-                Supports video URLs (watch, youtu.be, shorts) and channel URLs (youtube.com/@handle — pulls latest 25 videos). Duplicates are skipped.
+              <p className="text-caption text-muted-foreground mt-1.5">
+                Supports video URLs (watch, youtu.be, live, shorts) and channel URLs (youtube.com/@handle, pulls latest 25 videos). Duplicates are skipped.
               </p>
             </div>
             <div className="flex justify-end gap-2">
