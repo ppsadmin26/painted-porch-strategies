@@ -77,6 +77,7 @@ const amy: SpeakerData = {
     {
       slug: "dont-panic-navigating-a-changing-world",
       title: "Don't Panic! Navigating a Changing World",
+      image: dontPanic.url,
       description:
         "Grab your towel and don't panic, because change, much like the galaxy, is vast, unpredictable, and mostly harmless. Using Douglas Adams' Hitchhiker's Guide as a lens, discover how humor, perspective, and a good guide can turn overwhelming transformation into an adventure worth taking.",
     },
