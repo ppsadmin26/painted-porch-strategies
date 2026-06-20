@@ -149,7 +149,7 @@ export default function SpeakingWorkshopTopics() {
         if (isWorkshop && r.topic) existing.topic = displayTopic(r.topic);
         if (!existing.blurb && (r.description || r.blurb)) existing.blurb = (r.description || r.blurb) as string;
         if (!existing.facilitator && r.facilitator) existing.facilitator = r.facilitator;
-        return;
+        continue;
       }
       map.set(key, {
         key,
