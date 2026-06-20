@@ -116,7 +116,7 @@ export function BlueDoorCalloutSection() {
             </h3>
           </div>
           <p className="text-body text-foreground mb-6">
-            If you're responsible for leading change, setting direction, or navigating a major decision, the <span className="text-bluedoor font-bold">Blue Door</span> often provides the clearest place to begin.&nbsp;It offers a structured appraisal of your organization's current reality and reveals which opportunities, challenges, and priorities deserve attention first.
+            If you're responsible for leading change, setting direction, or navigating a major decision, the <span className="text-bluedoor font-bold">Blue Door</span>&nbsp;provides the clearest place to begin.&nbsp;It offers a structured appraisal of your organization's current reality and reveals which opportunities, challenges, and priorities require attention first.
             <br /><br />
             For many leaders, it becomes the bridge between possibility and action.
           </p>
