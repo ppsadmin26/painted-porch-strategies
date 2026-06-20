@@ -36,11 +36,11 @@ const offerings: OfferingCard[] = [
     color: "purple",
   },
   {
-    emoji: "✈️",
-    title: "From Passenger to Pilot",
+    emoji: "🎓",
+    title: "Mindful Masterclasses & Mini-Courses",
     description:
-      "A free training to help you take the driver's seat in your life, stop reacting and start leading with intention.",
-    href: "/pilot-training",
+      "On-demand learning designed to help you build resilience, manage energy, and lead with intention. Explore mindfulness, movement, and mindset tools you can use right away.",
+    href: "/partner/ignite/masterclasses?category=Mindfulness%20%26%20Resilience",
     color: "teal",
   },
   {
