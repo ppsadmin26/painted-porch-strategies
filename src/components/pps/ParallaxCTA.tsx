@@ -179,9 +179,9 @@ export function ParallaxCTA({
         )}
       >
         {eyebrow && (
-          <p className="text-body text-gold font-semibold uppercase tracking-wide -sm mb-3 drop-shadow">
+          <Eyebrow variant="plain" tone="gold" as="p" className="drop-shadow">
             {eyebrow}
-          </p>
+          </Eyebrow>
         )}
         <h2
           id={headingId}
