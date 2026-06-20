@@ -19,7 +19,7 @@ export function HowPeopleEnterSection() {
             Sometimes it begins with a leadership challenge that's difficult to solve alone.
           </p>
           <p className="text-body text-foreground leading-relaxed">
-            Sometimes it begins with a realization that the future you're trying to create will require something different from the people, systems, and structures you have today.
+            Sometimes it begins with a realization that the future you're trying to author will require something different from the people, systems, and structures you have today.
           </p>
           <p className="text-body text-foreground leading-relaxed">
             No two journeys look exactly alike.
