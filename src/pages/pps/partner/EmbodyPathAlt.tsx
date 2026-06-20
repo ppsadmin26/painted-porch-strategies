@@ -417,7 +417,7 @@ export default function EmbodyPathAlt() {
                   {[
                     "A team that identifies, prepares, and leads change faster than the market shifts",
                     "One strategic plan and direction instead of fragmented vendor projects to manage",
-                    "Permanent internal capacity to architect change without us",
+                    "Permanent internal capacity to architect transformation without us",
                   ].map((item) => (
                     <li key={item} className="text-body flex items-start gap-2 -sm text-foreground">
                       <CheckCircle className="w-4 h-4 text-lime flex-shrink-0 mt-0.5" />
