@@ -209,6 +209,30 @@ export default function AboutSierra() {
         </div>
       </section>
 
+      {/* ── FEATURED VIDEO ─────────────────────────────────────────────── */}
+      <section className="py-16 md:py-20">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy">
+            Featured Video
+          </h2>
+          <p className="text-body mt-3 text-foreground/60">
+            A moment of mindfulness with Sierra
+          </p>
+          <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-xl shadow-lg">
+            <div className="relative aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/QC_6yGQAPz0"
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="Featured Video"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── RADICAL MINDFULNESS ON YOUTUBE ───────────────────────────── */}
       <section className="py-16 md:py-20">
         <div className="mx-auto max-w-5xl px-6 text-center">
