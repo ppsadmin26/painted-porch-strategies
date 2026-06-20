@@ -168,10 +168,10 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
                   )}
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-3 uppercase">
+                  <h3 className="text-lg md:text-xl font-poppins font-semibold text-navy mb-3 uppercase">
                     {topic.title}
                   </h3>
-                  <p className="text-body -sm text-foreground leading-relaxed">
+                  <p className="text-body-sm text-foreground">
                     {topic.description}
                   </p>
                 </div>
