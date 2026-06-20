@@ -38,7 +38,7 @@ const amy: SpeakerData = {
     {
       slug: "lead-at-the-speed-of-change",
       title: "Lead at the Speed of Change",
-      image: leadSpeedOfChange.url,
+      image: keynoteLeadSpeedOfChange.url,
       description:
         "Change is inevitable, chaos isn't. Learn how to lead adaptively, align around what matters most, and keep moving forward when the ground shifts beneath you.",
     },
