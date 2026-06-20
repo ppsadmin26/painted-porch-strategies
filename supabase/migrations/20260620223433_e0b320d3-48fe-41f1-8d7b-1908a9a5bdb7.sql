@@ -1,0 +1,1 @@
+UPDATE public.page_status SET status = 'live' WHERE path IN ('/speaking/amy','/speaking/rob','/speaking/sierra','/speaking/topics');
