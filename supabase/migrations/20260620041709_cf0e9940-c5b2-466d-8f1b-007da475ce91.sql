@@ -1,0 +1,1 @@
+INSERT INTO public.page_status (path, status, note) VALUES ('/speaking/topics', 'draft', 'New Speaking & Workshop Topics catalog page (admin-only until live).') ON CONFLICT (path) DO NOTHING;

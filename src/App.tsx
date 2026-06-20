@@ -95,6 +95,7 @@ import BlueDoorSuccess from "./pages/pps/BlueDoorSuccess";
 
 // Other Pages
 import Speaking from "./pages/pps/Speaking";
+import SpeakingWorkshopTopics from "./pages/pps/SpeakingWorkshopTopics";
 import AmySpeaker from "./pages/pps/speaking/AmySpeaker";
 import RobSpeaker from "./pages/pps/speaking/RobSpeaker";
 import SierraSpeaker from "./pages/pps/speaking/SierraSpeaker";
@@ -330,6 +331,7 @@ const App = () => (
             {/* Other Pages */}
             
             <Route path="speaking" element={<Speaking />} />
+            <Route path="speaking/topics" element={<SpeakingWorkshopTopics />} />
             <Route path="speaking/amy" element={<AmySpeaker />} />
             <Route path="speaking/rob" element={<RobSpeaker />} />
             <Route path="speaking/sierra" element={<SierraSpeaker />} />
