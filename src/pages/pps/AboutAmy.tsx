@@ -176,27 +176,6 @@ export default function AboutAmy() {
         </div>
       </section>
 
-      {/* ── SPEAKER REEL ─────────────────────────────────────────────── */}
-      <section className="bg-navy py-12 md:py-16">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
-            See Amy in Action
-          </h2>
-          <p className="text-body mt-2 text-white/70">Expert Speaker Reel</p>
-          <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-xl shadow-2xl">
-            <div className="relative aspect-video">
-              <iframe
-                src="https://newvector.vids.io/videos/d390d3b51b1be0c35a/embed"
-                className="absolute inset-0 h-full w-full"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-                title="Amy Yackowski Speaker Reel"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ── WHAT I DO ────────────────────────────────────────────────── */}
       <section className="py-16 md:py-24">

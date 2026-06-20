@@ -171,27 +171,6 @@ export default function AboutSierra() {
         </div>
       </section>
 
-      {/* ── YOUTUBE EMBED ────────────────────────────────────────────── */}
-      <section className="bg-navy py-12 md:py-16">
-        <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
-            Radical Mindfulness in Action
-          </h2>
-          <p className="text-body mt-2 text-white/70">How to Celebrate Presence (Birthday Candle Breath)</p>
-          <div className="mx-auto mt-8 max-w-3xl overflow-hidden rounded-xl shadow-2xl">
-            <div className="relative aspect-video">
-              <iframe
-                src="https://www.youtube.com/embed/QC_6yGQAPz0"
-                className="absolute inset-0 h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title="Radical Mindfulness | How to Celebrate Presence"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ── WHAT I DO ────────────────────────────────────────────────── */}
       <section className="py-16 md:py-24">
