@@ -10,8 +10,8 @@ interface MoreTopicsCalloutProps {
 
 export function MoreTopicsCallout({ speakers, speakerName }: MoreTopicsCalloutProps) {
   const href = speakers && speakers.length > 0
-    ? `/topics?speakers=${encodeURIComponent(speakers.join(","))}`
-    : "/topics";
+    ? `/speaking/topics?speakers=${encodeURIComponent(speakers.join(","))}`
+    : "/speaking/topics";
 
   const heading = speakerName
     ? `${speakerName} speaks about several other topics.`
