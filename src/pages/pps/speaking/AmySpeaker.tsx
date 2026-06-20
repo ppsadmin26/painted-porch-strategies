@@ -7,7 +7,7 @@ import dysfunctionToDynamic from "@/assets/speaking/dysfunction-to-dynamic.png.a
 import stoicismWorkplace from "@/assets/speaking/keynote-cover-stoicism.png.asset.json";
 import keynoteAiEiOh from "@/assets/speaking/keynote-ai-ei-oh.png.asset.json";
 import keynoteLeadSpeedOfChange from "@/assets/speaking/keynote-cover-speed-of-change.png.asset.json";
-import colorfulPath from "@/assets/colorful-path.jpg";
+import shiftHappens from "@/assets/speaking/shift-happens.png.asset.json";
 import goldilocksLeadership from "@/assets/speaking/amy-goldilocks-leadership.png";
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
 
