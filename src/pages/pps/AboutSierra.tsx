@@ -4,8 +4,26 @@ import {
   Coffee,
   ExternalLink,
   ArrowRight,
+  Play,
+  Youtube,
 } from "lucide-react";
 import sierraPhoto from "@/assets/team/sierra-ramm-cantrell.jpg";
+
+interface YouTubeVideoItem {
+  id: string;
+  title: string;
+}
+
+const radicalMindfulnessVideos: YouTubeVideoItem[] = [
+  { id: "6HbbLNxVuqY", title: "Staying Mindful When \"Shift\" Happens | StaffingMania LIVE!" },
+  { id: "oxCcRb8qIng", title: "Box (or Square) Breath Technique | Mindful Moment on The Porch" },
+  { id: "_TzZMyPG8nw", title: "Mindful Moment | How to Find Small Moments of Solitude" },
+  { id: "UpR6pR1w80A", title: "What is Laughter Yoga? | Radical Mindfulness" },
+  { id: "6m6CQlA068c", title: "Mindful Moment | How to Practice Being Present (Despite the Conditions)" },
+  { id: "4XWtob487kM", title: "Radical Mindfulness | How Your PAST is NOT Your PRESENT" },
+  { id: "9daEXDwN2Q8", title: "Mindful Moment | How to Find 'Holiday Moments' Every Day" },
+  { id: "sc0gxJhdVkE", title: "Mindful Moment | How to Just Keep Swimming" },
+];
 
 /* ── Offering categories ─────────────────────────────────────────────── */
 
