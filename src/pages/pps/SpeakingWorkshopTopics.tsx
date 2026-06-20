@@ -126,7 +126,7 @@ const KEY_ALIASES: Record<string, string> = {
   "speak with style — 6 communicator styles":
     "speak with style: the 6 communicator styles for influence & impact",
   "radical mindfulness": "radically mindful leadership",
-  "the alice principles: down the rabbit hole of transformation": "the alice principles",
+  "the alice principles": "the alice principles: down the rabbit hole of transformation",
   "your 5-minute keynote": "5-minute keynote",
   "the 5-minute keynote": "5-minute keynote",
 };
