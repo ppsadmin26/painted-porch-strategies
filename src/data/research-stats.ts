@@ -24,8 +24,8 @@ export const RESEARCH_STATS: Record<string, ResearchStat> = {
   mck_ai_readiness: {
     id: "mck_ai_readiness",
     figure: "86%",
-    label: "of organizations aren't ready to adopt AI at scale",
-    long: "86% of organizations aren't ready to adopt AI at scale.",
+    label: "of organizations aren't equipped to adopt AI at scale",
+    long: "86% of organizations aren't equipped to adopt AI at scale.",
     source: "McKinsey, The State of Organizations 2026",
     sourceUrl: "https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-state-of-organizations-2026",
     year: "2026",
