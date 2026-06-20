@@ -29,7 +29,7 @@ const sierra: SpeakerData = {
       title: "From Passenger to Pilot",
       image: passengerToPilot.url,
       description:
-        "Tough times call for inner strength. Discover how to bounce back from challenges and prevent burnout using simple, science-backed resilience tools.",
+        "Ever feel like you're just along for the ride in your own life and work? This keynote explores how to shift from auto-pilot to intentional leadership, using simple, practical mindfulness tools to show up strong, be fully present, and steer your own path with clarity and purpose.",
     },
     {
       slug: "move-shake-innovate",
