@@ -179,7 +179,7 @@ export default function PPSAbout() {
               </h2>
               <div className="text-lg text-foreground leading-relaxed mb-6 space-y-4">
                 <p className="text-body">
-                  Across transformation efforts, growth initiatives, leadership transitions, and organizational change, one pattern kept emerging.
+                  Across transformation efforts, growth initiatives, leadership transitions, and organizational change, one pattern kept emerging:
                 </p>
                 <p className="text-body">
                   The challenge was rarely a lack of effort. It was a <strong>lack of space</strong>.
