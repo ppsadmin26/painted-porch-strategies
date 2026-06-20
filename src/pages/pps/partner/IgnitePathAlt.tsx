@@ -279,7 +279,7 @@ export default function IgnitePathAlt() {
                 Masterclasses
               </h3>
               <p className="text-body text-foreground mb-6 leading-relaxed">
-                Strategic insights in under 90 minutes. These mini-workshops illuminate Phase Zero strategic architecture, transformation design, and conscious leadership, one small shift at a time.
+                Strategic insights in under 90 minutes. These mini-workshops illuminate Phase Zero strategic architecture, capability design, and conscious leadership, one small shift at a time.
               </p>
               <p className="text-body -sm font-semibold text-navy mb-3">What's Inside:</p>
               <ul className="space-y-2 mb-6 flex-grow">
