@@ -264,7 +264,7 @@ export default function SpeakingWorkshopTopics() {
         if (isKeynote && !existing.formats.includes("Speaking")) existing.formats.push("Speaking");
         if (isWorkshop && !existing.formats.includes("Workshop")) existing.formats.push("Workshop");
         // Prefer workshop's topic tag (more detailed)
-        if (isWorkshop && r.topic) existing.topic = displayTopic(r.topic);
+        if (isWorkshop && r.topic) existing.topic = topicFor(key, r.topic);
         if (!existing.blurb && (r.description || r.blurb)) existing.blurb = (r.description || r.blurb) as string;
         if (!existing.facilitator && r.facilitator) existing.facilitator = r.facilitator;
         // Lock in canonical name if defined
