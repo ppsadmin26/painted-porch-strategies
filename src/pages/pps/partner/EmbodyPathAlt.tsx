@@ -100,7 +100,7 @@ const embodyIncludes = [
   },
   {
     title: "Architecture co-design across the Pillars",
-    body: "Cultural Cornerstone, Operational Frame, and Living Ecosystem worked simultaneously, not sequentially, so capability compounds and inter.",
+    body: "Cultural Cornerstone, Operational Frame, and Living Ecosystem worked simultaneously, not sequentially, so capability compounds and integrates.",
   },
   {
     title: "Phase Zero stewardship through every major shIFt",
