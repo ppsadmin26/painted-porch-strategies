@@ -163,6 +163,11 @@ export default function Speaking() {
                       ))}
                     </div>
 
+                    <Link to={speaker.href}>
+                      <Button variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white">
+                        Learn more about {speaker.name.split(" ")[0]}
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               );
