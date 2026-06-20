@@ -33,10 +33,10 @@ interface BlogPost {
 
 const categoryColors: Record<string, string> = {
   "Stoicism & Philosophy": "border-purple bg-purple/10 text-purple",
-  "Leadership & EQ": "border-primary bg-primary/10 text-primary",
+  "Leadership & Culture": "border-primary bg-primary/10 text-primary",
   "Change & Innovation": "border-strategic bg-strategic/10 text-strategic",
-  "Team Dynamics & Culture": "border-navy bg-navy/10 text-navy",
-  "Mindset & Wellbeing": "border-raspberry bg-raspberry/10 text-raspberry",
+  "Team Dynamics": "border-navy bg-navy/10 text-navy",
+  "Resilience & Wellbeing": "border-raspberry bg-raspberry/10 text-raspberry",
   "Communication": "border-lime bg-lime/10 text-lime",
   "Workplace & Operations": "border-primary bg-primary/10 text-primary",
   "Productivity & Focus": "border-gold bg-gold/10 text-gold",
@@ -46,10 +46,10 @@ const categoryColors: Record<string, string> = {
 
 const categoryBorderColors: Record<string, string> = {
   "Stoicism & Philosophy": "border-purple",
-  "Leadership & EQ": "border-primary",
+  "Leadership & Culture": "border-primary",
   "Change & Innovation": "border-strategic",
-  "Team Dynamics & Culture": "border-navy",
-  "Mindset & Wellbeing": "border-raspberry",
+  "Team Dynamics": "border-navy",
+  "Resilience & Wellbeing": "border-raspberry",
   "Communication": "border-lime",
   "Workplace & Operations": "border-primary",
   "Productivity & Focus": "border-gold",
