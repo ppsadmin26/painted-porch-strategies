@@ -598,11 +598,14 @@ export default function PathFinderOfferings() {
                     />
                   </div>
                   <div>
-                    <Label className="text-xs">Blurb (shown under the name)</Label>
+                    <Label className="text-xs">
+                      Short blurb (quiz results &amp; fallback for topic card)
+                    </Label>
                     <Textarea
                       rows={2}
                       value={valueOf(row, "blurb") ?? ""}
                       onChange={(e) => patch(row.id, { blurb: e.target.value })}
+                      placeholder="Short one-liner. Used in quiz results."
                     />
                   </div>
                   <div>
@@ -623,14 +626,19 @@ export default function PathFinderOfferings() {
                   </div>
                 </div>
 
-                <div className="mb-3">
-                  <Label className="text-xs">Workshop description (shown in accordion body)</Label>
+                <div className="mb-3 rounded-md border border-dashed border-teal/40 bg-teal/5 px-3 py-2">
+                  <Label className="text-xs font-semibold text-teal">
+                    Topic card description — single source of truth
+                  </Label>
                   <Textarea
                     rows={3}
                     value={valueOf(row, "description") ?? ""}
                     onChange={(e) => patch(row.id, { description: e.target.value || null as any })}
-                    placeholder="Full description shown when the accordion is expanded..."
+                    placeholder="The exact paragraph shown on /topics and the speaker pages (/speaking/amy|rob|sierra) and the workshops accordion."
                   />
+                  <p className="text-[11px] text-muted-foreground mt-1">
+                    This field renders on <code>/topics</code>, <code>/speaking/*</code>, and <code>/partner/amplify/workshops</code>. If empty, the short blurb above is used as fallback. Edits here are the <strong>only</strong> way to change topic-card copy — no hardcoded overrides.
+                  </p>
                 </div>
 
                 {/* Topic card (drives /topics, /speaking/amy|rob|sierra, and /partner/amplify/workshops) */}
