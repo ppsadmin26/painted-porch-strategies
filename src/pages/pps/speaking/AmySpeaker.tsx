@@ -7,7 +7,7 @@ import dysfunctionToDynamic from "@/assets/speaking/dysfunction-to-dynamic.png.a
 import stoicismWorkplace from "@/assets/speaking/stoicism-workplace.png.asset.json";
 import aiEiOh from "@/assets/speaking/ai-ei-oh.png.asset.json";
 import leadSpeedOfChange from "@/assets/speaking/lead-speed-of-change.png.asset.json";
-import shiftHappens from "@/assets/speaking/shift-happens.png.asset.json";
+import colorfulPath from "@/assets/colorful-path.jpg";
 import goldilocksLeadership from "@/assets/speaking/amy-goldilocks-leadership.png";
 import SpeakerDetailPage, { type SpeakerData } from "./SpeakerDetailPage";
 
@@ -45,7 +45,7 @@ const amy: SpeakerData = {
     {
       slug: "shift-happens-be-ready",
       title: "ShIFt Happens. Be Ready.",
-      image: shiftHappens.url,
+      image: colorfulPath,
       description:
         "Using our P.A.T.H.™ method, discover a proven roadmap to navigate change that's on time, on budget, and on purpose.",
     },
