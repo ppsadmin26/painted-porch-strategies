@@ -346,9 +346,7 @@ export default function OurApproach() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12 max-w-3xl mx-auto">
-            <p className="text-body font-poppins font-semibold uppercase tracking-[0.12em] sm:tracking-[0.18em] text-gold mb-3">
-              WHAT OUR WORK MAKES POSSIBLE
-            </p>
+            <Eyebrow variant="plain" tone="gold" as="p">WHAT OUR WORK MAKES POSSIBLE</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               The Conditions That Shape Every Outcome
             </h2>
