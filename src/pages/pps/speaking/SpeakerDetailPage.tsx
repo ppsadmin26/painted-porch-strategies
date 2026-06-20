@@ -222,7 +222,7 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
               </Button>
             </Link>
             <Link to="/speaking">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-navy text-lg py-5 px-8 transition-colors">
+              <Button variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-navy text-lg py-5 px-8 transition-colors">
                 All Speakers <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
