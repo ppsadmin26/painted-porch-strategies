@@ -51,7 +51,7 @@ const rows = [
     pillar: "Phase Zero Authorship",
     pillarSub: "The work before the work",
     shift:
-      "Adoption fails when leaders skip the authorship phase. Phase Zero is where you decide what's worth building before you ask people to build it.",
+      "Adoption fails when leaders skip the authorship phase. Phase Zero is where you decide what deserves your commitment and investment before you ask people to build it.",
     icon: PenTool,
     accentText: "text-raspberry",
     accentBg: "bg-raspberry/15",
