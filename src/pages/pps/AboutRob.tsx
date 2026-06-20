@@ -67,14 +67,6 @@ const offerings: OfferingCard[] = [
     color: "purple",
   },
   {
-    emoji: "🚀",
-    title: "AMPLIFY: Communication Workshops",
-    description:
-      "Focused team workshops and sprints that build compound momentum in communication clarity and confidence.",
-    href: "/partner/amplify",
-    color: "raspberry",
-  },
-  {
     emoji: "🎯",
     title: "Communication & Connection Masterclasses and Mini-Workshops",
     description:
