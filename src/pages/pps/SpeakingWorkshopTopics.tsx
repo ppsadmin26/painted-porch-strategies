@@ -39,7 +39,7 @@ import onAir from "@/assets/speaking/topics/on-air-confidence.jpg.asset.json";
 import sixStyles from "@/assets/speaking/topics/six-communicator-styles.jpg.asset.json";
 import findingJoy from "@/assets/speaking/topics/finding-joy-at-work.jpg.asset.json";
 import passengerToPilot from "@/assets/speaking/topics/passenger-to-pilot.jpg.asset.json";
-import moveShakeInnovate from "@/assets/speaking/topics/move-shake-innovate.jpg.asset.json";
+import moveShakeInnovate from "@/assets/speaking/topics/move-shake-innovate.png.asset.json";
 import reignitingResilience from "@/assets/speaking/topics/reigniting-resilience.jpg.asset.json";
 import fiveMinKeynote from "@/assets/speaking/topics/five-minute-keynote.jpg.asset.json";
 
