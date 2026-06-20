@@ -110,6 +110,38 @@ async function getChannelIdFromVideo(apiKey: string, videoId: string): Promise<s
   return data.items?.[0]?.snippet?.channelId || null;
 }
 
+function extractChannelHandle(url: string): string | null {
+  const m = url.match(/youtube\.com\/@([a-zA-Z0-9_.-]+)/);
+  return m ? m[1] : null;
+}
+
+async function getChannelIdFromHandle(apiKey: string, handle: string): Promise<string | null> {
+  const url = `https://www.googleapis.com/youtube/v3/channels?forHandle=@${handle}&part=id&key=${apiKey}`;
+  const res = await fetch(url);
+  if (!res.ok) return null;
+  const data = await res.json();
+  return data.items?.[0]?.id || null;
+}
+
+async function getRecentVideoIdsFromChannel(apiKey: string, channelId: string, max = 50): Promise<string[]> {
+  // Uploads playlist ID = channelId with 2nd char replaced with 'U'
+  const uploadsPlaylistId = "UU" + channelId.slice(2);
+  const ids: string[] = [];
+  let pageToken = "";
+  do {
+    const url = `https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${uploadsPlaylistId}&part=contentDetails&maxResults=50&key=${apiKey}${pageToken ? `&pageToken=${pageToken}` : ""}`;
+    const res = await fetch(url);
+    if (!res.ok) break;
+    const data = await res.json();
+    for (const item of data.items || []) {
+      if (item.contentDetails?.videoId) ids.push(item.contentDetails.videoId);
+      if (ids.length >= max) return ids;
+    }
+    pageToken = data.nextPageToken || "";
+  } while (pageToken && ids.length < max);
+  return ids;
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
