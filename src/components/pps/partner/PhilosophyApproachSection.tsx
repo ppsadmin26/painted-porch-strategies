@@ -32,7 +32,7 @@ const principles = [
         Success is not measured by a completed project. It's reflected in stronger leaders, healthier systems, and greater confidence in navigating uncertainty or whatever <ShIFt lowercase /> happens next.
       </>
     ),
-    contrast: "When we're done, you've become transformation architects yourselves.",
+    contrast: "When our partnership completes, you've become transformation architects yourselves.",
   },
   {
     icon: BookOpen,
