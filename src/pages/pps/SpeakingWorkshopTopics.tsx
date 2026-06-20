@@ -107,6 +107,7 @@ const KEY_ALIASES: Record<string, string> = {
   "speaking with style — 6 communicator styles":
     "speaking with style: the 6 communicator styles for influence & impact",
   "radical mindfulness": "radically mindful leadership",
+  "the alice principles: down the rabbit hole of transformation": "the alice principles",
 };
 
 /** Preferred display name for canonical keys (overrides whichever row was seen first). */
