@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useIsPageLive } from "@/hooks/useIsPageLive";
 import { ParallaxBackground } from "@/components/pps/ParallaxBackground";
+import { Eyebrow } from "@/components/pps/Eyebrow";
 
 
 /**
