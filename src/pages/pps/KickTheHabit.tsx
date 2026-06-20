@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import mcKickTheHabit from "@/assets/masterclass/kick-the-habit.jpg";
+import mcKickTheHabitAsset from "@/assets/masterclass/kick-the-habit.jpg.asset.json";
 import LazyPreviewVideo from "@/components/pps/LazyPreviewVideo";
 
 export default function KickTheHabit() {
@@ -65,7 +65,7 @@ export default function KickTheHabit() {
           <LazyPreviewVideo
             slotKey="kick-the-habit-preview"
             fallbackVideoUrl=""
-            fallbackPosterUrl={mcKickTheHabit}
+            fallbackPosterUrl={mcKickTheHabitAsset.url}
             playButtonClassName="bg-raspberry"
             ariaLabel="Watch Kick the Habit preview"
             className="shadow-xl"
