@@ -284,9 +284,11 @@ export default function SpeakingWorkshopTopics() {
         if (isWorkshop && !existing.formats.includes("Workshop")) existing.formats.push("Workshop");
         // Prefer workshop's topic tag (more detailed)
         if (isWorkshop && r.topic) existing.topic = topicFor(key, r.topic);
-        // Prefer the longer / more complete blurb (workshop blurbs are usually richer)
+        // DB is source of truth. Prefer description; fall back to blurb.
+        // If both variants have content, keep the workshop row's copy
+        // (richer accordion text) — otherwise take whichever is non-empty.
         const incomingBlurb = (r.description || r.blurb || "") as string;
-        if (incomingBlurb && incomingBlurb.length > (existing.blurb || "").length) {
+        if (incomingBlurb && (isWorkshop || !existing.blurb)) {
           existing.blurb = incomingBlurb;
         }
         // Prefer DB image_url; fall back to whatever's already set.
@@ -318,8 +320,6 @@ export default function SpeakingWorkshopTopics() {
         if (!m.formats.includes("Speaking")) m.formats.push("Speaking");
         if (!m.formats.includes("Workshop")) m.formats.push("Workshop");
       }
-      // Final fallback: legacy hardcoded blurb overrides ONLY if no DB content.
-      if (!m.blurb && BLURB_OVERRIDES[m.key]) m.blurb = BLURB_OVERRIDES[m.key];
     }
     return Array.from(map.values()).sort((a, b) => a.baseName.localeCompare(b.baseName));
   }, [rows]);
