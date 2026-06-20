@@ -35,9 +35,9 @@ const choiceCards = [
     tier: TIERS.EMBODY,
     conditions: [
       "You're a C-suite executive pursuing permanent transformation",
-      "Your organization is facing significant strategic change",
+      "Your organization is facing significant strategic integration",
       "You want embedded partnership, not project-based work",
-      "You're ready for 6-12+ month commitment",
+      "You're seeking a 6+ month commitment",
       "You're building organizational capability that lasts beyond any single initiative",
     ],
     cta: {
