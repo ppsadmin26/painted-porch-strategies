@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Mic, Users, ArrowRight, Flame } from "lucide-react";
+import { Mic, Users, ArrowRight, Flame, Pencil } from "lucide-react";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
+import { useUserRole } from "@/hooks/useUserRole";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import { Eyebrow } from "@/components/pps/Eyebrow";
 import { ParallaxCTA } from "@/components/pps/ParallaxCTA";
 import speakingHero from "@/assets/heroes/speaking-hero.jpg";
+
 
 // Topic images (existing assets). Keyed by normalized base name.
 import aiEiOh from "@/assets/speaking/keynote-ai-ei-oh.png.asset.json";
