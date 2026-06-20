@@ -240,7 +240,7 @@ export default function PPSAbout() {
       </section>
 
       {/* Team */}
-      <section className="pt-8 md:pt-10 pb-16 md:pb-24 bg-muted/30">
+      <section className="pt-8 md:pt-10 pb-16 md:pb-24 bg-white">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {team.map((member, index) => {
