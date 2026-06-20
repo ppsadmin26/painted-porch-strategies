@@ -267,7 +267,11 @@ export default function SpeakingWorkshopTopics() {
         if (isWorkshop && !existing.formats.includes("Workshop")) existing.formats.push("Workshop");
         // Prefer workshop's topic tag (more detailed)
         if (isWorkshop && r.topic) existing.topic = topicFor(key, r.topic);
-        if (!existing.blurb && (r.description || r.blurb)) existing.blurb = (r.description || r.blurb) as string;
+        // Prefer the longer / more complete blurb (workshop blurbs are usually richer)
+        const incomingBlurb = (r.description || r.blurb || "") as string;
+        if (incomingBlurb && incomingBlurb.length > (existing.blurb || "").length) {
+          existing.blurb = incomingBlurb;
+        }
         if (r.facilitator && !existing.facilitators.includes(r.facilitator)) existing.facilitators.push(r.facilitator);
         // Lock in canonical name if defined
         if (CANONICAL_NAME[key]) existing.baseName = CANONICAL_NAME[key];
