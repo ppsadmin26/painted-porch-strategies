@@ -400,7 +400,7 @@ export default function AmplifyWorkshops() {
               <Button
                 asChild
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-navy h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold whitespace-normal"
+                className="bg-transparent border-white text-white hover:bg-white hover:text-navy h-auto min-h-12 px-4 sm:px-8 py-3 text-base font-semibold whitespace-normal"
               >
                 <Link to="/contact?scope=organization&interest=workshops&message=I'd like to discuss a workshop or speaking topic for our team.">
                   Contact Us to Talk It Through
