@@ -4,6 +4,8 @@ import {
   Coffee,
   ExternalLink,
   ArrowRight,
+  Play,
+  Youtube,
 } from "lucide-react";
 
 const amyPhoto =
@@ -104,6 +106,12 @@ const quickLinks: QuickLink[] = [
     href: "https://open.spotify.com/playlist/1F6mkBYTllBzwawCXDEmry",
     external: true,
   },
+  {
+    emoji: "📺",
+    label: "Join me on our Painted Porch on YouTube",
+    href: "https://www.youtube.com/@onthepaintedporch",
+    external: true,
+  },
 ];
 
 /* ── Color helpers ───────────────────────────────────────────────────── */
@@ -123,6 +131,24 @@ const dotColorMap: Record<OfferingCard["color"], string> = {
   lime: "bg-accent",
   raspberry: "bg-destructive",
 };
+
+/* ── Do Epic ShIFt on YouTube ─────────────────────────────────────────── */
+
+interface YouTubeVideoItem {
+  id: string;
+  title: string;
+}
+
+const doEpicShiftVideos: YouTubeVideoItem[] = [
+  { id: "VENNusJo1PI", title: "Tech Change with Courage: When Shift Happens with Amy Yackowski" },
+  { id: "LFGbm__t5M4", title: "If your change plan is just comms & training, you're not ready." },
+  { id: "PKAJaUl7ui8", title: "From Hype to Habit: Turning AI Talk into Action" },
+  { id: "hwDE_vPLprQ", title: "Phase Zero: The Hidden Advantage In Change - Podcast With Amy Yackowski" },
+  { id: "_VwR3vrqFdE", title: "Fix Your Workplace Culture with Amy Yackowski | Your Inside Track to Success" },
+  { id: "zGcJ58ddTuo", title: "GROW Your Staffing Agency in 2025 with These Proven Strategies!" },
+  { id: "OiTJJna-YR0", title: "WEBINAR | Change Readiness Essentials | Part IV: Empowering People for Change" },
+  { id: "La5_9N0lHvU", title: "WEBINAR | Change Readiness Essentials | Part III: Streamlining Processes for Success" },
+];
 
 /* ── Component ───────────────────────────────────────────────────────── */
 
@@ -240,6 +266,75 @@ export default function AboutAmy() {
                 loading="lazy"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── DO EPIC SHIFt ON YOUTUBE ─────────────────────────────────── */}
+      <section className="py-16 md:py-24 overflow-hidden">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy">
+              Do Epic ShIFt with Amy on YouTube
+            </h2>
+            <p className="text-body mx-auto mt-3 max-w-xl text-foreground/60">
+              Real talk on change, leadership, and making shift happen -- one video at a time.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div
+              className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory"
+              style={{ scrollbarWidth: "thin", scrollbarColor: "hsl(var(--primary) / 0.5) transparent" }}
+            >
+              {doEpicShiftVideos.map((video) => (
+                <a
+                  key={video.id}
+                  href={`https://www.youtube.com/watch?v=${video.id}&list=PLhdPibIQvwhEhvaMycdAgzOM4dMMaFTVI`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group snap-start flex-shrink-0 w-[300px] block"
+                >
+                  <div className="relative aspect-video rounded-xl overflow-hidden bg-navy/10 shadow-md">
+                    <img
+                      src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
+                      alt={video.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                      <div className="w-14 h-14 rounded-full bg-raspberry/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                        <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
+                      </div>
+                    </div>
+                  </div>
+                  <h3 className="text-sm font-semibold text-navy mt-3 line-clamp-2 group-hover:text-primary transition-colors">
+                    {video.title}
+                  </h3>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="https://www.youtube.com/@onthepaintedporch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-destructive px-6 py-3 font-poppins font-semibold text-white transition hover:opacity-90"
+            >
+              <Youtube className="h-5 w-5" />
+              Subscribe on YouTube
+            </a>
+            <a
+              href="https://youtube.com/playlist?list=PLhdPibIQvwhEhvaMycdAgzOM4dMMaFTVI"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border-2 border-navy px-6 py-3 font-poppins font-semibold text-navy transition hover:bg-navy hover:text-white"
+            >
+              View Playlist
+              <ArrowRight className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </section>
