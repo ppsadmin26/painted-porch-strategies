@@ -36,6 +36,7 @@ interface Row {
   include_in_workshops: boolean;
   is_featured_in_quiz: boolean;
   is_keynote: boolean;
+  include_on_speaker_page: boolean;
   image_url: string | null;
   launch_slug: string | null;
   b2c_rt_pools: Record<string, string[]> | null;
