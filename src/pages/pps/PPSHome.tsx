@@ -413,7 +413,7 @@ export default function PPSHome() {
                 The Blue Door Organizational Appraisal.
               </h2>
               <p className="text-body text-foreground mb-4">
-                The questions that keep you up at 3AM deserve more than a pep
+                The questions that keep you up at 3 AM deserve more than a pep
                 talk or another planning deck. They deserve reality.
               </p>
               <p className="text-body text-foreground mb-4">
