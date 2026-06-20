@@ -20,6 +20,27 @@ import dysfunctionToDynamic from "@/assets/speaking/dysfunction-to-dynamic.png.a
 import shiftHappens from "@/assets/speaking/shift-happens.png.asset.json";
 import heroesAssemble from "@/assets/speaking/amy-heroes-assemble.png";
 import goldilocks from "@/assets/speaking/amy-goldilocks-leadership.png";
+// Workshop thumbs (already in use on /partner/amplify/workshops)
+import architectChangeThumb from "@/assets/workshops/architect-change-thumb.jpg";
+import resilienceThumb from "@/assets/workshops/change-resilience-thumb.jpg";
+import leadershipOpThumb from "@/assets/workshops/leadership-operating-thumb.jpg";
+import communicationThumb from "@/assets/workshops/communication-architecture-thumb.jpg";
+import mindfulnessThumb from "@/assets/workshops/mindfulness-leadership-thumb.jpg";
+// Newly generated topic covers
+import changeForGood from "@/assets/speaking/topics/change-for-good.jpg.asset.json";
+import drivingChange3Shifts from "@/assets/speaking/topics/driving-change-3-shifts.jpg.asset.json";
+import conflictToConnection from "@/assets/speaking/topics/conflict-to-connection.jpg.asset.json";
+import geniusAtWork from "@/assets/speaking/topics/genius-at-work.jpg.asset.json";
+import eightByEight from "@/assets/speaking/topics/eight-by-eight.jpg.asset.json";
+import borderlessComm from "@/assets/speaking/topics/borderless-communication.jpg.asset.json";
+import getClear from "@/assets/speaking/topics/get-clear-be-heard.jpg.asset.json";
+import highFidelity from "@/assets/speaking/topics/high-fidelity-communication.jpg.asset.json";
+import onAir from "@/assets/speaking/topics/on-air-confidence.jpg.asset.json";
+import sixStyles from "@/assets/speaking/topics/six-communicator-styles.jpg.asset.json";
+import findingJoy from "@/assets/speaking/topics/finding-joy-at-work.jpg.asset.json";
+import passengerToPilot from "@/assets/speaking/topics/passenger-to-pilot.jpg.asset.json";
+import moveShakeInnovate from "@/assets/speaking/topics/move-shake-innovate.jpg.asset.json";
+import reignitingResilience from "@/assets/speaking/topics/reigniting-resilience.jpg.asset.json";
 
 type Row = {
   offering_key: string;
