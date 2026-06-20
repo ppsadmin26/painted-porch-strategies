@@ -20,6 +20,27 @@ import dysfunctionToDynamic from "@/assets/speaking/dysfunction-to-dynamic.png.a
 import shiftHappens from "@/assets/speaking/shift-happens.png.asset.json";
 import heroesAssemble from "@/assets/speaking/amy-heroes-assemble.png";
 import goldilocks from "@/assets/speaking/amy-goldilocks-leadership.png";
+// Workshop thumbs (already in use on /partner/amplify/workshops)
+import architectChangeThumb from "@/assets/workshops/architect-change-thumb.jpg";
+import resilienceThumb from "@/assets/workshops/change-resilience-thumb.jpg";
+import leadershipOpThumb from "@/assets/workshops/leadership-operating-thumb.jpg";
+import communicationThumb from "@/assets/workshops/communication-architecture-thumb.jpg";
+import mindfulnessThumb from "@/assets/workshops/mindfulness-leadership-thumb.jpg";
+// Newly generated topic covers
+import changeForGood from "@/assets/speaking/topics/change-for-good.jpg.asset.json";
+import drivingChange3Shifts from "@/assets/speaking/topics/driving-change-3-shifts.jpg.asset.json";
+import conflictToConnection from "@/assets/speaking/topics/conflict-to-connection.jpg.asset.json";
+import geniusAtWork from "@/assets/speaking/topics/genius-at-work.jpg.asset.json";
+import eightByEight from "@/assets/speaking/topics/eight-by-eight.jpg.asset.json";
+import borderlessComm from "@/assets/speaking/topics/borderless-communication.jpg.asset.json";
+import getClear from "@/assets/speaking/topics/get-clear-be-heard.jpg.asset.json";
+import highFidelity from "@/assets/speaking/topics/high-fidelity-communication.jpg.asset.json";
+import onAir from "@/assets/speaking/topics/on-air-confidence.jpg.asset.json";
+import sixStyles from "@/assets/speaking/topics/six-communicator-styles.jpg.asset.json";
+import findingJoy from "@/assets/speaking/topics/finding-joy-at-work.jpg.asset.json";
+import passengerToPilot from "@/assets/speaking/topics/passenger-to-pilot.jpg.asset.json";
+import moveShakeInnovate from "@/assets/speaking/topics/move-shake-innovate.jpg.asset.json";
+import reignitingResilience from "@/assets/speaking/topics/reigniting-resilience.jpg.asset.json";
 
 type Row = {
   offering_key: string;
@@ -91,6 +112,35 @@ const IMAGE_MAP: Record<string, string> = {
   "heroes assemble": heroesAssemble,
   "heroes assemble!": heroesAssemble,
   "goldilocks leadership": goldilocks,
+  // Existing workshop thumbs from /partner/amplify/workshops
+  "architect change (strategic design intensive)": architectChangeThumb,
+  "architect change": architectChangeThumb,
+  "cultivating change resilience": resilienceThumb,
+  "leadership operating model": leadershipOpThumb,
+  "master your message": communicationThumb,
+  "master your message (b2b)": communicationThumb,
+  "radically mindful leadership": mindfulnessThumb,
+  "radical mindfulness (b2b)": mindfulnessThumb,
+  "radical mindfulness": mindfulnessThumb,
+  // Newly generated topic covers
+  "change for good: immunity to change": changeForGood.url,
+  "change for good": changeForGood.url,
+  "driving change: the 3 shifts": drivingChange3Shifts.url,
+  "from conflict to connection": conflictToConnection.url,
+  "genius at work": geniusAtWork.url,
+  "8:8": eightByEight.url,
+  "8:8 — capturing & keeping attention": eightByEight.url,
+  "borderless communication": borderlessComm.url,
+  "get c.l.e.a.r., be heard": getClear.url,
+  "get c.l.e.a.r. & be heard": getClear.url,
+  "high-fidelity communication": highFidelity.url,
+  "on-air ready confidence": onAir.url,
+  "speaking with style: the 6 communicator styles for influence & impact": sixStyles.url,
+  "speaking with style — 6 communicator styles": sixStyles.url,
+  "finding joy at work": findingJoy.url,
+  "from passenger to pilot": passengerToPilot.url,
+  "move, shake, innovate": moveShakeInnovate.url,
+  "reigniting resilience": reignitingResilience.url,
 };
 
 // Color accent per topic for the image placeholder when no image exists
