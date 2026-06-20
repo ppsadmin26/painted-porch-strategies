@@ -220,7 +220,7 @@ export function BulkYouTubeImportDialog({ onImported }: BulkYouTubeImportDialogP
                 className="font-mono text-sm"
               />
               <p className="text-xs text-muted-foreground mt-1.5">
-                Supports youtube.com/watch, youtu.be, and youtube.com/shorts URLs. Duplicates are automatically skipped.
+                Supports video URLs (watch, youtu.be, shorts) and channel URLs (youtube.com/@handle — pulls latest 25 videos). Duplicates are skipped.
               </p>
             </div>
             <div className="flex justify-end gap-2">
