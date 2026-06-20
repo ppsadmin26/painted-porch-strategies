@@ -20,7 +20,7 @@ const tierContent = {
   AMPLIFY: {
     tagline: "TEAM: Build momentum and collective capability",
     journey:
-      "Team workshops, strategic sprints, and cohort-based learning designed for leadership teams ready to build alignment around transformation, together.",
+      "Team workshops, strategic sprints, and cohort-based learning for leaders ready to build alignment around transformation, together.",
     perfectFor: [
       "Leadership teams needing strategic alignment",
       "Organizations exploring focused capability building",
