@@ -172,7 +172,7 @@ export default function BlueDoorPurchase() {
                 Visit our Impact page to see all of the good sh<span className="text-lime font-bold">IF</span>t we've been doing (because of you!) through the charities that have been supported over the years.
               </p>
               <Link
-                to="/about/our-impact#do-good-shift"
+                to="/about/impact#do-good-shift"
                 className="inline-block mt-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors"
               >
                 See our Impact page →
