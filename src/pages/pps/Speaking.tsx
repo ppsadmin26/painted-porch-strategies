@@ -9,6 +9,7 @@ import amyPhoto from "@/assets/team/amy-speaking-portrait.jpg";
 import robPhoto from "@/assets/team/rob-hunter.jpg";
 import sierraPhoto from "@/assets/team/sierra-ramm-cantrell.jpg";
 import { Eyebrow } from "@/components/pps/Eyebrow";
+import { MoreTopicsCallout } from "@/components/pps/MoreTopicsCallout";
 
 const speakingLogos: LogoItem[] = [
   { name: "ProjectWorld", src: "/logos/projectworld.png", href: "https://www.pmbaconferences.com/" },
