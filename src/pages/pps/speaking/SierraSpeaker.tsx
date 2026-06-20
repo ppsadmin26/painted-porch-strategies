@@ -26,30 +26,35 @@ const sierra: SpeakerData = {
     {
       slug: "from-passenger-to-pilot",
       title: "From Passenger to Pilot",
+      image: passengerToPilot.url,
       description:
         "Tough times call for inner strength. Discover how to bounce back from challenges and prevent burnout using simple, science-backed resilience tools.",
     },
     {
       slug: "move-shake-innovate",
       title: "Move, Shake, Innovate",
+      image: moveShakeInnovate.url,
       description:
         "Movement sparks creativity and connection. Explore how physical motion supports innovation, problem-solving, and present-moment awareness.",
     },
     {
       slug: "finding-joy-at-work",
       title: "Finding Joy at Work",
+      image: findingJoy.url,
       description:
         "Work doesn't have to feel like a grind. Learn how to infuse your day with purpose, presence, and a little play, even in high-pressure environments.",
     },
     {
       slug: "reigniting-resilience",
       title: "Reigniting Resilience",
+      image: reignitingResilience.url,
       description:
         "When the tank is empty, resilience is the fuel. Learn a framework to simplify your energy management and boost team engagement and retention.",
     },
     {
       slug: "radically-mindful-leadership",
       title: "Radically Mindful Leadership",
+      image: mindfulnessThumb,
       description:
         "Practical mindfulness techniques for executives who don't have time for mindfulness. Lead with calm, clarity, and intentional presence.",
     },
