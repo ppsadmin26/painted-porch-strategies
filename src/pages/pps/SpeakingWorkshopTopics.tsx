@@ -119,6 +119,7 @@ const CANONICAL_NAME: Record<string, string> = {
   "speaking with style: the 6 communicator styles for influence & impact":
     "Speaking with Style: The 6 Communicator Styles",
   "radically mindful leadership": "Radically Mindful Leadership",
+  "the alice principles": "The Alice Principles",
 };
 
 function canonicalKey(name: string): string {
