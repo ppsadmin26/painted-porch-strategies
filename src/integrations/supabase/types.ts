@@ -646,8 +646,10 @@ export type Database = {
           description: string | null
           facilitator: string | null
           id: string
+          image_url: string | null
           include_in_workshops: boolean
           is_featured_in_quiz: boolean
+          is_keynote: boolean
           is_live: boolean
           launch_slug: string | null
           name: string
@@ -669,8 +671,10 @@ export type Database = {
           description?: string | null
           facilitator?: string | null
           id?: string
+          image_url?: string | null
           include_in_workshops?: boolean
           is_featured_in_quiz?: boolean
+          is_keynote?: boolean
           is_live?: boolean
           launch_slug?: string | null
           name: string
@@ -692,8 +696,10 @@ export type Database = {
           description?: string | null
           facilitator?: string | null
           id?: string
+          image_url?: string | null
           include_in_workshops?: boolean
           is_featured_in_quiz?: boolean
+          is_keynote?: boolean
           is_live?: boolean
           launch_slug?: string | null
           name?: string
