@@ -359,13 +359,29 @@ export default function SpeakingWorkshopTopics() {
     return Array.from(set).sort();
   }, [merged]);
 
+  const activeSpeakers = useMemo(() => {
+    const list: string[] = [];
+    if (speakerFilter !== "all") list.push(speakerFilter);
+    for (const s of extraSpeakers) if (!list.includes(s)) list.push(s);
+    return list;
+  }, [speakerFilter, extraSpeakers]);
+
   const visible = useMemo(() => {
     return merged.filter((m) => {
       if (topicFilter !== "all" && m.topic !== topicFilter) return false;
-      if (speakerFilter !== "all" && !m.facilitators.includes(speakerFilter)) return false;
+      if (activeSpeakers.length > 0 && !activeSpeakers.some((s) => m.facilitators.includes(s))) return false;
       return true;
     });
-  }, [merged, topicFilter, speakerFilter]);
+  }, [merged, topicFilter, activeSpeakers]);
+
+  const clearSpeakerFilter = () => {
+    setSpeakerFilter("all");
+    setExtraSpeakers([]);
+    const next = new URLSearchParams(searchParams);
+    next.delete("speakers");
+    next.delete("speaker");
+    setSearchParams(next, { replace: true });
+  };
 
   // Group visible by topic
   const grouped = useMemo(() => {
