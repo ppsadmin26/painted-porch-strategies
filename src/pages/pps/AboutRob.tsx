@@ -130,6 +130,24 @@ const dotColorMap: Record<OfferingCard["color"], string> = {
   raspberry: "bg-destructive",
 };
 
+/* ── Equal Matters YouTube videos ──────────────────────────────────────── */
+
+interface YouTubeVideoItem {
+  id: string;
+  title: string;
+}
+
+const equalMattersVideos: YouTubeVideoItem[] = [
+  { id: "Yuv00QC0bmg", title: "One Word Almost Cost Me Everything. Until I rewrote my story." },
+  { id: "ciB457c8ToQ", title: "One Word Almost Cost Me Everything. How to Rewrite Your Life Story." },
+  { id: "5Tqms7WJD2k", title: "Everything is Fake. Propaganda is everywhere." },
+  { id: "b4ROlvC1Dfs", title: "You're Being Played by AI (And You've Been Played Before)" },
+  { id: "7LssTPXg-lw", title: "You're the Quarterback of Your Life (And Here's Why That Matters)" },
+  { id: "9GXYOul7CsU", title: "Are You Grinding Your Career Away or Going All In on Yourself?" },
+  { id: "GUYqtpDgMrw", title: "Confessions of a Talk Show Host: How Language is Used to Divide Us and Who Gets Rich" },
+  { id: "K9_GIn40OIU", title: "You are the Quarterback of your life." },
+];
+
 /* ── Component ───────────────────────────────────────────────────────── */
 
 export default function AboutRob() {
