@@ -94,7 +94,7 @@ export default function DiscoverSectionAlt() {
                       <>
                         {pillar.title.split(' (')[0]}
                         <br />
-                        <span className="text-sm opacity-90 font-medium">({pillar.title.split(' (')[1]}</span>
+                        <span className="text-sm opacity-90 font-medium">{pillar.title.split(' (')[1].replace(/\)$/, '')}</span>
                       </>
                     ) : pillar.title}
                   </h4>
