@@ -23,7 +23,7 @@ const teamSignals = [
   },
   {
     title: "Surface-Level Change",
-    description: "You've tried transformation initiatives that resulted in \"checkbox change\", compliance without shared commitment, activity without lasting adoption.",
+    description: "You've tried transformation initiatives that resulted in \"checkbox change\" - compliance without shared commitment, activity without lasting adoption.",
   },
   {
     title: "Reactive Mode",
@@ -191,8 +191,8 @@ export default function AmplifyPathAlt() {
       <TierHeroSection
         tier={TIERS.AMPLIFY}
         badgeLabel="AMPLIFY P.A.T.H.way"
-        headline={<>Boost Momentum That Aligns, Activates, and Accelerates Your Next Sh<span className="text-[hsl(263,85%,78%)] font-bold">IF</span>t.</>}
-        subheadline="When you're ready to architect change with clarity and confidence."
+        headline={<>Build Momentum That Aligns, Activates, and Accelerates Your Next Sh<span className="text-[hsl(263,85%,78%)] font-bold">IF</span>t.</>}
+        subheadline="When you've decided to architect change with clarity and confidence."
         description="AMPLIFY is for leadership teams seeking alignment AND individual leaders pursuing peer learning, creating compound momentum through team workshops, strategic sprints, and leadership labs."
         ctas={[
           {
@@ -224,7 +224,7 @@ export default function AmplifyPathAlt() {
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
               You Know What Sh<span className="text-[hsl(263,70%,55%)] font-bold">IF</span>t You Want to Make Happen.<br />
-              &nbsp;Now You Need to Build the Capacity for It.
+              &nbsp;Now You Need to Build the Capability for It.
             </h2>
             <p className="text-body text-foreground max-w-2xl mx-auto">
               Our AMPLIFY P.A.T.H.way is designed for two audiences: organizations/teams seeking alignment, and individual leaders wanting peer learning.
@@ -238,7 +238,7 @@ export default function AmplifyPathAlt() {
                 <Users className="w-8 h-8 text-gold" />
                 <h3 className="text-xl md:text-2xl font-poppins font-bold text-gold">Organizations & Teams</h3>
               </div>
-              <p className="text-body -sm font-semibold text-strategic mb-4">4 Signals Your Team is Ready for AMPLIFY Workshop or Strategic Sprint:</p>
+              <p className="text-body -sm font-semibold text-strategic mb-4">4 Signals Your Team Needs an AMPLIFY Workshop or Strategic Sprint:</p>
               <div className="space-y-4">
                 {teamSignals.map((signal, index) => (
                   <div key={index} className="flex items-start gap-3">
@@ -252,7 +252,7 @@ export default function AmplifyPathAlt() {
               </div>
               <div className="mt-auto pt-6">
                 <p className="text-body -sm text-foreground mb-6 italic min-h-[3rem]">
-                  If any of these resonate, AMPLIFY team workshops or strategic sprints are designed for you.
+                  If any of these resonate, AMPLIFY team workshops or strategic sprints are designed to build your collective capability.
                 </p>
                 <Button asChild className="bg-gold text-white border-2 border-gold hover:bg-white hover:text-gold transition-colors w-full">
                   <Link to="/partner/amplify/workshops" className="block">Explore Team Options</Link>
