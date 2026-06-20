@@ -162,7 +162,7 @@ export default function PPSAbout() {
       </section>
 
       {/* Our Story - Opening */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-muted/30">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="rounded-xl overflow-hidden shadow-lg md:order-1">
@@ -208,7 +208,7 @@ export default function PPSAbout() {
       <PhilosophyApproachSection showEncapsulationCard={false} />
 
       {/* Transformation Partners Intro */}
-      <section className="pt-16 md:pt-20 pb-8 md:pb-10 bg-white">
+      <section className="pt-16 md:pt-20 pb-8 md:pb-10 bg-muted/30">
         <div className="container max-w-4xl mx-auto px-6 text-center">
           <Eyebrow variant="plain" tone="teal" as="p">
             Meet the Team
@@ -240,7 +240,7 @@ export default function PPSAbout() {
       </section>
 
       {/* Team */}
-      <section className="pt-8 md:pt-10 pb-16 md:pb-24 bg-muted/30">
+      <section className="pt-8 md:pt-10 pb-16 md:pb-24 bg-white">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {team.map((member, index) => {
