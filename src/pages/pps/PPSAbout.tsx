@@ -338,11 +338,11 @@ export default function PPSAbout() {
           </div>
           <p className="text-body text-foreground/80">
             See the framework that holds it together in{" "}
-            <Link to="/about/approach#path" className="font-semibold italic text-primary hover:underline">
+            <Link to="/about/approach#path" className="font-semibold text-primary hover:underline">
               our P.A.T.H. methodology
             </Link>
             , backed by{" "}
-            <Link to="/about/approach#certifications" className="font-semibold italic text-primary hover:underline">
+            <Link to="/about/approach#certifications" className="font-semibold text-primary hover:underline">
               our certifications
             </Link>
             .
