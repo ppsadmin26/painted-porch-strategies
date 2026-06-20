@@ -433,7 +433,7 @@ export default function SpeakingWorkshopTopics() {
               We don't just talk about change. We show you how to author it.
             </h2>
             <p className="text-lead text-foreground">
-              Our topics live where strategy, Stoic philosophy, and human capacity meet. They come from 20+ years of partnering with leaders at the moment of strategic authorship, when teams stop reacting to change competitors have already launched and start designing the shIFt they want to lead.
+              Our topics live where strategy, Stoic philosophy, and human capability meet. They come from 20+ years of partnering with leaders at the moment of strategic authorship, when teams stop reacting to change competitors have already launched, and start designing the shIFt they want to lead - with c.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
