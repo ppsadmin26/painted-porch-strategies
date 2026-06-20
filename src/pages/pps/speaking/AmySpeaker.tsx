@@ -34,7 +34,7 @@ const amy: SpeakerData = {
       title: "Heroes Assemble!",
       image: heroesAssemble,
       description:
-        "Unite your team through shared purpose, candor, and trust. Learn how to build stronger dynamics by fostering healthy conflict and innovative thinking.",
+        "Unite your team through shared purpose, candor, and trust. Learn how to build stronger dynamics by understanding one another's superpowers (and stressors), fostering healthy conflict and innovative thinking.",
     },
     {
       slug: "lead-at-the-speed-of-change",
