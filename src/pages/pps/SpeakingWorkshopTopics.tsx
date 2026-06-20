@@ -217,7 +217,7 @@ const TOPIC_ACCENT: Record<string, string> = {
   "Change & Innovation": "from-purple/80 to-navy",
   "Communication": "from-gold/80 to-navy",
   "Mindset & Resilience": "from-bluedoor/80 to-navy",
-  "Teams": "from-primary/80 to-purple",
+  "Team Dynamics": "from-primary/80 to-purple",
   "Philosophy": "from-navy to-bluedoor",
   [UNTAGGED]: "from-navy to-charcoal",
 };
