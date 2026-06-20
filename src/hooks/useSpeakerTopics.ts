@@ -7,6 +7,7 @@ export function canonicalTopicKey(name: string): string {
   return name
     .replace(/\s*\((Keynote|Workshop|B2B|Lab|Masterclass|Mini Course)\)\s*$/i, "")
     .replace(/[:!]\s+.*/s, "")
+    .replace(/[:!]+$/, "")
     .replace(/\s+/g, " ")
     .trim()
     .toLowerCase();
