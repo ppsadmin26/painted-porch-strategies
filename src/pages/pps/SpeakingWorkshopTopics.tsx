@@ -161,7 +161,7 @@ const IMAGE_MAP: Record<string, string> = {
   "ai, ei, oh!": aiEiOh.url,
   "stoicism in the workplace": stoicism.url,
   "lead at the speed of change": speedOfChange.url,
-  "the alice principles": alice.url,
+  "the alice principles: down the rabbit hole of transformation": alice.url,
   "don't panic! navigating a changing world": dontPanic.url,
   "from dysfunction to dynamic teams": dysfunctionToDynamic.url,
   "shift happens. be ready.": shiftHappens.url,
