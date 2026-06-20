@@ -121,7 +121,7 @@ const coreValues = [
     description:
       "Real results come from shared commitment, trust, and clear accountability from both seats on the porch.",
     detail:
-      "We are here to do good work that is financially worth it and personally worth it, where talent, purpose, and contribution all line up.",
+      "We are here to do good work that makes financial sense and carries personal meaning, where talent, purpose, and contribution align.",
     color: "bg-lime/10",
     borderColor: "border-lime",
   },
