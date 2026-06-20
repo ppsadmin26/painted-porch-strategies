@@ -430,7 +430,7 @@ export default function SpeakingWorkshopTopics() {
           <div className="text-center mb-10">
             <Eyebrow tone="teal">Why these topics?</Eyebrow>
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mt-3 mb-4">
-              We don't talk about change. We help you author it.
+              We don't just talk about change. We show you how to author it.
             </h2>
             <p className="text-lead text-foreground">
               Our topics live where strategy, Stoic philosophy, and human capacity meet. They come from 20+ years of partnering with leaders at the moment of strategic authorship, when teams stop reacting to change competitors have already launched and start designing the shIFt they want to lead.
