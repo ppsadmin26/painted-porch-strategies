@@ -517,9 +517,9 @@ export default function SpeakingWorkshopTopics() {
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                   {items.map((m) => (
                     <article key={m.key} className="bg-white border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow flex flex-col">
-                      <div className="relative aspect-[16/10] overflow-hidden">
+                      <div className="relative aspect-video overflow-hidden bg-navy/5">
                         {m.image ? (
-                          <img src={m.image} alt={m.baseName} loading="lazy" className="w-full h-full object-cover" />
+                          <img src={m.image} alt={m.baseName} loading="lazy" className="w-full h-full object-contain" />
                         ) : (
                           <div className={`w-full h-full bg-gradient-to-br ${TOPIC_ACCENT[m.topic] ?? TOPIC_ACCENT[UNTAGGED]} flex items-center justify-center p-4`}>
                             <span className="text-white/90 font-poppins font-semibold text-center text-lg leading-tight">{m.baseName}</span>
