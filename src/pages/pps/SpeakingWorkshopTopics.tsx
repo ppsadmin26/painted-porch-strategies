@@ -107,6 +107,7 @@ const KEY_ALIASES: Record<string, string> = {
   "speaking with style — 6 communicator styles":
     "speaking with style: the 6 communicator styles for influence & impact",
   "radical mindfulness": "radically mindful leadership",
+  "the alice principles: down the rabbit hole of transformation": "the alice principles",
 };
 
 /** Preferred display name for canonical keys (overrides whichever row was seen first). */
@@ -118,6 +119,7 @@ const CANONICAL_NAME: Record<string, string> = {
   "speaking with style: the 6 communicator styles for influence & impact":
     "Speaking with Style: The 6 Communicator Styles",
   "radically mindful leadership": "Radically Mindful Leadership",
+  "the alice principles": "The Alice Principles",
 };
 
 function canonicalKey(name: string): string {
@@ -137,7 +139,6 @@ const IMAGE_MAP: Record<string, string> = {
   "ai, ei, oh!": aiEiOh.url,
   "stoicism in the workplace": stoicism.url,
   "lead at the speed of change": speedOfChange.url,
-  "the alice principles: down the rabbit hole of transformation": alice.url,
   "the alice principles": alice.url,
   "don't panic! navigating a changing world": dontPanic.url,
   "from dysfunction to dynamic teams": dysfunctionToDynamic.url,
