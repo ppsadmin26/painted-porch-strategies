@@ -270,6 +270,13 @@ export default function SpeakingWorkshopTopics() {
         image: IMAGE_MAP[key] ?? IMAGE_MAP[rawKey],
       });
     }
+    // Force "both formats" for designated topics
+    for (const m of map.values()) {
+      if (ALWAYS_BOTH.has(m.key)) {
+        if (!m.formats.includes("Speaking")) m.formats.push("Speaking");
+        if (!m.formats.includes("Workshop")) m.formats.push("Workshop");
+      }
+    }
     return Array.from(map.values()).sort((a, b) => a.baseName.localeCompare(b.baseName));
   }, [rows]);
 
