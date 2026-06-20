@@ -38,10 +38,11 @@ const offerings: OfferingCard[] = [
   },
   {
     emoji: "💡",
-    title: "Get C.L.E.A.R. Framework",
+    title: "6 Communicator Styles",
     description:
-      "Clarity. Language. Energy. Attention. Relevance. Download the free framework to simplify your message and boost engagement.",
-    href: "/resources/downloads",
+      "Discover your natural communication style and learn how to connect more effectively with every audience.",
+    href: "https://onthepaintedporch.com/6-communicator-styles",
+    external: true,
     color: "gold",
   },
   {
@@ -62,10 +63,10 @@ const offerings: OfferingCard[] = [
   },
   {
     emoji: "🎯",
-    title: "5-Day Master Your Message Challenge",
+    title: "Communication & Connection Masterclasses and Mini-Workshops",
     description:
-      "A quick-start challenge to transform how you communicate, in just five days.",
-    href: "https://www.paintedporchstrategies.com/talking-to-strangers",
+      "On-demand and live sessions to sharpen how you speak, listen, and lead through every conversation.",
+    href: "https://onthepaintedporch.com/partner/ignite/masterclasses?category=Communication%20%26%20Connection",
     external: true,
     color: "teal",
   },
