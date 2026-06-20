@@ -182,6 +182,14 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
         </div>
       </section>
 
+      {/* More Topics Callout */}
+      <MoreTopicsCallout
+        speakerName={speaker.firstName}
+        speakers={speaker.facilitatorKey ? [speaker.facilitatorKey, "Painted Porch Team"] : undefined}
+      />
+
+
+
       {/* Trust Signals / Where They've Spoken */}
       {speaker.trustSignals && (
         <ClientLogoMarquee
