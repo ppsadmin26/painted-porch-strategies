@@ -272,6 +272,9 @@ export default function YouTubeVideoEditor() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="__none__">No playlist</SelectItem>
+                  {playlist && !youtubePlaylists.some((pl) => pl.title === playlist) && (
+                    <SelectItem value={playlist}>{playlist} (current)</SelectItem>
+                  )}
                   {youtubePlaylists.map((pl) => (
                     <SelectItem key={pl.id} value={pl.title}>
                       {pl.title} ({pl.itemCount})
@@ -279,6 +282,11 @@ export default function YouTubeVideoEditor() {
                   ))}
                 </SelectContent>
               </Select>
+              {!youtubePlaylists.length && (
+                <p className="text-xs text-muted-foreground mt-1.5">
+                  Click "Fetch Metadata" above to load all channel playlists.
+                </p>
+              )}
             </div>
 
             <div>
