@@ -1,7 +1,7 @@
 /// <reference types="npm:@types/react@18.3.1" />
 import * as React from 'npm:react@18.3.1'
 import {
-  Body, Container, Head, Heading, Html, Img, Preview, Text, Section, Hr,
+  Body, Container, Head, Heading, Html, Img, Preview, Text, Section, Hr, Link,
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
@@ -32,7 +32,9 @@ const ContactConfirmationEmail = (props: ContactConfirmationProps) => {
       <Preview>Thank you for reaching out to {SITE_NAME}</Preview>
       <Body style={main}>
           <Container style={container}>
-            <Img src={LOGO_URL} width="180" height="auto" alt="Painted Porch Strategies" style={logo} />
+            <Link href="https://onthepaintedporch.com" style={{ display: "block", textDecoration: "none" }}>
+              <Img src={LOGO_URL} width="180" height="auto" alt="Painted Porch Strategies" style={logo} />
+            </Link>
             <Heading style={h1}>Thank you, {name}!</Heading>
           <Text style={text}>
             We appreciate you reaching out to {SITE_NAME}. Your message has been received and our team will review it promptly. You should expect a response within <strong>24 business hours</strong>.
