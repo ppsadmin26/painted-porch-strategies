@@ -140,6 +140,8 @@ export function BulkYouTubeImportDialog({ onImported }: BulkYouTubeImportDialogP
           duration: data.duration || null,
           published_date: data.published_date || null,
           channel_title: data.channel_title || null,
+          playlist: playlistMap[data.youtube_video_id] || null,
+
         });
 
         if (insertError) throw new Error(insertError.message);
