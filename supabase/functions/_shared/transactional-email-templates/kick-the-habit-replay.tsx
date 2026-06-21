@@ -1,7 +1,7 @@
 /// <reference types="npm:@types/react@18.3.1" />
 import * as React from 'npm:react@18.3.1'
 import {
-  Body, Container, Head, Heading, Html, Img, Preview, Text, Section, Hr, Button,
+  Body, Container, Head, Heading, Html, Img, Preview, Text, Section, Hr, Button, Link,
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
@@ -24,7 +24,9 @@ const KickHabitReplayEmail = ({ firstName, watchUrl }: KickHabitReplayProps) => 
       <Preview>Shift from Repeating to Reimagining</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img src={LOGO_URL} width="180" height="auto" alt={SITE_NAME} style={logo} />
+          <Link href="https://onthepaintedporch.com" style={logoLink}>
+            <Img src={LOGO_URL} width="180" height="auto" alt={SITE_NAME} style={logo} />
+          </Link>
           <Heading style={h1}>Kick the Habit</Heading>
           <Text style={subhead}>Training Replay</Text>
 
@@ -68,6 +70,7 @@ export const template = {
   component: KickHabitReplayEmail,
   subject: "[INSTANT ACCESS] Your access to the 'Kick the Habit' training session",
   displayName: 'Kick the Habit replay access',
+  replyTo: 'support@onthepaintedporch.com',
   previewData: {
     firstName: 'Marcus',
     watchUrl: 'https://onthepaintedporch.com/kick-the-habit-watch?token=sample-token',
@@ -78,6 +81,7 @@ export const template = {
 const main = { backgroundColor: '#ffffff', fontFamily: "'Montserrat', Arial, sans-serif" }
 const container = { padding: '32px 24px', maxWidth: '580px', margin: '0 auto' }
 const logo = { margin: '0 0 24px', backgroundColor: '#ffffff', padding: '20px 24px', borderRadius: '8px', display: 'block' as const, border: '1px solid #ffffff' }
+const logoLink = { display: 'block' as const, textDecoration: 'none' }
 const h1 = { fontSize: '28px', fontWeight: 'bold' as const, color: '#00006B', margin: '0 0 4px', fontFamily: "'Poppins', Arial, sans-serif", textAlign: 'center' as const }
 const subhead = { fontSize: '15px', color: '#DB0043', margin: '0 0 24px', textAlign: 'center' as const, fontWeight: '600' as const, letterSpacing: '0.5px', textTransform: 'uppercase' as const }
 const text = { fontSize: '15px', color: '#545454', lineHeight: '1.6', margin: '0 0 16px' }

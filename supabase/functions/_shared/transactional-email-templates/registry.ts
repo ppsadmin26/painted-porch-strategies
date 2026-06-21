@@ -5,6 +5,7 @@ export interface TemplateEntry {
   component: React.ComponentType<any>
   subject: string | ((data: Record<string, any>) => string)
   to?: string
+  replyTo?: string
   displayName?: string
   previewData?: Record<string, any>
 }
