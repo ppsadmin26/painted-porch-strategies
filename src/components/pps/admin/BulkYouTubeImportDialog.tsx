@@ -52,6 +52,7 @@ export function BulkYouTubeImportDialog({ onImported }: BulkYouTubeImportDialogP
 
     // Expand any channel URLs (e.g. https://www.youtube.com/@handle) into individual video URLs
     const expanded: string[] = [];
+    const playlistMap: Record<string, string> = {};
     for (const line of lines) {
       const isChannel = /youtube\.com\/@[a-zA-Z0-9_.-]+/.test(line) && !extractVideoId(line);
       if (isChannel) {
@@ -61,6 +62,7 @@ export function BulkYouTubeImportDialog({ onImported }: BulkYouTubeImportDialogP
           });
           if (error || data?.error) throw new Error(data?.error || error?.message || "Channel fetch failed");
           expanded.push(...(data.video_urls || []));
+          if (data.video_playlists) Object.assign(playlistMap, data.video_playlists);
         } catch (e: any) {
           toast({ title: `Channel expand failed: ${line}`, description: e.message, variant: "destructive" });
         }
@@ -68,6 +70,7 @@ export function BulkYouTubeImportDialog({ onImported }: BulkYouTubeImportDialogP
         expanded.push(line);
       }
     }
+
 
     // Deduplicate by video ID
     const seen = new Set<string>();
@@ -137,6 +140,8 @@ export function BulkYouTubeImportDialog({ onImported }: BulkYouTubeImportDialogP
           duration: data.duration || null,
           published_date: data.published_date || null,
           channel_title: data.channel_title || null,
+          playlist: playlistMap[data.youtube_video_id] || null,
+
         });
 
         if (insertError) throw new Error(insertError.message);

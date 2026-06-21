@@ -142,6 +142,30 @@ async function getRecentVideoIdsFromChannel(apiKey: string, channelId: string, m
   return ids;
 }
 
+/** Build a map of videoId -> first playlist title that contains it, scanning all channel playlists. */
+async function buildVideoPlaylistMap(
+  apiKey: string,
+  playlists: { id: string; title: string }[],
+): Promise<Record<string, string>> {
+  const map: Record<string, string> = {};
+  for (const pl of playlists) {
+    let pageToken = "";
+    do {
+      const url = `https://www.googleapis.com/youtube/v3/playlistItems?playlistId=${pl.id}&part=contentDetails&maxResults=50&key=${apiKey}${pageToken ? `&pageToken=${pageToken}` : ""}`;
+      const res = await fetch(url);
+      if (!res.ok) break;
+      const data = await res.json();
+      for (const item of data.items || []) {
+        const vid = item.contentDetails?.videoId;
+        if (vid && !map[vid]) map[vid] = pl.title;
+      }
+      pageToken = data.nextPageToken || "";
+    } while (pageToken);
+  }
+  return map;
+}
+
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -209,10 +233,19 @@ serve(async (req) => {
       }
       const ids = await getRecentVideoIdsFromChannel(apiKey, channelId, Math.min(Math.max(max || 25, 1), 100));
       const urls = ids.map((id) => `https://www.youtube.com/watch?v=${id}`);
-      return new Response(JSON.stringify({ channel_id: channelId, handle: resolvedHandle, video_urls: urls }), {
+      // Also build a videoId -> playlist title map so importers can auto-assign playlists.
+      let video_playlists: Record<string, string> = {};
+      try {
+        const playlists = await fetchPlaylists(apiKey, channelId);
+        video_playlists = await buildVideoPlaylistMap(apiKey, playlists);
+      } catch (e) {
+        console.error("Failed to build video->playlist map:", e);
+      }
+      return new Response(JSON.stringify({ channel_id: channelId, handle: resolvedHandle, video_urls: urls, video_playlists }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
+
 
     // Default action: fetch video metadata
     const { url } = body;
