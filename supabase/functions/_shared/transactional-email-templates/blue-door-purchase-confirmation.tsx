@@ -1,7 +1,7 @@
 /// <reference types="npm:@types/react@18.3.1" />
 import * as React from 'npm:react@18.3.1'
 import {
-  Body, Container, Head, Heading, Html, Img, Preview, Text, Section, Hr, Button,
+  Body, Container, Head, Heading, Html, Img, Preview, Text, Section, Hr, Button, Link,
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
@@ -30,8 +30,9 @@ const BlueDoorPurchaseConfirmation = ({
       <Preview>Your Blue Door is reserved. Access opens June 29th, 2026.</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img src={LOGO_URL} width="180" height="auto" alt="Painted Porch Strategies" style={logo} />
-
+          <Link href="https://onthepaintedporch.com" style={{ display: "block", textDecoration: "none" }}>
+            <Img src={LOGO_URL} width="180" height="auto" alt="Painted Porch Strategies" style={logo} />
+          </Link>
           <Heading style={h1}>Welcome through the Blue Door, {name}!</Heading>
 
           <Text style={text}>

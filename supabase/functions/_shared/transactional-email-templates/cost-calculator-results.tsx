@@ -1,7 +1,7 @@
 /// <reference types="npm:@types/react@18.3.1" />
 import * as React from 'npm:react@18.3.1'
 import {
-  Body, Container, Head, Heading, Html, Img, Preview, Text, Section, Hr, Button,
+  Body, Container, Head, Heading, Html, Img, Preview, Text, Section, Hr, Button, Link,
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
@@ -37,7 +37,9 @@ const Email = (p: CalcResultsProps) => {
       <Preview>Your Cost of Skipping Phase Zero results</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img src={LOGO_URL} width="180" height="auto" alt={SITE_NAME} style={logo} />
+          <Link href="https://onthepaintedporch.com" style={{ display: "block", textDecoration: "none" }}>
+            <Img src={LOGO_URL} width="180" height="auto" alt={SITE_NAME} style={logo} />
+          </Link>
           <Heading style={h1}>Your Cost-of-Skipping Estimate</Heading>
           <Text style={text}>
             Hi {name}, here's the breakdown from the calculator. Share it with your

@@ -1,7 +1,7 @@
 /// <reference types="npm:@types/react@18.3.1" />
 import * as React from 'npm:react@18.3.1'
 import {
-  Body, Container, Head, Heading, Html, Img, Preview, Text, Section, Hr, Button,
+  Body, Container, Head, Heading, Html, Img, Preview, Text, Section, Hr, Button, Link,
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
 
@@ -22,7 +22,9 @@ const StoicFieldGuideEmail = ({ firstName }: StoicFieldGuideProps) => {
       <Preview>Your Stoic Leader Field Guide is ready</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img src={LOGO_URL} width="180" height="auto" alt={SITE_NAME} style={logo} />
+          <Link href="https://onthepaintedporch.com" style={{ display: "block", textDecoration: "none" }}>
+            <Img src={LOGO_URL} width="180" height="auto" alt={SITE_NAME} style={logo} />
+          </Link>
           <Heading style={h1}>The Stoic Leader Field Guide</Heading>
           <Text style={subhead}>Free Download</Text>
 

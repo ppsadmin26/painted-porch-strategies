@@ -33,7 +33,9 @@ const Email = (p: Props) => {
       <Preview>Your P.A.T.H. Finder results</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img src={LOGO_URL} width="180" height="auto" alt={SITE} style={logo} />
+          <Link href="https://onthepaintedporch.com" style={{ display: "block", textDecoration: "none" }}>
+            <Img src={LOGO_URL} width="180" height="auto" alt={SITE} style={logo} />
+          </Link>
           <Text style={kicker}>Your P.A.T.H. Finder Results</Text>
           <Heading style={h1}>{p.headline ?? "Your starting point"}</Heading>
           {p.subhead ? <Text style={subhead}>{p.subhead}</Text> : null}
