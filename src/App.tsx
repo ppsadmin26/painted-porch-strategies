@@ -325,7 +325,7 @@ const App = () => (
             <Route path="burnout-access" element={<BurnoutResources />} />
             <Route path="burnout" element={<BurnoutOptIn />} />
             {/* Legacy redirects */}
-            <Route path="resources/burnout" element={<Navigate to="/burnout-access" replace />} />
+            <Route path="resources/burnout" element={<Navigate to="/burnout" replace />} />
             <Route path="burnout-resources-opt-in" element={<Navigate to="/burnout" replace />} />
             
             {/* Other Pages */}
