@@ -16,8 +16,6 @@ Disallow: /mym-journal-challenge
 Disallow: /overview
 Disallow: /partner/amplify/sprints-archive
 Disallow: /partner/embody-archive-v2
-Disallow: /rob
-Disallow: /sierra
 Disallow: /talking-to-strangers
 Disallow: /team-health-assessment
 Disallow: /team-superpowers
