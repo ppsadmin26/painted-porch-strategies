@@ -73,6 +73,20 @@ export default function YouTubeVideoEditor() {
       }
       const { data: links } = await supabase.from("youtube_video_categories").select("category_id").eq("video_id", id!);
       setSelectedCategoryIds((links || []).map((l) => l.category_id));
+
+      // Auto-load channel playlists so the dropdown is populated without needing to re-fetch metadata
+      if (data?.youtube_url) {
+        setLoadingPlaylists(true);
+        try {
+          const { data: meta } = await supabase.functions.invoke("fetch-youtube-metadata", {
+            body: { url: data.youtube_url },
+          });
+          if (meta?.playlists?.length) setYoutubePlaylists(meta.playlists);
+        } catch (e) {
+          console.error("Auto-load playlists failed:", e);
+        }
+        setLoadingPlaylists(false);
+      }
     };
     load();
   }, [id, isNew, user]);
