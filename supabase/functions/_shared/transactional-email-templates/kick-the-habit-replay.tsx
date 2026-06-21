@@ -24,7 +24,9 @@ const KickHabitReplayEmail = ({ firstName, watchUrl }: KickHabitReplayProps) => 
       <Preview>Shift from Repeating to Reimagining</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Img src={LOGO_URL} width="180" height="auto" alt={SITE_NAME} style={logo} />
+          <Link href="https://onthepaintedporch.com" style={logoLink}>
+            <Img src={LOGO_URL} width="180" height="auto" alt={SITE_NAME} style={logo} />
+          </Link>
           <Heading style={h1}>Kick the Habit</Heading>
           <Text style={subhead}>Training Replay</Text>
 
