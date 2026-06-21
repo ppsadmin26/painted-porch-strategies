@@ -70,6 +70,7 @@ export const template = {
   component: KickHabitReplayEmail,
   subject: "[INSTANT ACCESS] Your access to the 'Kick the Habit' training session",
   displayName: 'Kick the Habit replay access',
+  replyTo: 'support@onthepaintedporch.com',
   previewData: {
     firstName: 'Marcus',
     watchUrl: 'https://onthepaintedporch.com/kick-the-habit-watch?token=sample-token',
