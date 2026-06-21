@@ -33,7 +33,7 @@ const offerings: OfferingCard[] = [
     title: "Master Your Message",
     description:
       "Eliminate the static from your internal & external messaging to communicate with clarity, confidence, and influence.",
-    href: "/master-your-message",
+    href: "/communication",
     color: "teal",
   },
   {
