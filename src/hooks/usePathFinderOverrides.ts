@@ -21,13 +21,37 @@ export function usePathFinderOverrides(): Record<string, string> & { __full?: Ov
   useEffect(() => {
     let cancelled = false;
     (async () => {
-      const { data, error } = await supabase
-        .from("path_finder_offerings")
-        .select("offering_key, current_url, dedicated_url, anchor_id, is_live");
-      if (error || !data || cancelled) return;
+      const [offRes, draftsRes] = await Promise.all([
+        supabase
+          .from("path_finder_offerings")
+          .select("offering_key, current_url, dedicated_url, anchor_id, is_live"),
+        supabase.from("page_status").select("path").eq("status", "draft"),
+      ]);
+      if (offRes.error || !offRes.data || cancelled) return;
+      const draftPaths = new Set<string>(
+        (draftsRes.data ?? [])
+          .map((r: { path: string | null }) => (r.path ?? "").trim())
+          .filter(Boolean),
+      );
+      const pathOf = (u: string | null): string | null => {
+        if (!u) return null;
+        const t = u.trim();
+        if (!t || /^https?:\/\//i.test(t)) return null;
+        return t.split("#")[0].split("?")[0] || null;
+      };
       const map: Record<string, string> = {};
-      for (const row of data) {
-        let url = row.is_live && row.dedicated_url ? row.dedicated_url : row.current_url;
+      for (const row of offRes.data) {
+        const dedicatedIsDraft = (() => {
+          const p = pathOf(row.dedicated_url);
+          return p ? draftPaths.has(p) : false;
+        })();
+        // Prefer dedicated_url when live+set AND its page is not draft.
+        // Otherwise fall back to current_url + anchor so users land on the
+        // parent page's launch-list / coming-soon card instead of a draft page.
+        let url =
+          row.is_live && row.dedicated_url && !dedicatedIsDraft
+            ? row.dedicated_url
+            : row.current_url;
         if (!url) continue;
         if (row.anchor_id && !url.includes("#")) {
           url = `${url}#${row.anchor_id}`;
@@ -38,6 +62,7 @@ export function usePathFinderOverrides(): Record<string, string> & { __full?: Ov
     })();
     return () => { cancelled = true; };
   }, []);
+
 
   return overrides;
 }
