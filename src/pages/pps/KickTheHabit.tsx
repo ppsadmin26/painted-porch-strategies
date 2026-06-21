@@ -59,17 +59,18 @@ export default function KickTheHabit() {
         </div>
       </section>
 
-      {/* Video Preview, lazy mounted, click to play, admin-swappable */}
+      {/* Video Preview - YouTube embed */}
       <section className="bg-navy py-12">
         <div className="container max-w-3xl mx-auto px-6">
-          <LazyPreviewVideo
-            slotKey="kick-the-habit-preview"
-            fallbackVideoUrl=""
-            fallbackPosterUrl={mcKickTheHabitAsset.url}
-            playButtonClassName="bg-raspberry"
-            ariaLabel="Watch Kick the Habit preview"
-            className="shadow-xl"
-          />
+          <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-xl">
+            <iframe
+              src="https://www.youtube.com/embed/lhTnIrFUJyc?rel=0"
+              title="Kick the Habit: Develop a Change-Ready Mindset"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
           <p className="text-body text-center text-white/70 -sm mt-4">
             A short preview of the full masterclass replay. Sign up below for full access.
           </p>
