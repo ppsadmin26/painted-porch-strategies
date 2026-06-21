@@ -380,7 +380,7 @@ Deno.serve(async (req) => {
       message_id: messageId,
       to: effectiveRecipient,
       from: `${SITE_NAME} <noreply@${FROM_DOMAIN}>`,
-      reply_to: template.replyTo,
+      reply_to: template.replyTo ?? 'support@onthepaintedporch.com',
       sender_domain: SENDER_DOMAIN,
       subject: resolvedSubject,
       html,
