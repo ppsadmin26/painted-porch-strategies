@@ -233,10 +233,19 @@ serve(async (req) => {
       }
       const ids = await getRecentVideoIdsFromChannel(apiKey, channelId, Math.min(Math.max(max || 25, 1), 100));
       const urls = ids.map((id) => `https://www.youtube.com/watch?v=${id}`);
-      return new Response(JSON.stringify({ channel_id: channelId, handle: resolvedHandle, video_urls: urls }), {
+      // Also build a videoId -> playlist title map so importers can auto-assign playlists.
+      let video_playlists: Record<string, string> = {};
+      try {
+        const playlists = await fetchPlaylists(apiKey, channelId);
+        video_playlists = await buildVideoPlaylistMap(apiKey, playlists);
+      } catch (e) {
+        console.error("Failed to build video->playlist map:", e);
+      }
+      return new Response(JSON.stringify({ channel_id: channelId, handle: resolvedHandle, video_urls: urls, video_playlists }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
+
 
     // Default action: fetch video metadata
     const { url } = body;
