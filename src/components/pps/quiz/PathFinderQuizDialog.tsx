@@ -222,10 +222,18 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       ): boolean => {
         const p1 = pathOf(currentUrl);
         const p2 = pathOf(dedicatedUrl);
-        if (p1 && draftPaths.has(p1)) return true;
-        if (p2 && draftPaths.has(p2)) return true;
-        return false;
+        // Only drop the card when there is no live destination at all.
+        // If the dedicated page is draft but current_url (parent page) is live,
+        // the URL resolver will fall back to current_url + anchor so users can
+        // still find the offering's launch-list card on the parent page.
+        const currentDraft = p1 ? draftPaths.has(p1) : !p1;
+        const dedicatedDraft = p2 ? draftPaths.has(p2) : !p2;
+        if (!p1 && !p2) return true;
+        if (!p1) return dedicatedDraft;
+        if (!p2) return currentDraft;
+        return currentDraft && dedicatedDraft;
       };
+
       const matchesComingSoon = (
         anchor: string | null,
         currentUrl: string | null,
