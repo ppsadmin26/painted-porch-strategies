@@ -18,6 +18,7 @@ const ghlHeaders = (apiKey: string) => ({
 
 interface RecItem { name: string; url: string; blurb: string; tier: string }
 interface RecGroup { heading: string; items: RecItem[] }
+interface ContentItem { kind: "blog" | "media"; title: string; url: string; excerpt?: string; thumbnail?: string; date?: string; source?: string }
 interface Body {
   firstName: string;
   email: string;
@@ -29,6 +30,7 @@ interface Body {
   answers: Record<string, string | string[]>;
   recommendations: RecGroup[];
   strongestNextStep?: { name: string; url: string; label: string } | null;
+  relatedContent?: ContentItem[];
 }
 
 function buildNote(b: Body): string {
