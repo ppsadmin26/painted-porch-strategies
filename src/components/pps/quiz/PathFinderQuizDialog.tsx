@@ -563,6 +563,12 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               </div>
             )}
 
+            {result.crossoverNote && (
+              <div className="mb-6 p-4 rounded-lg bg-purple/5 border border-purple/20">
+                <p className="text-body-sm text-navy"><strong>Individual + Team crossover:</strong> {result.crossoverNote}</p>
+              </div>
+            )}
+
             {result.primaryGroup && (
               <RecGroup heading={result.primaryGroup.heading} offerings={result.primaryGroup.offerings} onClose={() => onOpenChange(false)} primary />
             )}
@@ -610,8 +616,8 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
             )}
 
 
-            {/* Topic note + Contact CTA — B2B only */}
-            {result.track === "b2b" && result.topicArea && (
+            {/* Topic note + Contact CTA — B2B only, suppressed in Scout Mode */}
+            {result.track === "b2b" && result.topicArea && !/Scout Mode/i.test(result.subhead ?? "") && (
               <div className="mt-6 p-4 rounded-lg border border-primary/20 bg-primary/5">
                 <p className="text-body-sm text-foreground mb-3">
                   We also offer additional <strong>speaking</strong> and <strong>workshop</strong> sessions
@@ -629,11 +635,8 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               </div>
             )}
 
-            {result.crossoverNote && (
-              <div className="mt-4 p-4 rounded-lg bg-purple/5 border border-purple/20">
-                <p className="text-body-sm text-navy"><strong>Individual + Team crossover:</strong> {result.crossoverNote}</p>
-              </div>
-            )}
+
+
 
             <div className="mt-6 p-4 rounded-lg bg-muted">
               <p className="text-caption uppercase tracking-wider text-foreground/70 font-semibold mb-1">What Comes Next</p>
