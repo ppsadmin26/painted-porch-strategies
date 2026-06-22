@@ -86,7 +86,7 @@ async function main() {
     const secondaryKeys = alsoGroup?.offerings.map((o) => o.key) ?? [];
     const freeGroup = r.groups.find((g) => /free/i.test(g.heading));
     const freeKeys = freeGroup?.offerings.map((o) => o.key) ?? [];
-    const pq2Tag = track === "b2c" ? `|PQ2:${val("PQ2") ?? ""}` : "";
+    const pq2Tag = track === "b2c" ? `|PQ2:${(answers as any).PQ2 ?? ""}` : "";
     const fp = `${r.resultType}${pq2Tag}|P:${primaryKeys.join(",")}|S:${secondaryKeys.join(",")}|F:${freeKeys.join(",")}|N:${r.strongestNextStep?.offering.key ?? ""}`;
     const bucket = fingerprintGroups[track];
     const existing = bucket.get(fp);
