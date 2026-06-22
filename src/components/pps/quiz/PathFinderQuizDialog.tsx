@@ -16,6 +16,7 @@ import {
   buildResult, type Answers, type Question, type QuizResult, type Track, type Offering,
 } from "@/data/pathFinderQuiz";
 import { saveQuizContactPrefill, clearQuizContactPrefill } from "./quizContactPrefill";
+import { useQuizRelatedContent } from "./useQuizRelatedContent";
 
 interface Props {
   open: boolean;
