@@ -60,7 +60,7 @@ const speakers = [
     icon: Mic,
   },
   {
-    name: "Sierra Cantrell",
+    name: "Sierra Ramm Cantrell",
     badge: "Mindful Resilience",
     tagline: "Sierra guides burnt-out teams back to balance with grace.",
     description:
