@@ -471,6 +471,16 @@ export interface RecommendationGroup {
   offerings: Offering[];
 }
 
+export interface ContentItem {
+  kind: "blog" | "media";
+  title: string;
+  url: string;
+  excerpt?: string;
+  thumbnail?: string;
+  date?: string;
+  source?: string; // media show name
+}
+
 export interface QuizResult {
   track: Track;
   resultType: ResultType;
@@ -488,7 +498,30 @@ export interface QuizResult {
   topicArea?: string;
   /** Suggested contact-form prefill values for the "Contact Us to Learn More" CTA. */
   contactPrefill?: { scope: string; interests: string[] };
+  /** Optional blog/media items related to this result, loaded async in the dialog. */
+  relatedContent?: ContentItem[];
 }
+
+/**
+ * Maps each result type to relevant blog_categories slugs. Used by the dialog
+ * to fetch related blog posts and media appearances (media uses the same
+ * blog_categories table via media_appearance_categories).
+ */
+export const RT_TO_CONTENT_CATEGORIES: Record<ResultType, string[]> = {
+  // B2C
+  RT1: ["resilience-wellbeing", "stoicism-philosophy"],
+  RT2: ["communication"],
+  RT3: ["team-dynamics", "leadership-culture"],
+  RT4: ["change-innovation"],
+  RT5: ["leadership-culture", "change-innovation", "stoicism-philosophy"],
+  RT6: ["resilience-wellbeing", "stoicism-philosophy"],
+  // B2B
+  "RT-A": ["team-dynamics", "communication"],
+  "RT-B": ["change-innovation"],
+  "RT-C": ["leadership-culture"],
+  "RT-D": ["change-innovation", "workplace-operations"],
+  "RT-E": ["leadership-culture", "change-innovation"],
+};
 
 export interface BuildResultOptions {
   /**
