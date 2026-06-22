@@ -176,7 +176,8 @@ describe("PathFinderQuizDialog — Related Reading (E2E)", () => {
     fireEvent.click(screen.getByRole("button", { name: /Email Me My Results/i }));
 
     await waitFor(() => expect(invokeSpy).toHaveBeenCalled());
-    const [fnName, opts] = invokeSpy.mock.calls[0] as [string, { body: Record<string, unknown> }];
+    const call = invokeSpy.mock.calls[0] as unknown as [string, { body: Record<string, unknown> }];
+    const [fnName, opts] = call;
     expect(fnName).toBe("submit-path-finder-quiz");
     const related = opts.body.relatedContent as Array<{ kind: string; title: string; url: string }>;
     expect(Array.isArray(related)).toBe(true);
