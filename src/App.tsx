@@ -265,6 +265,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <ScrollToHash />
         <RouteSeoGuards />
         <Routes>
