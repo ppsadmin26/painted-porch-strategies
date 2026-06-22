@@ -4,9 +4,10 @@ import {
   Coffee,
   ExternalLink,
   ArrowRight,
-  Play,
   Youtube,
 } from "lucide-react";
+import { YouTubeCarousel } from "@/components/pps/YouTubeCarousel";
+
 import sierraPhoto from "@/assets/team/sierra-ramm-cantrell.jpg";
 
 interface YouTubeVideoItem {
@@ -272,39 +273,13 @@ export default function AboutSierra() {
             </p>
           </div>
 
-          <div className="relative">
-            <div
-              className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory"
-              style={{ scrollbarWidth: "thin", scrollbarColor: "hsl(var(--primary) / 0.5) transparent" }}
-            >
-              {radicalMindfulnessVideos.map((video) => (
-                <a
-                  key={video.id}
-                  href={`https://www.youtube.com/watch?v=${video.id}&list=PLhdPibIQvwhH4j94ohc0BsOJqUud4xzoL`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group snap-start flex-shrink-0 w-[300px] block"
-                >
-                  <div className="relative aspect-video rounded-xl overflow-hidden bg-navy/10 shadow-md">
-                    <img
-                      src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
-                      alt={video.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                      <div className="w-14 h-14 rounded-full bg-raspberry/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
-                        <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
-                      </div>
-                    </div>
-                  </div>
-                  <h3 className="text-sm font-semibold text-navy mt-3 line-clamp-2 group-hover:text-primary transition-colors">
-                    {video.title}
-                  </h3>
-                </a>
-              ))}
-            </div>
-          </div>
+          <YouTubeCarousel
+            videos={radicalMindfulnessVideos}
+            getHref={(video) =>
+              `https://www.youtube.com/watch?v=${video.id}&list=PLhdPibIQvwhH4j94ohc0BsOJqUud4xzoL`
+            }
+          />
+
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <a
