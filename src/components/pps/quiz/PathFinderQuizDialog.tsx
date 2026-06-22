@@ -723,11 +723,11 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
       <div className="grid gap-2">
         {offerings.map((o) => {
           const isExternal = /^https?:\/\//i.test(o.url);
-          const className = "block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
+          const className = "block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
           const inner = (
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1">
-                <p className="text-body font-semibold text-navy -sm">
+                <p className="text-body font-semibold text-navy transition-colors group-hover:text-primary group-hover:underline">
                   <BoldShiftName name={o.name} />
                 </p>
                 <p className="text-body text-foreground/70 mt-0.5">{o.blurb}</p>
@@ -738,7 +738,10 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
                 )}
               </div>
               <div className="flex flex-col items-end gap-1 whitespace-nowrap">
-                <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-0.5">{o.tier}</span>
+                <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-0.5">
+                  {o.tier}
+                  {isExternal && <span className="sr-only"> (opens in new tab)</span>}
+                </span>
                 {o.isComingSoon && (
                   <span className="text-[10px] uppercase tracking-wider font-bold text-gold">Coming soon</span>
                 )}
@@ -754,13 +757,14 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
                 rel="noopener noreferrer"
                 onClick={onClose}
                 className={className}
+                aria-label={`${o.name} (opens in new tab)`}
               >
                 {inner}
               </a>
             );
           }
           return (
-            <Link key={o.key} to={o.url} onClick={onClose} className={className}>
+            <Link key={o.key} to={o.url} onClick={onClose} className={className} aria-label={o.name}>
               {inner}
             </Link>
           );
