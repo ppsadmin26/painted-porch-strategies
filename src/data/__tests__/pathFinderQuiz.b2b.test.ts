@@ -132,3 +132,42 @@ describe("B2B quiz recommendations (Labs guardrail)", () => {
     expect(allKeys.filter(isLabOffering)).toEqual([]);
   });
 });
+
+describe("B2B scout reroute (Q4DM=A) — individual focus signaled", () => {
+  // Per mem://features/quiz/b2b-recommendation-rules: Labs are B2C unless
+  // individual focus is signaled. Q4DM="A" ("Just me — exploring before
+  // bringing a recommendation to others") is that signal.
+  const scoutCases: { label: string; answers: Answers; expectedLab: string }[] = [
+    { label: "RT-A scout, Q1Team=A → conflictToConnectionLab",
+      answers: { OrgPQ2: "A", Q1Team: "A", Q2Team: "A", Q4DM: "A", OrgPQ3: "C" },
+      expectedLab: "conflictToConnectionLab" },
+    { label: "RT-A scout, Q1Team=C → goldilocksLab",
+      answers: { OrgPQ2: "A", Q1Team: "C", Q2Team: "A", Q4DM: "A", OrgPQ3: "C" },
+      expectedLab: "goldilocksLab" },
+    { label: "RT-B scout, Q1Change=D → aiEiOhLab",
+      answers: { OrgPQ2: "B", Q1Change: "D", Q2Change: "A", Q4DM: "A", OrgPQ3: "C" },
+      expectedLab: "aiEiOhLab" },
+    { label: "RT-C scout, Q1Cap=B → stracticalLeaderLab",
+      answers: { OrgPQ2: "C", Q1Cap: "B", Q2Cap: "A", Q4DM: "A", OrgPQ3: "C" },
+      expectedLab: "stracticalLeaderLab" },
+    { label: "RT-D scout, Q1Strategic=A → stoicismLab",
+      answers: { OrgPQ2: "D", Q1Strategic: "A", Q4DM: "A", OrgPQ3: "C" },
+      expectedLab: "stoicismLab" },
+  ];
+
+  it.each(scoutCases)("$label", ({ answers, expectedLab }) => {
+    const result = buildResult("b2b", answers);
+    expect(result.track).toBe("b2b");
+    expect(result.subhead).toMatch(/Scout Mode/i);
+    expect(result.primaryGroup?.offerings[0]?.key).toBe(expectedLab);
+    expect(result.strongestNextStep?.offering.key).toBe(expectedLab);
+    const hasWorkshopGroup = result.groups.some((g) =>
+      /When You're Ready to Bring Your Team/i.test(g.heading),
+    );
+    expect(hasWorkshopGroup).toBe(true);
+    const hasBlueDoorGroup = result.groups.some((g) =>
+      /Blue Door/i.test(g.heading),
+    );
+    expect(hasBlueDoorGroup).toBe(true);
+  });
+});
