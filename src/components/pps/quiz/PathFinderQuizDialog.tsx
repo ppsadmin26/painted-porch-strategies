@@ -492,21 +492,32 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         {/* Body */}
         {!showResult && current && (
           <div className="px-6 pb-6">
-            <p className="text-caption uppercase tracking-wider text-primary font-semibold mb-2">
+            <p className="text-caption uppercase tracking-wider text-primary font-semibold mb-2" aria-live="polite">
               Question {index + 1} of {questions.length}
             </p>
-            <h3 className="font-poppins text-xl text-navy mb-1">{current.prompt}</h3>
-            {current.helper && <p className="text-body-sm text-foreground/70 mb-4">{current.helper}</p>}
+            <h3 id={`pf-q-${current.id}`} className="font-poppins text-xl text-navy mb-1">{current.prompt}</h3>
+            {current.helper && (
+              <p id={`pf-q-${current.id}-helper`} className="text-body-sm text-foreground/70 mb-4">{current.helper}</p>
+            )}
 
-            <div className="space-y-2 mt-4">
+            <div
+              className="space-y-2 mt-4"
+              role={current.multi ? "group" : "radiogroup"}
+              aria-labelledby={`pf-q-${current.id}`}
+              aria-describedby={current.helper ? `pf-q-${current.id}-helper` : undefined}
+            >
               {current.options.map((opt) => {
                 const isSelected = current.multi
                   ? ((answers[current.id] as string[] | undefined) ?? []).includes(opt.id)
                   : answers[current.id] === opt.id;
+                const ariaProps = current.multi
+                  ? { "aria-pressed": isSelected }
+                  : { role: "radio", "aria-checked": isSelected };
                 return (
                   <button
                     key={opt.id}
                     type="button"
+                    {...ariaProps}
                     onClick={() =>
                       current.multi
                         ? onMultiToggle(current.id, opt.id)
@@ -517,11 +528,13 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                         ? "border-primary bg-primary/5"
                         : "border-border hover:border-primary/40 bg-white"
                     }`}
-
                   >
                     <div className="flex items-start gap-3">
-                      <div className={`mt-0.5 w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${isSelected ? "border-primary bg-primary" : "border-border"}`}>
-                        {isSelected && <CheckCircle2 className="w-4 h-4 text-white" />}
+                      <div
+                        aria-hidden="true"
+                        className={`mt-0.5 w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${isSelected ? "border-primary bg-primary" : "border-border"}`}
+                      >
+                        {isSelected && <CheckCircle2 className="w-4 h-4 text-white" aria-hidden="true" />}
                       </div>
                       <span className="text-sm text-foreground">{opt.label}</span>
                     </div>
@@ -532,10 +545,10 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
             <div className="flex justify-between items-center mt-6">
               <Button variant="ghost" onClick={onBack} disabled={index === 0}>
-                <ArrowLeft className="w-4 h-4 mr-1" /> Back
+                <ArrowLeft className="w-4 h-4 mr-1" aria-hidden="true" /> Back
               </Button>
               <Button onClick={onNext} disabled={!canAdvance} className="bg-primary text-white hover:bg-primary/90">
-                {isLast ? "See My Results" : "Next"} <ArrowRight className="w-4 h-4 ml-1" />
+                {isLast ? "See My Results" : "Next"} <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
               </Button>
             </div>
           </div>
