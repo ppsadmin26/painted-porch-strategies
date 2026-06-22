@@ -570,6 +570,45 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               <RecGroup key={i} heading={g.heading} offerings={g.offerings} onClose={() => onOpenChange(false)} />
             ))}
 
+            {relatedContent.length > 0 && (
+              <div className="mt-6">
+                <h4 className="font-poppins text-base font-semibold text-navy mb-2">From the Porch — Related Reading</h4>
+                <div className="grid gap-2">
+                  {relatedContent.map((c) => {
+                    const isExternal = /^https?:\/\//i.test(c.url);
+                    const Icon = c.kind === "media" ? Mic : BookOpen;
+                    const label = c.kind === "media" ? (c.source ? `Media · ${c.source}` : "Media") : "Blog";
+                    const inner = (
+                      <div className="flex items-start gap-3">
+                        <Icon className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-body font-semibold text-navy">{c.title}</p>
+                          {c.excerpt && (
+                            <p className="text-body-sm text-foreground/70 mt-0.5 line-clamp-2">{c.excerpt}</p>
+                          )}
+                          <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-1 inline-block">{label}</span>
+                        </div>
+                      </div>
+                    );
+                    const className = "block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
+                    if (isExternal) {
+                      return (
+                        <a key={`${c.kind}-${c.url}`} href={c.url} target="_blank" rel="noopener noreferrer" onClick={() => onOpenChange(false)} className={className}>
+                          {inner}
+                        </a>
+                      );
+                    }
+                    return (
+                      <Link key={`${c.kind}-${c.url}`} to={c.url} onClick={() => onOpenChange(false)} className={className}>
+                        {inner}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+
             {/* Topic note + Contact CTA — B2B only */}
             {result.track === "b2b" && result.topicArea && (
               <div className="mt-6 p-4 rounded-lg border border-primary/20 bg-primary/5">
