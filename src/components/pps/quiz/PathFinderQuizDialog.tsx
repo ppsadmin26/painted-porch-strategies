@@ -606,29 +606,32 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                   {relatedContent.map((c) => {
                     const isExternal = /^https?:\/\//i.test(c.url);
                     const Icon = c.kind === "media" ? Mic : BookOpen;
-                    const label = c.kind === "media" ? (c.source ? `Media · ${c.source}` : "Media") : "Blog";
+                    const label = c.kind === "media" ? (c.source ? `Media · ${c.source}` : "Media") : "Insights & Research";
                     const inner = (
                       <div className="flex items-start gap-3">
                         <Icon className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                         <div className="flex-1 min-w-0">
-                          <p className="text-body font-semibold text-navy">{c.title}</p>
+                          <p className="text-body font-semibold text-navy transition-colors group-hover:text-primary group-hover:underline">{c.title}</p>
                           {c.excerpt && (
                             <p className="text-body-sm text-foreground/70 mt-0.5 line-clamp-2">{c.excerpt}</p>
                           )}
-                          <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-1 inline-block">{label}</span>
+                          <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-1 inline-block">
+                            {label}
+                            {isExternal && <span className="sr-only"> (opens in new tab)</span>}
+                          </span>
                         </div>
                       </div>
                     );
-                    const className = "block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
+                    const className = "group block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
                     if (isExternal) {
                       return (
-                        <a key={`${c.kind}-${c.url}`} href={c.url} target="_blank" rel="noopener noreferrer" onClick={() => onOpenChange(false)} className={className}>
+                        <a key={`${c.kind}-${c.url}`} href={c.url} target="_blank" rel="noopener noreferrer" onClick={() => onOpenChange(false)} className={className} aria-label={`${c.title} (opens in new tab)`}>
                           {inner}
                         </a>
                       );
                     }
                     return (
-                      <Link key={`${c.kind}-${c.url}`} to={c.url} onClick={() => onOpenChange(false)} className={className}>
+                      <Link key={`${c.kind}-${c.url}`} to={c.url} onClick={() => onOpenChange(false)} className={className} aria-label={c.title}>
                         {inner}
                       </Link>
                     );
