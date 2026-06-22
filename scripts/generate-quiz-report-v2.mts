@@ -38,6 +38,7 @@ async function loadResolvedUrls(): Promise<Record<string, string>> {
 }
 
 const ANSWER_LABELS: Record<string, Record<string, string>> = {
+  PQ2: { current: "Current leader", aspiring: "Aspiring leader" },
   Q1: { A: "Show up well (foundation)", B: "Message lands (communication)", C: "Lead a team (people)", D: "Lead change" },
   Q2: { A: "Foundation focus", B: "Communication focus", C: "Team focus", D: "Change focus" },
   Q3: { A: "Self-focus", B: "Collaboration gap", C: "Friction", D: "Depth on self" },
