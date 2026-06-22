@@ -9,6 +9,7 @@ function RedirectBlogToInsights() {
   return <Navigate to={`/resources/insights/${slug ?? ""}`} replace />;
 }
 import { useEffect } from "react";
+import ScrollToTop from "./components/ScrollToTop";
 import { getSiteUrl } from "@/lib/site-url";
 import NotFound from "./pages/NotFound";
 
