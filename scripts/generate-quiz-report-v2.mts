@@ -86,7 +86,8 @@ async function main() {
     const secondaryKeys = alsoGroup?.offerings.map((o) => o.key) ?? [];
     const freeGroup = r.groups.find((g) => /free/i.test(g.heading));
     const freeKeys = freeGroup?.offerings.map((o) => o.key) ?? [];
-    const fp = `${r.resultType}|P:${primaryKeys.join(",")}|S:${secondaryKeys.join(",")}|F:${freeKeys.join(",")}|N:${r.strongestNextStep?.offering.key ?? ""}`;
+    const pq2Tag = track === "b2c" ? `|PQ2:${(answers as any).PQ2 ?? ""}` : "";
+    const fp = `${r.resultType}${pq2Tag}|P:${primaryKeys.join(",")}|S:${secondaryKeys.join(",")}|F:${freeKeys.join(",")}|N:${r.strongestNextStep?.offering.key ?? ""}`;
     const bucket = fingerprintGroups[track];
     const existing = bucket.get(fp);
     if (existing) {
@@ -106,10 +107,11 @@ async function main() {
     }
   };
 
-  // B2C: Q1..Q6 (4^6 = 4096)
+  // B2C: PQ2 (current/aspiring) × Q1..Q6 (2 × 4^6 = 8192)
   const OPTS = ["A", "B", "C", "D"];
-  for (const q1 of OPTS) for (const q2 of OPTS) for (const q3 of OPTS) for (const q4 of OPTS) for (const q5 of OPTS) for (const q6 of OPTS)
-    recordResult("b2c", { Q1: q1, Q2: q2, Q3: q3, Q4: q4, Q5: q5, Q6: q6 });
+  for (const pq2 of ["current", "aspiring"])
+    for (const q1 of OPTS) for (const q2 of OPTS) for (const q3 of OPTS) for (const q4 of OPTS) for (const q5 of OPTS) for (const q6 of OPTS)
+      recordResult("b2c", { PQ2: pq2, Q1: q1, Q2: q2, Q3: q3, Q4: q4, Q5: q5, Q6: q6 });
 
   // B2B branches
   for (const q1 of OPTS) for (const q2 of ["A","B","C"]) for (const q3 of ["comm","resilience","neither"]) for (const dm of OPTS) for (const pq3 of ["A","B","C"])

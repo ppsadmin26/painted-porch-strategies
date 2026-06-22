@@ -859,7 +859,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     groups.push(grp("Free Resources to Start Today", ...eligibleFree));
   }
 
-  return {
+  const baseResult: QuizResult = {
     track: "b2b",
     resultType: rt,
     headline,
@@ -875,6 +875,115 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
     whatComesNext: rt === "RT-D"
       ? "Blue Door produces your P.A.T.H. Compass — the organizational roadmap that informs everything that follows. From there, qualified organizations move to Architect Change and then into AMPLIFY or EMBODY partnership."
       : "A workshop is a powerful starting point. Organizations that go deeper often find the work surfaces something more structural that a single workshop addresses symptomatically but not architecturally. The Blue Door is there when you're ready for that conversation.",
+  };
+
+  return applyScoutReroute(baseResult, rt, answers, filterable ?? null);
+}
+
+/**
+ * Soft reroute for B2B respondents who picked Q4DM=A ("Just me — I'm exploring
+ * options before bringing a recommendation to others"). They selected the org
+ * track but are functionally an individual scout, so leading with workshops +
+ * Blue Door as the primary is the wrong move. Instead we:
+ *   - Promote a relevant individual AMPLIFY Lab (picked from their branch Q1)
+ *     plus a free/micro starter as the primary
+ *   - Demote workshops to "pitch to your team when you're ready"
+ *   - Reframe Blue Door as the "when you're ready to go deeper" option
+ * Preserves the original B2B resultType so contact prefill + topic area still
+ * reflect their org-level intent signal.
+ */
+function pickScoutLab(rt: B2BResultType, answers: Answers): OfferingKey {
+  const q1Team = val(answers, "Q1Team");
+  const q1Change = val(answers, "Q1Change");
+  const q1Cap = val(answers, "Q1Cap");
+  const q1Strat = val(answers, "Q1Strategic");
+  if (rt === "RT-A") {
+    if (q1Team === "C") return "goldilocksLab";
+    if (q1Team === "D") return "leadingChangeLab";
+    return "conflictToConnectionLab";
+  }
+  if (rt === "RT-B") {
+    if (q1Change === "D") return "aiEiOhLab";
+    return "leadingChangeLab";
+  }
+  if (rt === "RT-C") {
+    if (q1Cap === "B") return "stracticalLeaderLab";
+    if (q1Cap === "A" || q1Cap === "D") return "stoicismLab";
+    return "goldilocksLab";
+  }
+  if (rt === "RT-D") {
+    if (q1Strat === "C") return "aiEiOhLab";
+    if (q1Strat === "A") return "stoicismLab";
+    return "stracticalLeaderLab";
+  }
+  return "stracticalLeaderLab"; // RT-E
+}
+
+function applyScoutReroute(
+  r: QuizResult,
+  rt: B2BResultType,
+  answers: Answers,
+  filterable: Set<string> | null,
+): QuizResult {
+  if (val(answers, "Q4DM") !== "A") return r;
+
+  const labKey = pickScoutLab(rt, answers);
+  const microKey: OfferingKey = "stracticalMini";
+  const freeKey: OfferingKey = "stoicLeaderFieldGuide";
+  const okLab = !filterable || filterable.has(labKey);
+  const okMicro = !filterable || filterable.has(microKey);
+  const okFree = !filterable || filterable.has(freeKey);
+  const labOff = okLab ? O[labKey] : undefined;
+
+  const primaryOfferings: Offering[] = [];
+  if (labOff) primaryOfferings.push(labOff);
+  if (okMicro) primaryOfferings.push(O[microKey]);
+  if (primaryOfferings.length === 0) return r;
+
+  const workshopOfferings = r.primaryGroup?.offerings ?? [];
+  const newGroups: RecommendationGroup[] = [];
+
+  if (workshopOfferings.length > 0) {
+    newGroups.push({
+      heading: "When You're Ready to Bring Your Team — Workshops to Pitch",
+      offerings: workshopOfferings,
+    });
+  }
+
+  for (const g of r.groups) {
+    if (/Blue Door/i.test(g.heading)) {
+      newGroups.push({
+        heading: "When You're Ready to Go Deeper — Blue Door (for the org)",
+        offerings: g.offerings,
+      });
+    } else if (/^Free\b/i.test(g.heading)) {
+      const present = new Set(g.offerings.map((o) => o.key));
+      const merged = okFree && !present.has(freeKey)
+        ? [O[freeKey], ...g.offerings]
+        : g.offerings;
+      newGroups.push({ ...g, offerings: merged });
+    } else {
+      newGroups.push(g);
+    }
+  }
+
+  return {
+    ...r,
+    subhead: "Scout Mode — Start Solo, Bring the Team Later",
+    narrative:
+      "You said you're exploring before bringing a recommendation to others — that's the scout move, and it changes what makes sense to start with. Workshops, Blue Door, and team engagements all assume buy-in you don't have yet. The smarter play is to experience the work yourself, so when you do bring the conversation back you can speak to it firsthand.",
+    whyThisFits:
+      "Based on your other answers, we picked the AMPLIFY Lab that maps closest to what you're seeing. Pair it with a short, finishable resource you can share with one trusted colleague. The team-facing workshops and Blue Door are still here — they're just the next move, not the first one.",
+    primaryGroup: {
+      heading: "Start Solo — Experience the Work Yourself",
+      offerings: primaryOfferings,
+    },
+    groups: newGroups,
+    strongestNextStep: labOff
+      ? { kind: "workshop", offering: labOff, label: "Strongest Next Step — Try the Lab Yourself" }
+      : r.strongestNextStep,
+    whatComesNext:
+      "Once you've experienced the Lab and have a concrete read on what your team needs, the workshops above are how you scale it. Blue Door is how you'd diagnose what's underneath at the org level when you're ready for that conversation.",
   };
 }
 
