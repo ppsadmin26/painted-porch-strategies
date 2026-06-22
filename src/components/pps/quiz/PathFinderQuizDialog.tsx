@@ -563,6 +563,12 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               </div>
             )}
 
+            {result.crossoverNote && (
+              <div className="mb-6 p-4 rounded-lg bg-purple/5 border border-purple/20">
+                <p className="text-body-sm text-navy"><strong>Individual + Team crossover:</strong> {result.crossoverNote}</p>
+              </div>
+            )}
+
             {result.primaryGroup && (
               <RecGroup heading={result.primaryGroup.heading} offerings={result.primaryGroup.offerings} onClose={() => onOpenChange(false)} primary />
             )}
