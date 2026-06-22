@@ -469,14 +469,21 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-0 bg-white">
         <DialogHeader className="px-6 pt-6 pb-2">
           <DialogTitle className="font-poppins text-2xl text-navy flex items-center gap-2">
-            <Compass className="w-6 h-6 text-primary" />
+            <Compass className="w-6 h-6 text-primary" aria-hidden="true" />
             P.A.T.H.finder {showResult ? "Quiz Results" : "Quiz"}
           </DialogTitle>
           <DialogDescription className="text-foreground">
             {showResult ? "Your starting point and what's available when you're ready for more." : "About 3 minutes. You'll know exactly where to step onto the Porch."}
           </DialogDescription>
           {!showResult && (
-            <div className="mt-3 h-1.5 bg-muted rounded-full overflow-hidden">
+            <div
+              className="mt-3 h-1.5 bg-muted rounded-full overflow-hidden"
+              role="progressbar"
+              aria-label="Quiz progress"
+              aria-valuenow={progressPct}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            >
               <div className="h-full bg-primary transition-all" style={{ width: `${progressPct}%` }} />
             </div>
           )}
@@ -485,21 +492,32 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         {/* Body */}
         {!showResult && current && (
           <div className="px-6 pb-6">
-            <p className="text-caption uppercase tracking-wider text-primary font-semibold mb-2">
+            <p className="text-caption uppercase tracking-wider text-primary font-semibold mb-2" aria-live="polite">
               Question {index + 1} of {questions.length}
             </p>
-            <h3 className="font-poppins text-xl text-navy mb-1">{current.prompt}</h3>
-            {current.helper && <p className="text-body-sm text-foreground/70 mb-4">{current.helper}</p>}
+            <h3 id={`pf-q-${current.id}`} className="font-poppins text-xl text-navy mb-1">{current.prompt}</h3>
+            {current.helper && (
+              <p id={`pf-q-${current.id}-helper`} className="text-body-sm text-foreground/70 mb-4">{current.helper}</p>
+            )}
 
-            <div className="space-y-2 mt-4">
+            <div
+              className="space-y-2 mt-4"
+              role={current.multi ? "group" : "radiogroup"}
+              aria-labelledby={`pf-q-${current.id}`}
+              aria-describedby={current.helper ? `pf-q-${current.id}-helper` : undefined}
+            >
               {current.options.map((opt) => {
                 const isSelected = current.multi
                   ? ((answers[current.id] as string[] | undefined) ?? []).includes(opt.id)
                   : answers[current.id] === opt.id;
+                const ariaProps = current.multi
+                  ? { "aria-pressed": isSelected }
+                  : { role: "radio", "aria-checked": isSelected };
                 return (
                   <button
                     key={opt.id}
                     type="button"
+                    {...ariaProps}
                     onClick={() =>
                       current.multi
                         ? onMultiToggle(current.id, opt.id)
@@ -510,11 +528,13 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                         ? "border-primary bg-primary/5"
                         : "border-border hover:border-primary/40 bg-white"
                     }`}
-
                   >
                     <div className="flex items-start gap-3">
-                      <div className={`mt-0.5 w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${isSelected ? "border-primary bg-primary" : "border-border"}`}>
-                        {isSelected && <CheckCircle2 className="w-4 h-4 text-white" />}
+                      <div
+                        aria-hidden="true"
+                        className={`mt-0.5 w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${isSelected ? "border-primary bg-primary" : "border-border"}`}
+                      >
+                        {isSelected && <CheckCircle2 className="w-4 h-4 text-white" aria-hidden="true" />}
                       </div>
                       <span className="text-sm text-foreground">{opt.label}</span>
                     </div>
@@ -525,10 +545,10 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
             <div className="flex justify-between items-center mt-6">
               <Button variant="ghost" onClick={onBack} disabled={index === 0}>
-                <ArrowLeft className="w-4 h-4 mr-1" /> Back
+                <ArrowLeft className="w-4 h-4 mr-1" aria-hidden="true" /> Back
               </Button>
               <Button onClick={onNext} disabled={!canAdvance} className="bg-primary text-white hover:bg-primary/90">
-                {isLast ? "See My Results" : "Next"} <ArrowRight className="w-4 h-4 ml-1" />
+                {isLast ? "See My Results" : "Next"} <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
               </Button>
             </div>
           </div>
@@ -542,7 +562,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                 {result.subhead}
               </p>
             )}
-            <h2 className="font-poppins text-3xl text-navy mb-4">{result.headline}</h2>
+            <h3 className="font-poppins text-3xl text-navy mb-4">{result.headline}</h3>
             <p className="text-body text-foreground leading-relaxed mb-6">{result.narrative}</p>
 
             {result.whyThisFits && (
@@ -579,7 +599,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                   <Link to={result.strongestNextStep.offering.url} onClick={() => onOpenChange(false)}>
                     {(result.strongestNextStep.offering as { isComingSoon?: boolean }).isComingSoon
                       ? "See Details & Join List"
-                      : "Learn More"} <ArrowRight className="w-4 h-4 ml-1" />
+                      : "Learn More"} <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                   </Link>
                 </Button>
               </div>
@@ -609,7 +629,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                     const label = c.kind === "media" ? (c.source ? `Media · ${c.source}` : "Media") : "Insights & Research";
                     const inner = (
                       <div className="flex items-start gap-3">
-                        <Icon className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                        <Icon className="w-4 h-4 text-primary mt-1 flex-shrink-0" aria-hidden="true" />
                         <div className="flex-1 min-w-0">
                           <p className="text-body font-semibold text-navy transition-colors group-hover:text-primary group-hover:underline">{c.title}</p>
                           {c.excerpt && (
@@ -654,7 +674,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                     to={buildContactHref(result, firstName, email)}
                     onClick={() => onOpenChange(false)}
                   >
-                    Contact Us to Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                    Contact Us to Learn More <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                   </Link>
                 </Button>
               </div>
@@ -672,31 +692,38 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
             {/* Email form */}
             <div className="mt-8 pt-6 border-t border-border">
               {submitted ? (
-                <div className="flex items-center gap-3 text-navy">
-                  <CheckCircle2 className="w-5 h-5 text-lime" />
+                <div className="flex items-center gap-3 text-navy" role="status">
+                  <CheckCircle2 className="w-5 h-5 text-lime" aria-hidden="true" />
                   <p className="text-body font-poppins font-semibold">Sent! Check your inbox for your results.</p>
                 </div>
               ) : (
                 <form onSubmit={onEmailSubmit} className="space-y-3">
                   <h4 className="font-poppins text-lg text-navy flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-primary" /> Email me these results
+                    <Mail className="w-4 h-4 text-primary" aria-hidden="true" /> Email me these results
                   </h4>
                   <div className="grid sm:grid-cols-2 gap-3">
                     <div>
                       <Label htmlFor="pf-firstName">First Name</Label>
-                      <Input id="pf-firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+                      <Input id="pf-firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required autoComplete="given-name" />
                     </div>
                     <div>
                       <Label htmlFor="pf-email">Email</Label>
-                      <Input id="pf-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                      <Input id="pf-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
                     </div>
                   </div>
-                  <label className="flex items-start gap-2 text-sm text-foreground cursor-pointer">
-                    <Checkbox checked={subscribe} onCheckedChange={(v) => setSubscribe(v === true)} className="mt-0.5" />
-                    <span>Also subscribe me to updates on programs, resources, and insights.</span>
-                  </label>
+                  <div className="flex items-start gap-2 text-sm text-foreground">
+                    <Checkbox
+                      id="pf-subscribe"
+                      checked={subscribe}
+                      onCheckedChange={(v) => setSubscribe(v === true)}
+                      className="mt-0.5"
+                    />
+                    <Label htmlFor="pf-subscribe" className="cursor-pointer font-normal leading-snug">
+                      Also subscribe me to updates on programs, resources, and insights.
+                    </Label>
+                  </div>
                   <Button type="submit" disabled={submitting} className="bg-primary text-white hover:bg-primary/90">
-                    {submitting ? <Loader2 className="w-4 h-4 mr-1 animate-spin" /> : <Mail className="w-4 h-4 mr-1" />}
+                    {submitting ? <Loader2 className="w-4 h-4 mr-1 animate-spin" aria-hidden="true" /> : <Mail className="w-4 h-4 mr-1" aria-hidden="true" />}
                     Send my results
                   </Button>
                 </form>
@@ -705,7 +732,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
             <div className="flex justify-between items-center mt-6">
               <Button variant="ghost" onClick={onRetake}>
-                <RotateCcw className="w-4 h-4 mr-1" /> Retake
+                <RotateCcw className="w-4 h-4 mr-1" aria-hidden="true" /> Retake
               </Button>
               <Button variant="outline" onClick={() => onOpenChange(false)}>Close</Button>
             </div>
