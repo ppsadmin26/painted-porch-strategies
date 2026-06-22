@@ -138,6 +138,7 @@ Deno.serve(async (req) => {
           track: body.track,
           strongestNextStep: body.strongestNextStep,
           recommendations: body.recommendations,
+          relatedContent: body.relatedContent ?? [],
         },
       },
     });
