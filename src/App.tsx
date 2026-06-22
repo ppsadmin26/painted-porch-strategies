@@ -410,11 +410,14 @@ const App = () => (
             <Route path="labs" element={<Navigate to="/partner/amplify/labs" replace />} />
           </Route>
 
-          {/* Link-in-Bio Hub Pages (standalone, no nav/footer) */}
-          <Route path="/amy" element={<AboutAmy />} />
-          <Route path="/rob" element={<AboutRob />} />
-          <Route path="/sierra" element={<AboutSierra />} />
-          <Route path="/overview" element={<PPSOverview />} />
+          {/* Link-in-Bio Hub Pages (standalone, no nav/footer).
+              Wrapped in <PageGate> so an admin marking any of these Draft in
+              /admin/pages still suppresses public access — these routes live
+              outside PPSLayout so they don't inherit its gate. */}
+          <Route path="/amy" element={<PageGate><AboutAmy /></PageGate>} />
+          <Route path="/rob" element={<PageGate><AboutRob /></PageGate>} />
+          <Route path="/sierra" element={<PageGate><AboutSierra /></PageGate>} />
+          <Route path="/overview" element={<PageGate><PPSOverview /></PageGate>} />
           
 
           {/* Admin Routes */}
