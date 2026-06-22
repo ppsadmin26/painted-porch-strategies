@@ -48,24 +48,20 @@ export function useQuizRelatedContent(resultType: ResultType | null | undefined)
         }
 
         const [blogRes, mediaRes] = await Promise.all([
-          // Most recent published posts whose category set intersects ours.
           supabase
             .from("blog_post_categories")
             .select(
               "post:blog_posts!inner(id, slug, title, excerpt, cover_image_url, publish_date, status)"
             )
             .in("category_id", catIds)
-            .order("post(publish_date)", { ascending: false })
-            .limit(6),
-          // Most recent media appearances tagged with one of those categories.
+            .limit(30),
           supabase
             .from("media_appearance_categories")
             .select(
               "appearance:media_appearances!inner(id, title, show_name, description, thumbnail_url, external_url, appearance_date)"
             )
             .in("category_id", catIds)
-            .order("appearance(appearance_date)", { ascending: false })
-            .limit(6),
+            .limit(30),
         ]);
 
         // Dedupe blogs by id, keep only published with a slug, take top 2.
