@@ -51,14 +51,18 @@ Deno.serve(async (req) => {
     .eq("status", "published")
     .order("publish_date", { ascending: false });
 
-  // Pull all draft overrides so we can exclude them from the public sitemap.
-  const { data: draftRows } = await supabaseAdmin
+  // Whitelist approach: only emit paths explicitly marked Live in page_status,
+  // or that bypass overrides via ALWAYS_LIVE_PREFIXES. Matches the frontend
+  // PageGate default-to-draft behavior in src/config/pageStatus.ts so any
+  // newly-added route not yet seeded into page_status is hidden from crawlers
+  // until an admin flips it Live.
+  const { data: liveRows } = await supabaseAdmin
     .from("page_status")
     .select("path")
-    .eq("status", "draft");
-  const draftPaths = new Set<string>((draftRows ?? []).map((r: { path: string }) => r.path));
+    .eq("status", "live");
+  const livePaths = new Set<string>((liveRows ?? []).map((r: { path: string }) => r.path));
 
-  const isPublic = (path: string) => isAlwaysLive(path) || !draftPaths.has(path);
+  const isPublic = (path: string) => isAlwaysLive(path) || livePaths.has(path);
 
   const staticPages = [
     { loc: "/", priority: "1.0", changefreq: "weekly" },
