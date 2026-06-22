@@ -107,9 +107,10 @@ const labelFor = (qIndex: number, optId: string): string => {
 };
 
 function answerCurrent(optionLabel: string, last: boolean) {
-  const btn = screen
-    .getAllByRole("button")
-    .find((b) => b.textContent?.includes(optionLabel));
+  const btn = [
+    ...screen.queryAllByRole("button"),
+    ...screen.queryAllByRole("radio"),
+  ].find((b) => b.textContent?.includes(optionLabel));
   expect(btn, `option not found: "${optionLabel}"`).toBeTruthy();
   fireEvent.click(btn!);
   const advance = screen.getByRole("button", { name: last ? /See My Results/i : /^Next/i });
