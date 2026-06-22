@@ -159,15 +159,15 @@ describe("B2B scout reroute (Q4DM=A) — individual focus signaled", () => {
     const result = buildResult("b2b", answers);
     expect(result.track).toBe("b2b");
     expect(result.subhead).toMatch(/Scout Mode/i);
-    expect(result.primaryGroup?.offerings[0]?.key).toBe(expectedLab);
+    // Lab is the strongest next step (rendered above the primary group)
     expect(result.strongestNextStep?.offering.key).toBe(expectedLab);
-    const hasWorkshopGroup = result.groups.some((g) =>
-      /When You're Ready to Bring Your Team/i.test(g.heading),
-    );
-    expect(hasWorkshopGroup).toBe(true);
-    const hasBlueDoorGroup = result.groups.some((g) =>
-      /Blue Door/i.test(g.heading),
-    );
-    expect(hasBlueDoorGroup).toBe(true);
+    // Primary group is the micro starter + free pairing — never duplicates the lab
+    const primaryKeys = (result.primaryGroup?.offerings ?? []).map((o) => o.key);
+    expect(primaryKeys).not.toContain(expectedLab);
+    expect(primaryKeys).toContain("stracticalMini");
+    // Scout Mode collapses the team-facing / Blue Door / speaking / free groups
+    expect(result.groups).toHaveLength(0);
+    // Crossover note is suppressed in Scout Mode (would be redundant)
+    expect(result.crossoverNote).toBeUndefined();
   });
 });
