@@ -968,7 +968,7 @@ function applyScoutReroute(
     // the individual-track recommendation, so the note would be redundant.
     crossoverNote: undefined,
     whatComesNext:
-      "Once you've experienced the Lab and have a concrete read on what your team needs, team-facing workshops are how you scale it. Blue Door is how you'd diagnose what's underneath at the org level when you're ready for that conversation.",
+      "Once you've experienced the Lab and have a concrete read on what your team needs, team-facing workshops are how you scale it. The Blue Door Organizational Appraisal is how you'd diagnose what's underneath at the org level when you're ready for that conversation.",
   };
 }
 
