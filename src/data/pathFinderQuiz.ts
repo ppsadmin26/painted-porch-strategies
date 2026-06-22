@@ -647,16 +647,53 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         whatComesNext: "Leaders who do this work often reach a point where the change challenges they're navigating personally are also challenges their organization faces at scale. When it stops being about your development and starts being about the architecture your organization needs, there's a different conversation available.",
       };
     }
-    case "RT5":
+    case "RT5": {
+      // Score Labs against Q1–Q5 signals so RT5 narrows to the 2 most relevant
+      // Labs instead of dumping the full 6-Lab slate.
+      const q1 = val(answers, "Q1"), q2 = val(answers, "Q2"), q3 = val(answers, "Q3"),
+            q4 = val(answers, "Q4"), q5 = val(answers, "Q5");
+      const score: Record<OfferingKey, number> = {
+        stracticalLeaderLab: 0, leadingChangeLab: 0, conflictToConnectionLab: 0,
+        goldilocksLab: 0, stoicismLab: 0, aiEiOhLab: 0,
+      } as Record<OfferingKey, number>;
+      // Q1 — primary gap
+      if (q1 === "A") { score.stoicismLab += 3; score.goldilocksLab += 1; }
+      if (q1 === "B") { score.goldilocksLab += 3; score.conflictToConnectionLab += 1; }
+      if (q1 === "C") { score.conflictToConnectionLab += 3; score.goldilocksLab += 2; }
+      if (q1 === "D") { score.leadingChangeLab += 3; score.stracticalLeaderLab += 2; }
+      // Q2 — message-landing struggle = EQ calibration signal
+      if (q2 === "B" || q2 === "C") score.goldilocksLab += 1;
+      if (q2 === "D") { score.goldilocksLab += 2; score.conflictToConnectionLab += 1; }
+      // Q3 — secondary friction
+      if (q3 === "B") score.conflictToConnectionLab += 1;
+      if (q3 === "C") { score.conflictToConnectionLab += 2; score.goldilocksLab += 1; }
+      if (q3 === "D") { score.stoicismLab += 2; score.stracticalLeaderLab += 1; }
+      // Q4 — change history
+      if (q4 === "B") score.leadingChangeLab += 1;
+      if (q4 === "C") { score.leadingChangeLab += 2; score.stracticalLeaderLab += 1; }
+      if (q4 === "D") { score.stracticalLeaderLab += 2; score.leadingChangeLab += 1; }
+      // Q5 — integration depth
+      if (q5 === "C") score.leadingChangeLab += 1;
+      if (q5 === "D") { score.stracticalLeaderLab += 2; score.stoicismLab += 1; }
+      // Stable order for ties (matches existing visual ordering)
+      const labOrder: OfferingKey[] = ["stracticalLeaderLab", "leadingChangeLab", "conflictToConnectionLab", "goldilocksLab", "stoicismLab", "aiEiOhLab"];
+      const ranked = labOrder.slice().sort((a, b) => (score[b] - score[a]) || (labOrder.indexOf(a) - labOrder.indexOf(b)));
+      const primaryLabs = ranked.slice(0, 2);
+      const secondaryLabs = ranked.slice(2);
       return {
         track: "b2c", resultType: rt, headline: "Ready for Advanced Partnership",
         subhead: "AMPLIFY — Leadership Labs",
-        narrative: "You're not looking for a starting point. You're looking for depth: real challenge, peer-level conversation, an environment where the work pushes you rather than walks you through basics. The AMPLIFY Leadership Labs are built for exactly that.",
-        primaryGroup: grp("Your Starting Point — Pick the Lab that pulls you most", "stracticalLeaderLab", "leadingChangeLab", "conflictToConnectionLab", "goldilocksLab", "stoicismLab", "aiEiOhLab"),
-        whyThisFits: "You don't have one gap — you have range, and you're hungry for depth. So instead of picking for you, we surfaced the full Lab slate and let you pick the one that pulls hardest right now: strategy-to-tactics (Stractical Leader), change leadership (Leading Change), conflict (Conflict to Connection), calibration (Goldilocks), Stoic operating system, or AI + EQ. Every Lab is peer cohort, live, and built to push.",
-        groups: [grp("Also Worth Exploring", "stracticalMini", "performanceDNA", "eq360"), grp("Free Starting Points", "stoicLeaderFieldGuide")],
+        narrative: "You're not looking for a starting point. You're looking for depth: real challenge, peer-level conversation, an environment where the work pushes you rather than walks you through basics. The AMPLIFY Leadership Labs are built for exactly that — and based on your answers, two pull harder than the rest.",
+        primaryGroup: grp("Your Starting Point — The Two Labs Your Answers Point At", ...primaryLabs),
+        whyThisFits: "You have range and you're hungry for depth, so instead of handing you the full slate we narrowed to the two Labs your Q1–Q5 signals point at most directly. The remaining Labs are listed below if a different terrain pulls you. Every Lab is peer cohort, live, and built to push.",
+        groups: [
+          grp("Also Worth Exploring — The Other Labs", ...secondaryLabs),
+          grp("Micro Starting Points", "stracticalMini", "performanceDNA"),
+          grp("Free Starting Points", "stoicLeaderFieldGuide", "fiftyTwoStoicism"),
+        ],
         whatComesNext: "Some leaders reach a point where the work they're doing for themselves starts to feel like the work their whole organization needs. When you find yourself asking 'how do I build an organization that can hold what I'm trying to create' — we're here for that conversation.",
       };
+    }
     case "RT6":
       return {
         track: "b2c", resultType: rt, headline: "Explore Before Committing",
