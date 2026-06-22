@@ -11,10 +11,18 @@ interface YouTubeCarouselProps {
   getHref: (video: YouTubeVideoItem) => string;
 }
 
+const SCROLL_AMOUNT = 320; // 300px card width + 20px gap
+const SWIPE_THRESHOLD = 50;
+const SWIPE_TIMEOUT = 500;
+
 export function YouTubeCarousel({ videos, getHref }: YouTubeCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const touchStart = useRef<{ x: number; y: number; time: number } | null>(null);
+  const isSwiping = useRef(false);
+  const lastSwipeTime = useRef(0);
 
   const updateScrollState = () => {
     const el = scrollRef.current;
@@ -38,37 +46,87 @@ export function YouTubeCarousel({ videos, getHref }: YouTubeCarouselProps) {
   const scroll = (direction: "left" | "right") => {
     const el = scrollRef.current;
     if (!el) return;
-    const scrollAmount = 320; // 300px card width + 20px gap
     el.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
+      left: direction === "left" ? -SCROLL_AMOUNT : SCROLL_AMOUNT,
       behavior: "smooth",
     });
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY, time: Date.now() };
+    isSwiping.current = false;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!touchStart.current) return;
+    const t = e.touches[0];
+    const dx = touchStart.current.x - t.clientX;
+    const dy = touchStart.current.y - t.clientY;
+
+    // Once movement is clearly horizontal, mark as a swipe.
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+      isSwiping.current = true;
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!touchStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = touchStart.current.x - t.clientX;
+    const dy = touchStart.current.y - t.clientY;
+    const elapsed = Date.now() - touchStart.current.time;
+    touchStart.current = null;
+
+    if (
+      isSwiping.current &&
+      Math.abs(dx) > Math.abs(dy) &&
+      Math.abs(dx) > SWIPE_THRESHOLD &&
+      elapsed < SWIPE_TIMEOUT
+    ) {
+      e.preventDefault();
+      scroll(dx > 0 ? "right" : "left");
+      lastSwipeTime.current = Date.now();
+    }
+  };
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // If this click was generated right after a swipe, cancel navigation.
+    if (Date.now() - lastSwipeTime.current < 400) {
+      e.preventDefault();
+    }
   };
 
   return (
     <div className="relative">
       <div
         ref={scrollRef}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory"
         style={{
           scrollbarWidth: "thin",
           scrollbarColor: "hsl(var(--primary) / 0.5) transparent",
+          touchAction: "pan-y",
         }}
       >
         {videos.map((video) => (
           <a
             key={video.id}
             href={getHref(video)}
+            onClick={handleLinkClick}
             target="_blank"
             rel="noopener noreferrer"
-            className="group snap-start flex-shrink-0 w-[300px] block"
+            className="group snap-start flex-shrink-0 w-[300px] block select-none"
           >
             <div className="relative aspect-video rounded-xl overflow-hidden bg-navy/10 shadow-md">
               <img
                 src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
                 alt={video.title}
                 loading="lazy"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                draggable={false}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                 <div className="w-14 h-14 rounded-full bg-raspberry/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
