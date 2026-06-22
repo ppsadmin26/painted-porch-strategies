@@ -19,24 +19,30 @@ describe("Draft pages never leak to public surfaces", () => {
   describe("XML sitemap edge function (supabase/functions/sitemap)", () => {
     const fn = read("supabase/functions/sitemap/index.ts");
 
-    it("queries page_status for draft overrides", () => {
+    it("queries page_status for live overrides (whitelist, not blacklist)", () => {
+      // L3 fix: switched from `!draftPaths.has(path)` (default-public) to
+      // `livePaths.has(path)` (default-draft) so newly-added but unseeded
+      // routes never leak into the public XML sitemap.
       expect(fn).toMatch(/from\(["']page_status["']\)/);
-      expect(fn).toMatch(/\.eq\(["']status["'],\s*["']draft["']\)/);
+      expect(fn).toMatch(/\.eq\(["']status["'],\s*["']live["']\)/);
+      expect(fn).toMatch(/livePaths/);
+      // The old blacklist pattern must be gone.
+      expect(fn).not.toMatch(/!draftPaths\.has/);
     });
 
-    it("builds a Set of draft paths and filters static pages through it", () => {
-      expect(fn).toMatch(/draftPaths/);
+    it("builds a Set of live paths and filters static pages through it", () => {
+      expect(fn).toMatch(/livePaths/);
       expect(fn).toMatch(/staticPages[\s\S]*\.filter\(/);
     });
 
-    it("also filters dynamic blog post URLs against draft overrides", () => {
-      // The blog loop should skip any post whose resolved path is a draft.
+    it("also filters dynamic blog post URLs against the whitelist", () => {
       expect(fn).toMatch(/isPublic\(path\)/);
     });
 
     it("respects ALWAYS_LIVE_PREFIXES so admin/auth routes are never blocked", () => {
       expect(fn).toMatch(/ALWAYS_LIVE_PREFIXES/);
-      // The list must include every prefix from the shared config.
+      // L2 fix: every prefix from the shared frontend config must appear in
+      // the edge function's mirror list so the two stay in sync.
       for (const prefix of ALWAYS_LIVE_PREFIXES) {
         expect(fn).toContain(`"${prefix}"`);
       }
