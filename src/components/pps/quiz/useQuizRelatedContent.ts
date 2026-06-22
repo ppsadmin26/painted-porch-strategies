@@ -64,9 +64,8 @@ export function useQuizRelatedContent(resultType: ResultType | null | undefined)
             .limit(30),
         ]);
 
-        // Dedupe blogs by id, keep only published with a slug, take top 2.
-        const seenBlog = new Set<string>();
-        const blogs: ContentItem[] = [];
+        // Collect, dedupe, sort by date desc, then take top 2.
+        const blogMap = new Map<string, ContentItem & { _sortKey: number }>();
         for (const row of (blogRes.data ?? []) as Array<{
           post: {
             id: string;
@@ -80,21 +79,23 @@ export function useQuizRelatedContent(resultType: ResultType | null | undefined)
         }>) {
           const p = row.post;
           if (!p || !p.slug || p.status !== "published") continue;
-          if (seenBlog.has(p.id)) continue;
-          seenBlog.add(p.id);
-          blogs.push({
+          if (blogMap.has(p.id)) continue;
+          blogMap.set(p.id, {
             kind: "blog",
             title: p.title,
             url: `/resources/blog/${p.slug}`,
             excerpt: p.excerpt ?? undefined,
             thumbnail: p.cover_image_url ?? undefined,
             date: p.publish_date ?? undefined,
+            _sortKey: p.publish_date ? new Date(p.publish_date).getTime() : 0,
           });
-          if (blogs.length >= 2) break;
         }
+        const blogs = Array.from(blogMap.values())
+          .sort((a, b) => b._sortKey - a._sortKey)
+          .slice(0, 2)
+          .map(({ _sortKey, ...rest }) => { void _sortKey; return rest as ContentItem; });
 
-        const seenMedia = new Set<string>();
-        const media: ContentItem[] = [];
+        const mediaMap = new Map<string, ContentItem & { _sortKey: number }>();
         for (const row of (mediaRes.data ?? []) as Array<{
           appearance: {
             id: string;
@@ -108,9 +109,8 @@ export function useQuizRelatedContent(resultType: ResultType | null | undefined)
         }>) {
           const a = row.appearance;
           if (!a || !a.external_url) continue;
-          if (seenMedia.has(a.id)) continue;
-          seenMedia.add(a.id);
-          media.push({
+          if (mediaMap.has(a.id)) continue;
+          mediaMap.set(a.id, {
             kind: "media",
             title: a.title,
             url: a.external_url,
@@ -118,9 +118,13 @@ export function useQuizRelatedContent(resultType: ResultType | null | undefined)
             thumbnail: a.thumbnail_url ?? undefined,
             date: a.appearance_date ?? undefined,
             source: a.show_name,
+            _sortKey: a.appearance_date ? new Date(a.appearance_date).getTime() : 0,
           });
-          if (media.length >= 2) break;
         }
+        const media = Array.from(mediaMap.values())
+          .sort((a, b) => b._sortKey - a._sortKey)
+          .slice(0, 2)
+          .map(({ _sortKey, ...rest }) => { void _sortKey; return rest as ContentItem; });
 
         // Mix: prefer 1 blog + 1 media, else fill from whichever has content.
         const mixed: ContentItem[] = [];
