@@ -159,7 +159,13 @@ async function main() {
       out.push(`\n### ${rt} — ${vList[0].headline}`);
       out.push(`*Total matching combinations:* **${total}** across **${vList.length}** distinct recommendation slate${vList.length > 1 ? "s" : ""}\n`);
       vList.forEach((v, i) => {
-        out.push(`\n#### Variant ${i + 1} — ${v.count} combination${v.count > 1 ? "s" : ""}`);
+        const pq2 = (v.sampleAnswers as any).PQ2;
+        const pq2Tag = track === "b2c" && pq2
+          ? ` — _${pq2 === "aspiring" ? "Aspiring Leader" : "Current Leader"}_`
+          : "";
+        const q4dm = (v.sampleAnswers as any).Q4DM;
+        const scoutTag = track === "b2b" && q4dm === "A" ? " — _Scout Mode (Q4DM=A)_" : "";
+        out.push(`\n#### Variant ${i + 1} — ${v.count} combination${v.count > 1 ? "s" : ""}${pq2Tag}${scoutTag}`);
         out.push(`Triggered by answers like: ${fmtAnswers(v.sampleAnswers)}\n`);
         if (v.strongestKey) out.push(`**Strongest Next Step:** ${fmtOffering(v.strongestKey)}\n`);
         out.push(`**Primary Recommendations:**`);
