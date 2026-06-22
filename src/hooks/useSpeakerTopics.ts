@@ -65,6 +65,13 @@ export function useSpeakerTopics(facilitator: string): SpeakingTopic[] | null {
             existing.description = desc;
             existing._len = desc.length;
           }
+          // Prefer the richer (longer) title — e.g. the full subtitle from the
+          // workshop row over a truncated "(Keynote)" row — so the speaker
+          // page matches /topics.
+          if (title.length > existing.title.length) {
+            existing.title = title;
+            existing.slug = slugify(title);
+          }
           if (!existing.image && r.image_url) existing.image = r.image_url;
         } else {
           map.set(key, {
