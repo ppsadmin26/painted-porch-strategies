@@ -52,7 +52,9 @@ const MEDIA_ROW = {
   },
 };
 
-const invokeSpy = vi.fn(async () => ({ data: null, error: null }));
+const invokeSpy = vi.fn(
+  async (_name: string, _opts: { body: unknown }) => ({ data: null, error: null }),
+);
 
 vi.mock("@/integrations/supabase/client", () => {
   // Per-table fake query builder. Returns a thenable that resolves with the
