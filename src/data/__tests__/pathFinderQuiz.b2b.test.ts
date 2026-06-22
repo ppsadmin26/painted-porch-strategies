@@ -82,8 +82,10 @@ for (const q1 of ["A", "B", "C", "D"]) {
   }
 }
 
-// RT-E ambiguous fallback
-for (const q4 of Q4DM_VALUES) {
+// RT-E ambiguous fallback. Q4DM="A" (scout) is intentionally rerouted to
+// surface a Lab — see applyScoutReroute. The Labs-guardrail covers non-scout
+// Q4DM values only; the scout path has its own assertions below.
+for (const q4 of Q4DM_VALUES.filter((v) => v !== "A")) {
   combos.push({
     label: `RT-E PQ2=empty PQ3=C Q4DM=${q4}`,
     answers: { OrgPQ2: "", Q4DM: q4, OrgPQ3: "C" },
