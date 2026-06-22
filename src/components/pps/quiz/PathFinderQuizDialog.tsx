@@ -53,15 +53,38 @@ type PersistedState = {
 
 function BoldShiftName({ name }: { name: string }) {
   if (!name.toLowerCase().includes("shift")) return <>{name}</>;
-  
+
   // Match shIFt or ShIFt
   const match = name.match(/([sS])hIFt/);
   if (!match) return <>{name}</>;
-  
+
   const [before, after] = name.split(match[0]);
   return (
     <>
       {before}{match[1]}h<span className="font-bold">IF</span>t{after}
+    </>
+  );
+}
+
+function BlueDoorInlineLink({ text }: { text: string }) {
+  const phrase = "The Blue Door Organizational Appraisal";
+  const parts = text.split(phrase);
+  if (parts.length === 1) return <>{text}</>;
+  return (
+    <>
+      {parts.map((part, i) => (
+        <span key={i}>
+          {part}
+          {i < parts.length - 1 && (
+            <Link
+              to="/blue-door"
+              className="font-bold text-bluedoor hover:underline"
+            >
+              {phrase}
+            </Link>
+          )}
+        </span>
+      ))}
     </>
   );
 }
