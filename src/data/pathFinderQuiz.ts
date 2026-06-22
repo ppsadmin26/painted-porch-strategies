@@ -935,37 +935,15 @@ function applyScoutReroute(
   const okFree = !filterable || filterable.has(freeKey);
   const labOff = okLab ? O[labKey] : undefined;
 
+  // Scout Mode keeps the page intentionally narrow: Lab (as strongest), Mini
+  // (micro starter), and Stoic Field Guide (free). The team-facing workshops,
+  // Blue Door, and speaking groups are dropped as cards — they're referenced
+  // in narrative + What Comes Next so the user knows they're the next move,
+  // not the first one.
   const primaryOfferings: Offering[] = [];
-  if (labOff) primaryOfferings.push(labOff);
   if (okMicro) primaryOfferings.push(O[microKey]);
-  if (primaryOfferings.length === 0) return r;
-
-  const workshopOfferings = r.primaryGroup?.offerings ?? [];
-  const newGroups: RecommendationGroup[] = [];
-
-  if (workshopOfferings.length > 0) {
-    newGroups.push({
-      heading: "When You're Ready to Bring Your Team — Workshops to Pitch",
-      offerings: workshopOfferings,
-    });
-  }
-
-  for (const g of r.groups) {
-    if (/Blue Door/i.test(g.heading)) {
-      newGroups.push({
-        heading: "When You're Ready to Go Deeper — Blue Door (for the org)",
-        offerings: g.offerings,
-      });
-    } else if (/^Free\b/i.test(g.heading)) {
-      const present = new Set(g.offerings.map((o) => o.key));
-      const merged = okFree && !present.has(freeKey)
-        ? [O[freeKey], ...g.offerings]
-        : g.offerings;
-      newGroups.push({ ...g, offerings: merged });
-    } else {
-      newGroups.push(g);
-    }
-  }
+  if (okFree) primaryOfferings.push(O[freeKey]);
+  if (!labOff && primaryOfferings.length === 0) return r;
 
   return {
     ...r,
@@ -973,17 +951,24 @@ function applyScoutReroute(
     narrative:
       "You said you're exploring before bringing a recommendation to others — that's the scout move, and it changes what makes sense to start with. Workshops, Blue Door, and team engagements all assume buy-in you don't have yet. The smarter play is to experience the work yourself, so when you do bring the conversation back you can speak to it firsthand.",
     whyThisFits:
-      "Based on your other answers, we picked the AMPLIFY Lab that maps closest to what you're seeing. Pair it with a short, finishable resource you can share with one trusted colleague. The team-facing workshops and Blue Door are still here — they're just the next move, not the first one.",
-    primaryGroup: {
-      heading: "Start Solo — Experience the Work Yourself",
-      offerings: primaryOfferings,
-    },
-    groups: newGroups,
+      "Based on your other answers, we picked the AMPLIFY Lab that maps closest to what you're seeing. Pair it with a short, finishable resource you can share with one trusted colleague. Team-facing workshops and Blue Door are still on the menu — they're just the next move, not the first one.",
+    primaryGroup: primaryOfferings.length > 0
+      ? {
+          heading: "Pair It With These — Micro Starter + Free Resource",
+          offerings: primaryOfferings,
+        }
+      : undefined,
+    // Drop workshop / Blue Door / speaking / free groups for Scout Mode —
+    // they're covered by the narrative + What Comes Next.
+    groups: [],
     strongestNextStep: labOff
       ? { kind: "workshop", offering: labOff, label: "Strongest Next Step — Try the Lab Yourself" }
       : r.strongestNextStep,
+    // Suppress the Cap crossover note in Scout Mode — the entire result IS
+    // the individual-track recommendation, so the note would be redundant.
+    crossoverNote: undefined,
     whatComesNext:
-      "Once you've experienced the Lab and have a concrete read on what your team needs, the workshops above are how you scale it. Blue Door is how you'd diagnose what's underneath at the org level when you're ready for that conversation.",
+      "Once you've experienced the Lab and have a concrete read on what your team needs, team-facing workshops are how you scale it. Blue Door is how you'd diagnose what's underneath at the org level when you're ready for that conversation.",
   };
 }
 
