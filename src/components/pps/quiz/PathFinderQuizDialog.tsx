@@ -425,6 +425,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
           strongestNextStep: result.strongestNextStep
             ? { name: result.strongestNextStep.offering.name, url: result.strongestNextStep.offering.url, label: result.strongestNextStep.label }
             : null,
+          relatedContent,
         },
       });
       if (error) throw error;
