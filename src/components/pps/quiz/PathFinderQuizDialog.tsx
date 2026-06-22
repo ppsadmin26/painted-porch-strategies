@@ -692,31 +692,38 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
             {/* Email form */}
             <div className="mt-8 pt-6 border-t border-border">
               {submitted ? (
-                <div className="flex items-center gap-3 text-navy">
-                  <CheckCircle2 className="w-5 h-5 text-lime" />
+                <div className="flex items-center gap-3 text-navy" role="status">
+                  <CheckCircle2 className="w-5 h-5 text-lime" aria-hidden="true" />
                   <p className="text-body font-poppins font-semibold">Sent! Check your inbox for your results.</p>
                 </div>
               ) : (
                 <form onSubmit={onEmailSubmit} className="space-y-3">
                   <h4 className="font-poppins text-lg text-navy flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-primary" /> Email me these results
+                    <Mail className="w-4 h-4 text-primary" aria-hidden="true" /> Email me these results
                   </h4>
                   <div className="grid sm:grid-cols-2 gap-3">
                     <div>
                       <Label htmlFor="pf-firstName">First Name</Label>
-                      <Input id="pf-firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+                      <Input id="pf-firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required autoComplete="given-name" />
                     </div>
                     <div>
                       <Label htmlFor="pf-email">Email</Label>
-                      <Input id="pf-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                      <Input id="pf-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
                     </div>
                   </div>
-                  <label className="flex items-start gap-2 text-sm text-foreground cursor-pointer">
-                    <Checkbox checked={subscribe} onCheckedChange={(v) => setSubscribe(v === true)} className="mt-0.5" />
-                    <span>Also subscribe me to updates on programs, resources, and insights.</span>
-                  </label>
+                  <div className="flex items-start gap-2 text-sm text-foreground">
+                    <Checkbox
+                      id="pf-subscribe"
+                      checked={subscribe}
+                      onCheckedChange={(v) => setSubscribe(v === true)}
+                      className="mt-0.5"
+                    />
+                    <Label htmlFor="pf-subscribe" className="cursor-pointer font-normal leading-snug">
+                      Also subscribe me to updates on programs, resources, and insights.
+                    </Label>
+                  </div>
                   <Button type="submit" disabled={submitting} className="bg-primary text-white hover:bg-primary/90">
-                    {submitting ? <Loader2 className="w-4 h-4 mr-1 animate-spin" /> : <Mail className="w-4 h-4 mr-1" />}
+                    {submitting ? <Loader2 className="w-4 h-4 mr-1 animate-spin" aria-hidden="true" /> : <Mail className="w-4 h-4 mr-1" aria-hidden="true" />}
                     Send my results
                   </Button>
                 </form>
@@ -725,7 +732,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
             <div className="flex justify-between items-center mt-6">
               <Button variant="ghost" onClick={onRetake}>
-                <RotateCcw className="w-4 h-4 mr-1" /> Retake
+                <RotateCcw className="w-4 h-4 mr-1" aria-hidden="true" /> Retake
               </Button>
               <Button variant="outline" onClick={() => onOpenChange(false)}>Close</Button>
             </div>
