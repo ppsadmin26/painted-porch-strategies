@@ -72,6 +72,21 @@ const Email = (p: Props) => {
             </Section>
           ))}
 
+          {(p.relatedContent ?? []).length > 0 && (
+            <Section style={groupBox}>
+              <Text style={groupHeading}>From the Porch — Related Reading</Text>
+              {(p.relatedContent ?? []).map((c, i) => (
+                <Section key={i} style={recRow}>
+                  <Text style={recName}>
+                    <Link href={absUrl(c.url)} style={linkBold}>{c.title}</Link>
+                    {" "}<span style={tierBadge}>{c.kind === "media" ? (c.source ? `Media · ${c.source}` : "Media") : "Blog"}</span>
+                  </Text>
+                  {c.excerpt ? <Text style={recBlurb}>{c.excerpt}</Text> : null}
+                </Section>
+              ))}
+            </Section>
+          )}
+
           <Hr style={hr} />
           <Text style={text}>
             Want to talk through any of this? <Link href={`${SITE_URL}/contact`} style={link}>Contact us</Link> and we'll help you scope the right starting point.
