@@ -130,14 +130,15 @@ function renderDialog() {
  * directly from the data layer so this stays in sync with any wording tweaks.
  */
 function answerCurrent(optionLabel: string, last: boolean) {
-  // The dialog renders each option as a <button> containing the label text.
-  // Multiple buttons may match if a fragment is reused — pick the visible one
-  // inside the current question container (the only enabled option buttons).
-  const optionButtons = screen
-    .getAllByRole("button")
-    .filter((b) => b.textContent?.includes(optionLabel));
+  // Options render as <button> elements but expose role="radio" (single-select)
+  // or aria-pressed (multi-select) for screen readers, so query by either role.
+  const optionButtons = [
+    ...screen.queryAllByRole("button"),
+    ...screen.queryAllByRole("radio"),
+  ].filter((b) => b.textContent?.includes(optionLabel));
   expect(optionButtons.length, `option not found: "${optionLabel}"`).toBeGreaterThan(0);
   fireEvent.click(optionButtons[0]);
+
 
   const advance = screen.getByRole("button", { name: last ? /See My Results/i : /^Next/i });
   expect(advance, "advance button should be enabled after selection").not.toBeDisabled();
