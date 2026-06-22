@@ -70,14 +70,23 @@ export function YouTubeCarousel({ videos, getHref }: YouTubeCarouselProps) {
     }
   };
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!touchStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = touchStart.current.x - t.clientX;
+    const dy = touchStart.current.y - t.clientY;
     const elapsed = Date.now() - touchStart.current.time;
     touchStart.current = null;
 
-    if (isSwiping.current && elapsed < SWIPE_TIMEOUT) {
+    if (
+      isSwiping.current &&
+      Math.abs(dx) > Math.abs(dy) &&
+      Math.abs(dx) > SWIPE_THRESHOLD &&
+      elapsed < SWIPE_TIMEOUT
+    ) {
+      e.preventDefault();
+      scroll(dx > 0 ? "right" : "left");
       didSwipe.current = true;
-      // Clear the swipe flag after the delayed click would have fired.
       setTimeout(() => {
         didSwipe.current = false;
       }, 100);
