@@ -674,7 +674,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                     to={buildContactHref(result, firstName, email)}
                     onClick={() => onOpenChange(false)}
                   >
-                    Contact Us to Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                    Contact Us to Learn More <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                   </Link>
                 </Button>
               </div>
