@@ -1,62 +1,82 @@
-## Goal
+## Objective
+Extend the P.A.T.H. Finder quiz results to include 1-2 related content recommendations (blog posts and/or media appearances) based on the quiz result type. These appear as a "Related Reading" section in the result dialog and optionally in the results email.
 
-Make `/admin/offerings` (the existing P.A.T.H. Finder Offerings page) the **single source of truth** for every speaking/workshop topic. One save there updates `/topics`, `/partner/amplify/workshops`, `/speaking/amy`, `/speaking/rob`, and `/speaking/sierra` simultaneously — including description, topic tag, speaker, workshop/keynote flag, and image.
+## Scope
+- B2C result types RT1-RT6 and B2B result types RT-A through RT-E
+- 1-2 items max per result (blog post, media appearance, or one of each)
+- Rendered in the quiz result dialog as a distinct group below offering recommendations
+- Optionally included in the `path-finder-results` email template
+- Graceful empty-state handling (section hidden if no matches)
 
-## What changes
+## Out of Scope
+- No new admin UI for curating quiz-related content
+- No ML/semantic matching — deterministic category mapping only
 
-### 1. Database (one migration)
-
-Add two columns to `path_finder_offerings`:
-
-- `image_url text` — public URL or `/src/assets/...` path for the topic card image.
-- `is_keynote boolean default false` — paired with the existing `include_in_workshops` flag, this gives you the Workshop / Keynote chips.
-
-Backfill `image_url` from current `IMAGE_MAP` entries in `SpeakingWorkshopTopics.tsx`, and backfill `is_keynote = true` for the rows currently marked Speaking-only.
-
-### 2. Admin (extend the existing offerings card)
-
-On every row in `/admin/offerings`, add four controls already grouped under a new "Topic card" section:
-
-- **Speaker** dropdown (Amy / Rob / Sierra / none) — writes to `facilitator`.
-- **Workshop** switch (writes `include_in_workshops`).
-- **Keynote** switch (writes new `is_keynote`).
-- **Topic tag** (already exists — stays).
-- **Description** textarea (already exists as `description` — surfaced more clearly).
-- **Image** — URL input + small preview, with an "Upload" button that pushes to the existing `site-images` bucket and pastes the resulting public URL.
-
-Saving the row uses the existing save handler — no new save logic.
-
-### 3. Pages become readers, not authors
-
-`SpeakingWorkshopTopics.tsx`, `RobSpeaker.tsx`, `AmySpeaker.tsx`, `SierraSpeaker.tsx` each replace their hardcoded `topics` arrays / `BLURB_OVERRIDES` / `IMAGE_MAP` with a single query:
-
-```ts
-supabase.from("path_finder_offerings")
-  .select("name, topic, description, facilitator, image_url, include_in_workshops, is_keynote")
-  .or("include_in_workshops.eq.true,is_keynote.eq.true")
+## Decision Needed Before Implementation
+**Category-to-Result mapping:** Provide the 1-3 blog category slugs and/or media types that should map to each result type. Example:
 ```
+RT1 (B2C mindfulness)  -> blog categories: mindfulness, stoicism, burnout
+RT-B (B2B change)      -> blog categories: change-leadership, resilience
+RT-A (B2B team)        -> media types: podcast, video
+```
+If you don't have existing categories that align, we can use keyword filtering against post titles/excerpts as a fallback.
 
-Each page then filters:
-- `/topics` → everything returned.
-- `/speaking/<name>` → rows where `facilitator = '<Name>'`.
-- `/partner/amplify/workshops` → rows where `include_in_workshops = true`.
+---
 
-The existing chip logic (Workshop = navy icon, Keynote = green icon) reads `include_in_workshops` / `is_keynote` directly. A topic that is both shows both chips.
+## Implementation Steps
 
-The local `*.jpg.asset.json` imports stay on disk so any URL already pointing at them keeps rendering — the DB simply stores that same URL string.
+### 1. DB Schema Discovery & Category Mapping (15 min)
+- Confirm exact column names in `blog_categories` and `media_appearance_categories`
+- Build static `RT_TO_CONTENT_CATEGORIES` map in `src/data/pathFinderQuiz.ts`
+- If no clean category alignment exists, define keyword-based fallback filters
 
-### 4. Cleanup
+### 2. Type & Data Layer (30 min)
+- Add `ContentItem` interface:
+  ```ts
+  interface ContentItem {
+    kind: "blog" | "media";
+    title: string;
+    url: string;
+    thumbnail?: string;
+    excerpt?: string;
+    date?: string;
+  }
+  ```
+- Extend `QuizResult` with optional `relatedContent?: ContentItem[]`
+- Add `relatedContent` to the `submit-path-finder-quiz` edge function payload shape
 
-Remove `BLURB_OVERRIDES` and `IMAGE_MAP` from `SpeakingWorkshopTopics.tsx` once the backfill is verified.
+### 3. DB Query Hook in Dialog (45 min)
+- After `buildResult` returns, fire 2 parallel Supabase queries in `PathFinderQuizDialog`:
+  - `blog_posts`: join `blog_post_categories` -> `blog_categories`, filter by mapped slugs, `status='published'`, order by `publish_date DESC`, limit 2
+  - `media_appearances`: join `media_appearance_categories`, filter by mapped types/categories, order by `appearance_date DESC`, limit 2
+- Merge results, cap at 2 total items, and attach to the result object
+- Handle loading state (show skeleton or delay section until loaded)
 
-## Out of scope
+### 4. UI Rendering (45 min)
+- Add a "Related Reading" or "From the Porch" group in the result dialog
+- Layout: horizontal cards (thumbnail + title + excerpt) or compact list
+- Respect brand tokens: teal links, navy headings, generous whitespace
+- Hidden entirely when `relatedContent` is empty
 
-- No changes to quiz routing, RT pools, or the broader offerings schema.
-- No new admin page — everything lives on the offerings admin you already use.
-- Topic-card design on the public pages stays exactly as-is.
+### 5. Email Template Update (30 min)
+- Add a "Related Reading" section to the `path-finder-results` transactional email template
+- Same 1-2 items, rendered as linked titles with short excerpts
+- If email scope feels like scope creep, this can be deferred to a follow-up
 
-## Technical notes
+### 6. Tests (30 min)
+- Add 1-2 cases in `pathFinderQuiz.viewable.test.ts` verifying `relatedContent` population
+- Add Playwright assertion confirming the "Related Reading" section renders when content exists and hides when empty
 
-- Migration adds columns + a `set updated_at` is already handled by existing trigger.
-- `image_url` is plain text (no FK). Free-form so it can hold a Supabase storage URL, a CDN URL, or a `/src/assets/...` path resolved at build time.
-- Speaker pages currently sort topics manually; after the switch they'll sort by `sort_order` from the table (already used by the admin).
+---
+
+## Total Estimated Time
+2.5 - 3.5 hours (closer to 2.5 if email template is deferred)
+
+## Risk & Fallback
+- **Risk:** No published blog posts or media appearances match a given result type's mapped categories.
+- **Fallback:** Section simply does not render. No broken UI. Admin can adjust mappings later or publish aligned content.
+
+## Approval Needed
+Please confirm:
+1. Do you want the email template updated in this scope, or deferred?
+2. Can you provide (or point me to) the blog category slugs that align with each quiz result type? Or should I derive keyword filters from the result headlines/narratives instead?

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ArrowLeft, ArrowRight, CheckCircle2, Compass, Loader2, Mail, RotateCcw } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, Compass, Loader2, Mail, Mic, RotateCcw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { usePathFinderOverrides, usePathFinderRtPools } from "@/hooks/usePathFinderOverrides";
@@ -16,6 +16,7 @@ import {
   buildResult, type Answers, type Question, type QuizResult, type Track, type Offering,
 } from "@/data/pathFinderQuiz";
 import { saveQuizContactPrefill, clearQuizContactPrefill } from "./quizContactPrefill";
+import { useQuizRelatedContent } from "./useQuizRelatedContent";
 
 interface Props {
   open: boolean;
@@ -340,6 +341,8 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showResult, track, answers, overrides, viewableKeys, comingSoonKeys, rtPools, featuredKeys]);
+  const { items: relatedContent } = useQuizRelatedContent(result?.resultType ?? null);
+
 
   // Persist the prefill payload so /contact can hydrate from quiz context even
   // if the user navigates to a recommended workshop / Blue Door page first and
@@ -422,6 +425,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
           strongestNextStep: result.strongestNextStep
             ? { name: result.strongestNextStep.offering.name, url: result.strongestNextStep.offering.url, label: result.strongestNextStep.label }
             : null,
+          relatedContent,
         },
       });
       if (error) throw error;
@@ -566,6 +570,45 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
             {result.groups.map((g, i) => (
               <RecGroup key={i} heading={g.heading} offerings={g.offerings} onClose={() => onOpenChange(false)} />
             ))}
+
+            {relatedContent.length > 0 && (
+              <div className="mt-6">
+                <h4 className="font-poppins text-base font-semibold text-navy mb-2">From the Porch — Related Reading</h4>
+                <div className="grid gap-2">
+                  {relatedContent.map((c) => {
+                    const isExternal = /^https?:\/\//i.test(c.url);
+                    const Icon = c.kind === "media" ? Mic : BookOpen;
+                    const label = c.kind === "media" ? (c.source ? `Media · ${c.source}` : "Media") : "Blog";
+                    const inner = (
+                      <div className="flex items-start gap-3">
+                        <Icon className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-body font-semibold text-navy">{c.title}</p>
+                          {c.excerpt && (
+                            <p className="text-body-sm text-foreground/70 mt-0.5 line-clamp-2">{c.excerpt}</p>
+                          )}
+                          <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-1 inline-block">{label}</span>
+                        </div>
+                      </div>
+                    );
+                    const className = "block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
+                    if (isExternal) {
+                      return (
+                        <a key={`${c.kind}-${c.url}`} href={c.url} target="_blank" rel="noopener noreferrer" onClick={() => onOpenChange(false)} className={className}>
+                          {inner}
+                        </a>
+                      );
+                    }
+                    return (
+                      <Link key={`${c.kind}-${c.url}`} to={c.url} onClick={() => onOpenChange(false)} className={className}>
+                        {inner}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
 
             {/* Topic note + Contact CTA — B2B only */}
             {result.track === "b2b" && result.topicArea && (

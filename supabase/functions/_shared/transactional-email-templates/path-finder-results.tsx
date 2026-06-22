@@ -11,6 +11,7 @@ const LOGO_URL = 'https://dkpxjivoupqpmvzwxpef.supabase.co/storage/v1/object/pub
 
 interface RecItem { name: string; url: string; blurb: string; tier: string }
 interface RecGroup { heading: string; items: RecItem[] }
+interface ContentItem { kind: "blog" | "media"; title: string; url: string; excerpt?: string; source?: string }
 interface Props {
   firstName?: string
   headline?: string
@@ -19,6 +20,7 @@ interface Props {
   track?: string
   strongestNextStep?: { name: string; url: string; label: string } | null
   recommendations?: RecGroup[]
+  relatedContent?: ContentItem[]
 }
 
 const absUrl = (u: string) => (u.startsWith("http") ? u : `${SITE_URL}${u}`)
@@ -69,6 +71,21 @@ const Email = (p: Props) => {
               ))}
             </Section>
           ))}
+
+          {(p.relatedContent ?? []).length > 0 && (
+            <Section style={groupBox}>
+              <Text style={groupHeading}>From the Porch — Related Reading</Text>
+              {(p.relatedContent ?? []).map((c, i) => (
+                <Section key={i} style={recRow}>
+                  <Text style={recName}>
+                    <Link href={absUrl(c.url)} style={linkBold}>{c.title}</Link>
+                    {" "}<span style={tierBadge}>{c.kind === "media" ? (c.source ? `Media · ${c.source}` : "Media") : "Blog"}</span>
+                  </Text>
+                  {c.excerpt ? <Text style={recBlurb}>{c.excerpt}</Text> : null}
+                </Section>
+              ))}
+            </Section>
+          )}
 
           <Hr style={hr} />
           <Text style={text}>
