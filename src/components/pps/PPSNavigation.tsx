@@ -39,6 +39,9 @@ const navLinks = [
     label: "Speaking",
     href: "/speaking",
     children: [
+      { label: "Amy Yackowski", href: "/speaking/amy" },
+      { label: "Rob Yackowski", href: "/speaking/rob" },
+      { label: "Sierra Modro", href: "/speaking/sierra" },
       { label: "As Seen On", href: "/speaking/media" },
     ],
   },
