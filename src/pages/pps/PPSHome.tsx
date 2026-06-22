@@ -385,10 +385,10 @@ export default function PPSHome() {
           <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {threeAmQuestions.map((q, i) => (
               <div key={i} className="bg-muted/50 rounded-xl p-6 md:p-8 text-center">
-                <div className="text-3xl md:text-4xl font-poppins font-bold text-raspberry/80 mb-4">
+                <div className="text-3xl md:text-4xl font-poppins font-bold text-raspberry mb-4">
                   0{i + 1}
                 </div>
-                <p className="text-lg md:text-xl text-raspberry font-bold leading-relaxed">
+                <p className="text-lg md:text-xl text-foreground italic font-medium leading-relaxed">
                   &ldquo;{q}&rdquo;
                 </p>
               </div>
