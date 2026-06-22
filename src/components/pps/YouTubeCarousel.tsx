@@ -22,7 +22,7 @@ export function YouTubeCarousel({ videos, getHref }: YouTubeCarouselProps) {
 
   const touchStart = useRef<{ x: number; y: number; time: number } | null>(null);
   const isSwiping = useRef(false);
-  const didSwipe = useRef(false);
+  const lastSwipeTime = useRef(0);
 
   const updateScrollState = () => {
     const el = scrollRef.current;
@@ -86,22 +86,19 @@ export function YouTubeCarousel({ videos, getHref }: YouTubeCarouselProps) {
     ) {
       e.preventDefault();
       scroll(dx > 0 ? "right" : "left");
-      didSwipe.current = true;
-      setTimeout(() => {
-        didSwipe.current = false;
-      }, 100);
+      lastSwipeTime.current = Date.now();
     }
   };
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (didSwipe.current) {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // If this click was generated right after a swipe, cancel navigation.
+    if (Date.now() - lastSwipeTime.current < 400) {
       e.preventDefault();
-      didSwipe.current = false;
     }
   };
 
   return (
-    <div className="relative" onClick={handleClick}>
+    <div className="relative">
       <div
         ref={scrollRef}
         onTouchStart={handleTouchStart}
@@ -118,6 +115,7 @@ export function YouTubeCarousel({ videos, getHref }: YouTubeCarouselProps) {
           <a
             key={video.id}
             href={getHref(video)}
+            onClick={handleLinkClick}
             target="_blank"
             rel="noopener noreferrer"
             className="group snap-start flex-shrink-0 w-[300px] block select-none"
