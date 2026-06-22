@@ -410,7 +410,9 @@ export default function PPSHome() {
                 A Different Kind of Strategic Conversation
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-navy mb-6">
-                The Blue Door Organizational Appraisal.
+                <Link to="/blue-door" className="text-bluedoor hover:underline">
+                  The Blue Door Organizational Appraisal
+                </Link>
               </h2>
               <p className="text-body text-foreground mb-4">
                 The questions that keep you up at 3 AM deserve more than a pep
