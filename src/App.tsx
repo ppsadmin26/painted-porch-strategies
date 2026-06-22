@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 
 // Painted Porch Strategies Pages
 import PPSLayout from "./layouts/PPSLayout";
+import PageGate from "./components/pps/PageGate";
 import PPSHome from "./pages/pps/PPSHome";
 import PPSHomeArchive from "./pages/pps/PPSHomeArchive";
 import PPSHomeVerbatim from "./pages/pps/PPSHomeVerbatim";
