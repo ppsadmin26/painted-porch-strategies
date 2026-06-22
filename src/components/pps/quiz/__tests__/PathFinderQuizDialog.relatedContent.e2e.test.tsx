@@ -81,7 +81,7 @@ vi.mock("@/integrations/supabase/client", () => {
   return {
     supabase: {
       from: (table: string) => buildFor(table),
-      functions: { invoke: (...args: unknown[]) => invokeSpy(...args) },
+      functions: { invoke: (name: string, opts: { body: unknown }) => invokeSpy(name, opts) },
     },
   };
 });
