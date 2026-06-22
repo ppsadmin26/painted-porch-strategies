@@ -173,7 +173,7 @@ describe("PathFinderQuizDialog — Related Reading (E2E)", () => {
     // Now fill in the email form and submit — payload must include relatedContent.
     fireEvent.change(screen.getByLabelText(/First Name/i), { target: { value: "Marcus" } });
     fireEvent.change(screen.getByLabelText(/Email/i), { target: { value: "marcus@example.com" } });
-    fireEvent.click(screen.getByRole("button", { name: /Email Me My Results/i }));
+    fireEvent.click(screen.getByRole("button", { name: /Send my results/i }));
 
     await waitFor(() => expect(invokeSpy).toHaveBeenCalled());
     const call = invokeSpy.mock.calls[0] as unknown as [string, { body: Record<string, unknown> }];
