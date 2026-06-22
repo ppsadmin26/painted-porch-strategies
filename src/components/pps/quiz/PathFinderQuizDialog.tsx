@@ -663,7 +663,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
             <div className="mt-6 p-4 rounded-lg bg-muted">
               <p className="text-caption uppercase tracking-wider text-foreground/70 font-semibold mb-1">What Comes Next</p>
-              <p className="text-body-sm text-foreground">{result.whatComesNext}</p>
+              <p className="text-body-sm text-foreground"><BlueDoorInlineLink text={result.whatComesNext} /></p>
             </div>
 
 
