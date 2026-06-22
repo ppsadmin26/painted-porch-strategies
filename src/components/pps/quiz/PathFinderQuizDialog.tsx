@@ -629,7 +629,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                     const label = c.kind === "media" ? (c.source ? `Media · ${c.source}` : "Media") : "Insights & Research";
                     const inner = (
                       <div className="flex items-start gap-3">
-                        <Icon className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                        <Icon className="w-4 h-4 text-primary mt-1 flex-shrink-0" aria-hidden="true" />
                         <div className="flex-1 min-w-0">
                           <p className="text-body font-semibold text-navy transition-colors group-hover:text-primary group-hover:underline">{c.title}</p>
                           {c.excerpt && (
