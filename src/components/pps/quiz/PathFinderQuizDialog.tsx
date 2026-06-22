@@ -635,11 +635,8 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               </div>
             )}
 
-            {result.crossoverNote && (
-              <div className="mt-4 p-4 rounded-lg bg-purple/5 border border-purple/20">
-                <p className="text-body-sm text-navy"><strong>Individual + Team crossover:</strong> {result.crossoverNote}</p>
-              </div>
-            )}
+
+
 
             <div className="mt-6 p-4 rounded-lg bg-muted">
               <p className="text-caption uppercase tracking-wider text-foreground/70 font-semibold mb-1">What Comes Next</p>
