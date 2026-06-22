@@ -6,8 +6,18 @@ const corsHeaders = {
 };
 
 // Routes that bypass page_status overrides — auth, admin, sitemap, 404, contact.
-// Mirrors ALWAYS_LIVE_PREFIXES in src/config/pageStatus.ts.
-const ALWAYS_LIVE_PREFIXES = ["/admin", "/reset-password", "/sitemap", "/404", "/contact", "/resources/insights"];
+// MUST stay in sync with ALWAYS_LIVE_PREFIXES in src/config/pageStatus.ts.
+// (src/test/sitemap-draft-leakage.test.ts asserts every shared prefix is listed here.)
+const ALWAYS_LIVE_PREFIXES = [
+  "/admin",
+  "/reset-password",
+  "/sitemap",
+  "/404",
+  "/contact",
+  "/resources/insights",
+  "/resources/blog",
+  "/blog",
+];
 
 function isAlwaysLive(path: string) {
   return ALWAYS_LIVE_PREFIXES.some((p) => path === p || path.startsWith(`${p}/`));
