@@ -27,6 +27,9 @@ export const ALWAYS_LIVE_PREFIXES = [
   "/404",
   "/contact",
   "/resources/insights",
+  // Legacy blog URLs — these routes Navigate/redirect to /resources/insights.
+  // Must bypass the gate so the redirect can fire instead of showing ComingSoon.
+  "/resources/blog",
 ];
 
 function stripQuery(pathname: string): string {
