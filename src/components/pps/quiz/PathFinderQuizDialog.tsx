@@ -599,7 +599,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                   <Link to={result.strongestNextStep.offering.url} onClick={() => onOpenChange(false)}>
                     {(result.strongestNextStep.offering as { isComingSoon?: boolean }).isComingSoon
                       ? "See Details & Join List"
-                      : "Learn More"} <ArrowRight className="w-4 h-4 ml-1" />
+                      : "Learn More"} <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
                   </Link>
                 </Button>
               </div>
