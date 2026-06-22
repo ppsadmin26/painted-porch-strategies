@@ -2,6 +2,17 @@
 // - Includes PRIMARY + SECONDARY (also-worth-exploring) + FREE resources
 // - Uses live DB URL resolver (path_finder_offerings + page_status drafts)
 // - Groups by full recommendation fingerprint so answer-driven variations surface
+//
+// REQUIRED ENUMERATION DIMENSIONS (see
+// .lovable/memory/features/quiz/pq2-routing-and-scout-mode.md — do not remove):
+//   B2C: PQ2 ∈ {current, aspiring} × Q1..Q6 ∈ {A,B,C,D}^6 = 8192 combos.
+//        PQ2 only changes narrative, not recommendations, but MUST be in the
+//        fingerprint or current/aspiring variants silently collapse.
+//   B2B: every branch MUST enumerate all 4 Q4DM values (A/B/C/D), not just C.
+//        Q4DM="A" triggers the Scout-Mode reroute (Lab primary, workshops
+//        demoted). Dropping it from the loop hides scout variants entirely.
+// The variant fingerprint includes PQ2 (B2C) and Q4DM (B2B) for the same reason.
+
 import { buildResult, OFFERINGS, type Answers, type Track, type ResultType } from "../src/data/pathFinderQuiz";
 import { createClient } from "@supabase/supabase-js";
 import { writeFileSync } from "fs";
