@@ -73,8 +73,8 @@ vi.mock("@/integrations/supabase/client", () => {
     builder.in = chain;
     builder.limit = chain;
     builder.order = chain;
-    builder.then = (...args: unknown[]) =>
-      (result.then as (...a: unknown[]) => unknown)(...args);
+    builder.then = (onFulfilled?: unknown, onRejected?: unknown) =>
+      (result.then as (a?: unknown, b?: unknown) => unknown)(onFulfilled, onRejected);
     return builder;
   };
 
