@@ -616,8 +616,8 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
             )}
 
 
-            {/* Topic note + Contact CTA — B2B only */}
-            {result.track === "b2b" && result.topicArea && (
+            {/* Topic note + Contact CTA — B2B only, suppressed in Scout Mode */}
+            {result.track === "b2b" && result.topicArea && !/Scout Mode/i.test(result.subhead ?? "") && (
               <div className="mt-6 p-4 rounded-lg border border-primary/20 bg-primary/5">
                 <p className="text-body-sm text-foreground mb-3">
                   We also offer additional <strong>speaking</strong> and <strong>workshop</strong> sessions
