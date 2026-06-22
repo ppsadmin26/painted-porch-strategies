@@ -9,7 +9,7 @@ import mindfulnessThumb from "@/assets/workshops/mindfulness-leadership-thumb.jp
 
 const sierra: SpeakerData = {
   facilitatorKey: "Sierra",
-  name: "Sierra Cantrell",
+  name: "Sierra Ramm Cantrell",
   firstName: "Sierra",
   title: "Chief Joy Officer | M.B.A., Mind-Body Architect | Mindfulness Sherpa",
   seriesName: "The Radical Mindfulness Series",
