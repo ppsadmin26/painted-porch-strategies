@@ -154,8 +154,6 @@ const nextSteps = [
     phase: "Immediately after enrollment",
     items: [
       "You'll receive a confirmation email with Zoom links and calendar invites",
-      "\n",
-      "\n",
     ],
   },
   {
