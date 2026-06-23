@@ -80,7 +80,7 @@ const cohorts = [
     slug: "lab-stractical-leadership",
     tagline: "Balance vision with execution",
     description: "Learn to operate at both strategic and tactical levels simultaneously.",
-    image: stracticalImg,
+    image: stracticalImg.url,
     link: "/stracticalleader",
     showUpcomingCohort: true,
   },
