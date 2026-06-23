@@ -524,10 +524,6 @@ export default function StracticalLeaderWorkshop() {
               /* ── ACTIVE ENROLLMENT MODE ── */
               <>
                 <div className="bg-navy p-8 text-center">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <Users className="w-5 h-5 text-gold" />
-                    <span className="text-gold font-poppins font-semibold text-sm">Capped at 25 Participants</span>
-                  </div>
                   <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
                     Claim Your Spot
                   </h2>
