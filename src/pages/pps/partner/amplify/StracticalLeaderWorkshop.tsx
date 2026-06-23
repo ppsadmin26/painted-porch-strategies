@@ -509,7 +509,7 @@ export default function StracticalLeaderWorkshop() {
                 </div>
                 <div className="p-8 md:p-12 text-center">
                   <p className="text-body text-foreground/80 mb-6 max-w-md mx-auto">
-                    The Stractical Leader Lab is an intimate, highly interactive experience capped at 25 participants. Spots fill quickly, and waitlist members get early access before public enrollment opens.
+                    The Stractical Leader Lab is an intimate, highly interactive experience. Spots fill quickly, and waitlist members get early access before public enrollment opens.
                   </p>
                   <Button
                     onClick={() => setWaitlistOpen(true)}
