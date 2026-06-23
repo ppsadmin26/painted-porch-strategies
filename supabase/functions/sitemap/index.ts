@@ -17,6 +17,7 @@ const ALWAYS_LIVE_PREFIXES = [
   "/resources/insights",
   "/resources/blog",
   "/blog",
+  "/media",
 ];
 
 function isAlwaysLive(path: string) {
