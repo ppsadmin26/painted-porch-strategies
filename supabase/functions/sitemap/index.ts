@@ -6,8 +6,18 @@ const corsHeaders = {
 };
 
 // Routes that bypass page_status overrides — auth, admin, sitemap, 404, contact.
-// Mirrors ALWAYS_LIVE_PREFIXES in src/config/pageStatus.ts.
-const ALWAYS_LIVE_PREFIXES = ["/admin", "/reset-password", "/sitemap", "/404", "/contact", "/resources/insights"];
+// MUST stay in sync with ALWAYS_LIVE_PREFIXES in src/config/pageStatus.ts.
+// (src/test/sitemap-draft-leakage.test.ts asserts every shared prefix is listed here.)
+const ALWAYS_LIVE_PREFIXES = [
+  "/admin",
+  "/reset-password",
+  "/sitemap",
+  "/404",
+  "/contact",
+  "/resources/insights",
+  "/resources/blog",
+  "/blog",
+];
 
 function isAlwaysLive(path: string) {
   return ALWAYS_LIVE_PREFIXES.some((p) => path === p || path.startsWith(`${p}/`));
@@ -41,14 +51,18 @@ Deno.serve(async (req) => {
     .eq("status", "published")
     .order("publish_date", { ascending: false });
 
-  // Pull all draft overrides so we can exclude them from the public sitemap.
-  const { data: draftRows } = await supabaseAdmin
+  // Whitelist approach: only emit paths explicitly marked Live in page_status,
+  // or that bypass overrides via ALWAYS_LIVE_PREFIXES. Matches the frontend
+  // PageGate default-to-draft behavior in src/config/pageStatus.ts so any
+  // newly-added route not yet seeded into page_status is hidden from crawlers
+  // until an admin flips it Live.
+  const { data: liveRows } = await supabaseAdmin
     .from("page_status")
     .select("path")
-    .eq("status", "draft");
-  const draftPaths = new Set<string>((draftRows ?? []).map((r: { path: string }) => r.path));
+    .eq("status", "live");
+  const livePaths = new Set<string>((liveRows ?? []).map((r: { path: string }) => r.path));
 
-  const isPublic = (path: string) => isAlwaysLive(path) || !draftPaths.has(path);
+  const isPublic = (path: string) => isAlwaysLive(path) || livePaths.has(path);
 
   const staticPages = [
     { loc: "/", priority: "1.0", changefreq: "weekly" },
