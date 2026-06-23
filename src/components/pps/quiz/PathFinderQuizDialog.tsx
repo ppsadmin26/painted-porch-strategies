@@ -70,15 +70,16 @@ function BlueDoorInlineLink({ text }: { text: string }) {
   const phrase = "The Blue Door Organizational Appraisal";
   const parts = text.split(phrase);
   if (parts.length === 1) return <>{text}</>;
-  const linkClass =
-    "font-bold text-bluedoor underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bluedoor focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm";
   return (
     <>
       {parts.map((part, i) => (
         <span key={i}>
           {part}
           {i < parts.length - 1 && (
-            <Link to="/blue-door" className={linkClass}>
+            <Link
+              to="/blue-door"
+              className="font-bold text-bluedoor underline hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bluedoor focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
+            >
               {phrase}
             </Link>
           )}

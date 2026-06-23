@@ -1171,18 +1171,6 @@
       "with_check": "((bucket_id = 'site-videos'::text) AND is_admin_or_editor(auth.uid()))"
     },
     {
-      "cmd": "SELECT",
-      "permissive": "PERMISSIVE",
-      "policyname": "Blog images are publicly readable",
-      "qual": "(bucket_id = 'blog-images'::text)",
-      "roles": [
-        "public"
-      ],
-      "schemaname": "storage",
-      "tablename": "objects",
-      "with_check": null
-    },
-    {
       "cmd": "ALL",
       "permissive": "PERMISSIVE",
       "policyname": "Service role can manage email assets",
@@ -1193,18 +1181,6 @@
       "schemaname": "storage",
       "tablename": "objects",
       "with_check": "(bucket_id = 'email-assets'::text)"
-    },
-    {
-      "cmd": "SELECT",
-      "permissive": "PERMISSIVE",
-      "policyname": "Site videos are publicly readable",
-      "qual": "(bucket_id = 'site-videos'::text)",
-      "roles": [
-        "public"
-      ],
-      "schemaname": "storage",
-      "tablename": "objects",
-      "with_check": null
     }
   ],
   "rls_enabled_tables": [
