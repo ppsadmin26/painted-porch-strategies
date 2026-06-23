@@ -27,7 +27,7 @@ export const stracticalFaqCategories: FAQCategory[] = [
     name: "Investment & Guarantee",
     faqs: [
       {
-        question: "What does the $1,997 investment include?",
+        question: `What does the ${WORKSHOP_PRICE_DISPLAY} investment include?`,
         answer: "Your investment covers all 6 live sessions (including the one-month follow-up), 60-day access to session recordings, the Stractical Toolkit and Action Guide, your Personal Blueprint development, and access to the private community.",
       },
       {
