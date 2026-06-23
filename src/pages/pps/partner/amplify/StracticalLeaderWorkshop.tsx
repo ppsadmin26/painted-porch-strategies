@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
-  ArrowRight, CheckCircle2, Shield, Search, Gem, Check, Users, Calendar,
+  ArrowRight, CheckCircle2, Shield, Search, Gem, Check, Calendar,
   PlayCircle, Target, MessageSquare, Compass, FileText, Sparkles, Clock, Bell
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -509,7 +509,7 @@ export default function StracticalLeaderWorkshop() {
                 </div>
                 <div className="p-8 md:p-12 text-center">
                   <p className="text-body text-foreground/80 mb-6 max-w-md mx-auto">
-                    The Stractical Leader Lab is an intimate, highly interactive experience capped at 25 participants. Spots fill quickly, and waitlist members get early access before public enrollment opens.
+                    The Stractical Leader Lab is an intimate, highly interactive experience. Spots fill quickly, and waitlist members get early access before public enrollment opens.
                   </p>
                   <Button
                     onClick={() => setWaitlistOpen(true)}
@@ -524,10 +524,6 @@ export default function StracticalLeaderWorkshop() {
               /* ── ACTIVE ENROLLMENT MODE ── */
               <>
                 <div className="bg-navy p-8 text-center">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <Users className="w-5 h-5 text-gold" />
-                    <span className="text-gold font-poppins font-semibold text-sm">Capped at 25 Participants</span>
-                  </div>
                   <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
                     Claim Your Spot
                   </h2>
@@ -553,7 +549,6 @@ export default function StracticalLeaderWorkshop() {
                   >
                     CLAIM YOUR SPOT <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
-                  <p className="text-body text-foreground/50 mt-4">Capped at 25 participants per cohort</p>
                   <div className="border-t border-border/40 mt-8 pt-6">
                     <p className="text-body -sm text-foreground/60 mb-2">Not ready to begin?</p>
                     <button
@@ -652,7 +647,6 @@ export default function StracticalLeaderWorkshop() {
               >
                 CLAIM YOUR SPOT <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <p className="text-body -sm text-white/50 mt-4">Capped at 25 participants</p>
             </>
           )}
           <div className="mt-10 pt-8 border-t border-white/10 space-y-2 text-white/50 text-sm">

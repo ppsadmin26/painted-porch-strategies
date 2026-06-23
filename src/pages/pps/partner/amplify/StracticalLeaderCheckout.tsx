@@ -271,10 +271,6 @@ export default function StracticalLeaderCheckout() {
                     </Button>
                   </a>
                 )}
-                <div className="flex items-center justify-center gap-2 text-xs text-foreground/50 mt-4">
-                  <Users className="w-3.5 h-3.5" />
-                  <span>Capped at 25 participants</span>
-                </div>
               </div>
             </div>
 
@@ -378,9 +374,6 @@ export default function StracticalLeaderCheckout() {
               <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white mb-4">
                 Secure Your Spot Now
               </h2>
-              <p className="text-body text-white/70 mb-2">
-                Capped at 25 participants for maximum interaction and personalized feedback.
-              </p>
               <p className="text-body text-white/50 mb-1 font-poppins uppercase tracking-wider">Total Investment</p>
               <p className="text-body text-5xl font-poppins font-bold text-gold mb-8">{WORKSHOP_PRICE_DISPLAY}</p>
               <a
