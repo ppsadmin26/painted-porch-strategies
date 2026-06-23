@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
-  ArrowRight, CheckCircle2, Shield, Search, Gem, Check, Users, Calendar,
+  ArrowRight, CheckCircle2, Shield, Search, Gem, Check, Calendar,
   PlayCircle, Target, MessageSquare, Compass, FileText, Sparkles, Clock, Bell
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
