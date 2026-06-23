@@ -537,12 +537,12 @@ function PageRow({
         ) : (
           <label className="inline-flex items-center gap-2 text-xs text-pps-charcoal">
             <Switch
-              checked={row.status === "draft"}
-              onCheckedChange={(checked) => onToggleStatus(checked ? "draft" : "live")}
-              aria-label={`Toggle draft for ${row.path}`}
+              checked={row.status === "live"}
+              onCheckedChange={(checked) => onToggleStatus(checked ? "live" : "draft")}
+              aria-label={`Toggle live for ${row.path}`}
             />
-            <span className={row.status === "draft" ? "text-pps-navy font-semibold" : "text-pps-charcoal/70"}>
-              {row.status === "draft" ? "Draft" : "Live"}
+            <span className={row.status === "live" ? "text-pps-navy font-semibold" : "text-pps-charcoal/70"}>
+              {row.status === "live" ? "Live" : "Draft"}
             </span>
           </label>
         )}
