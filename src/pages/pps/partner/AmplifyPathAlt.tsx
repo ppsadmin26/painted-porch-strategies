@@ -114,7 +114,7 @@ const amplifyFormats = [
       "Deepening strategic capacity over time",
     ],
     timeline: "6-12 weeks (cohort-based)",
-    investment: "Starts at $2,000 per participant",
+    investment: "Starting at $997",
     cta: "Explore Leader Labs",
     ctaLink: "/partner/amplify/labs",
   },
