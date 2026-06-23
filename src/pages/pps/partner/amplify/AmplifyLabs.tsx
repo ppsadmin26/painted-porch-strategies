@@ -7,7 +7,7 @@ import { LaunchListCTA } from "@/components/pps/LaunchListCTA";
 import { Eyebrow } from "@/components/pps/Eyebrow";
 import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL } from "./stracticalConfig";
 import stracticalImg from "@/assets/labs/stractical-leadership.jpg";
-import leadingChangeImg from "@/assets/labs/leading-change.jpg";
+import leadingChangeImg from "@/assets/labs/leading-change.png.asset.json";
 import dysfunctionImg from "@/assets/labs/dysfunction-to-dynamic.jpg";
 import goldilocksImg from "@/assets/labs/goldilocks-leadership.jpg";
 import missionImg from "@/assets/labs/mission-unstoppable.jpg";
@@ -236,7 +236,7 @@ export default function AmplifyLabs() {
           <div className="bg-strategic/10 p-8 rounded-xl border-t-4 border-strategic text-center">
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy mb-2">Leadership Lab Investment</h2>
             <div className="text-2xl font-bold text-strategic mb-2">Starting at $997</div>
-            <p className="text-body -sm text-foreground mb-6">6-12 week cohort | Capped at 25 leaders per cohort</p>
+            <p className="text-body -sm text-foreground mb-6">6-12 week cohort</p>
             <p className="text-body -sm text-foreground/80 max-w-2xl mx-auto mb-6 italic">
               A full application process is coming soon. In the meantime, reach out with any questions and we'll point you toward the right cohort.
             </p>
