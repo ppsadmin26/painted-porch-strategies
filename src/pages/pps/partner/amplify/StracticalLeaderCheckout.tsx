@@ -154,8 +154,8 @@ const nextSteps = [
     phase: "Immediately after enrollment",
     items: [
       "You'll receive a confirmation email with Zoom links and calendar invites",
-      "Access to the pre-workshop assessment (15 minutes)",
-      "Welcome packet with framework overview",
+      "\n",
+      "\n",
     ],
   },
   {
