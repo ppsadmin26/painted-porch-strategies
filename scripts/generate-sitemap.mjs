@@ -41,6 +41,9 @@ const staticPages = [
   { path: "/resources/faq", priority: "0.6", changefreq: "monthly" },
   { path: "/resources/stractical-mini", priority: "0.7", changefreq: "monthly" },
   { path: "/media", priority: "0.6", changefreq: "monthly" },
+  // Legacy redirect kept in sitemap for SEO continuity — /blog 302s to
+  // /resources/insights so crawlers can still discover it.
+  { path: "/blog", priority: "0.5", changefreq: "weekly" },
   { path: "/speaking", priority: "0.7", changefreq: "monthly" },
   { path: "/start-here", priority: "0.9", changefreq: "monthly" },
   { path: "/blue-door", priority: "0.9", changefreq: "monthly" },
