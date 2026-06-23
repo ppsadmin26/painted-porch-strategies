@@ -384,12 +384,15 @@ export default function StracticalLeaderCheckout() {
               </p>
               <p className="text-body text-white/50 mb-1 font-poppins uppercase tracking-wider">Total Investment</p>
               <p className="text-body text-5xl font-poppins font-bold text-gold mb-8">$1,997</p>
-              <Button
-                onClick={() => window.open("https://via.growseamlessly.com/payment-link/695fe0393e9f2f42403166dc", "_blank")}
-                className="bg-gold border-2 border-gold text-navy font-poppins font-bold text-lg py-6 px-12 rounded-lg hover:bg-white hover:text-gold transition-colors"
+              <a
+                href="https://access.onthepaintedporch.com/courses/offers/1ddc8725-0210-4183-a20e-c7d505379fa1"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                COMPLETE ENROLLMENT <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
+                <Button className="bg-gold border-2 border-gold text-navy font-poppins font-bold text-lg py-6 px-12 rounded-lg hover:bg-white hover:text-gold transition-colors">
+                  COMPLETE ENROLLMENT <ArrowRight className="ml-2 w-5 h-5" />
+                </Button>
+              </a>
             </>
           )}
           <p className="text-body -sm text-white/50 mt-6">
