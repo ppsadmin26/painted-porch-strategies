@@ -81,7 +81,8 @@ describe.each([
   it("validates name + email before submitting", () => {
     expect(src).toMatch(/\.trim\(\)/);
     // Must short-circuit when fields are missing (no silent ghost submits).
-    expect(src).toMatch(/if\s*\(!?[^)]*\.trim\(\)[^)]*\)\s*\{[\s\S]{0,200}?(toast|return)/);
+    // Pattern: an `if (...trim()...)` guard with a `return` inside its block.
+    expect(src).toMatch(/if\s*\([^)]*\.trim\(\)[^)]*\)\s*\{[\s\S]{0,300}?return/);
   });
 
   it("does not use mailto: links or window.open (centralized lead capture)", () => {
