@@ -81,7 +81,7 @@ const cohorts = [
     tagline: "Balance vision with execution",
     description: "Learn to operate at both strategic and tactical levels simultaneously.",
     image: stracticalImg,
-    link: "/stracticalleader",
+    link: "/partner/amplify/stractical-leader",
     showUpcomingCohort: true,
   },
   {
