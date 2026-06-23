@@ -56,10 +56,6 @@ export const stracticalFaqCategories: FAQCategory[] = [
         answer: "Most programs teach you to be a better manager OR a better strategist. The Stractical Leader workshop teaches you to operate in the integration zone - bridging both simultaneously. You'll learn specific language patterns, strategic questions, and positioning techniques that change how you're perceived in your organization.",
       },
       {
-        question: "How many people are in each cohort?",
-        answer: "Each cohort is capped at 25 participants to ensure an intimate, interactive experience with personalized feedback and real-time application to your actual challenges.",
-      },
-      {
         question: "What if I'm not in an official leadership capacity?",
         answer: "We believe leadership isn't based on your title or role. It's based on your ambition, attitude, and desire. We welcome all - official \"capital L\" Leaders, as well as those aspiring to lead themselves and others with courage, curiosity, clarity, and the capacity to make shIFt happen.",
       },
