@@ -165,11 +165,12 @@ const nextSteps = [
     items: [
       "Weekly live sessions every Wednesday at 11am MST/PT (2pm ET)",
       "Weekly reflection prompts and application exercises",
+      "60-day access to all session recordings",
     ],
   },
   {
     phase: "After Completion",
-    items: ["Certificate of completion", "60-day access to all session recordings"],
+    items: ["Certificate of completion"],
   },
 ];
 
