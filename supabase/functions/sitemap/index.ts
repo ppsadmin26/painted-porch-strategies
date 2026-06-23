@@ -79,6 +79,10 @@ Deno.serve(async (req) => {
     { loc: "/resources/youtube", priority: "0.6", changefreq: "weekly" },
     { loc: "/resources/faq", priority: "0.6", changefreq: "monthly" },
     { loc: "/media", priority: "0.6", changefreq: "monthly" },
+    // Legacy redirect routes kept in sitemap for SEO continuity — they 302 to
+    // their canonical destinations (/blog → /resources/insights) so search
+    // engines can still discover them via the well-known path.
+    { loc: "/blog", priority: "0.5", changefreq: "weekly" },
     { loc: "/contact", priority: "0.8", changefreq: "monthly" },
     { loc: "/services", priority: "0.8", changefreq: "monthly" },
     { loc: "/business-programs", priority: "0.8", changefreq: "monthly" },
