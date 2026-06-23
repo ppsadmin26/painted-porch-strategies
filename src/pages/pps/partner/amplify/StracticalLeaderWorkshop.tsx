@@ -549,7 +549,6 @@ export default function StracticalLeaderWorkshop() {
                   >
                     CLAIM YOUR SPOT <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
-                  <p className="text-body text-foreground/50 mt-4">Capped at 25 participants per cohort</p>
                   <div className="border-t border-border/40 mt-8 pt-6">
                     <p className="text-body -sm text-foreground/60 mb-2">Not ready to begin?</p>
                     <button
