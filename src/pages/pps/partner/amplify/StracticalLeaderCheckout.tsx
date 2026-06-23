@@ -262,12 +262,15 @@ export default function StracticalLeaderCheckout() {
                     JOIN THE WAITLIST <Bell className="ml-2 w-5 h-5" />
                   </Button>
                 ) : (
-                  <Button
-                    onClick={() => window.open("https://via.growseamlessly.com/payment-link/695fe0393e9f2f42403166dc", "_blank")}
-                    className="bg-gold border-2 border-gold text-navy font-poppins font-bold text-base py-5 px-10 rounded-lg hover:bg-transparent hover:text-gold transition-colors w-full"
+                  <a
+                    href="https://access.onthepaintedporch.com/courses/offers/1ddc8725-0210-4183-a20e-c7d505379fa1"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    COMPLETE ENROLLMENT <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
+                    <Button className="bg-gold border-2 border-gold text-navy font-poppins font-bold text-base py-5 px-10 rounded-lg hover:bg-transparent hover:text-gold transition-colors w-full">
+                      COMPLETE ENROLLMENT <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </a>
                 )}
                 <div className="flex items-center justify-center gap-2 text-xs text-foreground/50 mt-4">
                   <Users className="w-3.5 h-3.5" />
