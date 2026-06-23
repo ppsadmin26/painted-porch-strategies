@@ -1,4 +1,5 @@
 import type { FAQCategory } from "@/components/pps/FAQSection";
+import { WORKSHOP_PRICE_DISPLAY } from "./stracticalConfig";
 
 export const stracticalFaqCategories: FAQCategory[] = [
   {

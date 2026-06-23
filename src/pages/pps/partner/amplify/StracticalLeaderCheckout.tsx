@@ -12,7 +12,7 @@ import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import { stracticalFaqCategories } from "./stracticalFaqs";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL, WORKSHOP_DATE_SHORT } from "./stracticalConfig";
+import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL, WORKSHOP_DATE_SHORT, WORKSHOP_PRICE_DISPLAY } from "./stracticalConfig";
 
 /* ──────────────────── COUNTDOWN HOOK ──────────────────── */
 function useCountdown(targetDate: Date) {
