@@ -89,7 +89,7 @@ const cohorts = [
     slug: "lab-leading-change",
     tagline: "Architect transformation",
     description: "Develop Phase Zero™ foundations before implementation begins.",
-    image: leadingChangeImg,
+    image: leadingChangeImg.url,
     comingSoon: true,
   },
   {
