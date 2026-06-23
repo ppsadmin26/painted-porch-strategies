@@ -15,7 +15,7 @@ import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import { stracticalFaqCategories } from "./stracticalFaqs";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL, WORKSHOP_DATE_SHORT } from "./stracticalConfig";
+import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL, WORKSHOP_DATE_SHORT, WORKSHOP_PRICE_DISPLAY } from "./stracticalConfig";
 
 /* ──────────────────── COUNTDOWN HOOK ──────────────────── */
 function useCountdown(targetDate: Date) {
@@ -537,7 +537,7 @@ export default function StracticalLeaderWorkshop() {
                 </div>
                 <div className="p-8 md:p-12 text-center">
                   <p className="text-body text-foreground/60 font-poppins uppercase tracking-wider mb-1">Investment</p>
-                  <p className="text-body text-5xl font-poppins font-bold text-navy mb-6">$1,997</p>
+                  <p className="text-body text-5xl font-poppins font-bold text-navy mb-6">{WORKSHOP_PRICE_DISPLAY}</p>
                   <div className="space-y-3 text-left max-w-md mx-auto mb-8 text-sm text-foreground/80">
                     <p className="text-body flex items-start gap-2"><Check className="w-4 h-4 text-lime mt-0.5 shrink-0" /> Your organization gains a leader who shapes strategy.</p>
                     <p className="text-body flex items-start gap-2"><Check className="w-4 h-4 text-lime mt-0.5 shrink-0" /> Your team gains a voice in decisions that affect them.</p>

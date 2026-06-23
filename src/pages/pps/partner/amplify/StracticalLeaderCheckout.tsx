@@ -12,7 +12,7 @@ import { FAQSection, type FAQCategory } from "@/components/pps/FAQSection";
 import { stracticalFaqCategories } from "./stracticalFaqs";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL, WORKSHOP_DATE_SHORT } from "./stracticalConfig";
+import { WORKSHOP_START_DATE, WORKSHOP_DATE_LABEL, WORKSHOP_DATE_SHORT, WORKSHOP_PRICE_DISPLAY } from "./stracticalConfig";
 
 /* ──────────────────── COUNTDOWN HOOK ──────────────────── */
 function useCountdown(targetDate: Date) {
@@ -245,7 +245,7 @@ export default function StracticalLeaderCheckout() {
                 <p className="text-body text-gold font-poppins font-semibold uppercase tracking-wider mb-1">
                   {isExpired ? "Workshop Investment" : "Your Investment"}
                 </p>
-                <p className="text-body text-5xl font-poppins font-bold text-white">$1,997</p>
+                <p className="text-body text-5xl font-poppins font-bold text-white">{WORKSHOP_PRICE_DISPLAY}</p>
               </div>
               <div className="p-6 text-center">
                 <p className="text-body -sm text-foreground/70 mb-6">
@@ -383,7 +383,7 @@ export default function StracticalLeaderCheckout() {
                 Capped at 25 participants for maximum interaction and personalized feedback.
               </p>
               <p className="text-body text-white/50 mb-1 font-poppins uppercase tracking-wider">Total Investment</p>
-              <p className="text-body text-5xl font-poppins font-bold text-gold mb-8">$1,997</p>
+              <p className="text-body text-5xl font-poppins font-bold text-gold mb-8">{WORKSHOP_PRICE_DISPLAY}</p>
               <a
                 href="https://access.onthepaintedporch.com/courses/offers/1ddc8725-0210-4183-a20e-c7d505379fa1"
                 target="_blank"
