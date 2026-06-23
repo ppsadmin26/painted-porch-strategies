@@ -271,10 +271,6 @@ export default function StracticalLeaderCheckout() {
                     </Button>
                   </a>
                 )}
-                <div className="flex items-center justify-center gap-2 text-xs text-foreground/50 mt-4">
-                  <Users className="w-3.5 h-3.5" />
-                  <span>Capped at 25 participants</span>
-                </div>
               </div>
             </div>
 
