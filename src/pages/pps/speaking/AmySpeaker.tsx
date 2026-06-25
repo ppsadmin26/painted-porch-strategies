@@ -104,7 +104,7 @@ const amy: SpeakerData = {
   outcomesClosing: "It's time to stop reacting and start leading with intention.",
   workshopHeading: "Continue the Work: Team Workshops & Strategy Sessions",
   workshopIntro:
-    "Bring the keynote to life with immersive follow-up workshops designed to help your team apply Amy's change-readiness frameworks in real-time. These sessions go beyond inspiration, they're where strategy meets execution.",
+    "Bring the keynote to life with immersive follow-up workshops designed to help your team apply Amy's change authorship frameworks in real-time. These sessions go beyond inspiration—they are where strategy meets execution.",
   workshopDetails: [
     "Pre-session alignment survey",
     "Custom journaling prompts to deepen reflection",
