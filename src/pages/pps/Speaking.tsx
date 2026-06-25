@@ -38,7 +38,7 @@ const speakers = [
     badge: "Change Leadership",
     tagline: "When change feels chaotic, Amy brings calm, clarity, and courage.",
     description:
-      "With her Stoic-infused leadership strategies, she partners with teams to align around purpose, lead through uncertainty, and create change that actually sticks.",
+      "With her Stoic-infused leadership strategies, she partners with teams to align around purpose, lead through uncertainty, and architect change that actually sticks.",
     photo: amyPhoto,
     specialties: ["Change Readiness", "Team Alignment", "Emotional Intelligence", "Organizational Transformation", "Operational Excellence", "Stoicism at Work"],
     href: "/speaking/amy",
