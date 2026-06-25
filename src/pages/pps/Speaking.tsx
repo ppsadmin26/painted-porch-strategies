@@ -38,9 +38,9 @@ const speakers = [
     badge: "Change Leadership",
     tagline: "When change feels chaotic, Amy brings calm, clarity, and courage.",
     description:
-      "With her Stoic-infused leadership strategies, she partners with teams to align around purpose, lead through uncertainty, and create change that actually sticks.",
+      "With her Stoic-infused leadership strategies, she partners with teams to align around purpose, lead through uncertainty, and architect change that actually sticks.",
     photo: amyPhoto,
-    specialties: ["Change Readiness", "Team Alignment", "Emotional Intelligence", "Organizational Transformation", "Operational Excellence", "Stoicism at Work"],
+    specialties: ["Change Authorship", "Team Alignment", "Emotional Intelligence", "Organizational Transformation", "Operational Excellence", "Stoicism at Work"],
     href: "/speaking/amy",
     badgeColor: "bg-primary text-white",
     borderColor: "border-primary",
@@ -197,7 +197,7 @@ export default function Speaking() {
             Bring Our Porch to Your Next Event
           </h2>
           <p className="text-body text-white/90 mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can bring transformative content to your audience. Every keynote can be expanded into a hands-on workshop for lasting team impact.
+            Let's discuss how we can bring transformative perspective to your audience. Every keynote can be expanded into a hands-on workshop for lasting team capability.
           </p>
           <Link to="/contact?interest=speaking&message=I'm interested in booking a speaker for our event.">
             <Button className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-lg py-5 px-8 transition-colors">
