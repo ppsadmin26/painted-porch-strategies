@@ -72,11 +72,11 @@ const amy: SpeakerData = {
         "Turn struggling teams into high-performing powerhouses. Learn how to break through silos, rebuild trust, and create the kind of collaboration that drives extraordinary results.",
     },
     {
-      slug: "ai-ei-oh-guiding-change-and-ai-adoption",
-      title: "AI, EI, Oh! Guiding Change and AI Adoption",
+      slug: "ai-ei-oh-guiding-change-in-the-ai-era",
+      title: "AI, EI, Oh! Guiding Change in the AI Era",
       image: keynoteAiEiOh.url,
       description:
-        "AI is here, but your people aren't ready. Discover how emotional intelligence is the missing link to successful AI adoption, and learn to lead your team through tech-driven change without leaving anyone behind.",
+        "AI is here, but your people aren't equipped for the shift. Discover how emotional intelligence is the missing link to successful AI adoption, and learn to lead your team through tech-driven change without leaving anyone behind.",
     },
     {
       slug: "the-alice-principles-down-the-rabbit-hole-of-transformation",

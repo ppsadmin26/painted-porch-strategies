@@ -119,8 +119,8 @@ function cleanName(name: string): string {
 /** Aliases that collapse keynote/workshop variants with different wording into one card. */
 const KEY_ALIASES: Record<string, string> = {
   "8:8 — capturing & keeping attention": "8:8",
-  "ai, ei, oh!": "ai, ei, oh! guiding change and ai adoption",
-  "ai, ei, oh! guiding change in the ai era": "ai, ei, oh! guiding change and ai adoption",
+  "ai, ei, oh!": "ai, ei, oh! guiding change in the ai era",
+  "ai, ei, oh! guiding change and ai adoption": "ai, ei, oh! guiding change in the ai era",
   "get c.l.e.a.r. & be heard": "get c.l.e.a.r., be heard",
   "heroes assemble!": "heroes assemble",
   "speaking with style — 6 communicator styles":
@@ -139,7 +139,7 @@ const KEY_ALIASES: Record<string, string> = {
 /** Preferred display name for canonical keys (overrides whichever row was seen first). */
 const CANONICAL_NAME: Record<string, string> = {
   "8:8": "8:8 — Capturing & Keeping Attention",
-  "ai, ei, oh! guiding change and ai adoption": "AI, EI, Oh! Guiding Change & AI Adoption",
+  "ai, ei, oh! guiding change in the ai era": "AI, EI, Oh! Guiding Change in the AI Era",
   "get c.l.e.a.r., be heard": "Get C.L.E.A.R., Be Heard",
   "heroes assemble": "Heroes Assemble",
   "speak with style: the 6 communicator styles for influence & impact":
