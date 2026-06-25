@@ -72,7 +72,7 @@ const amy: SpeakerData = {
         "Turn struggling teams into high-performing powerhouses. Learn how to break through silos, rebuild trust, and create the kind of collaboration that drives extraordinary results.",
     },
     {
-      slug: "ai-ei-oh-guiding-change-and-ai-adoption",
+      slug: "ai-ei-oh-guiding-change-in-the-ai-era",
       title: "AI, EI, Oh! Guiding Change in the AI Era",
       image: keynoteAiEiOh.url,
       description:
