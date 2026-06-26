@@ -330,8 +330,17 @@ export default function SpeakingWorkshopTopics() {
             if (!existing.facilitators.includes(f)) existing.facilitators.push(f);
           }
         }
-        // Lock in canonical name if defined
-        if (CANONICAL_NAME[key]) existing.baseName = CANONICAL_NAME[key];
+        // Lock in canonical name if defined; otherwise prefer the longer
+        // cleaned name (subtitles beat bare "(Keynote)" rows).
+        if (CANONICAL_NAME[key]) {
+          existing.baseName = CANONICAL_NAME[key];
+        } else {
+          const candidate = cleanName(r.name);
+          if (candidate.length > existing.baseName.length) {
+            existing.baseName = candidate;
+          }
+        }
+
         continue;
       }
       map.set(key, {
