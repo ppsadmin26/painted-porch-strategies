@@ -301,8 +301,11 @@ export default function SpeakingWorkshopTopics() {
     for (const r of rows) {
       const rawKey = normalizeKey(r.name);
       if (EXCLUDE_KEYS.has(rawKey)) continue;
-      const key = canonicalKey(r.name);
+      // Prefer DB topic_slug (canonical, kept in sync by trigger). Fall back
+      // to legacy alias-based canonical key for any row not yet backfilled.
+      const key = r.topic_slug || canonicalKey(r.name);
       const baseName = CANONICAL_NAME[key] ?? cleanName(r.name);
+
       // Source of truth for the chips: the boolean flags on the row.
       // Fall back to legacy URL/name heuristics so older rows keep rendering.
       const isKeynote = r.is_keynote || r.current_url.startsWith("/speaking/") || /\(Keynote\)/i.test(r.name);
