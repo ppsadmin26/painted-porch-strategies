@@ -282,11 +282,12 @@ export default function SpeakingWorkshopTopics() {
     (async () => {
       const { data, error } = await supabase
         .from("path_finder_offerings")
-        .select("offering_key,name,blurb,description,topic,facilitator,current_url,anchor_id,image_url,is_keynote,include_in_workshops")
+        .select("offering_key,name,blurb,description,topic,facilitator,current_url,anchor_id,image_url,is_keynote,include_in_workshops,topic_slug")
         .or(
           "current_url.eq./partner/amplify/workshops,current_url.eq./speaking/amy,current_url.eq./speaking/rob,current_url.eq./speaking/sierra,is_keynote.eq.true,include_in_workshops.eq.true",
         )
         .order("name", { ascending: true });
+
       if (!cancelled && !error && data) setRows(data as Row[]);
     })();
     return () => {
