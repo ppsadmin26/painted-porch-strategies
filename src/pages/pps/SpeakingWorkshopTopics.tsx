@@ -57,7 +57,9 @@ type Row = {
   image_url: string | null;
   is_keynote: boolean;
   include_in_workshops: boolean;
+  topic_slug: string | null;
 };
+
 
 type MergedTopic = {
   key: string;
