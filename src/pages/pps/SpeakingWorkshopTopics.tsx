@@ -57,7 +57,9 @@ type Row = {
   image_url: string | null;
   is_keynote: boolean;
   include_in_workshops: boolean;
+  topic_slug: string | null;
 };
+
 
 type MergedTopic = {
   key: string;
@@ -280,11 +282,12 @@ export default function SpeakingWorkshopTopics() {
     (async () => {
       const { data, error } = await supabase
         .from("path_finder_offerings")
-        .select("offering_key,name,blurb,description,topic,facilitator,current_url,anchor_id,image_url,is_keynote,include_in_workshops")
+        .select("offering_key,name,blurb,description,topic,facilitator,current_url,anchor_id,image_url,is_keynote,include_in_workshops,topic_slug")
         .or(
           "current_url.eq./partner/amplify/workshops,current_url.eq./speaking/amy,current_url.eq./speaking/rob,current_url.eq./speaking/sierra,is_keynote.eq.true,include_in_workshops.eq.true",
         )
         .order("name", { ascending: true });
+
       if (!cancelled && !error && data) setRows(data as Row[]);
     })();
     return () => {
@@ -298,8 +301,11 @@ export default function SpeakingWorkshopTopics() {
     for (const r of rows) {
       const rawKey = normalizeKey(r.name);
       if (EXCLUDE_KEYS.has(rawKey)) continue;
-      const key = canonicalKey(r.name);
+      // Prefer DB topic_slug (canonical, kept in sync by trigger). Fall back
+      // to legacy alias-based canonical key for any row not yet backfilled.
+      const key = r.topic_slug || canonicalKey(r.name);
       const baseName = CANONICAL_NAME[key] ?? cleanName(r.name);
+
       // Source of truth for the chips: the boolean flags on the row.
       // Fall back to legacy URL/name heuristics so older rows keep rendering.
       const isKeynote = r.is_keynote || r.current_url.startsWith("/speaking/") || /\(Keynote\)/i.test(r.name);
@@ -324,8 +330,17 @@ export default function SpeakingWorkshopTopics() {
             if (!existing.facilitators.includes(f)) existing.facilitators.push(f);
           }
         }
-        // Lock in canonical name if defined
-        if (CANONICAL_NAME[key]) existing.baseName = CANONICAL_NAME[key];
+        // Lock in canonical name if defined; otherwise prefer the longer
+        // cleaned name (subtitles beat bare "(Keynote)" rows).
+        if (CANONICAL_NAME[key]) {
+          existing.baseName = CANONICAL_NAME[key];
+        } else {
+          const candidate = cleanName(r.name);
+          if (candidate.length > existing.baseName.length) {
+            existing.baseName = candidate;
+          }
+        }
+
         continue;
       }
       map.set(key, {
