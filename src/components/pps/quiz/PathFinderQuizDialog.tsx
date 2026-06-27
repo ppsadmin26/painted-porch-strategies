@@ -366,6 +366,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showResult, track, answers, overrides, viewableKeys, comingSoonKeys, rtPools, featuredKeys]);
   const { items: relatedContent } = useQuizRelatedContent(result?.resultType ?? null);
+  const { group: blueDoorGroup } = useBlueDoorRecommendations(result, answers);
 
 
   // Persist the prefill payload so /contact can hydrate from quiz context even
