@@ -64,8 +64,11 @@ async function answerByKeyboard(page: Page, qIndex: number, optId: string, last:
   // The first option button should be reachable via Tab from the dialog's
   // initial focus. Tab until activeElement is the desired option label, then
   // activate with Space or Enter (both must work for buttons).
-  const target = page.getByRole("button", { name: opt.label, exact: false });
+  const target = page
+    .getByRole("radio", { name: opt.label, exact: false })
+    .or(page.getByRole("button", { name: opt.label, exact: false }));
   await expect(target).toBeVisible();
+
 
   // Tab forward up to N times to land on the target. Cap to avoid infinite loop.
   let landed = false;
