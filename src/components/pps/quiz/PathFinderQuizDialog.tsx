@@ -443,6 +443,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
           recommendations: [
             ...(result.primaryGroup ? [result.primaryGroup] : []),
             ...result.groups,
+            ...(blueDoorGroup ? [blueDoorGroup] : []),
           ].map((g) => ({
             heading: g.heading,
             items: g.offerings.map((o) => ({ name: o.name, url: o.url, blurb: o.blurb, tier: o.tier })),
