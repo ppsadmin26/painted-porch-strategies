@@ -130,10 +130,10 @@ test.describe("B2C quiz — keyboard-only navigation", () => {
     ).toBeVisible({ timeout: 5000 });
 
     // PQ1 — verify Shift+Tab also works (reverse traversal, no trap).
-    const firstOption = page.getByRole("button", {
-      name: PQ1.options[0].label,
-      exact: false,
-    });
+    const firstOption = page
+      .getByRole("radio", { name: PQ1.options[0].label, exact: false })
+      .or(page.getByRole("button", { name: PQ1.options[0].label, exact: false }));
+
     // Tab to first option.
     for (let i = 0; i < 10; i++) {
       const focused = await firstOption.evaluate(
