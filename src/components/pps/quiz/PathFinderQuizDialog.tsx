@@ -622,6 +622,14 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               <RecGroup key={i} heading={g.heading} offerings={g.offerings} onClose={() => onOpenChange(false)} />
             ))}
 
+            {blueDoorGroup && (
+              <RecGroup
+                heading={blueDoorGroup.heading}
+                offerings={blueDoorGroup.offerings}
+                onClose={() => onOpenChange(false)}
+              />
+            )}
+
             {relatedContent.length > 0 && (
               <div className="mt-6">
                 <h4 className="font-poppins text-base font-semibold text-navy mb-2">From the Porch — Related Reading</h4>
