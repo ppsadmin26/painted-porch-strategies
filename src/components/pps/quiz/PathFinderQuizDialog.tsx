@@ -17,6 +17,7 @@ import {
 } from "@/data/pathFinderQuiz";
 import { saveQuizContactPrefill, clearQuizContactPrefill } from "./quizContactPrefill";
 import { useQuizRelatedContent } from "./useQuizRelatedContent";
+import { useBlueDoorRecommendations } from "./useBlueDoorRecommendations";
 
 interface Props {
   open: boolean;
