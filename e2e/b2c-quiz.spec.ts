@@ -122,11 +122,14 @@ async function walkB2C(page: Page, answers: AnswerIds) {
     const last = i === answers.length - 1;
     const label = labelFor(i, answers[i]);
 
-    // Each option renders as a <button> whose accessible name contains the
-    // full prompt-label text. The dialog scopes us to the current question.
-    const option = page.getByRole("button", { name: label, exact: false });
+    // Each option renders as a radio (single-select) or pressable button
+    // (multi-select). Match either role so the walker works for both.
+    const option = page
+      .getByRole("radio", { name: label, exact: false })
+      .or(page.getByRole("button", { name: label, exact: false }));
     await expect(option, `option visible: "${label.slice(0, 40)}…"`).toBeVisible();
     await option.click();
+
 
     const advance = page.getByRole("button", {
       name: last ? /See My Results/i : /^Next$/i,
