@@ -460,15 +460,14 @@ export default function PathFinderOfferings() {
       </Dialog>
 
       <div className="mb-6 rounded-lg border border-bluedoor/30 bg-bluedoor/5 px-4 py-3 text-sm text-navy">
-        <p className="font-poppins font-semibold text-bluedoor mb-1">Heads up: this table is moving</p>
+        <p className="font-poppins font-semibold text-bluedoor mb-1">Phase B active — canonical fields are now read-only</p>
         <p>
-          The Blue Door <strong>Offerings Master Register</strong> is becoming the single source of truth for every offering (B2C and B2B). In Phase 2, this table will be a one-way synced mirror of that register, with canonical fields (name, blurb, pricing, descriptions) edited only in Blue Door admin. Routing fields below (URL, anchor, Live, Prioritize in quiz) will stay editable here.
+          The Blue Door <strong>Offerings Master Register</strong> is the source of truth. Narrative fields (<strong>name, blurb, description, image</strong>) are read-only here — use the <em>Edit in Blue Door</em> link on each row to change them. <strong>Routing</strong> (URL, anchor, Live, RT pools, launch link, surface flags, tier, topic tag, facilitator) stays editable on this page.
         </p>
         <p className="mt-2">
-          See <code>docs/offerings-master-schema.md</code> and{" "}
-          <code>.lovable/plan-offerings-sync.md</code> for the plan.{" "}
+          See <code>docs/handoff/BlueDoor-to-PPS-Offerings-Handoff-v1.md</code>.{" "}
           <a
-            href="https://bluedoordiagnostic.lovable.app/admin/offerings"
+            href={BLUEDOOR_ADMIN_BASE}
             target="_blank"
             rel="noopener noreferrer"
             className="text-bluedoor underline hover:no-underline"
