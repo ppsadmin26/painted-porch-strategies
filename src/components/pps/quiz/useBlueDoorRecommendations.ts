@@ -131,7 +131,7 @@ export function useBlueDoorRecommendations(
           return;
         }
         setGroup({
-          heading: "More from the Catalog",
+          heading: "More from the Porch",
           offerings: merged,
         });
       } catch (err) {
