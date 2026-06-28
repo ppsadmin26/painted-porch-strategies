@@ -341,7 +341,7 @@ export default function PathFinderOfferings() {
             <option value="broken-launch">Broken launch link ({brokenRows.length})</option>
           </select>
           <a
-            href={BLUEDOOR_ADMIN_BASE}
+            href={OP_PLATFORM_ADMIN_BASE}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-xs font-medium text-bluedoor hover:underline"
@@ -468,7 +468,7 @@ export default function PathFinderOfferings() {
         <p className="mt-2">
           See <code>docs/handoff/BlueDoor-to-PPS-Offerings-Handoff-v1.md</code>.{" "}
           <a
-            href={BLUEDOOR_ADMIN_BASE}
+            href={OP_PLATFORM_ADMIN_BASE}
             target="_blank"
             rel="noopener noreferrer"
             className="text-bluedoor underline hover:no-underline"
