@@ -567,7 +567,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               </p>
             )}
             <h3 className="font-poppins text-3xl text-navy mb-4">{result.headline}</h3>
-            <p className="text-body text-foreground leading-relaxed mb-6">{result.narrative}</p>
+            <p className="text-body-sm text-foreground leading-relaxed mb-6">{result.narrative}</p>
 
             {result.whyThisFits && (
               <div className="mb-6 p-4 rounded-lg border-l-4 border-primary bg-primary/5">
