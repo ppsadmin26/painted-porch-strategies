@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import {
-  fetchBlueDoorRecommendations,
+  fetchOpPlatformRecommendations,
   type BlueDoorFormat,
   type BlueDoorRecommendation,
-} from "@/integrations/bluedoor/recommendations";
+} from "@/integrations/op-platform/recommendations";
 import {
   resolveBlueDoorPersona,
   segmentForResult,
-} from "@/integrations/bluedoor/personaMap";
+} from "@/integrations/op-platform/personaMap";
 import type { Answers, Offering, QuizResult, ResultType } from "@/data/pathFinderQuiz";
 
 /**
@@ -85,7 +85,7 @@ export interface BlueDoorQuizGroup {
  * render below the existing recommendation groups. The dialog is
  * responsible for placement & styling.
  */
-export function useBlueDoorRecommendations(
+export function useOpPlatformRecommendations(
   result: QuizResult | null,
   answers: Answers,
 ): { group: BlueDoorQuizGroup | null; loading: boolean } {
@@ -108,7 +108,7 @@ export function useBlueDoorRecommendations(
       try {
         const persona = resolveBlueDoorPersona({ resultType, scoutMode });
         const segment = segmentForResult(resultType);
-        const data = await fetchBlueDoorRecommendations(
+        const data = await fetchOpPlatformRecommendations(
           {
             persona,
             segment,

@@ -2,13 +2,13 @@ import { describe, expect, it, vi, afterEach } from "vitest";
 import {
   BLUEDOOR_RECS_ENDPOINT,
   buildBlueDoorRecsUrl,
-  fetchBlueDoorRecommendations,
-} from "@/integrations/bluedoor/recommendations";
+  fetchOpPlatformRecommendations,
+} from "@/integrations/op-platform/recommendations";
 import {
   isB2BResult,
   resolveBlueDoorPersona,
   segmentForResult,
-} from "@/integrations/bluedoor/personaMap";
+} from "@/integrations/op-platform/personaMap";
 
 describe("buildBlueDoorRecsUrl", () => {
   it("returns the bare endpoint with no filters", () => {
@@ -43,7 +43,7 @@ describe("buildBlueDoorRecsUrl", () => {
   });
 });
 
-describe("fetchBlueDoorRecommendations", () => {
+describe("fetchOpPlatformRecommendations", () => {
   const originalFetch = globalThis.fetch;
   afterEach(() => {
     globalThis.fetch = originalFetch;
@@ -56,7 +56,7 @@ describe("fetchBlueDoorRecommendations", () => {
         { status: 200, headers: { "Content-Type": "application/json" } },
       ),
     ) as typeof fetch;
-    const out = await fetchBlueDoorRecommendations({ persona: "b2b_leader" });
+    const out = await fetchOpPlatformRecommendations({ persona: "b2b_leader" });
     expect(out.count).toBe(1);
     expect(out.results[0].name).toBe("X");
   });
@@ -66,7 +66,7 @@ describe("fetchBlueDoorRecommendations", () => {
       new Response("bad", { status: 400 }),
     ) as typeof fetch;
     await expect(
-      fetchBlueDoorRecommendations({ persona: "b2b_leader" }),
+      fetchOpPlatformRecommendations({ persona: "b2b_leader" }),
     ).rejects.toThrow(/400/);
   });
 });

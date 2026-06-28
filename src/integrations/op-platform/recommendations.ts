@@ -97,7 +97,7 @@ export function buildBlueDoorRecsUrl(
   return qs ? `${BLUEDOOR_RECS_ENDPOINT}?${qs}` : BLUEDOOR_RECS_ENDPOINT;
 }
 
-export async function fetchBlueDoorRecommendations(
+export async function fetchOpPlatformRecommendations(
   filters: BlueDoorRecommendationFilters,
   init?: { signal?: AbortSignal },
 ): Promise<BlueDoorRecommendationResponse> {

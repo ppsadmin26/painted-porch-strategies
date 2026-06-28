@@ -12,7 +12,7 @@ import type { ResultType } from "@/data/pathFinderQuiz";
 import type {
   BlueDoorPersona,
   BlueDoorSegment,
-} from "@/integrations/bluedoor/recommendations";
+} from "@/integrations/op-platform/recommendations";
 
 export interface PersonaMapInput {
   resultType: ResultType;
