@@ -1,21 +1,21 @@
 ---
 name: PPS Offerings Admin — Phase B (mirror-only)
-description: /admin/path-finder-offerings is now mirror-only for canonical narrative fields. Edit name/blurb/description/image in Blue Door; routing stays here.
+description: /admin/path-finder-offerings is mirror-only for canonical narrative fields. Edit name/blurb/description/image in the PPS Op Platform; routing stays here.
 type: feature
 ---
 
 # Phase B status
 
-`/admin/path-finder-offerings` is the **routing** editor only. Canonical narrative fields are sourced from the Blue Door Offerings Master Register and rendered read-only with an **Edit in Blue Door** deep link per row.
+`/admin/path-finder-offerings` is the **routing** editor only. Canonical narrative fields are sourced from the **PPS Op Platform** Offerings Master Register (the canonical offerings catalog formerly referred to internally as "Blue Door") and rendered read-only with an **Edit in PPS Op Platform** deep link per row.
 
-## Read-only (Blue Door canonical)
+> Naming note: the public product **The Blue Door Organizational Appraisal** is unrelated to this register and keeps its name. "PPS Op Platform" only refers to the master offerings register / admin project.
+
+## Read-only (PPS Op Platform canonical)
 
 - `name`
 - `blurb`
 - `description`
 - `image_url`
-
-(Pricing, marketing_angle, content_themes, pillar/stoic/icp/cascade live only in Blue Door and never appeared on this admin.)
 
 ## Still editable on PPS
 
@@ -29,13 +29,14 @@ type: feature
 
 ## New offerings
 
-The in-app "New offering" dialog is replaced by a **New in Blue Door** outbound link. New offerings must be authored in the Blue Door Offerings Register first; the reconciliation pass (Phase C, not built yet) will surface them here.
+The in-app "New offering" dialog is replaced by a **New in PPS Op Platform** outbound link. New offerings must be authored in the PPS Op Platform Offerings Register first; the reconciliation pass (Phase C, not built yet) will surface them here.
 
 ## Deep link
 
-`buildBlueDoorEditUrl(row)` in `src/pages/pps/admin/PathFinderOfferings.tsx` builds `https://bluedoordiagnostic.lovable.app/admin/topics?slug=<topic_slug>` (falls back to `?q=<name>` when `topic_slug` is null).
+`buildBlueDoorEditUrl(row)` in `src/pages/pps/admin/PathFinderOfferings.tsx` builds `https://bluedoordiagnostic.lovable.app/admin/topics?slug=<topic_slug>` (falls back to `?q=<name>` when `topic_slug` is null). Code identifiers (`buildBlueDoorEditUrl`, `BlueDoorEditLink`, `OP_PLATFORM_ADMIN_BASE`) and the project URL keep their existing names; only user-visible copy uses "PPS Op Platform".
 
 ## Reference
 
-- `docs/handoff/BlueDoor-to-PPS-Offerings-Handoff-v1.md`
+- `docs/handoff/BlueDoor-to-PPS-Offerings-Handoff-v1.md` (canonical handoff doc; filename retained for git history)
 - `.lovable/memory/features/quiz/bluedoor-recommendations-endpoint.md` (Phase A)
+- `.lovable/memory/architecture/offerings-master-register.md`

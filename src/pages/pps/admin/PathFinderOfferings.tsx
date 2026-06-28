@@ -45,35 +45,36 @@ interface Row {
 }
 
 /**
- * Phase B (Blue Door → PPS handoff): canonical narrative fields
+ * Phase B (PPS Op Platform → PPS site handoff): canonical narrative fields
  * (name, blurb, description, image_url) are read-only here and edited in
- * the Blue Door Offerings Register. Routing fields (URL, anchor, Live,
+ * the PPS Op Platform Offerings Register. Routing fields (URL, anchor, Live,
  * RT pools, launch link, tier, topic tag, facilitator, surface flags)
  * remain editable on this page.
  */
-const BLUEDOOR_ADMIN_BASE = "https://bluedoordiagnostic.lovable.app/admin/topics";
+const OP_PLATFORM_ADMIN_BASE = "https://bluedoordiagnostic.lovable.app/admin/topics";
 
 function buildBlueDoorEditUrl(row: { topic_slug?: string | null; name?: string | null }): string {
   const params = new URLSearchParams();
   if (row.topic_slug) params.set("slug", row.topic_slug);
   else if (row.name) params.set("q", row.name);
   const qs = params.toString();
-  return qs ? `${BLUEDOOR_ADMIN_BASE}?${qs}` : BLUEDOOR_ADMIN_BASE;
+  return qs ? `${OP_PLATFORM_ADMIN_BASE}?${qs}` : OP_PLATFORM_ADMIN_BASE;
 }
 
-function BlueDoorEditLink({ row, label = "Edit in Blue Door" }: { row: { topic_slug?: string | null; name?: string | null }; label?: string }) {
+function BlueDoorEditLink({ row, label = "Edit in PPS Op Platform" }: { row: { topic_slug?: string | null; name?: string | null }; label?: string }) {
   return (
     <a
       href={buildBlueDoorEditUrl(row)}
       target="_blank"
       rel="noopener noreferrer"
       className="inline-flex items-center gap-1 text-[11px] font-medium text-bluedoor hover:underline"
-      title="Open the canonical record in the Blue Door Offerings Register"
+      title="Open the canonical record in the PPS Op Platform Offerings Register"
     >
       {label} <ExternalLink className="w-3 h-3" />
     </a>
   );
 }
+
 
 interface LaunchOption {
   slug: string;
@@ -340,13 +341,13 @@ export default function PathFinderOfferings() {
             <option value="broken-launch">Broken launch link ({brokenRows.length})</option>
           </select>
           <a
-            href={BLUEDOOR_ADMIN_BASE}
+            href={OP_PLATFORM_ADMIN_BASE}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-xs font-medium text-bluedoor hover:underline"
-            title="New offerings must be authored in the Blue Door Offerings Register"
+            title="New offerings must be authored in the PPS Op Platform Offerings Register"
           >
-            <Plus className="w-4 h-4" /> New in Blue Door <ExternalLink className="w-3 h-3" />
+            <Plus className="w-4 h-4" /> New in PPS Op Platform <ExternalLink className="w-3 h-3" />
           </a>
         </div>
       </div>
@@ -462,17 +463,17 @@ export default function PathFinderOfferings() {
       <div className="mb-6 rounded-lg border border-bluedoor/30 bg-bluedoor/5 px-4 py-3 text-sm text-navy">
         <p className="font-poppins font-semibold text-bluedoor mb-1">Phase B active — canonical fields are now read-only</p>
         <p>
-          The Blue Door <strong>Offerings Master Register</strong> is the source of truth. Narrative fields (<strong>name, blurb, description, image</strong>) are read-only here — use the <em>Edit in Blue Door</em> link on each row to change them. <strong>Routing</strong> (URL, anchor, Live, RT pools, launch link, surface flags, tier, topic tag, facilitator) stays editable on this page.
+          The PPS Op Platform <strong>Offerings Master Register</strong> is the source of truth. Narrative fields (<strong>name, blurb, description, image</strong>) are read-only here — use the <em>Edit in PPS Op Platform</em> link on each row to change them. <strong>Routing</strong> (URL, anchor, Live, RT pools, launch link, surface flags, tier, topic tag, facilitator) stays editable on this page.
         </p>
         <p className="mt-2">
           See <code>docs/handoff/BlueDoor-to-PPS-Offerings-Handoff-v1.md</code>.{" "}
           <a
-            href={BLUEDOOR_ADMIN_BASE}
+            href={OP_PLATFORM_ADMIN_BASE}
             target="_blank"
             rel="noopener noreferrer"
             className="text-bluedoor underline hover:no-underline"
           >
-            Open Blue Door · Offerings Register
+            Open PPS Op Platform · Offerings Register
           </a>
         </p>
       </div>
@@ -625,7 +626,7 @@ export default function PathFinderOfferings() {
                 <div className="grid md:grid-cols-3 gap-3 text-sm mb-3">
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <Label className="text-xs">Display name <span className="text-bluedoor">· Blue Door canonical</span></Label>
+                      <Label className="text-xs">Display name <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
                       <BlueDoorEditLink row={row} label="Edit" />
                     </div>
                     <div className="font-poppins font-semibold text-navy bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10">
@@ -634,7 +635,7 @@ export default function PathFinderOfferings() {
                   </div>
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <Label className="text-xs">Short blurb <span className="text-bluedoor">· Blue Door canonical</span></Label>
+                      <Label className="text-xs">Short blurb <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
                       <BlueDoorEditLink row={row} label="Edit" />
                     </div>
                     <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10 whitespace-pre-wrap">
@@ -663,15 +664,15 @@ export default function PathFinderOfferings() {
                 <div className="mb-3 rounded-md border border-dashed border-bluedoor/40 bg-bluedoor/5 px-3 py-2">
                   <div className="flex items-center justify-between mb-1">
                     <Label className="text-xs font-semibold text-bluedoor">
-                      Topic card description · Blue Door canonical
+                      Topic card description · PPS Op Platform canonical
                     </Label>
-                    <BlueDoorEditLink row={row} label="Edit in Blue Door" />
+                    <BlueDoorEditLink row={row} label="Edit in PPS Op Platform" />
                   </div>
                   <div className="text-sm text-foreground/80 bg-white border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-16 whitespace-pre-wrap">
                     {row.description || <span className="italic text-muted-foreground">— empty (falls back to short blurb) —</span>}
                   </div>
                   <p className="text-[11px] text-muted-foreground mt-1">
-                    Renders on <code>/topics</code>, <code>/speaking/*</code>, and <code>/partner/amplify/workshops</code>. Edit in the Blue Door Offerings Register; changes flow back here on the next sync.
+                    Renders on <code>/topics</code>, <code>/speaking/*</code>, and <code>/partner/amplify/workshops</code>. Edit in the PPS Op Platform Offerings Register; changes flow back here on the next sync.
                   </p>
                 </div>
 
@@ -711,7 +712,7 @@ export default function PathFinderOfferings() {
                     </div>
                     <div className="md:col-span-2">
                       <div className="flex items-center justify-between mb-1">
-                        <Label className="text-xs">Image <span className="text-bluedoor">· Blue Door canonical</span></Label>
+                        <Label className="text-xs">Image <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
                         <BlueDoorEditLink row={row} label="Edit" />
                       </div>
                       <div className="text-xs text-muted-foreground break-all bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2">
