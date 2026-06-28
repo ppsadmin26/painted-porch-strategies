@@ -51,7 +51,7 @@ interface Row {
  * RT pools, launch link, tier, topic tag, facilitator, surface flags)
  * remain editable on this page.
  */
-const OP_PLATFORM_ADMIN_BASE = "https://bluedoordiagnostic.lovable.app/admin/topics";
+const OP_PLATFORM_ADMIN_BASE = "https://paintedporch-ops.lovable.app/admin/topics";
 
 function buildBlueDoorEditUrl(row: { topic_slug?: string | null; name?: string | null }): string {
   const params = new URLSearchParams();
