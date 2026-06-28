@@ -769,7 +769,7 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
                 <p className="text-body font-semibold text-navy transition-colors group-hover:text-primary group-hover:underline">
                   <BoldShiftName name={o.name} />
                 </p>
-                <p className="text-body text-foreground/70 mt-0.5">{o.blurb}</p>
+                <p className="text-body-sm text-foreground/70 mt-0.5">{o.blurb}</p>
                 {o.isComingSoon && (
                   <p className="text-body text-[11px] font-semibold text-gold mt-1">
                     Launching soon — join the launch list on the card.
