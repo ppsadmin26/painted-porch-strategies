@@ -45,35 +45,36 @@ interface Row {
 }
 
 /**
- * Phase B (Blue Door → PPS handoff): canonical narrative fields
+ * Phase B (PPS Op Platform → PPS site handoff): canonical narrative fields
  * (name, blurb, description, image_url) are read-only here and edited in
- * the Blue Door Offerings Register. Routing fields (URL, anchor, Live,
+ * the PPS Op Platform Offerings Register. Routing fields (URL, anchor, Live,
  * RT pools, launch link, tier, topic tag, facilitator, surface flags)
  * remain editable on this page.
  */
-const BLUEDOOR_ADMIN_BASE = "https://bluedoordiagnostic.lovable.app/admin/topics";
+const OP_PLATFORM_ADMIN_BASE = "https://bluedoordiagnostic.lovable.app/admin/topics";
 
 function buildBlueDoorEditUrl(row: { topic_slug?: string | null; name?: string | null }): string {
   const params = new URLSearchParams();
   if (row.topic_slug) params.set("slug", row.topic_slug);
   else if (row.name) params.set("q", row.name);
   const qs = params.toString();
-  return qs ? `${BLUEDOOR_ADMIN_BASE}?${qs}` : BLUEDOOR_ADMIN_BASE;
+  return qs ? `${OP_PLATFORM_ADMIN_BASE}?${qs}` : OP_PLATFORM_ADMIN_BASE;
 }
 
-function BlueDoorEditLink({ row, label = "Edit in Blue Door" }: { row: { topic_slug?: string | null; name?: string | null }; label?: string }) {
+function BlueDoorEditLink({ row, label = "Edit in PPS Op Platform" }: { row: { topic_slug?: string | null; name?: string | null }; label?: string }) {
   return (
     <a
       href={buildBlueDoorEditUrl(row)}
       target="_blank"
       rel="noopener noreferrer"
       className="inline-flex items-center gap-1 text-[11px] font-medium text-bluedoor hover:underline"
-      title="Open the canonical record in the Blue Door Offerings Register"
+      title="Open the canonical record in the PPS Op Platform Offerings Register"
     >
       {label} <ExternalLink className="w-3 h-3" />
     </a>
   );
 }
+
 
 interface LaunchOption {
   slug: string;
