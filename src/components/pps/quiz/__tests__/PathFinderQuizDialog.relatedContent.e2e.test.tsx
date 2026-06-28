@@ -150,7 +150,7 @@ describe("PathFinderQuizDialog — Related Reading (E2E)", () => {
     await screen.findByRole("heading", { name: /Start with Foundations/i });
 
     // Related Reading section renders once the hook resolves.
-    await screen.findByText(/From the Porch — Related Reading/i);
+    await screen.findByText(/^Related Reading$/i);
     await screen.findByText(BLOG_ROW.post.title);
     await screen.findByText(MEDIA_ROW.appearance.title);
 
