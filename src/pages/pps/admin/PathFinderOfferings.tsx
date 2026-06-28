@@ -624,23 +624,22 @@ export default function PathFinderOfferings() {
                 </div>
                 <div className="grid md:grid-cols-3 gap-3 text-sm mb-3">
                   <div>
-                    <Label className="text-xs">Display name (shown in quiz results)</Label>
-                    <Input
-                      value={valueOf(row, "name") ?? ""}
-                      onChange={(e) => patch(row.id, { name: e.target.value })}
-                      className="font-poppins font-semibold text-navy"
-                    />
+                    <div className="flex items-center justify-between mb-1">
+                      <Label className="text-xs">Display name <span className="text-bluedoor">· Blue Door canonical</span></Label>
+                      <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
+                    <div className="font-poppins font-semibold text-navy bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10">
+                      {row.name || <span className="italic text-muted-foreground">— missing —</span>}
+                    </div>
                   </div>
                   <div>
-                    <Label className="text-xs">
-                      Short blurb (quiz results &amp; fallback for topic card)
-                    </Label>
-                    <Textarea
-                      rows={2}
-                      value={valueOf(row, "blurb") ?? ""}
-                      onChange={(e) => patch(row.id, { blurb: e.target.value })}
-                      placeholder="Short one-liner. Used in quiz results."
-                    />
+                    <div className="flex items-center justify-between mb-1">
+                      <Label className="text-xs">Short blurb <span className="text-bluedoor">· Blue Door canonical</span></Label>
+                      <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
+                    <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10 whitespace-pre-wrap">
+                      {row.blurb || <span className="italic text-muted-foreground">— empty —</span>}
+                    </div>
                   </div>
                   <div>
                     <Label className="text-xs">Topic tag (workshop hub only — does not drive quiz routing)</Label>
@@ -661,18 +660,18 @@ export default function PathFinderOfferings() {
                   </div>
                 </div>
 
-                <div className="mb-3 rounded-md border border-dashed border-teal/40 bg-teal/5 px-3 py-2">
-                  <Label className="text-xs font-semibold text-teal">
-                    Topic card description — single source of truth
-                  </Label>
-                  <Textarea
-                    rows={3}
-                    value={valueOf(row, "description") ?? ""}
-                    onChange={(e) => patch(row.id, { description: e.target.value || null as any })}
-                    placeholder="The exact paragraph shown on /topics and the speaker pages (/speaking/amy|rob|sierra) and the workshops accordion."
-                  />
+                <div className="mb-3 rounded-md border border-dashed border-bluedoor/40 bg-bluedoor/5 px-3 py-2">
+                  <div className="flex items-center justify-between mb-1">
+                    <Label className="text-xs font-semibold text-bluedoor">
+                      Topic card description · Blue Door canonical
+                    </Label>
+                    <BlueDoorEditLink row={row} label="Edit in Blue Door" />
+                  </div>
+                  <div className="text-sm text-foreground/80 bg-white border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-16 whitespace-pre-wrap">
+                    {row.description || <span className="italic text-muted-foreground">— empty (falls back to short blurb) —</span>}
+                  </div>
                   <p className="text-[11px] text-muted-foreground mt-1">
-                    This field renders on <code>/topics</code>, <code>/speaking/*</code>, and <code>/partner/amplify/workshops</code>. If empty, the short blurb above is used as fallback. Edits here are the <strong>only</strong> way to change topic-card copy — no hardcoded overrides.
+                    Renders on <code>/topics</code>, <code>/speaking/*</code>, and <code>/partner/amplify/workshops</code>. Edit in the Blue Door Offerings Register; changes flow back here on the next sync.
                   </p>
                 </div>
 
