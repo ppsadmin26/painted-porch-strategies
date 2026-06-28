@@ -33,7 +33,7 @@ The in-app "New offering" dialog is replaced by a **New in PPS Op Platform** out
 
 ## Deep link
 
-`buildBlueDoorEditUrl(row)` in `src/pages/pps/admin/PathFinderOfferings.tsx` builds `https://bluedoordiagnostic.lovable.app/admin/topics?slug=<topic_slug>` (falls back to `?q=<name>` when `topic_slug` is null). Code identifiers (`buildBlueDoorEditUrl`, `BlueDoorEditLink`, `OP_PLATFORM_ADMIN_BASE`) and the project URL keep their existing names; only user-visible copy uses "PPS Op Platform".
+`buildBlueDoorEditUrl(row)` in `src/pages/pps/admin/PathFinderOfferings.tsx` builds `https://paintedporch-ops.lovable.app/admin/topics?slug=<topic_slug>` (falls back to `?q=<name>` when `topic_slug` is null). Code identifiers (`buildBlueDoorEditUrl`, `BlueDoorEditLink`, `OP_PLATFORM_ADMIN_BASE`) keep their existing names; only user-visible copy uses "PPS Op Platform".
 
 ## Reference
 
