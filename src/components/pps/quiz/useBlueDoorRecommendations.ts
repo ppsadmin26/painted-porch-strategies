@@ -138,6 +138,11 @@ export function useBlueDoorRecommendations(
           if (names.has(normalizeName(off.name))) continue;
           merged.push(off);
         }
+        if (merged.length === 0) {
+          setGroup(null);
+          return;
+        }
+        setGroup({ heading: "More from the Porch", offerings: merged });
       } catch (err) {
         if (!cancelled && (err as { name?: string }).name !== "AbortError") {
           console.warn("Blue Door recommendations fetch failed (non-fatal):", err);
