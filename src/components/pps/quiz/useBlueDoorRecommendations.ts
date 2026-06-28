@@ -27,7 +27,10 @@ import type { Answers, Offering, QuizResult, ResultType } from "@/data/pathFinde
  * Failures are non-fatal — the catalog group simply does not render.
  */
 
-const MAX_ITEMS = 3;
+// Supplemental cap. The dialog's "From the Porch" block totals ≤4 items
+// (≤2 free resources here + ≤2 insights from useQuizRelatedContent), so we
+// only ever surface up to 2 free-resource picks from the canonical catalog.
+const MAX_ITEMS = 2;
 const FORMAT_TO_TIER: Record<BlueDoorFormat, Offering["tier"]> = {
   assessment: "Assessment",
   course: "IGNITE",
