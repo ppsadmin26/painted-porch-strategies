@@ -1,10 +1,10 @@
 ---
 name: Offerings Master Register
-description: PPS Op Platform project owns the canonical offerings catalog. PPS site path_finder_offerings is a one-way mirror. Topic + delivery split is the long-term model.
+description: PPS Op Platform project (paintedporch-ops.lovable.app) owns the canonical offerings catalog. PPS site path_finder_offerings is a one-way mirror. Topic + delivery split is the long-term model.
 type: feature
 ---
 
-**Canonical:** PPS Op Platform project `offerings` table (Phase 2 → `topics` + `deliveries`). Internally referenced in older docs and code as the "Blue Door project" — same thing, different name.
+**Canonical:** PPS Op Platform project `offerings` table (Phase 2 → `topics` + `deliveries`). Project URL: `https://paintedporch-ops.lovable.app`. Internally referenced in older docs and code as the "Blue Door project" — same thing, different name.
 **Mirror:** PPS site `path_finder_offerings`. One-way sync from PPS Op Platform.
 
 > Do not confuse with the **public product** "The Blue Door Organizational Appraisal" ($1,500 org appraisal). That product keeps its name and is unrelated to this register's naming change.
@@ -26,4 +26,4 @@ type: feature
 
 **Do NOT:** Build cross-project Supabase reads (fragile RLS, separate auth contexts, brittle env). Always go through the sync.
 
-**Naming/code:** File paths and code identifiers retain "bluedoor" / "BlueDoor" prefixes (e.g. `src/integrations/bluedoor/`, `useBlueDoorRecommendations`, `BlueDoorEditLink`, `bluedoordiagnostic.lovable.app` URL). Only **user-visible copy** uses "PPS Op Platform". Renaming identifiers/URLs is out of scope.
+**Naming/code:** File paths and code identifiers retain "bluedoor" / "BlueDoor" prefixes (e.g. `src/integrations/bluedoor/`, `useBlueDoorRecommendations`, `BlueDoorEditLink`). Only **user-visible copy** uses "PPS Op Platform". Renaming identifiers is out of scope. The project URL itself was updated to `https://paintedporch-ops.lovable.app`; update the URL whenever it appears in admin deep links or docs.
