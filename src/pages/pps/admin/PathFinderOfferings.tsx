@@ -710,22 +710,21 @@ export default function PathFinderOfferings() {
                       <p className="text-[11px] text-muted-foreground mt-1">Select one or more. Controls which /speaking/* pages this topic shows on.</p>
                     </div>
                     <div className="md:col-span-2">
-                      <Label className="text-xs">Image URL (topic card image)</Label>
-                      <Input
-                        value={valueOf(row, "image_url") ?? ""}
-                        onChange={(e) => patch(row.id, { image_url: e.target.value || (null as any) })}
-                        placeholder="https://… or /__l5e/assets-v1/…"
-                      />
-                      {valueOf(row, "image_url") ? (
+                      <div className="flex items-center justify-between mb-1">
+                        <Label className="text-xs">Image <span className="text-bluedoor">· Blue Door canonical</span></Label>
+                        <BlueDoorEditLink row={row} label="Edit" />
+                      </div>
+                      <div className="text-xs text-muted-foreground break-all bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2">
+                        {row.image_url || <span className="italic">— no image set —</span>}
+                      </div>
+                      {row.image_url && (
                         <div className="mt-2 w-32 aspect-[16/10] rounded border border-border overflow-hidden bg-muted">
                           <img
-                            src={valueOf(row, "image_url") as string}
+                            src={row.image_url}
                             alt=""
                             className="w-full h-full object-cover"
                           />
                         </div>
-                      ) : (
-                        <p className="text-[11px] text-muted-foreground mt-1">Leave blank to use the legacy built-in image (if one exists for this topic).</p>
                       )}
                     </div>
                   </div>
