@@ -624,16 +624,17 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
             ))}
 
             {(() => {
-              const existingCount =
-                (result.primaryGroup?.offerings.length ?? 0) +
-                result.groups.reduce((sum, g) => sum + g.offerings.length, 0);
-              // Suppress supplemental catalog group when results are already plentiful.
-              if (!blueDoorGroup || existingCount >= 4) return null;
-              const trimmed = blueDoorGroup.offerings.slice(0, Math.max(1, 4 - existingCount));
+              // Supplemental "From the Porch" block totals at most 4 items:
+              // up to 2 free resources (Blue Door) + up to 2 insights
+              // (blog/media). Trim Blue Door first if both would exceed 4.
+              const insightCount = Math.min(relatedContent.length, 2);
+              const bdMax = Math.max(0, 4 - insightCount);
+              const bdTrimmed = blueDoorGroup ? blueDoorGroup.offerings.slice(0, bdMax) : [];
+              if (bdTrimmed.length === 0) return null;
               return (
                 <RecGroup
-                  heading={blueDoorGroup.heading}
-                  offerings={trimmed}
+                  heading={blueDoorGroup!.heading}
+                  offerings={bdTrimmed}
                   onClose={() => onOpenChange(false)}
                 />
               );
@@ -643,7 +644,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               <div className="mt-6">
                 <h4 className="font-poppins text-base font-semibold text-navy mb-2">Related Reading</h4>
                 <div className="grid gap-2">
-                  {relatedContent.map((c) => {
+                  {relatedContent.slice(0, 2).map((c) => {
                     const isExternal = /^https?:\/\//i.test(c.url);
                     const Icon = c.kind === "media" ? Mic : BookOpen;
                     const label = c.kind === "media" ? (c.source ? `Media · ${c.source}` : "Media") : "Insights & Research";

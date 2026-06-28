@@ -27,7 +27,10 @@ import type { Answers, Offering, QuizResult, ResultType } from "@/data/pathFinde
  * Failures are non-fatal — the catalog group simply does not render.
  */
 
-const MAX_ITEMS = 3;
+// Supplemental cap. The dialog's "From the Porch" block totals ≤4 items
+// (≤2 free resources here + ≤2 insights from useQuizRelatedContent), so we
+// only ever surface up to 2 free-resource picks from the canonical catalog.
+const MAX_ITEMS = 2;
 const FORMAT_TO_TIER: Record<BlueDoorFormat, Offering["tier"]> = {
   assessment: "Assessment",
   course: "IGNITE",
@@ -118,10 +121,19 @@ export function useBlueDoorRecommendations(
         if (cancelled) return;
 
         const { urls, names } = collectExisting(result);
+        // Prefer free resources first so the supplemental block always
+        // surfaces a low-friction starting point when one exists.
+        const sorted = [...data.results].sort((a, b) => {
+          const aFree = a.format === "free_resource" ? 0 : 1;
+          const bFree = b.format === "free_resource" ? 0 : 1;
+          return aFree - bFree;
+        });
         const merged: Offering[] = [];
-        for (let i = 0; i < data.results.length && merged.length < MAX_ITEMS; i += 1) {
-          const off = bdToOffering(data.results[i], i);
+        for (let i = 0; i < sorted.length && merged.length < MAX_ITEMS; i += 1) {
+          const off = bdToOffering(sorted[i], i);
           if (!off) continue;
+          if (!off.url || !/^https?:\/\/|^\//.test(off.url)) continue;
+          if (!off.name?.trim() || !off.blurb?.trim()) continue;
           if (urls.has(normalizeUrl(off.url))) continue;
           if (names.has(normalizeName(off.name))) continue;
           merged.push(off);
@@ -130,10 +142,7 @@ export function useBlueDoorRecommendations(
           setGroup(null);
           return;
         }
-        setGroup({
-          heading: "More from the Porch",
-          offerings: merged,
-        });
+        setGroup({ heading: "More from the Porch", offerings: merged });
       } catch (err) {
         if (!cancelled && (err as { name?: string }).name !== "AbortError") {
           console.warn("Blue Door recommendations fetch failed (non-fatal):", err);
