@@ -33,6 +33,7 @@ interface Row {
   is_live: boolean;
   sort_order: number;
   topic: string | null;
+  topic_slug: string | null;
   include_in_workshops: boolean;
   is_featured_in_quiz: boolean;
   is_keynote: boolean;
@@ -41,6 +42,37 @@ interface Row {
   launch_slug: string | null;
   b2c_rt_pools: Record<string, string[]> | null;
   b2b_rt_pools: Record<string, string[]> | null;
+}
+
+/**
+ * Phase B (Blue Door → PPS handoff): canonical narrative fields
+ * (name, blurb, description, image_url) are read-only here and edited in
+ * the Blue Door Offerings Register. Routing fields (URL, anchor, Live,
+ * RT pools, launch link, tier, topic tag, facilitator, surface flags)
+ * remain editable on this page.
+ */
+const BLUEDOOR_ADMIN_BASE = "https://bluedoordiagnostic.lovable.app/admin/topics";
+
+function buildBlueDoorEditUrl(row: { topic_slug?: string | null; name?: string | null }): string {
+  const params = new URLSearchParams();
+  if (row.topic_slug) params.set("slug", row.topic_slug);
+  else if (row.name) params.set("q", row.name);
+  const qs = params.toString();
+  return qs ? `${BLUEDOOR_ADMIN_BASE}?${qs}` : BLUEDOOR_ADMIN_BASE;
+}
+
+function BlueDoorEditLink({ row, label = "Edit in Blue Door" }: { row: { topic_slug?: string | null; name?: string | null }; label?: string }) {
+  return (
+    <a
+      href={buildBlueDoorEditUrl(row)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1 text-[11px] font-medium text-bluedoor hover:underline"
+      title="Open the canonical record in the Blue Door Offerings Register"
+    >
+      {label} <ExternalLink className="w-3 h-3" />
+    </a>
+  );
 }
 
 interface LaunchOption {
@@ -178,7 +210,7 @@ export default function PathFinderOfferings() {
   const load = async () => {
     setLoading(true);
     const [offRes, launchRes] = await Promise.all([
-      supabase.from("path_finder_offerings").select("id, offering_key, name, facilitator, tier, blurb, description, current_url, dedicated_url, anchor_id, is_live, sort_order, topic, include_in_workshops, is_featured_in_quiz, is_keynote, include_on_speaker_page, image_url, launch_slug, b2c_rt_pools, b2b_rt_pools").order("sort_order"),
+      supabase.from("path_finder_offerings").select("id, offering_key, name, facilitator, tier, blurb, description, current_url, dedicated_url, anchor_id, is_live, sort_order, topic, topic_slug, include_in_workshops, is_featured_in_quiz, is_keynote, include_on_speaker_page, image_url, launch_slug, b2c_rt_pools, b2b_rt_pools").order("sort_order"),
       supabase
         .from("course_launch_status")
         .select("slug, course_name, status, program_type")
@@ -307,13 +339,15 @@ export default function PathFinderOfferings() {
             <option value="live">Live ({rows.filter(r => r.is_live).length})</option>
             <option value="broken-launch">Broken launch link ({brokenRows.length})</option>
           </select>
-          <Button
-            size="sm"
-            onClick={() => setNewOpen(true)}
-            className="bg-primary text-white hover:bg-primary/90"
+          <a
+            href={BLUEDOOR_ADMIN_BASE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-medium text-bluedoor hover:underline"
+            title="New offerings must be authored in the Blue Door Offerings Register"
           >
-            <Plus className="w-4 h-4 mr-1" /> New offering
-          </Button>
+            <Plus className="w-4 h-4" /> New in Blue Door <ExternalLink className="w-3 h-3" />
+          </a>
         </div>
       </div>
 
@@ -426,15 +460,14 @@ export default function PathFinderOfferings() {
       </Dialog>
 
       <div className="mb-6 rounded-lg border border-bluedoor/30 bg-bluedoor/5 px-4 py-3 text-sm text-navy">
-        <p className="font-poppins font-semibold text-bluedoor mb-1">Heads up: this table is moving</p>
+        <p className="font-poppins font-semibold text-bluedoor mb-1">Phase B active — canonical fields are now read-only</p>
         <p>
-          The Blue Door <strong>Offerings Master Register</strong> is becoming the single source of truth for every offering (B2C and B2B). In Phase 2, this table will be a one-way synced mirror of that register, with canonical fields (name, blurb, pricing, descriptions) edited only in Blue Door admin. Routing fields below (URL, anchor, Live, Prioritize in quiz) will stay editable here.
+          The Blue Door <strong>Offerings Master Register</strong> is the source of truth. Narrative fields (<strong>name, blurb, description, image</strong>) are read-only here — use the <em>Edit in Blue Door</em> link on each row to change them. <strong>Routing</strong> (URL, anchor, Live, RT pools, launch link, surface flags, tier, topic tag, facilitator) stays editable on this page.
         </p>
         <p className="mt-2">
-          See <code>docs/offerings-master-schema.md</code> and{" "}
-          <code>.lovable/plan-offerings-sync.md</code> for the plan.{" "}
+          See <code>docs/handoff/BlueDoor-to-PPS-Offerings-Handoff-v1.md</code>.{" "}
           <a
-            href="https://bluedoordiagnostic.lovable.app/admin/offerings"
+            href={BLUEDOOR_ADMIN_BASE}
             target="_blank"
             rel="noopener noreferrer"
             className="text-bluedoor underline hover:no-underline"
@@ -591,23 +624,22 @@ export default function PathFinderOfferings() {
                 </div>
                 <div className="grid md:grid-cols-3 gap-3 text-sm mb-3">
                   <div>
-                    <Label className="text-xs">Display name (shown in quiz results)</Label>
-                    <Input
-                      value={valueOf(row, "name") ?? ""}
-                      onChange={(e) => patch(row.id, { name: e.target.value })}
-                      className="font-poppins font-semibold text-navy"
-                    />
+                    <div className="flex items-center justify-between mb-1">
+                      <Label className="text-xs">Display name <span className="text-bluedoor">· Blue Door canonical</span></Label>
+                      <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
+                    <div className="font-poppins font-semibold text-navy bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10">
+                      {row.name || <span className="italic text-muted-foreground">— missing —</span>}
+                    </div>
                   </div>
                   <div>
-                    <Label className="text-xs">
-                      Short blurb (quiz results &amp; fallback for topic card)
-                    </Label>
-                    <Textarea
-                      rows={2}
-                      value={valueOf(row, "blurb") ?? ""}
-                      onChange={(e) => patch(row.id, { blurb: e.target.value })}
-                      placeholder="Short one-liner. Used in quiz results."
-                    />
+                    <div className="flex items-center justify-between mb-1">
+                      <Label className="text-xs">Short blurb <span className="text-bluedoor">· Blue Door canonical</span></Label>
+                      <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
+                    <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10 whitespace-pre-wrap">
+                      {row.blurb || <span className="italic text-muted-foreground">— empty —</span>}
+                    </div>
                   </div>
                   <div>
                     <Label className="text-xs">Topic tag (workshop hub only — does not drive quiz routing)</Label>
@@ -628,18 +660,18 @@ export default function PathFinderOfferings() {
                   </div>
                 </div>
 
-                <div className="mb-3 rounded-md border border-dashed border-teal/40 bg-teal/5 px-3 py-2">
-                  <Label className="text-xs font-semibold text-teal">
-                    Topic card description — single source of truth
-                  </Label>
-                  <Textarea
-                    rows={3}
-                    value={valueOf(row, "description") ?? ""}
-                    onChange={(e) => patch(row.id, { description: e.target.value || null as any })}
-                    placeholder="The exact paragraph shown on /topics and the speaker pages (/speaking/amy|rob|sierra) and the workshops accordion."
-                  />
+                <div className="mb-3 rounded-md border border-dashed border-bluedoor/40 bg-bluedoor/5 px-3 py-2">
+                  <div className="flex items-center justify-between mb-1">
+                    <Label className="text-xs font-semibold text-bluedoor">
+                      Topic card description · Blue Door canonical
+                    </Label>
+                    <BlueDoorEditLink row={row} label="Edit in Blue Door" />
+                  </div>
+                  <div className="text-sm text-foreground/80 bg-white border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-16 whitespace-pre-wrap">
+                    {row.description || <span className="italic text-muted-foreground">— empty (falls back to short blurb) —</span>}
+                  </div>
                   <p className="text-[11px] text-muted-foreground mt-1">
-                    This field renders on <code>/topics</code>, <code>/speaking/*</code>, and <code>/partner/amplify/workshops</code>. If empty, the short blurb above is used as fallback. Edits here are the <strong>only</strong> way to change topic-card copy — no hardcoded overrides.
+                    Renders on <code>/topics</code>, <code>/speaking/*</code>, and <code>/partner/amplify/workshops</code>. Edit in the Blue Door Offerings Register; changes flow back here on the next sync.
                   </p>
                 </div>
 
@@ -678,22 +710,21 @@ export default function PathFinderOfferings() {
                       <p className="text-[11px] text-muted-foreground mt-1">Select one or more. Controls which /speaking/* pages this topic shows on.</p>
                     </div>
                     <div className="md:col-span-2">
-                      <Label className="text-xs">Image URL (topic card image)</Label>
-                      <Input
-                        value={valueOf(row, "image_url") ?? ""}
-                        onChange={(e) => patch(row.id, { image_url: e.target.value || (null as any) })}
-                        placeholder="https://… or /__l5e/assets-v1/…"
-                      />
-                      {valueOf(row, "image_url") ? (
+                      <div className="flex items-center justify-between mb-1">
+                        <Label className="text-xs">Image <span className="text-bluedoor">· Blue Door canonical</span></Label>
+                        <BlueDoorEditLink row={row} label="Edit" />
+                      </div>
+                      <div className="text-xs text-muted-foreground break-all bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2">
+                        {row.image_url || <span className="italic">— no image set —</span>}
+                      </div>
+                      {row.image_url && (
                         <div className="mt-2 w-32 aspect-[16/10] rounded border border-border overflow-hidden bg-muted">
                           <img
-                            src={valueOf(row, "image_url") as string}
+                            src={row.image_url}
                             alt=""
                             className="w-full h-full object-cover"
                           />
                         </div>
-                      ) : (
-                        <p className="text-[11px] text-muted-foreground mt-1">Leave blank to use the legacy built-in image (if one exists for this topic).</p>
                       )}
                     </div>
                   </div>
