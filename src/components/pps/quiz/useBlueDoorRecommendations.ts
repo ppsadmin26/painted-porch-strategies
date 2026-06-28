@@ -121,22 +121,23 @@ export function useBlueDoorRecommendations(
         if (cancelled) return;
 
         const { urls, names } = collectExisting(result);
+        // Prefer free resources first so the supplemental block always
+        // surfaces a low-friction starting point when one exists.
+        const sorted = [...data.results].sort((a, b) => {
+          const aFree = a.format === "free_resource" ? 0 : 1;
+          const bFree = b.format === "free_resource" ? 0 : 1;
+          return aFree - bFree;
+        });
         const merged: Offering[] = [];
-        for (let i = 0; i < data.results.length && merged.length < MAX_ITEMS; i += 1) {
-          const off = bdToOffering(data.results[i], i);
+        for (let i = 0; i < sorted.length && merged.length < MAX_ITEMS; i += 1) {
+          const off = bdToOffering(sorted[i], i);
           if (!off) continue;
+          if (!off.url || !/^https?:\/\/|^\//.test(off.url)) continue;
+          if (!off.name?.trim() || !off.blurb?.trim()) continue;
           if (urls.has(normalizeUrl(off.url))) continue;
           if (names.has(normalizeName(off.name))) continue;
           merged.push(off);
         }
-        if (merged.length === 0) {
-          setGroup(null);
-          return;
-        }
-        setGroup({
-          heading: "More from the Porch",
-          offerings: merged,
-        });
       } catch (err) {
         if (!cancelled && (err as { name?: string }).name !== "AbortError") {
           console.warn("Blue Door recommendations fetch failed (non-fatal):", err);
