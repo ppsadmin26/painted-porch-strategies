@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import {
-  fetchBlueDoorRecommendations,
-  type BlueDoorFormat,
-  type BlueDoorRecommendation,
-} from "@/integrations/bluedoor/recommendations";
+  fetchOpPlatformRecommendations,
+  type OpPlatformFormat,
+  type OpPlatformRecommendation,
+} from "@/integrations/op-platform/recommendations";
 import {
-  resolveBlueDoorPersona,
+  resolveOpPlatformPersona,
   segmentForResult,
-} from "@/integrations/bluedoor/personaMap";
+} from "@/integrations/op-platform/personaMap";
 import type { Answers, Offering, QuizResult, ResultType } from "@/data/pathFinderQuiz";
 
 /**
@@ -31,7 +31,7 @@ import type { Answers, Offering, QuizResult, ResultType } from "@/data/pathFinde
 // (≤2 free resources here + ≤2 insights from useQuizRelatedContent), so we
 // only ever surface up to 2 free-resource picks from the canonical catalog.
 const MAX_ITEMS = 2;
-const FORMAT_TO_TIER: Record<BlueDoorFormat, Offering["tier"]> = {
+const FORMAT_TO_TIER: Record<OpPlatformFormat, Offering["tier"]> = {
   assessment: "Assessment",
   course: "IGNITE",
   free_resource: "Free",
@@ -50,7 +50,7 @@ function normalizeUrl(url: string): string {
   return url.trim().toLowerCase().replace(/[#?].*$/, "").replace(/\/+$/, "");
 }
 
-function bdToOffering(rec: BlueDoorRecommendation, index: number): Offering | null {
+function bdToOffering(rec: OpPlatformRecommendation, index: number): Offering | null {
   if (!rec.url || !rec.url.trim()) return null;
   return {
     key: `bd:${normalizeUrl(rec.url)}:${index}`,
@@ -75,7 +75,7 @@ function collectExisting(result: QuizResult | null): { urls: Set<string>; names:
   return { urls, names };
 }
 
-export interface BlueDoorQuizGroup {
+export interface OpPlatformQuizGroup {
   heading: string;
   offerings: Offering[];
 }
@@ -85,11 +85,11 @@ export interface BlueDoorQuizGroup {
  * render below the existing recommendation groups. The dialog is
  * responsible for placement & styling.
  */
-export function useBlueDoorRecommendations(
+export function useOpPlatformRecommendations(
   result: QuizResult | null,
   answers: Answers,
-): { group: BlueDoorQuizGroup | null; loading: boolean } {
-  const [group, setGroup] = useState<BlueDoorQuizGroup | null>(null);
+): { group: OpPlatformQuizGroup | null; loading: boolean } {
+  const [group, setGroup] = useState<OpPlatformQuizGroup | null>(null);
   const [loading, setLoading] = useState(false);
 
   // Inputs we actually depend on — kept stable to avoid extra fetches.
@@ -106,9 +106,9 @@ export function useBlueDoorRecommendations(
     (async () => {
       setLoading(true);
       try {
-        const persona = resolveBlueDoorPersona({ resultType, scoutMode });
+        const persona = resolveOpPlatformPersona({ resultType, scoutMode });
         const segment = segmentForResult(resultType);
-        const data = await fetchBlueDoorRecommendations(
+        const data = await fetchOpPlatformRecommendations(
           {
             persona,
             segment,

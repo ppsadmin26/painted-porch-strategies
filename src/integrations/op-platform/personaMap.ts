@@ -10,9 +10,9 @@
 
 import type { ResultType } from "@/data/pathFinderQuiz";
 import type {
-  BlueDoorPersona,
-  BlueDoorSegment,
-} from "@/integrations/bluedoor/recommendations";
+  OpPlatformPersona,
+  OpPlatformSegment,
+} from "@/integrations/op-platform/recommendations";
 
 export interface PersonaMapInput {
   resultType: ResultType;
@@ -34,7 +34,7 @@ export function isB2BResult(rt: ResultType): boolean {
   return B2B_RESULTS.has(rt);
 }
 
-export function resolveBlueDoorPersona(input: PersonaMapInput): BlueDoorPersona {
+export function resolveOpPlatformPersona(input: PersonaMapInput): OpPlatformPersona {
   const { resultType, scoutMode, scope } = input;
 
   if (!isB2BResult(resultType)) return "b2c_individual";
@@ -59,6 +59,6 @@ export function resolveBlueDoorPersona(input: PersonaMapInput): BlueDoorPersona 
   }
 }
 
-export function segmentForResult(rt: ResultType): BlueDoorSegment {
+export function segmentForResult(rt: ResultType): OpPlatformSegment {
   return isB2BResult(rt) ? "B2B" : "B2C";
 }

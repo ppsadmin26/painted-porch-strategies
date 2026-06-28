@@ -17,7 +17,7 @@ import {
 } from "@/data/pathFinderQuiz";
 import { saveQuizContactPrefill, clearQuizContactPrefill } from "./quizContactPrefill";
 import { useQuizRelatedContent } from "./useQuizRelatedContent";
-import { useBlueDoorRecommendations } from "./useBlueDoorRecommendations";
+import { useOpPlatformRecommendations } from "./useOpPlatformRecommendations";
 
 interface Props {
   open: boolean;
@@ -366,7 +366,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showResult, track, answers, overrides, viewableKeys, comingSoonKeys, rtPools, featuredKeys]);
   const { items: relatedContent } = useQuizRelatedContent(result?.resultType ?? null);
-  const { group: blueDoorGroup } = useBlueDoorRecommendations(result, answers);
+  const { group: opPlatformGroup } = useOpPlatformRecommendations(result, answers);
 
 
   // Persist the prefill payload so /contact can hydrate from quiz context even
@@ -443,7 +443,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
           recommendations: [
             ...(result.primaryGroup ? [result.primaryGroup] : []),
             ...result.groups,
-            ...(blueDoorGroup ? [blueDoorGroup] : []),
+            ...(opPlatformGroup ? [opPlatformGroup] : []),
           ].map((g) => ({
             heading: g.heading,
             items: g.offerings.map((o) => ({ name: o.name, url: o.url, blurb: o.blurb, tier: o.tier })),
@@ -629,11 +629,11 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               // (blog/media). Trim Blue Door first if both would exceed 4.
               const insightCount = Math.min(relatedContent.length, 2);
               const bdMax = Math.max(0, 4 - insightCount);
-              const bdTrimmed = blueDoorGroup ? blueDoorGroup.offerings.slice(0, bdMax) : [];
+              const bdTrimmed = opPlatformGroup ? opPlatformGroup.offerings.slice(0, bdMax) : [];
               if (bdTrimmed.length === 0) return null;
               return (
                 <RecGroup
-                  heading={blueDoorGroup!.heading}
+                  heading={opPlatformGroup!.heading}
                   offerings={bdTrimmed}
                   onClose={() => onOpenChange(false)}
                 />
