@@ -623,17 +623,25 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               <RecGroup key={i} heading={g.heading} offerings={g.offerings} onClose={() => onOpenChange(false)} />
             ))}
 
-            {blueDoorGroup && (
-              <RecGroup
-                heading={blueDoorGroup.heading}
-                offerings={blueDoorGroup.offerings}
-                onClose={() => onOpenChange(false)}
-              />
-            )}
+            {(() => {
+              const existingCount =
+                (result.primaryGroup?.offerings.length ?? 0) +
+                result.groups.reduce((sum, g) => sum + g.offerings.length, 0);
+              // Suppress supplemental catalog group when results are already plentiful.
+              if (!blueDoorGroup || existingCount >= 4) return null;
+              const trimmed = blueDoorGroup.offerings.slice(0, Math.max(1, 4 - existingCount));
+              return (
+                <RecGroup
+                  heading={blueDoorGroup.heading}
+                  offerings={trimmed}
+                  onClose={() => onOpenChange(false)}
+                />
+              );
+            })()}
 
             {relatedContent.length > 0 && (
               <div className="mt-6">
-                <h4 className="font-poppins text-base font-semibold text-navy mb-2">From the Porch — Related Reading</h4>
+                <h4 className="font-poppins text-base font-semibold text-navy mb-2">Related Reading</h4>
                 <div className="grid gap-2">
                   {relatedContent.map((c) => {
                     const isExternal = /^https?:\/\//i.test(c.url);
