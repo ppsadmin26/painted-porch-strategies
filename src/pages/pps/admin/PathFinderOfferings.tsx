@@ -339,13 +339,15 @@ export default function PathFinderOfferings() {
             <option value="live">Live ({rows.filter(r => r.is_live).length})</option>
             <option value="broken-launch">Broken launch link ({brokenRows.length})</option>
           </select>
-          <Button
-            size="sm"
-            onClick={() => setNewOpen(true)}
-            className="bg-primary text-white hover:bg-primary/90"
+          <a
+            href={BLUEDOOR_ADMIN_BASE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-medium text-bluedoor hover:underline"
+            title="New offerings must be authored in the Blue Door Offerings Register"
           >
-            <Plus className="w-4 h-4 mr-1" /> New offering
-          </Button>
+            <Plus className="w-4 h-4" /> New in Blue Door <ExternalLink className="w-3 h-3" />
+          </a>
         </div>
       </div>
 
