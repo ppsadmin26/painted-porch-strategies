@@ -1,22 +1,22 @@
 import { describe, expect, it, vi, afterEach } from "vitest";
 import {
-  BLUEDOOR_RECS_ENDPOINT,
-  buildBlueDoorRecsUrl,
+  OP_PLATFORM_RECS_ENDPOINT,
+  buildOpPlatformRecsUrl,
   fetchOpPlatformRecommendations,
 } from "@/integrations/op-platform/recommendations";
 import {
   isB2BResult,
-  resolveBlueDoorPersona,
+  resolveOpPlatformPersona,
   segmentForResult,
 } from "@/integrations/op-platform/personaMap";
 
-describe("buildBlueDoorRecsUrl", () => {
+describe("buildOpPlatformRecsUrl", () => {
   it("returns the bare endpoint with no filters", () => {
-    expect(buildBlueDoorRecsUrl({})).toBe(BLUEDOOR_RECS_ENDPOINT);
+    expect(buildOpPlatformRecsUrl({})).toBe(OP_PLATFORM_RECS_ENDPOINT);
   });
 
   it("serializes scalar params", () => {
-    const url = buildBlueDoorRecsUrl({
+    const url = buildOpPlatformRecsUrl({
       persona: "b2b_leader",
       surface: "quiz",
       limit: 6,
@@ -29,7 +29,7 @@ describe("buildBlueDoorRecsUrl", () => {
   });
 
   it("CSV-joins array params", () => {
-    const url = buildBlueDoorRecsUrl({
+    const url = buildOpPlatformRecsUrl({
       persona: ["b2b_leader", "b2b_exec"],
       format: ["workshop", "lab"],
     });
@@ -38,8 +38,8 @@ describe("buildBlueDoorRecsUrl", () => {
   });
 
   it("omits empty arrays", () => {
-    const url = buildBlueDoorRecsUrl({ persona: [], format: [] });
-    expect(url).toBe(BLUEDOOR_RECS_ENDPOINT);
+    const url = buildOpPlatformRecsUrl({ persona: [], format: [] });
+    expect(url).toBe(OP_PLATFORM_RECS_ENDPOINT);
   });
 });
 
@@ -76,7 +76,7 @@ describe("persona mapping", () => {
     (["RT1", "RT2", "RT3", "RT4", "RT5", "RT6"] as const).forEach((rt) => {
       expect(isB2BResult(rt)).toBe(false);
       expect(segmentForResult(rt)).toBe("B2C");
-      expect(resolveBlueDoorPersona({ resultType: rt })).toBe("b2c_individual");
+      expect(resolveOpPlatformPersona({ resultType: rt })).toBe("b2c_individual");
     });
   });
 
@@ -84,25 +84,25 @@ describe("persona mapping", () => {
     (["RT-A", "RT-B", "RT-C", "RT-D", "RT-E"] as const).forEach((rt) => {
       expect(isB2BResult(rt)).toBe(true);
       expect(segmentForResult(rt)).toBe("B2B");
-      expect(resolveBlueDoorPersona({ resultType: rt })).toBe("b2b_leader");
+      expect(resolveOpPlatformPersona({ resultType: rt })).toBe("b2b_leader");
     });
   });
 
   it("honors explicit scope signals", () => {
-    expect(resolveBlueDoorPersona({ resultType: "RT-A", scope: "exec" })).toBe(
+    expect(resolveOpPlatformPersona({ resultType: "RT-A", scope: "exec" })).toBe(
       "b2b_exec",
     );
-    expect(resolveBlueDoorPersona({ resultType: "RT-B", scope: "team" })).toBe(
+    expect(resolveOpPlatformPersona({ resultType: "RT-B", scope: "team" })).toBe(
       "b2b_team",
     );
-    expect(resolveBlueDoorPersona({ resultType: "RT-C", scope: "org" })).toBe(
+    expect(resolveOpPlatformPersona({ resultType: "RT-C", scope: "org" })).toBe(
       "b2b_org",
     );
   });
 
   it("Scout Mode reroutes B2B → b2c_individual", () => {
     expect(
-      resolveBlueDoorPersona({ resultType: "RT-A", scoutMode: true }),
+      resolveOpPlatformPersona({ resultType: "RT-A", scoutMode: true }),
     ).toBe("b2c_individual");
   });
 });
