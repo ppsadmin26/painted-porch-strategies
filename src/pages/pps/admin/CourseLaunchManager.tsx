@@ -131,7 +131,7 @@ export default function CourseLaunchManager() {
     setRows((prev) => prev.map((r) => (r.slug === slug ? { ...r, [field]: value } : r)));
     const { error } = await supabase
       .from("course_launch_status")
-      .update({ [field]: value })
+      .update({ [field]: value } as never)
       .eq("slug", slug);
     if (error) {
       toast({ title: "Update failed", description: error.message, variant: "destructive" });
