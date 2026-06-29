@@ -52,7 +52,7 @@ function normalizeUrl(url: string): string {
 }
 
 function bdToOffering(rec: OpPlatformRecommendation, index: number): Offering | null {
-  if (!rec.url || !rec.url.trim()) return null;
+  if (!isSafeOpPlatformUrl(rec.url)) return null;
   return {
     key: `bd:${normalizeUrl(rec.url)}:${index}`,
     name: rec.name,
