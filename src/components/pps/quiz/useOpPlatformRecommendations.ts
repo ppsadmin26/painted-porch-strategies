@@ -133,7 +133,7 @@ export function useOpPlatformRecommendations(
         for (let i = 0; i < sorted.length && merged.length < MAX_ITEMS; i += 1) {
           const off = bdToOffering(sorted[i], i);
           if (!off) continue;
-          if (!off.url || !/^https?:\/\/|^\//.test(off.url)) continue;
+          if (!isSafeOpPlatformUrl(off.url)) continue;
           if (!off.name?.trim() || !off.blurb?.trim()) continue;
           if (urls.has(normalizeUrl(off.url))) continue;
           if (names.has(normalizeName(off.name))) continue;
