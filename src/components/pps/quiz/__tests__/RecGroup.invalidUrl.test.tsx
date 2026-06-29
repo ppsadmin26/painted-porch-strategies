@@ -26,8 +26,10 @@ describe("RecGroup — invalid URL defense-in-depth", () => {
     const placeholder = container.querySelector('[data-op-platform-invalid-url="true"]');
     expect(placeholder).not.toBeNull();
     expect(placeholder!.tagName).toBe("DIV");
-    expect(placeholder!.getAttribute("role")).toBe("group");
+    expect(placeholder!.getAttribute("role")).toBe("link");
+    expect(placeholder!.getAttribute("aria-disabled")).toBe("true");
     expect(placeholder!.getAttribute("aria-label")).toContain("link unavailable");
+    expect(placeholder!.getAttribute("aria-describedby")).toContain("bad-1-unavailable");
 
     // No anchor or router link rendered for this offering
     expect(within(placeholder as HTMLElement).queryByRole("link")).toBeNull();
@@ -35,6 +37,9 @@ describe("RecGroup — invalid URL defense-in-depth", () => {
 
     // Context still shown
     expect(getByText("Bad JS URL")).toBeInTheDocument();
+
+    // Visible, accessible unavailable text is rendered
+    expect(getByText("Link unavailable — check back soon")).toBeInTheDocument();
   });
 
   it.each([
@@ -45,11 +50,12 @@ describe("RecGroup — invalid URL defense-in-depth", () => {
     ["unsupported scheme", "ftp://example.com"],
     ["relative path without leading slash", "resources/foo"],
   ])("flags %s as invalid", (_label, url) => {
-    const { container } = renderGroup([
+    const { container, getByText } = renderGroup([
       { key: "k", name: "X", blurb: "y", url, tier: "Free" },
     ]);
     expect(container.querySelector('[data-op-platform-invalid-url="true"]')).not.toBeNull();
     expect(container.querySelectorAll("a").length).toBe(0);
+    expect(getByText("Link unavailable — check back soon")).toBeInTheDocument();
   });
 
   it("renders safe URLs as real links (no placeholder attribute)", () => {
