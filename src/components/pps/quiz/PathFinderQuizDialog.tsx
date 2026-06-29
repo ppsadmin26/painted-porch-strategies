@@ -802,15 +802,25 @@ export function RecGroup({ heading, offerings, onClose, primary }: { heading: st
             // Defense-in-depth: a recommendation slipped through with an
             // invalid / unsafe URL. Render a non-clickable placeholder so
             // the card still shows context but cannot navigate anywhere.
+            const unavailableId = `${o.key}-unavailable`;
             return (
               <div
                 key={o.key}
-                role="group"
-                aria-label={`${o.name} (link unavailable)`}
+                role="link"
+                aria-disabled="true"
+                aria-label={`${o.name} — link unavailable`}
+                aria-describedby={unavailableId}
+                tabIndex={-1}
                 data-op-platform-invalid-url="true"
                 className="block p-3 rounded-lg border border-border bg-muted/30 cursor-not-allowed opacity-75"
               >
                 {inner}
+                <p
+                  id={unavailableId}
+                  className="text-[11px] font-semibold text-raspberry mt-2"
+                >
+                  Link unavailable — check back soon
+                </p>
               </div>
             );
           }
