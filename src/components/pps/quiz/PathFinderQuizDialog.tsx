@@ -18,6 +18,7 @@ import {
 import { saveQuizContactPrefill, clearQuizContactPrefill } from "./quizContactPrefill";
 import { useQuizRelatedContent } from "./useQuizRelatedContent";
 import { useOpPlatformRecommendations } from "./useOpPlatformRecommendations";
+import { isSafeOpPlatformUrl } from "@/integrations/op-platform/urlValidation";
 
 interface Props {
   open: boolean;
