@@ -8,6 +8,7 @@ import {
   resolveOpPlatformPersona,
   segmentForResult,
 } from "@/integrations/op-platform/personaMap";
+import { isSafeOpPlatformUrl } from "@/integrations/op-platform/urlValidation";
 import type { Answers, Offering, QuizResult, ResultType } from "@/data/pathFinderQuiz";
 
 /**
