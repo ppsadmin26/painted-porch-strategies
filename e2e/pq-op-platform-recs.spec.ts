@@ -1,5 +1,6 @@
 import { test, expect, type Page } from "../playwright-fixture";
 import { PQ1, PQ2_B2C, B2C_QUESTIONS } from "../src/data/pathFinderQuiz";
+import { assertRecommendationLinksValid } from "./helpers/recommendationLinks";
 
 /**
  * Real-browser smoke for PPS Op Platform supplemental recommendations.
