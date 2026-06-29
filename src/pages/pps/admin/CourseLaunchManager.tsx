@@ -92,7 +92,7 @@ export default function CourseLaunchManager() {
     // notified_count, notified_at, last_notify_error) are revoked from the
     // anon/authenticated roles at the column-grant level. Admins read the full
     // row via the SECURITY DEFINER RPC below.
-    const { data, error } = await supabase.rpc("admin_list_course_launches");
+    const { data, error } = await (supabase as any).rpc("admin_list_course_launches");
     if (error) {
       toast({ title: "Failed to load", description: error.message, variant: "destructive" });
     } else {
