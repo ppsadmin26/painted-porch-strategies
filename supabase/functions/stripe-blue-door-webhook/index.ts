@@ -341,7 +341,7 @@ serve(async (req) => {
         `Amount: ${amountFormatted}\n` +
         `Internal Product ID: ${BLUE_DOOR_INTERNAL_PRODUCT_ID}\n` +
         `Stripe Checkout Session: ${orderId}\n` +
-        `Access link will be delivered June 29th, 2026.`
+        `Access link will be delivered July 6th, 2026.`
       )
     );
   }
