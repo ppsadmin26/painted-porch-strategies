@@ -98,62 +98,6 @@ test.describe("PPS Op Platform recommendation links — B2B (real browser)", () 
     await expect(dialog).toBeVisible({ timeout: 5000 });
     await page.waitForLoadState("networkidle").catch(() => { /* best-effort */ });
 
-    // 1. Every clickable recommendation href in the dialog.
-    const hrefs = await dialog.locator("a[href]").evaluateAll((nodes) =>
-      Array.from(
-        new Set(
-          (nodes as HTMLAnchorElement[])
-            .map((a) => a.getAttribute("href") ?? "")
-            .filter((h) => h.length > 0)
-            .filter((h) => !h.startsWith("#") && !h.startsWith("mailto:") && !h.startsWith("tel:")),
-        ),
-      ),
-    );
-
-    expect(
-      hrefs.length,
-      "B2B dialog should render at least one recommendation link",
-    ).toBeGreaterThan(0);
-
-    // 2. Safe-URL placeholders must not have rendered an <a>.
-    const invalidPlaceholders = dialog.locator('[data-op-platform-invalid-url="true"]');
-    const placeholderCount = await invalidPlaceholders.count();
-    if (placeholderCount > 0) {
-      const placeholderLinks = await invalidPlaceholders.locator("a[href]").count();
-      expect(placeholderLinks, "non-clickable fallback must not render an <a>").toBe(0);
-    }
-
-    // 3. Each href resolves with 2xx/3xx.
-    const baseURL = new URL(page.url()).origin;
-    const failures: string[] = [];
-    for (const href of hrefs) {
-      const absolute = href.startsWith("http") ? href : new URL(href, baseURL).toString();
-      try {
-        let resp = await page.request.fetch(absolute, {
-          method: "HEAD",
-          failOnStatusCode: false,
-          maxRedirects: 5,
-        });
-        if (resp.status() === 405 || resp.status() === 501) {
-          resp = await page.request.fetch(absolute, {
-            method: "GET",
-            failOnStatusCode: false,
-            maxRedirects: 5,
-          });
-        }
-        const status = resp.status();
-        if (status >= 400) {
-          failures.push(`${status} ${absolute}`);
-        }
-      } catch (err) {
-        failures.push(`THREW ${absolute}: ${(err as Error).message}`);
-      }
-    }
-
-    if (failures.length > 0) {
-      throw new Error(
-        `Broken B2B recommendation link(s) rendered in quiz result dialog:\n  - ${failures.join("\n  - ")}`,
-      );
-    }
+    await assertRecommendationLinksValid(page, dialog, "B2B quiz result dialog");
   });
 });
