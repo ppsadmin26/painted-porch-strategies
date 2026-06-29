@@ -181,20 +181,40 @@ Deno.serve(async (req) => {
   // === AuthZ: restrict templates anon/authenticated callers can send ===
   // Service role and admin/editor users may send any template. Everyone else
   // is limited to the public allowlist of user-initiated confirmations.
+  const authHeader = req.headers.get('authorization')
+  const anonKey = Deno.env.get('SUPABASE_ANON_KEY') || ''
   const privileged = await callerCanSendAnyTemplate(
-    req.headers.get('authorization'),
+    authHeader,
     supabaseUrl,
     supabaseServiceKey,
-    Deno.env.get('SUPABASE_ANON_KEY') || ''
+    anonKey
   )
-  if (!privileged && !PUBLIC_TEMPLATES.has(templateName)) {
-    return new Response(
-      JSON.stringify({ error: 'Template not permitted for this caller' }),
-      {
-        status: 403,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  if (!privileged) {
+    if (!PUBLIC_TEMPLATES.has(templateName)) {
+      return new Response(
+        JSON.stringify({ error: 'Template not permitted for this caller' }),
+        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
+    }
+    // Public templates still require a valid Supabase JWT (anon key or user
+    // JWT). This blocks fully unauthenticated curl against this function.
+    if (!hasValidSupabaseJwt(authHeader, anonKey, supabaseServiceKey)) {
+      return new Response(
+        JSON.stringify({ error: 'Authentication required' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
+    }
+    // Admin-targeted public templates additionally require an Origin from our
+    // own domains to limit replay/abuse spamming the admin inbox.
+    if (ADMIN_TARGETED_PUBLIC_TEMPLATES.has(templateName)) {
+      const origin = req.headers.get('origin')
+      if (!originAllowed(origin)) {
+        return new Response(
+          JSON.stringify({ error: 'Origin not permitted for this template' }),
+          { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        )
       }
-    )
+    }
   }
 
 
