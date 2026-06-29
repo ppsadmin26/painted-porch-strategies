@@ -5,6 +5,7 @@ import {
   CHANGE_BRANCH,
   type Question,
 } from "../src/data/pathFinderQuiz";
+import { assertRecommendationLinksValid } from "./helpers/recommendationLinks";
 
 /**
  * Real-browser smoke for PPS Op Platform supplemental recommendations on
