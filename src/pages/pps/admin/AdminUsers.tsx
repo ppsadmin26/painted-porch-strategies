@@ -358,7 +358,7 @@ export default function AdminUsers() {
       if (Object.keys(updates).length > 0) {
         const { error } = await supabase
           .from("profiles")
-          .update(updates)
+          .update(updates as never)
           .eq("id", editingProfile.id);
         if (error) throw error;
       }
