@@ -1113,6 +1113,30 @@ export type Database = {
           schedule: string
         }[]
       }
+      admin_list_course_launches: {
+        Args: never
+        Returns: {
+          admin_alert_enabled: boolean
+          checkout_url: string | null
+          course_name: string
+          course_path: string
+          created_at: string
+          last_notify_error: string | null
+          notified_at: string | null
+          notified_count: number
+          program_type: string
+          signup_confirmation_enabled: boolean
+          slug: string
+          status: string
+          updated_at: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "course_launch_status"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       admin_list_offering_notes: {
         Args: never
         Returns: {
