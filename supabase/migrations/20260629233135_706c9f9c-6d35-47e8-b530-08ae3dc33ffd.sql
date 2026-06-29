@@ -1,0 +1,1 @@
+UPDATE public.path_finder_offerings SET image_url = '/__l5e/assets-v1/45dd7441-67f7-4e67-8707-101e2f7bb34e/stractical-leadership.jpg' WHERE offering_key IN ('stracticalLeaderLab','stracticalLeader');
