@@ -765,7 +765,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   );
 }
 
-function RecGroup({ heading, offerings, onClose, primary }: { heading: string; offerings: { key: string; name: string; blurb: string; url: string; tier: string; isComingSoon?: boolean }[]; onClose: () => void; primary?: boolean }) {
+export function RecGroup({ heading, offerings, onClose, primary }: { heading: string; offerings: { key: string; name: string; blurb: string; url: string; tier: string; isComingSoon?: boolean }[]; onClose: () => void; primary?: boolean }) {
   return (
     <div className={`mt-4 ${primary ? "" : ""}`}>
       <h4 className="font-poppins text-base font-semibold text-navy mb-2">{heading}</h4>
