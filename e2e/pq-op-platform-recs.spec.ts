@@ -1,5 +1,6 @@
 import { test, expect, type Page } from "../playwright-fixture";
 import { PQ1, PQ2_B2C, B2C_QUESTIONS } from "../src/data/pathFinderQuiz";
+import { assertRecommendationLinksValid } from "./helpers/recommendationLinks";
 
 /**
  * Real-browser smoke for PPS Op Platform supplemental recommendations.
@@ -77,68 +78,6 @@ test.describe("PPS Op Platform recommendation links (real browser)", () => {
     await expect(dialog).toBeVisible({ timeout: 5000 });
     await page.waitForLoadState("networkidle").catch(() => { /* best-effort */ });
 
-    // 1. Collect every clickable recommendation href in the dialog.
-    const hrefs = await dialog.locator("a[href]").evaluateAll((nodes) =>
-      Array.from(
-        new Set(
-          (nodes as HTMLAnchorElement[])
-            .map((a) => a.getAttribute("href") ?? "")
-            .filter((h) => h.length > 0)
-            // Skip in-page anchors and mailto/tel which aren't navigations.
-            .filter((h) => !h.startsWith("#") && !h.startsWith("mailto:") && !h.startsWith("tel:")),
-        ),
-      ),
-    );
-
-    expect(hrefs.length, "dialog should render at least one recommendation link").toBeGreaterThan(0);
-
-    // 2. Any cards that fell back to the non-clickable placeholder must
-    //    not have rendered an <a> — they're <div data-op-platform-invalid-url>.
-    const invalidPlaceholders = dialog.locator('[data-op-platform-invalid-url="true"]');
-    const placeholderCount = await invalidPlaceholders.count();
-    if (placeholderCount > 0) {
-      // None of the placeholders should contain a navigable link.
-      const placeholderLinks = await invalidPlaceholders.locator("a[href]").count();
-      expect(placeholderLinks, "non-clickable fallback must not render an <a>").toBe(0);
-    }
-
-    // 3. Validate each href actually resolves. Internal routes are
-    //    fetched via the dev server; external links are hit with HEAD
-    //    (falling back to GET on 405) using the page's network stack so
-    //    cookies / origin headers behave like a real navigation.
-    const baseURL = new URL(page.url()).origin;
-    const failures: string[] = [];
-    for (const href of hrefs) {
-      const absolute = href.startsWith("http") ? href : new URL(href, baseURL).toString();
-      try {
-        let resp = await page.request.fetch(absolute, {
-          method: "HEAD",
-          failOnStatusCode: false,
-          maxRedirects: 5,
-        });
-        if (resp.status() === 405 || resp.status() === 501) {
-          resp = await page.request.fetch(absolute, {
-            method: "GET",
-            failOnStatusCode: false,
-            maxRedirects: 5,
-          });
-        }
-        const status = resp.status();
-        // Treat any 2xx/3xx as a working URL. SPA routes always 200 from
-        // the dev server because index.html is served for unknown paths,
-        // which is exactly the behavior production also uses.
-        if (status >= 400) {
-          failures.push(`${status} ${absolute}`);
-        }
-      } catch (err) {
-        failures.push(`THREW ${absolute}: ${(err as Error).message}`);
-      }
-    }
-
-    if (failures.length > 0) {
-      throw new Error(
-        `Broken recommendation link(s) rendered in quiz result dialog:\n  - ${failures.join("\n  - ")}`,
-      );
-    }
+    await assertRecommendationLinksValid(page, dialog, "B2C quiz result dialog");
   });
 });
