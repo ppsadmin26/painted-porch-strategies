@@ -46,6 +46,37 @@ const PUBLIC_TEMPLATES = new Set([
   'stractical-waitlist',
 ])
 
+// Templates that target a fixed internal/admin recipient (template.to is set).
+// These are abuse-prone (admin inbox spam) so we additionally require an
+// Origin header from our own domains.
+const ADMIN_TARGETED_PUBLIC_TEMPLATES = new Set([
+  'contact-notification',
+  'easter-egg-notification',
+])
+
+const ALLOWED_ORIGINS: RegExp[] = [
+  /^https?:\/\/(www\.)?paintedporchstrategies\.com$/i,
+  /^https?:\/\/(www\.)?onthepaintedporch\.com$/i,
+  /^https?:\/\/[a-z0-9-]+\.lovable\.app$/i,
+  /^https?:\/\/[a-z0-9-]+\.lovableproject\.com$/i,
+  /^http:\/\/localhost(:\d+)?$/i,
+]
+
+function originAllowed(origin: string | null): boolean {
+  if (!origin) return false
+  return ALLOWED_ORIGINS.some((re) => re.test(origin))
+}
+
+// Verifies the caller presented at least a Supabase JWT (anon key or user
+// JWT). Blocks fully unauthenticated callers that lack even the anon key.
+function hasValidSupabaseJwt(authHeader: string | null, anonKey: string, serviceKey: string): boolean {
+  if (!authHeader?.startsWith('Bearer ')) return false
+  const token = authHeader.slice(7).trim()
+  if (!token) return false
+  if (token === anonKey || token === serviceKey) return true
+  return token.split('.').length === 3
+}
+
 async function callerCanSendAnyTemplate(
   authHeader: string | null,
   supabaseUrl: string,
@@ -56,14 +87,10 @@ async function callerCanSendAnyTemplate(
   const token = authHeader.slice(7)
   if (!token) return false
 
-  // Service-role fast path: only matches when the caller presented the actual
-  // service-role secret as a Bearer token (used by trusted edge functions).
-  // Constant-time-ish comparison via length+char check is unnecessary — the
-  // secret value comparison itself is enough to reject forged "role" claims.
+  // Service-role fast path
   if (token === serviceKey) return true
 
-  // Otherwise, cryptographically verify the JWT by asking Supabase Auth.
-  // getUser(token) validates the signature server-side and returns the user.
+  // Cryptographically verify the JWT via Supabase Auth.
   const admin = createClient(supabaseUrl, serviceKey)
   try {
     const { data: userRes, error: userErr } = await admin.auth.getUser(token)
@@ -154,20 +181,40 @@ Deno.serve(async (req) => {
   // === AuthZ: restrict templates anon/authenticated callers can send ===
   // Service role and admin/editor users may send any template. Everyone else
   // is limited to the public allowlist of user-initiated confirmations.
+  const authHeader = req.headers.get('authorization')
+  const anonKey = Deno.env.get('SUPABASE_ANON_KEY') || ''
   const privileged = await callerCanSendAnyTemplate(
-    req.headers.get('authorization'),
+    authHeader,
     supabaseUrl,
     supabaseServiceKey,
-    Deno.env.get('SUPABASE_ANON_KEY') || ''
+    anonKey
   )
-  if (!privileged && !PUBLIC_TEMPLATES.has(templateName)) {
-    return new Response(
-      JSON.stringify({ error: 'Template not permitted for this caller' }),
-      {
-        status: 403,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  if (!privileged) {
+    if (!PUBLIC_TEMPLATES.has(templateName)) {
+      return new Response(
+        JSON.stringify({ error: 'Template not permitted for this caller' }),
+        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
+    }
+    // Public templates still require a valid Supabase JWT (anon key or user
+    // JWT). This blocks fully unauthenticated curl against this function.
+    if (!hasValidSupabaseJwt(authHeader, anonKey, supabaseServiceKey)) {
+      return new Response(
+        JSON.stringify({ error: 'Authentication required' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
+    }
+    // Admin-targeted public templates additionally require an Origin from our
+    // own domains to limit replay/abuse spamming the admin inbox.
+    if (ADMIN_TARGETED_PUBLIC_TEMPLATES.has(templateName)) {
+      const origin = req.headers.get('origin')
+      if (!originAllowed(origin)) {
+        return new Response(
+          JSON.stringify({ error: 'Origin not permitted for this template' }),
+          { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        )
       }
-    )
+    }
   }
 
 

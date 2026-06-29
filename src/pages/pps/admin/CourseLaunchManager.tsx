@@ -88,16 +88,18 @@ export default function CourseLaunchManager() {
 
   const load = async () => {
     setLoading(true);
-    const { data, error } = await supabase
-      .from("course_launch_status")
-      .select("*")
-      .order("course_name");
+    // Sensitive columns (admin_alert_enabled, signup_confirmation_enabled,
+    // notified_count, notified_at, last_notify_error) are revoked from the
+    // anon/authenticated roles at the column-grant level. Admins read the full
+    // row via the SECURITY DEFINER RPC below.
+    const { data, error } = await (supabase as any).rpc("admin_list_course_launches");
     if (error) {
       toast({ title: "Failed to load", description: error.message, variant: "destructive" });
     } else {
-      setRows((data || []) as CourseRow[]);
+      const rowsData = (data || []) as CourseRow[];
+      setRows(rowsData);
       const d: Record<string, string> = {};
-      for (const r of (data || []) as CourseRow[]) d[r.slug] = r.checkout_url || "";
+      for (const r of rowsData) d[r.slug] = r.checkout_url || "";
       setDrafts(d);
     }
     setLoading(false);
@@ -131,7 +133,7 @@ export default function CourseLaunchManager() {
     setRows((prev) => prev.map((r) => (r.slug === slug ? { ...r, [field]: value } : r)));
     const { error } = await supabase
       .from("course_launch_status")
-      .update({ [field]: value })
+      .update({ [field]: value } as never)
       .eq("slug", slug);
     if (error) {
       toast({ title: "Update failed", description: error.message, variant: "destructive" });

@@ -92,7 +92,7 @@ export function usePageStatuses() {
         if (category) patch.category = category;
         const { error } = await supabase
           .from("page_status")
-          .update(patch)
+          .update(patch as never)
           .eq("id", existing.id);
         if (error) throw error;
       } else {

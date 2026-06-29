@@ -253,7 +253,7 @@ export default function AdminUsers() {
           if (inviteShowAuthorFields) Object.assign(profileUpdates, authorFields);
           if (inviteRole === "editor") profileUpdates.editor_sections = inviteEditorSections;
           if (Object.keys(profileUpdates).length > 0) {
-            await supabase.from("profiles").update(profileUpdates).eq("id", data.userId);
+            await supabase.from("profiles").update(profileUpdates as never).eq("id", data.userId);
           }
         }
       }
@@ -358,7 +358,7 @@ export default function AdminUsers() {
       if (Object.keys(updates).length > 0) {
         const { error } = await supabase
           .from("profiles")
-          .update(updates)
+          .update(updates as never)
           .eq("id", editingProfile.id);
         if (error) throw error;
       }
