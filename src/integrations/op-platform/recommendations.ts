@@ -118,9 +118,19 @@ export async function fetchOpPlatformRecommendations(
       `Blue Door recommendations request failed (${res.status}): ${errBody}`,
     );
   }
-  const data = (await res.json()) as OpPlatformRecommendationResponse;
+  const data = (await res.json()) as Partial<OpPlatformRecommendationResponse>;
+  const { validateOpPlatformRecommendations } = await import("./schema");
+  const { valid, dropped } = validateOpPlatformRecommendations(data.results);
+  if (dropped.length > 0 && typeof console !== "undefined") {
+    // Single grouped warning per fetch so a noisy catalog doesn't spam the
+    // browser console. Includes index + field for fast triage.
+    console.warn(
+      `[op-platform] dropped ${dropped.length} invalid recommendation row(s):`,
+      dropped,
+    );
+  }
   return {
-    count: data.count ?? 0,
-    results: Array.isArray(data.results) ? data.results : [],
+    count: valid.length,
+    results: valid,
   };
 }
