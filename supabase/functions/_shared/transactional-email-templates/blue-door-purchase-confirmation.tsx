@@ -27,7 +27,7 @@ const BlueDoorPurchaseConfirmation = ({
   return (
     <Html lang="en" dir="ltr">
       <Head />
-      <Preview>Your Blue Door is reserved. Access opens June 29th, 2026.</Preview>
+      <Preview>Your Blue Door is reserved. Access opens July 6th, 2026.</Preview>
       <Body style={main}>
         <Container style={container}>
           <Link href="https://onthepaintedporch.com" style={{ display: "block", textDecoration: "none" }}>
@@ -41,7 +41,7 @@ const BlueDoorPurchaseConfirmation = ({
 
           <Section style={highlightBox}>
             <Text style={highlightHeading}>
-              📅 Your assessment opens Monday, June 29th, 2026
+              📅 Your assessment opens Monday, July 6th, 2026
             </Text>
             <Text style={highlightText}>
               On launch day, we will email you a secure access link from this same address. Open the link, complete the appraisal (less than 30 minutes), and your detailed executive brief will be delivered within 72 business hours.
@@ -67,10 +67,10 @@ const BlueDoorPurchaseConfirmation = ({
           <Heading style={h2}>What happens next</Heading>
           <Section style={linksSection}>
             <Text style={linkItem}>
-              <strong>1. Now → June 14th:</strong> No action needed. Watch for our launch-day email.
+              <strong>1. Now → June 21st:</strong> No action needed. Watch for our launch-day email.
             </Text>
             <Text style={linkItem}>
-              <strong>2. June 29th:</strong> Your access link arrives in this inbox.
+              <strong>2. July 6th:</strong> Your access link arrives in this inbox.
             </Text>
             <Text style={linkItem}>
               <strong>3. Within 72 business hours of completion:</strong> Your custom executive brief, with 3 to 4 viable change paths and structural recommendations, lands in your inbox.
@@ -119,7 +119,7 @@ const BlueDoorPurchaseConfirmation = ({
 
 export const template = {
   component: BlueDoorPurchaseConfirmation,
-  subject: 'Your Blue Door is reserved — access opens June 29th',
+  subject: 'Your Blue Door is reserved — access opens July 6th',
   displayName: 'Blue Door purchase confirmation',
   previewData: {
     firstName: 'Jane',

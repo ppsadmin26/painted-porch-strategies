@@ -54,7 +54,7 @@ export default function BlueDoorSuccess() {
         {isPreLaunch && (
           <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-5 mb-12 text-left">
             <p className="text-body font-poppins font-bold text-navy mb-1">
-              🚪 Launching June 29th, 2026
+              🚪 Launching July 6th, 2026
             </p>
             <p className="text-body text-foreground -sm leading-relaxed">
               Your spot is reserved. On launch day, we'll email you a secure access link to begin your Blue Door appraisal.
