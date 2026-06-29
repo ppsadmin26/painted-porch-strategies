@@ -18,6 +18,7 @@ import {
 import { saveQuizContactPrefill, clearQuizContactPrefill } from "./quizContactPrefill";
 import { useQuizRelatedContent } from "./useQuizRelatedContent";
 import { useOpPlatformRecommendations } from "./useOpPlatformRecommendations";
+import { isSafeOpPlatformUrl } from "@/integrations/op-platform/urlValidation";
 
 interface Props {
   open: boolean;
@@ -770,7 +771,8 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
       <h4 className="font-poppins text-base font-semibold text-navy mb-2">{heading}</h4>
       <div className="grid gap-2">
         {offerings.map((o) => {
-          const isExternal = /^https?:\/\//i.test(o.url);
+          const urlIsSafe = isSafeOpPlatformUrl(o.url);
+          const isExternal = urlIsSafe && /^https?:\/\//i.test(o.url);
           const className = "block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
           const inner = (
             <div className="flex items-start justify-between gap-3">
@@ -796,6 +798,22 @@ function RecGroup({ heading, offerings, onClose, primary }: { heading: string; o
               </div>
             </div>
           );
+          if (!urlIsSafe) {
+            // Defense-in-depth: a recommendation slipped through with an
+            // invalid / unsafe URL. Render a non-clickable placeholder so
+            // the card still shows context but cannot navigate anywhere.
+            return (
+              <div
+                key={o.key}
+                role="group"
+                aria-label={`${o.name} (link unavailable)`}
+                data-op-platform-invalid-url="true"
+                className="block p-3 rounded-lg border border-border bg-muted/30 cursor-not-allowed opacity-75"
+              >
+                {inner}
+              </div>
+            );
+          }
           if (isExternal) {
             return (
               <a

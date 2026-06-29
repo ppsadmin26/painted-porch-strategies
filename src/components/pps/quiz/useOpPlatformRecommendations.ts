@@ -8,6 +8,7 @@ import {
   resolveOpPlatformPersona,
   segmentForResult,
 } from "@/integrations/op-platform/personaMap";
+import { isSafeOpPlatformUrl } from "@/integrations/op-platform/urlValidation";
 import type { Answers, Offering, QuizResult, ResultType } from "@/data/pathFinderQuiz";
 
 /**
@@ -51,7 +52,7 @@ function normalizeUrl(url: string): string {
 }
 
 function bdToOffering(rec: OpPlatformRecommendation, index: number): Offering | null {
-  if (!rec.url || !rec.url.trim()) return null;
+  if (!isSafeOpPlatformUrl(rec.url)) return null;
   return {
     key: `bd:${normalizeUrl(rec.url)}:${index}`,
     name: rec.name,
@@ -132,7 +133,7 @@ export function useOpPlatformRecommendations(
         for (let i = 0; i < sorted.length && merged.length < MAX_ITEMS; i += 1) {
           const off = bdToOffering(sorted[i], i);
           if (!off) continue;
-          if (!off.url || !/^https?:\/\/|^\//.test(off.url)) continue;
+          if (!isSafeOpPlatformUrl(off.url)) continue;
           if (!off.name?.trim() || !off.blurb?.trim()) continue;
           if (urls.has(normalizeUrl(off.url))) continue;
           if (names.has(normalizeName(off.name))) continue;
