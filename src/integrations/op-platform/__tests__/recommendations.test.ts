@@ -50,15 +50,51 @@ describe("fetchOpPlatformRecommendations", () => {
   });
 
   it("returns parsed body on 200", async () => {
+    const row = {
+      name: "X",
+      short_blurb: "blurb",
+      url: "/workshops/x",
+      format: "workshop",
+      catalog_segment: "B2B",
+      audience_personas: ["b2b_leader"],
+      content_themes: [],
+      pillar_alignment: [],
+      is_live: true,
+      status: "live",
+    };
     globalThis.fetch = vi.fn(async () =>
       new Response(
-        JSON.stringify({ count: 1, results: [{ name: "X" }] }),
+        JSON.stringify({ count: 1, results: [row] }),
         { status: 200, headers: { "Content-Type": "application/json" } },
       ),
     ) as typeof fetch;
     const out = await fetchOpPlatformRecommendations({ persona: "b2b_leader" });
     expect(out.count).toBe(1);
     expect(out.results[0].name).toBe("X");
+  });
+
+  it("drops rows that fail schema validation", async () => {
+    const good = {
+      name: "Good",
+      short_blurb: "ok",
+      url: "/ok",
+      format: "workshop",
+      catalog_segment: "B2B",
+    };
+    const badUrl = { ...good, name: "BadUrl", url: "javascript:alert(1)" };
+    const noName = { ...good, name: "" };
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    globalThis.fetch = vi.fn(async () =>
+      new Response(
+        JSON.stringify({ count: 3, results: [good, badUrl, noName] }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    ) as typeof fetch;
+    const out = await fetchOpPlatformRecommendations({ persona: "b2b_leader" });
+    expect(out.count).toBe(1);
+    expect(out.results.map((r) => r.name)).toEqual(["Good"]);
+    expect(warn).toHaveBeenCalled();
+    warn.mockRestore();
   });
 
   it("throws on non-2xx", async () => {
