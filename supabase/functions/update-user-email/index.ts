@@ -75,9 +75,12 @@ Deno.serve(async (req) => {
     }
 
     // Update the auth user's email
+    // For self-updates, do NOT set email_confirm: true — Supabase must send a
+    // verification link to the new address so we only commit the change after
+    // the user proves ownership. Admin-initiated changes still auto-confirm.
     const { data: updatedUser, error: updateError } = await adminClient.auth.admin.updateUserById(
       userId,
-      { email: newEmail, email_confirm: true }
+      isSelfUpdate ? { email: newEmail } : { email: newEmail, email_confirm: true }
     );
 
     if (updateError) {
