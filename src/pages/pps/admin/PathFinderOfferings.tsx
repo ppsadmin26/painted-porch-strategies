@@ -661,6 +661,36 @@ export default function PathFinderOfferings() {
                   </div>
                 </div>
 
+                {(() => {
+                  const tier = (valueOf(row, "tier") ?? "") as string;
+                  const summary = routingSummaryForTier(tier);
+                  return (
+                    <div className="mb-3 rounded-md border border-dashed border-primary/30 bg-primary/5 px-3 py-3">
+                      <div className="flex items-center justify-between mb-1 gap-2 flex-wrap">
+                        <Label className="text-xs font-poppins font-semibold text-navy uppercase tracking-wide">
+                          Routing rules · how this offering reaches the quiz
+                        </Label>
+                        <div className="flex items-center gap-1">
+                          <Badge variant="outline" className="text-[10px]">{PLACEMENT_BADGE_COPY[summary.placement]}</Badge>
+                          <Link to="/admin/quiz-rules" className="text-[11px] text-bluedoor hover:underline ml-1">
+                            Full rules →
+                          </Link>
+                        </div>
+                      </div>
+                      <p className="text-xs font-medium text-navy/80 mb-2">{summary.headline}</p>
+                      <ul className="list-disc pl-5 space-y-1 text-xs text-foreground/80">
+                        {summary.rules.map((r, i) => <li key={i}>{r}</li>)}
+                      </ul>
+                      {summary.personas.length > 0 && (
+                        <p className="text-[11px] text-muted-foreground mt-2">
+                          Personas reached: {summary.personas.join(", ")}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })()}
+
+
                 <div className="mb-3 rounded-md border border-dashed border-bluedoor/40 bg-bluedoor/5 px-3 py-2">
                   <div className="flex items-center justify-between mb-1">
                     <Label className="text-xs font-semibold text-bluedoor">
