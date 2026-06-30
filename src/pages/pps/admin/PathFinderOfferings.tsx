@@ -247,11 +247,11 @@ export default function PathFinderOfferings() {
   const filtered = useMemo(() => {
     return rows.filter((r) => {
       if (showOnly === "broken-launch" && !brokenIds.has(r.id)) return false;
-      if (showOnly === "needs-page" && (r.is_live || (r.dedicated_url && r.dedicated_url !== r.current_url))) {
-        // "needs-page" = not live AND no dedicated_url set yet
-        if (r.is_live || r.dedicated_url) return false;
+      if (showOnly === "needs-page" && (r.is_published || (r.dedicated_url && r.dedicated_url !== r.current_url))) {
+        // "needs-page" = not published AND no dedicated_url set yet
+        if (r.is_published || r.dedicated_url) return false;
       }
-      if (showOnly === "live" && !r.is_live) return false;
+      if (showOnly === "live" && !r.is_published) return false;
       if (filter) {
         const q = filter.toLowerCase();
         if (
