@@ -538,16 +538,13 @@ export default function PathFinderOfferings() {
               <div key={row.id} id={`offering-${row.id}`} className="border rounded-lg p-4 bg-white">
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <select
-                      value={valueOf(row, "tier")}
-                      onChange={(e) => patch(row.id, { tier: e.target.value })}
-                      className={`h-7 rounded-md border px-2 text-xs font-medium ${TIER_COLORS[valueOf(row, "tier")] ?? "bg-background"}`}
-                      title="Pricing tier / category"
+                    <span
+                      className={`inline-flex items-center h-7 rounded-md border border-dashed border-bluedoor/40 px-2 text-xs font-medium ${TIER_COLORS[valueOf(row, "tier")] ?? "bg-background"}`}
+                      title="Tier is canonical — edit in PPS Op Platform"
                     >
-                      {TIER_OPTIONS.map((t) => (
-                        <option key={t} value={t}>{t}</option>
-                      ))}
-                    </select>
+                      {valueOf(row, "tier") || "—"}
+                      <span className="ml-1 text-[10px] text-bluedoor">· canonical</span>
+                    </span>
                     {row.facilitator && <Badge variant="outline">{row.facilitator}</Badge>}
                     <code className="text-xs text-muted-foreground">{row.offering_key}</code>
                     {isQuizEligible({
