@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import type { OfferingKey, ResultType } from "@/data/pathFinderQuiz";
+import { isOfferingPublished } from "@/lib/offeringVisibility";
 
 export type RtPoolOverrides = Partial<
   Record<ResultType, { free?: OfferingKey[]; speaking?: OfferingKey[] }>
@@ -13,8 +14,8 @@ interface OverridesResult {
 
 // Returns a map: offering_key -> resolved URL, plus admin-managed RT-pool
 // overrides (which offerings appear in which result-type pools).
-// If is_live=true and dedicated_url is set, that wins. Otherwise current_url.
-// Anchor_id, when present, is appended (#anchor).
+// Phase C: published-state lives on `is_published` (Op Platform owned).
+// `is_live` is still selected during transition for legacy fallback.
 export function usePathFinderOverrides(): Record<string, string> & { __full?: OverridesResult } {
   const [overrides, setOverrides] = useState<Record<string, string>>({});
 
@@ -24,7 +25,8 @@ export function usePathFinderOverrides(): Record<string, string> & { __full?: Ov
       const [offRes, draftsRes] = await Promise.all([
         supabase
           .from("path_finder_offerings")
-          .select("offering_key, current_url, dedicated_url, anchor_id, is_live"),
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .select("offering_key, current_url, dedicated_url, anchor_id, is_live, is_published") as any,
         supabase.from("page_status").select("path").eq("status", "draft"),
       ]);
       if (offRes.error || !offRes.data || cancelled) return;
@@ -40,16 +42,18 @@ export function usePathFinderOverrides(): Record<string, string> & { __full?: Ov
         return t.split("#")[0].split("?")[0] || null;
       };
       const map: Record<string, string> = {};
-      for (const row of offRes.data) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      for (const row of offRes.data as any[]) {
+        const published = isOfferingPublished(row);
         const dedicatedIsDraft = (() => {
           const p = pathOf(row.dedicated_url);
           return p ? draftPaths.has(p) : false;
         })();
-        // Prefer dedicated_url when live+set AND its page is not draft.
+        // Prefer dedicated_url when published+set AND its page is not draft.
         // Otherwise fall back to current_url + anchor so users land on the
         // parent page's launch-list / coming-soon card instead of a draft page.
         let url =
-          row.is_live && row.dedicated_url && !dedicatedIsDraft
+          published && row.dedicated_url && !dedicatedIsDraft
             ? row.dedicated_url
             : row.current_url;
         if (!url) continue;
