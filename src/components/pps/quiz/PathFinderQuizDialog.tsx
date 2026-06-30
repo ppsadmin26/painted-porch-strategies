@@ -711,14 +711,38 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               remaining -= (bdTrimmed.length + relatedToShow.length);
 
 
+              // "Why you got this" reason tags — surface the signal that
+              // routed each card so the recommendation logic is verifiable
+              // at a glance.
+              const scoutMode = answers["Q4DM"] === "A";
+              const rtLabel = `${result.resultType}${result.headline ? ` — ${result.headline}` : ""}`;
+              const primaryReason = scoutMode
+                ? `Scout Mode reroute · individual-focus signal (${rtLabel})`
+                : `Primary match for ${rtLabel}`;
+              const reasonForGroupHeading = (heading: string) => {
+                const h = heading.toLowerCase();
+                if (/blue.?door|deeper/.test(h)) return `Org-level engagement signal · ${rtLabel}`;
+                if (/workshop/.test(h)) return `Workshop pool for ${rtLabel}`;
+                if (/speaking|keynote/.test(h)) return `Speaking pool for ${rtLabel}`;
+                if (/free|resource|porch/.test(h)) return `Free-resource pool for ${rtLabel}`;
+                if (/lab|amplify/.test(h)) return `Lab pool for ${rtLabel}`;
+                if (/ignite/.test(h)) return `IGNITE pool for ${rtLabel}`;
+                if (/scout|when you/.test(h)) return `Scout-mode reroute · ${rtLabel}`;
+                return `Secondary match for ${rtLabel}`;
+              };
+              const opPlatformReason = scoutMode
+                ? `PPS Op Platform · Scout persona (${rtLabel})`
+                : `PPS Op Platform · persona match (${rtLabel})`;
+              const relatedReason = `Topic match · ${rtLabel}`;
+
               return (
                 <>
                   {result.primaryGroup && takePrimary.length > 0 && (
-                    <RecGroup heading={result.primaryGroup.heading} offerings={takePrimary} onClose={() => onOpenChange(false)} primary />
+                    <RecGroup heading={result.primaryGroup.heading} offerings={takePrimary} onClose={() => onOpenChange(false)} primary reason={primaryReason} />
                   )}
 
                   {trimmedGroups.map((g, i) => (
-                    <RecGroup key={i} heading={g.heading} offerings={g.offerings} onClose={() => onOpenChange(false)} />
+                    <RecGroup key={i} heading={g.heading} offerings={g.offerings} onClose={() => onOpenChange(false)} reason={reasonForGroupHeading(g.heading)} />
                   ))}
 
                   {bdTrimmed.length > 0 && (
@@ -726,6 +750,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                       heading={opPlatformGroup!.heading}
                       offerings={bdTrimmed}
                       onClose={() => onOpenChange(false)}
+                      reason={opPlatformReason}
                     />
                   )}
 
@@ -745,6 +770,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                                 {c.excerpt && (
                                   <p className="text-body-sm text-foreground/70 mt-0.5 line-clamp-2">{c.excerpt}</p>
                                 )}
+                                <p className="text-[11px] italic text-foreground/70 mt-1">Why: {relatedReason}</p>
                                 <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-1 inline-block">
                                   {label}
                                   {isExternal && <span className="sr-only"> (opens in new tab)</span>}
@@ -769,6 +795,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                       </div>
                     </div>
                   )}
+
                 </>
               );
             })()}
