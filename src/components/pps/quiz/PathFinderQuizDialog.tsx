@@ -884,7 +884,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   );
 }
 
-export function RecGroup({ heading, offerings, onClose, primary }: { heading: string; offerings: { key: string; name: string; blurb: string; url: string; tier: string; isComingSoon?: boolean }[]; onClose: () => void; primary?: boolean }) {
+export function RecGroup({ heading, offerings, onClose, primary, reason }: { heading: string; offerings: { key: string; name: string; blurb: string; url: string; tier: string; isComingSoon?: boolean }[]; onClose: () => void; primary?: boolean; reason?: string }) {
   return (
     <div className={`mt-4 ${primary ? "" : ""}`}>
       <h4 className="font-poppins text-base font-semibold text-navy mb-2">{heading}</h4>
@@ -900,12 +900,16 @@ export function RecGroup({ heading, offerings, onClose, primary }: { heading: st
                   <BoldShiftName name={o.name} />
                 </p>
                 <p className="text-body-sm text-foreground/70 mt-0.5">{o.blurb}</p>
+                {reason && (
+                  <p className="text-[11px] italic text-foreground/70 mt-1">Why: {reason}</p>
+                )}
                 {o.isComingSoon && (
                   <p className="text-body text-[11px] font-semibold text-gold mt-1">
                     Launching soon — join the launch list on the card.
                   </p>
                 )}
               </div>
+
               <div className="flex flex-col items-end gap-1 whitespace-nowrap">
                 <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-0.5">
                   {o.tier}
