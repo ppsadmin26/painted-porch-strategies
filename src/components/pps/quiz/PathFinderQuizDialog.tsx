@@ -591,6 +591,11 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                 <p className="font-poppins text-lead text-navy font-semibold mb-2">
                   <BoldShiftName name={result.strongestNextStep.offering.name} />
                 </p>
+                <p className="text-[11px] italic text-foreground/70 mb-2">
+                  Why: {result.strongestNextStep.kind === "blueDoor"
+                    ? `Org-level engagement signal · ${result.resultType}`
+                    : `Top match for your result (${result.resultType} — ${result.headline})`}
+                </p>
                 {(result.strongestNextStep.offering as { isComingSoon?: boolean }).isComingSoon && (
                   <p className="text-caption font-semibold text-gold mb-2">
                     Launching soon — join the launch list on the card to be notified.
@@ -609,6 +614,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                 </Button>
               </div>
             )}
+
 
             {result.crossoverNote && (
               <div className="mb-6 p-4 rounded-lg bg-purple/5 border border-purple/20">
