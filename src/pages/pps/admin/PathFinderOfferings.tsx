@@ -532,7 +532,7 @@ export default function PathFinderOfferings() {
       ) : (
         <div className="space-y-3">
           {filtered.map((row) => {
-            const live = valueOf(row, "is_live");
+            const published = valueOf(row, "is_published");
             const url = resolveUrl(row);
             return (
               <div key={row.id} id={`offering-${row.id}`} className="border rounded-lg p-4 bg-white">
@@ -551,7 +551,7 @@ export default function PathFinderOfferings() {
                     {row.facilitator && <Badge variant="outline">{row.facilitator}</Badge>}
                     <code className="text-xs text-muted-foreground">{row.offering_key}</code>
                     {isQuizEligible({
-                      is_live: valueOf(row, "is_live"),
+                      is_published: valueOf(row, "is_published"),
                       current_url: valueOf(row, "current_url"),
                       dedicated_url: valueOf(row, "dedicated_url"),
                       anchor_id: valueOf(row, "anchor_id"),
@@ -559,7 +559,7 @@ export default function PathFinderOfferings() {
                       <Badge
                         variant="outline"
                         className="bg-lime/15 text-lime-foreground border-lime/40"
-                        title="Live AND has a URL or anchor. Eligible to appear in quiz results."
+                        title="Published AND has a URL or anchor. Eligible to appear in quiz results (host page must also be Live)."
                       >
                         Quiz eligible
                       </Badge>
@@ -567,7 +567,7 @@ export default function PathFinderOfferings() {
                       <Badge
                         variant="outline"
                         className="bg-muted text-muted-foreground border-muted-foreground/30"
-                        title="Not eligible: needs Live + at least one of Hub URL, Dedicated URL, or Anchor."
+                        title="Not eligible: needs Published + at least one of Hub URL, Dedicated URL, or Anchor."
                       >
                         Not eligible
                       </Badge>
@@ -605,14 +605,14 @@ export default function PathFinderOfferings() {
                     })()}
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2" title="Published — eventually owned by PPS Op Platform sync. Page-level Live state lives in /admin/pages.">
                       <Switch
-                        checked={live}
-                        onCheckedChange={(v) => patch(row.id, { is_live: v })}
-                        id={`live-${row.id}`}
+                        checked={published}
+                        onCheckedChange={(v) => patch(row.id, { is_published: v })}
+                        id={`published-${row.id}`}
                       />
-                      <Label htmlFor={`live-${row.id}`} className="text-sm font-medium">
-                        {live ? "Live" : "Hub only"}
+                      <Label htmlFor={`published-${row.id}`} className="text-sm font-medium">
+                        {published ? "Published" : "Unpublished"}
                       </Label>
                     </div>
                     <Button
