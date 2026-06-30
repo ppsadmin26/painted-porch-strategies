@@ -31,6 +31,7 @@ interface Row {
   dedicated_url: string | null;
   anchor_id: string | null;
   is_live: boolean;
+  is_published: boolean;
   sort_order: number;
   topic: string | null;
   topic_slug: string | null;
@@ -98,10 +99,12 @@ const TIER_COLORS: Record<string, string> = {
   Speaking: "bg-navy/10 text-navy border-navy/40",
 };
 
-/** An offering is recommendable by the quiz if it is Live AND has at least
- *  one of current_url / dedicated_url / anchor_id set. */
-function isQuizEligible(row: Pick<Row, "is_live" | "current_url" | "dedicated_url" | "anchor_id">): boolean {
-  if (!row.is_live) return false;
+/** An offering is recommendable by the quiz if it is Published AND has at
+ *  least one of current_url / dedicated_url / anchor_id set. (Page-level
+ *  Live state is enforced separately by usePathFinderOverrides via page_status.)
+ */
+function isQuizEligible(row: Pick<Row, "is_published" | "current_url" | "dedicated_url" | "anchor_id">): boolean {
+  if (!row.is_published) return false;
   return Boolean(
     (row.current_url && row.current_url.trim()) ||
     (row.dedicated_url && row.dedicated_url.trim()) ||
