@@ -647,11 +647,13 @@ export type Database = {
           facilitator: string | null
           id: string
           image_url: string | null
+          include_in_quiz: boolean
           include_in_workshops: boolean
           include_on_speaker_page: boolean
           is_featured_in_quiz: boolean
           is_keynote: boolean
           is_live: boolean
+          is_published: boolean
           launch_slug: string | null
           name: string
           notes: string | null
@@ -674,11 +676,13 @@ export type Database = {
           facilitator?: string | null
           id?: string
           image_url?: string | null
+          include_in_quiz?: boolean
           include_in_workshops?: boolean
           include_on_speaker_page?: boolean
           is_featured_in_quiz?: boolean
           is_keynote?: boolean
           is_live?: boolean
+          is_published?: boolean
           launch_slug?: string | null
           name: string
           notes?: string | null
@@ -701,11 +705,13 @@ export type Database = {
           facilitator?: string | null
           id?: string
           image_url?: string | null
+          include_in_quiz?: boolean
           include_in_workshops?: boolean
           include_on_speaker_page?: boolean
           is_featured_in_quiz?: boolean
           is_keynote?: boolean
           is_live?: boolean
+          is_published?: boolean
           launch_slug?: string | null
           name?: string
           notes?: string | null

@@ -31,6 +31,7 @@ interface Row {
   dedicated_url: string | null;
   anchor_id: string | null;
   is_live: boolean;
+  is_published: boolean;
   sort_order: number;
   topic: string | null;
   topic_slug: string | null;
@@ -98,10 +99,12 @@ const TIER_COLORS: Record<string, string> = {
   Speaking: "bg-navy/10 text-navy border-navy/40",
 };
 
-/** An offering is recommendable by the quiz if it is Live AND has at least
- *  one of current_url / dedicated_url / anchor_id set. */
-function isQuizEligible(row: Pick<Row, "is_live" | "current_url" | "dedicated_url" | "anchor_id">): boolean {
-  if (!row.is_live) return false;
+/** An offering is recommendable by the quiz if it is Published AND has at
+ *  least one of current_url / dedicated_url / anchor_id set. (Page-level
+ *  Live state is enforced separately by usePathFinderOverrides via page_status.)
+ */
+function isQuizEligible(row: Pick<Row, "is_published" | "current_url" | "dedicated_url" | "anchor_id">): boolean {
+  if (!row.is_published) return false;
   return Boolean(
     (row.current_url && row.current_url.trim()) ||
     (row.dedicated_url && row.dedicated_url.trim()) ||
@@ -211,7 +214,7 @@ export default function PathFinderOfferings() {
   const load = async () => {
     setLoading(true);
     const [offRes, launchRes] = await Promise.all([
-      supabase.from("path_finder_offerings").select("id, offering_key, name, facilitator, tier, blurb, description, current_url, dedicated_url, anchor_id, is_live, sort_order, topic, topic_slug, include_in_workshops, is_featured_in_quiz, is_keynote, include_on_speaker_page, image_url, launch_slug, b2c_rt_pools, b2b_rt_pools").order("sort_order"),
+      supabase.from("path_finder_offerings").select("id, offering_key, name, facilitator, tier, blurb, description, current_url, dedicated_url, anchor_id, is_live, is_published, sort_order, topic, topic_slug, include_in_workshops, is_featured_in_quiz, is_keynote, include_on_speaker_page, image_url, launch_slug, b2c_rt_pools, b2b_rt_pools").order("sort_order"),
       supabase
         .from("course_launch_status")
         .select("slug, course_name, status, program_type")
@@ -244,11 +247,11 @@ export default function PathFinderOfferings() {
   const filtered = useMemo(() => {
     return rows.filter((r) => {
       if (showOnly === "broken-launch" && !brokenIds.has(r.id)) return false;
-      if (showOnly === "needs-page" && (r.is_live || (r.dedicated_url && r.dedicated_url !== r.current_url))) {
-        // "needs-page" = not live AND no dedicated_url set yet
-        if (r.is_live || r.dedicated_url) return false;
+      if (showOnly === "needs-page" && (r.is_published || (r.dedicated_url && r.dedicated_url !== r.current_url))) {
+        // "needs-page" = not published AND no dedicated_url set yet
+        if (r.is_published || r.dedicated_url) return false;
       }
-      if (showOnly === "live" && !r.is_live) return false;
+      if (showOnly === "live" && !r.is_published) return false;
       if (filter) {
         const q = filter.toLowerCase();
         if (
@@ -293,11 +296,11 @@ export default function PathFinderOfferings() {
   };
 
   const resolveUrl = (row: Row) => {
-    const live = valueOf(row, "is_live");
+    const published = valueOf(row, "is_published");
     const dedicated = valueOf(row, "dedicated_url");
     const current = valueOf(row, "current_url");
     const anchor = valueOf(row, "anchor_id");
-    let url = (live && dedicated) ? dedicated : current;
+    let url = (published && dedicated) ? dedicated : current;
     if (anchor && url && !url.includes("#")) url = `${url}#${anchor}`;
     return url;
   };
@@ -336,8 +339,8 @@ export default function PathFinderOfferings() {
             className="h-10 rounded-md border border-input bg-background px-3 text-sm"
           >
             <option value="all">All ({rows.length})</option>
-            <option value="needs-page">Needs page ({rows.filter(r => !r.is_live && !r.dedicated_url).length})</option>
-            <option value="live">Live ({rows.filter(r => r.is_live).length})</option>
+            <option value="needs-page">Needs publish ({rows.filter(r => !r.is_published && !r.dedicated_url).length})</option>
+            <option value="live">Published ({rows.filter(r => r.is_published).length})</option>
             <option value="broken-launch">Broken launch link ({brokenRows.length})</option>
           </select>
           <a
@@ -461,12 +464,12 @@ export default function PathFinderOfferings() {
       </Dialog>
 
       <div className="mb-6 rounded-lg border border-bluedoor/30 bg-bluedoor/5 px-4 py-3 text-sm text-navy">
-        <p className="font-poppins font-semibold text-bluedoor mb-1">Phase B active — canonical fields are now read-only</p>
+        <p className="font-poppins font-semibold text-bluedoor mb-1">Phase C active — Live split into Published + Page Live</p>
         <p>
-          The PPS Op Platform <strong>Offerings Master Register</strong> is the source of truth. Narrative fields (<strong>name, blurb, description, image</strong>) are read-only here — use the <em>Edit in PPS Op Platform</em> link on each row to change them. <strong>Routing</strong> (URL, anchor, Live, RT pools, launch link, surface flags, tier, topic tag, facilitator) stays editable on this page.
+          The PPS Op Platform <strong>Offerings Master Register</strong> is the source of truth for narrative (<strong>name, blurb, description, image</strong>) — read-only here. <strong>Published</strong> mirrors the canonical <code>delivery.is_published</code> flag (will become Op-Platform-owned once the sync ships). Page-level <strong>Live vs Coming Soon</strong> is managed in <Link to="/admin/pages" className="underline text-bluedoor">/admin/pages</Link>. A card is publicly visible only when <em>Published</em> AND its host page is Live.
         </p>
         <p className="mt-2">
-          See <code>docs/handoff/BlueDoor-to-PPS-Offerings-Handoff-v1.md</code>.{" "}
+          PPS-owned, editable here: <strong>RT pools, Pin to top, Include on speaker page, Linked launch, URL/anchor (transitional), tier, topic tag, facilitator</strong>.{" "}
           <a
             href={OP_PLATFORM_ADMIN_BASE}
             target="_blank"
@@ -529,7 +532,7 @@ export default function PathFinderOfferings() {
       ) : (
         <div className="space-y-3">
           {filtered.map((row) => {
-            const live = valueOf(row, "is_live");
+            const published = valueOf(row, "is_published");
             const url = resolveUrl(row);
             return (
               <div key={row.id} id={`offering-${row.id}`} className="border rounded-lg p-4 bg-white">
@@ -548,7 +551,7 @@ export default function PathFinderOfferings() {
                     {row.facilitator && <Badge variant="outline">{row.facilitator}</Badge>}
                     <code className="text-xs text-muted-foreground">{row.offering_key}</code>
                     {isQuizEligible({
-                      is_live: valueOf(row, "is_live"),
+                      is_published: valueOf(row, "is_published"),
                       current_url: valueOf(row, "current_url"),
                       dedicated_url: valueOf(row, "dedicated_url"),
                       anchor_id: valueOf(row, "anchor_id"),
@@ -556,7 +559,7 @@ export default function PathFinderOfferings() {
                       <Badge
                         variant="outline"
                         className="bg-lime/15 text-lime-foreground border-lime/40"
-                        title="Live AND has a URL or anchor. Eligible to appear in quiz results."
+                        title="Published AND has a URL or anchor. Eligible to appear in quiz results (host page must also be Live)."
                       >
                         Quiz eligible
                       </Badge>
@@ -564,7 +567,7 @@ export default function PathFinderOfferings() {
                       <Badge
                         variant="outline"
                         className="bg-muted text-muted-foreground border-muted-foreground/30"
-                        title="Not eligible: needs Live + at least one of Hub URL, Dedicated URL, or Anchor."
+                        title="Not eligible: needs Published + at least one of Hub URL, Dedicated URL, or Anchor."
                       >
                         Not eligible
                       </Badge>
@@ -602,14 +605,14 @@ export default function PathFinderOfferings() {
                     })()}
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2" title="Published — eventually owned by PPS Op Platform sync. Page-level Live state lives in /admin/pages.">
                       <Switch
-                        checked={live}
-                        onCheckedChange={(v) => patch(row.id, { is_live: v })}
-                        id={`live-${row.id}`}
+                        checked={published}
+                        onCheckedChange={(v) => patch(row.id, { is_published: v })}
+                        id={`published-${row.id}`}
                       />
-                      <Label htmlFor={`live-${row.id}`} className="text-sm font-medium">
-                        {live ? "Live" : "Hub only"}
+                      <Label htmlFor={`published-${row.id}`} className="text-sm font-medium">
+                        {published ? "Published" : "Unpublished"}
                       </Label>
                     </div>
                     <Button
