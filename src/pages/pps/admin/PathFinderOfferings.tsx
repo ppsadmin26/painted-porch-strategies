@@ -309,9 +309,9 @@ export default function PathFinderOfferings() {
     <div className="container max-w-7xl mx-auto py-8 px-4">
       <div className="flex items-start justify-between mb-6 gap-4 flex-wrap">
         <div>
-          <h1 className="text-3xl font-poppins font-bold text-navy">P.A.T.H. Finder Offerings</h1>
+          <h1 className="text-3xl font-poppins font-bold text-navy">Offerings</h1>
           <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
-            Every recommendation the quiz can surface. Flip <strong>Live</strong> on once a dedicated page exists — the quiz will start linking there instantly. Use <strong>Anchor</strong> to deep-link into a card on the hub page in the meantime.
+            The single admin surface for every offering the site can surface. Narrative copy (name, blurb, image, facilitator, tier, URL, anchor) is read-only here and edited in the <strong>PPS Op Platform</strong>. Website-specific controls — <strong>Quiz</strong>, <strong>Speaker page</strong>, RT pools, pin-to-top, and launch link — live on each card below.
           </p>
           <details className="mt-2 max-w-3xl text-xs text-muted-foreground">
             <summary className="cursor-pointer font-poppins font-semibold text-navy">How this page actually drives the quiz</summary>
