@@ -17,15 +17,21 @@ type: feature
 - `description`
 - `image_url`
 
-## Still editable on PPS
+## Still editable on PPS (website-only concerns)
 
-- `current_url`, `dedicated_url`, `anchor_id`
-- `is_live`, `is_featured_in_quiz`
-- `include_in_workshops`, `is_keynote`, `include_on_speaker_page`
+- `current_url`, `dedicated_url`, `anchor_id` (until Op Platform owns these end-to-end; mirror lets us hot-patch)
+- `is_live`
+- **Quiz routing — PPS-owned, NOT in Op Platform:**
+  - `b2c_rt_pools`, `b2b_rt_pools` (which result-type pools an offering appears in)
+  - `is_featured_in_quiz` (pin to top of quiz results)
+- **Surface visibility — PPS-owned:**
+  - `include_in_workshops`, `is_keynote`
+  - `include_on_speaker_page` — sole governor of `/speaking/{amy,rob,sierra}` inclusion; facilitator alone does NOT auto-list a topic
 - `tier`, `topic` (tag), `facilitator`
 - `launch_slug`
-- `b2c_rt_pools`, `b2b_rt_pools`
 - `sort_order`
+
+Quiz inclusion logic is a website-specific concern and stays out of the Op Platform register. Do not re-introduce an `include_in_quiz` field on the Op Platform side.
 
 ## New offerings
 
