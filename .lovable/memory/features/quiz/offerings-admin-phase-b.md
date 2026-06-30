@@ -10,28 +10,27 @@ type: feature
 
 > Naming note: the public product **The Blue Door Organizational Appraisal** is unrelated to this register and keeps its name. "PPS Op Platform" only refers to the master offerings register / admin project.
 
-## Read-only (PPS Op Platform canonical)
+## Ownership boundary (canonical)
 
-- `name`
-- `blurb`
-- `description`
-- `image_url`
+**PPS Op Platform owns everything offering-related** (name, blurb, description, image, facilitator, tier, topic, category, segment, format, pricing, URL/anchor mappings, delivery details, sort order, etc.) **EXCEPT** the following PPS-website-only concerns:
 
-## Still editable on PPS (website-only concerns)
+- **Quiz routing rules** — `b2c_rt_pools`, `b2b_rt_pools`, plus all result-type → offering mapping logic. Treated as configurable Pathfinder Quiz routing settings (future: move to a dedicated quiz-rules admin surface, not per-offering toggles).
+- **Include in Pathfinder quiz** flag (website-only inclusion gate).
+- **Pin to top of Pathfinder quiz** flag (`is_featured_in_quiz`).
+- **Speaker Page toggle** (`include_on_speaker_page`) — sole governor of `/speaking/{amy,rob,sierra}` inclusion; facilitator alone does NOT auto-list a topic.
+- **Linked Launch** (`launch_slug`) — ties an offering to a website launch-list / coming-soon notification flow.
 
-- `current_url`, `dedicated_url`, `anchor_id` (until Op Platform owns these end-to-end; mirror lets us hot-patch)
-- `is_live`
-- **Quiz routing — PPS-owned, NOT in Op Platform:**
-  - `b2c_rt_pools`, `b2b_rt_pools` (which result-type pools an offering appears in)
-  - `is_featured_in_quiz` (pin to top of quiz results)
-- **Surface visibility — PPS-owned:**
-  - `include_in_workshops`, `is_keynote`
-  - `include_on_speaker_page` — sole governor of `/speaking/{amy,rob,sierra}` inclusion; facilitator alone does NOT auto-list a topic
-- `tier`, `topic` (tag), `facilitator`
-- `launch_slug`
-- `sort_order`
+Everything else is read-only on `/admin/path-finder-offerings` and edited in the Op Platform. Do not re-introduce canonical fields (name, blurb, image, facilitator, tier, topic, anchor, URL, etc.) as editable on the PPS side. Hot-patch overrides for URL/anchor are tolerated only until Op Platform deliveries own them end-to-end (Phase C).
 
-Quiz inclusion logic is a website-specific concern and stays out of the Op Platform register. Do not re-introduce an `include_in_quiz` field on the Op Platform side.
+## LIVE toggle — open design question
+
+There are (at least) **three different "live" states** that today collapse into one `is_live` boolean. Before locking ownership of the toggle, untangle:
+
+1. **Sitemap/page Live** — owned by `page_status` (admin/pages). Governs whether the *destination URL* renders or shows Coming Soon.
+2. **Offering Live (dedicated page)** — does the offering have its own published URL? When false, fall back to `current_url` + anchor on the host page.
+3. **Offering Live (anchor-only deliveries)** — for resources, masterclasses, workshops, or speaking topics that never get a dedicated page, "live" means "the anchor card is published on its host page" (e.g. `/speaking/topics#...`).
+
+Decision pending: whether (2) and (3) collapse into a single Op-Platform-owned `delivery.is_published` flag (PPS derives display state by combining it with `page_status` for the host URL), or stay on PPS as a website-rendering override. Until resolved, `is_live` remains editable on PPS — document any change here.
 
 ## New offerings
 
