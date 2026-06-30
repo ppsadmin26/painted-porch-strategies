@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Loader2,
   RefreshCw,
@@ -9,11 +10,14 @@ import {
   ChevronDown,
   ChevronUp,
   ChevronRight,
+  Upload,
 } from "lucide-react";
 import {
   fetchOpPlatformRecommendations,
   type OpPlatformRecommendation,
 } from "@/integrations/op-platform/recommendations";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 
 interface LocalRow {
   id: string;
@@ -29,7 +33,12 @@ interface LocalRow {
 
 interface OpPlatformResyncPanelProps {
   rows: LocalRow[];
+  /** Called after a successful apply so the parent can refresh its rows. */
+  onApplied?: (
+    updates: Array<{ id: string; patch: Record<string, unknown> }>,
+  ) => void;
 }
+
 
 interface FieldDiff {
   field: string;
