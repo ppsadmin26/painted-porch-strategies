@@ -296,11 +296,11 @@ export default function PathFinderOfferings() {
   };
 
   const resolveUrl = (row: Row) => {
-    const live = valueOf(row, "is_live");
+    const published = valueOf(row, "is_published");
     const dedicated = valueOf(row, "dedicated_url");
     const current = valueOf(row, "current_url");
     const anchor = valueOf(row, "anchor_id");
-    let url = (live && dedicated) ? dedicated : current;
+    let url = (published && dedicated) ? dedicated : current;
     if (anchor && url && !url.includes("#")) url = `${url}#${anchor}`;
     return url;
   };
