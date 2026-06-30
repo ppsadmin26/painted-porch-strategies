@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Loader2,
   RefreshCw,
@@ -9,11 +10,14 @@ import {
   ChevronDown,
   ChevronUp,
   ChevronRight,
+  Upload,
 } from "lucide-react";
 import {
   fetchOpPlatformRecommendations,
   type OpPlatformRecommendation,
 } from "@/integrations/op-platform/recommendations";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 
 interface LocalRow {
   id: string;
@@ -29,7 +33,12 @@ interface LocalRow {
 
 interface OpPlatformResyncPanelProps {
   rows: LocalRow[];
+  /** Called after a successful apply so the parent can refresh its rows. */
+  onApplied?: (
+    updates: Array<{ id: string; patch: Record<string, unknown> }>,
+  ) => void;
 }
+
 
 interface FieldDiff {
   field: string;
@@ -87,16 +96,28 @@ function diffField(
  * Each mismatched row is expandable to reveal the full local vs Op Platform
  * value for every diverging field.
  */
-export function OpPlatformResyncPanel({ rows }: OpPlatformResyncPanelProps) {
+export function OpPlatformResyncPanel({
+  rows,
+  onApplied,
+}: OpPlatformResyncPanelProps) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [remote, setRemote] = useState<OpPlatformRecommendation[] | null>(null);
   const [fetchedAt, setFetchedAt] = useState<Date | null>(null);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [applying, setApplying] = useState(false);
 
   const toggle = (id: string) =>
     setExpanded((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+
+  const toggleSelected = (id: string) =>
+    setSelected((prev) => {
       const next = new Set(prev);
       next.has(id) ? next.delete(id) : next.add(id);
       return next;
@@ -113,6 +134,7 @@ export function OpPlatformResyncPanel({ rows }: OpPlatformResyncPanelProps) {
       setRemote(res.results);
       setFetchedAt(new Date());
       setExpanded(new Set());
+      setSelected(new Set());
     } catch (e: any) {
       setError(e?.message ?? "Failed to fetch from PPS Op Platform");
       setRemote(null);
@@ -120,6 +142,7 @@ export function OpPlatformResyncPanel({ rows }: OpPlatformResyncPanelProps) {
       setLoading(false);
     }
   };
+
 
   const buckets = (() => {
     if (!remote) return null;
@@ -220,6 +243,79 @@ export function OpPlatformResyncPanel({ rows }: OpPlatformResyncPanelProps) {
     }
     return { missingLocally, missingOnOp, mismatches };
   })();
+
+  /**
+   * Build a Supabase patch for a mismatch row using Op Platform values.
+   * Only writable canonical narrative fields are included; URL diffs and
+   * advisory tier/format diffs are intentionally skipped.
+   */
+  const buildPatch = (m: DiffItem): Record<string, unknown> => {
+    const patch: Record<string, unknown> = {};
+    for (const f of m.fields) {
+      if (f.advisory) continue;
+      if (f.field === "name") patch.name = m.remote.name;
+      else if (f.field === "blurb") patch.blurb = m.remote.short_blurb ?? "";
+      else if (f.field === "description")
+        patch.description = m.remote.long_description ?? "";
+      else if (f.field === "image_url")
+        patch.image_url = m.remote.thumbnail_url ?? null;
+      // url is skipped — dedicated_url vs current_url is locally owned.
+    }
+    return patch;
+  };
+
+  const selectableMismatches = (buckets?.mismatches ?? []).filter(
+    (m) => Object.keys(buildPatch(m)).length > 0,
+  );
+  const allSelected =
+    selectableMismatches.length > 0 &&
+    selectableMismatches.every((m) => selected.has(m.id));
+
+  const toggleSelectAll = () => {
+    if (allSelected) {
+      setSelected(new Set());
+    } else {
+      setSelected(new Set(selectableMismatches.map((m) => m.id)));
+    }
+  };
+
+  const applySelected = async () => {
+    if (!buckets) return;
+    const targets = buckets.mismatches.filter((m) => selected.has(m.id));
+    const updates = targets
+      .map((m) => ({ id: m.id, patch: buildPatch(m) }))
+      .filter((u) => Object.keys(u.patch).length > 0);
+    if (updates.length === 0) {
+      toast({ title: "Nothing to apply", description: "Select at least one row with writable diffs." });
+      return;
+    }
+    setApplying(true);
+    let okCount = 0;
+    const failures: string[] = [];
+    for (const u of updates) {
+      const { error: err } = await supabase
+        .from("path_finder_offerings")
+        .update(u.patch as never)
+        .eq("id", u.id);
+      if (err) failures.push(err.message);
+      else okCount += 1;
+    }
+    setApplying(false);
+    if (failures.length > 0) {
+      toast({
+        title: `Applied ${okCount} of ${updates.length}`,
+        description: failures[0],
+        variant: "destructive",
+      });
+    } else {
+      toast({ title: `Applied ${okCount} row${okCount === 1 ? "" : "s"}` });
+    }
+    onApplied?.(updates);
+    setSelected(new Set());
+    // Re-run audit so the panel reflects post-write state.
+    void runAudit();
+  };
+
 
   return (
     <div className="rounded-lg border border-dashed border-bluedoor/40 bg-bluedoor/5 p-4 mb-4">
@@ -386,67 +482,109 @@ export function OpPlatformResyncPanel({ rows }: OpPlatformResyncPanelProps) {
                 empty="None — local copy matches the feed for every shared row."
               >
                 {buckets.mismatches.length > 0 && (
-                  <ul className="divide-y">
-                    {buckets.mismatches.map((m) => {
-                      const isOpen = expanded.has(m.id);
-                      return (
-                        <li key={m.id} className="py-2 text-xs">
-                          <button
-                            type="button"
-                            onClick={() => toggle(m.id)}
-                            className="w-full flex items-center justify-between gap-3 text-left hover:bg-white/60 rounded px-1 py-1"
-                            aria-expanded={isOpen}
-                            aria-controls={`diff-${m.id}`}
-                          >
-                            <div className="flex items-center gap-2 min-w-0">
-                              {isOpen ? (
-                                <ChevronDown className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
-                              ) : (
-                                <ChevronRight className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
-                              )}
-                              <div className="min-w-0">
-                                <div className="font-medium text-navy text-sm truncate">
-                                  {m.localName}
-                                </div>
-                                <code className="text-[11px] text-muted-foreground">
-                                  {m.offering_key}
-                                </code>
+                  <>
+                    <div className="flex items-center justify-between gap-2 mb-2 px-1">
+                      <label className="flex items-center gap-2 text-[11px] text-navy font-medium cursor-pointer">
+                        <Checkbox
+                          checked={allSelected}
+                          onCheckedChange={toggleSelectAll}
+                          aria-label="Select all writable mismatches"
+                        />
+                        Select all writable ({selectableMismatches.length})
+                      </label>
+                      <Button
+                        size="sm"
+                        onClick={applySelected}
+                        disabled={applying || selected.size === 0}
+                        className="bg-bluedoor hover:bg-bluedoor/90 text-white h-7 px-3 text-xs"
+                      >
+                        {applying ? (
+                          <Loader2 className="w-3.5 h-3.5 mr-1 animate-spin" />
+                        ) : (
+                          <Upload className="w-3.5 h-3.5 mr-1" />
+                        )}
+                        Apply selected ({selected.size})
+                      </Button>
+                    </div>
+                    <ul className="divide-y">
+                      {buckets.mismatches.map((m) => {
+                        const isOpen = expanded.has(m.id);
+                        const patch = buildPatch(m);
+                        const writable = Object.keys(patch).length > 0;
+                        const isSelected = selected.has(m.id);
+                        return (
+                          <li key={m.id} className="py-2 text-xs">
+                            <div className="w-full flex items-center justify-between gap-3 hover:bg-white/60 rounded px-1 py-1">
+                              <div className="flex items-center gap-2 min-w-0 flex-1">
+                                <Checkbox
+                                  checked={isSelected}
+                                  onCheckedChange={() => toggleSelected(m.id)}
+                                  disabled={!writable}
+                                  aria-label={`Select ${m.localName}`}
+                                  title={
+                                    writable
+                                      ? "Select to apply Op Platform values"
+                                      : "No writable fields differ (advisory or URL only)"
+                                  }
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => toggle(m.id)}
+                                  className="flex items-center gap-2 min-w-0 text-left flex-1"
+                                  aria-expanded={isOpen}
+                                  aria-controls={`diff-${m.id}`}
+                                >
+                                  {isOpen ? (
+                                    <ChevronDown className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+                                  ) : (
+                                    <ChevronRight className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+                                  )}
+                                  <div className="min-w-0">
+                                    <div className="font-medium text-navy text-sm truncate">
+                                      {m.localName}
+                                    </div>
+                                    <code className="text-[11px] text-muted-foreground">
+                                      {m.offering_key}
+                                    </code>
+                                  </div>
+                                </button>
+                              </div>
+                              <div className="flex items-center gap-1 flex-wrap justify-end">
+                                {m.fields.map((f) => (
+                                  <Badge
+                                    key={f.field}
+                                    variant="outline"
+                                    className={`text-[10px] ${
+                                      f.advisory
+                                        ? "border-muted-foreground/30 text-muted-foreground"
+                                        : "border-gold/40 text-gold"
+                                    }`}
+                                  >
+                                    {f.label}
+                                    {f.advisory ? " (advisory)" : ""}
+                                  </Badge>
+                                ))}
                               </div>
                             </div>
-                            <div className="flex items-center gap-1 flex-wrap justify-end">
-                              {m.fields.map((f) => (
-                                <Badge
-                                  key={f.field}
-                                  variant="outline"
-                                  className={`text-[10px] ${
-                                    f.advisory
-                                      ? "border-muted-foreground/30 text-muted-foreground"
-                                      : "border-gold/40 text-gold"
-                                  }`}
-                                >
-                                  {f.label}
-                                  {f.advisory ? " (advisory)" : ""}
-                                </Badge>
-                              ))}
-                            </div>
-                          </button>
 
-                          {isOpen && (
-                            <div
-                              id={`diff-${m.id}`}
-                              className="mt-2 ml-5 space-y-3 border-l-2 border-gold/30 pl-3"
-                            >
-                              {m.fields.map((f) => (
-                                <FieldDiffBlock key={f.field} diff={f} />
-                              ))}
-                            </div>
-                          )}
-                        </li>
-                      );
-                    })}
-                  </ul>
+                            {isOpen && (
+                              <div
+                                id={`diff-${m.id}`}
+                                className="mt-2 ml-5 space-y-3 border-l-2 border-gold/30 pl-3"
+                              >
+                                {m.fields.map((f) => (
+                                  <FieldDiffBlock key={f.field} diff={f} />
+                                ))}
+                              </div>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </>
                 )}
               </DiffSection>
+
             </div>
           )}
         </>
