@@ -244,6 +244,79 @@ export function OpPlatformResyncPanel({
     return { missingLocally, missingOnOp, mismatches };
   })();
 
+  /**
+   * Build a Supabase patch for a mismatch row using Op Platform values.
+   * Only writable canonical narrative fields are included; URL diffs and
+   * advisory tier/format diffs are intentionally skipped.
+   */
+  const buildPatch = (m: DiffItem): Record<string, unknown> => {
+    const patch: Record<string, unknown> = {};
+    for (const f of m.fields) {
+      if (f.advisory) continue;
+      if (f.field === "name") patch.name = m.remote.name;
+      else if (f.field === "blurb") patch.blurb = m.remote.short_blurb ?? "";
+      else if (f.field === "description")
+        patch.description = m.remote.long_description ?? "";
+      else if (f.field === "image_url")
+        patch.image_url = m.remote.thumbnail_url ?? null;
+      // url is skipped — dedicated_url vs current_url is locally owned.
+    }
+    return patch;
+  };
+
+  const selectableMismatches = (buckets?.mismatches ?? []).filter(
+    (m) => Object.keys(buildPatch(m)).length > 0,
+  );
+  const allSelected =
+    selectableMismatches.length > 0 &&
+    selectableMismatches.every((m) => selected.has(m.id));
+
+  const toggleSelectAll = () => {
+    if (allSelected) {
+      setSelected(new Set());
+    } else {
+      setSelected(new Set(selectableMismatches.map((m) => m.id)));
+    }
+  };
+
+  const applySelected = async () => {
+    if (!buckets) return;
+    const targets = buckets.mismatches.filter((m) => selected.has(m.id));
+    const updates = targets
+      .map((m) => ({ id: m.id, patch: buildPatch(m) }))
+      .filter((u) => Object.keys(u.patch).length > 0);
+    if (updates.length === 0) {
+      toast({ title: "Nothing to apply", description: "Select at least one row with writable diffs." });
+      return;
+    }
+    setApplying(true);
+    let okCount = 0;
+    const failures: string[] = [];
+    for (const u of updates) {
+      const { error: err } = await supabase
+        .from("path_finder_offerings")
+        .update(u.patch)
+        .eq("id", u.id);
+      if (err) failures.push(err.message);
+      else okCount += 1;
+    }
+    setApplying(false);
+    if (failures.length > 0) {
+      toast({
+        title: `Applied ${okCount} of ${updates.length}`,
+        description: failures[0],
+        variant: "destructive",
+      });
+    } else {
+      toast({ title: `Applied ${okCount} row${okCount === 1 ? "" : "s"}` });
+    }
+    onApplied?.(updates);
+    setSelected(new Set());
+    // Re-run audit so the panel reflects post-write state.
+    void runAudit();
+  };
+
+
   return (
     <div className="rounded-lg border border-dashed border-bluedoor/40 bg-bluedoor/5 p-4 mb-4">
       <div className="flex items-center justify-between gap-3 flex-wrap">
