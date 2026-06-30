@@ -469,7 +469,8 @@ export default function PathFinderOfferings() {
           The PPS Op Platform <strong>Offerings Master Register</strong> is the source of truth for narrative (<strong>name, blurb, description, image</strong>) — read-only here. <strong>Published</strong> mirrors the canonical <code>delivery.is_published</code> flag (will become Op-Platform-owned once the sync ships). Page-level <strong>Live vs Coming Soon</strong> is managed in <Link to="/admin/pages" className="underline text-bluedoor">/admin/pages</Link>. A card is publicly visible only when <em>Published</em> AND its host page is Live.
         </p>
         <p className="mt-2">
-          PPS-owned, editable here: <strong>RT pools, Pin to top, Include on speaker page, Linked launch, URL/anchor (transitional), tier, topic tag, facilitator</strong>.{" "}
+          <strong>Canonical (PPS Op Platform):</strong> name, blurb, description, image, <strong>tier</strong>, <strong>topic tag</strong>, <strong>facilitator</strong>, and delivery-type chips (<strong>Workshop</strong>, <strong>Keynote</strong>).<br />
+          <strong>PPS-owned (editable here):</strong> RT pools, Pin to top, Include on speaker page, Linked launch, URL/anchor (transitional).{" "}
           <a
             href={OP_PLATFORM_ADMIN_BASE}
             target="_blank"
