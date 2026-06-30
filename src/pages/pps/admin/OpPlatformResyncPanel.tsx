@@ -482,67 +482,109 @@ export function OpPlatformResyncPanel({
                 empty="None — local copy matches the feed for every shared row."
               >
                 {buckets.mismatches.length > 0 && (
-                  <ul className="divide-y">
-                    {buckets.mismatches.map((m) => {
-                      const isOpen = expanded.has(m.id);
-                      return (
-                        <li key={m.id} className="py-2 text-xs">
-                          <button
-                            type="button"
-                            onClick={() => toggle(m.id)}
-                            className="w-full flex items-center justify-between gap-3 text-left hover:bg-white/60 rounded px-1 py-1"
-                            aria-expanded={isOpen}
-                            aria-controls={`diff-${m.id}`}
-                          >
-                            <div className="flex items-center gap-2 min-w-0">
-                              {isOpen ? (
-                                <ChevronDown className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
-                              ) : (
-                                <ChevronRight className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
-                              )}
-                              <div className="min-w-0">
-                                <div className="font-medium text-navy text-sm truncate">
-                                  {m.localName}
-                                </div>
-                                <code className="text-[11px] text-muted-foreground">
-                                  {m.offering_key}
-                                </code>
+                  <>
+                    <div className="flex items-center justify-between gap-2 mb-2 px-1">
+                      <label className="flex items-center gap-2 text-[11px] text-navy font-medium cursor-pointer">
+                        <Checkbox
+                          checked={allSelected}
+                          onCheckedChange={toggleSelectAll}
+                          aria-label="Select all writable mismatches"
+                        />
+                        Select all writable ({selectableMismatches.length})
+                      </label>
+                      <Button
+                        size="sm"
+                        onClick={applySelected}
+                        disabled={applying || selected.size === 0}
+                        className="bg-bluedoor hover:bg-bluedoor/90 text-white h-7 px-3 text-xs"
+                      >
+                        {applying ? (
+                          <Loader2 className="w-3.5 h-3.5 mr-1 animate-spin" />
+                        ) : (
+                          <Upload className="w-3.5 h-3.5 mr-1" />
+                        )}
+                        Apply selected ({selected.size})
+                      </Button>
+                    </div>
+                    <ul className="divide-y">
+                      {buckets.mismatches.map((m) => {
+                        const isOpen = expanded.has(m.id);
+                        const patch = buildPatch(m);
+                        const writable = Object.keys(patch).length > 0;
+                        const isSelected = selected.has(m.id);
+                        return (
+                          <li key={m.id} className="py-2 text-xs">
+                            <div className="w-full flex items-center justify-between gap-3 hover:bg-white/60 rounded px-1 py-1">
+                              <div className="flex items-center gap-2 min-w-0 flex-1">
+                                <Checkbox
+                                  checked={isSelected}
+                                  onCheckedChange={() => toggleSelected(m.id)}
+                                  disabled={!writable}
+                                  aria-label={`Select ${m.localName}`}
+                                  title={
+                                    writable
+                                      ? "Select to apply Op Platform values"
+                                      : "No writable fields differ (advisory or URL only)"
+                                  }
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() => toggle(m.id)}
+                                  className="flex items-center gap-2 min-w-0 text-left flex-1"
+                                  aria-expanded={isOpen}
+                                  aria-controls={`diff-${m.id}`}
+                                >
+                                  {isOpen ? (
+                                    <ChevronDown className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+                                  ) : (
+                                    <ChevronRight className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+                                  )}
+                                  <div className="min-w-0">
+                                    <div className="font-medium text-navy text-sm truncate">
+                                      {m.localName}
+                                    </div>
+                                    <code className="text-[11px] text-muted-foreground">
+                                      {m.offering_key}
+                                    </code>
+                                  </div>
+                                </button>
+                              </div>
+                              <div className="flex items-center gap-1 flex-wrap justify-end">
+                                {m.fields.map((f) => (
+                                  <Badge
+                                    key={f.field}
+                                    variant="outline"
+                                    className={`text-[10px] ${
+                                      f.advisory
+                                        ? "border-muted-foreground/30 text-muted-foreground"
+                                        : "border-gold/40 text-gold"
+                                    }`}
+                                  >
+                                    {f.label}
+                                    {f.advisory ? " (advisory)" : ""}
+                                  </Badge>
+                                ))}
                               </div>
                             </div>
-                            <div className="flex items-center gap-1 flex-wrap justify-end">
-                              {m.fields.map((f) => (
-                                <Badge
-                                  key={f.field}
-                                  variant="outline"
-                                  className={`text-[10px] ${
-                                    f.advisory
-                                      ? "border-muted-foreground/30 text-muted-foreground"
-                                      : "border-gold/40 text-gold"
-                                  }`}
-                                >
-                                  {f.label}
-                                  {f.advisory ? " (advisory)" : ""}
-                                </Badge>
-                              ))}
-                            </div>
-                          </button>
 
-                          {isOpen && (
-                            <div
-                              id={`diff-${m.id}`}
-                              className="mt-2 ml-5 space-y-3 border-l-2 border-gold/30 pl-3"
-                            >
-                              {m.fields.map((f) => (
-                                <FieldDiffBlock key={f.field} diff={f} />
-                              ))}
-                            </div>
-                          )}
-                        </li>
-                      );
-                    })}
-                  </ul>
+                            {isOpen && (
+                              <div
+                                id={`diff-${m.id}`}
+                                className="mt-2 ml-5 space-y-3 border-l-2 border-gold/30 pl-3"
+                              >
+                                {m.fields.map((f) => (
+                                  <FieldDiffBlock key={f.field} diff={f} />
+                                ))}
+                              </div>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </>
                 )}
               </DiffSection>
+
             </div>
           )}
         </>
