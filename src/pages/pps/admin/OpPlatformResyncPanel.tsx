@@ -96,16 +96,28 @@ function diffField(
  * Each mismatched row is expandable to reveal the full local vs Op Platform
  * value for every diverging field.
  */
-export function OpPlatformResyncPanel({ rows }: OpPlatformResyncPanelProps) {
+export function OpPlatformResyncPanel({
+  rows,
+  onApplied,
+}: OpPlatformResyncPanelProps) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [remote, setRemote] = useState<OpPlatformRecommendation[] | null>(null);
   const [fetchedAt, setFetchedAt] = useState<Date | null>(null);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [applying, setApplying] = useState(false);
 
   const toggle = (id: string) =>
     setExpanded((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+
+  const toggleSelected = (id: string) =>
+    setSelected((prev) => {
       const next = new Set(prev);
       next.has(id) ? next.delete(id) : next.add(id);
       return next;
@@ -122,6 +134,7 @@ export function OpPlatformResyncPanel({ rows }: OpPlatformResyncPanelProps) {
       setRemote(res.results);
       setFetchedAt(new Date());
       setExpanded(new Set());
+      setSelected(new Set());
     } catch (e: any) {
       setError(e?.message ?? "Failed to fetch from PPS Op Platform");
       setRemote(null);
@@ -129,6 +142,7 @@ export function OpPlatformResyncPanel({ rows }: OpPlatformResyncPanelProps) {
       setLoading(false);
     }
   };
+
 
   const buckets = (() => {
     if (!remote) return null;
