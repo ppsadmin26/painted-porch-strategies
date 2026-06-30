@@ -46,11 +46,12 @@ interface Row {
 }
 
 /**
- * Phase B (PPS Op Platform → PPS site handoff): canonical narrative fields
- * (name, blurb, description, image_url) are read-only here and edited in
- * the PPS Op Platform Offerings Register. Routing fields (URL, anchor, Live,
- * RT pools, launch link, tier, topic tag, facilitator, surface flags)
- * remain editable on this page.
+ * Phase B/C (PPS Op Platform → PPS site handoff): canonical fields
+ * (name, blurb, description, image_url, tier, topic, facilitator,
+ * include_in_workshops, is_keynote) are read-only here and edited in
+ * the PPS Op Platform Offerings Register. PPS-owned fields that remain
+ * editable: include_on_speaker_page, is_featured_in_quiz, launch_slug,
+ * RT pools (b2c/b2b), and URL/anchor (transitional).
  */
 const OP_PLATFORM_ADMIN_BASE = "https://paintedporch-ops.lovable.app/admin/topics";
 
@@ -311,7 +312,7 @@ export default function PathFinderOfferings() {
         <div>
           <h1 className="text-3xl font-poppins font-bold text-navy">Offerings</h1>
           <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
-            The single admin surface for every offering the site can surface. Narrative copy (name, blurb, image, facilitator, tier, URL, anchor) is read-only here and edited in the <strong>PPS Op Platform</strong>. Website-specific controls — <strong>Quiz</strong>, <strong>Speaker page</strong>, RT pools, pin-to-top, and launch link — live on each card below.
+            The single admin surface for every offering the site can surface. Narrative copy (name, blurb, image, <strong>tier, topic tag, facilitator</strong>) and delivery-type chips (<strong>Workshop / Keynote</strong>) are read-only here and edited in the <strong>PPS Op Platform</strong>. Website-specific controls — <strong>Speaker page</strong> toggle, RT pools, pin-to-top, and launch link — live on each card below.
           </p>
           <details className="mt-2 max-w-3xl text-xs text-muted-foreground">
             <summary className="cursor-pointer font-poppins font-semibold text-navy">How this page actually drives the quiz</summary>
@@ -469,7 +470,8 @@ export default function PathFinderOfferings() {
           The PPS Op Platform <strong>Offerings Master Register</strong> is the source of truth for narrative (<strong>name, blurb, description, image</strong>) — read-only here. <strong>Published</strong> mirrors the canonical <code>delivery.is_published</code> flag (will become Op-Platform-owned once the sync ships). Page-level <strong>Live vs Coming Soon</strong> is managed in <Link to="/admin/pages" className="underline text-bluedoor">/admin/pages</Link>. A card is publicly visible only when <em>Published</em> AND its host page is Live.
         </p>
         <p className="mt-2">
-          PPS-owned, editable here: <strong>RT pools, Pin to top, Include on speaker page, Linked launch, URL/anchor (transitional), tier, topic tag, facilitator</strong>.{" "}
+          <strong>Canonical (PPS Op Platform):</strong> name, blurb, description, image, <strong>tier</strong>, <strong>topic tag</strong>, <strong>facilitator</strong>, and delivery-type chips (<strong>Workshop</strong>, <strong>Keynote</strong>).<br />
+          <strong>PPS-owned (editable here):</strong> RT pools, Pin to top, Include on speaker page, Linked launch, URL/anchor (transitional).{" "}
           <a
             href={OP_PLATFORM_ADMIN_BASE}
             target="_blank"
@@ -538,16 +540,13 @@ export default function PathFinderOfferings() {
               <div key={row.id} id={`offering-${row.id}`} className="border rounded-lg p-4 bg-white">
                 <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <select
-                      value={valueOf(row, "tier")}
-                      onChange={(e) => patch(row.id, { tier: e.target.value })}
-                      className={`h-7 rounded-md border px-2 text-xs font-medium ${TIER_COLORS[valueOf(row, "tier")] ?? "bg-background"}`}
-                      title="Pricing tier / category"
+                    <span
+                      className={`inline-flex items-center h-7 rounded-md border border-dashed border-bluedoor/40 px-2 text-xs font-medium ${TIER_COLORS[valueOf(row, "tier")] ?? "bg-background"}`}
+                      title="Tier is canonical — edit in PPS Op Platform"
                     >
-                      {TIER_OPTIONS.map((t) => (
-                        <option key={t} value={t}>{t}</option>
-                      ))}
-                    </select>
+                      {valueOf(row, "tier") || "—"}
+                      <span className="ml-1 text-[10px] text-bluedoor">· canonical</span>
+                    </span>
                     {row.facilitator && <Badge variant="outline">{row.facilitator}</Badge>}
                     <code className="text-xs text-muted-foreground">{row.offering_key}</code>
                     {isQuizEligible({
@@ -646,21 +645,14 @@ export default function PathFinderOfferings() {
                     </div>
                   </div>
                   <div>
-                    <Label className="text-xs">Topic tag (workshop hub only — does not drive quiz routing)</Label>
-                    <select
-                      value={valueOf(row, "topic") ?? ""}
-                      onChange={(e) => patch(row.id, { topic: e.target.value || null })}
-                      className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
-                    >
-                      <option value="">— Untagged —</option>
-                      <option value="Change & Innovation">Change & Innovation</option>
-                      <option value="Comms">Comms</option>
-                      <option value="Leadership & Culture">Leadership & Culture</option>
-                      <option value="Philosophy">Philosophy</option>
-                      <option value="Team Dynamics">Team Dynamics</option>
-                      <option value="Resilience & Wellbeing">Resilience & Wellbeing</option>
-
-                    </select>
+                    <div className="flex items-center justify-between mb-1">
+                      <Label className="text-xs">Topic tag <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
+                      <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
+                    <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10">
+                      {row.topic || <span className="italic text-muted-foreground">— untagged —</span>}
+                    </div>
+                    <p className="text-[11px] text-muted-foreground mt-1">Workshop hub accordion only. Does not drive quiz routing.</p>
                   </div>
                 </div>
 
@@ -686,32 +678,14 @@ export default function PathFinderOfferings() {
                   </div>
                   <div className="grid md:grid-cols-3 gap-3 items-start">
                     <div>
-                      <Label className="text-xs">Speaker(s)</Label>
-                      {(() => {
-                        const current = (valueOf(row, "facilitator") ?? "") as string;
-                        const selected = current.split(",").map((s) => s.trim()).filter(Boolean);
-                        const toggle = (name: string) => {
-                          const next = selected.includes(name)
-                            ? selected.filter((s) => s !== name)
-                            : [...selected, name];
-                          patch(row.id, { facilitator: (next.join(", ") || (null as any)) });
-                        };
-                        return (
-                          <div className="flex flex-wrap gap-2">
-                            {["Amy", "Rob", "Sierra", "Painted Porch Team"].map((name) => (
-                              <label key={name} className="flex items-center gap-1.5 rounded-md border border-input bg-background px-2 py-1.5 text-xs cursor-pointer">
-                                <input
-                                  type="checkbox"
-                                  checked={selected.includes(name)}
-                                  onChange={() => toggle(name)}
-                                />
-                                {name}
-                              </label>
-                            ))}
-                          </div>
-                        );
-                      })()}
-                      <p className="text-[11px] text-muted-foreground mt-1">Select one or more. Controls which /speaking/* pages this topic shows on.</p>
+                      <div className="flex items-center justify-between mb-1">
+                        <Label className="text-xs">Speaker(s) <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
+                        <BlueDoorEditLink row={row} label="Edit" />
+                      </div>
+                      <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10">
+                        {row.facilitator || <span className="italic text-muted-foreground">— none —</span>}
+                      </div>
+                      <p className="text-[11px] text-muted-foreground mt-1">Drives which /speaking/* pages this topic shows on. Edit in PPS Op Platform.</p>
                     </div>
                     <div className="md:col-span-2">
                       <div className="flex items-center justify-between mb-1">
@@ -733,26 +707,28 @@ export default function PathFinderOfferings() {
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-3 gap-2">
-                    <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
-                      <Switch
-                        checked={!!valueOf(row, "include_in_workshops")}
-                        onCheckedChange={(v) => patch(row.id, { include_in_workshops: v })}
-                      />
-                      <span className="text-sm">
-                        <strong>Workshop</strong>
-                        <span className="block text-[11px] text-muted-foreground">Show on /partner/amplify/workshops &amp; Workshop chip on /topics</span>
+                    <div className="flex items-center gap-2 rounded-md border border-dashed border-bluedoor/40 bg-muted/40 px-3 py-2">
+                      <span
+                        className={`inline-flex items-center h-6 px-2 rounded text-[11px] font-semibold ${valueOf(row, "include_in_workshops") ? "bg-strategic/15 text-strategic" : "bg-muted text-muted-foreground"}`}
+                      >
+                        {valueOf(row, "include_in_workshops") ? "✓ Workshop" : "— Workshop"}
                       </span>
-                    </label>
-                    <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
-                      <Switch
-                        checked={!!valueOf(row, "is_keynote")}
-                        onCheckedChange={(v) => patch(row.id, { is_keynote: v })}
-                      />
-                      <span className="text-sm">
-                        <strong>Keynote</strong>
-                        <span className="block text-[11px] text-muted-foreground">Keynote chip on /topics</span>
+                      <span className="text-[11px] text-muted-foreground flex-1">
+                        Workshop chip on /topics &amp; /partner/amplify/workshops · <span className="text-bluedoor">canonical</span>
                       </span>
-                    </label>
+                      <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
+                    <div className="flex items-center gap-2 rounded-md border border-dashed border-bluedoor/40 bg-muted/40 px-3 py-2">
+                      <span
+                        className={`inline-flex items-center h-6 px-2 rounded text-[11px] font-semibold ${valueOf(row, "is_keynote") ? "bg-gold/20 text-gold-foreground" : "bg-muted text-muted-foreground"}`}
+                      >
+                        {valueOf(row, "is_keynote") ? "✓ Keynote" : "— Keynote"}
+                      </span>
+                      <span className="text-[11px] text-muted-foreground flex-1">
+                        Keynote chip on /topics · <span className="text-bluedoor">canonical</span>
+                      </span>
+                      <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
                     <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
                       <Switch
                         checked={!!valueOf(row, "include_on_speaker_page")}

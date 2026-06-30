@@ -26,8 +26,8 @@ Scout Mode (B2B individual exploring labs) maps to `b2c_individual` — matches 
 
 # Field ownership after Phase A wiring
 
-- **Blue Door (canonical, read-only on PPS):** name, short_blurb, long_description, marketing_angle, content_themes, pillar_alignment, stoic_alignment, icp_routing, cascade_elements, thumbnail_url, pricing.
-- **PPS (routing, still editable):** current_url, dedicated_url, anchor_id, is_live, is_featured_in_quiz, include_in_workshops, sort_order, RT pool memberships, tier colors.
+- **PPS Op Platform (canonical, read-only on PPS):** name, short_blurb, long_description, marketing_angle, content_themes, pillar_alignment, stoic_alignment, icp_routing, cascade_elements, thumbnail_url, pricing, **tier, topic tag, facilitator, `include_in_workshops` (Workshop chip), `is_keynote` (Keynote chip)**.
+- **PPS (routing, still editable):** current_url, dedicated_url, anchor_id, is_live, is_featured_in_quiz, include_on_speaker_page, launch_slug, sort_order, RT pool memberships (b2c + b2b), tier colors.
 
 # Reference
 
