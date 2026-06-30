@@ -616,71 +616,99 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               </div>
             )}
 
-            {result.primaryGroup && (
-              <RecGroup heading={result.primaryGroup.heading} offerings={result.primaryGroup.offerings} onClose={() => onOpenChange(false)} primary />
-            )}
-
-            {result.groups.map((g, i) => (
-              <RecGroup key={i} heading={g.heading} offerings={g.offerings} onClose={() => onOpenChange(false)} />
-            ))}
-
             {(() => {
-              // Supplemental "From the Porch" block totals at most 4 items:
-              // up to 2 free resources (Blue Door) + up to 2 insights
-              // (blog/media). Trim Blue Door first if both would exceed 4.
-              const insightCount = Math.min(relatedContent.length, 2);
-              const bdMax = Math.max(0, 4 - insightCount);
-              const bdTrimmed = opPlatformGroup ? opPlatformGroup.offerings.slice(0, bdMax) : [];
-              if (bdTrimmed.length === 0) return null;
+              // Enforce an overall cap on the total number of recommendation
+              // items shown across all sections so a quiz result never
+              // overwhelms the user. The Strongest Next Step counts as 1.
+              const MAX_TOTAL_RECOMMENDATIONS = 8;
+              let remaining = MAX_TOTAL_RECOMMENDATIONS - (result.strongestNextStep ? 1 : 0);
+
+              const takePrimary = result.primaryGroup
+                ? result.primaryGroup.offerings.slice(0, Math.max(0, remaining))
+                : [];
+              remaining -= takePrimary.length;
+
+              const trimmedGroups = result.groups
+                .map((g) => {
+                  const slice = g.offerings.slice(0, Math.max(0, remaining));
+                  remaining -= slice.length;
+                  return { ...g, offerings: slice };
+                })
+                .filter((g) => g.offerings.length > 0);
+
+              // Supplemental "From the Porch": up to 2 insights + Blue Door,
+              // capped to remaining budget and never exceeding 4 in this block.
+              const insightCount = Math.min(relatedContent.length, 2, Math.max(0, remaining));
+              const supplementalBudget = Math.max(0, Math.min(remaining - insightCount, 4 - insightCount));
+              const bdTrimmed = opPlatformGroup
+                ? opPlatformGroup.offerings.slice(0, supplementalBudget)
+                : [];
+              remaining -= bdTrimmed.length;
+              const relatedToShow = relatedContent.slice(0, insightCount);
+              remaining -= relatedToShow.length;
+
               return (
-                <RecGroup
-                  heading={opPlatformGroup!.heading}
-                  offerings={bdTrimmed}
-                  onClose={() => onOpenChange(false)}
-                />
+                <>
+                  {result.primaryGroup && takePrimary.length > 0 && (
+                    <RecGroup heading={result.primaryGroup.heading} offerings={takePrimary} onClose={() => onOpenChange(false)} primary />
+                  )}
+
+                  {trimmedGroups.map((g, i) => (
+                    <RecGroup key={i} heading={g.heading} offerings={g.offerings} onClose={() => onOpenChange(false)} />
+                  ))}
+
+                  {bdTrimmed.length > 0 && (
+                    <RecGroup
+                      heading={opPlatformGroup!.heading}
+                      offerings={bdTrimmed}
+                      onClose={() => onOpenChange(false)}
+                    />
+                  )}
+
+                  {relatedToShow.length > 0 && (
+                    <div className="mt-6">
+                      <h4 className="font-poppins text-base font-semibold text-navy mb-2">Related Reading</h4>
+                      <div className="grid gap-2">
+                        {relatedToShow.map((c) => {
+                          const isExternal = /^https?:\/\//i.test(c.url);
+                          const Icon = c.kind === "media" ? Mic : BookOpen;
+                          const label = c.kind === "media" ? (c.source ? `Media · ${c.source}` : "Media") : "Insights & Research";
+                          const inner = (
+                            <div className="flex items-start gap-3">
+                              <Icon className="w-4 h-4 text-primary mt-1 flex-shrink-0" aria-hidden="true" />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-body font-semibold text-navy transition-colors group-hover:text-primary group-hover:underline">{c.title}</p>
+                                {c.excerpt && (
+                                  <p className="text-body-sm text-foreground/70 mt-0.5 line-clamp-2">{c.excerpt}</p>
+                                )}
+                                <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-1 inline-block">
+                                  {label}
+                                  {isExternal && <span className="sr-only"> (opens in new tab)</span>}
+                                </span>
+                              </div>
+                            </div>
+                          );
+                          const className = "group block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+                          if (isExternal) {
+                            return (
+                              <a key={`${c.kind}-${c.url}`} href={c.url} target="_blank" rel="noopener noreferrer" onClick={() => onOpenChange(false)} className={className} aria-label={`${c.title} (opens in new tab)`}>
+                                {inner}
+                              </a>
+                            );
+                          }
+                          return (
+                            <Link key={`${c.kind}-${c.url}`} to={c.url} onClick={() => onOpenChange(false)} className={className} aria-label={c.title}>
+                              {inner}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </>
               );
             })()}
 
-            {relatedContent.length > 0 && (
-              <div className="mt-6">
-                <h4 className="font-poppins text-base font-semibold text-navy mb-2">Related Reading</h4>
-                <div className="grid gap-2">
-                  {relatedContent.slice(0, 2).map((c) => {
-                    const isExternal = /^https?:\/\//i.test(c.url);
-                    const Icon = c.kind === "media" ? Mic : BookOpen;
-                    const label = c.kind === "media" ? (c.source ? `Media · ${c.source}` : "Media") : "Insights & Research";
-                    const inner = (
-                      <div className="flex items-start gap-3">
-                        <Icon className="w-4 h-4 text-primary mt-1 flex-shrink-0" aria-hidden="true" />
-                        <div className="flex-1 min-w-0">
-                          <p className="text-body font-semibold text-navy transition-colors group-hover:text-primary group-hover:underline">{c.title}</p>
-                          {c.excerpt && (
-                            <p className="text-body-sm text-foreground/70 mt-0.5 line-clamp-2">{c.excerpt}</p>
-                          )}
-                          <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-1 inline-block">
-                            {label}
-                            {isExternal && <span className="sr-only"> (opens in new tab)</span>}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                    const className = "group block p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-primary/5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background";
-                    if (isExternal) {
-                      return (
-                        <a key={`${c.kind}-${c.url}`} href={c.url} target="_blank" rel="noopener noreferrer" onClick={() => onOpenChange(false)} className={className} aria-label={`${c.title} (opens in new tab)`}>
-                          {inner}
-                        </a>
-                      );
-                    }
-                    return (
-                      <Link key={`${c.kind}-${c.url}`} to={c.url} onClick={() => onOpenChange(false)} className={className} aria-label={c.title}>
-                        {inner}
-                      </Link>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
 
 
             {/* Topic note + Contact CTA — B2B only, suppressed in Scout Mode */}
