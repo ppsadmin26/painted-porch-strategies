@@ -643,21 +643,14 @@ export default function PathFinderOfferings() {
                     </div>
                   </div>
                   <div>
-                    <Label className="text-xs">Topic tag (workshop hub only — does not drive quiz routing)</Label>
-                    <select
-                      value={valueOf(row, "topic") ?? ""}
-                      onChange={(e) => patch(row.id, { topic: e.target.value || null })}
-                      className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
-                    >
-                      <option value="">— Untagged —</option>
-                      <option value="Change & Innovation">Change & Innovation</option>
-                      <option value="Comms">Comms</option>
-                      <option value="Leadership & Culture">Leadership & Culture</option>
-                      <option value="Philosophy">Philosophy</option>
-                      <option value="Team Dynamics">Team Dynamics</option>
-                      <option value="Resilience & Wellbeing">Resilience & Wellbeing</option>
-
-                    </select>
+                    <div className="flex items-center justify-between mb-1">
+                      <Label className="text-xs">Topic tag <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
+                      <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
+                    <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10">
+                      {row.topic || <span className="italic text-muted-foreground">— untagged —</span>}
+                    </div>
+                    <p className="text-[11px] text-muted-foreground mt-1">Workshop hub accordion only. Does not drive quiz routing.</p>
                   </div>
                 </div>
 
