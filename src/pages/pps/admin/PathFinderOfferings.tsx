@@ -532,7 +532,19 @@ export default function PathFinderOfferings() {
 
 
 
-      {!loading && <OpPlatformResyncPanel rows={rows} />}
+      {!loading && (
+        <OpPlatformResyncPanel
+          rows={rows}
+          onApplied={(updates) => {
+            setRows((rs) =>
+              rs.map((r) => {
+                const u = updates.find((x) => x.id === r.id);
+                return u ? ({ ...r, ...(u.patch as Partial<Row>) }) : r;
+              }),
+            );
+          }}
+        />
+      )}
 
       {loading ? (
         <div className="flex items-center justify-center py-20"><Loader2 className="animate-spin" /></div>
