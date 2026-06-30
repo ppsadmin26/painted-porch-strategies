@@ -591,6 +591,11 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                 <p className="font-poppins text-lead text-navy font-semibold mb-2">
                   <BoldShiftName name={result.strongestNextStep.offering.name} />
                 </p>
+                <p className="text-[11px] italic text-foreground/70 mb-2">
+                  Why: {result.strongestNextStep.kind === "blueDoor"
+                    ? `Org-level engagement signal · ${result.resultType}`
+                    : `Top match for your result (${result.resultType} — ${result.headline})`}
+                </p>
                 {(result.strongestNextStep.offering as { isComingSoon?: boolean }).isComingSoon && (
                   <p className="text-caption font-semibold text-gold mb-2">
                     Launching soon — join the launch list on the card to be notified.
@@ -609,6 +614,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                 </Button>
               </div>
             )}
+
 
             {result.crossoverNote && (
               <div className="mb-6 p-4 rounded-lg bg-purple/5 border border-purple/20">
@@ -705,14 +711,38 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               remaining -= (bdTrimmed.length + relatedToShow.length);
 
 
+              // "Why you got this" reason tags — surface the signal that
+              // routed each card so the recommendation logic is verifiable
+              // at a glance.
+              const scoutMode = answers["Q4DM"] === "A";
+              const rtLabel = `${result.resultType}${result.headline ? ` — ${result.headline}` : ""}`;
+              const primaryReason = scoutMode
+                ? `Scout Mode reroute · individual-focus signal (${rtLabel})`
+                : `Primary match for ${rtLabel}`;
+              const reasonForGroupHeading = (heading: string) => {
+                const h = heading.toLowerCase();
+                if (/blue.?door|deeper/.test(h)) return `Org-level engagement signal · ${rtLabel}`;
+                if (/workshop/.test(h)) return `Workshop pool for ${rtLabel}`;
+                if (/speaking|keynote/.test(h)) return `Speaking pool for ${rtLabel}`;
+                if (/free|resource|porch/.test(h)) return `Free-resource pool for ${rtLabel}`;
+                if (/lab|amplify/.test(h)) return `Lab pool for ${rtLabel}`;
+                if (/ignite/.test(h)) return `IGNITE pool for ${rtLabel}`;
+                if (/scout|when you/.test(h)) return `Scout-mode reroute · ${rtLabel}`;
+                return `Secondary match for ${rtLabel}`;
+              };
+              const opPlatformReason = scoutMode
+                ? `PPS Op Platform · Scout persona (${rtLabel})`
+                : `PPS Op Platform · persona match (${rtLabel})`;
+              const relatedReason = `Topic match · ${rtLabel}`;
+
               return (
                 <>
                   {result.primaryGroup && takePrimary.length > 0 && (
-                    <RecGroup heading={result.primaryGroup.heading} offerings={takePrimary} onClose={() => onOpenChange(false)} primary />
+                    <RecGroup heading={result.primaryGroup.heading} offerings={takePrimary} onClose={() => onOpenChange(false)} primary reason={primaryReason} />
                   )}
 
                   {trimmedGroups.map((g, i) => (
-                    <RecGroup key={i} heading={g.heading} offerings={g.offerings} onClose={() => onOpenChange(false)} />
+                    <RecGroup key={i} heading={g.heading} offerings={g.offerings} onClose={() => onOpenChange(false)} reason={reasonForGroupHeading(g.heading)} />
                   ))}
 
                   {bdTrimmed.length > 0 && (
@@ -720,6 +750,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                       heading={opPlatformGroup!.heading}
                       offerings={bdTrimmed}
                       onClose={() => onOpenChange(false)}
+                      reason={opPlatformReason}
                     />
                   )}
 
@@ -739,6 +770,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                                 {c.excerpt && (
                                   <p className="text-body-sm text-foreground/70 mt-0.5 line-clamp-2">{c.excerpt}</p>
                                 )}
+                                <p className="text-[11px] italic text-foreground/70 mt-1">Why: {relatedReason}</p>
                                 <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-1 inline-block">
                                   {label}
                                   {isExternal && <span className="sr-only"> (opens in new tab)</span>}
@@ -763,6 +795,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                       </div>
                     </div>
                   )}
+
                 </>
               );
             })()}
@@ -851,7 +884,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   );
 }
 
-export function RecGroup({ heading, offerings, onClose, primary }: { heading: string; offerings: { key: string; name: string; blurb: string; url: string; tier: string; isComingSoon?: boolean }[]; onClose: () => void; primary?: boolean }) {
+export function RecGroup({ heading, offerings, onClose, primary, reason }: { heading: string; offerings: { key: string; name: string; blurb: string; url: string; tier: string; isComingSoon?: boolean }[]; onClose: () => void; primary?: boolean; reason?: string }) {
   return (
     <div className={`mt-4 ${primary ? "" : ""}`}>
       <h4 className="font-poppins text-base font-semibold text-navy mb-2">{heading}</h4>
@@ -867,12 +900,16 @@ export function RecGroup({ heading, offerings, onClose, primary }: { heading: st
                   <BoldShiftName name={o.name} />
                 </p>
                 <p className="text-body-sm text-foreground/70 mt-0.5">{o.blurb}</p>
+                {reason && (
+                  <p className="text-[11px] italic text-foreground/70 mt-1">Why: {reason}</p>
+                )}
                 {o.isComingSoon && (
                   <p className="text-body text-[11px] font-semibold text-gold mt-1">
                     Launching soon — join the launch list on the card.
                   </p>
                 )}
               </div>
+
               <div className="flex flex-col items-end gap-1 whitespace-nowrap">
                 <span className="text-[10px] uppercase tracking-wider font-bold text-primary mt-0.5">
                   {o.tier}
