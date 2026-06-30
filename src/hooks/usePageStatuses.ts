@@ -62,8 +62,10 @@ export function usePageStatuses() {
     load();
 
     // Live updates so flipping a switch in /admin/pages reflects everywhere.
+    // Unique channel name per hook instance avoids "add callbacks after subscribe()"
+    // collisions when multiple components mount usePageStatuses concurrently.
     const channel = supabase
-      .channel("page_status_changes")
+      .channel(`page_status_changes_${Math.random().toString(36).slice(2)}`)
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "page_status" },
