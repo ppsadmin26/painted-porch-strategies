@@ -53,7 +53,6 @@ interface Row {
  * editable: include_on_speaker_page, is_featured_in_quiz, launch_slug,
  * RT pools (b2c/b2b), and URL/anchor (transitional).
  */
- */
 const OP_PLATFORM_ADMIN_BASE = "https://paintedporch-ops.lovable.app/admin/topics";
 
 function buildBlueDoorEditUrl(row: { topic_slug?: string | null; name?: string | null }): string {
