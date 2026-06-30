@@ -130,15 +130,25 @@ export function useOpPlatformRecommendations(
           return aFree - bFree;
         });
         const merged: Offering[] = [];
+        const seenUrls = new Set<string>(urls);
+        const seenNames = new Set<string>(names);
         for (let i = 0; i < sorted.length && merged.length < MAX_ITEMS; i += 1) {
           const off = bdToOffering(sorted[i], i);
           if (!off) continue;
           if (!isSafeOpPlatformUrl(off.url)) continue;
           if (!off.name?.trim() || !off.blurb?.trim()) continue;
-          if (urls.has(normalizeUrl(off.url))) continue;
-          if (names.has(normalizeName(off.name))) continue;
+          const nUrl = normalizeUrl(off.url);
+          const nName = normalizeName(off.name);
+          // Dedupe against existing groups AND against items already added to
+          // this supplemental block — catalog rows can repeat the same
+          // offering under multiple delivery formats (e.g. AMPLIFY lab +
+          // IGNITE course of "8:8") and we only ever want it surfaced once.
+          if (seenUrls.has(nUrl) || seenNames.has(nName)) continue;
           merged.push(off);
+          seenUrls.add(nUrl);
+          seenNames.add(nName);
         }
+
         if (merged.length === 0) {
           setGroup(null);
           return;

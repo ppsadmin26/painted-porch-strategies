@@ -815,15 +815,20 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
   const filteredPrimary = filterable
     ? (primaryKeys.filter((k) => filterable.has(k)) as OfferingKey[])
     : primaryKeys;
+  // blueDoor must never appear inside the primary "Workshops" group — it has
+  // its own Strongest Next Step + Deeper Option slots. Strip it from the
+  // fallback so a sparsely-configured admin set can't leak Blue Door into
+  // the workshops list.
   const safeFallback = (filterable
-    ? SAFE_B2B_FALLBACK.filter((k) => filterable.has(k))
-    : SAFE_B2B_FALLBACK) as OfferingKey[];
+    ? SAFE_B2B_FALLBACK.filter((k) => k !== "blueDoor" && filterable.has(k))
+    : SAFE_B2B_FALLBACK.filter((k) => k !== "blueDoor")) as OfferingKey[];
   const usableKeys = filteredPrimary.length > 0
     ? filteredPrimary
     : safeFallback.length > 0
       ? safeFallback
-      : primaryKeys;
+      : primaryKeys.filter((k) => k !== "blueDoor");
   const trimmedPrimary = usableKeys.slice(0, 3);
+
 
   // Speaking-topic candidates per RT. Only surfaced when admin has marked the
   // row Live + clickable; otherwise the group disappears entirely.
@@ -842,9 +847,13 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
 
   const meta = B2B_RESULT_META[rt];
 
-  const groups: RecommendationGroup[] = [
-    grp("Deeper Option — Blue Door Organizational Appraisal", "blueDoor"),
-  ];
+  // Skip the standalone "Deeper Option — Blue Door" group when Blue Door is
+  // already the Strongest Next Step (RT-D and any other RT where Blue Door
+  // wins the top slot). Otherwise the same card renders twice.
+  const groups: RecommendationGroup[] = strongest === "blueDoor"
+    ? []
+    : [grp("Deeper Option — Blue Door Organizational Appraisal", "blueDoor")];
+
   if (eligibleSpeaking.length > 0) {
     groups.push(grp("Speaking Topics — Bookable Keynotes", ...eligibleSpeaking));
   }
