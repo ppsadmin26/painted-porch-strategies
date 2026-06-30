@@ -339,8 +339,8 @@ export default function PathFinderOfferings() {
             className="h-10 rounded-md border border-input bg-background px-3 text-sm"
           >
             <option value="all">All ({rows.length})</option>
-            <option value="needs-page">Needs page ({rows.filter(r => !r.is_live && !r.dedicated_url).length})</option>
-            <option value="live">Live ({rows.filter(r => r.is_live).length})</option>
+            <option value="needs-page">Needs publish ({rows.filter(r => !r.is_published && !r.dedicated_url).length})</option>
+            <option value="live">Published ({rows.filter(r => r.is_published).length})</option>
             <option value="broken-launch">Broken launch link ({brokenRows.length})</option>
           </select>
           <a
