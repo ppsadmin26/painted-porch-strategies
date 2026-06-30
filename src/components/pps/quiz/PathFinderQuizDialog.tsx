@@ -626,6 +626,38 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               const MIN_SUPPLEMENTAL = 2;
               const MAX_SUPPLEMENTAL = 3;
 
+              // Global dedup: an offering must never appear in more than one
+              // category (Strongest Next Step, primary, secondary, From the
+              // Porch, Related Reading). Key by url (normalized) with name as
+              // a fallback so DB/local variants don't slip through.
+              const seen = new Set<string>();
+              const idsFor = (o: { url?: string; name?: string; key?: string }) => {
+                const ids: string[] = [];
+                if (o.url) ids.push(`u:${o.url.trim().toLowerCase().replace(/\/+$/, "")}`);
+                if (o.name) ids.push(`n:${o.name.trim().toLowerCase()}`);
+                if (o.key) ids.push(`k:${o.key}`);
+                return ids;
+              };
+              const isSeen = (o: { url?: string; name?: string; key?: string }) =>
+                idsFor(o).some((id) => seen.has(id));
+              const markSeen = (o: { url?: string; name?: string; key?: string }) => {
+                idsFor(o).forEach((id) => seen.add(id));
+              };
+              const dedupe = <T extends { url?: string; name?: string; key?: string }>(arr: T[]) => {
+                const out: T[] = [];
+                for (const item of arr) {
+                  if (isSeen(item)) continue;
+                  markSeen(item);
+                  out.push(item);
+                }
+                return out;
+              };
+
+              // Reserve the Strongest Next Step first so nothing duplicates it.
+              if (result.strongestNextStep?.offering) {
+                markSeen(result.strongestNextStep.offering as { url?: string; name?: string; key?: string });
+              }
+
               const snsUsed = result.strongestNextStep ? 1 : 0;
               let remaining = MAX_TOTAL_RECOMMENDATIONS - snsUsed;
 
@@ -637,13 +669,16 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               );
 
               const takePrimary = result.primaryGroup
-                ? result.primaryGroup.offerings.slice(0, Math.max(0, psBudget))
+                ? dedupe(result.primaryGroup.offerings).slice(0, Math.max(0, psBudget))
                 : [];
+              takePrimary.forEach(markSeen);
               let psUsed = takePrimary.length;
 
               const trimmedGroups = result.groups
                 .map((g) => {
-                  const slice = g.offerings.slice(0, Math.max(0, psBudget - psUsed));
+                  const deduped = dedupe(g.offerings);
+                  const slice = deduped.slice(0, Math.max(0, psBudget - psUsed));
+                  slice.forEach(markSeen);
                   psUsed += slice.length;
                   return { ...g, offerings: slice };
                 })
@@ -654,16 +689,21 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
 
               // Supplemental block: From the Porch + Related Reading.
               const supplementalBudget = Math.min(remaining, MAX_SUPPLEMENTAL);
-              const insightCount = Math.min(relatedContent.length, 2, supplementalBudget);
+              const bdDeduped = opPlatformGroup ? dedupe(opPlatformGroup.offerings) : [];
+              const relatedDeduped = dedupe(
+                relatedContent.map((c) => ({ ...c, name: c.title })),
+              );
+              const insightCount = Math.min(relatedDeduped.length, 2, supplementalBudget);
               const bdBudget = Math.max(
                 0,
                 Math.min(supplementalBudget - insightCount, MAX_SUPPLEMENTAL - insightCount),
               );
-              const bdTrimmed = opPlatformGroup
-                ? opPlatformGroup.offerings.slice(0, bdBudget)
-                : [];
-              const relatedToShow = relatedContent.slice(0, insightCount);
+              const bdTrimmed = bdDeduped.slice(0, bdBudget);
+              bdTrimmed.forEach(markSeen);
+              const relatedToShow = relatedDeduped.slice(0, insightCount);
+              relatedToShow.forEach(markSeen);
               remaining -= (bdTrimmed.length + relatedToShow.length);
+
 
               return (
                 <>
