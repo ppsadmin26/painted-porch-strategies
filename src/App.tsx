@@ -447,8 +447,9 @@ const App = () => (
             <Route path="policy-notifications" element={<PolicyNotifications />} />
             <Route path="refunds" element={<RefundRequestsManager />} />
             <Route path="course-launches" element={<CourseLaunchManager />} />
-            <Route path="path-finder" element={<PathFinderOfferings />} />
-            <Route path="offerings-coverage" element={<OfferingsCoverage />} />
+            <Route path="offerings" element={<PathFinderOfferings />} />
+            <Route path="path-finder" element={<Navigate to="/admin/offerings" replace />} />
+            <Route path="offerings-coverage" element={<Navigate to="/admin/offerings" replace />} />
             <Route path="security" element={<SecurityFindingsExplained />} />
           </Route>
           
