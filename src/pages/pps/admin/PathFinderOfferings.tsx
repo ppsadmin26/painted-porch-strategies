@@ -705,26 +705,28 @@ export default function PathFinderOfferings() {
                     </div>
                   </div>
                   <div className="grid sm:grid-cols-3 gap-2">
-                    <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
-                      <Switch
-                        checked={!!valueOf(row, "include_in_workshops")}
-                        onCheckedChange={(v) => patch(row.id, { include_in_workshops: v })}
-                      />
-                      <span className="text-sm">
-                        <strong>Workshop</strong>
-                        <span className="block text-[11px] text-muted-foreground">Show on /partner/amplify/workshops &amp; Workshop chip on /topics</span>
+                    <div className="flex items-center gap-2 rounded-md border border-dashed border-bluedoor/40 bg-muted/40 px-3 py-2">
+                      <span
+                        className={`inline-flex items-center h-6 px-2 rounded text-[11px] font-semibold ${valueOf(row, "include_in_workshops") ? "bg-strategic/15 text-strategic" : "bg-muted text-muted-foreground"}`}
+                      >
+                        {valueOf(row, "include_in_workshops") ? "✓ Workshop" : "— Workshop"}
                       </span>
-                    </label>
-                    <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
-                      <Switch
-                        checked={!!valueOf(row, "is_keynote")}
-                        onCheckedChange={(v) => patch(row.id, { is_keynote: v })}
-                      />
-                      <span className="text-sm">
-                        <strong>Keynote</strong>
-                        <span className="block text-[11px] text-muted-foreground">Keynote chip on /topics</span>
+                      <span className="text-[11px] text-muted-foreground flex-1">
+                        Workshop chip on /topics &amp; /partner/amplify/workshops · <span className="text-bluedoor">canonical</span>
                       </span>
-                    </label>
+                      <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
+                    <div className="flex items-center gap-2 rounded-md border border-dashed border-bluedoor/40 bg-muted/40 px-3 py-2">
+                      <span
+                        className={`inline-flex items-center h-6 px-2 rounded text-[11px] font-semibold ${valueOf(row, "is_keynote") ? "bg-gold/20 text-gold-foreground" : "bg-muted text-muted-foreground"}`}
+                      >
+                        {valueOf(row, "is_keynote") ? "✓ Keynote" : "— Keynote"}
+                      </span>
+                      <span className="text-[11px] text-muted-foreground flex-1">
+                        Keynote chip on /topics · <span className="text-bluedoor">canonical</span>
+                      </span>
+                      <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
                     <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
                       <Switch
                         checked={!!valueOf(row, "include_on_speaker_page")}
