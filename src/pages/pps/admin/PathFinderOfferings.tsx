@@ -46,11 +46,13 @@ interface Row {
 }
 
 /**
- * Phase B (PPS Op Platform → PPS site handoff): canonical narrative fields
- * (name, blurb, description, image_url) are read-only here and edited in
- * the PPS Op Platform Offerings Register. Routing fields (URL, anchor, Live,
- * RT pools, launch link, tier, topic tag, facilitator, surface flags)
- * remain editable on this page.
+ * Phase B/C (PPS Op Platform → PPS site handoff): canonical fields
+ * (name, blurb, description, image_url, tier, topic, facilitator,
+ * include_in_workshops, is_keynote) are read-only here and edited in
+ * the PPS Op Platform Offerings Register. PPS-owned fields that remain
+ * editable: include_on_speaker_page, is_featured_in_quiz, launch_slug,
+ * RT pools (b2c/b2b), and URL/anchor (transitional).
+ */
  */
 const OP_PLATFORM_ADMIN_BASE = "https://paintedporch-ops.lovable.app/admin/topics";
 
