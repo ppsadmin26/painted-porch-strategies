@@ -256,7 +256,7 @@ export default function CourseLaunchManager() {
             {linkedOffering && (
               <span className="block mt-1">
                 <Link
-                  to={`/admin/path-finder-offerings?filter=${encodeURIComponent(linkedOffering.offering_key)}`}
+                  to={`/admin/offerings?filter=${encodeURIComponent(linkedOffering.offering_key)}`}
                   className="underline font-medium"
                 >
                   Open "{linkedOffering.name}" in Offerings →
