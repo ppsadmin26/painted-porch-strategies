@@ -295,7 +295,7 @@ export function OpPlatformResyncPanel({
     for (const u of updates) {
       const { error: err } = await supabase
         .from("path_finder_offerings")
-        .update(u.patch)
+        .update(u.patch as never)
         .eq("id", u.id);
       if (err) failures.push(err.message);
       else okCount += 1;
