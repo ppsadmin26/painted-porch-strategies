@@ -18,6 +18,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { OpPlatformResyncPanel } from "./OpPlatformResyncPanel";
+import { routingSummaryForTier, PLACEMENT_BADGE_COPY } from "@/lib/quizRoutingSummary";
 
 interface Row {
   id: string;
@@ -321,6 +323,7 @@ export default function PathFinderOfferings() {
               <p><strong>RT mapping (Free + Speaking only):</strong> Tick which result types (RT1-6 for B2C, RT-A-E for B2B) the offering should appear in. Other tiers (IGNITE, AMPLIFY, Workshop, Blue Door, Assessment) are placed automatically by the quiz engine based on the result type — the RT box on those cards will say "placed automatically".</p>
               <p><strong>Prioritize in quiz:</strong> Pins this offering to position 1 of the primary recommendation list whenever it is already in that list for the matched result.</p>
               <p><strong>Topic tag:</strong> Used by the workshops hub accordion only. It does <em>not</em> drive quiz routing — RT mapping does.</p>
+              <p className="pt-1"><Link to="/admin/quiz-rules" className="text-bluedoor underline font-semibold">Open the full Quiz Routing Rules reference →</Link></p>
             </div>
           </details>
         </div>
@@ -529,6 +532,8 @@ export default function PathFinderOfferings() {
 
 
 
+      {!loading && <OpPlatformResyncPanel rows={rows} />}
+
       {loading ? (
         <div className="flex items-center justify-center py-20"><Loader2 className="animate-spin" /></div>
       ) : (
@@ -655,6 +660,36 @@ export default function PathFinderOfferings() {
                     <p className="text-[11px] text-muted-foreground mt-1">Workshop hub accordion only. Does not drive quiz routing.</p>
                   </div>
                 </div>
+
+                {(() => {
+                  const tier = (valueOf(row, "tier") ?? "") as string;
+                  const summary = routingSummaryForTier(tier);
+                  return (
+                    <div className="mb-3 rounded-md border border-dashed border-primary/30 bg-primary/5 px-3 py-3">
+                      <div className="flex items-center justify-between mb-1 gap-2 flex-wrap">
+                        <Label className="text-xs font-poppins font-semibold text-navy uppercase tracking-wide">
+                          Routing rules · how this offering reaches the quiz
+                        </Label>
+                        <div className="flex items-center gap-1">
+                          <Badge variant="outline" className="text-[10px]">{PLACEMENT_BADGE_COPY[summary.placement]}</Badge>
+                          <Link to="/admin/quiz-rules" className="text-[11px] text-bluedoor hover:underline ml-1">
+                            Full rules →
+                          </Link>
+                        </div>
+                      </div>
+                      <p className="text-xs font-medium text-navy/80 mb-2">{summary.headline}</p>
+                      <ul className="list-disc pl-5 space-y-1 text-xs text-foreground/80">
+                        {summary.rules.map((r, i) => <li key={i}>{r}</li>)}
+                      </ul>
+                      {summary.personas.length > 0 && (
+                        <p className="text-[11px] text-muted-foreground mt-2">
+                          Personas reached: {summary.personas.join(", ")}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })()}
+
 
                 <div className="mb-3 rounded-md border border-dashed border-bluedoor/40 bg-bluedoor/5 px-3 py-2">
                   <div className="flex items-center justify-between mb-1">
