@@ -22,15 +22,15 @@ type: feature
 
 Everything else is read-only on `/admin/path-finder-offerings` and edited in the Op Platform. Do not re-introduce canonical fields (name, blurb, image, facilitator, tier, topic, anchor, URL, etc.) as editable on the PPS side. Hot-patch overrides for URL/anchor are tolerated only until Op Platform deliveries own them end-to-end (Phase C).
 
-## LIVE toggle — open design question
+## LIVE toggle — RESOLVED in Phase C
 
-There are (at least) **three different "live" states** that today collapse into one `is_live` boolean. Before locking ownership of the toggle, untangle:
+The three collapsed "live" states are now separated. See `mem://features/quiz/offerings-live-toggle-phase-c.md` for the canonical rule. Short version:
 
-1. **Sitemap/page Live** — owned by `page_status` (admin/pages). Governs whether the *destination URL* renders or shows Coming Soon.
-2. **Offering Live (dedicated page)** — does the offering have its own published URL? When false, fall back to `current_url` + anchor on the host page.
-3. **Offering Live (anchor-only deliveries)** — for resources, masterclasses, workshops, or speaking topics that never get a dedicated page, "live" means "the anchor card is published on its host page" (e.g. `/speaking/topics#...`).
+- **Page Live vs Coming Soon** → `page_status` (PPS, `/admin/pages`).
+- **Offering Published (catalog)** → `path_finder_offerings.is_published` (mirrors Op Platform `delivery.is_published`).
+- A card is publicly visible only when Published AND its host page is Live. Helper: `src/lib/offeringVisibility.ts`.
 
-Decision pending: whether (2) and (3) collapse into a single Op-Platform-owned `delivery.is_published` flag (PPS derives display state by combining it with `page_status` for the host URL), or stay on PPS as a website-rendering override. Until resolved, `is_live` remains editable on PPS — document any change here.
+`is_live` is deprecated; a DB trigger mirrors it to `is_published` during the transition. Render code MUST go through `isOfferingPublished` / `isOfferingVisible`.
 
 ## New offerings
 
