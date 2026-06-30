@@ -18,6 +18,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { OpPlatformResyncPanel } from "./OpPlatformResyncPanel";
+import { routingSummaryForTier, PLACEMENT_BADGE_COPY } from "@/lib/quizRoutingSummary";
 
 interface Row {
   id: string;
@@ -321,6 +323,7 @@ export default function PathFinderOfferings() {
               <p><strong>RT mapping (Free + Speaking only):</strong> Tick which result types (RT1-6 for B2C, RT-A-E for B2B) the offering should appear in. Other tiers (IGNITE, AMPLIFY, Workshop, Blue Door, Assessment) are placed automatically by the quiz engine based on the result type — the RT box on those cards will say "placed automatically".</p>
               <p><strong>Prioritize in quiz:</strong> Pins this offering to position 1 of the primary recommendation list whenever it is already in that list for the matched result.</p>
               <p><strong>Topic tag:</strong> Used by the workshops hub accordion only. It does <em>not</em> drive quiz routing — RT mapping does.</p>
+              <p className="pt-1"><Link to="/admin/quiz-rules" className="text-bluedoor underline font-semibold">Open the full Quiz Routing Rules reference →</Link></p>
             </div>
           </details>
         </div>
@@ -528,6 +531,8 @@ export default function PathFinderOfferings() {
 
 
 
+
+      {!loading && <OpPlatformResyncPanel rows={rows} />}
 
       {loading ? (
         <div className="flex items-center justify-center py-20"><Loader2 className="animate-spin" /></div>
