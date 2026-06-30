@@ -66,8 +66,7 @@ export function AdminSidebar() {
     if (item.url === "/admin/emails/queue" && role !== "admin") return false;
     if (item.url === "/admin/policy-notifications" && role !== "admin") return false;
     if (item.url === "/admin/pages" && role !== "admin") return false;
-    if (item.url === "/admin/path-finder" && role !== "admin") return false;
-    if (item.url === "/admin/offerings-coverage" && role !== "admin") return false;
+    if (item.url === "/admin/offerings" && role !== "admin") return false;
     if (item.url === "/admin/security" && role !== "admin") return false;
     // Section-gated items
     if (item.section) return canAccess(item.section);
