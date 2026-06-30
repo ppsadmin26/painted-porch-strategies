@@ -464,12 +464,12 @@ export default function PathFinderOfferings() {
       </Dialog>
 
       <div className="mb-6 rounded-lg border border-bluedoor/30 bg-bluedoor/5 px-4 py-3 text-sm text-navy">
-        <p className="font-poppins font-semibold text-bluedoor mb-1">Phase B active — canonical fields are now read-only</p>
+        <p className="font-poppins font-semibold text-bluedoor mb-1">Phase C active — Live split into Published + Page Live</p>
         <p>
-          The PPS Op Platform <strong>Offerings Master Register</strong> is the source of truth. Narrative fields (<strong>name, blurb, description, image</strong>) are read-only here — use the <em>Edit in PPS Op Platform</em> link on each row to change them. <strong>Routing</strong> (URL, anchor, Live, RT pools, launch link, surface flags, tier, topic tag, facilitator) stays editable on this page.
+          The PPS Op Platform <strong>Offerings Master Register</strong> is the source of truth for narrative (<strong>name, blurb, description, image</strong>) — read-only here. <strong>Published</strong> mirrors the canonical <code>delivery.is_published</code> flag (will become Op-Platform-owned once the sync ships). Page-level <strong>Live vs Coming Soon</strong> is managed in <Link to="/admin/pages" className="underline text-bluedoor">/admin/pages</Link>. A card is publicly visible only when <em>Published</em> AND its host page is Live.
         </p>
         <p className="mt-2">
-          See <code>docs/handoff/BlueDoor-to-PPS-Offerings-Handoff-v1.md</code>.{" "}
+          PPS-owned, editable here: <strong>RT pools, Pin to top, Include on speaker page, Linked launch, URL/anchor (transitional), tier, topic tag, facilitator</strong>.{" "}
           <a
             href={OP_PLATFORM_ADMIN_BASE}
             target="_blank"
