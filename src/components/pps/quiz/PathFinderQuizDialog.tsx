@@ -617,35 +617,53 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
             )}
 
             {(() => {
-              // Enforce an overall cap on the total number of recommendation
-              // items shown across all sections so a quiz result never
-              // overwhelms the user. The Strongest Next Step counts as 1.
-              const MAX_TOTAL_RECOMMENDATIONS = 8;
-              let remaining = MAX_TOTAL_RECOMMENDATIONS - (result.strongestNextStep ? 1 : 0);
+              // Cap recommendations so a quiz result never overwhelms the user.
+              // 1 Strongest Next Step + ~2-4 primary/secondary offerings + ~2-3
+              // supplemental (From the Porch free resources + Related Reading)
+              // = ~6 total recommendations.
+              const MAX_TOTAL_RECOMMENDATIONS = 6;
+              const MAX_PRIMARY_SECONDARY = 4;
+              const MIN_SUPPLEMENTAL = 2;
+              const MAX_SUPPLEMENTAL = 3;
+
+              const snsUsed = result.strongestNextStep ? 1 : 0;
+              let remaining = MAX_TOTAL_RECOMMENDATIONS - snsUsed;
+
+              // Primary + secondary together get up to 4, while reserving at
+              // least 2 slots for supplemental content.
+              const psBudget = Math.min(
+                Math.max(0, remaining - MIN_SUPPLEMENTAL),
+                MAX_PRIMARY_SECONDARY,
+              );
 
               const takePrimary = result.primaryGroup
-                ? result.primaryGroup.offerings.slice(0, Math.max(0, remaining))
+                ? result.primaryGroup.offerings.slice(0, Math.max(0, psBudget))
                 : [];
-              remaining -= takePrimary.length;
+              let psUsed = takePrimary.length;
 
               const trimmedGroups = result.groups
                 .map((g) => {
-                  const slice = g.offerings.slice(0, Math.max(0, remaining));
-                  remaining -= slice.length;
+                  const slice = g.offerings.slice(0, Math.max(0, psBudget - psUsed));
+                  psUsed += slice.length;
                   return { ...g, offerings: slice };
                 })
                 .filter((g) => g.offerings.length > 0);
 
-              // Supplemental "From the Porch": up to 2 insights + Blue Door,
-              // capped to remaining budget and never exceeding 4 in this block.
-              const insightCount = Math.min(relatedContent.length, 2, Math.max(0, remaining));
-              const supplementalBudget = Math.max(0, Math.min(remaining - insightCount, 4 - insightCount));
+              // Recalculate remaining after primary/secondary allocations.
+              remaining = MAX_TOTAL_RECOMMENDATIONS - snsUsed - psUsed;
+
+              // Supplemental block: From the Porch + Related Reading.
+              const supplementalBudget = Math.min(remaining, MAX_SUPPLEMENTAL);
+              const insightCount = Math.min(relatedContent.length, 2, supplementalBudget);
+              const bdBudget = Math.max(
+                0,
+                Math.min(supplementalBudget - insightCount, MAX_SUPPLEMENTAL - insightCount),
+              );
               const bdTrimmed = opPlatformGroup
-                ? opPlatformGroup.offerings.slice(0, supplementalBudget)
+                ? opPlatformGroup.offerings.slice(0, bdBudget)
                 : [];
-              remaining -= bdTrimmed.length;
               const relatedToShow = relatedContent.slice(0, insightCount);
-              remaining -= relatedToShow.length;
+              remaining -= (bdTrimmed.length + relatedToShow.length);
 
               return (
                 <>

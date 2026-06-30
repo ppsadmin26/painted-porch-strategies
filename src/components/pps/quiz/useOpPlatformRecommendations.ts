@@ -28,10 +28,11 @@ import type { Answers, Offering, QuizResult, ResultType } from "@/data/pathFinde
  * Failures are non-fatal — the catalog group simply does not render.
  */
 
-// Supplemental cap. The dialog's "From the Porch" block totals ≤4 items
-// (≤2 free resources here + ≤2 insights from useQuizRelatedContent), so we
-// only ever surface up to 2 free-resource picks from the canonical catalog.
-const MAX_ITEMS = 2;
+// Supplemental cap. The dialog's "From the Porch" block totals ≤3 items
+// now that the overall recommendation cap is 6, so we surface up to 3
+// free-resource picks from the canonical catalog when the dialog has budget
+// for them.
+const MAX_ITEMS = 3;
 const FORMAT_TO_TIER: Record<OpPlatformFormat, Offering["tier"]> = {
   assessment: "Assessment",
   course: "IGNITE",
