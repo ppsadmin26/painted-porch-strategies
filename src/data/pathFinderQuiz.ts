@@ -847,9 +847,13 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
 
   const meta = B2B_RESULT_META[rt];
 
-  const groups: RecommendationGroup[] = [
-    grp("Deeper Option — Blue Door Organizational Appraisal", "blueDoor"),
-  ];
+  // Skip the standalone "Deeper Option — Blue Door" group when Blue Door is
+  // already the Strongest Next Step (RT-D and any other RT where Blue Door
+  // wins the top slot). Otherwise the same card renders twice.
+  const groups: RecommendationGroup[] = strongest === "blueDoor"
+    ? []
+    : [grp("Deeper Option — Blue Door Organizational Appraisal", "blueDoor")];
+
   if (eligibleSpeaking.length > 0) {
     groups.push(grp("Speaking Topics — Bookable Keynotes", ...eligibleSpeaking));
   }
