@@ -147,6 +147,7 @@ import AccountSettings from "./pages/pps/admin/AccountSettings";
 import SiteVideosManager from "./pages/pps/admin/SiteVideosManager";
 import PageStatusManager from "./pages/pps/admin/PageStatusManager";
 import PathFinderOfferings from "./pages/pps/admin/PathFinderOfferings";
+import PathFinderOfferingDetail from "./pages/pps/admin/PathFinderOfferingDetail";
 import QuizRoutingRules from "./pages/pps/admin/QuizRoutingRules";
 import BackupsManager from "./pages/pps/admin/BackupsManager";
 import MigrateManager from "./pages/pps/admin/MigrateManager";
