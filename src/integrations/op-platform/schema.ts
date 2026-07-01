@@ -117,8 +117,8 @@ export const OpPlatformRecommendationSchema = z
       .union([z.string(), z.null()])
       .optional()
       .transform((v) => (typeof v === "string" ? v : null)),
-    content_themes: z.array(z.string()).default([]),
-    pillar_alignment: z.array(z.string()).default([]),
+    content_themes: coerceStringArray,
+    pillar_alignment: coerceStringArray,
     is_live: z.boolean().default(true),
     status: z.string().default("live"),
     sort_order: z
