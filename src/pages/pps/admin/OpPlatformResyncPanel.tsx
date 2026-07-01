@@ -442,7 +442,7 @@ export function OpPlatformResyncPanel({
   const insertSelectedMissing = async () => {
     if (!buckets) return;
     const targets = buckets.missingLocally.filter((r) =>
-      selectedMissing.has(norm(r.name)),
+      selectedMissing.has(remoteKey(r)),
     );
     if (targets.length === 0) {
       toast({ title: "Nothing selected", description: "Select at least one Op Platform row to insert." });
