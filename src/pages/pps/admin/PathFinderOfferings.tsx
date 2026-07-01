@@ -733,7 +733,7 @@ export default function PathFinderOfferings() {
                         <BlueDoorEditLink row={row} label="Edit" />
                       </div>
                       <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10">
-                        {row.facilitator || <span className="italic text-muted-foreground">— none —</span>}
+                        {row.facilitator ? facilitatorDisplay(row.facilitator) : <span className="italic text-muted-foreground">— none —</span>}
                       </div>
                       <p className="text-[11px] text-muted-foreground mt-1">Drives which /speaking/* pages this topic shows on. Edit in PPS Op Platform.</p>
                     </div>
