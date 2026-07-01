@@ -498,7 +498,7 @@ function RtPoolEditor({ tier, b2cValue, b2bValue, onB2cChange, onB2bChange }: Rt
             {B2C_RTS.map((rt) => {
               const on = (b2cValue[rt] ?? []).includes("free");
               return (
-                <label key={rt} className="flex items-center gap-2 rounded border border-input bg-background px-2 py-1 cursor-pointer">
+                <label key={rt} title={RT_LABELS[rt]} className="flex items-center gap-2 rounded border border-input bg-background px-2 py-1 cursor-pointer hover:bg-primary/5">
                   <input
                     type="checkbox"
                     checked={on}
