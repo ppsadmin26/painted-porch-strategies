@@ -244,6 +244,12 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
             <Label htmlFor={`published-${row.id}`} className="text-sm font-medium">
               {valueOf("is_published") ? "Published" : "Unpublished"}
             </Label>
+            <HelpTooltip>
+              <strong>Live status</strong>
+              <p className="mt-1">
+                Published offerings appear in the quiz, public catalog pages, and anywhere the site pulls from this registry. Unpublished is hidden from visitors and treated as ineligible for quiz recommendations.
+              </p>
+            </HelpTooltip>
           </div>
           <Button
             size="sm"
