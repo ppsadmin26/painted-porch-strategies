@@ -318,7 +318,32 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
         </div>
       </div>
 
+      {validations.length > 0 && (
+        <div className="space-y-1.5" role="alert" aria-label="Configuration warnings">
+          {validations.map((v, i) => {
+            const isError = v.level === "error";
+            const Icon = isError ? AlertCircle : AlertTriangle;
+            return (
+              <div
+                key={i}
+                className={`flex items-start gap-2 rounded-md border px-3 py-2 text-xs ${
+                  isError
+                    ? "border-raspberry/40 bg-raspberry/5 text-raspberry"
+                    : "border-gold/40 bg-gold/5 text-gold-foreground"
+                }`}
+              >
+                <Icon className="w-3.5 h-3.5 mt-0.5 shrink-0" />
+                <span className="leading-relaxed">
+                  <strong className="font-semibold">{isError ? "Blocking:" : "Warning:"}</strong> {v.message}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
       {/* Registry */}
+
       <section className="rounded-md border border-dashed border-bluedoor/40 bg-bluedoor/5 px-3 py-3">
         <div className="flex items-center justify-between mb-2 gap-2 flex-wrap">
           <Label className="text-xs font-poppins font-semibold text-bluedoor uppercase tracking-wide">
