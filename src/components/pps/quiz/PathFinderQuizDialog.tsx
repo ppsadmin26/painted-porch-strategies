@@ -606,8 +606,8 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                 </p>
                 <p className="text-[11px] italic text-foreground/70 mb-2">
                   Why: {result.strongestNextStep.kind === "blueDoor"
-                    ? `Org-level engagement signal · ${result.resultType}`
-                    : `Top match for your result (${result.resultType} — ${result.headline})`}
+                    ? "Your answers point to an organization-level question — not a training gap. The Blue Door Appraisal is where that work begins."
+                    : `Your answers point most strongly to ${(result.headline || "this area").toLowerCase()} — and this is the tightest match.`}
                 </p>
                 {(result.strongestNextStep.offering as { isComingSoon?: boolean }).isComingSoon && (
                   <p className="text-caption font-semibold text-gold mb-2">
