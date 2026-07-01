@@ -112,6 +112,7 @@ export function OpPlatformResyncPanel({
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [applying, setApplying] = useState(false);
+  const [retryStatus, setRetryStatus] = useState<string | null>(null);
 
   const toggle = (id: string) =>
     setExpanded((prev) => {
@@ -130,18 +131,35 @@ export function OpPlatformResyncPanel({
   const runAudit = async () => {
     setLoading(true);
     setError(null);
+    setRetryStatus(null);
     try {
-      const res = await fetchOpPlatformRecommendations({
-        liveOnly: false,
-        limit: 200,
-      });
+      const res = await fetchOpPlatformRecommendations(
+        { liveOnly: false, limit: 200 },
+        {
+          retry: {
+            retries: 3,
+            baseDelayMs: 500,
+            maxDelayMs: 4000,
+            onRetry: ({ attempt, delayMs, error: err }) => {
+              const reason = err.status ? `HTTP ${err.status}` : "network error";
+              setRetryStatus(
+                `Transient failure (${reason}). Retry ${attempt} of 3 in ${
+                  Math.round(delayMs / 100) / 10
+                }s…`,
+              );
+            },
+          },
+        },
+      );
       setRemote(res.results);
       setFetchedAt(new Date());
       setExpanded(new Set());
       setSelected(new Set());
+      setRetryStatus(null);
     } catch (e: unknown) {
       setError(toAuditError(e));
       setRemote(null);
+      setRetryStatus(null);
     } finally {
       setLoading(false);
     }
@@ -389,6 +407,12 @@ export function OpPlatformResyncPanel({
         feed. No writes — surfaces what would change if we synced. Matched by
         normalized offering name (the feed does not expose a stable ID).
       </p>
+
+      {loading && retryStatus && (
+        <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1 mt-2">
+          {retryStatus}
+        </p>
+      )}
 
       {error && <SyncErrorPanel error={error} onRetry={runAudit} />}
 
