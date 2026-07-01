@@ -97,16 +97,50 @@ export function buildOpPlatformRecsUrl(
   return qs ? `${OP_PLATFORM_RECS_ENDPOINT}?${qs}` : OP_PLATFORM_RECS_ENDPOINT;
 }
 
+export class OpPlatformFetchError extends Error {
+  status?: number;
+  statusText?: string;
+  url: string;
+  body?: string;
+  cause?: unknown;
+  constructor(
+    message: string,
+    opts: {
+      url: string;
+      status?: number;
+      statusText?: string;
+      body?: string;
+      cause?: unknown;
+    },
+  ) {
+    super(message);
+    this.name = "OpPlatformFetchError";
+    this.url = opts.url;
+    this.status = opts.status;
+    this.statusText = opts.statusText;
+    this.body = opts.body;
+    this.cause = opts.cause;
+  }
+}
+
 export async function fetchOpPlatformRecommendations(
   filters: OpPlatformRecommendationFilters,
   init?: { signal?: AbortSignal },
 ): Promise<OpPlatformRecommendationResponse> {
   const url = buildOpPlatformRecsUrl(filters);
-  const res = await fetch(url, {
-    method: "GET",
-    headers: { Accept: "application/json" },
-    signal: init?.signal,
-  });
+  let res: Response;
+  try {
+    res = await fetch(url, {
+      method: "GET",
+      headers: { Accept: "application/json" },
+      signal: init?.signal,
+    });
+  } catch (cause) {
+    throw new OpPlatformFetchError(
+      `Network error contacting PPS Op Platform: ${(cause as Error)?.message ?? cause}`,
+      { url, cause },
+    );
+  }
   if (!res.ok) {
     let errBody = "";
     try {
@@ -114,8 +148,9 @@ export async function fetchOpPlatformRecommendations(
     } catch {
       // ignore
     }
-    throw new Error(
-      `Blue Door recommendations request failed (${res.status}): ${errBody}`,
+    throw new OpPlatformFetchError(
+      `PPS Op Platform request failed (${res.status} ${res.statusText}).`,
+      { url, status: res.status, statusText: res.statusText, body: errBody },
     );
   }
   const data = (await res.json()) as Partial<OpPlatformRecommendationResponse>;

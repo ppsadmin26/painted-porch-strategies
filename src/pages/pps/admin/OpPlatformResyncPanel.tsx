@@ -11,9 +11,12 @@ import {
   ChevronUp,
   ChevronRight,
   Upload,
+  Copy,
+  ExternalLink,
 } from "lucide-react";
 import {
   fetchOpPlatformRecommendations,
+  OpPlatformFetchError,
   type OpPlatformRecommendation,
 } from "@/integrations/op-platform/recommendations";
 import { supabase } from "@/integrations/supabase/client";
@@ -103,7 +106,7 @@ export function OpPlatformResyncPanel({
 }: OpPlatformResyncPanelProps) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<AuditError | null>(null);
   const [remote, setRemote] = useState<OpPlatformRecommendation[] | null>(null);
   const [fetchedAt, setFetchedAt] = useState<Date | null>(null);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
@@ -136,13 +139,14 @@ export function OpPlatformResyncPanel({
       setFetchedAt(new Date());
       setExpanded(new Set());
       setSelected(new Set());
-    } catch (e: any) {
-      setError(e?.message ?? "Failed to fetch from PPS Op Platform");
+    } catch (e: unknown) {
+      setError(toAuditError(e));
       setRemote(null);
     } finally {
       setLoading(false);
     }
   };
+
 
 
   const buckets = (() => {
@@ -386,12 +390,8 @@ export function OpPlatformResyncPanel({
         normalized offering name (the feed does not expose a stable ID).
       </p>
 
-      {error && (
-        <div className="mt-3 flex items-start gap-2 rounded-md border border-raspberry/40 bg-raspberry/5 p-3 text-sm text-raspberry">
-          <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0" />
-          <span>{error}</span>
-        </div>
-      )}
+      {error && <SyncErrorPanel error={error} onRetry={runAudit} />}
+
 
       {buckets && (
         <>
@@ -702,3 +702,199 @@ function DiffSection({
     </div>
   );
 }
+
+// ---------------------------------------------------------------------------
+// Error surfacing
+// ---------------------------------------------------------------------------
+
+interface AuditError {
+  title: string;
+  message: string;
+  url?: string;
+  status?: number;
+  statusText?: string;
+  body?: string;
+  suggestions: string[];
+  raw: string;
+}
+
+function toAuditError(e: unknown): AuditError {
+  if (e instanceof OpPlatformFetchError) {
+    return {
+      title: e.status
+        ? `PPS Op Platform returned ${e.status} ${e.statusText ?? ""}`.trim()
+        : "Could not reach PPS Op Platform",
+      message: e.message,
+      url: e.url,
+      status: e.status,
+      statusText: e.statusText,
+      body: e.body,
+      suggestions: suggestionsFor(e),
+      raw: JSON.stringify(
+        {
+          name: e.name,
+          message: e.message,
+          url: e.url,
+          status: e.status,
+          statusText: e.statusText,
+          body: e.body?.slice(0, 2000),
+        },
+        null,
+        2,
+      ),
+    };
+  }
+  const err = e as Error;
+  const msg = err?.message ?? String(e);
+  return {
+    title: "Unexpected error running audit",
+    message: msg,
+    suggestions: [
+      "Open the browser console and re-run the audit to capture a full stack trace.",
+      "If the error persists, ping engineering with the raw payload below.",
+    ],
+    raw: JSON.stringify(
+      { name: err?.name, message: msg, stack: err?.stack },
+      null,
+      2,
+    ),
+  };
+}
+
+function suggestionsFor(e: OpPlatformFetchError): string[] {
+  if (e.status === undefined) {
+    return [
+      "The request never reached the endpoint — likely a network / CORS / DNS issue.",
+      "Confirm you have internet access and try the endpoint URL directly in a new tab.",
+      "If CORS is the culprit, verify the PPS Op Platform edge function still allow-lists this origin.",
+    ];
+  }
+  const body = (e.body ?? "").toLowerCase();
+  if (e.status === 400) {
+    const tips: string[] = [
+      "The endpoint rejected the query. Check the URL below for unsupported filter values (persona, format, segment, stage).",
+      "If you recently added a new filter, confirm the edge function was redeployed with matching support.",
+    ];
+    if (body.includes("limit")) tips.unshift("`limit` may be above the endpoint cap — try lowering it.");
+    return tips;
+  }
+  if (e.status === 401 || e.status === 403) {
+    return [
+      "The endpoint refused the request. It should be public — confirm the edge function's RLS policies and JWT-verification flag haven't changed.",
+      "If auth was recently tightened, restore the anon-key read policy on the underlying view.",
+    ];
+  }
+  if (e.status === 404) {
+    return [
+      "Endpoint path not found. The edge function may have been renamed or unpublished — verify the deployment.",
+      "Double-check the URL below matches the deployed function name (`pathfinder-recommendations`).",
+    ];
+  }
+  if (e.status === 429) {
+    return [
+      "Rate limited. Wait 30 seconds and try again.",
+      "If this keeps happening, batch fewer resyncs per minute.",
+    ];
+  }
+  if (e.status >= 500) {
+    return [
+      "The endpoint errored server-side. It is usually transient — retry in a minute.",
+      "If it persists, check the PPS Op Platform edge function logs for a stack trace and share the timestamp.",
+    ];
+  }
+  return [
+    "Unexpected status code. Copy the raw payload below and share with engineering.",
+  ];
+}
+
+function SyncErrorPanel({
+  error,
+  onRetry,
+}: {
+  error: AuditError;
+  onRetry: () => void;
+}) {
+  const copyRaw = async () => {
+    try {
+      await navigator.clipboard.writeText(error.raw);
+      toast({ title: "Error details copied" });
+    } catch {
+      toast({ title: "Copy failed", variant: "destructive" });
+    }
+  };
+  return (
+    <div className="mt-3 rounded-md border border-raspberry/40 bg-raspberry/5 p-3 text-sm text-raspberry space-y-3">
+      <div className="flex items-start gap-2">
+        <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0" />
+        <div className="min-w-0 flex-1 space-y-1">
+          <div className="font-poppins font-semibold text-navy">
+            {error.title}
+          </div>
+          <div className="text-foreground/90 break-words">{error.message}</div>
+          {error.url && (
+            <div className="text-[11px] text-muted-foreground break-all">
+              <span className="uppercase tracking-wide font-semibold mr-1">
+                endpoint:
+              </span>
+              <a
+                href={error.url}
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-dotted hover:text-bluedoor inline-flex items-center gap-1"
+              >
+                {error.url}
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {error.suggestions.length > 0 && (
+        <div className="rounded-md border border-raspberry/30 bg-white p-2.5">
+          <div className="text-[11px] uppercase tracking-wide font-poppins font-semibold text-navy mb-1">
+            Suggested fixes
+          </div>
+          <ul className="list-disc pl-5 space-y-1 text-xs text-foreground/90">
+            {error.suggestions.map((s, i) => (
+              <li key={i}>{s}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {error.body && (
+        <details className="rounded-md border border-raspberry/30 bg-white p-2.5">
+          <summary className="text-[11px] uppercase tracking-wide font-poppins font-semibold text-navy cursor-pointer">
+            Response body ({error.body.length.toLocaleString()} chars)
+          </summary>
+          <pre className="mt-2 max-h-48 overflow-auto text-[11px] text-foreground/80 whitespace-pre-wrap break-words">
+            {error.body}
+          </pre>
+        </details>
+      )}
+
+      <div className="flex items-center gap-2 flex-wrap">
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={onRetry}
+          className="border-raspberry/40 text-raspberry hover:bg-raspberry/10 h-7 px-3 text-xs"
+        >
+          <RefreshCw className="w-3.5 h-3.5 mr-1" />
+          Retry audit
+        </Button>
+        <Button
+          size="sm"
+          variant="ghost"
+          onClick={copyRaw}
+          className="h-7 px-3 text-xs text-navy"
+        >
+          <Copy className="w-3.5 h-3.5 mr-1" />
+          Copy error details
+        </Button>
+      </div>
+    </div>
+  );
+}
+
