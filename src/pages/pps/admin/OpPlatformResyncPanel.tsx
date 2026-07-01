@@ -17,7 +17,6 @@ import {
 import {
   fetchOpPlatformRecommendations,
   OpPlatformFetchError,
-  buildOpPlatformRecsUrl,
   type OpPlatformRecommendation,
 } from "@/integrations/op-platform/recommendations";
 import { supabase } from "@/integrations/supabase/client";
