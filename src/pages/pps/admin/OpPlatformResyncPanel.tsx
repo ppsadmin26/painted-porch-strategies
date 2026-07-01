@@ -107,7 +107,7 @@ export function OpPlatformResyncPanel({
 }: OpPlatformResyncPanelProps) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<AuditError | null>(null);
   const [remote, setRemote] = useState<OpPlatformRecommendation[] | null>(null);
   const [fetchedAt, setFetchedAt] = useState<Date | null>(null);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
