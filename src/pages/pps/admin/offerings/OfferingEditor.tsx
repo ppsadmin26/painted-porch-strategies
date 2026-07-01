@@ -7,8 +7,10 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Save, ExternalLink } from "lucide-react";
+import { Loader2, Save, ExternalLink, HelpCircle } from "lucide-react";
 import { routingSummaryForTier, PLACEMENT_BADGE_COPY } from "@/lib/quizRoutingSummary";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+
 
 // Full-name display map for facilitators
 const FACILITATOR_FULL_NAME: Record<string, string> = {
@@ -79,6 +81,24 @@ const TIER_COLORS: Record<string, string> = {
   Assessment: "bg-raspberry/10 text-raspberry border-raspberry/40",
   Speaking: "bg-navy/10 text-navy border-navy/40",
 };
+
+function HelpTooltip({ children }: { children: React.ReactNode }) {
+  return (
+    <TooltipProvider delayDuration={150}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button type="button" className="inline-flex text-muted-foreground hover:text-primary focus:outline-none" aria-label="Help">
+            <HelpCircle className="w-3.5 h-3.5" />
+          </button>
+        </TooltipTrigger>
+        <TooltipContent side="top" className="max-w-xs text-xs leading-relaxed">
+          {children}
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}
+
 
 export interface OfferingRow {
   id: string;
@@ -224,6 +244,12 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
             <Label htmlFor={`published-${row.id}`} className="text-sm font-medium">
               {valueOf("is_published") ? "Published" : "Unpublished"}
             </Label>
+            <HelpTooltip>
+              <strong>Live status</strong>
+              <p className="mt-1">
+                Published offerings appear in the quiz, public catalog pages, and anywhere the site pulls from this registry. Unpublished is hidden from visitors and treated as ineligible for quiz recommendations.
+              </p>
+            </HelpTooltip>
           </div>
           <Button
             size="sm"
@@ -328,7 +354,15 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
 
           <div className="rounded-md border border-dashed border-primary/30 bg-white px-3 py-2">
             <div className="flex items-center justify-between mb-1 gap-2 flex-wrap">
-              <span className="text-[11px] font-semibold text-navy">Routing rules · how this offering reaches the quiz</span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[11px] font-semibold text-navy">Routing rules · how this offering reaches the quiz</span>
+                <HelpTooltip>
+                  <strong>Routing rules</strong>
+                  <p className="mt-1">
+                    Defines which quiz result types (RT buckets) will include this offering. If the registry says this delivery is automatic for a tier, the rules are locked to the canonical placement; otherwise the RT checkboxes below let you override inclusion.
+                  </p>
+                </HelpTooltip>
+              </div>
               <div className="flex items-center gap-1">
                 <Badge variant="outline" className="text-[10px]">{PLACEMENT_BADGE_COPY[summary.placement]}</Badge>
                 <Link to="/admin/quiz-rules" className="text-[11px] text-bluedoor hover:underline ml-1">
@@ -358,6 +392,12 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
                 When this offering already appears in a result's primary list, pin it to position 1.
               </span>
             </span>
+            <HelpTooltip>
+              <strong>Pin to top</strong>
+              <p className="mt-1">
+                Only affects the order inside the quiz results page. When the offering is already part of a result's primary recommendation group, this moves it to the first slot. It does not add the offering to a result it otherwise wouldn't belong to.
+              </p>
+            </HelpTooltip>
           </label>
 
           <RtPoolEditor
@@ -369,12 +409,20 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
           />
 
           <div className="rounded-md border border-dashed border-gold/40 bg-gold/5 px-3 py-2">
-            <Label className="text-xs">
-              <strong>Linked launch</strong>
-              <span className="block text-xs text-muted-foreground font-normal">
-                When linked, the quiz reads availability from <code>course_launch_status</code>.
-              </span>
-            </Label>
+            <div className="flex items-center gap-1.5">
+              <Label className="text-xs">
+                <strong>Linked launch</strong>
+                <span className="block text-xs text-muted-foreground font-normal">
+                  When linked, the quiz reads availability from <code>course_launch_status</code>.
+                </span>
+              </Label>
+              <HelpTooltip>
+                <strong>Linked launch</strong>
+                <p className="mt-1">
+                  Connects this offering to a program launch record. If the launch is set to "Coming Soon," the quiz still shows the offering but its CTA can point to a waitlist. If "Live," the quiz routes visitors to the active enrollment or checkout page. Leave empty to use the Hub / fallback URL above.
+                </p>
+              </HelpTooltip>
+            </div>
             <div className="flex items-center gap-2 mt-1">
               <select
                 value={valueOf("launch_slug") ?? ""}
@@ -412,6 +460,12 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
               <strong>Show on Speaker page</strong>
               <span className="block text-[11px] text-muted-foreground">Include on the facilitator's /speaking/[name] page.</span>
             </span>
+            <HelpTooltip>
+              <strong>Speaker page</strong>
+              <p className="mt-1">
+                Toggles whether this delivery appears as a card on the individual speaker pages (e.g., /speaking/amy). The card links to the resolved URL shown below and uses the topic's canonical image and blurb.
+              </p>
+            </HelpTooltip>
           </label>
 
           <div className="grid md:grid-cols-3 gap-3 text-sm">
