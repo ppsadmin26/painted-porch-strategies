@@ -332,16 +332,10 @@ export default function PathFinderOfferings() {
           <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
             The single admin surface for every offering the site can surface. Narrative copy (name, blurb, image, <strong>tier, topic tag, facilitator</strong>) and delivery-type chips (<strong>Workshop / Keynote</strong>) are read-only here and edited in the <strong>PPS Op Platform</strong>. Website-specific controls — <strong>Speaker page</strong> toggle, RT pools, pin-to-top, and launch link — live on each card below.
           </p>
-          <details className="mt-2 max-w-3xl text-xs text-muted-foreground">
-            <summary className="cursor-pointer font-poppins font-semibold text-navy">How this page actually drives the quiz</summary>
-            <div className="mt-2 space-y-1.5 pl-2 border-l-2 border-primary/30">
-              <p><strong>Eligibility (all tiers):</strong> An offering can only appear in a quiz result if it is <em>Live</em> AND has at least one URL or anchor. This page controls that.</p>
-              <p><strong>RT mapping (Free + Speaking only):</strong> Tick which result types (RT1-6 for B2C, RT-A-E for B2B) the offering should appear in. Other tiers (IGNITE, AMPLIFY, Workshop, Blue Door, Assessment) are placed automatically by the quiz engine based on the result type — the RT box on those cards will say "placed automatically".</p>
-              <p><strong>Prioritize in quiz:</strong> Pins this offering to position 1 of the primary recommendation list whenever it is already in that list for the matched result.</p>
-              <p><strong>Topic tag:</strong> Used by the workshops hub accordion only. It does <em>not</em> drive quiz routing — RT mapping does.</p>
-              <p className="pt-1"><Link to="/admin/quiz-rules" className="text-bluedoor underline font-semibold">Open the full Quiz Routing Rules reference →</Link></p>
-            </div>
-          </details>
+          <p className="mt-2 text-xs text-muted-foreground max-w-3xl">
+            Each card has two sections: <strong>Registry</strong> (read-only, edited in the PPS Op Platform) and <strong>PPS Controls</strong> (Quiz + Website settings owned here).{" "}
+            <Link to="/admin/quiz-rules" className="text-bluedoor underline font-semibold">Full quiz routing rules →</Link>
+          </p>
         </div>
         <div className="flex gap-2 items-center">
           <div className="relative">
@@ -570,8 +564,9 @@ export default function PathFinderOfferings() {
             const published = valueOf(row, "is_published");
             const url = resolveUrl(row);
             return (
-              <div key={row.id} id={`offering-${row.id}`} className="border rounded-lg p-4 bg-white">
-                <div className="flex items-start justify-between gap-4 flex-wrap mb-3">
+              <div key={row.id} id={`offering-${row.id}`} className="border rounded-lg p-4 bg-white space-y-4">
+                {/* ── Card header ────────────────────────────────────────── */}
+                <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span
                       className={`inline-flex items-center h-7 rounded-md border border-dashed border-bluedoor/40 px-2 text-xs font-medium ${TIER_COLORS[valueOf(row, "tier")] ?? "bg-background"}`}
@@ -580,7 +575,6 @@ export default function PathFinderOfferings() {
                       {valueOf(row, "tier") || "—"}
                       <span className="ml-1 text-[10px] text-bluedoor">· canonical</span>
                     </span>
-                    {/* Speaker chip removed — full-name Speaker(s) row lives in the Topic card block below. */}
                     <code className="text-xs text-muted-foreground">{row.offering_key}</code>
                     {isQuizEligible({
                       is_published: valueOf(row, "is_published"),
@@ -639,12 +633,12 @@ export default function PathFinderOfferings() {
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-2" title="Published — eventually owned by PPS Op Platform sync. Page-level Live state lives in /admin/pages.">
                       <Switch
-                        checked={published}
+                        checked={valueOf(row, "is_published")}
                         onCheckedChange={(v) => patch(row.id, { is_published: v })}
                         id={`published-${row.id}`}
                       />
                       <Label htmlFor={`published-${row.id}`} className="text-sm font-medium">
-                        {published ? "Published" : "Unpublished"}
+                        {valueOf(row, "is_published") ? "Published" : "Unpublished"}
                       </Label>
                     </div>
                     <Button
@@ -658,243 +652,209 @@ export default function PathFinderOfferings() {
                     </Button>
                   </div>
                 </div>
-                <div className="grid md:grid-cols-3 gap-3 text-sm mb-3">
-                  <div>
-                    <div className="flex items-center justify-between mb-1">
-                      <Label className="text-xs">Display name <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
-                      <BlueDoorEditLink row={row} label="Edit" />
-                    </div>
-                    <div className="font-poppins font-semibold text-navy bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10">
-                      {row.name || <span className="italic text-muted-foreground">— missing —</span>}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex items-center justify-between mb-1">
-                      <Label className="text-xs">Short blurb / Topic card description <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
-                      <BlueDoorEditLink row={row} label="Edit" />
-                    </div>
-                    <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10 whitespace-pre-wrap">
-                      {row.blurb || <span className="italic text-muted-foreground">— empty —</span>}
-                    </div>
-                    <p className="text-[11px] text-muted-foreground mt-1">
-                      Renders on <code>/topics</code>, <code>/speaking/*</code>, and <code>/partner/amplify/workshops</code>. Edit in the PPS Op Platform Offerings Register; changes flow back here on the next sync.
-                    </p>
-                  </div>
-                  <div>
-                    <div className="flex items-center justify-between mb-1">
-                      <Label className="text-xs">Topic tag <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
-                      <BlueDoorEditLink row={row} label="Edit" />
-                    </div>
-                    <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10">
-                      {row.topic || <span className="italic text-muted-foreground">— untagged —</span>}
-                    </div>
-                    <p className="text-[11px] text-muted-foreground mt-1">Workshop hub accordion only. Does not drive quiz routing.</p>
-                  </div>
-                </div>
 
-                {(() => {
-                  const tier = (valueOf(row, "tier") ?? "") as string;
-                  const summary = routingSummaryForTier(tier);
-                  return (
-                    <div className="mb-3 rounded-md border border-dashed border-primary/30 bg-primary/5 px-3 py-3">
-                      <div className="flex items-center justify-between mb-1 gap-2 flex-wrap">
-                        <Label className="text-xs font-poppins font-semibold text-navy uppercase tracking-wide">
-                          Routing rules · how this offering reaches the quiz
-                        </Label>
-                        <div className="flex items-center gap-1">
-                          <Badge variant="outline" className="text-[10px]">{PLACEMENT_BADGE_COPY[summary.placement]}</Badge>
-                          <Link to="/admin/quiz-rules" className="text-[11px] text-bluedoor hover:underline ml-1">
-                            Full rules →
-                          </Link>
-                        </div>
-                      </div>
-                      <p className="text-xs font-medium text-navy/80 mb-2">{summary.headline}</p>
-                      <ul className="list-disc pl-5 space-y-1 text-xs text-foreground/80">
-                        {summary.rules.map((r, i) => <li key={i}>{r}</li>)}
-                      </ul>
-                      {summary.personas.length > 0 && (
-                        <p className="text-[11px] text-muted-foreground mt-2">
-                          Personas reached: {summary.personas.join(", ")}
-                        </p>
-                      )}
-                    </div>
-                  );
-                })()}
-
-                {/* Topic card (drives /topics, /speaking/amy|rob|sierra, and /partner/amplify/workshops) */}
-                <div className="mb-3 rounded-md border border-dashed border-navy/30 bg-navy/5 px-3 py-3 space-y-3">
-                  <div className="text-xs font-poppins font-semibold text-navy uppercase tracking-wide">
-                    Topic card (Speaking / Workshops pages)
+                {/* ── 1. Registry (Op Platform · read-only) ─────────────── */}
+                <section className="rounded-md border border-dashed border-bluedoor/40 bg-bluedoor/5 px-3 py-3">
+                  <div className="flex items-center justify-between mb-2 gap-2 flex-wrap">
+                    <Label className="text-xs font-poppins font-semibold text-bluedoor uppercase tracking-wide">
+                      Registry · PPS Op Platform (read-only)
+                    </Label>
+                    <BlueDoorEditLink row={row} label="Edit in PPS Op Platform" />
                   </div>
-                  <div className="grid md:grid-cols-3 gap-3 items-start">
+                  <div className="grid md:grid-cols-[10rem_1fr] gap-4">
                     <div>
-                      <div className="flex items-center justify-between mb-1">
-                        <Label className="text-xs">Speaker(s) <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
-                        <BlueDoorEditLink row={row} label="Edit" />
-                      </div>
-                      <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10">
-                        {row.facilitator ? facilitatorDisplay(row.facilitator) : <span className="italic text-muted-foreground">— none —</span>}
-                      </div>
-                      <p className="text-[11px] text-muted-foreground mt-1">Drives which /speaking/* pages this topic shows on. Edit in PPS Op Platform.</p>
-                    </div>
-                    <div className="md:col-span-2">
-                      <div className="flex items-center justify-between mb-1">
-                        <Label className="text-xs">Image <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
-                        <BlueDoorEditLink row={row} label="Edit" />
-                      </div>
-                      <div className="text-xs text-muted-foreground break-all bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2">
-                        {row.image_url || <span className="italic">— no image set —</span>}
-                      </div>
-                      {row.image_url && (
-                        <div className="mt-2 w-32 aspect-[16/10] rounded border border-border overflow-hidden bg-muted">
-                          <img
-                            src={row.image_url}
-                            alt=""
-                            className="w-full h-full object-cover"
-                          />
+                      {row.image_url ? (
+                        <div className="w-full aspect-[16/10] rounded border border-border overflow-hidden bg-muted">
+                          <img src={row.image_url} alt="" className="w-full h-full object-cover" />
+                        </div>
+                      ) : (
+                        <div className="w-full aspect-[16/10] rounded border border-dashed border-muted-foreground/30 bg-muted flex items-center justify-center text-[11px] text-muted-foreground italic">
+                          no image
                         </div>
                       )}
                     </div>
+                    <div className="space-y-2 min-w-0">
+                      <div className="font-poppins font-semibold text-navy text-base leading-tight">
+                        {row.name || <span className="italic text-muted-foreground">— missing name —</span>}
+                      </div>
+                      <div className="text-sm text-foreground/80 whitespace-pre-wrap">
+                        {row.blurb || <span className="italic text-muted-foreground">— empty blurb —</span>}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        <span className="font-semibold text-navy">Speaker(s): </span>
+                        {row.facilitator ? facilitatorDisplay(row.facilitator) : <span className="italic">none</span>}
+                      </div>
+                      <div className="flex items-center gap-1.5 flex-wrap pt-1">
+                        {valueOf(row, "topic") && (
+                          <Badge variant="outline" className="bg-navy/5 text-navy border-navy/30 text-[11px]">
+                            Topic: {valueOf(row, "topic")}
+                          </Badge>
+                        )}
+                        {valueOf(row, "include_in_workshops") && (
+                          <Badge variant="outline" className="bg-strategic/15 text-strategic border-strategic/40 text-[11px]">
+                            Workshop
+                          </Badge>
+                        )}
+                        {valueOf(row, "is_keynote") && (
+                          <Badge variant="outline" className="bg-gold/20 text-gold-foreground border-gold/40 text-[11px]">
+                            Keynote
+                          </Badge>
+                        )}
+                        {valueOf(row, "blue_door_required") && (
+                          <Badge variant="outline" className="bg-bluedoor/15 text-bluedoor border-bluedoor/40 text-[11px]">
+                            Blue Door required
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  <div className="grid sm:grid-cols-3 gap-2">
-                    <div className="flex items-center gap-2 rounded-md border border-dashed border-bluedoor/40 bg-muted/40 px-3 py-2">
-                      <span
-                        className={`inline-flex items-center h-6 px-2 rounded text-[11px] font-semibold ${valueOf(row, "include_in_workshops") ? "bg-strategic/15 text-strategic" : "bg-muted text-muted-foreground"}`}
-                      >
-                        {valueOf(row, "include_in_workshops") ? "✓ Workshop" : "— Workshop"}
+                </section>
+
+                {/* ── 2. PPS Controls ───────────────────────────────────── */}
+                <section className="rounded-md border border-primary/30 bg-primary/[0.03] px-3 py-3 space-y-4">
+                  <Label className="text-xs font-poppins font-semibold text-navy uppercase tracking-wide">
+                    PPS Controls
+                  </Label>
+
+                  {/* Quiz sub-section */}
+                  <div className="space-y-3">
+                    <div className="text-xs font-poppins font-semibold text-primary uppercase tracking-wide">Quiz</div>
+
+                    {/* Routing rules summary */}
+                    {(() => {
+                      const tier = (valueOf(row, "tier") ?? "") as string;
+                      const summary = routingSummaryForTier(tier);
+                      return (
+                        <div className="rounded-md border border-dashed border-primary/30 bg-white px-3 py-2">
+                          <div className="flex items-center justify-between mb-1 gap-2 flex-wrap">
+                            <span className="text-[11px] font-semibold text-navy">Routing rules · how this offering reaches the quiz</span>
+                            <div className="flex items-center gap-1">
+                              <Badge variant="outline" className="text-[10px]">{PLACEMENT_BADGE_COPY[summary.placement]}</Badge>
+                              <Link to="/admin/quiz-rules" className="text-[11px] text-bluedoor hover:underline ml-1">
+                                Full rules →
+                              </Link>
+                            </div>
+                          </div>
+                          <p className="text-xs font-medium text-navy/80 mb-1">{summary.headline}</p>
+                          <ul className="list-disc pl-5 space-y-1 text-xs text-foreground/80">
+                            {summary.rules.map((r, i) => <li key={i}>{r}</li>)}
+                          </ul>
+                          {summary.personas.length > 0 && (
+                            <p className="text-[11px] text-muted-foreground mt-1">
+                              Personas reached: {summary.personas.join(", ")}
+                            </p>
+                          )}
+                        </div>
+                      );
+                    })()}
+
+                    {/* Pin to top */}
+                    <label className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
+                      <Switch
+                        checked={!!valueOf(row, "is_featured_in_quiz")}
+                        onCheckedChange={(v) => patch(row.id, { is_featured_in_quiz: v })}
+                      />
+                      <span className="text-sm">
+                        <strong>Pin to top of primary list</strong>
+                        <span className="block text-[11px] text-muted-foreground">
+                          When this offering already appears in a result's primary list, pin it to position 1. Does not force it into lists it isn't already in.
+                        </span>
                       </span>
-                      <span className="text-[11px] text-muted-foreground flex-1">
-                        Workshop chip on /topics &amp; /partner/amplify/workshops · <span className="text-bluedoor">canonical</span>
-                      </span>
-                      <BlueDoorEditLink row={row} label="Edit" />
+                    </label>
+
+                    {/* RT mapping — only when tier requires it (Free / Speaking) */}
+                    <RtPoolEditor
+                      tier={(valueOf(row, "tier") ?? "") as string}
+                      b2cValue={(valueOf(row, "b2c_rt_pools") ?? {}) as Record<string, string[]>}
+                      b2bValue={(valueOf(row, "b2b_rt_pools") ?? {}) as Record<string, string[]>}
+                      onB2cChange={(v) => patch(row.id, { b2c_rt_pools: v as any })}
+                      onB2bChange={(v) => patch(row.id, { b2b_rt_pools: v as any })}
+                    />
+
+                    {/* Linked launch */}
+                    <div className="rounded-md border border-dashed border-gold/40 bg-gold/5 px-3 py-2">
+                      <Label className="text-xs">
+                        <strong>Linked launch</strong> (single source of truth for Live vs Coming Soon)
+                        <span className="block text-xs text-muted-foreground font-normal">
+                          When linked, the quiz reads availability from <code>course_launch_status</code>. Coming Soon programs still appear, deprioritized, with a "join the launch list" badge.
+                        </span>
+                      </Label>
+                      <div className="flex items-center gap-2 mt-1">
+                        <select
+                          value={valueOf(row, "launch_slug") ?? ""}
+                          onChange={(e) => patch(row.id, { launch_slug: e.target.value || (null as any) })}
+                          className="h-10 flex-1 rounded-md border border-input bg-background px-3 text-sm"
+                        >
+                          <option value="">— No linked launch —</option>
+                          {launches.map((l) => (
+                            <option key={l.slug} value={l.slug}>
+                              {l.course_name} ({l.status === "live" ? "Live" : "Coming Soon"}) · {l.slug}
+                            </option>
+                          ))}
+                        </select>
+                        {valueOf(row, "launch_slug") ? (
+                          <Link
+                            to={`/admin/course-launches?slug=${encodeURIComponent(valueOf(row, "launch_slug") as string)}`}
+                            className="text-xs text-primary hover:underline inline-flex items-center gap-1"
+                          >
+                            Manage <ExternalLink className="w-3 h-3" />
+                          </Link>
+                        ) : null}
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 rounded-md border border-dashed border-bluedoor/40 bg-muted/40 px-3 py-2">
-                      <span
-                        className={`inline-flex items-center h-6 px-2 rounded text-[11px] font-semibold ${valueOf(row, "is_keynote") ? "bg-gold/20 text-gold-foreground" : "bg-muted text-muted-foreground"}`}
-                      >
-                        {valueOf(row, "is_keynote") ? "✓ Keynote" : "— Keynote"}
-                      </span>
-                      <span className="text-[11px] text-muted-foreground flex-1">
-                        Keynote chip on /topics · <span className="text-bluedoor">canonical</span>
-                      </span>
-                      <BlueDoorEditLink row={row} label="Edit" />
-                    </div>
-                    <div className="flex items-center gap-2 rounded-md border border-dashed border-bluedoor/40 bg-muted/40 px-3 py-2">
-                      <span
-                        className={`inline-flex items-center h-6 px-2 rounded text-[11px] font-semibold ${valueOf(row, "blue_door_required") ? "bg-bluedoor/15 text-bluedoor" : "bg-muted text-muted-foreground"}`}
-                      >
-                        {valueOf(row, "blue_door_required") ? "✓ Blue Door required" : "— Runs in parallel"}
-                      </span>
-                      <span className="text-[11px] text-muted-foreground flex-1">
-                        Sequencing flag for quiz recs · <span className="text-bluedoor">canonical</span>
-                      </span>
-                      <BlueDoorEditLink row={row} label="Edit" />
-                    </div>
-                    <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
+                  </div>
+
+                  {/* Website sub-section */}
+                  <div className="space-y-3 pt-2 border-t border-primary/10">
+                    <div className="text-xs font-poppins font-semibold text-primary uppercase tracking-wide">Website</div>
+
+                    <label className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
                       <Switch
                         checked={!!valueOf(row, "include_on_speaker_page")}
                         onCheckedChange={(v) => patch(row.id, { include_on_speaker_page: v })}
                       />
                       <span className="text-sm">
-                        <strong>Speaker Page</strong>
-                        <span className="block text-[11px] text-muted-foreground">Show on the facilitator's /speaking/[name] page</span>
+                        <strong>Show on Speaker page</strong>
+                        <span className="block text-[11px] text-muted-foreground">Include on the facilitator's /speaking/[name] page.</span>
                       </span>
                     </label>
+
+                    <div className="grid md:grid-cols-3 gap-3 text-sm">
+                      <div>
+                        <Label className="text-xs">Hub / fallback URL</Label>
+                        <Input
+                          value={valueOf(row, "current_url") ?? ""}
+                          onChange={(e) => patch(row.id, { current_url: e.target.value })}
+                        />
+                      </div>
+                      <div>
+                        <Label className="text-xs">Dedicated page URL (when it exists)</Label>
+                        <Input
+                          placeholder="e.g. /partner/amplify/labs/goldilocks"
+                          value={valueOf(row, "dedicated_url") ?? ""}
+                          onChange={(e) => patch(row.id, { dedicated_url: e.target.value || null as any })}
+                        />
+                      </div>
+                      <div>
+                        <Label className="text-xs">Anchor on hub page (optional)</Label>
+                        <Input
+                          placeholder="e.g. lab-goldilocks"
+                          value={valueOf(row, "anchor_id") ?? ""}
+                          onChange={(e) => patch(row.id, { anchor_id: e.target.value || null as any })}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <span>Quiz will link to:</span>
+                      {url ? (
+                        <Link to={url} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1">
+                          {url} <ExternalLink className="w-3 h-3" />
+                        </Link>
+                      ) : <span className="italic">(no url)</span>}
+                    </div>
                   </div>
-                </div>
-
-                <div className="mb-3 flex items-center gap-2 rounded-md border border-dashed border-primary/40 bg-primary/5 px-3 py-2">
-                  <Switch
-                    id={`featured-${row.id}`}
-                    checked={!!valueOf(row, "is_featured_in_quiz")}
-                    onCheckedChange={(v) => patch(row.id, { is_featured_in_quiz: v })}
-                  />
-                  <Label htmlFor={`featured-${row.id}`} className="text-sm">
-                    <strong>Pin to top of primary list in P.A.T.H.finder quiz</strong>
-                    <span className="block text-xs text-muted-foreground">
-                      When this offering already appears in a result's primary recommendation list, pin it to position 1. Eligibility (Live + has URL/anchor) still applies. Does not force it into lists it isn't already in.
-                    </span>
-                  </Label>
-                </div>
-
-
-
-
-                <div className="grid md:grid-cols-3 gap-3 text-sm">
-                  <div>
-                    <Label className="text-xs">Hub / fallback URL</Label>
-                    <Input
-                      value={valueOf(row, "current_url") ?? ""}
-                      onChange={(e) => patch(row.id, { current_url: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <Label className="text-xs">Dedicated page URL (when it exists)</Label>
-                    <Input
-                      placeholder="e.g. /partner/amplify/labs/goldilocks"
-                      value={valueOf(row, "dedicated_url") ?? ""}
-                      onChange={(e) => patch(row.id, { dedicated_url: e.target.value || null as any })}
-                    />
-                  </div>
-                  <div>
-                    <Label className="text-xs">Anchor on hub page (optional)</Label>
-                    <Input
-                      placeholder="e.g. lab-goldilocks"
-                      value={valueOf(row, "anchor_id") ?? ""}
-                      onChange={(e) => patch(row.id, { anchor_id: e.target.value || null as any })}
-                    />
-                  </div>
-                </div>
-
-                <RtPoolEditor
-                  tier={(valueOf(row, "tier") ?? "") as string}
-                  b2cValue={(valueOf(row, "b2c_rt_pools") ?? {}) as Record<string, string[]>}
-                  b2bValue={(valueOf(row, "b2b_rt_pools") ?? {}) as Record<string, string[]>}
-                  onB2cChange={(v) => patch(row.id, { b2c_rt_pools: v as any })}
-                  onB2bChange={(v) => patch(row.id, { b2b_rt_pools: v as any })}
-                />
-
-
-
-                <div className="mt-3 rounded-md border border-dashed border-gold/40 bg-gold/5 px-3 py-2">
-                  <Label className="text-xs">
-                    <strong>Linked launch</strong> (single source of truth for Live vs Coming Soon)
-                    <span className="block text-xs text-muted-foreground font-normal">
-                      When linked, the quiz reads availability from <code>course_launch_status</code>. Coming Soon programs still appear in results, deprioritized, with a "join the launch list" badge.
-                    </span>
-                  </Label>
-                  <div className="flex items-center gap-2 mt-1">
-                    <select
-                      value={valueOf(row, "launch_slug") ?? ""}
-                      onChange={(e) => patch(row.id, { launch_slug: e.target.value || (null as any) })}
-                      className="h-10 flex-1 rounded-md border border-input bg-background px-3 text-sm"
-                    >
-                      <option value="">— No linked launch (use Live toggle above) —</option>
-                      {launches.map((l) => (
-                        <option key={l.slug} value={l.slug}>
-                          {l.course_name} ({l.status === "live" ? "Live" : "Coming Soon"}) · {l.slug}
-                        </option>
-                      ))}
-                    </select>
-                    {valueOf(row, "launch_slug") ? (
-                      <Link
-                        to={`/admin/course-launches?slug=${encodeURIComponent(valueOf(row, "launch_slug") as string)}`}
-                        className="text-xs text-primary hover:underline inline-flex items-center gap-1"
-                      >
-                        Manage <ExternalLink className="w-3 h-3" />
-                      </Link>
-                    ) : null}
-                  </div>
-                </div>
-
-                <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
-                  <span>Quiz will link to:</span>
-                  {url ? (
-                    <Link to={url} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1">
-                      {url} <ExternalLink className="w-3 h-3" />
-                    </Link>
-                  ) : <span className="italic">(no url)</span>}
-                </div>
+                </section>
               </div>
             );
           })}

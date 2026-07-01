@@ -1,80 +1,68 @@
-# Phase C — Collapse "Live" toggles & finalize PPS ↔ Op Platform ownership
 
-## Goal
-End the ambiguity of `path_finder_offerings.is_live` by separating **page-level** live state (PPS-owned via `page_status`) from **offering-level** publish state (Op Platform-owned via `delivery.is_published`). After this phase, the PPS admin shows zero "Live" toggles on offerings — display is computed.
+# /admin/offerings cleanup
 
-## Ownership after Phase C
+## Problem
 
-| Concern | Source of truth | UI surface |
-|---|---|---|
-| Page renders vs Coming Soon | PPS `page_status` | `/admin/pages` (existing) |
-| Offering published (dedicated page OR anchor card) | Op Platform `delivery.is_published` | paintedporch-ops.lovable.app |
-| Quiz inclusion + pin | PPS (`is_featured_in_quiz`, new `include_in_quiz`) | `/admin/path-finder-offerings` |
-| Speaker page inclusion | PPS (`include_on_speaker_page`) | `/admin/path-finder-offerings` |
-| RT pools / routing rules | PPS (`b2c_rt_pools`, `b2b_rt_pools`) | `/admin/path-finder-offerings` (future: dedicated quiz-rules surface) |
-| Linked Launch | PPS (`launch_slug`) | `/admin/path-finder-offerings` |
-| Everything narrative + delivery (name, blurb, image, facilitator, tier, topic, format, segment, URL, anchor, sort_order, pricing) | Op Platform | paintedporch-ops.lovable.app |
+The card has grown to ~10 stacked blocks with overlapping purposes. Registry data (from the Op Platform) is interleaved with PPS-owned quiz/website controls, so it's hard to answer either "what's in the register?" or "how does this show up on the quiz?" at a glance.
 
-## Display computation (single rule)
+## Target structure — two sections per card
 
-An offering is **publicly visible** when:
+Every offering card collapses to a header + two labeled sections. Nothing else floats between them.
 
 ```text
-delivery.is_published === true        // from Op Platform mirror
-  AND page_status(host_url) === 'live' // PPS-owned
-  AND (PPS-side gates per surface)    // include_in_quiz / include_on_speaker_page / etc.
+┌─ Card header ────────────────────────────────────────────────┐
+│ [Tier chip] key · [Quiz eligible?] [Launch badge]  [Save]    │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ 1. Registry (PPS Op Platform · read-only) ──── Edit in Ops ─┐
+│  Thumbnail │ Name                                            │
+│   16:10    │ Short blurb                                     │
+│            │ Speaker(s): full names                          │
+│            │ Category chips: Tier · Topic tag · Workshop ·   │
+│            │                Keynote · Blue Door required     │
+└──────────────────────────────────────────────────────────────┘
+
+┌─ 2. PPS Controls ────────────────────────────────────────────┐
+│  Quiz                                                         │
+│   • Published [switch]  Pin to top [switch]                  │
+│   • Routing rules summary (auto)  →  Full rules              │
+│   • RT mapping checkboxes  ← ONLY if tier ∈ {Free, Speaking} │
+│   • Linked launch [select]                                    │
+│                                                               │
+│  Website                                                      │
+│   • Show on Speaker page [switch]                            │
+│   • Hub URL / Dedicated URL / Anchor  (3 inputs)             │
+│   • Quiz will link to: /resolved/url                          │
+└──────────────────────────────────────────────────────────────┘
 ```
 
-Where `host_url = (current_url || dedicated_url).split('#')[0]`.
+## What changes concretely
 
-## Work breakdown
+**Header (unchanged behavior, tightened):** tier chip, offering key, Quiz-eligible badge, Launch badge, Published switch, Save. Remove the standalone speaker chip (already done).
 
-### C1 — Schema
-- Add `path_finder_offerings.is_published BOOLEAN NOT NULL DEFAULT false` (mirrors `delivery.is_published` from Op Platform).
-- Backfill `is_published = is_live` for every existing row (one-time copy).
-- Keep `is_live` for one release as a deprecated alias; mark it nullable, no longer read by render code.
-- Add `include_in_quiz BOOLEAN NOT NULL DEFAULT true` (PPS-owned, separate from `is_featured_in_quiz` which is "pin to top").
-- Migration includes the standard GRANT block.
+**Section 1 · Registry (read-only, one block instead of three):**
+- Merge current "Display name / Short blurb / Topic tag" row + "Topic card" block + Workshop/Keynote/Blue-Door chip strip into a single card with a thumbnail on the left and text on the right.
+- Category chips render inline: Tier · Topic tag · Workshop · Keynote · Blue Door required. All read-only, all show `· canonical` treatment, single "Edit in PPS Op Platform" link in the section header (not one per field).
+- Show the thumbnail image itself, not the raw URL string.
 
-### C2 — Compute helper
-- Create `src/lib/offeringVisibility.ts` exporting `isOfferingVisible(row, pageStatuses)` and `resolveHostPath(row)`.
-- Single source of truth used by:
-  - `usePathFinderOverrides` (already reads `page_status`)
-  - `useSpeakerTopics`
-  - `useOpPlatformRecommendations` filter
-  - Speaking Topics page grouping
-- Add unit tests covering the four states (published+live, published+draft, unpublished+live, unpublished+draft).
+**Section 2 · PPS Controls (all editable things in one place):**
+- Sub-heading "Quiz" groups: Pin to top, Routing-rules summary (kept — it's the plain-English explainer), the RT checkbox grid **only** for Free + Speaking tiers, and Linked launch.
+- Sub-heading "Website" groups: Show on Speaker page, the three URL inputs, and the "Quiz will link to:" resolved preview.
+- Published stays in the header since it gates everything.
 
-### C3 — Admin UI
-- `/admin/path-finder-offerings`:
-  - Remove the `is_live` toggle column.
-  - Replace with a **read-only "Published"** badge sourced from `is_published` (with "Edit in PPS Op Platform" deep link).
-  - Add a computed **"Visible"** badge: Published ∧ host page Live ∧ relevant PPS gates.
-  - Keep editable: `include_in_quiz`, `is_featured_in_quiz` (pin), `include_on_speaker_page`, `launch_slug`, RT pools.
-- `/admin/pages` unchanged (already PPS-owned).
+**Removals / consolidations:**
+- Drop the `<details>` "How this page actually drives the quiz" at the page top — its content now lives contextually in each card's Routing-rules block, and `/admin/quiz-rules` is one click away.
+- Drop the per-field "Edit in PPS Op Platform" repetition inside the Registry section; one link at the section header.
+- The RT checkbox editor stays but is section-scoped and only rendered for Free/Speaking (already the case — we're just making that placement obvious under the "Quiz" sub-heading).
 
-### C4 — Sync contract
-- Update `docs/handoff/BlueDoor-to-PPS-Offerings-Handoff-v1.md`:
-  - `delivery.is_published` is the canonical publish flag.
-  - PPS mirror writes `is_published` only via sync; admin never edits it.
-- Update `.lovable/memory/features/quiz/offerings-admin-phase-b.md` → mark Phase B complete, link Phase C memory.
-- New memory file: `.lovable/memory/features/quiz/offerings-live-toggle-phase-c.md` with the visibility rule and ownership table above.
+**Untouched:** filter/search bar, top Phase-C banner, broken-launch alert, resync panel, New-offering dialog, save/dirty logic, all data fields, all DB writes.
 
-### C5 — Render code sweep
-- Replace every `row.is_live` read with `isOfferingVisible(...)` or `row.is_published` (depending on intent).
-- Files to touch (from grep):
-  - `src/hooks/usePathFinderOverrides.ts`
-  - `src/hooks/useSpeakerTopics.ts`
-  - `src/integrations/op-platform/recommendations.ts` (filter)
-  - Any `path_finder_offerings.is_live` SELECT in scripts/edge functions.
-- Update `scripts/audit-anchor-coverage.mjs` and report generators to read `is_published`.
+## Files
 
-### C6 — Tests
-- Vitest: visibility helper + admin component renders Published/Visible badges correctly.
-- Playwright: existing quiz specs continue to pass (no recommendation regressions).
+- `src/pages/pps/admin/PathFinderOfferings.tsx` — restructure card JSX (~lines 573–898) into header + Registry section + PPS Controls section; remove the top `<details>` block.
+- No schema changes, no changes to `OpPlatformResyncPanel`, `QuizRoutingRules`, or `quizRoutingSummary`.
 
-### C7 — Cleanup (follow-up PR, not this phase)
-- Once Op Platform sync overwrites `is_published` reliably, drop the deprecated `is_live` column.
+## Out of scope
 
-## Open question to confirm before C1
-Do you want **anchor-only deliveries** (workshops/keynotes on `/speaking/topics#…`) to require their *host* page (`/speaking/topics`) be Live before the card publishes, or should `delivery.is_published` alone be enough? My recommendation: require both (host page Live AND delivery published). Confirm and I'll proceed with C1–C6.
+- Renaming fields or changing what syncs from the Op Platform.
+- Bulk-edit / inline table view (can be a follow-up if the card view still feels heavy after this pass).
