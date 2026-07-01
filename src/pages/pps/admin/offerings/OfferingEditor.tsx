@@ -566,14 +566,22 @@ function RtPoolEditor({ tier, b2cValue, b2bValue, onB2cChange, onB2bChange }: Rt
 
   return (
     <div className="mt-3 rounded-md border border-dashed border-primary/40 bg-primary/5 px-3 py-2 space-y-2">
-      <Label className="text-xs">
-        <strong>Quiz result-type (RT) mapping</strong>
-        <span className="block text-xs text-muted-foreground font-normal">
-          {mode === "free"
-            ? "Tick each result type where this free resource should appear."
-            : "Tick each B2B result type where this speaking topic should appear."}
-        </span>
-      </Label>
+      <div className="flex items-center gap-1.5">
+        <Label className="text-xs">
+          <strong>Quiz result-type (RT) mapping</strong>
+          <span className="block text-xs text-muted-foreground font-normal">
+            {mode === "free"
+              ? "Tick each result type where this free resource should appear."
+              : "Tick each B2B result type where this speaking topic should appear."}
+          </span>
+        </Label>
+        <HelpTooltip>
+          <strong>RT mapping</strong>
+          <p className="mt-1">
+            Result Types (RT1–RT6 for B2C, RT-A–RT-E for B2B) are the quiz outcomes. This control is only exposed for Free resources and Speaking topics because other tiers are routed automatically by the rules above. Checked boxes add this delivery to that result's recommendation pool.
+          </p>
+        </HelpTooltip>
+      </div>
 
       {mode === "free" && (
         <div className="space-y-1">
