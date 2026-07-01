@@ -565,7 +565,7 @@ export default function PathFinderOfferings() {
                       {valueOf(row, "tier") || "—"}
                       <span className="ml-1 text-[10px] text-bluedoor">· canonical</span>
                     </span>
-                    {row.facilitator && <Badge variant="outline">{row.facilitator}</Badge>}
+                    {/* Speaker chip removed — full-name Speaker(s) row lives in the Topic card block below. */}
                     <code className="text-xs text-muted-foreground">{row.offering_key}</code>
                     {isQuizEligible({
                       is_published: valueOf(row, "is_published"),
