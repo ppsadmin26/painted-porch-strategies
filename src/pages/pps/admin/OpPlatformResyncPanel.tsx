@@ -596,19 +596,68 @@ export function OpPlatformResyncPanel({
                 empty="None — every Op Platform offering has a local mirror."
               >
                 {buckets.missingLocally.length > 0 && (
-                  <ul className="divide-y">
-                    {buckets.missingLocally.map((r, i) => (
-                      <li
-                        key={`${r.name}-${i}`}
-                        className="py-2 text-sm flex items-center justify-between gap-3"
+                  <>
+                    <div className="flex items-center justify-between gap-2 mb-2 px-1">
+                      <label className="flex items-center gap-2 text-[11px] text-navy font-medium cursor-pointer">
+                        <Checkbox
+                          checked={
+                            selectedMissing.size === buckets.missingLocally.length &&
+                            buckets.missingLocally.length > 0
+                          }
+                          onCheckedChange={() => {
+                            if (selectedMissing.size === buckets.missingLocally.length) {
+                              setSelectedMissing(new Set());
+                            } else {
+                              setSelectedMissing(
+                                new Set(buckets.missingLocally.map((r) => norm(r.name))),
+                              );
+                            }
+                          }}
+                          aria-label="Select all missing"
+                        />
+                        Select all ({buckets.missingLocally.length})
+                      </label>
+                      <Button
+                        size="sm"
+                        onClick={insertSelectedMissing}
+                        disabled={inserting || selectedMissing.size === 0}
+                        className="bg-bluedoor hover:bg-bluedoor/90 text-white h-7 px-3 text-xs"
                       >
-                        <div className="font-medium text-navy">{r.name}</div>
-                        <Badge variant="outline" className="text-[10px]">
-                          {r.format}
-                        </Badge>
-                      </li>
-                    ))}
-                  </ul>
+                        {inserting ? (
+                          <Loader2 className="w-3.5 h-3.5 mr-1 animate-spin" />
+                        ) : (
+                          <Upload className="w-3.5 h-3.5 mr-1" />
+                        )}
+                        Insert selected ({selectedMissing.size})
+                      </Button>
+                    </div>
+                    <p className="text-[11px] text-muted-foreground mb-2 px-1">
+                      Inserted rows start unpublished and excluded from the quiz. Configure PPS flags in the registry after insert.
+                    </p>
+                    <ul className="divide-y">
+                      {buckets.missingLocally.map((r, i) => {
+                        const key = norm(r.name);
+                        return (
+                          <li
+                            key={`${r.name}-${i}`}
+                            className="py-2 text-sm flex items-center justify-between gap-3"
+                          >
+                            <label className="flex items-center gap-2 min-w-0 flex-1 cursor-pointer">
+                              <Checkbox
+                                checked={selectedMissing.has(key)}
+                                onCheckedChange={() => toggleMissing(key)}
+                                aria-label={`Select ${r.name}`}
+                              />
+                              <span className="font-medium text-navy truncate">{r.name}</span>
+                            </label>
+                            <Badge variant="outline" className="text-[10px]">
+                              {r.format}
+                            </Badge>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </>
                 )}
               </DiffSection>
 
