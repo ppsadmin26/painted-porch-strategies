@@ -470,14 +470,30 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
 
           <div className="grid md:grid-cols-3 gap-3 text-sm">
             <div>
-              <Label className="text-xs">Hub / fallback URL</Label>
+              <div className="flex items-center gap-1.5 mb-1">
+                <Label className="text-xs">Hub / fallback URL</Label>
+                <HelpTooltip>
+                  <strong>Hub / fallback URL</strong>
+                  <p className="mt-1">
+                    The page the quiz and public site link to when no dedicated page exists. Usually a tier hub like /partner/ignite/courses or /speaking/topics. The resolved link below is what visitors actually see and click.
+                  </p>
+                </HelpTooltip>
+              </div>
               <Input
                 value={valueOf("current_url") ?? ""}
                 onChange={(e) => patch({ current_url: e.target.value })}
               />
             </div>
             <div>
-              <Label className="text-xs">Dedicated page URL</Label>
+              <div className="flex items-center gap-1.5 mb-1">
+                <Label className="text-xs">Dedicated page URL</Label>
+                <HelpTooltip>
+                  <strong>Dedicated page URL</strong>
+                  <p className="mt-1">
+                    Overrides the hub URL when the offering is published. Use this when the offering has its own landing page (e.g., /partner/amplify/stractical-leader). The quiz, speaker cards, and catalog will all prefer this URL over the hub once the offering is live.
+                  </p>
+                </HelpTooltip>
+              </div>
               <Input
                 placeholder="e.g. /partner/amplify/labs/goldilocks"
                 value={valueOf("dedicated_url") ?? ""}
@@ -485,7 +501,15 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
               />
             </div>
             <div>
-              <Label className="text-xs">Anchor on hub page</Label>
+              <div className="flex items-center gap-1.5 mb-1">
+                <Label className="text-xs">Anchor on hub page</Label>
+                <HelpTooltip>
+                  <strong>Anchor ID</strong>
+                  <p className="mt-1">
+                    Appends a #section ID to the resolved URL. Use it to send quiz visitors directly to a specific lab, workshop, or topic card on a long hub page. The anchor is added to whichever URL is chosen (hub or dedicated).
+                  </p>
+                </HelpTooltip>
+              </div>
               <Input
                 placeholder="e.g. lab-goldilocks"
                 value={valueOf("anchor_id") ?? ""}
