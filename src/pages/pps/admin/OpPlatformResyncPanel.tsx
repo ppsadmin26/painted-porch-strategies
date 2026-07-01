@@ -29,6 +29,7 @@ interface LocalRow {
   image_url: string | null;
   current_url: string | null;
   dedicated_url?: string | null;
+  blue_door_required?: boolean | null;
 }
 
 interface OpPlatformResyncPanelProps {
