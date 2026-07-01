@@ -408,6 +408,12 @@ export function OpPlatformResyncPanel({
         normalized offering name (the feed does not expose a stable ID).
       </p>
 
+      {loading && retryStatus && (
+        <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1 mt-2">
+          {retryStatus}
+        </p>
+      )}
+
       {error && <SyncErrorPanel error={error} onRetry={runAudit} />}
 
 
