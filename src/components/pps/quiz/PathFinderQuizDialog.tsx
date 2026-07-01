@@ -174,6 +174,12 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const [viewableKeys, setViewableKeys] = useState<Set<string> | null>(null);
   const [comingSoonKeys, setComingSoonKeys] = useState<Set<string>>(new Set());
   const [featuredKeys, setFeaturedKeys] = useState<Set<string>>(new Set());
+  // Canonical mirror from PPS Op Platform: offerings that CANNOT run in
+  // parallel with the Blue Door Organizational Appraisal — Blue Door must be
+  // completed first. Used to partition the B2B primary group so we never
+  // recommend a Blue-Door-required workshop under an "activate now / in
+  // parallel" heading.
+  const [blueDoorRequiredKeys, setBlueDoorRequiredKeys] = useState<Set<string>>(new Set());
 
   const { questions, track } = useMemo(() => buildQuestionPath(answers), [answers]);
   const current = questions[index];
