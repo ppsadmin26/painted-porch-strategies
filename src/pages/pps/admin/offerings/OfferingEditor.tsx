@@ -409,12 +409,20 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
           />
 
           <div className="rounded-md border border-dashed border-gold/40 bg-gold/5 px-3 py-2">
-            <Label className="text-xs">
-              <strong>Linked launch</strong>
-              <span className="block text-xs text-muted-foreground font-normal">
-                When linked, the quiz reads availability from <code>course_launch_status</code>.
-              </span>
-            </Label>
+            <div className="flex items-center gap-1.5">
+              <Label className="text-xs">
+                <strong>Linked launch</strong>
+                <span className="block text-xs text-muted-foreground font-normal">
+                  When linked, the quiz reads availability from <code>course_launch_status</code>.
+                </span>
+              </Label>
+              <HelpTooltip>
+                <strong>Linked launch</strong>
+                <p className="mt-1">
+                  Connects this offering to a program launch record. If the launch is set to "Coming Soon," the quiz still shows the offering but its CTA can point to a waitlist. If "Live," the quiz routes visitors to the active enrollment or checkout page. Leave empty to use the Hub / fallback URL above.
+                </p>
+              </HelpTooltip>
+            </div>
             <div className="flex items-center gap-2 mt-1">
               <select
                 value={valueOf("launch_slug") ?? ""}
