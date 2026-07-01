@@ -1,112 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Save, ExternalLink, Search, AlertTriangle, Plus } from "lucide-react";
-import { Link } from "react-router-dom";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Loader2, ExternalLink, Search, AlertTriangle, Plus, RefreshCw, Pencil } from "lucide-react";
 import { OpPlatformResyncPanel } from "./OpPlatformResyncPanel";
-import { routingSummaryForTier, PLACEMENT_BADGE_COPY } from "@/lib/quizRoutingSummary";
+import type { OfferingRow, LaunchOption } from "./offerings/OfferingEditor";
+import { facilitatorDisplay } from "./offerings/OfferingEditor";
 
-// Expand short facilitator first-names (as stored in the Op Platform) to display names.
-const FACILITATOR_FULL_NAME: Record<string, string> = {
-  Amy: "Amy Yackowski",
-  Rob: "Rob Hunter",
-  Sierra: "Sierra Ramm Cantrell",
-};
-const facilitatorDisplay = (f: string | null | undefined) => {
-  if (!f) return "";
-  return f
-    .split(/\s*(?:,|&|\band\b)\s*/i)
-    .filter(Boolean)
-    .map((n) => FACILITATOR_FULL_NAME[n] ?? n)
-    .join(", ");
-};
-
-interface Row {
-  id: string;
-  offering_key: string;
-  name: string;
-  facilitator: string | null;
-  tier: string;
-  blurb: string;
-  description: string | null;
-  current_url: string;
-  dedicated_url: string | null;
-  anchor_id: string | null;
-  is_live: boolean;
-  is_published: boolean;
-  sort_order: number;
-  topic: string | null;
-  topic_slug: string | null;
-  include_in_workshops: boolean;
-  is_featured_in_quiz: boolean;
-  is_keynote: boolean;
-  include_on_speaker_page: boolean;
-  image_url: string | null;
-  launch_slug: string | null;
-  b2c_rt_pools: Record<string, string[]> | null;
-  b2b_rt_pools: Record<string, string[]> | null;
-  blue_door_required: boolean;
-}
-
-/**
- * Phase B/C (PPS Op Platform → PPS site handoff): canonical fields
- * (name, blurb, description, image_url, tier, topic, facilitator,
- * include_in_workshops, is_keynote) are read-only here and edited in
- * the PPS Op Platform Offerings Register. PPS-owned fields that remain
- * editable: include_on_speaker_page, is_featured_in_quiz, launch_slug,
- * RT pools (b2c/b2b), and URL/anchor (transitional).
- */
 const OP_PLATFORM_ADMIN_BASE = "https://paintedporch-ops.lovable.app/admin/topics";
-
-function buildBlueDoorEditUrl(row: { topic_slug?: string | null; name?: string | null }): string {
-  const params = new URLSearchParams();
-  if (row.topic_slug) params.set("slug", row.topic_slug);
-  else if (row.name) params.set("q", row.name);
-  const qs = params.toString();
-  return qs ? `${OP_PLATFORM_ADMIN_BASE}?${qs}` : OP_PLATFORM_ADMIN_BASE;
-}
-
-function BlueDoorEditLink({ row, label = "Edit in PPS Op Platform" }: { row: { topic_slug?: string | null; name?: string | null }; label?: string }) {
-  return (
-    <a
-      href={buildBlueDoorEditUrl(row)}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-1 text-[11px] font-medium text-bluedoor hover:underline"
-      title="Open the canonical record in the PPS Op Platform Offerings Register"
-    >
-      {label} <ExternalLink className="w-3 h-3" />
-    </a>
-  );
-}
-
-
-interface LaunchOption {
-  slug: string;
-  course_name: string;
-  status: "coming_soon" | "live";
-  program_type: string;
-}
-
-const TIER_OPTIONS = ["Free", "IGNITE", "AMPLIFY", "Workshop", "Blue Door", "Speaking", "Assessment"] as const;
-const B2C_RTS = ["RT1", "RT2", "RT3", "RT4", "RT5", "RT6"] as const;
-const B2B_RTS = ["RT-A", "RT-B", "RT-C", "RT-D", "RT-E"] as const;
-
 
 const TIER_COLORS: Record<string, string> = {
   IGNITE: "bg-gold/15 text-gold-foreground border-gold/40",
@@ -118,17 +22,29 @@ const TIER_COLORS: Record<string, string> = {
   Speaking: "bg-navy/10 text-navy border-navy/40",
 };
 
-/** An offering is recommendable by the quiz if it is Published AND has at
- *  least one of current_url / dedicated_url / anchor_id set. (Page-level
- *  Live state is enforced separately by usePathFinderOverrides via page_status.)
- */
-function isQuizEligible(row: Pick<Row, "is_published" | "current_url" | "dedicated_url" | "anchor_id">): boolean {
-  if (!row.is_published) return false;
-  return Boolean(
-    (row.current_url && row.current_url.trim()) ||
-    (row.dedicated_url && row.dedicated_url.trim()) ||
-    (row.anchor_id && row.anchor_id.trim()),
-  );
+interface Row extends OfferingRow {
+  updated_at?: string | null;
+}
+
+function tierSegment(tier: string): "B2B" | "B2C" | null {
+  const t = (tier || "").toLowerCase();
+  if (["amplify", "embody", "blue door", "workshop", "speaking"].includes(t)) return "B2B";
+  if (["free", "ignite", "assessment"].includes(t)) return "B2C";
+  return null;
+}
+
+function deliveryTypes(row: Row): string[] {
+  const t = (row.tier || "").toLowerCase();
+  const out: string[] = [];
+  if (row.is_keynote) out.push("keynote");
+  if (row.include_in_workshops) out.push("workshop");
+  if (t === "free") out.push("free_resource");
+  if (t === "amplify") out.push("lab");
+  if (t === "ignite") out.push("course");
+  if (t === "assessment") out.push("assessment");
+  if (t === "blue door") out.push("assessment");
+  if (out.length === 0 && row.tier) out.push(row.tier.toLowerCase());
+  return Array.from(new Set(out));
 }
 
 export default function PathFinderOfferings() {
@@ -136,108 +52,21 @@ export default function PathFinderOfferings() {
   const [searchParams] = useSearchParams();
   const [rows, setRows] = useState<Row[]>([]);
   const [launches, setLaunches] = useState<LaunchOption[]>([]);
-  const [dirty, setDirty] = useState<Record<string, Partial<Row>>>({});
-  const [savingId, setSavingId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState(searchParams.get("filter") ?? "");
-  const [showOnly, setShowOnly] = useState<"all" | "needs-page" | "live" | "broken-launch">("all");
-  const [newOpen, setNewOpen] = useState(false);
-  const [creating, setCreating] = useState(false);
-  const [newRow, setNewRow] = useState({
-    offering_key: "",
-    name: "",
-    tier: "Free" as (typeof TIER_OPTIONS)[number],
-    current_url: "",
-    dedicated_url: "",
-    anchor_id: "",
-    topic: "",
-    blurb: "",
-    is_live: true,
-  });
-  const [keyManuallyEdited, setKeyManuallyEdited] = useState(false);
-
-  const slugifyKey = (s: string) =>
-    s
-      .trim()
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "")
-      .slice(0, 60);
-
-  const resetNew = () => {
-    setNewRow({
-      offering_key: "",
-      name: "",
-      tier: "Free",
-      current_url: "",
-      dedicated_url: "",
-      anchor_id: "",
-      topic: "",
-      blurb: "",
-      is_live: true,
-    });
-    setKeyManuallyEdited(false);
-  };
-
-  const createOffering = async () => {
-    const key = newRow.offering_key.trim();
-    const name = newRow.name.trim();
-    if (!name) {
-      toast({ title: "Name required", variant: "destructive" });
-      return;
-    }
-    if (!/^[a-zA-Z0-9_-]+$/.test(key)) {
-      toast({ title: "Invalid key", description: "Use letters, numbers, dashes, underscores only.", variant: "destructive" });
-      return;
-    }
-    if (rows.some((r) => r.offering_key === key)) {
-      toast({ title: "Key already exists", description: "Pick a unique offering key.", variant: "destructive" });
-      return;
-    }
-    const maxSort = rows.reduce((m, r) => Math.max(m, r.sort_order ?? 0), 0);
-    setCreating(true);
-    const { data, error } = await supabase
-      .from("path_finder_offerings")
-      .insert({
-        offering_key: key,
-        name,
-        tier: newRow.tier,
-        blurb: newRow.blurb || "",
-        current_url: newRow.current_url || "",
-        dedicated_url: newRow.dedicated_url || null,
-        anchor_id: newRow.anchor_id || null,
-        topic: newRow.topic || null,
-        is_live: newRow.is_live,
-        sort_order: maxSort + 10,
-        b2c_rt_pools: {},
-        b2b_rt_pools: {},
-      } as any)
-      .select()
-      .single();
-    setCreating(false);
-    if (error) {
-      toast({ title: "Create failed", description: error.message, variant: "destructive" });
-      return;
-    }
-    toast({ title: "Offering created", description: "Map it to RT pools below." });
-    setNewOpen(false);
-    resetNew();
-    await load();
-    // Scroll the new card into view
-    setTimeout(() => {
-      const el = document.getElementById(`offering-${(data as any).id}`);
-      el?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 200);
-  };
+  const [typeFilter, setTypeFilter] = useState("");
+  const [segmentFilter, setSegmentFilter] = useState("");
+  const [facilitatorFilter, setFacilitatorFilter] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("");
 
   const load = async () => {
     setLoading(true);
     const [offRes, launchRes] = await Promise.all([
-      supabase.from("path_finder_offerings").select("id, offering_key, name, facilitator, tier, blurb, description, current_url, dedicated_url, anchor_id, is_live, is_published, sort_order, topic, topic_slug, include_in_workshops, is_featured_in_quiz, is_keynote, include_on_speaker_page, image_url, launch_slug, b2c_rt_pools, b2b_rt_pools, blue_door_required").order("sort_order"),
       supabase
-        .from("course_launch_status")
-        .select("slug, course_name, status, program_type")
-        .order("course_name"),
+        .from("path_finder_offerings")
+        .select("id, offering_key, name, facilitator, tier, blurb, description, current_url, dedicated_url, anchor_id, is_live, is_published, sort_order, topic, topic_slug, include_in_workshops, is_featured_in_quiz, is_keynote, include_on_speaker_page, image_url, launch_slug, b2c_rt_pools, b2b_rt_pools, blue_door_required, updated_at")
+        .order("name"),
+      supabase.from("course_launch_status").select("slug, course_name, status, program_type").order("course_name"),
     ]);
     if (offRes.error) toast({ title: "Failed to load", description: offRes.error.message, variant: "destructive" });
     setRows((offRes.data ?? []) as Row[]);
@@ -248,29 +77,44 @@ export default function PathFinderOfferings() {
   useEffect(() => { load(); }, []);
 
   const launchSlugs = useMemo(() => new Set(launches.map((l) => l.slug)), [launches]);
+  const brokenIds = useMemo(() => {
+    if (launches.length === 0) return new Set<string>();
+    return new Set(rows.filter((r) => r.launch_slug && !launchSlugs.has(r.launch_slug)).map((r) => r.id));
+  }, [rows, launches, launchSlugs]);
 
-  // Effective launch_slug per row (accounts for unsaved edits) and broken-link detection
-  const brokenRows = useMemo(() => {
-    if (launches.length === 0) return [] as Array<{ row: Row; slug: string }>;
-    return rows
-      .map((r) => {
-        const d = dirty[r.id];
-        const slug = (d && "launch_slug" in d ? (d as any).launch_slug : r.launch_slug) as string | null;
-        return slug && !launchSlugs.has(slug) ? { row: r, slug } : null;
-      })
-      .filter(Boolean) as Array<{ row: Row; slug: string }>;
-  }, [rows, dirty, launches, launchSlugs]);
+  const topicDeliveryCount = useMemo(() => {
+    const m = new Map<string, number>();
+    for (const r of rows) {
+      const k = r.topic_slug || r.offering_key;
+      m.set(k, (m.get(k) ?? 0) + 1);
+    }
+    return m;
+  }, [rows]);
 
-  const brokenIds = useMemo(() => new Set(brokenRows.map((b) => b.row.id)), [brokenRows]);
+  const uniqueFacilitators = useMemo(() => {
+    const s = new Set<string>();
+    for (const r of rows) {
+      if (!r.facilitator) continue;
+      for (const p of r.facilitator.split(/\s*(?:,|&|\band\b)\s*/i)) {
+        const v = p.trim();
+        if (v) s.add(v);
+      }
+    }
+    return Array.from(s).sort();
+  }, [rows]);
+
+  const uniqueCategories = useMemo(() => {
+    const s = new Set<string>();
+    for (const r of rows) if (r.topic) s.add(r.topic);
+    return Array.from(s).sort();
+  }, [rows]);
 
   const filtered = useMemo(() => {
     return rows.filter((r) => {
-      if (showOnly === "broken-launch" && !brokenIds.has(r.id)) return false;
-      if (showOnly === "needs-page" && (r.is_published || (r.dedicated_url && r.dedicated_url !== r.current_url))) {
-        // "needs-page" = not published AND no dedicated_url set yet
-        if (r.is_published || r.dedicated_url) return false;
-      }
-      if (showOnly === "live" && !r.is_published) return false;
+      if (typeFilter && !deliveryTypes(r).includes(typeFilter)) return false;
+      if (segmentFilter && tierSegment(r.tier) !== segmentFilter) return false;
+      if (facilitatorFilter && !(r.facilitator ?? "").toLowerCase().includes(facilitatorFilter.toLowerCase())) return false;
+      if (categoryFilter && r.topic !== categoryFilter) return false;
       if (filter) {
         const q = filter.toLowerCase();
         if (
@@ -283,264 +127,84 @@ export default function PathFinderOfferings() {
       }
       return true;
     });
-  }, [rows, filter, showOnly, brokenIds]);
+  }, [rows, filter, typeFilter, segmentFilter, facilitatorFilter, categoryFilter]);
 
-  const patch = (id: string, partial: Partial<Row>) => {
-    setDirty((d) => ({ ...d, [id]: { ...d[id], ...partial } }));
-  };
+  const stats = useMemo(() => {
+    const topicSlugs = new Set(filtered.map((r) => r.topic_slug || r.offering_key));
+    const live = filtered.filter((r) => r.is_published).length;
+    return { shown: filtered.length, topics: topicSlugs.size, deliveries: filtered.length, live };
+  }, [filtered]);
 
-  const valueOf = <K extends keyof Row>(row: Row, key: K): Row[K] => {
-    const d = dirty[row.id];
-    return (d && key in d ? (d as any)[key] : row[key]) as Row[K];
-  };
-
-  const isDirty = (id: string) => !!dirty[id] && Object.keys(dirty[id]).length > 0;
-
-  const save = async (row: Row) => {
-    if (!isDirty(row.id)) return;
-    setSavingId(row.id);
-    const patchObj = dirty[row.id];
-    const { error } = await supabase
-      .from("path_finder_offerings")
-      .update(patchObj)
-      .eq("id", row.id);
-    setSavingId(null);
-    if (error) {
-      toast({ title: "Save failed", description: error.message, variant: "destructive" });
-      return;
-    }
-    setRows((r) => r.map((x) => (x.id === row.id ? { ...x, ...patchObj } as Row : x)));
-    setDirty((d) => { const n = { ...d }; delete n[row.id]; return n; });
-    toast({ title: "Saved" });
-  };
-
-  const resolveUrl = (row: Row) => {
-    const published = valueOf(row, "is_published");
-    const dedicated = valueOf(row, "dedicated_url");
-    const current = valueOf(row, "current_url");
-    const anchor = valueOf(row, "anchor_id");
-    let url = (published && dedicated) ? dedicated : current;
-    if (anchor && url && !url.includes("#")) url = `${url}#${anchor}`;
-    return url;
-  };
+  const deliveryTypeOptions = useMemo(() => {
+    const s = new Set<string>();
+    for (const r of rows) for (const t of deliveryTypes(r)) s.add(t);
+    return Array.from(s).sort();
+  }, [rows]);
 
   return (
     <div className="container max-w-7xl mx-auto py-8 px-4">
       <div className="flex items-start justify-between mb-6 gap-4 flex-wrap">
         <div>
-          <h1 className="text-3xl font-poppins font-bold text-navy">Offerings</h1>
+          <h1 className="text-3xl font-poppins font-bold text-navy">Offerings & Delivery</h1>
           <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
-            The single admin surface for every offering the site can surface. Narrative copy (name, blurb, image, <strong>tier, topic tag, facilitator</strong>) and delivery-type chips (<strong>Workshop / Keynote</strong>) are read-only here and edited in the <strong>PPS Op Platform</strong>. Website-specific controls — <strong>Speaker page</strong> toggle, RT pools, pin-to-top, and launch link — live on each card below.
-          </p>
-          <p className="mt-2 text-xs text-muted-foreground max-w-3xl">
-            Each card has two sections: <strong>Registry</strong> (read-only, edited in the PPS Op Platform) and <strong>PPS Controls</strong> (Quiz + Website settings owned here).{" "}
-            <Link to="/admin/quiz-rules" className="text-bluedoor underline font-semibold">Full quiz routing rules →</Link>
+            Canonical catalog. Each topic owns shared narrative (name, blurb, image, tier, facilitator) from the <strong>PPS Op Platform</strong>. Click a row to open its detail page and edit PPS-owned quiz & website controls.
           </p>
         </div>
         <div className="flex gap-2 items-center">
-          <div className="relative">
-            <Search className="absolute left-2 top-2.5 w-4 h-4 text-muted-foreground" />
-            <Input
-              placeholder="Filter…"
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-              className="pl-8 w-56"
-            />
-          </div>
-          <select
-            value={showOnly}
-            onChange={(e) => setShowOnly(e.target.value as any)}
-            className="h-10 rounded-md border border-input bg-background px-3 text-sm"
-          >
-            <option value="all">All ({rows.length})</option>
-            <option value="needs-page">Needs publish ({rows.filter(r => !r.is_published && !r.dedicated_url).length})</option>
-            <option value="live">Published ({rows.filter(r => r.is_published).length})</option>
-            <option value="broken-launch">Broken launch link ({brokenRows.length})</option>
-          </select>
+          <Button variant="outline" size="sm" onClick={load} disabled={loading}>
+            <RefreshCw className={`w-4 h-4 mr-1 ${loading ? "animate-spin" : ""}`} /> Refresh
+          </Button>
           <a
             href={OP_PLATFORM_ADMIN_BASE}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-xs font-medium text-bluedoor hover:underline"
+            className="inline-flex items-center gap-1 h-9 px-3 rounded-md bg-primary text-white text-sm font-medium hover:bg-primary/90"
             title="New offerings must be authored in the PPS Op Platform Offerings Register"
           >
-            <Plus className="w-4 h-4" /> New in PPS Op Platform <ExternalLink className="w-3 h-3" />
+            <Plus className="w-4 h-4" /> New topic <ExternalLink className="w-3 h-3" />
           </a>
         </div>
       </div>
 
-      <Dialog open={newOpen} onOpenChange={(o) => { setNewOpen(o); if (!o) resetNew(); }}>
-        <DialogContent className="max-w-lg">
-          <DialogHeader>
-            <DialogTitle>New offering</DialogTitle>
-            <DialogDescription>
-              Create a new offering. After saving, map it to B2C / B2B RT pools on its card to surface it in quiz results.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="space-y-3">
-            <div>
-              <Label className="text-xs">Display name *</Label>
-              <Input
-                value={newRow.name}
-                onChange={(e) => {
-                  const name = e.target.value;
-                  setNewRow((r) => ({
-                    ...r,
-                    name,
-                    offering_key: keyManuallyEdited ? r.offering_key : slugifyKey(name),
-                  }));
-                }}
-                placeholder="The Stoic Leader Field Guide"
-              />
-            </div>
-            <div>
-              <Label className="text-xs">Offering key * (unique, letters/numbers/-/_)</Label>
-              <Input
-                value={newRow.offering_key}
-                onChange={(e) => {
-                  setKeyManuallyEdited(true);
-                  setNewRow((r) => ({ ...r, offering_key: e.target.value }));
-                }}
-                placeholder="stoic-leader-field-guide"
-                className="font-mono text-xs"
-              />
-            </div>
-            <div>
-              <Label className="text-xs">Tier *</Label>
-              <select
-                value={newRow.tier}
-                onChange={(e) => setNewRow((r) => ({ ...r, tier: e.target.value as any }))}
-                className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
-              >
-                {TIER_OPTIONS.map((t) => <option key={t} value={t}>{t}</option>)}
-              </select>
-            </div>
-            <div>
-              <Label className="text-xs">Blurb</Label>
-              <Textarea
-                rows={2}
-                value={newRow.blurb}
-                onChange={(e) => setNewRow((r) => ({ ...r, blurb: e.target.value }))}
-                placeholder="One short line shown under the name."
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <Label className="text-xs">Hub URL</Label>
-                <Input
-                  value={newRow.current_url}
-                  onChange={(e) => setNewRow((r) => ({ ...r, current_url: e.target.value }))}
-                  placeholder="/partner/ignite"
-                />
-              </div>
-              <div>
-                <Label className="text-xs">Dedicated URL</Label>
-                <Input
-                  value={newRow.dedicated_url}
-                  onChange={(e) => setNewRow((r) => ({ ...r, dedicated_url: e.target.value }))}
-                  placeholder="/stoic-field-guide"
-                />
-              </div>
-              <div>
-                <Label className="text-xs">Anchor ID</Label>
-                <Input
-                  value={newRow.anchor_id}
-                  onChange={(e) => setNewRow((r) => ({ ...r, anchor_id: e.target.value }))}
-                  placeholder="optional"
-                />
-              </div>
-              <div>
-                <Label className="text-xs">Topic tag</Label>
-                <Input
-                  value={newRow.topic}
-                  onChange={(e) => setNewRow((r) => ({ ...r, topic: e.target.value }))}
-                  placeholder="Leadership"
-                />
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <Switch
-                checked={newRow.is_live}
-                onCheckedChange={(v) => setNewRow((r) => ({ ...r, is_live: v }))}
-                id="new-live"
-              />
-              <Label htmlFor="new-live" className="text-sm">Live (quiz-eligible)</Label>
-            </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setNewOpen(false)} disabled={creating}>Cancel</Button>
-            <Button onClick={createOffering} disabled={creating} className="bg-primary text-white hover:bg-primary/90">
-              {creating ? <Loader2 className="w-4 h-4 animate-spin mr-1" /> : <Plus className="w-4 h-4 mr-1" />}
-              Create
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      <div className="mb-6 rounded-lg border border-bluedoor/30 bg-bluedoor/5 px-4 py-3 text-sm text-navy">
-        <p className="font-poppins font-semibold text-bluedoor mb-1">Phase C active — Live split into Published + Page Live</p>
-        <p>
-          The PPS Op Platform <strong>Offerings Master Register</strong> is the source of truth for narrative (<strong>name, blurb, description, image</strong>) — read-only here. <strong>Published</strong> mirrors the canonical <code>delivery.is_published</code> flag (will become Op-Platform-owned once the sync ships). Page-level <strong>Live vs Coming Soon</strong> is managed in <Link to="/admin/pages" className="underline text-bluedoor">/admin/pages</Link>. A card is publicly visible only when <em>Published</em> AND its host page is Live.
-        </p>
-        <p className="mt-2">
-          <strong>Canonical (PPS Op Platform):</strong> name, blurb, description, image, <strong>tier</strong>, <strong>topic tag</strong>, <strong>facilitator</strong>, and delivery-type chips (<strong>Workshop</strong>, <strong>Keynote</strong>).<br />
-          <strong>PPS-owned (editable here):</strong> RT pools, Pin to top, Include on speaker page, Linked launch, URL/anchor (transitional).{" "}
-          <a
-            href={OP_PLATFORM_ADMIN_BASE}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-bluedoor underline hover:no-underline"
-          >
-            Open PPS Op Platform · Offerings Register
-          </a>
-        </p>
+      {/* Filters */}
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-2 mb-2">
+        <div className="relative">
+          <Search className="absolute left-2 top-2.5 w-4 h-4 text-muted-foreground" />
+          <Input
+            placeholder="Search by name, slug, ID, or type…"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            className="pl-8"
+          />
+        </div>
+        <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)} className="h-10 rounded-md border border-input bg-background px-3 text-sm">
+          <option value="">All types</option>
+          {deliveryTypeOptions.map((t) => <option key={t} value={t}>{t}</option>)}
+        </select>
+        <select value={segmentFilter} onChange={(e) => setSegmentFilter(e.target.value)} className="h-10 rounded-md border border-input bg-background px-3 text-sm">
+          <option value="">All segments</option>
+          <option value="B2B">B2B</option>
+          <option value="B2C">B2C</option>
+        </select>
+        <select value={facilitatorFilter} onChange={(e) => setFacilitatorFilter(e.target.value)} className="h-10 rounded-md border border-input bg-background px-3 text-sm">
+          <option value="">All facilitators</option>
+          {uniqueFacilitators.map((f) => <option key={f} value={f}>{f}</option>)}
+        </select>
+        <select value={categoryFilter} onChange={(e) => setCategoryFilter(e.target.value)} className="h-10 rounded-md border border-input bg-background px-3 text-sm">
+          <option value="">All categories</option>
+          {uniqueCategories.map((c) => <option key={c} value={c}>{c}</option>)}
+        </select>
+      </div>
+      <div className="text-xs text-muted-foreground text-right mb-4">
+        {stats.shown} shown · {stats.topics} topics · {stats.deliveries} deliveries · <span className="text-lime-foreground">{stats.live} live</span>
       </div>
 
-      {!loading && brokenRows.length > 0 && (
-        <div className="mb-6 rounded-lg border border-raspberry/40 bg-raspberry/5 px-4 py-3 text-sm text-navy">
-          <div className="flex items-start gap-2">
-            <AlertTriangle className="w-4 h-4 mt-0.5 text-raspberry shrink-0" />
-            <div className="flex-1">
-              <p className="font-poppins font-semibold text-raspberry mb-1">
-                {brokenRows.length} offering{brokenRows.length === 1 ? "" : "s"} link to a missing program launch
-              </p>
-              <p className="mb-2 text-xs">
-                The linked <code>launch_slug</code> no longer exists in <code>course_launch_status</code>. The quiz falls back to the <strong>Live</strong> toggle for these rows, but the link should be cleared or repointed.
-              </p>
-              <ul className="space-y-1 text-xs">
-                {brokenRows.slice(0, 8).map(({ row, slug }) => (
-                  <li key={row.id} className="flex items-center gap-2 flex-wrap">
-                    <strong className="text-navy">{row.name}</strong>
-                    <code className="text-muted-foreground">{row.offering_key}</code>
-                    <span className="text-muted-foreground">→ missing slug</span>
-                    <code className="text-raspberry">{slug}</code>
-                    <button
-                      type="button"
-                      onClick={() => patch(row.id, { launch_slug: null as any })}
-                      className="text-primary hover:underline"
-                    >
-                      Clear link
-                    </button>
-                  </li>
-                ))}
-                {brokenRows.length > 8 && (
-                  <li className="text-muted-foreground">…and {brokenRows.length - 8} more.</li>
-                )}
-              </ul>
-              <button
-                type="button"
-                onClick={() => setShowOnly("broken-launch")}
-                className="mt-2 text-xs text-primary hover:underline"
-              >
-                Filter to broken-launch rows →
-              </button>
-            </div>
-          </div>
+      {!loading && brokenIds.size > 0 && (
+        <div className="mb-4 rounded-lg border border-raspberry/40 bg-raspberry/5 px-4 py-2 text-xs text-navy flex items-center gap-2">
+          <AlertTriangle className="w-4 h-4 text-raspberry" />
+          {brokenIds.size} offering{brokenIds.size === 1 ? "" : "s"} link to a missing program launch — open the row to repair.
         </div>
       )}
-
-
-
 
       {!loading && (
         <OpPlatformResyncPanel
@@ -559,401 +223,90 @@ export default function PathFinderOfferings() {
       {loading ? (
         <div className="flex items-center justify-center py-20"><Loader2 className="animate-spin" /></div>
       ) : (
-        <div className="space-y-3">
-          {filtered.map((row) => {
-            const published = valueOf(row, "is_published");
-            const url = resolveUrl(row);
-            return (
-              <div key={row.id} id={`offering-${row.id}`} className="border rounded-lg p-4 bg-white space-y-4">
-                {/* ── Card header ────────────────────────────────────────── */}
-                <div className="flex items-start justify-between gap-4 flex-wrap">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span
-                      className={`inline-flex items-center h-7 rounded-md border border-dashed border-bluedoor/40 px-2 text-xs font-medium ${TIER_COLORS[valueOf(row, "tier")] ?? "bg-background"}`}
-                      title="Tier is canonical — edit in PPS Op Platform"
-                    >
-                      {valueOf(row, "tier") || "—"}
-                      <span className="ml-1 text-[10px] text-bluedoor">· canonical</span>
-                    </span>
-                    <code className="text-xs text-muted-foreground">{row.offering_key}</code>
-                    {isQuizEligible({
-                      is_published: valueOf(row, "is_published"),
-                      current_url: valueOf(row, "current_url"),
-                      dedicated_url: valueOf(row, "dedicated_url"),
-                      anchor_id: valueOf(row, "anchor_id"),
-                    }) ? (
-                      <Badge
-                        variant="outline"
-                        className="bg-lime/15 text-lime-foreground border-lime/40"
-                        title="Published AND has a URL or anchor. Eligible to appear in quiz results (host page must also be Live)."
-                      >
-                        Quiz eligible
-                      </Badge>
-                    ) : (
-                      <Badge
-                        variant="outline"
-                        className="bg-muted text-muted-foreground border-muted-foreground/30"
-                        title="Not eligible: needs Published + at least one of Hub URL, Dedicated URL, or Anchor."
-                      >
-                        Not eligible
-                      </Badge>
-                    )}
-                    {(() => {
-                      const slug = valueOf(row, "launch_slug");
-                      if (!slug) return null;
-                      const launch = launches.find((l) => l.slug === slug);
-                      if (!launch) {
-                        return (
-                          <Badge
-                            variant="outline"
-                            className="bg-raspberry/10 text-raspberry border-raspberry/40"
-                            title={`Linked launch "${slug}" no longer exists`}
-                          >
-                            Launch: missing
-                          </Badge>
-                        );
-                      }
-                      const cls =
-                        launch.status === "live"
-                          ? "bg-lime/15 text-lime-foreground border-lime/40"
-                          : "bg-gold/15 text-gold-foreground border-gold/40";
-                      return (
-                        <Link
-                          to={`/admin/course-launches?slug=${encodeURIComponent(slug)}`}
-                          className="inline-flex items-center"
-                          title="Open in Program Launches"
-                        >
-                          <Badge variant="outline" className={`${cls} hover:underline cursor-pointer`}>
-                            {launch.status === "live" ? "Launch: Live" : "Launch: Coming Soon"}
-                          </Badge>
-                        </Link>
-                      );
-                    })()}
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-2" title="Published — eventually owned by PPS Op Platform sync. Page-level Live state lives in /admin/pages.">
-                      <Switch
-                        checked={valueOf(row, "is_published")}
-                        onCheckedChange={(v) => patch(row.id, { is_published: v })}
-                        id={`published-${row.id}`}
-                      />
-                      <Label htmlFor={`published-${row.id}`} className="text-sm font-medium">
-                        {valueOf(row, "is_published") ? "Published" : "Unpublished"}
-                      </Label>
-                    </div>
-                    <Button
-                      size="sm"
-                      onClick={() => save(row)}
-                      disabled={!isDirty(row.id) || savingId === row.id}
-                      className="bg-primary text-white hover:bg-primary/90"
-                    >
-                      {savingId === row.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4 mr-1" />}
-                      Save
-                    </Button>
-                  </div>
-                </div>
-
-                {/* ── 1. Registry (Op Platform · read-only) ─────────────── */}
-                <section className="rounded-md border border-dashed border-bluedoor/40 bg-bluedoor/5 px-3 py-3">
-                  <div className="flex items-center justify-between mb-2 gap-2 flex-wrap">
-                    <Label className="text-xs font-poppins font-semibold text-bluedoor uppercase tracking-wide">
-                      Registry · PPS Op Platform (read-only)
-                    </Label>
-                    <BlueDoorEditLink row={row} label="Edit in PPS Op Platform" />
-                  </div>
-                  <div className="grid md:grid-cols-[10rem_1fr] gap-4">
-                    <div>
-                      {row.image_url ? (
-                        <div className="w-full aspect-[16/10] rounded border border-border overflow-hidden bg-muted">
-                          <img src={row.image_url} alt="" className="w-full h-full object-cover" />
+        <div className="border rounded-lg bg-white overflow-hidden">
+          <table className="w-full text-sm">
+            <thead className="bg-muted/40 text-xs text-navy">
+              <tr className="text-left">
+                <th className="px-4 py-3 font-semibold">Topic</th>
+                <th className="px-2 py-3 font-semibold">ID</th>
+                <th className="px-2 py-3 font-semibold">Types</th>
+                <th className="px-2 py-3 font-semibold">Segment</th>
+                <th className="px-2 py-3 font-semibold">Facilitator</th>
+                <th className="px-2 py-3 font-semibold">Category</th>
+                <th className="px-2 py-3 font-semibold text-center">Deliveries</th>
+                <th className="px-2 py-3 font-semibold text-center">Live</th>
+                <th className="px-2 py-3 font-semibold">Updated</th>
+                <th className="px-2 py-3" />
+              </tr>
+            </thead>
+            <tbody>
+              {filtered.map((r) => {
+                const seg = tierSegment(r.tier);
+                const types = deliveryTypes(r);
+                const facilitators = r.facilitator ? facilitatorDisplay(r.facilitator).split(", ") : [];
+                const deliveryCount = topicDeliveryCount.get(r.topic_slug || r.offering_key) ?? 1;
+                return (
+                  <tr key={r.id} className="border-t hover:bg-muted/20 align-top">
+                    <td className="px-4 py-3 max-w-xs">
+                      <Link to={`/admin/offerings/${encodeURIComponent(r.offering_key)}`} className="block group">
+                        <div className="font-poppins font-semibold text-navy leading-tight group-hover:underline">
+                          {r.name || <span className="italic text-muted-foreground">— missing name —</span>}
                         </div>
-                      ) : (
-                        <div className="w-full aspect-[16/10] rounded border border-dashed border-muted-foreground/30 bg-muted flex items-center justify-center text-[11px] text-muted-foreground italic">
-                          no image
-                        </div>
+                        <code className="text-[10px] text-muted-foreground">{r.offering_key}</code>
+                        {r.blurb && (
+                          <div className="text-xs text-muted-foreground mt-1 line-clamp-1">{r.blurb}</div>
+                        )}
+                      </Link>
+                    </td>
+                    <td className="px-2 py-3 text-xs text-muted-foreground whitespace-nowrap">#{r.sort_order ?? "—"}</td>
+                    <td className="px-2 py-3">
+                      <div className="flex flex-col gap-1">
+                        {types.map((t) => (
+                          <Badge key={t} variant="outline" className={`${TIER_COLORS[r.tier] ?? ""} text-[10px] w-fit`}>{t}</Badge>
+                        ))}
+                      </div>
+                    </td>
+                    <td className="px-2 py-3">
+                      {seg && (
+                        <Badge variant="outline" className={seg === "B2B" ? "bg-navy/10 text-navy border-navy/30" : "bg-lime/15 text-lime-foreground border-lime/40"}>
+                          {seg}
+                        </Badge>
                       )}
-                    </div>
-                    <div className="space-y-2 min-w-0">
-                      <div className="font-poppins font-semibold text-navy text-base leading-tight">
-                        {row.name || <span className="italic text-muted-foreground">— missing name —</span>}
+                    </td>
+                    <td className="px-2 py-3">
+                      <div className="flex flex-col gap-1">
+                        {facilitators.map((f) => (
+                          <Badge key={f} variant="outline" className="text-[10px] w-fit whitespace-nowrap">{f}</Badge>
+                        ))}
                       </div>
-                      <div className="text-sm text-foreground/80 whitespace-pre-wrap">
-                        {row.blurb || <span className="italic text-muted-foreground">— empty blurb —</span>}
-                      </div>
-                      <div className="text-xs text-muted-foreground">
-                        <span className="font-semibold text-navy">Speaker(s): </span>
-                        {row.facilitator ? facilitatorDisplay(row.facilitator) : <span className="italic">none</span>}
-                      </div>
-                      <div className="flex items-center gap-1.5 flex-wrap pt-1">
-                        {valueOf(row, "topic") && (
-                          <Badge variant="outline" className="bg-navy/5 text-navy border-navy/30 text-[11px]">
-                            Topic: {valueOf(row, "topic")}
-                          </Badge>
-                        )}
-                        {valueOf(row, "include_in_workshops") && (
-                          <Badge variant="outline" className="bg-strategic/15 text-strategic border-strategic/40 text-[11px]">
-                            Workshop
-                          </Badge>
-                        )}
-                        {valueOf(row, "is_keynote") && (
-                          <Badge variant="outline" className="bg-gold/20 text-gold-foreground border-gold/40 text-[11px]">
-                            Keynote
-                          </Badge>
-                        )}
-                        {valueOf(row, "blue_door_required") && (
-                          <Badge variant="outline" className="bg-bluedoor/15 text-bluedoor border-bluedoor/40 text-[11px]">
-                            Blue Door required
-                          </Badge>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </section>
-
-                {/* ── 2. PPS Controls ───────────────────────────────────── */}
-                <section className="rounded-md border border-primary/30 bg-primary/[0.03] px-3 py-3 space-y-4">
-                  <Label className="text-xs font-poppins font-semibold text-navy uppercase tracking-wide">
-                    PPS Controls
-                  </Label>
-
-                  {/* Quiz sub-section */}
-                  <div className="space-y-3">
-                    <div className="text-xs font-poppins font-semibold text-primary uppercase tracking-wide">Quiz</div>
-
-                    {/* Routing rules summary */}
-                    {(() => {
-                      const tier = (valueOf(row, "tier") ?? "") as string;
-                      const summary = routingSummaryForTier(tier);
-                      return (
-                        <div className="rounded-md border border-dashed border-primary/30 bg-white px-3 py-2">
-                          <div className="flex items-center justify-between mb-1 gap-2 flex-wrap">
-                            <span className="text-[11px] font-semibold text-navy">Routing rules · how this offering reaches the quiz</span>
-                            <div className="flex items-center gap-1">
-                              <Badge variant="outline" className="text-[10px]">{PLACEMENT_BADGE_COPY[summary.placement]}</Badge>
-                              <Link to="/admin/quiz-rules" className="text-[11px] text-bluedoor hover:underline ml-1">
-                                Full rules →
-                              </Link>
-                            </div>
-                          </div>
-                          <p className="text-xs font-medium text-navy/80 mb-1">{summary.headline}</p>
-                          <ul className="list-disc pl-5 space-y-1 text-xs text-foreground/80">
-                            {summary.rules.map((r, i) => <li key={i}>{r}</li>)}
-                          </ul>
-                          {summary.personas.length > 0 && (
-                            <p className="text-[11px] text-muted-foreground mt-1">
-                              Personas reached: {summary.personas.join(", ")}
-                            </p>
-                          )}
-                        </div>
-                      );
-                    })()}
-
-                    {/* Pin to top */}
-                    <label className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
-                      <Switch
-                        checked={!!valueOf(row, "is_featured_in_quiz")}
-                        onCheckedChange={(v) => patch(row.id, { is_featured_in_quiz: v })}
-                      />
-                      <span className="text-sm">
-                        <strong>Pin to top of primary list</strong>
-                        <span className="block text-[11px] text-muted-foreground">
-                          When this offering already appears in a result's primary list, pin it to position 1. Does not force it into lists it isn't already in.
-                        </span>
-                      </span>
-                    </label>
-
-                    {/* RT mapping — only when tier requires it (Free / Speaking) */}
-                    <RtPoolEditor
-                      tier={(valueOf(row, "tier") ?? "") as string}
-                      b2cValue={(valueOf(row, "b2c_rt_pools") ?? {}) as Record<string, string[]>}
-                      b2bValue={(valueOf(row, "b2b_rt_pools") ?? {}) as Record<string, string[]>}
-                      onB2cChange={(v) => patch(row.id, { b2c_rt_pools: v as any })}
-                      onB2bChange={(v) => patch(row.id, { b2b_rt_pools: v as any })}
-                    />
-
-                    {/* Linked launch */}
-                    <div className="rounded-md border border-dashed border-gold/40 bg-gold/5 px-3 py-2">
-                      <Label className="text-xs">
-                        <strong>Linked launch</strong> (single source of truth for Live vs Coming Soon)
-                        <span className="block text-xs text-muted-foreground font-normal">
-                          When linked, the quiz reads availability from <code>course_launch_status</code>. Coming Soon programs still appear, deprioritized, with a "join the launch list" badge.
-                        </span>
-                      </Label>
-                      <div className="flex items-center gap-2 mt-1">
-                        <select
-                          value={valueOf(row, "launch_slug") ?? ""}
-                          onChange={(e) => patch(row.id, { launch_slug: e.target.value || (null as any) })}
-                          className="h-10 flex-1 rounded-md border border-input bg-background px-3 text-sm"
-                        >
-                          <option value="">— No linked launch —</option>
-                          {launches.map((l) => (
-                            <option key={l.slug} value={l.slug}>
-                              {l.course_name} ({l.status === "live" ? "Live" : "Coming Soon"}) · {l.slug}
-                            </option>
-                          ))}
-                        </select>
-                        {valueOf(row, "launch_slug") ? (
-                          <Link
-                            to={`/admin/course-launches?slug=${encodeURIComponent(valueOf(row, "launch_slug") as string)}`}
-                            className="text-xs text-primary hover:underline inline-flex items-center gap-1"
-                          >
-                            Manage <ExternalLink className="w-3 h-3" />
-                          </Link>
-                        ) : null}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Website sub-section */}
-                  <div className="space-y-3 pt-2 border-t border-primary/10">
-                    <div className="text-xs font-poppins font-semibold text-primary uppercase tracking-wide">Website</div>
-
-                    <label className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
-                      <Switch
-                        checked={!!valueOf(row, "include_on_speaker_page")}
-                        onCheckedChange={(v) => patch(row.id, { include_on_speaker_page: v })}
-                      />
-                      <span className="text-sm">
-                        <strong>Show on Speaker page</strong>
-                        <span className="block text-[11px] text-muted-foreground">Include on the facilitator's /speaking/[name] page.</span>
-                      </span>
-                    </label>
-
-                    <div className="grid md:grid-cols-3 gap-3 text-sm">
-                      <div>
-                        <Label className="text-xs">Hub / fallback URL</Label>
-                        <Input
-                          value={valueOf(row, "current_url") ?? ""}
-                          onChange={(e) => patch(row.id, { current_url: e.target.value })}
-                        />
-                      </div>
-                      <div>
-                        <Label className="text-xs">Dedicated page URL (when it exists)</Label>
-                        <Input
-                          placeholder="e.g. /partner/amplify/labs/goldilocks"
-                          value={valueOf(row, "dedicated_url") ?? ""}
-                          onChange={(e) => patch(row.id, { dedicated_url: e.target.value || null as any })}
-                        />
-                      </div>
-                      <div>
-                        <Label className="text-xs">Anchor on hub page (optional)</Label>
-                        <Input
-                          placeholder="e.g. lab-goldilocks"
-                          value={valueOf(row, "anchor_id") ?? ""}
-                          onChange={(e) => patch(row.id, { anchor_id: e.target.value || null as any })}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <span>Quiz will link to:</span>
-                      {url ? (
-                        <Link to={url} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1">
-                          {url} <ExternalLink className="w-3 h-3" />
-                        </Link>
-                      ) : <span className="italic">(no url)</span>}
-                    </div>
-                  </div>
-                </section>
-              </div>
-            );
-          })}
+                    </td>
+                    <td className="px-2 py-3">
+                      {r.topic && (
+                        <Badge variant="outline" className="bg-navy/5 text-navy border-navy/30 text-[10px]">{r.topic}</Badge>
+                      )}
+                    </td>
+                    <td className="px-2 py-3 text-center text-navy font-semibold">{deliveryCount}</td>
+                    <td className="px-2 py-3 text-center">
+                      {r.is_published ? <span className="text-lime-foreground font-semibold">✓</span> : <span className="text-muted-foreground">—</span>}
+                    </td>
+                    <td className="px-2 py-3 text-xs text-muted-foreground whitespace-nowrap">
+                      {r.updated_at ? new Date(r.updated_at).toLocaleDateString() : "—"}
+                    </td>
+                    <td className="px-2 py-3">
+                      <Link to={`/admin/offerings/${encodeURIComponent(r.offering_key)}`} className="text-muted-foreground hover:text-primary" title="Edit">
+                        <Pencil className="w-4 h-4" />
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
+              {filtered.length === 0 && (
+                <tr><td colSpan={10} className="text-center py-10 text-sm text-muted-foreground">No offerings match filters.</td></tr>
+              )}
+            </tbody>
+          </table>
         </div>
       )}
     </div>
   );
 }
-
-
-
-
-interface RtPoolEditorProps {
-  tier: string;
-  b2cValue: Record<string, string[]>;
-  b2bValue: Record<string, string[]>;
-  onB2cChange: (v: Record<string, string[]>) => void;
-  onB2bChange: (v: Record<string, string[]>) => void;
-}
-
-// Which tiers the RT-pool editor actually controls.
-// Other tiers (Workshop, IGNITE courses, AMPLIFY labs, EMBODY, Blue Door,
-// Assessment, Free guides not in a curated pool) are placed by the quiz engine via
-// hardcoded result-type maps + the global Live + URL allowlist.
-function rtPoolMode(tier: string): "free" | "speaking" | "none" {
-  const t = (tier || "").trim().toLowerCase();
-  if (t === "free") return "free";
-  if (t === "speaking") return "speaking";
-  return "none";
-}
-
-function RtPoolEditor({ tier, b2cValue, b2bValue, onB2cChange, onB2bChange }: RtPoolEditorProps) {
-  const mode = rtPoolMode(tier);
-
-  if (mode === "none") {
-    // Consolidated into the "Routing rules · how this offering reaches the quiz" block above.
-    // No per-RT toggles apply to this tier — placement is fully automatic.
-    return null;
-  }
-
-  const toggle = (current: Record<string, string[]>, rt: string, on: boolean, poolName: "free" | "speaking") => {
-    const copy = { ...current };
-    if (on) copy[rt] = [poolName];
-    else delete copy[rt];
-    return copy;
-  };
-
-  return (
-    <div className="mt-3 rounded-md border border-dashed border-primary/40 bg-primary/5 px-3 py-2 space-y-2">
-      <Label className="text-xs">
-        <strong>Quiz result-type (RT) mapping</strong>
-        <span className="block text-xs text-muted-foreground font-normal">
-          {mode === "free"
-            ? "Tick each result type where this free resource should appear in the Free Resources / Free Starting Points group."
-            : "Tick each B2B result type where this speaking topic should appear in the Speaking Topics group."}
-        </span>
-      </Label>
-
-      {mode === "free" && (
-        <div className="space-y-1">
-          <div className="text-xs font-poppins font-semibold text-navy">B2C results (individual leader) <span className="font-normal text-muted-foreground">— appears in the "Free Starting Points" sub-group, never the primary recommendation.</span></div>
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-            {B2C_RTS.map((rt) => {
-              const on = (b2cValue[rt] ?? []).includes("free");
-              return (
-                <label key={rt} className="flex items-center gap-2 rounded border border-input bg-background px-2 py-1 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={on}
-                    onChange={(e) => onB2cChange(toggle(b2cValue, rt, e.target.checked, "free"))}
-                  />
-                  <span className="text-[11px] text-muted-foreground">{rt}</span>
-                </label>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      <div className="space-y-1">
-        <div className="text-xs font-poppins font-semibold text-navy">B2B results (organization)</div>
-        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-          {B2B_RTS.map((rt) => {
-            const poolName: "free" | "speaking" = mode;
-            const on = (b2bValue[rt] ?? []).includes(poolName);
-            return (
-              <label key={rt} className="flex items-center gap-2 rounded border border-input bg-background px-2 py-1 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={on}
-                  onChange={(e) => onB2bChange(toggle(b2bValue, rt, e.target.checked, poolName))}
-                />
-                <span className="text-[11px] text-muted-foreground">{rt}</span>
-              </label>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
-
