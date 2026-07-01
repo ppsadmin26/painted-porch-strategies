@@ -728,9 +728,18 @@ export function OpPlatformResyncPanel({
                                     <div className="font-medium text-navy text-sm truncate">
                                       {m.localName}
                                     </div>
-                                    <code className="text-[11px] text-muted-foreground">
-                                      {m.offering_key}
-                                    </code>
+                                    <div className="flex items-center gap-1.5 mt-0.5">
+                                      <code className="text-[11px] text-muted-foreground">
+                                        {m.offering_key}
+                                      </code>
+                                      <Badge variant="outline" className="text-[10px]">
+                                        {m.local.tier}
+                                      </Badge>
+                                      <span className="text-[10px] text-muted-foreground">→</span>
+                                      <Badge variant="outline" className="text-[10px] border-bluedoor/40 text-bluedoor">
+                                        {m.remote.format}
+                                      </Badge>
+                                    </div>
                                   </div>
                                 </button>
                               </div>
@@ -757,6 +766,7 @@ export function OpPlatformResyncPanel({
                                 id={`diff-${m.id}`}
                                 className="mt-2 ml-5 space-y-3 border-l-2 border-gold/30 pl-3"
                               >
+                                <DeliveryTypeBlock local={m.local.tier} remote={m.remote.format} />
                                 {m.fields.map((f) => (
                                   <FieldDiffBlock key={f.field} diff={f} />
                                 ))}
@@ -777,6 +787,33 @@ export function OpPlatformResyncPanel({
     </div>
   );
 }
+
+function DeliveryTypeBlock({
+  local,
+  remote,
+}: {
+  local: string;
+  remote: string;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <span className="text-[11px] font-poppins font-semibold text-navy uppercase tracking-wide">
+        Delivery type
+      </span>
+      <div className="grid grid-cols-[60px_1fr] gap-x-2 gap-y-1 items-start text-xs">
+        <span className="text-[10px] uppercase tracking-wide text-raspberry font-semibold">
+          local
+        </span>
+        <div className="text-foreground/90">{local || <em className="text-muted-foreground">—</em>}</div>
+        <span className="text-[10px] uppercase tracking-wide text-bluedoor font-semibold">
+          op
+        </span>
+        <div className="text-foreground/90">{remote || <em className="text-muted-foreground">—</em>}</div>
+      </div>
+    </div>
+  );
+}
+
 
 function FieldDiffBlock({ diff }: { diff: FieldDiff }) {
   const isLong =
