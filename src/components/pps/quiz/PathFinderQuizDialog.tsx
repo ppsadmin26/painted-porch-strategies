@@ -864,17 +864,19 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               <div className="mt-6 p-4 rounded-lg border border-primary/20 bg-primary/5">
                 <p className="text-body-sm text-foreground mb-3">
                   We also offer additional <strong>speaking</strong> and <strong>workshop</strong> sessions
-                  in <strong className="text-primary">{result.topicArea}</strong>. The right fit depends on your team,
-                  timing, and goals — let's discuss on a quick call.
+                  in <strong className="text-primary">{result.topicArea}</strong>. Browse the full list first,
+                  then reach out through the contact form on that page so we can tailor the right fit for your team, timing, and goals.
                 </p>
-                <Button asChild className="bg-primary text-white hover:bg-primary/90">
-                  <Link
-                    to={buildContactHref(result, firstName, email)}
-                    onClick={() => onOpenChange(false)}
-                  >
-                    Contact Us to Learn More <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
-                  </Link>
-                </Button>
+                <div className="flex flex-wrap gap-3">
+                  <Button asChild className="bg-primary text-white hover:bg-primary/90">
+                    <Link
+                      to="/speaking/topics"
+                      onClick={() => onOpenChange(false)}
+                    >
+                      Browse Speaking &amp; Workshop Topics <ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />
+                    </Link>
+                  </Button>
+                </div>
               </div>
             )}
 
