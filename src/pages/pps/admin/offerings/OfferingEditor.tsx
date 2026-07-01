@@ -196,6 +196,61 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
   const summary = useMemo(() => routingSummaryForTier(tier), [tier]);
   const launch = launches.find((l) => l.slug === valueOf("launch_slug"));
 
+  const validations = useMemo(() => {
+    const issues: { level: "error" | "warning"; message: string }[] = [];
+    const published = !!valueOf("is_published");
+    const current = (valueOf("current_url") ?? "").toString().trim();
+    const dedicated = (valueOf("dedicated_url") ?? "").toString().trim();
+    const anchor = (valueOf("anchor_id") ?? "").toString().trim();
+    const pinned = !!valueOf("is_featured_in_quiz");
+    const speakerOn = !!valueOf("include_on_speaker_page");
+    const facilitator = (valueOf("facilitator") ?? "").toString().trim();
+    const bdReq = !!valueOf("blue_door_required");
+    const b2c = (valueOf("b2c_rt_pools") ?? {}) as Record<string, string[]>;
+    const b2b = (valueOf("b2b_rt_pools") ?? {}) as Record<string, string[]>;
+    const mode = rtPoolMode(tier);
+    const b2cCount = Object.keys(b2c).length;
+    const b2bCount = Object.keys(b2b).length;
+    const tLower = (tier || "").toLowerCase();
+
+    if (published && !current && !dedicated && !anchor) {
+      issues.push({ level: "error", message: "Published but no Hub URL, Dedicated URL, or Anchor set — offering will not appear in quiz results." });
+    }
+    if (anchor && !current && !dedicated) {
+      issues.push({ level: "warning", message: "Anchor ID is set but no Hub or Dedicated URL exists to attach it to." });
+    }
+    if (dedicated && !published) {
+      issues.push({ level: "warning", message: "Dedicated page URL is set but offering is unpublished — visitors will still hit the fallback until published." });
+    }
+    if (mode === "free" && published && b2cCount === 0 && b2bCount === 0) {
+      issues.push({ level: "error", message: "Free resource with no RT checkboxes ticked — it will never appear in any quiz result." });
+    }
+    if (mode === "speaking" && published && b2bCount === 0) {
+      issues.push({ level: "error", message: "Speaking topic with no B2B RT checkboxes ticked — it will never appear in a bookable-keynote list." });
+    }
+    if (mode === "speaking" && b2cCount > 0) {
+      issues.push({ level: "warning", message: "Speaking topics only route to B2B results; B2C RT selections will be ignored." });
+    }
+    if (mode === "none" && (b2cCount > 0 || b2bCount > 0)) {
+      issues.push({ level: "warning", message: `RT-pool selections exist but tier "${tier || "—"}" is auto-routed — checkboxes will be ignored by the engine.` });
+    }
+    if (pinned && !published) {
+      issues.push({ level: "warning", message: "Pinned to top but not published — pin has no effect until offering is live." });
+    }
+    if (speakerOn && !facilitator) {
+      issues.push({ level: "warning", message: "\"Show on Speaker page\" is on but no facilitator is set — no speaker page will render this card." });
+    }
+    if (bdReq && tLower !== "workshop") {
+      issues.push({ level: "warning", message: "\"Blue Door required\" is typically only meaningful for Workshops — verify this is intentional." });
+    }
+    if (launch && tLower !== "ignite" && tLower !== "amplify") {
+      issues.push({ level: "warning", message: `Launch is linked but tier "${tier}" is not IGNITE/AMPLIFY — quiz availability logic may not apply.` });
+    }
+
+    return issues;
+  }, [dirty, row, tier, launch]);
+
+
   return (
     <div className="border rounded-lg p-4 bg-white space-y-4">
       {/* Header */}
