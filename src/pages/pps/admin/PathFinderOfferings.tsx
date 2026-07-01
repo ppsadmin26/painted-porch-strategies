@@ -786,6 +786,7 @@ export default function PathFinderOfferings() {
                         Sequencing flag for quiz recs · <span className="text-bluedoor">canonical</span>
                       </span>
                       <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
                     <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
                       <Switch
                         checked={!!valueOf(row, "include_on_speaker_page")}
