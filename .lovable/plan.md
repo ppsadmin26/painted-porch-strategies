@@ -1,68 +1,57 @@
 
-# /admin/offerings cleanup
+# Split /admin/offerings into list + detail
 
-## Problem
+## Goal
 
-The card has grown to ~10 stacked blocks with overlapping purposes. Registry data (from the Op Platform) is interleaved with PPS-owned quiz/website controls, so it's hard to answer either "what's in the register?" or "how does this show up on the quiz?" at a glance.
+Match the PPS Ops Platform pattern: `/admin/offerings` is a compact registry table of every delivery; clicking a row opens a full detail/edit page for that one offering.
 
-## Target structure — two sections per card
+## Routes
 
-Every offering card collapses to a header + two labeled sections. Nothing else floats between them.
+- `/admin/offerings` — **List view** (new default). Table of all deliveries.
+- `/admin/offerings/:offeringKey` — **Detail view**. The card UI that today lives inline (Registry section + PPS Controls section from the last cleanup).
+- Existing redirects (`/admin/path-finder`, `/admin/offerings-coverage`) continue to land on the list.
 
-```text
-┌─ Card header ────────────────────────────────────────────────┐
-│ [Tier chip] key · [Quiz eligible?] [Launch badge]  [Save]    │
-└──────────────────────────────────────────────────────────────┘
+## List view (`/admin/offerings`)
 
-┌─ 1. Registry (PPS Op Platform · read-only) ──── Edit in Ops ─┐
-│  Thumbnail │ Name                                            │
-│   16:10    │ Short blurb                                     │
-│            │ Speaker(s): full names                          │
-│            │ Category chips: Tier · Topic tag · Workshop ·   │
-│            │                Keynote · Blue Door required     │
-└──────────────────────────────────────────────────────────────┘
+Columns modeled on the reference screenshot:
 
-┌─ 2. PPS Controls ────────────────────────────────────────────┐
-│  Quiz                                                         │
-│   • Published [switch]  Pin to top [switch]                  │
-│   • Routing rules summary (auto)  →  Full rules              │
-│   • RT mapping checkboxes  ← ONLY if tier ∈ {Free, Speaking} │
-│   • Linked launch [select]                                    │
-│                                                               │
-│  Website                                                      │
-│   • Show on Speaker page [switch]                            │
-│   • Hub URL / Dedicated URL / Anchor  (3 inputs)             │
-│   • Quiz will link to: /resolved/url                          │
-└──────────────────────────────────────────────────────────────┘
-```
+| Column | Source | Notes |
+| --- | --- | --- |
+| Topic | `name` + `offering_key` + short blurb (1 line, truncated) | Click → detail page |
+| IDs | `#sort_order` (or short id) | Read-only |
+| Types | delivery-type chips (workshop / keynote / lab / free_resource / …) | From canonical fields (`is_keynote`, `include_in_workshops`, tier) |
+| Segments | B2B / B2C chip | Derived from tier + audience |
+| Facilitator | full name chips (`facilitatorDisplay`) | Read-only |
+| Categories | topic tag chip(s) | Read-only |
+| Deliveries | count of sibling rows sharing `topic_slug` | Read-only |
+| Live | ✅ / — based on visible flag | Read-only summary |
+| Updated | `updated_at` | Formatted date |
+| ✎ | Link to detail page | |
 
-## What changes concretely
+Keeps: top summary line ("N shown · N topics · N deliveries · N live"), search input, type/segment/facilitator/category filters, "Refresh" and "New topic" buttons, Phase-C banner, broken-launch alert, `OpPlatformResyncPanel`.
 
-**Header (unchanged behavior, tightened):** tier chip, offering key, Quiz-eligible badge, Launch badge, Published switch, Save. Remove the standalone speaker chip (already done).
+Removes from list view: the giant expanded card per row (moves to detail page).
 
-**Section 1 · Registry (read-only, one block instead of three):**
-- Merge current "Display name / Short blurb / Topic tag" row + "Topic card" block + Workshop/Keynote/Blue-Door chip strip into a single card with a thumbnail on the left and text on the right.
-- Category chips render inline: Tier · Topic tag · Workshop · Keynote · Blue Door required. All read-only, all show `· canonical` treatment, single "Edit in PPS Op Platform" link in the section header (not one per field).
-- Show the thumbnail image itself, not the raw URL string.
+## Detail view (`/admin/offerings/:offeringKey`)
 
-**Section 2 · PPS Controls (all editable things in one place):**
-- Sub-heading "Quiz" groups: Pin to top, Routing-rules summary (kept — it's the plain-English explainer), the RT checkbox grid **only** for Free + Speaking tiers, and Linked launch.
-- Sub-heading "Website" groups: Show on Speaker page, the three URL inputs, and the "Quiz will link to:" resolved preview.
-- Published stays in the header since it gates everything.
+Reuses the current card body verbatim — Registry section (read-only, Op Platform) + PPS Controls section (Quiz + Website). Adds:
 
-**Removals / consolidations:**
-- Drop the `<details>` "How this page actually drives the quiz" at the page top — its content now lives contextually in each card's Routing-rules block, and `/admin/quiz-rules` is one click away.
-- Drop the per-field "Edit in PPS Op Platform" repetition inside the Registry section; one link at the section header.
-- The RT checkbox editor stays but is section-scoped and only rendered for Free/Speaking (already the case — we're just making that placement obvious under the "Quiz" sub-heading).
+- Back link "← All offerings"
+- Page title = offering name, subtitle = key + tier chip
+- Save + dirty-state logic (already exists) scoped to this one offering
 
-**Untouched:** filter/search bar, top Phase-C banner, broken-launch alert, resync panel, New-offering dialog, save/dirty logic, all data fields, all DB writes.
+Same data fetch: single `path_finder_offerings` row by `offering_key` (plus launch options + page-status lookup already in the page).
 
 ## Files
 
-- `src/pages/pps/admin/PathFinderOfferings.tsx` — restructure card JSX (~lines 573–898) into header + Registry section + PPS Controls section; remove the top `<details>` block.
-- No schema changes, no changes to `OpPlatformResyncPanel`, `QuizRoutingRules`, or `quizRoutingSummary`.
+- `src/pages/pps/admin/PathFinderOfferings.tsx` — refactor into the **list view** only. Strip the per-row expanded card JSX.
+- `src/pages/pps/admin/PathFinderOfferingDetail.tsx` — **new**. Renders one offering using the extracted card component.
+- `src/pages/pps/admin/offerings/OfferingEditor.tsx` — **new**. Extracted from the current inline card (Registry + PPS Controls sections + save handler). Consumed by the detail page. This keeps the diff manageable and lets both pages share code if needed later.
+- `src/App.tsx` — add the `/admin/offerings/:offeringKey` route.
 
 ## Out of scope
 
-- Renaming fields or changing what syncs from the Op Platform.
-- Bulk-edit / inline table view (can be a follow-up if the card view still feels heavy after this pass).
+- Bulk edit from the list.
+- Any DB / schema changes.
+- Changes to `OpPlatformResyncPanel`, routing-rules logic, or sync behavior.
+- Renaming or moving fields.
