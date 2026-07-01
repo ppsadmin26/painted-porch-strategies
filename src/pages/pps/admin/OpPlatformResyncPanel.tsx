@@ -358,6 +358,98 @@ export function OpPlatformResyncPanel({
     void runAudit();
   };
 
+  /** Map Op Platform format → local tier. Best-effort default; admin can edit after insert. */
+  const formatToTier = (fmt: string): string => {
+    switch (fmt) {
+      case "keynote":
+        return "Speaking";
+      case "workshop":
+        return "Workshop";
+      case "lab":
+        return "AMPLIFY";
+      case "course":
+      case "masterclass":
+        return "IGNITE";
+      case "assessment":
+        return "IGNITE";
+      case "free_resource":
+        return "Free";
+      case "partnership":
+        return "AMPLIFY";
+      default:
+        return "Free";
+    }
+  };
+
+  const slugify = (s: string): string =>
+    s
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 64) || `op-${Date.now()}`;
+
+  const toggleMissing = (key: string) =>
+    setSelectedMissing((prev) => {
+      const next = new Set(prev);
+      next.has(key) ? next.delete(key) : next.add(key);
+      return next;
+    });
+
+  const insertSelectedMissing = async () => {
+    if (!buckets) return;
+    const targets = buckets.missingLocally.filter((r) =>
+      selectedMissing.has(norm(r.name)),
+    );
+    if (targets.length === 0) {
+      toast({ title: "Nothing selected", description: "Select at least one Op Platform row to insert." });
+      return;
+    }
+    setInserting(true);
+    const existingKeys = new Set(rows.map((r) => r.offering_key));
+    const payload = targets.map((r) => {
+      let key = slugify(r.name);
+      let i = 2;
+      while (existingKeys.has(key)) key = `${slugify(r.name)}-${i++}`;
+      existingKeys.add(key);
+      return {
+        offering_key: key,
+        name: r.name,
+        tier: formatToTier(r.format),
+        blurb: r.short_blurb ?? "",
+        description: r.long_description ?? null,
+        current_url: r.url ?? "https://onthepaintedporch.com",
+        dedicated_url: r.url ?? null,
+        image_url: r.thumbnail_url ?? null,
+        blue_door_required: Boolean(
+          (r as unknown as { blue_door_required?: boolean }).blue_door_required,
+        ),
+        is_published: false,
+        include_in_quiz: false,
+      };
+    });
+    const { error: err } = await supabase
+      .from("path_finder_offerings")
+      .insert(payload as never);
+    setInserting(false);
+    if (err) {
+      toast({
+        title: `Insert failed`,
+        description: err.message,
+        variant: "destructive",
+      });
+      return;
+    }
+    toast({
+      title: `Inserted ${payload.length} row${payload.length === 1 ? "" : "s"}`,
+      description: "New rows are unpublished and excluded from the quiz. Configure them in the registry.",
+    });
+    setSelectedMissing(new Set());
+    onApplied?.([]);
+    void runAudit();
+  };
+
+
 
   return (
     <div className="rounded-lg border border-dashed border-bluedoor/40 bg-bluedoor/5 p-4 mb-4">
