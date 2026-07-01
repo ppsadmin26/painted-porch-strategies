@@ -21,6 +21,21 @@ import {
 import { OpPlatformResyncPanel } from "./OpPlatformResyncPanel";
 import { routingSummaryForTier, PLACEMENT_BADGE_COPY } from "@/lib/quizRoutingSummary";
 
+// Expand short facilitator first-names (as stored in the Op Platform) to display names.
+const FACILITATOR_FULL_NAME: Record<string, string> = {
+  Amy: "Amy Yackowski",
+  Rob: "Rob Hunter",
+  Sierra: "Sierra Ramm Cantrell",
+};
+const facilitatorDisplay = (f: string | null | undefined) => {
+  if (!f) return "";
+  return f
+    .split(/\s*(?:,|&|\band\b)\s*/i)
+    .filter(Boolean)
+    .map((n) => FACILITATOR_FULL_NAME[n] ?? n)
+    .join(", ");
+};
+
 interface Row {
   id: string;
   offering_key: string;
