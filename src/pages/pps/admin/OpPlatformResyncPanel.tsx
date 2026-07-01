@@ -67,6 +67,12 @@ function norm(s: string | null | undefined): string {
   return (s ?? "").trim().toLowerCase().replace(/\s+/g, " ");
 }
 
+/** Composite key used for missing-remote selection. Includes format so two
+ *  rows with the same name but different delivery types are distinct. */
+function remoteKey(r: OpPlatformRecommendation): string {
+  return `${norm(r.name)}|${(r.format ?? "").toLowerCase()}`;
+}
+
 /** Tier (local) → expected format (Op Platform). Used for advisory diffs. */
 const TIER_FORMAT_MAP: Record<string, string[]> = {
   Free: ["free_resource"],
