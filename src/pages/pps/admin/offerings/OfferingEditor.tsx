@@ -281,22 +281,40 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
                   Topic: {valueOf("topic")}
                 </Badge>
               )}
-              {valueOf("include_in_workshops") && (
-                <Badge variant="outline" className="bg-strategic/15 text-strategic border-strategic/40 text-[11px]">
-                  Workshop
+              {(() => {
+                const seg = tierSegment(tier);
+                if (!seg) return null;
+                return (
+                  <Badge
+                    variant="outline"
+                    title={seg === "B2B" ? "Audience segment: organization (B2B)" : "Audience segment: individual leader (B2C)"}
+                    className={seg === "B2B" ? "bg-navy/10 text-navy border-navy/30 text-[11px]" : "bg-lime/15 text-lime-foreground border-lime/40 text-[11px]"}
+                  >
+                    {seg}
+                  </Badge>
+                );
+              })()}
+              {deliveryTypeLabels({
+                tier,
+                is_keynote: !!valueOf("is_keynote"),
+                include_in_workshops: !!valueOf("include_in_workshops"),
+              }).map((label) => (
+                <Badge
+                  key={label}
+                  variant="outline"
+                  title="Delivery type · canonical from PPS Op Platform"
+                  className="bg-strategic/10 text-strategic border-strategic/40 text-[11px]"
+                >
+                  {label}
                 </Badge>
-              )}
-              {valueOf("is_keynote") && (
-                <Badge variant="outline" className="bg-gold/20 text-gold-foreground border-gold/40 text-[11px]">
-                  Keynote
-                </Badge>
-              )}
+              ))}
               {valueOf("blue_door_required") && (
                 <Badge variant="outline" className="bg-bluedoor/15 text-bluedoor border-bluedoor/40 text-[11px]">
                   Blue Door required
                 </Badge>
               )}
             </div>
+
           </div>
         </div>
       </section>
