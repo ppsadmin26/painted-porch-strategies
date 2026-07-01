@@ -21,6 +21,21 @@ import {
 import { OpPlatformResyncPanel } from "./OpPlatformResyncPanel";
 import { routingSummaryForTier, PLACEMENT_BADGE_COPY } from "@/lib/quizRoutingSummary";
 
+// Expand short facilitator first-names (as stored in the Op Platform) to display names.
+const FACILITATOR_FULL_NAME: Record<string, string> = {
+  Amy: "Amy Yackowski",
+  Rob: "Rob Hunter",
+  Sierra: "Sierra Ramm Cantrell",
+};
+const facilitatorDisplay = (f: string | null | undefined) => {
+  if (!f) return "";
+  return f
+    .split(/\s*(?:,|&|\band\b)\s*/i)
+    .filter(Boolean)
+    .map((n) => FACILITATOR_FULL_NAME[n] ?? n)
+    .join(", ");
+};
+
 interface Row {
   id: string;
   offering_key: string;
@@ -565,7 +580,7 @@ export default function PathFinderOfferings() {
                       {valueOf(row, "tier") || "—"}
                       <span className="ml-1 text-[10px] text-bluedoor">· canonical</span>
                     </span>
-                    {row.facilitator && <Badge variant="outline">{row.facilitator}</Badge>}
+                    {/* Speaker chip removed — full-name Speaker(s) row lives in the Topic card block below. */}
                     <code className="text-xs text-muted-foreground">{row.offering_key}</code>
                     {isQuizEligible({
                       is_published: valueOf(row, "is_published"),
@@ -718,7 +733,7 @@ export default function PathFinderOfferings() {
                         <BlueDoorEditLink row={row} label="Edit" />
                       </div>
                       <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10">
-                        {row.facilitator || <span className="italic text-muted-foreground">— none —</span>}
+                        {row.facilitator ? facilitatorDisplay(row.facilitator) : <span className="italic text-muted-foreground">— none —</span>}
                       </div>
                       <p className="text-[11px] text-muted-foreground mt-1">Drives which /speaking/* pages this topic shows on. Edit in PPS Op Platform.</p>
                     </div>
