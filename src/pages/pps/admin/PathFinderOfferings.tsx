@@ -915,20 +915,9 @@ function RtPoolEditor({ tier, b2cValue, b2bValue, onB2cChange, onB2bChange }: Rt
   const mode = rtPoolMode(tier);
 
   if (mode === "none") {
-    return (
-      <div className="mt-3 rounded-md border border-dashed border-muted-foreground/30 bg-muted/30 px-3 py-2 space-y-1">
-        <div className="text-xs font-poppins font-semibold text-navy">Quiz result-type (RT) mapping</div>
-        <p className="text-xs text-muted-foreground">
-          This offering's tier (<strong>{tier || "—"}</strong>) is placed automatically by the quiz engine based
-          on each result type's recommended path. There's nothing to map here. To control whether it can appear at
-          all, use the <strong>Live</strong> toggle and make sure a URL or anchor is set above.
-        </p>
-        <p className="text-xs text-muted-foreground">
-          RT mapping is only used for <strong>Free</strong> tier (Free Resources group) and <strong>Speaking</strong> tier
-          (Speaking Topics group, B2B only).
-        </p>
-      </div>
-    );
+    // Consolidated into the "Routing rules · how this offering reaches the quiz" block above.
+    // No per-RT toggles apply to this tier — placement is fully automatic.
+    return null;
   }
 
   const toggle = (current: Record<string, string[]>, rt: string, on: boolean, poolName: "free" | "speaking") => {
