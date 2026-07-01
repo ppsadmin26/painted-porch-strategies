@@ -123,17 +123,55 @@ export class OpPlatformFetchError extends Error {
   }
 }
 
-export async function fetchOpPlatformRecommendations(
-  filters: OpPlatformRecommendationFilters,
-  init?: { signal?: AbortSignal },
-): Promise<OpPlatformRecommendationResponse> {
-  const url = buildOpPlatformRecsUrl(filters);
+export interface FetchRetryOptions {
+  /** Retry attempts after the initial try. Default 3. */
+  retries?: number;
+  /** Base delay in ms; each attempt waits baseDelayMs * 2^attempt + jitter. Default 400. */
+  baseDelayMs?: number;
+  /** Ceiling for a single backoff wait, in ms. Default 4000. */
+  maxDelayMs?: number;
+  /** Called before each retry (1-indexed). Useful for surfacing status in UI. */
+  onRetry?: (info: {
+    attempt: number;
+    delayMs: number;
+    error: OpPlatformFetchError;
+  }) => void;
+}
+
+/** HTTP statuses treated as transient and safe to retry. */
+const RETRYABLE_STATUSES = new Set([408, 425, 429, 500, 502, 503, 504]);
+
+function isRetryable(err: OpPlatformFetchError): boolean {
+  // Network / DNS / TLS failures have no status — always retry those.
+  if (err.status === undefined) return true;
+  return RETRYABLE_STATUSES.has(err.status);
+}
+
+function sleep(ms: number, signal?: AbortSignal): Promise<void> {
+  return new Promise((resolve, reject) => {
+    if (signal?.aborted) {
+      reject(new DOMException("Aborted", "AbortError"));
+      return;
+    }
+    const t = setTimeout(() => {
+      signal?.removeEventListener("abort", onAbort);
+      resolve();
+    }, ms);
+    const onAbort = () => {
+      clearTimeout(t);
+      reject(new DOMException("Aborted", "AbortError"));
+    };
+    signal?.addEventListener("abort", onAbort, { once: true });
+  });
+}
+
+async function fetchOnce(url: string, signal?: AbortSignal): Promise<Response> {
   let res: Response;
   try {
     res = await fetch(url, {
       method: "GET",
       headers: { Accept: "application/json" },
-      signal: init?.signal,
+      signal,
     });
   } catch (cause) {
     throw new OpPlatformFetchError(
@@ -153,6 +191,39 @@ export async function fetchOpPlatformRecommendations(
       { url, status: res.status, statusText: res.statusText, body: errBody },
     );
   }
+  return res;
+}
+
+export async function fetchOpPlatformRecommendations(
+  filters: OpPlatformRecommendationFilters,
+  init?: { signal?: AbortSignal; retry?: FetchRetryOptions },
+): Promise<OpPlatformRecommendationResponse> {
+  const url = buildOpPlatformRecsUrl(filters);
+  const retries = init?.retry?.retries ?? 3;
+  const baseDelay = init?.retry?.baseDelayMs ?? 400;
+  const maxDelay = init?.retry?.maxDelayMs ?? 4000;
+
+  let lastErr: OpPlatformFetchError | null = null;
+  let res: Response | null = null;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      res = await fetchOnce(url, init?.signal);
+      break;
+    } catch (e) {
+      const err = e as OpPlatformFetchError;
+      lastErr = err;
+      if (attempt === retries || !isRetryable(err)) throw err;
+      const backoff = Math.min(maxDelay, baseDelay * Math.pow(2, attempt));
+      const jitter = Math.floor(Math.random() * Math.min(200, backoff / 2));
+      const delayMs = backoff + jitter;
+      init?.retry?.onRetry?.({ attempt: attempt + 1, delayMs, error: err });
+      await sleep(delayMs, init?.signal);
+    }
+  }
+  if (!res) {
+    throw lastErr ?? new OpPlatformFetchError("Unknown fetch failure", { url });
+  }
+
   const data = (await res.json()) as Partial<OpPlatformRecommendationResponse>;
   const { validateOpPlatformRecommendations } = await import("./schema");
   const { valid, dropped } = validateOpPlatformRecommendations(data.results);
