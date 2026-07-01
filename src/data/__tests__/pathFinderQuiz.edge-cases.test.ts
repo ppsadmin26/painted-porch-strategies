@@ -40,11 +40,40 @@ function allSurfaces(r: QuizResult): { where: string; offering: Offering }[] {
   for (const g of r.groups ?? []) {
     for (const o of g.offerings) out.push({ where: `group:${g.heading}`, offering: o });
   }
-  if (r.strongestNextStep?.offering) {
-    out.push({ where: "strongestNextStep", offering: r.strongestNextStep.offering });
-  }
   return out;
 }
+
+/**
+ * Duplication surfaces to guard against, deliberately excluding
+ * `strongestNextStep`: that field is a *pointer* to the offering already
+ * rendered as the top card of `primaryGroup`, not an additional card. So a
+ * strongest-next-step matching a primary entry is expected, not a duplicate.
+ * We still flag the strongest offering echoing inside a *secondary* group,
+ * which would render it twice on screen.
+ */
+function findDuplicateKeys(r: QuizResult): { key: string; locations: string[] }[] {
+  const byKey = new Map<string, string[]>();
+  for (const { where, offering } of allSurfaces(r)) {
+    const arr = byKey.get(offering.key) ?? [];
+    arr.push(where);
+    byKey.set(offering.key, arr);
+  }
+  // Extra check: strongest echoed in a secondary group (not primary).
+  const strongestKey = r.strongestNextStep?.offering.key;
+  if (strongestKey) {
+    for (const g of r.groups ?? []) {
+      if (g.offerings.some((o) => o.key === strongestKey)) {
+        const arr = byKey.get(strongestKey) ?? [];
+        if (!arr.includes("strongestNextStep")) arr.push("strongestNextStep");
+        byKey.set(strongestKey, arr);
+      }
+    }
+  }
+  return Array.from(byKey.entries())
+    .filter(([, locs]) => locs.length > 1)
+    .map(([key, locations]) => ({ key, locations }));
+}
+
 
 function findDuplicateKeys(r: QuizResult): { key: string; locations: string[] }[] {
   const byKey = new Map<string, string[]>();
