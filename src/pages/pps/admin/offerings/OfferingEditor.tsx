@@ -311,9 +311,22 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
                 const seg = tierSegment(tier);
                 if (!seg) return null;
                 return (
+                  <HelpTooltip>
+                    <strong>Audience segment</strong>
+                    <p className="mt-1">
+                      {seg === "B2B"
+                        ? "This delivery is designed for organizations and leadership teams. It routes into the B2B P.A.T.H. Finder flow (RT-A through RT-E) and organizational pages."
+                        : "This delivery is designed for individual leaders. It routes into the B2C P.A.T.H. Finder flow (RT1 through RT6) and personal development pages."}
+                    </p>
+                  </HelpTooltip>
+                );
+              })()}
+              {(() => {
+                const seg = tierSegment(tier);
+                if (!seg) return null;
+                return (
                   <Badge
                     variant="outline"
-                    title={seg === "B2B" ? "Audience segment: organization (B2B)" : "Audience segment: individual leader (B2C)"}
                     className={seg === "B2B" ? "bg-navy/10 text-navy border-navy/30 text-[11px]" : "bg-lime/15 text-lime-foreground border-lime/40 text-[11px]"}
                   >
                     {seg}
