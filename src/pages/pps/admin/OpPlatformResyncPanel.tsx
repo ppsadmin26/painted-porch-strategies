@@ -728,9 +728,18 @@ export function OpPlatformResyncPanel({
                                     <div className="font-medium text-navy text-sm truncate">
                                       {m.localName}
                                     </div>
-                                    <code className="text-[11px] text-muted-foreground">
-                                      {m.offering_key}
-                                    </code>
+                                    <div className="flex items-center gap-1.5 mt-0.5">
+                                      <code className="text-[11px] text-muted-foreground">
+                                        {m.offering_key}
+                                      </code>
+                                      <Badge variant="outline" className="text-[10px]">
+                                        {m.local.tier}
+                                      </Badge>
+                                      <span className="text-[10px] text-muted-foreground">→</span>
+                                      <Badge variant="outline" className="text-[10px] border-bluedoor/40 text-bluedoor">
+                                        {m.remote.format}
+                                      </Badge>
+                                    </div>
                                   </div>
                                 </button>
                               </div>
@@ -757,6 +766,7 @@ export function OpPlatformResyncPanel({
                                 id={`diff-${m.id}`}
                                 className="mt-2 ml-5 space-y-3 border-l-2 border-gold/30 pl-3"
                               >
+                                <DeliveryTypeBlock local={m.local.tier} remote={m.remote.format} />
                                 {m.fields.map((f) => (
                                   <FieldDiffBlock key={f.field} diff={f} />
                                 ))}
