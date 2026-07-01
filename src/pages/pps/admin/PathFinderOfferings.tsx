@@ -332,16 +332,10 @@ export default function PathFinderOfferings() {
           <p className="text-sm text-muted-foreground mt-1 max-w-3xl">
             The single admin surface for every offering the site can surface. Narrative copy (name, blurb, image, <strong>tier, topic tag, facilitator</strong>) and delivery-type chips (<strong>Workshop / Keynote</strong>) are read-only here and edited in the <strong>PPS Op Platform</strong>. Website-specific controls — <strong>Speaker page</strong> toggle, RT pools, pin-to-top, and launch link — live on each card below.
           </p>
-          <details className="mt-2 max-w-3xl text-xs text-muted-foreground">
-            <summary className="cursor-pointer font-poppins font-semibold text-navy">How this page actually drives the quiz</summary>
-            <div className="mt-2 space-y-1.5 pl-2 border-l-2 border-primary/30">
-              <p><strong>Eligibility (all tiers):</strong> An offering can only appear in a quiz result if it is <em>Live</em> AND has at least one URL or anchor. This page controls that.</p>
-              <p><strong>RT mapping (Free + Speaking only):</strong> Tick which result types (RT1-6 for B2C, RT-A-E for B2B) the offering should appear in. Other tiers (IGNITE, AMPLIFY, Workshop, Blue Door, Assessment) are placed automatically by the quiz engine based on the result type — the RT box on those cards will say "placed automatically".</p>
-              <p><strong>Prioritize in quiz:</strong> Pins this offering to position 1 of the primary recommendation list whenever it is already in that list for the matched result.</p>
-              <p><strong>Topic tag:</strong> Used by the workshops hub accordion only. It does <em>not</em> drive quiz routing — RT mapping does.</p>
-              <p className="pt-1"><Link to="/admin/quiz-rules" className="text-bluedoor underline font-semibold">Open the full Quiz Routing Rules reference →</Link></p>
-            </div>
-          </details>
+          <p className="mt-2 text-xs text-muted-foreground max-w-3xl">
+            Each card has two sections: <strong>Registry</strong> (read-only, edited in the PPS Op Platform) and <strong>PPS Controls</strong> (Quiz + Website settings owned here).{" "}
+            <Link to="/admin/quiz-rules" className="text-bluedoor underline font-semibold">Full quiz routing rules →</Link>
+          </p>
         </div>
         <div className="flex gap-2 items-center">
           <div className="relative">
