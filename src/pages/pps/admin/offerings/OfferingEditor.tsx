@@ -453,22 +453,24 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
         <div className="space-y-3 pt-2 border-t border-primary/10">
           <div className="text-xs font-poppins font-semibold text-primary uppercase tracking-wide">Website</div>
 
-          <label className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
-            <Switch
-              checked={!!valueOf("include_on_speaker_page")}
-              onCheckedChange={(v) => patch({ include_on_speaker_page: v })}
-            />
-            <span className="text-sm">
-              <strong>Show on Speaker page</strong>
-              <span className="block text-[11px] text-muted-foreground">Include on the facilitator's /speaking/[name] page.</span>
-            </span>
+          <div className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
+            <label className="flex items-center gap-2 flex-1 cursor-pointer">
+              <Switch
+                checked={!!valueOf("include_on_speaker_page")}
+                onCheckedChange={(v) => patch({ include_on_speaker_page: v })}
+              />
+              <span className="text-sm">
+                <strong>Show on Speaker page</strong>
+                <span className="block text-[11px] text-muted-foreground">Include on the facilitator's /speaking/[name] page.</span>
+              </span>
+            </label>
             <HelpTooltip>
               <strong>Speaker page</strong>
               <p className="mt-1">
                 Toggles whether this delivery appears as a card on the individual speaker pages (e.g., /speaking/amy). The card links to the resolved URL shown below and uses the topic's canonical image and blurb.
               </p>
             </HelpTooltip>
-          </label>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-3 text-sm">
             <div>
