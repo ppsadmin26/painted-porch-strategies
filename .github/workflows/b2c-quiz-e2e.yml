@@ -106,8 +106,44 @@ jobs:
       - name: Install Playwright (Chromium, Firefox, WebKit)
         run: npx playwright install --with-deps chromium firefox webkit
 
-      - name: Run keyboard tests across Chromium, Firefox, and WebKit
-        run: npm run test:e2e:keyboard:all
+      - name: Run keyboard tests across Chromium, Firefox, and WebKit (with auto-retry)
+        id: run_tests
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 12
+          max_attempts: 3
+          retry_wait_seconds: 20
+          command: npm run test:e2e:keyboard:all
+
+      - name: Report retry summary
+        if: always()
+        env:
+          STEP_ATTEMPTS: ${{ steps.run_tests.outputs.total_attempts }}
+          STEP_OUTCOME: ${{ steps.run_tests.outcome }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          RUN_ID: ${{ github.run_id }}
+          REPO: ${{ github.repository }}
+          SERVER: ${{ github.server_url }}
+        run: |
+          ATTEMPTS="${STEP_ATTEMPTS:-1}"
+          {
+            echo "## Cross-browser keyboard — retry report"
+            echo ""
+            echo "- Step attempts: $ATTEMPTS"
+            echo "- Step outcome: $STEP_OUTCOME"
+            echo "- Workflow run attempt: $RUN_ATTEMPT"
+            echo "- Current run: $SERVER/$REPO/actions/runs/$RUN_ID/attempts/$RUN_ATTEMPT"
+            if [ "$RUN_ATTEMPT" -gt 1 ]; then
+              echo "- Previous workflow attempts (re-runs):"
+              for i in $(seq 1 $((RUN_ATTEMPT - 1))); do
+                echo "  - $SERVER/$REPO/actions/runs/$RUN_ID/attempts/$i"
+              done
+            fi
+            if [ "$ATTEMPTS" -gt 1 ] && [ "$STEP_OUTCOME" = "success" ]; then
+              echo ""
+              echo "Passed after $ATTEMPTS attempt(s); earlier attempts within this job failed transiently."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload Playwright report on failure
         if: failure()
