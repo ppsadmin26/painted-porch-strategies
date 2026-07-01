@@ -391,12 +391,8 @@ export function OpPlatformResyncPanel({
         normalized offering name (the feed does not expose a stable ID).
       </p>
 
-      {error && (
-        <div className="mt-3 flex items-start gap-2 rounded-md border border-raspberry/40 bg-raspberry/5 p-3 text-sm text-raspberry">
-          <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0" />
-          <span>{error}</span>
-        </div>
-      )}
+      {error && <SyncErrorPanel error={error} onRetry={runAudit} />}
+
 
       {buckets && (
         <>
