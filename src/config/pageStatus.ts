@@ -33,6 +33,7 @@ export const ALWAYS_LIVE_PREFIXES = [
   // crawlable for SEO continuity.
   "/resources/blog",
   "/blog",
+  "/insights",
   "/media",
 ];
 
