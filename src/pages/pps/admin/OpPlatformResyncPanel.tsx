@@ -140,13 +140,14 @@ export function OpPlatformResyncPanel({
       setFetchedAt(new Date());
       setExpanded(new Set());
       setSelected(new Set());
-    } catch (e: any) {
-      setError(e?.message ?? "Failed to fetch from PPS Op Platform");
+    } catch (e: unknown) {
+      setError(toAuditError(e));
       setRemote(null);
     } finally {
       setLoading(false);
     }
   };
+
 
 
   const buckets = (() => {
