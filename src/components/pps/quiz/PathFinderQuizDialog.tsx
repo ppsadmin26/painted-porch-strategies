@@ -281,6 +281,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       const eligible: string[] = [];
       const soon = new Set<string>();
       const featured = new Set<string>();
+      const bdr = new Set<string>();
       for (const r of offeringsRes.data as Array<{
         offering_key: string;
         is_live: boolean;
@@ -289,7 +290,12 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         anchor_id: string | null;
         launch_slug: string | null;
         is_featured_in_quiz: boolean | null;
+        blue_door_required: boolean | null;
       }>) {
+        // Track Blue Door prerequisite regardless of eligibility so downstream
+        // partitioning works even when we later widen the visible set.
+        if (r.blue_door_required) bdr.add(r.offering_key);
+
         const hasDest =
           (r.current_url && r.current_url.trim().length > 0) ||
           (r.dedicated_url && r.dedicated_url.trim().length > 0) ||
@@ -318,6 +324,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       setViewableKeys(new Set(eligible));
       setComingSoonKeys(soon);
       setFeaturedKeys(featured);
+      setBlueDoorRequiredKeys(bdr);
     })();
     return () => { cancelled = true; };
   }, [open, viewableKeys]);
