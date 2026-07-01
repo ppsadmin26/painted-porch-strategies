@@ -652,7 +652,7 @@ export function OpPlatformResyncPanel({
                               setSelectedMissing(new Set());
                             } else {
                               setSelectedMissing(
-                                new Set(buckets.missingLocally.map((r) => norm(r.name))),
+                                new Set(buckets.missingLocally.map(remoteKey)),
                               );
                             }
                           }}
