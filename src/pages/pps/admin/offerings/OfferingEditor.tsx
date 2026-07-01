@@ -381,24 +381,26 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
             )}
           </div>
 
-          <label className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
-            <Switch
-              checked={!!valueOf("is_featured_in_quiz")}
-              onCheckedChange={(v) => patch({ is_featured_in_quiz: v })}
-            />
-            <span className="text-sm">
-              <strong>Pin to top of primary list</strong>
-              <span className="block text-[11px] text-muted-foreground">
-                When this offering already appears in a result's primary list, pin it to position 1.
+          <div className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
+            <label className="flex items-center gap-2 flex-1 cursor-pointer">
+              <Switch
+                checked={!!valueOf("is_featured_in_quiz")}
+                onCheckedChange={(v) => patch({ is_featured_in_quiz: v })}
+              />
+              <span className="text-sm">
+                <strong>Pin to top of primary list</strong>
+                <span className="block text-[11px] text-muted-foreground">
+                  When this offering already appears in a result's primary list, pin it to position 1.
+                </span>
               </span>
-            </span>
+            </label>
             <HelpTooltip>
               <strong>Pin to top</strong>
               <p className="mt-1">
                 Only affects the order inside the quiz results page. When the offering is already part of a result's primary recommendation group, this moves it to the first slot. It does not add the offering to a result it otherwise wouldn't belong to.
               </p>
             </HelpTooltip>
-          </label>
+          </div>
 
           <RtPoolEditor
             tier={tier}
