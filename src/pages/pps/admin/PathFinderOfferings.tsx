@@ -45,6 +45,7 @@ interface Row {
   launch_slug: string | null;
   b2c_rt_pools: Record<string, string[]> | null;
   b2b_rt_pools: Record<string, string[]> | null;
+  blue_door_required: boolean;
 }
 
 /**
