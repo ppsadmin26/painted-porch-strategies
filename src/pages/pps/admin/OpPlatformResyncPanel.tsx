@@ -11,16 +11,6 @@ import {
   ChevronUp,
   ChevronRight,
   Upload,
-} from "lucide-react";
-import {
-  Loader2,
-  RefreshCw,
-  AlertTriangle,
-  CheckCircle2,
-  ChevronDown,
-  ChevronUp,
-  ChevronRight,
-  Upload,
   Copy,
   ExternalLink,
 } from "lucide-react";
