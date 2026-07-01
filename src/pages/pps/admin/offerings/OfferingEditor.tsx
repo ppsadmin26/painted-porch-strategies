@@ -7,7 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Save, ExternalLink, HelpCircle } from "lucide-react";
+import { Loader2, Save, ExternalLink, HelpCircle, AlertTriangle, AlertCircle } from "lucide-react";
 import { routingSummaryForTier, PLACEMENT_BADGE_COPY } from "@/lib/quizRoutingSummary";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -196,6 +196,61 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
   const summary = useMemo(() => routingSummaryForTier(tier), [tier]);
   const launch = launches.find((l) => l.slug === valueOf("launch_slug"));
 
+  const validations = useMemo(() => {
+    const issues: { level: "error" | "warning"; message: string }[] = [];
+    const published = !!valueOf("is_published");
+    const current = (valueOf("current_url") ?? "").toString().trim();
+    const dedicated = (valueOf("dedicated_url") ?? "").toString().trim();
+    const anchor = (valueOf("anchor_id") ?? "").toString().trim();
+    const pinned = !!valueOf("is_featured_in_quiz");
+    const speakerOn = !!valueOf("include_on_speaker_page");
+    const facilitator = (valueOf("facilitator") ?? "").toString().trim();
+    const bdReq = !!valueOf("blue_door_required");
+    const b2c = (valueOf("b2c_rt_pools") ?? {}) as Record<string, string[]>;
+    const b2b = (valueOf("b2b_rt_pools") ?? {}) as Record<string, string[]>;
+    const mode = rtPoolMode(tier);
+    const b2cCount = Object.keys(b2c).length;
+    const b2bCount = Object.keys(b2b).length;
+    const tLower = (tier || "").toLowerCase();
+
+    if (published && !current && !dedicated && !anchor) {
+      issues.push({ level: "error", message: "Published but no Hub URL, Dedicated URL, or Anchor set — offering will not appear in quiz results." });
+    }
+    if (anchor && !current && !dedicated) {
+      issues.push({ level: "warning", message: "Anchor ID is set but no Hub or Dedicated URL exists to attach it to." });
+    }
+    if (dedicated && !published) {
+      issues.push({ level: "warning", message: "Dedicated page URL is set but offering is unpublished — visitors will still hit the fallback until published." });
+    }
+    if (mode === "free" && published && b2cCount === 0 && b2bCount === 0) {
+      issues.push({ level: "error", message: "Free resource with no RT checkboxes ticked — it will never appear in any quiz result." });
+    }
+    if (mode === "speaking" && published && b2bCount === 0) {
+      issues.push({ level: "error", message: "Speaking topic with no B2B RT checkboxes ticked — it will never appear in a bookable-keynote list." });
+    }
+    if (mode === "speaking" && b2cCount > 0) {
+      issues.push({ level: "warning", message: "Speaking topics only route to B2B results; B2C RT selections will be ignored." });
+    }
+    if (mode === "none" && (b2cCount > 0 || b2bCount > 0)) {
+      issues.push({ level: "warning", message: `RT-pool selections exist but tier "${tier || "—"}" is auto-routed — checkboxes will be ignored by the engine.` });
+    }
+    if (pinned && !published) {
+      issues.push({ level: "warning", message: "Pinned to top but not published — pin has no effect until offering is live." });
+    }
+    if (speakerOn && !facilitator) {
+      issues.push({ level: "warning", message: "\"Show on Speaker page\" is on but no facilitator is set — no speaker page will render this card." });
+    }
+    if (bdReq && tLower !== "workshop") {
+      issues.push({ level: "warning", message: "\"Blue Door required\" is typically only meaningful for Workshops — verify this is intentional." });
+    }
+    if (launch && tLower !== "ignite" && tLower !== "amplify") {
+      issues.push({ level: "warning", message: `Launch is linked but tier "${tier}" is not IGNITE/AMPLIFY — quiz availability logic may not apply.` });
+    }
+
+    return issues;
+  }, [dirty, row, tier, launch]);
+
+
   return (
     <div className="border rounded-lg p-4 bg-white space-y-4">
       {/* Header */}
@@ -263,7 +318,32 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
         </div>
       </div>
 
+      {validations.length > 0 && (
+        <div className="space-y-1.5" role="alert" aria-label="Configuration warnings">
+          {validations.map((v, i) => {
+            const isError = v.level === "error";
+            const Icon = isError ? AlertCircle : AlertTriangle;
+            return (
+              <div
+                key={i}
+                className={`flex items-start gap-2 rounded-md border px-3 py-2 text-xs ${
+                  isError
+                    ? "border-raspberry/40 bg-raspberry/5 text-raspberry"
+                    : "border-gold/40 bg-gold/5 text-gold-foreground"
+                }`}
+              >
+                <Icon className="w-3.5 h-3.5 mt-0.5 shrink-0" />
+                <span className="leading-relaxed">
+                  <strong className="font-semibold">{isError ? "Blocking:" : "Warning:"}</strong> {v.message}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
       {/* Registry */}
+
       <section className="rounded-md border border-dashed border-bluedoor/40 bg-bluedoor/5 px-3 py-3">
         <div className="flex items-center justify-between mb-2 gap-2 flex-wrap">
           <Label className="text-xs font-poppins font-semibold text-bluedoor uppercase tracking-wide">
