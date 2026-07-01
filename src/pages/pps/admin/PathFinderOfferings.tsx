@@ -776,6 +776,16 @@ export default function PathFinderOfferings() {
                       </span>
                       <BlueDoorEditLink row={row} label="Edit" />
                     </div>
+                    <div className="flex items-center gap-2 rounded-md border border-dashed border-bluedoor/40 bg-muted/40 px-3 py-2">
+                      <span
+                        className={`inline-flex items-center h-6 px-2 rounded text-[11px] font-semibold ${valueOf(row, "blue_door_required") ? "bg-bluedoor/15 text-bluedoor" : "bg-muted text-muted-foreground"}`}
+                      >
+                        {valueOf(row, "blue_door_required") ? "✓ Blue Door required" : "— Runs in parallel"}
+                      </span>
+                      <span className="text-[11px] text-muted-foreground flex-1">
+                        Sequencing flag for quiz recs · <span className="text-bluedoor">canonical</span>
+                      </span>
+                      <BlueDoorEditLink row={row} label="Edit" />
                     <label className="flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 cursor-pointer">
                       <Switch
                         checked={!!valueOf(row, "include_on_speaker_page")}
