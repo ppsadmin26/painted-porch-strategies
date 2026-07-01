@@ -696,7 +696,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               const scoutMode = answers["Q4DM"] === "A";
               const isB2B = result.track === "b2b";
               let effectivePrimary = result.primaryGroup;
-              let bdrGroup: { heading: string; offerings: typeof result.primaryGroup.offerings } | null = null;
+              let bdrGroup: { heading: string; offerings: NonNullable<typeof result.primaryGroup>["offerings"] } | null = null;
               if (isB2B && !scoutMode && result.primaryGroup) {
                 const parallelSafe = result.primaryGroup.offerings.filter(
                   (o) => !blueDoorRequiredKeys.has(o.key),
