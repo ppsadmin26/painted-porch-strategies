@@ -311,9 +311,22 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
                 const seg = tierSegment(tier);
                 if (!seg) return null;
                 return (
+                  <HelpTooltip>
+                    <strong>Audience segment</strong>
+                    <p className="mt-1">
+                      {seg === "B2B"
+                        ? "This delivery is designed for organizations and leadership teams. It routes into the B2B P.A.T.H. Finder flow (RT-A through RT-E) and organizational pages."
+                        : "This delivery is designed for individual leaders. It routes into the B2C P.A.T.H. Finder flow (RT1 through RT6) and personal development pages."}
+                    </p>
+                  </HelpTooltip>
+                );
+              })()}
+              {(() => {
+                const seg = tierSegment(tier);
+                if (!seg) return null;
+                return (
                   <Badge
                     variant="outline"
-                    title={seg === "B2B" ? "Audience segment: organization (B2B)" : "Audience segment: individual leader (B2C)"}
                     className={seg === "B2B" ? "bg-navy/10 text-navy border-navy/30 text-[11px]" : "bg-lime/15 text-lime-foreground border-lime/40 text-[11px]"}
                   >
                     {seg}
@@ -381,24 +394,26 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
             )}
           </div>
 
-          <label className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
-            <Switch
-              checked={!!valueOf("is_featured_in_quiz")}
-              onCheckedChange={(v) => patch({ is_featured_in_quiz: v })}
-            />
-            <span className="text-sm">
-              <strong>Pin to top of primary list</strong>
-              <span className="block text-[11px] text-muted-foreground">
-                When this offering already appears in a result's primary list, pin it to position 1.
+          <div className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
+            <label className="flex items-center gap-2 flex-1 cursor-pointer">
+              <Switch
+                checked={!!valueOf("is_featured_in_quiz")}
+                onCheckedChange={(v) => patch({ is_featured_in_quiz: v })}
+              />
+              <span className="text-sm">
+                <strong>Pin to top of primary list</strong>
+                <span className="block text-[11px] text-muted-foreground">
+                  When this offering already appears in a result's primary list, pin it to position 1.
+                </span>
               </span>
-            </span>
+            </label>
             <HelpTooltip>
               <strong>Pin to top</strong>
               <p className="mt-1">
                 Only affects the order inside the quiz results page. When the offering is already part of a result's primary recommendation group, this moves it to the first slot. It does not add the offering to a result it otherwise wouldn't belong to.
               </p>
             </HelpTooltip>
-          </label>
+          </div>
 
           <RtPoolEditor
             tier={tier}
@@ -451,33 +466,51 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
         <div className="space-y-3 pt-2 border-t border-primary/10">
           <div className="text-xs font-poppins font-semibold text-primary uppercase tracking-wide">Website</div>
 
-          <label className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
-            <Switch
-              checked={!!valueOf("include_on_speaker_page")}
-              onCheckedChange={(v) => patch({ include_on_speaker_page: v })}
-            />
-            <span className="text-sm">
-              <strong>Show on Speaker page</strong>
-              <span className="block text-[11px] text-muted-foreground">Include on the facilitator's /speaking/[name] page.</span>
-            </span>
+          <div className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
+            <label className="flex items-center gap-2 flex-1 cursor-pointer">
+              <Switch
+                checked={!!valueOf("include_on_speaker_page")}
+                onCheckedChange={(v) => patch({ include_on_speaker_page: v })}
+              />
+              <span className="text-sm">
+                <strong>Show on Speaker page</strong>
+                <span className="block text-[11px] text-muted-foreground">Include on the facilitator's /speaking/[name] page.</span>
+              </span>
+            </label>
             <HelpTooltip>
               <strong>Speaker page</strong>
               <p className="mt-1">
                 Toggles whether this delivery appears as a card on the individual speaker pages (e.g., /speaking/amy). The card links to the resolved URL shown below and uses the topic's canonical image and blurb.
               </p>
             </HelpTooltip>
-          </label>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-3 text-sm">
             <div>
-              <Label className="text-xs">Hub / fallback URL</Label>
+              <div className="flex items-center gap-1.5 mb-1">
+                <Label className="text-xs">Hub / fallback URL</Label>
+                <HelpTooltip>
+                  <strong>Hub / fallback URL</strong>
+                  <p className="mt-1">
+                    The page the quiz and public site link to when no dedicated page exists. Usually a tier hub like /partner/ignite/courses or /speaking/topics. The resolved link below is what visitors actually see and click.
+                  </p>
+                </HelpTooltip>
+              </div>
               <Input
                 value={valueOf("current_url") ?? ""}
                 onChange={(e) => patch({ current_url: e.target.value })}
               />
             </div>
             <div>
-              <Label className="text-xs">Dedicated page URL</Label>
+              <div className="flex items-center gap-1.5 mb-1">
+                <Label className="text-xs">Dedicated page URL</Label>
+                <HelpTooltip>
+                  <strong>Dedicated page URL</strong>
+                  <p className="mt-1">
+                    Overrides the hub URL when the offering is published. Use this when the offering has its own landing page (e.g., /partner/amplify/stractical-leader). The quiz, speaker cards, and catalog will all prefer this URL over the hub once the offering is live.
+                  </p>
+                </HelpTooltip>
+              </div>
               <Input
                 placeholder="e.g. /partner/amplify/labs/goldilocks"
                 value={valueOf("dedicated_url") ?? ""}
@@ -485,7 +518,15 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
               />
             </div>
             <div>
-              <Label className="text-xs">Anchor on hub page</Label>
+              <div className="flex items-center gap-1.5 mb-1">
+                <Label className="text-xs">Anchor on hub page</Label>
+                <HelpTooltip>
+                  <strong>Anchor ID</strong>
+                  <p className="mt-1">
+                    Appends a #section ID to the resolved URL. Use it to send quiz visitors directly to a specific lab, workshop, or topic card on a long hub page. The anchor is added to whichever URL is chosen (hub or dedicated).
+                  </p>
+                </HelpTooltip>
+              </div>
               <Input
                 placeholder="e.g. lab-goldilocks"
                 value={valueOf("anchor_id") ?? ""}
@@ -496,6 +537,12 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
 
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <span>Quiz will link to:</span>
+            <HelpTooltip>
+              <strong>Resolved link</strong>
+              <p className="mt-1">
+                This is the actual URL the quiz, email results, and public cards will use. It chooses the dedicated URL when the offering is published and a dedicated URL exists; otherwise it falls back to the hub URL. The anchor ID is appended if provided.
+              </p>
+            </HelpTooltip>
             {url ? (
               <Link to={url} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1">
                 {url} <ExternalLink className="w-3 h-3" />
@@ -536,14 +583,22 @@ function RtPoolEditor({ tier, b2cValue, b2bValue, onB2cChange, onB2bChange }: Rt
 
   return (
     <div className="mt-3 rounded-md border border-dashed border-primary/40 bg-primary/5 px-3 py-2 space-y-2">
-      <Label className="text-xs">
-        <strong>Quiz result-type (RT) mapping</strong>
-        <span className="block text-xs text-muted-foreground font-normal">
-          {mode === "free"
-            ? "Tick each result type where this free resource should appear."
-            : "Tick each B2B result type where this speaking topic should appear."}
-        </span>
-      </Label>
+      <div className="flex items-center gap-1.5">
+        <Label className="text-xs">
+          <strong>Quiz result-type (RT) mapping</strong>
+          <span className="block text-xs text-muted-foreground font-normal">
+            {mode === "free"
+              ? "Tick each result type where this free resource should appear."
+              : "Tick each B2B result type where this speaking topic should appear."}
+          </span>
+        </Label>
+        <HelpTooltip>
+          <strong>RT mapping</strong>
+          <p className="mt-1">
+            Result Types (RT1–RT6 for B2C, RT-A–RT-E for B2B) are the quiz outcomes. This control is only exposed for Free resources and Speaking topics because other tiers are routed automatically by the rules above. Checked boxes add this delivery to that result's recommendation pool.
+          </p>
+        </HelpTooltip>
+      </div>
 
       {mode === "free" && (
         <div className="space-y-1">
