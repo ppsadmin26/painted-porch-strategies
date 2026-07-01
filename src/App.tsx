@@ -450,6 +450,7 @@ const App = () => (
             <Route path="refunds" element={<RefundRequestsManager />} />
             <Route path="course-launches" element={<CourseLaunchManager />} />
             <Route path="offerings" element={<PathFinderOfferings />} />
+            <Route path="offerings/:offeringKey" element={<PathFinderOfferingDetail />} />
             <Route path="quiz-rules" element={<QuizRoutingRules />} />
             <Route path="path-finder" element={<Navigate to="/admin/offerings" replace />} />
             <Route path="offerings-coverage" element={<Navigate to="/admin/offerings" replace />} />
