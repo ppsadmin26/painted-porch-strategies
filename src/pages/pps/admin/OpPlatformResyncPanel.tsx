@@ -788,6 +788,33 @@ export function OpPlatformResyncPanel({
   );
 }
 
+function DeliveryTypeBlock({
+  local,
+  remote,
+}: {
+  local: string;
+  remote: string;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <span className="text-[11px] font-poppins font-semibold text-navy uppercase tracking-wide">
+        Delivery type
+      </span>
+      <div className="grid grid-cols-[60px_1fr] gap-x-2 gap-y-1 items-start text-xs">
+        <span className="text-[10px] uppercase tracking-wide text-raspberry font-semibold">
+          local
+        </span>
+        <div className="text-foreground/90">{local || <em className="text-muted-foreground">—</em>}</div>
+        <span className="text-[10px] uppercase tracking-wide text-bluedoor font-semibold">
+          op
+        </span>
+        <div className="text-foreground/90">{remote || <em className="text-muted-foreground">—</em>}</div>
+      </div>
+    </div>
+  );
+}
+
+
 function FieldDiffBlock({ diff }: { diff: FieldDiff }) {
   const isLong =
     (diff.local?.length ?? 0) > 80 || (diff.remote?.length ?? 0) > 80;
