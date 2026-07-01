@@ -171,25 +171,54 @@ export function OpPlatformResyncPanel({
 
   const buckets = (() => {
     if (!remote) return null;
-    const remoteByName = new Map<string, OpPlatformRecommendation>();
-    for (const r of remote) remoteByName.set(norm(r.name), r);
-    const localByName = new Map<string, LocalRow>();
-    for (const r of rows) localByName.set(norm(r.name), r);
 
-    const missingLocally: OpPlatformRecommendation[] = [];
+    // Match key = normalized name + Op Platform format. This lets a single
+    // topic name (e.g., "AI, EI, Oh!") exist as multiple local rows for
+    // different delivery types (keynote vs. workshop vs. masterclass) and
+    // still line up with the correct remote record.
+    const remoteByKey = new Map<string, OpPlatformRecommendation>();
+    const remoteKeysByName = new Map<string, string[]>();
+    for (const r of remote) {
+      const nameKey = norm(r.name);
+      const key = `${nameKey}|${(r.format ?? "").toLowerCase()}`;
+      remoteByKey.set(key, r);
+      const arr = remoteKeysByName.get(nameKey) ?? [];
+      arr.push(key);
+      remoteKeysByName.set(nameKey, arr);
+    }
+
     const missingOnOp: LocalRow[] = [];
     const mismatches: DiffItem[] = [];
+    const claimedRemote = new Set<string>();
 
-    for (const r of remote) {
-      if (!localByName.has(norm(r.name))) missingLocally.push(r);
-    }
     for (const l of rows) {
-      const key = norm(l.name);
-      const r = remoteByName.get(key);
-      if (!r) {
+      const nameKey = norm(l.name);
+      const expectedFormats = TIER_FORMAT_MAP[l.tier] ?? [];
+
+      // 1. Prefer an unclaimed remote whose format matches the local tier.
+      let matchedKey: string | null = null;
+      for (const fmt of expectedFormats) {
+        const k = `${nameKey}|${fmt}`;
+        if (remoteByKey.has(k) && !claimedRemote.has(k)) {
+          matchedKey = k;
+          break;
+        }
+      }
+      // 2. Fallback — same name, unclaimed, only if exactly one candidate.
+      if (!matchedKey) {
+        const candidates = (remoteKeysByName.get(nameKey) ?? []).filter(
+          (k) => !claimedRemote.has(k),
+        );
+        if (candidates.length === 1) matchedKey = candidates[0];
+      }
+
+      if (!matchedKey) {
         missingOnOp.push(l);
         continue;
       }
+      claimedRemote.add(matchedKey);
+      const r = remoteByKey.get(matchedKey)!;
+
       const fields: FieldDiff[] = [];
 
       // Name (case + punctuation — match key is normalized so casing diffs
@@ -252,9 +281,8 @@ export function OpPlatformResyncPanel({
       }
 
       // Tier ↔ format consistency (advisory only — does not block sync).
-      const expectedFormats = TIER_FORMAT_MAP[l.tier];
       if (
-        expectedFormats &&
+        expectedFormats.length > 0 &&
         r.format &&
         !expectedFormats.includes(r.format)
       ) {
@@ -279,6 +307,15 @@ export function OpPlatformResyncPanel({
         });
       }
     }
+
+    // Any remote record that wasn't claimed by a local row is genuinely
+    // missing locally — including name-collision cases where one delivery
+    // type exists but another (e.g., masterclass vs. workshop) does not.
+    const missingLocally: OpPlatformRecommendation[] = remote.filter((r) => {
+      const key = `${norm(r.name)}|${(r.format ?? "").toLowerCase()}`;
+      return !claimedRemote.has(key);
+    });
+
     return { missingLocally, missingOnOp, mismatches };
   })();
 
