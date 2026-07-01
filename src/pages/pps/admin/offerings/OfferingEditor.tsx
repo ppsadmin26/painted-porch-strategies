@@ -82,6 +82,24 @@ const TIER_COLORS: Record<string, string> = {
   Speaking: "bg-navy/10 text-navy border-navy/40",
 };
 
+function HelpTooltip({ children }: { children: React.ReactNode }) {
+  return (
+    <TooltipProvider delayDuration={150}>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <button type="button" className="inline-flex text-muted-foreground hover:text-primary focus:outline-none" aria-label="Help">
+            <HelpCircle className="w-3.5 h-3.5" />
+          </button>
+        </TooltipTrigger>
+        <TooltipContent side="top" className="max-w-xs text-xs leading-relaxed">
+          {children}
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}
+
+
 export interface OfferingRow {
   id: string;
   offering_key: string;
