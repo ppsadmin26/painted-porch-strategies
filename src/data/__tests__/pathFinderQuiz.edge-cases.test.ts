@@ -75,18 +75,6 @@ function findDuplicateKeys(r: QuizResult): { key: string; locations: string[] }[
 }
 
 
-function findDuplicateKeys(r: QuizResult): { key: string; locations: string[] }[] {
-  const byKey = new Map<string, string[]>();
-  for (const { where, offering } of allSurfaces(r)) {
-    const arr = byKey.get(offering.key) ?? [];
-    arr.push(where);
-    byKey.set(offering.key, arr);
-  }
-  return Array.from(byKey.entries())
-    .filter(([, locs]) => locs.length > 1)
-    .map(([key, locations]) => ({ key, locations }));
-}
-
 function findDuplicateFormats(r: QuizResult): { format: string; locations: string[] }[] {
   // (name, tier) collision across DIFFERENT keys catches accidental catalog
   // duplication — e.g., two workshop entries with the same visible name.
