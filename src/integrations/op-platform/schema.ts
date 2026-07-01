@@ -84,6 +84,25 @@ const nullableThumb = z
   .transform((v) => (typeof v === "string" && v.trim() ? v : null));
 
 /**
+ * Accepts an array of strings OR a delimited string (comma / semicolon /
+ * pipe / newline) and normalizes to `string[]`. The Op Platform feed
+ * occasionally serializes multi-value fields as joined strings; we coerce
+ * here so one representation change doesn't drop every row.
+ */
+const coerceStringArray = z
+  .union([z.array(z.string()), z.string(), z.null(), z.undefined()])
+  .transform((v) => {
+    if (Array.isArray(v)) return v.map((s) => s.trim()).filter(Boolean);
+    if (typeof v === "string") {
+      return v
+        .split(/[,;|\n]/)
+        .map((s) => s.trim())
+        .filter(Boolean);
+    }
+    return [];
+  });
+
+/**
  * Zod schema for a single recommendation row. Unknown extra keys are passed
  * through (we use `.passthrough()`) so the catalog can add new fields without
  * breaking the client.
@@ -117,8 +136,8 @@ export const OpPlatformRecommendationSchema = z
       .union([z.string(), z.null()])
       .optional()
       .transform((v) => (typeof v === "string" ? v : null)),
-    content_themes: z.array(z.string()).default([]),
-    pillar_alignment: z.array(z.string()).default([]),
+    content_themes: coerceStringArray,
+    pillar_alignment: coerceStringArray,
     is_live: z.boolean().default(true),
     status: z.string().default("live"),
     sort_order: z
