@@ -679,7 +679,7 @@ export function OpPlatformResyncPanel({
                     </p>
                     <ul className="divide-y">
                       {buckets.missingLocally.map((r, i) => {
-                        const key = norm(r.name);
+                        const key = remoteKey(r);
                         return (
                           <li
                             key={`${r.name}-${i}`}
