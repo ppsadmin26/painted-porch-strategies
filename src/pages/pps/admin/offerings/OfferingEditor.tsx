@@ -37,6 +37,39 @@ function buildBlueDoorEditUrl(row: { topic_slug?: string | null; name?: string |
 const B2C_RTS = ["RT1", "RT2", "RT3", "RT4", "RT5", "RT6"] as const;
 const B2B_RTS = ["RT-A", "RT-B", "RT-C", "RT-D", "RT-E"] as const;
 
+const RT_LABELS: Record<string, string> = {
+  RT1: "RT1 · Start with Foundations (IGNITE self-paced — Radical Mindfulness)",
+  RT2: "RT2 · Build Communication Power (IGNITE self-paced — Master Your Message)",
+  RT3: "RT3 · Elevate Team Leadership (IGNITE course or AMPLIFY Lab)",
+  RT4: "RT4 · Master Change Architecture (Leading Change — mini or Lab)",
+  RT5: "RT5 · Ready for Advanced Partnership (AMPLIFY Leadership Labs)",
+  RT6: "RT6 · Explore Before Committing (free starting points, no clear signal)",
+  "RT-A": "RT-A · Team & People (team dynamics, conflict, collaboration)",
+  "RT-B": "RT-B · Change & Transformation (active or imminent change)",
+  "RT-C": "RT-C · Leadership Capability (how leaders show up)",
+  "RT-D": "RT-D · Strategic / Architectural (Blue Door primary)",
+  "RT-E": "RT-E · Exploring Your Options (no sharp signal yet)",
+};
+
+function tierSegment(tier: string): "B2B" | "B2C" | null {
+  const t = (tier || "").toLowerCase();
+  if (["amplify", "embody", "blue door", "workshop", "speaking"].includes(t)) return "B2B";
+  if (["free", "ignite", "assessment"].includes(t)) return "B2C";
+  return null;
+}
+
+function deliveryTypeLabels(row: Pick<OfferingRow, "tier" | "is_keynote" | "include_in_workshops">): string[] {
+  const t = (row.tier || "").toLowerCase();
+  const out: string[] = [];
+  if (row.is_keynote) out.push("Keynote");
+  if (row.include_in_workshops) out.push("Workshop");
+  if (t === "free") out.push("Free Resource");
+  if (t === "amplify") out.push("Lab");
+  if (t === "ignite") out.push("Course");
+  if (t === "assessment" || t === "blue door") out.push("Assessment");
+  return Array.from(new Set(out));
+}
+
 const TIER_COLORS: Record<string, string> = {
   IGNITE: "bg-gold/15 text-gold-foreground border-gold/40",
   AMPLIFY: "bg-purple/15 text-purple border-purple/40",
@@ -248,22 +281,40 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
                   Topic: {valueOf("topic")}
                 </Badge>
               )}
-              {valueOf("include_in_workshops") && (
-                <Badge variant="outline" className="bg-strategic/15 text-strategic border-strategic/40 text-[11px]">
-                  Workshop
+              {(() => {
+                const seg = tierSegment(tier);
+                if (!seg) return null;
+                return (
+                  <Badge
+                    variant="outline"
+                    title={seg === "B2B" ? "Audience segment: organization (B2B)" : "Audience segment: individual leader (B2C)"}
+                    className={seg === "B2B" ? "bg-navy/10 text-navy border-navy/30 text-[11px]" : "bg-lime/15 text-lime-foreground border-lime/40 text-[11px]"}
+                  >
+                    {seg}
+                  </Badge>
+                );
+              })()}
+              {deliveryTypeLabels({
+                tier,
+                is_keynote: !!valueOf("is_keynote"),
+                include_in_workshops: !!valueOf("include_in_workshops"),
+              }).map((label) => (
+                <Badge
+                  key={label}
+                  variant="outline"
+                  title="Delivery type · canonical from PPS Op Platform"
+                  className="bg-strategic/10 text-strategic border-strategic/40 text-[11px]"
+                >
+                  {label}
                 </Badge>
-              )}
-              {valueOf("is_keynote") && (
-                <Badge variant="outline" className="bg-gold/20 text-gold-foreground border-gold/40 text-[11px]">
-                  Keynote
-                </Badge>
-              )}
+              ))}
               {valueOf("blue_door_required") && (
                 <Badge variant="outline" className="bg-bluedoor/15 text-bluedoor border-bluedoor/40 text-[11px]">
                   Blue Door required
                 </Badge>
               )}
             </div>
+
           </div>
         </div>
       </section>
@@ -447,7 +498,7 @@ function RtPoolEditor({ tier, b2cValue, b2bValue, onB2cChange, onB2bChange }: Rt
             {B2C_RTS.map((rt) => {
               const on = (b2cValue[rt] ?? []).includes("free");
               return (
-                <label key={rt} className="flex items-center gap-2 rounded border border-input bg-background px-2 py-1 cursor-pointer">
+                <label key={rt} title={RT_LABELS[rt]} className="flex items-center gap-2 rounded border border-input bg-background px-2 py-1 cursor-pointer hover:bg-primary/5">
                   <input
                     type="checkbox"
                     checked={on}
@@ -468,7 +519,7 @@ function RtPoolEditor({ tier, b2cValue, b2bValue, onB2cChange, onB2bChange }: Rt
             const poolName: "free" | "speaking" = mode;
             const on = (b2bValue[rt] ?? []).includes(poolName);
             return (
-              <label key={rt} className="flex items-center gap-2 rounded border border-input bg-background px-2 py-1 cursor-pointer">
+              <label key={rt} title={RT_LABELS[rt]} className="flex items-center gap-2 rounded border border-input bg-background px-2 py-1 cursor-pointer hover:bg-primary/5">
                 <input
                   type="checkbox"
                   checked={on}
