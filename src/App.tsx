@@ -147,6 +147,7 @@ import AccountSettings from "./pages/pps/admin/AccountSettings";
 import SiteVideosManager from "./pages/pps/admin/SiteVideosManager";
 import PageStatusManager from "./pages/pps/admin/PageStatusManager";
 import PathFinderOfferings from "./pages/pps/admin/PathFinderOfferings";
+import PathFinderOfferingDetail from "./pages/pps/admin/PathFinderOfferingDetail";
 import QuizRoutingRules from "./pages/pps/admin/QuizRoutingRules";
 import BackupsManager from "./pages/pps/admin/BackupsManager";
 import MigrateManager from "./pages/pps/admin/MigrateManager";
@@ -449,6 +450,7 @@ const App = () => (
             <Route path="refunds" element={<RefundRequestsManager />} />
             <Route path="course-launches" element={<CourseLaunchManager />} />
             <Route path="offerings" element={<PathFinderOfferings />} />
+            <Route path="offerings/:offeringKey" element={<PathFinderOfferingDetail />} />
             <Route path="quiz-rules" element={<QuizRoutingRules />} />
             <Route path="path-finder" element={<Navigate to="/admin/offerings" replace />} />
             <Route path="offerings-coverage" element={<Navigate to="/admin/offerings" replace />} />
