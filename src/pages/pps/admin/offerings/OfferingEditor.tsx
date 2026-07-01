@@ -460,6 +460,12 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
               <strong>Show on Speaker page</strong>
               <span className="block text-[11px] text-muted-foreground">Include on the facilitator's /speaking/[name] page.</span>
             </span>
+            <HelpTooltip>
+              <strong>Speaker page</strong>
+              <p className="mt-1">
+                Toggles whether this delivery appears as a card on the individual speaker pages (e.g., /speaking/amy). The card links to the resolved URL shown below and uses the topic's canonical image and blurb.
+              </p>
+            </HelpTooltip>
           </label>
 
           <div className="grid md:grid-cols-3 gap-3 text-sm">
