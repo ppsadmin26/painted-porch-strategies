@@ -130,7 +130,7 @@ export function OpPlatformResyncPanel({
     try {
       const res = await fetchOpPlatformRecommendations({
         liveOnly: false,
-        limit: 500,
+        limit: 200,
       });
       setRemote(res.results);
       setFetchedAt(new Date());
