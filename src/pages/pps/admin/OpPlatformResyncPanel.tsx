@@ -213,6 +213,19 @@ export function OpPlatformResyncPanel({
           remote: remoteUrl,
         });
       }
+      // Blue Door required (canonical mirror from Op Platform).
+      const remoteBdr = Boolean(
+        (r as unknown as { blue_door_required?: boolean }).blue_door_required,
+      );
+      const localBdr = Boolean(l.blue_door_required);
+      if (remoteBdr !== localBdr) {
+        fields.push({
+          field: "blue_door_required",
+          label: "Requires Blue Door first",
+          local: localBdr ? "yes" : "no",
+          remote: remoteBdr ? "yes" : "no",
+        });
+      }
 
       // Tier ↔ format consistency (advisory only — does not block sync).
       const expectedFormats = TIER_FORMAT_MAP[l.tier];
