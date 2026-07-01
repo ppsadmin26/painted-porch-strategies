@@ -174,6 +174,12 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
   const [viewableKeys, setViewableKeys] = useState<Set<string> | null>(null);
   const [comingSoonKeys, setComingSoonKeys] = useState<Set<string>>(new Set());
   const [featuredKeys, setFeaturedKeys] = useState<Set<string>>(new Set());
+  // Canonical mirror from PPS Op Platform: offerings that CANNOT run in
+  // parallel with the Blue Door Organizational Appraisal — Blue Door must be
+  // completed first. Used to partition the B2B primary group so we never
+  // recommend a Blue-Door-required workshop under an "activate now / in
+  // parallel" heading.
+  const [blueDoorRequiredKeys, setBlueDoorRequiredKeys] = useState<Set<string>>(new Set());
 
   const { questions, track } = useMemo(() => buildQuestionPath(answers), [answers]);
   const current = questions[index];
@@ -201,7 +207,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       const [offeringsRes, draftsRes, launchRes] = await Promise.all([
         supabase
           .from("path_finder_offerings")
-          .select("offering_key, is_live, current_url, dedicated_url, anchor_id, launch_slug, is_featured_in_quiz"),
+          .select("offering_key, is_live, current_url, dedicated_url, anchor_id, launch_slug, is_featured_in_quiz, blue_door_required"),
         supabase
           .from("page_status")
           .select("path")
@@ -275,6 +281,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       const eligible: string[] = [];
       const soon = new Set<string>();
       const featured = new Set<string>();
+      const bdr = new Set<string>();
       for (const r of offeringsRes.data as Array<{
         offering_key: string;
         is_live: boolean;
@@ -283,7 +290,12 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
         anchor_id: string | null;
         launch_slug: string | null;
         is_featured_in_quiz: boolean | null;
+        blue_door_required: boolean | null;
       }>) {
+        // Track Blue Door prerequisite regardless of eligibility so downstream
+        // partitioning works even when we later widen the visible set.
+        if (r.blue_door_required) bdr.add(r.offering_key);
+
         const hasDest =
           (r.current_url && r.current_url.trim().length > 0) ||
           (r.dedicated_url && r.dedicated_url.trim().length > 0) ||
@@ -312,6 +324,7 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
       setViewableKeys(new Set(eligible));
       setComingSoonKeys(soon);
       setFeaturedKeys(featured);
+      setBlueDoorRequiredKeys(bdr);
     })();
     return () => { cancelled = true; };
   }, [open, viewableKeys]);
@@ -593,8 +606,8 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                 </p>
                 <p className="text-[11px] italic text-foreground/70 mb-2">
                   Why: {result.strongestNextStep.kind === "blueDoor"
-                    ? `Org-level engagement signal · ${result.resultType}`
-                    : `Top match for your result (${result.resultType} — ${result.headline})`}
+                    ? "Your answers point to an organization-level question — not a training gap. The Blue Door Appraisal is where that work begins."
+                    : `Your answers point most strongly to ${(result.headline || "this area").toLowerCase()} — and this is the tightest match.`}
                 </p>
                 {(result.strongestNextStep.offering as { isComingSoon?: boolean }).isComingSoon && (
                   <p className="text-caption font-semibold text-gold mb-2">
@@ -674,24 +687,57 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
                 MAX_PRIMARY_SECONDARY,
               );
 
-              const takePrimary = result.primaryGroup
-                ? dedupe(result.primaryGroup.offerings).slice(0, Math.max(0, psBudget))
+              // B2B partition: workshops flagged `blue_door_required=true` in
+              // the canonical PPS Op Platform mirror can't run in parallel
+              // with the Blue Door Appraisal — they must be sequenced after
+              // it. Split those out of the primary "activate in parallel"
+              // group and surface them under a dedicated "after Blue Door"
+              // heading so the recommendation matches the delivery reality.
+              const scoutMode = answers["Q4DM"] === "A";
+              const isB2B = result.track === "b2b";
+              let effectivePrimary = result.primaryGroup;
+              let bdrGroup: { heading: string; offerings: NonNullable<typeof result.primaryGroup>["offerings"] } | null = null;
+              if (isB2B && !scoutMode && result.primaryGroup) {
+                const parallelSafe = result.primaryGroup.offerings.filter(
+                  (o) => !blueDoorRequiredKeys.has(o.key),
+                );
+                const bdr = result.primaryGroup.offerings.filter((o) =>
+                  blueDoorRequiredKeys.has(o.key),
+                );
+                effectivePrimary = { ...result.primaryGroup, offerings: parallelSafe };
+                if (bdr.length > 0) {
+                  bdrGroup = {
+                    heading: "Once the Blue Door Work is Complete",
+                    offerings: bdr,
+                  };
+                }
+              }
+
+              // Secondary groups: interleave the BDR group at the top so it
+              // sits right below the parallel-safe primary picks in the UI
+              // and shares the same primary/secondary budget.
+              const secondaryInput = bdrGroup
+                ? [bdrGroup, ...result.groups]
+                : result.groups;
+
+              const takePrimary = effectivePrimary
+                ? dedupe(effectivePrimary.offerings).slice(0, Math.max(0, psBudget))
                 : [];
               takePrimary.forEach(markSeen);
-              let psUsed = takePrimary.length;
+              let psUsedOverride = takePrimary.length;
 
-              const trimmedGroups = result.groups
+              const trimmedGroups = secondaryInput
                 .map((g) => {
                   const deduped = dedupe(g.offerings);
-                  const slice = deduped.slice(0, Math.max(0, psBudget - psUsed));
+                  const slice = deduped.slice(0, Math.max(0, psBudget - psUsedOverride));
                   slice.forEach(markSeen);
-                  psUsed += slice.length;
+                  psUsedOverride += slice.length;
                   return { ...g, offerings: slice };
                 })
                 .filter((g) => g.offerings.length > 0);
 
               // Recalculate remaining after primary/secondary allocations.
-              remaining = MAX_TOTAL_RECOMMENDATIONS - snsUsed - psUsed;
+              remaining = MAX_TOTAL_RECOMMENDATIONS - snsUsed - psUsedOverride;
 
               // Supplemental block: From the Porch + Related Reading.
               const supplementalBudget = Math.min(remaining, MAX_SUPPLEMENTAL);
@@ -711,34 +757,45 @@ export default function PathFinderQuizDialog({ open, onOpenChange }: Props) {
               remaining -= (bdTrimmed.length + relatedToShow.length);
 
 
-              // "Why you got this" reason tags — surface the signal that
-              // routed each card so the recommendation logic is verifiable
-              // at a glance.
-              const scoutMode = answers["Q4DM"] === "A";
-              const rtLabel = `${result.resultType}${result.headline ? ` — ${result.headline}` : ""}`;
+              // "Why you got this" reason tags — written in plain user
+              // language tied to the person's actual answers. No RT codes,
+              // no internal jargon. Update these when the routing logic
+              // changes so the surfaced reason still matches reality.
+              const headlineLower = (result.headline || "this area").toLowerCase();
               const primaryReason = scoutMode
-                ? `Scout Mode reroute · individual-focus signal (${rtLabel})`
-                : `Primary match for ${rtLabel}`;
+                ? "You told us you're exploring for yourself before bringing this to your team — so start with what you can experience firsthand."
+                : `Workshops that work directly on ${headlineLower} — the strongest signal in your answers.`;
               const reasonForGroupHeading = (heading: string) => {
                 const h = heading.toLowerCase();
-                if (/blue.?door|deeper/.test(h)) return `Org-level engagement signal · ${rtLabel}`;
-                if (/workshop/.test(h)) return `Workshop pool for ${rtLabel}`;
-                if (/speaking|keynote/.test(h)) return `Speaking pool for ${rtLabel}`;
-                if (/free|resource|porch/.test(h)) return `Free-resource pool for ${rtLabel}`;
-                if (/lab|amplify/.test(h)) return `Lab pool for ${rtLabel}`;
-                if (/ignite/.test(h)) return `IGNITE pool for ${rtLabel}`;
-                if (/scout|when you/.test(h)) return `Scout-mode reroute · ${rtLabel}`;
-                return `Secondary match for ${rtLabel}`;
+                if (/once the blue door|after the blue door|after blue door/.test(h))
+                  return "These require the Blue Door Appraisal first so they can be sequenced to what it surfaces about your organization.";
+                if (/blue.?door|deeper/.test(h))
+                  return "The prerequisite for any deeper, organization-wide engagement.";
+                if (/speaking|keynote/.test(h))
+                  return `A bookable keynote on ${headlineLower}.`;
+                if (/free|resource|porch/.test(h))
+                  return "A no-cost place to start on what your answers surfaced.";
+                if (/lab|amplify/.test(h))
+                  return scoutMode
+                    ? "A peer cohort you can experience firsthand before pitching to your team."
+                    : `A lab aligned with ${headlineLower}.`;
+                if (/ignite/.test(h))
+                  return "Self-led starting points aligned with your answers.";
+                if (/scout|when you/.test(h))
+                  return "Options built for individuals exploring the work before bringing it to their team.";
+                if (/workshop/.test(h))
+                  return `Workshops aligned with ${headlineLower}.`;
+                return `Related to ${headlineLower} — your strongest signal.`;
               };
-              const opPlatformReason = scoutMode
-                ? `PPS Op Platform · Scout persona (${rtLabel})`
-                : `PPS Op Platform · persona match (${rtLabel})`;
-              const relatedReason = `Topic match · ${rtLabel}`;
+              const opPlatformReason =
+                "Other resources from the Porch aligned with what your answers surfaced.";
+              const relatedReason =
+                "An article or media appearance on the topic your answers surfaced.";
 
               return (
                 <>
-                  {result.primaryGroup && takePrimary.length > 0 && (
-                    <RecGroup heading={result.primaryGroup.heading} offerings={takePrimary} onClose={() => onOpenChange(false)} primary reason={primaryReason} />
+                  {effectivePrimary && takePrimary.length > 0 && (
+                    <RecGroup heading={effectivePrimary.heading} offerings={takePrimary} onClose={() => onOpenChange(false)} primary reason={primaryReason} />
                   )}
 
                   {trimmedGroups.map((g, i) => (

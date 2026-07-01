@@ -639,6 +639,7 @@ export type Database = {
           anchor_id: string | null
           b2b_rt_pools: Json
           b2c_rt_pools: Json
+          blue_door_required: boolean
           blurb: string
           created_at: string
           current_url: string
@@ -668,6 +669,7 @@ export type Database = {
           anchor_id?: string | null
           b2b_rt_pools?: Json
           b2c_rt_pools?: Json
+          blue_door_required?: boolean
           blurb: string
           created_at?: string
           current_url: string
@@ -697,6 +699,7 @@ export type Database = {
           anchor_id?: string | null
           b2b_rt_pools?: Json
           b2c_rt_pools?: Json
+          blue_door_required?: boolean
           blurb?: string
           created_at?: string
           current_url?: string

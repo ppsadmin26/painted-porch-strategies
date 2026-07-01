@@ -45,6 +45,7 @@ interface Row {
   launch_slug: string | null;
   b2c_rt_pools: Record<string, string[]> | null;
   b2b_rt_pools: Record<string, string[]> | null;
+  blue_door_required: boolean;
 }
 
 /**
@@ -217,7 +218,7 @@ export default function PathFinderOfferings() {
   const load = async () => {
     setLoading(true);
     const [offRes, launchRes] = await Promise.all([
-      supabase.from("path_finder_offerings").select("id, offering_key, name, facilitator, tier, blurb, description, current_url, dedicated_url, anchor_id, is_live, is_published, sort_order, topic, topic_slug, include_in_workshops, is_featured_in_quiz, is_keynote, include_on_speaker_page, image_url, launch_slug, b2c_rt_pools, b2b_rt_pools").order("sort_order"),
+      supabase.from("path_finder_offerings").select("id, offering_key, name, facilitator, tier, blurb, description, current_url, dedicated_url, anchor_id, is_live, is_published, sort_order, topic, topic_slug, include_in_workshops, is_featured_in_quiz, is_keynote, include_on_speaker_page, image_url, launch_slug, b2c_rt_pools, b2b_rt_pools, blue_door_required").order("sort_order"),
       supabase
         .from("course_launch_status")
         .select("slug, course_name, status, program_type")
@@ -773,6 +774,17 @@ export default function PathFinderOfferings() {
                       </span>
                       <span className="text-[11px] text-muted-foreground flex-1">
                         Keynote chip on /topics · <span className="text-bluedoor">canonical</span>
+                      </span>
+                      <BlueDoorEditLink row={row} label="Edit" />
+                    </div>
+                    <div className="flex items-center gap-2 rounded-md border border-dashed border-bluedoor/40 bg-muted/40 px-3 py-2">
+                      <span
+                        className={`inline-flex items-center h-6 px-2 rounded text-[11px] font-semibold ${valueOf(row, "blue_door_required") ? "bg-bluedoor/15 text-bluedoor" : "bg-muted text-muted-foreground"}`}
+                      >
+                        {valueOf(row, "blue_door_required") ? "✓ Blue Door required" : "— Runs in parallel"}
+                      </span>
+                      <span className="text-[11px] text-muted-foreground flex-1">
+                        Sequencing flag for quiz recs · <span className="text-bluedoor">canonical</span>
                       </span>
                       <BlueDoorEditLink row={row} label="Edit" />
                     </div>
