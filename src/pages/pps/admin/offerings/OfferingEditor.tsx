@@ -37,6 +37,39 @@ function buildBlueDoorEditUrl(row: { topic_slug?: string | null; name?: string |
 const B2C_RTS = ["RT1", "RT2", "RT3", "RT4", "RT5", "RT6"] as const;
 const B2B_RTS = ["RT-A", "RT-B", "RT-C", "RT-D", "RT-E"] as const;
 
+const RT_LABELS: Record<string, string> = {
+  RT1: "RT1 · Start with Foundations (IGNITE self-paced — Radical Mindfulness)",
+  RT2: "RT2 · Build Communication Power (IGNITE self-paced — Master Your Message)",
+  RT3: "RT3 · Elevate Team Leadership (IGNITE course or AMPLIFY Lab)",
+  RT4: "RT4 · Master Change Architecture (Leading Change — mini or Lab)",
+  RT5: "RT5 · Ready for Advanced Partnership (AMPLIFY Leadership Labs)",
+  RT6: "RT6 · Explore Before Committing (free starting points, no clear signal)",
+  "RT-A": "RT-A · Team & People (team dynamics, conflict, collaboration)",
+  "RT-B": "RT-B · Change & Transformation (active or imminent change)",
+  "RT-C": "RT-C · Leadership Capability (how leaders show up)",
+  "RT-D": "RT-D · Strategic / Architectural (Blue Door primary)",
+  "RT-E": "RT-E · Exploring Your Options (no sharp signal yet)",
+};
+
+function tierSegment(tier: string): "B2B" | "B2C" | null {
+  const t = (tier || "").toLowerCase();
+  if (["amplify", "embody", "blue door", "workshop", "speaking"].includes(t)) return "B2B";
+  if (["free", "ignite", "assessment"].includes(t)) return "B2C";
+  return null;
+}
+
+function deliveryTypeLabels(row: Pick<OfferingRow, "tier" | "is_keynote" | "include_in_workshops">): string[] {
+  const t = (row.tier || "").toLowerCase();
+  const out: string[] = [];
+  if (row.is_keynote) out.push("Keynote");
+  if (row.include_in_workshops) out.push("Workshop");
+  if (t === "free") out.push("Free Resource");
+  if (t === "amplify") out.push("Lab");
+  if (t === "ignite") out.push("Course");
+  if (t === "assessment" || t === "blue door") out.push("Assessment");
+  return Array.from(new Set(out));
+}
+
 const TIER_COLORS: Record<string, string> = {
   IGNITE: "bg-gold/15 text-gold-foreground border-gold/40",
   AMPLIFY: "bg-purple/15 text-purple border-purple/40",
