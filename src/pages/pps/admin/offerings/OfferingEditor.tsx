@@ -520,6 +520,12 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
 
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <span>Quiz will link to:</span>
+            <HelpTooltip>
+              <strong>Resolved link</strong>
+              <p className="mt-1">
+                This is the actual URL the quiz, email results, and public cards will use. It chooses the dedicated URL when the offering is published and a dedicated URL exists; otherwise it falls back to the hub URL. The anchor ID is appended if provided.
+              </p>
+            </HelpTooltip>
             {url ? (
               <Link to={url} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1">
                 {url} <ExternalLink className="w-3 h-3" />
