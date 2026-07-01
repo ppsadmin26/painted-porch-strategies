@@ -655,12 +655,15 @@ export default function PathFinderOfferings() {
                   </div>
                   <div>
                     <div className="flex items-center justify-between mb-1">
-                      <Label className="text-xs">Short blurb <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
+                      <Label className="text-xs">Short blurb / Topic card description <span className="text-bluedoor">· PPS Op Platform canonical</span></Label>
                       <BlueDoorEditLink row={row} label="Edit" />
                     </div>
                     <div className="text-sm text-foreground/80 bg-muted/40 border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-10 whitespace-pre-wrap">
                       {row.blurb || <span className="italic text-muted-foreground">— empty —</span>}
                     </div>
+                    <p className="text-[11px] text-muted-foreground mt-1">
+                      Renders on <code>/topics</code>, <code>/speaking/*</code>, and <code>/partner/amplify/workshops</code>. Edit in the PPS Op Platform Offerings Register; changes flow back here on the next sync.
+                    </p>
                   </div>
                   <div>
                     <div className="flex items-center justify-between mb-1">
@@ -702,22 +705,6 @@ export default function PathFinderOfferings() {
                     </div>
                   );
                 })()}
-
-
-                <div className="mb-3 rounded-md border border-dashed border-bluedoor/40 bg-bluedoor/5 px-3 py-2">
-                  <div className="flex items-center justify-between mb-1">
-                    <Label className="text-xs font-semibold text-bluedoor">
-                      Topic card description · PPS Op Platform canonical
-                    </Label>
-                    <BlueDoorEditLink row={row} label="Edit in PPS Op Platform" />
-                  </div>
-                  <div className="text-sm text-foreground/80 bg-white border border-dashed border-bluedoor/30 rounded-md px-3 py-2 min-h-16 whitespace-pre-wrap">
-                    {row.description || <span className="italic text-muted-foreground">— empty (falls back to short blurb) —</span>}
-                  </div>
-                  <p className="text-[11px] text-muted-foreground mt-1">
-                    Renders on <code>/topics</code>, <code>/speaking/*</code>, and <code>/partner/amplify/workshops</code>. Edit in the PPS Op Platform Offerings Register; changes flow back here on the next sync.
-                  </p>
-                </div>
 
                 {/* Topic card (drives /topics, /speaking/amy|rob|sierra, and /partner/amplify/workshops) */}
                 <div className="mb-3 rounded-md border border-dashed border-navy/30 bg-navy/5 px-3 py-3 space-y-3">
