@@ -354,7 +354,15 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
 
           <div className="rounded-md border border-dashed border-primary/30 bg-white px-3 py-2">
             <div className="flex items-center justify-between mb-1 gap-2 flex-wrap">
-              <span className="text-[11px] font-semibold text-navy">Routing rules · how this offering reaches the quiz</span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-[11px] font-semibold text-navy">Routing rules · how this offering reaches the quiz</span>
+                <HelpTooltip>
+                  <strong>Routing rules</strong>
+                  <p className="mt-1">
+                    Defines which quiz result types (RT buckets) will include this offering. If the registry says this delivery is automatic for a tier, the rules are locked to the canonical placement; otherwise the RT checkboxes below let you override inclusion.
+                  </p>
+                </HelpTooltip>
+              </div>
               <div className="flex items-center gap-1">
                 <Badge variant="outline" className="text-[10px]">{PLACEMENT_BADGE_COPY[summary.placement]}</Badge>
                 <Link to="/admin/quiz-rules" className="text-[11px] text-bluedoor hover:underline ml-1">
