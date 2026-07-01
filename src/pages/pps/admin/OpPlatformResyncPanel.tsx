@@ -111,6 +111,8 @@ export function OpPlatformResyncPanel({
   const [fetchedAt, setFetchedAt] = useState<Date | null>(null);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [selectedMissing, setSelectedMissing] = useState<Set<string>>(new Set());
+  const [inserting, setInserting] = useState(false);
   const [applying, setApplying] = useState(false);
   const [retryStatus, setRetryStatus] = useState<string | null>(null);
 
