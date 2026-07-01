@@ -13,7 +13,21 @@ import {
   Upload,
 } from "lucide-react";
 import {
+  Loader2,
+  RefreshCw,
+  AlertTriangle,
+  CheckCircle2,
+  ChevronDown,
+  ChevronUp,
+  ChevronRight,
+  Upload,
+  Copy,
+  ExternalLink,
+} from "lucide-react";
+import {
   fetchOpPlatformRecommendations,
+  OpPlatformFetchError,
+  buildOpPlatformRecsUrl,
   type OpPlatformRecommendation,
 } from "@/integrations/op-platform/recommendations";
 import { supabase } from "@/integrations/supabase/client";
