@@ -35,8 +35,9 @@ const rob: SpeakerData = {
         "Learn how to dial in your message frequency, eliminate static, and broadcast a clear signal that resonates.",
     },
     {
-      slug: "8-8",
-      title: "8:8 — Capturing & Keeping Attention",
+      slug: "eight-second-world",
+      aliases: ["8-8"],
+      title: "8:8 — Capture & Keep Attention in an 8-Second World",
       image: eightByEight.url,
       description:
         "In today's distracted world, attention spans are shrinking. Discover how to hook, hold, and inspire your audience fast, before they scroll away.",
@@ -50,7 +51,7 @@ const rob: SpeakerData = {
     },
     {
       slug: "get-clear-be-heard",
-      title: "Get C.L.E.A.R. & Be Heard",
+      title: "Get C.L.E.A.R., Be Heard",
       image: getClear.url,
       description:
         "Master the framework to simplify your message and boost team engagement, attention, and action.",
@@ -70,18 +71,26 @@ const rob: SpeakerData = {
         "Tame the nerves and take the mic. From boardrooms to breakouts, learn how to show up prepared, polished, and powerful, every time you speak.",
     },
     {
-      slug: "your-5-minute-keynote",
-      title: "Your 5-Minute Keynote",
+      slug: "five-minute-keynote",
+      aliases: ["your-5-minute-keynote"],
+      title: "The 5-Minute Keynote",
       image: fiveMinKeynote.url,
       description:
         "Every leader needs a signature message they can deliver at a moment's notice. Learn how to craft and deliver a powerful 5-minute keynote that leaves a lasting impression.",
     },
     {
-      slug: "speaking-with-style-the-6-communicator-styles-for-influence-impact",
-      title: "Speaking with Style: The 6 Communicator Styles for Influence & Impact",
+      slug: "communicate-with-style",
+      aliases: ["speaking-with-style-the-6-communicator-styles-for-influence-impact"],
+      title: "Communicate with Style: The 6 Communicator Styles for Maximum Influence & Impact",
       image: sixStyles.url,
       description:
         "There are six distinct communicator styles, and knowing yours changes everything. Discover your natural style and learn to flex across all six to connect with any audience.",
+    },
+    {
+      slug: "master-your-message",
+      title: "Master Your Message",
+      description:
+        "Sharpen the signature message you deliver in every keynote, pitch, and high-stakes moment so it lands with clarity and conviction.",
     },
   ],
   outcomesHeading: "Speak with Clarity. Lead with Confidence.",
