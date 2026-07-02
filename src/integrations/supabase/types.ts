@@ -662,6 +662,7 @@ export type Database = {
           notes: string | null
           offering_key: string
           sort_order: number
+          tier: string
           topic: string | null
           topic_slug: string | null
           updated_at: string
@@ -693,6 +694,7 @@ export type Database = {
           notes?: string | null
           offering_key: string
           sort_order?: number
+          tier: string
           topic?: string | null
           topic_slug?: string | null
           updated_at?: string
@@ -724,6 +726,7 @@ export type Database = {
           notes?: string | null
           offering_key?: string
           sort_order?: number
+          tier?: string
           topic?: string | null
           topic_slug?: string | null
           updated_at?: string
