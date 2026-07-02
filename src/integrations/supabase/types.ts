@@ -676,9 +676,9 @@ export type Database = {
           created_at?: string
           current_url: string
           dedicated_url?: string | null
-          delivery_format: Database["public"]["Enums"]["delivery_format_t"]
+          delivery_format?: Database["public"]["Enums"]["delivery_format_t"]
           description?: string | null
-          engagement_tier: Database["public"]["Enums"]["engagement_tier_t"]
+          engagement_tier?: Database["public"]["Enums"]["engagement_tier_t"]
           facilitator?: string | null
           id?: string
           image_url?: string | null
