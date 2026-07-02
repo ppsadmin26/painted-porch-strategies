@@ -64,7 +64,7 @@ export default function PathFinderOfferings() {
     const [offRes, launchRes] = await Promise.all([
       supabase
         .from("path_finder_offerings")
-        .select("id, offering_key, name, facilitator, tier, blurb, description, current_url, dedicated_url, anchor_id, is_live, is_published, sort_order, topic, topic_slug, include_in_workshops, is_featured_in_quiz, is_keynote, include_on_speaker_page, image_url, launch_slug, b2c_rt_pools, b2b_rt_pools, blue_door_required, updated_at")
+        .select("id, offering_key, name, facilitator, tier, engagement_tier, delivery_format, blurb, description, current_url, dedicated_url, anchor_id, is_live, is_published, sort_order, topic, topic_slug, include_in_workshops, is_featured_in_quiz, is_keynote, include_on_speaker_page, image_url, launch_slug, b2c_rt_pools, b2b_rt_pools, blue_door_required, updated_at")
         .order("name"),
       supabase.from("course_launch_status").select("slug, course_name, status, program_type").order("course_name"),
     ]);
