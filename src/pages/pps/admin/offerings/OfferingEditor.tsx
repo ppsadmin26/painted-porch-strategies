@@ -100,12 +100,26 @@ function HelpTooltip({ children }: { children: React.ReactNode }) {
 }
 
 
+export type EngagementTier = "IGNITE" | "AMPLIFY" | "EMBODY" | "NONE";
+export type DeliveryFormat =
+  | "keynote"
+  | "speaking"
+  | "workshop"
+  | "lab"
+  | "course"
+  | "assessment"
+  | "free_resource"
+  | "blue_door";
+
 export interface OfferingRow {
   id: string;
   offering_key: string;
   name: string;
   facilitator: string | null;
+  /** Auto-derived from (engagement_tier, delivery_format). Read-only display. */
   tier: string;
+  engagement_tier: EngagementTier;
+  delivery_format: DeliveryFormat;
   blurb: string;
   description: string | null;
   current_url: string;
