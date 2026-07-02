@@ -314,15 +314,68 @@ export function OpPlatformResyncPanel({
       }
     }
 
-    // Any remote record that wasn't claimed by a local row is genuinely
-    // missing locally — including name-collision cases where one delivery
-    // type exists but another (e.g., masterclass vs. workshop) does not.
-    const missingLocally: OpPlatformRecommendation[] = remote.filter((r) => {
+    // Split unclaimed remote rows into "genuinely new topics" vs. "same
+    // topic, different delivery format" so the missing count reflects real
+    // gaps, not format drift between the two projects.
+    const localNames = new Set(rows.map((l) => norm(l.name)));
+    const remoteNames = new Set(remote.map((r) => norm(r.name)));
+
+    const unclaimedRemote = remote.filter((r) => {
       const key = `${norm(r.name)}|${(r.format ?? "").toLowerCase()}`;
       return !claimedRemote.has(key);
     });
+    const missingLocally: OpPlatformRecommendation[] = unclaimedRemote.filter(
+      (r) => !localNames.has(norm(r.name)),
+    );
+    const trulyMissingOnOp: LocalRow[] = missingOnOp.filter(
+      (l) => !remoteNames.has(norm(l.name)),
+    );
 
-    return { missingLocally, missingOnOp, mismatches };
+    // Format-drift bucket: topic exists on both sides but the local tier
+    // maps to a different remote format. One entry per topic name, listing
+    // every local delivery and every remote delivery for the topic.
+    const driftMap = new Map<
+      string,
+      {
+        name: string;
+        localRows: LocalRow[];
+        remoteRows: OpPlatformRecommendation[];
+      }
+    >();
+    const ensureDrift = (displayName: string) => {
+      const k = norm(displayName);
+      if (!driftMap.has(k))
+        driftMap.set(k, { name: displayName, localRows: [], remoteRows: [] });
+      return driftMap.get(k)!;
+    };
+    for (const l of missingOnOp) {
+      if (remoteNames.has(norm(l.name))) ensureDrift(l.name).localRows.push(l);
+    }
+    for (const r of unclaimedRemote) {
+      if (localNames.has(norm(r.name))) ensureDrift(r.name).remoteRows.push(r);
+    }
+    // Fold in matched rows so each drift group shows the full delivery
+    // lineup on both sides — makes it obvious which format is unpaired.
+    for (const [k, group] of driftMap) {
+      for (const l of rows) {
+        if (norm(l.name) === k && !group.localRows.includes(l))
+          group.localRows.push(l);
+      }
+      for (const r of remote) {
+        if (norm(r.name) === k && !group.remoteRows.includes(r))
+          group.remoteRows.push(r);
+      }
+    }
+    const formatDrift = Array.from(driftMap.values()).sort((a, b) =>
+      a.name.localeCompare(b.name),
+    );
+
+    return {
+      missingLocally,
+      missingOnOp: trulyMissingOnOp,
+      mismatches,
+      formatDrift,
+    };
   })();
 
   /**
@@ -556,27 +609,38 @@ export function OpPlatformResyncPanel({
 
       {buckets && (
         <>
-          <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+          <div className="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
             <div className="rounded-md border bg-white p-3">
               <div className="text-xs text-muted-foreground">
-                Missing locally
+                New on Op Platform
               </div>
               <div className="text-2xl font-poppins font-bold text-bluedoor">
                 {buckets.missingLocally.length}
               </div>
               <div className="text-[11px] text-muted-foreground">
-                In Op Platform · not in DB
+                Topic not in DB at all
               </div>
             </div>
             <div className="rounded-md border bg-white p-3">
               <div className="text-xs text-muted-foreground">
-                Missing on Op Platform
+                Only in DB
               </div>
               <div className="text-2xl font-poppins font-bold text-raspberry">
                 {buckets.missingOnOp.length}
               </div>
               <div className="text-[11px] text-muted-foreground">
-                In DB · not in feed (possibly invalid)
+                Topic not in feed (possibly stale)
+              </div>
+            </div>
+            <div className="rounded-md border bg-white p-3">
+              <div className="text-xs text-muted-foreground">
+                Delivery-format drift
+              </div>
+              <div className="text-2xl font-poppins font-bold text-navy">
+                {buckets.formatDrift.length}
+              </div>
+              <div className="text-[11px] text-muted-foreground">
+                Same topic · different formats
               </div>
             </div>
             <div className="rounded-md border bg-white p-3">
@@ -632,6 +696,78 @@ export function OpPlatformResyncPanel({
                   </ul>
                 )}
               </DiffSection>
+
+              <DiffSection
+                title="Delivery-format drift — same topic, different formats between the two projects"
+                tone="navy"
+                empty="None — every shared topic has matching delivery formats on both sides."
+              >
+                {buckets.formatDrift.length > 0 && (
+                  <>
+                    <p className="text-[11px] text-muted-foreground mb-2 px-1">
+                      These topics exist on <strong>both</strong> sides. They
+                      are <strong>not missing</strong> — the local tier just
+                      maps to a different delivery format than what the Op
+                      Platform publishes. Reconcile by editing the tier locally
+                      or the format in the Op Platform.
+                    </p>
+                    <ul className="divide-y">
+                      {buckets.formatDrift.map((g) => (
+                        <li key={g.name} className="py-2 text-xs">
+                          <div className="font-medium text-navy text-sm mb-1">
+                            {g.name}
+                          </div>
+                          <div className="grid grid-cols-[60px_1fr] gap-x-2 gap-y-1 items-start">
+                            <span className="text-[10px] uppercase tracking-wide text-raspberry font-semibold">
+                              local
+                            </span>
+                            <div className="flex flex-wrap gap-1">
+                              {g.localRows.length === 0 ? (
+                                <em className="text-muted-foreground">
+                                  — no local delivery —
+                                </em>
+                              ) : (
+                                g.localRows.map((l) => (
+                                  <Badge
+                                    key={l.id}
+                                    variant="outline"
+                                    className="text-[10px]"
+                                    title={l.offering_key}
+                                  >
+                                    {l.tier}
+                                  </Badge>
+                                ))
+                              )}
+                            </div>
+                            <span className="text-[10px] uppercase tracking-wide text-bluedoor font-semibold">
+                              op
+                            </span>
+                            <div className="flex flex-wrap gap-1">
+                              {g.remoteRows.length === 0 ? (
+                                <em className="text-muted-foreground">
+                                  — no remote delivery —
+                                </em>
+                              ) : (
+                                g.remoteRows.map((r, i) => (
+                                  <Badge
+                                    key={i}
+                                    variant="outline"
+                                    className="text-[10px] border-bluedoor/40 text-bluedoor"
+                                  >
+                                    {r.format}
+                                  </Badge>
+                                ))
+                              )}
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </DiffSection>
+
+
 
               <DiffSection
                 title="Missing locally — present in Op Platform but no DB row"
@@ -922,7 +1058,7 @@ function DiffSection({
   children,
 }: {
   title: string;
-  tone: "raspberry" | "bluedoor" | "gold";
+  tone: "raspberry" | "bluedoor" | "gold" | "navy";
   empty: string;
   children?: React.ReactNode;
 }) {
@@ -931,7 +1067,9 @@ function DiffSection({
       ? "border-raspberry/30 bg-raspberry/5"
       : tone === "bluedoor"
         ? "border-bluedoor/30 bg-bluedoor/5"
-        : "border-gold/40 bg-gold/5";
+        : tone === "navy"
+          ? "border-navy/30 bg-navy/5"
+          : "border-gold/40 bg-gold/5";
   const empty_ = !children;
   return (
     <div className={`rounded-md border ${toneCls} p-3`}>
