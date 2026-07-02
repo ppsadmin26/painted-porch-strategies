@@ -167,9 +167,11 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
             {topics.map((topic, i) => (
               <div
                 key={i}
-                id={topic.slug ? `topic-${topic.slug}` : undefined}
+                id={topic.slug || undefined}
                 className={`bg-white rounded-xl border-l-4 ${speaker.themeColor} hover:shadow-lg transition-shadow overflow-hidden flex flex-col scroll-mt-24`}
               >
+                {/* Legacy alias — keeps `#topic-<slug>` inbound links resolving. */}
+                {topic.slug && <span id={`topic-${topic.slug}`} aria-hidden="true" /> }
                 {/* Thumbnail — standardized 16:9 to match /topics */}
                 <div className="relative w-full aspect-[16/9] overflow-hidden bg-navy/5">
                   {topic.image ? (
