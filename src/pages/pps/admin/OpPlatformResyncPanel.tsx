@@ -314,15 +314,68 @@ export function OpPlatformResyncPanel({
       }
     }
 
-    // Any remote record that wasn't claimed by a local row is genuinely
-    // missing locally — including name-collision cases where one delivery
-    // type exists but another (e.g., masterclass vs. workshop) does not.
-    const missingLocally: OpPlatformRecommendation[] = remote.filter((r) => {
+    // Split unclaimed remote rows into "genuinely new topics" vs. "same
+    // topic, different delivery format" so the missing count reflects real
+    // gaps, not format drift between the two projects.
+    const localNames = new Set(rows.map((l) => norm(l.name)));
+    const remoteNames = new Set(remote.map((r) => norm(r.name)));
+
+    const unclaimedRemote = remote.filter((r) => {
       const key = `${norm(r.name)}|${(r.format ?? "").toLowerCase()}`;
       return !claimedRemote.has(key);
     });
+    const missingLocally: OpPlatformRecommendation[] = unclaimedRemote.filter(
+      (r) => !localNames.has(norm(r.name)),
+    );
+    const trulyMissingOnOp: LocalRow[] = missingOnOp.filter(
+      (l) => !remoteNames.has(norm(l.name)),
+    );
 
-    return { missingLocally, missingOnOp, mismatches };
+    // Format-drift bucket: topic exists on both sides but the local tier
+    // maps to a different remote format. One entry per topic name, listing
+    // every local delivery and every remote delivery for the topic.
+    const driftMap = new Map<
+      string,
+      {
+        name: string;
+        localRows: LocalRow[];
+        remoteRows: OpPlatformRecommendation[];
+      }
+    >();
+    const ensureDrift = (displayName: string) => {
+      const k = norm(displayName);
+      if (!driftMap.has(k))
+        driftMap.set(k, { name: displayName, localRows: [], remoteRows: [] });
+      return driftMap.get(k)!;
+    };
+    for (const l of missingOnOp) {
+      if (remoteNames.has(norm(l.name))) ensureDrift(l.name).localRows.push(l);
+    }
+    for (const r of unclaimedRemote) {
+      if (localNames.has(norm(r.name))) ensureDrift(r.name).remoteRows.push(r);
+    }
+    // Fold in matched rows so each drift group shows the full delivery
+    // lineup on both sides — makes it obvious which format is unpaired.
+    for (const [k, group] of driftMap) {
+      for (const l of rows) {
+        if (norm(l.name) === k && !group.localRows.includes(l))
+          group.localRows.push(l);
+      }
+      for (const r of remote) {
+        if (norm(r.name) === k && !group.remoteRows.includes(r))
+          group.remoteRows.push(r);
+      }
+    }
+    const formatDrift = Array.from(driftMap.values()).sort((a, b) =>
+      a.name.localeCompare(b.name),
+    );
+
+    return {
+      missingLocally,
+      missingOnOp: trulyMissingOnOp,
+      mismatches,
+      formatDrift,
+    };
   })();
 
   /**
