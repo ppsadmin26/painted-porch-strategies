@@ -536,7 +536,9 @@ export default function SpeakingWorkshopTopics() {
                 </div>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                   {items.map((m) => (
-                    <article key={m.key} className="relative bg-white border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow flex flex-col">
+                    <article key={m.key} id={m.key} className="relative bg-white border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow flex flex-col scroll-mt-24">
+                      {/* Legacy alias — keeps `#topic-<slug>` inbound links resolving. */}
+                      <span id={`topic-${m.key}`} aria-hidden="true" />
                       {isAdmin && (
                         <Link
                           to={`/admin/offerings?filter=${encodeURIComponent(m.baseName)}`}
