@@ -1,57 +1,59 @@
-
-# Split /admin/offerings into list + detail
-
 ## Goal
 
-Match the PPS Ops Platform pattern: `/admin/offerings` is a compact registry table of every delivery; clicking a row opens a full detail/edit page for that one offering.
+Split the overloaded `path_finder_offerings.tier` column into two typed fields — `engagement_tier` (IGNITE/AMPLIFY/EMBODY/NONE) and `delivery_format` (keynote/speaking/workshop/lab/course/assessment/free_resource/blue_door) — backed by Postgres enums, and drop the legacy `tier` column in the same rollout.
 
-## Routes
+## Sequence
 
-- `/admin/offerings` — **List view** (new default). Table of all deliveries.
-- `/admin/offerings/:offeringKey` — **Detail view**. The card UI that today lives inline (Registry section + PPS Controls section from the last cleanup).
-- Existing redirects (`/admin/path-finder`, `/admin/offerings-coverage`) continue to land on the list.
+### 1. Backfill map from v5 CSV
+Generate `scripts/split-tier-backfill.sql` from `/mnt/documents/offerings-url-reconciliation-v5.csv`. For each row with a `resolved_ops_offering_key`, parse `{topic}--{format}--{segment}` to seed `delivery_format`, and derive `engagement_tier` from the local `tier`. For rows without a resolved key, fall back to the derivation logic already in `PathFinderOfferings.tsx` (`deliveryTypes()` + `tierSegment()`):
 
-## List view (`/admin/offerings`)
+| current `tier` | engagement_tier | delivery_format (default) |
+|---|---|---|
+| IGNITE | IGNITE | course (or `assessment` if is_keynote=false and name matches) |
+| AMPLIFY | AMPLIFY | lab (or `workshop` if include_in_workshops) |
+| EMBODY | EMBODY | workshop |
+| Workshop | AMPLIFY | workshop |
+| Speaking | NONE | speaking (or `keynote` if is_keynote=true) |
+| Free | NONE | free_resource |
+| Assessment | IGNITE | assessment |
+| Blue Door | NONE | blue_door |
 
-Columns modeled on the reference screenshot:
+Keynote wins over workshop when `is_keynote=true`.
 
-| Column | Source | Notes |
-| --- | --- | --- |
-| Topic | `name` + `offering_key` + short blurb (1 line, truncated) | Click → detail page |
-| IDs | `#sort_order` (or short id) | Read-only |
-| Types | delivery-type chips (workshop / keynote / lab / free_resource / …) | From canonical fields (`is_keynote`, `include_in_workshops`, tier) |
-| Segments | B2B / B2C chip | Derived from tier + audience |
-| Facilitator | full name chips (`facilitatorDisplay`) | Read-only |
-| Categories | topic tag chip(s) | Read-only |
-| Deliveries | count of sibling rows sharing `topic_slug` | Read-only |
-| Live | ✅ / — based on visible flag | Read-only summary |
-| Updated | `updated_at` | Formatted date |
-| ✎ | Link to detail page | |
+### 2. Migration (single transaction)
+- `CREATE TYPE engagement_tier_t AS ENUM ('IGNITE','AMPLIFY','EMBODY','NONE')`
+- `CREATE TYPE delivery_format_t AS ENUM ('keynote','speaking','workshop','lab','course','assessment','free_resource','blue_door')`
+- `ALTER TABLE path_finder_offerings ADD COLUMN engagement_tier engagement_tier_t, ADD COLUMN delivery_format delivery_format_t`
+- Run backfill UPDATEs (one WHEN/CASE per offering_key from the CSV, plus derivation fallback)
+- `ALTER TABLE ... ALTER COLUMN engagement_tier SET NOT NULL, ALTER COLUMN delivery_format SET NOT NULL`
+- `ALTER TABLE ... DROP COLUMN tier`
+- Add indexes on both new columns
 
-Keeps: top summary line ("N shown · N topics · N deliveries · N live"), search input, type/segment/facilitator/category filters, "Refresh" and "New topic" buttons, Phase-C banner, broken-launch alert, `OpPlatformResyncPanel`.
+### 3. Code updates (same PR as migration approval)
+Files touched:
 
-Removes from list view: the giant expanded card per row (moves to detail page).
+- `src/pages/pps/admin/PathFinderOfferings.tsx` — replace `tierSegment(tier)` / `deliveryTypes(row)` with direct reads of `delivery_format` + `engagement_tier`; update `TIER_COLORS` to key on `engagement_tier`; filter dropdowns use enum values.
+- `src/pages/pps/admin/offerings/OfferingEditor.tsx` — swap the single Tier `<Select>` for two selects (Engagement Tier + Delivery Format).
+- `src/pages/pps/admin/OpPlatformResyncPanel.tsx` — Ops payload's `format` maps 1:1 to `delivery_format`; `catalog_segment`+`path_stage` → `engagement_tier`.
+- `src/components/pps/TierBadge.tsx` — accept `engagement_tier` prop; unchanged rendering.
+- `src/config/tiers.ts` — key by engagement tier only.
+- `src/data/pathFinderQuiz.ts` + `supabase/functions/submit-path-finder-quiz/index.ts` + `src/components/pps/quiz/useOpPlatformRecommendations.ts` + `src/lib/quizRoutingSummary.ts` — anywhere that reads `tier` for routing/filtering switches to the new pair (usually `engagement_tier`).
+- `supabase/functions/_shared/transactional-email-templates/path-finder-results.tsx` — tier badge label uses `engagement_tier`.
+- `src/components/pps/partner/HowToChooseSection.tsx`, `SocialProofSection.tsx` — same swap.
+- Tests: `src/data/__tests__/pathFinderQuiz.edge-cases.test.ts`, quiz integration & RecGroup tests — update fixtures.
 
-## Detail view (`/admin/offerings/:offeringKey`)
+### 4. Verification
+- `tsgo` for typecheck (Supabase types regenerate after migration approval)
+- `bunx vitest run` for the quiz + offering visibility tests
+- Manual: load `/admin/offerings` — types column shows `delivery_format`, segment filter still works, edit page shows two selects.
 
-Reuses the current card body verbatim — Registry section (read-only, Op Platform) + PPS Controls section (Quiz + Website). Adds:
+## Technical notes
 
-- Back link "← All offerings"
-- Page title = offering name, subtitle = key + tier chip
-- Save + dirty-state logic (already exists) scoped to this one offering
+- Ops sync becomes trivial: no more overloaded field; the export → import mapping is direct.
+- `deliveryTypes()` helper in the admin list becomes a one-liner returning `[row.delivery_format]`.
+- The `NONE` engagement tier covers Free/Speaking/Blue Door — quiz routing that currently branches on `tier IN ('Free','Speaking','Blue Door')` will branch on `delivery_format` instead, which is more accurate.
+- Migration is destructive (`DROP COLUMN tier`) — no going back without a restore; that's what "drop now" means. Backfill correctness is the entire risk; the v5 CSV + derivation table above are how we manage it.
 
-Same data fetch: single `path_finder_offerings` row by `offering_key` (plus launch options + page-status lookup already in the page).
+## What ships in this turn
 
-## Files
-
-- `src/pages/pps/admin/PathFinderOfferings.tsx` — refactor into the **list view** only. Strip the per-row expanded card JSX.
-- `src/pages/pps/admin/PathFinderOfferingDetail.tsx` — **new**. Renders one offering using the extracted card component.
-- `src/pages/pps/admin/offerings/OfferingEditor.tsx` — **new**. Extracted from the current inline card (Registry + PPS Controls sections + save handler). Consumed by the detail page. This keeps the diff manageable and lets both pages share code if needed later.
-- `src/App.tsx` — add the `/admin/offerings/:offeringKey` route.
-
-## Out of scope
-
-- Bulk edit from the list.
-- Any DB / schema changes.
-- Changes to `OpPlatformResyncPanel`, routing-rules logic, or sync behavior.
-- Renaming or moving fields.
+Only the migration (step 1 backfill baked in). Code updates (step 3) go out in the follow-up turn once the migration is approved and `src/integrations/supabase/types.ts` regenerates — otherwise every code change fights the old type definitions.
