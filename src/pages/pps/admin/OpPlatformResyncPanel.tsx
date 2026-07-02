@@ -519,10 +519,12 @@ export function OpPlatformResyncPanel({
       let i = 2;
       while (existingKeys.has(key)) key = `${slugify(r.name)}-${i++}`;
       existingKeys.add(key);
+      const split = formatToSplit(r.format, (r as unknown as { catalog_segment?: string }).catalog_segment);
       return {
         offering_key: key,
         name: r.name,
-        tier: formatToTier(r.format),
+        engagement_tier: split.engagement_tier as never,
+        delivery_format: split.delivery_format as never,
         blurb: r.short_blurb ?? "",
         description: r.long_description ?? null,
         current_url: r.url ?? "https://onthepaintedporch.com",
