@@ -698,6 +698,78 @@ export function OpPlatformResyncPanel({
               </DiffSection>
 
               <DiffSection
+                title="Delivery-format drift — same topic, different formats between the two projects"
+                tone="navy"
+                empty="None — every shared topic has matching delivery formats on both sides."
+              >
+                {buckets.formatDrift.length > 0 && (
+                  <>
+                    <p className="text-[11px] text-muted-foreground mb-2 px-1">
+                      These topics exist on <strong>both</strong> sides. They
+                      are <strong>not missing</strong> — the local tier just
+                      maps to a different delivery format than what the Op
+                      Platform publishes. Reconcile by editing the tier locally
+                      or the format in the Op Platform.
+                    </p>
+                    <ul className="divide-y">
+                      {buckets.formatDrift.map((g) => (
+                        <li key={g.name} className="py-2 text-xs">
+                          <div className="font-medium text-navy text-sm mb-1">
+                            {g.name}
+                          </div>
+                          <div className="grid grid-cols-[60px_1fr] gap-x-2 gap-y-1 items-start">
+                            <span className="text-[10px] uppercase tracking-wide text-raspberry font-semibold">
+                              local
+                            </span>
+                            <div className="flex flex-wrap gap-1">
+                              {g.localRows.length === 0 ? (
+                                <em className="text-muted-foreground">
+                                  — no local delivery —
+                                </em>
+                              ) : (
+                                g.localRows.map((l) => (
+                                  <Badge
+                                    key={l.id}
+                                    variant="outline"
+                                    className="text-[10px]"
+                                    title={l.offering_key}
+                                  >
+                                    {l.tier}
+                                  </Badge>
+                                ))
+                              )}
+                            </div>
+                            <span className="text-[10px] uppercase tracking-wide text-bluedoor font-semibold">
+                              op
+                            </span>
+                            <div className="flex flex-wrap gap-1">
+                              {g.remoteRows.length === 0 ? (
+                                <em className="text-muted-foreground">
+                                  — no remote delivery —
+                                </em>
+                              ) : (
+                                g.remoteRows.map((r, i) => (
+                                  <Badge
+                                    key={i}
+                                    variant="outline"
+                                    className="text-[10px] border-bluedoor/40 text-bluedoor"
+                                  >
+                                    {r.format}
+                                  </Badge>
+                                ))
+                              )}
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </DiffSection>
+
+
+
+              <DiffSection
                 title="Missing locally — present in Op Platform but no DB row"
                 tone="bluedoor"
                 empty="None — every Op Platform offering has a local mirror."
