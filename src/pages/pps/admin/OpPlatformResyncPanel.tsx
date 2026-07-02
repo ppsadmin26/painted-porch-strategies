@@ -609,27 +609,38 @@ export function OpPlatformResyncPanel({
 
       {buckets && (
         <>
-          <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+          <div className="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
             <div className="rounded-md border bg-white p-3">
               <div className="text-xs text-muted-foreground">
-                Missing locally
+                New on Op Platform
               </div>
               <div className="text-2xl font-poppins font-bold text-bluedoor">
                 {buckets.missingLocally.length}
               </div>
               <div className="text-[11px] text-muted-foreground">
-                In Op Platform · not in DB
+                Topic not in DB at all
               </div>
             </div>
             <div className="rounded-md border bg-white p-3">
               <div className="text-xs text-muted-foreground">
-                Missing on Op Platform
+                Only in DB
               </div>
               <div className="text-2xl font-poppins font-bold text-raspberry">
                 {buckets.missingOnOp.length}
               </div>
               <div className="text-[11px] text-muted-foreground">
-                In DB · not in feed (possibly invalid)
+                Topic not in feed (possibly stale)
+              </div>
+            </div>
+            <div className="rounded-md border bg-white p-3">
+              <div className="text-xs text-muted-foreground">
+                Delivery-format drift
+              </div>
+              <div className="text-2xl font-poppins font-bold text-navy">
+                {buckets.formatDrift.length}
+              </div>
+              <div className="text-[11px] text-muted-foreground">
+                Same topic · different formats
               </div>
             </div>
             <div className="rounded-md border bg-white p-3">
