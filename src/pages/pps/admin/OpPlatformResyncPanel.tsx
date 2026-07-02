@@ -1058,7 +1058,7 @@ function DiffSection({
   children,
 }: {
   title: string;
-  tone: "raspberry" | "bluedoor" | "gold";
+  tone: "raspberry" | "bluedoor" | "gold" | "navy";
   empty: string;
   children?: React.ReactNode;
 }) {
@@ -1067,7 +1067,9 @@ function DiffSection({
       ? "border-raspberry/30 bg-raspberry/5"
       : tone === "bluedoor"
         ? "border-bluedoor/30 bg-bluedoor/5"
-        : "border-gold/40 bg-gold/5";
+        : tone === "navy"
+          ? "border-navy/30 bg-navy/5"
+          : "border-gold/40 bg-gold/5";
   const empty_ = !children;
   return (
     <div className={`rounded-md border ${toneCls} p-3`}>
