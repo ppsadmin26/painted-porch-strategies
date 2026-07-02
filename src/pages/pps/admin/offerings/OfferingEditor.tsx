@@ -452,6 +452,59 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
         </div>
       </section>
 
+      {/* Classification — engagement tier + delivery format (source of truth for tier) */}
+      <section className="rounded-md border border-strategic/30 bg-strategic/[0.03] px-3 py-3 space-y-3">
+        <div className="flex items-center gap-1.5">
+          <Label className="text-xs font-poppins font-semibold text-strategic uppercase tracking-wide">
+            Classification
+          </Label>
+          <HelpTooltip>
+            <strong>Engagement tier &amp; delivery format</strong>
+            <p className="mt-1">
+              These two fields are the source of truth for the legacy <code>tier</code> label shown above.
+              Engagement tier is the P.A.T.H. shape (IGNITE / AMPLIFY / EMBODY, or NONE for Free / Speaking / Blue Door).
+              Delivery format is how the offering is delivered.
+              Once Ops Platform sync is live, these become read-only mirrors — for now, correct any mismapping here.
+            </p>
+          </HelpTooltip>
+        </div>
+        <div className="grid md:grid-cols-2 gap-3 text-sm">
+          <div>
+            <Label className="text-xs mb-1 block">Engagement tier</Label>
+            <select
+              value={valueOf("engagement_tier") ?? "NONE"}
+              onChange={(e) => patch({ engagement_tier: e.target.value as EngagementTier })}
+              className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
+            >
+              <option value="IGNITE">IGNITE (B2C individual growth)</option>
+              <option value="AMPLIFY">AMPLIFY (team &amp; leadership)</option>
+              <option value="EMBODY">EMBODY (org-wide transformation)</option>
+              <option value="NONE">NONE (Free / Speaking / Blue Door)</option>
+            </select>
+          </div>
+          <div>
+            <Label className="text-xs mb-1 block">Delivery format</Label>
+            <select
+              value={valueOf("delivery_format") ?? "free_resource"}
+              onChange={(e) => patch({ delivery_format: e.target.value as DeliveryFormat })}
+              className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
+            >
+              <option value="keynote">Keynote</option>
+              <option value="speaking">Speaking topic</option>
+              <option value="workshop">Workshop</option>
+              <option value="lab">Lab (cohort)</option>
+              <option value="course">Course / masterclass</option>
+              <option value="assessment">Assessment</option>
+              <option value="free_resource">Free resource</option>
+              <option value="blue_door">Blue Door appraisal</option>
+            </select>
+          </div>
+        </div>
+        <p className="text-[11px] text-muted-foreground">
+          Resulting tier label: <code className="text-navy">{tier || "—"}</code> (auto)
+        </p>
+      </section>
+
       {/* PPS Controls */}
       <section className="rounded-md border border-primary/30 bg-primary/[0.03] px-3 py-3 space-y-4">
         <Label className="text-xs font-poppins font-semibold text-navy uppercase tracking-wide">PPS Controls</Label>
