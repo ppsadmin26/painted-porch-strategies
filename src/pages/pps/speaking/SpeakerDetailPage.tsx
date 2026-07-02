@@ -173,8 +173,11 @@ export default function SpeakerDetailPage({ speaker }: { speaker: SpeakerData })
                 id={topic.slug || undefined}
                 className={`bg-white rounded-xl border-l-4 ${speaker.themeColor} hover:shadow-lg transition-shadow overflow-hidden flex flex-col scroll-mt-24`}
               >
-                {/* Legacy alias — keeps `#topic-<slug>` inbound links resolving. */}
-                {topic.slug && <span id={`topic-${topic.slug}`} aria-hidden="true" /> }
+                {/* Legacy aliases — keep `#topic-<slug>` and prior slug URLs resolving. */}
+                {topic.slug && <span id={`topic-${topic.slug}`} aria-hidden="true" />}
+                {topic.aliases?.map((a) => (
+                  <span key={a} id={a} aria-hidden="true" />
+                ))}
                 {/* Thumbnail — standardized 16:9 to match /topics */}
                 <div className="relative w-full aspect-[16/9] overflow-hidden bg-navy/5">
                   {topic.image ? (
