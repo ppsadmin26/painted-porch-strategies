@@ -644,7 +644,9 @@ export type Database = {
           created_at: string
           current_url: string
           dedicated_url: string | null
+          delivery_format: Database["public"]["Enums"]["delivery_format_t"]
           description: string | null
+          engagement_tier: Database["public"]["Enums"]["engagement_tier_t"]
           facilitator: string | null
           id: string
           image_url: string | null
@@ -660,7 +662,6 @@ export type Database = {
           notes: string | null
           offering_key: string
           sort_order: number
-          tier: string
           topic: string | null
           topic_slug: string | null
           updated_at: string
@@ -674,7 +675,9 @@ export type Database = {
           created_at?: string
           current_url: string
           dedicated_url?: string | null
+          delivery_format: Database["public"]["Enums"]["delivery_format_t"]
           description?: string | null
+          engagement_tier: Database["public"]["Enums"]["engagement_tier_t"]
           facilitator?: string | null
           id?: string
           image_url?: string | null
@@ -690,7 +693,6 @@ export type Database = {
           notes?: string | null
           offering_key: string
           sort_order?: number
-          tier: string
           topic?: string | null
           topic_slug?: string | null
           updated_at?: string
@@ -704,7 +706,9 @@ export type Database = {
           created_at?: string
           current_url?: string
           dedicated_url?: string | null
+          delivery_format?: Database["public"]["Enums"]["delivery_format_t"]
           description?: string | null
+          engagement_tier?: Database["public"]["Enums"]["engagement_tier_t"]
           facilitator?: string | null
           id?: string
           image_url?: string | null
@@ -720,7 +724,6 @@ export type Database = {
           notes?: string | null
           offering_key?: string
           sort_order?: number
-          tier?: string
           topic?: string | null
           topic_slug?: string | null
           updated_at?: string
@@ -1207,6 +1210,16 @@ export type Database = {
         | "approved"
         | "scheduled"
         | "published"
+      delivery_format_t:
+        | "keynote"
+        | "speaking"
+        | "workshop"
+        | "lab"
+        | "course"
+        | "assessment"
+        | "free_resource"
+        | "blue_door"
+      engagement_tier_t: "IGNITE" | "AMPLIFY" | "EMBODY" | "NONE"
       media_type:
         | "podcast"
         | "interview"
@@ -1349,6 +1362,17 @@ export const Constants = {
         "scheduled",
         "published",
       ],
+      delivery_format_t: [
+        "keynote",
+        "speaking",
+        "workshop",
+        "lab",
+        "course",
+        "assessment",
+        "free_resource",
+        "blue_door",
+      ],
+      engagement_tier_t: ["IGNITE", "AMPLIFY", "EMBODY", "NONE"],
       media_type: [
         "podcast",
         "interview",
