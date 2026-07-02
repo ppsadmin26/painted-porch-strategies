@@ -13,9 +13,12 @@ export interface SpeakingTopic {
   title: string;
   description: string;
   image?: string;
-  /** Optional kebab-case slug for deep-linking via #topic-{slug}. */
+  /** Canonical kebab-case slug used as the on-page anchor id. */
   slug?: string;
+  /** Legacy anchor ids to keep resolving after a rename. */
+  aliases?: string[];
 }
+
 
 export interface SpeakerData {
   /** Optional. When set, topics are read from path_finder_offerings for this
