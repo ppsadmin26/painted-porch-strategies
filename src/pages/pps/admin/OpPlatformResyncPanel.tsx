@@ -454,28 +454,39 @@ export function OpPlatformResyncPanel({
     void runAudit();
   };
 
-  /** Map Op Platform format → local tier. Best-effort default; admin can edit after insert. */
-  const formatToTier = (fmt: string): string => {
+  /** Map Op Platform format → local delivery_format enum + engagement_tier. */
+  const formatToSplit = (
+    fmt: string,
+    catalogSegment?: string,
+  ): { delivery_format: string; engagement_tier: string; legacyTier: string } => {
+    const seg = (catalogSegment ?? "").toUpperCase();
     switch (fmt) {
       case "keynote":
-        return "Speaking";
+        return { delivery_format: "keynote", engagement_tier: "NONE", legacyTier: "Speaking" };
       case "workshop":
-        return "Workshop";
+        return { delivery_format: "workshop", engagement_tier: "AMPLIFY", legacyTier: "Workshop" };
       case "lab":
-        return "AMPLIFY";
+        return { delivery_format: "lab", engagement_tier: "AMPLIFY", legacyTier: "AMPLIFY" };
       case "course":
       case "masterclass":
-        return "IGNITE";
+        return { delivery_format: "course", engagement_tier: "IGNITE", legacyTier: "IGNITE" };
       case "assessment":
-        return "IGNITE";
+        return { delivery_format: "assessment", engagement_tier: "IGNITE", legacyTier: "Assessment" };
       case "free_resource":
-        return "Free";
+        return { delivery_format: "free_resource", engagement_tier: "NONE", legacyTier: "Free" };
       case "partnership":
-        return "AMPLIFY";
+        return {
+          delivery_format: seg === "B2C" ? "course" : "workshop",
+          engagement_tier: "AMPLIFY",
+          legacyTier: "AMPLIFY",
+        };
       default:
-        return "Free";
+        return { delivery_format: "free_resource", engagement_tier: "NONE", legacyTier: "Free" };
     }
   };
+
+  /** @deprecated retained only for legacy code paths still keyed on tier string. */
+  const formatToTier = (fmt: string): string => formatToSplit(fmt).legacyTier;
 
   const slugify = (s: string): string =>
     s
