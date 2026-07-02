@@ -72,21 +72,24 @@ const amy: SpeakerData = {
         "Turn struggling teams into high-performing powerhouses. Learn how to break through silos, rebuild trust, and create the kind of collaboration that drives extraordinary results.",
     },
     {
-      slug: "ai-ei-oh-guiding-change-in-the-ai-era",
+      slug: "ai-ei-oh",
+      aliases: ["ai-ei-oh-guiding-change-in-the-ai-era"],
       title: "AI, EI, Oh! Guiding Change in the AI Era",
       image: keynoteAiEiOh.url,
       description:
         "AI is here, but your people aren't equipped for the shift. Discover how emotional intelligence is the missing link to successful AI adoption, and learn to lead your team through tech-driven change without leaving anyone behind.",
     },
     {
-      slug: "the-alice-principles-down-the-rabbit-hole-of-transformation",
+      slug: "alice-principles",
+      aliases: ["the-alice-principles-down-the-rabbit-hole-of-transformation"],
       title: "The Alice Principles: Down the Rabbit Hole of Transformation",
       image: alicePrinciples.url,
       description:
         "What can Alice's adventures teach us about navigating organizational change? Explore how curiosity, adaptability, and questioning the status quo, inspired by Lewis Carroll's timeless tale, can transform the way your team approaches uncertainty and growth.",
     },
     {
-      slug: "dont-panic-navigating-a-changing-world",
+      slug: "dont-panic",
+      aliases: ["dont-panic-navigating-a-changing-world"],
       title: "Don't Panic! Navigating a Changing World",
       image: dontPanic.url,
       description:
