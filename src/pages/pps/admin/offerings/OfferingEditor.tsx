@@ -218,6 +218,23 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
 
   const validations = useMemo(() => {
     const issues: { level: "error" | "warning"; message: string }[] = [];
+
+    // Workshop / keynote / speaking routing rules (shared with build-time script).
+    const routing = validateWorkshopRouting({
+      offering_key: row.offering_key,
+      name: valueOf("name"),
+      delivery_format: valueOf("delivery_format"),
+      current_url: valueOf("current_url"),
+      anchor_id: valueOf("anchor_id"),
+      topic_slug: valueOf("topic_slug"),
+      include_in_workshops: !!valueOf("include_in_workshops"),
+      include_on_speaker_page: !!valueOf("include_on_speaker_page"),
+      is_keynote: !!valueOf("is_keynote"),
+    });
+    for (const i of routing.issues) {
+      issues.push({ level: i.level, message: i.message });
+    }
+
     const published = !!valueOf("is_published");
     const current = (valueOf("current_url") ?? "").toString().trim();
     const dedicated = (valueOf("dedicated_url") ?? "").toString().trim();
