@@ -666,6 +666,11 @@ export type Database = {
           topic: string | null
           topic_slug: string | null
           updated_at: string
+          workshop_card_bullets: string[] | null
+          workshop_card_challenge: string | null
+          workshop_card_description: string | null
+          workshop_card_format: string | null
+          workshop_card_investment: string | null
         }
         Insert: {
           anchor_id?: string | null
@@ -698,6 +703,11 @@ export type Database = {
           topic?: string | null
           topic_slug?: string | null
           updated_at?: string
+          workshop_card_bullets?: string[] | null
+          workshop_card_challenge?: string | null
+          workshop_card_description?: string | null
+          workshop_card_format?: string | null
+          workshop_card_investment?: string | null
         }
         Update: {
           anchor_id?: string | null
@@ -730,6 +740,11 @@ export type Database = {
           topic?: string | null
           topic_slug?: string | null
           updated_at?: string
+          workshop_card_bullets?: string[] | null
+          workshop_card_challenge?: string | null
+          workshop_card_description?: string | null
+          workshop_card_format?: string | null
+          workshop_card_investment?: string | null
         }
         Relationships: []
       }
