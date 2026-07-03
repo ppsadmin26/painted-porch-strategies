@@ -318,7 +318,7 @@ export default function SpeakingWorkshopTopics() {
         if (isWorkshop && r.topic) existing.topic = topicFor(key, r.topic);
         // DB is source of truth. Prefer description; fall back to blurb.
         // If both variants have content, keep the workshop row's copy
-        // (richer accordion text) — otherwise take whichever is non-empty.
+        // (richer body copy) — otherwise take whichever is non-empty.
         const incomingBlurb = (r.description || r.blurb || "") as string;
         if (incomingBlurb && (isWorkshop || !existing.blurb)) {
           existing.blurb = incomingBlurb;
