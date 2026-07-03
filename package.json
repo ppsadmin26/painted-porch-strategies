@@ -36,7 +36,8 @@
     "brand:eyebrows": "node scripts/brand-eyebrows.mjs",
     "audit:anchors": "node scripts/audit-anchor-coverage.mjs",
     "validate:routing": "node scripts/validate-workshop-routing.mjs",
-    "validate:routing:live": "node scripts/validate-workshop-routing.mjs --live"
+    "validate:routing:live": "node scripts/validate-workshop-routing.mjs --live",
+    "audit:links": "node scripts/audit-workshop-links.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.107.0",
