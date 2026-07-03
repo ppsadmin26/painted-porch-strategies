@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2, Save, ExternalLink, HelpCircle, AlertTriangle, AlertCircle } from "lucide-react";
 import { routingSummaryForTier, PLACEMENT_BADGE_COPY } from "@/lib/quizRoutingSummary";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { validateWorkshopRouting } from "@/lib/workshopRoutingValidation";
 
 
 // Full-name display map for facilitators
