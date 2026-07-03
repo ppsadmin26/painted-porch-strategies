@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "predev": "node scripts/generate-sitemap.mjs",
-    "prebuild": "node scripts/generate-sitemap.mjs && node scripts/generate-robots-txt.mjs && node scripts/validate-workshop-routing.mjs",
+    "prebuild": "node scripts/generate-sitemap.mjs && node scripts/generate-robots-txt.mjs && node scripts/audit-workshop-links.mjs && node scripts/validate-workshop-routing.mjs",
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
