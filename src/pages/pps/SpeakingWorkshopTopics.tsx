@@ -284,7 +284,7 @@ export default function SpeakingWorkshopTopics() {
         .from("path_finder_offerings")
         .select("offering_key,name,blurb,description,topic,facilitator,current_url,anchor_id,image_url,is_keynote,include_in_workshops,topic_slug")
         .or(
-          "current_url.eq./partner/amplify/workshops,current_url.eq./speaking/amy,current_url.eq./speaking/rob,current_url.eq./speaking/sierra,is_keynote.eq.true,include_in_workshops.eq.true",
+          "current_url.eq./partner/amplify/workshops,current_url.eq./speaking/topics,current_url.eq./speaking/amy,current_url.eq./speaking/rob,current_url.eq./speaking/sierra,is_keynote.eq.true,include_in_workshops.eq.true",
         )
         .order("name", { ascending: true });
 
