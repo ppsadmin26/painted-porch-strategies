@@ -9,6 +9,7 @@ import { Loader2, ExternalLink, Search, AlertTriangle, Plus, RefreshCw, Pencil }
 import { OpPlatformResyncPanel } from "./OpPlatformResyncPanel";
 import type { OfferingRow, LaunchOption } from "./offerings/OfferingEditor";
 import { facilitatorDisplay } from "./offerings/OfferingEditor";
+import { validateWorkshopRouting } from "@/lib/workshopRoutingValidation";
 
 const OP_PLATFORM_ADMIN_BASE = "https://paintedporch-ops.lovable.app/admin/topics";
 
@@ -249,8 +250,32 @@ export default function PathFinderOfferings() {
                   <tr key={r.id} className="border-t hover:bg-muted/20 align-top">
                     <td className="px-4 py-3 max-w-xs">
                       <Link to={`/admin/offerings/${encodeURIComponent(r.offering_key)}`} className="block group">
-                        <div className="font-poppins font-semibold text-navy leading-tight group-hover:underline">
-                          {r.name || <span className="italic text-muted-foreground">— missing name —</span>}
+                        <div className="flex items-center gap-1.5 font-poppins font-semibold text-navy leading-tight group-hover:underline">
+                          {(() => {
+                            const routing = validateWorkshopRouting({
+                              offering_key: r.offering_key,
+                              name: r.name,
+                              delivery_format: r.delivery_format,
+                              current_url: r.current_url,
+                              anchor_id: r.anchor_id,
+                              topic_slug: r.topic_slug,
+                              include_in_workshops: !!r.include_in_workshops,
+                              include_on_speaker_page: !!r.include_on_speaker_page,
+                              is_keynote: !!r.is_keynote,
+                            });
+                            if (routing.level === "error" && r.is_published) {
+                              return (
+                                <AlertTriangle
+                                  className="w-4 h-4 text-raspberry shrink-0"
+                                  aria-label="Published row has blocking routing errors"
+                                >
+                                  <title>{routing.issues.map((i) => i.message).join("\n")}</title>
+                                </AlertTriangle>
+                              );
+                            }
+                            return null;
+                          })()}
+                          <span>{r.name || <span className="italic text-muted-foreground">— missing name —</span>}</span>
                         </div>
                         <code className="text-[10px] text-muted-foreground">{r.offering_key}</code>
                         {r.blurb && (
@@ -259,6 +284,7 @@ export default function PathFinderOfferings() {
                       </Link>
                     </td>
                     <td className="px-2 py-3 text-xs text-muted-foreground whitespace-nowrap">#{r.sort_order ?? "—"}</td>
+
                     <td className="px-2 py-3">
                       <div className="flex flex-col gap-1">
                         {types.map((t) => (

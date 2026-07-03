@@ -1,59 +1,68 @@
-## Goal
+# Workshop/Keynote Route Validator
 
-Split the overloaded `path_finder_offerings.tier` column into two typed fields — `engagement_tier` (IGNITE/AMPLIFY/EMBODY/NONE) and `delivery_format` (keynote/speaking/workshop/lab/course/assessment/free_resource/blue_door) — backed by Postgres enums, and drop the legacy `tier` column in the same rollout.
+Two-part validation to prevent broken or misrouted workshop/keynote links from shipping.
 
-## Sequence
+## Part 1 — Build-time route audit script
 
-### 1. Backfill map from v5 CSV
-Generate `scripts/split-tier-backfill.sql` from `/mnt/documents/offerings-url-reconciliation-v5.csv`. For each row with a `resolved_ops_offering_key`, parse `{topic}--{format}--{segment}` to seed `delivery_format`, and derive `engagement_tier` from the local `tier`. For rows without a resolved key, fall back to the derivation logic already in `PathFinderOfferings.tsx` (`deliveryTypes()` + `tierSegment()`):
+**New file:** `scripts/validate-workshop-routing.mjs` (patterned after `audit-anchor-coverage.mjs`, read-only, no DB writes)
 
-| current `tier` | engagement_tier | delivery_format (default) |
-|---|---|---|
-| IGNITE | IGNITE | course (or `assessment` if is_keynote=false and name matches) |
-| AMPLIFY | AMPLIFY | lab (or `workshop` if include_in_workshops) |
-| EMBODY | EMBODY | workshop |
-| Workshop | AMPLIFY | workshop |
-| Speaking | NONE | speaking (or `keynote` if is_keynote=true) |
-| Free | NONE | free_resource |
-| Assessment | IGNITE | assessment |
-| Blue Door | NONE | blue_door |
+For every offering row where `delivery_format IN ('workshop','keynote','speaking')` OR `include_in_workshops = true` OR `is_keynote = true`, run a set of routing rules and emit both a JSON report and a non-zero exit code when any errors are found:
 
-Keynote wins over workshop when `is_keynote=true`.
+**Routing rules (per row):**
+1. **Featured workshops** (`include_in_workshops = true`) must have `current_url = '/partner/amplify/workshops'` AND a non-null `anchor_id`. The `anchor_id` must correspond to a card `id={…}` actually rendered in `src/pages/pps/partner/amplify/AmplifyWorkshops.tsx` (either via the DB query it makes, or the hardcoded fallback ids).
+2. **Speaker-page rows** (`include_on_speaker_page = true`) must have `current_url = '/speaking/amy'` (or another registered speaker page) AND an `anchor_id` present on that page.
+3. **Everything else** (workshop/keynote/speaking rows not featured and not on a speaker page, excluding dedicated landings like `/resources/kick-the-habit`, `/partner/amplify/stractical-leader`) must:
+   - route to `current_url = '/speaking/topics'`
+   - have a non-null `topic_slug`
+   - have `anchor_id = topic_slug`
+4. **`topic_slug` uniqueness pairing**: rows sharing a `topic_slug` (workshop + keynote pair) must all share the same `current_url` and `anchor_id`.
+5. **Reachability**: fetch each unique target URL from the running Vite preview (localhost:8080) and confirm HTTP 200. Skipped by default; enabled with `--live` flag so CI can opt in when a preview is running.
 
-### 2. Migration (single transaction)
-- `CREATE TYPE engagement_tier_t AS ENUM ('IGNITE','AMPLIFY','EMBODY','NONE')`
-- `CREATE TYPE delivery_format_t AS ENUM ('keynote','speaking','workshop','lab','course','assessment','free_resource','blue_door')`
-- `ALTER TABLE path_finder_offerings ADD COLUMN engagement_tier engagement_tier_t, ADD COLUMN delivery_format delivery_format_t`
-- Run backfill UPDATEs (one WHEN/CASE per offering_key from the CSV, plus derivation fallback)
-- `ALTER TABLE ... ALTER COLUMN engagement_tier SET NOT NULL, ALTER COLUMN delivery_format SET NOT NULL`
-- `ALTER TABLE ... DROP COLUMN tier`
-- Add indexes on both new columns
+**Outputs:**
+- `docs/workshop-routing-audit.json` — machine-readable results (used by the admin validator page for context)
+- Console: grouped table of errors / warnings
+- Exit code 1 on any error
 
-### 3. Code updates (same PR as migration approval)
-Files touched:
+**Wire-up:**
+- Add `"validate:routing": "node scripts/validate-workshop-routing.mjs"` to `package.json` scripts.
+- Add to `prebuild` chain after sitemap generation.
 
-- `src/pages/pps/admin/PathFinderOfferings.tsx` — replace `tierSegment(tier)` / `deliveryTypes(row)` with direct reads of `delivery_format` + `engagement_tier`; update `TIER_COLORS` to key on `engagement_tier`; filter dropdowns use enum values.
-- `src/pages/pps/admin/offerings/OfferingEditor.tsx` — swap the single Tier `<Select>` for two selects (Engagement Tier + Delivery Format).
-- `src/pages/pps/admin/OpPlatformResyncPanel.tsx` — Ops payload's `format` maps 1:1 to `delivery_format`; `catalog_segment`+`path_stage` → `engagement_tier`.
-- `src/components/pps/TierBadge.tsx` — accept `engagement_tier` prop; unchanged rendering.
-- `src/config/tiers.ts` — key by engagement tier only.
-- `src/data/pathFinderQuiz.ts` + `supabase/functions/submit-path-finder-quiz/index.ts` + `src/components/pps/quiz/useOpPlatformRecommendations.ts` + `src/lib/quizRoutingSummary.ts` — anywhere that reads `tier` for routing/filtering switches to the new pair (usually `engagement_tier`).
-- `supabase/functions/_shared/transactional-email-templates/path-finder-results.tsx` — tier badge label uses `engagement_tier`.
-- `src/components/pps/partner/HowToChooseSection.tsx`, `SocialProofSection.tsx` — same swap.
-- Tests: `src/data/__tests__/pathFinderQuiz.edge-cases.test.ts`, quiz integration & RecGroup tests — update fixtures.
+## Part 2 — Admin publish guard
 
-### 4. Verification
-- `tsgo` for typecheck (Supabase types regenerate after migration approval)
-- `bunx vitest run` for the quiz + offering visibility tests
-- Manual: load `/admin/offerings` — types column shows `delivery_format`, segment filter still works, edit page shows two selects.
+Enforce the same rules in the offerings editor so bad rows can't reach the site.
 
-## Technical notes
+**New shared file:** `src/lib/workshopRoutingValidation.ts`
+- Exports `validateWorkshopRouting(row): { level: 'ok'|'warning'|'error', issues: string[] }`
+- Same rule set as the script (rules 1-4; rule 5 is script-only)
+- Pure function, importable in both React admin UI and unit tests.
 
-- Ops sync becomes trivial: no more overloaded field; the export → import mapping is direct.
-- `deliveryTypes()` helper in the admin list becomes a one-liner returning `[row.delivery_format]`.
-- The `NONE` engagement tier covers Free/Speaking/Blue Door — quiz routing that currently branches on `tier IN ('Free','Speaking','Blue Door')` will branch on `delivery_format` instead, which is more accurate.
-- Migration is destructive (`DROP COLUMN tier`) — no going back without a restore; that's what "drop now" means. Backfill correctness is the entire risk; the v5 CSV + derivation table above are how we manage it.
+**Editor integration** — `src/pages/pps/admin/offerings/OfferingEditor.tsx`:
+- On render, call `validateWorkshopRouting` against the current draft.
+- Show a red `<Alert>` above the publish toggle listing each issue when `level === 'error'`.
+- Disable the "Published" `<Switch>` (and the Save button when the user is trying to flip `is_published: true`) while errors exist. Editors can still save unpublished drafts to fix them.
+- Warnings render as a yellow banner but don't block publish.
 
-## What ships in this turn
+**List page** — `src/pages/pps/admin/PathFinderOfferings.tsx`:
+- Compute validation per row; show an `AlertTriangle` icon in the row when a published row currently fails validation (catches drift when routing rules or hardcoded featured lists change).
 
-Only the migration (step 1 backfill baked in). Code updates (step 3) go out in the follow-up turn once the migration is approved and `src/integrations/supabase/types.ts` regenerates — otherwise every code change fights the old type definitions.
+**Unit tests** — `src/lib/__tests__/workshopRoutingValidation.test.ts`:
+- Covers each rule with a passing + failing fixture (featured missing anchor, speaking row not on /speaking/topics, mismatched anchor_id vs topic_slug, paired workshop/keynote diverging URLs, dedicated-landing exceptions).
+
+## Technical details
+
+- Script uses the same `PPS_URL` / `PPS_SERVICE_KEY` env pattern as `audit-anchor-coverage.mjs`. No new secrets.
+- Featured id pool for rule 1 is derived by parsing `AmplifyWorkshops.tsx` (both the Supabase select and the `FALLBACK_THUMB` keys — same technique as the anchor audit).
+- Dedicated-landing exceptions list is a small allowlist in the validation module, keyed by `offering_key`: `stracticalLeader`, `kickTheHabit`. Add more by editing the list.
+- No DB migration required. All enforcement lives client-side + build-time; the existing RLS already blocks non-editors from mutating rows.
+
+## Files touched
+
+**Created**
+- `scripts/validate-workshop-routing.mjs`
+- `src/lib/workshopRoutingValidation.ts`
+- `src/lib/__tests__/workshopRoutingValidation.test.ts`
+
+**Edited**
+- `package.json` (script + prebuild chain)
+- `src/pages/pps/admin/offerings/OfferingEditor.tsx` (publish guard UI)
+- `src/pages/pps/admin/PathFinderOfferings.tsx` (row-level warning icon)

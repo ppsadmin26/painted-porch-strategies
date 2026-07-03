@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2, Save, ExternalLink, HelpCircle, AlertTriangle, AlertCircle } from "lucide-react";
 import { routingSummaryForTier, PLACEMENT_BADGE_COPY } from "@/lib/quizRoutingSummary";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { validateWorkshopRouting } from "@/lib/workshopRoutingValidation";
 
 
 // Full-name display map for facilitators
@@ -217,6 +218,23 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
 
   const validations = useMemo(() => {
     const issues: { level: "error" | "warning"; message: string }[] = [];
+
+    // Workshop / keynote / speaking routing rules (shared with build-time script).
+    const routing = validateWorkshopRouting({
+      offering_key: row.offering_key,
+      name: valueOf("name"),
+      delivery_format: valueOf("delivery_format"),
+      current_url: valueOf("current_url"),
+      anchor_id: valueOf("anchor_id"),
+      topic_slug: valueOf("topic_slug"),
+      include_in_workshops: !!valueOf("include_in_workshops"),
+      include_on_speaker_page: !!valueOf("include_on_speaker_page"),
+      is_keynote: !!valueOf("is_keynote"),
+    });
+    for (const i of routing.issues) {
+      issues.push({ level: i.level, message: i.message });
+    }
+
     const published = !!valueOf("is_published");
     const current = (valueOf("current_url") ?? "").toString().trim();
     const dedicated = (valueOf("dedicated_url") ?? "").toString().trim();
@@ -269,6 +287,15 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
     return issues;
   }, [dirty, row, tier, launch]);
 
+  const hasBlockingErrors = validations.some((v) => v.level === "error");
+  const currentlyPublished = !!valueOf("is_published");
+  // Publish switch is blocked from flipping ON when there are errors,
+  // but always allows flipping OFF (so admins can unpublish a broken row).
+  const publishBlocked = hasBlockingErrors && !currentlyPublished;
+  // Save is blocked only if the pending save would put a broken row live.
+  const wouldPublishBroken = hasBlockingErrors && currentlyPublished;
+
+
 
   return (
     <div className="border rounded-lg p-4 bg-white space-y-4">
@@ -312,7 +339,11 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
           <div className="flex items-center gap-2">
             <Switch
               checked={!!valueOf("is_published")}
-              onCheckedChange={(v) => patch({ is_published: v })}
+              onCheckedChange={(v) => {
+                if (v && publishBlocked) return;
+                patch({ is_published: v });
+              }}
+              disabled={publishBlocked}
               id={`published-${row.id}`}
             />
             <Label htmlFor={`published-${row.id}`} className="text-sm font-medium">
@@ -323,19 +354,26 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
               <p className="mt-1">
                 Published offerings appear in the quiz, public catalog pages, and anywhere the site pulls from this registry. Unpublished is hidden from visitors and treated as ineligible for quiz recommendations.
               </p>
+              {publishBlocked && (
+                <p className="mt-2 text-raspberry font-semibold">
+                  Fix the blocking routing errors below before publishing.
+                </p>
+              )}
             </HelpTooltip>
           </div>
           <Button
             size="sm"
             onClick={save}
-            disabled={!isDirty || saving}
+            disabled={!isDirty || saving || wouldPublishBroken}
             className="bg-primary text-white hover:bg-primary/90"
+            title={wouldPublishBroken ? "Fix blocking routing errors before saving a published row" : undefined}
           >
             {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4 mr-1" />}
             Save
           </Button>
         </div>
       </div>
+
 
       {validations.length > 0 && (
         <div className="space-y-1.5" role="alert" aria-label="Configuration warnings">
