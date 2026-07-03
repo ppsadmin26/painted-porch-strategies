@@ -139,6 +139,11 @@ export interface OfferingRow {
   b2c_rt_pools: Record<string, string[]> | null;
   b2b_rt_pools: Record<string, string[]> | null;
   blue_door_required: boolean;
+  workshop_card_challenge: string | null;
+  workshop_card_description: string | null;
+  workshop_card_format: string | null;
+  workshop_card_investment: string | null;
+  workshop_card_bullets: string[] | null;
 }
 
 export interface LaunchOption {
@@ -631,6 +636,108 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
               </p>
             </HelpTooltip>
           </div>
+
+          <div className="flex items-center gap-2 rounded-md border border-input bg-white px-3 py-2 cursor-pointer">
+            <label className="flex items-center gap-2 flex-1 cursor-pointer">
+              <Switch
+                checked={!!valueOf("include_in_workshops")}
+                onCheckedChange={(v) => patch({ include_in_workshops: v })}
+              />
+              <span className="text-sm">
+                <strong>Feature on Workshops page</strong>
+                <span className="block text-[11px] text-muted-foreground">
+                  Show as a full card on <code>/partner/amplify/workshops</code>.
+                  {" "}Blue Door required → Phase Zero section. Otherwise → Team Development section.
+                </span>
+              </span>
+            </label>
+            <HelpTooltip>
+              <strong>Feature on Workshops page</strong>
+              <p className="mt-1">
+                When on, this offering renders as a full card on the Workshops page using the copy in the "Workshops page card" fields below. The card is placed in the Phase Zero section if <em>Blue Door required</em> is on, or under Leadership &amp; Team Development if not.
+              </p>
+            </HelpTooltip>
+          </div>
+
+          {!!valueOf("include_in_workshops") && (
+            <div className="rounded-md border border-strategic/30 bg-strategic/[0.03] px-3 py-3 space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <Label className="text-xs font-poppins font-semibold text-strategic uppercase tracking-wide">
+                  Workshops page card
+                </Label>
+                <span className="text-[11px] text-muted-foreground">
+                  Section: {valueOf("blue_door_required") ? (
+                    <span className="font-semibold text-bluedoor">Phase Zero (Blue Door)</span>
+                  ) : (
+                    <span className="font-semibold text-gold-foreground">Team Development</span>
+                  )}
+                </span>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-3 text-sm">
+                <div>
+                  <Label className="text-xs mb-1 block">Format / duration</Label>
+                  <Input
+                    placeholder="e.g. Half-day to full-day"
+                    value={valueOf("workshop_card_format") ?? ""}
+                    onChange={(e) => patch({ workshop_card_format: (e.target.value || null) as any })}
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs mb-1 block">Investment</Label>
+                  <Input
+                    placeholder="e.g. Starting at $7,500"
+                    value={valueOf("workshop_card_investment") ?? ""}
+                    onChange={(e) => patch({ workshop_card_investment: (e.target.value || null) as any })}
+                  />
+                </div>
+              </div>
+
+              {!!valueOf("blue_door_required") ? (
+                <div>
+                  <Label className="text-xs mb-1 block">The Challenge (red callout box)</Label>
+                  <textarea
+                    className="w-full min-h-[72px] rounded-md border border-input bg-background px-3 py-2 text-sm"
+                    placeholder="Your team..."
+                    value={valueOf("workshop_card_challenge") ?? ""}
+                    onChange={(e) => patch({ workshop_card_challenge: (e.target.value || null) as any })}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <Label className="text-xs mb-1 block">Card description</Label>
+                  <textarea
+                    className="w-full min-h-[72px] rounded-md border border-input bg-background px-3 py-2 text-sm"
+                    placeholder="Why most team-building fails..."
+                    value={valueOf("workshop_card_description") ?? ""}
+                    onChange={(e) => patch({ workshop_card_description: (e.target.value || null) as any })}
+                  />
+                </div>
+              )}
+
+              <div>
+                <Label className="text-xs mb-1 block">
+                  What You'll Walk Away With — one bullet per line
+                </Label>
+                <textarea
+                  className="w-full min-h-[112px] rounded-md border border-input bg-background px-3 py-2 text-sm"
+                  placeholder={"Identify team dynamics that…\nBuild shared language for…"}
+                  value={(valueOf("workshop_card_bullets") ?? []).join("\n")}
+                  onChange={(e) =>
+                    patch({
+                      workshop_card_bullets: e.target.value
+                        .split("\n")
+                        .map((s) => s.trim())
+                        .filter(Boolean) as any,
+                    })
+                  }
+                />
+                <p className="text-[11px] text-muted-foreground mt-1">
+                  {(valueOf("workshop_card_bullets") ?? []).length} bullet(s)
+                </p>
+              </div>
+            </div>
+          )}
 
           <div className="grid md:grid-cols-3 gap-3 text-sm">
             <div>
