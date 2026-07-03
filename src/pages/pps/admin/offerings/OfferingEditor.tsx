@@ -139,6 +139,11 @@ export interface OfferingRow {
   b2c_rt_pools: Record<string, string[]> | null;
   b2b_rt_pools: Record<string, string[]> | null;
   blue_door_required: boolean;
+  workshop_card_challenge: string | null;
+  workshop_card_description: string | null;
+  workshop_card_format: string | null;
+  workshop_card_investment: string | null;
+  workshop_card_bullets: string[] | null;
 }
 
 export interface LaunchOption {
