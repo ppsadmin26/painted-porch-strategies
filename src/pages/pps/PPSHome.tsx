@@ -238,6 +238,9 @@ export default function PPSHome() {
                 <br />
                 <strong>Wherever you enter, clarity comes before commitment.</strong>
               </p>
+              <p className="text-body text-foreground italic mt-4">
+                Know your organization needs to move? Start with the Blue Door. Still figuring out where to begin? The P.A.T.H.finder Quiz will orient you.
+              </p>
             </div>
 
             {/* Right: 3 stacked engagement rows */}
@@ -263,7 +266,7 @@ export default function PPSHome() {
                       but not sure where to get started.
                     </p>
                     <span className="text-sm font-semibold text-primary inline-flex items-center">
-                      Discover Your P.A.T.H.way
+                      Take the P.A.T.H.finder Quiz
                       <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
