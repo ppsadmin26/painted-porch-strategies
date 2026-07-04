@@ -14,7 +14,7 @@ const sierra: SpeakerData = {
   title: "Chief Joy Officer | M.B.A., Mind-Body Architect | Mindfulness Sherpa",
   seriesName: "The Radical Mindfulness Series",
   seriesIntro:
-    "Seventy-five percent of employees report burnout, but it doesn't have to be that way. In this uplifting speaker series, Sierra guides teams to recharge, refocus, and reconnect through mindfulness-based strategies that boost resilience and well-being.",
+    "Seventy-five percent of employees report burnout, but it doesn't have to be that way. In this uplifting speaker series, Sierra guides teams to recharge, refocus, and reconnect through mindfulness-based strategies that build resilience and well-being.",
   bio: [
     "Most people know me as a mindfulness coach, speaker, and wellness leader. But what truly lights me up is guiding people from overwhelmed to \"Om\", even in the middle of chaos.",
     "For over 15 years, I've guided teams, leaders, and mission-driven humans through the stress, burnout, and pressure that come with constant change. My mission is to reconnect you with your energy, your purpose, and your inner calm, so you can lead and live with more joy.",
