@@ -19,7 +19,7 @@ const amy: SpeakerData = {
   seriesName: "The Evolution of Change Leadership Series",
   heroBadgeLabel: "It's Time to Do Epic ShIFt",
   seriesIntro:
-    "Change doesn't have to suck. In this empowering speaker series, Amy Yackowski equips modern leaders with Stoic tools, real-world frameworks, and emotional intelligence practices that keep teams grounded and united through transformation.",
+    "Change doesn't have to suck. In this speaker series, Amy Yackowski equips modern leaders with Stoic tools, real-world frameworks, and emotional intelligence practices that keep teams grounded and united through transformation.",
   bio: [
     "Most people know me as a shift strategist, operational advisor, and founder of Painted Porch Strategies. But really? I'm just someone who believes that change doesn't have to suck.",
     "For over 20 years, I've partnered with teams and leaders in fast-paced industries like staffing, energy, and healthcare, turning burnout into boldness and uncertainty into aligned action.",
@@ -98,7 +98,7 @@ const amy: SpeakerData = {
   ],
   outcomesHeading: "Lead Through Uncertainty With Clarity & Courage",
   outcomesIntro:
-    "Change doesn't have to suck. In this empowering speaker series, Amy equips modern leaders with Stoic tools, real-world frameworks, and emotional intelligence practices that keep teams grounded and united through transformation.",
+    "Change doesn't have to suck. In this speaker series, Amy equips modern leaders with Stoic tools, real-world frameworks, and emotional intelligence practices that keep teams grounded and united through transformation.",
   outcomes: [
     "Lead through change with purpose and presence",
     "Build trust and candor across your team",
