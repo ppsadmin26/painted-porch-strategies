@@ -191,7 +191,7 @@ export default function AmplifyPathAlt() {
       <TierHeroSection
         tier={TIERS.AMPLIFY}
         badgeLabel="AMPLIFY P.A.T.H.way"
-        headline={<>Build Momentum That Aligns, Activates, and Accelerates Your Next Sh<span className="text-[hsl(263,85%,78%)] font-bold">IF</span>t.</>}
+        headline={<>Boost Momentum That Aligns, Activates, and Accelerates Your Next Sh<span className="text-[hsl(263,85%,78%)] font-bold">IF</span>t.</>}
         subheadline="When you've decided to architect change with clarity and confidence."
         description="AMPLIFY is for leadership teams seeking alignment AND individual leaders pursuing peer learning, creating compound momentum through team workshops, strategic sprints, and leadership labs."
         ctas={[
