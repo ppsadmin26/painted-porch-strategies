@@ -71,7 +71,10 @@ export function PartnerHeroSection() {
                 Our P.A.T.H.ways provide that direction.
               </p>
               <p data-body-allow className="text-lead text-white/80 italic">
-                Your next step isn't determined by your title. It's determined by where you are and what requires your focus right now.
+                Your next step depends on where you are and what sh<span className="text-raspberry font-bold">IF</span>t you want to start next, not your title.
+              </p>
+              <p data-body-allow className="text-lead text-white/80 italic">
+                If you&rsquo;re leading an organization through a known change and want clarity before committing, the Blue Door is the right first move. If you&rsquo;re still orienting - figuring out what you need, what we do, or whether this is the right fit - the P.A.T.H.finder Quiz will point you in the right direction.
               </p>
             </div>
 
@@ -82,7 +85,10 @@ export function PartnerHeroSection() {
               }`}
             >
               <Button asChild className="bg-primary border-2 border-primary text-white hover:bg-white hover:text-primary text-base sm:text-lg py-4 sm:py-6 px-4 sm:px-8 transition-colors w-full max-w-[20rem] sm:w-auto sm:max-w-full whitespace-normal h-auto leading-tight text-center">
-                <Link to="/start-here">Discover Your P.A.T.H.way</Link>
+                <Link to="/start-here">Take the P.A.T.H.finder Quiz</Link>
+              </Button>
+              <Button asChild className="bg-bluedoor border-2 border-bluedoor text-white hover:bg-white hover:text-bluedoor text-base sm:text-lg py-4 sm:py-6 px-4 sm:px-8 transition-colors w-full max-w-[20rem] sm:w-auto sm:max-w-full whitespace-normal h-auto leading-tight text-center">
+                <Link to="/blue-door">Open the Blue Door</Link>
               </Button>
             </div>
           </div>
