@@ -317,8 +317,8 @@ export default function PPSHome() {
                       Partner With Us
                     </h3>
                     <p className="text-body text-foreground leading-relaxed mb-3">
-                      Once the Blue Door reveals what&rsquo;s real, we partner
-                      with you to architect, align, and sustain the change.
+                      Once the Blue Door or P.A.T.H.finder quiz reveals what&rsquo;s real now, we partner
+                      with you to architect, align, and sustain your next sh<span className="text-raspberry font-bold">IF</span>t.
                       Three engagement styles, shaped to how you want to engage, what you need, and when.
                     </p>
                     <span className="text-sm font-semibold text-pps-purple inline-flex items-center">
