@@ -19,7 +19,7 @@ const sierra: SpeakerData = {
     "Most people know me as a mindfulness coach, speaker, and wellness leader. But what truly lights me up is guiding people from overwhelmed to \"Om\", even in the middle of chaos.",
     "For over 15 years, I've guided teams, leaders, and mission-driven humans through the stress, burnout, and pressure that come with constant change. My mission is to reconnect you with your energy, your purpose, and your inner calm, so you can lead and live with more joy.",
     "Through simple, science-backed practices, I teach people how to pause with intention, lead with presence, and build resilience that lasts.",
-    "If you're ready to stop surviving and start thriving, I'm here for it.",
+    "If you've decided to stop surviving and start thriving, I'm here for it.",
   ],
   closingLine: "Let's breathe new life into the way you work and lead.",
   photo: sierraPhoto,
