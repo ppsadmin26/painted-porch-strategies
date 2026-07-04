@@ -41,7 +41,7 @@ export default function OurImpact() {
     ogImage: impactCta,
   });
   const { ref: ctaRef, parallaxOffset } = useParallax<HTMLElement>({ mode: "viewport", range: 80, offset: 40 });
-  const { value: totalGiven, ref: counterRef } = useCountUp({ end: 31199, duration: 2500 });
+  const { value: totalGiven, ref: counterRef } = useCountUp({ end: 31474, duration: 2500 });
 
   // Single looping hero video (uses native `loop` for reliable continuous playback)
   const videoRef = useRef<HTMLVideoElement>(null);
