@@ -1,5 +1,5 @@
 /**
- * Shared helper for carrying P.A.T.H.finder quiz context into the Contact form
+ * Shared helper for carrying P.A.T.H.way quiz context into the Contact form
  * even when the user navigates away from the quiz dialog first (e.g., clicks
  * through to a recommended workshop or the Blue Door page, then later opens
  * /contact). The quiz dialog writes this payload to sessionStorage as soon as
@@ -58,7 +58,7 @@ export function clearQuizContactPrefill(): void {
 /** Combine the answers and recommendations into a single appendable block. */
 export function formatQuizBlock(p: Pick<QuizContactPrefill, "message" | "answersText" | "resultHeadline">): string {
   const parts: string[] = [];
-  parts.push(`--- P.A.T.H.finder Quiz Context ---`);
+  parts.push(`--- P.A.T.H.way Quiz Context ---`);
   if (p.resultHeadline) parts.push(`Result: ${p.resultHeadline}`);
   if (p.answersText && p.answersText.trim()) {
     parts.push(``, `My quiz responses:`, p.answersText.trim());

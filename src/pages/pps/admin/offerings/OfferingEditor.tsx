@@ -452,8 +452,8 @@ export default function OfferingEditor({ row: initialRow, launches, onSaved }: P
                     <strong>Audience segment</strong>
                     <p className="mt-1">
                       {seg === "B2B"
-                        ? "This delivery is designed for organizations and leadership teams. It routes into the B2B P.A.T.H. Finder flow (RT-A through RT-E) and organizational pages."
-                        : "This delivery is designed for individual leaders. It routes into the B2C P.A.T.H. Finder flow (RT1 through RT6) and personal development pages."}
+                        ? "This delivery is designed for organizations and leadership teams. It routes into the B2B P.A.T.H.way flow (RT-A through RT-E) and organizational pages."
+                        : "This delivery is designed for individual leaders. It routes into the B2C P.A.T.H.way flow (RT1 through RT6) and personal development pages."}
                     </p>
                   </HelpTooltip>
                 );

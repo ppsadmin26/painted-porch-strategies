@@ -1,4 +1,4 @@
-// P.A.T.H. Finder™ quiz data, branching, and scoring.
+// P.A.T.H.way™ quiz data, branching, and scoring.
 // Mirrors spec: PPS-PATH-Finder-Quiz-v4-2026-06-09.
 
 export type Track = "b2c" | "b2b";
@@ -739,7 +739,7 @@ function b2cResult(rt: B2CResultType, answers: Answers): QuizResult {
         groups: [
           grp("Free Starting Points", "stoicLeaderFieldGuide", "fiftyTwoStoicism", "burnoutResources", "stracticalMini"),
         ],
-        whatComesNext: "Retake the P.A.T.H. Finder in 60 to 90 days once you have more signal. Or reach out directly. Sometimes the right starting point is a conversation, not a quiz.",
+        whatComesNext: "Retake the P.A.T.H.way in 60 to 90 days once you have more signal. Or reach out directly. Sometimes the right starting point is a conversation, not a quiz.",
       };
   }
 }
@@ -765,7 +765,7 @@ function b2bResult(rt: B2BResultType, answers: Answers, strongest: "workshop" | 
 
   // Crossover note for Cap
   const crossover = (val(answers, "Q1Cap") === "B" && val(answers, "Q2Cap") === "C")
-    ? "Your situation also includes an individual-leader development thread. The Stractical Leader Lab (AMPLIFY, individual track) is built for exactly that strategic-tactical integration work. Have those individual leaders take the P.A.T.H. Finder on their own track."
+    ? "Your situation also includes an individual-leader development thread. The Stractical Leader Lab (AMPLIFY, individual track) is built for exactly that strategic-tactical integration work. Have those individual leaders take the P.A.T.H.way on their own track."
     : undefined;
 
   let headline = "", narrative = "", primaryHeading = "", primaryKeys: OfferingKey[] = [], whyThisFits = "";

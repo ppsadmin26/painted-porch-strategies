@@ -4,7 +4,7 @@ import { ExternalLink, Info } from "lucide-react";
 import { routingSummaryForTier } from "@/lib/quizRoutingSummary";
 
 /**
- * Placeholder admin page documenting the full P.A.T.H.finder quiz routing
+ * Placeholder admin page documenting the full P.A.T.H.way quiz routing
  * logic. Source of truth lives in code (src/data/pathFinderQuiz.ts and
  * src/integrations/op-platform/personaMap.ts) — this page mirrors it so
  * non-engineers can audit how a quiz answer becomes a recommendation list.
@@ -50,7 +50,7 @@ export default function QuizRoutingRules() {
           <Badge variant="outline" className="bg-bluedoor/10 text-bluedoor border-bluedoor/40">Placeholder</Badge>
           <Badge variant="outline">Read-only · code-sourced</Badge>
         </div>
-        <h1 className="text-2xl font-poppins font-bold text-navy">P.A.T.H.finder Quiz Routing Rules</h1>
+        <h1 className="text-2xl font-poppins font-bold text-navy">P.A.T.H.way Quiz Routing Rules</h1>
         <p className="text-sm text-muted-foreground mt-1">
           How every answer becomes a recommendation. Source of truth lives in <code>src/data/pathFinderQuiz.ts</code> and{" "}
           <code>src/integrations/op-platform/personaMap.ts</code>. Per-offering routing also shows on each card in{" "}

@@ -1,5 +1,5 @@
 /**
- * End-to-end-style integration test for the B2C P.A.T.H.finder quiz.
+ * End-to-end-style integration test for the B2C P.A.T.H.way quiz.
  *
  * Renders the real <PathFinderQuizDialog/> in jsdom and clicks through every
  * question for each canonical B2C result type (RT1–RT6) plus the cohort
@@ -161,7 +161,7 @@ function walkB2C(a: Flow["answers"]) {
   ids.forEach((id, i) => answerCurrent(labelFor(i, id), i === ids.length - 1));
 }
 
-describe("B2C P.A.T.H.finder quiz (UI integration)", () => {
+describe("B2C P.A.T.H.way quiz (UI integration)", () => {
   beforeEach(() => {
     cleanup();
     // Wipe persisted progress between flows.

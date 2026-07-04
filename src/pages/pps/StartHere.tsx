@@ -61,7 +61,7 @@ export default function StartHere() {
           </span>
         }
         headline="Find Your P.A.T.H.way"
-        description="Not sure where to begin? Our P.A.T.H.finder quiz will surface the right partnership style and specific programs to start with on the Painted Porch."
+        description="Not sure where to begin? Our P.A.T.H.way quiz will surface the right partnership style and specific programs to start with on the Painted Porch."
         ctas={[]}
         background={{ type: "image", src: startHereHero }}
         overlayClass="bg-navy/50"
@@ -75,7 +75,7 @@ export default function StartHere() {
             onClick={openQuiz}
             className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary px-6 sm:px-10 py-4 sm:py-6 text-base sm:text-lg font-semibold rounded-lg transition-colors max-w-full whitespace-normal h-auto"
           >
-            Take the P.A.T.H.finder Quiz <ArrowRight className="ml-2 w-5 h-5 shrink-0" />
+            Take the P.A.T.H.way Quiz <ArrowRight className="ml-2 w-5 h-5 shrink-0" />
           </Button>
           <p className="text-body -sm text-foreground/70 mt-3">About 3 minutes. Email yourself the results when you're done.</p>
         </div>

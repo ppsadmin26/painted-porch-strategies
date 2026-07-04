@@ -1,4 +1,4 @@
-// P.A.T.H. Finder quiz: emails user their results; if subscribe=true, also syncs to GHL with PathQuiz tag.
+// P.A.T.H.way quiz: emails user their results; if subscribe=true, also syncs to GHL with PathQuiz tag.
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
@@ -36,7 +36,7 @@ interface Body {
 function buildNote(b: Body): string {
   const date = new Date().toLocaleDateString("en-US", { timeZone: "America/Phoenix" });
   const lines = [
-    `P.A.T.H. Finder — ${date}`,
+    `P.A.T.H.way — ${date}`,
     ``,
     `Track: ${b.track.toUpperCase()}  |  Result: ${b.resultType} — ${b.headline}`,
     b.strongestNextStep ? `Strongest Next Step: ${b.strongestNextStep.name}` : null,
@@ -74,7 +74,7 @@ async function upsertContact(apiKey: string, locationId: string, b: Body): Promi
     method: "POST", headers: ghlHeaders(apiKey),
     body: JSON.stringify({
       locationId, firstName: b.firstName.trim(), email: b.email.trim(),
-      tags, source: "P.A.T.H. Finder Quiz",
+      tags, source: "P.A.T.H.way Quiz",
     }),
   });
   if (!res.ok) throw new Error(`GHL create fail: ${res.status} ${await res.text()}`);

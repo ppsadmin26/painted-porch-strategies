@@ -9,7 +9,7 @@ import { assertRecommendationLinksValid } from "./helpers/recommendationLinks";
 
 /**
  * Real-browser smoke for PPS Op Platform supplemental recommendations on
- * the B2B side of the P.A.T.H.finder quiz.
+ * the B2B side of the P.A.T.H.way quiz.
  *
  * Mirrors pq-op-platform-recs.spec.ts (B2C) but walks an organizational
  * "Change" branch — a path that consistently surfaces a primary workshop,

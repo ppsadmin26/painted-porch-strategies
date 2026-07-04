@@ -2,7 +2,7 @@ import { test, expect, type Page } from "../playwright-fixture";
 import { PQ1, PQ2_B2C, B2C_QUESTIONS } from "../src/data/pathFinderQuiz";
 
 /**
- * Keyboard-only navigation guardrails for the B2C P.A.T.H.finder quiz.
+ * Keyboard-only navigation guardrails for the B2C P.A.T.H.way quiz.
  *
  * Verifies, end to end in real Chromium:
  *   1. Focus order — Tab lands on option buttons in DOM order, then Next.

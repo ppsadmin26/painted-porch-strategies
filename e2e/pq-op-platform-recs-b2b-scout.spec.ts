@@ -9,7 +9,7 @@ import { assertRecommendationLinksValid } from "./helpers/recommendationLinks";
 
 /**
  * Second real-browser smoke for PPS Op Platform supplemental recommendations
- * on the B2B side of the P.A.T.H.finder quiz.
+ * on the B2B side of the P.A.T.H.way quiz.
  *
  * Sibling to pq-op-platform-recs-b2b.spec.ts but deliberately walks a
  * DIFFERENT answer path:

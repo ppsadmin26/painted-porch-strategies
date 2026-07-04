@@ -1,6 +1,6 @@
 /**
  * Guardrails for the admin-driven "viewable" filter that controls which
- * P.A.T.H.finder offerings can appear in quiz results.
+ * P.A.T.H.way offerings can appear in quiz results.
  *
  * Rule: an offering is only recommendable if its key is in `viewableKeys`
  * (computed at runtime from /admin/path-finder-offerings as is_live=true
