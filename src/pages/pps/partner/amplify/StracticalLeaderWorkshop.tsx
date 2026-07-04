@@ -5,7 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
   ArrowRight, CheckCircle2, Shield, Search, Gem, Check, Calendar,
-  PlayCircle, Target, MessageSquare, Compass, FileText, Sparkles, Clock, Bell
+  PlayCircle, Target, MessageSquare, Compass, FileText, Sparkles, Clock, Bell, Download
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
@@ -484,6 +484,35 @@ export default function StracticalLeaderWorkshop() {
                 <p className="text-body text-foreground/80">{item}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ CALL OUT: MINI GUIDE DOWNLOAD ═══ */}
+      <section className="py-12 md:py-16 bg-muted">
+        <div className="container max-w-4xl mx-auto px-6">
+          <div className="relative rounded-2xl bg-gradient-to-br from-navy to-navy/90 text-white p-8 md:p-10 shadow-xl overflow-hidden">
+            <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-gold/15 blur-2xl pointer-events-none" />
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
+                <Download className="w-6 h-6 text-gold" aria-hidden />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl md:text-3xl font-poppins font-bold text-white mb-3">
+                  Start with the free mini guide
+                </h3>
+                <p className="text-body text-white/85 mb-5">
+                  Not ready for the 6-week lab? Download the Stractical Leader Mini Guide to get the blueprint, the three-pillar framework, and concrete next steps you can use right away.
+                </p>
+                <Link
+                  to="/resources/stractical-mini"
+                  className="inline-flex items-center gap-2 bg-gold text-navy font-poppins font-semibold px-6 py-3 rounded-lg hover:bg-gold/90 transition-colors focus-ring-on-dark"
+                >
+                  Download the Mini Guide
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
