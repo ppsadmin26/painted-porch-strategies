@@ -98,7 +98,7 @@ const amy: SpeakerData = {
   ],
   outcomesHeading: "Lead Through Uncertainty With Clarity & Courage",
   outcomesIntro:
-    "Change doesn't have to suck. In this empowering speaker series, Amy equips modern leaders with Stoic tools, real-world frameworks, and emotional intelligence practices that keep teams grounded and united through transformation.",
+    "Change doesn't have to suck. In this speaker series, Amy equips modern leaders with Stoic tools, real-world frameworks, and emotional intelligence practices that keep teams grounded and united through transformation.",
   outcomes: [
     "Lead through change with purpose and presence",
     "Build trust and candor across your team",
