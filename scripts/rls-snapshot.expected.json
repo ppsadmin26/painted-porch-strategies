@@ -173,18 +173,6 @@
       "with_check": null
     },
     {
-      "cmd": "SELECT",
-      "permissive": "PERMISSIVE",
-      "policyname": "Anyone can read post categories",
-      "qual": "true",
-      "roles": [
-        "public"
-      ],
-      "schemaname": "public",
-      "tablename": "blog_post_categories",
-      "with_check": null
-    },
-    {
       "cmd": "DELETE",
       "permissive": "PERMISSIVE",
       "policyname": "Authors or admins can delete post categories",
@@ -207,6 +195,18 @@
       "schemaname": "public",
       "tablename": "blog_post_categories",
       "with_check": "(is_admin(auth.uid()) OR (EXISTS ( SELECT 1\n   FROM blog_posts bp\n  WHERE ((bp.id = blog_post_categories.post_id) AND (bp.author_id = auth.uid())))))"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "Public can read categories for visible posts",
+      "qual": "((EXISTS ( SELECT 1\n   FROM blog_posts bp\n  WHERE ((bp.id = blog_post_categories.post_id) AND (bp.status = ANY (ARRAY['published'::blog_post_status, 'scheduled'::blog_post_status]))))) OR is_admin(auth.uid()) OR (EXISTS ( SELECT 1\n   FROM blog_posts bp\n  WHERE ((bp.id = blog_post_categories.post_id) AND (bp.author_id = auth.uid())))))",
+      "roles": [
+        "public"
+      ],
+      "schemaname": "public",
+      "tablename": "blog_post_categories",
+      "with_check": null
     },
     {
       "cmd": "INSERT",
