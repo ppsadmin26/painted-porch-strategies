@@ -457,7 +457,7 @@ export default function PhaseZero() {
               Three clear ways to begin.
             </h2>
             <p className="text-body text-foreground/80 mt-4">
-              If you're leading an organization and you know change is coming, the Blue Door is the recommended starting point. If you're still orienting yourself or your team, the P.A.T.H.way Quiz will show you where to begin.
+              Phase Zero isn't something you purchase on its own - it's the stage of work that must happen before execution begins. These are the three ways we facilitate it.. If you're leading an organization and you know change is coming, the Blue Door is the recommended starting point. If you're still orienting yourself or your team, the P.A.T.H.way Quiz will show you where to begin.
             </p>
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-6">
