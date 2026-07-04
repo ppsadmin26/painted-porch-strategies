@@ -41,7 +41,7 @@ const BlueDoorPurchaseConfirmation = ({
 
           <Section style={highlightBox}>
             <Text style={highlightHeading}>
-              📅 Your assessment opens Monday, July 2026
+              📅 Your assessment opens July 2026
             </Text>
             <Text style={highlightText}>
               On launch day, we will email you a secure access link from this same address. Open the link, complete the appraisal (less than 30 minutes), and your detailed executive brief will be delivered within 72 business hours.
