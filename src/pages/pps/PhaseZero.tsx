@@ -456,6 +456,9 @@ export default function PhaseZero() {
             <h2 className="text-3xl md:text-4xl font-poppins font-bold text-navy leading-tight">
               Three clear ways to begin.
             </h2>
+            <p className="text-body text-foreground/80 mt-4">
+              If you're leading an organization and you know change is coming, the Blue Door is the recommended starting point. If you're still orienting yourself or your team, the P.A.T.H.way Quiz will show you where to begin.
+            </p>
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-6">
             {wherePhaseZeroLeads.map((w) => (
