@@ -71,7 +71,10 @@ export function PartnerHeroSection() {
                 Our P.A.T.H.ways provide that direction.
               </p>
               <p data-body-allow className="text-lead text-white/80 italic">
-                Your next step isn't determined by your title. It's determined by where you are and what requires your focus right now.
+                Your next step depends on where you are and what sh<span className="text-raspberry font-bold">IF</span>t you want to start next, not your title.
+              </p>
+              <p data-body-allow className="text-lead text-white/80 italic">
+                If you&rsquo;re leading an organization through a known change and want clarity before committing, the Blue Door is the right first move. If you&rsquo;re still orienting - figuring out what you need, what we do, or whether this is the right fit - the P.A.T.H.finder Quiz will point you in the right direction.
               </p>
             </div>
 
