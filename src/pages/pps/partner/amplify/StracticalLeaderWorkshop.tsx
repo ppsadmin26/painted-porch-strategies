@@ -5,7 +5,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
   ArrowRight, CheckCircle2, Shield, Search, Gem, Check, Calendar,
-  PlayCircle, Target, MessageSquare, Compass, FileText, Sparkles, Clock, Bell
+  PlayCircle, Target, MessageSquare, Compass, FileText, Sparkles, Clock, Bell, Download
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
