@@ -117,6 +117,35 @@ export default function StracticalLeaderGuide() {
         </div>
       </section>
 
+      {/* CALL OUT: DEEPER DIVE */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container max-w-4xl mx-auto px-6">
+          <div className="relative rounded-2xl bg-gradient-to-br from-navy to-navy/90 text-white p-8 md:p-10 shadow-xl overflow-hidden">
+            <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-gold/15 blur-2xl pointer-events-none" />
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
+                <Sparkles className="w-6 h-6 text-gold" aria-hidden />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl md:text-3xl font-poppins font-bold text-white mb-3">
+                  Ready to go deeper?
+                </h3>
+                <p className="text-body text-white/85 mb-5">
+                  This mini guide is a great start. If you want guided practice, real scenarios, and direct feedback over six weeks, the Stractical Leader Lab is your next step.
+                </p>
+                <Link
+                  to="/partner/amplify/stractical-leader"
+                  className="inline-flex items-center gap-2 bg-gold text-navy font-poppins font-semibold px-6 py-3 rounded-lg hover:bg-gold/90 transition-colors focus-ring-on-dark"
+                >
+                  Explore the Leader Lab
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* GHL FORM EMBED */}
       <section id="get-guide" className="py-16 md:py-24 bg-muted scroll-mt-24">
         <div className="container max-w-xl mx-auto px-6">
