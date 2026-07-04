@@ -32,13 +32,13 @@ const Email = (p: Props) => {
   return (
     <Html lang="en" dir="ltr">
       <Head />
-      <Preview>Your P.A.T.H. Finder results</Preview>
+      <Preview>Your P.A.T.H.way results</Preview>
       <Body style={main}>
         <Container style={container}>
           <Link href="https://onthepaintedporch.com" style={{ display: "block", textDecoration: "none" }}>
             <Img src={LOGO_URL} width="180" height="auto" alt={SITE} style={logo} />
           </Link>
-          <Text style={kicker}>Your P.A.T.H. Finder Results</Text>
+          <Text style={kicker}>Your P.A.T.H.way Results</Text>
           <Heading style={h1}>{p.headline ?? "Your starting point"}</Heading>
           {p.subhead ? <Text style={subhead}>{p.subhead}</Text> : null}
           <Text style={text}>
@@ -103,8 +103,8 @@ const Email = (p: Props) => {
 
 export const template = {
   component: Email,
-  subject: 'Your P.A.T.H. Finder results',
-  displayName: 'P.A.T.H. Finder quiz results',
+  subject: 'Your P.A.T.H.way results',
+  displayName: 'P.A.T.H.way quiz results',
   previewData: {
     firstName: 'Marcus',
     headline: 'Elevate Team Leadership',

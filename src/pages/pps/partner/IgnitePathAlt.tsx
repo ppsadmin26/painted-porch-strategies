@@ -172,10 +172,10 @@ export default function IgnitePathAlt() {
               <strong>If any of these spark a "Sh<span className="text-gold font-bold">IF</span>t Yeah!", then stepping onto the IGNITE P.A.T.H.way makes the most sense for you right now.</strong>
             </p>
             <p className="text-body text-foreground mb-8 max-w-2xl mx-auto">
-              Take our free P.A.T.H.finder quiz to discover which programs fit your specific development priorities.
+              Take our free P.A.T.H.way quiz to discover which programs fit your specific development priorities.
             </p>
             <Button asChild className="bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary h-12 px-8 text-base font-semibold transition-colors">
-              <Link to="/start-here">Take Free P.A.T.H.finder Quiz</Link>
+              <Link to="/start-here">Take Free P.A.T.H.way Quiz</Link>
             </Button>
           </div>
         </div>
@@ -457,9 +457,9 @@ export default function IgnitePathAlt() {
         overlayTone="teal"
         headline={<>What Sh<span className="text-gold font-bold">IF</span>t Will You Ignite First?</>}
         description={<>Your Phase Zero journey starts with one program, one assessment, or one decision to invest in your capability.</>}
-        footnote="Not sure where to start? Take our P.A.T.H.finder quiz to get personalized recommendations based on your development priorities."
+        footnote="Not sure where to start? Take our P.A.T.H.way quiz to get personalized recommendations based on your development priorities."
         actions={[
-          { label: "Take Free P.A.T.H.finder Quiz", to: "/start-here", variant: "primary" },
+          { label: "Take Free P.A.T.H.way Quiz", to: "/start-here", variant: "primary" },
         ]}
       />
     </div>

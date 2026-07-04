@@ -239,7 +239,7 @@ export default function PPSHome() {
                 <strong>Wherever you enter, clarity comes before commitment.</strong>
               </p>
               <p className="text-body text-foreground italic mt-4">
-                Know your organization needs to move? Start with the Blue Door. Still figuring out where to begin? The P.A.T.H.finder Quiz will orient you.
+                Know your organization needs to move? Start with the Blue Door. Still figuring out where to begin? The P.A.T.H.way Quiz will orient you.
               </p>
             </div>
 
@@ -266,7 +266,7 @@ export default function PPSHome() {
                       but not sure where to get started.
                     </p>
                     <span className="text-sm font-semibold text-primary inline-flex items-center">
-                      Take the P.A.T.H.finder Quiz
+                      Take the P.A.T.H.way Quiz
                       <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
@@ -317,7 +317,7 @@ export default function PPSHome() {
                       Partner With Us
                     </h3>
                     <p className="text-body text-foreground leading-relaxed mb-3">
-                      Once the Blue Door or P.A.T.H.finder quiz reveals what&rsquo;s real now, we partner
+                      Once the Blue Door or P.A.T.H.way quiz reveals what&rsquo;s real now, we partner
                       with you to architect, align, and sustain your next sh<span className="text-raspberry font-bold">IF</span>t.
                       Three engagement styles, shaped to how you want to engage, what you need, and when.
                     </p>

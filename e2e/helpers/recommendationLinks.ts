@@ -2,7 +2,7 @@ import { expect, type Page, type Locator } from "../../playwright-fixture";
 
 /**
  * Shared helpers for asserting that every rendered recommendation link
- * inside the P.A.T.H.finder result dialog is safe and reachable.
+ * inside the P.A.T.H.way result dialog is safe and reachable.
  *
  * Used by both pq-op-platform-recs.spec.ts (B2C) and
  * pq-op-platform-recs-b2b.spec.ts (B2B).

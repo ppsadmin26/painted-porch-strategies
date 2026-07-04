@@ -111,14 +111,14 @@ export function StartWhereYouAreSection() {
           })}
         </div>
 
-        {/* P.A.T.H.finder Quiz CTA */}
+        {/* P.A.T.H.way Quiz CTA */}
         <div className="flex flex-col items-center mt-12 px-4">
           <p className="text-body text-foreground mb-4 text-center">
             Unsure which P.A.T.H.way to explore first?
           </p>
           <Link to="/start-here" className="w-full max-w-[20rem] sm:w-auto sm:max-w-full">
             <Button className="bg-primary text-white hover:bg-primary/90 px-4 sm:px-12 py-4 sm:py-6 text-sm sm:text-lg font-semibold rounded-lg transition-colors w-full sm:w-auto max-w-full whitespace-normal h-auto leading-tight text-center">
-              <span className="min-w-0 whitespace-normal">Take P.A.T.H.finder Quiz</span>
+              <span className="min-w-0 whitespace-normal">Take P.A.T.H.way Quiz</span>
               <ArrowRight className="ml-2 w-5 h-5 shrink-0" />
             </Button>
           </Link>

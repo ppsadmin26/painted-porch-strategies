@@ -22,7 +22,7 @@ interface SearchEntry {
 const searchIndex: SearchEntry[] = [
   // Main pages
   { title: "Home", description: "Welcome to Painted Porch Strategies", href: "/", category: "Pages", keywords: ["home", "main", "landing", "painted porch"], icon: <Building className="w-4 h-4" /> },
-  { title: "Start Here", description: "Take the P.A.T.H.finder quiz to discover your pathway", href: "/start-here", category: "Pages", keywords: ["start", "quiz", "pathfinder", "path", "begin", "assessment", "blue door"], icon: <ArrowRight className="w-4 h-4" /> },
+  { title: "Start Here", description: "Take the P.A.T.H.way quiz to discover your pathway", href: "/start-here", category: "Pages", keywords: ["start", "quiz", "pathway", "path", "begin", "assessment", "blue door"], icon: <ArrowRight className="w-4 h-4" /> },
   { title: "Contact Us", description: "Get in touch with us", href: "/contact", category: "Pages", keywords: ["contact", "call", "schedule", "email", "phone", "reach out"], icon: <FileText className="w-4 h-4" /> },
   { title: "Speaking", description: "Book Amy for keynotes, workshops, and events", href: "/speaking", category: "Pages", keywords: ["speaking", "keynote", "event", "workshop", "conference", "presenter"], icon: <Mic className="w-4 h-4" /> },
 

@@ -41,7 +41,7 @@ async function assertNoCriticalA11yViolations(page: Page, context: string) {
 }
 
 /**
- * Real-browser smoke for the B2C P.A.T.H.finder quiz.
+ * Real-browser smoke for the B2C P.A.T.H.way quiz.
  *
  * Mirrors the jsdom integration suite
  * (src/components/pps/quiz/__tests__/PathFinderQuizDialog.b2c.e2e.test.tsx)
@@ -139,7 +139,7 @@ async function walkB2C(page: Page, answers: AnswerIds) {
   }
 }
 
-test.describe("B2C P.A.T.H.finder quiz (real browser)", () => {
+test.describe("B2C P.A.T.H.way quiz (real browser)", () => {
   test.beforeEach(async ({ page }) => {
     // Wipe any sessionStorage progress between flows.
     await page.addInitScript(() => {
