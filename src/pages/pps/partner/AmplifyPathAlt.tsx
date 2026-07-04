@@ -31,7 +31,7 @@ const teamSignals = [
   },
   {
     title: "Individual Capacity, Team Gaps",
-    description: "Individuals and leaders are capable, but team dynamics undermine transformation. Silos, conflict, and unclear accountability limit progress.",
+    description: "Individuals and leaders are capable, but team dynamics hold back transformation. Silos, conflict, and unclear accountability limit progress.",
   },
 ];
 
