@@ -251,11 +251,11 @@ export default function PPSHome() {
                     <MessageCircle className="w-6 h-6 text-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-body font-poppins font-semibold uppercase tracking-wider text-primary mb-1">
-                      01 &middot; Find Your P.A.T.H.
-                    </p>
+                    <Eyebrow variant="plain" tone="primary" className="mb-1">
+                      ORIENT YOURSELF
+                    </Eyebrow>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-primary transition-colors">
-                      Explore where you are
+                      Find Your P.A.T.H.
                     </h3>
                     <p className="text-body text-foreground leading-relaxed mb-3">
                       From free resources, masterclasses, courses, assessments,
@@ -279,15 +279,16 @@ export default function PPSHome() {
                     <KeyRound className="w-6 h-6 text-bluedoor" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-body font-poppins font-semibold uppercase tracking-wider text-bluedoor mb-1">
-                      02 &middot; Open the Blue Door
-                    </p>
+                    <Eyebrow variant="plain" tone="cobalt" className="mb-1">
+                      APPRAISE YOUR REALITY
+                    </Eyebrow>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-bluedoor transition-colors">
-                      Get clarity before you commit
+                      Open the Blue Door
                     </h3>
                     <p className="text-body text-foreground leading-relaxed mb-3">
-                      A structured organizational appraisal that reveals what
-                      your organization is realistically positioned to pursue before your next initiative begins.
+                      Already know change is coming and want clarity before you commit?
+                      This is where to start. A structured organizational appraisal that
+                      reveals what your organization is realistically positioned to pursue before your next initiative begins.
                     </p>
                     <span className="text-sm font-semibold text-bluedoor inline-flex items-center">
                       Open the Blue Door
@@ -306,11 +307,11 @@ export default function PPSHome() {
                     <Handshake className="w-6 h-6 text-pps-purple" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-body font-poppins font-semibold uppercase tracking-wider text-pps-purple mb-1">
-                      03 &middot; Build what&rsquo;s next, together
-                    </p>
+                    <Eyebrow variant="plain" tone="purple" className="mb-1">
+                      ARCHITECT THE SHIFT
+                    </Eyebrow>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-pps-purple transition-colors">
-                      Partner through your next sh<span className="text-raspberry font-bold">IF</span>t
+                      Partner With Us
                     </h3>
                     <p className="text-body text-foreground leading-relaxed mb-3">
                       Once the Blue Door reveals what&rsquo;s real, we partner
