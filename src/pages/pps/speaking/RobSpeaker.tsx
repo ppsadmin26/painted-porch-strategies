@@ -110,7 +110,7 @@ const rob: SpeakerData = {
     "Hands-on exercises to sharpen delivery and presence",
     "Live coaching with actionable feedback",
     "Frameworks like C.L.E.A.R. and \"You Have 8 Minutes…\"",
-    "Safe, fun space to build confidence and team connection",
+    "Engaging space to build confidence and team connection",
   ],
   workshopClosing: "Let's turn clarity into impact.",
   themeColor: "border-muted-foreground",
