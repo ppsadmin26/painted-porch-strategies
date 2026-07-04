@@ -143,7 +143,7 @@ function cardAnchor(row: WorkshopCardRow): string {
 }
 
 function handleImgError(
-  event: React.SyntheticEvent<HTMLImageElement>,
+  event: SyntheticEvent<HTMLImageElement>,
   row: WorkshopCardRow,
 ) {
   const img = event.currentTarget;
