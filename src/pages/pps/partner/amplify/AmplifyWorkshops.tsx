@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type SyntheticEvent } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -53,18 +53,55 @@ const workshopFaqCategories: FAQCategory[] = [
   },
 ];
 
-/** Fallback thumbnails when a featured offering row has no image_url set. */
+/**
+ * Fallback thumbnails for every offering that can appear in either section.
+ * Keyed by offering_key first; a keyword-based matcher covers rows whose key
+ * isn't explicitly listed so newly-included workshops still get a themed image.
+ */
 const FALLBACK_THUMB: Record<string, string> = {
+  // Phase Zero Strategic Workshops
   architectChange: architectChangeThumb,
   architectureOfOrganizationalShift: pillarsThumb,
   pathToLastingChange: pathThumb,
   cultivatingChangeResilience: resilienceThumb,
   leadershipOM: leadershipOpThumb,
+  // Leadership & Team Development Workshops
   workshopCreateExtraordinaryTeams: teamBuildingThumb,
   radicalMindfulnessB2B: mindfulnessThumb,
   masterYourMessageB2B: communicationThumb,
   stoicismB2B: stoicThumb,
+  // Additional workshop offerings (mapped to closest themed thumb)
+  fromConflictToConnection: teamBuildingThumb,
+  fromDysfunctionToDynamic: teamBuildingThumb,
+  geniusAtWork: teamBuildingThumb,
+  workingGenius: teamBuildingThumb,
+  moveShakeInnovate: teamBuildingThumb,
+  leadAtSpeed: leadershipOpThumb,
+  goldilocks: leadershipOpThumb,
+  fromPassengerToPilot: leadershipOpThumb,
+  aiEiOh: leadershipOpThumb,
+  changeForGood: resilienceThumb,
+  drivingChange3Shifts: resilienceThumb,
+  reignitingResilience: resilienceThumb,
+  findingJoyAtWork: mindfulnessThumb,
+  communicateWithStyle: communicationThumb,
+  powerOfStory: communicationThumb,
+  highFidelityCommunication: communicationThumb,
 };
+
+/** Keyword → thumbnail matcher used when offering_key isn't in FALLBACK_THUMB. */
+const KEYWORD_THUMB: Array<[RegExp, string]> = [
+  [/mindful/i, mindfulnessThumb],
+  [/joy|wellbeing|well-being/i, mindfulnessThumb],
+  [/resilien/i, resilienceThumb],
+  [/communicat|message|story|voice/i, communicationThumb],
+  [/stoic/i, stoicThumb],
+  [/genius|team|dysfunction|conflict|connection|innovate/i, teamBuildingThumb],
+  [/leader|pilot|operating|goldilocks|speed/i, leadershipOpThumb],
+  [/p\.a\.t\.h|pathway|lasting change/i, pathThumb],
+  [/pillar|architecture|foundation/i, pillarsThumb],
+  [/architect|phase zero|strategic design/i, architectChangeThumb],
+];
 
 interface WorkshopCardRow {
   offering_key: string;
@@ -80,12 +117,41 @@ interface WorkshopCardRow {
   workshop_card_bullets: string[] | null;
 }
 
+/** Pick the best local fallback thumb for a row, ignoring image_url. */
+function fallbackThumb(row: WorkshopCardRow): string {
+  const byKey = FALLBACK_THUMB[row.offering_key];
+  if (byKey) return byKey;
+  const haystack = `${row.offering_key} ${row.name ?? ""}`;
+  for (const [pattern, thumb] of KEYWORD_THUMB) {
+    if (pattern.test(haystack)) return thumb;
+  }
+  return architectChangeThumb;
+}
+
+/**
+ * Prefer image_url when present and non-empty (after trimming); otherwise use
+ * the best-fit local fallback. Broken remote URLs are handled at render time
+ * via <img onError> which swaps in the same fallback.
+ */
 function cardImage(row: WorkshopCardRow): string {
-  return row.image_url || FALLBACK_THUMB[row.offering_key] || architectChangeThumb;
+  const remote = row.image_url?.trim();
+  return remote && remote.length > 0 ? remote : fallbackThumb(row);
 }
 
 function cardAnchor(row: WorkshopCardRow): string {
   return row.anchor_id || row.offering_key;
+}
+
+function handleImgError(
+  event: SyntheticEvent<HTMLImageElement>,
+  row: WorkshopCardRow,
+) {
+  const img = event.currentTarget;
+  const fallback = fallbackThumb(row);
+  if (img.src !== fallback && !img.dataset.fallbackApplied) {
+    img.dataset.fallbackApplied = "true";
+    img.src = fallback;
+  }
 }
 
 export default function AmplifyWorkshops() {
@@ -169,6 +235,7 @@ export default function AmplifyWorkshops() {
                             src={cardImage(workshop)}
                             alt={workshop.name}
                             loading="lazy"
+                            onError={(e) => handleImgError(e, workshop)}
                             className="w-full h-40 sm:w-28 sm:h-20 rounded-lg object-cover flex-shrink-0"
                           />
                           <div>
@@ -271,6 +338,7 @@ export default function AmplifyWorkshops() {
                           src={cardImage(workshop)}
                           alt={workshop.name}
                           loading="lazy"
+                          onError={(e) => handleImgError(e, workshop)}
                           className="w-full h-40 sm:w-28 sm:h-20 rounded-lg object-cover flex-shrink-0"
                         />
                         <div>
