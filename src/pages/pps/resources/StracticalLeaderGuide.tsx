@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Download, BookOpen, Lightbulb, Target, ArrowRight } from "lucide-react";
+import { Download, BookOpen, Lightbulb, Target, ArrowRight, Sparkles } from "lucide-react";
 
 const insideBullets = [
   {
