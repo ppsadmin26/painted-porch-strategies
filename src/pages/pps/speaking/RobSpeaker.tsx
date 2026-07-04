@@ -19,7 +19,7 @@ const rob: SpeakerData = {
   seriesIntro:
     "In a world full of noise, leaders who communicate with clarity and conviction rise above the rest. Rob Hunter, a #1-rated radio host and journalist turned communication impact strategist, teaches high-fidelity messaging practices to speak so your signal is clear, and people act.",
   bio: [
-    "Most people know me as a radio host, communicator, and storyteller. But at my core, I'm someone who believes that clear, confident communication is the most powerful leadership tool we have.",
+    "Most people know me as a radio host, journalist, and storyteller. But at my core, I'm someone who believes that clear, confident communication is the most powerful leadership tool we have.",
     "Over the past 27 years, I've hosted top-rated radio shows across the country, and I've learned what it takes to cut through the noise and truly connect. Now, I partner with leaders to do the same in meetings, keynotes, and high-stakes moments.",
     "I bring together the science of messaging, the rhythm of broadcasting, and the art of storytelling to help teams speak with impact, listen with intention, and lead with presence.",
     "If you're ready to master your message and make it matter, I've got you.",
