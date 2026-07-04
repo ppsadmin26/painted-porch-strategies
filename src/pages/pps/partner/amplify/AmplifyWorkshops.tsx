@@ -338,6 +338,7 @@ export default function AmplifyWorkshops() {
                           src={cardImage(workshop)}
                           alt={workshop.name}
                           loading="lazy"
+                          onError={(e) => handleImgError(e, workshop)}
                           className="w-full h-40 sm:w-28 sm:h-20 rounded-lg object-cover flex-shrink-0"
                         />
                         <div>
