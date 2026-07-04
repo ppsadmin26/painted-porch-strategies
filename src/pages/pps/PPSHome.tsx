@@ -307,7 +307,7 @@ export default function PPSHome() {
                     <Handshake className="w-6 h-6 text-pps-purple" />
                   </div>
                   <div className="flex-1">
-                    <Eyebrow variant="plain" tone="purple" className="mb-1">
+                    <Eyebrow variant="plain" tone="purple" className="mb-1 text-pps-purple">
                       ARCHITECT THE SHIFT
                     </Eyebrow>
                     <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 group-hover:text-pps-purple transition-colors">
