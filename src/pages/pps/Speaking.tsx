@@ -88,7 +88,7 @@ export default function Speaking() {
           <Eyebrow tone="gold">Three Dynamic Speakers. One Stoic Mission.</Eyebrow>
         }
         headline="Meet the Voices of Change"
-        description="Empowering leaders and teams to architect change, communicate with clarity, and build the capability to carry what comes next."
+        description="Three voices. One mission: to partner with leaders and teams who are ready to architect change, communicate with clarity, and build the capability and mindset to carry what comes next."
         ctas={[
           { label: "Contact Us", href: "/contact?interest=speaking&message=I'm interested in booking a speaker for our event.", isPrimary: true },
         ]}
