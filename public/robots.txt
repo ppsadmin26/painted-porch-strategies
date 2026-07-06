@@ -22,39 +22,4 @@ Disallow: /team-superpowers
 Disallow: /wfh-sign-up
 Disallow: /wfh-thank-you
 
-# AI / answer-engine crawlers — explicitly allowed so ChatGPT, Perplexity,
-# Claude, and Google's AI surfaces can index and cite this site.
-User-agent: GPTBot
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-Sitemap: https://onthepaintedporch.com/sitemap.xml
+Sitemap: /sitemap.xml

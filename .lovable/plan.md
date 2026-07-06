@@ -1,68 +1,42 @@
-# Workshop/Keynote Route Validator
+# Prerender key public routes for crawlers
 
-Two-part validation to prevent broken or misrouted workshop/keynote links from shipping.
+## Goal
+After `vite build`, generate real static HTML for a curated set of high-value routes so crawlers (ChatGPT, Perplexity, Google, Bing) see full content instead of an empty `<div id="root"></div>`. Real users still get the SPA — hydration takes over on load.
 
-## Part 1 — Build-time route audit script
+## Approach
+A new `scripts/prerender.mjs` runs as a `postbuild` step. It:
 
-**New file:** `scripts/validate-workshop-routing.mjs` (patterned after `audit-anchor-coverage.mjs`, read-only, no DB writes)
+1. Starts `vite preview` on a local port (SPA fallback built in, serves `dist/`).
+2. Launches headless Chromium via Playwright (already a dev dep).
+3. Visits each route, waits for network idle + a short settle, snapshots the fully rendered HTML.
+4. Rewrites `dist/<route>/index.html` with the snapshotted `<head>` (real title/meta/canonical/OG) and pre-rendered `<div id="root">…</div>` body. The existing `<script type="module">` bundle stays, so the SPA hydrates on top.
+5. Shuts down the preview server.
 
-For every offering row where `delivery_format IN ('workshop','keynote','speaking')` OR `include_in_workshops = true` OR `is_keynote = true`, run a set of routing rules and emit both a JSON report and a non-zero exit code when any errors are found:
+Non-prerendered routes keep working exactly as today (SPA shell).
 
-**Routing rules (per row):**
-1. **Featured workshops** (`include_in_workshops = true`) must have `current_url = '/partner/amplify/workshops'` AND a non-null `anchor_id`. The `anchor_id` must correspond to a card `id={…}` actually rendered in `src/pages/pps/partner/amplify/AmplifyWorkshops.tsx` (either via the DB query it makes, or the hardcoded fallback ids).
-2. **Speaker-page rows** (`include_on_speaker_page = true`) must have `current_url = '/speaking/amy'` (or another registered speaker page) AND an `anchor_id` present on that page.
-3. **Everything else** (workshop/keynote/speaking rows not featured and not on a speaker page, excluding dedicated landings like `/resources/kick-the-habit`, `/partner/amplify/stractical-leader`) must:
-   - route to `current_url = '/speaking/topics'`
-   - have a non-null `topic_slug`
-   - have `anchor_id = topic_slug`
-4. **`topic_slug` uniqueness pairing**: rows sharing a `topic_slug` (workshop + keynote pair) must all share the same `current_url` and `anchor_id`.
-5. **Reachability**: fetch each unique target URL from the running Vite preview (localhost:8080) and confirm HTTP 200. Skipped by default; enabled with `--live` flag so CI can opt in when a preview is running.
+## Routes to prerender (v1)
+- `/` — home
+- `/about`, `/about/approach`, `/about/impact`
+- `/amy`, `/rob`, `/sierra`
+- `/blue-door`
+- `/partner`
+- `/partner/ignite`, `/partner/amplify`, `/partner/embody`
+- `/resources`, `/resources/free`, `/resources/faq`, `/resources/insights`
 
-**Outputs:**
-- `docs/workshop-routing-audit.json` — machine-readable results (used by the admin validator page for context)
-- Console: grouped table of errors / warnings
-- Exit code 1 on any error
+Blog post detail pages (`/resources/insights/:slug`) are out of scope for v1 — dynamic slugs need a Supabase fetch to enumerate. Easy to add later.
 
-**Wire-up:**
-- Add `"validate:routing": "node scripts/validate-workshop-routing.mjs"` to `package.json` scripts.
-- Add to `prebuild` chain after sitemap generation.
+## Technical notes
+- `package.json` gets a `postbuild` script: `node scripts/prerender.mjs`. Skippable via `PRERENDER=0` env for fast dev builds.
+- Script gates on `NODE_ENV === 'production'` / presence of `dist/` — no-op otherwise.
+- Playwright already installed; script uses `chromium.launch({ headless: true })`.
+- Auth-gated routes are excluded; only fully public pages are prerendered.
+- If a route errors or times out (10s), the script logs a warning and leaves the original shell in place — build never fails on prerender issues.
+- Meta tags set by `useDocumentSeo` are captured because Playwright waits for React to run.
+- No source changes to components required.
 
-## Part 2 — Admin publish guard
+## Verification
+After build, `curl -s dist/blue-door/index.html | grep -c "Blue Door"` should return >0 hits (vs. 0 today). CI stays green because prerender failures degrade gracefully.
 
-Enforce the same rules in the offerings editor so bad rows can't reach the site.
-
-**New shared file:** `src/lib/workshopRoutingValidation.ts`
-- Exports `validateWorkshopRouting(row): { level: 'ok'|'warning'|'error', issues: string[] }`
-- Same rule set as the script (rules 1-4; rule 5 is script-only)
-- Pure function, importable in both React admin UI and unit tests.
-
-**Editor integration** — `src/pages/pps/admin/offerings/OfferingEditor.tsx`:
-- On render, call `validateWorkshopRouting` against the current draft.
-- Show a red `<Alert>` above the publish toggle listing each issue when `level === 'error'`.
-- Disable the "Published" `<Switch>` (and the Save button when the user is trying to flip `is_published: true`) while errors exist. Editors can still save unpublished drafts to fix them.
-- Warnings render as a yellow banner but don't block publish.
-
-**List page** — `src/pages/pps/admin/PathFinderOfferings.tsx`:
-- Compute validation per row; show an `AlertTriangle` icon in the row when a published row currently fails validation (catches drift when routing rules or hardcoded featured lists change).
-
-**Unit tests** — `src/lib/__tests__/workshopRoutingValidation.test.ts`:
-- Covers each rule with a passing + failing fixture (featured missing anchor, speaking row not on /speaking/topics, mismatched anchor_id vs topic_slug, paired workshop/keynote diverging URLs, dedicated-landing exceptions).
-
-## Technical details
-
-- Script uses the same `PPS_URL` / `PPS_SERVICE_KEY` env pattern as `audit-anchor-coverage.mjs`. No new secrets.
-- Featured id pool for rule 1 is derived by parsing `AmplifyWorkshops.tsx` (both the Supabase select and the `FALLBACK_THUMB` keys — same technique as the anchor audit).
-- Dedicated-landing exceptions list is a small allowlist in the validation module, keyed by `offering_key`: `stracticalLeader`, `kickTheHabit`. Add more by editing the list.
-- No DB migration required. All enforcement lives client-side + build-time; the existing RLS already blocks non-editors from mutating rows.
-
-## Files touched
-
-**Created**
-- `scripts/validate-workshop-routing.mjs`
-- `src/lib/workshopRoutingValidation.ts`
-- `src/lib/__tests__/workshopRoutingValidation.test.ts`
-
-**Edited**
-- `package.json` (script + prebuild chain)
-- `src/pages/pps/admin/offerings/OfferingEditor.tsx` (publish guard UI)
-- `src/pages/pps/admin/PathFinderOfferings.tsx` (row-level warning icon)
+## Follow-ups (not in this change)
+- Add blog post slugs by fetching from Supabase during prerender.
+- Add `/partner/amplify/workshops`, `/partner/amplify/sprints`, `/partner/ignite/masterclasses` once v1 is validated.
