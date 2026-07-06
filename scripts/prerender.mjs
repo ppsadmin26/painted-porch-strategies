@@ -293,7 +293,7 @@ function buildHtml(route) {
   // graph already in the template.
   const jsonLd = [...(route.jsonLd ?? []), ...autoJsonLd(route)];
   if (jsonLd.length) {
-    const scripts = route.jsonLd
+    const scripts = jsonLd
       .map(
         (obj) =>
           `<script type="application/ld+json">${JSON.stringify(obj)}</script>`,
