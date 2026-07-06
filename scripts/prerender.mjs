@@ -161,6 +161,19 @@ function buildHtml(route) {
     `<meta name="twitter:description" content="${escapeAttr(route.description)}">`,
   );
 
+  // Per-route JSON-LD (Service, BreadcrumbList, etc.) injected right
+  // before </head> so it stacks with the sitewide Organization/WebSite
+  // graph already in the template.
+  if (Array.isArray(route.jsonLd) && route.jsonLd.length) {
+    const scripts = route.jsonLd
+      .map(
+        (obj) =>
+          `<script type="application/ld+json">${JSON.stringify(obj)}</script>`,
+      )
+      .join("\n    ");
+    html = replaceTag(html, /<\/head>/, `    ${scripts}\n  </head>`);
+  }
+
   // Inject body content inside #root. Preserves everything after it
   // (noscript, script tags).
   html = replaceTag(
