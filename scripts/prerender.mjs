@@ -190,5 +190,83 @@ for (const route of routes) {
   }
 }
 
-console.log(`[prerender] done — ${ok} ok, ${failed} failed`);
+// ── Dynamic: prerender blog posts from Supabase ─────────────────────
+// Pulls published + scheduled posts and generates
+// dist/resources/insights/<slug>/index.html for each one. Non-fatal
+// on any error (network, missing env, schema drift).
+const SUPABASE_URL =
+  process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL || "";
+const SUPABASE_ANON =
+  process.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+  process.env.VITE_SUPABASE_ANON_KEY ||
+  process.env.SUPABASE_ANON_KEY ||
+  "";
+
+async function prerenderBlogPosts() {
+  if (!SUPABASE_URL || !SUPABASE_ANON) {
+    console.log("[prerender] blog: no Supabase env — skipping");
+    return { ok: 0, failed: 0 };
+  }
+  let posts = [];
+  try {
+    const url = `${SUPABASE_URL}/rest/v1/blog_posts?select=slug,title,excerpt,cover_image_url,publish_date&status=in.(published,scheduled)&order=publish_date.desc&limit=500`;
+    const res = await fetch(url, {
+      headers: { apikey: SUPABASE_ANON, authorization: `Bearer ${SUPABASE_ANON}` },
+    });
+    if (!res.ok) {
+      console.warn(`[prerender] blog: fetch ${res.status} — skipping`);
+      return { ok: 0, failed: 0 };
+    }
+    posts = await res.json();
+  } catch (err) {
+    console.warn(`[prerender] blog: fetch failed — ${err.message}`);
+    return { ok: 0, failed: 0 };
+  }
+
+  let ok = 0;
+  let failed = 0;
+  for (const post of posts) {
+    if (!post?.slug) continue;
+    try {
+      const path_ = `/resources/insights/${post.slug}`;
+      const title = post.title
+        ? `${post.title} | Painted Porch Strategies`
+        : "Insight | Painted Porch Strategies";
+      const description =
+        post.excerpt ||
+        "Insight from Painted Porch Strategies on change origination, Phase Zero™ strategy, and Stoic leadership.";
+      const route = {
+        path: path_,
+        title,
+        description,
+        h1: post.title || "Insight",
+        intro: post.excerpt || description,
+        ogImage: post.cover_image_url || undefined,
+        sections: [],
+        links: [
+          { href: "/resources/insights", label: "All insights" },
+          { href: "/resources", label: "Resources hub" },
+          { href: "/blue-door", label: "The Blue Door" },
+          { href: "/contact", label: "Contact us" },
+        ],
+      };
+      const html = buildHtml(route);
+      const outDir = path.join(DIST, path_.replace(/^\//, ""));
+      await mkdir(outDir, { recursive: true });
+      await writeFile(path.join(outDir, "index.html"), html, "utf8");
+      ok++;
+    } catch (err) {
+      console.warn(`[prerender] blog ✗ ${post.slug} — ${err.message}`);
+      failed++;
+    }
+  }
+  console.log(`[prerender] blog — ${ok} ok, ${failed} failed`);
+  return { ok, failed };
+}
+
+const blog = await prerenderBlogPosts();
+
+console.log(
+  `[prerender] done — ${ok + blog.ok} ok, ${failed + blog.failed} failed`,
+);
 process.exit(0);
