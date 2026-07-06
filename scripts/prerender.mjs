@@ -109,6 +109,133 @@ ${
     </div>`;
 }
 
+// Auto-generated Service / Offer JSON-LD keyed by route path. Keeps
+// prerender-content.mjs focused on copy while still emitting rich
+// structured data for crawlers on our highest-intent pages.
+const ORG_REF = { "@id": `${SITE}/#organization` };
+
+const SERVICE_LD = {
+  "/blue-door": {
+    "@type": "Service",
+    name: "The Blue Door — Strategic Organizational Appraisal",
+    serviceType: "Strategic Organizational Appraisal",
+    category: "Management Consulting",
+    provider: ORG_REF,
+    areaServed: { "@type": "Country", name: "United States" },
+    offers: {
+      "@type": "Offer",
+      price: "1500",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: `${SITE}/blue-door`,
+    },
+  },
+  "/partner": {
+    "@type": "Service",
+    name: "The Painted Porch Partnership",
+    serviceType: "Organizational Transformation Partnership",
+    category: "Management Consulting",
+    provider: ORG_REF,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Partnership Tiers",
+      itemListElement: [
+        { "@type": "Offer", name: "IGNITE — self-led", url: `${SITE}/partner/ignite` },
+        { "@type": "Offer", name: "AMPLIFY — 3–6 month partnership", url: `${SITE}/partner/amplify` },
+        { "@type": "Offer", name: "EMBODY — embedded partnership", url: `${SITE}/partner/embody` },
+      ],
+    },
+  },
+  "/partner/ignite": {
+    "@type": "Service",
+    name: "IGNITE — Self-led Transformation",
+    serviceType: "Leadership Development",
+    category: "Professional Training",
+    provider: ORG_REF,
+  },
+  "/partner/amplify": {
+    "@type": "Service",
+    name: "AMPLIFY — 3–6 Month Partnership",
+    serviceType: "Organizational Transformation Partnership",
+    category: "Management Consulting",
+    provider: ORG_REF,
+  },
+  "/partner/embody": {
+    "@type": "Service",
+    name: "EMBODY — Embedded Executive Partnership",
+    serviceType: "Executive Advisory",
+    category: "Management Consulting",
+    provider: ORG_REF,
+  },
+  "/partner/amplify/stractical-leader": {
+    "@type": "Course",
+    name: "The Stractical Leader 6-Week Intensive",
+    description:
+      "A 6-week AMPLIFY cohort that builds strategic-plus-tactical leadership capacity.",
+    provider: ORG_REF,
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: "online",
+      courseWorkload: "PT18H",
+    },
+  },
+  "/eq": {
+    "@type": "Service",
+    name: "EQ-i 2.0 Emotional Intelligence Assessment",
+    serviceType: "Assessment & Coaching",
+    category: "Professional Training",
+    provider: ORG_REF,
+  },
+  "/speaking": {
+    "@type": "Service",
+    name: "Keynotes & Executive Workshops",
+    serviceType: "Speaking & Workshops",
+    category: "Professional Speaking",
+    provider: ORG_REF,
+  },
+};
+
+function breadcrumbLd(path) {
+  if (path === "/") return null;
+  const segments = path.split("/").filter(Boolean);
+  const items = [{ name: "Home", url: SITE + "/" }];
+  let acc = "";
+  for (const seg of segments) {
+    acc += `/${seg}`;
+    items.push({
+      name: seg
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase()),
+      url: SITE + acc,
+    });
+  }
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      item: it.url,
+    })),
+  };
+}
+
+function autoJsonLd(route) {
+  const out = [];
+  const svc = SERVICE_LD[route.path];
+  if (svc) {
+    out.push({
+      "@context": "https://schema.org",
+      url: SITE + (route.path === "/" ? "" : route.path),
+      ...svc,
+    });
+  }
+  const crumbs = breadcrumbLd(route.path);
+  if (crumbs) out.push(crumbs);
+  return out;
+}
+
 function buildHtml(route) {
   const url = SITE + (route.path === "/" ? "" : route.path);
   let html = template;
