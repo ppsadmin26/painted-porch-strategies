@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Flame, Download, Play, ExternalLink, ArrowRight, Heart, Users, Sparkles } from "lucide-react";
@@ -56,6 +57,12 @@ const resources = {
 };
 
 const BurnoutResources = () => {
+  useDocumentSeo({
+    title: "Burnout Recovery Resources | Painted Porch Strategies",
+    description: "A curated toolkit for spotting, squashing, and preventing burnout. Videos, guides, and mindfulness practices from Painted Porch Strategies.",
+    canonical: "/burnout",
+  });
+
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [authorized, setAuthorized] = useState(() => !!sessionStorage.getItem("burnout_access"));

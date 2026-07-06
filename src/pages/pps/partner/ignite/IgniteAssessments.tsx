@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, ArrowLeft, Heart } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
@@ -97,6 +98,12 @@ function AssessmentIcon({ icon }: { icon: string }) {
 }
 
 export default function IgniteAssessments() {
+  useDocumentSeo({
+    title: "IGNITE Assessments | Painted Porch Strategies",
+    description: "Individual and team assessments from Painted Porch Strategies: EQ-i 2.0, Working Genius, and the Painted Porch Pillars™ diagnostic.",
+    canonical: "/partner/ignite/assessments",
+  });
+
   return (
     <div>
       <PPSBreadcrumb

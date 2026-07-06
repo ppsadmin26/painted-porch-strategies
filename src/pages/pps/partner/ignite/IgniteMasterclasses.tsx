@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Video, ArrowLeft, X } from "lucide-react";
@@ -62,6 +63,12 @@ const allMasterclasses: MasterclassItem[] = [
 ];
 
 export default function IgniteMasterclasses() {
+  useDocumentSeo({
+    title: "IGNITE Masterclasses | Painted Porch Strategies",
+    description: "Live and on-demand masterclasses on leadership, communication, mindfulness, and team dynamics from Painted Porch Strategies.",
+    canonical: "/partner/ignite/masterclasses",
+  });
+
   const [activeFilter, setActiveFilter] = useState<Category | null>(null);
 
   const filtered = activeFilter

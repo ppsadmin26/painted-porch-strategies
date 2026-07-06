@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Info, Download, Compass, PencilRuler, Map } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
@@ -132,6 +133,12 @@ const differenceRows = [
 ];
 
 export default function AmplifySprints() {
+  useDocumentSeo({
+    title: "AMPLIFY 90-Day Sprints | Painted Porch Strategies",
+    description: "Focused 90-day Phase Zero™ partnership sprints from Painted Porch Strategies. Diagnose, Design, and set Direction for market-leading change.",
+    canonical: "/partner/amplify/sprints",
+  });
+
   return (
     <div>
       <PPSBreadcrumb

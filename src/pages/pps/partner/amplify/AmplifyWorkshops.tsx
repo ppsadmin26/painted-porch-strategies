@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type SyntheticEvent } from "react";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -155,6 +156,12 @@ function handleImgError(
 }
 
 export default function AmplifyWorkshops() {
+  useDocumentSeo({
+    title: "AMPLIFY Workshops | Painted Porch Strategies",
+    description: "AMPLIFY workshops from Painted Porch Strategies: Architect Change, P.A.T.H.™ framework, leadership development, and team building — 1–3 day team engagements.",
+    canonical: "/partner/amplify/workshops",
+  });
+
   const { open: openQuiz } = usePathFinderQuiz();
   const [rows, setRows] = useState<WorkshopCardRow[]>([]);
 

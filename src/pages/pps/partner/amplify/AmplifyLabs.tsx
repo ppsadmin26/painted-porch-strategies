@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
@@ -152,6 +153,12 @@ const cohorts = [
 
 
 export default function AmplifyLabs() {
+  useDocumentSeo({
+    title: "Leadership Labs | AMPLIFY | Painted Porch Strategies",
+    description: "Cohort-based Leadership Labs from Painted Porch Strategies: 6–12 week programs on Stractical Leadership, Leading Change, Stoicism at Work, AI+EI, and more.",
+    canonical: "/partner/amplify/labs",
+  });
+
   const hasUpcomingCohort = WORKSHOP_START_DATE.getTime() > Date.now();
 
   return (

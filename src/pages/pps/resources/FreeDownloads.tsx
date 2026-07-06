@@ -1,4 +1,5 @@
 import React from "react";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Link } from "react-router-dom";
 import { Download, FileText, BarChart, Flame, BookOpen, Compass, Play, MessageCircle, Plane, Map, Megaphone, ClipboardCheck, Calendar, Repeat } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
@@ -179,6 +180,12 @@ const downloads = [
 ];
 
 export default function FreeDownloads() {
+  useDocumentSeo({
+    title: "Free Downloads & Resources | Painted Porch Strategies",
+    description: "Free playbooks, guides, and tools from Painted Porch Strategies. Includes the Stractical Leader mini-guide, burnout resource kit, and more.",
+    canonical: "/resources/free",
+  });
+
   return (
     <div>
       {/* Hero */}

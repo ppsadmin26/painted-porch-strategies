@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Youtube, Play, Search, X, ChevronLeft, ChevronRight, Star, ArrowUpDown } from "lucide-react";
@@ -79,6 +80,12 @@ function sortVideos(videos: YouTubeVideo[], sort: SortOption): YouTubeVideo[] {
 }
 
 export default function YouTubePage() {
+  useDocumentSeo({
+    title: "YouTube Library | Painted Porch Strategies",
+    description: "Videos, mini-trainings, and conversations from Painted Porch Strategies on change origination, leadership, communication, and Stoic practical wisdom.",
+    canonical: "/resources/youtube",
+  });
+
   const { data: videos = [], isLoading } = useQuery({
     queryKey: ["youtube-videos"],
     queryFn: fetchVideos,
