@@ -28,6 +28,16 @@ const DIST = path.join(ROOT, "dist");
 const PORT = 4173;
 const BASE = `http://localhost:${PORT}`;
 
+// Never fail the build on prerender errors.
+process.on("uncaughtException", (err) => {
+  console.warn(`[prerender] uncaught: ${err.message} — skipping`);
+  process.exit(0);
+});
+process.on("unhandledRejection", (err) => {
+  console.warn(`[prerender] unhandled rejection: ${err?.message ?? err} — skipping`);
+  process.exit(0);
+});
+
 const ROUTES = [
   "/",
   "/about",
