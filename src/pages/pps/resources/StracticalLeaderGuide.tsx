@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import { Download, BookOpen, Lightbulb, Target, ArrowRight, Sparkles } from "lucide-react";
 
@@ -34,6 +35,12 @@ const insideBullets = [
 ];
 
 export default function StracticalLeaderGuide() {
+  useDocumentSeo({
+    title: "Stractical Leader Mini Guide | Painted Porch Strategies",
+    description: "Download the free Stractical Leader mini guide. A short blueprint for managers ready to master strategic vision and tactical execution together.",
+    canonical: "/resources/stractical-mini",
+  });
+
   return (
     <div>
       {/* HERO */}

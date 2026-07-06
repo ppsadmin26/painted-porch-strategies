@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import {
   Heart,
   Coffee,
@@ -144,6 +145,12 @@ const dotColorMap: Record<OfferingCard["color"], string> = {
 /* ── Component ───────────────────────────────────────────────────────── */
 
 export default function AboutSierra() {
+  useDocumentSeo({
+    title: "Sierra Ramm-Cantrell, Chief Joy Officer | Painted Porch Strategies",
+    description: "Sierra Ramm-Cantrell is the Chief Joy Officer at Painted Porch Strategies. Explore Radical Mindfulness practices and Mindful Moments for leaders.",
+    canonical: "/sierra",
+  });
+
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────── */}

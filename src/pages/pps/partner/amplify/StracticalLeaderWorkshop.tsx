@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -222,6 +223,12 @@ const forYouItems = [
 
 /* ──────────────────── MAIN COMPONENT ──────────────────── */
 export default function StracticalLeaderWorkshop() {
+  useDocumentSeo({
+    title: "Stractical Leader 6-Week Intensive | Painted Porch Strategies",
+    description: "The Stractical Leader is a 6-week cohort intensive for managers ready to master strategic vision and tactical execution together.",
+    canonical: "/partner/amplify/stractical-leader",
+  });
+
   const [waitlistOpen, setWaitlistOpen] = useState(false);
   const navigate = useNavigate();
   const { scrollToId } = useSmoothScroll({ offset: 32 });

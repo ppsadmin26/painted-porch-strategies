@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import {
   Mic,
   Coffee,
@@ -144,6 +145,12 @@ const equalMattersVideos: YouTubeVideoItem[] = [
 /* ── Component ───────────────────────────────────────────────────────── */
 
 export default function AboutRob() {
+  useDocumentSeo({
+    title: "Rob Yackowski, Master of Communication | Painted Porch Strategies",
+    description: "Rob Yackowski leads communication architecture at Painted Porch Strategies. Explore Rob's Master Your Message training, keynotes, and podcast.",
+    canonical: "/rob",
+  });
+
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────── */}

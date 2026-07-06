@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import { Download, BookOpen, Youtube, Mic, HelpCircle, ArrowRight } from "lucide-react";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
@@ -44,6 +45,12 @@ const resourceCategories = [
 ];
 
 export default function ResourcesHub() {
+  useDocumentSeo({
+    title: "Resources | Painted Porch Strategies",
+    description: "Free tools, insights, YouTube library, and FAQs from Painted Porch Strategies. Practical wisdom for change origination and leadership.",
+    canonical: "/resources",
+  });
+
   return (
     <div>
       {/* Hero */}

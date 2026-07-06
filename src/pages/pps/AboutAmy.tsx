@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import {
   Mic,
   Coffee,
@@ -154,6 +155,12 @@ const doEpicShiftVideos: YouTubeVideoItem[] = [
 /* ── Component ───────────────────────────────────────────────────────── */
 
 export default function AboutAmy() {
+  useDocumentSeo({
+    title: "Amy Yackowski, Founder | Painted Porch Strategies",
+    description: "Amy Yackowski is the Founder and Organizational Shift Strategist at Painted Porch Strategies. Explore Amy's keynotes, courses, and thought leadership on change origination.",
+    canonical: "/amy",
+  });
+
   return (
     <>
 

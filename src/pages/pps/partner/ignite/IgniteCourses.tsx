@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { Button } from "@/components/ui/button";
 import { Clock, ExternalLink, ArrowLeft } from "lucide-react";
 import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
@@ -82,6 +83,12 @@ const courses = [
 ];
 
 export default function IgniteCourses() {
+  useDocumentSeo({
+    title: "IGNITE Self-Paced Courses | Painted Porch Strategies",
+    description: "Self-paced leadership courses from Painted Porch Strategies: Radical Mindfulness, Master Your Message, Extraordinary Teams, and Leading Change.",
+    canonical: "/partner/ignite/courses",
+  });
+
   return (
     <div>
       <PPSBreadcrumb
