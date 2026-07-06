@@ -1,61 +1,32 @@
 #!/usr/bin/env node
 /**
- * Prerender key public routes into static HTML after `vite build`.
+ * Postbuild prerender: bake per-route SEO metadata + real content into
+ * static HTML files under dist/ so crawlers (ChatGPT, Perplexity,
+ * Google, Bing) see full content instead of the empty SPA shell.
  *
  * How it works:
- *   1. Start `vite preview` against ./dist (SPA fallback built in).
- *   2. Launch headless Chromium (Playwright).
- *   3. For each route, navigate, wait for network idle + short settle,
- *      snapshot the fully hydrated HTML.
- *   4. Rewrite `dist/<route>/index.html` with the snapshot so crawlers
- *      see real content. Real users still get the SPA — React hydrates
- *      on top of the prerendered markup.
+ *   - Reads the built dist/index.html as a template.
+ *   - For each route in scripts/prerender-content.mjs, produces
+ *     dist/<route>/index.html with:
+ *       • rewritten <title>, meta description, canonical, og:*, twitter:*
+ *       • real HTML content injected into <div id="root"> (H1, intro,
+ *         section headings, key links)
+ *   - Real users still get the SPA. main.tsx uses createRoot (not
+ *     hydrateRoot), so React replaces the #root children on mount —
+ *     no hydration mismatch warnings.
  *
- * Failures degrade gracefully: a bad route logs a warning and keeps the
- * original SPA shell. The build never fails on prerender issues.
- *
- * Skip with PRERENDER=0.
+ * Failures are non-fatal: warnings logged, build continues.
+ * Skip entirely with PRERENDER=0.
  */
 
-import { spawn } from "node:child_process";
 import { mkdir, readFile, writeFile, access } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { routes, SITE } from "./prerender-content.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const DIST = path.join(ROOT, "dist");
-const PORT = 4173;
-const BASE = `http://localhost:${PORT}`;
-
-// Never fail the build on prerender errors.
-process.on("uncaughtException", (err) => {
-  console.warn(`[prerender] uncaught: ${err.message} — skipping`);
-  process.exit(0);
-});
-process.on("unhandledRejection", (err) => {
-  console.warn(`[prerender] unhandled rejection: ${err?.message ?? err} — skipping`);
-  process.exit(0);
-});
-
-const ROUTES = [
-  "/",
-  "/about",
-  "/about/approach",
-  "/about/impact",
-  "/amy",
-  "/rob",
-  "/sierra",
-  "/blue-door",
-  "/partner",
-  "/partner/ignite",
-  "/partner/amplify",
-  "/partner/embody",
-  "/resources",
-  "/resources/free",
-  "/resources/faq",
-  "/resources/insights",
-];
 
 if (process.env.PRERENDER === "0") {
   console.log("[prerender] skipped (PRERENDER=0)");
@@ -72,121 +43,152 @@ async function exists(p) {
 }
 
 if (!(await exists(DIST))) {
-  console.log("[prerender] no dist/ directory — skipping");
+  console.log("[prerender] no dist/ — skipping");
   process.exit(0);
 }
 
-let playwright;
-try {
-  playwright = await import("playwright");
-} catch {
-  console.warn("[prerender] playwright not installed — skipping");
+// Never fail the build on prerender errors.
+process.on("uncaughtException", (err) => {
+  console.warn(`[prerender] uncaught: ${err.message}`);
   process.exit(0);
-}
-
-// Start `vite preview` as a child process.
-const preview = spawn(
-  "npx",
-  ["vite", "preview", "--port", String(PORT), "--strictPort"],
-  { cwd: ROOT, stdio: ["ignore", "pipe", "pipe"], env: { ...process.env } },
-);
-
-const killPreview = () => {
-  try {
-    preview.kill("SIGTERM");
-  } catch {}
-};
-process.on("exit", killPreview);
-process.on("SIGINT", () => {
-  killPreview();
-  process.exit(130);
+});
+process.on("unhandledRejection", (err) => {
+  console.warn(`[prerender] rejection: ${err?.message ?? err}`);
+  process.exit(0);
 });
 
-async function waitForServer(url, timeoutMs = 15_000) {
-  const start = Date.now();
-  while (Date.now() - start < timeoutMs) {
-    try {
-      const res = await fetch(url);
-      if (res.ok) return true;
-    } catch {}
-    await new Promise((r) => setTimeout(r, 250));
-  }
-  return false;
+const escapeHtml = (s) =>
+  String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+const escapeAttr = escapeHtml;
+
+const template = await readFile(path.join(DIST, "index.html"), "utf8");
+
+/**
+ * Replace the first matching tag in the HTML document.
+ * Returns unchanged HTML if the pattern doesn't match (never throws).
+ */
+function replaceTag(html, regex, replacement) {
+  return regex.test(html) ? html.replace(regex, replacement) : html;
 }
 
-const ready = await waitForServer(BASE);
-if (!ready) {
-  console.warn("[prerender] preview server did not start — skipping");
-  killPreview();
-  process.exit(0);
+function renderBody(route) {
+  const url = SITE + (route.path === "/" ? "" : route.path);
+  const sections = (route.sections ?? [])
+    .map(
+      (s) =>
+        `      <section><h2>${escapeHtml(s.h2)}</h2><p>${escapeHtml(
+          s.body,
+        )}</p></section>`,
+    )
+    .join("\n");
+  const links = (route.links ?? [])
+    .map(
+      (l) =>
+        `        <li><a href="${escapeAttr(l.href)}">${escapeHtml(l.label)}</a></li>`,
+    )
+    .join("\n");
+
+  // This content lives inside <div id="root">. Since main.tsx uses
+  // createRoot (not hydrateRoot), React replaces these children on
+  // mount — no hydration warnings, no visual flash for users because
+  // the SPA styles hide untyped body content behind the app shell.
+  return `<div style="max-width:760px;margin:2rem auto;padding:1.5rem;font-family:system-ui,-apple-system,sans-serif;line-height:1.6;color:#1a1a2e">
+      <h1>${escapeHtml(route.h1)}</h1>
+      <p>${escapeHtml(route.intro)}</p>
+${sections}
+${
+  links
+    ? `      <nav aria-label="Explore"><h2>Explore</h2><ul>\n${links}\n        </ul></nav>`
+    : ""
+}
+      <p><a href="${escapeAttr(url)}">${escapeHtml(url)}</a></p>
+    </div>`;
 }
 
-async function launchBrowser() {
-  try {
-    return await playwright.chromium.launch({ headless: true });
-  } catch (err) {
-    if (!/Executable doesn't exist/i.test(err.message)) throw err;
-    console.log("[prerender] installing Chromium (first run)…");
-    await new Promise((resolve) => {
-      const p = spawn("npx", ["playwright", "install", "chromium"], {
-        cwd: ROOT,
-        stdio: "inherit",
-      });
-      p.on("exit", resolve);
-    });
-    return await playwright.chromium.launch({ headless: true });
-  }
-}
+function buildHtml(route) {
+  const url = SITE + (route.path === "/" ? "" : route.path);
+  let html = template;
 
-let browser;
-try {
-  browser = await launchBrowser();
-} catch (err) {
-  console.warn(`[prerender] cannot launch Chromium — skipping (${err.message})`);
-  killPreview();
-  process.exit(0);
-}
-const context = await browser.newContext({
-  viewport: { width: 1280, height: 900 },
-  userAgent: "Mozilla/5.0 (compatible; LovablePrerender/1.0)",
-});
+  // Title & meta description
+  html = replaceTag(
+    html,
+    /<title>[\s\S]*?<\/title>/,
+    `<title>${escapeHtml(route.title)}</title>`,
+  );
+  html = replaceTag(
+    html,
+    /<meta name="description"[^>]*>/,
+    `<meta name="description" content="${escapeAttr(route.description)}">`,
+  );
 
+  // Canonical
+  html = replaceTag(
+    html,
+    /<link rel="canonical"[^>]*>/,
+    `<link rel="canonical" href="${escapeAttr(url)}" />`,
+  );
+
+  // Open Graph
+  html = replaceTag(
+    html,
+    /<meta property="og:url"[^>]*>/,
+    `<meta property="og:url" content="${escapeAttr(url)}" />`,
+  );
+  html = replaceTag(
+    html,
+    /<meta property="og:title"[^>]*>/,
+    `<meta property="og:title" content="${escapeAttr(route.title)}">`,
+  );
+  html = replaceTag(
+    html,
+    /<meta property="og:description"[^>]*>/,
+    `<meta property="og:description" content="${escapeAttr(route.description)}">`,
+  );
+
+  // Twitter
+  html = replaceTag(
+    html,
+    /<meta name="twitter:title"[^>]*>/,
+    `<meta name="twitter:title" content="${escapeAttr(route.title)}">`,
+  );
+  html = replaceTag(
+    html,
+    /<meta name="twitter:description"[^>]*>/,
+    `<meta name="twitter:description" content="${escapeAttr(route.description)}">`,
+  );
+
+  // Inject body content inside #root. Preserves everything after it
+  // (noscript, script tags).
+  html = replaceTag(
+    html,
+    /<div id="root">[\s\S]*?<\/div>/,
+    `<div id="root">${renderBody(route)}</div>`,
+  );
+
+  return html;
+}
 
 let ok = 0;
 let failed = 0;
 
-for (const route of ROUTES) {
-  const url = BASE + route;
-  const page = await context.newPage();
+for (const route of routes) {
   try {
-    await page.goto(url, { waitUntil: "networkidle", timeout: 15_000 });
-    // Small settle for late data or animations.
-    await page.waitForTimeout(400);
-    const html = await page.content();
-
-    // Ensure hydration marker is present.
-    if (!html.includes('id="root"')) {
-      throw new Error("no #root in rendered HTML");
-    }
-
+    const html = buildHtml(route);
     const outDir =
-      route === "/" ? DIST : path.join(DIST, route.replace(/^\//, ""));
+      route.path === "/" ? DIST : path.join(DIST, route.path.replace(/^\//, ""));
     await mkdir(outDir, { recursive: true });
-    const outFile = path.join(outDir, "index.html");
-    await writeFile(outFile, html, "utf8");
-    console.log(`[prerender] ✓ ${route}`);
+    await writeFile(path.join(outDir, "index.html"), html, "utf8");
+    console.log(`[prerender] ✓ ${route.path}`);
     ok++;
   } catch (err) {
-    console.warn(`[prerender] ✗ ${route} — ${err.message}`);
+    console.warn(`[prerender] ✗ ${route.path} — ${err.message}`);
     failed++;
-  } finally {
-    await page.close();
   }
 }
 
-await browser.close();
-killPreview();
-
 console.log(`[prerender] done — ${ok} ok, ${failed} failed`);
-// Never fail the build on prerender errors.
 process.exit(0);
