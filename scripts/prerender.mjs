@@ -291,7 +291,8 @@ function buildHtml(route) {
   // Per-route JSON-LD (Service, BreadcrumbList, etc.) injected right
   // before </head> so it stacks with the sitewide Organization/WebSite
   // graph already in the template.
-  if (Array.isArray(route.jsonLd) && route.jsonLd.length) {
+  const jsonLd = [...(route.jsonLd ?? []), ...autoJsonLd(route)];
+  if (jsonLd.length) {
     const scripts = route.jsonLd
       .map(
         (obj) =>
