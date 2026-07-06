@@ -334,6 +334,311 @@ export const routes = [
       "Long-form thought leadership on change origination, Phase Zero™ strategic positioning, Stoic leadership, communication architecture, and the mechanics of building organizations that lead their markets.",
     links: commonLinks,
   },
+  {
+    path: "/partner/amplify/workshops",
+    title: "AMPLIFY Workshops | Painted Porch Strategies",
+    description:
+      "Live, cohort-based leadership and change workshops inside AMPLIFY. Architect Change, communication architecture, change readiness, and more.",
+    h1: "AMPLIFY Workshops",
+    intro:
+      "Cohort-based workshops that open AMPLIFY engagements or run as targeted capability builds. Every workshop is anchored in Phase Zero™ and The Painted Porch Pillars™ so the work sticks after the room clears.",
+    links: [
+      { href: "/partner/amplify", label: "AMPLIFY overview" },
+      { href: "/partner/amplify/sprints", label: "AMPLIFY sprints" },
+      { href: "/partner/amplify/labs", label: "AMPLIFY labs" },
+      { href: "/partner/amplify/stractical-leader", label: "Stractical Leader Intensive" },
+      { href: "/blue-door", label: "The Blue Door (prerequisite)" },
+      { href: "/contact", label: "Contact us" },
+    ],
+  },
+  {
+    path: "/partner/amplify/sprints",
+    title: "AMPLIFY Sprints | Painted Porch Strategies",
+    description:
+      "90-day AMPLIFY sprints that drive focused execution across leadership, communication, and operational capacity.",
+    h1: "AMPLIFY Sprints",
+    intro:
+      "AMPLIFY sprints are 90-day focused execution engagements. Each sprint is designed around a specific transformation target surfaced by the Blue Door and structured through the P.A.T.H.™ methodology.",
+    links: [
+      { href: "/partner/amplify", label: "AMPLIFY overview" },
+      { href: "/partner/amplify/workshops", label: "AMPLIFY workshops" },
+      { href: "/partner/amplify/labs", label: "AMPLIFY labs" },
+      { href: "/blue-door", label: "The Blue Door (prerequisite)" },
+      { href: "/contact", label: "Contact us" },
+    ],
+  },
+  {
+    path: "/partner/amplify/labs",
+    title: "AMPLIFY Labs | Painted Porch Strategies",
+    description:
+      "AMPLIFY labs deepen specific capabilities — team dynamics, change readiness, communication systems — through hands-on practice.",
+    h1: "AMPLIFY Labs",
+    intro:
+      "AMPLIFY labs are hands-on, capability-specific engagements. They pair with workshops and sprints to deepen the muscles a specific transformation needs.",
+    links: [
+      { href: "/partner/amplify", label: "AMPLIFY overview" },
+      { href: "/partner/amplify/workshops", label: "AMPLIFY workshops" },
+      { href: "/partner/amplify/sprints", label: "AMPLIFY sprints" },
+      { href: "/contact", label: "Contact us" },
+    ],
+  },
+  {
+    path: "/partner/amplify/stractical-leader",
+    title: "The Stractical Leader 6-Week Intensive | Painted Porch Strategies",
+    description:
+      "A 6-week intensive that turns tactical managers into stractical leaders combining strategic thinking with practical execution.",
+    h1: "The Stractical Leader — 6-Week Intensive",
+    intro:
+      "The Stractical Leader Intensive is a 6-week AMPLIFY program that builds strategic-plus-tactical (stractical) leadership capacity. Live cohort sessions, applied assignments, and direct coaching from Amy Yackowski.",
+    links: [
+      { href: "/resources/stractical-mini", label: "Stractical mini guide (free)" },
+      { href: "/partner/amplify", label: "AMPLIFY overview" },
+      { href: "/blue-door", label: "The Blue Door (prerequisite)" },
+      { href: "/contact", label: "Contact us" },
+    ],
+  },
+  {
+    path: "/partner/ignite/courses",
+    title: "IGNITE Courses | Painted Porch Strategies",
+    description:
+      "Self-paced leadership and change courses inside the IGNITE tier of Painted Porch Strategies.",
+    h1: "IGNITE Courses",
+    intro:
+      "Self-paced courses covering change origination, leadership fundamentals, communication architecture, and Stoic practical wisdom for modern leaders.",
+    links: [
+      { href: "/partner/ignite", label: "IGNITE overview" },
+      { href: "/partner/ignite/assessments", label: "IGNITE assessments" },
+      { href: "/partner/ignite/masterclasses", label: "IGNITE masterclasses" },
+      { href: "/contact", label: "Contact us" },
+    ],
+  },
+  {
+    path: "/partner/ignite/assessments",
+    title: "IGNITE Assessments | Painted Porch Strategies",
+    description:
+      "Individual and team assessments inside IGNITE: Working Genius, EQ-i, change readiness, and elemental style.",
+    h1: "IGNITE Assessments",
+    intro:
+      "A library of individual and team assessments that surface how you and your people are wired for change: Working Genius, EQ-i 2.0, change readiness, elemental style, and team health.",
+    links: [
+      { href: "/partner/ignite", label: "IGNITE overview" },
+      { href: "/eq", label: "EQ-i 2.0 assessment" },
+      { href: "/partner/ignite/assessments/working-genius", label: "Working Genius" },
+      { href: "/contact", label: "Contact us" },
+    ],
+  },
+  {
+    path: "/partner/ignite/masterclasses",
+    title: "IGNITE Masterclasses | Painted Porch Strategies",
+    description:
+      "Live and on-demand masterclasses on change origination, leadership, communication, and Stoic wisdom.",
+    h1: "IGNITE Masterclasses",
+    intro:
+      "Live and on-demand masterclasses on the topics leaders wrestle with most: originating change, leading through uncertainty, designing communication that lands, and applying Stoic practical wisdom.",
+    links: [
+      { href: "/partner/ignite", label: "IGNITE overview" },
+      { href: "/partner/ignite/courses", label: "IGNITE courses" },
+      { href: "/contact", label: "Contact us" },
+    ],
+  },
+  {
+    path: "/speaking",
+    title: "Speaking & Workshops | Painted Porch Strategies",
+    description:
+      "Book Amy Yackowski, Rob Yackowski, or the Painted Porch team for keynotes, workshops, and executive sessions on change origination.",
+    h1: "Speaking & Workshops",
+    intro:
+      "Amy Yackowski and the Painted Porch team deliver keynotes, workshops, and executive sessions on change origination, Phase Zero™ strategy, Stoic leadership, and communication architecture.",
+    links: [
+      { href: "/speaking/topics", label: "Talk topics" },
+      { href: "/speaking/amy", label: "Amy Yackowski (speaker)" },
+      { href: "/speaking/rob", label: "Rob Yackowski (speaker)" },
+      { href: "/speaking/media", label: "As seen on" },
+      { href: "/contact", label: "Book a session" },
+    ],
+  },
+  {
+    path: "/speaking/topics",
+    title: "Speaking Topics | Painted Porch Strategies",
+    description:
+      "Signature talk and workshop topics from Painted Porch Strategies: Phase Zero, Stractical Leadership, Stoic leadership, and change origination.",
+    h1: "Speaking Topics",
+    intro:
+      "Signature keynote and workshop topics from the Painted Porch team, ranging from Phase Zero™ strategic authorship to Stoic practical wisdom for modern leaders.",
+    links: [
+      { href: "/speaking", label: "Speaking overview" },
+      { href: "/contact", label: "Book a session" },
+    ],
+  },
+  {
+    path: "/speaking/amy",
+    title: "Amy Yackowski, Speaker | Painted Porch Strategies",
+    description:
+      "Book Amy Yackowski, Founder of Painted Porch Strategies, for keynotes and workshops on change origination and Stoic leadership.",
+    h1: "Amy Yackowski — Keynote Speaker",
+    intro:
+      "Amy Yackowski delivers keynotes and workshops on change origination, Phase Zero™ strategy, and Stoic practical wisdom for modern executives. 20+ years inside real transformations, no theater.",
+    links: [
+      { href: "/speaking", label: "All speakers" },
+      { href: "/speaking/topics", label: "Talk topics" },
+      { href: "/contact", label: "Book Amy" },
+    ],
+  },
+  {
+    path: "/speaking/rob",
+    title: "Rob Yackowski, Speaker | Painted Porch Strategies",
+    description:
+      "Book Rob Yackowski, Master of Communication at Painted Porch Strategies, for keynotes on change communication architecture.",
+    h1: "Rob Yackowski — Keynote Speaker",
+    intro:
+      "Rob Yackowski speaks on communication architecture, the six communicator styles, and how to make change legible inside complex organizations.",
+    links: [
+      { href: "/speaking", label: "All speakers" },
+      { href: "/6-communicator-styles", label: "Six Communicator Styles" },
+      { href: "/contact", label: "Book Rob" },
+    ],
+  },
+  {
+    path: "/speaking/media",
+    title: "As Seen On | Painted Porch Strategies",
+    description:
+      "Media appearances, podcasts, and press coverage featuring Painted Porch Strategies.",
+    h1: "As Seen On",
+    intro:
+      "Podcasts, press, and media appearances featuring Amy Yackowski and the Painted Porch team on change origination, leadership, and Stoic practical wisdom.",
+    links: commonLinks,
+  },
+  {
+    path: "/contact",
+    title: "Contact Painted Porch Strategies",
+    description:
+      "Get in touch with Painted Porch Strategies to discuss partnership, the Blue Door, speaking, or workshops.",
+    h1: "Contact Painted Porch Strategies",
+    intro:
+      "Ready to talk? Send us a message and we will respond within one business day. For engagement inquiries, we recommend starting with The Blue Door, our $1,500 strategic organizational appraisal and prerequisite for partnership.",
+    links: [
+      { href: "/blue-door", label: "Start with the Blue Door" },
+      { href: "/partner", label: "Partner With Us" },
+      { href: "/speaking", label: "Speaking & workshops" },
+    ],
+  },
+  {
+    path: "/start-here",
+    title: "Start Here | Painted Porch Strategies",
+    description:
+      "New to Painted Porch Strategies? Take the P.A.T.H. Compass quiz to find your best entry point across IGNITE, AMPLIFY, and EMBODY.",
+    h1: "Start Here — Discover Your P.A.T.H.way",
+    intro:
+      "A short guided quiz that maps your situation to the right Painted Porch entry point: IGNITE, AMPLIFY, EMBODY, or the Blue Door, so you're not guessing what to do next.",
+    links: commonLinks,
+  },
+  {
+    path: "/phase-zero",
+    title: "Phase Zero | Painted Porch Strategies",
+    description:
+      "Phase Zero is the strategic authorship phase before implementation, where leaders determine what change to lead and design the architecture to sustain it.",
+    h1: "Phase Zero™ — The Work Before the Work",
+    intro:
+      "Phase Zero™ is Painted Porch Strategies' signature framework. It's the strategic authorship phase where leaders determine what change to lead, assess whether they're structurally capable of leading it, and design the architecture required to sustain that leadership before a single tool gets launched.",
+    links: commonLinks,
+  },
+  {
+    path: "/eq",
+    title: "EQ-i 2.0 Assessment | Painted Porch Strategies",
+    description:
+      "Take the EQ-i 2.0 emotional intelligence assessment with debrief and coaching from a certified Painted Porch practitioner.",
+    h1: "EQ-i 2.0 Emotional Intelligence Assessment",
+    intro:
+      "The EQ-i 2.0 is the world's most established emotional intelligence assessment. Painted Porch offers certified administration, debrief, and coaching, individually or for teams.",
+    links: [
+      { href: "/partner/ignite/assessments", label: "All assessments" },
+      { href: "/contact", label: "Contact us" },
+    ],
+  },
+  {
+    path: "/resources/youtube",
+    title: "YouTube | Painted Porch Strategies",
+    description:
+      "Watch Painted Porch Strategies videos: change origination, Phase Zero, Stoic leadership, and practical wisdom for modern executives.",
+    h1: "Painted Porch on YouTube",
+    intro:
+      "Short-form and long-form video on change origination, Phase Zero™, Stoic leadership, and the mechanics of building organizations that lead their markets.",
+    links: commonLinks,
+  },
+  {
+    path: "/resources/stractical-mini",
+    title: "The Stractical Leader Mini Guide (Free) | Painted Porch Strategies",
+    description:
+      "Free mini guide: how strategic-plus-tactical (stractical) leaders think, decide, and execute. From the Stractical Leader Intensive.",
+    h1: "The Stractical Leader Mini Guide",
+    intro:
+      "A free mini guide adapted from the Stractical Leader 6-Week Intensive. How strategic-plus-tactical leaders think about direction, decisions, and execution, without collapsing into either extreme.",
+    links: [
+      { href: "/partner/amplify/stractical-leader", label: "Full 6-week Intensive" },
+      { href: "/resources", label: "All resources" },
+      { href: "/contact", label: "Contact us" },
+    ],
+  },
+  {
+    path: "/kick-the-habit",
+    title: "Kick the Habit | Painted Porch Strategies",
+    description:
+      "A free session on breaking the habits that keep leaders stuck in reactive change management.",
+    h1: "Kick the Habit",
+    intro:
+      "A free session on the specific habits that keep smart leaders stuck in reactive change management, and how to break them.",
+    links: commonLinks,
+  },
+  {
+    path: "/stoic-field-guide",
+    title: "The Stoic Field Guide | Painted Porch Strategies",
+    description:
+      "A practical Stoic field guide for modern leaders: apply Marcus Aurelius, Epictetus, and Seneca to your actual calendar.",
+    h1: "The Stoic Field Guide",
+    intro:
+      "A practical Stoic field guide built for modern leaders. Marcus Aurelius, Epictetus, and Seneca translated into decisions you can make on Monday morning.",
+    links: commonLinks,
+  },
+  {
+    path: "/6-communicator-styles",
+    title: "The Six Communicator Styles | Painted Porch Strategies",
+    description:
+      "The Six Communicator Styles, Rob Yackowski's framework for making change communication land inside complex organizations.",
+    h1: "The Six Communicator Styles",
+    intro:
+      "Rob Yackowski's framework for change communication. Six distinct styles that shape how people receive, interpret, and act on organizational messages.",
+    links: commonLinks,
+  },
+  {
+    path: "/burnout",
+    title: "Burnout Resources | Painted Porch Strategies",
+    description:
+      "Free resources for leaders and teams recovering from burnout: practical tools and reframes from Painted Porch Strategies.",
+    h1: "Burnout Resources",
+    intro:
+      "A free resource pack for leaders and teams working through burnout. Practical tools, honest reframes, and a path back to sustainable capacity.",
+    links: commonLinks,
+  },
+  {
+    path: "/terms",
+    title: "Terms & Conditions | Painted Porch Strategies",
+    description:
+      "Terms and conditions, privacy policy, and cookie policy for Painted Porch Strategies.",
+    h1: "Terms & Conditions",
+    intro:
+      "The legal terms governing use of Painted Porch Strategies programs, products, and this website, plus our privacy and cookie policies.",
+    links: commonLinks,
+  },
+  {
+    path: "/sitemap",
+    title: "Sitemap | Painted Porch Strategies",
+    description:
+      "Full sitemap of Painted Porch Strategies: every public page, organized by section.",
+    h1: "Sitemap",
+    intro:
+      "Every public page on the Painted Porch Strategies site, organized by section: About, Partnership tiers, Resources, Speaking, and lead-magnet landing pages.",
+    links: commonLinks,
+  },
 ];
 
 export { SITE };
