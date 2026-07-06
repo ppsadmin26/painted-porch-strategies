@@ -438,6 +438,10 @@ async function prerenderBlogPosts() {
         h1: post.title || "Insight",
         intro: post.excerpt || description,
         ogImage: post.cover_image_url || undefined,
+        ogImageAlt: post.title ? `Cover image for ${post.title}` : undefined,
+        ogType: "article",
+        publishedTime: post.publish_date || undefined,
+        author: "Painted Porch Strategies",
         sections: [],
         links: [
           { href: "/resources/insights", label: "All insights" },
