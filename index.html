@@ -58,21 +58,59 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://onthepaintedporch.com/#organization",
         "name": "Painted Porch Strategies",
+        "alternateName": "PPS",
         "url": "https://onthepaintedporch.com/",
-        "logo": "https://onthepaintedporch.com/og-image.jpg",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://onthepaintedporch.com/og-image.jpg"
+        },
+        "image": "https://onthepaintedporch.com/og-image.jpg",
         "description": "Painted Porch Strategies partners with leaders to architect extraordinary outcomes through Phase Zero strategic positioning and organizational transformation.",
-        "founder": { "@type": "Person", "name": "Amy Yackowski" },
-        "sameAs": ["https://www.paintedporchstrategies.com"]
+        "founder": {
+          "@type": "Person",
+          "name": "Amy Yackowski",
+          "jobTitle": "Founder & Organizational Shift Strategist",
+          "url": "https://onthepaintedporch.com/amy"
+        },
+        "founders": [
+          { "@type": "Person", "name": "Amy Yackowski", "url": "https://onthepaintedporch.com/amy" }
+        ],
+        "areaServed": { "@type": "Country", "name": "United States" },
+        "knowsAbout": [
+          "Change management",
+          "Organizational transformation",
+          "Leadership development",
+          "Phase Zero strategic positioning",
+          "Stoic leadership",
+          "Executive advisory",
+          "Change communication"
+        ],
+        "slogan": "Architect Extraordinary Outcomes",
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "url": "https://onthepaintedporch.com/contact",
+          "availableLanguage": ["English"]
+        }],
+        "sameAs": [
+          "https://www.paintedporchstrategies.com",
+          "https://www.linkedin.com/company/painted-porch-strategies",
+          "https://www.youtube.com/@paintedporchstrategies"
+        ]
       }
     </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": "https://onthepaintedporch.com/#website",
         "name": "Painted Porch Strategies",
-        "url": "https://onthepaintedporch.com/"
+        "url": "https://onthepaintedporch.com/",
+        "publisher": { "@id": "https://onthepaintedporch.com/#organization" },
+        "inLanguage": "en-US"
       }
     </script>
 
