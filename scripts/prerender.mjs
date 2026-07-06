@@ -276,6 +276,61 @@ function buildHtml(route) {
     `<meta property="og:description" content="${escapeAttr(route.description)}">`,
   );
 
+  // og:image / twitter:image — per-route override, else keep sitewide.
+  if (route.ogImage) {
+    const img = route.ogImage;
+    html = replaceTag(
+      html,
+      /<meta property="og:image"[^>]*>/,
+      `<meta property="og:image" content="${escapeAttr(img)}">`,
+    );
+    html = replaceTag(
+      html,
+      /<meta name="twitter:image"[^>]*>/,
+      `<meta name="twitter:image" content="${escapeAttr(img)}">`,
+    );
+    // Strip fixed 1200x630 dimension hints — per-route images may differ.
+    html = html
+      .replace(/\n\s*<meta property="og:image:width"[^>]*>/g, "")
+      .replace(/\n\s*<meta property="og:image:height"[^>]*>/g, "");
+    if (route.ogImageAlt) {
+      html = replaceTag(
+        html,
+        /<meta property="og:image:alt"[^>]*>/,
+        `<meta property="og:image:alt" content="${escapeAttr(route.ogImageAlt)}">`,
+      );
+    }
+  }
+
+  // og:type — default "website"; blog posts pass "article".
+  if (route.ogType) {
+    html = replaceTag(
+      html,
+      /<meta property="og:type"[^>]*>/,
+      `<meta property="og:type" content="${escapeAttr(route.ogType)}">`,
+    );
+  }
+
+  // Article-only tags (published_time, author).
+  if (route.ogType === "article") {
+    const articleTags = [];
+    if (route.publishedTime)
+      articleTags.push(
+        `<meta property="article:published_time" content="${escapeAttr(route.publishedTime)}">`,
+      );
+    if (route.author)
+      articleTags.push(
+        `<meta property="article:author" content="${escapeAttr(route.author)}">`,
+      );
+    if (articleTags.length) {
+      html = replaceTag(
+        html,
+        /<\/head>/,
+        `    ${articleTags.join("\n    ")}\n  </head>`,
+      );
+    }
+  }
+
   // Twitter
   html = replaceTag(
     html,
