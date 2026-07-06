@@ -111,11 +111,36 @@ if (!ready) {
   process.exit(0);
 }
 
-const browser = await playwright.chromium.launch({ headless: true });
+async function launchBrowser() {
+  try {
+    return await playwright.chromium.launch({ headless: true });
+  } catch (err) {
+    if (!/Executable doesn't exist/i.test(err.message)) throw err;
+    console.log("[prerender] installing Chromium (first run)…");
+    await new Promise((resolve) => {
+      const p = spawn("npx", ["playwright", "install", "chromium"], {
+        cwd: ROOT,
+        stdio: "inherit",
+      });
+      p.on("exit", resolve);
+    });
+    return await playwright.chromium.launch({ headless: true });
+  }
+}
+
+let browser;
+try {
+  browser = await launchBrowser();
+} catch (err) {
+  console.warn(`[prerender] cannot launch Chromium — skipping (${err.message})`);
+  killPreview();
+  process.exit(0);
+}
 const context = await browser.newContext({
   viewport: { width: 1280, height: 900 },
   userAgent: "Mozilla/5.0 (compatible; LovablePrerender/1.0)",
 });
+
 
 let ok = 0;
 let failed = 0;
