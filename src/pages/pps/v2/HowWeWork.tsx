@@ -3,7 +3,7 @@ import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { useScrollAnimation, getAnimationClasses } from "@/hooks/useScrollAnimation";
 import { TierHeroSection } from "@/components/pps/TierHeroSection";
 import ParallaxCTA from "@/components/pps/ParallaxCTA";
-import PPSBreadcrumb from "@/components/pps/PPSBreadcrumb";
+import { PPSBreadcrumb } from "@/components/pps/PPSBreadcrumb";
 import { Eyebrow } from "@/components/pps/Eyebrow";
 import { ShIFt } from "@/components/pps/v2/ShIFt";
 import { Check, X, ArrowRight } from "lucide-react";
