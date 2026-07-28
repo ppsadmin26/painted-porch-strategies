@@ -101,7 +101,7 @@ export default function HowWeWork() {
         overlayClass="bg-navy/55"
       />
 
-      <PPSBreadcrumb items={[{ label: "How We Work" }]} />
+      <PPSBreadcrumb segments={[{ label: "How We Work" }]} />
 
       {/* Stages */}
       <section className="py-20 md:py-28 bg-white" aria-labelledby="stages">
