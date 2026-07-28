@@ -24,6 +24,10 @@ import HeroPreviewV2 from "./pages/pps/HeroPreviewV2";
 import HeroPreviewV3 from "./pages/pps/HeroPreviewV3";
 import HeroPreviewCompare from "./pages/pps/HeroPreviewCompare";
 import PhaseZero from "./pages/pps/PhaseZero";
+import HomeV2 from "./pages/pps/v2/HomeV2";
+import HowWeWork from "./pages/pps/v2/HowWeWork";
+import EpicShift from "./pages/pps/v2/EpicShift";
+import CapabilitiesV2 from "./pages/pps/v2/Capabilities";
 import PPSAbout from "./pages/pps/PPSAbout";
 import PPSPricing from "./pages/pps/PPSPricing";
 import PPSBlog from "./pages/pps/PPSBlog";
@@ -282,6 +286,13 @@ const App = () => (
             <Route path="hero-preview/v3" element={<HeroPreviewV3 />} />
             <Route path="hero-preview/compare" element={<HeroPreviewCompare />} />
             <Route path="phase-zero" element={<PhaseZero />} />
+
+            {/* Epic ShIFt draft ecosystem (v2) — not linked in nav */}
+            <Route path="home-v2" element={<HomeV2 />} />
+            <Route path="how-we-work" element={<HowWeWork />} />
+            <Route path="epic-shift" element={<EpicShift />} />
+            <Route path="capabilities" element={<CapabilitiesV2 />} />
+
             {/* About Section */}
             <Route path="about" element={<PPSAbout />} />
             <Route path="about/approach" element={<OurApproach />} />
