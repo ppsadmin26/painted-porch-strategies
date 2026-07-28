@@ -50,6 +50,15 @@ export const sitemapData: SitemapNode[] = [
     path: "/phase-zero",
   },
   {
+    label: "Epic ShIFt (Draft)",
+    path: "/home-v2",
+    children: [
+      { label: "How We Work (Draft)", path: "/how-we-work" },
+      { label: "Epic ShIFt Philosophy (Draft)", path: "/epic-shift" },
+      { label: "Capabilities (Draft)", path: "/capabilities" },
+    ],
+  },
+  {
     label: "About",
     path: "/about",
     children: [
