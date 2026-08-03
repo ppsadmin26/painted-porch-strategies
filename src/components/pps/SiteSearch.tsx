@@ -1,6 +1,8 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, FileText, Users, Mic, BookOpen, Flame, Rocket, Building, Download, Video, ArrowRight } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Search, FileText, Users, Mic, BookOpen, Flame, Rocket, Building, Download, Video, ArrowRight, PenLine } from "lucide-react";
 import {
   CommandDialog,
   CommandEmpty,
@@ -61,6 +63,33 @@ export function SiteSearch() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
+  // Published blog posts, loaded once the dialog is opened
+  const { data: blogEntries = [] } = useQuery<SearchEntry[]>({
+    queryKey: ["site-search-blog-posts"],
+    enabled: open,
+    staleTime: 5 * 60 * 1000,
+    queryFn: async () => {
+      const { data } = await supabase
+        .from("blog_posts")
+        .select("id, title, slug, excerpt")
+        .eq("status", "published")
+        .order("publish_date", { ascending: false })
+        .limit(200);
+
+      return (data || [])
+        .filter((p) => p.slug)
+        .map((p) => ({
+          title: p.title,
+          description: p.excerpt?.slice(0, 120) || "Thoughts from the Porch",
+          href: `/resources/insights/${p.slug}`,
+          category: "Insights",
+          keywords: ["blog", "insight", "article", "post", p.title.toLowerCase()],
+          icon: <PenLine className="w-4 h-4" />,
+        }));
+    },
+  });
+
+
   // Keyboard shortcut: Cmd+K / Ctrl+K
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -88,14 +117,14 @@ export function SiteSearch() {
 
   const groupedEntries = useMemo(() => {
     const groups: Record<string, SearchEntry[]> = {};
-    searchIndex
+    [...searchIndex, ...blogEntries]
       .filter((entry) => !EXCLUDED_HREFS.has(entry.href))
       .forEach((entry) => {
         if (!groups[entry.category]) groups[entry.category] = [];
         groups[entry.category].push(entry);
       });
     return groups;
-  }, [EXCLUDED_HREFS]);
+  }, [EXCLUDED_HREFS, blogEntries]);
 
   return (
     <>
