@@ -854,50 +854,73 @@ Deno.serve(async (req) => {
     // body. This mirrors how a human (or LLM) reading the page would isolate
     // the actual article content from LinkedIn's surrounding chrome (comments,
     // "more from this author", recommended posts, sign-in prompts, footer, etc.)
-    const scrapeRes = await fetch("https://api.firecrawl.dev/v2/scrape", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${firecrawlKey}`,
-        "Content-Type": "application/json",
+    const jsonFormat = {
+      type: "json",
+      prompt:
+        "You are locating the SINGLE LinkedIn Pulse article at the requested URL within page markdown. Return: 'title' (article title, no '| LinkedIn' suffix), 'cover_image_url' (article hero/cover image URL if present, otherwise null), 'first_paragraph_snippet' (verbatim ~120 chars of the article's FIRST line of body content after the title — this INCLUDES any opening epigraph, pull-quote, italicized intro, or blockquote that appears before the first regular paragraph; do NOT skip them), 'last_paragraph_snippet' (verbatim ~120 chars of the article's FINAL line of body content before any LinkedIn chrome — this INCLUDES any sign-off line such as '~ Amy Yack', '— Amy', author signature, or closing italic note; do NOT stop before the sign-off), and 'body_markdown' (FALLBACK ONLY — full article body in clean markdown with bold **text**, italic *text*, blockquotes > , links [text](url), and in-body images ![alt](https-url) preserved verbatim; exclude cover image, comments, follow widgets, 'More articles by', newsletter chrome, sign-in prompts, navigation, footer). Snippets MUST appear verbatim in the page text. Do NOT paraphrase.",
+      schema: {
+        type: "object",
+        properties: {
+          title: { type: "string" },
+          cover_image_url: { type: ["string", "null"] },
+          first_paragraph_snippet: { type: "string" },
+          last_paragraph_snippet: { type: "string" },
+          body_markdown: { type: "string" },
+        },
+        required: ["title", "first_paragraph_snippet", "last_paragraph_snippet", "body_markdown"],
       },
-      body: JSON.stringify({
-        url,
-        onlyMainContent: true,
-        formats: [
-          "markdown",
-          {
-            type: "json",
-            prompt:
-              "You are locating the SINGLE LinkedIn Pulse article at the requested URL within page markdown. Return: 'title' (article title, no '| LinkedIn' suffix), 'cover_image_url' (article hero/cover image URL if present, otherwise null), 'first_paragraph_snippet' (verbatim ~120 chars of the article's FIRST line of body content after the title — this INCLUDES any opening epigraph, pull-quote, italicized intro, or blockquote that appears before the first regular paragraph; do NOT skip them), 'last_paragraph_snippet' (verbatim ~120 chars of the article's FINAL line of body content before any LinkedIn chrome — this INCLUDES any sign-off line such as '~ Amy Yack', '— Amy', author signature, or closing italic note; do NOT stop before the sign-off), and 'body_markdown' (FALLBACK ONLY — full article body in clean markdown with bold **text**, italic *text*, blockquotes > , links [text](url), and in-body images ![alt](https-url) preserved verbatim; exclude cover image, comments, follow widgets, 'More articles by', newsletter chrome, sign-in prompts, navigation, footer). Snippets MUST appear verbatim in the page text. Do NOT paraphrase.",
-            schema: {
-              type: "object",
-              properties: {
-                title: { type: "string" },
-                cover_image_url: { type: ["string", "null"] },
-                first_paragraph_snippet: { type: "string" },
-                last_paragraph_snippet: { type: "string" },
-                body_markdown: { type: "string" },
-              },
-              required: ["title", "first_paragraph_snippet", "last_paragraph_snippet", "body_markdown"],
-            },
-          },
-        ],
-      }),
-    });
+    };
 
-    const scrapeData = await scrapeRes.json();
-    if (!scrapeRes.ok || !scrapeData.success) {
+    // LinkedIn aggressively blocks datacenter scrapers, so try progressively
+    // heavier strategies before giving up.
+    const attempts = [
+      { label: "basic", extra: {} },
+      { label: "stealth", extra: { proxy: "stealth", waitFor: 5000 } },
+      { label: "stealth+all-formats", extra: { proxy: "stealth", waitFor: 8000, onlyMainContent: false } },
+    ];
+
+    let scrapeData: any = null;
+    let lastDetail = "";
+
+    for (const attempt of attempts) {
+      const scrapeRes = await fetch("https://api.firecrawl.dev/v2/scrape", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${firecrawlKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          url,
+          onlyMainContent: true,
+          formats: ["markdown", jsonFormat],
+          ...attempt.extra,
+        }),
+      });
+
+      const body = await scrapeRes.json().catch(() => ({}));
+      if (scrapeRes.ok && body?.success) {
+        scrapeData = body;
+        break;
+      }
+      lastDetail = typeof body?.error === "string" ? body.error : JSON.stringify(body ?? {});
+      console.warn(`Firecrawl attempt "${attempt.label}" failed [${scrapeRes.status}]: ${lastDetail}`);
+    }
+
+    if (!scrapeData) {
       return new Response(
         JSON.stringify({
           error: "Failed to scrape article",
-          detail: scrapeData.error,
+          detail:
+            "LinkedIn blocked all scrape attempts (basic and stealth proxy) for this URL. Confirm the article opens in a logged-out browser window, then retry. If it is member-only or was deleted, paste the content into a new post manually.",
+          firecrawl_detail: lastDetail,
         }),
         {
-          status: 500,
+          status: 502,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         }
       );
     }
+
 
     const payload = scrapeData.data ?? scrapeData;
     const extracted = payload.json ?? {};
