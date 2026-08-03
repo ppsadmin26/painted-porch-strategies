@@ -1068,12 +1068,22 @@ Deno.serve(async (req) => {
       console.warn(`Firecrawl attempt "${attempt.label}" failed [${scrapeRes.status}]: ${lastDetail}`);
     }
 
+    // Firecrawl fully blocked (document_antibot) → fall back to fetching the
+    // crawler-rendered page ourselves and converting the markup to markdown.
+    if (!scrapeData) {
+      console.warn("All Firecrawl attempts failed; trying direct crawler-UA fetch");
+      const direct = await scrapeLinkedInDirect(url);
+      if (direct) {
+        scrapeData = { success: true, data: direct };
+      }
+    }
+
     if (!scrapeData) {
       return new Response(
         JSON.stringify({
           error: "Failed to scrape article",
           detail:
-            "LinkedIn blocked all scrape attempts (basic and stealth proxy) for this URL. Confirm the article opens in a logged-out browser window, then retry. If it is member-only or was deleted, paste the content into a new post manually.",
+            "Could not read this LinkedIn article. Firecrawl was blocked and the direct fetch found no article content. Confirm the article opens in a logged-out browser window, then retry. If it is member-only or was deleted, paste the content into a new post manually.",
           firecrawl_detail: lastDetail,
         }),
         {
@@ -1082,6 +1092,7 @@ Deno.serve(async (req) => {
         }
       );
     }
+
 
 
     const payload = scrapeData.data ?? scrapeData;
