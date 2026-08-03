@@ -1,6 +1,8 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, FileText, Users, Mic, BookOpen, Flame, Rocket, Building, Download, Video, ArrowRight } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { Search, FileText, Users, Mic, BookOpen, Flame, Rocket, Building, Download, Video, ArrowRight, PenLine } from "lucide-react";
 import {
   CommandDialog,
   CommandEmpty,
