@@ -1033,18 +1033,18 @@ Deno.serve(async (req) => {
       },
     };
 
-    // LinkedIn aggressively blocks datacenter scrapers, so try progressively
-    // heavier strategies before giving up.
-    const attempts = [
-      { label: "basic", extra: {} },
-      { label: "stealth", extra: { proxy: "stealth", waitFor: 5000 } },
-      { label: "stealth+all-formats", extra: { proxy: "stealth", waitFor: 8000, onlyMainContent: false } },
-    ];
-
-    let scrapeData: any = null;
+    // LinkedIn currently blocks Firecrawl's browser engines, while its public
+    // server-rendered article page remains readable. Use that fast path first
+    // so the browser request does not wait through several doomed retries.
+    const direct = await scrapeLinkedInDirect(url);
+    let scrapeData: any = direct
+      ? { success: true, data: direct }
+      : null;
     let lastDetail = "";
 
-    for (const attempt of attempts) {
+    // Keep one Firecrawl attempt as a fallback for pages whose public markup
+    // changes or is temporarily unavailable.
+    if (!scrapeData) {
       const scrapeRes = await fetch("https://api.firecrawl.dev/v2/scrape", {
         method: "POST",
         headers: {
@@ -1055,26 +1055,15 @@ Deno.serve(async (req) => {
           url,
           onlyMainContent: true,
           formats: ["markdown", jsonFormat],
-          ...attempt.extra,
         }),
       });
 
       const body = await scrapeRes.json().catch(() => ({}));
       if (scrapeRes.ok && body?.success) {
         scrapeData = body;
-        break;
-      }
-      lastDetail = typeof body?.error === "string" ? body.error : JSON.stringify(body ?? {});
-      console.warn(`Firecrawl attempt "${attempt.label}" failed [${scrapeRes.status}]: ${lastDetail}`);
-    }
-
-    // Firecrawl fully blocked (document_antibot) → fall back to fetching the
-    // crawler-rendered page ourselves and converting the markup to markdown.
-    if (!scrapeData) {
-      console.warn("All Firecrawl attempts failed; trying direct crawler-UA fetch");
-      const direct = await scrapeLinkedInDirect(url);
-      if (direct) {
-        scrapeData = { success: true, data: direct };
+      } else {
+        lastDetail = typeof body?.error === "string" ? body.error : JSON.stringify(body ?? {});
+        console.warn(`Firecrawl fallback failed [${scrapeRes.status}]: ${lastDetail}`);
       }
     }
 

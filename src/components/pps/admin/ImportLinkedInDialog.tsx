@@ -83,9 +83,12 @@ export default function ImportLinkedInDialog({ onImported }: ImportLinkedInDialo
       onImported?.(data.slug);
     } catch (err: any) {
       console.error("Import error:", err);
+      const message = err?.message?.toLowerCase().includes("failed to send a request")
+        ? "The importer could not reach the backend. Your login may have expired. Refresh the page, sign in again if prompted, and retry."
+        : err?.message || "Something went wrong";
       toast({
         title: "Import failed",
-        description: err.message || "Something went wrong",
+        description: message,
         variant: "destructive",
       });
     } finally {
