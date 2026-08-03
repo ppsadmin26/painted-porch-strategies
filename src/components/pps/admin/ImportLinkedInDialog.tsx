@@ -42,7 +42,21 @@ export default function ImportLinkedInDialog({ onImported }: ImportLinkedInDialo
         { body: { url, reimport } }
       );
 
-      if (error) throw error;
+      if (error) {
+        let detail = error.message;
+        const ctx = (error as any).context;
+        if (ctx?.text) {
+          const raw = await ctx.text();
+          try {
+            const parsed = JSON.parse(raw);
+            detail = parsed.detail || parsed.error || raw;
+          } catch {
+            detail = raw || detail;
+          }
+        }
+        throw new Error(detail);
+      }
+
 
       if (data?.error) {
         if (data.slug) {
