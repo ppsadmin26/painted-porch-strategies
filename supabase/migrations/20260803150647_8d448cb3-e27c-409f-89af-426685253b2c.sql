@@ -1,0 +1,1 @@
+delete from public.blog_post_categories where post_id = '74a8abdf-3332-4bb5-ade6-6153523d399b'; delete from public.blog_posts where id = '74a8abdf-3332-4bb5-ade6-6153523d399b';
