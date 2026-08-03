@@ -117,14 +117,14 @@ export function SiteSearch() {
 
   const groupedEntries = useMemo(() => {
     const groups: Record<string, SearchEntry[]> = {};
-    searchIndex
+    [...searchIndex, ...blogEntries]
       .filter((entry) => !EXCLUDED_HREFS.has(entry.href))
       .forEach((entry) => {
         if (!groups[entry.category]) groups[entry.category] = [];
         groups[entry.category].push(entry);
       });
     return groups;
-  }, [EXCLUDED_HREFS]);
+  }, [EXCLUDED_HREFS, blogEntries]);
 
   return (
     <>
