@@ -122,6 +122,7 @@ export default function BlueDoorPurchase() {
                 <p className="text-body text-foreground -sm">
                   Reserve your Blue Door now. On launch day, we'll email you a secure link to access and complete your assessment.
                 </p>
+                <BlueDoorNotifyCTA className="mt-3 text-bluedoor hover:text-navy" />
               </div>
             )}
 
