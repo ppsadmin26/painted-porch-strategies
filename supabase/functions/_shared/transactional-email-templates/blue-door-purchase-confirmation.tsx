@@ -4,6 +4,7 @@ import {
   Body, Container, Head, Heading, Html, Img, Preview, Text, Section, Hr, Button, Link,
 } from 'npm:@react-email/components@0.0.22'
 import type { TemplateEntry } from './registry.ts'
+import { BLUE_DOOR_COPY } from '../blue-door-copy.ts'
 
 const SITE_NAME = 'Painted Porch Strategies'
 const LOGO_URL = 'https://dkpxjivoupqpmvzwxpef.supabase.co/storage/v1/object/public/email-assets/pps-logo-white.png'
@@ -27,7 +28,7 @@ const BlueDoorPurchaseConfirmation = ({
   return (
     <Html lang="en" dir="ltr">
       <Head />
-      <Preview>Your Blue Door is reserved. Access opens Coming Soon.</Preview>
+      <Preview>{BLUE_DOOR_COPY.emailPreview}</Preview>
       <Body style={main}>
         <Container style={container}>
           <Link href="https://onthepaintedporch.com" style={{ display: "block", textDecoration: "none" }}>
@@ -41,10 +42,10 @@ const BlueDoorPurchaseConfirmation = ({
 
           <Section style={highlightBox}>
             <Text style={highlightHeading}>
-              📅 Your assessment opens Coming Soon
+              {BLUE_DOOR_COPY.emailHighlight}
             </Text>
             <Text style={highlightText}>
-              On launch day, we will email you a secure access link from this same address. Open the link, complete the appraisal (less than 30 minutes), and your detailed executive brief will be delivered within 72 business hours.
+              {BLUE_DOOR_COPY.emailHighlightBody}
             </Text>
           </Section>
 
@@ -70,7 +71,7 @@ const BlueDoorPurchaseConfirmation = ({
               <strong>1. Now → launch day:</strong> No action needed. Watch for our launch-day email.
             </Text>
             <Text style={linkItem}>
-              <strong>2. Coming Soon:</strong> Your access link arrives in this inbox.
+              <strong>2. On launch day:</strong> Your access link arrives in this inbox.
             </Text>
             <Text style={linkItem}>
               <strong>3. Within 72 business hours of completion:</strong> Your custom executive brief, with 3 to 4 viable change paths and structural recommendations, lands in your inbox.
@@ -119,7 +120,7 @@ const BlueDoorPurchaseConfirmation = ({
 
 export const template = {
   component: BlueDoorPurchaseConfirmation,
-  subject: 'Your Blue Door is reserved — access opens Coming Soon',
+  subject: BLUE_DOOR_COPY.emailSubject,
   displayName: 'Blue Door purchase confirmation',
   previewData: {
     firstName: 'Jane',

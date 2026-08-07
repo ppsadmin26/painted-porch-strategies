@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@18.5.0";
+import { BLUE_DOOR_COPY } from "../_shared/blue-door-copy.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -158,8 +159,7 @@ serve(async (req) => {
             product: "blue_door_diagnostic",
             company: companyValidation.sanitized || "",
           },
-          footer:
-            "Thank you for opening your Blue Door. Your assessment access link will be emailed on launch day (Coming Soon). Questions? explore@onthepaintedporch.com",
+          footer: BLUE_DOOR_COPY.invoiceFooter,
           rendering_options: { amount_tax_display: "exclude_tax" },
         },
       },
