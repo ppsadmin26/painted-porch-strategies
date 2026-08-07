@@ -31,6 +31,13 @@ const includedItems = [
 
 export default function BlueDoorPurchase() {
   const { toast } = useToast();
+
+  useDocumentSeo({
+    title: blueDoorCheckoutSeoTitle(),
+    description: blueDoorCheckoutSeoDescription(),
+  });
+
+
   
   useEffect(() => {
     window.scrollTo(0, 0);
