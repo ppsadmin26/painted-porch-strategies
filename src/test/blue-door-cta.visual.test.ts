@@ -182,32 +182,21 @@ describe("Blue Door CTA visual regression (className tokens)", () => {
         );
       }
 
-      // Decorative icons inside a labelled CTA should be hidden from AT.
-      if (hasIcon && visibleText.length > 0 && !/aria-hidden/.test(ctx) && /<Button\b/.test(ctx)) {
-        // shadcn Button renders lucide icons with aria-hidden by default only
-        // when passed `aria-hidden`; flag raw usages so screen readers don't
-        // announce the glyph name.
-        // (informational-strength rule: only raw <a>/<Link> markup)
-      }
-
       // --- Accessibility: visible focus state ------------------------------
-      // Hand-rolled anchors/links (not shadcn <Button>, which ships a
-      // focus-visible ring) must declare their own focus-visible treatment.
-      const usesButtonPrimitive =
-        /<Button\b/.test(ctx) ||
-        /buttonClassName/.test(ctx) ||
-        /<ParallaxCTA\b/.test(ctx) ||
-        /variant\s*:/.test(ctx) ||
-        /isPrimary\s*:/.test(ctx);
-      const isRawAnchor = !usesButtonPrimitive && /className=/.test(ctx) && /<(a\s|Link\b)/.test(ctx);
+      // index.css ships a global :focus-visible safety net for every anchor
+      // and button, so plain text links are covered. What it can NOT cover is
+      // a CTA painted onto a dark surface: the default ring uses --ring, which
+      // is too low-contrast against cobalt/navy. Those need `focus-ring-on-dark`
+      // (or their own focus-visible ring).
       const hasFocusState =
         /focus-visible:/.test(ctx) ||
         /focus-ring-on-dark/.test(ctx) ||
         /focus:ring/.test(ctx) ||
         /focus:outline/.test(ctx);
-      if (isRawAnchor && !hasFocusState) {
+      const onDarkSurface = /\b(bg-bluedoor|bg-navy|bg-charcoal|bg-purple|bg-raspberry)\b/.test(ctx);
+      if (onDarkSurface && !hasFocusState && !/<Button\b|<ParallaxCTA\b|buttonClassName/.test(ctx)) {
         violations.push(
-          `${rel}: /blue-door link has custom styling but no focus-visible state — add focus-visible: classes or focus-ring-on-dark.\n${ctx.trim().slice(0, 240)}`,
+          `${rel}: /blue-door CTA sits on a dark surface without a high-contrast focus ring — add focus-ring-on-dark.\n${ctx.trim().slice(0, 240)}`,
         );
       }
 
