@@ -114,6 +114,23 @@ ${
 // structured data for crawlers on our highest-intent pages.
 const ORG_REF = { "@id": `${SITE}/#organization` };
 
+// Blue Door launch state is derived from src/config/blueDoor.ts so prerendered
+// structured data can never drift from the runtime pages. Verified by
+// src/test/blue-door-offer-schema.test.ts.
+const blueDoorConfig = await readFile(
+  path.join(ROOT, "src/config/blueDoor.ts"),
+  "utf8",
+).catch(() => "");
+const blueDoorLaunchIso =
+  blueDoorConfig.match(/BLUE_DOOR_LAUNCH_DATE = new Date\("([^"]+)"\)/)?.[1] ?? "";
+// Mirrors isBlueDoorPreLaunch(): driven by the explicit BLUE_DOOR_LAUNCHED
+// switch, never by the calendar.
+const blueDoorPreLaunch =
+  (blueDoorConfig.match(/BLUE_DOOR_LAUNCHED = (true|false)/)?.[1] ?? "false") === "false";
+const blueDoorAvailability = blueDoorPreLaunch
+  ? "https://schema.org/PreOrder"
+  : "https://schema.org/InStock";
+
 const SERVICE_LD = {
   "/blue-door": {
     "@type": "Service",
@@ -126,8 +143,11 @@ const SERVICE_LD = {
       "@type": "Offer",
       price: "1500",
       priceCurrency: "USD",
-      availability: "https://schema.org/PreOrder",
+      availability: blueDoorAvailability,
       url: `${SITE}/blue-door`,
+      ...(blueDoorPreLaunch
+        ? { availabilityStarts: new Date(blueDoorLaunchIso).toISOString() }
+        : {}),
     },
   },
   "/partner": {
