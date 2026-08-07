@@ -10,7 +10,10 @@ import { BLUE_DOOR_COPY } from "@/config/blueDoor";
 describe("Blue Door copy sync", () => {
   it("backend mirror matches src/config/blueDoor.ts", () => {
     const mirror = readFileSync("supabase/functions/_shared/blue-door-copy.ts", "utf8");
+    // SEO-only keys are frontend concerns and are not mirrored backend-side.
+    const frontendOnly = new Set(["seoTitle", "seoTitleCheckout"]);
     for (const [key, value] of Object.entries(BLUE_DOOR_COPY)) {
+      if (frontendOnly.has(key)) continue;
       expect(mirror, `missing key: ${key}`).toContain(`${key}:`);
       expect(mirror, `value drift for: ${key}`).toContain(value.replace(/"/g, '\\"'));
     }

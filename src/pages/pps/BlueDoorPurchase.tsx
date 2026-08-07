@@ -7,7 +7,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Check, Clock, ArrowLeft, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
-import { isBlueDoorPreLaunch, BLUE_DOOR_PRICE_DISPLAY, BLUE_DOOR_COPY } from "@/config/blueDoor";
+import { isBlueDoorPreLaunch, BLUE_DOOR_PRICE_DISPLAY, BLUE_DOOR_COPY, blueDoorCheckoutSeoTitle, blueDoorCheckoutSeoDescription } from "@/config/blueDoor";
+import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import { BlueDoorNotifyCTA } from "@/components/pps/blue-door/BlueDoorNotifyCTA";
 
 const checkoutSchema = z.object({
@@ -30,6 +31,13 @@ const includedItems = [
 
 export default function BlueDoorPurchase() {
   const { toast } = useToast();
+
+  useDocumentSeo({
+    title: blueDoorCheckoutSeoTitle(),
+    description: blueDoorCheckoutSeoDescription(),
+  });
+
+
   
   useEffect(() => {
     window.scrollTo(0, 0);
