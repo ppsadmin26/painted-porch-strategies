@@ -9,7 +9,15 @@
 
 export const BLUE_DOOR_LAUNCH_DATE = new Date("2026-07-31T23:59:59");
 
-export const isBlueDoorPreLaunch = () => new Date() < BLUE_DOOR_LAUNCH_DATE;
+/**
+ * Explicit launch switch. The Blue Door stays in "Coming Soon" mode until this
+ * is flipped to `true` — we intentionally do NOT infer launch state from a
+ * date, so a passing target date can never silently flip copy or the offer
+ * schema to "available". Flip this (and only this) on launch day.
+ */
+export const BLUE_DOOR_LAUNCHED = false;
+
+export const isBlueDoorPreLaunch = () => !BLUE_DOOR_LAUNCHED;
 
 /** Numeric price of the Blue Door Organizational Appraisal, in USD. */
 export const BLUE_DOOR_PRICE_USD = 1500;

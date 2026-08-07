@@ -123,9 +123,10 @@ const blueDoorConfig = await readFile(
 ).catch(() => "");
 const blueDoorLaunchIso =
   blueDoorConfig.match(/BLUE_DOOR_LAUNCH_DATE = new Date\("([^"]+)"\)/)?.[1] ?? "";
-const blueDoorPreLaunch = blueDoorLaunchIso
-  ? new Date() < new Date(blueDoorLaunchIso)
-  : false;
+// Mirrors isBlueDoorPreLaunch(): driven by the explicit BLUE_DOOR_LAUNCHED
+// switch, never by the calendar.
+const blueDoorPreLaunch =
+  (blueDoorConfig.match(/BLUE_DOOR_LAUNCHED = (true|false)/)?.[1] ?? "false") === "false";
 const blueDoorAvailability = blueDoorPreLaunch
   ? "https://schema.org/PreOrder"
   : "https://schema.org/InStock";
