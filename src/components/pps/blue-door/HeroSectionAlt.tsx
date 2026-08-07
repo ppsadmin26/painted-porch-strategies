@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParallax } from "@/hooks/useParallax";
-import { isBlueDoorPreLaunch } from "@/config/blueDoor";
+import { isBlueDoorPreLaunch, BLUE_DOOR_LAUNCH_LABEL } from "@/config/blueDoor";
 import blueDoorHero from "@/assets/blue-door-hero.jpg";
 
 export default function HeroSectionAlt() {
@@ -56,7 +56,7 @@ export default function HeroSectionAlt() {
               </Link>
               {isBlueDoorPreLaunch() && (
                 <p className="text-body mt-4 -sm text-white/90 font-poppins">
-                  <span className="inline-block bg-gold/90 text-navy font-semibold px-2 py-0.5 rounded mr-2">Launching July 2026</span>
+                  <span className="inline-block bg-gold/90 text-navy font-semibold px-2 py-0.5 rounded mr-2">{BLUE_DOOR_LAUNCH_LABEL}</span>
                   Purchase now and we'll email your assessment access link on launch day.
                 </p>
               )}

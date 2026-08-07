@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Check, Clock, ArrowLeft, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
-import { isBlueDoorPreLaunch, BLUE_DOOR_PRICE_DISPLAY } from "@/config/blueDoor";
+import { isBlueDoorPreLaunch, BLUE_DOOR_PRICE_DISPLAY, BLUE_DOOR_LAUNCH_LABEL } from "@/config/blueDoor";
 
 const checkoutSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
@@ -117,7 +117,7 @@ export default function BlueDoorPurchase() {
             {isBlueDoorPreLaunch() && (
               <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-4 mb-6">
                 <p className="text-body font-poppins font-bold text-navy mb-1">
-                  🚪 Launching July 2026
+                  🚪 {BLUE_DOOR_LAUNCH_LABEL}
                 </p>
                 <p className="text-body text-foreground -sm">
                   Reserve your Blue Door now. On launch day, we'll email you a secure link to access and complete your assessment.
