@@ -60,10 +60,16 @@ export default function FinalCTASectionAlt() {
         >
           <Link to="/blue-door/purchase">
             <Button className="bg-bluedoor text-white border-2 border-bluedoor text-base sm:text-lg md:text-xl py-4 sm:py-5 px-6 sm:px-12 shadow-lg hover:shadow-xl hover:bg-white hover:text-bluedoor transition-all font-semibold max-w-full whitespace-normal h-auto">
-              Open your Blue Door →
+              {isBlueDoorPreLaunch() ? "Reserve your Blue Door →" : "Open your Blue Door →"}
             </Button>
           </Link>
+          {isBlueDoorPreLaunch() && (
+            <div>
+              <BlueDoorNotifyCTA className="mt-4 text-white/90 hover:text-white focus-ring-on-dark" />
+            </div>
+          )}
         </div>
+
         
         <p 
           className={`text-body text-white/80 mt-8 transition-all duration-700 ease-out delay-500 ${
