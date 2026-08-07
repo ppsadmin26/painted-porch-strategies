@@ -126,7 +126,7 @@ const SERVICE_LD = {
       "@type": "Offer",
       price: "1500",
       priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
+      availability: "https://schema.org/PreOrder",
       url: `${SITE}/blue-door`,
     },
   },

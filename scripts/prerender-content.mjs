@@ -154,9 +154,9 @@ export const routes = [
   },
   {
     path: "/blue-door",
-    title: "The Blue Door | Painted Porch Strategies",
+    title: "The Blue Door (Coming Soon) | Painted Porch Strategies",
     description:
-      "The Blue Door is a $1,500 strategic organizational appraisal and prerequisite for engagement. Opens the door to sustainable, market-leading shift.",
+      "Coming Soon: The Blue Door, a $1,500 strategic organizational appraisal and prerequisite for engagement. Reserve now and we will email your access link on launch day.",
     h1: "The Blue Door — Opening the Door to Strategic, Sustainable Shift",
     intro:
       "The Blue Door is a $1,500 strategic organizational appraisal and the required entry point for every Painted Porch engagement. It surfaces the strategic authorship gap — what shift your organization is positioned to lead, and whether you have the infrastructure to sustain it.",
