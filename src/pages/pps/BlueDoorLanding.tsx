@@ -10,7 +10,7 @@ import FAQSectionAlt from "@/components/pps/blue-door/FAQSectionAlt";
 import FinalCTASectionAlt from "@/components/pps/blue-door/FinalCTASectionAlt";
 import { useDocumentSeo } from "@/hooks/useDocumentSeo";
 import blueDoorHero from "@/assets/blue-door-hero.jpg";
-import { blueDoorSeoTitle, blueDoorSeoDescription } from "@/config/blueDoor";
+import { blueDoorSeoTitle, blueDoorSeoDescription, blueDoorServiceJsonLd } from "@/config/blueDoor";
 
 
 export default function BlueDoorLanding() {
@@ -18,6 +18,7 @@ export default function BlueDoorLanding() {
     title: blueDoorSeoTitle(),
     description: blueDoorSeoDescription(),
     ogImage: blueDoorHero,
+    jsonLd: blueDoorServiceJsonLd(),
   });
   return (
     <div className="min-h-screen">

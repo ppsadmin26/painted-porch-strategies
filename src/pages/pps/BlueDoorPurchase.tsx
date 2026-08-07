@@ -35,6 +35,7 @@ export default function BlueDoorPurchase() {
   useDocumentSeo({
     title: blueDoorCheckoutSeoTitle(),
     description: blueDoorCheckoutSeoDescription(),
+    jsonLd: blueDoorServiceJsonLd(),
   });
 
 
