@@ -171,7 +171,7 @@ export function CourseLaunchListDialog({
                 disabled={loading || !consent}
                 className="w-full bg-gold border-2 border-gold text-pps-navy font-poppins font-semibold text-base h-12 hover:bg-transparent hover:text-gold transition-colors"
               >
-                {loading ? "Signing Up..." : "JOIN THE LAUNCH LIST"}
+                {loading ? "Signing Up..." : submitLabel}
                 {!loading && <Bell className="ml-2 w-4 h-4" />}
               </Button>
             </form>
