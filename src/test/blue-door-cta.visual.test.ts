@@ -137,10 +137,12 @@ describe("Blue Door CTA visual regression (className tokens)", () => {
 
       const rel = path.relative(ROOT, file);
 
-      // Forbidden: gold shortcut in TierHeroSection CTAs
-      if (/isPrimary\s*:\s*true/.test(ctx)) {
+      // Forbidden: gold shortcut in TierHeroSection CTAs, unless an explicit
+      // bluedoor buttonClassName overrides the gold styling.
+      if (/isPrimary\s*:\s*true/.test(ctx) && !/buttonClassName[^,}]*bluedoor/.test(ctx)) {
         violations.push(`${rel}: TierHero CTA uses isPrimary:true (gold) — use buttonClassName with bluedoor.\n${ctx.trim().slice(0, 240)}`);
       }
+
 
       // Forbidden: generic outline variant without bluedoor classes
       if (
