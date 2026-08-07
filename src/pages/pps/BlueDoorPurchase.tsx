@@ -8,6 +8,7 @@ import { Check, Clock, ArrowLeft, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 import { isBlueDoorPreLaunch, BLUE_DOOR_PRICE_DISPLAY, BLUE_DOOR_LAUNCH_LABEL } from "@/config/blueDoor";
+import { BlueDoorNotifyCTA } from "@/components/pps/blue-door/BlueDoorNotifyCTA";
 
 const checkoutSchema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
