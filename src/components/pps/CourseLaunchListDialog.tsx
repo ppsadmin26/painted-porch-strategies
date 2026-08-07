@@ -112,11 +112,15 @@ export function CourseLaunchListDialog({
           <>
             <DialogHeader>
               <DialogTitle className="font-poppins text-2xl text-pps-navy">
-                Join the Launch List
+                {title}
               </DialogTitle>
               <DialogDescription className="text-foreground/80">
-                Be the first to know when <strong>{courseName}</strong> is
-                ready on our new course platform.
+                {description ?? (
+                  <>
+                    Be the first to know when <strong>{courseName}</strong> is
+                    ready on our new course platform.
+                  </>
+                )}
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-2">
