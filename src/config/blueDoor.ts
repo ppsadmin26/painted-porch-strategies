@@ -86,3 +86,34 @@ export const blueDoorCheckoutSeoTitle = () =>
 
 /** @deprecated Use BLUE_DOOR_COPY.label. Kept for existing imports. */
 export const BLUE_DOOR_LAUNCH_LABEL = BLUE_DOOR_COPY.label;
+
+/** Site origin used in structured data. Mirrors scripts/prerender-content.mjs. */
+export const BLUE_DOOR_SITE = "https://www.onthepaintedporch.com";
+
+/** schema.org availability for the Blue Door offer, launch-state aware. */
+export const blueDoorAvailability = () =>
+  isBlueDoorPreLaunch() ? "https://schema.org/PreOrder" : "https://schema.org/InStock";
+
+/**
+ * Offer/Service JSON-LD for the Blue Door. Used by the runtime pages via
+ * useDocumentSeo and mirrored by scripts/prerender.mjs so prerendered HTML and
+ * the SPA emit identical structured data. Verified by
+ * `src/test/blue-door-offer-schema.test.ts`.
+ */
+export const blueDoorServiceJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "The Blue Door — Strategic Organizational Appraisal",
+  serviceType: "Strategic Organizational Appraisal",
+  category: "Management Consulting",
+  provider: { "@id": `${BLUE_DOOR_SITE}/#organization` },
+  areaServed: { "@type": "Country", name: "United States" },
+  offers: {
+    "@type": "Offer",
+    price: String(BLUE_DOOR_PRICE_USD),
+    priceCurrency: "USD",
+    availability: blueDoorAvailability(),
+    url: `${BLUE_DOOR_SITE}/blue-door`,
+    ...(isBlueDoorPreLaunch() ? { availabilityStarts: BLUE_DOOR_LAUNCH_DATE.toISOString() } : {}),
+  },
+});
