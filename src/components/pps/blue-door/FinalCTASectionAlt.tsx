@@ -4,6 +4,8 @@ import { useParallax } from "@/hooks/useParallax";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import Eyebrow from "@/components/pps/Eyebrow";
 import compassDirection from "@/assets/compass-direction-cta.jpg";
+import { isBlueDoorPreLaunch } from "@/config/blueDoor";
+import { BlueDoorNotifyCTA } from "@/components/pps/blue-door/BlueDoorNotifyCTA";
 
 export default function FinalCTASectionAlt() {
   const { ref: contentRef, isVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
