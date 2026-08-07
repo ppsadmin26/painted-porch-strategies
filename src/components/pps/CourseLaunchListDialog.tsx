@@ -20,6 +20,14 @@ interface CourseLaunchListDialogProps {
   courseName: string;
   /** Tag suffix used in GHL, e.g. "master-your-message" */
   courseSlug: string;
+  /** Optional dialog title override (default: "Join the Launch List"). */
+  title?: string;
+  /** Optional intro copy override for non-course offerings. */
+  description?: React.ReactNode;
+  /** Optional submit button label override. */
+  submitLabel?: string;
+  /** Optional success copy override. */
+  successMessage?: React.ReactNode;
 }
 
 export function CourseLaunchListDialog({
@@ -27,6 +35,10 @@ export function CourseLaunchListDialog({
   onOpenChange,
   courseName,
   courseSlug,
+  title = "Join the Launch List",
+  description,
+  submitLabel = "JOIN THE LAUNCH LIST",
+  successMessage,
 }: CourseLaunchListDialogProps) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
