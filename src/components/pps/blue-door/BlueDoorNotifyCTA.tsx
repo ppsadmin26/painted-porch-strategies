@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Bell } from "lucide-react";
 import { CourseLaunchListDialog } from "@/components/pps/CourseLaunchListDialog";
+import { BLUE_DOOR_COPY } from "@/config/blueDoor";
 
 export const BLUE_DOOR_LAUNCH_SLUG = "blue-door";
 export const BLUE_DOOR_LAUNCH_NAME = "The Blue Door Organizational Appraisal";
@@ -19,7 +20,7 @@ interface BlueDoorNotifyCTAProps {
  */
 export function BlueDoorNotifyCTA({
   className = "",
-  label = "Notify me when it launches",
+  label = BLUE_DOOR_COPY.notifyLabel,
 }: BlueDoorNotifyCTAProps) {
   const [open, setOpen] = useState(false);
 

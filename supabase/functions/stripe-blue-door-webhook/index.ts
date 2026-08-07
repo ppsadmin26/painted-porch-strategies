@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@18.5.0";
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { BLUE_DOOR_COPY } from "../_shared/blue-door-copy.ts";
 
 // Stripe webhooks must NOT have CORS or JWT verification — Stripe sends
 // signed requests directly from its servers.
@@ -341,7 +342,7 @@ serve(async (req) => {
         `Amount: ${amountFormatted}\n` +
         `Internal Product ID: ${BLUE_DOOR_INTERNAL_PRODUCT_ID}\n` +
         `Stripe Checkout Session: ${orderId}\n` +
-        `Access link will be delivered Coming Soon.`
+        BLUE_DOOR_COPY.ghlAccessNote
       )
     );
   }
