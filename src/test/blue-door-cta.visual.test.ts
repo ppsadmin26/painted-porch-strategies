@@ -161,6 +161,63 @@ describe("Blue Door CTA visual regression (className tokens)", () => {
         }
       }
 
+      // --- Accessibility: accessible name ---------------------------------
+      // Icon-only CTAs (an icon component as the only child, no text node)
+      // need an explicit accessible name.
+      const strippedTags = ctx.replace(/<[^>]*>/g, "\u0000");
+      const visibleText = strippedTags
+        .split("\u0000")
+        .map((t) => t.replace(/[{}\s]/g, ""))
+        .join("");
+      const hasIcon = /<(ArrowRight|ArrowLeft|DoorOpen|DoorClosed|ChevronRight|ChevronLeft|ExternalLink|Key|Lock)\b/.test(ctx);
+      const hasAccessibleName =
+        /aria-label\s*=/.test(ctx) ||
+        /aria-labelledby\s*=/.test(ctx) ||
+        /sr-only/.test(ctx) ||
+        /\blabel\s*:/.test(ctx) ||
+        visibleText.length > 0;
+      if (!hasAccessibleName) {
+        violations.push(
+          `${rel}: /blue-door CTA has no accessible name${hasIcon ? " (icon-only)" : ""} — add visible text or aria-label.\n${ctx.trim().slice(0, 240)}`,
+        );
+      }
+
+      // Decorative icons inside a labelled CTA should be hidden from AT.
+      if (hasIcon && visibleText.length > 0 && !/aria-hidden/.test(ctx) && /<Button\b/.test(ctx)) {
+        // shadcn Button renders lucide icons with aria-hidden by default only
+        // when passed `aria-hidden`; flag raw usages so screen readers don't
+        // announce the glyph name.
+        // (informational-strength rule: only raw <a>/<Link> markup)
+      }
+
+      // --- Accessibility: visible focus state ------------------------------
+      // Hand-rolled anchors/links (not shadcn <Button>, which ships a
+      // focus-visible ring) must declare their own focus-visible treatment.
+      const usesButtonPrimitive =
+        /<Button\b/.test(ctx) ||
+        /buttonClassName/.test(ctx) ||
+        /<ParallaxCTA\b/.test(ctx) ||
+        /variant\s*:/.test(ctx) ||
+        /isPrimary\s*:/.test(ctx);
+      const isRawAnchor = !usesButtonPrimitive && /className=/.test(ctx) && /<(a\s|Link\b)/.test(ctx);
+      const hasFocusState =
+        /focus-visible:/.test(ctx) ||
+        /focus-ring-on-dark/.test(ctx) ||
+        /focus:ring/.test(ctx) ||
+        /focus:outline/.test(ctx);
+      if (isRawAnchor && !hasFocusState) {
+        violations.push(
+          `${rel}: /blue-door link has custom styling but no focus-visible state — add focus-visible: classes or focus-ring-on-dark.\n${ctx.trim().slice(0, 240)}`,
+        );
+      }
+
+      // Focus rings must never be removed outright.
+      if (/(focus:outline-none|focus-visible:outline-none)/.test(ctx) && !hasFocusState) {
+        violations.push(
+          `${rel}: /blue-door CTA removes the focus outline without a replacement ring.\n${ctx.trim().slice(0, 240)}`,
+        );
+      }
+
       // Must contain a bluedoor signal somewhere in the CTA block.
       const hasBluedoor =
         /bluedoor/.test(ctx) || /variant\s*:\s*["']bluedoor["']/.test(ctx);
