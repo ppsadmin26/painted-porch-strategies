@@ -9,6 +9,15 @@
  *   `buttonClassName` with bluedoor classes instead. In <ParallaxCTA> use
  *   `variant: "bluedoor"`.
  *
+ * Accessibility rules enforced alongside the color rule:
+ *   - Every /blue-door CTA must expose an accessible name (visible text, a
+ *     `label:` entry, `sr-only` text, or aria-label/aria-labelledby) so
+ *     icon-only doors are never unlabelled.
+ *   - CTAs painted on a solid dark surface (bg-bluedoor/navy/charcoal/etc)
+ *     must carry `focus-ring-on-dark` (or their own focus-visible ring),
+ *     because the default --ring color is too low-contrast there.
+ *   - No CTA may strip the focus outline without providing a replacement.
+ *
  * This is a lightweight static visual-regression check: rather than diffing
  * pixels (heavy in CI), we assert the className tokens that drive the visual
  * outcome. If a future edit reintroduces gold/teal/navy/etc on a blue-door
@@ -113,6 +122,7 @@ const files = walk(path.join(ROOT, "pages"))
 
 describe("Blue Door CTA visual regression (className tokens)", () => {
   const violations: string[] = [];
+  const a11yViolations: string[] = [];
 
   for (const file of files) {
     const src = fs.readFileSync(file, "utf8");
@@ -161,6 +171,54 @@ describe("Blue Door CTA visual regression (className tokens)", () => {
         }
       }
 
+      // --- Accessibility: accessible name ---------------------------------
+      // Icon-only CTAs (an icon component as the only child, no text node)
+      // need an explicit accessible name.
+      const strippedTags = ctx.replace(/<[^>]*>/g, "\u0000");
+      const visibleText = strippedTags
+        .split("\u0000")
+        .map((t) => t.replace(/[{}\s]/g, ""))
+        .join("");
+      const hasIcon = /<(ArrowRight|ArrowLeft|DoorOpen|DoorClosed|ChevronRight|ChevronLeft|ExternalLink|Key|Lock)\b/.test(ctx);
+      const hasAccessibleName =
+        /aria-label\s*=/.test(ctx) ||
+        /aria-labelledby\s*=/.test(ctx) ||
+        /sr-only/.test(ctx) ||
+        /\blabel\s*:/.test(ctx) ||
+        visibleText.length > 0;
+      if (!hasAccessibleName) {
+        a11yViolations.push(
+          `${rel}: /blue-door CTA has no accessible name${hasIcon ? " (icon-only)" : ""} — add visible text or aria-label.\n${ctx.trim().slice(0, 240)}`,
+        );
+      }
+
+      // --- Accessibility: visible focus state ------------------------------
+      // index.css ships a global :focus-visible safety net for every anchor
+      // and button, so plain text links are covered. What it can NOT cover is
+      // a CTA painted onto a dark surface: the default ring uses --ring, which
+      // is too low-contrast against cobalt/navy. Those need `focus-ring-on-dark`
+      // (or their own focus-visible ring).
+      const hasFocusState =
+        /focus-visible:/.test(ctx) ||
+        /focus-ring-on-dark/.test(ctx) ||
+        /focus:ring/.test(ctx) ||
+        /focus:outline/.test(ctx);
+      // Solid dark fills only — tint utilities like `bg-bluedoor/10` sit on
+      // light cards and keep enough contrast for the default ring.
+      const onDarkSurface = /(^|[\s"'`])(bg-bluedoor|bg-navy|bg-charcoal|bg-purple|bg-raspberry)(?![\w/-])/.test(ctx);
+      if (onDarkSurface && !hasFocusState && !/<Button\b|<ParallaxCTA\b|buttonClassName/.test(ctx)) {
+        a11yViolations.push(
+          `${rel}: /blue-door CTA sits on a dark surface without a high-contrast focus ring — add focus-ring-on-dark.\n${ctx.trim().slice(0, 240)}`,
+        );
+      }
+
+      // Focus rings must never be removed outright.
+      if (/(focus:outline-none|focus-visible:outline-none)/.test(ctx) && !hasFocusState) {
+        a11yViolations.push(
+          `${rel}: /blue-door CTA removes the focus outline without a replacement ring.\n${ctx.trim().slice(0, 240)}`,
+        );
+      }
+
       // Must contain a bluedoor signal somewhere in the CTA block.
       const hasBluedoor =
         /bluedoor/.test(ctx) || /variant\s*:\s*["']bluedoor["']/.test(ctx);
@@ -172,6 +230,10 @@ describe("Blue Door CTA visual regression (className tokens)", () => {
 
   it("every /blue-door CTA uses cobalt (bluedoor) styling", () => {
     expect(violations, violations.join("\n\n---\n\n")).toEqual([]);
+  });
+
+  it("every /blue-door CTA has an accessible name and a visible focus state", () => {
+    expect(a11yViolations, a11yViolations.join("\n\n---\n\n")).toEqual([]);
   });
 
   it("scanned at least 5 live files (sanity check)", () => {

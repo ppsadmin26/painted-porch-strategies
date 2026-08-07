@@ -176,7 +176,7 @@ export default function HomeV2() {
             <div className="mt-10">
               <Link
                 to="/blue-door"
-                className="inline-flex items-center gap-2 bg-bluedoor text-white font-poppins font-semibold text-base px-8 h-12 rounded-md hover:bg-white hover:text-bluedoor border-2 border-bluedoor transition-colors"
+                className="inline-flex items-center gap-2 bg-bluedoor text-white font-poppins font-semibold text-base px-8 h-12 rounded-md hover:bg-white hover:text-bluedoor border-2 border-bluedoor transition-colors focus-ring-on-dark"
               >
                 <DoorOpen className="w-5 h-5" aria-hidden="true" />
                 Open the Blue Door
