@@ -191,8 +191,12 @@ export function CourseLaunchListDialog({
               You're on the List!
             </h3>
             <p className="text-body text-foreground/80">
-              We'll email you as soon as <strong>{courseName}</strong> is
-              available on our new course platform.
+              {successMessage ?? (
+                <>
+                  We'll email you as soon as <strong>{courseName}</strong> is
+                  available on our new course platform.
+                </>
+              )}
             </p>
           </div>
         )}
