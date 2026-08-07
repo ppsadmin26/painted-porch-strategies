@@ -193,7 +193,9 @@ describe("Blue Door CTA visual regression (className tokens)", () => {
         /focus-ring-on-dark/.test(ctx) ||
         /focus:ring/.test(ctx) ||
         /focus:outline/.test(ctx);
-      const onDarkSurface = /\b(bg-bluedoor|bg-navy|bg-charcoal|bg-purple|bg-raspberry)\b/.test(ctx);
+      // Solid dark fills only — tint utilities like `bg-bluedoor/10` sit on
+      // light cards and keep enough contrast for the default ring.
+      const onDarkSurface = /(^|[\s"'`])(bg-bluedoor|bg-navy|bg-charcoal|bg-purple|bg-raspberry)(?![\w/-])/.test(ctx);
       if (onDarkSurface && !hasFocusState && !/<Button\b|<ParallaxCTA\b|buttonClassName/.test(ctx)) {
         violations.push(
           `${rel}: /blue-door CTA sits on a dark surface without a high-contrast focus ring — add focus-ring-on-dark.\n${ctx.trim().slice(0, 240)}`,
