@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight, Mail, Clock, ClipboardList } from "lucide-react";
-import { isBlueDoorPreLaunch } from "@/config/blueDoor";
+import { isBlueDoorPreLaunch, BLUE_DOOR_LAUNCH_LABEL } from "@/config/blueDoor";
 
 const nextSteps = [
   {
@@ -54,7 +54,7 @@ export default function BlueDoorSuccess() {
         {isPreLaunch && (
           <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-5 mb-12 text-left">
             <p className="text-body font-poppins font-bold text-navy mb-1">
-              🚪 Launching July 2026
+              🚪 {BLUE_DOOR_LAUNCH_LABEL}
             </p>
             <p className="text-body text-foreground -sm leading-relaxed">
               Your spot is reserved. On launch day, we'll email you a secure access link to begin your Blue Door appraisal.
