@@ -50,7 +50,39 @@ export const BLUE_DOOR_COPY = {
     "On launch day, we will email you a secure access link from this same address. Open the link, complete the appraisal (less than 30 minutes), and your detailed executive brief will be delivered within 72 business hours.",
   /** Notify-me trigger label. */
   notifyLabel: "Notify me when it launches",
+  /** SEO title for the Blue Door landing page while pre-launch. */
+  seoTitle:
+    "The Blue Door Organizational Appraisal (Coming Soon) | Painted Porch Strategies",
+  /** SEO title for the checkout/reserve page while pre-launch. */
+  seoTitleCheckout: "Reserve The Blue Door (Coming Soon) | Painted Porch Strategies",
 } as const;
+
+/**
+ * SEO description for the Blue Door landing page. Leads with "Coming Soon"
+ * while pre-launch so search snippets match the on-page messaging.
+ */
+export const blueDoorSeoDescription = () =>
+  isBlueDoorPreLaunch()
+    ? `Coming Soon: The Blue Door, a ${BLUE_DOOR_PRICE_DISPLAY} strategic organizational appraisal. Reserve now and we will email your access link on launch day.`
+    : `Step through the Blue Door. A ${BLUE_DOOR_PRICE_DISPLAY} organizational appraisal that opens the door to sustainable shIFt, before you commit to a larger engagement.`;
+
+/** SEO description for the Blue Door checkout page. */
+export const blueDoorCheckoutSeoDescription = () =>
+  isBlueDoorPreLaunch()
+    ? `Coming Soon: reserve your ${BLUE_DOOR_PRICE_DISPLAY} Blue Door organizational appraisal today. Your secure access link is emailed on launch day.`
+    : `Purchase your ${BLUE_DOOR_PRICE_DISPLAY} Blue Door strategic organizational appraisal and get your executive brief within 72 business hours.`;
+
+/** SEO title for the Blue Door landing page, launch-state aware. */
+export const blueDoorSeoTitle = () =>
+  isBlueDoorPreLaunch()
+    ? BLUE_DOOR_COPY.seoTitle
+    : "The Blue Door Organizational Appraisal | Painted Porch Strategies";
+
+/** SEO title for the Blue Door checkout page, launch-state aware. */
+export const blueDoorCheckoutSeoTitle = () =>
+  isBlueDoorPreLaunch()
+    ? BLUE_DOOR_COPY.seoTitleCheckout
+    : "Complete Your Blue Door Purchase | Painted Porch Strategies";
 
 /** @deprecated Use BLUE_DOOR_COPY.label. Kept for existing imports. */
 export const BLUE_DOOR_LAUNCH_LABEL = BLUE_DOOR_COPY.label;
