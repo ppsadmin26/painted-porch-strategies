@@ -20,6 +20,14 @@ interface CourseLaunchListDialogProps {
   courseName: string;
   /** Tag suffix used in GHL, e.g. "master-your-message" */
   courseSlug: string;
+  /** Optional dialog title override (default: "Join the Launch List"). */
+  title?: string;
+  /** Optional intro copy override for non-course offerings. */
+  description?: React.ReactNode;
+  /** Optional submit button label override. */
+  submitLabel?: string;
+  /** Optional success copy override. */
+  successMessage?: React.ReactNode;
 }
 
 export function CourseLaunchListDialog({
@@ -27,6 +35,10 @@ export function CourseLaunchListDialog({
   onOpenChange,
   courseName,
   courseSlug,
+  title = "Join the Launch List",
+  description,
+  submitLabel = "JOIN THE LAUNCH LIST",
+  successMessage,
 }: CourseLaunchListDialogProps) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -100,11 +112,15 @@ export function CourseLaunchListDialog({
           <>
             <DialogHeader>
               <DialogTitle className="font-poppins text-2xl text-pps-navy">
-                Join the Launch List
+                {title}
               </DialogTitle>
               <DialogDescription className="text-foreground/80">
-                Be the first to know when <strong>{courseName}</strong> is
-                ready on our new course platform.
+                {description ?? (
+                  <>
+                    Be the first to know when <strong>{courseName}</strong> is
+                    ready on our new course platform.
+                  </>
+                )}
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-2">
@@ -155,7 +171,7 @@ export function CourseLaunchListDialog({
                 disabled={loading || !consent}
                 className="w-full bg-gold border-2 border-gold text-pps-navy font-poppins font-semibold text-base h-12 hover:bg-transparent hover:text-gold transition-colors"
               >
-                {loading ? "Signing Up..." : "JOIN THE LAUNCH LIST"}
+                {loading ? "Signing Up..." : submitLabel}
                 {!loading && <Bell className="ml-2 w-4 h-4" />}
               </Button>
             </form>
@@ -175,8 +191,12 @@ export function CourseLaunchListDialog({
               You're on the List!
             </h3>
             <p className="text-body text-foreground/80">
-              We'll email you as soon as <strong>{courseName}</strong> is
-              available on our new course platform.
+              {successMessage ?? (
+                <>
+                  We'll email you as soon as <strong>{courseName}</strong> is
+                  available on our new course platform.
+                </>
+              )}
             </p>
           </div>
         )}

@@ -4,6 +4,8 @@ import { useParallax } from "@/hooks/useParallax";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import Eyebrow from "@/components/pps/Eyebrow";
 import compassDirection from "@/assets/compass-direction-cta.jpg";
+import { isBlueDoorPreLaunch } from "@/config/blueDoor";
+import { BlueDoorNotifyCTA } from "@/components/pps/blue-door/BlueDoorNotifyCTA";
 
 export default function FinalCTASectionAlt() {
   const { ref: contentRef, isVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
@@ -60,10 +62,16 @@ export default function FinalCTASectionAlt() {
         >
           <Link to="/blue-door/purchase">
             <Button className="bg-bluedoor text-white border-2 border-bluedoor text-base sm:text-lg md:text-xl py-4 sm:py-5 px-6 sm:px-12 shadow-lg hover:shadow-xl hover:bg-white hover:text-bluedoor transition-all font-semibold max-w-full whitespace-normal h-auto">
-              Open your Blue Door →
+              {isBlueDoorPreLaunch() ? "Reserve your Blue Door →" : "Open your Blue Door →"}
             </Button>
           </Link>
+          {isBlueDoorPreLaunch() && (
+            <div>
+              <BlueDoorNotifyCTA className="mt-4 text-white/90 hover:text-white focus-ring-on-dark" />
+            </div>
+          )}
         </div>
+
         
         <p 
           className={`text-body text-white/80 mt-8 transition-all duration-700 ease-out delay-500 ${
