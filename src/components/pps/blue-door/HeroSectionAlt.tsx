@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useParallax } from "@/hooks/useParallax";
 import { isBlueDoorPreLaunch, BLUE_DOOR_LAUNCH_LABEL } from "@/config/blueDoor";
+import { BlueDoorNotifyCTA } from "@/components/pps/blue-door/BlueDoorNotifyCTA";
 import blueDoorHero from "@/assets/blue-door-hero.jpg";
 
 export default function HeroSectionAlt() {
