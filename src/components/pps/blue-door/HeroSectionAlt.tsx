@@ -55,10 +55,13 @@ export default function HeroSectionAlt() {
                 </Button>
               </Link>
               {isBlueDoorPreLaunch() && (
-                <p className="text-body mt-4 -sm text-white/90 font-poppins">
-                  <span className="inline-block bg-gold/90 text-navy font-semibold px-2 py-0.5 rounded mr-2">{BLUE_DOOR_LAUNCH_LABEL}</span>
-                  Purchase now and we'll email your assessment access link on launch day.
-                </p>
+                <>
+                  <p className="text-body mt-4 -sm text-white/90 font-poppins">
+                    <span className="inline-block bg-gold/90 text-navy font-semibold px-2 py-0.5 rounded mr-2">{BLUE_DOOR_LAUNCH_LABEL}</span>
+                    Purchase now and we'll email your assessment access link on launch day.
+                  </p>
+                  <BlueDoorNotifyCTA className="mt-3 text-white/90 hover:text-white focus-ring-on-dark" />
+                </>
               )}
             </div>
           </div>
