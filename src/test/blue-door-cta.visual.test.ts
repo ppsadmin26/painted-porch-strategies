@@ -9,6 +9,15 @@
  *   `buttonClassName` with bluedoor classes instead. In <ParallaxCTA> use
  *   `variant: "bluedoor"`.
  *
+ * Accessibility rules enforced alongside the color rule:
+ *   - Every /blue-door CTA must expose an accessible name (visible text, a
+ *     `label:` entry, `sr-only` text, or aria-label/aria-labelledby) so
+ *     icon-only doors are never unlabelled.
+ *   - CTAs painted on a solid dark surface (bg-bluedoor/navy/charcoal/etc)
+ *     must carry `focus-ring-on-dark` (or their own focus-visible ring),
+ *     because the default --ring color is too low-contrast there.
+ *   - No CTA may strip the focus outline without providing a replacement.
+ *
  * This is a lightweight static visual-regression check: rather than diffing
  * pixels (heavy in CI), we assert the className tokens that drive the visual
  * outcome. If a future edit reintroduces gold/teal/navy/etc on a blue-door
@@ -113,6 +122,7 @@ const files = walk(path.join(ROOT, "pages"))
 
 describe("Blue Door CTA visual regression (className tokens)", () => {
   const violations: string[] = [];
+  const a11yViolations: string[] = [];
 
   for (const file of files) {
     const src = fs.readFileSync(file, "utf8");
@@ -177,7 +187,7 @@ describe("Blue Door CTA visual regression (className tokens)", () => {
         /\blabel\s*:/.test(ctx) ||
         visibleText.length > 0;
       if (!hasAccessibleName) {
-        violations.push(
+        a11yViolations.push(
           `${rel}: /blue-door CTA has no accessible name${hasIcon ? " (icon-only)" : ""} — add visible text or aria-label.\n${ctx.trim().slice(0, 240)}`,
         );
       }
@@ -197,14 +207,14 @@ describe("Blue Door CTA visual regression (className tokens)", () => {
       // light cards and keep enough contrast for the default ring.
       const onDarkSurface = /(^|[\s"'`])(bg-bluedoor|bg-navy|bg-charcoal|bg-purple|bg-raspberry)(?![\w/-])/.test(ctx);
       if (onDarkSurface && !hasFocusState && !/<Button\b|<ParallaxCTA\b|buttonClassName/.test(ctx)) {
-        violations.push(
+        a11yViolations.push(
           `${rel}: /blue-door CTA sits on a dark surface without a high-contrast focus ring — add focus-ring-on-dark.\n${ctx.trim().slice(0, 240)}`,
         );
       }
 
       // Focus rings must never be removed outright.
       if (/(focus:outline-none|focus-visible:outline-none)/.test(ctx) && !hasFocusState) {
-        violations.push(
+        a11yViolations.push(
           `${rel}: /blue-door CTA removes the focus outline without a replacement ring.\n${ctx.trim().slice(0, 240)}`,
         );
       }
@@ -220,6 +230,10 @@ describe("Blue Door CTA visual regression (className tokens)", () => {
 
   it("every /blue-door CTA uses cobalt (bluedoor) styling", () => {
     expect(violations, violations.join("\n\n---\n\n")).toEqual([]);
+  });
+
+  it("every /blue-door CTA has an accessible name and a visible focus state", () => {
+    expect(a11yViolations, a11yViolations.join("\n\n---\n\n")).toEqual([]);
   });
 
   it("scanned at least 5 live files (sanity check)", () => {
