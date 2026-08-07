@@ -119,7 +119,7 @@ const BlueDoorPurchaseConfirmation = ({
 
 export const template = {
   component: BlueDoorPurchaseConfirmation,
-  subject: 'Your Blue Door is reserved — access opens July 2026',
+  subject: 'Your Blue Door is reserved — access opens Coming Soon',
   displayName: 'Blue Door purchase confirmation',
   previewData: {
     firstName: 'Jane',
