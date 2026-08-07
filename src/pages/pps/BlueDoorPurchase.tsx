@@ -7,7 +7,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Check, Clock, ArrowLeft, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
-import { isBlueDoorPreLaunch, BLUE_DOOR_PRICE_DISPLAY, BLUE_DOOR_LAUNCH_LABEL } from "@/config/blueDoor";
+import { isBlueDoorPreLaunch, BLUE_DOOR_PRICE_DISPLAY, BLUE_DOOR_COPY } from "@/config/blueDoor";
 import { BlueDoorNotifyCTA } from "@/components/pps/blue-door/BlueDoorNotifyCTA";
 
 const checkoutSchema = z.object({
@@ -118,10 +118,10 @@ export default function BlueDoorPurchase() {
             {isBlueDoorPreLaunch() && (
               <div className="bg-gold/15 border-l-4 border-gold rounded-r-lg p-4 mb-6">
                 <p className="text-body font-poppins font-bold text-navy mb-1">
-                  🚪 {BLUE_DOOR_LAUNCH_LABEL}
+                  {BLUE_DOOR_COPY.badge}
                 </p>
                 <p className="text-body text-foreground -sm">
-                  Reserve your Blue Door now. On launch day, we'll email you a secure link to access and complete your assessment.
+                  {BLUE_DOOR_COPY.purchaseNote}
                 </p>
                 <BlueDoorNotifyCTA className="mt-3 text-bluedoor hover:text-navy" />
               </div>
