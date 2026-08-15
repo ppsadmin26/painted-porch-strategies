@@ -93,10 +93,11 @@ export default function PPSFooter() {
             <h4 className="text-sm font-poppins font-semibold text-gold mb-3">Quick Links</h4>
             <ul className="space-y-2">
               {visibleQuick.map((link) => (
-                <li key={link.href} className="text-body">
-                  <Link to={link.href} className="text-sm text-white/80 hover:text-lime transition-colors">
+                <li key={link.href} className="text-body-sm">
+                  <Link to={link.href} className="text-white/80 hover:text-lime transition-colors">
                     {link.label}
                   </Link>
+
                 </li>
               ))}
             </ul>
@@ -107,10 +108,11 @@ export default function PPSFooter() {
             <h4 className="text-sm font-poppins font-semibold text-gold mb-3">P.A.T.H.ways</h4>
             <ul className="space-y-2">
               {visiblePathways.map((link) => (
-                <li key={link.href} className="text-body">
-                  <Link to={link.href} className="text-sm text-white/80 hover:text-lime transition-colors">
+                <li key={link.href} className="text-body-sm">
+                  <Link to={link.href} className="text-white/80 hover:text-lime transition-colors">
                     {link.label}
                   </Link>
+
                 </li>
               ))}
             </ul>
@@ -119,9 +121,10 @@ export default function PPSFooter() {
           {/* Contact */}
           <div>
             <h4 className="text-sm font-poppins font-semibold text-gold mb-3">Get In Touch</h4>
-            <Link to="/contact?interest=general" className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy font-semibold py-2 px-6 rounded-lg transition-all">
+            <Link to="/contact?interest=general" className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy text-sm font-semibold py-2 px-6 rounded-lg transition-all">
               Contact Us
             </Link>
+
 
             {/* Newsletter Signup */}
             <form onSubmit={handleSubscribe} className="mt-5">
@@ -129,7 +132,7 @@ export default function PPSFooter() {
                 Porch Perspectives Newsletter
               </label>
               {status === "success" ? (
-                <p className="text-body -sm text-lime" role="status">{message}</p>
+                <p className="text-body-sm text-lime" role="status">{message}</p>
               ) : (
                 <>
                   <div className="flex flex-col sm:flex-row gap-2">
@@ -155,7 +158,7 @@ export default function PPSFooter() {
                     </button>
                   </div>
                   {status === "error" && (
-                    <p className="text-body mt-2 text-raspberry" role="alert">{message}</p>
+                    <p className="text-body-sm mt-2 text-raspberry" role="alert">{message}</p>
                   )}
                 </>
               )}
@@ -191,13 +194,14 @@ export default function PPSFooter() {
 
         {/* Legal Links */}
         <div className="mt-6 pt-6 text-center">
-          <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs text-white/70">
-            <li className="text-body"><Link to="/terms?tab=terms" className="hover:text-lime transition-colors">Terms</Link></li>
-            <li aria-hidden className="text-body text-white/30">·</li>
-            <li className="text-body"><Link to="/terms?tab=privacy" className="hover:text-lime transition-colors">Privacy</Link></li>
-            <li aria-hidden className="text-body text-white/30">·</li>
-            <li className="text-body"><Link to="/terms?tab=cookies" className="hover:text-lime transition-colors">Cookies</Link></li>
+          <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-white/70">
+            <li className="text-caption"><Link to="/terms?tab=terms" className="hover:text-lime transition-colors">Terms</Link></li>
+            <li aria-hidden className="text-caption text-white/30">·</li>
+            <li className="text-caption"><Link to="/terms?tab=privacy" className="hover:text-lime transition-colors">Privacy</Link></li>
+            <li aria-hidden className="text-caption text-white/30">·</li>
+            <li className="text-caption"><Link to="/terms?tab=cookies" className="hover:text-lime transition-colors">Cookies</Link></li>
           </ul>
+
         </div>
 
         {/* Copyright */}
