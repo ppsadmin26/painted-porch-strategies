@@ -288,6 +288,7 @@ export const sitemapData: SitemapNode[] = [
     label: "Utility Pages",
     children: [
       { label: "Sitemap (this page)", path: "/sitemap" },
+      { label: "Brand Library", path: "/brand-library", note: "Internal asset library: logos, colors, type, imagery, voice and terminology rules" },
       { label: "Found It (Easter Egg)", path: "/found-it", note: "Hidden form linked secretly inside Terms & Conditions" },
     ],
   },
