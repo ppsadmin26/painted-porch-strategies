@@ -260,7 +260,11 @@ async function upsertContact(
       email: payload.email.trim(),
       tags: contactTags,
       source: "Website Contact",
-      customFields: buildContactCustomFields({ setStatus: true, setFirstContactDate: true }),
+      customFields: buildContactCustomFields({
+        setStatus: true,
+        setFirstContactDate: true,
+        setFirstTouchBrand: true,
+      }),
     };
 
     if (payload.phone) createBody.phone = payload.phone.trim();
