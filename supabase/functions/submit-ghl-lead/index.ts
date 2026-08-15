@@ -119,9 +119,13 @@ const GHL_FIELD_IDS = {
   first_contact_date: "410RQnsoOeKEcmKVJw7i",
 };
 
+// Brand value for every website-generated record
+const PPS_BRAND = "Painted Porch Strategies";
+
 function buildContactCustomFields(payload: {
   setStatus?: boolean;
   setFirstContactDate?: boolean;
+  setFirstTouchBrand?: boolean;
 }): GHLCustomField[] {
   const customFields: GHLCustomField[] = [];
 
@@ -131,6 +135,14 @@ function buildContactCustomFields(payload: {
 
   customFields.push({ id: GHL_FIELD_IDS.contact_source, field_value: "Website Contact" });
 
+  // Contact-level brand is always Painted Porch Strategies from this site
+  customFields.push({ key: "brands", field_value: PPS_BRAND });
+
+  // First-touch brand is write-once: only set when it has no value yet
+  if (payload.setFirstTouchBrand) {
+    customFields.push({ key: "first_touch_brand", field_value: PPS_BRAND });
+  }
+
   if (payload.setFirstContactDate) {
     const firstContactDate = todayForGHL();
     customFields.push({ id: GHL_FIELD_IDS.first_contact_date, field_value: firstContactDate });
@@ -138,6 +150,26 @@ function buildContactCustomFields(payload: {
 
   return customFields;
 }
+
+// Best-effort check for an already-populated custom field on an existing contact.
+// GHL returns custom fields with varying shapes; we only treat a field as
+// populated when we can positively identify it by key AND it has a value.
+function hasPopulatedCustomField(
+  contact: Record<string, unknown> | null,
+  key: string,
+): boolean {
+  const fields = (contact?.customFields ?? contact?.customField) as
+    | Array<Record<string, unknown>>
+    | undefined;
+  if (!Array.isArray(fields)) return false;
+  return fields.some((f) => {
+    const fieldKey = String(f.key ?? f.fieldKey ?? "");
+    if (!fieldKey.endsWith(key)) return false;
+    const value = f.value ?? f.field_value;
+    return Array.isArray(value) ? value.length > 0 : String(value ?? "").trim() !== "";
+  });
+}
+
 
 // ── Step 1: Upsert Contact ──────────────────────────────────────────────
 async function upsertContact(
@@ -182,7 +214,12 @@ async function upsertContact(
       lastName: payload.lastName.trim(),
       email: payload.email.trim(),
       tags: contactTags,
-      customFields: buildContactCustomFields({ setStatus: false, setFirstContactDate: false }),
+      customFields: buildContactCustomFields({
+        setStatus: false,
+        setFirstContactDate: false,
+        // Write-once: only stamp first_touch_brand when it is still empty
+        setFirstTouchBrand: !hasPopulatedCustomField(existingContact, "first_touch_brand"),
+      }),
     };
 
     if (payload.phone) updateBody.phone = payload.phone.trim();
@@ -223,7 +260,11 @@ async function upsertContact(
       email: payload.email.trim(),
       tags: contactTags,
       source: "Website Contact",
-      customFields: buildContactCustomFields({ setStatus: true, setFirstContactDate: true }),
+      customFields: buildContactCustomFields({
+        setStatus: true,
+        setFirstContactDate: true,
+        setFirstTouchBrand: true,
+      }),
     };
 
     if (payload.phone) createBody.phone = payload.phone.trim();
@@ -324,7 +365,7 @@ async function createOpportunity(
   const customFields: GHLCustomField[] = [];
 
   // Brand is always Painted Porch Strategies for website-generated opportunities
-  customFields.push({ key: "brand", field_value: "Painted Porch Strategies" });
+  customFields.push({ key: "brands", field_value: PPS_BRAND });
 
   if (payload.message) {
     customFields.push({ key: "contact_form_details", field_value: payload.message });
