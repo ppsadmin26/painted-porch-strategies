@@ -70,23 +70,23 @@
       "policyname": "Service role can insert backup runs",
       "qual": null,
       "roles": [
-        "authenticated"
+        "service_role"
       ],
       "schemaname": "public",
       "tablename": "backup_runs",
-      "with_check": "(auth.role() = 'service_role'::text)"
+      "with_check": "true"
     },
     {
       "cmd": "UPDATE",
       "permissive": "PERMISSIVE",
       "policyname": "Service role can update backup runs",
-      "qual": "(auth.role() = 'service_role'::text)",
+      "qual": "true",
       "roles": [
-        "authenticated"
+        "service_role"
       ],
       "schemaname": "public",
       "tablename": "backup_runs",
-      "with_check": "(auth.role() = 'service_role'::text)"
+      "with_check": "true"
     },
     {
       "cmd": "SELECT",
