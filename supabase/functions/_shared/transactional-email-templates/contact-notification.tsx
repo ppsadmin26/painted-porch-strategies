@@ -92,7 +92,7 @@ export const template = {
   subject: (data: Record<string, any>) =>
     `New Website Inquiry: ${data.firstName || ''} ${data.lastName || ''}`.trim(),
   displayName: 'Contact form notification (internal)',
-  to: 'explore@onthepaintedporch.com',
+  to: 'team@onthepaintedporch.com',
   previewData: {
     firstName: 'Jane',
     lastName: 'Smith',
