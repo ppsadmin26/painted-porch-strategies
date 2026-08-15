@@ -37,7 +37,7 @@ const ContactConfirmationEmail = (props: ContactConfirmationProps) => {
             </Link>
             <Heading style={h1}>Thank you, {name}!</Heading>
           <Text style={text}>
-            We appreciate you reaching out to {SITE_NAME}. Your message has been received and our team will review it promptly. You should expect a response within <strong>24 business hours</strong>.
+            We appreciate you reaching out to {SITE_NAME}. Your message has been received and our team will review it promptly. We typically respond within <strong>24-48 business hours (Monday through Friday)</strong>.
           </Text>
 
           <Hr style={hr} />
