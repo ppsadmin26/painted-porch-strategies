@@ -264,7 +264,7 @@ export default function PPSContact() {
         supabase.functions.invoke("send-transactional-email", {
           body: {
             templateName: "contact-notification",
-            recipientEmail: "explore@onthepaintedporch.com",
+            recipientEmail: "team@onthepaintedporch.com",
             idempotencyKey: `contact-notify-${submissionId}`,
             templateData: emailData,
           },
