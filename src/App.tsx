@@ -393,6 +393,7 @@ const App = () => (
             <Route path="cookies" element={<Navigate to="/terms?tab=cookies" replace />} />
             <Route path="sitemap" element={<Sitemap />} />
             <Route path="found-it" element={<EasterEggForm />} />
+            <Route path="brand-library" element={<BrandLibrary />} />
             <Route path="unsubscribe" element={<Unsubscribe />} />
             <Route path="refund-request" element={<RefundRequest />} />
             
