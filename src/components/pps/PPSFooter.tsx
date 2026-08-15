@@ -196,11 +196,11 @@ export default function PPSFooter() {
         {/* Legal Links */}
         <div className="mt-6 pt-6 text-center">
           <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-white/70">
-            <li className="text-caption"><Link to="/terms?tab=terms" className="hover:text-lime transition-colors rounded-sm focus-ring-on-dark">Terms</Link></li>
-            <li aria-hidden className="text-caption text-white/30">·</li>
-            <li className="text-caption"><Link to="/terms?tab=privacy" className="hover:text-lime transition-colors rounded-sm focus-ring-on-dark">Privacy</Link></li>
-            <li aria-hidden className="text-caption text-white/30">·</li>
-            <li className="text-caption"><Link to="/terms?tab=cookies" className="hover:text-lime transition-colors rounded-sm focus-ring-on-dark">Cookies</Link></li>
+            <li className="text-legal"><Link to="/terms?tab=terms" className="hover:text-lime transition-colors rounded-sm focus-ring-on-dark">Terms</Link></li>
+            <li aria-hidden className="text-legal text-white/30">·</li>
+            <li className="text-legal"><Link to="/terms?tab=privacy" className="hover:text-lime transition-colors rounded-sm focus-ring-on-dark">Privacy</Link></li>
+            <li aria-hidden className="text-legal text-white/30">·</li>
+            <li className="text-legal"><Link to="/terms?tab=cookies" className="hover:text-lime transition-colors rounded-sm focus-ring-on-dark">Cookies</Link></li>
           </ul>
 
         </div>
