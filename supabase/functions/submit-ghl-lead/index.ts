@@ -214,7 +214,12 @@ async function upsertContact(
       lastName: payload.lastName.trim(),
       email: payload.email.trim(),
       tags: contactTags,
-      customFields: buildContactCustomFields({ setStatus: false, setFirstContactDate: false }),
+      customFields: buildContactCustomFields({
+        setStatus: false,
+        setFirstContactDate: false,
+        // Write-once: only stamp first_touch_brand when it is still empty
+        setFirstTouchBrand: !hasPopulatedCustomField(existingContact, "first_touch_brand"),
+      }),
     };
 
     if (payload.phone) updateBody.phone = payload.phone.trim();
