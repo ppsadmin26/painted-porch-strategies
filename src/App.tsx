@@ -134,6 +134,7 @@ import ChangeCommsThankYou from "./pages/pps/ChangeCommsThankYou";
 import TermsAndConditions from "./pages/pps/TermsAndConditions";
 import Sitemap from "./pages/pps/Sitemap";
 import EasterEggForm from "./pages/pps/EasterEggForm";
+import BrandLibrary from "./pages/pps/BrandLibrary";
 import Unsubscribe from "./pages/pps/Unsubscribe";
 
 // Admin Pages
@@ -392,6 +393,7 @@ const App = () => (
             <Route path="cookies" element={<Navigate to="/terms?tab=cookies" replace />} />
             <Route path="sitemap" element={<Sitemap />} />
             <Route path="found-it" element={<EasterEggForm />} />
+            <Route path="brand-library" element={<BrandLibrary />} />
             <Route path="unsubscribe" element={<Unsubscribe />} />
             <Route path="refund-request" element={<RefundRequest />} />
             
