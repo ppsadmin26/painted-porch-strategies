@@ -90,7 +90,7 @@ export default function PPSFooter() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-base md:text-lg font-poppins font-semibold text-gold mb-4">Quick Links</h4>
+            <h4 className="text-sm font-poppins font-semibold text-gold mb-3">Quick Links</h4>
             <ul className="space-y-2">
               {visibleQuick.map((link) => (
                 <li key={link.href} className="text-body">
@@ -104,7 +104,7 @@ export default function PPSFooter() {
 
           {/* P.A.T.H.ways */}
           <div>
-            <h4 className="text-base md:text-lg font-poppins font-semibold text-gold mb-4">P.A.T.H.ways</h4>
+            <h4 className="text-sm font-poppins font-semibold text-gold mb-3">P.A.T.H.ways</h4>
             <ul className="space-y-2">
               {visiblePathways.map((link) => (
                 <li key={link.href} className="text-body">
@@ -118,7 +118,7 @@ export default function PPSFooter() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-base md:text-lg font-poppins font-semibold text-gold mb-4">Get In Touch</h4>
+            <h4 className="text-sm font-poppins font-semibold text-gold mb-3">Get In Touch</h4>
             <Link to="/contact?interest=general" className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy font-semibold py-2 px-6 rounded-lg transition-all">
               Contact Us
             </Link>
@@ -180,10 +180,10 @@ export default function PPSFooter() {
 
         {/* Charity Note */}
         <div className="mt-6 pt-6 text-center">
-          <h4 className="text-base md:text-lg font-poppins font-bold text-lime mb-2">
+          <h4 className="text-sm font-poppins font-bold text-lime mb-1">
             Let's Do Good Sh<span className="text-red-500 font-bold">IF</span>t
           </h4>
-          <p className="text-body -sm text-white/80">
+          <p className="text-body-sm text-white/80">
             To do <em>well</em>, we must also do <em>good</em>.{" "}
             <Link to="/about/impact#do-good-shift" className="text-lime font-semibold underline hover:text-white transition-colors">5% of your investment is donated to charity.</Link>
           </p>
@@ -202,7 +202,7 @@ export default function PPSFooter() {
 
         {/* Copyright */}
         <div className="mt-4 pt-4 text-center">
-          <p className="text-body text-white/60">
+          <p className="text-caption text-white/60">
             © {new Date().getFullYear()} Painted Porch Strategies. All rights reserved. Phase Zero, P.A.T.H., and The Painted Porch Pillars are trademarks.
           </p>
         </div>
