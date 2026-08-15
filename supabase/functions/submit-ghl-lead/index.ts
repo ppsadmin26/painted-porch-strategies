@@ -365,7 +365,7 @@ async function createOpportunity(
   const customFields: GHLCustomField[] = [];
 
   // Brand is always Painted Porch Strategies for website-generated opportunities
-  customFields.push({ key: "brand", field_value: "Painted Porch Strategies" });
+  customFields.push({ key: "brands", field_value: PPS_BRAND });
 
   if (payload.message) {
     customFields.push({ key: "contact_form_details", field_value: payload.message });
