@@ -282,7 +282,8 @@
    *   .text-lead       18px / 20px (md+)  Hero sub-heads, section intros under an H2
    *   .text-body       16px / 18px (lg+)  DEFAULT body copy. Use unless you have a reason not to.
    *   .text-body-sm    14px               Compact: card body, multi-column grids, dense lists, table cells
-   *   .text-caption    12px               Footnotes, legal, labels, timestamps, badges
+   *   .text-caption    12px               Footnotes, labels, timestamps, badges
+   *   .text-legal       11px               Fine print: Terms, Privacy, Cookies, copyright, disclaimers
    *   .text-pullquote  20px / 24px (md+)  Block quotes & callout quotes only
    *
    * UI / CHROME TOKENS (size only, no weight or family)
@@ -303,6 +304,9 @@
   }
   .text-caption {
     @apply text-xs leading-normal;
+  }
+  .text-legal {
+    @apply text-[11px] leading-normal;
   }
   .text-pullquote {
     @apply text-xl md:text-2xl italic leading-snug;
