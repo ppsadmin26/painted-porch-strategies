@@ -134,6 +134,7 @@ import ChangeCommsThankYou from "./pages/pps/ChangeCommsThankYou";
 import TermsAndConditions from "./pages/pps/TermsAndConditions";
 import Sitemap from "./pages/pps/Sitemap";
 import EasterEggForm from "./pages/pps/EasterEggForm";
+import BrandLibrary from "./pages/pps/BrandLibrary";
 import Unsubscribe from "./pages/pps/Unsubscribe";
 
 // Admin Pages
