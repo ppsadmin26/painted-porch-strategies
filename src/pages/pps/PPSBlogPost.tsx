@@ -541,7 +541,7 @@ export default function PPSBlogPost() {
                         {rp.primaryCategoryTitle}
                       </span>
                     )}
-                    <h3 className="text-xl md:text-2xl font-poppins font-semibold text-navy mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                    <h3 className="text-base md:text-lg font-poppins font-semibold text-navy mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                       {rp.title}
                     </h3>
                     {rp.excerpt && (
