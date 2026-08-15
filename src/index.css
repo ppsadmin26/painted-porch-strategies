@@ -279,11 +279,18 @@
    * Use these tokens on every <p>, list, and narrative text block
    * instead of raw text-xs/sm/base/lg/xl utilities.
    *
-   *   .text-lead       Hero sub-heads, section intros under an H2
-   *   .text-body       DEFAULT body copy (16px). Use unless you have a reason not to.
-   *   .text-body-sm    Compact: card body, multi-column grids, dense lists, table cells
-   *   .text-caption    Footnotes, legal, labels, timestamps, badges
-   *   .text-pullquote  Block quotes & callout quotes only
+   *   .text-lead       18px / 20px (md+)  Hero sub-heads, section intros under an H2
+   *   .text-body       16px / 18px (lg+)  DEFAULT body copy. Use unless you have a reason not to.
+   *   .text-body-sm    14px               Compact: card body, multi-column grids, dense lists, table cells
+   *   .text-caption    12px               Footnotes, legal, labels, timestamps, badges
+   *   .text-pullquote  20px / 24px (md+)  Block quotes & callout quotes only
+   *
+   * UI / CHROME TOKENS (size only, no weight or family)
+   * For interface text that is not narrative copy. Pair with
+   * font-poppins / font-semibold in the component as needed.
+   *
+   *   .text-ui-label   14px  Column headings, form labels, small section labels
+   *   .text-ui-control 14px  Buttons, inputs, selects, chips
    * ============================================================ */
   .text-lead {
     @apply text-lg md:text-xl leading-relaxed;
@@ -300,6 +307,13 @@
   .text-pullquote {
     @apply text-xl md:text-2xl italic leading-snug;
   }
+  .text-ui-label {
+    @apply text-sm leading-snug;
+  }
+  .text-ui-control {
+    @apply text-sm leading-none;
+  }
+
 
 
   /* Gradient backgrounds for visual variety */

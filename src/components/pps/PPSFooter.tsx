@@ -90,7 +90,7 @@ export default function PPSFooter() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-sm font-poppins font-semibold text-gold mb-3">Quick Links</h4>
+            <h4 className="text-ui-label font-poppins font-semibold text-gold mb-3">Quick Links</h4>
             <ul className="space-y-2">
               {visibleQuick.map((link) => (
                 <li key={link.href} className="text-body-sm">
@@ -105,7 +105,7 @@ export default function PPSFooter() {
 
           {/* P.A.T.H.ways */}
           <div>
-            <h4 className="text-sm font-poppins font-semibold text-gold mb-3">P.A.T.H.ways</h4>
+            <h4 className="text-ui-label font-poppins font-semibold text-gold mb-3">P.A.T.H.ways</h4>
             <ul className="space-y-2">
               {visiblePathways.map((link) => (
                 <li key={link.href} className="text-body-sm">
@@ -120,15 +120,16 @@ export default function PPSFooter() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-poppins font-semibold text-gold mb-3">Get In Touch</h4>
-            <Link to="/contact?interest=general" className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy text-sm font-semibold py-2 px-6 rounded-lg transition-all">
+            <h4 className="text-ui-label font-poppins font-semibold text-gold mb-3">Get In Touch</h4>
+            <Link to="/contact?interest=general" className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy text-ui-control font-semibold py-2 px-6 rounded-lg transition-all">
+
               Contact Us
             </Link>
 
 
             {/* Newsletter Signup */}
             <form onSubmit={handleSubscribe} className="mt-5">
-              <label htmlFor="footer-newsletter-email" className="block text-sm font-poppins font-semibold text-white mb-2">
+              <label htmlFor="footer-newsletter-email" className="block text-ui-label font-poppins font-semibold text-white mb-2">
                 Porch Perspectives Newsletter
               </label>
               {status === "success" ? (
@@ -147,12 +148,12 @@ export default function PPSFooter() {
                       }}
                       placeholder="you@example.com"
                       disabled={status === "loading"}
-                      className="flex-1 min-w-0 bg-white/10 border border-white/30 text-white placeholder:text-white/50 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent disabled:opacity-60"
+                      className="flex-1 min-w-0 bg-white/10 border border-white/30 text-white placeholder:text-white/50 rounded-lg px-3 py-2 text-ui-control focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent disabled:opacity-60"
                     />
                     <button
                       type="submit"
                       disabled={status === "loading"}
-                      className="inline-flex items-center justify-center bg-lime text-white hover:bg-white hover:text-navy font-semibold text-sm py-2 px-4 rounded-lg transition-all disabled:opacity-60"
+                      className="inline-flex items-center justify-center bg-lime text-white hover:bg-white hover:text-navy font-semibold text-ui-control py-2 px-4 rounded-lg transition-all disabled:opacity-60"
                     >
                       {status === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : "Subscribe"}
                     </button>
@@ -183,7 +184,7 @@ export default function PPSFooter() {
 
         {/* Charity Note */}
         <div className="mt-6 pt-6 text-center">
-          <h4 className="text-sm font-poppins font-bold text-lime mb-1">
+          <h4 className="text-ui-label font-poppins font-bold text-lime mb-1">
             Let's Do Good Sh<span className="text-red-500 font-bold">IF</span>t
           </h4>
           <p className="text-body-sm text-white/80">
