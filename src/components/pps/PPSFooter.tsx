@@ -94,7 +94,7 @@ export default function PPSFooter() {
             <ul className="space-y-2">
               {visibleQuick.map((link) => (
                 <li key={link.href} className="text-body-sm">
-                  <Link to={link.href} className="text-white/80 hover:text-lime transition-colors">
+                  <Link to={link.href} className="text-white/80 hover:text-lime transition-colors rounded-sm focus-ring-on-dark">
                     {link.label}
                   </Link>
 
@@ -109,7 +109,7 @@ export default function PPSFooter() {
             <ul className="space-y-2">
               {visiblePathways.map((link) => (
                 <li key={link.href} className="text-body-sm">
-                  <Link to={link.href} className="text-white/80 hover:text-lime transition-colors">
+                  <Link to={link.href} className="text-white/80 hover:text-lime transition-colors rounded-sm focus-ring-on-dark">
                     {link.label}
                   </Link>
 
@@ -121,7 +121,7 @@ export default function PPSFooter() {
           {/* Contact */}
           <div>
             <h4 className="text-ui-label font-poppins font-semibold text-gold mb-3">Get In Touch</h4>
-            <Link to="/contact?interest=general" className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy text-ui-control font-semibold py-2 px-6 rounded-lg transition-all">
+            <Link to="/contact?interest=general" className="inline-block bg-transparent border-2 border-white text-white hover:bg-white hover:text-navy text-ui-control font-semibold py-2 px-6 rounded-lg transition-all focus-ring-on-dark">
 
               Contact Us
             </Link>
@@ -153,7 +153,7 @@ export default function PPSFooter() {
                     <button
                       type="submit"
                       disabled={status === "loading"}
-                      className="inline-flex items-center justify-center bg-lime text-white hover:bg-white hover:text-navy font-semibold text-ui-control py-2 px-4 rounded-lg transition-all disabled:opacity-60"
+                      className="inline-flex items-center justify-center bg-lime text-white hover:bg-white hover:text-navy font-semibold text-ui-control py-2 px-4 rounded-lg transition-all disabled:opacity-60 focus-ring-on-dark"
                     >
                       {status === "loading" ? <Loader2 className="w-4 h-4 animate-spin" /> : "Subscribe"}
                     </button>
@@ -173,7 +173,7 @@ export default function PPSFooter() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="text-white/60 hover:text-lime transition-colors"
+                  className="text-white/60 hover:text-lime transition-colors rounded-sm focus-ring-on-dark"
                 >
                   <social.icon className="w-5 h-5" />
                 </a>
@@ -189,18 +189,18 @@ export default function PPSFooter() {
           </h4>
           <p className="text-body-sm text-white/80">
             To do <em>well</em>, we must also do <em>good</em>.{" "}
-            <Link to="/about/impact#do-good-shift" className="text-lime font-semibold underline hover:text-white transition-colors">5% of your investment is donated to charity.</Link>
+            <Link to="/about/impact#do-good-shift" className="text-lime font-semibold underline hover:text-white transition-colors rounded-sm focus-ring-on-dark">5% of your investment is donated to charity.</Link>
           </p>
         </div>
 
         {/* Legal Links */}
         <div className="mt-6 pt-6 text-center">
           <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-white/70">
-            <li className="text-caption"><Link to="/terms?tab=terms" className="hover:text-lime transition-colors">Terms</Link></li>
+            <li className="text-caption"><Link to="/terms?tab=terms" className="hover:text-lime transition-colors rounded-sm focus-ring-on-dark">Terms</Link></li>
             <li aria-hidden className="text-caption text-white/30">·</li>
-            <li className="text-caption"><Link to="/terms?tab=privacy" className="hover:text-lime transition-colors">Privacy</Link></li>
+            <li className="text-caption"><Link to="/terms?tab=privacy" className="hover:text-lime transition-colors rounded-sm focus-ring-on-dark">Privacy</Link></li>
             <li aria-hidden className="text-caption text-white/30">·</li>
-            <li className="text-caption"><Link to="/terms?tab=cookies" className="hover:text-lime transition-colors">Cookies</Link></li>
+            <li className="text-caption"><Link to="/terms?tab=cookies" className="hover:text-lime transition-colors rounded-sm focus-ring-on-dark">Cookies</Link></li>
           </ul>
 
         </div>
