@@ -98,22 +98,21 @@ export default function PPSHome() {
       <TierHeroSection
         customBadge={
           <span className="inline-block bg-gold/90 text-navy font-poppins font-semibold text-sm px-4 py-1.5 rounded-full mb-6">
-            Phase Zero<sup className="text-[0.55em] align-super">™</sup> &middot; The Work Before the Work
+            Know Before Your Grow
           </span>
         }
         headline={
           <>
-            It&rsquo;s Time to Do Epic <ShIFt />.
+            Build An Organization That Can Do Epic <ShIFt />
           </>
         }
         subheadline=""
         description={
           <>
-            You have the vision. You have the resolve. What's harder to find is the clarity - the kind that comes <em>before</em> strategy hardens, <em>before</em> the announcement activates, <em>before</em> momentum exceeds what your organization is able to realistically execute.
+            You have the vision. You have the resolve. What's harder to find is the clarity - the kind that comes before strategy hardens, before the announcement activates, before momentum exceeds what your organization is able to realistically execute.
             <br /><br />
             That's the work we do.
             <br /><br />
-            And it starts with one question: <strong>What is your organization actually built to lead next?</strong>
           </>
         }
 
