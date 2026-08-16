@@ -109,19 +109,20 @@ async function fetchBlogPosts() {
 }
 
 function generateSitemap(entries) {
-  const today = new Date().toISOString().split("T")[0];
-
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
   for (const entry of entries) {
     xml += `  <url>\n`;
     xml += `    <loc>${BASE_URL}${entry.path}</loc>\n`;
-    xml += `    <lastmod>${entry.lastmod || today}</lastmod>\n`;
+    // <lastmod> is emitted only when we have a page-specific, authoritative
+    // timestamp (e.g. blog_posts.updated_at). Never derived from build time.
+    if (entry.lastmod) xml += `    <lastmod>${entry.lastmod}</lastmod>\n`;
     xml += `    <changefreq>${entry.changefreq}</changefreq>\n`;
     xml += `    <priority>${entry.priority}</priority>\n`;
     xml += `  </url>\n`;
   }
+
 
   xml += `</urlset>\n`;
   return xml;
@@ -147,13 +148,11 @@ async function fetchNonPublicPaths() {
 
 async function main() {
   const [posts, skipPaths] = await Promise.all([fetchBlogPosts(), fetchNonPublicPaths()]);
-  const today = new Date().toISOString().split("T")[0];
 
   const entries = staticPages
     .filter((page) => !skipPaths.has(page.path))
     .map((page) => ({
       path: page.path,
-      lastmod: today,
       changefreq: page.changefreq,
       priority: page.priority,
     }));
@@ -161,15 +160,16 @@ async function main() {
   if (posts.length > 0) {
     for (const post of posts) {
       if (!post.slug) continue;
-      const lastmod = (post.updated_at || post.publish_date || today).split("T")[0];
+      const source = post.updated_at || post.publish_date;
       entries.push({
         path: `/resources/insights/${post.slug}`,
-        lastmod,
+        lastmod: source ? String(source).split("T")[0] : undefined,
         changefreq: "monthly",
         priority: "0.7",
       });
     }
   }
+
 
   const xml = generateSitemap(entries);
   const outPath = resolve("public/sitemap.xml");

@@ -99,8 +99,6 @@ Deno.serve(async (req) => {
     { loc: "/cookies", priority: "0.3", changefreq: "yearly" },
   ].filter((page) => isPublic(page.loc));
 
-  const today = new Date().toISOString().split("T")[0];
-
   let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
@@ -108,7 +106,6 @@ Deno.serve(async (req) => {
   for (const page of staticPages) {
     xml += `  <url>
     <loc>${siteUrl}${page.loc}</loc>
-    <lastmod>${today}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
   </url>
@@ -120,11 +117,13 @@ Deno.serve(async (req) => {
       if (!post.slug) continue;
       const path = `/resources/insights/${post.slug}`;
       if (!isPublic(path)) continue;
-      const lastmod = (post.updated_at || post.publish_date || today).split("T")[0];
+      const source = post.updated_at || post.publish_date;
+      const lastmodTag = source
+        ? `    <lastmod>${String(source).split("T")[0]}</lastmod>\n`
+        : "";
       xml += `  <url>
     <loc>${siteUrl}${path}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>monthly</changefreq>
+${lastmodTag}    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 `;

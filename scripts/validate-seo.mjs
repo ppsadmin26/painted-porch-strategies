@@ -1,6 +1,6 @@
 import { chromium } from '@playwright/test';
 
-const DEFAULT_SITE_URL = 'https://pps-website.lovable.app';
+const DEFAULT_SITE_URL = 'https://onthepaintedporch.com';
 const DEFAULT_KEY_PAGES = ['/', '/about', '/contact', '/resources', '/resources/blog'];
 const MAX_STATIC_PAGES = 8;
 const MAX_BLOG_PAGES = 3;
