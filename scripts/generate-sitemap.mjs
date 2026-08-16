@@ -148,13 +148,11 @@ async function fetchNonPublicPaths() {
 
 async function main() {
   const [posts, skipPaths] = await Promise.all([fetchBlogPosts(), fetchNonPublicPaths()]);
-  const today = new Date().toISOString().split("T")[0];
 
   const entries = staticPages
     .filter((page) => !skipPaths.has(page.path))
     .map((page) => ({
       path: page.path,
-      lastmod: today,
       changefreq: page.changefreq,
       priority: page.priority,
     }));
@@ -162,15 +160,16 @@ async function main() {
   if (posts.length > 0) {
     for (const post of posts) {
       if (!post.slug) continue;
-      const lastmod = (post.updated_at || post.publish_date || today).split("T")[0];
+      const source = post.updated_at || post.publish_date;
       entries.push({
         path: `/resources/insights/${post.slug}`,
-        lastmod,
+        lastmod: source ? String(source).split("T")[0] : undefined,
         changefreq: "monthly",
         priority: "0.7",
       });
     }
   }
+
 
   const xml = generateSitemap(entries);
   const outPath = resolve("public/sitemap.xml");
