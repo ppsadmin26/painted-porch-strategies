@@ -5,14 +5,19 @@ Disallow: /admin/
 Disallow: /reset-password
 
 # Draft / internal / archived pages — hidden from search engines
+Disallow: /blue-door-archive
 Disallow: /brand-library
+Disallow: /capabilities
 Disallow: /change-ready-leader-assessment
 Disallow: /change-ready-team-assessment
 Disallow: /elemental-style-assessment
 Disallow: /elements-mini
+Disallow: /epic-shift
 Disallow: /eq-change-leader
 Disallow: /home-archive
+Disallow: /home-v2
 Disallow: /home-verbatim
+Disallow: /how-we-work
 Disallow: /mym-journal-challenge
 Disallow: /overview
 Disallow: /partner/amplify/sprints-archive
@@ -23,4 +28,4 @@ Disallow: /team-superpowers
 Disallow: /wfh-sign-up
 Disallow: /wfh-thank-you
 
-Sitemap: /sitemap.xml
+Sitemap: https://onthepaintedporch.com/sitemap.xml
