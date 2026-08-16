@@ -109,19 +109,20 @@ async function fetchBlogPosts() {
 }
 
 function generateSitemap(entries) {
-  const today = new Date().toISOString().split("T")[0];
-
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
   for (const entry of entries) {
     xml += `  <url>\n`;
     xml += `    <loc>${BASE_URL}${entry.path}</loc>\n`;
-    xml += `    <lastmod>${entry.lastmod || today}</lastmod>\n`;
+    // <lastmod> is emitted only when we have a page-specific, authoritative
+    // timestamp (e.g. blog_posts.updated_at). Never derived from build time.
+    if (entry.lastmod) xml += `    <lastmod>${entry.lastmod}</lastmod>\n`;
     xml += `    <changefreq>${entry.changefreq}</changefreq>\n`;
     xml += `    <priority>${entry.priority}</priority>\n`;
     xml += `  </url>\n`;
   }
+
 
   xml += `</urlset>\n`;
   return xml;
