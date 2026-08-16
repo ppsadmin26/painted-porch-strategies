@@ -74,7 +74,7 @@ Disallow: /reset-password
     }
   }
 
-  content += "\nSitemap: /sitemap.xml\n";
+  content += "\nSitemap: https://onthepaintedporch.com/sitemap.xml\n";
 
   const outPath = resolve("public/robots.txt");
   writeFileSync(outPath, content);
